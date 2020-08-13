@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class GetAzureDiskAccess : ComputeAutomationBaseCmdlet
     {
         private const string DefaultParameterSet = "DefaultParameterSet";
-        private const string InputObjectParameterSet = "InputObjectParameterSet";
         private const string ResourceIDParameterSet = "ResourceIDParameterSet";
 
         [Parameter(
@@ -51,60 +50,70 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroupName = this.ResourceGroupName;
-                string diskName = this.DiskName;
+                string resourceGroupName;
+                string diskAccessName;
 
-                if (ShouldGetByName(resourceGroupName, diskName))
+                if (this.ParameterSetName == ResourceIDParameterSet)
                 {
-                    var result = DisksClient.Get(resourceGroupName, diskName);
-                    var psObject = new PSDisk();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
-                    WriteObject(psObject);
-                }
-                else if (ShouldListByResourceGroup(resourceGroupName, diskName))
-                {
-                    var result = DisksClient.ListByResourceGroup(resourceGroupName);
-                    var resultList = result.ToList();
-                    var nextPageLink = result.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
-                    {
-                        var pageResult = DisksClient.ListByResourceGroupNext(nextPageLink);
-                        foreach (var pageItem in pageResult)
-                        {
-                            resultList.Add(pageItem);
-                        }
-                        nextPageLink = pageResult.NextPageLink;
-                    }
-                    var psObject = new List<PSDiskList>();
-                    foreach (var r in resultList)
-                    {
-                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
-                    }
-                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskName, psObject), true);
+                    resourceGroupName = GetResourceGroupName(this.ResourceId);
+                    diskAccessName = GetResourceName(this.ResourceId, "Microsoft.Compute/diskAccesses");
                 }
                 else
                 {
-                    var result = DisksClient.List();
+                    resourceGroupName = this.ResourceGroupName;
+                    diskAccessName = this.Name;
+                }
+
+                if (ShouldGetByName(resourceGroupName, diskAccessName))
+                {
+                    var result = DiskAccessesClient.Get(resourceGroupName, diskAccessName);
+                    var psObject = new PSDiskAccess();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccess>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (ShouldListByResourceGroup(resourceGroupName, diskAccessName))
+                {
+                    var result = DiskAccessesClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
                     var nextPageLink = result.NextPageLink;
                     while (!string.IsNullOrEmpty(nextPageLink))
                     {
-                        var pageResult = DisksClient.ListNext(nextPageLink);
+                        var pageResult = DiskAccessesClient.ListByResourceGroupNext(nextPageLink);
                         foreach (var pageItem in pageResult)
                         {
                             resultList.Add(pageItem);
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
-                    var psObject = new List<PSDiskList>();
+                    var psObject = new List<PSDiskAccessList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccessList>(r));
                     }
-                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskName, psObject), true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskAccessName, psObject), true);
+                }
+                else
+                {
+                    var result = DiskAccessesClient.List();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = DiskAccessesClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSDiskAccessList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccessList>(r));
+                    }
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskAccessName, psObject), true);
                 }
             });
         }
     }
 }
-*/

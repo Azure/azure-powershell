@@ -929,19 +929,65 @@ Testing diskAssess object
 function Test-DiskAccessObject
 {
     $rgname = Get-ComputeTestResourceName;
-    $diskname = 'diskaccess' + $rgname;
+    $rgname2 = $rgname + '2';
+    $diskname1Rg1 = 'diskaccess1' + $rgname;
+    $diskName2Rg1 = 'diskAccess2' + $rgname;
+    $diskName3Rg2 = 'diskAccess1' + $rgname2;
     
     try
     {
         # Common
         $loc = "northcentralus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname2 -Location $loc -Force;
 
-        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname -location $loc
+        #Create DiskAccess1 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1 -location $loc
+
+        #Use Get-AzDiskAccess on DiskAccess1 using Default ParameterSet
+        $diskAccess1 = Get-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1
+        #Use Get-AzDiskAccess on DiskAccess1 using resourceId
+        $diskAccess1check = Get-AzDiskAccess -resourceId $diskAccess1.id
+
+        #check if diskAccess1 is good
+        Assert-NotNull $diskAccess1
+        Assert-AreEqual $diskAccess1.Name $diskname1Rg1
+
+        #ASSERT check if diskaccess1 and diskaccess1check are same
+        Assert-AreEqual $diskAccess1.id $diskAccess1check.id
+
+        #Create DiskAccess2 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1 -location $loc
+
+        #Use Get-AzDiskAccess by resourceGroupName
+        $rg1Result = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $rg1Result.count 2
+
+        #add DiskAccess3 to ResourceGroup2
+        New-AzDiskAccess -ResourceGroupName $rgname2 -Name $diskname3Rg2 -location $loc
+
+        #use get-azdiskaccess with no parameters. count should be >= 3
+        $allResult = Get-AzDiskAccess
+
+        Assert-True {$allResult.Count -gt 2;}
+
+        #remove-AzDiskAccess to DiskAccess1 by resourceId
+        Remove-AzDiskAccess -resourceid $diskAccess1.id
+        
+        #Remove-AzDiskAccess to DiskAccess2 by default parameter set
+        Remove-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1
+
+        #Get-AzDiskAccess by resource group. Count should be 0
+        $allResult = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $allResult.count 0
+
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname2
     }
 }
