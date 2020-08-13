@@ -89,30 +89,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // ActiveKey
             KeyVaultAndKeyReference vActiveKey = null;
 
-            /*
-            //ada
-            Encryption vEncryption = null;
-
-            //ada
-            if (this.IsParameterBound(c => c.EncryptionType))
-            {
-                if (vEncryption == null)
-                {
-                    vEncryption = new Encryption();
-                }
-                vEncryption.Type = this.EncryptionType;
-            }
-            else
-            {
-
-                if (vEncryption == null)
-                {
-                    vEncryption = new Encryption();
-                }
-
-                vEncryption.Type = "EncryptionAtRestWithCustomerKey";
-            }*/
-
             if (this.IsParameterBound(c => c.IdentityType))
             {
                 if (vIdentity == null)
@@ -148,8 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
-                EncryptionType = this.IsParameterBound(c => c.EncryptionType) ? this.EncryptionType : "EncryptionAtRestWithCustomerKey",
-                //Encryption = vEncryption,
+                EncryptionType = this.IsParameterBound(c => c.EncryptionType) ? this.EncryptionType : null,
                 Identity = vIdentity,
                 ActiveKey = vActiveKey,
             };

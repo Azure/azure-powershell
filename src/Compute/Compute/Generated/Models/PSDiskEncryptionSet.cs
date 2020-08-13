@@ -49,12 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
-
         public string EncryptionType { get; set; }
-
-
-        //public Encryption Encryption { get; set; }
-        //public EncryptionType EncryptionType { get; set; }
 
     }
 }

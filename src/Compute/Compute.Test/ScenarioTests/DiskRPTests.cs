@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDiskEncryptionSetEncryptionType()
+        public void TestDiskEncryptionSetConfigEncryptionType()
         {
-            TestRunner.RunTestScript("Test-DiskEncryptionSetEncryptionType");
+            TestRunner.RunTestScript("Test-DiskEncryptionSetConfigEncryptionType");
         }
     }
 }
