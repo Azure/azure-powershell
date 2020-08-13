@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Resources service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 azure: true
 powershell: true
 branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/blob/regionmove
+repo: https://github.com/Azure/azure-rest-api-specs/blob/kakattam/sourceidchanges
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -74,7 +74,7 @@ clear-output-folder: true
 
 ``` yaml
 input-file:
-  - https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/regionmove/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
+  - https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/kakattam/sourceidchanges/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
 module-name: Az.Resources.TestSupport
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources
 

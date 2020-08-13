@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.RegionMove
+Module Name: AzResourceMover.RegionMove
 online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/new-azmoveresource
 schema: 2.0.0
 ---
 
-# New-AzMoveResource
+# Update-AzMoveResourceEditSettings
 
 ## SYNOPSIS
 
@@ -14,37 +14,50 @@ schema: 2.0.0
 
 ### CreateExpanded (Default)
 ```
-New-AzMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+Update-AzMoveResourceEditSettings -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-ExistingTargetId <String>] [-MoveStatusCode <String>] [-MoveStatusDetail <ICloudErrorBody[]>]
  [-MoveStatusJobName <String>] [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>]
  [-MoveStatusMoveState <String>] [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>]
  [-ProvisioningState <String>] [-ResourceSettingResourceType <String>]
- [-ResourceSettingTargetResourceName <String>] [-SourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceSettingTargetResourceName <String>] [-SourceId <String>] [-TargetAvailabilityZone <Object>]
+ [-UpdateDomain <Object>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### AvailabilitySet
+```
+Update-AzMoveResourceEditSettings -UpdateDomain <Object> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Body <IMoveResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzMoveResourceEditSettings -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Body <IMoveResource> -TargetAvailabilityZone <Object> -UpdateDomain <Object>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzMoveResource -InputObject <IRegionMoveIdentity> -Body <IMoveResource> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMoveResourceEditSettings -InputObject <IRegionMoveIdentity> -Body <IMoveResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzMoveResource -InputObject <IRegionMoveIdentity> [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
- [-ExistingTargetId <String>] [-MoveStatusCode <String>] [-MoveStatusDetail <ICloudErrorBody[]>]
- [-MoveStatusJobName <String>] [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>]
- [-MoveStatusMoveState <String>] [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>]
- [-ProvisioningState <String>] [-ResourceSettingResourceType <String>]
- [-ResourceSettingTargetResourceName <String>] [-SourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzMoveResourceEditSettings -InputObject <IRegionMoveIdentity>
+ [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-ExistingTargetId <String>]
+ [-MoveStatusCode <String>] [-MoveStatusDetail <ICloudErrorBody[]>] [-MoveStatusJobName <String>]
+ [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>] [-MoveStatusMoveState <String>]
+ [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>] [-ProvisioningState <String>]
+ [-ResourceSettingResourceType <String>] [-ResourceSettingTargetResourceName <String>] [-SourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### VirtualMachines
+```
+Update-AzMoveResourceEditSettings -TargetAvailabilityZone <Object> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -167,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+
 
 ```yaml
 Type: System.String
@@ -425,6 +438,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetAvailabilityZone
+Gets or sets the target availability zone.
+
+```yaml
+Type: System.Object
+Parameter Sets: Create, CreateExpanded, VirtualMachines
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateDomain
+Gets or sets the target UpdateDomain.
+
+```yaml
+Type: System.Object
+Parameter Sets: AvailabilitySet, Create, CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -480,25 +523,30 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <IMoveResource>: Defines the move resource.
   - `ResourceSettingResourceType <String>`: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+  - `ResourceSettingTargetResourceName <String>`: Gets or sets the target Resource name.
+  - `SourceId <String>`: Gets or sets the Source ARM Id of the resource.
+  - `SourceResourceSettingResourceType <String>`: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+  - `SourceResourceSettingTargetResourceName <String>`: Gets or sets the target Resource name.
+  - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
   - `[DependsOnOverride <IMoveResourceDependencyOverride[]>]`: Gets or sets the move resource dependencies overrides.
     - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.
     - `[TargetId <String>]`: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
-  - `[ExistingTargetId <String>]`: Gets or sets the existing target ARM Id of the resource.
-  - `[MoveStatusCode <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  - `[MoveStatusDetail <ICloudErrorBody[]>]`: A list of additional details about the error.
+  - `[Detail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
     - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
+    - `[Detail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
     - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
     - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
-  - `[MoveStatusJobName <String>]`: Defines the job names.
+  - `[ExistingTargetId <String>]`: Gets or sets the existing target ARM Id of the resource.
+  - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
+  - `[MoveStatusCode <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+  - `[MoveStatusDetail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
+  - `[MoveStatusJobName <JobName?>]`: Defines the job names.
   - `[MoveStatusJobProgress <String>]`: Gets or sets the monitoring job percentage.
   - `[MoveStatusMessage <String>]`: A message describing the error, intended to be suitable for display in a user interface.
-  - `[MoveStatusMoveState <String>]`: Defines the MoveResource states.
+  - `[MoveStatusMoveState <MoveState?>]`: Defines the MoveResource states.
   - `[MoveStatusTarget <String>]`: The target of the particular error. For example, the name of the property in error.
   - `[MoveStatusTargetId <String>]`: Gets the Target ARM Id of the resource.
-  - `[ProvisioningState <String>]`: Defines the provisioning states.
-  - `[ResourceSettingTargetResourceName <String>]`: Gets or sets the target Resource name.
-  - `[SourceId <String>]`: Gets or sets the Source ARM Id of the resource.
+  - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
 DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>: Gets or sets the move resource dependencies overrides.
   - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.

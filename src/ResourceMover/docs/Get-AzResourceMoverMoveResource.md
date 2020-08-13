@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/get-azmovecollection
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/get-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
-# Get-AzMoveCollection
+# Get-AzResourceMoverMoveResource
 
 ## SYNOPSIS
 
@@ -14,24 +14,14 @@ schema: 2.0.0
 
 ### List (Default)
 ```
-Get-AzMoveCollection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzMoveCollection -InputObject <IRegionMoveIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzMoveCollection -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,19 +64,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Filter
+The filter to apply on the operation.
+For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: GetViaIdentity
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveCollectionName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,7 +101,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: MoveCollectionName
+Aliases: MoveResourceName
 
 Required: True
 Position: Named
@@ -110,7 +115,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -125,7 +130,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -140,29 +145,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
+### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResource
 
 ## NOTES
 
 ALIASES
-
-### Select-AzResourceMoveContext
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 ## RELATED LINKS
 

@@ -1,27 +1,32 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/get-azunresolveddependency
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/get-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
-# Get-AzUnresolvedDependency
+# Get-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
 
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzUnresolvedDependency -MoveCollectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzResourceMoverMoveCollection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List1
 ```
-Get-AzUnresolvedDependency -InputObject <IRegionMoveIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzResourceMoverMoveCollection -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,29 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MoveCollectionName
+### -Name
 .
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: MoveCollectionName
 
 Required: True
 Position: Named
@@ -100,7 +89,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -115,7 +104,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -130,27 +119,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IUnresolvedDependencyCollection
+### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 ## RELATED LINKS
 

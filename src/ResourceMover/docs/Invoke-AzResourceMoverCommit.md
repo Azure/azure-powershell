@@ -1,45 +1,29 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/invoke-azinitiatemovecollectionmove
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/invoke-azresourcemovercommit
 schema: 2.0.0
 ---
 
-# Invoke-AzInitiateMoveCollectionMove
+# Invoke-AzResourceMoverCommit
 
 ## SYNOPSIS
-
+Commits the set of resources included in the request body.
+The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## SYNTAX
 
-### InitiateExpanded (Default)
 ```
-Invoke-AzInitiateMoveCollectionMove -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-MoveResource <String[]>] [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Initiate
-```
-Invoke-AzInitiateMoveCollectionMove -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Body <IResourceMoveRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InitiateViaIdentity
-```
-Invoke-AzInitiateMoveCollectionMove -InputObject <IRegionMoveIdentity> -Body <IResourceMoveRequest>
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### InitiateViaIdentityExpanded
-```
-Invoke-AzInitiateMoveCollectionMove -InputObject <IRegionMoveIdentity> [-MoveResource <String[]>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-
+Commits the set of resources included in the request body.
+The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## EXAMPLES
 
@@ -78,22 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the request body for resource move operation.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IResourceMoveRequest
-Parameter Sets: Initiate, InitiateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -109,28 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: InitiateViaIdentity, InitiateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MoveCollectionName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Initiate, InitiateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -145,7 +97,22 @@ Gets or sets the list of move resources ARM id's.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InitiateExpanded, InitiateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveResourceInputType
+Defines the move resource input type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.MoveResourceInputType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,7 +142,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Initiate, InitiateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -190,7 +157,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Initiate, InitiateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -201,11 +168,11 @@ Accept wildcard characters: False
 ```
 
 ### -ValidateOnly
-Gets or sets a value indicating whether the operation needs to only run pre-requisite.
+Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InitiateExpanded, InitiateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -251,10 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IResourceMoveRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IOperationStatus
@@ -262,22 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <IResourceMoveRequest>: Defines the request body for resource move operation.
-  - `[MoveResource <String[]>]`: Gets or sets the list of move resources ARM id's.
-  - `[ValidateOnly <Boolean?>]`: Gets or sets a value indicating whether the operation needs to only run pre-requisite.
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 ## RELATED LINKS
 

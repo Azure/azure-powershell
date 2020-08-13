@@ -1,44 +1,41 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/new-azmovecollection
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/update-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
-# New-AzMoveCollection
+# Update-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
 
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>] [-Location <String>]
- [-ProvisioningState <String>] [-SourceRegion <String>] [-Tag <Hashtable>] [-TargetRegion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Body <IMoveCollection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### Update
 ```
-New-AzMoveCollection -InputObject <IRegionMoveIdentity> -Body <IMoveCollection> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Body <IUpdateMoveCollectionRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentity
 ```
-New-AzMoveCollection -InputObject <IRegionMoveIdentity> [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-Location <String>] [-ProvisioningState <String>]
- [-SourceRegion <String>] [-Tag <Hashtable>] [-TargetRegion <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceMoverMoveCollection -InputObject <IRegionMoveIdentity> -Body <IUpdateMoveCollectionRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResourceMoverMoveCollection -InputObject <IRegionMoveIdentity> [-IdentityPrincipalId <String>]
+ [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,28 +63,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Body
-Define the move collection.
+Defines the request body for updating move collection.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
-Parameter Sets: Create, CreateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IUpdateMoveCollectionRequest
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -117,7 +99,7 @@ Gets or sets the principal id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -132,7 +114,7 @@ Gets or sets the tenant id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -146,8 +128,8 @@ Accept wildcard characters: False
 The type of identity used for the region move service.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.ResourceIdentityType
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -163,7 +145,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -173,60 +155,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases: MoveCollectionName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-Defines the provisioning states.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,25 +175,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceRegion
-Gets or sets the source region.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -268,7 +190,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -279,26 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetRegion
-Gets or sets the target region.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -344,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
+### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IUpdateMoveCollectionRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
 
@@ -356,23 +263,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-### AzResourceMoveContext
-
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IMoveCollection>: Define the move collection.
+BODY <IUpdateMoveCollectionRequest>: Defines the request body for updating move collection.
   - `[IdentityPrincipalId <String>]`: Gets or sets the principal id.
   - `[IdentityTenantId <String>]`: Gets or sets the tenant id.
-  - `[IdentityType <String>]`: The type of identity used for the region move service.
-  - `[Location <String>]`: The geo-location where the resource lives
-  - `[ProvisioningState <String>]`: Defines the provisioning states.
-  - `[SourceRegion <String>]`: Gets or sets the source region.
-  - `[Tag <IMoveCollectionTags>]`: Resource tags.
+  - `[IdentityType <ResourceIdentityType?>]`: The type of identity used for the region move service.
+  - `[Tag <IUpdateMoveCollectionRequestTags>]`: Gets or sets the Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[TargetRegion <String>]`: Gets or sets the target region.
 
 INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/remove-azmovecollection
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/remove-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
-# Remove-AzMoveCollection
+# Remove-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
 
@@ -14,40 +14,15 @@ schema: 2.0.0
 
 ### Delete (Default)
 ```
-Remove-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzMoveCollection -InputObject <IRegionMoveIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Discard
 ```
-Remove-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Body <IDiscardRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### DiscardExpanded
-```
-Remove-AzMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-MoveResource <String[]>] [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DiscardViaIdentity
-```
-Remove-AzMoveCollection -InputObject <IRegionMoveIdentity> -Body <IDiscardRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DiscardViaIdentityExpanded
-```
-Remove-AzMoveCollection -InputObject <IRegionMoveIdentity> [-MoveResource <String[]>] [-ValidateOnly]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +71,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IDiscardRequest
-Parameter Sets: Discard, DiscardViaIdentity
+Parameter Sets: Discard
 Aliases:
 
 Required: True
@@ -121,43 +96,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: DeleteViaIdentity, DiscardViaIdentity, DiscardViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MoveResource
-Gets or sets the list of move resources ARM id's.
-
-```yaml
-Type: System.String[]
-Parameter Sets: DiscardExpanded, DiscardViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Discard, DiscardExpanded
+Parameter Sets: (All)
 Aliases: MoveCollectionName
 
 Required: True
@@ -187,7 +131,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete, DeleteViaIdentity
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -202,7 +146,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Discard, DiscardExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -217,25 +161,10 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Discard, DiscardExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValidateOnly
-Gets or sets a value indicating whether the operation needs to only run pre-requisite.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DiscardExpanded, DiscardViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,8 +209,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IDiscardRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IOperationStatus
@@ -296,15 +223,9 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BODY <IDiscardRequest>: Defines the request body for discard operation.
-  - `[MoveResource <String[]>]`: Gets or sets the list of move resources ARM id's.
+  - `MoveResource <String[]>`: Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
+  - `[MoveResourceInputType <MoveResourceInputType?>]`: Defines the move resource input type.
   - `[ValidateOnly <Boolean?>]`: Gets or sets a value indicating whether the operation needs to only run pre-requisite.
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 ## RELATED LINKS
 

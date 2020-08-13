@@ -41,7 +41,7 @@ Use of the beta version of `autorest.powershell` generator requires the followin
 ## Run Generation
 In this directory, run AutoRest:
 > `autorest`
-
+ 
 ---
 ### AutoRest Configuration
 > see https://aka.ms/autorest

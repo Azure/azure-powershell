@@ -1,28 +1,31 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/remove-azmoveresource
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/new-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
-# Remove-AzMoveResource
+# New-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
 
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Location <String>] [-ProvisioningState <ProvisioningState>] [-SourceRegion <String>] [-Tag <Hashtable>]
+ [-TargetRegion <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CreateViaIdentityExpanded
 ```
-Remove-AzMoveResource -InputObject <IRegionMoveIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResourceMoverMoveCollection -InputObject <IRegionMoveIdentity> [-IdentityPrincipalId <String>]
+ [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-ProvisioningState <ProvisioningState>] [-SourceRegion <String>] [-Tag <Hashtable>] [-TargetRegion <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,21 +53,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -80,13 +68,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityPrincipalId
+Gets or sets the principal id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityTenantId
+Gets or sets the tenant id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of identity used for the region move service.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.ResourceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -96,15 +129,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MoveCollectionName
-.
+### -Location
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,8 +149,8 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MoveResourceName
+Parameter Sets: CreateExpanded
+Aliases: MoveCollectionName
 
 Required: True
 Position: Named
@@ -126,26 +159,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -ProvisioningState
+Defines the provisioning states.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -161,10 +179,25 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceRegion
+Gets or sets the source region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,10 +209,40 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetRegion
+Gets or sets the target region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -226,7 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
 
 ## NOTES
 

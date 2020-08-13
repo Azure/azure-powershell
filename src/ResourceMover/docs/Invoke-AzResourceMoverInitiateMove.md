@@ -1,32 +1,29 @@
 ---
 external help file:
-Module Name: Az.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/az.regionmove/resolve-azmovecollectiondependency
+Module Name: AzResourceMover.RegionMove
+online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/invoke-azresourcemoverinitiatemove
 schema: 2.0.0
 ---
 
-# Resolve-AzMoveCollectionDependency
+# Invoke-AzResourceMoverInitiateMove
 
 ## SYNOPSIS
-
+Moves the set of resources included in the request body.
+The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## SYNTAX
 
-### Resolve (Default)
 ```
-Resolve-AzMoveCollectionDependency -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ResolveViaIdentity
-```
-Resolve-AzMoveCollectionDependency -InputObject <IRegionMoveIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Moves the set of resources included in the request body.
+The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## EXAMPLES
 
@@ -80,31 +77,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: ResolveViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MoveCollectionName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Resolve
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveResource
+Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveResourceInputType
+Defines the move resource input type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.MoveResourceInputType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +142,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Resolve
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -146,10 +157,25 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resolve
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidateOnly
+Gets or sets a value indicating whether the operation needs to only run pre-requisite.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,8 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IOperationStatus
@@ -201,18 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 ## RELATED LINKS
 
