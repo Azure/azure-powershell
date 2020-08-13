@@ -122,4 +122,9 @@ directive:
       model-name: UnresolvedDependencyCollection
     set:
        suppress-format: true
+  - where:
+      model-name: UnresolvedDependency
+    set:
+       suppress-format: true
+  
 ```
