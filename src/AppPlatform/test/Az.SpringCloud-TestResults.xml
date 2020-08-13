@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="31" errors="0" failures="0" not-run="0" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2020-08-13" time="01:12:06">
+  <environment user-domain="" os-version="4.19.76-linuxkit" clr-version="Unknown" platform="Linux" machine-name="205babbe9061" user="root" cwd="/src/AppPlatform" nunit-version="2.5.8.0" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="36.0456" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Deploy-AzSpringCloudApp.Tests.ps1" executed="True" result="Ignored" success="True" time="12.0721" asserts="0" description="/src/AppPlatform/test/Deploy-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Deploy-AzSpringCloudApp" executed="True" result="Ignored" success="True" time="0.1534" asserts="0" description="Deploy-AzSpringCloudApp">
+            <results>
+              <test-case description="CreateExpanded" name="Deploy-AzSpringCloudApp.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Get-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="1.8379" asserts="0" description="/src/AppPlatform/test/Get-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloud" executed="True" result="Success" success="True" time="0.3847" asserts="0" description="Get-AzSpringCloud">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloud.List" time="0.184" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzSpringCloud.List1" time="0.0283" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloud.Get" time="0.0504" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloud.GetViaIdentity" time="0.0568" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Get-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="1.482" asserts="0" description="/src/AppPlatform/test/Get-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1257" asserts="0" description="Get-AzSpringCloudApp">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudApp.List" time="0.0406" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudApp.Get" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloudApp.GetViaIdentity" time="0.0316" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Get-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.491" asserts="0" description="/src/AppPlatform/test/Get-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1334" asserts="0" description="Get-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudAppDeployment.List" time="0.0419" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudAppDeployment.Get" time="0.028" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloudAppDeployment.GetViaIdentity" time="0.0323" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/New-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="1.4691" asserts="0" description="/src/AppPlatform/test/New-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloud" executed="True" result="Success" success="True" time="0.108" asserts="0" description="New-AzSpringCloud">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloud.CreateExpanded" time="0.0872" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/New-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="1.4533" asserts="0" description="/src/AppPlatform/test/New-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1032" asserts="0" description="New-AzSpringCloudApp">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudApp.CreateExpanded" time="0.0801" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/New-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.5003" asserts="0" description="/src/AppPlatform/test/New-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1494" asserts="0" description="New-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudAppDeployment.CreateExpanded" time="0.13" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Remove-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="2.8165" asserts="0" description="/src/AppPlatform/test/Remove-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloud" executed="True" result="Success" success="True" time="1.4351" asserts="0" description="Remove-AzSpringCloud">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloud.Delete" time="0.6926" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloud.DeleteViaIdentity" time="0.7156" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Remove-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="1.5154" asserts="0" description="/src/AppPlatform/test/Remove-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.147" asserts="0" description="Remove-AzSpringCloudApp">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudApp.Delete" time="0.0378" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudApp.DeleteViaIdentity" time="0.0744" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Remove-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.4886" asserts="0" description="/src/AppPlatform/test/Remove-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.099" asserts="0" description="Remove-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudAppDeployment.Delete" time="0.0383" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudAppDeployment.DeleteViaIdentity" time="0.0358" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Restart-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.5334" asserts="0" description="/src/AppPlatform/test/Restart-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1389" asserts="0" description="Restart-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Restart" name="Restart-AzSpringCloudAppDeployment.Restart" time="0.0588" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartViaIdentity" name="Restart-AzSpringCloudAppDeployment.RestartViaIdentity" time="0.052" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Start-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.5002" asserts="0" description="/src/AppPlatform/test/Start-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.126" asserts="0" description="Start-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Start" name="Start-AzSpringCloudAppDeployment.Start" time="0.0456" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StartViaIdentity" name="Start-AzSpringCloudAppDeployment.StartViaIdentity" time="0.0507" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Stop-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.4714" asserts="0" description="/src/AppPlatform/test/Stop-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1094" asserts="0" description="Stop-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Stop" name="Stop-AzSpringCloudAppDeployment.Stop" time="0.0474" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StopViaIdentity" name="Stop-AzSpringCloudAppDeployment.StopViaIdentity" time="0.0367" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Update-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="1.5123" asserts="0" description="/src/AppPlatform/test/Update-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloud" executed="True" result="Success" success="True" time="0.1304" asserts="0" description="Update-AzSpringCloud">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloud.UpdateExpanded" time="0.0607" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloud.UpdateViaIdentityExpanded" time="0.0377" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Update-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="1.4505" asserts="0" description="/src/AppPlatform/test/Update-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1059" asserts="0" description="Update-AzSpringCloudApp">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudApp.UpdateExpanded" time="0.0446" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudApp.UpdateViaIdentityExpanded" time="0.0316" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/AppPlatform/test/Update-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="1.4514" asserts="0" description="/src/AppPlatform/test/Update-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1218" asserts="0" description="Update-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudAppDeployment.UpdateExpanded" time="0.0481" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudAppDeployment.UpdateViaIdentityExpanded" time="0.0492" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
