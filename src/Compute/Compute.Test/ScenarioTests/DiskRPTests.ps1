@@ -934,7 +934,7 @@ function Test-DiskAccessObject
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
+        $loc = "northcentralus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname -location $loc

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [Alias("DiskAssessName")]
+        [Alias("DiskAccessName")]
         public string Name { get; set; }
 
         [Parameter(
