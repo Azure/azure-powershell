@@ -165,6 +165,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
         public string EncryptionType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskAccessId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string NetworkAccessPolicy { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -343,6 +353,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
+                NetworkAccessPolicy = NetworkAccessPolicy,
+                DiskAccessId = DiskAccessId
             };
 
             WriteObject(vDisk);
