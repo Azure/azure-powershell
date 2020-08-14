@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot have both &apos;Commission&apos; and &apos;Decomission&apos; flags set.
+        ///   Looks up a localized string similar to Cannot specify both Commission and Decommission flags for this command.
         /// </summary>
         internal static string CommissioningStateConflict {
             get {

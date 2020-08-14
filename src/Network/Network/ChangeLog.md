@@ -26,7 +26,7 @@
     - `Update-AzCustomIpPrefix`
     - `Remove-AzCustomIpPrefix`
 * Modified the New-AzPublicIpPrefix cmdlet to support BYOIP functionality
-	- Add optional property "CustomIpPrefix" to allow future customers to associate the prefix with the CustomIpPrefix range that the customer owns.
+    - Add optional property "CustomIpPrefix" to allow future customers to associate the prefix with the CustomIpPrefix range that the customer owns.
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

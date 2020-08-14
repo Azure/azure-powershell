@@ -692,4 +692,7 @@
   <data name="VHubRouteTableReferenceNotFound" xml:space="preserve">
     <value>A valid HubRouteTable reference is required.</value>
   </data>
+  <data name="CommissioningStateConflict" xml:space="preserve">
+    <value>Cannot specify both Commission and Decommission flags for this command</value>
+  </data>
 </root>
