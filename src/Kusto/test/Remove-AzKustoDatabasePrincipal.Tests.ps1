@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzKustoDatabasePrincipal.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -20,6 +20,7 @@ Describe 'Remove-AzKustoDatabasePrincipal' {
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
         $databasePrincipal = $databasePrincipals[0]
 
-        { Remove-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name=$databasePrincipal.Name; Role=$databasePrincipal.Role; Type=$databasePrincipal.Type; Email=$databasePrincipal.Email}) } | Should -Not -Throw
+        { Remove-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name = $databasePrincipal.Name; Role = $databasePrincipal.Role; Type = $databasePrincipal.Type; Email = $databasePrincipal.Email; AppId = $databasePrincipal.AppId }) } | Should -Not -Throw
+        { Add-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Value (@{Name = $databasePrincipal.Name; Role = $databasePrincipal.Role; Type = $databasePrincipal.Type; Email = $databasePrincipal.Email; AppId = $databasePrincipal.AppId }) } | Should -Not -Throw
     }
 }
