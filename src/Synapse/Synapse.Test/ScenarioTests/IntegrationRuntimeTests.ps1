@@ -14,6 +14,9 @@ function Test-SelfHosted-IntegrationRuntime
 
     try
     {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+
         $actual = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
             -WorkspaceName $workspaceName `
             -Name $irname `
@@ -75,6 +78,9 @@ function Test-Azure-IntegrationRuntime
 
     try
     {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+
         $description = "ManagedElastic"
    
         $actual = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
@@ -113,6 +119,9 @@ function Test-IntegrationRuntime-Piping
 
     try
     {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+    
         $result = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
             -WorkspaceName $workspaceName `
             -Name $irname `
