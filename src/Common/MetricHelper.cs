@@ -24,7 +24,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation.Host;
-using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -284,6 +283,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("duration", qos.Duration.ToString("c"));
             eventProperties.Add("subscription-id", qos.SubscriptionId);
             eventProperties.Add("tenant-id", qos.TenantId);
+
+            if(qos.Exception != null)
+            {
+                eventProperties.Add("exception-type", qos.Exception.GetType().ToString());
+            }
 
             if (qos.InputFromPipeline != null)
             {
