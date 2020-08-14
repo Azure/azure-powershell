@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -88,9 +89,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _pipelineClient.StartDeletePipeline(pipelineName);
         }
 
-        public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
+        public string CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+            var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+            var document = JsonDocument.Parse(operation.GetRawResponse().ContentStream);
+            return document.RootElement.ToString();
         }
 
         #endregion
