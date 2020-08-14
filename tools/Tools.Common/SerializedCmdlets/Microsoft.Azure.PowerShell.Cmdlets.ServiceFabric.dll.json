@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -200,7 +200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
             "GenericTypeArguments": [],
@@ -675,7 +675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
                   "GenericTypeArguments": [],
@@ -936,7 +936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -1100,6 +1100,24 @@
         },
         {
           "Name": "SecretIdentifier",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Thumbprint",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -1344,6 +1362,30 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Thumbprint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
@@ -1972,7 +2014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -2330,7 +2372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -2550,7 +2592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2880,7 +2922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3064,7 +3106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
               "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3583,7 +3625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ProvisioningState": "System.String",
@@ -4089,7 +4131,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultParameterList": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4674,7 +4716,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartitionDescription": "Microsoft.Azure.Management.ServiceFabric.Models.PartitionSchemeDescription",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5254,7 +5296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -5640,7 +5682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
               "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6609,7 +6651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ProvisioningState": "System.String",
@@ -6893,7 +6935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultParameterList": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7356,7 +7398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartitionDescription": "Microsoft.Azure.Management.ServiceFabric.Models.PartitionSchemeDescription",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7666,7 +7708,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8034,7 +8076,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8383,7 +8425,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8732,7 +8774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9177,7 +9219,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9622,7 +9664,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10067,7 +10109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10295,7 +10337,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Cluster": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
               "Deployment": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended",
@@ -10722,7 +10764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10841,6 +10883,24 @@
         },
         {
           "Name": "SecretIdentifier",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Thumbprint",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -11063,6 +11123,30 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Thumbprint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
@@ -12008,7 +12092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12331,7 +12415,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
               "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12764,7 +12848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
                     "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13082,7 +13166,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ProvisioningState": "System.String",
@@ -13502,7 +13586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ProvisioningState": "System.String",
@@ -13827,7 +13911,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultParameterList": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14280,7 +14364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationTypeVersion, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultParameterList": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14610,7 +14694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartitionDescription": "Microsoft.Azure.Management.ServiceFabric.Models.PartitionSchemeDescription",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15062,7 +15146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSService, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "PartitionDescription": "Microsoft.Azure.Management.ServiceFabric.Models.PartitionSchemeDescription",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15282,7 +15366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -15450,7 +15534,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
             "GenericTypeArguments": [],
@@ -15877,7 +15961,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
                   "GenericTypeArguments": [],
@@ -16138,7 +16222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -16450,7 +16534,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -16808,7 +16892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -17120,7 +17204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -17286,7 +17370,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
             "GenericTypeArguments": [],
@@ -17535,7 +17619,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
                   "GenericTypeArguments": [],
@@ -17654,7 +17738,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -17838,7 +17922,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
             "GenericTypeArguments": [],
@@ -18111,7 +18195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
                   "GenericTypeArguments": [],
@@ -18230,7 +18314,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -18360,7 +18444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18572,7 +18656,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18775,7 +18859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19005,7 +19089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
               "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19246,7 +19330,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19565,7 +19649,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
               "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19898,7 +19982,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20459,7 +20543,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20900,7 +20984,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "UpgradePolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationUpgradePolicy",
                     "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -21077,7 +21161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -21227,7 +21311,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21463,7 +21547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21647,7 +21731,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -21779,7 +21863,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21993,7 +22077,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23836,7 +23920,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsAdmin": "System.Boolean",
         "CertificateCommonName": "System.String",
@@ -24717,7 +24801,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
         "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
@@ -24800,7 +24884,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Properties": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended",
         "Name": "System.String",
@@ -25757,7 +25841,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25769,7 +25853,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
         "KeyVaultId": "System.String",
@@ -25830,7 +25914,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]",
         "Name": "System.String"
@@ -25880,7 +25964,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25892,7 +25976,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"

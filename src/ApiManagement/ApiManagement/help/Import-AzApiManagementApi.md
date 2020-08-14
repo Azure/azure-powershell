@@ -36,7 +36,7 @@ The **Import-AzApiManagementApi** cmdlet imports an Azure API Management API fro
 
 ## EXAMPLES
 
-### Example 1 Import an API from a WADL file
+### Example 1: Import an API from a WADL file
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationPath "C:\contoso\specifications\echoapi.wadl" -Path "apis"
@@ -44,7 +44,7 @@ PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "
 
 This command imports an API from the specified WADL file.
 
-### Example 2 Import an API from a Swagger file
+### Example 2: Import an API from a Swagger file
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceBusRule
 
 ## SYNOPSIS
-Creates a new rule for a given Subscription of Topic. 
+Retrieves the definition of an existing rule in a given Subscription of Topic. 
 
 ## SYNTAX
 

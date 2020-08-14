@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Fixed bug for `New-AzHpcCacheStorageTarget` and help text.
+
 ## Version 0.1.0
 * Preview of `Az.HPCCache` module

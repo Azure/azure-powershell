@@ -120,6 +120,14 @@ namespace CognitiveServices.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSet");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkRuleSetDefaultActions()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSetDefaultActions");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
@@ -196,6 +204,27 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestUserOwnedStorage()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserOwnedStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpoint()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PrivateEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicNetworkAccess()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapabilities()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
         }
     }
 }

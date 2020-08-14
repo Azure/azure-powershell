@@ -28,21 +28,14 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IOperationDefinition
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationoperation
 #>
 function Get-AzAppConfigurationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Query')]
-    [System.String]
-    # A skip token is used to continue retrieving items after an operation returns a partial result.
-    # If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
-    ${SkipToken},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -147,37 +140,46 @@ Regenerates an access key for the specified configuration store.
 .Description
 Regenerates an access key for the specified configuration store.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
+PS C:\> New-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test -Id $keys[0].id
 
-{{ Add output here }}
+ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
+----------------                                                                                                                     ------------        ----      -------- -----
+Endpoint=https://appconfig-test01.azconfig.io;Id=09pv-l0-s0:opFCQMC6+9485xJgN5Ws;Secret=GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY= 5/8/2020 5:47:15 AM Secondary False    GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY=
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $app= New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test
+PS C:\> $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
+PS C:\> New-AzAppConfigurationStoreKey -InputObject $app -Id $keys[0].id
+ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
+----------------                                                                                                                     ------------        ----      -------- -----
+Endpoint=https://appconfig-test01.azconfig.io;Id=09pv-l0-s0:opFCQMC6+9485xJgN5Ws;Secret=GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY= 5/8/2020 5:47:15 AM Secondary False    GcoE9e9t7GLRNJ910M46IrbHO/Vg0tt4HujRdsaCoTY=
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IRegenerateKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IRegenerateKeyParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IApiKey
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 
 REGENERATEKEYPARAMETER <IRegenerateKeyParameters>: The parameters used to regenerate an API key.
-  [Id <String>]: The id of the key to regenerate.
+  Id <String>: The id of the key to regenerate.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 #>
 function New-AzAppConfigurationStoreKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IApiKey])]
 [CmdletBinding(DefaultParameterSetName='RegenerateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
@@ -208,7 +210,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IRegenerateKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IRegenerateKeyParameters]
     # The parameters used to regenerate an API key.
     # To construct, see NOTES section for REGENERATEKEYPARAMETER properties and create a hash table.
     ${RegenerateKeyParameter},
@@ -321,74 +323,115 @@ Creates a configuration store with the specified parameters.
 .Description
 Creates a configuration store with the specified parameters.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGSTORECREATIONPARAMETER <IConfigurationStore>: The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
-  Location <String>: The location of the resource. This cannot be changed after the resource is created.
-  [Tag <IResourceTags>]: The tags of the resource.
-    [(Any) <String>]: This indicates any property can be added to this object.
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  [ConfigStoreName <String>]: The name of the configuration store.
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
-  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
 #>
 function New-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the configuration store.
     ${Name},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Microsoft Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore]
-    # The configuration store along with all resource properties.
-    # The Configuration Store will have all information to begin utilizing it.
-    # To construct, see NOTES section for CONFIGSTORECREATIONPARAMETER properties and create a hash table.
-    ${ConfigStoreCreationParameter},
+    [System.String]
+    # The location of the resource.
+    # This cannot be changed after the resource is created.
+    ${Location},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The SKU name of the configuration store.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The URI of the key vault key used to encrypt data.
+    ${EncryptionKeyIdentifier},
+
+    [Parameter()]
+    [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
+    # The type of managed identity used.
+    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+    # The type 'None' will remove any identities.
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The client id of the identity which will be used to access key vault.
+    ${KeyVaultIdentityClientId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
+    # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # The tags of the resource.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The list of user-assigned identities associated with the resource.
+    # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -458,10 +501,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_Create';
-            CreateViaIdentity = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_CreateViaIdentity';
+            CreateExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_CreateExpanded';
         }
-        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -510,22 +552,17 @@ Checks whether the configuration store name is available for use.
 .Description
 Checks whether the configuration store name is available for use.
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.ICheckNameAvailabilityParameters
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.ICheckNameAvailabilityParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CHECKNAMEAVAILABILITYPARAMETER <ICheckNameAvailabilityParameters>: Parameters used for checking whether a resource name is available.
@@ -533,14 +570,16 @@ CHECKNAMEAVAILABILITYPARAMETER <ICheckNameAvailabilityParameters>: Parameters us
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.INameAvailabilityStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.INameAvailabilityStatus])]
 [CmdletBinding(DefaultParameterSetName='Check', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check')]
@@ -559,7 +598,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.ICheckNameAvailabilityParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.ICheckNameAvailabilityParameters]
     # Parameters used for checking whether a resource name is available.
     # To construct, see NOTES section for CHECKNAMEAVAILABILITYPARAMETER properties and create a hash table.
     ${CheckNameAvailabilityParameter},
@@ -672,56 +711,72 @@ Updates a configuration store with the specified parameters.
 .Description
 Updates a configuration store with the specified parameters.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
+PS C:\> $systemAssignedAppStore = New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "SystemAssigned"
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $systemAssignedAppStore.IdentityPrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
+PS C:\> Update-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -EncryptionKeyIdentifier $key.Id
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test01 Microsoft.AppConfiguration/configurationStores
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
+PS C:\> Update-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test11 -EncryptionKeyIdentifier $key.Id -KeyVaultIdentityClientId $assignedIdentity.ClientId
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> $appConf = Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -EncryptionKeyIdentifier $null
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -Sku 'standard' -Tag @{'key'='update'}
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Notes
 COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CONFIGSTOREUPDATEPARAMETER <IConfigurationStoreUpdateParameters>: The parameters for updating a configuration store.
-  [Property <IConfigurationStorePropertiesUpdateParameters>]: The properties for updating a configuration store.
-  [Tag <IConfigurationStoreUpdateParametersTags>]: The ARM resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
 #>
 function Update-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the configuration store.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -729,7 +784,6 @@ param(
     # The Microsoft Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
@@ -737,28 +791,47 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters]
-    # The parameters for updating a configuration store.
-    # To construct, see NOTES section for CONFIGSTOREUPDATEPARAMETER properties and create a hash table.
-    ${ConfigStoreUpdateParameter},
+    [System.String]
+    # The URI of the key vault key used to encrypt data.
+    ${EncryptionKeyIdentifier},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
+    [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStorePropertiesUpdateParameters]
-    # The properties for updating a configuration store.
-    ${Property},
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
+    # The type of managed identity used.
+    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+    # The type 'None' will remove any identities.
+    ${IdentityType},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags]))]
+    [System.String]
+    # The client id of the identity which will be used to access key vault.
+    ${KeyVaultIdentityClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The SKU name of the configuration store.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # The ARM resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The list of user-assigned identities associated with the resource.
+    # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -828,12 +901,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_Update';
             UpdateExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateExpanded';
-            UpdateViaIdentity = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateViaIdentityExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

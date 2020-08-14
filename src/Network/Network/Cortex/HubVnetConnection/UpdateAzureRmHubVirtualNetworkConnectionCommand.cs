@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableInternetSecurity { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this HubVirtualNetwork connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -114,10 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            //// Get the virtual hub - this will throw not found if the resource is invalid
-            PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-
-            var connectionToModify = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
+            var connectionToModify = this.HubVirtualNetworkConnectionsClient.Get(this.ResourceGroupName, this.ParentResourceName, this.Name);
             if (connectionToModify == null)
             {
                 throw new PSArgumentException(Properties.Resources.HubVnetConnectionNotFound);
@@ -126,6 +128,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableInternetSecurity.HasValue)
             {
                 connectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                connectionToModify.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
             }
 
             List<string> resourceIds = new List<string>();
@@ -141,10 +148,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag, auxAuthHeader);
-                        var updatedVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-
-                        WriteObject(updatedVirtualHub.VirtualNetworkConnections.FirstOrDefault(hubConnection => hubConnection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)));
+                        WriteObject(this.CreateOrUpdateHubVirtualNetworkConnection(this.ResourceGroupName, this.ParentResourceName, this.Name, connectionToModify, auxAuthHeader));
                     });
         }
     }

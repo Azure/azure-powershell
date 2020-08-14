@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -57,40 +58,66 @@ namespace Microsoft.Azure.Commands.Network
                 // For example if the peering has only IPv4 properties set and the user tries to remove IPv6 address family peering, we can ignore the remove operation
                 bool validateAddressFamilyPresent = true;
 
-                if ((this.PeerAddressType == IPv4 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && peering.MicrosoftPeeringConfig == null) ||
-                    (this.PeerAddressType == IPv6 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
+                if (peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering)
                 {
-                    validateAddressFamilyPresent = false;
+                    if ((AddressTypeUtils.IsIpv4(this.PeerAddressType) && peering.MicrosoftPeeringConfig == null) ||
+                        (AddressTypeUtils.IsIpv6(this.PeerAddressType) && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
+                    {
+                        validateAddressFamilyPresent = false;
+                    }
+
+                    if (!validateAddressFamilyPresent)
+                    {
+                        // Peering config for specified address family is not present. No action
+                        return;
+                    }
+
+                    if (peering.MicrosoftPeeringConfig != null && peering.Ipv6PeeringConfig != null)
+                    {
+                        // Both IPv4 and IPv6 peering configs are present. Only nullify the config corresponding to the address family specified
+                        if (AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                        {
+                            peering.PrimaryPeerAddressPrefix = null;
+                            peering.SecondaryPeerAddressPrefix = null;
+                            peering.RouteFilter = null;
+                            peering.MicrosoftPeeringConfig = null;
+                        }
+                        else if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
+                        {
+                            peering.Ipv6PeeringConfig = null;
+                        }
+                        else if (AddressTypeUtils.IsAll(this.PeerAddressType))
+                        {
+                            this.ExpressRouteCircuit.Peerings.Remove(peering);
+                        }
+                    }
+                    else
+                    {
+                        // Only one peering config exists. Removing that should result in the entire peering being removed
+                        this.ExpressRouteCircuit.Peerings.Remove(peering);
+                    }
                 }
 
-                if (!validateAddressFamilyPresent)
+                else if (peering.PeeringType == MNM.ExpressRoutePeeringType.AzurePrivatePeering)
                 {
-                    // Peering config for specified address family is not present. No action
-                    return;
-                }
-
-                if (peering.MicrosoftPeeringConfig != null && peering.Ipv6PeeringConfig != null)
-                {
-                    // Both IPv4 and IPv6 peering configs are present. Only nullify the config corresponding to the address family specified
-                    if (this.PeerAddressType == IPv4 || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                    if (AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType))
                     {
                         peering.PrimaryPeerAddressPrefix = null;
                         peering.SecondaryPeerAddressPrefix = null;
-                        peering.RouteFilter = null;
-                        peering.MicrosoftPeeringConfig = null;
                     }
-                    else if (this.PeerAddressType == IPv6)
+                    else if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
                     {
                         peering.Ipv6PeeringConfig = null;
                     }
-                    else if(this.PeerAddressType == All)
+                    else if (AddressTypeUtils.IsAll(this.PeerAddressType))
                     {
                         this.ExpressRouteCircuit.Peerings.Remove(peering);
                     }
                 }
+
                 else
                 {
-                    // Only one peering config exists. Removing that should result in the entire peering being removed
+                    // In case of Azure Public Peering
                     this.ExpressRouteCircuit.Peerings.Remove(peering);
                 }
             }

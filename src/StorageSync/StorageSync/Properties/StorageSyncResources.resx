@@ -279,4 +279,13 @@
   <data name="NewCloudEndpointUnableToRegisterErrorFormat" xml:space="preserve">
     <value>The given subscription {0} was unable to registered to Azure File Sync.</value>
   </data>
+  <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
+    <value>Updating a Storage Sync Service</value>
+  </data>
+  <data name="InvalidInitialDownloadPolicyErrorMessage" xml:space="preserve">
+    <value>InitialDownloadPolicy parameter has invalid value.</value>
+  </data>
+  <data name="InvalidLocalCacheModeErrorMessage" xml:space="preserve">
+    <value>LocalCacheMode parameter has invalid value.</value>
+  </data>
 </root>

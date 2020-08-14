@@ -198,7 +198,8 @@ function Add-SolutionReference
         [string]$ServiceFolderPath
     )
 
-    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | Where-Object { ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*") -and $_.FullName -notlike "*.Test*" }
+    .($PSScriptRoot + "\PreloadToolDll.ps1")
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | Where-Object { (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*.Test*" }
     foreach ($CsprojFile in $CsprojFiles)
     {
         $Key = $CsprojFile.BaseName

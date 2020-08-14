@@ -17,7 +17,32 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 0.8.0
+* Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
+* Added new cmdlet: `Get-AzSecurityTopology`, `Get-AzSecurityAdaptiveNetworkHardening` and `Add-AzSecurityAdaptiveNetworkHardening`
+
+## Version 0.7.10
+* Added new cmdlet: `Get-AzAllowedConnection`
+* Added new cmdlet: `Get-AzSecurityTopology`
+
+## Version 0.7.9
+* Add new cmdlets: `Get-AzSecurityAssessment`,
+                   `Set-AzSecurityAssessment`,
+                   `Remove-AzSecurityAssessment`,
+                   `Get-AzSecurityAssessmentMetadata`,
+                   `Set-AzSecurityAssessmentMetadata`,
+                   `Remove-AzSecurityAssessmentMetadata`,
+                   `Get-AzSecuritySubAssessment`
+
+## Version 0.7.9
+* Added new cmdlets: 
+	- `Get-AzSecuritySetting`
+	- `Set-AzSecuritySetting`
+
+## Version 0.7.8
 * Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
 					`Get-AzRegulatoryComplianceControl`, 
 					`Get-AzRegulatoryComplainceAssessment`

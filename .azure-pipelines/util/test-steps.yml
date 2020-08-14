@@ -9,6 +9,18 @@ steps:
   parameters:
     osName: ${{ parameters.osName }}
 
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 2.1.x
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 3.1.x
+
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
@@ -19,6 +31,7 @@ steps:
 - powershell: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: Test for AutoGen Modules With Windows PowerShell
@@ -27,6 +40,8 @@ steps:
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+   $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'

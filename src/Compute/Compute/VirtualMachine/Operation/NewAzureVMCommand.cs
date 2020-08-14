@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
-        [PSArgumentCompleter("Deallocate")]
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -253,6 +253,12 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "The max price of the billing of a low priority virtual machine.")]
         public double MaxPrice { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
 
         public override void ExecuteCmdlet()
         {
@@ -388,7 +394,8 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
                 else
@@ -412,7 +419,8 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
             }
@@ -525,7 +533,6 @@ namespace Microsoft.Azure.Commands.Compute
         public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             if (this.VM.DiagnosticsProfile == null)
             {
                 var storageUri = GetOrCreateStorageAccountForBootDiagnostics();
@@ -542,8 +549,6 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
             }
-
-
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -568,7 +573,8 @@ namespace Microsoft.Azure.Commands.Compute
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         Priority = this.VM.Priority,
                         EvictionPolicy = this.VM.EvictionPolicy,
-                        BillingProfile = this.VM.BillingProfile
+                        BillingProfile = this.VM.BillingProfile,
+                        SecurityProfile = this.VM.SecurityProfile
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

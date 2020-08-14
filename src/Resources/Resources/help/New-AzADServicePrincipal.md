@@ -128,7 +128,7 @@ principal with the **Role** and **Scope** parameters. If both are omitted, the c
 assigned to the service principal. The default values for the **Role** and **Scope** parameters are
 **Contributor** for the current subscription. The cmdlet creates an application and sets its
 properties if an ApplicationId is not provided. To update the application-specific parameters, use
-the [Set-AzADApplication](./get-azadapplication.md) cmdlet.
+the [Update-AzADApplication](./update-azadapplication.md) cmdlet.
 
 ## EXAMPLES
 
@@ -609,12 +609,10 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
 -WarningAction, and -WarningVariable. For more information, see
 [about_CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
-
 ## INPUTS
 
 ### System.Guid

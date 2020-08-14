@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     {
         Hashed,
         GeoLatency,
-        Static
+        Static,
+        Custom
     }
 }

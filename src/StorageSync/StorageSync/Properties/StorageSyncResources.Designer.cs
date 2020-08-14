@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class StorageSyncResources {
@@ -120,6 +120,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string InvalidArgumentErrorFormat {
             get {
                 return ResourceManager.GetString("InvalidArgumentErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InitialDownloadPolicy parameter has invalid value..
+        /// </summary>
+        internal static string InvalidInitialDownloadPolicyErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidInitialDownloadPolicyErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LocalCacheMode parameter has invalid value..
+        /// </summary>
+        internal static string InvalidLocalCacheModeErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidLocalCacheModeErrorMessage", resourceCulture);
             }
         }
         
@@ -516,6 +534,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string SetServerEndpointActionMessage {
             get {
                 return ResourceManager.GetString("SetServerEndpointActionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating a Storage Sync Service.
+        /// </summary>
+        internal static string SetStorageSyncServiceActionMessage {
+            get {
+                return ResourceManager.GetString("SetStorageSyncServiceActionMessage", resourceCulture);
             }
         }
         

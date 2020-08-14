@@ -30,8 +30,8 @@ The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 
 ## EXAMPLES
 
-### 1: Retrieve an existing network security group
-```
+### Example 1: Retrieve an existing network security group
+```powershell
 Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName "rg1"
 
 Name                        : nsg1
@@ -209,8 +209,8 @@ Subnets                     : []
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
 
-### 2: List existing network security groups using filtering
-```
+### Example 2: List existing network security groups using filtering
+```powershell
 Get-AzNetworkSecurityGroup -Name nsg*
 
 Name                        : nsg1

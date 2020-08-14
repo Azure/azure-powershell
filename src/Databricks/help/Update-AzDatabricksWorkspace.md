@@ -15,13 +15,17 @@ Updates a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyVersion <String>] [-PrepareEncryption] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-EncryptionKeyName <String>]
+ [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
+ [-PrepareEncryption] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,16 +33,44 @@ Updates a workspace.
 
 ## EXAMPLES
 
-### Example 1: Update a Databricks workspace
+### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test -Tag @{ dbr="home-resource" }
+PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceopsc46 -Tag @{'key'=1}
+PS C:\> Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 
-Location Name            Type
--------- ----            ----
-eastus   databricks-test Microsoft.Databricks/workspaces
+Name            Location Managed Resource Group ID
+----            -------- -------------------------
+workspaceopsc46 eastus   /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceopsc46-wfgp3ayhu6jkn
 ```
 
-This command updates a Databricks workspace.
+This command updates the tags of a Databricks workspace.
+
+### Example 2: Enable encryption on a Databricks workspace
+```powershell
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -PrepareEncryption
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
+
+Name            Location       Managed Resource Group ID
+----            --------       -------------------------
+workspaceypae6l East US 2 EUAP /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceypae6l-wzefrgv2b075t
+```
+
+Enabling encryption on a Databricks workspace takes three steps:
+
+1. Update the workspace with `-PrepareEncryption` (if it was not created so).
+1. Find `StorageAccountIdentityPrincipalId` in the output of the last step. Grant key permissions to the principal.
+1. Update the workspace again to fill in information about the encryption key:
+    - `-EncryptionKeySource`
+    - `-EncryptionKeyVaultUri`
+    - `-EncryptionKeyName`
+    - `-EncryptionKeyVersion`
+
+### Example 3: Disable encryption on a Databricks workspace
+```powershell
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Default'
+```
+
+To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
 
 ## PARAMETERS
 
@@ -72,8 +104,69 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionKeyName
+The name of Key Vault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Default, Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVaultUri
+The URI (DNS name) of the Key Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVersion
+The version of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-Identity Parameter
+Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -105,6 +198,22 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrepareEncryption
+Prepare the workspace for encryption.
+Enables the Managed Identity for managed storage account.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -211,11 +320,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   - `[Id <String>]`: Resource identity path
+  - `[PeeringName <String>]`: The name of the workspace vNet peering.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.

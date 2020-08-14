@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
+                    accountACL.DefaultAction = NetworkRuleAction.Deny;
                 }
 
                 switch (ParameterSetName)

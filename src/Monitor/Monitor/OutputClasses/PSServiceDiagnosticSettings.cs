@@ -62,16 +62,23 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 this.EventHubName = serviceDiagnosticSettings.EventHubName;
                 this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
                 this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
-                this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
-                foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
+
+                if (serviceDiagnosticSettings.Metrics != null)
                 {
-                    this.Metrics.Add(new PSMetricSettings(metricSettings));
+                    this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
+                    foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
+                    {
+                        this.Metrics.Add(new PSMetricSettings(metricSettings));
+                    }
                 }
 
-                this.Logs = new List<Management.Monitor.Management.Models.LogSettings>();
-                foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
+                if (serviceDiagnosticSettings.Logs != null)
                 {
-                    this.Logs.Add(new PSLogSettings(logSettings));
+                    this.Logs = new List<Management.Monitor.Management.Models.LogSettings>();
+                    foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
+                    {
+                        this.Logs.Add(new PSLogSettings(logSettings));
+                    }
                 }
 
                 this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;

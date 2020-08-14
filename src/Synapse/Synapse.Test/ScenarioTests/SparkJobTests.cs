@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 _logger,
                 string.Format(
                 "Test-SynapseSparkJob -resourceGroupname '{0}' -workspaceName '{1}' -sparkPoolName {2}",
+                resourceGroupName,
                 testWorkspaceName,
                 testSparkPoolName));
         }

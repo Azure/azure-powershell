@@ -130,7 +130,18 @@ namespace Microsoft.Azure.Commands.HPCCache
                 this.Name,
                 () =>
                 {
-                    this.storageTarget = this.CLFS.IsPresent ? this.CreateClfsStorageTargetParameters() : this.CreateNfsStorageTargetParameters();
+                    if (this.CLFS.IsPresent)
+                    {
+                        this.storageTarget = this.CreateClfsStorageTargetParameters();
+                    }
+                    else if (this.NFS.IsPresent)
+                    {
+                        this.storageTarget = this.CreateNfsStorageTargetParameters();
+                    }
+                    else
+                    {
+                        throw new Exception(string.Format(Resources.CLFSorNFS));
+                    }
                     if (this.IsParameterBound(c => c.Junction))
                     {
                         this.storageTarget.Junctions = new List<NamespaceJunction>();
@@ -170,7 +181,7 @@ namespace Microsoft.Azure.Commands.HPCCache
                     this.CacheName,
                     this.Name);
 
-                throw new Exception(string.Format(Resources.UpgradeHpcCache, this.Name, this.CacheName));
+                throw new Exception(string.Format(Resources.StorageTargetAlreadyExist, this.Name, this.CacheName));
             }
             catch (CloudErrorException e)
             {

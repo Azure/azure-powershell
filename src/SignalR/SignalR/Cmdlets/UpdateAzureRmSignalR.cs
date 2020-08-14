@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
 using Newtonsoft.Json;
 
+
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
@@ -129,16 +130,18 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     IList<string> origins = ParseAndCheckAllowedOrigins(AllowedOrigin);
                     PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
+
                     Sku = Sku ?? DefaultSku;
                     UnitCount = UnitCount ?? DefaultUnitCount;
 
-                    IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(value: ServiceMode) };
+                    IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(flag: FeatureFlags.ServiceMode, value: ServiceMode) };
                     SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
 
-                    var parameters = new SignalRUpdateParameters(
-                        tags: Tag,
-                        sku: new ResourceSku(name: Sku, capacity: UnitCount),
-                        properties: new SignalRCreateOrUpdateProperties(features: features, cors: cors));
+                    var parameters = new SignalRResource(
+                                      tags: Tag,
+          sku: new ResourceSku(name: Sku, capacity: UnitCount),
+                        features: features,
+                        cors: cors);
 
                     Client.SignalR.Update(ResourceGroupName, Name, parameters);
 

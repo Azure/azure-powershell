@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                 Priority = this.Priority,
                 Rules = this.Rule?.ToList(),
                 Action = new PSAzureFirewallPolicyFilterRuleCollectionAction { Type = ActionType },
-                RuleCollectionType = "FirewallPolicyFilterRule"
+                RuleCollectionType = "FirewallPolicyFilterRuleCollection"
             };
             WriteObject(filterRule);
         }

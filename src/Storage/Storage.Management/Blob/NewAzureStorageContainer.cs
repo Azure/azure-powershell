@@ -111,8 +111,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             this.ResourceGroupName,
                             this.StorageAccountName,
                             this.Name,
-                            (PublicAccess?)this.publicAccess,
-                            MetadataDictionary);
+                            new BlobContainer(
+                                publicAccess: (PublicAccess?)this.publicAccess,
+                                metadata: MetadataDictionary));
 
                 WriteObject(new PSContainer(contaienr));
             }

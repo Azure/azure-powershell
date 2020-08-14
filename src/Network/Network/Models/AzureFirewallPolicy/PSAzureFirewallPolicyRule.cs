@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1,PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty("ruleConditionType")]
+        [JsonProperty("ruleType")]
         public string RuleType { get; set; }
 
     }

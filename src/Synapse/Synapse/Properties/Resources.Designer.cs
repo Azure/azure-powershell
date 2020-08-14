@@ -88,11 +88,47 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; already exists. Please use Set-AzSynapseFirewallRule to modify a firewall rule with these properties..
+        /// </summary>
+        internal static string ConflictFirewallRuleName {
+            get {
+                return ResourceManager.GetString("ConflictFirewallRuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new firewall rule in workspace &apos;{0}&apos; with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingFirewallRule {
+            get {
+                return ResourceManager.GetString("CreatingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new role assignment in workspace &apos;{0}&apos; with RoleDefinitionId &apos;{1}&apos; and ObjectId &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseRoleAssignment {
+            get {
+                return ResourceManager.GetString("CreatingSynapseRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new Spark pool in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string CreatingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("CreatingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new SQL Database in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("CreatingSynapseSqlDatabase", resourceCulture);
             }
         }
         
@@ -178,6 +214,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist. Please use Add-AzSynapseFirewallRule to create a firewall rule with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverFirewallRuleByWorkspace {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverFirewallRuleByWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find workspace: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this workspace exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
@@ -210,6 +255,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDiscoverSparkStatement {
             get {
                 return ResourceManager.GetString("FailedToDiscoverSparkStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; does not exist. Please use New-AzSynapseSqlDatabase to create a SQL Database with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverSqlDatabase {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverSqlDatabase", resourceCulture);
             }
         }
         
@@ -273,6 +327,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("FilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified firewall rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string FirewallRuleDoesNotExist {
+            get {
+                return ResourceManager.GetString("FirewallRuleDoesNotExist", resourceCulture);
             }
         }
         
@@ -349,11 +412,47 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting firewall rule &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemovingFirewallRule {
+            get {
+                return ResourceManager.GetString("RemovingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting role assignment with RoleDefinitionId &apos;{0}&apos; and ObjectId &apos;{1}&apos; in workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseRoleAssignment {
+            get {
+                return ResourceManager.GetString("RemovingSynapseRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting role assignment with RoleAssignmentId &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseRoleAssignmentById {
+            get {
+                return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting Spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string RemovingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("RemovingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlDatabase", resourceCulture);
             }
         }
         
@@ -390,6 +489,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ResumingSynapseSqlPool {
             get {
                 return ResourceManager.GetString("ResumingSynapseSqlPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role Definition Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string RoleDefinitionNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalNameDoesNotExist", resourceCulture);
             }
         }
         
@@ -475,6 +592,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseSqlDatabase to update an existing SQL Database..
+        /// </summary>
+        internal static string SynapseSqlDatabaseExists {
+            get {
+                return ResourceManager.GetString("SynapseSqlDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A SQL pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Set-AzSynapseSqlPool to update an existing SQL pool..
         /// </summary>
         internal static string SynapseSqlPoolExists {
@@ -502,6 +628,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under Workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("UpdatingSynapseSqlDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating SQL pool &apos;{0}&apos; in resource group &apos;{1}&apos; under Workspace &apos;{2}&apos;..
         /// </summary>
         internal static string UpdatingSynapseSqlPool {
@@ -516,6 +651,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("UpdatingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with Name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string UserNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("UserNameDoesNotExist", resourceCulture);
             }
         }
         

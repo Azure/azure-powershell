@@ -39,5 +39,16 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRWithDefaultArgs() =>
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRWithDefaultArgs");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmSignalRUpdateNetworkAcl() =>
+    TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdateNetworkAcl");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmSignalRSetUpstream() =>
+TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRSetUpstream");
+
     }
 }

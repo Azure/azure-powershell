@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
+
+## Version 2.11.0
+* Removed project reference to Authentication
+* Azure Backup tuned cmdlets help text to be more accurate.
+* Azure Backup added support for fetching MAB agent jobs using `Get-AzRecoveryServicesBackupJob` cmdlet.
+
+
+## Version 2.10.0
+* Azure Backup added support for fetching MAB items.
+* Azure Site Recovery support to update failover and test failover NIC names, existing NIC reuse.
+* Azure Site Recovery supports disk type "StandardSSD_LRS"
+
+## Version 2.9.1
+* Azure Site Recovery support for creating recovery plan for zone to zone replication from xml input.
+* Updated assembly version of SiteRecovery and Backup cmdlets
+
+## Version 2.9.0
 * Azure Site Recovery added support for protecting proximity placement group virtual machines for Azure to Azure provider.
 * Azure Site Recovery added support for zone to zone replication.
 * Azure Backup Added Long term retention support for Azure FileShare Recovery Points.

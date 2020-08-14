@@ -1,16 +1,16 @@
 {
-  "Get-AzKustoClusterFollowerDatabase+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/listFollowerDatabases?api-version=2020-02-15+1": {
+  "Get-AzKustoClusterFollowerDatabase+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/listFollowerDatabases?api-version=2020-06-14+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/listFollowerDatabases?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/listFollowerDatabases?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "4e94496b-a911-49af-a3d6-ae2f456d7e0b" ],
+        "x-ms-unique-id": [ "165" ],
+        "x-ms-client-request-id": [ "a3892518-b4e9-4048-b522-b09f4bd64a56" ],
         "CommandName": [ "Get-AzKustoClusterFollowerDatabase" ],
         "FullCommandName": [ "Get-AzKustoClusterFollowerDatabase_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -19,25 +19,25 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "5b0c35e9-c069-4853-a217-0fd00a0689ff" ],
-        "x-ms-correlation-request-id": [ "8763cc17-3eb9-4b0b-b44c-807ed6bb96fa" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200405T140303Z:8763cc17-3eb9-4b0b-b44c-807ed6bb96fa" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "38769197-e8cc-4901-a69d-4de22ef0effe" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "b262934c-8d51-4c4f-9e45-9496d66e26ec" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200802T232824Z:b262934c-8d51-4c4f-9e45-9496d66e26ec" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 05 Apr 2020 14:03:03 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=9a838ce951ff4a4e588f47ec992dc9adcb73c9a40c27b5fc6f5d3195a90fb3f7;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Sun, 02 Aug 2020 23:28:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "261" ],
+        "Content-Length": [ "263" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereuf\",\"attachedDatabaseConfigurationName\":\"sdkpowershellfconfig\",\"databaseName\":\"sdkpowershelldb\"}]}"
+      "Content": "{\"value\":[{\"clusterResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testfclusterbgiwc7\",\"attachedDatabaseConfigurationName\":\"testdbconfbgiwc7\",\"databaseName\":\"testdatabaselbfexs\"}]}"
     }
   }
 }

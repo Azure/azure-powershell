@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
@@ -120,6 +119,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
             IEnumerable<Topic> topicsList;
             string nextLink = null;
             string newNextLink = null;
@@ -132,9 +133,17 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
+                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+            }
+            else if (!string.IsNullOrEmpty(this.Name))
+            {
+                // If Name is provided, ResourceGroup should be non-empty as well
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.Name;
+            }
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                resourceGroupName = this.ResourceGroupName;
             }
             else if (!string.IsNullOrEmpty(this.NextLink))
             {
@@ -160,21 +169,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                 PSTopicListPagedInstance pSTopicListPagedInstance = new PSTopicListPagedInstance(topicsList, newNextLink);
                 this.WriteObject(pSTopicListPagedInstance, true);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName) && !string.IsNullOrEmpty(this.Name))
+            else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(topicName))
             {
                 // Get details of the Event Grid topic
-                Topic topic = this.Client.GetTopic(this.ResourceGroupName, this.Name);
+                Topic topic = this.Client.GetTopic(resourceGroupName, topicName);
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+            else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(topicName))
             {
                 // List all Event Grid topics in the given resource group
-                (topicsList, newNextLink) = this.Client.ListTopicsByResourceGroup(this.ResourceGroupName, this.ODataQuery, providedTop);
+                (topicsList, newNextLink) = this.Client.ListTopicsByResourceGroup(resourceGroupName, this.ODataQuery, providedTop);
                 PSTopicListPagedInstance pSTopicListPagedInstance = new PSTopicListPagedInstance(topicsList, newNextLink);
                 this.WriteObject(pSTopicListPagedInstance, true);
             }
-            else if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+            else if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(topicName))
             {
                 // List all Event Grid topics in the given subscription
                 (topicsList, newNextLink) = this.Client.ListTopicsBySubscription(this.ODataQuery, providedTop);

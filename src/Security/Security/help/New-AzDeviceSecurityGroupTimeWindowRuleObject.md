@@ -13,8 +13,9 @@ Create new time window rule for device security group (IoT Security)
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize <TimeSpan> -MinThreshold <Int32> -MaxThreshold <Int32> -Enabled <Boolean> -Type <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize <TimeSpan> -MinThreshold <Int32>
+ -MaxThreshold <Int32> -Enabled <Boolean> -Type <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
