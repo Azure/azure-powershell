@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
 
             IDictionary<string, string> tags = (await blob.GetTagsAsync(BlobRequestConditions,
-                this.CmdletCancellationToken).ConfigureAwait(false)).Value;
+                this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
 
             OutputStream.WriteObject(taskId, tags is null ? null : tags.ToHashtable());
         }

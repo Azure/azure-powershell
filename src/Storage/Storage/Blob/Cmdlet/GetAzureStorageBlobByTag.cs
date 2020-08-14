@@ -106,14 +106,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                IAsyncEnumerator<Page<BlobTagItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
+                IAsyncEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
                     .AsPages(track2ContinuationToken, requestCount)
                     .GetAsyncEnumerator();
 
-                Page<BlobTagItem> page;
+                Page<TaggedBlobItem> page;
                 await enumerator.MoveNextAsync().ConfigureAwait(false);
                 page = enumerator.Current;
-                foreach (BlobTagItem item in page.Values)
+                foreach (TaggedBlobItem item in page.Values)
                 {
                     OutputStream.WriteObject(taskId, new AzureStorageBlob(item, Channel.StorageContext, page.ContinuationToken, ClientOptions, this.GetBlobProperty.IsPresent));
                     realListCount++;

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support set/update/remove Acl recursively on Datalake Gen2 item 
+    -  `Set-AzDataLakeGen2AclRecursive` 
+    -  `Update-AzDataLakeGen2AclRecursive` 
+    -  `Remove-AzDataLakeGen2AclRecursive`
 * Supported Container access policy with new permission x,t
     -  `New-AzStorageContainerStoredAccessPolicy`
     -  `Set-AzStorageContainerStoredAccessPolicy`

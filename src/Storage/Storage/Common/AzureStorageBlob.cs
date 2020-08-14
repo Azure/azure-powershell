@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure storage blob constructor
         /// </summary>
         /// <param name="blob">ICloud blob object</param>
-        public AzureStorageBlob(BlobTagItem blob, AzureStorageContext storageContext, string continuationToken = null, BlobClientOptions options = null, bool getProperties = false)
+        public AzureStorageBlob(TaggedBlobItem blob, AzureStorageContext storageContext, string continuationToken = null, BlobClientOptions options = null, bool getProperties = false)
         {
             // Get Track2 blob client
             BlobUriBuilder uriBuilder = new BlobUriBuilder(storageContext.StorageAccount.BlobEndpoint)
