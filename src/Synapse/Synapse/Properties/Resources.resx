@@ -312,4 +312,19 @@
   <data name="ServicePrincipalNameDoesNotExist" xml:space="preserve">
     <value>Service principal with Name '{0}' does not exist.</value>
   </data>
+  <data name="CreatingSynapseSqlDatabase" xml:space="preserve">
+    <value>Creating a new SQL Database in resource group '{0}' under parent Workspace '{1}' with name '{2}'.</value>
+  </data>
+  <data name="FailedToDiscoverSqlDatabase" xml:space="preserve">
+    <value>A SQL Database with name '{0}' in resource group '{1}' under workspace '{2}' does not exist. Please use New-AzSynapseSqlDatabase to create a SQL Database with these properties.</value>
+  </data>
+  <data name="RemovingSynapseSqlDatabase" xml:space="preserve">
+    <value>Deleting SQL Database '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="SynapseSqlDatabaseExists" xml:space="preserve">
+    <value>A SQL Database with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseSqlDatabase to update an existing SQL Database.</value>
+  </data>
+  <data name="UpdatingSynapseSqlDatabase" xml:space="preserve">
+    <value>Updating SQL Database '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
 </root>

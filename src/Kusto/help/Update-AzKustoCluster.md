@@ -15,11 +15,11 @@ Update a Kusto cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
+ [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
+ [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
  [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
@@ -29,11 +29,12 @@ Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnablePurge]
- [-EnableStreamingIngest] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnableDoubleEncryption]
+ [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
  [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
@@ -102,6 +103,21 @@ Accept wildcard characters: False
 
 ### -EnableDiskEncryption
 A boolean value that indicates if the cluster's disks are encrypted.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableDoubleEncryption
+A boolean value that indicates if double encryption is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -242,7 +258,7 @@ The list of language extensions.
 To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -454,7 +470,7 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -550,7 +566,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster
 
 ## NOTES
 

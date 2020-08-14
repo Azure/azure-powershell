@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         private readonly Guid _subscriptionId;
         private readonly SynapseManagementClient _synapseManagementClient;
+        private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
 
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
@@ -29,6 +30,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _subscriptionId = context.Subscription.GetId();
 
             _synapseManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
+
+            _synapseSqlV3ManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseSqlV3ManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 
@@ -448,6 +452,236 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             catch (CloudException ex)
             {
                 throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region SQL Pool V3 operations
+
+        public SqlPoolV3 CreateSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolV3 createOrUpdateParams)
+        {
+            try
+            {
+                return _synapseSqlV3ManagementClient.SqlPoolsV3.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlPoolV3 GetSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return _synapseSqlV3ManagementClient.SqlPoolsV3.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlPoolV3 GetSqlPoolV3OrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return GetSqlPoolV3(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<SqlPoolV3> ListSqlPoolsV3(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var firstPage = this._synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspaceNext);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void UpdateSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolUpdate updateParams)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseSqlV3ManagementClient.SqlPoolsV3.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void DeleteSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestSqlPoolV3(resourceGroupName, workspaceName, sqlPoolName))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolDoesNotExist, sqlPoolName));
+                }
+
+                _synapseSqlV3ManagementClient.SqlPoolsV3.Delete(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public bool TestSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                GetSqlPoolV3(resourceGroupName, workspaceName, sqlPoolName);
+                return true;
+            }
+            catch (NotFoundException)
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region SQL Database operations
+
+        public SqlDatabase CreateSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName, SqlDatabase createOrUpdateParams)
+        {
+            try
+            {
+                return _synapseSqlV3ManagementClient.SqlDatabases.CreateOrUpdate(resourceGroupName, workspaceName, sqlDatabaseName, createOrUpdateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlDatabase GetSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return _synapseSqlV3ManagementClient.SqlDatabases.Get(resourceGroupName, workspaceName, sqlDatabaseName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlDatabase GetSqlDatabaseOrDefault(string resourceGroupName, string workspaceName, string sqlDatabaseName)
+        {
+            try
+            {
+                return GetSqlDatabase(resourceGroupName, workspaceName, sqlDatabaseName);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<SqlDatabase> ListSqlDatabases(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var firstPage = this._synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspaceNext);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void UpdateSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName, SqlDatabaseUpdate updateParams)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseSqlV3ManagementClient.SqlDatabases.Update(resourceGroupName, workspaceName, sqlDatabaseName, updateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void DeleteSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestSqlDatabase(resourceGroupName, workspaceName, sqlDatabaseName))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlDatabaseDoesNotExist, sqlDatabaseName));
+                }
+
+                _synapseSqlV3ManagementClient.SqlDatabases.Delete(resourceGroupName, workspaceName, sqlDatabaseName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public bool TestSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
+        {
+            try
+            {
+                GetSqlDatabase(resourceGroupName, workspaceName, sqlDatabaseName);
+                return true;
+            }
+            catch (NotFoundException)
+            {
+                return false;
             }
         }
 

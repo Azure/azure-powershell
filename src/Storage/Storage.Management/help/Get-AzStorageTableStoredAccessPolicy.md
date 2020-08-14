@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BF5526C1-11B9-47A8-A5A6-CB275B470A9E
