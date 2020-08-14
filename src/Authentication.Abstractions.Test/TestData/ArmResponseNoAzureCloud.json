@@ -1,0 +1,57 @@
+[
+  {
+    "portal": "https://portal.azure.us",
+    "authentication": {
+      "loginEndpoint": "https://login.microsoftonline.us",
+      "audiences": [
+        "https://management.core.usgovcloudapi.net",
+        "https://management.usgovcloudapi.net"
+      ],
+      "tenant": "common",
+      "identityProvider": "AAD"
+    },
+    "media": "https://rest.media.usgovcloudapi.net",
+    "graphAudience": "https://graph.windows.net",
+    "graph": "https://graph.windows.net",
+    "name": "AzureUSGovernment",
+    "suffixes": {
+      "acrLoginServer": "azurecr.us",
+      "sqlServerHostname": "database.usgovcloudapi.net",
+      "keyVaultDns": "vault.usgovcloudapi.net",
+      "storage": "core.usgovcloudapi.net",
+      "azureFrontDoorEndpointSuffix": ""
+    },
+    "batch": "https://batch.core.usgovcloudapi.net",
+    "resourceManager": "https://management.usgovcloudapi.net",
+    "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+    "sqlManagement": "https://management.core.usgovcloudapi.net:8443",
+    "gallery": "https://gallery.usgovcloudapi.net"
+  },
+  {
+    "portal": "https://portal.microsoftazure.de",
+    "authentication": {
+      "loginEndpoint": "https://login.microsoftonline.de",
+      "audiences": [
+        "https://management.core.cloudapi.de",
+        "https://management.microsoftazure.de"
+      ],
+      "tenant": "common",
+      "identityProvider": "AAD"
+    },
+    "media": "https://rest.media.cloudapi.de",
+    "graphAudience": "https://graph.cloudapi.de",
+    "graph": "https://graph.cloudapi.de",
+    "name": "AzureGermanCloud",
+    "suffixes": {
+      "sqlServerHostname": "database.cloudapi.de",
+      "keyVaultDns": "vault.microsoftazure.de",
+      "storage": "core.cloudapi.de",
+      "azureFrontDoorEndpointSuffix": ""
+    },
+    "batch": "https://batch.cloudapi.de",
+    "resourceManager": "https://management.microsoftazure.de",
+    "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+    "sqlManagement": "https://management.core.cloudapi.de:8443",
+    "gallery": "https://gallery.cloudapi.de"
+  }
+]

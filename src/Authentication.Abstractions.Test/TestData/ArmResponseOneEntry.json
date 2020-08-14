@@ -1,0 +1,30 @@
+[
+  {
+    "portal": "https://portal.azure.us",
+    "authentication": {
+      "loginEndpoint": "https://login.microsoftonline.us",
+      "audiences": [
+        "https://management.core.usgovcloudapi.net",
+        "https://management.usgovcloudapi.net"
+      ],
+      "tenant": "common",
+      "identityProvider": "AAD"
+    },
+    "media": "https://rest.media.usgovcloudapi.net",
+    "graphAudience": "https://graph.windows.net",
+    "graph": "https://graph.windows.net",
+    "name": "MockedOne",
+    "suffixes": {
+      "acrLoginServer": "azurecr.us",
+      "sqlServerHostname": "database.usgovcloudapi.net",
+      "keyVaultDns": "vault.usgovcloudapi.net",
+      "storage": "core.usgovcloudapi.net",
+      "azureFrontDoorEndpointSuffix": ""
+    },
+    "batch": "https://batch.core.usgovcloudapi.net",
+    "resourceManager": "https://management.usgovcloudapi.net",
+    "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+    "sqlManagement": "https://management.core.usgovcloudapi.net:8443",
+    "gallery": "https://gallery.usgovcloudapi.net"
+  }
+]

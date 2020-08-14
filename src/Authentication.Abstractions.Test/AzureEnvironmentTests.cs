@@ -53,6 +53,33 @@ namespace Authentication.Abstractions.Test
         }
 
         [Fact]
+        public void TestArmResponseNoAzureCloud()
+        {
+            Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\ArmResponseNoAzureCloud.json");
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
+
+            // Check AzureCloud is added to public environment list even discovery endpoint doesn't return AzureCloud.
+            Assert.Equal(4, armEnvironments.Count);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureChinaCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeDiscovered, armEnvironments[EnvironmentName.AzureGermanCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeDiscovered, armEnvironments[EnvironmentName.AzureUSGovernment].Type);
+        }
+
+        [Fact]
+        public void TestArmResponseOneEntry()
+        {
+            Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\ArmResponseOneEntry.json");
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(null, httpOperations: TestOperationsFactory.Create().GetHttpOperations());
+
+            Assert.Equal(5, armEnvironments.Count);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureChinaCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureGermanCloud].Type);
+            Assert.Equal(AzureEnvironment.TypeBuiltIn, armEnvironments[EnvironmentName.AzureUSGovernment].Type);
+        }
+
+        [Fact]
         public void TestFallbackWhenArmCloudMetadataInitFails()
         {
             Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\BadArmResponse.json");
