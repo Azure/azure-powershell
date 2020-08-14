@@ -190,7 +190,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ParameterSetName = SetByParentObject,
             Mandatory = false, HelpMessage = HelpMessages.IntegrationRuntimePublicIP)]
         [ValidateNotNull]
-        public string[] PublicIPs { get; set; }
+        [Alias("PublicIPs")]
+        public string[] PublicIP { get; set; }
 
         [Parameter(ParameterSetName = SetByIntegrationRuntimeName,
             Mandatory = false, HelpMessage = HelpMessages.IntegrationRuntimeDataFlowComputeType)]
@@ -660,7 +661,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
             }
 
-            if (PublicIPs != null)
+            if (PublicIP != null)
             {
                 if (string.IsNullOrWhiteSpace(VNetId))
                 {
@@ -670,7 +671,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         "VNetId");
                 }
 
-                if (PublicIPs.Length != 2)
+                if (PublicIP.Length != 2)
                 {
                     throw new PSArgumentException(string.Format(
                             CultureInfo.InvariantCulture,
@@ -678,7 +679,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         "PublicIPs");
                 }
 
-                integrationRuntime.ComputeProperties.VNetProperties.PublicIPs = PublicIPs;
+                integrationRuntime.ComputeProperties.VNetProperties.PublicIPs = PublicIP;
             }
 
             if (!string.IsNullOrWhiteSpace(LicenseType))
