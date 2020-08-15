@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -12,7 +13,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = CreateByNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkSession, DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkSession))]
     public class StartAzureSynapseSparkSession : SynapseSparkCmdletBase
     {
@@ -101,20 +102,23 @@ namespace Microsoft.Azure.Commands.Synapse
                 ExecutorCount = this.ExecutorCount
             };
 
-            var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion:true);
-
-            PSSynapseSparkSession psSparkSession = null;
-            if (this.IsParameterBound(c => c.Language))
+            if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.StartingSynapseSparkSession, this.SparkPoolName, this.WorkspaceName)))
             {
-                this.Language = LanguageType.Parse(this.Language);
-                psSparkSession = new PSSynapseSparkSession(this.Language, sparkSession);
-            }
-            else
-            {
-                psSparkSession = new PSSynapseSparkSession(sparkSession);
-            }
+                var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion: true);
 
-            WriteObject(psSparkSession);
+                PSSynapseSparkSession psSparkSession = null;
+                if (this.IsParameterBound(c => c.Language))
+                {
+                    this.Language = LanguageType.Parse(this.Language);
+                    psSparkSession = new PSSynapseSparkSession(this.Language, sparkSession);
+                }
+                else
+                {
+                    psSparkSession = new PSSynapseSparkSession(sparkSession);
+                }
+
+                WriteObject(psSparkSession);
+            }
         }
     }
 }

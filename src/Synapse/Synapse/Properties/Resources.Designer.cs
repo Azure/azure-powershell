@@ -340,15 +340,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InteractiveSparkSessionTips.
-        /// </summary>
-        internal static string InteractiveSparkSessionTips {
-            get {
-                return ResourceManager.GetString("InteractiveSparkSessionTips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         internal static string InvalidDefaultSubscription {
@@ -381,6 +372,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string InvalidStorageUri {
             get {
                 return ResourceManager.GetString("InvalidStorageUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Spark statement in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string InvokingSparkStatement {
+            get {
+                return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
             }
         }
         
@@ -538,11 +538,11 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must be issued in interactive mode..
+        ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
-        internal static string StartSparkSessionNonInteractiveMessage {
+        internal static string StartingSynapseSparkSession {
             get {
-                return ResourceManager.GetString("StartSparkSessionNonInteractiveMessage", resourceCulture);
+                return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
             }
         }
         
@@ -570,6 +570,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseSparkSession {
             get {
                 return ResourceManager.GetString("StoppingSynapseSparkSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SubmittingSynapseSparkJob {
+            get {
+                return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
             }
         }
         

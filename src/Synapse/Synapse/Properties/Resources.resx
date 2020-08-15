@@ -198,9 +198,6 @@
   <data name="FilePathDoesNotExist" xml:space="preserve">
     <value>The file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
   </data>
-  <data name="InteractiveSparkSessionTips" xml:space="preserve">
-    <value>InteractiveSparkSessionTips</value>
-  </data>
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
@@ -248,9 +245,6 @@
   </data>
   <data name="SqlPoolDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified SQL pool '{0}' does not exist.</value>
-  </data>
-  <data name="StartSparkSessionNonInteractiveMessage" xml:space="preserve">
-    <value>{0} must be issued in interactive mode.</value>
   </data>
   <data name="StoppingSparkJob" xml:space="preserve">
     <value>Stopping Spark job with Id: '{0}' ...</value>
@@ -326,5 +320,14 @@
   </data>
   <data name="UpdatingSynapseSqlDatabase" xml:space="preserve">
     <value>Updating SQL Database '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
+  <data name="InvokingSparkStatement" xml:space="preserve">
+    <value>Invoking Spark statement in Spark pool '{0}' under workspace '{1}' ...</value>
+  </data>
+  <data name="StartingSynapseSparkSession" xml:space="preserve">
+    <value>Starting Spark session in Spark pool '{0}' under workspace '{1}' ...</value>
+  </data>
+  <data name="SubmittingSynapseSparkJob" xml:space="preserve">
+    <value>Submitting Spark job in Spark pool '{0}' under workspace '{1}' ...</value>
   </data>
 </root>
