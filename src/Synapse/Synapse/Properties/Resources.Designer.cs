@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new SQL Database in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("CreatingSynapseSqlDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new SQL pool in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string CreatingSynapseSqlPool {
@@ -246,6 +255,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDiscoverSparkStatement {
             get {
                 return ResourceManager.GetString("FailedToDiscoverSparkStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; does not exist. Please use New-AzSynapseSqlDatabase to create a SQL Database with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverSqlDatabase {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverSqlDatabase", resourceCulture);
             }
         }
         
@@ -430,6 +448,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting SQL pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string RemovingSynapseSqlPool {
@@ -565,6 +592,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseSqlDatabase to update an existing SQL Database..
+        /// </summary>
+        internal static string SynapseSqlDatabaseExists {
+            get {
+                return ResourceManager.GetString("SynapseSqlDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A SQL pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Set-AzSynapseSqlPool to update an existing SQL pool..
         /// </summary>
         internal static string SynapseSqlPoolExists {
@@ -588,6 +624,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("UpdatingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under Workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("UpdatingSynapseSqlDatabase", resourceCulture);
             }
         }
         
