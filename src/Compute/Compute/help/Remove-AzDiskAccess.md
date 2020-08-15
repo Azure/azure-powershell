@@ -35,14 +35,14 @@ The **Remove-AzDiskAccess** cmdlet removes a disk access resource.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove Disk Access using Default Parameter Set
 ```
 PS C:\> Remove-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 ```
 
 This command removes the disk access named "DiskAccess01" in resource group "ResourceGroup01"
 
-### Example 2
+### Example 2: Remove Disk Access using Resource ID
 ```
 PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 PS C:\> Remove-AzDiskAccess -ResourceId $myDiskAccess.id
@@ -50,7 +50,7 @@ PS C:\> Remove-AzDiskAccess -ResourceId $myDiskAccess.id
 
 This command removes the disk access by Resource ID
 
-### Example 3
+### Example 3: Remove Disk Access using Input Object
 ```
 PS C:\> $myDiskAccess = Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01"
 PS C:\> Remove-AzDiskAccess -InputObject $myDiskAccess
@@ -58,7 +58,7 @@ PS C:\> Remove-AzDiskAccess -InputObject $myDiskAccess
 
 This command removes the disk access by InputObject
 
-### Example 4
+### Example 4: Remove Disk Access by piping Input Object
 ```
 PS C:\> Get-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" | Remove-AzDiskAccess 
 ```

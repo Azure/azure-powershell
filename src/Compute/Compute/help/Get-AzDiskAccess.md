@@ -28,7 +28,7 @@ The **Get-AzDiskAccess** cmdlet gets the properties of Disk Accesses
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Using Default Parameter Set 
 ```
 PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -Name 'DiskAccess01'
 
@@ -44,7 +44,7 @@ Tags                       : {}
 
 This command gets the properties of a Disk Access resource named 'DiskAccess01' in the resource group 'ResourceGroup01'.
 
-### Example 2
+### Example 2: Get-AzDiskAccess by Resource Group
 ```
 PS C:\> Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01'
 
@@ -70,9 +70,9 @@ Tags                       : {}
 This command gets the properties of all disk accesses in the resource group 'ResourceGroup01'.
 
 
-### Example 3
+### Example 3: Getting all Disk Access
 ```
-PS C:\> Get-AzDisk
+PS C:\> Get-AzDiskAccess
 
 PrivateEndpointConnections : {}
 ProvisioningState          : Succeeded
@@ -104,7 +104,7 @@ Tags                       : {}
 
 This command gets the properties of all disk accesses under the subscription.
 
-### Example 4
+### Example 4: Get all Disk Access using Wildcard Character
 ```
 PS C:\> Get-AzDiskAccess -Name DiskAccessMicrosoft*
 
@@ -129,7 +129,7 @@ Tags                       : {}
 
 This command gets the properties of all disk accesses under the subscription name starting with 'DiskAccessMicrosoft'.
 
-### Example 5
+### Example 5: Get Disk Access using ResourceId.
 ```
 PS C:\> Get-AzDiskAccess -ResourceId '/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/diskAccesses/DiskAccess01'
 
