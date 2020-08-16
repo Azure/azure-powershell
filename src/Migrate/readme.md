@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Migrate service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -50,31 +50,13 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json
-  - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2018-01-10/service.json
+
 module-version: 0.1.0
 title: Migrate 
 subject-prefix: 'Migrate'
 
 directive:
-  - from: Microsoft.Migrate/stable/2019-10-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^Project_AssessmentOptions$/g, "Project_GetAssessmentOptions")
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^(.*)_GetAll(.*)$/g, "$1_List")
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^(.*)_Get(.*)$/g, "$1_Get")
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^(.*)_Put(.*)$/g, "$1_CreateOrUpdate")
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^(.*)_Patch(.*)$/g, "$1_Update")
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where: $.paths..operationId
-    transform: return $.replace(/^(.*)_Refresh(.*)$)$/g, "$1_Refresh")
   - where:
       verb: Set$
       subject: HyperV(Cluster|Host)$|VCenter$
@@ -97,3 +79,6 @@ directive:
       subject: Site$|VCenter$
       parameter-name: Name
     clear-alias: true
+  - where:
+      subject: RecoveryPoint$
+    hide: true
