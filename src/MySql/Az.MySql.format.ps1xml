@@ -649,9 +649,6 @@
             <Label>SkuName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SkuSize</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SkuTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -678,9 +675,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuSize</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SkuTier</PropertyName>

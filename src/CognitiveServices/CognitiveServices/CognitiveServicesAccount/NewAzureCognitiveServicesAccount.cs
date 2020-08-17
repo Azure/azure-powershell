@@ -245,24 +245,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                             }
                         }
                     }
-
-                    if (Type.Equals("Face", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        if (Force.IsPresent)
-                        {
-                            WriteWarning(Resources.NewAccount_LegalTerm_NotPolice);
-                        }
-                        else
-                        {
-                            bool yesToAll = false, noToAll = false;
-                            if (!ShouldContinue(Resources.NewAccount_LegalTerm_NotPolice, "Notice", true, ref yesToAll, ref noToAll))
-                            {
-                                return;
-                            }
-                        }
-                    }
-
-
                     try
                     {
                         CognitiveServicesAccount createAccountResponse = CognitiveServicesClient.Accounts.Create(

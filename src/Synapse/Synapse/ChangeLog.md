@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+* Added support for gen3 Sql Pools
+    - For `Get-AzSynapseSqlPool`, `New-AzSynapseSqlPool`, ` Remove-AzSynapseSqlPool`, ` Test-AzSynapseSqlPool` and `Update-AzSynapseSqlPool` cmdlet
+        - Add Version parameter to cmdlets to specify version 3. 
+        - For this release, these cmdlets will not work unless a customer's subscription is on the allowlist.
+* Added support for gen3 Sql Databases
+    - Add `Get-AzSynapseSqlDatabase` cmdlet
+    - Add `New-AzSynapseSqlDatabase` cmdlet
+    - Add `Remove-AzSynapseSqlDatabase` cmdlet
+    - Add `Update-AzSynapseSqlDatabase` cmdlet
+    - Add `Test-AzSynapseSqlDatabase` cmdlet
+
 ## Version 0.1.2
 
 * Changed some property names and types of output for the following cmdlets
