@@ -44,7 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexDownloadConfig()
         {

@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,46 +26,49 @@ function Check-CmdletReturnType
 
 <#
 .SYNOPSIS
-Test creating new VirtualRouter
+Test creating new HubBgpConnection
 #>
-function Test-VirtualRouterCRUD
+function Test-HubBgpConnectionCRUD
 {
     # Setup
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
     $virtualRouterName = Get-ResourceName
+    $virtualWanName = Get-ResourceName
     $subnetName = Get-ResourceName
+    $peerName = Get-ResourceName
 
     try
     {
-      # Create the resource group
+      # Create resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
      
-      # Create the Virtual Network
+      # Create virtual network and subnet
       $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
-        
-      # Create Virtual Router
-      $actualvr = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
-      $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-      Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
-      Assert-AreEqual $expectedvr.Name $actualvr.Name
-      Assert-AreEqual $expectedvr.Location $actualvr.Location
-        
-      # List Virtual Routers
-      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
-      Assert-AreEqual $list[0].ResourceGroupName $actualvr.ResourceGroupName	
-      Assert-AreEqual $list[0].Name $actualvr.Name	
-      Assert-AreEqual $list[0].Location $actualvr.Location
-        
-      # Delete VR
-      $deletevr = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
-      Assert-AreEqual true $deletevr
-        
+      
+      # Create virtual router
+      $virtualRouter = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
+      $virtualRouter = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+
+      # Create hub bgp connection
+      $actualBgpConnection = Add-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
+      $expectedBgpConnection = Get-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
+      Assert-AreEqual $expectedBgpConnection.Peerings.PeerName $actualBgpConnection.PeerName
+      Assert-AreEqual $expectedBgpConnection.PeerIp "192.168.1.5"
+      Assert-AreEqual $expectedBgpConnection.PeerAsn "20000"
+
+      #delete hub bgp connection
+      $deleteBgpConnection = Remove-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -Force
+      Assert-AreEqual 0 @($deleteBgpConnection.Peerings).Count
+
+      # Delete virtual router
+      $deleteVirtualRouter = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      Assert-AreEqual true $deleteVirtualRouter
+
       $list = Get-AzVirtualRouter -ResourceGroupName $rgname
       Assert-AreEqual 0 @($list).Count
     }

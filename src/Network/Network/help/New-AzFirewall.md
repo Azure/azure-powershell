@@ -20,7 +20,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -33,7 +33,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -47,7 +47,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -229,8 +229,8 @@ This example creates a Firewall attached to virtual network "vnet" in the same r
 DNS Proxy is enabled for this firewall and 2 DNS Servers are provided. Also Require DNS Proxy for Network rules is set
 so if there are any Network rules with FQDNs then DNS proxy will be used for them too.
 
-### Example 15: Create a Firewall with multiple IPs. The Firewall can be associated with the Virtual Hub
-```powershell
+### 15:  Create a Firewall with multiple IPs. The Firewall can be associated with the Virtual Hub
+```
 $rgName = "resourceGroupName"
 $vHub = Get-AzVirtualHub -Name "hub"
 $vHubId = $vHub.Id
@@ -241,6 +241,16 @@ $fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -Sku
 
 This example creates a Firewall attached to virtual hub "hub" in the same resource group as the firewall.
 The Firewall will be assigned 2 public IPs that are created implicitly.
+
+### 16:  Create a Firewall with Allow Active FTP.
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -AllowActiveFTP
+```
+
+This example creates a Firewall with allow active FTP flag.
 
 ## PARAMETERS
 
@@ -321,6 +331,22 @@ Accept wildcard characters: False
 
 ### -EnableDnsProxy
 Enable DNS Proxy. By default it is disabled.
+
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowActiveFTP
+Allows Active FTP on the Firewall. By default it is disabled.
 
 
 ```yaml
