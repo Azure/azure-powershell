@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
             var document = JsonDocument.Parse(operation.GetRawResponse().ContentStream);
-            return document.RootElement.ToString();
+            return document.RootElement.GetProperty("runId").ToString();
         }
 
         #endregion

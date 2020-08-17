@@ -12,6 +12,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.RunId = response?.RunId;
         }
 
+        public PSCreateRunResponse(string runId)
+        {
+            this.RunId = runId;
+        }
+
         public string RunId { get; set; }
     }
 }

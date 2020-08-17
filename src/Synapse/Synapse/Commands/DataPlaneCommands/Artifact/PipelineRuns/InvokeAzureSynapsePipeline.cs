@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapsePipelineRun, this.WorkspaceName, this.PipelineName)))
             {
-                WriteObject(SynapseAnalyticsClient.CreatePipelineRun(this.PipelineName, this.ReferencePipelineRunId, isRecovery, this.StartActivityName, paramDictionary));
+                WriteObject(new PSCreateRunResponse(SynapseAnalyticsClient.CreatePipelineRun(this.PipelineName, this.ReferencePipelineRunId, isRecovery, this.StartActivityName, paramDictionary)));
             }
         }
 

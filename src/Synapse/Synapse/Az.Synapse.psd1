@@ -94,6 +94,17 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseFirewallRule', 'Update-AzSynapseFirewallRule', 
                'Get-AzSynapseRoleAssignment', 'New-AzSynapseRoleAssignment', 
                'Remove-AzSynapseRoleAssignment', 'Get-AzSynapseRoleDefinition',
+               'Get-AzSynapsePipeline', 'Remove-AzSynapsePipeline',
+               'Set-AzSynapsePipeline', 'Invoke-AzSynapsePipeline',
+               'Get-AzSynapsePipelineRun', 'Stop-AzSynapsePipelineRun',
+               'Get-AzSynapseActivityRun', 'Get-AzSynapseLinkedService',
+               'Set-AzSynapseLinkedService', 'Remove-AzSynapseLinkedService',
+               'Get-AzSynapseNotebook', 'Set-AzSynapseNotebook',
+               'Remove-AzSynapseNotebook', 'Export-AzSynapseNotebook',
+               'Set-AzSynapseTrigger', 'Get-AzSynapseTrigger', 'Remove-AzSynapseTrigger',
+               'Get-AzSynapseTriggerSubscriptionStatus', 'Add-AzSynapseTriggerSubscription',
+               'Remove-AzSynapseTriggerSubscription', 'Start-AzSynapseTrigger',
+               'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun',
                'Get-AzSynapseSqlDatabase', 'New-AzSynapseSqlDatabase',
                'Remove-AzSynapseSqlDatabase', 'Update-AzSynapseSqlDatabase',
                'Test-AzSynapseSqlDatabase',
@@ -115,7 +126,6 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseTriggerSubscriptionStatus','Add-AzSynapseTriggerSubscription',
                'Remove-AzSynapseTriggerSubscription','Start-AzSynapseTrigger',
                'Stop-AzSynapseTrigger','Get-AzSynapseTriggerRun'
-
 
 # Variables to export from this module
 # VariablesToExport = @()
