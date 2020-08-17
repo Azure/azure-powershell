@@ -54,7 +54,7 @@ function New-AzMigratePolicy {
         [Parameter(Mandatory)]
         [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('VMwareCbt')})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.InstanceType]
+        [System.String]
         # The kind of the environment.
         ${ProviderSpecificInputInstanceType},
 
@@ -147,18 +147,18 @@ function New-AzMigratePolicy {
             if ($PSBoundParameters['ProviderSpecificInputInstanceType'] -eq 'VMwareCbt') {
                 $test = $PSBoundParameters
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreatePolicyInput]::new()
-                $Parameter.PropertyDummy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreatePolicyInputProperties]::new()
-                $Parameter.PropertyDummy.ProviderSpecificInputDummy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
-                $Parameter.PropertyDummy.ProviderSpecificInputDummy.CrashConsistentFrequencyInMinute = $PSBoundParameters['AppConsistentFrequencyInMinutes']
-                $Parameter.PropertyDummy.ProviderSpecificInputDummy.AppConsistentFrequencyInMinute = $PSBoundParameters['CrashConsistentFrequencyInMinutes']
-                $Parameter.PropertyDummy.ProviderSpecificInputDummy.RecoveryPointHistoryInMinute = $PSBoundParameters['RecoveryPointHistoryInMinutes']
-                $Parameter.PropertyDummy.ProviderSpecificInputDummy.InstanceType  = $PSBoundParameters['ProviderSpecificInputInstanceType']
+                $Parameter.ProviderSpecificInputInstanceType = $PSBoundParameters['ProviderSpecificInputInstanceType']
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreatePolicyInputProperties]::new()
+                $Parameter.Property.ProviderSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
+                $Parameter.Property.ProviderSpecificInput.CrashConsistentFrequencyInMinute = $PSBoundParameters['AppConsistentFrequencyInMinutes']
+                $Parameter.Property.ProviderSpecificInput.AppConsistentFrequencyInMinute = $PSBoundParameters['CrashConsistentFrequencyInMinutes']
+                $Parameter.Property.ProviderSpecificInput.RecoveryPointHistoryInMinute = $PSBoundParameters['RecoveryPointHistoryInMinutes']
+                $Parameter.Property.ProviderSpecificInput.InstanceType  = $PSBoundParameters['ProviderSpecificInputInstanceType']
                 $null = $PSBoundParameters.Remove('ProviderSpecificInputInstanceType')
                 $null = $PSBoundParameters.Remove('AppConsistentFrequencyInMinutes')
                 $null = $PSBoundParameters.Remove('CrashConsistentFrequencyInMinutes')
                 $null = $PSBoundParameters.Remove('RecoveryPointHistoryInMinutes')
                 $null = $PSBoundParameters.Add('Input', $Parameter)
-                $test = $PSBoundParameters
                 Az.Migrate.internal\New-AzMigrateReplicationPolicy @PSBoundParameters
             } else {
                 Write-Host "error" -ForegroundColor Red -BackgroundColor Yellow
@@ -166,15 +166,8 @@ function New-AzMigratePolicy {
 
             
         } catch {
-           $ErrorRecord=$Error[0]
-           $ErrorRecord | Format-List * -Force
-           $ErrorRecord.InvocationInfo |Format-List *
-           $Exception = $ErrorRecord.Exception
-           for ($i = 0; $Exception; $i++, ($Exception = $Exception.InnerException))
-           {   “$i” * 80
-               $Exception |Format-List * -Force
-           }
-            throw
+           Write-Host $Error[0]
+           throw
         }
     }
 }   

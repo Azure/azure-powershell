@@ -5,8 +5,8 @@
 azure: true
 powershell: true
 license-header: MICROSOFT_MIT_NO_VERSION
-branch: AzMigratePwsh
-repo: https://github.com/prsadhu-ms-idc/azure-rest-api-specs/blob/$(branch)
+branch: master
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
