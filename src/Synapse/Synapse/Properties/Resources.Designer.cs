@@ -510,6 +510,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string LongRunningStatusError {
             get {
                 return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
+                }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Spark statement in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string InvokingSparkStatement {
+            get {
+                return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
             }
         }
         
@@ -703,11 +712,11 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must be issued in interactive mode..
+        ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
-        internal static string StartSparkSessionNonInteractiveMessage {
+        internal static string StartingSynapseSparkSession {
             get {
-                return ResourceManager.GetString("StartSparkSessionNonInteractiveMessage", resourceCulture);
+                return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
             }
         }
         
@@ -735,6 +744,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseSparkSession {
             get {
                 return ResourceManager.GetString("StoppingSynapseSparkSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SubmittingSynapseSparkJob {
+            get {
+                return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
             }
         }
         

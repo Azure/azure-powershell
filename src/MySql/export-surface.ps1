@@ -21,7 +21,7 @@ if(-not $Isolated) {
   return
 }
 
-$dll = Join-Path $PSScriptRoot 'bin/Az.MySql.private.dll'
+$dll = Join-Path $PSScriptRoot 'bin\Az.MySql.private.dll'
 if(-not (Test-Path $dll)) {
   Write-Error "Unable to find output assembly in '$binFolder'."
 }
