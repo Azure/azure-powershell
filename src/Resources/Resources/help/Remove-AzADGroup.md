@@ -12,16 +12,16 @@ Deletes an active directory group.
 
 ## SYNTAX
 
-### ObjectIdParameterSet (Default)
-```
-Remove-AzADGroup -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DisplayNameParameterSet
+### DisplayNameParameterSet (Default)
 ```
 Remove-AzADGroup -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectIdParameterSet
+```
+Remove-AzADGroup -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
