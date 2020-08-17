@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:
 schema: 2.0.0
 ---
 
