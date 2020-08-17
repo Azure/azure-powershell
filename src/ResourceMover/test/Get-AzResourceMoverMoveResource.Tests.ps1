@@ -12,10 +12,6 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzResourceMoverMoveResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

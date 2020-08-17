@@ -12,25 +12,11 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Code <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-Detail <IMoveResourceErrorBody[]>] [-ExistingTargetId <String>] [-Message <String>]
  [-MoveStatusCode <String>] [-MoveStatusDetail <IMoveResourceErrorBody[]>] [-MoveStatusJobName <JobName>]
- [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>] [-MoveStatusMoveState <MoveState>]
- [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>] [-ResourceSettingResourceType <String>]
- [-ResourceSettingTargetResourceName <String>] [-SourceId <String>]
- [-SourceResourceSettingResourceType <String>] [-SourceResourceSettingTargetResourceName <String>]
- [-Target <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzResourceMoverMoveResource -InputObject <IRegionMoveIdentity> [-Code <String>]
- [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-Detail <IMoveResourceErrorBody[]>]
- [-ExistingTargetId <String>] [-Message <String>] [-MoveStatusCode <String>]
- [-MoveStatusDetail <IMoveResourceErrorBody[]>] [-MoveStatusJobName <JobName>]
  [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>] [-MoveStatusMoveState <MoveState>]
  [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>] [-ResourceSettingResourceType <String>]
  [-ResourceSettingTargetResourceName <String>] [-SourceId <String>]
@@ -156,22 +142,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Message
 A message describing the error, intended to be suitable for display in a user interface.
 
@@ -192,7 +162,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -330,7 +300,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: MoveResourceName
 
 Required: True
@@ -360,7 +330,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -452,7 +422,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -514,8 +484,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.IRegionMoveIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResource
@@ -538,13 +506,6 @@ DETAIL <IMoveResourceErrorBody[]>: A list of additional details about the error.
   - `[Detail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
   - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
   - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
-
-INPUTOBJECT <IRegionMoveIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MoveCollectionName <String>]`: 
-  - `[MoveResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: 
-  - `[SubscriptionId <String>]`: The Subscription ID.
 
 MOVESTATUSDETAIL <IMoveResourceErrorBody[]>: A list of additional details about the error.
   - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.

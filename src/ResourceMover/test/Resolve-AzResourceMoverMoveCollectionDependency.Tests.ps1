@@ -15,8 +15,4 @@ Describe 'Resolve-AzResourceMoverMoveCollectionDependency' {
     It 'Resolve' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'ResolveViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

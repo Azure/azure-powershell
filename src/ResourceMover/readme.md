@@ -78,10 +78,7 @@ title: Rms-client
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^GetViaIdentity|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|$CreateViaIdentityExpanded$|^DeleteViaIdentity$|$Update|$UpdateExpanded
-    remove: true
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|$CreateViaIdentityExpanded$
+      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^GetViaIdentity$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^Update$|^UpdateExpanded$|^List$|^List1$|^ResolveViaIdentity$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$      
     remove: true
   - where:
       subject: OperationsDiscovery
@@ -117,14 +114,9 @@ directive:
   - where:
       model-name: OperationStatus
     set:
-       suppress-format: true
-  - where:
-      model-name: UnresolvedDependencyCollection
-    set:
-       suppress-format: true
+       suppress-format: true  
   - where:
       model-name: UnresolvedDependency
     set:
        suppress-format: true
-  
 ```

@@ -12,13 +12,6 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -64,22 +57,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-The filter to apply on the operation.
-For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MoveCollectionName
 .
 
@@ -100,7 +77,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases: MoveResourceName
 
 Required: True

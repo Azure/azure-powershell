@@ -55,9 +55,3 @@ To aid the user to prerequisite the operation the client can call operation with
 ### [Resolve-AzResourceMoverMoveCollectionDependency](Resolve-AzResourceMoverMoveCollectionDependency.md)
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
 
-### [Update-AzMoveResourceEditSettings](Update-AzMoveResourceEditSettings.md)
-
-
-### [Update-AzResourceMoverMoveCollection](Update-AzResourceMoverMoveCollection.md)
-
-
