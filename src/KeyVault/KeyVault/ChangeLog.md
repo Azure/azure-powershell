@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added warning messages for planning to disable soft delete
+* Added warning messages for planning to remove attribute SecretVauleText
 
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`

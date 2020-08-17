@@ -214,6 +214,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.EncryptionInTransit = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption at host or not.")]
+        public bool? EncryptionAtHost
+        {
+            get { return _config.EncryptionAtHost; }
+            set { _config.EncryptionAtHost = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightClusterConfigCommand()
