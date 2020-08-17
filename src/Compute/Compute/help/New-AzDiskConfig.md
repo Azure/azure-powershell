@@ -231,7 +231,8 @@ Accept wildcard characters: False
 ```
 
 ### -DiskAccessId
-Id of DiskAccess.
+Gets or sets ARM id of the DiskAccess resource for using private endpoints on.
+
 
 ```yaml
 Type: System.String

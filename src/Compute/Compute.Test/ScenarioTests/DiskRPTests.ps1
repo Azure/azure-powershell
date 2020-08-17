@@ -1032,3 +1032,50 @@ function Test-DiskConfigDiskAccessNetworkAccess
         Clean-ResourceGroup $rgname
     }
 }
+
+function Test-SnapshotConfigDiskAccessNetworkPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $snapshotname = 'snapshot' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/TestVault123';
+        $mockkey = 'https://myvault.vault-int.azure-int.net/keys/mockkey/00000000000000000000000000000000';
+        $mocksecret = 'https://myvault.vault-int.azure-int.net/secrets/mocksecret/00000000000000000000000000000000';
+        $access = 'Read';
+
+        # Config and create test
+        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
+
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
+                                               -EncryptionSettingsEnabled $true  -HyperVGeneration "V2" -DiskAccessId $diskAccess.Id;
+
+        $snapshotconfig.EncryptionSettingsCollection.Enabled = $false;
+        $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings = $null;
+        $snapshotconfig.CreationData.ImageReference = $null;
+        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual $diskAccess.Id $snapshot.DiskAccessId
+
+        # Remove test
+        $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

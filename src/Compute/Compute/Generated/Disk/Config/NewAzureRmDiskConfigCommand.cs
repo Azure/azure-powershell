@@ -353,8 +353,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
-                NetworkAccessPolicy = NetworkAccessPolicy,
-                DiskAccessId = DiskAccessId
+                NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
+                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null
             };
 
             WriteObject(vDisk);
