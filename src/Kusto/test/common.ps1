@@ -179,16 +179,10 @@ function Validate_EventHubDataConnection {
 		[string]$dataConnectionFullName,
 		[string]$location,
 		[string]$eventHubResourceId,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
 		$DataConnection.Name | Should Be $dataConnectionFullName
 		$DataConnection.Location | Should Be $location
 		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
 		$DataConnection.Kind | Should Be $kind
 }
 
@@ -202,17 +196,11 @@ function Validate_EventGridDataConnection {
 		[string]$location,
 		[string]$eventHubResourceId,
 		[string]$storageAccountResourceId,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
 		$DataConnection.Name | Should Be $dataConnectionFullName
 		$DataConnection.Location | Should Be $location
 		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
 		$DataConnection.StorageAccountResourceId | Should Be $storageAccountResourceId
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
 		$DataConnection.Kind | Should Be $kind
 }
 
@@ -226,17 +214,11 @@ function Validate_IotHubDataConnection {
 		[string]$location,
 		[string]$iotHubResourceId,
 		[string]$sharedAccessPolicyName,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
 		$DataConnection.Name | Should Be $dataConnectionFullName
 		$DataConnection.Location | Should Be $location
 		$DataConnection.IotHubResourceId | Should Be $iotHubResourceId
 		$DataConnection.SharedAccessPolicyName | Should Be $sharedAccessPolicyName
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
 		$DataConnection.Kind | Should Be $kind
 }
 
