@@ -505,6 +505,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide two static public IP addresses for your Azure-SSIS Integration Runtime..
+        /// </summary>
+        internal static string InvalidPublicIPCount {
+            get {
+                return ResourceManager.GetString("InvalidPublicIPCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid storage URI: {0}. Allowed URI example: abfss://fileSystem@storageAccountName.dfs.core.windows.net/samples/java/wordcount/wordcount.jar.
         /// </summary>
         internal static string InvalidStorageUri {
