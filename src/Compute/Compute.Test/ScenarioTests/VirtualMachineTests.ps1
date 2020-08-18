@@ -3018,7 +3018,6 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_DS2_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
 
         # OS & Image
         $username = "admin01";
