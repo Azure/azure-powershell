@@ -2960,15 +2960,6 @@ function Test-VirtualMachineGetStatus
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
 
-        # Check for VmHealth Property
-        Assert-NotNull $vm.VmHealth
-        Assert-NotNull $vm.VmHealth.Status
-        Assert-NotNull $vm.VmHealth.Status.Code
-        Assert-NotNull $vm.VmHealth.Status.Level
-        Assert-NotNull $vm.VmHealth.Status.DisplayStatus
-        Assert-NotNull $vm.VmHealth.Status.Message
-        Assert-NotNull $vm.VmHealth.Status.Time
-
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
@@ -2993,6 +2984,67 @@ function Test-VirtualMachineGetStatus
         $vms[0].DisplayHint = "Expand"
         $a = $vms[0] | Format-Custom | Out-String;
         Assert-True{$a.Contains("Sku");};
+
+        # Remove
+        Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines
+#>
+function Test-VirtualMachineGetStatusWithHealhtExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        if ($loc -eq $null)
+        {
+            $loc = Get-ComputeVMLocation;
+        }
+        $loc = $loc.Replace(' ', '');
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # OS & Image
+        $username = "admin01";
+        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "vcrptestps7691-6f2166";
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -DomainNameLabel $domainNameLabel -Name $vmname -Credential $cred -Size $vmsize;
+
+        # Adding health extension on VM
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension"
+        $extensionType = "ApplicationHealthWindows"
+        $publisher = "Microsoft.ManagedServices"
+        Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0"
+
+        # Get VM
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+        # Check for VmHealth Property
+        Assert-NotNull $vm.VMHealth
+        Assert-NotNull $vm.VMHealth.Status
+        Assert-NotNull $vm.VMHealth.Status.Code
+        Assert-NotNull $vm.VMHealth.Status.Level
+        Assert-NotNull $vm.VMHealth.Status.DisplayStatus
+        Assert-NotNull $vm.VMHealth.Status.Time
 
         # Remove
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
