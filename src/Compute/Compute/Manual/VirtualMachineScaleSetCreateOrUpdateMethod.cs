@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
-            HelpMessage = "Specifies the dedicated host group the virtual machine scale set will reside in."
+            HelpMessage = "Specifies the dedicated host group the virtual machine scale set will reside in.",
+            ValueFromPipelineByPropertyName = true
         )]
         public string HostGroupId { get; set; }
 
