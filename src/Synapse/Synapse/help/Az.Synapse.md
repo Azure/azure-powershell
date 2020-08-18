@@ -72,7 +72,7 @@ Gets a Synapse Analytics Spark session.
 Gets a Synapse Analytics Spark statement.
 
 ### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
-Gets a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
 
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
@@ -111,7 +111,7 @@ Creates a Synapse Analytics role assignment.
 Creates a Synapse Analytics Spark pool.
 
 ### [New-AzSynapseSqlDatabase](New-AzSynapseSqlDatabase.md)
-Gets a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
 
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
 Creates a Synapse Analytics SQL pool.
@@ -150,7 +150,7 @@ Deletes a Synapse Analytics role assignment.
 Deletes a Synapse Analytics Spark pool.
 
 ### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
-Deletes a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
 
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
 Deletes a Synapse Analytics SQL pool.
@@ -219,7 +219,7 @@ Synchronizes credentials among integration runtime nodes.
 Checks for the existence of a Synapse Analytics Spark pool.
 
 ### [Test-AzSynapseSqlDatabase](Test-AzSynapseSqlDatabase.md)
-Checks for the existence of a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Checks for the existence of a Synapse Analytics SQL database.
 
 ### [Test-AzSynapseSqlPool](Test-AzSynapseSqlPool.md)
 Checks for the existence of a Synapse Analytics SQL pool.
@@ -240,7 +240,7 @@ Updates self-hosted integration runtime node.
 Updates a Synapse Analytics Spark pool.
 
 ### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
-Updates a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.
