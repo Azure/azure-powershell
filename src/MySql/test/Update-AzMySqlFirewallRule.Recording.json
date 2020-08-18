@@ -1,5 +1,5 @@
 {
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+1": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01",
@@ -36,7 +36,7 @@
       "Content": "{\"operation\":\"UpsertElasticServerFirewallRules\",\"startTime\":\"2020-07-24T07:10:12.05Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8e22193e-3d9c-4e45-bf1d-61bd3b5e29d8?api-version=2017-12-01+2": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8e22193e-3d9c-4e45-bf1d-61bd3b5e29d8?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8e22193e-3d9c-4e45-bf1d-61bd3b5e29d8?api-version=2017-12-01",
@@ -76,7 +76,7 @@
       "Content": "{\"name\":\"8e22193e-3d9c-4e45-bf1d-61bd3b5e29d8\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T07:10:12.05Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+3": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01",
@@ -115,7 +115,7 @@
       "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01\",\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/servers/firewallRules\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+4": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+4": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01",
@@ -152,7 +152,7 @@
       "Content": "{\"operation\":\"UpsertElasticServerFirewallRules\",\"startTime\":\"2020-07-24T07:10:29.63Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/e5917bef-26e5-48bd-a3d4-ccfd236ebb4b?api-version=2017-12-01+5": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/e5917bef-26e5-48bd-a3d4-ccfd236ebb4b?api-version=2017-12-01+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/e5917bef-26e5-48bd-a3d4-ccfd236ebb4b?api-version=2017-12-01",
@@ -161,7 +161,7 @@
         "x-ms-unique-id": [ "4", "5" ],
         "x-ms-client-request-id": [ "f648dd60-5779-47ac-9af9-cd4d906c7f3d", "f648dd60-5779-47ac-9af9-cd4d906c7f3d" ],
         "CommandName": [ "Az.MySql.internal\\Update-AzMySqlFirewallRule", "Az.MySql.internal\\Update-AzMySqlFirewallRule" ],
-        "FullCommandName": [ "Update-AzMySqlFirewallRule_UpdateExpanded", "Update-AzMySqlFirewallRule_UpdateExpanded" ],
+        "FullCommandName": [ "Update-AzMySqlFirewallRule_ClientIPAddress", "Update-AzMySqlFirewallRule_ClientIPAddress" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
@@ -192,7 +192,7 @@
       "Content": "{\"name\":\"e5917bef-26e5-48bd-a3d4-ccfd236ebb4b\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T07:10:29.63Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+6": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01",
@@ -201,7 +201,7 @@
         "x-ms-unique-id": [ "4", "5", "6" ],
         "x-ms-client-request-id": [ "f648dd60-5779-47ac-9af9-cd4d906c7f3d", "f648dd60-5779-47ac-9af9-cd4d906c7f3d", "f648dd60-5779-47ac-9af9-cd4d906c7f3d" ],
         "CommandName": [ "Az.MySql.internal\\Update-AzMySqlFirewallRule", "Az.MySql.internal\\Update-AzMySqlFirewallRule", "Az.MySql.internal\\Update-AzMySqlFirewallRule" ],
-        "FullCommandName": [ "Update-AzMySqlFirewallRule_UpdateExpanded", "Update-AzMySqlFirewallRule_UpdateExpanded", "Update-AzMySqlFirewallRule_UpdateExpanded" ],
+        "FullCommandName": [ "Update-AzMySqlFirewallRule_ClientIPAddress", "Update-AzMySqlFirewallRule_ClientIPAddress", "Update-AzMySqlFirewallRule_ClientIPAddress" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
@@ -231,7 +231,7 @@
       "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01\",\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/servers/firewallRules\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+7": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01+7": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100/firewallRules/mysqlrule01?api-version=2017-12-01",
@@ -273,7 +273,7 @@
       "Content": "{\"operation\":\"DropElasticServerFirewallRule\",\"startTime\":\"2020-07-24T07:10:47.143Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01+8": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01+8": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01",
@@ -313,7 +313,7 @@
       "Content": "{\"name\":\"ef9d3f5d-7528-4905-b20d-f765ede790a2\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T07:10:47.143Z\"}"
     }
   },
-  "Update-AzMySqlFirewallRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01+9": {
+  "Update-AzMySqlFirewallRule+[NoContext]+ClientIPAddress+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01+9": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ef9d3f5d-7528-4905-b20d-f765ede790a2?api-version=2017-12-01",

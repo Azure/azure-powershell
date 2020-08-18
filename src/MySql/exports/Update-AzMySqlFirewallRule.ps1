@@ -33,11 +33,11 @@ Name StartIPAddress EndIPAddress
 rule 0.0.0.2        0.0.0.3
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -StartIPAddress 0.0.0.2
+PS C:\> Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
 
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+rule 0.0.0.2        0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -67,6 +67,7 @@ function Update-AzMySqlFirewallRule {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -74,6 +75,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -81,18 +83,21 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ClientIPAddress')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
@@ -100,20 +105,29 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
-    # The start IP address of the server firewall rule.
-    # Must be IPv4 format.
-    # If range contains one IP, use StartIPAddress only.
-    ${StartIPAddress},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -184,9 +198,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             UpdateExpanded = 'Az.MySql.custom\Update-AzMySqlFirewallRule';
+            ClientIPAddress = 'Az.MySql.custom\Update-AzMySqlFirewallRule';
+            ClientIPAddressViaIdentity = 'Az.MySql.custom\Update-AzMySqlFirewallRule';
             UpdateViaIdentityExpanded = 'Az.MySql.custom\Update-AzMySqlFirewallRule';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'ClientIPAddress') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
