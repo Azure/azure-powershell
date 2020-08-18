@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserverreplica
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlreplica
 schema: 2.0.0
 ---
 
-# New-AzMySqlServerReplica
+# New-AzMySqlReplica
 
 ## SYNOPSIS
 Creates a new replica from an existing database.
@@ -13,9 +13,9 @@ Creates a new replica from an existing database.
 ## SYNTAX
 
 ```
-New-AzMySqlServerReplica -Name <String> -ResourceGroupName <String> -InputObject <IServer>
- [-SubscriptionId <String>] [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlReplica -Replica <String> -ResourceGroupName <String> -Master <IServer> [-SubscriptionId <String>]
+ [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,14 +25,26 @@ Creates a new replica from an existing database.
 
 ### Example 1: Create a new MySql server replica
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlServerReplica -Name mysql-test-replica -ResourceGroupName PowershellMySqlTest
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlReplica -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
 
-Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
 This cmdlet creates a new MySql server replica.
+
+### Example 2: Create a new MySql server replica
+```powershell
+PS C:\> $mysql = Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> New-AzMySqlReplica -Master $mysql -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
+
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
+```
+
+This cmdlet with parameter master(inputobject) creates a new MySql server replica.
 
 ## PARAMETERS
 
@@ -66,22 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The source server object to create replica from.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The location the resource resides in.
 
@@ -97,18 +93,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -Master
+The source server object to create replica from.
+To construct, see NOTES section for MASTER properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 Parameter Sets: (All)
-Aliases: ReplicaServerName
+Aliases: InputObject
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,6 +118,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Replica
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ReplicaServerName, Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,10 +232,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The source server object to create replica from.
+MASTER <IServer>: The source server object to create replica from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -21,9 +21,9 @@ List all the replicas for a given server.
 .Example
 PS C:\> Get-AzMySqlReplica -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer

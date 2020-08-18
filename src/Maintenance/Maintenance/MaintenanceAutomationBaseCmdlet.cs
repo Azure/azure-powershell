@@ -98,6 +98,14 @@ namespace Microsoft.Azure.Commands.Maintenance
             }
         }
 
+        public IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurationsClient
+        {
+            get
+            {
+                return MaintenanceClient.MaintenanceManagementClient.PublicMaintenanceConfigurations;
+            }
+        }
+
         public IUpdatesOperations UpdatesClient
         {
             get

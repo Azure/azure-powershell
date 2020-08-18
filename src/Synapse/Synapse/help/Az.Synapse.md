@@ -14,6 +14,18 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Synap
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
+### [Get-AzSynapseIntegrationRuntime](Get-AzSynapseIntegrationRuntime.md)
+Gets information about integration runtime resources.
+
+### [Get-AzSynapseIntegrationRuntimeKey](Get-AzSynapseIntegrationRuntimeKey.md)
+Gets keys for a self-hosted integration runtime.
+
+### [Get-AzSynapseIntegrationRuntimeMetric](Get-AzSynapseIntegrationRuntimeMetric.md)
+Gets metric data for an integration runtime. 
+
+### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
+Gets an integration runtime node information.
+
 ### [Get-AzSynapseRoleAssignment](Get-AzSynapseRoleAssignment.md)
 Gets a Synapse Analytics role assignment.
 
@@ -41,11 +53,17 @@ Gets a Synapse Analytics SQL pool.
 ### [Get-AzSynapseWorkspace](Get-AzSynapseWorkspace.md)
 Gets a Synapse Analytics workspace.
 
+### [Invoke-AzSynapseIntegrationRuntimeUpgrade](Invoke-AzSynapseIntegrationRuntimeUpgrade.md)
+Upgrades self-hosted integration runtime.
+
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
 Invokes a Synapse Analytics Spark statement.
 
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
+
+### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
+Regenerate self-hosted integration runtime key.
 
 ### [New-AzSynapseRoleAssignment](New-AzSynapseRoleAssignment.md)
 Creates a Synapse Analytics role assignment.
@@ -65,6 +83,12 @@ Creates a Synapse Analytics workspace.
 ### [Remove-AzSynapseFirewallRule](Remove-AzSynapseFirewallRule.md)
 Deletes a Synapse Analytics Firewall Rule.
 
+### [Remove-AzSynapseIntegrationRuntime](Remove-AzSynapseIntegrationRuntime.md)
+Removes an integration runtime.
+
+### [Remove-AzSynapseIntegrationRuntimeNode](Remove-AzSynapseIntegrationRuntimeNode.md)
+Remove a node with the given name on an integration runtime.
+
 ### [Remove-AzSynapseRoleAssignment](Remove-AzSynapseRoleAssignment.md)
 Deletes a Synapse Analytics role assignment.
 
@@ -83,6 +107,9 @@ Deletes a Synapse Analytics workspace.
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
 Resets timeout of a Synapse Analytics Spark session.
 
+### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
+Updates an integration runtime.
+
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
 
@@ -98,6 +125,9 @@ Cancels a Synapse Analytics Spark statement.
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.
 
+### [Sync-AzSynapseIntegrationRuntimeCredential](Sync-AzSynapseIntegrationRuntimeCredential.md)
+Synchronizes credentials among integration runtime nodes.
+
 ### [Test-AzSynapseSparkPool](Test-AzSynapseSparkPool.md)
 Checks for the existence of a Synapse Analytics Spark pool.
 
@@ -112,6 +142,12 @@ Checks for the existence of a Synapse Analytics workspace.
 
 ### [Update-AzSynapseFirewallRule](Update-AzSynapseFirewallRule.md)
 Updates a Synapse Analytics Firewall Rule.
+
+### [Update-AzSynapseIntegrationRuntime](Update-AzSynapseIntegrationRuntime.md)
+Updates an integration runtime.
+
+### [Update-AzSynapseIntegrationRuntimeNode](Update-AzSynapseIntegrationRuntimeNode.md)
+Updates self-hosted integration runtime node.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
 Updates a Synapse Analytics Spark pool.

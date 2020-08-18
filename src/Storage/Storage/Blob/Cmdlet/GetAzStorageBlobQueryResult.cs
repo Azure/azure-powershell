@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Threading.Tasks;
     using Track2Models = global::Azure.Storage.Blobs.Models;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobQueryResult", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(BlobQueryOutput))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobQueryResult", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(BlobQueryOutput))]
     public class GetStorageAzureBlobQueryResultCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string NameParameterSet = "NamePipeline";
 
         private List<PSBlobQueryError> queryErrors = new List<PSBlobQueryError>();
-        private long bytesScanned = 0; 
+        private long bytesScanned = 0;
 
         [Parameter(HelpMessage = "BlobBaseClient Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSet)]
@@ -105,6 +105,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified blob is successfully queried.")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(HelpMessage = "Force to overwrite the existing file.")]
+        public SwitchParameter Force { get; set; }
+
         protected override bool UseTrack2Sdk()
         {
             return true;
@@ -126,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             Channel = channel;
         }
-      
+
 
         /// <summary>
         /// Cmdlet begin processing
@@ -151,11 +154,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case BlobPipelineParameterSet:
                     break;
                 case ContainerPipelineParameterSet:
-                    this.BlobBaseClient = Util.GetTrack2BlobClient(this.BlobContainerClient, 
-                        this.Blob, Channel.StorageContext, 
-                        this.VersionId, 
-                        null, 
-                        this.SnapshotTime is null? null : this.SnapshotTime.Value.ToString("o"), 
+                    this.BlobBaseClient = Util.GetTrack2BlobClient(this.BlobContainerClient,
+                        this.Blob, Channel.StorageContext,
+                        this.VersionId,
+                        null,
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
                 case NameParameterSet:
@@ -179,11 +182,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
             {
-                    bytesScanned = finishedBytes;
+                bytesScanned = finishedBytes;
             });
 
             // preapre query Option
-            // Not show the ProgressHandler now, since the ProgressHandler can't represent the read query progress 
+            // Not show the Progressbar now, since the ProgressHandler can't represent the read query progress 
             Track2Models.BlobQueryOptions queryOption = new Track2Models.BlobQueryOptions
             {
                 InputTextConfiguration = this.InputTextConfiguration is null ? null : this.InputTextConfiguration.ParseBlobQueryTextConfiguration(),
@@ -196,13 +199,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 queryErrors.Add(new PSBlobQueryError(e));
             };
 
-            using (var reader = (await ((BlockBlobClient)blob).QueryAsync(query, queryOption, CmdletCancellationToken)).Value.Content)
+            if (this.Force.IsPresent
+                || !System.IO.File.Exists(this.ResultFile)
+                || ShouldContinue(string.Format(Resources.OverwriteConfirmation, this.ResultFile), null))
             {
-                FileStream fs = File.Create(this.ResultFile);
-                reader.CopyTo(fs);
-                fs.Close();
+                {
+                    using (var reader = (await ((BlockBlobClient)blob).QueryAsync(query, queryOption, CmdletCancellationToken)).Value.Content)
+                    {
+                        FileStream fs = File.Create(this.ResultFile);
+                        reader.CopyTo(fs);
+                        fs.Close();
+                    }
+                    OutputStream.WriteObject(taskId, new BlobQueryOutput(bytesScanned, queryErrors));
+                }
             }
-            OutputStream.WriteObject(taskId, new BlobQueryOutput(bytesScanned, queryErrors));
         }
     }
 }

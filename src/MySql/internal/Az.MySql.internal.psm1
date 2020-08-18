@@ -1,6 +1,6 @@
 # region Generated 
   # Load the private module dll
-  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '../bin/Az.MySql.private.dll')
+  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.MySql.private.dll')
 
   # Get the private module's instance
   $instance = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Module]::Instance

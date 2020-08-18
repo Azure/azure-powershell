@@ -13,16 +13,16 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function New-AzMySqlServerReplica {
+function New-AzMySqlReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new replica from an existing database.')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]
-        [Alias('ReplicaServerName')]
+        [Alias('ReplicaServerName', 'Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
-        ${Name},
+        ${Replica},
 
         [Parameter(Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
@@ -36,9 +36,10 @@ function New-AzMySqlServerReplica {
         ${SubscriptionId},
 
         [Parameter(Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
+        [Alias('InputObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
-        ${InputObject},
+        ${Master},
 
         [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -112,10 +113,10 @@ function New-AzMySqlServerReplica {
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForReplica]::new()
           $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Replica
 
-          $server = $PSBoundParameters['InputObject']
+          $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id
           $Parameter.Location = $server.Location
-          $null = $PSBoundParameters.Remove('InputObject')
+          $null = $PSBoundParameters.Remove('Master')
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']
@@ -125,6 +126,12 @@ function New-AzMySqlServerReplica {
           if ($PSBoundParameters.ContainsKey('Sku')) {
               $Parameter.SkuName = $PSBoundParameters['Sku']
               $null = $PSBoundParameters.Remove('Sku')
+          }
+
+          if ($PSBoundParameters.ContainsKey('Replica'))
+          {
+            $PSBoundParameters['Name'] =  $PSBoundParameters['Replica']
+            $null = $PSBoundParameters.Remove('Replica')
           }
 
           $PSBoundParameters.Add('Parameter', $Parameter)
