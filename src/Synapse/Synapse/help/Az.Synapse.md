@@ -111,7 +111,7 @@ Creates a Synapse Analytics role assignment.
 Creates a Synapse Analytics Spark pool.
 
 ### [New-AzSynapseSqlDatabase](New-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Creates a Synapse Analytics SQL database.
 
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
 Creates a Synapse Analytics SQL pool.
