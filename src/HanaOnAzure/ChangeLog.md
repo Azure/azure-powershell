@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue in PowerShell prior to 7.0
 
 ## Version 0.1.0
 * the first preview release
