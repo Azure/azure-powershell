@@ -539,15 +539,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
                 }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
-        /// </summary>
-        internal static string LongRunningStatusError {
-            get {
-                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because main class name or main executable file is not provided. Please specify -MainClassName for Spark job or -MainExecutableFile for .NET Spark job..

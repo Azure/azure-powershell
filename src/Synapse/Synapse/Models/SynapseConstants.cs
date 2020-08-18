@@ -109,40 +109,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string TriggerRun = nameof(TriggerRun);
 
-        public const string IntegrationRuntime = nameof(IntegrationRuntime);
-
-        public const string IntegrationRuntimeName = nameof(IntegrationRuntimeName);
-
-        public const string IntegrationRuntimeTypeManaged = "Managed";
-
-        public const string IntegrationRuntimeSelfhosted = "SelfHosted";
-
-        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
-
-        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
-
-        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
-
-        public const string Key = nameof(Key);
-
-        public const string Metric = nameof(Metric);
-
-        public const string Node = nameof(Node);
-
-        public const string Upgrade = nameof(Upgrade);
-
-        public const string SubnetName = nameof(SubnetName);
-
-        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
-
-        public const string IntegrationRuntimeBasePrice = "BasePrice";
-
-        public const string Credential = nameof(Credential);
-
-        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
-
-        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
-
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

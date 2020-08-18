@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SynapseManagementClient _synapseManagementClient;
         private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
 
-
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
             if (context == null)
