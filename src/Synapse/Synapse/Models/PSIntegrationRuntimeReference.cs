@@ -29,4 +29,3 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
     }
 }
-
