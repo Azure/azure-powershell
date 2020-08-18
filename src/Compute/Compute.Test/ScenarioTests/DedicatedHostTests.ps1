@@ -79,7 +79,7 @@ function Test-DedicatedHost
 
         $hostGroupInstanceViewResult = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -InstanceView;
         Assert-NotNull $hostGroupInstanceViewResult.Hosts;
-        foreach ($hostInstanceViewWithName in $hostGroupInstanceViewResult.Hosts) {
+        foreach ($hostInstanceViewWithName in $hostGroupInstanceViewResult.InstanceView.Hosts) {
             Assert-NotNull $hostInstanceViewWithName.Name;
         } 
 
