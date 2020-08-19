@@ -68,7 +68,7 @@ directive:
     where: $
     transform: return $.replace(/\/accessPolicies\//g, "/accesspolicies/")
   - from: swagger-document
-    where: $definitions.Gen1EnvironmentResourceProperties.allOf
+    where: $.definitions.Gen1EnvironmentResourceProperties.allOf
     transform: >
       return [
         {
@@ -79,7 +79,7 @@ directive:
         }
       ]
   - from: swagger-document
-    where: $definitions.Gen2EnvironmentResourceProperties.allOf
+    where: $.definitions.Gen2EnvironmentResourceProperties.allOf
     transform: >
       return [
         {
