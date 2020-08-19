@@ -1,0 +1,91 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
+
+    /// <summary>Configure pairing input properties.</summary>
+    public partial class CreateProtectionContainerMappingInputProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerMappingInputProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerMappingInputPropertiesInternal
+    {
+
+        /// <summary>Internal Acessors for ProviderSpecificInput</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerMappingInputPropertiesInternal.ProviderSpecificInput { get => (this._providerSpecificInput = this._providerSpecificInput ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ReplicationProviderSpecificContainerMappingInput()); set { {_providerSpecificInput = value;} } }
+
+        /// <summary>Backing field for <see cref="PolicyId" /> property.</summary>
+        private string _policyId;
+
+        /// <summary>Applicable policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PolicyId { get => this._policyId; set => this._policyId = value; }
+
+        /// <summary>Backing field for <see cref="ProviderSpecificInput" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput _providerSpecificInput;
+
+        /// <summary>Provider specific input for pairing.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput ProviderSpecificInput { get => (this._providerSpecificInput = this._providerSpecificInput ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ReplicationProviderSpecificContainerMappingInput()); set => this._providerSpecificInput = value; }
+
+        /// <summary>The class type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
+        public string ProviderSpecificInputInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInputInternal)ProviderSpecificInput).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInputInternal)ProviderSpecificInput).InstanceType = value; }
+
+        /// <summary>Backing field for <see cref="TargetProtectionContainerId" /> property.</summary>
+        private string _targetProtectionContainerId;
+
+        /// <summary>The target unique protection container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string TargetProtectionContainerId { get => this._targetProtectionContainerId; set => this._targetProtectionContainerId = value; }
+
+        /// <summary>
+        /// Creates an new <see cref="CreateProtectionContainerMappingInputProperties" /> instance.
+        /// </summary>
+        public CreateProtectionContainerMappingInputProperties()
+        {
+
+        }
+    }
+    /// Configure pairing input properties.
+    public partial interface ICreateProtectionContainerMappingInputProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable
+    {
+        /// <summary>Applicable policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Applicable policy.",
+        SerializedName = @"policyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PolicyId { get; set; }
+        /// <summary>The class type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The class type.",
+        SerializedName = @"instanceType",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProviderSpecificInputInstanceType { get; set; }
+        /// <summary>The target unique protection container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The target unique protection container name.",
+        SerializedName = @"targetProtectionContainerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string TargetProtectionContainerId { get; set; }
+
+    }
+    /// Configure pairing input properties.
+    internal partial interface ICreateProtectionContainerMappingInputPropertiesInternal
+
+    {
+        /// <summary>Applicable policy.</summary>
+        string PolicyId { get; set; }
+        /// <summary>Provider specific input for pairing.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput ProviderSpecificInput { get; set; }
+        /// <summary>The class type.</summary>
+        string ProviderSpecificInputInstanceType { get; set; }
+        /// <summary>The target unique protection container name.</summary>
+        string TargetProtectionContainerId { get; set; }
+
+    }
+}
