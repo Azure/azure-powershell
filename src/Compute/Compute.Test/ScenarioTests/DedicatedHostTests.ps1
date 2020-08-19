@@ -40,7 +40,7 @@ function Test-DedicatedHost
         Assert-AreEqual $loc $hostGroup.Location;
         Assert-True { $hostGroup.Tags.Keys.Contains("key1") };
         Assert-AreEqual "val1" $hostGroup.Tags["key1"];
-        #Assert-True { $hostGroup.Zones.Contains("2") };
+        Assert-True { $hostGroup.Zones.Contains("2") };
         Assert-AreEqual 0 $hostGroup.Hosts.Count;
         Assert-AreEqual $true $hostGroup.SupportAutomaticPlacement;
 
