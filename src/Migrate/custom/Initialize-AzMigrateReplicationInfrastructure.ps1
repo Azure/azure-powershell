@@ -15,25 +15,22 @@
 
 <#
 .Synopsis
-Create an environment in the specified subscription and resource group.
+# TODO PLEASE FIX BEFORE RELEASE
+Create a deployment in the specified subscription and resource group.
 .Description
-Create an environment in the specified subscription and resource group.
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-THIS IS FOR DEMO PURPOSE ONLY. HAS TO BE REMOVED .>>>>>>>>>>>>>>>>>>>>>
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# TODO PLEASE FIX BEFORE RELEASE
+Create a deployment in the specified subscription and resource group.
+This has to be done only once, before enabling replication for first 
+VmWare virtual machine.
+Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
+# TODO PLEASE FIX BEFORE RELEASE
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
-function New-AzMigratePolicy {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]
+function Initialize-AzMigrateReplicationInfrastructure {
+    [OutputType([System.Void])]
     [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of the environment
-        ${PolicyName},
-    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -43,8 +40,14 @@ function New-AzMigratePolicy {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceName},
+        # Name of an Azure Migrate project.
+        ${ProjectName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Switch]
+        # Name of an Azure Migrate project.
+        ${Vmwareagentless},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -52,35 +55,7 @@ function New-AzMigratePolicy {
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-    
-        [Parameter(Mandatory)]
-        [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('VMwareCbt')})]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-        [System.String]
-        # The kind of the environment.
-        ${ProviderSpecificInputInstanceType},
 
-        [Parameter(ParameterSetName='VMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-        [System.Int32]
-        # The capacity of the sku.
-        # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
-        ${AppConsistentFrequencyInMinutes},
-
-        [Parameter(ParameterSetName='VMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-        [System.Int32]
-        # The capacity of the sku.
-        # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
-        ${CrashConsistentFrequencyInMinutes},
-
-        [Parameter(ParameterSetName='VMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-        [System.Int32]
-        # The capacity of the sku.
-        # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
-        ${RecoveryPointHistoryInMinutes},
-    
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -141,35 +116,46 @@ function New-AzMigratePolicy {
         ${ProxyUseDefaultCredentials}
     )
     
-
-    
     process {
         try {
+            # TODO PLEASE FIX BEFORE RELEASE
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($PSBoundParameters['ProviderSpecificInputInstanceType'] -eq 'VMwareCbt') {
+            if ($Vmwareagentless.IsPresent) {
+                # TODO PLEASE FIX BEFORE RELEASE
+                # Get Site name from project name
+                
                 $test = $PSBoundParameters
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreatePolicyInput]::new()
-                $Parameter.ProviderSpecificInputInstanceType = $PSBoundParameters['ProviderSpecificInputInstanceType']
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreatePolicyInputProperties]::new()
-                $Parameter.Property.ProviderSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
-                $Parameter.Property.ProviderSpecificInput.CrashConsistentFrequencyInMinute = $PSBoundParameters['AppConsistentFrequencyInMinutes']
-                $Parameter.Property.ProviderSpecificInput.AppConsistentFrequencyInMinute = $PSBoundParameters['CrashConsistentFrequencyInMinutes']
-                $Parameter.Property.ProviderSpecificInput.RecoveryPointHistoryInMinute = $PSBoundParameters['RecoveryPointHistoryInMinutes']
-                $Parameter.Property.ProviderSpecificInput.InstanceType  = $PSBoundParameters['ProviderSpecificInputInstanceType']
-                $null = $PSBoundParameters.Remove('ProviderSpecificInputInstanceType')
-                $null = $PSBoundParameters.Remove('AppConsistentFrequencyInMinutes')
-                $null = $PSBoundParameters.Remove('CrashConsistentFrequencyInMinutes')
-                $null = $PSBoundParameters.Remove('RecoveryPointHistoryInMinutes')
-                $null = $PSBoundParameters.Add('Input', $Parameter)
-                Az.Migrate.internal\New-AzMigrateReplicationPolicy @PSBoundParameters
-            } else {
-                Write-Host "error" -ForegroundColor Red -BackgroundColor Yellow
+                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
+                $Source = @"
+using System;
+public class HashFunctions
+{
+public static int hashForArtifact(String artifact)
+    {
+            int hash = 0;
+            int al = artifact.Length;
+            int tl = 0;
+            char[] ac = artifact.ToCharArray();
+            while (tl < al)
+            {
+                hash = ((hash << 5) - hash) + ac[tl++] | 0;
             }
-
-            
+            return Math.Abs(hash);
+    }
+}
+"@
+                Add-Type -TypeDefinition $Source -Language CSharp 
+                $hash = [HashFunctions]::hashForArtifact($artifactName) 
+                Write-Host $hash
+               
+                
+            } else {
+                # TODO PLEASE FIX BEFORE RELEASE
+                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
+            }
         } catch {
-           Write-Host $Error[0]
            throw
         }
     }
+
 }   

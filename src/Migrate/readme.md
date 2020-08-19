@@ -57,28 +57,7 @@ title: Migrate
 subject-prefix: 'Migrate'
 
 directive:
-  - where:
-      verb: Set$
-      subject: HyperV(Cluster|Host)$|VCenter$
-    set:
-      verb: Update
-  - where:
-      verb: Set$
-      subject: (HyperV)?Site$
-    hide: true
-  - where:
-      verb: New$|Update$
-      variant: ^(Update|Create)(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New$
-      variant: ^CreateViaIdentity
-    hide: true
-  - where:
-      verb: New$|Set$|Update$
-      subject: Site$|VCenter$
-      parameter-name: Name
-    clear-alias: true
+  # Remove cmdlets that should not be exposed
   - where:
       subject: ^Recovery|^ReplicationRecovery
     remove: true
