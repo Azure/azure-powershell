@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: AzResourceMover.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/new-azresourcemovermoveresource
+Module Name: Az.ResourceMover
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/new-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
@@ -100,7 +100,7 @@ Gets or sets the move resource dependencies overrides.
 To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResourceDependencyOverride[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceDependencyOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ A list of additional details about the error.
 To construct, see NOTES section for DETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResourceErrorBody[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceErrorBody[]
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +193,7 @@ A list of additional details about the error.
 To construct, see NOTES section for MOVESTATUSDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResourceErrorBody[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceErrorBody[]
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Defines the job names.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.JobName
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 Defines the MoveResource states.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.MoveState
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState
 Parameter Sets: (All)
 Aliases:
 
@@ -486,7 +486,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource
 
 ## NOTES
 

@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 azure: true
 powershell: true
 branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/blob/kakattam/sourceidchanges
+repo: https://github.com/Azure/azure-rest-api-specs/blob/master
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -74,7 +74,7 @@ clear-output-folder: true
 
 ``` yaml
 input-file:
-  - https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/kakattam/sourceidchanges/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
 module-name: Az.Resources.TestSupport
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources
 

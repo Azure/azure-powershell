@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# AzResourceMover.RegionMove
-This directory contains the PowerShell module for the RegionMove service.
+# Az.ResourceMover
+This directory contains the PowerShell module for the ResourceMover service.
 
 ---
 ## Status
-[![AzResourceMover.RegionMove](https://img.shields.io/powershellgallery/v/AzResourceMover.RegionMove.svg?style=flat-square&label=AzResourceMover.RegionMove "AzResourceMover.RegionMove")](https://www.powershellgallery.com/packages/AzResourceMover.RegionMove/)
+[![Az.ResourceMover](https://img.shields.io/powershellgallery/v/Az.ResourceMover.svg?style=flat-square&label=Az.ResourceMover "Az.ResourceMover")](https://www.powershellgallery.com/packages/Az.ResourceMover/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `AzResourceMover.RegionMove`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.ResourceMover`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -51,21 +51,21 @@ In this directory, run AutoRest:
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
-  description: 'Microsoft Azure PowerShell: $(service-name) cmdlets'
+  description: 'Microsoft Azure PowerShell: $(prefix).$(service-name) cmdlets'
   copyright: Microsoft Corporation. All rights reserved.
-  tags: Azure ResourceManager ARM PSModule $(service-name)
+  tags: Azure ResourceManager ARM PSModule $(prefix).$(service-name)
   companyName: Microsoft Corporation
   requireLicenseAcceptance: true
   licenseUri: https://aka.ms/azps-license
   projectUri: https://github.com/Azure/azure-powershell
 
-service-name: RegionMove
+service-name: ResourceMover
 powershell: true
 azure: true
-branch: kakattam/sourceidchanges
-repo: https://github.com/kattamudi-karthik/azure-rest-api-specs/tree/$(branch)
-prefix: AzResourceMover
-subject-prefix: ''
+branch: master
+repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
+prefix: Az
+subject-prefix: $(service-name)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
@@ -78,7 +78,7 @@ title: Rms-client
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^GetViaIdentity$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^Update$|^UpdateExpanded$|^List$|^List1$|^ResolveViaIdentity$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$      
+      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^List$|^List1$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$  
     remove: true
   - where:
       subject: OperationsDiscovery

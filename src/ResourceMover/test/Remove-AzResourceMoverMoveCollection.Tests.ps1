@@ -15,8 +15,4 @@ Describe 'Remove-AzResourceMoverMoveCollection' {
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'Discard' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

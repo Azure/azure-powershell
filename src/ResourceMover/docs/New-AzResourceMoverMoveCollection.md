@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: AzResourceMover.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/new-azresourcemovermovecollection
+Module Name: Az.ResourceMover
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ schema: 2.0.0
 ```
 New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-ProvisioningState <ProvisioningState>] [-SourceRegion <String>] [-Tag <Hashtable>]
- [-TargetRegion <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-SourceRegion <String>] [-Tag <Hashtable>] [-TargetRegion <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The type of identity used for the region move service.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.ResourceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -128,21 +128,6 @@ Parameter Sets: (All)
 Aliases: MoveCollectionName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-Defines the provisioning states.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Support.ProvisioningState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -262,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IMoveCollection
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection
 
 ## NOTES
 

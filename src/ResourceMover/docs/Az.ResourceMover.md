@@ -1,16 +1,16 @@
 ---
-Module Name: AzResourceMover.RegionMove
-Module Guid: 44fbad5e-88f6-47b9-a4a1-babdc97a24ab
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove
+Module Name: Az.ResourceMover
+Module Guid: 97d87543-8eef-4574-a70d-7317ec4abe54
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzResourceMover.RegionMove Module
+# Az.ResourceMover Module
 ## Description
-Microsoft Azure PowerShell: RegionMove cmdlets
+Microsoft Azure PowerShell: Az.ResourceMover cmdlets
 
-## AzResourceMover.RegionMove Cmdlets
+## Az.ResourceMover Cmdlets
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
 
 

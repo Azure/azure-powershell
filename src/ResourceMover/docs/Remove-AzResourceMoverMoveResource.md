@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: AzResourceMover.RegionMove
-online version: https://docs.microsoft.com/en-us/powershell/module/azresourcemover.regionmove/remove-azresourcemovermoveresource
+Module Name: Az.ResourceMover
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
@@ -201,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IOperationStatus
 
 ## NOTES
 
