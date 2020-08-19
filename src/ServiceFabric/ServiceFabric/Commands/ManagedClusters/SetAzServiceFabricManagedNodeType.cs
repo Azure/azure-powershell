@@ -103,6 +103,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = ReimageByObj)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         #region set params

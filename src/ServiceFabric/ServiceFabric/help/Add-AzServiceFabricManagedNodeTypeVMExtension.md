@@ -17,7 +17,7 @@ Add vm extension to the node type.
 Add-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-ClusterName] <String>
  [-NodeTypeName] <String> -Name <String> [-ForceUpdateTag <String>] -Publisher <String> -Type <String>
  -TypeHandlerVersion <String> [-AutoUpgradeMinorVersion] [-Setting <Object>] [-ProtectedSetting <Object>]
- [-ProvisionAfterExtension <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ProvisionAfterExtension <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Add-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-Cl
 Add-AzServiceFabricManagedNodeTypeVMExtension [-InputObject] <PSManagedNodeType> -Name <String>
  [-ForceUpdateTag <String>] -Publisher <String> -Type <String> -TypeHandlerVersion <String>
  [-AutoUpgradeMinorVersion] [-Setting <Object>] [-ProtectedSetting <Object>]
- [-ProvisionAfterExtension <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ProvisionAfterExtension <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -69,6 +69,21 @@ $nodeType | Add-AzServiceFabricManagedNodeTypeVMExtension $ExtName -Publisher $P
 This command adds an extension to the node type, with piping.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AutoUpgradeMinorVersion
 Indicates whether the extension should use a newer minor version if one is available at deployment time.

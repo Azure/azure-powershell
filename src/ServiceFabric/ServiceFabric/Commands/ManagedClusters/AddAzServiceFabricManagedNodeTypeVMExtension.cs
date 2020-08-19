@@ -85,6 +85,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Collection of extension names after which this extension needs to be provisioned.")]
         public string[] ProvisionAfterExtension { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()

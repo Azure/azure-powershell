@@ -82,6 +82,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Endpoint used by reverse proxy.")]
         public int? ReverseProxyEndpointPort { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()

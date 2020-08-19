@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()

@@ -14,7 +14,7 @@ Restart specific nodes from the node type.
 
 ```
 Restart-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <String[]> [-ForceRestart] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -NodeName <String[]> [-ForceRestart] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,6 +34,21 @@ Restart-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $
 Restart node 0 and 3 on the node type.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 Specify the name of the cluster.

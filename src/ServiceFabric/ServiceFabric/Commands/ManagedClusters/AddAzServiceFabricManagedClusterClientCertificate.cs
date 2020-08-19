@@ -91,6 +91,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    HelpMessage = "List of Issuer thumbprints for the client certificate use comma to separate the issuers. Only use in combination with CommonName.")]
         public string[] IssuerThumbprint { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
