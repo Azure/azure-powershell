@@ -17,7 +17,7 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
-### [New-AzConnectedMachine](New-AzConnectedMachine.md)
+### [Connect-AzConnectedMachine](Connect-AzConnectedMachine.md)
 API to register a new machine and thereby create a tracked resource in ARM
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)

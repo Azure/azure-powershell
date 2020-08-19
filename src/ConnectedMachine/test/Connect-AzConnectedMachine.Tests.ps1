@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConnectedMachine.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Connect-AzConnectedMachine.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,10 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzConnectedMachine' {
+Describe 'Connect-AzConnectedMachine' {
     BeforeAll {
         if ($TestMode -eq 'playback') {
-            Write-Host "New-AzConnectedMachine tests can only be run live. Skipping..."
+            Write-Host "Connect-AzConnectedMachine tests can only be run live. Skipping..."
             $SkipAll = $true
 
             # All `It` calls will have -Skip:$true
@@ -23,7 +23,7 @@ Describe 'New-AzConnectedMachine' {
         }
 
         if ($IsMacOS) {
-            Write-Host "New-AzConnectedMachine tests can only be run on Windows or Linux. Skipping..."
+            Write-Host "Connect-AzConnectedMachine tests can only be run on Windows or Linux. Skipping..."
             $SkipAll = $true
 
             # All `It` calls will have -Skip:$true
@@ -69,7 +69,7 @@ Describe 'New-AzConnectedMachine' {
     }
 
     It 'Can connect a machine to an existing resource group' {
-        $machine = New-AzConnectedMachine @commonParams -Location $env.location -Tag @{ Owner = "Contoso" }
+        $machine = Connect-AzConnectedMachine @commonParams -Location $env.location -Tag @{ Owner = "Contoso" }
         $machine.Tag | Write-Host
         $machine.Tag.Values | Write-Host
         $machine.Tag.Keys | Write-Host
@@ -88,7 +88,7 @@ Describe 'New-AzConnectedMachine' {
             $pssession = New-PSSession -ComputerName localhost
         }
 
-        $machine = New-AzConnectedMachine @commonParams -Location $env.location -PSSession $pssession
+        $machine = Connect-AzConnectedMachine @commonParams -Location $env.location -PSSession $pssession
 
         $machine | Should -Not -Be $null
         $machine.Location | Should -MatchExactly $env.location

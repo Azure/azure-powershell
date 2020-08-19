@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/Connect-AzConnectedMachine
 schema: 2.0.0
 ---
 
-# New-AzConnectedMachine
+# Connect-AzConnectedMachine
 
 ## SYNOPSIS
 API to register a new machine and thereby create a tracked resource in ARM
@@ -13,7 +13,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 ## SYNTAX
 
 ```
-New-AzConnectedMachine [-ResourceGroupName] <String> [-Location] <String> [[-SubscriptionId] <String>]
+Connect-AzConnectedMachine [-ResourceGroupName] <String> [-Location] <String> [[-SubscriptionId] <String>]
  [[-Name] <String>] [[-DefaultProfile] <PSObject>] [[-PSSession] <PSSession[]>] [[-Tag] <Hashtable>]
  [[-Proxy] <Uri>] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 
 ### Example 1: Onboards the machine you're on as a connected machine
 ```powershell
-PS C:\> New-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name linux_eastus1_1 -Location eastus
+PS C:\> Connect-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name linux_eastus1_1 -Location eastus
 
 < truncated output of installing the azcmagent >
 
@@ -44,7 +44,7 @@ Onboards the machine you're on as a connected machine.
 ### Example 2: Onboards a remove machine as a connected device
 ```powershell
 PS C:\> $session = New-PSSession -ComputerName WINBOX
-PS C:\> New-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
+PS C:\> Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
 
 < truncated output of installing the azcmagent >
 
