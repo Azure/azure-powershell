@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlDatabase = nameof(SqlDatabase);
+
         public const string SparkPoolName = nameof(SparkPoolName);
 
         public const string Job = nameof(Job);
@@ -51,6 +53,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string JarExtention = ".jar";
 
         public const string MainExecutableFile = nameof(MainExecutableFile);
+
+        public const string IntegrationRuntime = nameof(IntegrationRuntime);
+
+        public const string IntegrationRuntimeName = nameof(IntegrationRuntimeName);
+
+        public const string IntegrationRuntimeTypeManaged = "Managed";
+
+        public const string IntegrationRuntimeSelfhosted = "SelfHosted";
+
+        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
+
+        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
+
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
+        public const string Key = nameof(Key);
+
+        public const string Metric = nameof(Metric);
+
+        public const string Node = nameof(Node);
+
+        public const string Upgrade = nameof(Upgrade);
+
+        public const string SubnetName = nameof(SubnetName);
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
+
+        public const string Credential = nameof(Credential);
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {

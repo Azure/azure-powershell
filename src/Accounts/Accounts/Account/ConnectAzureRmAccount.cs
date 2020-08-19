@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const int DefaultMaxContextPopulation = 25;
         public const string DefaultMaxContextPopulationString = "25";
 
-        private IAzureEnvironment _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+        private IAzureEnvironment _environment;
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
@@ -188,6 +188,15 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
+            if (AzureEnvironment.PublicEnvironments.ContainsKey(EnvironmentName.AzureCloud))
+            {
+                _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+            }
+            else
+            {
+                WriteWarning($"Default environment {EnvironmentName.AzureCloud} cannot be found from PublicEnvironment list. ");
+                WriteWarning("You can get current list via [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments");
+            }
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
                 var profile = GetDefaultProfile();

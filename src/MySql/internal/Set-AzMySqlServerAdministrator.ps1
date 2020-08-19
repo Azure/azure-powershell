@@ -35,6 +35,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministrator
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
