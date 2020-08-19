@@ -16,29 +16,40 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
+        protected const string ByName = "ByName";
+        protected const string ById = "ById";
+        protected const string ByObj = "ByObj";
 
         #region Params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ById,
+            HelpMessage = "Managed Cluster resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ByObj,
+            HelpMessage = "Managed Cluster resource")]
+        [ValidateNotNull]
+        public PSManagedCluster InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -47,6 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
+            this.SetParams();
             if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Remove cluster {0} in resource group {1}.", this.Name, this.ResourceGroupName)))
             {
                 try
@@ -68,6 +80,33 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw;
                 }
             }
+        }
+
+        private void SetParams()
+        {
+            switch (ParameterSetName)
+            {
+                case ByObj:
+                    if (string.IsNullOrEmpty(this.InputObject?.Id))
+                    {
+                        throw new ArgumentException("ResourceId is null.");
+                    }
+
+                    SetParametersByResourceId(this.InputObject.Id);
+                    break;
+                case ById:
+                    SetParametersByResourceId(this.ResourceId);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+            }
+        }
+
+        private void SetParametersByResourceId(string resourceId)
+        {
+            this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName);
+            this.ResourceGroupName = resourceGroup;
+            this.Name = resourceName;
         }
     }
 }

@@ -12,10 +12,18 @@ Add certificate secret to the node type.
 
 ## SYNTAX
 
+### ByName
 ```
 Add-AzServiceFabricManagedNodeTypeVMSecret [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> -SourceVaultId <String> -CertificateUrl <String> -CertificateStore <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObj
+```
+Add-AzServiceFabricManagedNodeTypeVMSecret [-InputObject] <PSManagedNodeType> -SourceVaultId <String>
+ -CertificateUrl <String> -CertificateStore <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +33,25 @@ Add certificate secret to the node type. The secret must be stored in an Azure K
 
 ### Example 1
 ```powershell
-PS C:\> $rgName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $NodeTypeName = "nt1"
-PS C:\> Add-AzServiceFabricManagedNodeTypeVMSecret -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Add-AzServiceFabricManagedNodeTypeVMSecret -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
 ```
 
 This commad adds a certificate secret from the keyvault and secret identifier specified.
+
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType | Add-AzServiceFabricManagedNodeTypeVMSecret -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
+```
+
+This commad adds a certificate secret from the keyvault and secret identifier specified, with piping.
 
 ## PARAMETERS
 
@@ -73,7 +93,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -98,12 +118,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Node Type resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases: NodeTypeName
 
 Required: True
@@ -118,7 +153,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True

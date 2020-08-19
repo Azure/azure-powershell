@@ -12,15 +12,28 @@ Add certificate common name or thumbprint to the cluster. This will register the
 
 ## SYNTAX
 
-### ClientCertByTp
+### ClientCertByTpByName
 ```
 Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String> [-Admin]
  -Thumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ClientCertByCn
+### ClientCertByCnByName
 ```
 Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String> [-Admin]
+ -CommonName <String> [-IssuerThumbprint <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ClientCertByTpByObj
+```
+Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> [-Admin]
+ -Thumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ClientCertByCnByObj
+```
+Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> [-Admin]
  -CommonName <String> [-IssuerThumbprint <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -48,6 +61,16 @@ Add-AzServiceFabricManagedClusterClientCertificate -ResourceGroupName $rgName -C
 
 This command will add a read only client certificate with common name 'Contoso.com' and 2 issuers.
 
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName
+$cluster | Add-AzServiceFabricManagedClusterClientCertificate -CommonName 'Contoso.com' -IssuerThumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A, 5F3660C715EBBDA31DB1FFDCF508302348DE8E7B
+```
+
+This command will add a read only client certificate with common name 'Contoso.com' and 2 issuers, with piping.
+
 ## PARAMETERS
 
 ### -Admin
@@ -70,7 +93,7 @@ Client certificate common name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByCn
+Parameter Sets: ClientCertByCnByName, ClientCertByCnByObj
 Aliases:
 
 Required: True
@@ -95,13 +118,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed cluster resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Parameter Sets: ClientCertByTpByObj, ClientCertByCnByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IssuerThumbprint
 List of Issuer thumbprints for the client certificate.
 Only use in combination with CommonName.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ClientCertByCn
+Parameter Sets: ClientCertByCnByName, ClientCertByCnByObj
 Aliases:
 
 Required: False
@@ -116,7 +154,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientCertByTpByName, ClientCertByCnByName
 Aliases: ClusterName
 
 Required: True
@@ -131,7 +169,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientCertByTpByName, ClientCertByCnByName
 Aliases:
 
 Required: True
@@ -146,7 +184,7 @@ Client certificate thumbprint.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByTp
+Parameter Sets: ClientCertByTpByName, ClientCertByTpByObj
 Aliases:
 
 Required: True

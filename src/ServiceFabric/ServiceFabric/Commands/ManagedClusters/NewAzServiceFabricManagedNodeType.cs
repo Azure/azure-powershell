@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter Primary { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = "Disk size for each vm in the node type in GBs. Default 100.")]
-        public int? DiskSize { get; set; }
+        public int DiskSize { get; set; } = 100;
 
         [Parameter(Mandatory = false, HelpMessage = "Application start port of a range of ports.")]
         public int? ApplicationStartPort { get; set; }
@@ -73,25 +73,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public int? EphemeralEndPort { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The size of virtual machines in the pool. All virtual machines in a pool are the same size. Default: Standard_D2.")]
-        public string VmSize { get; set; }
-        
+        public string VmSize { get; set; } = "Standard_D2";
+
         [Parameter(Mandatory = false, HelpMessage = "The publisher of the Azure Virtual Machines Marketplace image. Default: MicrosoftWindowsServer.")]
-        public string VmImagePublisher { get; set; }
-        
+        public string VmImagePublisher { get; set; } = "MicrosoftWindowsServer";
+
         [Parameter(Mandatory = false, HelpMessage = "The offer type of the Azure Virtual Machines Marketplace image. Default: WindowsServer.")]
-        public string VmImageOffer { get; set; }
-        
+        public string VmImageOffer { get; set; } = "WindowsServer";
+
         [Parameter(Mandatory = false, HelpMessage = "The SKU of the Azure Virtual Machines Marketplace image. Default: 2019-Datacenter.")]
-        public string VmImageSku { get; set; }
-        
+        public string VmImageSku { get; set; } = "2019-Datacenter";
+
         [Parameter(Mandatory = false, HelpMessage = "The version of the Azure Virtual Machines Marketplace image. Default: latest.")]
-        public string VmImageVersion { get; set; }
+        public string VmImageVersion { get; set; } = "latest";
 
         [Parameter(Mandatory = false, HelpMessage = "Capacity tags applied to the nodes in the node type as key/value pairs, the cluster resource manager uses these tags to understand how much resource a node has. Updating this will override the current values.")]
         public Hashtable Capacity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
-        public Hashtable PlacementPropertie { get; set; }
+        public Hashtable PlacementProperty { get; set; }
 
         #endregion
 
@@ -128,51 +128,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private NodeType GetNewNodeTypeParameters()
         {
-            if (!this.DiskSize.HasValue)
-            {
-                this.DiskSize = 100;
-            }
-
-            var vmSize = "Standard_D2";
-            if (!string.IsNullOrEmpty(this.VmSize))
-            {
-                vmSize = this.VmSize;
-            }
-
-            var vmImagePublisher = "MicrosoftWindowsServer";
-            if (!string.IsNullOrEmpty(this.VmImagePublisher))
-            {
-                vmImagePublisher = this.VmImagePublisher;
-            }
-
-            var vmImageOffer = "WindowsServer";
-            if (!string.IsNullOrEmpty(this.VmImageOffer))
-            {
-                vmImageOffer = this.VmImageOffer;
-            }
-
-            var vmImageSku = "2019-Datacenter";
-            if (!string.IsNullOrEmpty(this.VmImageSku))
-            {
-                vmImageSku = this.VmImageSku;
-            }
-
-            var vmImageVersion = "latest";
-            if (!string.IsNullOrEmpty(this.VmImageVersion))
-            {
-                vmImageVersion = this.VmImageVersion;
-            }
 
             var newNodeType = new NodeType(
                 isPrimary: this.Primary.IsPresent,
                 vmInstanceCount: this.InstanceCount,
-                dataDiskSizeGB: this.DiskSize.Value,
+                dataDiskSizeGB: this.DiskSize,
                 name: this.Name,
-                vmSize: vmSize,
-                vmImagePublisher: vmImagePublisher,
-                vmImageOffer: vmImageOffer,
-                vmImageSku: vmImageSku,
-                vmImageVersion: vmImageVersion
+                vmSize: this.VmSize,
+                vmImagePublisher: this.VmImagePublisher,
+                vmImageOffer: this.VmImageOffer,
+                vmImageSku: this.VmImageSku,
+                vmImageVersion: this.VmImageVersion
             );
 
             if (this.ApplicationStartPort.HasValue && this.ApplicationEndPort.HasValue)
@@ -190,9 +156,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 newNodeType.Capacities = this.Capacity.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
-            if (this.PlacementPropertie != null)
+            if (this.PlacementProperty != null)
             {
-                newNodeType.PlacementProperties = this.PlacementPropertie.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+                newNodeType.PlacementProperties = this.PlacementProperty.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
             return newNodeType;

@@ -16,7 +16,7 @@ Create new managed cluster.
 ```
 New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-ClientCertIsAdmin]
- -ClientCertThumbprint <String> -AdminPassword <String> [-AdminUserName <String>]
+ -ClientCertThumbprint <String> -AdminPassword <SecureString> [-AdminUserName <String>]
  [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>] [-DnsName <String>]
  [-ReverseProxyEndpointPort <Int32>] [-Sku <ManagedClusterSku>] [-UseTestExtension]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -26,8 +26,7 @@ New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
 ```
 New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-ClientCertIsAdmin]
- -ClientCertCommonName <String>
- [-ClientCertIssuerThumbprint <System.Collections.Generic.List`1[System.String]>] -AdminPassword <String>
+ -ClientCertCommonName <String> [-ClientCertIssuerThumbprint <String[]>] -AdminPassword <SecureString>
  [-AdminUserName <String>] [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>]
  [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-Sku <ManagedClusterSku>] [-UseTestExtension]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,7 +51,7 @@ This command creates a cluster resource with default basic sku.
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
-$password = "testpass1234!@#$"
+$password = ConvertTo-SecureString -AsPlainText -Force "testpass1234!@#$"
 New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -ClientCertThumbprint XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -ClientCertIsAdmin -AdminPassword $password -Sku Standard -Verbose
 ```
 
@@ -64,7 +63,7 @@ This command creates a cluster resource in centraluseuap with an initial admin c
 Admin password used for the virtual machines.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "vmadmin"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -126,7 +125,7 @@ List of Issuer thumbprints for the client certificate.
 Only use in combination with ClientCertCommonName.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: ClientCertByCn
 Aliases:
 
@@ -157,13 +156,13 @@ Port used for client connections to the cluster.
 Default: 19000.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 19000
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -219,13 +218,13 @@ Port used for http connections to the cluster.
 Default: 19080.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 19080
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -301,7 +300,7 @@ Accepted values: Basic, Standard
 
 Required: False
 Position: Named
-Default value: None
+Default value: Basic
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

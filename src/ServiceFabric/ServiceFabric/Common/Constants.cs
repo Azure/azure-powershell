@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string AzureAsyncOperationHeader = "Azure-AsyncOperation";
 
         // Managed clusters
+        public const string ManagedClusterProvider = "managedClusters";
+        public const string ManagedNodeTypeProvider = "nodeTypes";
         public const string ManagedClustersFullType = "Microsoft.ServiceFabric/managedClusters";
         public const string ManagedNodeTypesFullType = "Microsoft.ServiceFabric/managedClusters/nodeTypes";
     }

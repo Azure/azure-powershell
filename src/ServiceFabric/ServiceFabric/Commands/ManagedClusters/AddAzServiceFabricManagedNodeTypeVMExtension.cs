@@ -26,26 +26,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMExtension", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
     public class AddAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricCommonCmdletBase
     {
+        protected const string ByName = "ByName";
+        protected const string ByObj = "ByObj";
+
         #region Params
 
         #region Common params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         public string NodeTypeName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ByObj,
+            HelpMessage = "Node Type resource")]
+        [ValidateNotNull]
+        public PSManagedNodeType InputObject { get; set; }
 
         #endregion
 
@@ -69,18 +77,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter AutoUpgradeMinorVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Json formatted public settings for the extension.")]
-        public Object Settings { get; set; }
+        public Object Setting { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.")]
-        public Object ProtectedSettings { get; set; }
+        public Object ProtectedSetting { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collection of extension names after which this extension needs to be provisioned.")]
-        public String[] ProvisionAfterExtensions { get; set; }
+        public string[] ProvisionAfterExtension { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
+            this.SetParams();
             if (ShouldProcess(target: this.Name, action: string.Format("Add Extenions {0} with type {1} to node type {2}", this.Name, this.Type, this.NodeTypeName)))
             {
                 try
@@ -118,12 +127,38 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 TypeHandlerVersion = this.TypeHandlerVersion,
                 ForceUpdateTag = this.ForceUpdateTag,
                 AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion.IsPresent,
-                Settings = this.Settings,
-                ProtectedSettings = this.ProtectedSettings,
-                ProvisionAfterExtensions = this.ProvisionAfterExtensions
+                Settings = this.Setting,
+                ProtectedSettings = this.ProtectedSetting,
+                ProvisionAfterExtensions = this.ProvisionAfterExtension
             });
 
             return currentNodeType;
+        }
+
+        private void SetParams()
+        {
+            switch (ParameterSetName)
+            {
+                case ByObj:
+                    if (string.IsNullOrEmpty(this.InputObject?.Id))
+                    {
+                        throw new ArgumentException("ResourceId is null.");
+                    }
+
+                    SetParametersByResourceId(this.InputObject.Id);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+
+            }
+        }
+
+        private void SetParametersByResourceId(string resourceId)
+        {
+            this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName, out string parentResourceName);
+            this.ResourceGroupName = resourceGroup;
+            this.Name = resourceName;
+            this.ClusterName = parentResourceName;
         }
     }
 }

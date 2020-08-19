@@ -12,8 +12,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -28,26 +26,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMExtension", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
     public class RemoveAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricCommonCmdletBase
     {
+        protected const string ByName = "ByName";
+        protected const string ByObj = "ByObj";
+
         #region Params
 
         #region Common params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         public string NodeTypeName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ByObj,
+            HelpMessage = "Node type resource")]
+        [ValidateNotNull]
+        public PSManagedNodeType InputObject { get; set; }
 
         #endregion
 
@@ -55,10 +61,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("ExtensionName")]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
+            this.SetParams();
             if (ShouldProcess(target: this.Name, action: string.Format("Remove Extenions {0} from node type {1}", this.Name, this.NodeTypeName)))
             {
                 try
@@ -69,7 +79,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     var nodeType = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedNodeType(nodeType), false);
+                    if (this.PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                    else
+                    {
+                        WriteObject(new PSManagedNodeType(nodeType), false);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -90,6 +107,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             return currentNodeType;
+        }
+
+        private void SetParams()
+        {
+            switch (ParameterSetName)
+            {
+                case ByObj:
+                    if (string.IsNullOrEmpty(this.InputObject?.Id))
+                    {
+                        throw new ArgumentException("ResourceId is null.");
+                    }
+
+                    SetParametersByResourceId(this.InputObject.Id);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+            }
+        }
+
+        private void SetParametersByResourceId(string resourceId)
+        {
+            this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName, out string parentResourceName);
+            this.ResourceGroupName = resourceGroup;
+            this.NodeTypeName = resourceName;
+            this.ClusterName = parentResourceName;
         }
     }
 }

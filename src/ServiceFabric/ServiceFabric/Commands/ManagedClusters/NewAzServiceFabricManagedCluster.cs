@@ -12,9 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Sku = Microsoft.Azure.Management.ServiceFabric.Models.Sku;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -38,29 +37,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Common params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ClientCertByTp, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ClientCertByCn, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ClientCertByTp, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ClientCertByCn, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource location")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ClientCertByTp, HelpMessage = "The resource location")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ClientCertByCn, HelpMessage = "The resource location")]
         [LocationCompleter(Constants.ManagedClustersFullType)]
         public string Location { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
         public ClusterUpgradeMode UpgradeMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
         [ValidateNotNullOrEmpty()]
         public string CodeVersion { get; set; }
 
@@ -84,33 +90,43 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
                    HelpMessage = "List of Issuer thumbprints for the client certificate. Only use in combination with ClientCertCommonName.")]
-        public List<string> ClientCertIssuerThumbprint { get; set; }
+        public string[] ClientCertIssuerThumbprint { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "Admin password used for the virtual machines.")]
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByTp, HelpMessage = "Admin password used for the virtual machines.")]
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByCn, HelpMessage = "Admin password used for the virtual machines.")]
         [ValidateNotNullOrEmpty()]
-        public string AdminPassword { get; set; }
+        public SecureString AdminPassword { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Admin password used for the virtual machines. Default: vmadmin.")]
-        public string AdminUserName { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Admin user used for the virtual machines. Default: vmadmin.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Admin user used for the virtual machines. Default: vmadmin.")]
+        public string AdminUserName { get; set; } = "vmadmin";
 
-        [Parameter(Mandatory = false, HelpMessage = "Port used for http connections to the cluster. Default: 19080.")]
-        public int? HttpGatewayConnectionPort { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Port used for http connections to the cluster. Default: 19080.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Port used for http connections to the cluster. Default: 19080.")]
+        public int HttpGatewayConnectionPort { get; set; } = 19080;
 
-        [Parameter(Mandatory = false, HelpMessage = "Port used for client connections to the cluster. Default: 19000.")]
-        public int? ClientConnectionPort { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Port used for client connections to the cluster. Default: 19000.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Port used for client connections to the cluster. Default: 19000.")]
+        public int ClientConnectionPort { get; set; } = 19000;
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster's dns name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster's dns name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Endpoint used by reverse proxy.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Endpoint used by reverse proxy.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Endpoint used by reverse proxy.")]
         public int? ReverseProxyEndpointPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.")]
-        public ManagedClusterSku Sku { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp,
+            HelpMessage = "Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,
+            HelpMessage = "Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.")]
+        public ManagedClusterSku Sku { get; set; } = ManagedClusterSku.Basic;
 
-        [Parameter(Mandatory = false, HelpMessage = "If Specify The cluster will be crated with service test vmss extension.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "If Specify The cluster will be crated with service test vmss extension.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "If Specify The cluster will be crated with service test vmss extension.")]
         public SwitchParameter UseTestExtension { get; set; }
 
         #endregion
@@ -180,24 +196,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 });
             }
 
-            if (string.IsNullOrEmpty(this.AdminUserName))
-            {
-                this.AdminUserName = "vmadmin";
-            }
-
             if (string.IsNullOrEmpty(this.DnsName))
             {
                 this.DnsName = this.Name;
-            }
-
-            if (!this.HttpGatewayConnectionPort.HasValue)
-            {
-                this.HttpGatewayConnectionPort = 19080;
-            }
-
-            if (!this.ClientConnectionPort.HasValue)
-            {
-                this.ClientConnectionPort = 19000;
             }
 
             var newCluster = new ManagedCluster(
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 useTestExtension: this.UseTestExtension,
                 clients: clientCerts,
                 adminUserName: this.AdminUserName,
-                adminPassword: this.AdminPassword,
+                adminPassword: this.AdminPassword.ConvertToString(),
                 httpGatewayConnectionPort: this.HttpGatewayConnectionPort,
                 clientConnectionPort: this.ClientConnectionPort,
                 reverseProxyEndpointPort: this.ReverseProxyEndpointPort,

@@ -12,62 +12,79 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
-using Sku = Microsoft.Azure.Management.ServiceFabric.Models.Sku;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterClientCertificate", SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
     public class RemoveAzServiceFabricManagedClusterClientCertificate : ServiceFabricCommonCmdletBase
     {
-        protected const string ClientCertByTp = "ClientCertByTp";
-        protected const string ClientCertByCn = "ClientCertByCn";
+        protected const string ClientCertByTpByName = "ClientCertByCnTpName";
+        protected const string ClientCertByCnByName = "ClientCertByCnByName";
+        protected const string ClientCertByTpByObj = "ClientCertByTpByObj";
+        protected const string ClientCertByCnByObj = "ClientCertByCnByObj";
 
         #region Params
 
         #region Common params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ClientCertByTpByName,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ClientCertByCnByName,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ClientCertByTpByName,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ClientCertByCnByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ClientCertByTpByObj,
+            HelpMessage = "Managed cluster resource")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ClientCertByCnByObj,
+            HelpMessage = "Managed cluster resource")]
+        [ValidateNotNull]
+        public PSManagedCluster InputObject { get; set; }
+
         #endregion
 
-        [Parameter(Mandatory = true, ParameterSetName = ClientCertByTp,
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByTpByName,
+                   HelpMessage = "Client certificate thumbprint.")]
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByTpByObj,
                    HelpMessage = "Client certificate thumbprint.")]
         [ValidateNotNullOrEmpty()]
         public string Thumbprint { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ClientCertByCn,
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByCnByName,
+                   HelpMessage = "Client certificate common name.")]
+        [Parameter(Mandatory = true, ParameterSetName = ClientCertByCnByObj,
                    HelpMessage = "Client certificate common name.")]
         [ValidateNotNullOrEmpty()]
         public string CommonName { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove client cert '{0}' from cluster {1}", ParameterSetName == ClientCertByTp ? this.Thumbprint : this.CommonName, this.Name)))
+            this.SetParams();
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove client cert '{0}' from cluster {1}",
+                (ParameterSetName == ClientCertByTpByName || ParameterSetName == ClientCertByTpByObj) ? this.Thumbprint : this.CommonName, this.Name)))
             {
                 try
                 {
@@ -77,7 +94,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     var cluster = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedCluster(cluster), false);
+                    if (this.PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                    else
+                    {
+                        WriteObject(new PSManagedCluster(cluster), false);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -99,10 +123,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             int initialSize = currentCluster.Clients.Count();
             switch (ParameterSetName)
             {
-                case ClientCertByTp:
+                case ClientCertByTpByName:
+                case ClientCertByTpByObj:
                     currentCluster.Clients = currentCluster.Clients.Where(cert => !string.Equals(cert.Thumbprint, this.Thumbprint, StringComparison.OrdinalIgnoreCase)).ToList();
                     break;
-                case ClientCertByCn:
+                case ClientCertByCnByName:
+                case ClientCertByCnByObj:
                     currentCluster.Clients = currentCluster.Clients.Where(cert => !string.Equals(cert.CommonName, this.CommonName, StringComparison.OrdinalIgnoreCase)).ToList();
                     break;
                 default:
@@ -113,10 +139,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new InvalidOperationException(string.Format(
                     "Client certificate '{0}' is not registered on the cluster.",
-                    ParameterSetName == ClientCertByTp ? this.Thumbprint : this.CommonName));
+                    (ParameterSetName == ClientCertByCnByObj || ParameterSetName == ClientCertByTpByObj) ? this.Thumbprint : this.CommonName));
             }
 
             return currentCluster;
+        }
+
+        private void SetParams()
+        {
+            switch (ParameterSetName)
+            {
+                case ClientCertByCnByObj:
+                case ClientCertByTpByObj:
+                    if (string.IsNullOrEmpty(this.InputObject?.Id))
+                    {
+                        throw new ArgumentException("ResourceId is null.");
+                    }
+
+                    SetParametersByResourceId(this.InputObject.Id);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+
+            }
+        }
+
+        private void SetParametersByResourceId(string resourceId)
+        {
+            this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName);
+            this.ResourceGroupName = resourceGroup;
+            this.Name = resourceName;
         }
     }
 }

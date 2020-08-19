@@ -12,16 +12,30 @@ Remvoe client certificate by thumbprint or common name.
 
 ## SYNTAX
 
-### ClientCertByTp
+### ClientCertByCnTpName
 ```
 Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -Thumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Thumbprint <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ClientCertByCn
+### ClientCertByCnByName
 ```
 Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -CommonName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CommonName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ClientCertByTpByObj
+```
+Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> -Thumbprint <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ClientCertByCnByObj
+```
+Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> -CommonName <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +61,17 @@ Remove-AzServiceFabricManagedClusterClientCertificate -ResourceGroupName $rgName
 
 Remove client certificate by thumbprint.
 
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName
+
+$cluster | Remove-AzServiceFabricManagedClusterClientCertificate -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
+```
+
+Remove client certificate by thumbprint, with piping.
+
 ## PARAMETERS
 
 ### -CommonName
@@ -54,7 +79,7 @@ Client certificate common name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByCn
+Parameter Sets: ClientCertByCnByName, ClientCertByCnByObj
 Aliases:
 
 Required: True
@@ -79,12 +104,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed cluster resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Parameter Sets: ClientCertByTpByObj, ClientCertByCnByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientCertByCnTpName, ClientCertByCnByName
 Aliases: ClusterName
 
 Required: True
@@ -94,12 +134,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientCertByCnTpName, ClientCertByCnByName
 Aliases:
 
 Required: True
@@ -114,7 +169,7 @@ Client certificate thumbprint.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByTp
+Parameter Sets: ClientCertByCnTpName, ClientCertByTpByObj
 Aliases:
 
 Required: True

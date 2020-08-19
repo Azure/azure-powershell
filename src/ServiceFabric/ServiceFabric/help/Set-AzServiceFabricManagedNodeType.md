@@ -12,20 +12,45 @@ Sets node type resource properties or run reimage actions on specific ndes of th
 
 ## SYNTAX
 
-### SetParams (Default)
+### WithParamsByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
  [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-Capacity <Hashtable>]
- [-PlacementPropertie <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-PlacementProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Reimage
+### ReimageByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <System.Collections.Generic.List`1[System.String]> [-Reimage] [-ForceReimage] [-PassThru]
+ -NodeName <String[]> [-Reimage] [-ForceReimage] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithParamsById
+```
+Set-AzServiceFabricManagedNodeType [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ReimageById
+```
+Set-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-Reimage] [-ForceReimage]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObj
+```
+Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageByObj
+```
+Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> -NodeName <String[]> [-Reimage]
+ [-ForceReimage] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,12 +73,12 @@ Update the instance count of the node type.
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Set-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -name $NodeTypeName -PlacementPropertie @{NodeColor="Red";SomeProperty="6";} -Verbose
+Set-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -name $NodeTypeName -PlacementProperty @{NodeColor="Red";SomeProperty="6";} -Verbose
 ```
 
 Update placement properites of the node type. This will overwrite older placement properites if any.
 
-### Example
+### Example 3
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
@@ -63,6 +88,19 @@ Set-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clus
 
 Reimage node 0 and 3 on the node type.
 
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType.VmInstanceCount = 6
+$nodeType | Set-AzServiceFabricManagedNodeType
+```
+
+Update the instance count of the node type, with piping.
+
 ## PARAMETERS
 
 ### -ApplicationEndPort
@@ -70,7 +108,7 @@ Application End port of a range of ports.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -85,7 +123,7 @@ Application start port of a range of ports.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -100,7 +138,7 @@ Capacity tags applied to the nodes in the node type as key/value pairs, the clus
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -115,7 +153,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WithParamsByName, ReimageByName
 Aliases:
 
 Required: True
@@ -145,7 +183,7 @@ Ephemeral end port of a range of ports.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -160,7 +198,7 @@ Ephemeral start port of a range of ports.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -176,7 +214,7 @@ Use with caution as this might cause data loss if stateful workloads are running
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: ReimageByName, ReimageById, ReimageByObj
 Aliases:
 
 Required: False
@@ -186,12 +224,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Node type resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
+Parameter Sets: ByObj, ReimageByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceCount
 The number of nodes in the node type.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -206,7 +259,7 @@ Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WithParamsByName, ReimageByName
 Aliases: NodeTypeName
 
 Required: True
@@ -220,8 +273,8 @@ Accept wildcard characters: False
 List of node names for the operation.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Reimage
+Type: System.String[]
+Parameter Sets: ReimageByName, ReimageById, ReimageByObj
 Aliases:
 
 Required: True
@@ -236,7 +289,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: ReimageByName, ReimageById, ReimageByObj
 Aliases:
 
 Required: False
@@ -246,12 +299,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlacementPropertie
+### -PlacementProperty
 Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SetParams
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: False
@@ -266,7 +319,7 @@ Specify to reimage nodes on the node type.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: ReimageByName, ReimageById, ReimageByObj
 Aliases:
 
 Required: True
@@ -281,13 +334,28 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WithParamsByName, ReimageByName
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Node type resource id
+
+```yaml
+Type: System.String
+Parameter Sets: WithParamsById, ReimageById
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

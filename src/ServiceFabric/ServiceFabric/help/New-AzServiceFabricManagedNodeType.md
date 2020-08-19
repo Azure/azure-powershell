@@ -17,7 +17,7 @@ New-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] 
  -InstanceCount <Int32> [-Primary] [-DiskSize <Int32>] [-ApplicationStartPort <Int32>]
  [-ApplicationEndPort <Int32>] [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-VmSize <String>]
  [-VmImagePublisher <String>] [-VmImageOffer <String>] [-VmImageSku <String>] [-VmImageVersion <String>]
- [-Capacity <Hashtable>] [-PlacementPropertie <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Create primary node type with 3 nodes.
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-New-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName -InstanceCount 5 -Primary -PlacementPropertie @{NodeColor="Green";SomeProperty="5";} -Capacity @{ClientConnections="65536";} -ApplicationStartPort 20575 -ApplicationEndPort 20605 -EphemeralStartPort 20606 -EphemeralEndPort 20861
+New-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName -InstanceCount 5 -Primary -PlacementProperty @{NodeColor="Green";SomeProperty="5";} -Capacity @{ClientConnections="65536";} -ApplicationStartPort 20575 -ApplicationEndPort 20605 -EphemeralStartPort 20606 -EphemeralEndPort 20861
 ```
 
 Create primary node type with 5 nodes and specifying placement properties, capacities, application and ephemeral ports.
@@ -129,7 +129,7 @@ Disk size for each vm in the node type in GBs.
 Default 100.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +200,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PlacementPropertie
+### -PlacementProperty
 Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run.
 Updating this will override the current values.
 
@@ -260,7 +260,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "WindowsServer"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -276,7 +276,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "MicrosoftWindowsServer"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -292,7 +292,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "2019-Datacenter"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -308,7 +308,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "latest"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -325,7 +325,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "Standard_D2"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

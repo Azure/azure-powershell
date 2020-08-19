@@ -12,8 +12,21 @@ Remove cluster resource.
 
 ## SYNTAX
 
+### ByName
 ```
 Remove-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ById
+```
+Remove-AzServiceFabricManagedCluster [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObj
+```
+Remove-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +42,16 @@ $clusterName = "testCluster"
 Remove-AzServiceFabricManagedCluster -ResourceGroupName sfmcalsantamps -ClusterName sfmcalsantamps
 ```
 
-Remove cluster.
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName
+
+$cluster | Remove-AzServiceFabricManagedCluster
+```
+
+Remove cluster, with piping.
 
 ## PARAMETERS
 
@@ -48,12 +70,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed Cluster resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases: ClusterName
 
 Required: True
@@ -83,13 +120,28 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Managed Cluster resource id
+
+```yaml
+Type: System.String
+Parameter Sets: ById
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

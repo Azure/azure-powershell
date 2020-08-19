@@ -12,10 +12,42 @@ Remove the node type or specific nodes within the node type.
 
 ## SYNTAX
 
+### DeleteNodeTypeByName
+```
+Remove-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteNodeByName
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  -NodeName <String[]> [-ForceRemoveNode] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### DeleteNodeTypeByObj
+```
+Remove-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteNodeByObj
+```
+Remove-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> -NodeName <String[]>
+ [-ForceRemoveNode] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteNodeTypeById
+```
+Remove-AzServiceFabricManagedNodeType [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteNodeById
+```
+Remove-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-ForceRemoveNode]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,11 +69,35 @@ Remove node type.
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
+$NodeTypeName = "nt2"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType | Remove-AzServiceFabricManagedNodeType
+```
+
+Remove node type, with piping.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
 $NodeTypeName = "nt1"
 Remove-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
 Remove 2 nodes from the node type.
+
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType | Remove-AzServiceFabricManagedNodeType -NodeName nt1_0, nt1_3
+```
+
+Remove 2 nodes from the node type, with piping.
 
 ## PARAMETERS
 
@@ -50,7 +106,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
 Aliases:
 
 Required: True
@@ -81,7 +137,7 @@ Use with caution as this might cause data loss if stateful workloads are running
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: DeleteNodeByName, DeleteNodeByObj, DeleteNodeById
 Aliases:
 
 Required: False
@@ -91,12 +147,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Node type resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
+Parameter Sets: DeleteNodeTypeByObj, DeleteNodeByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
 Aliases: NodeTypeName
 
 Required: True
@@ -111,7 +182,7 @@ List of node names for the operation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: DeleteNodeByName, DeleteNodeByObj, DeleteNodeById
 Aliases:
 
 Required: True
@@ -141,13 +212,28 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Node type resource id
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteNodeTypeById, DeleteNodeById
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,10 +12,17 @@ Remove vm extension from the node type.
 
 ## SYNTAX
 
+### ByName
 ```
 Remove-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-ClusterName] <String>
- [-NodeTypeName] <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NodeTypeName] <String> -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByObj
+```
+Remove-AzServiceFabricManagedNodeTypeVMExtension [-InputObject] <PSManagedNodeType> -Name <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +40,18 @@ Remove-AzServiceFabricManagedNodeTypeVMExtension -ResourceGroupName $rgName -Clu
 
 Remove extension from node type by name.
 
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType | Remove-AzServiceFabricManagedNodeTypeVMExtension -Name MyExtensionName
+```
+
+Remove extension from node type by name, with piping.
+
 ## PARAMETERS
 
 ### -ClusterName
@@ -40,7 +59,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -65,6 +84,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Node type resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 extension name.
 
@@ -85,7 +119,7 @@ Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -95,12 +129,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True

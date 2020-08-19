@@ -12,11 +12,21 @@ Add vm extension to the node type.
 
 ## SYNTAX
 
+### ByName
 ```
 Add-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-ClusterName] <String>
  [-NodeTypeName] <String> -Name <String> [-ForceUpdateTag <String>] -Publisher <String> -Type <String>
- -TypeHandlerVersion <String> [-AutoUpgradeMinorVersion] [-Settings <Object>] [-ProtectedSettings <Object>]
- [-ProvisionAfterExtensions <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -TypeHandlerVersion <String> [-AutoUpgradeMinorVersion] [-Setting <Object>] [-ProtectedSetting <Object>]
+ [-ProvisionAfterExtension <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByObj
+```
+Add-AzServiceFabricManagedNodeTypeVMExtension [-InputObject] <PSManagedNodeType> -Name <String>
+ [-ForceUpdateTag <String>] -Publisher <String> -Type <String> -TypeHandlerVersion <String>
+ [-AutoUpgradeMinorVersion] [-Setting <Object>] [-ProtectedSetting <Object>]
+ [-ProvisionAfterExtension <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,24 +37,36 @@ Add vm extension to the node type. This will add the extension to the underliyin
 
 ### Example 1
 ```powershell
-PS C:\> $rgName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> Add-AzServiceFabricManagedNodeTypeVMExtension -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion -Verbose
+$rgName = "testRG"
+$clusterName = "testCluster"
+Add-AzServiceFabricManagedNodeTypeVMExtension -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion -Verbose
 ```
 
 This command adds an extension to the node type.
 
 ### Example 2
 ```powershell
-PS C:\> $rgName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $NodeTypeName = "nt1"
-PS C:\> $settings = @{ "secretsManagementSettings" = @{ "pollingIntervalInS" = "3600"; "certificateStoreName" = "MY"; "certificateStoreLocation" = "LocalMachine"; "observedCertificates" = @( "https:/testkv.vault.azure.net/secrets/TestSecret" ) } };
-PS C:\> $protectedSettings = @{"testProgectedSetting" = $protectedSetting };
-PS C:\> Add-AzServiceFabricManagedNodeTypeVMExtension -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -Name KeyVaultForWindows -Publisher Microsoft.Azure.KeyVault -Type KeyVaultForWindows -TypeHandlerVersion 1.0 -Settings $settings -ProtectedSettings $protectedSettings  -AutoUpgradeMinorVersion -Verbose
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$settings = @{ "secretsManagementSettings" = @{ "pollingIntervalInS" = "3600"; "certificateStoreName" = "MY"; "certificateStoreLocation" = "LocalMachine"; "observedCertificates" = @( "https:/testkv.vault.azure.net/secrets/TestSecret" ) } };
+$protectedSettings = @{"testProgectedSetting" = $protectedSetting };
+Add-AzServiceFabricManagedNodeTypeVMExtension -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -Name KeyVaultForWindows -Publisher Microsoft.Azure.KeyVault -Type KeyVaultForWindows -TypeHandlerVersion 1.0 -Settings $settings -ProtectedSettings $protectedSettings  -AutoUpgradeMinorVersion -Verbose
 ```
 
 This command adds an extension with settings and protected settings to the node type.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+$nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
+
+$nodeType | Add-AzServiceFabricManagedNodeTypeVMExtension $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion -Verbose
+```
+
+This command adds an extension to the node type, with piping.
 
 ## PARAMETERS
 
@@ -69,7 +91,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -109,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Node Type resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 extension name.
 
@@ -129,7 +166,7 @@ Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -139,7 +176,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProtectedSettings
+### -ProtectedSetting
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
@@ -154,7 +191,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisionAfterExtensions
+### -ProvisionAfterExtension
 Collection of extension names after which this extension needs to be provisioned.
 
 ```yaml
@@ -189,7 +226,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -199,7 +236,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Settings
+### -Setting
 Json formatted public settings for the extension.
 
 ```yaml

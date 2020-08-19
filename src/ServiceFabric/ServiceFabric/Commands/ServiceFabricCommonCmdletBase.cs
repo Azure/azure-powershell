@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Rest.Azure;
@@ -77,6 +78,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
 
         #region Helper
+
+        protected void GetParametersByResourceId(string resourceId, string resourceType, out string resourceGroup, out string resourceName, out string parentResourceName)
+        {
+            ResourceIdentifier rId = new ResourceIdentifier(resourceId);
+            if (!rId.ResourceType.EndsWith(resourceType, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException(string.Format("Invalid resource id {0}", resourceId));
+            }
+
+            resourceGroup = rId.ResourceGroupName;
+            resourceName = rId.ResourceName;
+            parentResourceName = string.Empty;
+            if (!string.IsNullOrEmpty(rId.ParentResource))
+            {
+                var parent = rId.ParentResource.Split('/');
+                parentResourceName = parent.Length == 2 ? parent[1] : null;
+            }
+        }
+
+        protected void GetParametersByResourceId(string resourceId, string resourceType, out string resourceGroup, out string resourceName)
+        {
+            this.GetParametersByResourceId(resourceId, resourceType, out resourceGroup, out resourceName, out _);
+        }
 
         protected T SafeGetResource<T>(Func<T> action, bool ingoreAllError=false)
         {

@@ -12,11 +12,26 @@ Set cluster resource properties.
 
 ## SYNTAX
 
+### WithPramsByName
 ```
 Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>]
  [-ClientConnectionPort <Int32>] [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByNameById
+```
+Set-AzServiceFabricManagedCluster [-ResourceId] <String> [-UpgradeMode <ClusterUpgradeMode>]
+ [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>]
+ [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByObj
+```
+Set-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +48,27 @@ Update-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterNa
 
 Update dns name and client connection port for the clsuter.
 
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName
+
+$cluster.DnsName = "testnewdns"
+$cluster.ClientConnectionPort = 50000
+$cluster | Set-AzServiceFabricManagedCluster
+```
+
+Update dns name and client connection port for the clsuter, with piping.
+
 ## PARAMETERS
 
 ### -ClientConnectionPort
-Port used for client connections to the cluster.
-Default: 19000.
-
-## PARAMETERS
-
-### -ClientConnectionPort
-Port used for client connections to the cluster.
-Default: 19000.
+Port used for client connections to the cluster. Default: 19000.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 
 Required: False
@@ -58,12 +79,11 @@ Accept wildcard characters: False
 ```
 
 ### -CodeVersion
-Cluster code version.
-Only use if upgrade mode is Manual.
+Cluster code version. Only use if upgrade mode is Manual.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 
 Required: False
@@ -77,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,8 +112,8 @@ Accept wildcard characters: False
 Cluster's dns name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 
 Required: False
@@ -104,12 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -HttpGatewayConnectionPort
-Port used for http connections to the cluster.
-Default: 19080.
+Port used for http connections to the cluster. Default: 19080.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 
 Required: False
@@ -119,12 +138,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed Cluster resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the cluster.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: WithPramsByName
 Aliases: ClusterName
 
 Required: True
@@ -138,8 +172,8 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: WithPramsByName
 Aliases:
 
 Required: True
@@ -149,12 +183,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Managed Cluster resource id
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameById
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ReverseProxyEndpointPort
 Endpoint used by reverse proxy.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 
 Required: False
@@ -165,12 +214,11 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeMode
-Cluster code version upgrade mode.
-Automatic or Manual.
+Cluster code version upgrade mode. Automatic or Manual.
 
 ```yaml
-Type: ClusterUpgradeMode
-Parameter Sets: (All)
+Type: System.Nullable`1[Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode]
+Parameter Sets: WithPramsByName, ByNameById
 Aliases:
 Accepted values: Automatic, Manual
 
@@ -185,7 +233,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -197,11 +245,10 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

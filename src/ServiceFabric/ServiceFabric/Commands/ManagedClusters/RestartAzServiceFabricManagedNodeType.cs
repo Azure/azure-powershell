@@ -12,7 +12,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
-        public List<string> NodeName { get; set; }
+        public string[] NodeName { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
