@@ -670,7 +670,9 @@ function Get-ResourceProviderLocation
 
 function Get-ComputeVMLocation
 {
-    Get-Location "Microsoft.Compute" "virtualMachines" "East US";
+    $result = Get-Location "Microsoft.Compute" "virtualMachines" "East US";
+    $result = $result.Replace(' ', '');
+    return $result
 }
 
 function Get-ComputeAvailabilitySetLocation
@@ -776,4 +778,21 @@ function Get-VMImageVersion {
 					 -Location $location `
 					 -Offer $offer `
 					 -Skus $sku | Sort-Object -Descending Version | select -First 1).Version
+}
+
+
+<#
+.SYNOPSIS
+Gets a sku that is available for the location, subscription, and resourceType
+#>
+function Get-AvailableSku
+{
+    param([string] $location, [string] $resourceType)
+
+    $res = get-azcomputeresourcesku $location | where-object ResourceType -match $resourceType
+    $res = $res.where({$_.restrictions.count -eq 0})
+    if ($resourceType -match "virtualmachine"){
+        $res = $res.where({$_.Name -notmatch "Standard_B"})
+    }
+    return $res[0].Name
 }

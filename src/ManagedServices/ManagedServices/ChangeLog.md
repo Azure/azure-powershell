@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change warnings on cmdlets of managed services assignment and definition
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path

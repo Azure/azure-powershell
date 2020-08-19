@@ -185,6 +185,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public bool? EncryptionInTransit;
 
+        /// <summary>
+        /// Gets or sets the flag which indicates whether enable encryption at host or not.
+        /// </summary>
+        public bool? EncryptionAtHost;
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;

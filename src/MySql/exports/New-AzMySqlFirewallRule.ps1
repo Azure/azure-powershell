@@ -25,11 +25,11 @@ Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
 .Example
-PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -StartIPAddress 0.0.0.1
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
 
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.1        0.0.0.1
+Name                                StartIPAddress EndIPAddress
+----                                -------------- ------------
+ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
 .Example
 PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
 
@@ -78,17 +78,23 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
-    # The start IP address of the server firewall rule.
-    # Must be IPv4 format.
-    # If range contains one IP, use StartIPAddress only.
-    ${StartIPAddress},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
 
     [Parameter(ParameterSetName='AllowAll', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -165,9 +171,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             CreateExpanded = 'Az.MySql.custom\New-AzMySqlFirewallRule';
+            ClientIPAddress = 'Az.MySql.custom\New-AzMySqlFirewallRule';
             AllowAll = 'Az.MySql.custom\New-AzMySqlFirewallRule';
         }
-        if (('CreateExpanded', 'AllowAll') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'ClientIPAddress', 'AllowAll') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

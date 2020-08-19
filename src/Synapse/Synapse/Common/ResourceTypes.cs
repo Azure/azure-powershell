@@ -9,5 +9,6 @@
         public const string StorageAccount = "Microsoft.Storage/storageAccounts";
         public const string SqlDatabase = "Microsoft.Sql/servers/databases";
         public const string RecoverablSqlDatabase = "Microsoft.Sql/servers/recoverableDatabases";
+        public const string IntegrationRuntime = "Microsoft.Synapse/workspaces/integrationruntimes";
     }
 }
