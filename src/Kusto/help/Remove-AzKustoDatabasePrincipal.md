@@ -140,7 +140,7 @@ The list of Kusto database principals.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal
 
 ## NOTES
 

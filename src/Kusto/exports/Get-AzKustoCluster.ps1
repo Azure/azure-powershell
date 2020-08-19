@@ -35,7 +35,7 @@ East US  testnewkustocluster Microsoft.Kusto/Clusters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,7 +55,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/get-azkustocluster
 #>
 function Get-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

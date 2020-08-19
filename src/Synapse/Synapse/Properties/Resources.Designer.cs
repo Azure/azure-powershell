@@ -97,6 +97,16 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continuing execution will renegerate the authentication key &apos;{0}&apos; of integration runtime {1}. This operation will invalidate the existing authentication key.
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string ContinueRegenerateAuthKey {
+            get {
+                return ResourceManager.GetString("ContinueRegenerateAuthKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new firewall rule in workspace &apos;{0}&apos; with name &apos;{1}&apos;..
         /// </summary>
         internal static string CreatingFirewallRule {
@@ -120,6 +130,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string CreatingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("CreatingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new SQL Database in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("CreatingSynapseSqlDatabase", resourceCulture);
             }
         }
         
@@ -250,6 +269,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; does not exist. Please use New-AzSynapseSqlDatabase to create a SQL Database with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverSqlDatabase {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverSqlDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to discover restore points for SQL database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; does not exist..
         /// </summary>
         internal static string FailedToDiscoverSqlDatabaseRestorePoints {
@@ -322,6 +350,89 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;?.
+        /// </summary>
+        internal static string IntegrationRuntimeConfirmationMessage {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An integration runtime with the name {0} in the workspace {1} exists. 
+        ///Continuing execution may overwrite the existing one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string IntegrationRuntimeExists {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both VNetId and Subnet must be set..
+        /// </summary>
+        internal static string IntegrationRuntimeInvalidVnet {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeInvalidVnet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove node {0} in integration runtime &apos;{1}&apos;&apos;?.
+        /// </summary>
+        internal static string IntegrationRuntimeNodeConfirmationMessage {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeNodeConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The node &apos;{0}&apos; does not exist in integration runtime &apos;{1}&apos;..
+        /// </summary>
+        internal static string IntegrationRuntimeNodeNotFound {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeNodeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integration runtime &apos;{0}&apos; does not exist in the workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string IntegrationRuntimeNotFound {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to sync node credentials in integration runtime &apos;{0}&apos;..
+        /// </summary>
+        internal static string IntegrationRuntimeSyncNodeCredential {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeSyncNodeCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a VNet resource ID and subnet name to bring static public IP addresses for your Azure-SSIS Integration Runtime..
+        /// </summary>
+        internal static string IntegrationRuntimeVNetNotProvided {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeVNetNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value for pramater &apos;Type&apos; is different with existing integration runtime with name {0}..
+        /// </summary>
+        internal static string IntegrationRuntimeWrongType {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeWrongType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InteractiveSparkSessionTips.
         /// </summary>
         internal static string InteractiveSparkSessionTips {
@@ -331,11 +442,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
+        /// </summary>
+        internal static string InvalidCastParameterKeyExceptionMessage {
+            get {
+                return ResourceManager.GetString("InvalidCastParameterKeyExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         internal static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only self-hosted integration runtime can be shared..
+        /// </summary>
+        internal static string InvalidIntegrationRuntimeSharing {
+            get {
+                return ResourceManager.GetString("InvalidIntegrationRuntimeSharing", resourceCulture);
             }
         }
         
@@ -358,6 +487,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide two static public IP addresses for your Azure-SSIS Integration Runtime..
+        /// </summary>
+        internal static string InvalidPublicIPCount {
+            get {
+                return ResourceManager.GetString("InvalidPublicIPCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid storage URI: {0}. Allowed URI example: abfss://fileSystem@storageAccountName.dfs.core.windows.net/samples/java/wordcount/wordcount.jar.
         /// </summary>
         internal static string InvalidStorageUri {
@@ -367,11 +505,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        /// </summary>
+        internal static string LongRunningStatusError {
+            get {
+                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
+                }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Spark statement in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string InvokingSparkStatement {
+            get {
+                return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because main class name or main executable file is not provided. Please specify -MainClassName for Spark job or -MainExecutableFile for .NET Spark job..
         /// </summary>
         internal static string MissingMainClassName {
             get {
                 return ResourceManager.GetString("MissingMainClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
+        /// </summary>
+        internal static string NeedIntegrationRuntimeType {
+            get {
+                return ResourceManager.GetString("NeedIntegrationRuntimeType", resourceCulture);
             }
         }
         
@@ -394,11 +559,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Renegerate the authentication key &apos;{0}&apos; of integration runtime {1}..
+        /// </summary>
+        internal static string RegenerateAuthKey {
+            get {
+                return ResourceManager.GetString("RegenerateAuthKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting firewall rule &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
         internal static string RemovingFirewallRule {
             get {
                 return ResourceManager.GetString("RemovingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the integration runtime &apos;{0}&apos; in the workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("RemovingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the node {0} in integration runtime &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingIntegrationRuntimeNode {
+            get {
+                return ResourceManager.GetString("RemovingIntegrationRuntimeNode", resourceCulture);
             }
         }
         
@@ -426,6 +618,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("RemovingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlDatabase", resourceCulture);
             }
         }
         
@@ -511,11 +712,11 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must be issued in interactive mode..
+        ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
-        internal static string StartSparkSessionNonInteractiveMessage {
+        internal static string StartingSynapseSparkSession {
             get {
-                return ResourceManager.GetString("StartSparkSessionNonInteractiveMessage", resourceCulture);
+                return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
             }
         }
         
@@ -547,6 +748,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SubmittingSynapseSparkJob {
+            get {
+                return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pausing SQL pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string SuspendingSynapseSqlPool {
@@ -561,6 +771,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SynapseSparkPoolExists {
             get {
                 return ResourceManager.GetString("SynapseSparkPoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A SQL Database with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseSqlDatabase to update an existing SQL Database..
+        /// </summary>
+        internal static string SynapseSqlDatabaseExists {
+            get {
+                return ResourceManager.GetString("SynapseSqlDatabaseExists", resourceCulture);
             }
         }
         
@@ -583,11 +802,56 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Syncing node credentials in integration runtime &apos;{0}&apos;..
+        /// </summary>
+        internal static string SyncingIntegrationRuntimeNodeCredential {
+            get {
+                return ResourceManager.GetString("SyncingIntegrationRuntimeNodeCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the authentication key of linked integration runtime &apos;{0}&apos; is not allowed..
+        /// </summary>
+        internal static string UpdateAuthKeyNotAllowed {
+            get {
+                return ResourceManager.GetString("UpdateAuthKeyNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("UpdatingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating integration runtime node {0}..
+        /// </summary>
+        internal static string UpdatingIntegrationRuntimeNode {
+            get {
+                return ResourceManager.GetString("UpdatingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating Spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string UpdatingSynapseSparkPool {
             get {
                 return ResourceManager.GetString("UpdatingSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating SQL Database &apos;{0}&apos; in resource group &apos;{1}&apos; under Workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdatingSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("UpdatingSynapseSqlDatabase", resourceCulture);
             }
         }
         
@@ -606,6 +870,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("UpdatingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrading integration runtime &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpgradingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("UpgradingIntegrationRuntime", resourceCulture);
             }
         }
         

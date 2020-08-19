@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(keyVaultToken2, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
             var factory = new ClientFactory();
             var rmClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            var rmCred = rmClient.Credentials as TokenCredentials;
+            var rmCred = rmClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(rmCred);
             var message = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
             rmCred.ProcessHttpRequestAsync(message, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(message.Headers.Authorization.Parameter);
             Assert.Contains(accessToken2, message.Headers.Authorization.Parameter);
             var graphClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-            var graphCred = graphClient.Credentials as TokenCredentials;
+            var graphCred = graphClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(graphCred);
             var graphMessage = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
             graphCred.ProcessHttpRequestAsync(graphMessage, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();

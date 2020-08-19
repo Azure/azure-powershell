@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
+
         [Parameter(ValueFromPipeline = true, ParameterSetName = TestByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
@@ -48,7 +52,14 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            WriteObject(SynapseAnalyticsClient.TestSqlPool(ResourceGroupName, WorkspaceName, Name));
+            if (this.Version == 3)
+            {
+                WriteObject(SynapseAnalyticsClient.TestSqlPoolV3(ResourceGroupName, WorkspaceName, Name));
+            }
+            else
+            {
+                WriteObject(SynapseAnalyticsClient.TestSqlPool(ResourceGroupName, WorkspaceName, Name));
+            }
         }
     }
 }

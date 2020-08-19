@@ -17,7 +17,7 @@ Applies a simple Structured Query Language (SQL) statement on a blob's contents 
 Get-AzStorageBlobQueryResult [-Blob] <String> [-Container] <String> [-SnapshotTime <DateTimeOffset>]
  [-VersionId <String>] -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
- [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
+ [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -27,7 +27,7 @@ Get-AzStorageBlobQueryResult [-Blob] <String> [-Container] <String> [-SnapshotTi
 ```
 Get-AzStorageBlobQueryResult -BlobBaseClient <BlobBaseClient> -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
- [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
+ [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -38,7 +38,7 @@ Get-AzStorageBlobQueryResult -BlobBaseClient <BlobBaseClient> -QueryString <Stri
 Get-AzStorageBlobQueryResult -BlobContainerClient <BlobContainerClient> [-Blob] <String>
  [-SnapshotTime <DateTimeOffset>] [-VersionId <String>] -QueryString <String> -ResultFile <String>
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
- [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Context <IStorageContext>]
+ [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -212,6 +212,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Force to overwrite the existing file.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

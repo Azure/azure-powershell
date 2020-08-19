@@ -7,7 +7,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoAttachedDatabaseConfiguration.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -23,7 +23,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
-        $clusterResourceId= "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
+        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         [array]$attachedDatabaseConfigurationGet = Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName
@@ -40,7 +40,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
-        $clusterResourceId= "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
+        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         $attachedDatabaseConfiguration = Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName

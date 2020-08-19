@@ -35,7 +35,7 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,7 +55,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/get-azkustodatabase
 #>
 function Get-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

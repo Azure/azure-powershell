@@ -4,6 +4,8 @@
     { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" },
     { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" },
 
+    { "regex": "ImageBuilder", "alias": "Image Builder" },
+
     { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" },
     { "regex": "Image", "group": "Virtual Machines", "alias": "VM Images" },
     { "regex": "Vmss", "group": "Virtual Machines", "alias": "VM Scale Sets" },
@@ -112,9 +114,6 @@
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" },
     { "regex": "Billing", "group": "Billing", "alias": "Billing" },
 
-    { "regex": "ApplicationInsights", "alias": "Monitor" },
-    { "regex": "Monitor", "alias": "Monitor" },
-
     { "regex": "Media", "alias": "Media Services" },
 
     { "regex": "UsageAggregates", "alias": "Usage Aggregates" },
@@ -174,13 +173,16 @@
     { "regex": "Sql", "alias": "SQL" },
     { "regex": "Blockchain", "alias": "Blockchain Service" },
     { "regex": "ImportExport", "alias": "Import/Export" },
-    { "regex": "ImageBuilder", "alias": "Image Builder" },
     { "regex": "Functions", "alias": "Functions" },
     { "regex": "DesktopVirtualization", "alias": "DesktopVirtualization" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
     { "regex": "HanaOnAzure", "alias": "SAP HANA on Azure" },
     { "regex": "CustomProviders", "alias": "Custom Resource Providers" },
-    { "regex": "MonitoringSolutions", "alias": "Monitoring Solutions" },
+    { "regex": "MonitorLogAnalytics", "alias": "Monitoring Solutions" },
+
+    { "regex": "ApplicationInsights", "alias": "Monitor" },
+    { "regex": "Monitor", "alias": "Monitor" },
+
     { "regex": "StackEdge", "alias": "Stack Edge" },
     { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
     { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" },
