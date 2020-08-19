@@ -11,8 +11,53 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+function ConvertTagHashtableToString {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DoNotExport()]
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [hashtable]
+        $TagHashtable
+    )
 
-Import-Module $PSScriptRoot/helper.psm1
+    $keys = $TagHashtable.Keys
+    $tagStrings = foreach ($key in $keys) {
+        $tag = $key
+        if ($TagHashtable[$key] -and $TagHashtable[$key].GetType() -eq [string]) {
+            $tag += "=$($TagHashtable[$key])"
+        }
+        $tag
+    }
+
+    return [string]::Join(',', $tagStrings)
+}
+
+filter HandleShowResult {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DoNotExport()]
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]
+        $ShowResult,
+
+        [Parameter(Mandatory)]
+        [string]
+        $ResourceGroupName,
+
+        [Parameter(Mandatory)]
+        [string]
+        $SubscriptionId
+    )
+
+    # Get name of machine registered
+    $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)\n"
+    $Name = $selectStrResult.Matches.Groups |
+        Where-Object Name -EQ resourceName |
+        Select-Object -ExpandProperty Value
+
+    # Return the ConnectedMachine object.
+    Get-AzConnectedMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+}
 
 <#
 .Synopsis
@@ -21,7 +66,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 API to register a new machine and thereby create a tracked resource in ARM
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://docs.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachine
 #>
 function New-AzConnectedMachine {
     [CmdletBinding()]

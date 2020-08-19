@@ -54,13 +54,83 @@ directive:
     hide: true
   - where: $.definitions.Identifier.properties
     suppress: R3019
+  # Set correct variants for PUT and PATCH verbs
+  - where:
+      verb: New
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$|^Create\d?$
+    remove: true
+  - where:
+      verb: Set
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  # Make parameters friendlier for extensions
+  - where:
+      subject: MachineExtension
+      parameter-name: Name
+    set:
+      parameter-name: MachineName
+  - where:
+      subject: MachineExtension
+      parameter-name: ExtensionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: MachineExtension
+      parameter-name: PropertiesType
+    set:
+      parameter-name: ExtensionType
+  - where:
+      model-name: MachineExtension
+      property-name: PropertiesType
+    set:
+      property-name: MachineExtensionType
+  - where:
+      verb: New|Update
+      subject: MachineExtension
+    hide: true
+  - where:
+      subject: MachineExtension
+      parameter-name: Setting
+    set:
+      alias: Settings
+  - where:
+      subject: MachineExtension
+      parameter-name: ProtectedSetting
+    set:
+      alias: ProtectedSettings
+  - where:
+      subject: MachineExtension
+      parameter-name: ForceUpdateTag
+    set:
+      parameter-name: ForceRerun
+  # Formatting
+  - where:
+       model-name: Machine
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSName
+          - Status
+          - ProvisioningState
+  - where:
+       model-name: MachineExtension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - PropertiesType
+          - ProvisioningState
   - remove-operation:
     - Machines_Reconnect
     - Machines_CreateOrUpdate
     - Machines_Update
-    - MachineExtensions_CreateOrUpdate
-    - MachineExtensions_Update
-    - MachineExtensions_Delete
-    - MachineExtensions_Get
-    - MachineExtensions_List
+    # - MachineExtensions_CreateOrUpdate
+    # - MachineExtensions_Update
 ```

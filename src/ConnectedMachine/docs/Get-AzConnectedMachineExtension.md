@@ -1,49 +1,63 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/remove-azconnectedmachine
+online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/get-azconnectedmachineextension
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachine
+# Get-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to remove a hybrid machine identity in Azure.
+The operation to get the extension.
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 ```
-Remove-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to remove a hybrid machine identity in Azure.
+The operation to get the extension.
 
 ## EXAMPLES
 
-### Example 1: Remove a connected machine
+### Example 1: List all extensions for a machine
 ```powershell
-PS C:\> Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
+PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
 
+Name    Location  PropertiesType        ProvisioningState
+----    --------  --------------        -----------------
+custom  westus2   CustomScriptExtension Succeeded
+custom  westus2   CustomScriptExtension Succeeded
+dsc     westus2   DSC                   Succeeded
 ```
 
-Deletes the connected machine.
+Lists all extensions for a specific machine.
 
-### Example 2: Remove connected machines via the pipeline
+### Example 2: Get a specific extension on a machine
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
+PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
 
+Name  Location  PropertiesType        ProvisioningState
+----  --------  --------------        -----------------
+dsc   westus2   CustomScriptExtension Succeeded
 ```
 
-Removes all machines in the `contoso-connected-machines` resource group.
+Gets a specific extension on a machine.
 
 ## PARAMETERS
 
@@ -62,13 +76,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Expand
+The expand expression to apply on the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -78,12 +107,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the hybrid machine.
+### -MachineName
+The name of the machine containing the extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -93,15 +122,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Name
+The name of the machine extension.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,7 +142,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -127,44 +156,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api201912.IMachineExtension
 
 ## NOTES
 

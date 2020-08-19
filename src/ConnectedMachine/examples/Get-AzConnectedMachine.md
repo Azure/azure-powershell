@@ -2,23 +2,25 @@
 ```powershell
 PS C:\> Get-AzConnectedMachine -SubscriptionId 67379433-5e19-4702-b39a-c0a03ca8d20c
 
-Location Name           Type
--------- ----           ----
-westus2  winwestus2_1   Microsoft.HybridCompute/machines
-westus2  linwestus2_1   Microsoft.HybridCompute/machines
+Name           Location OSName   Status     ProvisioningState
+----           -------- ------   ------     -----------------
+winwestus2_1   westus2  windows  Connected  Succeeded
+linwestus2_1   westus2  linux    Connected  Succeeded
+winwestus2_2   westus2  windows  Connected  Succeeded
+winwestus2_3   westus2  windows  Connected  Succeeded
 
 ```
 
-Lists all connected machines in a subscription.
+Lists all connected machines in a subscription. If subscription isn't specified, it will use the subscription from your current Azure PowerShell context.
 
 ### Example 2: List all connected machines in a resource group
 ```powershell
 PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines
 
-Location Name           Type
--------- ----           ----
-westus2  winwestus2_2   Microsoft.HybridCompute/machines
-westus2  winwestus2_3   Microsoft.HybridCompute/machines
+Name           Location OSName   Status     ProvisioningState
+----           -------- ------   ------     -----------------
+winwestus2_2   westus2  windows  Connected  Succeeded
+winwestus2_3   westus2  windows  Connected  Succeeded
 ```
 
 List all connected machines in a resource group.
@@ -27,9 +29,9 @@ List all connected machines in a resource group.
 ```powershell
 PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwestus2_1
 
-Location Name           Type
--------- ----           ----
-westus2  winwestus2_1   Microsoft.HybridCompute/machines
+Name           Location OSName   Status     ProvisioningState
+----           -------- ------   ------     -----------------
+winwestus2_1   westus2  windows  Connected  Succeeded
 ```
 
 Get a connected machine in a resource group by name.

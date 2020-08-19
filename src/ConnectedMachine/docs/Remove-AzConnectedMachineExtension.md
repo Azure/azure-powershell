@@ -1,51 +1,67 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/remove-azconnectedmachine
+online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachine
+# Remove-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to remove a hybrid machine identity in Azure.
+The operation to delete the extension.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to remove a hybrid machine identity in Azure.
+The operation to delete the extension.
 
 ## EXAMPLES
 
-### Example 1: Remove a connected machine
+### Example 1: Remove a machine extension.
 ```powershell
-PS C:\> Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
+PS C:\> Remove-AzConnectedMachineExtension -MachineName myMachine -ResourceGroupName myRG -Name custom
 
 ```
 
-Deletes the connected machine.
+Deletes the extension on the machine.
 
-### Example 2: Remove connected machines via the pipeline
+### Example 2: Remove extension via the pipeline
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
+PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName myMachine | Remove-AzConnectedMachineExtension
 
 ```
 
-Removes all machines in the `contoso-connected-machines` resource group.
+Removes all extensions in the specified machine.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -78,8 +94,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the hybrid machine.
+### -MachineName
+The name of the machine where the extension should be deleted.
 
 ```yaml
 Type: System.String
@@ -87,6 +103,36 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the machine extension.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
