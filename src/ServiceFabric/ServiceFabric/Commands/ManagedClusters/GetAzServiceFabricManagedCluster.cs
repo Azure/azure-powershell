@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = BySubscription, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = BySubscription), OutputType(typeof(PSManagedCluster))]
     public class GetServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";
