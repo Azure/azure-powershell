@@ -26,6 +26,7 @@
 * Fixed the behaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
 * Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
 * Added breaking change attribute to `Get-AzResourceGroupDeploymentOperation` for the upcoming output type change
+* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`.
 
 ## Version 2.4.0
 * Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
