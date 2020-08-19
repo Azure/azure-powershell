@@ -691,6 +691,7 @@
   </data>
   <data name="VHubRouteTableReferenceNotFound" xml:space="preserve">
     <value>A valid HubRouteTable reference is required.</value>
+  </data>
   <data name="CommissioningStateConflict" xml:space="preserve">
     <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
     <comment>Error message for setting the customIpPrefix</comment>
