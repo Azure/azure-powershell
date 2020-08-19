@@ -42,6 +42,8 @@ $clusterName = "testCluster"
 Remove-AzServiceFabricManagedCluster -ResourceGroupName sfmcalsantamps -ClusterName sfmcalsantamps
 ```
 
+Remove cluster.
+
 ### Example 2
 ```powershell
 $rgName = "testRG"

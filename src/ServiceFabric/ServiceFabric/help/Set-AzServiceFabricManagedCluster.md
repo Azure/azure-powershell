@@ -46,7 +46,7 @@ $clusterName = "testCluster"
 Update-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName -DnsName testnewdns -ClientConnectionPort 50000 -Verbose
 ```
 
-Update dns name and client connection port for the clsuter.
+Update dns name and client connection port for the cluster.
 
 ### Example 2
 ```powershell
@@ -59,7 +59,7 @@ $cluster.ClientConnectionPort = 50000
 $cluster | Set-AzServiceFabricManagedCluster
 ```
 
-Update dns name and client connection port for the clsuter, with piping.
+Update dns name and client connection port for the cluster, with piping.
 
 ## PARAMETERS
 
