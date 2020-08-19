@@ -148,7 +148,7 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @("Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
