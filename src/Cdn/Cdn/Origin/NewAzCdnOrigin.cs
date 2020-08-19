@@ -125,15 +125,23 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
             originProperties.PrivateLinkLocation = PrivateLinkLocation;
             originProperties.Weight = Weight;
 
-            var origin = CdnManagementClient.Origins.Create(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName,
-                OriginName,
-                originProperties);
+            try
+            {
+                var origin = CdnManagementClient.Origins.Create(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName,
+                    OriginName,
+                    originProperties);
 
-            WriteVerbose(Resources.Success);
-            WriteObject(origin.ToPsOrigin());
+                WriteVerbose(Resources.Success);
+                WriteObject(origin.ToPsOrigin());
+            }
+            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }
