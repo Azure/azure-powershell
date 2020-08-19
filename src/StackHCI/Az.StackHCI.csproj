@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>StackHCI</PsModuleName>
+    <!-- suppress warning CS2008 because no csharp file for the time being -->
+    <NoWarn>2008</NoWarn>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
