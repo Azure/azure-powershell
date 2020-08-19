@@ -29,23 +29,17 @@ The operation to create or update the extension.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set an extension on a machine
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
+PS C:\> Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
 
-{{ Add output here }}
+Name  Location ProvisioningState
+----  -------- -----------------
+food2 eastus   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Sets an extension on a machine.
 
 ## PARAMETERS
 

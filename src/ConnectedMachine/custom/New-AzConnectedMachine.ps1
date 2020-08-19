@@ -11,53 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-function ConvertTagHashtableToString {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DoNotExport()]
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [hashtable]
-        $TagHashtable
-    )
-
-    $keys = $TagHashtable.Keys
-    $tagStrings = foreach ($key in $keys) {
-        $tag = $key
-        if ($TagHashtable[$key] -and $TagHashtable[$key].GetType() -eq [string]) {
-            $tag += "=$($TagHashtable[$key])"
-        }
-        $tag
-    }
-
-    return [string]::Join(',', $tagStrings)
-}
-
-filter HandleShowResult {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DoNotExport()]
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [string]
-        $ShowResult,
-
-        [Parameter(Mandatory)]
-        [string]
-        $ResourceGroupName,
-
-        [Parameter(Mandatory)]
-        [string]
-        $SubscriptionId
-    )
-
-    # Get name of machine registered
-    $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)\n"
-    $Name = $selectStrResult.Matches.Groups |
-        Where-Object Name -EQ resourceName |
-        Select-Object -ExpandProperty Value
-
-    # Return the ConnectedMachine object.
-    Get-AzConnectedMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-}
 
 <#
 .Synopsis
@@ -194,7 +147,17 @@ function New-AzConnectedMachine {
 
     if ($Tag) {
         $azcmagentArgs.Add('--tags')
-        $azcmagentArgs.Add((ConvertTagHashtableToString -TagHashtable $Tag))
+
+        # Build tag string
+        $tagStrings = foreach ($key in $Tag.Keys) {
+            $t = $key
+            if ($TagHashtable[$key] -and $TagHashtable[$key].GetType() -eq [string]) {
+                $t += "=$($TagHashtable[$key])"
+            }
+            $t
+        }
+
+        $azcmagentArgs.Add([string]::Join(',', $tagStrings))
     }
 
     $script = {
@@ -277,5 +240,15 @@ function New-AzConnectedMachine {
         $showResult = & $script $azcmagentArgs
     }
 
-    $showResult | HandleShowResult -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+    # Handle show result by getting the name and getting the machine object
+    $showResult | ForEach-Object {
+        # Get name of machine registered
+        $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)\n"
+        $Name = $selectStrResult.Matches.Groups |
+            Where-Object Name -EQ resourceName |
+            Select-Object -ExpandProperty Value
+
+        # Return the ConnectedMachine object.
+        Get-AzConnectedMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+    }
 }

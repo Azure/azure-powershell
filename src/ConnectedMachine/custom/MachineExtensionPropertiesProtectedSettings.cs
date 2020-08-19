@@ -3,22 +3,31 @@ using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api201912
 {
-    public partial class MachineExtensionPropertiesProtectedSettings
+    public partial class MachineExtensionPropertiesProtectedSettings : Hashtable
     {
-        public IDictionary Settings { get; private set; }
-
         partial void AfterDeserializeDictionary(IDictionary content)
         {
-            Settings = content;
+            foreach (var key in content.Keys)
+            {
+                this[key] = content[key];
+            }
         }
 
         partial void AfterToJson(ref JsonObject container)
         {
-            foreach (var item in Settings.Keys)
+            foreach (var key in this.Keys)
             {
                 container.Add(
-                    item.ToString(),
-                    Runtime.JsonSerializable.ToJsonValue(Settings[item]));
+                    key.ToString(),
+                    Runtime.JsonSerializable.ToJsonValue(this[key]));
+            }
+        }
+
+        partial void AfterFromJson(JsonObject json)
+        {
+            foreach (var key in json.Keys)
+            {
+                this[key] = json[key].ToValue();
             }
         }
     }
