@@ -163,3 +163,39 @@ function Test-CreateClusterWithPrivateLink{
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster which Enalbes Encryption At Host
+#>
+
+function Test-TestCreateClusterWithEncryptionAtHost{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameterForWASB -Location "South Central US"
+		$encryptionAtHost=$true
+		$workerNodeSize="Standard_DS14_v2"
+		$headNodeSize="Standard_DS14_v2"
+		$zookeeperNodeSize="Standard_DS14_v2"
+
+		# create cluster
+		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
+
+		Assert-AreEqual $cluster.DiskEncryption.EncryptionAtHost $encryptionAtHost
+		
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}

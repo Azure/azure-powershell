@@ -17,7 +17,6 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
 ## Upcoming Release
 * Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
 * Added `SupportAutomaticPlacement` to New-AzHostGroup 
@@ -25,6 +24,7 @@
 * Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
 * Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
 * Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
+* Added new cmdlet `Invoke-AzVmPatchAssessment`
 
 ## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version

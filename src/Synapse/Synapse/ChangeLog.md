@@ -19,6 +19,30 @@
 -->
 ## Upcoming Release
 
+* Added support for gen3 Sql Pools
+    - For `Get-AzSynapseSqlPool`, `New-AzSynapseSqlPool`, ` Remove-AzSynapseSqlPool`, ` Test-AzSynapseSqlPool` and `Update-AzSynapseSqlPool` cmdlet
+        - Add Version parameter to cmdlets to specify version 3. 
+        - For this release, these cmdlets will not work unless a customer's subscription is on the allowlist.
+* Added support for gen3 Sql Databases
+    - Add `Get-AzSynapseSqlDatabase` cmdlet
+    - Add `New-AzSynapseSqlDatabase` cmdlet
+    - Add `Remove-AzSynapseSqlDatabase` cmdlet
+    - Add `Update-AzSynapseSqlDatabase` cmdlet
+    - Add `Test-AzSynapseSqlDatabase` cmdlet
+* Added support for operation of Synapse IntegrationRuntime
+    - Add `Get-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeKey` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeMetric` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeNode` cmdlet
+    - Add `Invoke-AzSynapseIntegrationRuntimeUpgrade` cmdlet
+    - Add `New-AzSynapseIntegrationRuntimeKey` cmdlet
+    - Add `Remove-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Remove-AzSynapseIntegrationRuntimeNode` cmdlet
+    - Add `Set-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Sync-AzSynapseIntegrationRuntimeCredential` cmdlet
+    - Add `Update-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Update-AzSynapseIntegrationRuntimeNode` cmdlet
+
 ## Version 0.1.2
 
 * Changed some property names and types of output for the following cmdlets

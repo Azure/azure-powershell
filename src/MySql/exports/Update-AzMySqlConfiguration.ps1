@@ -16,8 +16,10 @@
 <#
 .Synopsis
 Updates a configuration of a server.
+Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Description
 Updates a configuration of a server.
+Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
 PS C:\> Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
@@ -38,9 +40,10 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
   [FirewallRuleName <String>]: The name of the server firewall rule.
@@ -88,7 +91,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
-    # Identity Parameter
+    # Identity Parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
@@ -121,21 +124,18 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
@@ -147,20 +147,17 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -172,8 +169,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.MySql.private\Update-AzMySqlConfiguration_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.MySql.private\Update-AzMySqlConfiguration_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.MySql.custom\Update-AzMySqlConfiguration';
+            UpdateViaIdentityExpanded = 'Az.MySql.custom\Update-AzMySqlConfiguration';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
