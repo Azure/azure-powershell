@@ -33,11 +33,11 @@ Name StartIPAddress EndIPAddress
 rule 0.0.0.2        0.0.0.3
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -StartIPAddress 0.0.0.2
+PS C:\> Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
 
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+rule 0.0.0.2        0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
