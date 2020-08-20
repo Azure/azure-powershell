@@ -1,0 +1,113 @@
+{
+  "New-AzSpringCloudApp+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/gateway?api-version=2019-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/gateway?api-version=2019-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"persistentDisk\": {\n      \"mountPath\": \"/mypersistentdisk\",\n      \"sizeInGB\": 2\n    },\n    \"temporaryDisk\": {\n      \"mountPath\": \"/mytemporarydisk\",\n      \"sizeInGB\": 2\n    }\n  },\n  \"location\": \"eastus\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "228" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "58243186-97bb-4f4e-8e46-0d7e98b7e4d1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c3a9de23-1162-4439-b38e-50208ce0091f" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "58243186-97bb-4f4e-8e46-0d7e98b7e4d1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200810T092013Z:58243186-97bb-4f4e-8e46-0d7e98b7e4d1" ],
+        "Date": [ "Mon, 10 Aug 2020 09:20:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"fqdn\":\"spring-9ys40b.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T09:20:12.797Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/gateway\",\"name\":\"gateway\"}"
+    }
+  },
+  "New-AzSpringCloudApp+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/account?api-version=2019-05-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/account?api-version=2019-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"persistentDisk\": {\n      \"mountPath\": \"/mypersistentdisk\",\n      \"sizeInGB\": 2\n    },\n    \"temporaryDisk\": {\n      \"mountPath\": \"/mytemporarydisk\",\n      \"sizeInGB\": 2\n    }\n  },\n  \"location\": \"eastus\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "228" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "99bb0871-7919-4e38-a9b6-a62dff3313f0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "152628c4-30f4-494c-8003-86b715e18f2e" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "99bb0871-7919-4e38-a9b6-a62dff3313f0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200810T092014Z:99bb0871-7919-4e38-a9b6-a62dff3313f0" ],
+        "Date": [ "Mon, 10 Aug 2020 09:20:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"fqdn\":\"spring-9ys40b.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T09:20:14.527Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/account\",\"name\":\"account\"}"
+    }
+  },
+  "New-AzSpringCloudApp+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/auth?api-version=2019-05-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/auth?api-version=2019-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"persistentDisk\": {\n      \"mountPath\": \"/mypersistentdisk\",\n      \"sizeInGB\": 2\n    },\n    \"temporaryDisk\": {\n      \"mountPath\": \"/mytemporarydisk\",\n      \"sizeInGB\": 2\n    }\n  },\n  \"location\": \"eastus\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "228" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "8aa8690f-91b4-4aa6-9a76-e60c5830cead" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "f567c116-7e13-42df-b9dd-7765a2f52bab" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "8aa8690f-91b4-4aa6-9a76-e60c5830cead" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200810T092015Z:8aa8690f-91b4-4aa6-9a76-e60c5830cead" ],
+        "Date": [ "Mon, 10 Aug 2020 09:20:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"fqdn\":\"spring-9ys40b.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T09:20:15.2Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-9ys40b/apps/auth\",\"name\":\"auth\"}"
+    }
+  }
+}
