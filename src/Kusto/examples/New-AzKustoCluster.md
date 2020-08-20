@@ -1,6 +1,6 @@
 ### Example 1: Create a new Kusto cluster
 ```powershell
-PS C:\> New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard
+PS C:\> New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard -EnableDoubleEncryption true
 
 Location Name                Type                     Zone
 -------- ----                ----                     ----

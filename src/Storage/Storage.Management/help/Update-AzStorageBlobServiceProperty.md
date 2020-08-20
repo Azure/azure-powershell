@@ -126,6 +126,21 @@ Accept wildcard characters: False
 
 ### -EnableChangeFeed
 Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableChangeFeed
+Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.
 Change feed support in Azure Blob Storage works by listening to a GPv2 or Blob storage account for any blob level creation, modification, or deletion events. 
 It then outputs an ordered log of events for the blobs stored in the $blobchangefeed container within the storage account. 
 The serialized changes are persisted as an Apache Avro file and can be processed asynchronously and incrementally.

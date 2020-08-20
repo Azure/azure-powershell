@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using System.Collections.Generic;
@@ -35,11 +34,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
 
-        ///// <summary>
-        ///// Account ResourceId  parameter set 
-        ///// </summary>
-        //private const string ResourceIdParameterSet = "ResourceId";
-
         [Parameter(
          Position = 0,
          Mandatory = true,
@@ -58,15 +52,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
-
-        //[Parameter(
-        //    Position = 0,
-        //    Mandatory = true,
-        //    ValueFromPipelineByPropertyName = true,
-        //    HelpMessage = "Object Replication Policy Id.",
-        //   ParameterSetName = ResourceIdParameterSet)]
-        //[ValidateNotNullOrEmpty]
-        //public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
@@ -91,11 +76,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.ResourceGroupName = StorageAccount.ResourceGroupName;
                     this.StorageAccountName = StorageAccount.StorageAccountName;
                     break;
-                //case ResourceIdParameterSet:
-                //    ResourceIdentifier accountResource = new ResourceIdentifier(ResourceId);
-                //    this.ResourceGroupName = accountResource.ResourceGroupName;
-                //    this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
-                //    break;
                 default:
                     // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                     break;

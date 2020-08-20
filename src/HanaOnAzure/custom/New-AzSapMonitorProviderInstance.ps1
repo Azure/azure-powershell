@@ -203,7 +203,8 @@ function New-AzSapMonitorProviderInstance {
                     hanaDbName     = $HanaDatabaseName
                     hanaDbSqlPort  = $HanaDatabaseSqlPort
                     hanaDbUsername = $HanaDatabaseUsername
-                    hanaDbPassword = ConvertFrom-SecureString $HanaDatabasePassword -AsPlainText
+                    # cannot use `ConvertFrom-SecureString -AsPlainText`, requires powershell >= 7
+                    hanaDbPassword = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($HanaDatabasePassword))
                 }
             }
             'ByKeyVault' {

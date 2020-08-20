@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -33,6 +35,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange(
+            nameOfParameterChanging: "ResourceId",
+            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
+            ChangeDescription = ManagedServicesUtility.DeprecatedParameterDescription)]
         [Parameter(
             ParameterSetName = ByResourceIdParameterSet,
             Mandatory = true,

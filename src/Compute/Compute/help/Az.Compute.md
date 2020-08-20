@@ -209,6 +209,9 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+### [Invoke-AzVMPatchAssessment](Invoke-AzVMPatchAssessment.md)
+Assess patch state of a virtual machine.
+
 ### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
 Reimage an Azure virtual machine.
 

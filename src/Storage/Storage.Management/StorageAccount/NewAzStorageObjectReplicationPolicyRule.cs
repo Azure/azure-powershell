@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using System;
 using System.Management.Automation;
 
@@ -58,24 +55,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = false,
             HelpMessage = "Object Replication Rule Id.")]
-        //[ValidatePattern("(\\{|\\()?[A-Za-z0-9]{4}([A-Za-z0-9]{4}\\-?){4}[A-Za-z0-9]{12}(\\}|\\()?|default")]
         public string RuleId { get; set; }
-        //{
-        //    get
-        //    {
-        //        return ruleId;
-        //    }
-        //    set
-        //    {
-        //        ruleId = value;
-        //    }
-        //}
-        //private string ruleId = "default";
-
-        //[Parameter(Mandatory = false,
-        //    HelpMessage = "Filters the results to replicate blobs with the tag.")]
-        //[ValidateNotNullOrEmpty]
-        //public string[] Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -89,14 +69,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 DestinationContainer = this.DestinationContainer
             };
 
-            //if (this.PrefixMatch != null || this.Tag != null)
             if (this.PrefixMatch != null || minCreationTime != null)
             {
                 rule.Filters = new PSObjectReplicationPolicyFilter()
                 {
                     PrefixMatch = this.PrefixMatch,
                     MinCreationTime = this.minCreationTime,
-                    //Tag = this.Tag
                 };
             }
 
