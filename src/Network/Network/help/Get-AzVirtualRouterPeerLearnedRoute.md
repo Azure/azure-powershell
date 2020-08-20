@@ -20,8 +20,8 @@ Get-AzVirtualRouterPeerLearnedRoute -ResourceGroupName <String> -VirtualRouterNa
 
 ### VirtualRouterPeerObjectParameterSet
 ```
-Get-AzVirtualRouterPeerLearnedRoute -ResourceGroupName <String> -VirtualRouterName <String> -PeerName <String>
- -InputObject <PSVirtualRouterPeer> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualRouterPeerLearnedRoute -InputObject <PSVirtualRouterPeer> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The virtual router peer input object.
 
 ```yaml
-Type: PSVirtualRouterPeer
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
 Parameter Sets: VirtualRouterPeerObjectParameterSet
 Aliases:
 
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 Virtual router peer name
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
+Type: System.String
+Parameter Sets: VirtualRouterPeerNameParameterSet
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -102,8 +102,8 @@ Accept wildcard characters: False
 Virtual router peer resource group's name
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
 Required: True
@@ -117,9 +117,9 @@ Accept wildcard characters: False
 Virtual router name
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
+Type: System.String
+Parameter Sets: VirtualRouterPeerNameParameterSet
+Aliases:
 
 Required: True
 Position: Named

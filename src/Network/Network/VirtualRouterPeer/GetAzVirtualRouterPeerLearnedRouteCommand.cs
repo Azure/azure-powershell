@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetVirtualRouterPeerLearnedRouteCommand : NetworkBaseCmdlet
     {
         [Parameter(
+            ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual router peer resource group's name")]
@@ -20,8 +21,8 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual router name")]
@@ -29,7 +30,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string VirtualRouterName { get; set; }
 
+        [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual router peer name")]
