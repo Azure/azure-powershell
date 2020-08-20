@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed typo in New-AzConfigurationAssignment.md 
 * Added optional schedule related fields to `New-AzMaintenanceConfiguration`
 * Added new cmdlet for `Get-AzMaintenancePublicConfiguration`
 
