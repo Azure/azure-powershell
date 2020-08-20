@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Add new cmdlets for Virtual Router Peer Routes
+* Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
