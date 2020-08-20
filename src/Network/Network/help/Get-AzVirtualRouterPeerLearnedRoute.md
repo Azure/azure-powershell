@@ -31,10 +31,14 @@ Get-AzVirtualRouterPeerLearnedRoute -InputObject <PSVirtualRouterPeer> [-AsJob]
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzVirtualRouterPeerLearnedRouter -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
 ```
 
-{{ Add example description here }}
+### Example 2
+```powershell
+$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
+Get-AzVirtualRouterPeerLearnedRouter -InputObject $virtualRouterPeer
+```
 
 ## PARAMETERS
 
