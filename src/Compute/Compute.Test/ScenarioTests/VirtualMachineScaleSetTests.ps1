@@ -2569,13 +2569,13 @@ function Test-VirtualMachineScaleSetAssignedHost
         $domainNameLabel = "domainlabel"
         $vmssname = "MyVmss"
         $username = "admin01"
-        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
 
         $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
         
-        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.assignedHost;
+        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.AssignedHost;
     }
     finally
     {
