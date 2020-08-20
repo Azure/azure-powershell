@@ -20,5 +20,5 @@
 ## Upcoming Release
 
 ## Version 0.1.0
-* First preview release for module Az.SpringCloud
+* First preview release for module Az.SpringCloud.
 

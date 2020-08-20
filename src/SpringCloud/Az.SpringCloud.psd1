@@ -115,7 +115,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'First preview release for module Az.SpringCloud.'
 
         # Prerelease string of this module
         # Prerelease = ''
