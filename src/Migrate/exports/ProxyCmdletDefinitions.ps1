@@ -2031,8 +2031,6 @@ PS C:\> {{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 .Notes
@@ -2043,112 +2041,56 @@ To create the parameters described below, construct a hash table containing the 
 INPUT <IEnableMigrationInput>: Enable migration input.
   PolicyId <String>: The policy Id.
   ProviderSpecificDetailInstanceType <String>: The class type.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [EventName <String>]: The name of the Azure Site Recovery event.
-  [FabricName <String>]: Fabric name.
-  [Id <String>]: Resource identity path
-  [JobName <String>]: Job identifier
-  [LogicalNetworkName <String>]: Logical network name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationProtectedItemName <String>]: The name of the protected item on which the agent is to be updated.
-  [ResourceGroupName <String>]: The name of the resource group where the recovery services vault is present.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The subscription Id.
-  [VCenterName <String>]: vCenter name.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
 #>
 function New-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Fabric name.
     ${FabricName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Migration item name.
     ${MigrationItemName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Protection container name.
     ${ProtectionContainerName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group where the recovery services vault is present.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the recovery services vault.
     ${ResourceName},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription Id.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput]
     # Enable migration input.
     # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [System.String]
-    # The policy Id.
-    ${PolicyId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [System.String]
-    # The class type.
-    ${ProviderSpecificDetailInstanceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2219,11 +2161,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.Migrate.private\New-AzMigrateReplicationMigrationItem_Create';
-            CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationMigrationItem_CreateExpanded';
-            CreateViaIdentity = 'Az.Migrate.private\New-AzMigrateReplicationMigrationItem_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.Migrate.private\New-AzMigrateReplicationMigrationItem_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2282,8 +2221,6 @@ PS C:\> {{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreatePolicyInput
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy
 .Notes
@@ -2293,91 +2230,44 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUT <ICreatePolicyInput>: Protection Policy input.
   [ProviderSpecificInputInstanceType <String>]: The class type.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [EventName <String>]: The name of the Azure Site Recovery event.
-  [FabricName <String>]: Fabric name.
-  [Id <String>]: Resource identity path
-  [JobName <String>]: Job identifier
-  [LogicalNetworkName <String>]: Logical network name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationProtectedItemName <String>]: The name of the protected item on which the agent is to be updated.
-  [ResourceGroupName <String>]: The name of the resource group where the recovery services vault is present.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The subscription Id.
-  [VCenterName <String>]: vCenter name.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Replication policy name
     ${PolicyName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group where the recovery services vault is present.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the recovery services vault.
     ${ResourceName},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription Id.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreatePolicyInput]
     # Protection Policy input.
     # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [System.String]
-    # The class type.
-    ${ProviderSpecificInputInstanceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2448,11 +2338,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_Create';
-            CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateExpanded';
-            CreateViaIdentity = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2511,8 +2398,6 @@ PS C:\> {{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer
 .Notes
@@ -2523,102 +2408,50 @@ To create the parameters described below, construct a hash table containing the 
 CREATIONINPUT <ICreateProtectionContainerInput>: Create protection container input.
   [ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>]: Provider specific inputs for container creation.
     [InstanceType <String>]: The class type.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [EventName <String>]: The name of the Azure Site Recovery event.
-  [FabricName <String>]: Fabric name.
-  [Id <String>]: Resource identity path
-  [JobName <String>]: Job identifier
-  [LogicalNetworkName <String>]: Logical network name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationProtectedItemName <String>]: The name of the protected item on which the agent is to be updated.
-  [ResourceGroupName <String>]: The name of the resource group where the recovery services vault is present.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The subscription Id.
-  [VCenterName <String>]: vCenter name.
-
-PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerCreationInput[]>: Provider specific inputs for container creation.
-  [InstanceType <String>]: The class type.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainer
 #>
 function New-AzMigrateReplicationProtectionContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Unique fabric ARM name.
     ${FabricName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Unique protection container ARM name.
     ${ProtectionContainerName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group where the recovery services vault is present.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the recovery services vault.
     ${ResourceName},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription Id.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput]
     # Create protection container input.
     # To construct, see NOTES section for CREATIONINPUT properties and create a hash table.
     ${CreationInput},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerCreationInput[]]
-    # Provider specific inputs for container creation.
-    # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
-    ${ProviderSpecificInput},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2689,11 +2522,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainer_Create';
-            CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainer_CreateExpanded';
-            CreateViaIdentity = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainer_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainer_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

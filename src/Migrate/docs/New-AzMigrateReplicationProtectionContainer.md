@@ -12,34 +12,11 @@ Operation to create a protection container.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
-```
-New-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
- -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
 ```
 New-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
  -ResourceGroupName <String> -ResourceName <String> -CreationInput <ICreateProtectionContainerInput>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzMigrateReplicationProtectionContainer -InputObject <IMigrateIdentity>
- -CreationInput <ICreateProtectionContainerInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzMigrateReplicationProtectionContainer -InputObject <IMigrateIdentity>
- [-ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +65,7 @@ To construct, see NOTES section for CREATIONINPUT properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -118,29 +95,13 @@ Unique fabric ARM name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -164,26 +125,10 @@ Unique protection container ARM name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderSpecificInput
-Provider specific inputs for container creation.
-To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerCreationInput[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,7 +140,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -210,7 +155,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -225,7 +170,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,8 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer
@@ -291,36 +234,6 @@ To create the parameters described below, construct a hash table containing the 
 CREATIONINPUT <ICreateProtectionContainerInput>: Create protection container input.
   - `[ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>]`: Provider specific inputs for container creation.
     - `[InstanceType <String>]`: The class type.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  - `[AlertSettingName <String>]`: The name of the email notification configuration.
-  - `[EventName <String>]`: The name of the Azure Site Recovery event.
-  - `[FabricName <String>]`: Fabric name.
-  - `[Id <String>]`: Resource identity path
-  - `[JobName <String>]`: Job identifier
-  - `[LogicalNetworkName <String>]`: Logical network name.
-  - `[MappingName <String>]`: Protection Container mapping name.
-  - `[MigrationItemName <String>]`: Migration item name.
-  - `[MigrationRecoveryPointName <String>]`: The migration recovery point name.
-  - `[NetworkMappingName <String>]`: Network mapping name.
-  - `[NetworkName <String>]`: Primary network name.
-  - `[PolicyName <String>]`: Replication policy name.
-  - `[ProtectableItemName <String>]`: Protectable item name.
-  - `[ProtectionContainerName <String>]`: Protection container name.
-  - `[ProviderName <String>]`: Recovery services provider name
-  - `[RecoveryPlanName <String>]`: Name of the recovery plan.
-  - `[RecoveryPointName <String>]`: The recovery point name.
-  - `[ReplicatedProtectedItemName <String>]`: Replication protected item name.
-  - `[ReplicationProtectedItemName <String>]`: The name of the protected item on which the agent is to be updated.
-  - `[ResourceGroupName <String>]`: The name of the resource group where the recovery services vault is present.
-  - `[ResourceName <String>]`: The name of the recovery services vault.
-  - `[StorageClassificationMappingName <String>]`: Storage classification mapping name.
-  - `[StorageClassificationName <String>]`: Storage classification name.
-  - `[SubscriptionId <String>]`: The subscription Id.
-  - `[VCenterName <String>]`: vCenter name.
-
-PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerCreationInput[]>: Provider specific inputs for container creation.
-  - `[InstanceType <String>]`: The class type.
 
 ## RELATED LINKS
 

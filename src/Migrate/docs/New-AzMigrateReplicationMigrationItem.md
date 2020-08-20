@@ -12,33 +12,11 @@ The operation to create an ASR migration item (enable migration).
 
 ## SYNTAX
 
-### CreateExpanded (Default)
-```
-New-AzMigrateReplicationMigrationItem -FabricName <String> -MigrationItemName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String> -PolicyId <String>
- -ProviderSpecificDetailInstanceType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
 ```
 New-AzMigrateReplicationMigrationItem -FabricName <String> -MigrationItemName <String>
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  -Input <IEnableMigrationInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzMigrateReplicationMigrationItem -InputObject <IMigrateIdentity> -Input <IEnableMigrationInput>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzMigrateReplicationMigrationItem -InputObject <IMigrateIdentity> -PolicyId <String>
- -ProviderSpecificDetailInstanceType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +79,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,23 +95,7 @@ To construct, see NOTES section for INPUT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -148,7 +110,7 @@ Migration item name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -173,42 +135,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyId
-The policy Id.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProtectionContainerName
 Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderSpecificDetailInstanceType
-The class type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -223,7 +155,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,7 +170,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -253,7 +185,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -301,8 +233,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
@@ -319,33 +249,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUT <IEnableMigrationInput>: Enable migration input.
   - `PolicyId <String>`: The policy Id.
   - `ProviderSpecificDetailInstanceType <String>`: The class type.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  - `[AlertSettingName <String>]`: The name of the email notification configuration.
-  - `[EventName <String>]`: The name of the Azure Site Recovery event.
-  - `[FabricName <String>]`: Fabric name.
-  - `[Id <String>]`: Resource identity path
-  - `[JobName <String>]`: Job identifier
-  - `[LogicalNetworkName <String>]`: Logical network name.
-  - `[MappingName <String>]`: Protection Container mapping name.
-  - `[MigrationItemName <String>]`: Migration item name.
-  - `[MigrationRecoveryPointName <String>]`: The migration recovery point name.
-  - `[NetworkMappingName <String>]`: Network mapping name.
-  - `[NetworkName <String>]`: Primary network name.
-  - `[PolicyName <String>]`: Replication policy name.
-  - `[ProtectableItemName <String>]`: Protectable item name.
-  - `[ProtectionContainerName <String>]`: Protection container name.
-  - `[ProviderName <String>]`: Recovery services provider name
-  - `[RecoveryPlanName <String>]`: Name of the recovery plan.
-  - `[RecoveryPointName <String>]`: The recovery point name.
-  - `[ReplicatedProtectedItemName <String>]`: Replication protected item name.
-  - `[ReplicationProtectedItemName <String>]`: The name of the protected item on which the agent is to be updated.
-  - `[ResourceGroupName <String>]`: The name of the resource group where the recovery services vault is present.
-  - `[ResourceName <String>]`: The name of the recovery services vault.
-  - `[StorageClassificationMappingName <String>]`: Storage classification mapping name.
-  - `[StorageClassificationName <String>]`: Storage classification name.
-  - `[SubscriptionId <String>]`: The subscription Id.
-  - `[VCenterName <String>]`: vCenter name.
 
 ## RELATED LINKS
 

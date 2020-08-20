@@ -59,6 +59,14 @@ subject-prefix: 'Migrate'
 directive:
   # Remove cmdlets that should not be exposed
   - where:
+      verb: New$
+      variant: ^CreateExpanded
+    hide: remove
+  - where:
+      verb: New$
+      variant: ^CreateViaIdentity
+    hide: true
+  - where:
       subject: ^Recovery|^ReplicationRecovery
     remove: true
   - where:
