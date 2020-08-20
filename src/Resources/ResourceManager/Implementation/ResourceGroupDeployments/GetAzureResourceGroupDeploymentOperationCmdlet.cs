@@ -36,14 +36,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string DeploymentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id parameter.
-        /// </summary>
-        /// [CmdletParameterBreakingChange("SubscriptionId", ChangeDescription = "Parameter is deprecated and is a no-op parameter. It will be retired in a future release")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
-        [ValidateNotNullOrEmpty]
-        public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
