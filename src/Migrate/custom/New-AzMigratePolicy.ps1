@@ -161,7 +161,7 @@ function New-AzMigratePolicy {
                 $null = $PSBoundParameters.Remove('CrashConsistentFrequencyInMinutes')
                 $null = $PSBoundParameters.Remove('RecoveryPointHistoryInMinutes')
                 $null = $PSBoundParameters.Add('Input', $Parameter)
-                Az.Migrate.internal\New-AzMigrateReplicationPolicy @PSBoundParameters
+                Az.Migrate\New-AzMigrateReplicationPolicy @PSBoundParameters
             } else {
                 Write-Host "error" -ForegroundColor Red -BackgroundColor Yellow
             }
