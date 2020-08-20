@@ -84,6 +84,10 @@ directive:
     set:
       parameter-name: Sku
 
+  # Service team asked us to use 2018-10-31, should be the same as 2018-10-31-preview, but it's not ready on swagger yet
+  - from: swagger-document
+    where: $.info
+    transform: $['version'] = '2018-10-31'
 
   # TODO:
   # Get-: remove -top?

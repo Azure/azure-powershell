@@ -14,7 +14,7 @@ Create or Update a dedicated HSM in the specified subscription.
 
 ```
 New-AzDedicatedHsm -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-NetworkProfileNetworkInterface <INetworkInterface[]>] [-SkuName <String>] [-StampId <String>]
+ [-NetworkProfileNetworkInterface <INetworkInterface[]>] [-Sku <String>] [-StampId <String>]
  [-SubnetId <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -109,7 +109,7 @@ Specifies the list of resource Ids for the network interfaces associated with th
 To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031Preview.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +150,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 SKU of the dedicated HSM
 
 ```yaml
@@ -279,7 +279,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031Preview.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm
 
 ## NOTES
 
