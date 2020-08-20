@@ -17,7 +17,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -211,6 +214,11 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.InputFile,
+            HelpMessage = "Path to role assignment json")]
+        [ValidateNotNullOrEmpty]
+        public string InputFile { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowDelegation { get; set; }
@@ -221,6 +229,34 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ParameterSet.InputFile)
+            {
+                string fileName = this.TryResolvePath(InputFile);
+                if (!(new FileInfo(fileName)).Exists)
+                {
+                    throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
+                }
+
+                try
+                {
+                    PSRoleAssignment RoleAssignment = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
+
+                    this.ObjectId = RoleAssignment.ObjectId;
+                    this.ResourceType = RoleAssignment.ObjectType;
+                    this.Scope = RoleAssignment.Scope;
+                    Guid guid = Guid.Empty;
+                    Guid.TryParse(RoleAssignment.RoleDefinitionId,out guid);
+                    this.RoleDefinitionId = guid;
+                    this.Description = RoleAssignment.Description;
+                    this.Condition = RoleAssignment.Condition;
+                    this.ConditionVersion = RoleAssignment.ConditionVersion;
+                }
+                catch (JsonException)
+                {
+                    WriteVerbose("Deserializing the input role assignment failed.");
+                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formated");
+                }
+            }
             if (string.IsNullOrEmpty(Condition) ^ string.IsNullOrEmpty(ConditionVersion))
             {
                 if (!string.IsNullOrEmpty(Condition))

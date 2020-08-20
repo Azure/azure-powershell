@@ -245,6 +245,15 @@ function Test-Blob
 		Assert-AreEqual $t.Error $null
         Assert-AreEqual (Get-FileHash -Path $localDestFile2 -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
+		# upload/download blob which name include "/"
+		$blobNameWithFolder = "aa/bb/cc/dd.txt"
+		$localFileNameWithFolder= "aa\bb\cc\dd.txt"
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
+		Get-AzStorageBlobContent -Container $containerName -Blob $blobNameWithFolder -Destination . -Force -Context $storageContext 
+        Assert-AreEqual (Get-FileHash -Path $localFileNameWithFolder -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		Remove-Item -Path "aa" -Force -Recurse
+        Remove-AzStorageBlob -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
+
         Remove-AzStorageBlob -Container $containerName -Blob $objectName2 -Force -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
         Assert-AreEqual $blob.Count 1

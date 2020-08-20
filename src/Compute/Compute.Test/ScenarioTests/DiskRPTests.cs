@@ -72,5 +72,27 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DiskEncryptionSetConfigEncryptionType");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskAccessObject()
+        {
+            TestRunner.RunTestScript("Test-DiskAccessObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskConfigDiskAccessNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-DiskConfigDiskAccessNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotConfigDiskAccessNetworkPolicy()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigDiskAccessNetworkPolicy");
+        }
+
     }
 }

@@ -999,6 +999,165 @@ function Test-DiskEncryptionSetConfigEncryptionType
     {
         # Cleanup
         $encSet | Remove-AzDiskEncryptionSet -Force;
+        Clean-ResourceGroup $rgname
     }
 }
 
+
+<#
+.SYNOPSIS
+Testing diskAssess object
+#>
+function Test-DiskAccessObject
+{
+    $rgname = Get-ComputeTestResourceName;
+    $rgname2 = $rgname + '2';
+    $diskname1Rg1 = 'diskaccess1' + $rgname;
+    $diskName2Rg1 = 'diskAccess2' + $rgname;
+    $diskName3Rg2 = 'diskAccess1' + $rgname2;
+    
+    try
+    {
+        # Common
+        $loc = "northcentralus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname2 -Location $loc -Force;
+
+        #Create DiskAccess1 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1 -location $loc
+
+        #Use Get-AzDiskAccess on DiskAccess1 using Default ParameterSet
+        $diskAccess1 = Get-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1
+        #Use Get-AzDiskAccess on DiskAccess1 using resourceId
+        $diskAccess1check = Get-AzDiskAccess -resourceId $diskAccess1.id
+
+        #check if diskAccess1 is good
+        Assert-NotNull $diskAccess1
+        Assert-AreEqual $diskAccess1.Name $diskname1Rg1
+
+        #ASSERT check if diskaccess1 and diskaccess1check are same
+        Assert-AreEqual $diskAccess1.id $diskAccess1check.id
+
+        #Create DiskAccess2 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1 -location $loc
+
+        #Use Get-AzDiskAccess by resourceGroupName
+        $rg1Result = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $rg1Result.count 2
+
+        #add DiskAccess3 to ResourceGroup2
+        New-AzDiskAccess -ResourceGroupName $rgname2 -Name $diskname3Rg2 -location $loc
+
+        #use get-azdiskaccess with no parameters. count should be >= 3
+        $allResult = Get-AzDiskAccess
+
+        Assert-True {$allResult.Count -gt 2;}
+
+        #remove-AzDiskAccess to DiskAccess1 by resourceId
+        Remove-AzDiskAccess -resourceid $diskAccess1.id
+        
+        #Remove-AzDiskAccess to DiskAccess2 by default parameter set
+        Remove-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1
+
+        #Get-AzDiskAccess by resource group. Count should be 0
+        $allResult = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $allResult.count 0
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname2
+    }
+}
+
+<#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskConfigDiskAccessNetworkAccess
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $diskname0 = 'disk0' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        #Testing disk access
+        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
+        $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        
+        Assert-AreEqual $diskAccess.Id $disk.DiskAccessId;
+
+        Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
+
+        $diskconfig2 = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -NetworkAccessPolicy "AllowAll";
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig2;
+        $disk2 = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        Assert-AreEqual "AllowAll" $disk2.NetworkAccessPolicy;
+    
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-SnapshotConfigDiskAccessNetworkPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $snapshotname = 'snapshot' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/TestVault123';
+        $mockkey = 'https://myvault.vault-int.azure-int.net/keys/mockkey/00000000000000000000000000000000';
+        $mocksecret = 'https://myvault.vault-int.azure-int.net/secrets/mocksecret/00000000000000000000000000000000';
+        $access = 'Read';
+
+        # Config and create test
+        $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
+
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
+                                               -EncryptionSettingsEnabled $true  -HyperVGeneration "V2" -DiskAccessId $diskAccess.Id;
+
+        $snapshotconfig.EncryptionSettingsCollection.Enabled = $false;
+        $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings = $null;
+        $snapshotconfig.CreationData.ImageReference = $null;
+        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual $diskAccess.Id $snapshot.DiskAccessId
+
+        # Remove test
+        $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

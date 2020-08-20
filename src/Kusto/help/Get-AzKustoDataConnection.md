@@ -174,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnection
 
 ## NOTES
 

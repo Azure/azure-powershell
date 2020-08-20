@@ -341,6 +341,9 @@ Modifies a resource group.
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
+### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
+Update a role assignment.
+
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
@@ -392,4 +395,3 @@ Updates a Management Group
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.
-

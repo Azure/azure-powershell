@@ -1,45 +1,38 @@
 {
-  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-02-15+1": {
+  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-06-14+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-02-15",
-      "Content": "{\r\n  \"name\": \"sdkpsclustereu\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-06-14",
+      "Content": "{\r\n  \"name\": \"testclusterlbfexs\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "c158a448-85a6-4108-afa0-b016ada54806" ],
-        "CommandName": [ "Test-AzKustoClusterNameAvailability" ],
-        "FullCommandName": [ "Test-AzKustoClusterNameAvailability_CheckExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "71" ]
+        "Content-Length": [ "74" ]
       }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-correlation-request-id": [ "8a8435fe-a9d8-4599-a526-5765e73effaa" ],
-        "x-ms-request-id": [ "b177ad6d-4802-4139-9d4b-c9aa90ec3a62" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20200407T215154Z:8a8435fe-a9d8-4599-a526-5765e73effaa" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "b11bd8e4-e85b-4447-a15f-02bf78fd7d7f" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T015217Z:aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 21:51:54 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=215f89ce1e3b7fe16702b151d790214d3e419a6068dd5b2f7cbbd791a4ac2087;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 01:52:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "148" ],
+        "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"sdkpsclustereu\",\"nameAvailable\":false,\"message\":\"Name \u0027sdkpsclustereu\u0027 with type Engine is already taken. Please specify a different name\"}"
+      "Content": "{\"name\":\"testclusterlbfexs\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterlbfexs\u0027 with type Engine is already taken. Please specify a different name\"}"
     }
   }
 }

@@ -7,7 +7,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzKustoCluster.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -15,7 +15,9 @@ while(-not $mockingPath) {
 
 Describe 'New-AzKustoCluster' {
     It 'CreateExpanded' {
-        $clusterCreated = New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
-        Validate_Cluster $clusterCreated $env.clusterName  $env.location  "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
+        $name = "testcluster" + $env.rstr4
+        $clusterCreated = New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+        Validate_Cluster $clusterCreated $name  $env.location  "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
+        { Remove-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name } | Should -Not -Throw
     }
 }
