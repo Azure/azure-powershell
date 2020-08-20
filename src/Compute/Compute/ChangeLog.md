@@ -22,6 +22,7 @@
 * Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
 * Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
 * Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
+* Added the '-EncryptionType' optional parameter to New-AzVmDiskEncryptionSetConfig.
 * New cmdlet 'Invoke-AzVmPatchAssessment'
 
 ## Version 4.2.1

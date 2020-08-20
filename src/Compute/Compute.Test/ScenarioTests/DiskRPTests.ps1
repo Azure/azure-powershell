@@ -922,6 +922,88 @@ function Test-DiskEncryptionSet
     }
 }
 
+ <#
+.SYNOPSIS
+Testing the EncryptionType parameter passed to the Config obejct is inherited by an associated DiskEncryptionSet object. 
+#>
+function Test-DiskEncryptionSetConfigEncryptionType
+{
+    # Setup
+    $loc = 'centraluseuap';
+    $rgname = 'adamGroupDES5';
+    $encryptionName = "enc" + $rgname;
+
+    $vaultName1 = 'kv11' + $rgname ;
+    $vaultName2 = 'kv12' + $rgname ;
+
+    try
+    {
+        <#
+        # 
+        # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
+        #
+        Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
+        $vaultName1 = 'kv11' + $rgname ;
+        $kekName1 = 'kek11' + $rgname;
+        $secretname1 = 'mysecret11';
+        $secretdata1 = 'mysecretvalue11';
+        $securestring1 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
+
+        $vaultName2 = 'kv12' + $rgname;
+        $kekName2 = 'kek11' + $rgname; #not a typo
+        $secretname2 = 'mysecret12';
+        $secretdata2 = 'mysecretvalue12';
+        $securestring2 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $vault1 = New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        $vault2 = New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        $mocksourcevault1 = $vault1.ResourceId;
+        $mocksourcevault2 = $vault2.ResourceId;
+        $userPrincipalName = (Get-AzContext).Account.Id;
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName1 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName2 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        $kek1 = Add-AzKeyVaultKey -VaultName $vaultName1 -Name $kekName1 -Destination "Software";
+        $kek2 = Add-AzKeyVaultKey -VaultName $vaultName2 -Name $kekName2 -Destination "Software";
+        $secret1 = Set-AzKeyVaultSecret -VaultName $vaultName1 -Name $secretname1 -SecretValue $securestring1;
+        $secret2 = Set-AzKeyVaultSecret -VaultName $vaultName2 -Name $secretname2 -SecretValue $securestring2;
+        $mockkey1 = $kek1.Id
+        $mockkey2 = $kek2.Id
+        #>
+
+        $mockkey1 = "https://kv11adamgroupdes5.vault.azure.net/keys/kek11adamGroupDES5/22120aaea54a4e929e4f44c17d27a72f";
+        $mockkey2 = "https://kv12adamgroupdes5.vault.azure.net:443/keys/kek11adamGroupDES5/ac421d75276142d7be4714ba34966996";
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $mocksourcevault1 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName1;
+        $mocksourcevault2 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName2;
+
+        $encryptionType = "EncryptionAtRestWithPlatformAndCustomerKeys";
+        $encryptionTypeDefault = "EncryptionAtRestWithCustomerKey";
+
+        $encSetConfig = New-AzDiskEncryptionSetConfig -Location $loc -EncryptionType $encryptionType;
+
+        $encSetConfigValues = New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey1 -SourceVaultId $mocksourcevault1 -EncryptionType $encryptionType -IdentityType "SystemAssigned" `
+
+        $encSet = New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName -InputObject $encSetConfigValues;
+
+        Assert-NotNull $encSet;
+        Assert-AreEqual $encryptionType $encSet.EncryptionType;
+
+        Assert-NotNull $encSetConfig;
+        Assert-AreEqual $encSetConfig.EncryptionType $encryptionType;
+
+        $encSetConfigDefault = New-AzDiskEncryptionSetConfig -Location $loc;
+        Assert-AreEqual $encSetConfigDefault.EncryptionType $null;
+    }
+    finally
+    {
+        # Cleanup
+        $encSet | Remove-AzDiskEncryptionSet -Force;
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
 <#
 .SYNOPSIS
 Testing diskAssess object

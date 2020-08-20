@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskEncryptionSetConfigEncryptionType()
+        {
+            TestRunner.RunTestScript("Test-DiskEncryptionSetConfigEncryptionType");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiskAccessObject()
         {
             TestRunner.RunTestScript("Test-DiskAccessObject");
