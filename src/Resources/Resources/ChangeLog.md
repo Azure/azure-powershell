@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`.
 * Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
 * Created new cmdlet `Set-AzRoleAssignment`
 * Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope
@@ -26,7 +27,6 @@
 * Fixed the behaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
 * Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
 * Added breaking change attribute to `Get-AzResourceGroupDeploymentOperation` for the upcoming output type change
-* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`.
 
 ## Version 2.4.0
 * Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
