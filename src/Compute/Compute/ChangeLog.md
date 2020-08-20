@@ -24,6 +24,9 @@
 * Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
 * Added the '-EncryptionType' optional parameter to New-AzVmDiskEncryptionSetConfig.
 * New cmdlet 'Invoke-AzVmPatchAssessment'
+* New cmdlets for new resource type: DiskAccess 'Get-AzDiskAccess', 'New-AzDiskAccess' , 'Get-AzDiskAccess'
+* Added optional parameters '-DiskAccessId' and '-NetworkAccessPolicy' to New-AzSnapshotConfig
+* Added optional parameters '-DiskAccessId' and '-NetworkAccessPolicy' to New-AzDiskConfig
 
 ## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version
