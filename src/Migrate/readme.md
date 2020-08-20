@@ -61,11 +61,11 @@ directive:
   - where:
       verb: New$
       variant: ^CreateExpanded
-    hide: remove
+    remove: true
   - where:
       verb: New$
       variant: ^CreateViaIdentity
-    hide: true
+    remove: true
   - where:
       subject: ^Recovery|^ReplicationRecovery
     remove: true
