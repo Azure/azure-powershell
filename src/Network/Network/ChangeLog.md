@@ -19,9 +19,12 @@
 --->
 
 ## Upcoming Release
-* Added new cmdlet for virtual router
-    - `Update-AzVirtualRouter`: to allow branch to branch traffic
-* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
+* Added warning messages for upcoming breaking change for Virtual Router Peer Routes
+    - `Get-AzVirtualRouterPeerLearnedRoute`
+    - `Get-AzVirtualRouterPeerAdvertisedRoute`
+
+## Version 4.1.0
+* [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
