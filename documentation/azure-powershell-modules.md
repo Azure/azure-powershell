@@ -98,6 +98,7 @@ Security                              | `Az.Security`                           
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
+SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
 SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
 Stack Edge                            | `Az.StackEdge`                          | [![StackEdge]][StackEdgeGallery]
@@ -204,10 +205,11 @@ Web App Service                       | `Az.Websites`                           
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
+[SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
 [StackEdge]:                  https://img.shields.io/powershellgallery/v/Az.StackEdge.svg?style=flat-square&label=Az.StackEdge
-[StackHCI]:                  https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
+[StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
 [StreamAnalytics]:            https://img.shields.io/powershellgallery/v/Az.StreamAnalytics.svg?style=flat-square&label=Az.StreamAnalytics
@@ -308,6 +310,7 @@ Web App Service                       | `Az.Websites`                           
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
+[SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
 [StackEdgeGallery]:                  https://www.powershellgallery.com/packages/Az.StackEdge/
