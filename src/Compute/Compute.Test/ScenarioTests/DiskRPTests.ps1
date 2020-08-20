@@ -1126,11 +1126,6 @@ function Test-SnapshotConfigDiskAccessNetworkPolicy
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
-        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/TestVault123';
-        $mockkey = 'https://myvault.vault-int.azure-int.net/keys/mockkey/00000000000000000000000000000000';
-        $mocksecret = 'https://myvault.vault-int.azure-int.net/secrets/mocksecret/00000000000000000000000000000000';
-        $access = 'Read';
 
         # Config and create test
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
