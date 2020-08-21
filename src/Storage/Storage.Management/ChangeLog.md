@@ -36,6 +36,8 @@
     -  `Set-AzStorageQueueStoredAccessPolicy`
     -  `Get-AzStorageTableStoredAccessPolicy`
     -  `Set-AzStorageTableStoredAccessPolicy`
+
+## Version 2.5.0
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
