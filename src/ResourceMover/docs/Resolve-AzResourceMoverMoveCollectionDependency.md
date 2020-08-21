@@ -8,7 +8,7 @@ schema: 2.0.0
 # Resolve-AzResourceMoverMoveCollectionDependency
 
 ## SYNOPSIS
-Computes, resolves and validate the dependencies of the moveResources in the move collection.
+Computes, resolves and validate the dependencies of the moveresources in the Move collection.
 
 ## SYNTAX
 
@@ -19,27 +19,31 @@ Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName <String> -Re
 ```
 
 ## DESCRIPTION
-Computes, resolves and validate the dependencies of the moveResources in the move collection.
+Computes, resolves and validate the dependencies of the moveresources in the Move collection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Computes, resolves and validate the dependencies of the moveresources in the Move collection.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -SubscriptionId "e80eb9fa-c996-4435-aa32-5af6f3d3077c" -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM" 
 
-{{ Add output here }}
+AdditionalInfo : 
+Code           : MoveCollectionResolveDependenciesOperationFailed
+Detail         : {}
+EndTime        : 8/16/2020 2:28:18 PM
+Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migrate/MoveCollections/PS-ce
+                 ntralus-westcentralus-demoRM/operations/bce85a10-1ff3-4815-a677-7b188f7b441a
+Message        : The resolve dependencies operation of one ore more resources has failed. Check the move status of the resource for more details. 
+Possible Causes: The resolve dependencies operation of one ore more resources has failed.
+Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
+                     
+Name           : bce85a10-1ff3-4815-a677-7b188f7b441a
+Property       : Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.OperationStatusProperties
+StartTime      : 8/16/2020 2:28:16 PM
+Status         : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Computes, resolves and validate the dependencies of the moveresources in the Move collection.
 
 ## PARAMETERS
 
@@ -74,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-The Move Collection Name.
+.
 
 ```yaml
 Type: System.String
@@ -104,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The Resource Group Name.
+.
 
 ```yaml
 Type: System.String

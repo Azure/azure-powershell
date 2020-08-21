@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Creates or updates a Move Resource in the move collection.
+Adding a resource to the Move collection.
 
 ## SYNTAX
 
@@ -25,27 +25,51 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.
+Adding a resource to the Move collection within the specified subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Adding a resource to the move collection.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzResourceMoverMoveResource -SubscriptionId "e80eb9fa-c996-4435-aa32-5af6f3d3077c" -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM" -SourceId “/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM” -Name ”PSDemoVM” -ResourceSettingResourceType ” Microsoft.Compute/virtualMachines” -ResourceSettingTargetResourceName “PSDemoVM”
 
-{{ Add output here }}
+Output:
+
+Code                                    :
+DependsOn                               : {}
+DependsOnOverride                       : {}
+Detail                                  :
+ExistingTargetId                        :
+Id                                      : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migr
+                                          ate/MoveCollections/PS-centralus-westcentralus-demoRM/MoveResources/PSDemoVM
+Message                                 :
+MoveStatusCode                          : DependencyComputationPending
+MoveStatusDetail                        : {}
+MoveStatusJobName                       :
+MoveStatusJobProgress                   :
+MoveStatusMessage                       : The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resou
+                                          rceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM.
+                                              Possible Causes: Dependency computation is pending for resource.
+                                              Recommended Action: Validate dependencies to compute the dependencies.
+
+MoveStatusMoveState                     : PreparePending
+MoveStatusTarget                        :
+MoveStatusTargetId                      :
+Name                                    : PSDemoVM
+ProvisioningState                       : Succeeded
+ResourceSettingResourceType             : Microsoft.Compute/virtualMachines
+ResourceSettingTargetResourceName       : PSDemoVM
+SourceId                                : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachi
+                                          nes/PSDemoVM
+SourceResourceSettingResourceType       : Microsoft.Compute/virtualMachines
+SourceResourceSettingTargetResourceName : PSDemoVM
+Target                                  :
+TargetId                                :
+Type          
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Adding a resource to the move collection within the specified subscription.
 
 ## PARAMETERS
 
