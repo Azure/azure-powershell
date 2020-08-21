@@ -41,9 +41,9 @@ linux_eastus1_1  eastus   linux    Connected  Succeeded
 
 Onboards the machine you're on as a connected machine.
 
-### Example 2: Onboards a remove machine as a connected device
+### Example 2: Onboards a remote machine as a connected device
 ```powershell
-PS C:\> $session = New-PSSession -ComputerName WINBOX
+PS C:\> $session = Connect-PSSession -ComputerName WINBOX
 PS C:\> Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
 
 < truncated output of installing the azcmagent >
@@ -58,7 +58,7 @@ Name           Location OSName   Status     ProvisioningState
 win_eastus1_1  eastus   windows  Connected  Succeeded
 ```
 
-Onboards a remove machine as a connected device using PowerShell remoting.
+Onboards a remote machine as a connected device using PowerShell remoting.
 Note: only Windows as the target is supported at this time.
 
 ## PARAMETERS

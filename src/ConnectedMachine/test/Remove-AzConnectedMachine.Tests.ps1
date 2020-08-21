@@ -11,24 +11,19 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Import-Module "$PSScriptRoot/helper.psm1" -Force
+
 Describe 'Remove-AzConnectedMachine' {
     BeforeAll {
         $machineName = $env.MachineName2
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
-            Write-Host "Live Remove-AzConnectedMachine tests can only be run on Windows and Linux. Skipping..."
+            Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
             $SkipAll = $true
 
             # All `It` calls will have -Skip:$true
             $PSDefaultParameterValues["It:Skip"] = $true
         }
-
-        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
-        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
-        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
-        $AccessToken = $Token.AccessToken
     }
 
     AfterAll {
@@ -50,26 +45,7 @@ Describe 'Remove-AzConnectedMachine' {
             return
         }
 
-        $azcmagentArgs = @(
-            'connect'
-            '--resource-group'
-            $env.ResourceGroupName
-            '--tenant-id'
-            $TenantId
-            '--location'
-            $env.location
-            '--subscription-id'
-            $env.SubscriptionId
-            '--access-token'
-            $AccessToken
-            '--resource-name'
-            $machineName
-        )
-
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath @azcmagentArgs 
-        }
-        & $env.azcmagentPath @azcmagentArgs
+        Start-Agent -MachineName $machineName -Env $env
     }
 
     AfterEach {
@@ -82,10 +58,7 @@ Describe 'Remove-AzConnectedMachine' {
             return
         }
 
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
-        }
-        & $env.azcmagentPath disconnect --access-token $AccessToken
+        Stop-Agent -AgentPath $env.azcmagentPath
     }
 
     It 'Remove a connected machine by name' {
@@ -106,6 +79,7 @@ Describe 'Remove-AzConnectedMachine' {
         $before = $PSDefaultParameterValues["*:SubscriptionId"]
         $PSDefaultParameterValues.Remove("*:SubscriptionId")
         try {
+            { Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName } | Should -Not -Throw
             Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName | Remove-AzConnectedMachine
             { Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName } | Should -Throw
         } finally {

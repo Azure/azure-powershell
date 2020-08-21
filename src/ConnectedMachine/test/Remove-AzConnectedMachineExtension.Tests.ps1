@@ -11,12 +11,63 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Import-Module "$PSScriptRoot/helper.psm1" -Force
+
 Describe 'Remove-AzConnectedMachineExtension' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $machineName = $env.MachineName1
+
+        if ($TestMode -ne 'playback' -and $IsMacOS) {
+            Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
+            $SkipAll = $true
+            # All `It` calls will have -Skip:$true
+            $PSDefaultParameterValues["It:Skip"] = $true
+        }
+
+        if ($TestMode -eq 'playback') {
+            # Skip starting azcmagent
+            return
+        }
+
+        Start-Agent -MachineName $machineName -Env $env
+        Start-ExtensionPopulate -MachineName $machineName -Env $env
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    AfterAll {
+        # Reset PSDefaultParameterValues
+        if ($PSDefaultParameterValues["It:Skip"]) {
+            $PSDefaultParameterValues.Remove("It:Skip")
+            return
+        }
+
+        if ($TestMode -eq 'playback') {
+            # Skip stopping azcmagent
+            return
+        }
+
+        # Extensions must be removed first before the machine is disconnected.
+        Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
+        Stop-Agent -AgentPath $env.azcmagentPath
+    }
+
+    It 'Delete an extension' {
+        { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1 } | Should -Not -Throw
+        Remove-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
+        { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1 } | Should -Throw
+    }
+
+    It 'Delete an extension using piping' {
+        # Tests include -SubscriptionId automatically but it causes
+        # piping to fail. This temporarily removes that default value for
+        # this test.
+        $before = $PSDefaultParameterValues["*:SubscriptionId"]
+        $PSDefaultParameterValues.Remove("*:SubscriptionId")
+        try {
+            { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 } | Should -Not -Throw
+            Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 | Remove-AzConnectedMachineExtension
+            { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 } | Should -Throw
+        } finally {
+            $PSDefaultParameterValues["*:SubscriptionId"] = $before
+        }
     }
 }

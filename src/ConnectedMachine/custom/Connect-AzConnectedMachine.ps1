@@ -151,8 +151,8 @@ function Connect-AzConnectedMachine {
         # Build tag string
         $tagStrings = foreach ($key in $Tag.Keys) {
             $t = $key
-            if ($TagHashtable[$key] -and $TagHashtable[$key].GetType() -eq [string]) {
-                $t += "=$($TagHashtable[$key])"
+            if ($Tag[$key] -and $Tag[$key].GetType() -eq [string]) {
+                $t += "=$($Tag[$key])"
             }
             $t
         }

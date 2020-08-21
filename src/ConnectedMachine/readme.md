@@ -54,10 +54,17 @@ directive:
     hide: true
   - where: $.definitions.Identifier.properties
     suppress: R3019
+
+  # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
+  - where:
+      verb: New
+      variant: ^GetViaIdentity\d?$
+    remove: true
+
   # Set correct variants for PUT and PATCH verbs
   - where:
       verb: New
-      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$|^Create\d?$
+      variant: ^CreateViaIdentity\d?$|^Create\d?$
     remove: true
   - where:
       verb: Set
@@ -67,6 +74,13 @@ directive:
       verb: Update
       variant: ^Update\d?$|^UpdateViaIdentity\d?$
     remove: true
+
+  # New, Update, and Set all do the same thing so we hide New and Update.
+  - where:
+      verb: Update|New
+      subject: MachineExtension
+    hide: true
+
   # Make parameters friendlier for extensions
   - where:
       subject: MachineExtension
@@ -89,10 +103,6 @@ directive:
     set:
       property-name: MachineExtensionType
   - where:
-      verb: New|Update
-      subject: MachineExtension
-    hide: true
-  - where:
       subject: MachineExtension
       parameter-name: Setting
     set:
@@ -107,6 +117,7 @@ directive:
       parameter-name: ForceUpdateTag
     set:
       parameter-name: ForceRerun
+
   # Formatting
   - where:
        model-name: Machine
@@ -127,10 +138,10 @@ directive:
           - Location
           - PropertiesType
           - ProvisioningState
+
+  # These APIs are used by the agent so they do not need to be in the cmdlets.
   - remove-operation:
     - Machines_Reconnect
     - Machines_CreateOrUpdate
     - Machines_Update
-    # - MachineExtensions_CreateOrUpdate
-    # - MachineExtensions_Update
 ```

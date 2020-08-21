@@ -11,12 +11,14 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Import-Module "$PSScriptRoot/helper.psm1" -Force
+
 Describe 'Get-AzConnectedMachine' {
     BeforeAll {
         $machineName = $env.MachineName1
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
-            Write-Host "Live Get-AzConnectedMachine tests can only be run on Windows and Linux. Skipping..."
+            Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
             $SkipAll = $true
             # All `It` calls will have -Skip:$true
             $PSDefaultParameterValues["It:Skip"] = $true
@@ -27,33 +29,7 @@ Describe 'Get-AzConnectedMachine' {
             return
         }
 
-        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
-        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
-        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
-        $AccessToken = $Token.AccessToken
-
-        $azcmagentArgs = @(
-            'connect'
-            '--resource-group'
-            $env.ResourceGroupName
-            '--tenant-id'
-            $TenantId
-            '--location'
-            $env.location
-            '--subscription-id'
-            $env.SubscriptionId
-            '--access-token'
-            $AccessToken
-            '--resource-name'
-            $machineName
-        )
-
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath @azcmagentArgs 
-        }
-        & $env.azcmagentPath @azcmagentArgs
+        Start-Agent -MachineName $machineName -Env $env
     }
 
     AfterAll {
@@ -68,10 +44,7 @@ Describe 'Get-AzConnectedMachine' {
             return
         }
 
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
-        }
-        & $env.azcmagentPath disconnect --access-token $AccessToken
+        Stop-Agent $env.azcmagentPath
     }
 
     It 'Get all connected machines in a subscription' {

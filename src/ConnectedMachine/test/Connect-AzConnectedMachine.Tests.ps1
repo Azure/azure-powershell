@@ -70,9 +70,7 @@ Describe 'Connect-AzConnectedMachine' {
 
     It 'Can connect a machine to an existing resource group' {
         $machine = Connect-AzConnectedMachine @commonParams -Location $env.location -Tag @{ Owner = "Contoso" }
-        $machine.Tag | Write-Host
-        $machine.Tag.Values | Write-Host
-        $machine.Tag.Keys | Write-Host
+
         $machine | Should -Not -Be $null
         $machine.Location | Should -MatchExactly $env.location
         $machine.Tag["Owner"] | Should -Be "Contoso"

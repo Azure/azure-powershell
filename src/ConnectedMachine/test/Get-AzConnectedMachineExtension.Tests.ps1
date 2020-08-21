@@ -11,12 +11,14 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Import-Module "$PSScriptRoot/helper.psm1" -Force
+
 Describe 'Get-AzConnectedMachineExtension' {
     BeforeAll {
         $machineName = $env.MachineName1
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
-            Write-Host "Live Get-AzConnectedMachine tests can only be run on Windows and Linux. Skipping..."
+            Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
             $SkipAll = $true
             # All `It` calls will have -Skip:$true
             $PSDefaultParameterValues["It:Skip"] = $true
@@ -27,37 +29,8 @@ Describe 'Get-AzConnectedMachineExtension' {
             return
         }
 
-        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
-        $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
-        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
-        $AccessToken = $Token.AccessToken
-
-        $azcmagentArgs = @(
-            'connect'
-            '--resource-group'
-            $env.ResourceGroupName
-            '--tenant-id'
-            $TenantId
-            '--location'
-            $env.location
-            '--subscription-id'
-            $env.SubscriptionId
-            '--access-token'
-            $AccessToken
-            '--resource-name'
-            $machineName
-        )
-
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath @azcmagentArgs 
-        }
-        & $env.azcmagentPath @azcmagentArgs
-
-        $splat = @{
-            
-        }
+        Start-Agent -MachineName $machineName -Env $env
+        Start-ExtensionPopulate -MachineName $machineName -Env $env
     }
 
     AfterAll {
@@ -72,21 +45,23 @@ Describe 'Get-AzConnectedMachineExtension' {
             return
         }
 
-        if ($IsLinux) {
-            return sudo $env.azcmagentPath disconnect --access-token $AccessToken
-        }
-        & $env.azcmagentPath disconnect --access-token $AccessToken
+        # Extensions must be removed first before the machine is disconnected.
+        Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
+        Stop-Agent -AgentPath $env.azcmagentPath
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List all extensions' {
+        $all = @(Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName)
+        $all | Should -HaveCount 2
+        $all[0].Name | Should -Be "custom1"
+        $all[0].Setting["commandToExecute"] | Should -Not -BeNullOrEmpty
+        $all[1].Name | Should -Be "custom2"
+        $all[1].MachineExtensionType | Should -BeLike "DependencyAgent*"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get a specific extension' {
+        $all = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
+        $all.Name | Should -Be "custom1"
+        $all.Setting["commandToExecute"] | Should -Not -BeNullOrEmpty
     }
 }
