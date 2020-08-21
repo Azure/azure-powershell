@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
 * Created new cmdlet `Set-AzRoleAssignment`
 * Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope

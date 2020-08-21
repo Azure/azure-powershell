@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Removed legacy SkuSize from input and output (#11725)
 * Added AllowAll & ClientIpAddress Modes to firewall rule cmdlets (#11932)
 * specified a default name when created MySql firewall rule without a name (#11932)

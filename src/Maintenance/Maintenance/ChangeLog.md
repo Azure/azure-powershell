@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.0
 * Added optional schedule related fields to `New-AzMaintenanceConfiguration`
 * Added new cmdlet for `Get-AzMaintenancePublicConfiguration`
 
