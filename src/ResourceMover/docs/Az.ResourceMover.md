@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: Az.ResourceMover cmdlets
 
 ## Az.ResourceMover Cmdlets
+### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
+
+
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
 
 
@@ -41,9 +44,6 @@ The prepare operation is on the moveResources that are in the moveState 'Prepare
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-
-
-### [New-AzResourceMoverMoveResource](New-AzResourceMoverMoveResource.md)
 
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)

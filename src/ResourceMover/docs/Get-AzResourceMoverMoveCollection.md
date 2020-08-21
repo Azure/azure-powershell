@@ -12,8 +12,22 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### List (Default)
+```
+Get-AzResourceMoverMoveCollection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+
+Get-AzResourceMoverMoveCollection -SubscriptionId "e80eb9fa-c996-4435-aa32-5af6f3d3077c"
+```
+
+### Get
 ```
 Get-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzResourceMoverMoveCollection -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,7 +76,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases: MoveCollectionName
 
 Required: True
@@ -77,7 +91,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

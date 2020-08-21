@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/new-azresourcemovermoveresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/add-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
-# New-AzResourceMoverMoveResource
+# Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
 
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Code <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-Detail <IMoveResourceErrorBody[]>] [-ExistingTargetId <String>] [-Message <String>]
  [-MoveStatusCode <String>] [-MoveStatusDetail <IMoveResourceErrorBody[]>] [-MoveStatusJobName <JobName>]

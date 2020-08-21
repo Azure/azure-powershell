@@ -78,7 +78,7 @@ title: Rms-client
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^List$|^List1$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$  
+      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$  
     remove: true
   - where:
       subject: OperationsDiscovery
@@ -95,6 +95,12 @@ directive:
       verb: Invoke
     set:
       subject: Discard
+  - where:      
+      variant: CreateExpanded 
+      subject: MoveResource
+      verb: New
+    set:
+      verb: Add
   - where:      
       variant: PrepareExpanded            
     set:
