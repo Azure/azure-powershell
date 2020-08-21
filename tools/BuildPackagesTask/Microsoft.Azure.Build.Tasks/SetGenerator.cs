@@ -57,7 +57,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
 
             var outputSet = new HashSet<string>();
-            var filesProvidedCount = filesChangedSet.Count;
             var filesFoundCount = 0;
             var useFullMapping = false;
             if (filesChangedSet.Count >= MaxFilesPossible || filesChangedSet.Count == 0)
@@ -132,19 +131,16 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             foreach (var module in moduleNames)
             {
-                foreach (var pair in mappingsDictionary)
+                var key = $"src/{module}/";
+                if (mappingsDictionary.ContainsKey(key))
                 {
-                    if (pair.Key.Equals($"src/{module}/"))
+                    var lines = mappingsDictionary[key];
+                    foreach (var line in lines)
                     {
-                        var lines = pair.Value;
-                        foreach (var line in lines)
+                        if (line.Contains($"/src/{module}/") || line.Contains($"\\src\\{module}\\") || line.Equals($"Az.{module}"))
                         {
-                            if(line.Contains($"/src/{module}/") || line.Contains($"\\src\\{module}\\") || line.Equals($"Az.{module}"))
-                            {
-                                outputSet.Add(line);
-                            }
+                            outputSet.Add(line);
                         }
-                        break;
                     }
                 }
             }
