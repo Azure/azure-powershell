@@ -14,9 +14,9 @@ The operation to create an ASR migration item (enable migration).
 
 ```
 New-AzMigrateReplicationMigrationItem -FabricName <String> -MigrationItemName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- -Input <IEnableMigrationInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String> -PolicyId <String>
+ -ProviderSpecificDetailInstanceType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,22 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
-Enable migration input.
-To construct, see NOTES section for INPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MigrationItemName
 Migration item name.
 
@@ -135,8 +119,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PolicyId
+The policy Id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectionContainerName
 Protection container name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderSpecificDetailInstanceType
+The class type.
 
 ```yaml
 Type: System.String
@@ -231,8 +245,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInput
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
@@ -240,15 +252,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUT <IEnableMigrationInput>: Enable migration input.
-  - `PolicyId <String>`: The policy Id.
-  - `ProviderSpecificDetailInstanceType <String>`: The class type.
 
 ## RELATED LINKS
 

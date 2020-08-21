@@ -14,9 +14,9 @@ Operation to create a protection container.
 
 ```
 New-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
- -ResourceGroupName <String> -ResourceName <String> -CreationInput <ICreateProtectionContainerInput>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,22 +56,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CreationInput
-Create protection container input.
-To construct, see NOTES section for CREATIONINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -129,6 +113,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderSpecificInput
+Provider specific inputs for container creation.
+To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerCreationInput[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,8 +216,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateProtectionContainerInput
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer
@@ -231,9 +229,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CREATIONINPUT <ICreateProtectionContainerInput>: Create protection container input.
-  - `[ProviderSpecificInput <IReplicationProviderSpecificContainerCreationInput[]>]`: Provider specific inputs for container creation.
-    - `[InstanceType <String>]`: The class type.
+PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerCreationInput[]>: Provider specific inputs for container creation.
+  - `[InstanceType <String>]`: The class type.
 
 ## RELATED LINKS
 

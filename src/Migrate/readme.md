@@ -57,24 +57,35 @@ title: Migrate
 subject-prefix: 'Migrate'
 
 directive:
-  # Remove cmdlets that should not be exposed
+  # Correct some generated models
+  - no-inline:
+    - PolicyProviderSpecificInput
+  # Remove cmldets that should not be exposed
   - where:
       verb: New$
-      variant: ^CreateExpanded
+      variant: ^Create$
     remove: true
   - where:
       verb: New$
       variant: ^CreateViaIdentity
     remove: true
   - where:
-      subject: ^Recovery|^ReplicationRecovery
+      subject: 
     remove: true
   - where:
-      subject: ^ReplicationFabric|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage
+      subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage
+    remove: true
+  - where:
+      verb: Export$|Find$|Switch$
     remove: true
   - where:
       subject: ^Commit|^Planned|^Renew|^Reprotect|^Resync|^Unplanned|VaultHealth$|vCenter$|ComputeSize$
     remove: true
+  # Hide cmldets that have customisation
+  - where:
+      verb: Get$
+      subject: 
+    hide: true
   # Correct some generated code
   - from: source-file-csharp
     where: $
