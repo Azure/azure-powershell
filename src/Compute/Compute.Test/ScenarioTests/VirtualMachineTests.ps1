@@ -3028,7 +3028,7 @@ function Test-VirtualMachineGetStatusWithAssignedHost
 
         # Creating a VM using simple parameter set
         $user = "Foo2";
-        $password = "ComepresaP13123fdsa"
+        $password = Get-PasswordForVM
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
