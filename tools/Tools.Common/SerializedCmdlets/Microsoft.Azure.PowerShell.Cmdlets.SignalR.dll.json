@@ -6,7 +6,7 @@
       "Name": "Get-AzSignalR",
       "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.GetAzureRmSignalR",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ListSignalRServiceParameterSet",
       "OutputTypes": [
@@ -14,22 +14,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -67,7 +69,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -450,7 +452,7 @@
       "Name": "Get-AzSignalRKey",
       "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.GetAzureRmSignalRKey",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ResourceGroupParameterSet",
       "OutputTypes": [
@@ -458,7 +460,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "PrimaryKey": "System.String",
@@ -578,22 +580,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -631,7 +635,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -848,22 +852,24 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
                     "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
                     "PublicPort": "System.Nullable`1[System.Int32]",
                     "ServerPort": "System.Nullable`1[System.Int32]",
-                    "ExternalIp": "System.String",
-                    "HostName": "System.String",
-                    "HostNamePrefix": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Version": "System.String",
-                    "Location": "System.String",
                     "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
                     "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -901,7 +907,7 @@
                       "ReturnType": null,
                       "Parameters": [
                         {
-                          "Name": "signalRResource",
+                          "Name": "signalR",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
                       ]
@@ -1012,7 +1018,7 @@
       "Name": "Get-AzSignalRUsage",
       "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.GetAzureRmSignalRUsage",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -1020,7 +1026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Int64]",
               "Limit": "System.Nullable`1[System.Int64]",
@@ -1215,22 +1221,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1268,7 +1276,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -1434,7 +1442,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1686,7 +1694,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1834,22 +1842,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1887,7 +1897,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -1926,7 +1936,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2058,7 +2068,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2177,7 +2187,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2245,22 +2255,24 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
                     "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
                     "PublicPort": "System.Nullable`1[System.Int32]",
                     "ServerPort": "System.Nullable`1[System.Int32]",
-                    "ExternalIp": "System.String",
-                    "HostName": "System.String",
-                    "HostNamePrefix": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Version": "System.String",
-                    "Location": "System.String",
                     "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
                     "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2298,7 +2310,7 @@
                       "ReturnType": null,
                       "Parameters": [
                         {
-                          "Name": "signalRResource",
+                          "Name": "signalR",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
                       ]
@@ -2349,7 +2361,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2444,7 +2456,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2592,22 +2604,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -2645,7 +2659,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -2663,7 +2677,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2681,7 +2695,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2786,7 +2800,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2810,7 +2824,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2902,7 +2916,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2926,7 +2940,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2994,22 +3008,24 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
                     "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
                     "PublicPort": "System.Nullable`1[System.Int32]",
                     "ServerPort": "System.Nullable`1[System.Int32]",
-                    "ExternalIp": "System.String",
-                    "HostName": "System.String",
-                    "HostNamePrefix": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Version": "System.String",
-                    "Location": "System.String",
                     "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
                     "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -3047,7 +3063,7 @@
                       "ReturnType": null,
                       "Parameters": [
                         {
-                          "Name": "signalRResource",
+                          "Name": "signalR",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
                       ]
@@ -3071,7 +3087,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3095,7 +3111,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3163,7 +3179,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3187,7 +3203,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3335,22 +3351,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -3388,7 +3406,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -3406,7 +3424,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3424,7 +3442,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3529,7 +3547,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3553,7 +3571,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3645,7 +3663,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3669,7 +3687,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3737,22 +3755,24 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
                     "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
                     "PublicPort": "System.Nullable`1[System.Int32]",
                     "ServerPort": "System.Nullable`1[System.Int32]",
-                    "ExternalIp": "System.String",
-                    "HostName": "System.String",
-                    "HostNamePrefix": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Version": "System.String",
-                    "Location": "System.String",
                     "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
                     "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -3790,7 +3810,7 @@
                       "ReturnType": null,
                       "Parameters": [
                         {
-                          "Name": "signalRResource",
+                          "Name": "signalR",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
                       ]
@@ -3814,7 +3834,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3838,7 +3858,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3906,7 +3926,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3930,7 +3950,907 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Set",
+      "NounName": "AzSignalRUpstream",
+      "Name": "Set-AzSignalRUpstream",
+      "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.SetAzureRmSignalRUpstream",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ResourceGroupParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+            "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "settings",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+            "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+              "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
+              "PublicPort": "System.Nullable`1[System.Int32]",
+              "ServerPort": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "signalR",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Template",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+            "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Clear",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ResourceGroupParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Template",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Clear",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Template",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Clear",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+                    "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
+                    "PublicPort": "System.Nullable`1[System.Int32]",
+                    "ServerPort": "System.Nullable`1[System.Int32]",
+                    "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
+                    "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "signalR",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Template",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Clear",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Template",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Clear",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3997,7 +4917,7 @@
       "Name": "Test-AzSignalRName",
       "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.TestAzureRmSignalRName",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -4200,22 +5120,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -4253,7 +5175,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -4326,22 +5248,24 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
               "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
               "PublicPort": "System.Nullable`1[System.Int32]",
               "ServerPort": "System.Nullable`1[System.Int32]",
-              "ExternalIp": "System.String",
-              "HostName": "System.String",
-              "HostNamePrefix": "System.String",
-              "ProvisioningState": "System.String",
-              "Version": "System.String",
-              "Location": "System.String",
               "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
               "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -4379,7 +5303,7 @@
                 "ReturnType": null,
                 "Parameters": [
                   {
-                    "Name": "signalRResource",
+                    "Name": "signalR",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
                 ]
@@ -4492,7 +5416,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4722,7 +5646,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4939,7 +5863,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5007,22 +5931,24 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
                     "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
                     "PublicPort": "System.Nullable`1[System.Int32]",
                     "ServerPort": "System.Nullable`1[System.Int32]",
-                    "ExternalIp": "System.String",
-                    "HostName": "System.String",
-                    "HostNamePrefix": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Version": "System.String",
-                    "Location": "System.String",
                     "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
                     "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -5060,7 +5986,7 @@
                       "ReturnType": null,
                       "Parameters": [
                         {
-                          "Name": "signalRResource",
+                          "Name": "signalR",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
                       ]
@@ -5209,7 +6135,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5402,7 +6328,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5410,6 +6336,1305 @@
                   "Constructors": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Update",
+      "NounName": "AzSignalRNetworkAcl",
+      "Name": "Update-AzSignalRNetworkAcl",
+      "ClassName": "Microsoft.Azure.Commands.SignalR.Cmdlets.UpdateAzureRmSignalRNetworkAcl",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ResourceGroupParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+            "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
+              "PrivateEndpoints": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
+              "DefaultAction": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "signalRNetworkAcls",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+            "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+              "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+              "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+              "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
+              "PublicPort": "System.Nullable`1[System.Int32]",
+              "ServerPort": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "ExternalIp": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "HostNamePrefix": "System.String",
+              "HostName": "System.String",
+              "Version": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "signalR",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultAction",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Allow",
+            "Deny"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PublicNetwork",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PrivateEndpointName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Allow",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "ClientConnection",
+            "ServerConnection",
+            "RESTAPI"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Deny",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "ClientConnection",
+            "ServerConnection",
+            "RESTAPI"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ResourceGroupParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultAction",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Allow",
+                  "Deny"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetwork",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrivateEndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Allow",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Deny",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultAction",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Allow",
+                  "Deny"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetwork",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrivateEndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Allow",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Deny",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+                  "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
+                    "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+                    "Cors": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
+                    "NetworkAcls": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Features": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
+                    "PublicPort": "System.Nullable`1[System.Int32]",
+                    "ServerPort": "System.Nullable`1[System.Int32]",
+                    "Id": "System.String",
+                    "Location": "System.String",
+                    "ExternalIp": "System.String",
+                    "Name": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostNamePrefix": "System.String",
+                    "HostName": "System.String",
+                    "Version": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "signalR",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultAction",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Allow",
+                  "Deny"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetwork",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrivateEndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Allow",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Deny",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultAction",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Allow",
+                  "Deny"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetwork",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrivateEndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Allow",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Deny",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "ClientConnection",
+                  "ServerConnection",
+                  "RESTAPI"
+                ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
@@ -5608,7 +7833,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Family": "System.String",
@@ -5680,10 +7905,217 @@
       "Methods": [],
       "Constructors": []
     },
+    "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings": {
+      "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+      "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "settings",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate": {
+      "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+      "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "HubPattern": "System.String",
+        "EventPattern": "System.String",
+        "CategoryPattern": "System.String",
+        "UrlTemplate": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "toSDKTemplate",
+          "Parameters": [],
+          "ReturnType": "Microsoft.Azure.Management.SignalR.Models.UpstreamTemplate"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "upstream",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.SignalR.Models.UpstreamTemplate": {
+      "Namespace": "Microsoft.Azure.Management.SignalR.Models",
+      "Name": "Microsoft.Azure.Management.SignalR.Models.UpstreamTemplate",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.SignalR.Models.UpstreamTemplate, Microsoft.Azure.Management.SignalR, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "HubPattern": "System.String",
+        "EventPattern": "System.String",
+        "CategoryPattern": "System.String",
+        "UrlTemplate": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "urlTemplate",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "hubPattern",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "eventPattern",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "categoryPattern",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AllowedOrigins": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -5741,6 +8173,170 @@
       "Methods": [],
       "Constructors": []
     },
+    "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls": {
+      "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+      "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
+        "PrivateEndpoints": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
+        "DefaultAction": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "signalRNetworkAcls",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl": {
+      "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+      "Name": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Allow": "System.Collections.Generic.IList`1[System.String]",
+        "Deny": "System.Collections.Generic.IList`1[System.String]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "networkACL",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL": {
+      "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
+      "Name": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Allow": "System.Collections.Generic.IList`1[System.String]",
+        "Deny": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "privateEndpointAcl",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5757,7 +8353,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5769,7 +8365,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Value": "System.String",
@@ -5932,16 +8528,6 @@
       "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": "System.Byte",
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Void": {
-      "Namespace": "System",
-      "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
