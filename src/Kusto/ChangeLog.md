@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Updated API version to 2020-06-14; added new properties to data connection and cluster
 
 ## Version 0.1.4
