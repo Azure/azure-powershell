@@ -24,6 +24,8 @@
 * Added `-InstanceView` switch as optional parameter to `Get-AzHostGroup`
 * Added new cmdlet `Invoke-AzVmPatchAssessment`
 * Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* Added `OrchestrationMode` parameter to the `New-AzVmssConfig` cmdlet.
 
 ## Version 4.2.1
 * Added warning when using `New-AzVmss` without "latest" image version

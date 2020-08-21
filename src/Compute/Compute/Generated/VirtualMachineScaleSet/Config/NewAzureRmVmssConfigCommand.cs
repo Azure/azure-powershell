@@ -244,7 +244,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter EncryptionAtHost { get; set; } 
+        public SwitchParameter EncryptionAtHost { get; set; }
+
+        [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false,
+            HelpMessage = "Set the orchestration mode of the scale set. This will be either the VM mode or the traditional mode.")]
+        [Parameter(ParameterSetName = "DefaultParameterSet", Mandatory = false,
+            HelpMessage = "Set the orchestration mode of the scale set. This will be either the VM mode or the traditional mode.")]
+        public string OrchestrationMode { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -630,6 +636,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.OrchestrationMode))
+            { 
+                CheckOrchestrationModeRequirements(vVirtualMachineProfile);
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -649,9 +660,38 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 AdditionalCapabilities = vAdditionalCapabilities,
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
+                OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
             };
 
             WriteObject(vVirtualMachineScaleSet);
+        }
+
+        private void CheckOrchestrationModeRequirements(PSVirtualMachineScaleSetVMProfile virtualMachineProfile)
+        {
+            if (virtualMachineProfile != null)
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The configuration caused the 'VirtualMachineScaleSetVMProfile' to be created, which is not allowed with the orchestration mode.", this.OrchestrationMode);
+            }
+            else if (this.IsParameterBound(c => c.SinglePlacementGroup))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'SinglePlacementGroup' is not allowed with an orchestration mode.", this.SinglePlacementGroup);
+            }
+            else if (this.IsParameterBound(c => c.Zone))
+            {
+                if (this.Zone.Length > 1)
+                {
+                    WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.", this.Zone);
+                } 
+            }
+            else if (!this.IsParameterBound(c => c.PlatformFaultDomainCount))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'PlatformFaultDomainCount' is required with an orchestration mode.", this.PlatformFaultDomainCount);
+            }
+        }
+
+        private void WriteError(string message, params object[] args)
+        {
+            base.WriteError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));
         }
     }
 }

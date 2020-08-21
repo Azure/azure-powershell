@@ -2579,3 +2579,69 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         Clean-ResourceGroup $rgname
     }
 }
+
+ <#
+.SYNOPSIS
+    Testing the new OrchestrationMode and PlatformFaultDomainCount parameters when creating VMSS objects. 
+    OrchestrationMode has several requirements
+    -PlatformFaultDomainCount is passed in.
+    -The VMSS VMProfile is not passed in.
+    -The Zone has only 1 zone.
+    -The SinglePlacementGroup parameter is false 
+#>
+function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $orchestrationMode = "VM";
+        $licenseType = "Windows_Server";
+        $platformFaultDomainCount = 5;
+        $platformFaultDomainCountConfig = 3;
+        $zone = "2";
+        $zones = @("2", "3");
+        $domainNameLabel = $rgname + "domain";
+        $VmSku = "Standard_D2s_v3";
+        $vmssname = "MyVmss";
+        $username = "admin01";
+        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        # Validation
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
+        
+        Assert-NotNull $vmss; 
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $platformFaultDomainCount;
+
+
+        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig;
+        Assert-NotNull $vmssConfigFaultDomain;
+        Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        #If a VMProfile exists in the config exists, the cmdlet fails. 
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -LicenseType $licenseType -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4'; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The configuration caused the 'VirtualMachineScaleSetVMProfile' to be created, which is not allowed with the orchestration mode."; 
+
+        #If OrchestrationMode is given without PlatformFaultDomainCount, the cmdlet fails. 
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'PlatformFaultDomainCount' is required with an orchestration mode.";
+        
+        #If SinglePlacementGroup is passed as 'true' with OrchestrationMode, the cmdlet fails. 
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -SinglePlacementGroup $true; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'SinglePlacementGroup' is not allowed with an orchestration mode."; 
+
+        #If multiple zones are passed in with OrchestrationMode, the cmdlet fails. 
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -Zone $zones; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.";
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
