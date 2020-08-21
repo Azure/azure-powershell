@@ -71,9 +71,14 @@ Disables Advanced Data Security on a managed instance.
 ### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
 
-
 ### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Disables Azure AD only authentication for a specific SQL Server.
+
+### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Server.
+
+### [Get-AzSqlServerActiveDirectoryOnlyAuthentication](Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Server.
 
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.

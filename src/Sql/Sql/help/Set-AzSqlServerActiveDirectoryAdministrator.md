@@ -104,7 +104,7 @@ Specifies if only Azure Active Directory authentication is allowed.
 ```yaml
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases:
+Aliases: IsAzureOnlyAuthentication
 
 Required: False
 Position: 4

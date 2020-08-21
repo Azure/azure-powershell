@@ -18,12 +18,12 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
+namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AzureSqlServerActiveDirectoryAdministratorCommunicator
+    public class AzureSqlServerActiveDirectoryOnlyAuthenticationCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         private static SqlManagementClient SqlClient { get; set; }
 
         /// <summary>
-        /// The Sql client default name for the active directory admin
+        /// The Sql client default name for the active directory only authentication
         /// </summary>
-        private static string ActiveDirectoryDefaultName { get { return "ActiveDirectory"; } }
+        private static string ActiveDirectoryOnlyAuthenticationDefaultName { get { return "Default"; } }
 
         /// <summary>
-        /// The Sql client default type for the active directory admin
+        /// The Sql client default type for the active directory only authentication
         /// </summary>
-        private static string ActiveDirectoryDefaultType { get { return "activeDirectory"; } }
+        private static string ActiveDirectoryOnlyAuthenticationDefaultType { get { return "default"; } }
 
         /// <summary>
         /// Gets or set the Azure subscription
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerActiveDirectoryAdministratorCommunicator(IAzureContext context)
+        public AzureSqlServerActiveDirectoryOnlyAuthenticationCommunicator(IAzureContext context)
         {
             Context = context;
             if (context?.Subscription != Subscription)
@@ -66,35 +66,27 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         }
 
         /// <summary>
-        /// Gets the Azure SQL Server Active Directory administrator
+        /// Gets the Azure SQL Server Active Directory only authentication
         /// </summary>
-        public Management.Sql.Models.ServerAzureADAdministrator Get(string resourceGroupName, string serverName)
+        public Management.Sql.Models.ServerAzureADOnlyAuthentication Get(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADAdministrators.GetAsync(resourceGroupName, serverName).Result;
+            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.GetAsync(resourceGroupName, serverName).Result;
         }
 
         /// <summary>
-        /// Lists Azure SQL Server Active Directory administrators
+        /// Disables Azure Active Directory only authentication on a Azure SQL Server
         /// </summary>
-        public IEnumerable<Management.Sql.Models.ServerAzureADAdministrator> List(string resourceGroupName, string serverName)
+        public Management.Sql.Models.ServerAzureADOnlyAuthentication CreateOrUpdate(string resourceGroupName, string serverName, ServerAzureADOnlyAuthentication parameters)
         {
-            return GetCurrentSqlClient().ServerAzureADAdministrators.ListByServer(resourceGroupName, serverName);
+            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
-        /// Creates or updates a Azure SQL Server Active Directory Administrator
+        /// Lists Azure SQL Server Active Directory only authenctications
         /// </summary>
-        public Management.Sql.Models.ServerAzureADAdministrator CreateOrUpdate(string resourceGroupName, string serverName, ServerAzureADAdministrator parameters)
+        public IEnumerable<Management.Sql.Models.ServerAzureADOnlyAuthentication> List(string resourceGroupName, string serverName)
         {
-           return GetCurrentSqlClient().ServerAzureADAdministrators.CreateOrUpdate(resourceGroupName, serverName, parameters);
-        }
-
-        /// <summary>
-        /// Deletes a Azure SQL Server Active Directory Administrator
-        /// </summary>
-        public void Remove(string resourceGroupName, string serverName)
-        {
-            GetCurrentSqlClient().ServerAzureADAdministrators.DeleteWithHttpMessagesAsync(resourceGroupName, serverName);
+            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.ListByServer(resourceGroupName, serverName);
         }
 
         /// <summary>

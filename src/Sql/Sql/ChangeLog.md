@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Add readable secondary parameter to Invoke-AzureSqlDatabaseFailover
 * Add cmdlet Disable-AzSqlServerActiveDirectoryOnlyAuthentication
+* Add cmdlet Enable-AzSqlServerActiveDirectoryOnlyAuthentication
+* Add cmdlet Get-AzSqlServerActiveDirectoryOnlyAuthentication
 
 ## Version 2.4.0
 * Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
