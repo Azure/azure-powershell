@@ -22,18 +22,6 @@
     -  `Set-AzDataLakeGen2AclRecursive` 
     -  `Update-AzDataLakeGen2AclRecursive` 
     -  `Remove-AzDataLakeGen2AclRecursive`
-* Supported Container access policy with new permission x,t
-    -  `New-AzStorageContainerStoredAccessPolicy`
-    -  `Set-AzStorageContainerStoredAccessPolicy`
-* Change the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
-    -  `Get-AzStorageContainerStoredAccessPolicy`
-    -  `Set-AzStorageContainerStoredAccessPolicy`
-    -  `Get-AzStorageShareStoredAccessPolicy`
-    -  `Set-AzStorageShareStoredAccessPolicy`
-    -  `Get-AzStorageQueueStoredAccessPolicy`
-    -  `Set-AzStorageQueueStoredAccessPolicy`
-    -  `Get-AzStorageTableStoredAccessPolicy`
-    -  `Set-AzStorageTableStoredAccessPolicy`
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
