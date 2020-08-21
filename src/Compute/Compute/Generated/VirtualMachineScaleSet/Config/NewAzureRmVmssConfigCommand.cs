@@ -364,6 +364,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
 
+            if (this.AutoOSUpgrade.IsPresent)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new UpgradePolicy();
+                }
+                if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
+                {
+                    vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+                }
+                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+            }
+            /*
             if (vUpgradePolicy == null)
             {
                 vUpgradePolicy = new UpgradePolicy();
@@ -373,6 +386,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+            */
 
             if (this.EnableAutomaticRepair.IsPresent)
             {
