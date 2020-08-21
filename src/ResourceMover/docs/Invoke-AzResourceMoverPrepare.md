@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

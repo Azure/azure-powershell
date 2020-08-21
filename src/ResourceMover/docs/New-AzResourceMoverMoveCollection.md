@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
+Creates a move collection.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -Su
 ```
 
 ## DESCRIPTION
-
+Creates a move collection.
 
 ## EXAMPLES
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+The geo-location where the resource lives.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

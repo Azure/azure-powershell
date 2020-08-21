@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzResourceMoverUnresolvedDependency
 
 ## SYNOPSIS
-
+Gets a list of unresolved dependencies.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-
+Gets a list of unresolved dependencies.
 
 ## EXAMPLES
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

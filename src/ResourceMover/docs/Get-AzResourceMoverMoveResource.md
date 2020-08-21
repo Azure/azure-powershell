@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-
+Gets the Move Resource.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-
+Gets the Move Resource.
 
 ## EXAMPLES
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Resource Name.
 
 ```yaml
 Type: System.String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

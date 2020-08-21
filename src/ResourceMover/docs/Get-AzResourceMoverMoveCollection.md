@@ -8,15 +8,13 @@ schema: 2.0.0
 # Get-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
+Gets the move collection.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzResourceMoverMoveCollection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
-
-Get-AzResourceMoverMoveCollection -SubscriptionId "e80eb9fa-c996-4435-aa32-5af6f3d3077c"
 ```
 
 ### Get
@@ -32,7 +30,7 @@ Get-AzResourceMoverMoveCollection -ResourceGroupName <String> -SubscriptionId <S
 ```
 
 ## DESCRIPTION
-
+Gets the move collection.
 
 ## EXAMPLES
 
@@ -72,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -87,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

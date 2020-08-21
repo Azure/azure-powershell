@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-
+Creates or updates a Move Resource in the move collection.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-
+Creates or updates a Move Resource in the move collection.
 
 ## EXAMPLES
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveStatusJobName
-Defines the job names.
+Defines the job name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Resource Name.
 
 ```yaml
 Type: System.String
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String

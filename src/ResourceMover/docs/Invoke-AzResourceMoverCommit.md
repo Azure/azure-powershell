@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveResource
-Gets or sets the list of move resources ARM id's.
+Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
 
 ```yaml
 Type: System.String[]
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ValidateOnly
-Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
+Gets or sets a value indicating whether the operation needs to only run pre-requisite.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

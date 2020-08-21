@@ -12,16 +12,16 @@ Microsoft Azure PowerShell: Az.ResourceMover cmdlets
 
 ## Az.ResourceMover Cmdlets
 ### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
-
+Creates or updates a Move Resource in the move collection.
 
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
-
+Gets the move collection.
 
 ### [Get-AzResourceMoverMoveResource](Get-AzResourceMoverMoveResource.md)
-
+Gets the Move Resource.
 
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
-
+Gets a list of unresolved dependencies.
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
 Commits the set of resources included in the request body.
@@ -44,13 +44,13 @@ The prepare operation is on the moveResources that are in the moveState 'Prepare
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-
+Creates a move collection.
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
-
+Deletes a move collection.
 
 ### [Remove-AzResourceMoverMoveResource](Remove-AzResourceMoverMoveResource.md)
-
+Deletes a Move Resource from the move collection.
 
 ### [Resolve-AzResourceMoverMoveCollectionDependency](Resolve-AzResourceMoverMoveCollectionDependency.md)
 Computes, resolves and validate the dependencies of the moveResources in the move collection.

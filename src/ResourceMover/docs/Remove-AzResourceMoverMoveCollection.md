@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
+Deletes a move collection.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-
+Deletes a move collection.
 
 ## EXAMPLES
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
