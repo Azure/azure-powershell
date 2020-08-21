@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added warning messages for planning to disable soft delete
 * Added warning messages for planning to remove attribute SecretValueText
 

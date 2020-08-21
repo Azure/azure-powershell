@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+
 * Added support for gen3 Sql Pools
     - For `Get-AzSynapseSqlPool`, `New-AzSynapseSqlPool`, ` Remove-AzSynapseSqlPool`, ` Test-AzSynapseSqlPool` and `Update-AzSynapseSqlPool` cmdlet
         - Add Version parameter to cmdlets to specify version 3. 
