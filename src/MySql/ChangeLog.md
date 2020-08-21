@@ -18,14 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Remove legacy SkuSize from input and output (#11725)
-* Specify a default name when create MySql firewall rule without name and add AllowAll mode (#11932)
-* Enable EndIpAddress to be absent if only one IP to be authorized in firewall rule (#11933)
-* Add validateset for parameter StorageAutogrow (#11936)
-* Rename New-AzMySqlServerReplica to New-AzMySqlReplica (#11938)
-* Use 'master' and 'replica' to avoid confusion when create mysql replica server (#11939)
-* Provide hint in doc to use Update-AzMySqlServer & Update-AzMySqlServerConfiguration as a candidate for each other (#11954)
+
+## Version 0.2.0
+* Removed legacy SkuSize from input and output (#11725)
+* Added AllowAll & ClientIpAddress Modes to firewall rule cmdlets (#11932)
+* specified a default name when created MySql firewall rule without a name (#11932)
+* Added validateset for parameter StorageAutogrow (#11936)
+* Renamed New-AzMySqlServerReplica to New-AzMySqlReplica (#11938)
+* Used 'master' and 'replica' to avoid confusion when created mysql replica server (#11939)
+* Provided hint in doc to use Update-AzMySqlServer & Update-AzMySqlServerConfiguration as a candidate for each other (#11954)
 
 ## Version 0.1.0
-* the first preview release
+* The first preview release
 

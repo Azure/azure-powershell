@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -32,10 +33,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         protected const string ByInputObjectParameterSet = "ByInputObject";
         protected const string ByResourceIdParameterSet = "ByResourceId";
 
+        [CmdletParameterBreakingChange(
+            nameOfParameterChanging: "Id",
+            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
+            ReplaceMentCmdletParameterName = "Name")]
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration definition identifier.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        [CmdletParameterBreakingChange(
+            nameOfParameterChanging: "ResourceId",
+            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
+            ChangeDescription = ManagedServicesUtility.DeprecatedParameterDescription)]
         [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full qualified resource id of registration definition.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

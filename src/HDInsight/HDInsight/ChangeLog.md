@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.5.0
+* Supported creating cluster with encryption at host feature.
+
 ## Version 3.4.0
 * Supported creating cluster with encryption in transit feature.
     - Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightCluster`
