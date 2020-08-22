@@ -5,8 +5,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/providers/Microsoft.HybridCompute/machines?api-version=2019-12-12",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "d4d86519-d811-48e6-accc-671d926838ce" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "42a9387d-f476-4ddc-aea3-39e2cbaab57b" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,31 +21,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "ac705046-c63b-4061-bb71-95b0657d8e89" ],
+        "x-ms-request-id": [ "105569e9-49aa-455f-8a60-5704201b83e9" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "cad7aa67-0393-439b-82fa-46c94bc5e0cb" ],
-        "x-ms-routing-request-id": [ "WESTUS:20200807T021717Z:cad7aa67-0393-439b-82fa-46c94bc5e0cb" ],
+        "x-ms-correlation-request-id": [ "c69c569d-c701-4125-acbe-cbefe2b2f2c7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200822T001700Z:c69c569d-c701-4125-acbe-cbefe2b2f2c7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 07 Aug 2020 02:17:17 GMT" ]
+        "Date": [ "Sat, 22 Aug 2020 00:17:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1142" ],
+        "Content-Length": [ "900" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/nagsyd\",\"name\":\"nagsyd\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"e9cf2564-f9d2-47dc-8e98-e15884f71e2e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.10.20195.006\",\"status\":\"Connected\",\"lastStatusChange\":\"2020-08-07T02:17:14.277682Z\",\"errorDetails\":[],\"displayName\":\"TYLEONHA-DESK1\",\"machineFqdn\":\"TYLEONHA-DESK1\",\"osName\":\"windows\",\"osVersion\":\"10.0.18363.959\",\"osProfile\":{\"computerName\":\"TYLEONHA-DESK1\"},\"vmId\":\"ad012ce3-80a8-456f-b7f9-09182cc667a9\",\"clientPublicKey\":\"MIIBCgKCAQEA7fnwK/A2nYCe1RO4L2qoEzcfJwMO4qSvirivjnwHTtmsWM4lx/s3+SKnUMYiKRNXRjMHDtUetUfJkigYwZbRpNuCreZKf4p94NZkHmCtO8RSR+iKS3OGdd8R4n7ytQBULwraEHsGr8ME/FT/E8TIVul7HQU+EVLTYcxueaL7+kGIPAX6lTZPrFFDm4l736qSK1A7VLpECTtd2OXqVuSHF4z0XjNux2ZFjJRI0A3VHpIxv4bQ3rifgZNCVsYJEYyJkH0hLdDKjX0u5/0hpfMGGGAHEGjmdipKfakwsPVlgWcdNimSUrYg35aeE00oHJ1umwQHZh1/foBE2nkEMpVoqQIDAQAB\"}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines/5ckuvr\",\"name\":\"5ckuvr\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"bbd9916f-8248-4340-aa37-e93a3afef9f7\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"osName\":\"windows\",\"osProfile\":{},\"vmId\":\"3c7da33d-4591-410c-bc2d-29fff148da57\",\"clientPublicKey\":\"MIIBCgKCAQEAy4/ugttHx/MkfRSpkZsKOCjpbf1YVW6MQEAPLBTcrDNEdlxXbp5aXp7oXvCL6D7MC2bLHW2n6+MTXeHFkVhWMvcXzmlfMwDYvxCo8jgQ0+h10/reGFR8rqYWZuMPQQ/XHVagBea73WyBx7dKN4DnvkyAiTvIAxsjIaohBFEmGHziM6aRIICGUwyN4idF4J0ffB10+u/7sx3pt93d429divPObdyTkl4ynY/svRCZEsnIGnRKCZMI8Xbz0BXFDTLcHtepekzEgtolqp9p3YYHsa775ro5FrCS2UMmbSfH1SyTX5JVUby4JrWOv9JyGnwftvvIMw4A1A0liUKlGFFIrQIDAQAB\"}}]}"
     }
   },
-  "Get-AzConnectedMachine+[NoContext]+Get all connected machines in a resource group+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines?api-version=2019-12-12+1": {
+  "Get-AzConnectedMachine+[NoContext]+Get all connected machines in a resource group+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines?api-version=2019-12-12+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines?api-version=2019-12-12",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "61634684-3705-4b31-b6e2-707b8ad44d54" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "50bc5d2e-110e-4a6d-9bba-2ca674bd77ee" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,31 +60,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "af7810f4-13fd-4c50-8b2a-7101986de3c5" ],
+        "x-ms-request-id": [ "6a4e1923-3efe-4cfe-b5c3-443bec8b7b11" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "fd1d2c8d-7564-4695-abe5-4b048b57686d" ],
-        "x-ms-routing-request-id": [ "WESTUS:20200807T021718Z:fd1d2c8d-7564-4695-abe5-4b048b57686d" ],
+        "x-ms-correlation-request-id": [ "86fa7bcc-d1f7-4622-a875-ac79d5b6ea7c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200822T001701Z:86fa7bcc-d1f7-4622-a875-ac79d5b6ea7c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 07 Aug 2020 02:17:17 GMT" ]
+        "Date": [ "Sat, 22 Aug 2020 00:17:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1142" ],
+        "Content-Length": [ "900" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/nagsyd\",\"name\":\"nagsyd\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"e9cf2564-f9d2-47dc-8e98-e15884f71e2e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.10.20195.006\",\"status\":\"Connected\",\"lastStatusChange\":\"2020-08-07T02:17:14.277682Z\",\"errorDetails\":[],\"displayName\":\"TYLEONHA-DESK1\",\"machineFqdn\":\"TYLEONHA-DESK1\",\"osName\":\"windows\",\"osVersion\":\"10.0.18363.959\",\"osProfile\":{\"computerName\":\"TYLEONHA-DESK1\"},\"vmId\":\"ad012ce3-80a8-456f-b7f9-09182cc667a9\",\"clientPublicKey\":\"MIIBCgKCAQEA7fnwK/A2nYCe1RO4L2qoEzcfJwMO4qSvirivjnwHTtmsWM4lx/s3+SKnUMYiKRNXRjMHDtUetUfJkigYwZbRpNuCreZKf4p94NZkHmCtO8RSR+iKS3OGdd8R4n7ytQBULwraEHsGr8ME/FT/E8TIVul7HQU+EVLTYcxueaL7+kGIPAX6lTZPrFFDm4l736qSK1A7VLpECTtd2OXqVuSHF4z0XjNux2ZFjJRI0A3VHpIxv4bQ3rifgZNCVsYJEYyJkH0hLdDKjX0u5/0hpfMGGGAHEGjmdipKfakwsPVlgWcdNimSUrYg35aeE00oHJ1umwQHZh1/foBE2nkEMpVoqQIDAQAB\"}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines/5ckuvr\",\"name\":\"5ckuvr\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"bbd9916f-8248-4340-aa37-e93a3afef9f7\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"osName\":\"windows\",\"osProfile\":{},\"vmId\":\"3c7da33d-4591-410c-bc2d-29fff148da57\",\"clientPublicKey\":\"MIIBCgKCAQEAy4/ugttHx/MkfRSpkZsKOCjpbf1YVW6MQEAPLBTcrDNEdlxXbp5aXp7oXvCL6D7MC2bLHW2n6+MTXeHFkVhWMvcXzmlfMwDYvxCo8jgQ0+h10/reGFR8rqYWZuMPQQ/XHVagBea73WyBx7dKN4DnvkyAiTvIAxsjIaohBFEmGHziM6aRIICGUwyN4idF4J0ffB10+u/7sx3pt93d429divPObdyTkl4ynY/svRCZEsnIGnRKCZMI8Xbz0BXFDTLcHtepekzEgtolqp9p3YYHsa775ro5FrCS2UMmbSfH1SyTX5JVUby4JrWOv9JyGnwftvvIMw4A1A0liUKlGFFIrQIDAQAB\"}}]}"
     }
   },
-  "Get-AzConnectedMachine+[NoContext]+Get a connected machine by machine name+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/nagsyd?api-version=2019-12-12+1": {
+  "Get-AzConnectedMachine+[NoContext]+Get a connected machine by machine name+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines/5ckuvr?api-version=2019-12-12+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/nagsyd?api-version=2019-12-12",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines/5ckuvr?api-version=2019-12-12",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "a0c7d497-e77c-4891-965b-09344b362ff6" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "d3625223-1f18-4fc2-a4b0-3fdc46ad3837" ],
         "CommandName": [ "Get-AzConnectedMachine" ],
         "FullCommandName": [ "Get-AzConnectedMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -99,21 +99,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e1b655bd-0f34-4031-8135-cb11cc315614" ],
+        "x-ms-request-id": [ "4859bf97-1d0b-4a46-a100-2f3ca8d2f04f" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "63869ef5-36e0-47f6-9d9c-a677f93d8032" ],
-        "x-ms-routing-request-id": [ "WESTUS:20200807T021719Z:63869ef5-36e0-47f6-9d9c-a677f93d8032" ],
+        "x-ms-correlation-request-id": [ "b3054ccb-13a0-4bf6-a5a3-1635d89247b1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20200822T001701Z:b3054ccb-13a0-4bf6-a5a3-1635d89247b1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 07 Aug 2020 02:17:19 GMT" ]
+        "Date": [ "Sat, 22 Aug 2020 00:17:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1130" ],
+        "Content-Length": [ "1132" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-swmvgp/providers/Microsoft.HybridCompute/machines/nagsyd\",\"name\":\"nagsyd\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"e9cf2564-f9d2-47dc-8e98-e15884f71e2e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.10.20195.006\",\"status\":\"Connected\",\"lastStatusChange\":\"2020-08-07T02:17:14.277682Z\",\"errorDetails\":[],\"displayName\":\"TYLEONHA-DESK1\",\"machineFqdn\":\"TYLEONHA-DESK1\",\"osName\":\"windows\",\"osVersion\":\"10.0.18363.959\",\"osProfile\":{\"computerName\":\"TYLEONHA-DESK1\"},\"vmId\":\"ad012ce3-80a8-456f-b7f9-09182cc667a9\",\"clientPublicKey\":\"MIIBCgKCAQEA7fnwK/A2nYCe1RO4L2qoEzcfJwMO4qSvirivjnwHTtmsWM4lx/s3+SKnUMYiKRNXRjMHDtUetUfJkigYwZbRpNuCreZKf4p94NZkHmCtO8RSR+iKS3OGdd8R4n7ytQBULwraEHsGr8ME/FT/E8TIVul7HQU+EVLTYcxueaL7+kGIPAX6lTZPrFFDm4l736qSK1A7VLpECTtd2OXqVuSHF4z0XjNux2ZFjJRI0A3VHpIxv4bQ3rifgZNCVsYJEYyJkH0hLdDKjX0u5/0hpfMGGGAHEGjmdipKfakwsPVlgWcdNimSUrYg35aeE00oHJ1umwQHZh1/foBE2nkEMpVoqQIDAQAB\"}}"
+      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-9k2g8p/providers/Microsoft.HybridCompute/machines/5ckuvr\",\"name\":\"5ckuvr\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"bbd9916f-8248-4340-aa37-e93a3afef9f7\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.11.20231.004\",\"status\":\"Connected\",\"lastStatusChange\":\"2020-08-22T00:16:58.2898434Z\",\"errorDetails\":[],\"displayName\":\"TYLEONHA-DESK1\",\"machineFqdn\":\"TYLEONHA-DESK1\",\"osName\":\"windows\",\"osVersion\":\"10.0.18363.1016\",\"osProfile\":{\"computerName\":\"TYLEONHA-DESK1\"},\"vmId\":\"3c7da33d-4591-410c-bc2d-29fff148da57\",\"clientPublicKey\":\"MIIBCgKCAQEAy4/ugttHx/MkfRSpkZsKOCjpbf1YVW6MQEAPLBTcrDNEdlxXbp5aXp7oXvCL6D7MC2bLHW2n6+MTXeHFkVhWMvcXzmlfMwDYvxCo8jgQ0+h10/reGFR8rqYWZuMPQQ/XHVagBea73WyBx7dKN4DnvkyAiTvIAxsjIaohBFEmGHziM6aRIICGUwyN4idF4J0ffB10+u/7sx3pt93d429divPObdyTkl4ynY/svRCZEsnIGnRKCZMI8Xbz0BXFDTLcHtepekzEgtolqp9p3YYHsa775ro5FrCS2UMmbSfH1SyTX5JVUby4JrWOv9JyGnwftvvIMw4A1A0liUKlGFFIrQIDAQAB\"}}"
     }
   }
 }

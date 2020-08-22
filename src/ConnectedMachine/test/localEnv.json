@@ -1,9 +1,9 @@
 {
-  "MachineName1": "qj79vi",
-  "MachineName2": "lo35y0",
   "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d",
-  "ResourceGroupName": "connectedmachine-rg-vqzufb",
-  "azcmagentPath": "azcmagent",
-  "Location": "eastus",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  "MachineName2": "kg3m7l",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "MachineName1": "rbfx2a",
+  "azcmagentPath": "C:\\Program Files\\AzureConnectedMachineAgent\\azcmagent.exe",
+  "ResourceGroupName": "connectedmachine-rg-byemgn",
+  "Location": "eastus"
 }
