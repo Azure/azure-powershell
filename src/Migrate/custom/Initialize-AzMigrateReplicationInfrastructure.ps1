@@ -46,7 +46,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Switch]
-        # Name of an Azure Migrate project.
+        # Swicth Parameter to indicate provider.
         ${Vmwareagentless},
     
         [Parameter()]

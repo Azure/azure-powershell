@@ -59,19 +59,20 @@ subject-prefix: 'Migrate'
 directive:
   # Correct some generated models
   - no-inline:
-    - PolicyProviderSpecificInput
-  # Remove cmldets that should not be exposed
+    - TestMigrateProviderSpecificInput
+    - MigrationProviderSpecificSettings
+  # Remove variants not in scope
   - where:
-      verb: New$
-      variant: ^Create$
+      verb: Test$
+      subject: ^ReplicationMigrationItemMigrate
+      variant: ^TestViaIdentity$|^TestViaIdentityExpanded$|^Test$
     remove: true
   - where:
-      verb: New$
-      variant: ^CreateViaIdentity
+      verb: Get$
+      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$
+      variant: ^GetViaIdentity$
     remove: true
-  - where:
-      subject: 
-    remove: true
+  # Remove cmdlets not in scope
   - where:
       subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage
     remove: true
@@ -81,21 +82,8 @@ directive:
   - where:
       subject: ^Commit|^Planned|^Renew|^Reprotect|^Resync|^Unplanned|VaultHealth$|vCenter$|ComputeSize$
     remove: true
-  # Hide cmldets that have customisation
+  # Hide cmldets used by custom
   - where:
       verb: Get$
-      subject: 
+      subject: ReplicationPolicy$|ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$
     hide: true
-  # Correct some generated code
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreatePolicyInputProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreatePolicyInputProperties Property');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInputProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationInputProperties Property');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput ProviderSpecificInput', 'public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput ProviderSpecificInput');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationProviderSpecificInput ProviderSpecificDetail', 'public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationProviderSpecificInput ProviderSpecificDetail');

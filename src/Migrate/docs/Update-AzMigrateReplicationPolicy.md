@@ -15,8 +15,8 @@ The operation to update a replication policy.
 ### UpdateExpanded (Default)
 ```
 Update-AzMigrateReplicationPolicy -PolicyName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-ReplicationProviderSetting <IPolicyProviderSpecificInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ReplicationProviderSettingInstanceType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -35,8 +35,8 @@ Update-AzMigrateReplicationPolicy -InputObject <IMigrateIdentity> -Input <IUpdat
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMigrateReplicationPolicy -InputObject <IMigrateIdentity>
- [-ReplicationProviderSetting <IPolicyProviderSpecificInput>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReplicationProviderSettingInstanceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,12 +156,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicationProviderSetting
-The ReplicationProviderSettings.
-To construct, see NOTES section for REPLICATIONPROVIDERSETTING properties and create a hash table.
+### -ReplicationProviderSettingInstanceType
+The class type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -271,8 +270,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUT <IUpdatePolicyInput>: Update policy input.
-  - `[ReplicationProviderSetting <IPolicyProviderSpecificInput>]`: The ReplicationProviderSettings.
-    - `[InstanceType <String>]`: The class type.
+  - `[ReplicationProviderSettingInstanceType <String>]`: The class type.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   - `[AlertSettingName <String>]`: The name of the email notification configuration.
@@ -300,9 +298,6 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   - `[StorageClassificationName <String>]`: Storage classification name.
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VCenterName <String>]`: vCenter name.
-
-REPLICATIONPROVIDERSETTING <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
-  - `[InstanceType <String>]`: The class type.
 
 ## RELATED LINKS
 
