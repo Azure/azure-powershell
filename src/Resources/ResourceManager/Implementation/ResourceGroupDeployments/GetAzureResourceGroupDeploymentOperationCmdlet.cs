@@ -15,11 +15,8 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Common.ArgumentCompleters;
-    using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the deployment operation.

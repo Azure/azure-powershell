@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -25,6 +26,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
         public string ApiVersion { get; set; }
+
+        private Dictionary<string, string> GetCmdletHeaders()
+        {
+            return new Dictionary<string, string>
+            {
+                {"ParameterSetName", this.ParameterSetName },
+                {"CommandName", this.CommandRuntime.ToString() }
+            };
+        }
 
         /// <summary>
         /// Determines the API version.

@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Rest.Azure;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -33,7 +32,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using System.Runtime.ExceptionServices;
     using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// The base class for resource manager cmdlets.
@@ -286,7 +284,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.subscriptionSdkClient = value; }
         }
 
-        protected Dictionary<string, string> GetCmdletHeaders()
+        private Dictionary<string, string> GetCmdletHeaders()
         {
             return new Dictionary<string, string>
             {
