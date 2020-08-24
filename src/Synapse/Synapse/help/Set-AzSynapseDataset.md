@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSynapseDataset
 
 ## SYNOPSIS
-Creates a dataset in workspace.
+Creates or updates a dataset in workspace.
 
 ## SYNTAX
 

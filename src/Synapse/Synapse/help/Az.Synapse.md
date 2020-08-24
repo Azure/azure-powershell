@@ -171,10 +171,10 @@ Resets timeout of a Synapse Analytics Spark session.
 Updates an integration runtime.
 
 ### [Set-AzSynapseDataFlow](Set-AzSynapseDataFlow.md)
-Creates a data flow in workspace.
+Creates or updates a data flow in workspace.
 
 ### [Set-AzSynapseDataset](Set-AzSynapseDataset.md)
-Creates a dataset in workspace.
+Creates or updates a dataset in workspace.
 
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.

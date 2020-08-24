@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSynapseDataFlow
 
 ## SYNOPSIS
-Creates a data flow in workspace.
+Creates or updates a data flow in workspace.
 
 ## SYNTAX
 
