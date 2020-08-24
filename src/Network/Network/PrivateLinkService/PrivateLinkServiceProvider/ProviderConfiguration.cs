@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview");
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview");
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01");
+            RegisterConfiguration("Microsoft.SignalRService/signalr", "2020-05-01", false);
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)

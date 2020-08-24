@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -73,8 +73,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var cachePath = Path.Combine(cacheDirectory, cacheFile);
                     result = new ProtectedFileTokenCache(cachePath, store);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    TracingAdapter.Information("[AzureSessionInitializer]: Cannot initialize token cache in 'CurrentUser' mode. Falling back to 'Process' mode.");
+                    TracingAdapter.Information($"[AzureSessionInitializer]: Message: {ex.Message}; Stacktrace: {ex.StackTrace}");
                 }
             }
 
@@ -159,10 +161,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 // ignore exceptions in reading settings from disk
                 result.Mode = ContextSaveMode.Process;
+                TracingAdapter.Information("[AzureSessionInitializer]: Cannot read settings from disk. Falling back to 'Process' mode.");
+                TracingAdapter.Information($"[AzureSessionInitializer]: Message: {ex.Message}; Stacktrace: {ex.StackTrace}");
             }
 
             return result;

@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
                     QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
-                    DynamicCompression = SDKForwardingConfiguration.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
+                    DynamicCompression = SDKForwardingConfiguration.CacheConfiguration?.DynamicCompression == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
             else if (sdkRouteConfiguration is SdkRedirectConfiguration)
@@ -326,6 +326,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Weight = sdkBackend.Weight,
                 BackendHostHeader = sdkBackend.BackendHostHeader,
                 PrivateLinkAlias = sdkBackend.PrivateLinkAlias,
+                PrivateLinkResourceId = sdkBackend.PrivateLinkResourceId,
+                PrivateLinkLocation = sdkBackend.PrivateLinkLocation,
                 PrivateEndpointStatus = sdkBackend.PrivateEndpointStatus == null ?
                         (PSPrivateEndpointStatus?)null :
                         (PSPrivateEndpointStatus)Enum.Parse(typeof(PSPrivateEndpointStatus), sdkBackend.PrivateEndpointStatus.ToString()),
@@ -335,18 +337,18 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
         public static SdkBackend ToSdkBackend(this PSBackend psBackend)
         {
             return new SdkBackend(
-                psBackend.Address,
-                psBackend.PrivateLinkAlias,
-                psBackend.PrivateEndpointStatus == null
-                        ? (PrivateEndpointStatus?)null
-                        : (PrivateEndpointStatus)Enum.Parse(typeof(PrivateEndpointStatus), psBackend.PrivateEndpointStatus.ToString()),
-                psBackend.PrivateLinkApprovalMessage,
-                psBackend.HttpPort,
-                psBackend.HttpsPort,
-                psBackend.EnabledState.ToString(),
-                psBackend.Priority,
-                psBackend.Weight,
-                psBackend.BackendHostHeader
+                address: psBackend.Address,
+                httpPort: psBackend.HttpPort,
+                httpsPort: psBackend.HttpsPort,
+                enabledState: psBackend.EnabledState.ToString(),
+                priority: psBackend.Priority,
+                weight: psBackend.Weight,
+                backendHostHeader: psBackend.BackendHostHeader,
+                privateLinkAlias: psBackend.PrivateLinkAlias,
+                privateLinkResourceId: psBackend.PrivateLinkResourceId,
+                privateLinkLocation: psBackend.PrivateLinkLocation,
+                privateEndpointStatus: psBackend.PrivateEndpointStatus?.ToString(),
+                privateLinkApprovalMessage: psBackend.PrivateLinkApprovalMessage
                 );
         }
         public static PSBackendPool ToPSBackendPool(this SdkBackendPool sdkBackendPool)

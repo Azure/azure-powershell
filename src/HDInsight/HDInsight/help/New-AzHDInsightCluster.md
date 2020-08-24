@@ -33,7 +33,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
  [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>]
  [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -56,7 +58,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
  [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
- [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -79,7 +83,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
  [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
- [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +110,7 @@ PS C:\&gt; # Primary storage account info
         $clusterCreds = Get-Credential
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
         New-AzHDInsightCluster `
@@ -117,7 +123,7 @@ PS C:\&gt; # Primary storage account info
             -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
             -DefaultStorageAccountKey $storageAccountKey `
             -DefaultStorageContainer $storageContainer `
-			-SshCredential $clusterCreds `
+            -SshCredential $clusterCreds `
 ```
 
 This command creates a cluster in the current subscription.
@@ -138,14 +144,14 @@ PS C:\&gt; # Primary storage account info
         $clusterName = "your-cmk-cluster"
         $clusterCreds = Get-Credential
 
-		# Customer-managed Key info
-		$assignedIdentity = "your-ami-resource-id"
-		$encryptionKeyName = "new-key"
-		$encryptionVaultUri = "https://MyKeyVault.vault.azure.net"
-		$encryptionKeyVersion = "00000000000000000000000000000000"
+        # Customer-managed Key info
+        $assignedIdentity = "your-ami-resource-id"
+        $encryptionKeyName = "new-key"
+        $encryptionVaultUri = "https://MyKeyVault.vault.azure.net"
+        $encryptionKeyVersion = "00000000000000000000000000000000"
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
         New-AzHDInsightCluster `
@@ -158,11 +164,118 @@ PS C:\&gt; # Primary storage account info
             -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
             -DefaultStorageAccountKey $storageAccountKey `
             -DefaultStorageContainer $storageContainer `
-			-SshCredential $clusterCreds `
-			-AssignedIdentity $assignedIdentity `
-			-EncryptionKeyName $encryptionKeyName `
-			-EncryptionVaultUri $encryptionVaultUri `
-			-EncryptionKeyVersion $encryptionKeyVersion
+            -SshCredential $clusterCreds `
+            -AssignedIdentity $assignedIdentity `
+            -EncryptionKeyName $encryptionKeyName `
+            -EncryptionVaultUri $encryptionVaultUri `
+            -EncryptionKeyVersion $encryptionKeyVersion
+```
+
+### Example 3: Create an Azure HDInsight cluster which enables encryption in transit
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -DefaultStorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -EncryptionInTransit $true `
+```
+
+### Example 4: Create an Azure HDInsight cluster with private link feature
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Virtual network info
+        $virtualNetworkId="yourvnetresourceid"
+        $subnetName="yoursubnetresourceid"
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -DefaultStorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
+            -PublicNetworkAccessType OutboundOnly -OutboundPublicNetworkAccessType PublicLoadBalancer `
+```
+
+### Example 5: Create an Azure HDInsight cluster which enables encryption at host
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -DefaultStorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -EncryptionAtHost $true `
 ```
 
 ## PARAMETERS
@@ -515,6 +628,37 @@ Gets or sets the encryption algorithm.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+Gets or sets the flag which indicates whether enable encryption at host or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransit
+Gets or sets the flag which indicates whether enable encryption in transit or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -686,6 +830,38 @@ Type: Microsoft.Azure.Management.HDInsight.Models.OSType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Windows, Linux
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutboundPublicNetworkAccessType
+Gets or sets the outbound access type to the public network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: PublicLoadBalancer, UDR
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccessType
+Gets or sets the public network access type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: InboundAndOutbound, OutboundOnly
 
 Required: False
 Position: Named

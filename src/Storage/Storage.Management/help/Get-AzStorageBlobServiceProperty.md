@@ -39,9 +39,15 @@ The **Get-AzStorageBlobServiceProperty** cmdlet gets the service properties for 
 ```powershell
 PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days 
------------------- ----------------- --------------------- ----------------------------- -------------------------- 
-myresourcegroup    mystorageaccount  2018-03-28            False                                                    
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : False
+DeleteRetentionPolicy.Days    : 
+RestorePolicy.Enabled         : 
+RestorePolicy.Days            : 
+ChangeFeed                    : True
+IsVersioningEnabled           : True
 ```
 
 This command gets the Blob services property of a specified Storage Account.

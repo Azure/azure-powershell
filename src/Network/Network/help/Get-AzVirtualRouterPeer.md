@@ -30,7 +30,7 @@ The **Get-AzVirtualRouterPeer** cmdlet gets a Peer in an Azure VirtualRouter
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -RouterName virtualRouter -PeerName csr
+Get-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -VirtualRouterName virtualRouter -PeerName csr
 ```
 
 ### Example 2

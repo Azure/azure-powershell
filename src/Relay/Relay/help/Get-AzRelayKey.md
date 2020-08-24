@@ -35,8 +35,8 @@ The **Get-AzRelayKey** cmdlet returns the primary and secondary connection strin
 
 ## EXAMPLES
 
-### Example 1 - Namespace
-```
+### Example 1: Namespace
+```powershell
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
@@ -46,8 +46,8 @@ SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 ```
 
-### Example 2 - WcfRelay
-```
+### Example 2: WcfRelay
+```powershell
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
@@ -57,8 +57,8 @@ SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 ```
 
-### Example 3 - HybridConnection
-```
+### Example 3: HybridConnection
+```powershell
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Attestation
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage =
-                "Specifies the RFC7519 JSON Web Token containing a claim named \"aas-policyCertificate\" whose value is an RFC7517 JSON Web Key which contains a trusted signing key to remove. The RFC7519 JWT must be signed with one of the existing trusted signing keys."
+                "Specifies the RFC7519 JSON Web Token containing a claim named \"maa-policyCertificate\" whose value is an RFC7517 JSON Web Key which contains a trusted signing key to remove. The RFC7519 JWT must be signed with one of the existing trusted signing keys."
         )]
         [ValidateNotNullOrEmpty]
         public string Signer { get; set; }

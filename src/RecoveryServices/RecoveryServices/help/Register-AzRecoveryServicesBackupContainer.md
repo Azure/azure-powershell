@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-This command allows Azure Backup to convert the �Resource� to a �Backup Container� which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
 ```
 
 ## DESCRIPTION
-The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+This command allows Azure Backup to convert the Resource to a Backup Container which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## EXAMPLES
 
@@ -36,12 +36,12 @@ The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType �MSSQL� -BackupManagementType �AzureWorkload�
 ```
 
-The cmdlet registers an azure VM for the workload MSSQL.
+The cmdlet registers an azure VM as a container for the workload MSSQL.
 
 ## PARAMETERS
 
 ### -BackupManagementType
-The backup management type of the Azure Backup container
+The class of resources being protected. Currently the value supported for this cmdlet is AzureWorkload
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
+Workload type of the resource. The current supported value is AzureVM, WindowsServer, AzureFiles, MSSQL
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -164,7 +164,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

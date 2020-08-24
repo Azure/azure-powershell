@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.FirewallRule,
         DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseIpFirewallRule))]
-    public class GetAzureSynapseFirewallRule : SynapseCmdletBase
+    public class GetAzureSynapseFirewallRule : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";

@@ -51,6 +51,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 response = GetPSAzureWorkloadJob(serviceClientJob);
             }
+            else if (serviceClientJob.Properties.GetType() == typeof(MabJob)) 
+            {
+                response = GetPSMabJob(serviceClientJob);
+            }            
 
             return response;
         }
@@ -154,6 +158,90 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// Creates the powershell MabJob object from service response.
+        /// </summary>
+        private static CmdletModel.JobBase GetPSMabJob(JobResource serviceClientJob)
+        {
+            CmdletModel.MabJob response;
+
+            MabJob mabJob = serviceClientJob.Properties as MabJob;
+
+            if (mabJob.ExtendedInfo != null)
+            {
+                response = new CmdletModel.MabJobDetails();
+            }
+            else
+            {
+                response = new CmdletModel.MabJob();
+            }
+            
+            // Transfer values from service job object to powershell job object. 
+            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
+            response.StartTime = GetJobStartTime(mabJob.StartTime);
+            response.EndTime = mabJob.EndTime;
+            response.Duration = GetJobDuration(mabJob.Duration);
+            response.Status = mabJob.Status;
+            response.WorkloadName = mabJob.EntityFriendlyName;
+            response.ActivityId = mabJob.ActivityId;
+            response.BackupManagementType =
+                CmdletModel.ConversionUtils.GetPsBackupManagementType(mabJob.BackupManagementType);
+            response.Operation = mabJob.Operation;
+
+            if (mabJob.ErrorDetails != null)
+            {
+                response.ErrorDetails = new List<CmdletModel.AzureJobErrorInfo>();
+                foreach (var mabError in mabJob.ErrorDetails)
+                {
+                    response.ErrorDetails.Add(GetPSMabErrorInfo(mabError));
+                }
+            }
+
+            // fill extended info if present
+            if (mabJob.ExtendedInfo != null)
+            {
+                CmdletModel.MabJobDetails detailedResponse = response as CmdletModel.MabJobDetails;
+
+                detailedResponse.DynamicErrorMessage = mabJob.ExtendedInfo.DynamicErrorMessage;
+                if (mabJob.ExtendedInfo.PropertyBag != null)
+                {
+                    detailedResponse.Properties = new Dictionary<string, string>();
+                    foreach (var key in mabJob.ExtendedInfo.PropertyBag.Keys)
+                    {
+                        detailedResponse.Properties.Add(key, mabJob.ExtendedInfo.PropertyBag[key]);
+                    }
+                }
+
+                if (mabJob.ExtendedInfo.TasksList != null)
+                {
+                    detailedResponse.SubTasks = new List<CmdletModel.MabJobSubTask>();
+                    foreach (var mabJobTask in mabJob.ExtendedInfo.TasksList)
+                    {
+                        detailedResponse.SubTasks.Add(new CmdletModel.MabJobSubTask()
+                        {
+                            Name = mabJobTask.TaskId,
+                            Status = mabJobTask.Status
+                        });
+                    }
+                }
+            }
+
+            return response;
+        }
+
+        private static CmdletModel.AzureJobErrorInfo GetPSMabErrorInfo(MabErrorInfo mabError)
+        {
+            CmdletModel.MabJobErrorInfo psErrorInfo = new CmdletModel.MabJobErrorInfo();
+            psErrorInfo.ErrorMessage = mabError.ErrorString;
+            if (mabError.Recommendations != null)
+            {
+                psErrorInfo.Recommendations = new List<string>();
+                psErrorInfo.Recommendations.AddRange(mabError.Recommendations);
+            }
+
+            return psErrorInfo;
         }
 
         private static CmdletModel.JobBase GetPSAzureFileShareJob(JobResource serviceClientJob)

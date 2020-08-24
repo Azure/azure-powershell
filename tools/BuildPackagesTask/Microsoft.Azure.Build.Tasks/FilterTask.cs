@@ -41,6 +41,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string MapFilePath { get; set; }
 
         /// <summary>
+        /// Gets or set the TargetModule, e.g. Storage
+        /// </summary>
+        public string TargetModule { get; set; } 
+        
+        /// <summary>
         /// Gets or sets the test assemblies output produced by the task.
         /// </summary>
         [Output]
@@ -64,31 +69,26 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 throw new FileNotFoundException("The MapFilePath provided could not be found. Please provide a valid MapFilePath.");
             }
 
-            var debugEnvironmentVariable = Environment.GetEnvironmentVariable("DebugLocalBuildTasks");
-            bool debug;
-            if (!Boolean.TryParse(debugEnvironmentVariable, out debug))
-            {
-                debug = false;
-            }
+            var mappingsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(MapFilePath));
 
             if (FilesChanged != null && FilesChanged.Length > 0)
             {
-                Output = GetOutput(FilesChanged, MapFilePath);
+                Console.WriteLine($"Filter according to {FilesChanged.Length} file(s) in FilesChanged");
+                var filesChangedSet = new HashSet<string>(FilesChanged);
+                Output = SetGenerator.Generate(filesChangedSet, mappingsDictionary).ToArray();
+            }
+            else if(!string.IsNullOrWhiteSpace(TargetModule))
+            {
+                Console.WriteLine($"Filter module {TargetModule}");
+                var modules = (TargetModule.Equals("Accounts"))? new string[] { "Accounts"} : new string[] { "Accounts" , TargetModule};
+                Output = SetGenerator.Generate(modules, mappingsDictionary).ToArray();
             }
             else
             {
-                if (debug)
-                {
-                    Console.WriteLine("Debug: ModuleMapping.json");
-                    var lines = File.ReadAllLines(MapFilePath);
-                    foreach (var line in lines)
-                    {
-                        Console.WriteLine(line);
-                    }
-                }
+                Console.WriteLine($"Skip filter and load all from ${MapFilePath}");
                 var set = new HashSet<string>();
-                var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(MapFilePath));
-                foreach (KeyValuePair<string, string[]> pair in dictionary)
+                mappingsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(MapFilePath));
+                foreach (KeyValuePair<string, string[]> pair in mappingsDictionary)
                 {
                     set.UnionWith(pair.Value);
                 }
@@ -97,11 +97,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
 
             return true;
-        }
-
-        public string[] GetOutput(string[] filesChanged, string mapFilePath)
-        {
-            return SetGenerator.Generate(filesChanged, mapFilePath).ToArray();
         }
     }
 }

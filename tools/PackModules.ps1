@@ -112,11 +112,20 @@ if (!(Test-Path -Path $tmp)) {
 
 try {
     foreach ($artifact in Get-ChildItem $tmp -Directory) {
-        $module_name = ($artifact).Name
-        Write-Output "Repackaging $module_name"
-        Update-NugetPackage -TempRepoPath (Get-Item $Artifacts).FullName -ModuleName $module_name -DirPath $tmp"\"$module_name -NugetExe $NugetExe
-        Write-Output "Removing $tmp\$module_name"
-        Remove-Item -Recurse $tmp"\"$module_name -Force -ErrorAction Stop  
+        $artifactDir = ($artifact).Name
+        $tokens = $artifactDir.split(".")
+        if($tokens.length -gt 1) {
+            # Az.n.n.n.nuget or Az.module.n.n.n.nuget
+            if($tokens.length -gt 5) {
+                $module_name = $tokens[0]+"."+$tokens[1]
+            } else {
+                $module_name = $tokens[0]
+            }
+        } else {
+            $module_name = $artifactDir
+        }
+        Write-Output "Repackaging $module_name under $artifactDir"
+        Update-NugetPackage -TempRepoPath (Get-Item $Artifacts).FullName -ModuleName $module_name -DirPath $tmp"\"$artifactDir -NugetExe $NugetExe
     } 
 } catch {
     $Errors = $_

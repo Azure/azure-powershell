@@ -90,15 +90,20 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription"))
             {
-                var owners = this.ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName).Select(id => new AdPrincipal() { ObjectId = id }).ToArray();
+                SubscriptionCreationResult result = new SubscriptionCreationResult();
+
+                var owners = this
+                    .ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName)
+                    .Select(id => new AdPrincipal() { ObjectId = id }).ToArray();
 
                 // Create the subscription.
-                var result = this.SubscriptionClient.SubscriptionFactory.CreateSubscriptionInEnrollmentAccount(EnrollmentAccountObjectId, new SubscriptionCreationParameters()
-                {
-                    DisplayName = this.Name,
-                    OfferType = this.OfferType,
-                    Owners = owners
-                });
+                result = this.SubscriptionClient.Subscription.CreateSubscriptionInEnrollmentAccount(
+                    EnrollmentAccountObjectId, new SubscriptionCreationParameters()
+                    {
+                        DisplayName = this.Name,
+                        OfferType = this.OfferType,
+                        Owners = owners
+                    });
 
                 // Write output.
                 var createdSubscription = new AzureSubscription()

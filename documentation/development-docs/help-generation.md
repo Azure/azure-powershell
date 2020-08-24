@@ -79,7 +79,7 @@ If you would like to update the inputs/outputs for a markdown file, please run t
 
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Accounts.md`) with any added or removed cmdlets.
 
-_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/master/src/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/master/src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
  
 #### Updating a single markdown file
 

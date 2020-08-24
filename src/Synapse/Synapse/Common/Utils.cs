@@ -123,5 +123,15 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
             return errorContent;
         }
+
+        public static bool IsNextPageLink(this string nextLink)
+        {
+            return !string.IsNullOrEmpty(nextLink);
+        }
+
+        public static bool IsEmptyOrWhiteSpace(this string value)
+        {
+            return value.All(char.IsWhiteSpace);
+        }
     }
 }

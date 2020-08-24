@@ -33,11 +33,18 @@ namespace Microsoft.Azure.Commands.Marketplace.Cmdlets
         [ValidateNotNullOrEmpty]
         public string OfferId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Azure subscription id")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            var isSubscriptionScope = !string.IsNullOrEmpty(SubscriptionId);
+
             if (!string.IsNullOrEmpty(OfferId))
             {
-                var privateStoresOffer = ResourceMarketplaceClient.PrivateStoreOffer.Get(PrivateStoreId, OfferId);
+                var privateStoresOffer = isSubscriptionScope ? ResourceMarketplaceClient.PrivateStorePrivateOffer.Get(SubscriptionId, PrivateStoreId, OfferId) :
+                                                               ResourceMarketplaceClient.PrivateStoreOffer.Get(PrivateStoreId, OfferId);
                 if (privateStoresOffer == null)
                 {
                     WriteObject(new PSPrivateStoreOffer());
@@ -47,7 +54,9 @@ namespace Microsoft.Azure.Commands.Marketplace.Cmdlets
                 return;
             }
 
-            var privateStoresOffers = ResourceMarketplaceClient.PrivateStoreOffers.List(PrivateStoreId);
+            var privateStoresOffers = isSubscriptionScope ? ResourceMarketplaceClient.PrivateStorePrivateOffers.List(SubscriptionId, PrivateStoreId) :
+                                                            ResourceMarketplaceClient.PrivateStoreOffers.List(PrivateStoreId);
+
             if (privateStoresOffers == null || !privateStoresOffers.Any())
             {
                 WriteObject(new List<PSPrivateStoreOffer>(), true);

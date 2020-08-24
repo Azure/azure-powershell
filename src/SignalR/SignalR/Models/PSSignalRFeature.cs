@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public PSSignalRFeature(SignalRFeature signalrFeature)
         {
-            Flag = SignalRFeature.Flag;
+            Flag = signalrFeature.Flag;
             Value = signalrFeature.Value;
             Properties = signalrFeature.Properties;
         }

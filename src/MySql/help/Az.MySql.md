@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: 43b3698e-9955-4090-9969-7b5a71479c75
+Module Guid: 8c7c6fcd-a96f-460b-89e2-ff822a3246c8
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,11 +32,11 @@ Gets a virtual network rule.
 ### [New-AzMySqlFirewallRule](New-AzMySqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
+### [New-AzMySqlReplica](New-AzMySqlReplica.md)
+Creates a new replica from an existing database.
+
 ### [New-AzMySqlServer](New-AzMySqlServer.md)
 Creates a new server.
-
-### [New-AzMySqlServerReplica](New-AzMySqlServerReplica.md)
-Creates a new replica from an existing database.
 
 ### [New-AzMySqlVirtualNetworkRule](New-AzMySqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.
@@ -58,6 +58,7 @@ Restore a server from an existing backup
 
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)
 Updates a configuration of a server.
+Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzMySqlFirewallRule](Update-AzMySqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
@@ -65,6 +66,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzMySqlServer](Update-AzMySqlServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMySqlVirtualNetworkRule](Update-AzMySqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.
