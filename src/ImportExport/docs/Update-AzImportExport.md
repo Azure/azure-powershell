@@ -24,8 +24,8 @@ Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>] [-ReturnAddressRecipientName <String>]
  [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
  [-ReturnAddressStreetAddress2 <String>] [-ReturnShippingCarrierAccountNumber <String>]
- [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <IUpdateJobParametersTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <IAny>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,7 +38,7 @@ Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <Str
  [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
  [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
  [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>] [-State <String>]
- [-Tag <IUpdateJobParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <IAny>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -468,7 +468,7 @@ Accept wildcard characters: False
 Specifies the tags that will be assigned to the job
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IAny
 Parameter Sets: (All)
 Aliases:
 

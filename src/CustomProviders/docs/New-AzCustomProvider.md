@@ -43,7 +43,6 @@ PS C:\> New-AzCustomProvider -ResourceGroupName myRG -Name Namespace2.Type -Loca
 Location  Name             Type
 --------  ----             ----
 West US 2 Namespace2.Type   Microsoft.CustomProviders/resourceproviders
-
 ```
 
 Create a custom provider, with a route for Custom provider associations.
@@ -272,7 +271,7 @@ To create the parameters described below, construct a hash table containing the 
 ACTION <ICustomRpActionRouteDefinition[]>: A list of actions that the custom resource provider implements.
   - `Endpoint <String>`: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
   - `Name <String>`: The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
-  - `[RoutingType <ActionRouting?>]`: The routing types that are supported for action requests.
+  - `[RoutingType <String>]`: The routing types that are supported for action requests.
 
 RESOURCETYPE <ICustomRpResourceTypeRouteDefinition[]>: A list of resource types that the custom resource provider implements.
   - `Endpoint <String>`: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
@@ -281,7 +280,7 @@ RESOURCETYPE <ICustomRpResourceTypeRouteDefinition[]>: A list of resource types 
 
 VALIDATION <ICustomRpValidations[]>: A list of validations to run on the custom resource provider's requests.
   - `Specification <String>`: A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
-  - `[ValidationType <ValidationType?>]`: The type of validation to run against a matching request.
+  - `[ValidationType <String>]`: The type of validation to run against a matching request.
 
 ## RELATED LINKS
 

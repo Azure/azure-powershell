@@ -292,7 +292,7 @@ INPUTOBJECT <IServer>: The source server object to restore from.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
   - `[FullyQualifiedDomainName <String>]`: The fully qualified domain name of a server.
-  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  - `[IdentityType <String>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   - `[MasterServerId <String>]`: The master server id of a replica server.
   - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
   - `[ReplicationRole <String>]`: The replication role of the server.
