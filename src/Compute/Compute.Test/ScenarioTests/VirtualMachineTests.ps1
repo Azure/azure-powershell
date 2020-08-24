@@ -3021,7 +3021,7 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
 
         # OS & Image
         $username = "admin01";
-        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force;
+        $password = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force;
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
         [string]$domainNameLabel = "vcrptestps7691-6f2166";
         # Virtual Machine
