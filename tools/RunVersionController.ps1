@@ -96,9 +96,9 @@ function Update-AzurecmdFile
         [string]$RootPath
     )
 
-    $AzurecmdFile = Get-Item -Path "$RootPath\setup\azurecmd.wxs"
+    $AzurecmdFile = Get-Item -Path "$RootPath\setup\generate.ps1"
     (Get-Content $AzurecmdFile.FullName) | % {
-        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\w*)", "Microsoft Azure PowerShell - $Release"
+        $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\d*)", "Microsoft Azure PowerShell - $Release"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
 
     (Get-Content $AzurecmdFile.FullName) | % {
@@ -133,11 +133,13 @@ function Get-ReleaseNotes
     )
 
     $ProjectPaths = @( "$RootPath\src" )
+    
+    .($PSScriptRoot + "\PreloadToolDll.ps1")
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
-                                                                                                          ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*") } }
+                                                                                                          (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
 
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
@@ -205,6 +207,10 @@ switch ($PSCmdlet.ParameterSetName)
                         $JsonFile = $NestedModule.Replace(".\", "") + ".json"
                         $ExpectJsonHashSet.Add($JsonFile, $true)
                     }
+                    if($null -eq $Psd1Object.NestedModules)
+                    {
+                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
+                    }
                 }
             }
         }
@@ -213,8 +219,8 @@ switch ($PSCmdlet.ParameterSetName)
             $ModuleName = $JsonFile.Replace('Microsoft.Azure.PowerShell.Cmdlets.', '').Replace('.dll.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
-                Write-Host "Module ${ModuleName} is not GA yet. Remove the json file: ${JsonFile}." -ForegroundColor Red
-                rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
+                Write-Warning "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
+                # rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
             }
         }
         try

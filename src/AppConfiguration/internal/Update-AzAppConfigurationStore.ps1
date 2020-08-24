@@ -19,56 +19,72 @@ Updates a configuration store with the specified parameters.
 .Description
 Updates a configuration store with the specified parameters.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
+PS C:\> $systemAssignedAppStore = New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "SystemAssigned"
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $systemAssignedAppStore.IdentityPrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
+PS C:\> Update-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -EncryptionKeyIdentifier $key.Id
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test01 Microsoft.AppConfiguration/configurationStores
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
+PS C:\> Update-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test11 -EncryptionKeyIdentifier $key.Id -KeyVaultIdentityClientId $assignedIdentity.ClientId
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> $appConf = Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -EncryptionKeyIdentifier $null
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+.Example
+PS C:\> Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -Sku 'standard' -Tag @{'key'='update'}
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Notes
 COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CONFIGSTOREUPDATEPARAMETER <IConfigurationStoreUpdateParameters>: The parameters for updating a configuration store.
-  [Property <IConfigurationStorePropertiesUpdateParameters>]: The properties for updating a configuration store.
-  [Tag <IConfigurationStoreUpdateParametersTags>]: The ARM resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
 #>
 function Update-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the configuration store.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -76,7 +92,6 @@ param(
     # The Microsoft Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
@@ -84,28 +99,47 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters]
-    # The parameters for updating a configuration store.
-    # To construct, see NOTES section for CONFIGSTOREUPDATEPARAMETER properties and create a hash table.
-    ${ConfigStoreUpdateParameter},
+    [System.String]
+    # The URI of the key vault key used to encrypt data.
+    ${EncryptionKeyIdentifier},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
+    [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStorePropertiesUpdateParameters]
-    # The properties for updating a configuration store.
-    ${Property},
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
+    # The type of managed identity used.
+    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+    # The type 'None' will remove any identities.
+    ${IdentityType},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags]))]
+    [System.String]
+    # The client id of the identity which will be used to access key vault.
+    ${KeyVaultIdentityClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The SKU name of the configuration store.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # The ARM resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The list of user-assigned identities associated with the resource.
+    # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,12 +209,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_Update';
             UpdateExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateExpanded';
-            UpdateViaIdentity = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateViaIdentityExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -122,6 +122,28 @@ $azFw | Set-AzFirewall
 
 In this example, the management public IP address of the firewall will be changed to "AzFwMgmtPublicIp2"
 
+### 9:	Add DNS configuration to an Azure Firewall
+```
+$dnsServers = @("10.10.10.1", "20.20.20.2")
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.DNSEnableProxy = $true
+$azFw.DNSServer = $dnsServers
+
+$azFw | Set-AzFirewall
+```
+
+In this example, DNS Proxy and DNS Server configuration is attached to the Firewall.
+
+### 10:	Update destination of an existing rule within a Firewall application rule collection
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
+$rule=$ruleCollection.GetRuleByName("ruleName")
+$rule.DestinationAddresses="10.10.10.10"
+Set-AzFirewall -AzureFirewall $azFw
+```
+
+This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
 
 ## PARAMETERS
 

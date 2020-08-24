@@ -405,13 +405,16 @@ function Test-SetWebAppSlot
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
+	$rgname1 = Get-ResourceGroupName
 	$appname = Get-WebsiteName
 	$location = Get-Location
 	$slotname = "staging"
 	$planName1 = Get-WebHostPlanName
-	$planName2 = Get-WebHostPlanName
+	$planName2 = Get-WebHostPlanName	
+	$planName3 = Get-WebHostPlanName	
 	$tier1 = "Standard"
 	$tier2 = "Standard"
+	$tier3 = "Standard"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$numberOfWorkers = 2
@@ -420,8 +423,10 @@ function Test-SetWebAppSlot
 	{
 		#Setup
 		New-AzResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname1 -Location $location
 		$serverFarm1 = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName1 -Location  $location -Tier $tier1
 		$serverFarm2 = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName2 -Location  $location -Tier $tier2
+		$serverFarm3 = New-AzAppServicePlan -ResourceGroupName $rgname1 -Name  $planName3 -Location  $location -Tier $tier3
 		
 		# Create new web app
 		$webApp = New-AzWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName1 
@@ -495,6 +500,45 @@ function Test-SetWebAppSlot
 		}
 
 		Assert-AreEqual $numberOfWorkers $slot.SiteConfig.NumberOfWorkers
+
+		#Set-AzWebAppSlot errors on operations for App Services not in the same resource group as the App Service Plan
+		#setup
+			
+		$app1 = Get-WebsiteName
+		
+		# Create new web app
+		$webApp = New-AzWebApp -ResourceGroupName $rgname1 -Name $app1 -Location $location -AppServicePlan $planName3
+		
+		# Assert
+		Assert-AreEqual $app1 $webApp.Name
+		
+		# Create deployment slot
+		$slot = New-AzWebAppSlot -ResourceGroupName $rgname1 -Name $app1 -Slot $slotname -AppServicePlan $planName3
+		$appWithSlotName = "$app1/$slotname"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot.Name
+		Assert-Null $webApp.Identity
+		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
+
+		# Get the deployment slot
+		
+		$slot = Get-AzWebAppSlot -ResourceGroupName $rgname1 -Name $app1 -Slot $slotName		
+
+		# Set config properties
+		$slot.SiteConfig.HttpLoggingEnabled = $true
+		$slot.SiteConfig.RequestTracingEnabled = $true
+		$slot.SiteConfig.FtpsState = "FtpsOnly"
+		$slot.SiteConfig.MinTlsVersion = "1.0"
+
+		$slot = $slot | Set-AzWebAppSlot
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot.Name
+		Assert-AreEqual $true $slot.SiteConfig.HttpLoggingEnabled
+		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
+		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
 	}
 	finally
 	{
@@ -504,6 +548,7 @@ function Test-SetWebAppSlot
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName1 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName2 -Force
 		Remove-AzResourceGroup -Name $rgname -Force
+		Remove-AzResourceGroup -Name $rgname1 -Force
 	}
 }
 

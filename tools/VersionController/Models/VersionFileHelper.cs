@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Tools.Common.Utilities;
 
 namespace VersionController.Models
 {
@@ -15,18 +16,18 @@ namespace VersionController.Models
             OutputModuleManifestPath = outputModuleManifestPath;
             ProjectModuleManifestPath = projectModuleManifestPath;
 
-            _outputDirectories = new List<string>{ DebugDirectory };
+            _outputDirectories = new List<string>{ ReleaseDirectory };
 
-            _projectDirectories = new List<string>{ SrcDirectory };
+            _projectDirectories = new List<string>{ Path.Combine(RootDirectory, @"src") };
         }
 
         public string RootDirectory { get; set; }
 
-        public string SrcDirectory => Path.Combine(RootDirectory, @"src");
+        public string SrcDirectory => Path.Combine(RootDirectory, @"src", ModuleNameWithoutAz);
 
         public string PackageDirectory => Path.Combine(RootDirectory, @"artifacts");
 
-        public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
+        public string ReleaseDirectory => Path.Combine(PackageDirectory, @"Release");
 
         public string ArtifactsVersionControllerDirectory => Path.Combine(PackageDirectory, @"VersionController");
 
@@ -58,16 +59,18 @@ namespace VersionController.Models
 
         public string ModuleName => ModuleFileName.Replace(".psd1", "");
 
+        private string ModuleNameWithoutAz => ModuleName.Replace("Az.", "");
+
         public string ProjectDirectory => Directory.GetParent(ProjectModuleManifestPath).FullName;
 
         public string ChangeLogPath => Directory.GetFiles(ProjectDirectory, "ChangeLog.md").FirstOrDefault();
 
-        public List<string> AssemblyInfoPaths => Directory.GetFiles(ProjectDirectory, "AssemblyInfo.cs", SearchOption.AllDirectories)
-                                                            .Where(f => !f.Contains("Stack") && !f.Contains(".Test"))
+        public List<string> AssemblyInfoPaths => Directory.GetFiles(SrcDirectory, "AssemblyInfo.cs", SearchOption.AllDirectories)
+                                                            .Where(f => !ModuleFilter.IsAzureStackModule(f) && !f.Contains(".Test"))
                                                             .ToList();
 
-        public string GalleryModuleDirectory => Path.Combine(OutputModuleDirectory, ModuleName);
+        public string GalleryModuleDirectory => OutputModuleDirectory;
 
-        public string GalleryModuleVersionDirectory => Directory.GetDirectories(GalleryModuleDirectory).FirstOrDefault();
+        public string GalleryModuleVersionDirectory => GalleryModuleDirectory;
     }
 }

@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## SYNTAX
 
@@ -17,7 +18,7 @@ The request body can contain one to many of the properties present in the normal
 ```
 Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-ReplicationRole <String>]
- [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>]
  [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,7 +27,7 @@ Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId
 ```
 Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
  [-BackupRetentionDay <Int32>] [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-SkuFamily <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
  [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,6 +35,7 @@ Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword 
 ## DESCRIPTION
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## EXAMPLES
 
@@ -41,9 +43,9 @@ The request body can contain one to many of the properties present in the normal
 ```powershell
 PS C:\> Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
 ```
 
 This cmdlet updates MySql server by resource group and server name.
@@ -52,9 +54,9 @@ This cmdlet updates MySql server by resource group and server name.
 ```powershell
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
 This cmdlet updates MySql server by identity.
@@ -245,21 +247,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuSize
-The size code, to be interpreted by resource as appropriate.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkuTier
 The tier of the particular SKU, e.g.
 Basic.
@@ -398,6 +385,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

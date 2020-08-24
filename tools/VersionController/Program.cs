@@ -7,6 +7,7 @@ using System.Management.Automation;
 using System.Reflection;
 using Tools.Common.Models;
 using VersionController.Models;
+using Tools.Common.Utilities;
 
 namespace VersionController
 {
@@ -37,7 +38,7 @@ namespace VersionController
 
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
-            _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Debug\") }.Where((d) => Directory.Exists(d)).ToList();
+            _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
             if (args != null && args.Length > 0)
@@ -105,7 +106,7 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => (!f.Contains("Stack") || f.Contains("StackEdge")) && IsChangeLogUpdated(f))
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f) && IsChangeLogUpdated(f))
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => m.Contains(_moduleNameFilter))
                                             .ToList();
@@ -170,7 +171,7 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => !f.Contains("Stack"))
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f))
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => !string.IsNullOrEmpty(m) && m.Contains(_moduleNameFilter))
                                             .ToList();

@@ -15,7 +15,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Management.Automation;

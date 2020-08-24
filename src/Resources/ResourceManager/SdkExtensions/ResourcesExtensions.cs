@@ -77,11 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = DeploymentOperationErrorInfo
-                                    .DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())?
-                                    .ToFormattedString()?
-                                    .TrimEnd(System.Environment.NewLine.ToCharArray())
-                                        ?? result.Properties.StatusMessage, // To-Do: With the new API version this work will move to error model extensions.
+                    StatusMessage = result.Properties.StatusMessage?.Error?.ToFormattedString(),
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
@@ -193,6 +189,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             result.AppendLine(string.Format("{0, -15}: {1}", "ContentVersion", templateLink.ContentVersion));
 
             return result.ToString();
+        }
+
+        public static string ConstructOutputTable(IDictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var maxNameLength = 18;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            StringBuilder output = new StringBuilder();
+                
+                if (dictionary.Count > 0)
+                {
+                    string rowFormat = "{0, -" + maxNameLength + "}  {1}\r\n";
+                    output.AppendLine();
+                    output.AppendFormat(rowFormat, "Key", "Value");
+                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxNameLength, "="));
+
+                    foreach (KeyValuePair<string, object> pair in dictionary)
+                    {
+                        String val = pair.Value.ToString().Replace("\n", "\n" + GeneralUtilities.GenerateSeparator(maxNameLength, " ") + "  ");
+                        output.AppendFormat(rowFormat, pair.Key, val);
+                    }
+                }
+
+            return output.ToString();
         }
 
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)

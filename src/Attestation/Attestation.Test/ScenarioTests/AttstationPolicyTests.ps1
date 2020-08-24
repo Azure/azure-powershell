@@ -50,6 +50,19 @@ function Test-GetAttestationPolicy
 	}
 }
 
+function Test-GetDefaultProviderPolicy
+{
+	$location = "East US"
+	$teeType = "SgxEnclave"
+
+	$getPolicy = Get-AzAttestationPolicy -DefaultProvider -Location $location -Tee $teeType
+	Assert-NotNull $getPolicy.Jwt
+	Assert-NotNull $getPolicy.Text
+	Assert-AreEqual "none" $getPolicy.Algorithm
+	Assert-True { $getPolicy.JwtLength -gt 0 }
+	Assert-True { $getPolicy.TextLength -gt 0 }
+}
+
 <#
 .SYNOPSIS
 Test Reset-AzAttestationPolicy

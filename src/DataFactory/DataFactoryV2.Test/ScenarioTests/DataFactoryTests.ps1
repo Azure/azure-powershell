@@ -65,6 +65,44 @@ function Test-GetNonExistingDataFactory
 
 <#
 .SYNOPSIS
+Gets and updates a Data Factory global parameters object.
+#>
+function Test-UpdateFactoryGlobalParameters
+{	
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $actual = Get-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+        if($actual.GlobalParameters -eq $null) {
+            $actual.GlobalParameters = New-Object 'system.collections.generic.dictionary[string,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]'
+		}
+
+        $actual.GlobalParameters.add("paramFromPs", @{ Type="String"; Value="String param from PS"})
+
+        $expected = Set-AzDataFactoryV2 -InputObject $actual -Force
+
+		ValidateFactoryProperties $expected $actual
+		ValidateFactoryProperties $expected.GlobalParameters $actual.GlobalParameters
+
+        $actual.GlobalParameters.GetEnumerator() | ForEach-Object {
+            ValidateFactoryProperties $_.Value $expected.GlobalParameters[$_.Key]
+        }
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
 Creates a data factory and then does a Get to verify that both are identical.
 #>
 function Test-CreateDataFactory

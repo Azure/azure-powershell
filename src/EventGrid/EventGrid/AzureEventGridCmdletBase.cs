@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string AliasDomain = "Domain";
         protected const string AliasDomainName = "DomainName";
         protected const string AliasDomainTopicName = "DomainTopicName";
+        protected const string AliasAadAppIdUri = "AliasAadAppIdUri";
+        protected const string AliasAadTenantId = "AliasAadTenantId";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 

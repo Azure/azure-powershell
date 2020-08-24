@@ -40,9 +40,26 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the credential (username and password) of the Azure SQL Database. 
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
-        [ValidateNotNull]
+        [Parameter(Mandatory = false, HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
         public PSCredential MemberDatabaseCredential { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use private link connection
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use private link when connecting to this sync member.")]
+        public bool? UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sync member resource Id
+        /// </summary>
+        /// <value>
+        /// The sync member database id (only for sync member using Azure SQL Database), e.g. "subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncMemberServer01}/databases/{syncMemberDatabaseName01}"
+        /// </value>
+        /// <remarks>
+        /// This needs to be a sync member sql azure database id (i.e. full arm uri) so that we can validate calling user's R/W access to this database via RBAC.
+        /// </remarks>
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID for the sync member database, used if UsePrivateLinkConnection is set to true.")]
+        public string SyncMemberAzureDatabaseResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -63,6 +80,18 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncMemberModel> ApplyUserInputToModel(IEnumerable<AzureSqlSyncMemberModel> model)
         {
             AzureSqlSyncMemberModel newModel = model.First();
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(UsePrivateLinkConnection)))
+            {
+                if (this.UsePrivateLinkConnection.GetValueOrDefault() && !MyInvocation.BoundParameters.ContainsKey(nameof(SyncMemberAzureDatabaseResourceId)))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.SyncMemberIdRequired, nameof(SyncMemberAzureDatabaseResourceId));
+                }
+
+                newModel.UsePrivateLinkConnection = this.UsePrivateLinkConnection;
+                newModel.SyncMemberAzureDatabaseResourceId = this.SyncMemberAzureDatabaseResourceId;
+            }
 
             if (MyInvocation.BoundParameters.ContainsKey("MemberDatabaseCredential"))
             {

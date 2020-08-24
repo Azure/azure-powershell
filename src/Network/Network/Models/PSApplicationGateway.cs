@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
 
+        public List<PSApplicationGatewayPrivateLinkConfiguration> PrivateLinkConfigurations { get; set; }
+
+        public List<PSApplicationGatewayPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableHttp2 { get; set; }
 
@@ -171,6 +175,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string FirewallPolicyText
         {
             get { return JsonConvert.SerializeObject(FirewallPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PrivateLinkConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(PrivateLinkConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PrivateLinkEndpointConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(PrivateEndpointConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

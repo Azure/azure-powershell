@@ -18,13 +18,19 @@ New-AzADGroup -DisplayName <String> -MailNickname <String> [-Description <String
 ```
 
 ## DESCRIPTION
-Creates a new active directory group.
+Creates a new active directory group.Below are the permissions needed:
+
+- Azure Active Directory Graph
+  - Directory.ReadWrite.All
+- Microsoft Graph
+  - Directory.ReadWrite.All
+  - PrivilegedAccess.ReadWrite.AzureADGroup
 
 ## EXAMPLES
 
-### Example 1 - Create a new AD group
+### Example 1: Create a new AD group
 
-```
+```powershell
 PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "MyGroupNick"
 ```
 

@@ -14,13 +14,13 @@ Checks for the existence of a Synapse Analytics SQL pool.
 
 ### TestByNameParameterSet (Default)
 ```
-Test-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Test-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestByParentObjectParameterSet
 ```
-Test-AzSynapseSqlPool -Name <String> -WorkspaceObject <PSSynapseWorkspace>
+Test-AzSynapseSqlPool -Name <String> [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -74,6 +74,21 @@ Resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: TestByNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of Synapse SQL pool. For example, 2 or 3.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False

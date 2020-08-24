@@ -22,7 +22,7 @@ The cmdlet **New-AzApiManagementHttpMessageDiagnostic** creates the Http Message
 
 ## EXAMPLES
 
-### Example 1 : Create a Basic Http Message diagnostic Setting
+### Example 1: Create a Basic Http Message diagnostic Setting
 ```powershell
 PS C:\>  New-AzApiManagementHttpMessageDiagnostic -Headers 'Content-Type', 'UserAgent' -BodyBytes 100
 

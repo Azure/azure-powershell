@@ -1,0 +1,88 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "galleries_testsharedgallery_name": {
+            "defaultValue": "testsharedgallery",
+            "type": "String"
+        },
+        "images_test_linux_image_externalid": {
+            "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/WYUNCHI-IMAGEBUILDER/providers/Microsoft.Compute/images/test-linux-image",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/galleries",
+            "apiVersion": "2019-03-01",
+            "name": "[parameters('galleries_testsharedgallery_name')]",
+            "location": "eastus",
+            "tags": {
+                "type": "test"
+            },
+            "properties": {
+                "identifier": {
+                    "uniqueName": "9e223dbe-3399-4e19-88eb-0975f02ac87f-TESTSHAREDGALLERY"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/galleries/images",
+            "apiVersion": "2019-03-01",
+            "name": "[concat(parameters('galleries_testsharedgallery_name'), '/imagedefinition-linux')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/galleries', parameters('galleries_testsharedgallery_name'))]"
+            ],
+            "properties": {
+                "osType": "Linux",
+                "osState": "Generalized",
+                "identifier": {
+                    "publisher": "test",
+                    "offer": "test",
+                    "sku": "Linux-Gen1"
+                },
+                "recommended": {
+                    "vCPUs": {
+                        "min": 16,
+                        "max": 64
+                    },
+                    "memory": {
+                        "min": 500,
+                        "max": 1024
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/galleries/images/versions",
+            "apiVersion": "2019-03-01",
+            "name": "[concat(parameters('galleries_testsharedgallery_name'), '/imagedefinition-linux/1.0.0')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/galleries/images', parameters('galleries_testsharedgallery_name'), 'imagedefinition-linux')]",
+                "[resourceId('Microsoft.Compute/galleries', parameters('galleries_testsharedgallery_name'))]"
+            ],
+            "properties": {
+                "publishingProfile": {
+                    "source": {
+                        "managedImage": {
+                            "id": "[parameters('images_test_linux_image_externalid')]"
+                        }
+                    },
+                    "targetRegions": [
+                        {
+                            "name": "East US",
+                            "regionalReplicaCount": 1,
+                            "storageAccountType": "Standard_LRS"
+                        }
+                    ],
+                    "replicaCount": 1,
+                    "excludeFromLatest": false,
+                    "storageAccountType": "Standard_LRS"
+                }
+            }
+        }
+    ]
+}

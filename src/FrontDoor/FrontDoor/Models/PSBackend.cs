@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string PrivateLinkAlias { get; set; }
 
+        public string PrivateLinkResourceId { get; set; }
+
+        public string PrivateLinkLocation { get; set; }
+
         public PSPrivateEndpointStatus? PrivateEndpointStatus { get; set; }
 
         public string PrivateLinkApprovalMessage { get; set; }

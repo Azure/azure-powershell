@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ManagedServices.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -22,6 +23,10 @@ using System.Text;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChange(
+        message: "New mandatory parameter 'DisplayName' will be added to represent a user-friendly name for a registration definition",
+        deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+        changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate)]
     [Cmdlet(
     VerbsCommon.New,
     Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",

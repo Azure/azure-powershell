@@ -181,6 +181,41 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaCreatedBySP");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV1Conditions()
+        {
+            TestRunner.RunTestScript("Test-RaWithV1Conditions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2Conditions()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2Conditions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2ConditionsOnly()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2ConditionsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2ConditionVersionOnly()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2ConditionVersionOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRa()
+        {
+            TestRunner.RunTestScript("Test-UpdateRa");
+        }
+
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()

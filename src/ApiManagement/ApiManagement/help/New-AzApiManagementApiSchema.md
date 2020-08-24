@@ -31,7 +31,7 @@ Creates the new API Schema of the API.
 
 ## EXAMPLES
 
-### Example 1 : Create new Schema for Swagger Petstore Extensive API
+### Example 1: Create new Schema for Swagger Petstore Extensive API
 ```powershell
 PS D:\github\azure-powershell> $context = New-AzApiManagementContext -ResourceId /subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.ApiManagement/service/sdktestapim4163
 PS D:\github\azure-powershell> New-AzApiManagementApiSchema -Context $context -ApiId swagger-petstore-extensive -SchemaDocumentContentType swaggerdefinition -SchemaDocumentFilePath C:\Users\sasolank\Downloads\petstoreschema.json

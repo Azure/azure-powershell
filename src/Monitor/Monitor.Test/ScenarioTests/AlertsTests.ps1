@@ -391,10 +391,7 @@ function Test-AddAzureRmMetricAlertRuleV2-ActionGroupId
 	$actionGroup1 = New-AzActionGroup -ActionGroupId $NewActionGroup1.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
     try
-    {
-		# Test - cannot create metric alert with action group id and action group
-		Assert-Throws { Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup1 -ActionGroupId $NewActionGroup1.Id, $NewActionGroup1.Id -Severity 3 } "Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided."
-		
+    {		
 		# Test - create metric alert by action group id
         $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroupId $NewActionGroup1.Id, $NewActionGroup2.Id -Severity 3
 		Assert-AreEqual $actual.Name $ruleName
@@ -404,6 +401,60 @@ function Test-AddAzureRmMetricAlertRuleV2-ActionGroupId
         # Cleanup
         Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
 		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+	<#
+.SYNOPSIS
+Tests disabling a GenV2 metric alert rule with action groups.
+#>
+function Test-DisableAzureRmMetricAlertRuleV2WithActionGroups
+{
+	# Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleWithActionGroupIdName = Get-ResourceName
+	$ruleByResourceId = Get-ResourceName
+	$ruleByResourceScope = Get-ResourceName
+	$actionGroupName1 = Get-ResourceName
+	$actionGroupName2 = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	$targetResourceScope = $targetResourceId
+	$targetResourceType = 'Microsoft.Storage/storageAccounts'
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$newActionGroup1 =  Set-AzureRmActionGroup -Name $actionGroupName1 -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$newActionGroup2 =  Set-AzureRmActionGroup -Name $actionGroupName2 -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+    try
+    {
+		# Test - disable metric alert with resource id and action group
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleByResourceId -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -Severity 3 -ActionGroupId $newActionGroup1.Id, $newActionGroup2.Id
+		$actual = Get-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceId | Add-AzMetricAlertRuleV2 -DisableRule
+		Assert-AreEqual $actual.Name $ruleByResourceId
+		Assert-AreEqual $actual.Actions[0].ActionGroupId $NewActionGroup1.Id
+		Assert-AreEqual $actual.Actions[1].ActionGroupId $NewActionGroup2.Id
+
+		# Test - disable metric alert with scope and action group
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleByResourceScope -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceScope $targetResourceScope -TargetResourceType $targetResourceType -TargetResourceRegion $location -Condition $condition -Severity 3 -ActionGroupId $newActionGroup1.Id, $newActionGroup2.Id
+		$actual = Get-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceScope | Add-AzMetricAlertRuleV2 -DisableRule
+		Assert-AreEqual $actual.Name $ruleByResourceScope
+		Assert-AreEqual $actual.Actions[0].ActionGroupId $NewActionGroup1.Id
+		Assert-AreEqual $actual.Actions[1].ActionGroupId $NewActionGroup2.Id
+	}
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceId 
+		Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceScope
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName1
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName2
 		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
 		Remove-AzResourceGroup -Name $rgname -Force
     }

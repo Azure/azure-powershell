@@ -498,4 +498,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="ADGraphPermissionWarning" xml:space="preserve">
+    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>
+  </data>
 </root>

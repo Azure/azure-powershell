@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Added `-RunOn` parameters to `Set-AzAutomationWebhook` to specify a Hybrid Worker Group
+
+## Version 1.3.7
+* Fixed the issue that string with escape chars cannot be converted into json object.
+
 ## Version 1.3.6
 * Fixed typo in Example 1 in reference documentation for `New-AzAutomationSoftwareUpdateConfiguration`
 

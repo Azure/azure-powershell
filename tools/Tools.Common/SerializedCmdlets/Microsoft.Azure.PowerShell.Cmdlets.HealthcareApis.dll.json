@@ -14,26 +14,30 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
               "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-              "Authority": "System.String",
+              "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Kind": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "ResourceGroupName": "System.String",
-              "Audience": "System.String"
+              "Name": "System.String",
+              "Etag": "System.String",
+              "Kind": "System.String",
+              "Id": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "Authority": "System.String",
+              "Audience": "System.String",
+              "Location": "System.String",
+              "IdentityTenantId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -477,26 +481,30 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
               "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-              "Authority": "System.String",
+              "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Kind": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "ResourceGroupName": "System.String",
-              "Audience": "System.String"
+              "Name": "System.String",
+              "Etag": "System.String",
+              "Kind": "System.String",
+              "Id": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "Authority": "System.String",
+              "Audience": "System.String",
+              "Location": "System.String",
+              "IdentityTenantId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -793,7 +801,43 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "ExportStorageAccountName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "EnableSmartProxy",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ManagedIdentity",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -1220,7 +1264,55 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExportStorageAccountName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "EnableSmartProxy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ManagedIdentity",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -1432,26 +1524,30 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
               "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-              "Authority": "System.String",
+              "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Kind": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "ResourceGroupName": "System.String",
-              "Audience": "System.String"
+              "Name": "System.String",
+              "Etag": "System.String",
+              "Kind": "System.String",
+              "Id": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "Authority": "System.String",
+              "Audience": "System.String",
+              "Location": "System.String",
+              "IdentityTenantId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1752,26 +1848,30 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-                    "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-                    "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
                     "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+                    "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+                    "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
                     "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
                     "CorsMaxAge": "System.Nullable`1[System.Int32]",
                     "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-                    "Authority": "System.String",
+                    "IdentityType": "System.String",
                     "ResourceType": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Kind": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Audience": "System.String"
+                    "Name": "System.String",
+                    "Etag": "System.String",
+                    "Kind": "System.String",
+                    "Id": "System.String",
+                    "IdentityPrincipalId": "System.String",
+                    "ExportStorageAccountName": "System.String",
+                    "Authority": "System.String",
+                    "Audience": "System.String",
+                    "Location": "System.String",
+                    "IdentityTenantId": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2149,26 +2249,30 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
               "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-              "Authority": "System.String",
+              "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Kind": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "ResourceGroupName": "System.String",
-              "Audience": "System.String"
+              "Name": "System.String",
+              "Etag": "System.String",
+              "Kind": "System.String",
+              "Id": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "Authority": "System.String",
+              "Audience": "System.String",
+              "Location": "System.String",
+              "IdentityTenantId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2467,6 +2571,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "ExportStorageAccountName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "AccessPolicyObjectId",
           "AliasList": [],
           "Type": {
@@ -2483,6 +2605,42 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "EnableManagedIdentity",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DisableManagedIdentity",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "Tag",
@@ -2510,26 +2668,30 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+              "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+              "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
               "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-              "Authority": "System.String",
+              "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Kind": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "ResourceGroupName": "System.String",
-              "Audience": "System.String"
+              "Name": "System.String",
+              "Etag": "System.String",
+              "Kind": "System.String",
+              "Id": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "Authority": "System.String",
+              "Audience": "System.String",
+              "Location": "System.String",
+              "IdentityTenantId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2980,6 +3142,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExportStorageAccountName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AccessPolicyObjectId",
                 "AliasList": [],
                 "Type": {
@@ -2996,6 +3182,54 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableManagedIdentity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisableManagedIdentity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -3366,6 +3600,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExportStorageAccountName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AccessPolicyObjectId",
                 "AliasList": [],
                 "Type": {
@@ -3382,6 +3640,54 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableManagedIdentity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisableManagedIdentity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -3513,26 +3819,30 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-                    "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-                    "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
                     "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+                    "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+                    "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
                     "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
                     "CorsMaxAge": "System.Nullable`1[System.Int32]",
                     "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-                    "Authority": "System.String",
+                    "IdentityType": "System.String",
                     "ResourceType": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Kind": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Audience": "System.String"
+                    "Name": "System.String",
+                    "Etag": "System.String",
+                    "Kind": "System.String",
+                    "Id": "System.String",
+                    "IdentityPrincipalId": "System.String",
+                    "ExportStorageAccountName": "System.String",
+                    "Authority": "System.String",
+                    "Audience": "System.String",
+                    "Location": "System.String",
+                    "IdentityTenantId": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3890,7 +4200,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3902,7 +4212,7 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ObjectId": "System.String"
       },
@@ -3997,26 +4307,30 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-        "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-        "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
         "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
+        "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
+        "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
         "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
         "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
         "CorsMaxAge": "System.Nullable`1[System.Int32]",
         "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
-        "Authority": "System.String",
+        "IdentityType": "System.String",
         "ResourceType": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Kind": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
         "ResourceGroupName": "System.String",
-        "Audience": "System.String"
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Kind": "System.String",
+        "Id": "System.String",
+        "IdentityPrincipalId": "System.String",
+        "ExportStorageAccountName": "System.String",
+        "Authority": "System.String",
+        "Audience": "System.String",
+        "Location": "System.String",
+        "IdentityTenantId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

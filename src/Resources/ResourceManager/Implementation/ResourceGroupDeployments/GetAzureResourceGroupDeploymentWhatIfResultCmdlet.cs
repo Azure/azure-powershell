@@ -14,22 +14,23 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System;
-    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName),
     OutputType(typeof(PSWhatIfOperationResult))]
-    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
+            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -44,43 +45,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat ResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
-        protected override void OnProcessRecord()
-        {
-            const string statusMessage = "Getting the latest status of all resources...";
-            var clearMessage = new string(' ', statusMessage.Length);
-            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
-            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
-            var tags = new[] { "PSHOST" };
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] ExcludeChangeType { get; set; }
 
-            try
-            {
-                // Write status message.
-                this.WriteInformation(information, tags);
-
-                var parameters = new PSDeploymentWhatIfCmdletParameters
-                {
-                    DeploymentName = this.Name,
-                    Mode = this.Mode,
-                    ResourceGroupName = this.ResourceGroupName,
-                    TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                    TemplateObject = this.TemplateObject,
-                    TemplateParametersUri = this.TemplateParameterUri,
-                    TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
-                    ResultFormat = this.ResultFormat
-                };
-
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
-
-                // Clear status before returning result.
-                this.WriteInformation(clearInformation, tags);
-                this.WriteObject(whatIfResult);
-            }
-            catch (Exception)
-            {
-                // Clear status before on exception.
-                this.WriteInformation(clearInformation, tags);
-                throw;
-            }
-        }
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.ResourceGroup,
+            deploymentName: this.Name,
+            mode: this.Mode,
+            resourceGroupName: this.ResourceGroupName,
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            templateObject: this.TemplateObject,
+            templateParametersUri: this.TemplateParameterUri,
+            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat: this.ResultFormat,
+            excludeChangeTypes: this.ExcludeChangeType);
     }
 }

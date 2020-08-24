@@ -19,6 +19,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
+* Added `-EncryptionAtHost` parameter to `New-AzVm`, `New-AzVmss`, `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss`
+* Added `SecurityProfile` to `Get-AzVM` and `Get-AzVmss` return object
+* Added `-InstanceView` switch as optional parameter to `Get-AzHostGroup`
+* Added new cmdlet `Invoke-AzVmPatchAssessment`
+
+## Version 4.2.1
+* Added warning when using `New-AzVmss` without "latest" image version
+* Added '-Location' as optional positional parameter to Get-AzComputeResourceSku cmdlet
+
+## Version 4.2.0
+* Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
+* Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.
+* Added Substatuses to VMCustomScriptExtension [#11297]
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Fixed name of new VM Extension for SAP
+
+## Version 4.1.0
 * Added HostId parameter to `Update-AzVM` cmdlet
 * Updated Help documents for `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVmss`, `Set-AzVMOperatingSystem` and `Set-AzVmssOsProfile` cmdlets.
 * Breaking changes

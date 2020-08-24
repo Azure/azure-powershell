@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.0
 * Rebranding `Az.DataboxEdge` to `Az.StackEdge`
 * Combined output of `Get-AzStackEdgeDevice` to single output variable
 * Bandwidth Schedule by default sets unlimited bandwidth schedule

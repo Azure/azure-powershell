@@ -1,0 +1,675 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d0eb999e-0a24-41d0-adef-e2d5b59fa1b6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ccfae9d-5ef0-4c39-9a15-624f1fe3d259"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "6b99a852-66b4-4c14-875b-82c57ad9ec62"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024243Z:5f004baf-4ad1-4e43-a74e-6a83dd0a8d62"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:43 GMT"
+        ],
+        "Content-Length": [
+          "318"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"The document could not be retrieved because it does not exist.\",\r\n  \"target\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.DataFactory/factories/roletestspace/integrationruntimes/test-integrationruntime-for-piping\",\r\n  \"details\": null,\r\n  \"error\": null\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c8a51e15-0185-462a-b3e8-5274f746640f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5b44101-80de-44b5-b7aa-51ba6714ab2e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5e304f99-e498-4a99-bc46-e49727a4f8d1"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024255Z:adcb058a-a70a-4eea-8a5d-7d064066ad3b"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:55 GMT"
+        ],
+        "Content-Length": [
+          "373"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationruntimes/test-integrationruntime-for-piping\",\r\n  \"name\": \"test-integrationruntime-for-piping\",\r\n  \"type\": \"Microsoft.Synapse/workspaces/integrationruntimes\",\r\n  \"properties\": {\r\n    \"type\": \"SelfHosted\"\r\n  },\r\n  \"etag\": \"12006d78-0000-0200-0000-5f35fa250000\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"SelfHosted\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fd13e727-9280-46aa-8691-8f180b54fb06"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "54"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/operationResults/6111c2c4-5772-40e6-a202-f85bb57422cb?api-version=2019-06-01-preview"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Headers": [
+          "Location",
+          "Retry-After"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Location",
+          "Retry-After"
+        ],
+        "x-ms-request-id": [
+          "610f8925-c1c5-43a1-a7a1-4112097c845a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "8850a34f-4e9c-4915-b26a-489a2c587deb"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024244Z:8850a34f-4e9c-4915-b26a-489a2c587deb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:44 GMT"
+        ],
+        "Content-Length": [
+          "423"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping\",\r\n  \"recordId\": 59768,\r\n  \"state\": \"Creating\",\r\n  \"created\": \"2020-08-14T02:42:44.25Z\",\r\n  \"changed\": \"2020-08-14T02:42:44.25Z\",\r\n  \"type\": \"IntegrationRuntime\",\r\n  \"name\": \"test-integrationruntime-for-piping\",\r\n  \"operationId\": \"6111c2c4-5772-40e6-a202-f85bb57422cb\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/operationResults/6111c2c4-5772-40e6-a202-f85bb57422cb?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL29wZXJhdGlvblJlc3VsdHMvNjExMWMyYzQtNTc3Mi00MGU2LWEyMDItZjg1YmI1NzQyMmNiP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd5bf336-f8fe-4bc1-9fdf-7c745ccdda02"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "176f8d17-20dc-4155-8de1-0e5e1afd4e4c"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024255Z:62ceb27d-355d-4ab6-a640-4774e374b2d7"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:54 GMT"
+        ],
+        "Content-Length": [
+          "373"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationruntimes/test-integrationruntime-for-piping\",\r\n  \"name\": \"test-integrationruntime-for-piping\",\r\n  \"type\": \"Microsoft.Synapse/workspaces/integrationruntimes\",\r\n  \"properties\": {\r\n    \"type\": \"SelfHosted\"\r\n  },\r\n  \"etag\": \"12006d78-0000-0200-0000-5f35fa250000\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping/listAuthKeys?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZy9saXN0QXV0aEtleXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6a6e82b7-5281-4ab6-ad74-ebf4ed9fb6fa"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "1c992946-f5c8-417a-aab8-0272bb7422c0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "dd9d7ecd-a67e-4a49-aade-f87705644cf2"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024256Z:95114f0f-51b5-42b7-bcb4-97704d09753f"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:56 GMT"
+        ],
+        "Content-Length": [
+          "233"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"authKey1\": \"IR@af2d3b80-3bc0-45a9-aed0-b275e6d7d30d@roletestspace@eu2@y2eJxfzCBGzroOCcmsqSVKvsq1LKmN1OZFaSXraaEOY=\",\r\n  \"authKey2\": \"IR@af2d3b80-3bc0-45a9-aed0-b275e6d7d30d@roletestspace@eu2@QexH44sB8yCqYNXS5BQnXm4wW6xawfjSyhwwIjukcyg=\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping/regenerateAuthKey?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZy9yZWdlbmVyYXRlQXV0aEtleT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"keyName\": \"AuthKey1\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "58756ae4-0d9f-4a78-b9c6-e2e4ff7dffb0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "3483bf54-b60f-45f6-8f67-de7cf7cd47cf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "aeda6b0b-9f54-488e-8c4e-788ce5a401c9"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024257Z:efd7e67a-ad62-4135-b09e-72559377326c"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:56 GMT"
+        ],
+        "Content-Length": [
+          "117"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"authKey1\": \"IR@af2d3b80-3bc0-45a9-aed0-b275e6d7d30d@roletestspace@eu2@uERRjtwX5DZ8gjUwOIFiJDcxebDDthpchW8wUUnJpas=\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping/monitoringData?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZy9tb25pdG9yaW5nRGF0YT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "52dcf04d-0afa-4df8-859b-bbad34b3803d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "5cffae97-59c0-4c71-b1f7-2e45f1eb7ad6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "2815ddf1-f346-4e97-8757-52bb9cfd9935"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024257Z:0f658ddb-fc41-4074-a264-2f34527fdad2"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:57 GMT"
+        ],
+        "Content-Length": [
+          "45"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"test-integrationruntime-for-piping\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL2ludGVncmF0aW9uUnVudGltZXMvdGVzdC1pbnRlZ3JhdGlvbnJ1bnRpbWUtZm9yLXBpcGluZz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e47727e-42a0-43c0-9216-24fb89a69f1a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/operationResults/607b57a7-1c6f-40c9-90ea-2147b0475331?api-version=2019-06-01-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Headers": [
+          "Location"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Location"
+        ],
+        "x-ms-request-id": [
+          "9cac251b-b4b2-44e6-9408-0fed0c19930b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "43b76b0e-c846-4b0a-94c9-3d4365474a6e"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024258Z:43b76b0e-c846-4b0a-94c9-3d4365474a6e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:42:58 GMT"
+        ],
+        "Content-Length": [
+          "411"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/integrationRuntimes/test-integrationruntime-for-piping\",\r\n  \"recordId\": 0,\r\n  \"state\": \"Deleting\",\r\n  \"created\": \"0001-01-01T00:00:00\",\r\n  \"changed\": \"0001-01-01T00:00:00\",\r\n  \"type\": \"IntegrationRuntime\",\r\n  \"name\": \"test-integrationruntime-for-piping\",\r\n  \"operationId\": \"607b57a7-1c6f-40c9-90ea-2147b0475331\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/operationResults/607b57a7-1c6f-40c9-90ea-2147b0475331?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL29wZXJhdGlvblJlc3VsdHMvNjA3YjU3YTctMWM2Zi00MGM5LTkwZWEtMjE0N2IwNDc1MzMxP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a3a264d5-44e7-4490-9a4f-f8ad6a442a12"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-correlation-request-id": [
+          "640dc409-ffc2-43c8-a627-0ed8c37deb56"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024329Z:640dc409-ffc2-43c8-a627-0ed8c37deb56"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:43:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/roletestspace/operationResults/607b57a7-1c6f-40c9-90ea-2147b0475331?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3l3dGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9yb2xldGVzdHNwYWNlL29wZXJhdGlvblJlc3VsdHMvNjA3YjU3YTctMWM2Zi00MGM5LTkwZWEtMjE0N2IwNDc1MzMxP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e0de84ea-835f-4e4f-b149-34c574ff1619"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
+        "x-ms-correlation-request-id": [
+          "75ff2e8b-eba7-41de-99c0-5c868a8dc3f4"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREASOUTH:20200814T024329Z:75ff2e8b-eba7-41de-99c0-5c868a8dc3f4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 14 Aug 2020 02:43:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3",
+    "resourceGroupName": "ywtest",
+    "workspaceName": "roletestspace"
+  }
+}

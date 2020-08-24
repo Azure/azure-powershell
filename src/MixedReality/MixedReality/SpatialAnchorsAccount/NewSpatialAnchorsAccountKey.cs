@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("New", AzureRMConstants.AzureRMPrefix + ResourceType + "Key", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSSpatialAnchorsAccountKeys))]
+    [OutputType(typeof(PSAccountKeys))]
     public sealed class NewSpatialAnchorsAccountKey : SpatialAnchorsAccountCmdletBase
     {
         public const string RegeneratePrimaryKeyParameterSetName = "RegeneratePrimaryKeyParameterSet";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 var resourceId = new ResourceId(ResourceId);
 
                 ResourceGroupName = resourceId.ResourceGroupName;
-                Name = resourceId.SpatialAnchorsAccountName;
+                Name = resourceId.ResourceName;
             }
 
             if (ParameterSetName.StartsWith(PipelineParameterSetPrefix))

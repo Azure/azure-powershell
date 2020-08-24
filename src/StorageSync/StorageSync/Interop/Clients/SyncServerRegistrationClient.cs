@@ -301,7 +301,7 @@ namespace Commands.StorageSync.Interop.Clients
                 monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
             }
             var registrationInfo = new ServerRegistrationInformation(
-                serviceEndpoint: registeredServerResource.ManagementEndpointUri,
+                serviceEndpoint: registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
                 subscriptionId: subscriptionId,
                 resourceGroupName: resourceGroupName,
                 storageSyncServiceName: storageSyncServiceName,

@@ -12,7 +12,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string WorkspaceName = nameof(WorkspaceName);
 
-        public const string FilewallRuleAllowAll = nameof(FilewallRuleAllowAll);
+        public const string FirewallRuleName = nameof(FirewallRuleName);
+
+        public const string FirewallRule = nameof(FirewallRule);
 
         public const string SparkPool = nameof(SparkPool);
 
@@ -30,9 +32,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlDatabase = nameof(SqlDatabase);
+
         public const string SparkPoolName = nameof(SparkPoolName);
 
         public const string Job = nameof(Job);
+
+        public const string RoleAssignment = nameof(RoleAssignment);
+
+        public const string RoleDefinition = nameof(RoleDefinition);
 
         public const string SparkDotNetJarFile = "local:///usr/hdp/current/spark2-client/jars/microsoft-spark.jar";
 
@@ -45,6 +53,61 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string JarExtention = ".jar";
 
         public const string MainExecutableFile = nameof(MainExecutableFile);
+
+        public const string IntegrationRuntime = nameof(IntegrationRuntime);
+
+        public const string IntegrationRuntimeName = nameof(IntegrationRuntimeName);
+
+        public const string IntegrationRuntimeTypeManaged = "Managed";
+
+        public const string IntegrationRuntimeSelfhosted = "SelfHosted";
+
+        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
+
+        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
+
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
+        public const string Key = nameof(Key);
+
+        public const string Metric = nameof(Metric);
+
+        public const string Node = nameof(Node);
+
+        public const string Upgrade = nameof(Upgrade);
+
+        public const string SubnetName = nameof(SubnetName);
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
+
+        public const string Credential = nameof(Credential);
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
+
+        public const string Pipeline = nameof(Pipeline);
+
+        public const string PipelineRun = nameof(PipelineRun);
+
+        public const string ActivityRun = nameof(ActivityRun);
+
+        public const string LinkedService = nameof(LinkedService);
+
+        public const string Notebook = nameof(Notebook);
+
+        // TODO: In future, we should expose the default version string of Spark SDK and use that value here.
+        public const string SparkServiceEndpointApiVersion = "2019-11-01-priview";
+
+        public const string Trigger = nameof(Trigger);
+
+        public const string SubscriptionStatus = nameof(SubscriptionStatus);
+
+        public const string Subscription = nameof(Subscription);
+
+        public const string TriggerRun = nameof(TriggerRun);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {

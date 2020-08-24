@@ -156,13 +156,13 @@ function Test-GetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
 		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -RequireInfrastructureEncryption;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -170,6 +170,7 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
+		Assert-AreEqual $true $sto.Encryption.RequireInfrastructureEncryption
 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
@@ -1325,6 +1326,61 @@ function Test-NewSetAzureStorageAccount_RAGZRS
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+
+	<#
+.SYNOPSIS
+Test Test-NewAzureStorageAccount_TLSveresionBlobPublicAccess
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+		$tlsVersion = "TLS1_2"
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype  -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $false;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
+        Assert-AreEqual $false $sto.AllowBlobPublicAccess
+		
+		$tlsVersion = "TLS1_1"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $true ;
+		
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
+        Assert-AreEqual $true $sto.AllowBlobPublicAccess
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

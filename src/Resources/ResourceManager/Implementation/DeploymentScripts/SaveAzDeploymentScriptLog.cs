@@ -17,9 +17,11 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -52,17 +54,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string DeploymentScriptResourceId { get; set; }
 
+        [Alias("DeploymentScriptInputObject")]
         [Parameter(Position = 0, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The deployment script PowerShell object.")]
         [ValidateNotNullOrEmpty]
-        public PsDeploymentScript DeploymentScriptInputObject { get; set; }
+        public PsDeploymentScript DeploymentScriptObject { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
+
+        [Parameter(Position = 3, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = false, HelpMessage = "Limit output to last n lines")]
+        [ValidateNotNullOrEmpty]
+        public int Tail { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Forces the overwrite of the existing file.")]
@@ -76,24 +85,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
 
             PsDeploymentScriptLog deploymentScriptLog;
+            int tailParam = this.IsParameterBound(c => c.Tail) ? Tail : 0;
+            string scriptName = "";
 
             try
             {
                 switch (ParameterSetName)
                 {
                     case SaveDeploymentScriptLogByName:
+                        scriptName = Name;
                         deploymentScriptLog =
-                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(Name, ResourceGroupName);
+                            DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName, ResourceGroupName, tailParam);
                         break;
                     case SaveDeploymentScriptLogByResourceId:
-                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId),
-                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId));
+                        scriptName = ResourceIdUtility.GetResourceName(this.DeploymentScriptResourceId);
+                        deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(scriptName,
+                            ResourceIdUtility.GetResourceGroupName(this.DeploymentScriptResourceId),
+                            tailParam);
                         break;
                     case SaveDeploymentScriptLogByInputObject:
+                        scriptName = DeploymentScriptObject.Name;
                         deploymentScriptLog = DeploymentScriptsSdkClient.GetDeploymentScriptLog(
-                            DeploymentScriptInputObject.Name,
-                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptInputObject.Id));
+                            scriptName,
+                            ResourceIdUtility.GetResourceGroupName(DeploymentScriptObject.Id),
+                            tailParam);
                         break;
                     default:
                         throw new PSInvalidOperationException();
@@ -108,13 +123,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     this.ConfirmAction(
                         this.Force || !AzureSession.Instance.DataStore.FileExists(outputPathWithFileName),
                         string.Format(
-                            Properties.Resources.DeploymentScriptLogFileExists, Name, OutputPath),
+                            Properties.Resources.DeploymentScriptLogFileExists, scriptName, OutputPath),
                         Properties.Resources.DeploymentScriptShouldProcessString,
                         OutputPath,
                         () =>
                         {
+                            //Standardize newline character to be written into file
+                            StringBuilder logs = new StringBuilder();
+                            StringReader stringReader = new StringReader(deploymentScriptLog.Log);
+
+                            String line = stringReader.ReadLine();
+                            while(line != null)
+                            {
+                                logs.Append(line);
+                                line = stringReader.ReadLine();
+                                if (line != null)
+                                    logs.Append(Environment.NewLine);
+                            }
+
                             AzureSession.Instance.DataStore.WriteFile(outputPathWithFileName,
-                                deploymentScriptLog.Log);
+                                logs.ToString());
 
                             WriteObject(new PsDeploymentScriptLogPath() {Path = outputPathWithFileName});
                         });

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase

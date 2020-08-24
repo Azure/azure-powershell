@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
+        protected const string IdentityUpdateParameterSet = "IdentityUpdateParameterSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroup = "ResourceGroup";

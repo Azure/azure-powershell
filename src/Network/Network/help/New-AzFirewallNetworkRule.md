@@ -25,22 +25,22 @@ The **New-AzFirewallNetworkRule** cmdlet creates an network rule for Azure Firew
 
 ## EXAMPLES
 
-### 1:  Create a rule for all TCP traffic
-```
+### Example 1: Create a rule for all TCP traffic
+```powershell
 $rule = New-AzFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 ```
 
 This example creates a rule for all TCP traffic. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
-### 2:  Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
-```
+### Example 2: Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
+```powershell
 $rule = New-AzFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
-### 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
-```
+### Example 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
+```powershell
 $rule = New-AzFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
 ```
 
@@ -177,7 +177,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

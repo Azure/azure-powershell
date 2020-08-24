@@ -28,21 +28,14 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IOperationDefinition
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationoperation
 #>
 function Get-AzAppConfigurationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Query')]
-    [System.String]
-    # A skip token is used to continue retrieving items after an operation returns a partial result.
-    # If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
-    ${SkipToken},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

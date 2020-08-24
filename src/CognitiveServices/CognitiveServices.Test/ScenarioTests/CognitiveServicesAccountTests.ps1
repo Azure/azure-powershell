@@ -510,8 +510,8 @@ function Test-NetworkRuleSet
         # Test
         $accountname = 'csa' + $rgname;
         $vnetname = 'vnet' + $rgname;
-        $skuname = 'S0';
-        $accounttype = 'Face';
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -597,6 +597,51 @@ function Test-NetworkRuleSet
 		Assert-AreEqual 2 $ruleSet.IpRules.Count
 		Assert-AreEqual 2 $ruleSet.VirtualNetworkRules.Count
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+TestNetworkRuleSetDefaultActions
+#>
+function Test-NetworkRuleSetDefaultActions
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$vnetid = $vnet.Subnets[0].Id
+		$vnetid2 = $vnet.Subnets[1].Id
+
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-Null $ruleSet
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 1 $ruleSet.VirtualNetworkRules.Count
     }
     finally
     {
@@ -1118,6 +1163,140 @@ function Test-UserOwnedStorage
         Assert-NotNull $updatedAccount;
         Assert-AreEqual $updatedAccount.UserOwnedStorage.Length 1
         Assert-AreEqual $updatedAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatest"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test PrivateEndpoint
+#>
+function Test-PrivateEndpoint
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+        Assert-AreEqual $createdAccount.PrivateEndpointConnections $null
+
+        $vnet = Get-AzVirtualNetwork -ResourceName yydemo-vnet -ResourceGroupName yuanyang-demo
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name pe-powershell-ut -PrivateLinkServiceId $createdAccount.Id -RequestMessage "Please Approve my request" -GroupId "account"
+        New-AzPrivateEndpoint -PrivateLinkServiceConnection $plsConnection -Subnet $vnet.Subnets[0] -Name pe-powershell-ut -ResourceGroupName yuanyang-demo -Location centraluseuap 
+        
+        $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname
+        Assert-AreEqual $account.PrivateEndpointConnections.Length 1
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test PublicNetworkAccess
+#>
+function Test-PublicNetworkAccess
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    # Test
+    $accountname = 'csa' + $rgname;
+    $skuname = 'S1';
+    $accounttype = 'TextAnalytics';
+    $loc = "Central US EUAP";
+
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Disabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Disabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Enabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Disabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Disabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Capabilities
+#>
+function Test-Capabilities
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'F0';
+        $accounttype = 'FormRecognizer';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-True {$createdAccount.Capabilities.Length -gt 0}
+        Assert-True {$createdAccount.Capabilities[0].Name.Length -gt 0}
     }
     finally
     {

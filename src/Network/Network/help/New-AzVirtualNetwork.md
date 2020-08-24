@@ -25,8 +25,8 @@ The **New-AzVirtualNetwork** cmdlet creates an Azure virtual network.
 
 ## EXAMPLES
 
-### 1:  Create a virtual network with two subnets
-```
+### Example 1: Create a virtual network with two subnets
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 $backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
@@ -40,8 +40,8 @@ is one subnet called frontendSubnet and one subnet called backendSubnet. The
 New-AzVirtualNetwork cmdlet then creates a virtual network using the CIDR 10.0.0.0/16 as the
 address prefix and two subnets.
 
-### 2:  Create a virtual network with DNS settings
-```
+### Example 2: Create a virtual network with DNS settings
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 $backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
@@ -54,8 +54,8 @@ virtual network inherit these DNS servers as defaults. These defaults can be ove
 through a NIC-level setting. If no DNS servers are specified on a VNET and no DNS servers on the
 NICs, then the default Azure DNS servers are used for DNS resolution.
 
-### 3: Create a virtual network with a subnet referencing a network security group
-```
+### Example 3: Create a virtual network with a subnet referencing a network security group
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $rdpRule              = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule

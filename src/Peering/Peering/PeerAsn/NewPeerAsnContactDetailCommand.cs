@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = Constants.RoleHelp, ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Models.Role.Noc, Models.Role.Service, Models.Role.Technical, Models.Role.Policy, Models.Role.Other)]
+        [PSArgumentCompleter(Models.Role.Noc, Models.Role.Service, Models.Role.Escalation, Models.Role.Technical, Models.Role.Policy, Models.Role.Other)]
         public string Role { get; set; }
 
         /// <summary>

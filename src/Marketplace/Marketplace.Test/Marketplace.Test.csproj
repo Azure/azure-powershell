@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Marketplace</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Marketplace" Version="1.1.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <RootNamespace>Microsoft.Azure.Commands.Marketplace.Test</RootNamespace>
+  </PropertyGroup>
+
+</Project>

@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Get Action rule by resoure id.
+Get Action rule by resource id.
 
 ```yaml
 Type: System.String

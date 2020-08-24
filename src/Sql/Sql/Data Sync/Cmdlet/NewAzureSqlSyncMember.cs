@@ -16,7 +16,7 @@ using System.Security;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -147,6 +147,24 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SyncDirection { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to use private link connection
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use a private link connection when connecting to this sync member.")]
+        public SwitchParameter UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sync member resource Id
+        /// </summary>
+        /// <value>
+        /// The sync member database id (only for sync member using Azure SQL Database), e.g. "subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncMemberServer01}/databases/{syncMemberDatabaseName01}"
+        /// </value>
+        /// <remarks>
+        /// This needs to be a sync member sql azure database id (i.e. full arm uri) so that we can validate calling user's R/W access to this database via RBAC.
+        /// </remarks>
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID for the sync member database, used if UsePrivateLinkConnection is set to true.")]
+        public string SyncMemberAzureDatabaseResourceId { get; set; }
+
+        /// <summary>
         /// The id of the sync agent which is connected by the on-premises SQL server.
         /// </summary>
         private string syncAgentId = null;
@@ -198,6 +216,18 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 SyncDirection = this.SyncDirection,
                 MemberDatabaseType = this.MemberDatabaseType
             };
+
+            if (UsePrivateLinkConnection.IsPresent)
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(SyncMemberAzureDatabaseResourceId)))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.SyncMemberIdRequired, nameof(SyncMemberAzureDatabaseResourceId));
+                }
+
+                newModel.UsePrivateLinkConnection = true;
+                newModel.SyncMemberAzureDatabaseResourceId = this.SyncMemberAzureDatabaseResourceId;
+            }
             
             if(ParameterSetName == AzureSqlSet) 
             {

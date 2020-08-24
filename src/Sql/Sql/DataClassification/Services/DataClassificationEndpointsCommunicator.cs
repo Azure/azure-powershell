@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             };
 
             SqlManagementClient client = GetCurrentSqlManagementClient();
-            client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
             HttpResponseMessage response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
             response.EnsureSuccessStatusCode();
         }

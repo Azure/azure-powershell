@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
@@ -124,10 +125,21 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/virtualNetworks")]
         public string RemoteVirtualNetworkId { get; set; }
 
+        [CmdletParameterBreakingChange("EnableInternetSecurity", OldParamaterType = typeof(SwitchParameter), NewParameterTypeName = "EnableInternetSecurityFlag")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection")]
         public SwitchParameter EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public bool? EnableInternetSecurityFlag { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this HubVirtualnNetwork connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -156,31 +168,28 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
             }
 
-            //// Get the virtual hub - this will throw not found if the resource does not exist
-            PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-            if (parentVirtualHub == null)
-            {
-                throw new PSArgumentException(Properties.Resources.ParentVirtualHubNotFound);
-            }
-
-            PSHubVirtualNetworkConnection hubVnetConnection = new PSHubVirtualNetworkConnection();
+            var hubVnetConnection = new MNM.HubVirtualNetworkConnection(enableInternetSecurity: true);
             hubVnetConnection.Name = this.Name;
-            hubVnetConnection.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
+
+            if (this.EnableInternetSecurityFlag.HasValue && this.EnableInternetSecurityFlag.Value == false)
+            {
+                hubVnetConnection.EnableInternetSecurity = false;
+            }
 
             //// Resolve the remote virtual network
             //// Let's not try to resolve this since this can be in other RG/Sub/Location
             if (ParameterSetName.Contains(CortexParameterSetNames.ByRemoteVirtualNetworkObject))
             {
-                hubVnetConnection.RemoteVirtualNetwork = new PSResourceId() { Id = this.RemoteVirtualNetwork.Id };
+                hubVnetConnection.RemoteVirtualNetwork = new MNM.SubResource(this.RemoteVirtualNetwork.Id);
             }
             else if (ParameterSetName.Contains(CortexParameterSetNames.ByRemoteVirtualNetworkResourceId))
             {
-                hubVnetConnection.RemoteVirtualNetwork = new PSResourceId() { Id = this.RemoteVirtualNetworkId };
+                hubVnetConnection.RemoteVirtualNetwork = new MNM.SubResource(this.RemoteVirtualNetworkId);
             }
-            
-            if (parentVirtualHub.VirtualNetworkConnections == null)
+
+            if (this.RoutingConfiguration != null)
             {
-                parentVirtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                hubVnetConnection.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
             }
 
             List<string> resourceIds = new List<string>();
@@ -191,18 +200,13 @@ namespace Microsoft.Azure.Commands.Network
                 auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
             }
 
-            parentVirtualHub.VirtualNetworkConnections.Add(hubVnetConnection);
-            
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag, auxAuthHeader);
-                    var createdVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-
-                    WriteObject(createdVirtualHub.VirtualNetworkConnections.FirstOrDefault(hubConnection => hubConnection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)));
+                    WriteObject(this.CreateOrUpdateHubVirtualNetworkConnection(this.ResourceGroupName, this.ParentResourceName, this.Name, hubVnetConnection, auxAuthHeader));
                 });
         }
     }

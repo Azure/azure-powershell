@@ -12,11 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzAppConfigurationStoreKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded' {
+        $oldAppconfkeys = Get-AzAppConfigurationStoreKey -Name $env.appconfName00-ResourceGroupName $env.resourceGroup
+        New-AzAppConfigurationStoreKey -Name $env.appconfName00 -ResourceGroupName $env.resourceGroup -Id $oldAppconfkeys[0].id
+        $newAppconfkeys = Get-AzAppConfigurationStoreKey -Name $env.appconfName00-ResourceGroupName $env.resourceGroup
+        $oldAppconfkeys[0].value | Should -Not -Be $newAppconfkeys[0].value
     }
 
-    It 'RegenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateViaIdentityExpanded' {
+        $appconf = Get-AzAppConfigurationStore -Name $env.appconfName00-ResourceGroupName $env.resourceGroup
+        $oldAppconfkeys = Get-AzAppConfigurationStoreKey -Name $env.appconfName00 -ResourceGroupName $env.resourceGroup
+        New-AzAppConfigurationStoreKey -InputObject $appconf -Id $oldAppconfkeys[0].id
+        $newAppconfkeys = Get-AzAppConfigurationStoreKey -Name $env.appconfName00-ResourceGroupName $env.resourceGroup
+        $oldAppconfkeys[0].value | Should -Not -Be $newAppconfkeys[0].value
     }
 }

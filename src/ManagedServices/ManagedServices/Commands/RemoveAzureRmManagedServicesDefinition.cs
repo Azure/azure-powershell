@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
