@@ -210,7 +210,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[ResourceProviderName <String>]`: The name of the resource provider.
-  - `[Scope <String>]`: The scope of the association.
+  - `[Scope <String>]`: The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
   - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS

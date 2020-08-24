@@ -190,7 +190,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.

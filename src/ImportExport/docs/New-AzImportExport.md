@@ -30,7 +30,7 @@ New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-ShippingInformationPhone <String>] [-ShippingInformationPostalCode <String>]
  [-ShippingInformationRecipientName <String>] [-ShippingInformationStateOrProvince <String>]
  [-ShippingInformationStreetAddress1 <String>] [-ShippingInformationStreetAddress2 <String>] [-State <String>]
- [-StorageAccountId <String>] [-Tag <IPutJobParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-StorageAccountId <String>] [-Tag <IAny>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -782,7 +782,7 @@ Accept wildcard characters: False
 Specifies the tags that will be assigned to the job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
