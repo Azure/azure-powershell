@@ -4478,7 +4478,7 @@
     }
   ],
   "Names": {
-    "Test-HubBgpConnectionCRUD": [
+    "Test-VirtualRouterPeerCRUD": [
       "ps3045",
       "ps5215",
       "ps2813",
