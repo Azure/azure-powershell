@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
 
 ## Version 2.1.0
 * Added warning messages for planning to disable soft delete
