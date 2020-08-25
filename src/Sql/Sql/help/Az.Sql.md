@@ -32,6 +32,9 @@ Adds a Key Vault key to a SQL server.
 ### [Add-AzSqlServerTransparentDataEncryptionCertificate](Add-AzSqlServerTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
+### [Cancel-AzSqlInstanceDatabaseLogReplay](Cancel-AzSqlInstanceDatabaseLogReplay.md)
+Cancels a log replay service for the given SQL Managed Database.
+
 ### [Clear-AzSqlDatabaseAdvancedThreatProtectionSetting](Clear-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
 Removes the advanced threat protection settings from a database.
 
@@ -55,6 +58,9 @@ Removes the advanced threat protection settings from a server.
 
 ### [Clear-AzSqlServerVulnerabilityAssessmentSetting](Clear-AzSqlServerVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a server.
+
+### [Complete-AzSqlInstanceDatabaseLogReplay](Complete-AzSqlInstanceDatabaseLogReplay.md)
+Completes a log replay service for the given SQL Managed Database.
 
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
@@ -247,6 +253,9 @@ Gets a backup short term retention policy.
 
 ### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
 Returns information about Azure SQL Managed Instance database redundant backup.
+
+### [Get-AzSqlInstanceDatabaseLogReplay](Get-AzSqlInstanceDatabaseLogReplay.md)
+Returns a log replay service restore details for the given SQL Managed Database.
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
@@ -694,6 +703,9 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
+
+### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
+Starts a log replay service for the given SQL Managed Database.
 
 ### [Stop-AzSqlDatabaseActivity](Stop-AzSqlDatabaseActivity.md)
 Cancels the asynchronous updates operation on the database.

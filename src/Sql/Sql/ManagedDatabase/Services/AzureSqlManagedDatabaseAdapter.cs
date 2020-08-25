@@ -179,6 +179,70 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         }
 
         /// <summary>
+        /// Start the managed database log replay
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay</param>
+        public void StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            var model = new Management.Sql.Models.ManagedDatabase()
+            {
+                Location = parameters.Location,
+                Collation = parameters.Collation,
+                AutoCompleteRestore = parameters.AutoCompleteRestore,
+                LastBackupName = parameters.LastBackupName,
+                CreateMode = CreateMode.RestoreExternalBackup,
+                StorageContainerUri = parameters.StorageContainerUri,
+                StorageContainerSasToken = parameters.StorageContainerSasToken
+            };
+            Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+        }
+
+        /// <summary>
+        /// Get managed database log replay restore status details
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
+        /// <returns></returns>
+        public AzureSqlManagedDatabaseRestoreDetailsResultModel GetManagedDatabaseLogReplay(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
+        {
+            var result = Communicator.GetLogReplayStatus(
+                resourceGroupName,
+                managedInstanceName,
+                managedDatabaseName);
+
+            return CreateManagedDatabaseRestoreStatusModel(
+                resourceGroupName, 
+                managedInstanceName,
+                managedDatabaseName, result);
+        }
+
+        /// <summary>
+        /// Completes managed database log replay restore.
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay complete action</param>
+        public void CompleteManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            Communicator.CompleteLogReplay(
+                parameters.ResourceGroupName,
+                parameters.ManagedInstanceName,
+                parameters.Name,
+                parameters.LastBackupName);
+        }
+
+        /// <summary>
+        /// Removes managed database in order to stop log replay service
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay cancel action</param>
+        public void CancelManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            Communicator.Remove(
+                parameters.ResourceGroupName,
+                parameters.ManagedInstanceName,
+                parameters.Name);
+        }
+
+        /// <summary>
         /// Converts the response from the service to a powershell managed database object
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
@@ -189,5 +253,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             return new AzureSqlManagedDatabaseModel(resourceGroup, managedInstanceName, managedDatabase);
         }
+
+        private AzureSqlManagedDatabaseRestoreDetailsResultModel CreateManagedDatabaseRestoreStatusModel(string resourceGroupName, string managedInstanceName, string managedDatabaseName, ManagedDatabaseRestoreDetailsResult result)
+        {
+            return new AzureSqlManagedDatabaseRestoreDetailsResultModel(result)
+            {
+                ResourceGroupName = resourceGroupName,
+                ManagedInstanceName = managedInstanceName,
+                Name = managedDatabaseName
+            };
+        }
+
     }
 }
