@@ -73,7 +73,7 @@ output-folder: .
 aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
 input-file:
 	- $(aks)/regionmovecollection.json
-module-version: 1.0.0
+module-version: 0.1.0
 title: Rms-client
 directive:
   # Remove the unexpanded parameter set
