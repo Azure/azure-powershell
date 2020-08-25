@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 2.5.1
+## Version 2.5.2
 * Support set/update/remove Acl recursively on Datalake Gen2 item 
     -  `Set-AzDataLakeGen2AclRecursive` 
     -  `Update-AzDataLakeGen2AclRecursive` 
