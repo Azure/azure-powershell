@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.0" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="36.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
