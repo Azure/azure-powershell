@@ -24,7 +24,7 @@ $instanceLocation = "eastus"
 function Test-CreateManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $instanceLocation
 	$vnetName = "vnet-newprovisioningtest3"
 	$subnetName = "ManagedInstance"
 
@@ -34,10 +34,11 @@ function Test-CreateManagedInstance
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
+	$backupStorageRedundancy = "RA-GRS"
 
  	try
  	{
@@ -49,7 +50,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -66,11 +67,12 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
+		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
 
 		$edition = "GeneralPurpose"
-		$computeGeneration = "Gen4"
+		$computeGeneration = "Gen5"
 		$managedInstanceName = Get-ManagedInstanceName
 		$dnsZonePartner = $managedInstance1.ResourceId
         $originalDnsZone = $managedInstance1.DnsZone
@@ -109,7 +111,7 @@ function Test-CreateManagedInstance
 function Test-SetManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $instanceLocation
 	$vnetName = "vnet-newprovisioningtest3"
 	$subnetName = "ManagedInstance"
 
@@ -238,11 +240,11 @@ function Test-GetManagedInstance
 	# Setup
 	$rg = Create-ResourceGroupForTest $instanceLocation
 	$rg1 = Create-ResourceGroupForTest $instanceLocation
-	$vnetName = "cl_initial"
-	$subnetName = "CooL"
+	$vnetName = "vnet-newprovisioningtest3"
+	$subnetName = "ManagedInstance"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "powershell_mi"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
@@ -291,7 +293,7 @@ function Test-RemoveManagedInstance
 	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "powershell_mi"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	try
@@ -333,7 +335,7 @@ function Test-CreateManagedInstanceWithIdentity
 	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
  	$managedInstanceName = Get-ManagedInstanceName
@@ -342,7 +344,7 @@ function Test-CreateManagedInstanceWithIdentity
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 
 	try
 	{

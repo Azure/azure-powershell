@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 InstancePoolId = model.InstancePoolName != null ?
                     string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
                         Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName): null,
-                MinimalTlsVersion = model.MinimalTlsVersion
+                MinimalTlsVersion = model.MinimalTlsVersion,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -214,6 +215,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.InstancePoolName = resp.InstancePoolId != null ?
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
+            managedInstance.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(resp.StorageAccountType);
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
@@ -241,6 +243,36 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             }
 
             return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
+        }
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy to Internal
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return "GRS";
+            }
+
+            return backupStorageRedundancy.Equals("RA-GRS") ? "GRS" : backupStorageRedundancy;
+        }
+
+        /// <summary>
+        /// Map internal BackupStorageRedundancy to external
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return "RA-GRS";
+            }
+
+            return backupStorageRedundancy.Equals("GRS") ? "RA-GRS" : backupStorageRedundancy;
         }
     }
 }

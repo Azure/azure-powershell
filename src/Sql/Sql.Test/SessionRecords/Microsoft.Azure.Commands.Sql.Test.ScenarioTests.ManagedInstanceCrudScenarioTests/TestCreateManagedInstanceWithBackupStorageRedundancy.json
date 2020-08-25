@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6393a874-2f01-44e3-8eca-76d8c763ae3d"
+          "4cfa6d60-8cb3-4547-860c-faf46ac6977c"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "9cd5a477-0be9-4c5a-8310-20ebc1af1077"
+          "e8810c74-7b36-4158-8518-1becccc1a469"
         ],
         "x-ms-correlation-request-id": [
-          "9cd5a477-0be9-4c5a-8310-20ebc1af1077"
+          "e8810c74-7b36-4158-8518-1becccc1a469"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20200822T012118Z:9cd5a477-0be9-4c5a-8310-20ebc1af1077"
+          "UKSOUTH:20200822T011946Z:e8810c74-7b36-4158-8518-1becccc1a469"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 22 Aug 2020 01:21:18 GMT"
+          "Sat, 22 Aug 2020 01:19:46 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -81,19 +81,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "49b72b9c-8828-424b-a503-bc6c64e7f28e"
+          "8ac30723-ccd7-474b-87d4-78bdd111ac5c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "378d53ff-a230-415d-90e3-bfe779dc40be"
+          "d7d1e0a0-c2a6-4e50-b28b-6a9c3808bacb"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20200822T012327Z:378d53ff-a230-415d-90e3-bfe779dc40be"
+          "UKSOUTH:20200822T012103Z:d7d1e0a0-c2a6-4e50-b28b-6a9c3808bacb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -102,7 +102,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 22 Aug 2020 01:23:26 GMT"
+          "Sat, 22 Aug 2020 01:21:03 GMT"
         ],
         "Content-Length": [
           "824"
@@ -124,7 +124,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e5c0b12b-5e63-48bd-93db-538252e4ff1d"
+          "bd824c08-a169-4511-8e9d-a8f8d1e45598"
         ],
         "Accept-Language": [
           "en-US"
@@ -144,19 +144,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2700d6e4-ce64-4f49-8620-c4a16533e9b8"
+          "50b8e5f3-e129-44a5-95a5-3234f038c889"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "b01e06c6-a810-43cd-a6fe-2c7740f045cf"
+          "cf6397ae-7928-401a-879b-229c870617b2"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20200822T012327Z:b01e06c6-a810-43cd-a6fe-2c7740f045cf"
+          "UKSOUTH:20200822T012103Z:cf6397ae-7928-401a-879b-229c870617b2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -165,7 +165,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 22 Aug 2020 01:23:26 GMT"
+          "Sat, 22 Aug 2020 01:21:03 GMT"
         ],
         "Content-Length": [
           "824"
@@ -184,10 +184,10 @@
       "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/DejanDuVnetRG/providers/Microsoft.Sql/managedInstances/ps123?api-version=2020-02-02-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL0RlamFuRHVWbmV0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9wczEyMz9hcGktdmVyc2lvbj0yMDIwLTAyLTAyLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\",\r\n    \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/AndyPG/providers/Microsoft.Network/virtualNetworks/prepare-cl-nimilj/subnets/default\",\r\n    \"licenseType\": \"BasePrice\",\r\n    \"vCores\": 4,\r\n    \"storageSizeInGB\": 128,\r\n    \"collation\": \"Serbian_Cyrillic_100_CS_AS\",\r\n    \"publicDataEndpointEnabled\": true,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"Central Europe Standard Time\",\r\n    \"minimalTlsVersion\": \"1.2\",\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\",\r\n    \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/AndyPG/providers/Microsoft.Network/virtualNetworks/prepare-cl-nimilj/subnets/default\",\r\n    \"licenseType\": \"BasePrice\",\r\n    \"vCores\": 4,\r\n    \"storageSizeInGB\": 128,\r\n    \"collation\": \"Serbian_Cyrillic_100_CS_AS\",\r\n    \"publicDataEndpointEnabled\": true,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"Central Europe Standard Time\",\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dde380ce-6676-4e0a-aa61-a695bc46d718"
+          "45403d83-e9cf-4886-a40b-9fc7285bee4d"
         ],
         "Accept-Language": [
           "en-US"
@@ -202,7 +202,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "685"
+          "652"
         ]
       },
       "ResponseHeaders": {
@@ -216,19 +216,19 @@
           "60"
         ],
         "x-ms-request-id": [
-          "7e249e48-ec96-4a61-bc8c-263b9d6d6dc4"
+          "733d5935-5589-4922-b958-98a7ed01714c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "8167f74a-99ce-4908-aa9a-ca55c75b5040"
+          "0be0e6cf-b68c-47af-9748-724892c84cd1"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20200822T012227Z:8167f74a-99ce-4908-aa9a-ca55c75b5040"
+          "UKSOUTH:20200822T012003Z:0be0e6cf-b68c-47af-9748-724892c84cd1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,7 +237,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 22 Aug 2020 01:22:26 GMT"
+          "Sat, 22 Aug 2020 01:20:02 GMT"
         ],
         "Content-Length": [
           "766"
@@ -259,7 +259,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "82dd4bb1-0a5c-4d93-8c6d-2e07e0c260ee"
+          "8d85f337-6fed-4e6b-adfa-13554a9c15cf"
         ],
         "Accept-Language": [
           "en-US"
@@ -282,7 +282,7 @@
           "60"
         ],
         "x-ms-request-id": [
-          "0dc3ec76-1aa0-4938-b211-bae4726d2f29"
+          "f2ecf29a-7f74-4db7-bef4-b916dd6449ed"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -291,10 +291,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "8de767ed-6347-419b-9d3e-ac2e158b7edb"
+          "c2f5e664-4927-4fca-b63e-efc74452cbaa"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20200822T012332Z:8de767ed-6347-419b-9d3e-ac2e158b7edb"
+          "UKSOUTH:20200822T012109Z:c2f5e664-4927-4fca-b63e-efc74452cbaa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,7 +303,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 22 Aug 2020 01:23:31 GMT"
+          "Sat, 22 Aug 2020 01:21:09 GMT"
         ],
         "Expires": [
           "-1"
