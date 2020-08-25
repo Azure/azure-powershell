@@ -20,6 +20,8 @@
 -->
 ## Upcoming Release
 * Added `vmHealh` property to ``Get-AzVm ... -Status``'s return object (VMInstanceView)
+
+## Version 4.3.0
 * Added `-EncryptionAtHost` parameter to `New-AzVm`, `New-AzVmss`, `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss`
 * Added `SecurityProfile` to `Get-AzVM` and `Get-AzVmss` return object
 * Added `-InstanceView` switch as optional parameter to `Get-AzHostGroup`

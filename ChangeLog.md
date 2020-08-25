@@ -1,3 +1,69 @@
+## 4.6.0 - August 2020
+#### Az.Accounts
+* Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
+* Exposed SubscriptionPolicies in 'Get-AzSubscription' [#12551]
+
+#### Az.Automation
+* Added '-RunOn' parameters to 'Set-AzAutomationWebhook' to specify a Hybrid Worker Group
+
+#### Az.Compute
+* Added '-EncryptionAtHost' parameter to 'New-AzVm', 'New-AzVmss', 'New-AzVMConfig', 'New-AzVmssConfig', 'Update-AzVM', and 'Update-AzVmss'
+* Added 'SecurityProfile' to 'Get-AzVM' and 'Get-AzVmss' return object
+* Added '-InstanceView' switch as optional parameter to 'Get-AzHostGroup'
+* Added new cmdlet 'Invoke-AzVmPatchAssessment'
+
+#### Az.DataFactory
+* Added missing properties to PSPipelineRun class.
+
+#### Az.HDInsight
+* Supported creating cluster with encryption at host feature.
+
+#### Az.KeyVault
+* Added warning messages for planning to disable soft delete
+* Added warning messages for planning to remove attribute SecretValueText
+
+#### Az.Maintenance
+* Added optional schedule related fields to 'New-AzMaintenanceConfiguration'
+* Added new cmdlet for 'Get-AzMaintenancePublicConfiguration'
+
+#### Az.ManagedServices
+* Added breaking change warnings on cmdlets of managed services assignment and definition
+
+#### Az.Monitor
+* Extended the parameter set in 'Set-AzDiagnosticSetting' for separation of Logs and Metrics enablement [#12482]
+* Fixed bug for 'Add-AzMetricAlertRuleV2' when getting metric alert from pipeline
+
+#### Az.Resources
+* Updated 'Get-AzPolicyAlias' response to include information indicating whether the alias is modifiable by Azure Policy.
+* Created new cmdlet 'Set-AzRoleAssignment'
+* Added 'Get-AzDeploymentManagementGroupWhatIfResult' for getting ARM template What-If results at management Group scope
+* Added 'Get-AzTenantWhatIfResult' new cmdlet for getting ARM template What-If results at tenant scope
+* Overrode '-WhatIf' and '-Confirm' for 'New-AzManagementGroupDeployment' and 'New-AzTenantDeployment' to use ARM template What-If results
+* Fixed the behaviors of '-WhatIf' and '-Confirm' for new deployment cmdlets so they comply with False and 
+* Fixed serialization error for '-TemplateObject' and 'TemplateParameterObject' [#1528] [#6292]
+* Added breaking change attribute to 'Get-AzResourceGroupDeploymentOperation' for the upcoming output type change
+
+#### Az.SignalR
+* Fixed 'Restart-AzSignalR' and 'Update-AzSignalR' help files errors
+* Added cmdlets 'Update-AzSignalRNetworkAcl', 'Set-AzSignalRUpstream'
+
+#### Az.Storage
+* Supported blob query acceleration
+    -  'Get-AzStorageBlobQueryResult'
+    -  'New-AzStorageBlobQueryConfig'
+* Updated help file, added more description, and fixed typo
+    -  'Start-AzStorageBlobCopy'
+    -  'Get-AzDataLakeGen2Item'
+* Fixed download blob fail when related sub directory not exist [#12592]
+    -  'Get-AzStorageBlobContent'
+* Supported Set/Get/Remove Object Replication Policy on Storage accounts
+    - 'New-AzStorageObjectReplicationPolicyRule'
+    - 'Set-AzStorageObjectReplicationPolicy'
+    - 'Get-AzStorageObjectReplicationPolicy'
+    - 'Remove-AzStorageObjectReplicationPolicy'
+* Supported enable/disable ChangeFeed on Blob Service of a Storage account
+    - 'Update-AzStorageBlobServiceProperty'
+
 ## 4.5.0 - August 2020
 #### Az.Accounts
 * Updated 'Connect-AzAccount' to accept parameter 'MaxContextPopulation' [#9865]
