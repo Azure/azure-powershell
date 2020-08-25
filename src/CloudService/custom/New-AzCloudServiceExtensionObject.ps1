@@ -20,23 +20,19 @@ Create a in-memory object for Extension
 Create a in-memory object for Extension
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceExtensionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.Extension')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
-        [Parameter(HelpMessage="Indicates this extension can be auto upgraded by automatic platform upgrades.")]
-        [bool]
-        $EnableAutomaticUpgrade,
         [Parameter()]
         [string]
         $Name,
         [Parameter(HelpMessage="Protected settings for the extension which are encrypted before sent to the VM.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.ICloudServiceExtensionPropertiesProtectedSettings]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesProtectedSettings]
         $ProtectedSetting,
         [Parameter()]
         [string]
@@ -45,7 +41,7 @@ function New-AzCloudServiceExtensionObject {
         [string[]]
         $RolesAppliedTo,
         [Parameter(HelpMessage="Public settings for the extension.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.ICloudServiceExtensionPropertiesSettings]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesSettings]
         $Setting,
         [Parameter()]
         [string]
@@ -56,9 +52,8 @@ function New-AzCloudServiceExtensionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.Extension]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension]::New()
 
-        $Object.EnableAutomaticUpgrade = $EnableAutomaticUpgrade
         $Object.Name = $Name
         $Object.ProtectedSetting = $ProtectedSetting
         $Object.Publisher = $Publisher

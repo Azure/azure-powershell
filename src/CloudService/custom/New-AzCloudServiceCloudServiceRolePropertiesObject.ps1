@@ -20,36 +20,24 @@ Create a in-memory object for CloudServiceRoleProperties
 Create a in-memory object for CloudServiceRoleProperties
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.CloudServiceRoleProperties
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProperties
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceCloudServiceRolePropertiesObject
 #>
 function New-AzCloudServiceCloudServiceRolePropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.CloudServiceRoleProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter()]
+        [Parameter(HelpMessage=".")]
         [string]
-        $Name,
-        [Parameter(HelpMessage="Specifies the number of role instances in the cloud service.")]
-        [long]
-        $SkuCapacity,
-        [Parameter(HelpMessage="The sku name.")]
-        [string]
-        $SkuName,
-        [Parameter()]
-        [string]
-        $SkuTier
+        $UniqueId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.CloudServiceRoleProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProperties]::New()
 
-        $Object.Name = $Name
-        $Object.SkuCapacity = $SkuCapacity
-        $Object.SkuName = $SkuName
-        $Object.SkuTier = $SkuTier
+        $Object.UniqueId = $UniqueId
         return $Object
     }
 }

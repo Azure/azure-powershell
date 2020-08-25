@@ -3,7 +3,7 @@
   "info": {
     "title": "CloudServiceManagementClient",
     "description": "The Cloud Service Management Client.",
-    "version": "2020-06-01"
+    "version": "2020-10-01-preview"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -406,6 +406,108 @@
           }
         },
         "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles/{roleName}": {
+      "get": {
+        "tags": [
+          "CloudServiceRoles"
+        ],
+        "description": "Gets a role from a cloud service.",
+        "operationId": "CloudServiceRoles_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleName",
+            "description": "Name of the role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceRole"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles": {
+      "get": {
+        "tags": [
+          "CloudServiceRoles"
+        ],
+        "description": "Gets a list of all roles in a cloud service.",
+        "operationId": "CloudServiceRoles_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CloudServiceRoleListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}": {
@@ -1483,18 +1585,6 @@
         "value"
       ]
     },
-    "CloudServiceUpgradeMode": {
-      "enum": [
-        "Auto",
-        "Manual",
-        "Simultaneous"
-      ],
-      "type": "string",
-      "x-ms-enum": {
-        "name": "CloudServiceUpgradeMode",
-        "modelAsString": true
-      }
-    },
     "CloudServiceRoleSku": {
       "description": "Describes the role sku in the cloud service.",
       "type": "object",
@@ -1516,6 +1606,68 @@
     "CloudServiceRoleProperties": {
       "type": "object",
       "properties": {
+        "uniqueId": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "CloudServiceRole": {
+      "description": "Cloud service role model.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "sku": {
+          "$ref": "#/definitions/CloudServiceRoleSku"
+        },
+        "properties": {
+          "$ref": "#/definitions/CloudServiceRoleProperties"
+        }
+      }
+    },
+    "CloudServiceRoleListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudServiceRole"
+          }
+        },
+        "nextLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "CloudServiceUpgradeMode": {
+      "enum": [
+        "Auto",
+        "Manual",
+        "Simultaneous"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CloudServiceUpgradeMode",
+        "modelAsString": true
+      }
+    },
+    "CloudServiceRoleProfileProperties": {
+      "type": "object",
+      "properties": {
         "name": {
           "type": "string"
         },
@@ -1530,7 +1682,7 @@
         "roles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CloudServiceRoleProperties"
+            "$ref": "#/definitions/CloudServiceRoleProfileProperties"
           }
         }
       }
@@ -1635,6 +1787,10 @@
     "CloudServiceExtensionProperties": {
       "type": "object",
       "properties": {
+        "autoUpgradeMinorVersion": {
+          "description": "Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available",
+          "type": "boolean"
+        },
         "settings": {
           "description": "Public settings for the extension",
           "type": "object"
@@ -1647,10 +1803,6 @@
           "description": "The provisioning state, which only appears in the response.",
           "type": "string",
           "readOnly": true
-        },
-        "enableAutomaticUpgrade": {
-          "description": "Indicates this extension can be auto upgraded by automatic platform upgrades",
-          "type": "boolean"
         },
         "rolesAppliedTo": {
           "type": "array",

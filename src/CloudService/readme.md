@@ -63,16 +63,32 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Reimage$|^Reimage1$
     remove: true
   - where:
-      subject: CloudService
+      subject: ^CloudService$
       verb: Set
     remove: true
   - where:
-      subject: CloudServiceUpdateDomain
+      subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
+  # - where:
+  #     subject: ^CloudServiceUpdateDomain$
+  #     verb: Set
+  #   set:
+  #     subject: ^CloudServiceDomain
   - where:
-      subject: CloudServiceUpdateDomain
-      verb: Set
-    set:
-      subject: CloudServiceDomain
+      subject: ^CloudService$|^CloudServiceInstanceView$|^CloudServiceRoleInstance$|^CloudServiceRoleInstanceView$
+      verb: Get
+    hide: true
+  - where:
+      subject: ^CloudServiceInstance$|^CloudService$
+      verb: Remove
+    hide: true
+  - where:
+      subject: ^CloudService$|^CloudServiceRoleInstance$
+      verb: Restart|Update
+    hide: true
+  - where:
+      subject: ^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
+      verb: Invoke
+    hide: true
 ```
