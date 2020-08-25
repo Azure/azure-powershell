@@ -9,13 +9,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
     public partial struct Kind :
         System.IEquatable<Kind>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind LongTerm = @"LongTerm";
+        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind Gen1 = @"Gen1";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind Gen2 = @"Gen2";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind MicrosoftEventHub = @"Microsoft.EventHub";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind MicrosoftIoTHub = @"Microsoft.IoTHub";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind Standard = @"Standard";
 
         /// <summary>the value for an instance of the <see cref="Kind" /> Enum.</summary>
         private string _value { get; set; }

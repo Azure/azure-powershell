@@ -18,7 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865](https://github.com/Azure/azure-powershell/issues/9865)
+* Updated Azure.Core to 1.4.1
+
+## Version 1.9.3
+* Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
+* Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
+
+## Version 1.9.2
+* Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
+* Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]
+* Supported home tenant and managedBy tenant information of subscription
+* Corrected module name, version info in telemetry data
+* Adjusted SqlDatabaseDnsSuffix and ServiceManagementUrl if environment metadata endpoint returns incompatible value
 
 ## Version 1.9.1
 * Added new cmdlet `Invoke-AzRestMethod`

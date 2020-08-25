@@ -18,8 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* added properties "Condition", "ConditionVersion" and "Description" to New-AzRoleAssignment
-    - this includes all the relevant changes to the data models
+* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`.
+
+## Version 2.5.0
+* Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
+* Created new cmdlet `Set-AzRoleAssignment`
+* Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope
+* Added `Get-AzTenantWhatIfResult` new cmdlet for getting ARM template What-If results at tenant scope
+* Overrode `-WhatIf` and `-Confirm` for `New-AzManagementGroupDeployment` and `New-AzTenantDeployment` to use ARM template What-If results
+* Fixed the behaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
+* Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
+* Added breaking change attribute to `Get-AzResourceGroupDeploymentOperation` for the upcoming output type change
+
+## Version 2.4.0
+* Added properties "Condition", "ConditionVersion" and "Description" to `New-AzRoleAssignment`
+    - This included all the relevant changes to the data models
 
 ## Version 2.3.0
 * Updated `Save-AzResourceGroupDeploymentTemplate` to use the SDK.

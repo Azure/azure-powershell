@@ -79,6 +79,12 @@ function Test-DedicatedHost
         Assert-AreEqual 1 $hostGroup.Hosts.Count;
         Assert-AreEqual 1 $hostGroup.Count;
 
+        $hostGroupInstanceViewResult = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -InstanceView;
+        Assert-NotNull $hostGroupInstanceViewResult.Hosts;
+        foreach ($hostInstanceViewWithName in $hostGroupInstanceViewResult.Hosts) {
+            Assert-NotNull $hostInstanceViewWithName.Name;
+        } 
+
         Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
 
         Assert-ThrowsContains {

@@ -3089,17 +3089,17 @@ function Test-ApplicationGatewayPrivateEndpointWorkFlows
 		$approve = Approve-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $approve;
         Assert-AreEqual "Approved" $approve.PrivateLinkServiceConnectionState.Status
-		Start-Sleep -s 30
+		Start-TestSleep -s 30
 
 		# Deny Connection
 		$deny = Deny-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $deny;
         Assert-AreEqual "Rejected" $deny.PrivateLinkServiceConnectionState.Status
-		Start-Sleep -s 30
+		Start-TestSleep -s 30
 
 		# Remove Connection
 		$remove = Remove-AzPrivateEndpointConnection -ResourceId $connection.Id -Force
-		Start-Sleep -s 30
+		Start-TestSleep -s 30
 
 		# Verify PrivateEndpointConnections on Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname

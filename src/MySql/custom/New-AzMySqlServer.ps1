@@ -75,6 +75,7 @@ function New-AzMySqlServer {
 
         [Parameter(HelpMessage = 'Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
         ${StorageAutogrow},

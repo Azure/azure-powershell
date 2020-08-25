@@ -1,0 +1,95 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/bc17bb69-1264-4f90-a9f6-0e51e29d5281/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers/test_test_pmc2pc1.test-managed-app-private-indirect-gov?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmMxN2JiNjktMTI2NC00ZjkwLWE5ZjYtMGU1MWUyOWQ1MjgxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFya2V0cGxhY2UvcHJpdmF0ZVN0b3Jlcy9hNzBkMzg0ZC1lYzM0LTQ3ZGQtOWQzOC1lYzZkZjQ1MmNiYTEvb2ZmZXJzL3Rlc3RfdGVzdF9wbWMycGMxLnRlc3QtbWFuYWdlZC1hcHAtcHJpdmF0ZS1pbmRpcmVjdC1nb3Y/YXBpLXZlcnNpb249MjAyMC0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"specificPlanIdsLimitation\": [\r\n      \"test-managed-app\"\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7819c288-2fc7-4a43-85f7-349c85cf29fe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Marketplace.MarketplaceManagementClient/1.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "x-ms-version": [
+          "1.0.0.1147 (AzureUX-MarketPlaceRP:master.b3ffec124.200719-2342)"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=d5875ee4588400a4fb0947a763344a490debf1cc23d0bcadd6b781766dbb1f00;Path=/;HttpOnly;Domain=df.marketplacerp.azure-test.net"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "4e9e167e-9472-413f-a10e-d7a0c3e9656b"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e9e167e-9472-413f-a10e-d7a0c3e9656b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200720T121940Z:4e9e167e-9472-413f-a10e-d7a0c3e9656b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Mon, 20 Jul 2020 12:19:40 GMT"
+        ],
+        "Content-Length": [
+          "555"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1/offers/test_test_pmc2pc1.test-managed-app-private-indirect-gov\",\r\n  \"name\": \"test_test_pmc2pc1.test-managed-app-private-indirect-gov\",\r\n  \"type\": \"Microsoft.Marketplace/privateStores/offers\",\r\n  \"properties\": {\r\n    \"uniqueOfferId\": \"test_test_pmc2pc1.test-managed-app-private-indirect-gov\",\r\n    \"specificPlanIdsLimitation\": [\r\n      \"test-managed-app\"\r\n    ],\r\n    \"eTag\": \"\\\"1400357d-0000-0100-0000-5f158bdb0000\\\"\",\r\n    \"privateStoreId\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\",\r\n    \"updateSuppressedDueIdempotence\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "bc17bb69-1264-4f90-a9f6-0e51e29d5281"
+  }
+}

@@ -129,7 +129,7 @@ PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "202
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
-blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z  
+blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z
 ```
 
 This command gets a single blobs verion with VersionId.
@@ -142,7 +142,7 @@ PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
-blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot        2020-07-06T06:56:06.8588431Z False               
+blob1                BlockBlob 2097152         application/octet-stream       2020-07-06 06:56:06Z Hot        2020-07-06T06:56:06.8588431Z False
 ```
 
 This command gets a single blobs snapshot with SnapshotTime.
