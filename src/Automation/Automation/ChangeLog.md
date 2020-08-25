@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Added `-RunOn` parameters to `Set-AzAutomationWebhook` to specify a Hybrid Worker Group
 
 ## Version 1.3.7

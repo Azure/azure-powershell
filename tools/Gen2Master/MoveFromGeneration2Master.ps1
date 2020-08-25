@@ -66,9 +66,12 @@ Function Move-Generation2Master {
         If ($Null -ne $ModuleGuid) {
             $Psd1Metadata.GUID = $ModuleGuid
         }
-        If ($Null -ne $RequiredModule) {
-            $Psd1Metadata.RequiredModules = $RequiredModule
+        If ($Null -eq $RequiredModule) {
+            $AccountsModulePath = [System.IO.Path]::Combine($DestPath, '..', 'Accounts', 'Accounts')
+            $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
+            $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }
+        $Psd1Metadata.RequiredModules = $RequiredModule
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object {$_ -ne "*"})
         }

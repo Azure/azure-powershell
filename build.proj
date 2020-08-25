@@ -18,6 +18,8 @@
   /p:Scope
     'Subfolder under src': An individual cmdlet module
     By default, it builds everything
+  /p:TargetModule
+    Just focus on one module and its dependency such as Az.Account. Module name doesn't need to lead with Az.
   /p:SkipHelp=True
     Skips help generation, mainly for local builds to save time.
 -->
@@ -118,7 +120,7 @@
     </FilesChangedTask>
 
     <!-- Get the list of modules changed -->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./ModuleMappings.json">
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./ModuleMappings.json" TargetModule="$(TargetModule)">
       <Output TaskParameter="Output" ItemName="ModulesChanged" />
     </FilterTask>
     <Message Importance="high" Text="Filtering help generation and StaticAnalysis by the following modules:" />
@@ -127,7 +129,7 @@
     <Message Importance="high" Text="" />
 
     <!-- Get the list of projects to build -->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./CsprojMappings.json">
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./CsprojMappings.json" TargetModule="$(TargetModule)">
       <Output TaskParameter="Output" ItemName="ProjectsToBuild" />
     </FilterTask>
     <Message Importance="high" Text="Filtering projects to build by the following:" />
@@ -237,8 +239,8 @@
 
   <Target Name="Publish" Condition="'$(Configuration)' == 'Release'">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;"  Condition="'$(TargetModule)' == ''"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;" Condition="'$(TargetModule)' == ''"/>
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" />
 
@@ -246,7 +248,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
   </Target>
 
-  <Target Name="BuildInstaller" AfterTargets="Publish" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
+  <Target Name="BuildInstaller" AfterTargets="Publish" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore') and '$(TargetModule)' == ''">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(RepoArtifacts) -InstallationPolicy Trusted &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoRoot)/setup/generate.ps1 -repository MSIcreationrepository &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
