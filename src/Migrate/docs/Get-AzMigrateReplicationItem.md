@@ -1,26 +1,39 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationitem
 schema: 2.0.0
 ---
 
-# Test-AzMigrateReplicationMigrationItemMigrateCleanup
+# Get-AzMigrateReplicationItem
 
 ## SYNOPSIS
-The operation to initiate test migrate cleanup.
+Get Replication items.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Test-AzMigrateReplicationMigrationItemMigrateCleanup -FabricName <String> -MigrationItemName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-Comment <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzMigrateReplicationItem -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ByMachineId
+```
+Get-AzMigrateReplicationItem -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByMachineName
+```
+Get-AzMigrateReplicationItem -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to initiate test migrate cleanup.
+Get Replication items.
 
 ## EXAMPLES
 
@@ -59,21 +72,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Comment
-Test migrate cleanup comments.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -89,12 +87,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricName
-Fabric name.
+### -Filter
+OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineId
+Id of an Azure Migrate protected VM.
+
+```yaml
+Type: System.String
+Parameter Sets: ByMachineId
 Aliases:
 
 Required: True
@@ -104,12 +117,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationItemName
-Migration item name.
+### -MachineName
+Name of an Azure Migrate protected VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByMachineName
 Aliases:
 
 Required: True
@@ -134,12 +147,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -ProjectName
+Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByMachineName, List
 Aliases:
 
 Required: True
@@ -150,11 +163,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the recovery services vault is present.
+Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByMachineName, List
 Aliases:
 
 Required: True
@@ -164,15 +177,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the recovery services vault.
+### -SkipToken
+The pagination token.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -180,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
 schema: 2.0.0
 ---
 
-# Initialize-AzMigrateReplicationInfrastructure
+# Set-AzMigrateServerReplication
 
 ## SYNOPSIS
 # TODO PLEASE FIX BEFORE RELEASE
@@ -14,9 +14,8 @@ Create a deployment in the specified subscription and resource group.
 ## SYNTAX
 
 ```
-Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Vmwareagentless
-Swicth Parameter to indicate provider.
+Name of an Azure Migrate project.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

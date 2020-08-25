@@ -1,26 +1,30 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigrate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrateserverreplication
 schema: 2.0.0
 ---
 
-# Test-AzMigrateReplicationMigrationItemMigrate
+# Restart-AzMigrateServerReplication
 
 ## SYNOPSIS
-The operation to initiate test migration of the item.
+# TODO PLEASE FIX BEFORE RELEASE
+Create a deployment in the specified subscription and resource group.
 
 ## SYNTAX
 
 ```
-Test-AzMigrateReplicationMigrationItemMigrate -FabricName <String> -MigrationItemName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- -ProviderSpecificDetail <ITestMigrateProviderSpecificInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to initiate test migration of the item.
+# TODO PLEASE FIX BEFORE RELEASE
+Create a deployment in the specified subscription and resource group.
+This has to be done only once, before enabling replication for first 
+VmWare virtual machine.
+Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
 
 ## EXAMPLES
 
@@ -74,36 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricName
-Fabric name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MigrationItemName
-Migration item name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -119,27 +93,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -ProjectName
+Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderSpecificDetail
-The provider specific details.
-To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ITestMigrateProviderSpecificInput
 Parameter Sets: (All)
 Aliases:
 
@@ -151,22 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the recovery services vault is present.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the recovery services vault.
+Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
@@ -181,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String
@@ -191,6 +134,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vmwareagentless
+Name of an Azure Migrate project.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -233,19 +191,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+### System.Void
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PROVIDERSPECIFICDETAIL <ITestMigrateProviderSpecificInput>: The provider specific details.
-  - `InstanceType <String>`: The class type.
-
 ## RELATED LINKS
+
+# TODO PLEASE FIX BEFORE RELEASE
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 

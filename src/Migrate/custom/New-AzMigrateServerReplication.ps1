@@ -27,7 +27,7 @@ Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName 
 # TODO PLEASE FIX BEFORE RELEASE
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
-function Initialize-AzMigrateReplicationInfrastructure {
+function New-AzMigrateServerReplication {
     [OutputType([System.Void])]
     [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

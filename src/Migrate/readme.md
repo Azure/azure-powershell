@@ -61,6 +61,7 @@ directive:
   - no-inline:
     - TestMigrateProviderSpecificInput
     - MigrationProviderSpecificSettings
+    - MigrateProviderSpecificInput
   # Remove variants not in scope
   - where:
       verb: Test$
@@ -69,21 +70,64 @@ directive:
     remove: true
   - where:
       verb: Get$
-      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$
+      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
       variant: ^GetViaIdentity$
+    remove: true
+  - where:
+      verb: Remove$
+      subject: ^ReplicationMigrationItem
+      variant: ^DeleteViaIdentity$
+    remove: true
+  - where:
+      verb: Move$
+      subject: ^ReplicationMigrationItem
+      variant: ^MigrateViaIdentityExpanded$|^Migrate$|^MigrateViaIdentity$
+    remove: true
+  - where:
+      verb: Restart$
+      subject: ^ReplicationJob
+      variant: ^RestartViaIdentity$
     remove: true
   # Remove cmdlets not in scope
   - where:
-      subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage
+      subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
     remove: true
   - where:
-      verb: Export$|Find$|Switch$
+      verb: Export$|Find$|Switch$|Clear$
     remove: true
   - where:
-      subject: ^Commit|^Planned|^Renew|^Reprotect|^Resync|^Unplanned|VaultHealth$|vCenter$|ComputeSize$
+      subject: ^Commit|^Planned|^Renew|^Reprotect|^Resync|^Unplanned|VaultHealth$|vCenter$|ComputeSize$|FabricConsistency$
+    remove: true
+  - where:
+      verb: New$|Remove$
+      subject: Fabric$|Policy$|ProtectionContainer$|ReplicationMigrationItem$
+    remove: true
+  - where:
+      verb: Update$
+      subject: Fabric$|MigrationItem$|Policy$|ProtectionContainer$
+    remove: true
+  - where:
+      verb: Stop$|Resume$
+      subject: Job$
     remove: true
   # Hide cmldets used by custom
   - where:
       verb: Get$
-      subject: ReplicationPolicy$|ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$
+      subject: ReplicationPolicy$|ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
+    hide: true
+  - where:
+      verb: Test$
+      subject: ^ReplicationMigrationItemMigrate
+    hide: true
+  - where:
+      verb: Remove$
+      subject: ^ReplicationMigrationItem
+    hide: true
+  - where:
+      verb: Move$
+      subject: ^ReplicationMigrationItem
+    hide: true
+  - where:
+      verb: Restart$
+      subject: ^ReplicationJob
     hide: true

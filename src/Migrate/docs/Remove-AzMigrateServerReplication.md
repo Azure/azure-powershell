@@ -1,30 +1,32 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
 schema: 2.0.0
 ---
 
-# Initialize-AzMigrateReplicationInfrastructure
+# Remove-AzMigrateServerReplication
 
 ## SYNOPSIS
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Remove Migration item.
 
 ## SYNTAX
 
+### ByMachineName (Default)
 ```
-Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DeleteOption <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByMachineId
+```
+Remove-AzMigrateServerReplication -MachineId <String> [-SubscriptionId <String>] [-DeleteOption <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Remove Migration item.
 
 ## EXAMPLES
 
@@ -78,6 +80,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteOption
+The delete option.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineId
+Id of an Azure Migrate protected VM.
+
+```yaml
+Type: System.String
+Parameter Sets: ByMachineId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+Name of an Azure Migrate protected VM.
+
+```yaml
+Type: System.String
+Parameter Sets: ByMachineName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -98,7 +145,7 @@ Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByMachineName
 Aliases:
 
 Required: True
@@ -113,7 +160,7 @@ Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByMachineName
 Aliases:
 
 Required: True
@@ -134,21 +181,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Vmwareagentless
-Swicth Parameter to indicate provider.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -191,14 +223,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 

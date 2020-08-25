@@ -1,32 +1,38 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/stop-azmigratereplicationjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 schema: 2.0.0
 ---
 
-# Stop-AzMigrateReplicationJob
+# Get-AzmigrateJob
 
 ## SYNOPSIS
-The operation to cancel an Azure Site Recovery job.
+Get job.
 
 ## SYNTAX
 
-### Cancel (Default)
+### List (Default)
 ```
-Stop-AzMigrateReplicationJob -JobName <String> -ResourceGroupName <String> -ResourceName <String>
+Get-AzmigrateJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByJobName
+```
+Get-AzmigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CancelViaIdentity
+### ByMachineId
 ```
-Stop-AzMigrateReplicationJob -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzmigrateJob -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to cancel an Azure Site Recovery job.
+Get job.
 
 ## EXAMPLES
 
@@ -80,28 +86,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Filter
+OData filter options.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-Parameter Sets: CancelViaIdentity
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobName
+Name of Job.
+
+```yaml
+Type: System.String
+Parameter Sets: ByJobName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobName
-Job identifier.
+### -MachineId
+Id of an Azure Migrate protected VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: ByMachineId
 Aliases:
 
 Required: True
@@ -126,12 +146,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group where the recovery services vault is present.
+### -ProjectName
+Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: ByJobName, List
 Aliases:
 
 Required: True
@@ -141,12 +161,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the recovery services vault.
+### -ResourceGroupName
+Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: ByJobName, List
 Aliases:
 
 Required: True
@@ -157,11 +177,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,8 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
@@ -216,38 +234,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  - `[AlertSettingName <String>]`: The name of the email notification configuration.
-  - `[EventName <String>]`: The name of the Azure Site Recovery event.
-  - `[FabricName <String>]`: Fabric name.
-  - `[Id <String>]`: Resource identity path
-  - `[JobName <String>]`: Job identifier
-  - `[LogicalNetworkName <String>]`: Logical network name.
-  - `[MappingName <String>]`: Protection Container mapping name.
-  - `[MigrationItemName <String>]`: Migration item name.
-  - `[MigrationRecoveryPointName <String>]`: The migration recovery point name.
-  - `[NetworkMappingName <String>]`: Network mapping name.
-  - `[NetworkName <String>]`: Primary network name.
-  - `[PolicyName <String>]`: Replication policy name.
-  - `[ProtectableItemName <String>]`: Protectable item name.
-  - `[ProtectionContainerName <String>]`: Protection container name.
-  - `[ProviderName <String>]`: Recovery services provider name
-  - `[RecoveryPlanName <String>]`: Name of the recovery plan.
-  - `[RecoveryPointName <String>]`: The recovery point name.
-  - `[ReplicatedProtectedItemName <String>]`: Replication protected item name.
-  - `[ReplicationProtectedItemName <String>]`: The name of the protected item on which the agent is to be updated.
-  - `[ResourceGroupName <String>]`: The name of the resource group where the recovery services vault is present.
-  - `[ResourceName <String>]`: The name of the recovery services vault.
-  - `[StorageClassificationMappingName <String>]`: Storage classification mapping name.
-  - `[StorageClassificationName <String>]`: Storage classification name.
-  - `[SubscriptionId <String>]`: The subscription Id.
-  - `[VCenterName <String>]`: vCenter name.
 
 ## RELATED LINKS
 
