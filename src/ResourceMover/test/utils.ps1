@@ -9,8 +9,11 @@ $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
+    $SubscriptionId = (Get-AzContext).Subscription.Id
+    $null = $env.Add("SubscriptionId", $SubscriptionId)
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $null = $env.Add("moveCollectionMetadataRG", "rg-my-moveCollection")
+    $null = $env.Add("moveCollectionName", "my-movecollection")        
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

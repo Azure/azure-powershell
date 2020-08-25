@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzResourceMoverPrepare' {
-    It 'PrepareExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PrepareExpanded'  {
+        Resolve-AzResourceMoverMoveCollectionDependency -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName
+        $prepareResponse = Invoke-AzResourceMoverPrepare -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
+        $prepareResponse.Status.Length | Should -BeGreaterOrEqual 6
     }
 }

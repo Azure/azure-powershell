@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzResourceMoverMoveCollection' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'CreateExpanded' {	    
+            $moveCollection = New-AzResourceMoverMoveCollection -Name $env.moveCollectionName  -ResourceGroupName $env.moveCollectionMetadataRG -SubscriptionId $env.SubscriptionId -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "EastUs2"
+            $moveCollection.Name | Should -Be $env.moveCollectionName
+        }
 }

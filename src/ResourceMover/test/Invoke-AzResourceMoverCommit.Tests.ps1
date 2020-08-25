@@ -5,14 +5,15 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzResourceMoverCommit.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzResourceMoverCommit' {
-    It 'CommitExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CommitExpanded' {
+            $commitResponse = Invoke-AzResourceMoverCommit -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
+            $commitResponse.Status.Length | Should -BeGreaterOrEqual 6
     }
 }

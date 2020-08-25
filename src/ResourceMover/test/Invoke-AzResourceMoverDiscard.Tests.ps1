@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzResourceMoverDiscard' {
-    It 'DiscardExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DiscardExpanded' {
+        $discardResponse = Invoke-AzResourceMoverDiscard -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
+        $discardResponse.Status.Length | Should -BeGreaterOrEqual 6
     }
 }
