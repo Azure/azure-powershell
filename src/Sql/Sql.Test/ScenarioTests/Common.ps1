@@ -979,14 +979,14 @@ function Get-InstancePoolTestProperties()
 {
     $tags = @{ instance="Pools" };
     $instancePoolTestProperties = @{
-        resourceGroup = "instancePoolCSSdemo"
-        name = "cssinstancepool0"
-        subnetName = "InstancePool"
-        vnetName = "vnet-cssinstancepool0"
+        resourceGroup = "toki"
+        name = "ps-instancepool2"
+        subnetName = "ManagedInstance"
+        vnetName = "vnet-pcresizeandcreate"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
-        location = "canadacentral"
+        location = "westeurope"
         licenseType = "LicenseIncluded"
         vCores = 16
     }

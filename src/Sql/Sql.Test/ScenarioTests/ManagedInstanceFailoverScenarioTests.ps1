@@ -24,12 +24,12 @@ function Test-FailoverManagedInstance
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest
-		$vnetName = "cl_initial"
-		$subnetName = "CooL"
+		$rg = Create-ResourceGroupForTest "westeurope"
+		$vnetName = "vnet-pcresizeandcreate"
+		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+     	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -63,12 +63,12 @@ function Test-FailoverManagedInstancePassThru
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest
-		$vnetName = "cl_initial"
-		$subnetName = "CooL"
+		$rg = Create-ResourceGroupForTest "westeurope"
+		$vnetName = "vnet-pcresizeandcreate"
+		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+     	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -92,12 +92,12 @@ function Test-FailoverManagedInstancePiping
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest
-		$vnetName = "cl_initial"
-		$subnetName = "CooL"
+		$rg = Create-ResourceGroupForTest "westeurope"
+		$vnetName = "vnet-pcresizeandcreate"
+		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+     	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -123,12 +123,12 @@ function Test-FailoverManagedInstanceReadableSecondary
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest
-		$vnetName = "cl_initial"
-		$subnetName = "CooL"
+		$rg = Create-ResourceGroupForTest "westeurope"
+		$vnetName = "vnet-pcresizeandcreate"
+		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+     	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
