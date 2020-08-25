@@ -922,94 +922,11 @@ function Test-DiskEncryptionSet
     }
 }
 
- <#
+<#
 .SYNOPSIS
 Testing the EncryptionType parameter passed to the Config obejct is inherited by an associated DiskEncryptionSet object. 
 #>
 function Test-DiskEncryptionSetConfigEncryptionType
-{
-    # Setup
-    $loc = 'centraluseuap';
-    $rgname = 'adamGroupDES7';
-    $encryptionName = "enc" + $rgname;
-
-    $vaultName1 = 'kv15' + $rgname ;
-    $vaultName2 = 'kv16' + $rgname ;
-
-    try
-    {
-        <#
-        # 
-        # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
-        #
-        Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
-        $vaultName1 = 'kv15' + $rgname ;
-        $kekName1 = 'kek15' + $rgname;
-        $secretname1 = 'mysecret15';
-        $secretdata1 = 'mysecretvalue15';
-        $securestring1 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
-
-        $vaultName2 = 'kv16' + $rgname;
-        $kekName2 = 'kek15' + $rgname; #not a typo
-        $secretname2 = 'mysecret16';
-        $secretdata2 = 'mysecretvalue16';
-        $securestring2 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
-
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        $vault1 = New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgname -Location $loc -Sku Standard;
-        $vault2 = New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgname -Location $loc -Sku Standard;
-        $mocksourcevault1 = $vault1.ResourceId;
-        $mocksourcevault2 = $vault2.ResourceId;
-        $userPrincipalName = (Get-AzContext).Account.Id;
-        Set-AzKeyVaultAccessPolicy -VaultName $vaultName1 -ResourceGroupName $rgname -EnabledForDiskEncryption;
-        Set-AzKeyVaultAccessPolicy -VaultName $vaultName2 -ResourceGroupName $rgname -EnabledForDiskEncryption;
-        $kek1 = Add-AzKeyVaultKey -VaultName $vaultName1 -Name $kekName1 -Destination "Software";
-        $kek2 = Add-AzKeyVaultKey -VaultName $vaultName2 -Name $kekName2 -Destination "Software";
-        $secret1 = Set-AzKeyVaultSecret -VaultName $vaultName1 -Name $secretname1 -SecretValue $securestring1;
-        $secret2 = Set-AzKeyVaultSecret -VaultName $vaultName2 -Name $secretname2 -SecretValue $securestring2;
-        $mockkey1 = $kek1.Id
-        $mockkey2 = $kek2.Id
-        #>
-
-        $mockkey1 = "https://kv15adamgroupdes7.vault.azure.net/keys/kek15adamGroupDES7/74332f302a0e48999415f6f9bbf7430c";
-        $mockkey2 = "https://kv16adamgroupdes7.vault.azure.net/keys/kek15adamGroupDES7/84412eaa63f344bf8a1b15612f2b36cb";
-        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
-        $mocksourcevault1 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName1;
-        $mocksourcevault2 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName2;
-
-        $encryptionType = "EncryptionAtRestWithPlatformAndCustomerKeys";
-
-        $encSetConfig = New-AzDiskEncryptionSetConfig -Location $loc -EncryptionType $encryptionType;
-        Assert-NotNull $encSetConfig;
-        Assert-AreEqual $encSetConfig.EncryptionType $encryptionType;
-
-        $encSetConfigValues = New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey1 -SourceVaultId $mocksourcevault1 -EncryptionType $encryptionType -IdentityType "SystemAssigned" `
-
-        $encSet = New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName -DiskEncryptionSet $encSetConfigValues;
-
-        Assert-NotNull $encSet;
-        Assert-AreEqual $encryptionType $encSet.EncryptionType;
-
-        Assert-NotNull $encSetConfig;
-        Assert-AreEqual $encSetConfig.EncryptionType $encryptionType;
-
-        $encSetConfigDefault = New-AzDiskEncryptionSetConfig -Location $loc;
-        Assert-AreEqual $encSetConfigDefault.EncryptionType $null;
-    }
-    finally
-    {
-        # Cleanup
-        $encSet | Remove-AzDiskEncryptionSet -Force;
-        Clean-ResourceGroup $rgname
-    }
-}
-
-
-<#
-.SYNOPSIS
-Testing diskAssess object
-#>
-function Test-DiskAccessObject
 {
     # Setup
     $loc = 'centraluseuap';
@@ -1092,6 +1009,76 @@ function Test-DiskAccessObject
         # Cleanup
         $encSet | Remove-AzDiskEncryptionSet -Force;
         $encSetDefault | Remove-AzDiskEncryptionSet -Force;
+    }
+}
+
+<#
+.SYNOPSIS
+Testing diskAssess object
+#>
+function Test-DiskAccessObject
+{
+    $rgname = Get-ComputeTestResourceName;
+    $rgname2 = $rgname + '2';
+    $diskname1Rg1 = 'diskaccess1' + $rgname;
+    $diskName2Rg1 = 'diskAccess2' + $rgname;
+    $diskName3Rg2 = 'diskAccess1' + $rgname2;
+    
+    try
+    {
+        # Common
+        $loc = "northcentralus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname2 -Location $loc -Force;
+
+        #Create DiskAccess1 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1 -location $loc
+
+        #Use Get-AzDiskAccess on DiskAccess1 using Default ParameterSet
+        $diskAccess1 = Get-AzDiskAccess -ResourceGroupName $rgname -Name $diskname1Rg1
+        #Use Get-AzDiskAccess on DiskAccess1 using resourceId
+        $diskAccess1check = Get-AzDiskAccess -resourceId $diskAccess1.id
+
+        #check if diskAccess1 is good
+        Assert-NotNull $diskAccess1
+        Assert-AreEqual $diskAccess1.Name $diskname1Rg1
+
+        #ASSERT check if diskaccess1 and diskaccess1check are same
+        Assert-AreEqual $diskAccess1.id $diskAccess1check.id
+
+        #Create DiskAccess2 in ResourceGroup1
+        New-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1 -location $loc
+
+        #Use Get-AzDiskAccess by resourceGroupName
+        $rg1Result = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $rg1Result.count 2
+
+        #add DiskAccess3 to ResourceGroup2
+        New-AzDiskAccess -ResourceGroupName $rgname2 -Name $diskname3Rg2 -location $loc
+
+        #use get-azdiskaccess with no parameters. count should be >= 3
+        $allResult = Get-AzDiskAccess
+
+        Assert-True {$allResult.Count -gt 2;}
+
+        #remove-AzDiskAccess to DiskAccess1 by resourceId
+        Remove-AzDiskAccess -resourceid $diskAccess1.id
+        
+        #Remove-AzDiskAccess to DiskAccess2 by default parameter set
+        Remove-AzDiskAccess -ResourceGroupName $rgname -Name $diskname2Rg1
+
+        #Get-AzDiskAccess by resource group. Count should be 0
+        $allResult = Get-AzDiskAccess -ResourceGroupName $rgname
+
+        Assert-AreEqual $allResult.count 0
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname2
     }
 }
 
