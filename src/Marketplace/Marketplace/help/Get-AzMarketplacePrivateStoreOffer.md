@@ -18,8 +18,8 @@ Get-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> [-OfferId <String>]
 ```
 
 ## DESCRIPTION
-Get one or more private store's offer that were added under tenant scope.
-
+Get one or more private store's offer with public + private plans  that were added under tenant scope. If subscription id is presents, 
+get one or more private store's offer with private plans only under subscription scope
 ## EXAMPLES
 
 ### Example 1
@@ -33,7 +33,7 @@ ETag                      : "04009182-0000-0100-0000-5ecd2fb00000"
 PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
 CreatedBy                 :
 CreatedDate               : 01/01/0001 00:00:00
-SpecificPlanIdsLimitation : {small, medium-with-upgraded-bandwidth, medium-with-upgraded-apps, large}
+SpecificPlanIdsLimitation : {small, medium-with-upgraded-bandwidth, medium-with-upgraded-apps, large, large-pr, small-pr}
 Id                        : /providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
                             publisherid.offerid
 Name                      : publisherid.offerid
@@ -46,16 +46,49 @@ ETag                      : "00009568-0000-0100-0000-5ec4f9590000"
 PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
 CreatedBy                 :
 CreatedDate               : 01/01/0001 00:00:00
-SpecificPlanIdsLimitation : {azure_managedservices_professional}
+SpecificPlanIdsLimitation : {azure_managedservices_professional ,azure_managedservices_professional-pr}
 Id                        : /providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
                             publisherid1.offerid1
 Name                      : publisherid1.offerid1
 Type                      : Microsoft.Marketplace/privateStores/offers
 ```
 
-Get private store's offers that were added under tenant scope.
+Get private store's offers with private + public plans  that were added under tenant scope.
 
 ### Example 2
+```powershell
+PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+
+UniqueOfferId             : publisherid.offerid
+OfferDisplayName          :
+PublisherDisplayName      :
+ETag                      : "04009182-0000-0100-0000-5ecd2fb00000"
+PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
+CreatedBy                 :
+CreatedDate               : 01/01/0001 00:00:00
+SpecificPlanIdsLimitation : {large-pr, small-pr}
+Id                        : /subscriptions/bc17bb69-1264-4f90-a9f6-0e51e29d5281/providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
+                            publisherid.offerid
+Name                      : publisherid.offerid
+Type                      : Microsoft.Marketplace/privateStores/offers
+
+UniqueOfferId             : publisherid1.offerid1
+OfferDisplayName          :
+PublisherDisplayName      :
+ETag                      : "00009568-0000-0100-0000-5ec4f9590000"
+PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
+CreatedBy                 :
+CreatedDate               : 01/01/0001 00:00:00
+SpecificPlanIdsLimitation : {azure_managedservices_professional-pr}
+Id                        : /subscriptions/bc17bb69-1264-4f90-a9f6-0e51e29d5281/providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
+                            publisherid1.offerid1
+Name                      : publisherid1.offerid1
+Type                      : Microsoft.Marketplace/privateStores/offers
+```
+
+Get private store's offers with private plans only that were added under subscription scope.
+
+### Example 3
 ```powershell
 PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid
 
@@ -67,14 +100,36 @@ ETag                      : "04009182-0000-0100-0000-5ecd2fb00000"
 PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
 CreatedBy                 :
 CreatedDate               : 01/01/0001 00:00:00
-SpecificPlanIdsLimitation : {small, medium-with-upgraded-bandwidth, medium-with-upgraded-apps, large}
+SpecificPlanIdsLimitation : {small, medium-with-upgraded-bandwidth, medium-with-upgraded-apps, large, large-pr, small-pr}
 Id                        : /providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
                             publisherid.offerid
 Name                      : publisherid.offerid
 Type                      : Microsoft.Marketplace/privateStores/offers
 ```
 
-Get  private store's offer that was been added under tenant scope.
+Get  private store's offer with private + public plans that was been added under tenant scope.
+
+### Example 4
+```powershell
+PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+
+
+UniqueOfferId             : publisherid.offerid
+OfferDisplayName          :
+PublisherDisplayName      :
+ETag                      : "04009182-0000-0100-0000-5ecd2fb00000"
+PrivateStoreId            : 7gh67884-1r56-44fb-a93d-030d4ae08b2d
+CreatedBy                 :
+CreatedDate               : 01/01/0001 00:00:00
+SpecificPlanIdsLimitation : {large-pr, small-pr}
+Id                        : /subscriptions/bc17bb69-1264-4f90-a9f6-0e51e29d5281/providers/Microsoft.Marketplace/privateStores/7gh67884-1r56-44fb-a93d-030d4ae08b2d/offers/
+                            publisherid.offerid
+Name                      : publisherid.offerid
+Type                      : Microsoft.Marketplace/privateStores/offers
+```
+
+Get private store's offer with private plans only that was been added under tenant scope.
+
 
 ## PARAMETERS
 
@@ -117,6 +172,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Azure Marketplace subscription id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

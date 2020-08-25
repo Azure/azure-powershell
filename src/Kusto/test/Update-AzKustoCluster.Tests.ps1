@@ -7,7 +7,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzKustoCluster.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -20,9 +20,8 @@ Describe 'Update-AzKustoCluster' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-
-        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName 
-        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $env.updatedSkuName -SkuTier $env.skuTier
-        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuTier $env.capacity
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName
+        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $env.skuName -SkuTier $env.skuTier
+        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
     }
 }

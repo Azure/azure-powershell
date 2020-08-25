@@ -1,14 +1,14 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLivySessionStateInformation : PSLivyStateInformation
     {
-        public PSLivySessionStateInformation(LivySessionStateInformation stateInfo)
+        public PSLivySessionStateInformation(SparkSessionState stateInfo)
             : base(stateInfo?.NotStartedAt,
                 stateInfo?.StartingAt,
                 stateInfo?.DeadAt,
-                stateInfo?.KilledAt,
+                stateInfo?.TerminatedAt,
                 stateInfo?.RecoveringAt,
                 stateInfo?.CurrentState,
                 stateInfo?.JobCreationRequest)

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
     /// [OpenAPI] Environments_Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzTimeSeriesInsightsEnvironment_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Description(@"Updates the environment with the specified name in the specified subscription and resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Generated]
     public partial class UpdateAzTimeSeriesInsightsEnvironment_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -44,35 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
-        /// <summary>
-        /// The capacity of the sku. For standard environments, this value can be changed to support scale out of environments after
-        /// they have been created.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The capacity of the sku. For standard environments, this value can be changed to support scale out of environments after they have been created.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The capacity of the sku. For standard environments, this value can be changed to support scale out of environments after they have been created.",
-        SerializedName = @"capacity",
-        PossibleTypes = new [] { typeof(int) })]
-        public int Capacity { get => StandardEnvironmentUpdateParametersBody.SkuCapacity; set => StandardEnvironmentUpdateParametersBody.SkuCapacity = value; }
-
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.TimeSeriesInsights Client => Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Module.Instance.ClientAPI;
-
-        /// <summary>
-        /// ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.",
-        SerializedName = @"dataRetentionTime",
-        PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        public global::System.TimeSpan DataRetentionTime { get => StandardEnvironmentUpdateParametersBody.DataRetentionTime ?? default(global::System.TimeSpan); set => StandardEnvironmentUpdateParametersBody.DataRetentionTime = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -82,6 +55,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Backing field for <see cref="EnvironmentUpdateParametersBody" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentUpdateParameters _environmentUpdateParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.EnvironmentUpdateParameters();
+
+        /// <summary>Parameters supplied to the Update Environment operation.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentUpdateParameters EnvironmentUpdateParametersBody { get => this._environmentUpdateParametersBody; set => this._environmentUpdateParametersBody = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -123,20 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
-        /// The list of event properties which will be used to partition data in the environment.
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of event properties which will be used to partition data in the environment.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of event properties which will be used to partition data in the environment.",
-        SerializedName = @"partitionKeyProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[] PartitionKeyProperty { get => StandardEnvironmentUpdateParametersBody.PartitionKeyProperty ?? null /* arrayOf */; set => StandardEnvironmentUpdateParametersBody.PartitionKeyProperty = value; }
-
-        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.HttpPipeline Pipeline { get; set; }
@@ -157,44 +122,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>The name of this SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of this SKU.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of this SKU.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName Sku { get => StandardEnvironmentUpdateParametersBody.SkuName; set => StandardEnvironmentUpdateParametersBody.SkuName = value; }
-
-        /// <summary>
-        /// Backing field for <see cref="StandardEnvironmentUpdateParametersBody" /> property.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IStandardEnvironmentUpdateParameters _standardEnvironmentUpdateParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.StandardEnvironmentUpdateParameters();
-
-        /// <summary>
-        /// Parameters supplied to the Update Environment operation to update a standard environment.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IStandardEnvironmentUpdateParameters StandardEnvironmentUpdateParametersBody { get => this._standardEnvironmentUpdateParametersBody; set => this._standardEnvironmentUpdateParametersBody = value; }
-
-        /// <summary>
-        /// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress"
-        /// is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue
-        /// to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If \"PauseIngress\" is specified, new events will not be read from the event source. If \"PurgeOldData\" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If ""PauseIngress"" is specified, new events will not be read from the event source. If ""PurgeOldData"" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.",
-        SerializedName = @"storageLimitExceededBehavior",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior))]
-        public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior StorageLimitExceededBehavior { get => StandardEnvironmentUpdateParametersBody.StorageLimitExceededBehavior ?? ((Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior)""); set => StandardEnvironmentUpdateParametersBody.StorageLimitExceededBehavior = value; }
-
         /// <summary>Key-value pairs of additional properties for the environment.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Key-value pairs of additional properties for the environment.")]
@@ -204,32 +131,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         ReadOnly = false,
         Description = @"Key-value pairs of additional properties for the environment.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentUpdateParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentUpdateParametersTags Tag { get => StandardEnvironmentUpdateParametersBody.Tag ?? null /* object */; set => StandardEnvironmentUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentUpdateParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentUpdateParametersTags Tag { get => EnvironmentUpdateParametersBody.Tag ?? null /* object */; set => EnvironmentUpdateParametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -263,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.StandardEnvironmentUpdateParametersBody = this.StandardEnvironmentUpdateParametersBody;
+            clone.EnvironmentUpdateParametersBody = this.EnvironmentUpdateParametersBody;
             return clone;
         }
 
@@ -420,7 +347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.EnvironmentsUpdateViaIdentity(InputObject.Id, StandardEnvironmentUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.EnvironmentsUpdateViaIdentity(InputObject.Id, EnvironmentUpdateParametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -437,13 +364,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.EnvironmentName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.EnvironmentsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EnvironmentName ?? null, StandardEnvironmentUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.EnvironmentsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EnvironmentName ?? null, EnvironmentUpdateParametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=StandardEnvironmentUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=EnvironmentUpdateParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -475,12 +402,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -497,15 +424,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=StandardEnvironmentUpdateParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=EnvironmentUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=StandardEnvironmentUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=EnvironmentUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -515,12 +442,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -532,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
                 WriteObject((await response));
             }
         }

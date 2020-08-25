@@ -29,8 +29,8 @@ For more on this setting and how to enable it, see New-AzResourceGroupDeployment
 
 ## EXAMPLES
 
-### Get1
-```
+### Example 1: Get1
+```powershell
 PS C:\>Get-AzResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
 ```
 

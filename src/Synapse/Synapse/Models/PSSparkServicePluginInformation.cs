@@ -1,10 +1,10 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSparkServicePluginInformation
     {
-        public PSSparkServicePluginInformation(SparkServicePluginInformation pluginInfo)
+        public PSSparkServicePluginInformation(SparkServicePlugin pluginInfo)
         {
             this.PreparationStartedAt = pluginInfo?.PreparationStartedAt;
             this.ResourceAcquisitionStartedAt = pluginInfo?.ResourceAcquisitionStartedAt;
@@ -39,6 +39,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// 'ResourceAcquisition', 'Queued', 'Submission', 'Monitoring',
         /// 'Cleanup', 'Ended'
         /// </summary>
-        public string CurrentState { get; set; }
+        public PluginCurrentState? CurrentState { get; set; }
     }
 }

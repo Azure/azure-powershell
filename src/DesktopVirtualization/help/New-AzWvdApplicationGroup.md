@@ -13,10 +13,10 @@ Create or update an applicationGroup.
 ## SYNTAX
 
 ```
-New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApplicationGroupType <ApplicationGroupType>] [-Description <String>] [-FriendlyName <String>]
- [-HostPoolArmPath <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String>
+ -ApplicationGroupType <ApplicationGroupType> -HostPoolArmPath <String> -Location <String>
+ [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +68,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Applicati
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +128,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,14 +136,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -41,5 +41,19 @@ namespace Subscription.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscription");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateRenameSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateRenameSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCancelSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCancelSubscription");
+        }
     }
 }

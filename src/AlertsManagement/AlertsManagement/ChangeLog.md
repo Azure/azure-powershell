@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Fixed bug for `Set-AzActionRule` incorrectly parsed `TargetResourceTypeCondition` to `MonitorCondition` [#12258]
+
 ## Version 0.1.3
 * Updated AlertsManagement SDK version to 0.9.2-preview.
 * Added Subscription Scope Type for Set-AzActionRule.
