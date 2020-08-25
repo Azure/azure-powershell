@@ -25,6 +25,11 @@
 * Added non-breaking changes: PeerAddressType functionality for Private Peering in `Remove-AzExpressRouteCircutPeeringConfig`.
 * Code changed to ignore case for AddressPrefixType and PeerAddressType parameter.
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
+* Added new cmdlets for VirtualWan
+    - `Start-AzVpnGatewayPacketCapture`
+    - `Stop-AzVpnGatewayPacketCapture`
+    - `Start-AzVpnConnectionPacketCapture`
+    - `Stop-AzVpnConnectionPacketCapture`
 
 ## Version 3.2.0
 * Fixed parameters swap in VWan HubVnet connection
