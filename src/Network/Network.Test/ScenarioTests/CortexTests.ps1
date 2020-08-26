@@ -178,12 +178,12 @@ function Test-CortexCRUD
         Assert-NotNull $vpnGatewaysAll
 		
 		# Reset/Reboot the VpnGateway using Reset-AzVpnGateway
-        #$job = Reset-AzVpnGateway -VpnGateway $vpnGateway -AsJob
-	    #$job | Wait-Job
-	    #$actual = $job | Receive-Job
+        $job = Reset-AzVpnGateway -VpnGateway $vpnGateway -AsJob
+	    $job | Wait-Job
+	    $actual = $job | Receive-Job
 		
-		#$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
-		#Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
 
 		# Create the VpnConnection
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20 -UseLocalAzureIpAddress 
@@ -559,7 +559,7 @@ function Test-CortexExpressRouteCRUD
 		$customDnsServers = New-Object string[] 2
 		$customDnsServers[0] = "7.7.7.7"
 		$customDnsServers[1] = "8.8.8.8"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers #-EnableInternetSecurityFlag
+		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
@@ -571,15 +571,15 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 2 @($P2SVpnGateway.CustomDnsServers).Count
         Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual "8.8.8.8" $P2SVpnGateway.CustomDnsServers[1]
-		#Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $true
+		Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $true
 
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
-        #$job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
-	    #$job | Wait-Job
-	    #$actual = $job | Receive-Job
+        $job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
+	    $job | Wait-Job
+	    $actual = $job | Receive-Job
 		
-		#$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		#Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
+		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
 		# Get all associated VpnServerConfigurations at Wan level using Get-AzVirtualWanVpnServerConfiguration
         $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
@@ -637,7 +637,7 @@ function Test-CortexExpressRouteCRUD
 
         # Update existing P2SVpnGateway  with new VpnClientAddressPool and CustomDnsServers using Update-AzP2sVpnGateway
         $vpnClientAddressSpaces[1] = "192.168.4.0/24"
-        $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 #-DisableInternetSecurityFlag
+        $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
 
         $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
@@ -647,7 +647,7 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
         Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
-		#Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $false
+		Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $false
 
 		# Update existing P2SVpnGateway to remove the CustomDnsServers
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
