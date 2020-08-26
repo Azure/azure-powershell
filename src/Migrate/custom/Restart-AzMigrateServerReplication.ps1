@@ -15,20 +15,14 @@
 
 <#
 .Synopsis
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Restart job.
 .Description
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Restart job.
 .Link
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication{
-    [OutputType([System.Void])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -43,12 +37,12 @@ function Restart-AzMigrateServerReplication{
         # Name of an Azure Migrate project.
         ${ProjectName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='ByJobName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
-        # Name of an Azure Migrate project.
-        ${Vmwareagentless},
-    
+        [System.String]
+        # Name of Job.
+        ${JobName},
+        
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]

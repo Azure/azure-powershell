@@ -15,39 +15,45 @@
 
 <#
 .Synopsis
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Migrates a VM.
 .Description
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Migrates a VM.
 .Link
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
 #>
 function Start-AzMigrateServerMigration {
-    [OutputType([System.Void])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Resource group.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate project.
         ${ProjectName},
 
+        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${MachineName},
+
+        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Id of an Azure Migrate protected VM.
+        ${MachineId},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
-        # Name of an Azure Migrate project.
-        ${Vmwareagentless},
+        [System.String]
+        # Turn off source VM.
+        ${TurnOffSourceServer},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -117,45 +123,8 @@ function Start-AzMigrateServerMigration {
     )
     
     process {
-        try {
-            # TODO PLEASE FIX BEFORE RELEASE
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
-using System;
-public class HashFunctions
-{
-public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
-            }
-            return Math.Abs(hash);
-    }
-}
-"@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
-            }
-        } catch {
-           throw
-        }
+        
+            
     }
 
 }   

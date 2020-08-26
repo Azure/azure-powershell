@@ -8,23 +8,26 @@ schema: 2.0.0
 # Restart-AzMigrateServerReplication
 
 ## SYNOPSIS
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Restart job.
 
 ## SYNTAX
 
+### VMwareCbt (Default)
 ```
 Restart-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ByJobName
+```
+Restart-AzMigrateServerReplication -JobName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Restart job.
 
 ## EXAMPLES
 
@@ -72,6 +75,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobName
+Name of Job.
+
+```yaml
+Type: System.String
+Parameter Sets: ByJobName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,21 +156,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vmwareagentless
-Name of an Azure Migrate project.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -191,14 +194,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Void
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 

@@ -35,11 +35,7 @@ Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName 
 Remove Migration item.
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Restart job.
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
 # TODO PLEASE FIX BEFORE RELEASE
@@ -49,11 +45,7 @@ VmWare virtual machine.
 Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
 
 ### [Start-AzMigrateServerMigration](Start-AzMigrateServerMigration.md)
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Migrates a VM.
 
 ### [Start-AzMigrateTestMigration](Start-AzMigrateTestMigration.md)
 Test Migrate a protected VM.
