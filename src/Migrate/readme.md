@@ -100,7 +100,7 @@ directive:
     remove: true
   - where:
       verb: New$|Remove$
-      subject: Fabric$|Policy$|ProtectionContainer$|ReplicationMigrationItem$
+      subject: Fabric$|Policy$|ProtectionContainer$
     remove: true
   - where:
       verb: Update$
@@ -120,7 +120,7 @@ directive:
       subject: ^ReplicationMigrationItemMigrate
     hide: true
   - where:
-      verb: Remove$
+      verb: New$|Remove$
       subject: ^ReplicationMigrationItem
     hide: true
   - where:

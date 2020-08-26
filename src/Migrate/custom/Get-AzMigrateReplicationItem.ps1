@@ -132,9 +132,6 @@ function Get-AzMigrateReplicationItem {
     
     process {
         try {
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            $test = $PSBoundParameters
-
             $parameterSet = $PSCmdlet.ParameterSetName
 
             if (('ByMachineName', 'List') -contains $parameterSet) {

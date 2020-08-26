@@ -23,14 +23,14 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrates
 #>
 function Restart-AzMigrateServerReplication{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='ByJobName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
+        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Resource group.
         ${ResourceGroupName},
-        
+
         [Parameter(ParameterSetName='ByMachineId',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -43,17 +43,11 @@ function Restart-AzMigrateServerReplication{
         # Id of an Azure Migrate protected VM.
         ${MachineName},
 
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
+        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate project.
         ${ProjectName},
-
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of Job.
-        ${JobName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -124,41 +118,78 @@ function Restart-AzMigrateServerReplication{
     
     process {
         try {
-            # TODO PLEASE FIX BEFORE RELEASE
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
-using System;
-public class HashFunctions
-{
-public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
+            $parameterSet = $PSCmdlet.ParameterSetName
+
+            if($parameterSet  -eq 'ByMachineId'){
+                $null = $PSBoundParameters.Remove('MachineId')
+
+                $MachineIdArray = $MachineId.Split("/")
+                $ResourceGroupName = $MachineIdArray[4]
+                $VaultName = $MachineIdArray[8]
+                $FabricName = $MachineIdArray[10]
+                $ProtectionContainerName = $MachineIdArray[12]
+                $MachineName = $MachineIdArray[14] 
+
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+                $null = $PSBoundParameters.Add("FabricName", $FabricName)
+                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+
+                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -eq "None")){
+                    
+                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
+                    $null = $PSBoundParameters.Remove("FabricName")
+                    $null = $PSBoundParameters.Remove("MigrationItemName")
+                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
+                    
+                    $null = $PSBoundParameters.Add('JobName', $JobName)
+                    return Az.Migrate.internal\Restart-AzMigrateReplicationJob @PSBoundParameters 
+                }
+
+                return
             }
-            return Math.Abs(hash);
-    }
-}
-"@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
+
+            if($parameterSet -eq "ByMachineName"){
+                 # TODO
+                 $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
+                 $FabricName = ""
+                 $ProtectionContainerName = ""
+                 
+                 $null = $PSBoundParameters.Remove('ProjectName')
+                 $null = $PSBoundParameters.Remove('MachineName')
+ 
+                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                 $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+                 if($allFabrics -and ($allFabrics.length -gt 0)){
+                     $FabricName = $allFabrics[0].Name
+                 }
+                 
+                 $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                 $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                 if($peContainers -and ($peContainers.length -gt 0)){
+                     $ProtectionContainerName = $peContainers[0].Name
+                 }
+ 
+                 $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+ 
+                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -eq "None")){
+                    
+                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
+                    $null = $PSBoundParameters.Remove("FabricName")
+                    $null = $PSBoundParameters.Remove("MigrationItemName")
+                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
+                    
+                    $null = $PSBoundParameters.Add('JobName', $JobName)
+                    return Az.Migrate.internal\Restart-AzMigrateReplicationJob @PSBoundParameters 
+                }
+
+                return
             }
+
         } catch {
            throw
         }

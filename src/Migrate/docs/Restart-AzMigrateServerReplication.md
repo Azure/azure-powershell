@@ -12,9 +12,9 @@ Restart job.
 
 ## SYNTAX
 
-### ByJobName (Default)
+### ByMachineName (Default)
 ```
-Restart-AzMigrateServerReplication -JobName <String> -ProjectName <String> -ResourceGroupName <String>
+Restart-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,12 +23,6 @@ Restart-AzMigrateServerReplication -JobName <String> -ProjectName <String> -Reso
 ```
 Restart-AzMigrateServerReplication -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByMachineName
-```
-Restart-AzMigrateServerReplication -MachineName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,21 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobName
-Name of Job.
-
-```yaml
-Type: System.String
-Parameter Sets: ByJobName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MachineId
 Id of an Azure Migrate protected VM.
 
@@ -151,7 +130,7 @@ Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByJobName
+Parameter Sets: ByMachineName
 Aliases:
 
 Required: True
@@ -166,7 +145,7 @@ Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByJobName
+Parameter Sets: ByMachineName
 Aliases:
 
 Required: True
