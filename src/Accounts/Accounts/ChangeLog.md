@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.3
 * Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
 * Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
 
