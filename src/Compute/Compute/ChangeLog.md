@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added PatchStatus Property to VirtualMachine Instance View
 
 ## Version 4.3.0
 * Added `-EncryptionAtHost` parameter to `New-AzVm`, `New-AzVmss`, `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss`

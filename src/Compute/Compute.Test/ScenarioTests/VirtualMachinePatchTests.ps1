@@ -74,3 +74,46 @@ function Test-InvokeAzVmPatchAssessment
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test PatchStatus in Get-Azvm instance view
+#>
+function Test-PatchStatusGetAzVMinstanceview
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = Get-AvailableSku $loc "virtualMachine"
+        $vmname = 'vm' + $rgname;
+
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+        $patchResult = invoke-azvmpatchAssessment -resourcegroupname $rgname -vmname $vmname
+
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+
+        Assert-NotNull $vm.PatchStatus;
+        Assert-NotNull $vm.PatchStatus.availablePatchSummary;
+        Assert-AreEqual "Succeeded" $vm.PatchStatus.availablePatchSummary.status;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
