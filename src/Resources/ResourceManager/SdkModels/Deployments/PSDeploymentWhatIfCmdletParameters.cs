@@ -106,6 +106,7 @@
             }
             else
             {
+                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
                 Dictionary<string, object> parametersDictionary = this.TemplateParametersObject?.ToDictionary(false);
                 string parametersContent = parametersDictionary != null
                     ? PSJsonSerializer.Serialize(parametersDictionary)

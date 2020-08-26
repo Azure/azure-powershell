@@ -453,6 +453,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
+                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
                 Dictionary<string, object> parametersDictionary = parameters.TemplateParameterObject?.ToDictionary(false);
                 string parametersContent = parametersDictionary != null
                     ? PSJsonSerializer.Serialize(parametersDictionary)
