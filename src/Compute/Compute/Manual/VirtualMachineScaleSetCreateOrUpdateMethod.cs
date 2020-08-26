@@ -176,6 +176,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Fault Domain count for each placement group.")]
         public int PlatformFaultDomainCount { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set the orchestration mode of the scale set. Not entering a value will leave the scale set in the traditional mode.")]
+        public string OrchestrationMode { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -290,9 +295,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
-                return resourceGroup.CreateVirtualMachineScaleSetConfig(
+                if (_cmdlet.IsParameterBound(c => c.OrchestrationMode))
+                {
+
+                    //By this point the Simple Parameter Set requirements have already been met. 
+                    return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationMode(
+                        name: _cmdlet.VMScaleSetName,
+                        vmSize: _cmdlet.VmSize,
+                        instanceCount: _cmdlet.InstanceCount,
+                        identity: _cmdlet.GetVmssIdentityFromArgs(),
+                        singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
+                        upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
+                            ? _cmdlet.UpgradePolicyMode
+                            : (UpgradeMode?)null,
+                        zones: _cmdlet.Zone,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                        proximityPlacementGroup: proximityPlacementGroup,
+                        scaleInPolicy: _cmdlet.ScaleInPolicy,
+                        doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
+                        platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                        );
+                }
+                else
+                {
+                    return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
-                    subnet: subnet,                    
+                    subnet: subnet,
                     backendAdressPool: backendAddressPool,
                     inboundNatPools: inboundNatPools,
                     networkSecurityGroup: networkSecurityGroup,
@@ -306,18 +334,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
-                    ultraSSDEnabled : _cmdlet.EnableUltraSSD.IsPresent,
+                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent,
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
                     proximityPlacementGroup: proximityPlacementGroup,
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount : _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                    encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
                     );
+                }
+                
             }
         }
 

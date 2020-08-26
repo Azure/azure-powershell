@@ -42,9 +42,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            //check orchestrationMode for SImple and Default param sets. 
+            //SImple is just the values that can be direcly set on VMSS,
+            //Default is all the values. 
+
             switch (ParameterSetName)
             {
                 case SimpleParameterSet:
+                    if (this.IsParameterBound(c => c.OrchestrationMode))
+                    {
+                        CheckOrchestrationModeRequirementsSimpleParameterSet();
+                    }
                     this.StartAndWait(SimpleParameterSetExecuteCmdlet);
                     break;
                 default:
@@ -56,6 +65,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             string vmScaleSetName = this.VMScaleSetName;
                             VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+
+                            if (this.VirtualMachineScaleSet.OrchestrationMode != null)
+                            {
+                                CheckOrchestrationModeRequirementsDefaultParameterSet();
+                            }
+
                             if (parameters?.VirtualMachineProfile?.StorageProfile?.ImageReference?.Version?.ToLower() != "latest")
                             {
                                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
@@ -69,6 +84,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     });
                     break;
             }
+        }
+
+        private void CheckOrchestrationModeRequirementsDefaultParameterSet()
+        {
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile != null)
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null.", this.OrchestrationMode);
+            }
+        }
+
+        private void CheckOrchestrationModeRequirementsSimpleParameterSet()
+        {
+            //couldn't ifgure out how to convert to object[] to instead just set the parameter in the if body and then pass that to one WriteError() call. 
+            if (this.IsParameterBound(c => c.EncryptionAtHost))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter would create a 'VirtualMachineScaleSetVMProfile'.", this.EncryptionAtHost);
+            }
+            else if (this.IsParameterBound(c => c.Priority))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter would create a 'VirtualMachineScaleSetVMProfile'.", this.Priority);
+            }
+            else if (this.IsParameterBound(c => c.EvictionPolicy))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter would create a 'VirtualMachineScaleSetVMProfile'.", this.EvictionPolicy);
+            }
+            else if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter would create a 'VirtualMachineScaleSetVMProfile'.", this.MaxPrice);
+            }  
+        }
+
+        private void WriteError(string message, params object[] args)
+        {
+            base.WriteError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));
         }
 
         [Parameter(

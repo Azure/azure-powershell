@@ -139,5 +139,46 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
                 });
+
+        internal static ResourceConfig<VirtualMachineScaleSet> CreateVirtualMachineScaleSetConfigOrchestrationMode(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            string vmSize,
+            int instanceCount,
+            VirtualMachineScaleSetIdentity identity,
+            bool singlePlacementGroup,
+            UpgradeMode? upgradeMode,
+            IList<string> zones,
+            bool ultraSSDEnabled,
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string[] scaleInPolicy,
+            bool doNotRunExtensionsOnOverprovisionedVMs,
+            int? platformFaultDomainCount)
+            => Strategy.CreateResourceConfig(
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: engine => new VirtualMachineScaleSet()
+                {
+                    Zones = zones,
+                    /*UpgradePolicy = new UpgradePolicy
+                    {
+                        Mode = upgradeMode ?? UpgradeMode.Manual
+                    },
+                    Sku = new Azure.Management.Compute.Models.Sku()
+                    {
+                        Capacity = instanceCount,
+                        Name = vmSize,
+                    },*/
+                    Identity = identity,
+                    SinglePlacementGroup = singlePlacementGroup,
+                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                    PlatformFaultDomainCount = platformFaultDomainCount,
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
+                    {
+                        Rules = scaleInPolicy
+                    },
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
+                });
     }
 }
