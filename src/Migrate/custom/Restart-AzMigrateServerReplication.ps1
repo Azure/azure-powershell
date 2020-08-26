@@ -137,7 +137,7 @@ function Restart-AzMigrateServerReplication{
                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -eq "None")){
+                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
                     
                     $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
                     $null = $PSBoundParameters.Remove("FabricName")
@@ -176,7 +176,7 @@ function Restart-AzMigrateServerReplication{
                  $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
  
                  $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -eq "None")){
+                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
                     
                     $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
                     $null = $PSBoundParameters.Remove("FabricName")
