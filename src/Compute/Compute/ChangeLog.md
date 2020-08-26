@@ -17,6 +17,7 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
+        
 ## Upcoming Release
 * Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
 * Added `SupportAutomaticPlacement` to New-AzHostGroup 
