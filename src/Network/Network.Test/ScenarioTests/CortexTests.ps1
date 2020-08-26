@@ -556,9 +556,8 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces = New-Object string[] 2
 		$vpnClientAddressSpaces[0] = "192.168.2.0/24"
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
-		$customDnsServers = New-Object string[] 2
+		$customDnsServers = New-Object string[] 1
 		$customDnsServers[0] = "7.7.7.7"
-		$customDnsServers[1] = "8.8.8.8"
 		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
@@ -568,10 +567,9 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
-		Assert-AreEqual 2 @($P2SVpnGateway.CustomDnsServers).Count
+		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
         Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
-		Assert-AreEqual "8.8.8.8" $P2SVpnGateway.CustomDnsServers[1]
-		Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $true
+		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
         $job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
@@ -647,7 +645,7 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
         Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
-		Assert-AreEqual $P2SVpnGateway.EnableInternetSecurity $false
+		Assert-AreEqual $false $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
 		# Update existing P2SVpnGateway to remove the CustomDnsServers
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
