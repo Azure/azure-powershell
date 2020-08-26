@@ -503,7 +503,49 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.ServiceFabricCluster, opt => opt.MapFrom(src => src.Properties.ServiceFabricCluster))
                     .AfterMap((src, dest) => 
                         dest.Properties = Utils.ToBackendProperties(src.Tls));
-                
+
+                cfg
+                    .CreateMap<GatewayContract, PsApiManagementGateway>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.GatewayId, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.LocationData, opt => opt.MapFrom(src => src.LocationData));
+
+                cfg
+                    .CreateMap<PsApiManagementGateway, GatewayContract>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.GatewayId))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.LocationData, opt => opt.MapFrom(src => src.LocationData));
+
+
+                cfg
+                    .CreateMap<ResourceLocationDataContract, PsApiManagementResourceLocation>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+                    .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District))
+                    .ForMember(dest => dest.CountryOrRegion, opt => opt.MapFrom(src => src.CountryOrRegion));
+
+                cfg
+                    .CreateMap<PsApiManagementResourceLocation, ResourceLocationDataContract>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+                    .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District))
+                    .ForMember(dest => dest.CountryOrRegion, opt => opt.MapFrom(src => src.CountryOrRegion));
+
+                cfg
+                    .CreateMap<GatewayKeysContract, PsApiManagementGatewayKey>()
+                    .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.Primary))
+                    .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.Secondary));
+
+                cfg
+                    .CreateMap<GatewayHostnameConfigurationContract, PsApiManagementGatewayHostnameConfiguration>()
+                    .ForMember(dest => dest.GatewayHostnameConfigurationId, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.GatewayId, opt => opt.MapFrom(src => new PsApiManagementGatewayHostnameConfiguration(src.Id).GatewayId))
+                    .ForMember(dest => dest.Hostname, opt => opt.MapFrom(src => src.Hostname))
+                    .ForMember(dest => dest.CertificateResourceId, opt => opt.MapFrom(src => src.CertificateId))
+                    .ForMember(dest => dest.NegotiateClientCertificate, opt => opt.MapFrom(src => src.NegotiateClientCertificate));
+
                 cfg
                     .CreateMap<ApiVersionSetContract, PsApiManagementApiVersionSet>()
                     .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -3959,5 +4001,182 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return parameterList.ToArray();
         }
         #endregion
+
+        #region Gateways
+        public PsApiManagementGateway GatewayCreate(
+            PsApiManagementContext context,
+            string gatewayId,
+            string description,
+            PsApiManagementResourceLocation locationData)
+        {
+            var gatewayCreateParameters = new GatewayContract()
+            {
+                Description = description,
+                LocationData = Mapper.Map<ResourceLocationDataContract>(locationData)
+            };
+
+            var gatewayContract = Client.Gateway.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, gatewayId, gatewayCreateParameters);
+
+            var gateway = Mapper.Map<PsApiManagementGateway>(gatewayContract);
+
+            return gateway;
+        }
+
+        public IList<PsApiManagementGateway> GatewaysList(PsApiManagementContext context)
+        {
+            var results = ListPagedAndMap<PsApiManagementGateway, GatewayContract>(
+                () => Client.Gateway.ListByService(context.ResourceGroupName, context.ServiceName, null),
+                nextLink => Client.Gateway.ListByServiceNext(nextLink));
+
+            return results;
+        }
+
+        public PsApiManagementGateway GatewayById(string resourceGroupName, string serviceName, string gatewayId)
+        {
+            var response = Client.Gateway.Get(resourceGroupName, serviceName, gatewayId);
+            var gateway = Mapper.Map<PsApiManagementGateway>(response);
+
+            return gateway;
+        }
+
+        public void GatewayRemove(string resourceGroupName, string serviceName, string gatewayId)
+        {
+            Client.Gateway.Delete(resourceGroupName, serviceName, gatewayId, "*");
+        }
+
+        public void GatewaySet(
+            string resourceGroupName,
+            string serviceName,
+            string gatewayId,
+            string description,
+            PsApiManagementResourceLocation locationData,
+            PsApiManagementGateway gatewayObject)
+        {
+            GatewayContract gatewayUpdateParameters;
+
+            if (gatewayObject == null)
+            {
+                gatewayUpdateParameters = new GatewayContract();
+            }
+            else
+            {
+                gatewayUpdateParameters = Mapper.Map<GatewayContract>(gatewayObject);
+            }
+
+            if (!string.IsNullOrWhiteSpace(description))
+            {
+                gatewayUpdateParameters.Description = description;
+            }
+
+            if (locationData != null)
+            {
+                gatewayUpdateParameters.LocationData = Mapper.Map<ResourceLocationDataContract>(locationData);
+            }
+
+            Client.Gateway.Update(
+                resourceGroupName,
+                serviceName,
+                gatewayId,
+                gatewayUpdateParameters,
+                "*");
+        }
+
+        public void ApiAddToGateway(PsApiManagementContext context, string gatewayId, string apiId, PsApiManagementGatewayApiProvisioningState? provisioningState)
+        {
+            AssociationContract association = null;
+            if (provisioningState != null)
+            {
+                association = new AssociationContract();
+                association.ProvisioningState = Mapper.Map<ProvisioningState>(provisioningState);
+            }
+
+            Client.GatewayApi.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, gatewayId, apiId, association);
+        }
+
+        public IList<PsApiManagementApi> ApiByGatewayId(PsApiManagementContext context, string gatewayId)
+        {
+            var results = ListPagedAndMap<PsApiManagementApi, ApiContract>(
+                () => Client.GatewayApi.ListByService(context.ResourceGroupName, context.ServiceName, gatewayId),
+                nextLink => Client.GatewayApi.ListByServiceNext(nextLink));
+
+            return results;
+        }
+
+        public void ApiRemoveFromGateway(PsApiManagementContext context, string gatewayId, string apiId)
+        {
+            Client.GatewayApi.Delete(context.ResourceGroupName, context.ServiceName, gatewayId, apiId);
+        }
+
+        public PsApiManagementGatewayKey GatewayKeyById(
+                   string resourceGroupName,
+                   string serviceName,
+                   string gatewayId)
+        {
+            var response = Client.Gateway.ListKeys(
+                resourceGroupName,
+                serviceName,
+                gatewayId);
+            var keys = Mapper.Map<PsApiManagementGatewayKey>(response);
+
+            return keys;
+        }
+
+        public IList<PsApiManagementGatewayHostnameConfiguration> GatewayHostnameConfigurationByGateway(
+                           string resourceGroupName,
+                           string serviceName,
+                           string gatewayId)
+        {
+            var results = ListPagedAndMap<PsApiManagementGatewayHostnameConfiguration, GatewayHostnameConfigurationContract>(
+                () => Client.GatewayHostnameConfiguration.ListByService(resourceGroupName, serviceName, gatewayId),
+                nextLink => Client.GatewayHostnameConfiguration.ListByServiceNext(nextLink));
+
+            return results;
+        }
+
+        public PsApiManagementGatewayHostnameConfiguration GatewayHostnameConfigurationById(
+                           string resourceGroupName,
+                           string serviceName,
+                           string gatewayId,
+                           string hostnameConfigurationId)
+        {
+            var response = Client.GatewayHostnameConfiguration.Get(
+                resourceGroupName,
+                serviceName,
+                gatewayId,
+                hostnameConfigurationId);
+            var hostnameConfig = Mapper.Map<PsApiManagementGatewayHostnameConfiguration>(response);
+
+            return hostnameConfig;
+        }
+
+        public PsApiManagementGatewayHostnameConfiguration GatewayHostnameConfigurationCreate(
+                    PsApiManagementContext context,
+                    string gatewayId,
+                    string hostnameConfigurationId,
+                    string hostname,
+                    string certificateId,
+                    bool? negotiateClientCertificate
+                    )
+        {
+            var hostnameCreateParameters = new GatewayHostnameConfigurationContract()
+            {
+                Hostname = hostname,
+                CertificateId = certificateId,
+                NegotiateClientCertificate = negotiateClientCertificate
+            };
+
+            var hostnameContract = Client.GatewayHostnameConfiguration.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, gatewayId, hostnameConfigurationId, hostnameCreateParameters);
+
+            var config = Mapper.Map<PsApiManagementGatewayHostnameConfiguration>(hostnameContract);
+
+            return config;
+        }
+
+        public void GatewayHostnameConfigurationRemove(string resourceGroupName, string serviceName, string gatewayId, string hostnameConfigurationId)
+        {
+            Client.GatewayHostnameConfiguration.Delete(resourceGroupName, serviceName, gatewayId, hostnameConfigurationId);
+        }
+        #endregion
+
     }
 }

@@ -83,7 +83,7 @@ Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -101,7 +101,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightseventsource
 #>
 function Get-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -32,5 +32,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualRouterCRUD"));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestVirtualRouterPeerCRUD()
+        {
+            TestRunner.RunTestScript(string.Format("Test-VirtualRouterPeerCRUD"));
+        }
     }
 }

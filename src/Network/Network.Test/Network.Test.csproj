@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="810.1900.36551" />	
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.0" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="36.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="38.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />

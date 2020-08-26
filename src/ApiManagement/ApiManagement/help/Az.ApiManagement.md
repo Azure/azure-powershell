@@ -11,6 +11,9 @@ Locale: en-US
 This topic displays help topics for the Azure API Management Cmdlets.
 
 ## Az.ApiManagement Cmdlets
+### [Add-AzApiManagementApiToGateway](Add-AzApiManagementApiToGateway.md)
+Attaches an API to a gateway.
+
 ### [Add-AzApiManagementApiToProduct](Add-AzApiManagementApiToProduct.md)
 Adds an API to a product.
 
@@ -64,6 +67,15 @@ Gets API Management certificates configured for Mutual Authentication with Backe
 
 ### [Get-AzApiManagementDiagnostic](Get-AzApiManagementDiagnostic.md)
 Get details of the Diagnostic configured at the service level or the Api Level. Diagnostics are used to log requests/responses from Api Management gateway.
+
+### [Get-AzApiManagementGateway](Get-AzApiManagementGateway.md)
+Gets all or specific API management Gateway.
+
+### [Get-AzApiManagementGatewayHostnameConfiguration](Get-AzApiManagementGatewayHostnameConfiguration.md)
+Gets all or specific hostname configuration for the existing Gateway.
+
+### [Get-AzApiManagementGatewayKey](Get-AzApiManagementGatewayKey.md)
+Gets keys of the existing Gateway
 
 ### [Get-AzApiManagementGroup](Get-AzApiManagementGroup.md)
 Gets all or specific API management groups.
@@ -182,6 +194,12 @@ Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
 ### [New-AzApiManagementDiagnostic](New-AzApiManagementDiagnostic.md)
 Creates a new diagnostics at the Global scope or Api Scope.
 
+### [New-AzApiManagementGateway](New-AzApiManagementGateway.md)
+Creates new Gateway entity.
+
+### [New-AzApiManagementGatewayHostnameConfiguration](New-AzApiManagementGatewayHostnameConfiguration.md)
+Creates a hostname configuratin for the existing Gateway.
+
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.
 
@@ -211,6 +229,9 @@ Creates an API Management product.
 
 ### [New-AzApiManagementRegion](New-AzApiManagementRegion.md)
 Creates an instance of PsApiManagementRegion.
+
+### [New-AzApiManagementResourceLocationObject](New-AzApiManagementResourceLocationObject.md)
+Create a new resource location contract (used in Gateways).
 
 ### [New-AzApiManagementSamplingSetting](New-AzApiManagementSamplingSetting.md)
 Create a new sampling setting for the Diagnostic
@@ -242,6 +263,9 @@ Removes an API Management service.
 ### [Remove-AzApiManagementApi](Remove-AzApiManagementApi.md)
 Removes an API.
 
+### [Remove-AzApiManagementApiFromGateway](Remove-AzApiManagementApiFromGateway.md)
+Attaches an API to a gateway.
+
 ### [Remove-AzApiManagementApiFromProduct](Remove-AzApiManagementApiFromProduct.md)
 Removes an API from a product.
 
@@ -271,6 +295,12 @@ Removes an API Management certificate.
 
 ### [Remove-AzApiManagementDiagnostic](Remove-AzApiManagementDiagnostic.md)
 Remove the Diagnostic entity from Global or API level scope.
+
+### [Remove-AzApiManagementGateway](Remove-AzApiManagementGateway.md)
+Detaches an API from a Gateway.
+
+### [Remove-AzApiManagementGatewayHostnameConfiguration](Remove-AzApiManagementGatewayHostnameConfiguration.md)
+Removes a hostname configuration from the existing Gateway.
 
 ### [Remove-AzApiManagementGroup](Remove-AzApiManagementGroup.md)
 Removes an existing API management group.
@@ -382,6 +412,9 @@ Updates a particular Api Release.
 
 ### [Update-AzApiManagementCache](Update-AzApiManagementCache.md)
 updates a cache in Api Management service.
+
+### [Update-AzApiManagementGateway](Update-AzApiManagementGateway.md)
+Configures an API management Gateway.
 
 ### [Update-AzApiManagementRegion](Update-AzApiManagementRegion.md)
 Updates existing deployment region in PsApiManagement instance.

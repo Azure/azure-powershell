@@ -25,7 +25,7 @@ The **Set-AzLoadBalancerProbeConfig** cmdlet updates a probe configuration for a
 ## EXAMPLES
 
 ### Example 1: Modify the probe configuration on a load balancer
-```
+```powershell
 PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerProbeConfig -Name "NewProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath "healthcheck.aspx" 
 PS C:\> $slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2

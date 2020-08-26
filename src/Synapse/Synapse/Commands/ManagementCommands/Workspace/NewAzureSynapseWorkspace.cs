@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Synaspe
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseWorkspace))]
-    public class NewAzureSynapseWorkspace : SynapseCmdletBase
+    public class NewAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.ResourceGroupName)]

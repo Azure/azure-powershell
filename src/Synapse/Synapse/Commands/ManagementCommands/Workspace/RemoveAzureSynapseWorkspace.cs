@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synaspe
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureSynapseWorkspace : SynapseCmdletBase
+    public class RemoveAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";

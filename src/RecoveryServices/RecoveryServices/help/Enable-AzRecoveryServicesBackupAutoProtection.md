@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzRecoveryServicesBackupAutoProtection
 
 ## SYNOPSIS
-This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
+The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
 
 ## SYNTAX
 
@@ -20,19 +20,19 @@ Enable-AzRecoveryServicesBackupAutoProtection [-InputItem] <ProtectableItemBase>
 ```
 
 ## DESCRIPTION
-The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets Azure auto Backup protection policy on an protectable item.
+This command allows users to automatically protect all existing unprotected SQL DBs and any DB which will be added later with the given policy.  Since the instruction is to back up all future DBs, the operation is done at a SQLInstance level, Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
-PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL" -Policy $Pol
+PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultSQLPolicy"
+PS C:\> $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "MSSQLInstance" -ServerName "TestSQLServer" 
+PS C:\> Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $Pol -VaultId $targetvault.ID 
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
-The second cmdlet sets the Backup protection policy for the AzureWorkload using the policy in $Pol.
+The second cmdlet fetches the relevant SQLInstance which is a protectable item. The 3rd command then sets up auto protection for this instance using the policy in $Pol.
 
 ### Example 2
 
@@ -45,7 +45,7 @@ Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType AzureVM -Inp
 ## PARAMETERS
 
 ### -BackupManagementType
-Backup Management type of the resource (for example: MAB, DPM, AzureWorkload).
+The class of resources being protected. Currently the values supported for this cmdlet are MAB, AzureWorkload, AzureVM
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputItem
-Specifies the protectable item object that can be passed as an input.
+Specifies the protectable item object that can be passed as an input. The current supported value is a protectableItem object of type "SQLInstance". 
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
+Workload type of the resource. The current supported values are AzureVM, WindowsServer, MSSQL
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

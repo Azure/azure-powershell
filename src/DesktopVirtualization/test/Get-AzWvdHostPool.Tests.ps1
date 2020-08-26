@@ -28,7 +28,8 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -48,6 +49,7 @@ Describe 'Get-AzWvdHostPool' {
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
+            $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -70,7 +72,8 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -87,7 +90,8 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -105,9 +109,10 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPools[0].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[0].ValidationEnvironment | Should -Be $false
+            $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
 
             $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
             $hostPools[1].Location | Should -Be $env.Location
@@ -121,9 +126,10 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPools[1].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[1].ValidationEnvironment | Should -Be $false
+            $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -150,7 +156,8 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -167,7 +174,8 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `
@@ -184,9 +192,10 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPools[0].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[0].ValidationEnvironment | Should -Be $false
+            $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
 
             $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
             $hostPools[1].Location | Should -Be $env.Location
@@ -200,9 +209,10 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPools[1].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[1].ValidationEnvironment | Should -Be $false
+            $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `

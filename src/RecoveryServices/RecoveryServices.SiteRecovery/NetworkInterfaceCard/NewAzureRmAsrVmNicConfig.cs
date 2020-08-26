@@ -57,6 +57,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMNetworkId { get; set; }
 
         /// <summary>
+        ///     Gets or sets name of the recovery NIC.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies the name of the recovery NIC.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the recovery NIC resource group name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies the name of the recovery NIC resource group.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing NIC can be used during failover.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies whether an existing NIC can be used during failover.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ReuseExistingNic { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the recovery VM subnet.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
@@ -118,6 +145,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             HelpMessage = "Specifies the ID of the test failover virtual network.")]
         [ValidateNotNullOrEmpty]
         public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the test failover NIC.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies the name of the test failover NIC.")]
+        [ValidateNotNullOrEmpty]
+        public string TfoNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the test failover NIC resource group.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies the name of the test failover NIC resource group.")]
+        [ValidateNotNullOrEmpty]
+        public string TfoNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing NIC can be reused during test failover.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = false,
+            HelpMessage = "Specifies whether an existing NIC can be used during test failover.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter TfoReuseExistingNic { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of the test failover subnet.
@@ -338,6 +392,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         NicId = this.NicId,
                         RecoveryVMNetworkId = this.RecoveryVMNetworkId,
+                        RecoveryNicName = this.RecoveryNicName,
+                        RecoveryNicResourceGroupName = this.RecoveryNicResourceGroupName,
+                        ReuseExistingNic = this.ReuseExistingNic,
                         RecoveryVMSubnetName = this.RecoveryVMSubnetName,
                         RecoveryNetworkSecurityGroupId = this.RecoveryNetworkSecurityGroupId,
                         EnableAcceleratedNetworkingOnRecovery =
@@ -356,6 +413,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             },
 
                         TfoVMNetworkId = this.TfoVMNetworkId,
+                        TfoNicName = this.TfoNicName,
+                        TfoNicResourceGroupName = this.TfoNicResourceGroupName,
+                        TfoReuseExistingNic = this.TfoReuseExistingNic,
                         TfoVMSubnetName = this.TfoVMSubnetName,
                         TfoNetworkSecurityGroupId = this.TfoNetworkSecurityGroupId,
                         EnableAcceleratedNetworkingOnTfo = this.EnableAcceleratedNetworkingOnTfo,

@@ -14,8 +14,8 @@ Create or update an application.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
- [-CommandLineSetting <CommandLineSetting>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
+ -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  [-SubscriptionId <String>] [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```

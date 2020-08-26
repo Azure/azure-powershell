@@ -100,16 +100,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool HostPoolBody { get => this._hostPoolBody; set => this._hostPoolBody = value; }
 
         /// <summary>HostPool type for desktop.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "HostPool type for desktop.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "HostPool type for desktop.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"HostPool type for desktop.",
         SerializedName = @"hostPoolType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType HostPoolType { get => HostPoolBody.HostPoolType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType)""); set => HostPoolBody.HostPoolType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType HostPoolType { get => HostPoolBody.HostPoolType; set => HostPoolBody.HostPoolType = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -127,24 +127,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>The type of the load balancer.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the load balancer.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The type of the load balancer.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"The type of the load balancer.",
         SerializedName = @"loadBalancerType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType LoadBalancerType { get => HostPoolBody.LoadBalancerType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType)""); set => HostPoolBody.LoadBalancerType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType LoadBalancerType { get => HostPoolBody.LoadBalancerType; set => HostPoolBody.LoadBalancerType = value; }
 
-        /// <summary>Resource location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
-        Description = @"Resource location.",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => HostPoolBody.Location ?? null; set => HostPoolBody.Location = value; }
@@ -199,6 +199,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>
+        /// The type of preferred application group type, default to Desktop Application Group
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The type of preferred application group type, default to Desktop Application Group")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The type of preferred application group type, default to Desktop Application Group",
+        SerializedName = @"preferredAppGroupType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType PreferredAppGroupType { get => HostPoolBody.PreferredAppGroupType; set => HostPoolBody.PreferredAppGroupType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -302,8 +316,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ITrackedResourceTags Tag { get => HostPoolBody.Tag ?? null /* object */; set => HostPoolBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ITrackedResourceTags Tag { get => HostPoolBody.Tag ?? null /* object */; set => HostPoolBody.Tag = value; }
 
         /// <summary>VM template for sessionhosts configuration within hostpool.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "VM template for sessionhosts configuration within hostpool.")]

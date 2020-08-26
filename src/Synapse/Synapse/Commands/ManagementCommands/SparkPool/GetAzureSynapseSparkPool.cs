@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkPool,
         DefaultParameterSetName = GetByNameParameterSet)]
     [OutputType(typeof(PSSynapseSparkPool))]
-    public class GetAzureSynapseSparkPool : SynapseCmdletBase
+    public class GetAzureSynapseSparkPool : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";

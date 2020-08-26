@@ -21,5 +21,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             Assert.False(Util.AreEmailAddressesInCorrectFormat(new[] { "kuku@microsoft" }), "Invalid mail address not detected");
             Assert.False(Util.AreEmailAddressesInCorrectFormat(new[] { "@micorsoft.com", "kuku@microsoft.com" }), "One fauly mail address should fail the lot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ServerNameValidation()
+        {
+            Assert.True(Util.ValidateServerName("lowercase"));
+            Assert.True(Util.ValidateServerName("12345"));
+            Assert.False(Util.ValidateServerName("MixedCase"));
+            Assert.False(Util.ValidateServerName("-hyphen"));
+            Assert.False(Util.ValidateServerName("hyphen-"));
+        }
     }
 }

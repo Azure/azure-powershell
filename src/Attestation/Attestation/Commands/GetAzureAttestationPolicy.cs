@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Attestation.Models;
+using Microsoft.Azure.Commands.Attestation.Properties;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -64,8 +65,29 @@ namespace Microsoft.Azure.Commands.Attestation
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Location of the default attestation.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies the Location of the default attestation provider.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Flag for the default attestation.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultProviderParameterSet,
+            HelpMessage = "Specifies this is the request to a default attestation provider.")]
+        public SwitchParameter DefaultProvider { get; set; }
+
+        /// <summary>
         /// Trusted Execution Environment
-         /// </summary>
+        /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage =
                 "Specifies a type of Trusted Execution Environment. We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave."
@@ -78,7 +100,25 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
-            String policy = AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, Tee);
+            string policy;
+
+            switch (ParameterSetName)
+            {
+                case DefaultProviderParameterSet:
+                    policy =
+                        AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, Tee, true, Location);
+                    break;
+
+                case NameParameterSet:
+                case ResourceIdParameterSet:
+                    policy =
+                        AttestationDataPlaneClient.GetPolicy(Name, ResourceGroupName, ResourceId, Tee);
+                    break;
+
+                default:
+                    throw new ArgumentException(Resources.BadParameterSetName);
+            }
+
             WriteObject(new PSPolicy(policy));
         }
     }

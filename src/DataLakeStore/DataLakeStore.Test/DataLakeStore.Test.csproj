@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.0" />
   </ItemGroup>
 
   <ItemGroup>

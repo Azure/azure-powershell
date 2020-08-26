@@ -19,32 +19,32 @@ Create an event source under the specified environment.
 .Description
 Create an event source under the specified environment.
 .Example
-PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup2 -NamespaceName spacename001 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
-PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup2 -NamespaceName spacename001 -AuthorizationRuleName RootManageSharedAccessKey
+PS C:\> New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
+PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
 PS C:\> $k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename001 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Kind               Location Name      Type
 ----               -------- ----      ----
 Microsoft.EventHub eastus   estest001 Microsoft.TimeSeriesInsights/Environments/EventSources
 .Example
-PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup2 -Location eastus -Name iotname001 -SkuName S1 -Units 100
-PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup2 -Name iotname001
+PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
+PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
 PS C:\> $k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 
--EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Location Name    Type                                                   Kind
 -------- ----    ----                                                   ----
 eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsoft.IoTHub
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='eventhub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -124,7 +124,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
