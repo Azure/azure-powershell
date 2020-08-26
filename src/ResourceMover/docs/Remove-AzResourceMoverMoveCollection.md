@@ -43,15 +43,6 @@ PS C:\> Remove-AzResourceMoverMoveCollection -SubscriptionId  "e80eb9fa-c996-443
 
 Remove the Move collection from the specified subscription.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob

@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Move collection.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzResourceMoverMoveCollection -Name PS-centralus-westcentralus-demoRM  -ResourceGroupName RG-MoveCollection-demoRM -SubscriptionId e80eb9fa-c996-4435-aa32-5af6f3d3077c -SourceRegion centralus -TargetRegion westcentralus -Location eastus2
 
-{{ Add output here }}
+Location Name                               Type
+-------- ----                               ----
+eastus2  PS-centralus-westcentralus-demoRM  Microsoft.Migrate/moveCollections
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a new Move collection within a subscription.
