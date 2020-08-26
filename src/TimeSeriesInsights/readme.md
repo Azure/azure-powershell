@@ -47,11 +47,10 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: powershell
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2018-08-15-preview/timeseriesinsights.json
+  - $(repo)/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/stable/2020-05-15/timeseriesinsights.json
 
 module-version: 0.0.1
 title: TimeSeriesInsights
@@ -68,6 +67,25 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/accessPolicies\//g, "/accesspolicies/")
+  - from: swagger-document
+    where: $.definitions.Gen1EnvironmentResourceProperties.allOf
+    transform: >
+      return [
+        {
+          "$ref": "#/definitions/Gen1EnvironmentCreationProperties"
+        },
+        {
+          "$ref": "#/definitions/EnvironmentResourceProperties"
+        }
+      ]
+  - from: swagger-document
+    where: $.definitions.Gen2EnvironmentResourceProperties.allOf
+    transform: >
+      return [
+        {
+          "$ref": "#/definitions/EnvironmentResourceProperties"
+        }
+      ]
   # Remove the unneeded parameter set
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -99,11 +117,11 @@ directive:
       parameter-name: Sku
   # Suppress the table format
   - where:
-        model-name: StandardEnvironmentResource
+        model-name: Gen1EnvironmentResource
     set:      
         suppress-format: true
   - where:
-        model-name: LongTermEnvironmentResource
+        model-name: Gen2EnvironmentResource
     set:      
         suppress-format: true
   - where:
@@ -117,14 +135,14 @@ directive:
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IStandardEnvironmentCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IStandardEnvironmentCreationProperties Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IGen1EnvironmentCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IGen1EnvironmentCreationProperties Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ILongTermEnvironmentCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ILongTermEnvironmentCreationProperties Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IGen2EnvironmentCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IGen2EnvironmentCreationProperties Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventHubEventSourceCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventHubEventSourceCreationProperties Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventHubEventSourceCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventHubEventSourceCreationProperties Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IIoTHubEventSourceCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IIoTHubEventSourceCreationProperties Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IIoTHubEventSourceCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IIoTHubEventSourceCreationProperties Property');
 ```

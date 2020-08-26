@@ -1,9 +1,9 @@
 {
-  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-02-15+1": {
+  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-06-14+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-02-15",
-      "Content": "{\r\n  \"name\": \"testclusterpb8oay\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-06-14",
+      "Content": "{\r\n  \"name\": \"testclusterlbfexs\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -17,22 +17,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "a8f3053a-1394-403c-87a0-de03fda03208" ],
-        "Set-Cookie": [ "ARRAffinity=6546d31d55ee4830d02435ffb7e23d3cc2fbc05a13894098a441197898802a3b;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "b11bd8e4-e85b-4447-a15f-02bf78fd7d7f" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20200507T143525Z:1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
+        "x-ms-correlation-request-id": [ "aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T015217Z:aa6a4346-207d-437d-a63b-9aa0a9c91277" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 07 May 2020 14:35:25 GMT" ]
+        "Date": [ "Mon, 03 Aug 2020 01:52:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testclusterpb8oay\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterpb8oay\u0027 with type Engine is already taken. Please specify a different name\"}"
+      "Content": "{\"name\":\"testclusterlbfexs\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterlbfexs\u0027 with type Engine is already taken. Please specify a different name\"}"
     }
   }
 }

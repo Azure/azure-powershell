@@ -15,16 +15,12 @@ Updates the environment with the specified name in the specified subscription an
 ### UpdateExpanded (Default)
 ```
 Update-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-DataRetentionTime <TimeSpan>] [-PartitionKeyProperty <ITimeSeriesIdProperty[]>]
- [-Sku <SkuName>] [-StorageLimitExceededBehavior <StorageLimitExceededBehavior>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzTimeSeriesInsightsEnvironment -InputObject <ITimeSeriesInsightsIdentity> [-Capacity <Int32>]
- [-DataRetentionTime <TimeSpan>] [-PartitionKeyProperty <ITimeSeriesIdProperty[]>] [-Sku <SkuName>]
- [-StorageLimitExceededBehavior <StorageLimitExceededBehavior>] [-Tag <Hashtable>]
+Update-AzTimeSeriesInsightsEnvironment -InputObject <ITimeSeriesInsightsIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,9 +29,9 @@ Updates the environment with the specified name in the specified subscription an
 
 ## EXAMPLES
 
-### Example 1: Update a standard time series insights environment
+### Example 1: Update a Gen1 time series insights environment
 ```powershell
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Capacity 5 -Sku S1
+PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -43,7 +39,7 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
@@ -60,12 +56,12 @@ Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsi
 Type                         : Microsoft.TimeSeriesInsights/Environments
 ```
 
-This command updates a standard time series insights environment.
+This command updates a Gen1 time series insights environment.
 
-### Example 2:  Update a standard time series insights environment
+### Example 2:  Update a Gen1 time series insights environment
 ```powershell
 PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Capacity 6 -Sku S1
+PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -73,13 +69,13 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
 PropertyUsageState           :
 Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
-SkuCapacity                  : 6
+SkuCapacity                  : 5
 SkuName                      : S1
 StateDetailCode              :
 StateDetailCurrentCount      :
@@ -90,7 +86,7 @@ Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsi
 Type                         : Microsoft.TimeSeriesInsights/Environments
 ```
 
-This command updates a standard time series insights environment.
+This command updates a Gen1 time series insights environment.
 
 ## PARAMETERS
 
@@ -99,37 +95,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Capacity
-The capacity of the sku.
-For standard environments, this value can be changed to support scale out of environments after they have been created.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataRetentionTime
-ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
-
-```yaml
-Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -201,22 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartitionKeyProperty
-The list of event properties which will be used to partition data in the environment.
-To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of an Azure Resource group.
 
@@ -226,39 +175,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sku
-The name of this SKU.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageLimitExceededBehavior
-The behavior the Time Series Insights service should take when the environment's capacity has been exceeded.
-If "PauseIngress" is specified, new events will not be read from the event source.
-If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment.
-The default behavior is PurgeOldData.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -335,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 
 ## NOTES
 
@@ -354,10 +270,6 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   - `[ReferenceDataSetName <String>]`: Name of the reference data set.
   - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-PARTITIONKEYPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties which will be used to partition data in the environment.
-  - `[Name <String>]`: The name of the property.
-  - `[Type <PropertyType?>]`: The type of the property.
 
 ## RELATED LINKS
 
