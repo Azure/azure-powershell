@@ -158,9 +158,9 @@ function Get-AzmigrateJob {
                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') ){
+                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
                     
-                    $JobName = $ReplicationMigrationItem
+                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
                     $null = $PSBoundParameters.Remove("FabricName")
                     $null = $PSBoundParameters.Remove("MigrationItemName")
                     $null = $PSBoundParameters.Remove("ProtectionContainerName")
