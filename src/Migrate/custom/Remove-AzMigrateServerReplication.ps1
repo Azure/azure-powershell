@@ -126,11 +126,11 @@ function Remove-AzMigrateServerReplication {
         try {
             # TODO PLEASE FIX BEFORE RELEASE
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
+            $test = $PSBoundParameters
             $parameterSet = $PSCmdlet.ParameterSetName
-
+            
             $hasDeleteOption = $PSBoundParameters.ContainsKey('DeleteOption')
             $null = $PSBoundParameters.Remove('DeleteOption')
-
             if ($parameterSet -eq 'ByMachineName') {
                 # TODO
                 $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
@@ -179,12 +179,8 @@ function Remove-AzMigrateServerReplication {
                 if($hasDeleteOption){
                     $null = $PSBoundParameters.Add('DeleteOption', $DeleteOption)
                 }
-
                 return Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters
-
                 
-
-                return
             }
         } catch {
            throw

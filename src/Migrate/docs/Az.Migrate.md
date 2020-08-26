@@ -25,11 +25,7 @@ VmWare virtual machine.
 Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
 
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+Enable Migration
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Remove Migration item.
