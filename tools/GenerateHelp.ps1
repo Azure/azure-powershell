@@ -99,6 +99,7 @@ $NewModules = @("Az.AppConfiguration",
                 "Az.MySql",
                 "Az.Portal",
                 "Az.PostgreSql",
+                "Az.SpringCloud",
                 "Az.TimeSeriesInsights"
                 )
 if ($GenerateMamlHelp)

@@ -14,7 +14,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName)]
+    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkJob))]
     public class SubmitAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
@@ -184,8 +184,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 batchRequest.Configuration[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
             }
 
-            var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion:false);
-            WriteObject(new PSSynapseSparkJob(jobInformation));
+            if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.SubmittingSynapseSparkJob, this.SparkPoolName, this.WorkspaceName)))
+            {
+                var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion: false);
+                WriteObject(new PSSynapseSparkJob(jobInformation));
+            }
         }
     }
 }

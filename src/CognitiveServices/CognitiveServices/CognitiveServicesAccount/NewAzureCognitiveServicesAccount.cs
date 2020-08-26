@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                     }
 
-                    if (Type.Equals("Face", StringComparison.InvariantCultureIgnoreCase))
+                    if (Type.Equals("Face", StringComparison.InvariantCultureIgnoreCase) || Type.Equals("CognitiveServices", StringComparison.InvariantCultureIgnoreCase))
                     {
                         if (Force.IsPresent)
                         {

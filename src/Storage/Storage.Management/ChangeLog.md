@@ -18,11 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
-* Fixed [#12592]: Fix download blob fail when related sub directory not exist.
-	- `Get-AzStorageBlobContent`
+* Updated help file, added more description, and fixed typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
+* Fixed download blob fail when related sub directory not exist [#12592]
+    -  `Get-AzStorageBlobContent`
+* Supported Set/Get/Remove Object Replication Policy on Storage accounts
+    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
+    - `Get-AzStorageObjectReplicationPolicy`
+    - `Remove-AzStorageObjectReplicationPolicy`
+* Supported enable/disable ChangeFeed on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
 
 ## Version 2.4.0
 * Supported create container/blob Sas token with new permission x,t
