@@ -12,18 +12,23 @@ Restart job.
 
 ## SYNTAX
 
-### VMwareCbt (Default)
-```
-Restart-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByJobName
+### ByJobName (Default)
 ```
 Restart-AzMigrateServerReplication -JobName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ByMachineId
+```
+Restart-AzMigrateServerReplication -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByMachineName
+```
+Restart-AzMigrateServerReplication -MachineName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +101,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+Id of an Azure Migrate protected VM.
+
+```yaml
+Type: System.String
+Parameter Sets: ByMachineId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+Id of an Azure Migrate protected VM.
+
+```yaml
+Type: System.String
+Parameter Sets: ByMachineName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -116,7 +151,7 @@ Name of an Azure Migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByJobName
 Aliases:
 
 Required: True
@@ -131,7 +166,7 @@ Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByJobName
 Aliases:
 
 Required: True

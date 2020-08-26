@@ -23,29 +23,19 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzmigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
         [Parameter(ParameterSetName='ByMachineName',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Resource group.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
         [Parameter(ParameterSetName='ByMachineName',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate project.
         ${ProjectName},
-
-        [Parameter(ParameterSetName='ByJobName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of Job.
-        ${JobName},
 
         [Parameter(ParameterSetName='ByMachineId',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -65,12 +55,6 @@ function Get-AzmigrateJob {
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
-        [System.String]
-        # OData filter options.
-        ${Filter},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -134,20 +118,7 @@ function Get-AzmigrateJob {
     
     process {
         try {
-
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            $test = $PSBoundParameters
-
             $parameterSet = $PSCmdlet.ParameterSetName
-
-            if (('ByJobName', 'List') -contains $parameterSet) {
-                $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-
-                $null = $PSBoundParameters.Remove('ProjectName')
-                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-
-                return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
-            } 
 
             if($parameterSet  -eq 'ByMachineId'){
                 $null = $PSBoundParameters.Remove('MachineId')

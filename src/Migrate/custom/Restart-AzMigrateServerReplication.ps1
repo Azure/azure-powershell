@@ -23,15 +23,27 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrates
 #>
 function Restart-AzMigrateServerReplication{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByJobName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByJobName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Resource group.
         ${ResourceGroupName},
+        
+        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Id of an Azure Migrate protected VM.
+        ${MachineId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Id of an Azure Migrate protected VM.
+        ${MachineName},
+
+        [Parameter(ParameterSetName='ByJobName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate project.
@@ -42,7 +54,7 @@ function Restart-AzMigrateServerReplication{
         [System.String]
         # Name of Job.
         ${JobName},
-        
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
