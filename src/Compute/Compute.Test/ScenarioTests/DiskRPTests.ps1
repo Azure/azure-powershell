@@ -1084,7 +1084,7 @@ function Test-DiskAccessObject
 
 <#
 .SYNOPSIS
-Testing disk upload
+Testing DiskConfig property NetworkAccessPolicy
 #>
 function Test-DiskConfigDiskAccessNetworkAccess
 {
@@ -1123,6 +1123,10 @@ function Test-DiskConfigDiskAccessNetworkAccess
     }
 }
 
+<#
+.SYNOPSIS
+Testing SnapshotConfig property NetworkAccessPolicy
+#>
 function Test-SnapshotConfigDiskAccessNetworkPolicy
 {
     # Setup

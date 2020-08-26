@@ -231,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskAccessId
-Gets or sets ARM id of the DiskAccess resource for using private endpoints on.
+Gets or sets ARM ID of the DiskAccess resource for using private endpoints on.
 
 
 ```yaml
