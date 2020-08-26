@@ -59,7 +59,7 @@ PS C:\> $definitions = Get-AzManagedServicesDefinition
 PS C:\> $definitions[0].Name
 fff287a4-1714-4a17-bc40-a17ca8e69e3f
 PS C:\> Get-AzManagedServicesDefinition -Name $definitions[0].Name
-
+```
 
 ## PARAMETERS
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The unique name of the Registration Definition (for example b0c052e5-c437-4771-a476-8b1201158a57).
 ```yaml
 Type: System.String
-Parameter Sets: ById
+Parameter Sets: ByName
 Aliases:
 
 Required: True
