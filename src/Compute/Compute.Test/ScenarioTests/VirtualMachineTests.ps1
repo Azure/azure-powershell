@@ -2997,7 +2997,13 @@ function Test-VirtualMachineGetStatus
 
 <#
 .SYNOPSIS
-Test Virtual Machines
+Test Virtual Machines's Status With Health Extension
+Description:
+This test creates a virtual machine and adds a vm health extension
+and gets the virtual machine with -Status flag which returns the instance
+view of the virtual machine. Since the vm has a health extension,
+the vm's instance view should have the "vmHealth" field present in its return
+object.
 #>
 function Test-VirtualMachineGetStatusWithHealhtExtension
 {
