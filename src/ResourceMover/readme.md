@@ -50,21 +50,21 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
+title: ResourceMover
 service-name: ResourceMover
-branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 prefix: Az
 subject-prefix: $(service-name)
+branch: master
+repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
 aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
-
 input-file:
 	- $(aks)/regionmovecollection.json
 module-version: 0.1.0
-title: Rms-client
+
 directive:
   # Remove the unexpanded parameter set
   - where:
