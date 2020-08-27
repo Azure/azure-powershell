@@ -63,6 +63,7 @@ directive:
     - MigrationProviderSpecificSettings
     - MigrateProviderSpecificInput
     - ResyncProviderSpecificInput
+    - EnableMigrationProviderSpecificInput
   # Remove variants not in scope
   - where:
       verb: Test$
@@ -88,6 +89,11 @@ directive:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
       variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+    remove: true
+  - where:
+      verb: New$
+      subject: ^ReplicationMigrationItem
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
     remove: true
   # Remove cmdlets not in scope
   - where:
