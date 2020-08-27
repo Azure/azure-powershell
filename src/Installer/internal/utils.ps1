@@ -12,160 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-AzModuleMapping{
-    [OutputType([Hashtable])]
-    [CmdletBinding()]
-    param(
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${RequiredVersion},
-
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${MaximumVersion},
-
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${MinimumVersion},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Repository}
-    )
-    
-    process {
-
-        $map = @{}
-
-        $PSBoundParameters.Add('Name', 'Az')
-        $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $PSBoundParameters
-
-        (Invoke-Expression $cmd[0]).Dependencies | Foreach-Object {$map.Add($_.Name, $_)}
-        return $map
-    }
-}
-
-function Get-LatestVersion{
-    [OutputType([String])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Repository},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Name},
-
-        [Parameter()]
-        [Switch]
-        ${AllowPrerelease}
-    )
-
-    $PSBoundParameters.Add('AllVersion', $true)
-    $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $PSBoundParameters
-
-    $version = @()
-    Invoke-Expression $cmd[0] | ForEach-Object {
-        $version += $_.Version
-    }
-
-
-    $latest = (($version -eq $null) -or ($version.Length -eq 0)) ? $null : $version[0]
-
-    $version | Foreach-Object {
-        if ((Compare-Version -Str1 $_ -Str2 $latest) -gt 0) {
-            $latest = $_
-        }
-    }
-
-    return $latest
-}
-
-function Compare-Version{
-    [OutputType([Int])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Str1},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Str2}
-    )
-    #return 1 if Str1>Str2
-    #return 0 if Str1==Str2
-    #return -1 if Str1<Str2
-}
-
-function Get-AllModule{
-    [OutputType([string[]])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Repository}
-    )
-
-    process {
-        $prefix = 'Microsoft Azure PowerShell'
-        $all = @()
-
-        $PSBoundParameters.Add('Name', 'Az.*')
-        $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $PSBoundParameters
-
-        Invoke-Expression $cmd[0] | ForEach-Object {
-            if ($_.Description.StartsWith($prefix)) {
-                $all += $_.Name
-            }
-        }
-
-        return $all
-    }
-
-}
-
-function Get-DependencyMapping{
-    [OutputType([Hashtable])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        ${Repository}
-
-
-    )
-
-
-
-}
-
-function Test-FullModuleName{
-    [OutputType([bool])]
-    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false)]
-    param(
-        [Parameter(ParameterSetName = 'Default', Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [System.Array]
-        ${Name}
-    )
-
-    process{
-        return $Name.StartsWith('Az.')
-    }
-}
-
 function Get-CommandAsString{
     [OutputType([String[]])]
     [CmdletBinding()]
@@ -176,11 +22,10 @@ function Get-CommandAsString{
         ${Base},
 
         [ValidateNotNullOrEmpty()]
-        [System.Management.Automation.PSBoundParametersDictionary]
+        [HashTable]
         ${BoundParameter},
 
         [Parameter()]
-        [ValidateNotNullOrEmpty()]
         [HashTable]
         ${Index}
     )
@@ -188,12 +33,13 @@ function Get-CommandAsString{
     $cmdlist = @()
     $cmd = $Base
     
-    if ($PSBoundParameters.ContainsKey($BoundParameter)) {
+    if ($PSBoundParameters.ContainsKey('BoundParameter')) {
         $BoundParameter.Keys | Foreach-Object {
             $parameter = ''
-    
-            if ($BoundParameter[$_].GetType().Name -eq 'Boolean') {
-                $parameter = Get-ParameterAsString -Key $_
+            if (($BoundParameter[$_].GetType().Name -eq 'Boolean') -or ($BoundParameter[$_].GetType().Name -eq 'SwitchParameter')) {
+                if ($BoundParameter[$_] -eq $true) {
+                    $parameter = Get-ParameterAsString -Key $_
+                }
             } else {
                 $parameter = Get-ParameterAsString -Key $_ -Val $BoundParameter[$_]         
             }
@@ -202,17 +48,19 @@ function Get-CommandAsString{
         }
     }
 
-    if ($PSBoundParameters.ContainsKey($Index)) {
+    if ($PSBoundParameters.ContainsKey('Index')) {
         $Index.Keys | Foreach-Object {
             $parameter = ''
             $parameter += Get-ParameterAsString -Key 'Name' -Val $_
-            $parameter += Get-ParameterAsString -Key 'RequiredVersion' -Val $Index[$_]
+            if ($Index[$_] -ne $null) {
+                $parameter += Get-ParameterAsString -Key 'RequiredVersion' -Val $Index[$_]
+            }
             $cmdlist += $cmd + $parameter
         }
     } else {
         $cmdlist += $cmd
     }
-    
+
     return $cmdlist
 }
 
@@ -229,13 +77,28 @@ function Get-ParameterAsString{
 
     $param = ''
 
-    if ($PSBoundParameters.ContainsKey($Key)) {
+    if (($PSBoundParameters.ContainsKey('Key')) -and ($Key.Length -gt 0)) {
         $param += ' -' + $Key
     }
 
-    if ($PSBoundParameters.ContainsKey($Val)) {
+    if (($PSBoundParameters.ContainsKey('Val')) -and ($Val.Length -gt 0)) {
         $param += ' ' + $Val
     }
 
     return $param
+}
+
+function remove_installed_module {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true, 
+        ValueFromPipelineByPropertyName = $true,
+        ValueFromPipeline = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        ${Name}
+    )
+
+    #TODO: catch exceptions when no previous versions found
+    Get-InstalledModule -Name $Name | Uninstall-Module -AllVersions -AllowPrerelease
 }

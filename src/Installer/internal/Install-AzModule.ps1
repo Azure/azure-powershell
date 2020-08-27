@@ -16,22 +16,25 @@ function Install-AzModule{
     [OutputType([System.Collections.Hashtable])]
     [CmdletBinding(DefaultParameterSetName = 'All', PositionalBinding = $false)]
     param(
-        [Parameter(HelpMessage = 'Maximum Az Version.')]
+        [Parameter(ParameterSetName = 'All',HelpMessage = 'Maximum Az Version.')]
+        [Parameter(ParameterSetName = 'ByName',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
         [String]
         ${MaximumVersion},
 
-        [Parameter(HelpMessage = 'Minimum Az Version.')]
+        [Parameter(ParameterSetName = 'All',HelpMessage = 'Minimum Az Version.')]
+        [Parameter(ParameterSetName = 'ByName',HelpMessage = 'Minimum Az Version.')]
         [ValidateNotNullOrEmpty()]
         [String]
         ${MinimumVersion},
 
-        [Parameter(HelpMessage = 'Required Az Version.')]
+        [Parameter(ParameterSetName = 'All',HelpMessage = 'Required Az Version.')]
+        [Parameter(ParameterSetName = 'ByName',HelpMessage = 'Required Az Version.')]
         [ValidateNotNullOrEmpty()]
         [String]
         ${RequiredVersion},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(Mandatory, HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
         [String]
         ${Repository},
@@ -46,11 +49,6 @@ function Install-AzModule{
         [Switch]
         ${RemoveAzureRm},
 
-        [Parameter(HelpMessage = 'Overrides warning messages about installation conflicts about existing commands on a computer. Overwrites existing commands that have the same name as commands being installed by a module.')]
-        [ValidateNotNullOrEmpty()]
-        [Switch]
-        ${AllowClobber},
-
         [Parameter(HelpMessage = 'Installs modules and overrides warning messages about module installation conflicts. If a module with the same name already exists on the computer, Force allows for multiple versions to be installed. If there is an existing module with the same name and version, Force overwrites that version.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
@@ -59,7 +57,7 @@ function Install-AzModule{
         [Parameter(ParameterSetName = 'AllAndPreview', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
         [Parameter(ParameterSetName = 'ByNameAndPreview', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [Switch]
         ${AllowPrerelease},
 
         [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to install.')]
@@ -68,73 +66,104 @@ function Install-AzModule{
         [String[]]
         ${Name}
     )
-    
-    begin {
-
-    }
 
     process {
 
-        $remove_azurerm = $null
-        $remove_previous = $null
-        $module_name = $null
-        $required = ''
-        $maximum = ''
-        $minimum = ''
+        $author = 'Microsoft Corporation'
+        $company_name = 'azure-sdk'
 
-        if ($PSBoundParameters.ContainsKey('RemoveAzureRm')) {
-            $remove_azurerm = $PSBoundParameters['RemoveAzureRm']
-            $null = $PSBoundParameters.Remove('RemoveAzureRm')
+        if (!$PSBoundParameters.ContainsKey('Force')) {
+            $confirmation = Read-Host "You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the `nSet-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'?`n[Y] Yes  [N] No  (default is `"N`")"
+
+            switch ($confirmation) {
+                'Y' {
+                    $PSBoundParameters.Add('Force', $true)
+                }
+
+                'N' {
+                    Return
+                }
+            }
         }
 
-        if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
-            $remove_previous = $PSBoundParameters['RemovePrevious']
-            $null = $PSBoundParameters.Remove('RemovePrevious')
-        }
+        $module_name = @()
+        $version = @{}
+        $module = @()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $module_name = $PSBoundParameters['Name']
-            $null = $PSBoundParameters.Remove('Name')
+            $PSBoundParameters['Name'] | Foreach-Object {
+                if ($_ -ne 'Az.Accounts') {
+                    $module_name += $_
+                }
+            }
         }
 
         if ($PSBoundParameters.ContainsKey('MaximumVersion')) {
-            $maximum = $PSBoundParameters['MaximumVersion']
-            $null = $PSBoundParameters.Remove('MaximumVersion')
+            $version.Add('MaximumVersion', $PSBoundParameters['MaximumVersion'])
         }
 
         if ($PSBoundParameters.ContainsKey('MinimumVersion')) {
-            $minimum = $PSBoundParameters['MinimumVersion']
-            $null = $PSBoundParameters.Remove('MinimumVersion')
+            $version.Add('MinimumVersion', $PSBoundParameters['MinimumVersion'])
         }
 
         if ($PSBoundParameters.ContainsKey('RequiredVersion')) {
-            $required = $PSBoundParameters['RequiredVersion']
-            $null = $PSBoundParameters.Remove('RequiredVersion')
+            $version.Add('RequiredVersion', $PSBoundParameters['RequiredVersion'])
         }
 
-        if ($PSCmdlet.ParameterSetName -eq 'ByName') {
+        if (($PSCmdlet.ParameterSetName -eq 'ByName') -or ($PSCmdlet.ParameterSetName -eq 'All')) {
+         
+            #Without preview
+            $parameter = @{}
+            $parameter.Add('Repository', $Repository)
+            $parameter.Add('Name', 'Az')
+            $index = @{}          
+            $version.Keys | Foreach-Object {$parameter.Add($_, $version[$_])}
+            $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $parameter
 
-            
+            #TODO: catch exception when Az was not found
+            (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
+                if ($_.Name -ne 'Az.Accounts') {
+                    $index.Add($_.Name, $_.RequiredVersion)
+                }
+            }
 
-        } elseif ($PSCmdlet.ParameterSetName -eq 'ByNameAndPreview') {
-
-            # Install specified modules, preview if there are any
-
-        } elseif ($PSCmdlet.ParameterSetName -eq 'AllAndPreview') {
-
-            # Install Az and all preview modules
+            if ($PSCmdlet.ParameterSetName -eq 'All') {
+                #Install Az package
+                $index.Keys | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_; 'Version'=index[$_]}}
+            } elseif ($PSCmdlet.ParameterSetName -eq 'ByName') {
+                #Install Az modules by name
+                $module_name | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_; 'Version'=index[$_]}}
+            }
 
         } else {
             
-            #Install Az package
+            #With preview
+            Write-Warning 'Please use `Install-Module -Name Az.Accounts -AllowPrerelease` to install preview version for Az.Accounts'
+
+            if ($PSCmdlet.ParameterSetName -eq 'AllAndPreview') {
+
+                # all latest modules
+                Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
+                    if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts')) {
+                        $module_name += $_.Name
+                    }
+                }
+            }
             
+            $module_name | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_}}
         }
 
+        if ($PSBoundParameters.ContainsKey('RemoveAzureRm')) {
+            remove_installed_module -Name 'AzureRm*'
+        }
 
-    }
+        if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
+            
+            $module_name | remove_installed_module
+        }
 
-    end {
-
+        $module.Keys | Foreach-Object {
+            $module | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
+        }
     }
 }
-
