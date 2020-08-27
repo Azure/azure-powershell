@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Fault Domain count for each placement group.")]
-        public int PlatformFaultDomainCount { get; set; }
+        public int? PlatformFaultDomainCount { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : null
                     );
                 }
                 
