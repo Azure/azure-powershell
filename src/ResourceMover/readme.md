@@ -48,20 +48,9 @@ In this directory, run AutoRest:
 
 > Metadata
 ``` yaml
-metadata:
-  authors: Microsoft Corporation
-  owners: Microsoft Corporation
-  description: 'Microsoft Azure PowerShell: $(prefix).$(service-name) cmdlets'
-  copyright: Microsoft Corporation. All rights reserved.
-  tags: Azure ResourceManager ARM PSModule $(prefix).$(service-name)
-  companyName: Microsoft Corporation
-  requireLicenseAcceptance: true
-  licenseUri: https://aka.ms/azps-license
-  projectUri: https://github.com/Azure/azure-powershell
-
+require:
+  - $(this-folder)/../readme.azure.noprofile.md
 service-name: ResourceMover
-powershell: true
-azure: true
 branch: master
 repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 prefix: Az
@@ -71,6 +60,7 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
 aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
+
 input-file:
 	- $(aks)/regionmovecollection.json
 module-version: 0.1.0
