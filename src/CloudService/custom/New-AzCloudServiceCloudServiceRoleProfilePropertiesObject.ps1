@@ -33,7 +33,7 @@ function New-AzCloudServiceCloudServiceRoleProfilePropertiesObject {
         [string]
         $Name,
         [Parameter(HelpMessage="Specifies the number of role instances in the cloud service..")]
-        [long?]
+        [long]
         $SkuCapacity,
         [Parameter(HelpMessage="The sku name..")]
         [string]
