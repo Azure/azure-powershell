@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot retrieve access token for resource &apos;{0}&apos;.  Please ensure that you have provided the appropriate access tokens when using access token login..
         /// </summary>
-        public static string AccessTokenResourceNotFound {
+        internal static string AccessTokenResourceNotFound {
             get {
                 return ResourceManager.GetString("AccessTokenResourceNotFound", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account needs to be specified.
         /// </summary>
-        public static string AccountNeedsToBeSpecified {
+        internal static string AccountNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("AccountNeedsToBeSpecified", resourceCulture);
             }
@@ -81,16 +81,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No account was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount..
         /// </summary>
-        public static string AccountNotFound {
+        internal static string AccountNotFound {
             get {
                 return ResourceManager.GetString("AccountNotFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Common.Authentication]: Authenticating using configuration values: Domain: &apos;{0}&apos;, Endpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirect: &apos;{3}&apos;, ResourceClientUri: &apos;{4}&apos;, ValidateAuthrity: &apos;{5}&apos;.
+        ///   Looks up a localized string similar to [Common.Authentication]: Authenticating using configuration values: Domain: &apos;{0}&apos;, Endpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirect: &apos;{3}&apos;, ResourceClientUri: &apos;{4}&apos;, ValidateAuthority: &apos;{5}&apos;.
         /// </summary>
-        public static string AdalAuthConfigurationTrace {
+        internal static string AdalAuthConfigurationTrace {
             get {
                 return ResourceManager.GetString("AdalAuthConfigurationTrace", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Received exception {0}, while authenticating..
         /// </summary>
-        public static string AdalAuthException {
+        internal static string AdalAuthException {
             get {
                 return ResourceManager.GetString("AdalAuthException", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Multiple tokens were found for this user. Please clear your token cache using, Clear-AzureProfile and try this command again..
         /// </summary>
-        public static string AdalMultipleTokens {
+        internal static string AdalMultipleTokens {
             get {
                 return ResourceManager.GetString("AdalMultipleTokens", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzAccount..
         /// </summary>
-        public static string AdalUserInteractionRequired {
+        internal static string AdalUserInteractionRequired {
             get {
                 return ResourceManager.GetString("AdalUserInteractionRequired", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
         /// </summary>
-        public static string ArmAccountNotFound {
+        internal static string ArmAccountNotFound {
             get {
                 return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please execute Connect-AzAccount without parameters and enter your credentials..
         /// </summary>
-        public static string ArmUserInteractionRequired {
+        internal static string ArmUserInteractionRequired {
             get {
                 return ResourceManager.GetString("ArmUserInteractionRequired", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Authenticating for account {0} with single tenant {1}.
         /// </summary>
-        public static string AuthenticatingForSingleTenant {
+        internal static string AuthenticatingForSingleTenant {
             get {
                 return ResourceManager.GetString("AuthenticatingForSingleTenant", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .Azure.
         /// </summary>
-        public static string AzureDirectoryName {
+        internal static string AzureDirectoryName {
             get {
                 return ResourceManager.GetString("AzureDirectoryName", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Checking Cache request {0}.
         /// </summary>
-        public static string CacheCheck {
+        internal static string CacheCheck {
             get {
                 return ResourceManager.GetString("CacheCheck", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cache Hit.
         /// </summary>
-        public static string CacheHit {
+        internal static string CacheHit {
             get {
                 return ResourceManager.GetString("CacheHit", resourceCulture);
             }
@@ -180,16 +180,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
         /// </summary>
-        public static string CertificateNotFoundInStore {
+        internal static string CertificateNotFoundInStore {
             get {
                 return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Changing public environment is not supported..
+        ///   Looks up a localized string similar to Changing built-in or discovered environment is not supported..
         /// </summary>
-        public static string ChangingDefaultEnvironmentNotSupported {
+        internal static string ChangingDefaultEnvironmentNotSupported {
             get {
                 return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to -Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account..
         /// </summary>
-        public static string CredentialOrganizationIdMessage {
+        internal static string CredentialOrganizationIdMessage {
             get {
                 return ResourceManager.GetString("CredentialOrganizationIdMessage", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Environment name needs to be specified.
         /// </summary>
-        public static string EnvironmentNameNeedsToBeSpecified {
+        internal static string EnvironmentNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Environment needs to be specified.
         /// </summary>
-        public static string EnvironmentNeedsToBeSpecified {
+        internal static string EnvironmentNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
         /// </summary>
-        public static string EnvironmentNotFound {
+        internal static string EnvironmentNotFound {
             get {
                 return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzAccount..
         /// </summary>
-        public static string ExpiredRefreshToken {
+        internal static string ExpiredRefreshToken {
             get {
                 return ResourceManager.GetString("ExpiredRefreshToken", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File path is not valid.
         /// </summary>
-        public static string FilePathIsNotValid {
+        internal static string FilePathIsNotValid {
             get {
                 return ResourceManager.GetString("FilePathIsNotValid", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
         /// </summary>
-        public static string HttpClientAddingHeader {
+        internal static string HttpClientAddingHeader {
             get {
                 return ResourceManager.GetString("HttpClientAddingHeader", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations {0}].
         /// </summary>
-        public static string HttpClientOperationsInvocationId {
+        internal static string HttpClientOperationsInvocationId {
             get {
                 return ResourceManager.GetString("HttpClientOperationsInvocationId", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unexpected response status code &apos;{0}&apos; received for request &apos;{{{1} {2}}} Body: {{{3}}}.
         /// </summary>
-        public static string HttpRequestExceptionMessage {
+        internal static string HttpRequestExceptionMessage {
             get {
                 return ResourceManager.GetString("HttpRequestExceptionMessage", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Illegal characters in path..
         /// </summary>
-        public static string IllegalPath {
+        internal static string IllegalPath {
             get {
                 return ResourceManager.GetString("IllegalPath", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials..
         /// </summary>
-        public static string InvalidArmContext {
+        internal static string InvalidArmContext {
             get {
                 return ResourceManager.GetString("InvalidArmContext", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings.
         /// </summary>
-        public static string InvalidCertificate {
+        internal static string InvalidCertificate {
             get {
                 return ResourceManager.GetString("InvalidCertificate", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Credential type invalid, only handles &apos;{0}&apos;.
         /// </summary>
-        public static string InvalidCredentialType {
+        internal static string InvalidCredentialType {
             get {
                 return ResourceManager.GetString("InvalidCredentialType", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
-        public static string InvalidDefaultSubscription {
+        internal static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &quot;{0}&quot; is an invalid DNS name for {1}.
         /// </summary>
-        public static string InvalidDnsName {
+        internal static string InvalidDnsName {
             get {
                 return ResourceManager.GetString("InvalidDnsName", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided file in {0} must be have {1} extension.
         /// </summary>
-        public static string InvalidFileExtension {
+        internal static string InvalidFileExtension {
             get {
                 return ResourceManager.GetString("InvalidFileExtension", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No value was specified for the token audience for the graph endpoint in environment &apos;{0}&apos;.  Please use Set-AzEnvironment -Name {0} -GraphAudience token-audience-value.
         /// </summary>
-        public static string InvalidGraphTokenAudience {
+        internal static string InvalidGraphTokenAudience {
             get {
                 return ResourceManager.GetString("InvalidGraphTokenAudience", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot create instance of management client type {0}. It does not have the expected constructor..
         /// </summary>
-        public static string InvalidManagementClientType {
+        internal static string InvalidManagementClientType {
             get {
                 return ResourceManager.GetString("InvalidManagementClientType", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No value was specified for the token audience for the management endpoint in environment &apos;{0}&apos;.  Please use Set-AzEnvironment -Name {0} -ActiveDirectoryServiceEndpointResourceId token-audience-value.
         /// </summary>
-        public static string InvalidManagementTokenAudience {
+        internal static string InvalidManagementTokenAudience {
             get {
                 return ResourceManager.GetString("InvalidManagementTokenAudience", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} is invalid or empty.
         /// </summary>
-        public static string InvalidOrEmptyArgumentMessage {
+        internal static string InvalidOrEmptyArgumentMessage {
             get {
                 return ResourceManager.GetString("InvalidOrEmptyArgumentMessage", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Must specify a non-null subscription name..
         /// </summary>
-        public static string InvalidSubscriptionName {
+        internal static string InvalidSubscriptionName {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionName", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Add-AzureAccount to set up your Azure credentials..
         /// </summary>
-        public static string InvalidSubscriptionState {
+        internal static string InvalidSubscriptionState {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionState", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There was an error retrieving the managed service access token for resource &apos;{0}&apos; using the URI &apos;{1}&apos;.  Please check that this managed service is configured to emit tokens at this address and that the associated managed service identity has the appropriate role assignment and try logging in again..
         /// </summary>
-        public static string MSITokenRequestFailed {
+        internal static string MSITokenRequestFailed {
             get {
                 return ResourceManager.GetString("MSITokenRequestFailed", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: No matching account record for account {0} in subscription {1}.
         /// </summary>
-        public static string NoAccountInContext {
+        internal static string NoAccountInContext {
             get {
                 return ResourceManager.GetString("NoAccountInContext", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: No matching environment record for environment {0} in subscription {1}, using AzureCloud environment instead.
         /// </summary>
-        public static string NoEnvironmentInContext {
+        internal static string NoEnvironmentInContext {
             get {
                 return ResourceManager.GetString("NoEnvironmentInContext", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
         /// </summary>
-        public static string NoInternetConnection {
+        internal static string NoInternetConnection {
             get {
                 return ResourceManager.GetString("NoInternetConnection", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
-        public static string NoSubscriptionInContext {
+        internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
-        public static string NoTenantInContext {
+        internal static string NoTenantInContext {
             get {
                 return ResourceManager.GetString("NoTenantInContext", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Windows Azure Powershell.
         /// </summary>
-        public static string OldAzureDirectoryName {
+        internal static string OldAzureDirectoryName {
             get {
                 return ResourceManager.GetString("OldAzureDirectoryName", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path {0} doesn&apos;t exist..
         /// </summary>
-        public static string PathDoesNotExist {
+        internal static string PathDoesNotExist {
             get {
                 return ResourceManager.GetString("PathDoesNotExist", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path for {0} doesn&apos;t exist in {1}..
         /// </summary>
-        public static string PathDoesNotExistForElement {
+        internal static string PathDoesNotExistForElement {
             get {
                 return ResourceManager.GetString("PathDoesNotExistForElement", resourceCulture);
             }
@@ -477,16 +477,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &amp;whr={0}.
         /// </summary>
-        public static string PublishSettingsFileRealmFormat {
+        internal static string PublishSettingsFileRealmFormat {
             get {
                 return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing public environment is not supported..
+        ///   Looks up a localized string similar to Removing built-in or discovered environment is not supported..
         /// </summary>
-        public static string RemovingDefaultEnvironmentsNotSupported {
+        internal static string RemovingDefaultEnvironmentsNotSupported {
             get {
                 return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzAccount..
         /// </summary>
-        public static string ServiceKeyNotFound {
+        internal static string ServiceKeyNotFound {
             get {
                 return ResourceManager.GetString("ServiceKeyNotFound", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided service name {0} already exists, please pick another name.
         /// </summary>
-        public static string ServiceNameExists {
+        internal static string ServiceNameExists {
             get {
                 return ResourceManager.GetString("ServiceNameExists", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Renewing token using AppId: &apos;{0}&apos;, AdalConfiguration with ADDomain: &apos;{1}&apos;, AdEndpoint: &apos;{2}&apos;, ClientId: &apos;{3}&apos;, RedirectUri: &apos;{4}&apos;.
         /// </summary>
-        public static string SPNRenewTokenTrace {
+        internal static string SPNRenewTokenTrace {
             get {
                 return ResourceManager.GetString("SPNRenewTokenTrace", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Checking token expiration, token expires &apos;{0}&apos; Comparing to &apos;{1}&apos; With threshold &apos;{2}&apos;, calculated time until token expiry: &apos;{3}&apos;.
         /// </summary>
-        public static string SPNTokenExpirationCheckTrace {
+        internal static string SPNTokenExpirationCheckTrace {
             get {
                 return ResourceManager.GetString("SPNTokenExpirationCheckTrace", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription id {0} doesn&apos;t exist..
         /// </summary>
-        public static string SubscriptionIdNotFoundMessage {
+        internal static string SubscriptionIdNotFoundMessage {
             get {
                 return ResourceManager.GetString("SubscriptionIdNotFoundMessage", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription name needs to be specified.
         /// </summary>
-        public static string SubscriptionNameNeedsToBeSpecified {
+        internal static string SubscriptionNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("SubscriptionNameNeedsToBeSpecified", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription name {0} doesn&apos;t exist..
         /// </summary>
-        public static string SubscriptionNameNotFoundMessage {
+        internal static string SubscriptionNameNotFoundMessage {
             get {
                 return ResourceManager.GetString("SubscriptionNameNotFoundMessage", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription needs to be specified.
         /// </summary>
-        public static string SubscriptionNeedsToBeSpecified {
+        internal static string SubscriptionNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("SubscriptionNeedsToBeSpecified", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No tenant was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount..
         /// </summary>
-        public static string TenantNotFound {
+        internal static string TenantNotFound {
             get {
                 return ResourceManager.GetString("TenantNotFound", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Parsed token &apos;{0}&apos; with json value &apos;{1}&apos; and decoded issuer &apos;{2}&apos;..
         /// </summary>
-        public static string TokenIssuerTrace {
+        internal static string TokenIssuerTrace {
             get {
                 return ResourceManager.GetString("TokenIssuerTrace", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to update mismatching Json structured: {0} {1}..
         /// </summary>
-        public static string UnableToPatchJson {
+        internal static string UnableToPatchJson {
             get {
                 return ResourceManager.GetString("UnableToPatchJson", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Illegal credential type.
         /// </summary>
-        public static string UnknownCredentialType {
+        internal static string UnknownCredentialType {
             get {
                 return ResourceManager.GetString("UnknownCredentialType", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Certificate authentication is not supported for account type {0}..
         /// </summary>
-        public static string UnsupportedCredentialType {
+        internal static string UnsupportedCredentialType {
             get {
                 return ResourceManager.GetString("UnsupportedCredentialType", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using AdalConfiguration with Domain: &apos;{0}&apos;, AdEndpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirectUri: {3}.
         /// </summary>
-        public static string UPNAcquireTokenConfigTrace {
+        internal static string UPNAcquireTokenConfigTrace {
             get {
                 return ResourceManager.GetString("UPNAcquireTokenConfigTrace", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, CorrelationId: &apos;{1}&apos;, ValidateAuthority: &apos;{2}&apos;.
         /// </summary>
-        public static string UPNAcquireTokenContextTrace {
+        internal static string UPNAcquireTokenContextTrace {
             get {
                 return ResourceManager.GetString("UPNAcquireTokenContextTrace", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Received token with LoginType &apos;{0}&apos;, Tenant: &apos;{1}&apos;, UserId: &apos;{2}&apos;.
         /// </summary>
-        public static string UPNAuthenticationTokenTrace {
+        internal static string UPNAuthenticationTokenTrace {
             get {
                 return ResourceManager.GetString("UPNAuthenticationTokenTrace", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Authenticating using Account: &apos;{0}&apos;, environment: &apos;{1}&apos;, tenant: &apos;{2}&apos;.
         /// </summary>
-        public static string UPNAuthenticationTrace {
+        internal static string UPNAuthenticationTrace {
             get {
                 return ResourceManager.GetString("UPNAuthenticationTrace", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Token is expired.
         /// </summary>
-        public static string UPNExpiredTokenTrace {
+        internal static string UPNExpiredTokenTrace {
             get {
                 return ResourceManager.GetString("UPNExpiredTokenTrace", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Renewing Token with Type: &apos;{0}&apos;, Expiry: &apos;{1}&apos;, MultipleResource? &apos;{2}&apos;, Tenant: &apos;{3}&apos;, UserId: &apos;{4}&apos;.
         /// </summary>
-        public static string UPNRenewTokenTrace {
+        internal static string UPNRenewTokenTrace {
             get {
                 return ResourceManager.GetString("UPNRenewTokenTrace", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: User info for token DisplayId: &apos;{0}&apos;, Name: {2} {1}, IdProvider: &apos;{3}&apos;, Uid: &apos;{4}&apos;.
         /// </summary>
-        public static string UPNRenewTokenUserInfoTrace {
+        internal static string UPNRenewTokenUserInfoTrace {
             get {
                 return ResourceManager.GetString("UPNRenewTokenUserInfoTrace", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Checking token expiration, token expires &apos;{0}&apos; Comparing to &apos;{1}&apos; With threshold &apos;{2}&apos;, calculated time until token expiry: &apos;{3}&apos;.
         /// </summary>
-        public static string UPNTokenExpirationCheckTrace {
+        internal static string UPNTokenExpirationCheckTrace {
             get {
                 return ResourceManager.GetString("UPNTokenExpirationCheckTrace", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User name is not valid.
         /// </summary>
-        public static string UserNameIsNotValid {
+        internal static string UserNameIsNotValid {
             get {
                 return ResourceManager.GetString("UserNameIsNotValid", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User name needs to be specified.
         /// </summary>
-        public static string UserNameNeedsToBeSpecified {
+        internal static string UserNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("UserNameNeedsToBeSpecified", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to  (x86).
         /// </summary>
-        public static string x86InProgramFiles {
+        internal static string x86InProgramFiles {
             get {
                 return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
             }

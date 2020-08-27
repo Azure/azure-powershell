@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
