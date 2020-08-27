@@ -3879,7 +3879,7 @@ function Test-EncryptionAtHostVMNull
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
         Assert-AreEqual $null $vm.SecurityProfile.encryptionathost
 
         # Get VM
