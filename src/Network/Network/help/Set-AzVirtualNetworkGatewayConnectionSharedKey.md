@@ -23,8 +23,8 @@ The **Set-AzVirtualNetworkGatewayConnectionSharedKey** cmdlet configures the sha
 
 ## EXAMPLES
 
-### Example 1:
-```
+### Example 1
+```powershell
 PS C:\Users\alzam> Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName VPNGatewayV3 -Name VNet1toVNet2 -Value abcd1234
 
 Confirm

@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
@@ -6,14 +6,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLivyStatementOutput
     {
-        public PSLivyStatementOutput(LivyStatementOutput output)
+        public PSLivyStatementOutput(SparkStatementOutput output)
         {
             this.Status = output?.Status;
             this.ExecutionCount = output?.ExecutionCount;
             //this.Data = LivyStatementOutputParser.Parse(output?.Data);
             this.Data = output?.Data;
-            this.Ename = output?.Ename;
-            this.Evalue = output?.Evalue;
+            this.ErrorName = output?.ErrorName;
+            this.ErrorValue = output?.ErrorValue;
             this.Traceback = output?.Traceback;
         }
 
@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary>
         /// </summary>
-        public string Ename { get; set; }
+        public string ErrorName { get; set; }
 
         /// <summary>
         /// </summary>
-        public string Evalue { get; set; }
+        public string ErrorValue { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<string> Traceback { get; set; }
+        public IReadOnlyList<string> Traceback { get; set; }
     }
 }

@@ -100,6 +100,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                         !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 var probingDirectories = new List<string> {baseDirectory};
 
                 // Add current directory for probing
@@ -175,7 +176,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         var executingPath =
                             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
-                        var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
+                        var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
 
 #if SERIALIZE
                         SerializeCmdlets(filePath, newModuleMetadata);

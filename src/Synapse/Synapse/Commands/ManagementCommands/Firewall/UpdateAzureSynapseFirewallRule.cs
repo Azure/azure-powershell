@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.FirewallRule,
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseIpFirewallRule))]
-    public class UpdateAzureSynapseFirewallRules : SynapseCmdletBase
+    public class UpdateAzureSynapseFirewallRules : SynapseManagementCmdletBase
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
         private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";

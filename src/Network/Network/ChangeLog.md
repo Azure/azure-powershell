@@ -30,6 +30,14 @@
     - `Get-AzVirtualRouterPeer`
     - `Remove-AzVirtualRouterPeer`
 * Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
+
+## Version 3.3.0
+* Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
+* Added non-breaking changes: PeerAddressType functionality for Private Peering in `Remove-AzExpressRouteCircutPeeringConfig`.
+* Code changed to ignore case for AddressPrefixType and PeerAddressType parameter.
+* Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
+
+## Version 3.2.0
 * Fixed parameters swap in VWan HubVnet connection
 * Added new cmdlets for Azure Network Virtual Appliance Sites
     - `Get-AzVirtualApplianceSite`
@@ -47,6 +55,9 @@
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
 * Add `AllowActiveFTP` parameter to `AzureFirewall`
+* Onboarded Application Gateway to Private Link Common Cmdlets
+* Onboarded StorageSync to Private Link Common Cmdlets
+* Onboarded SignalR to Private Link Common Cmdlets
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

@@ -48,25 +48,25 @@ Deletes an active directory user (work/school account also popularly known as or
 
 ## EXAMPLES
 
-### Example 1 - Remove a user by user principal name
+### Example 1: Remove a user by user principal name
 
-```
+```powershell
 PS C:\> Remove-AzADUser -UserPrincipalName foo@domain.com
 ```
 
 Removes the user with user principal name "foo@domain.com" from the tenant.
 
-### Example 2 - Remove a user by object id
+### Example 2: Remove a user by object id
 
-```
+```powershell
 PS C:\> Remove-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69
 ```
 
 Removes the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' from the tenant.
 
-### Example 3 - Remove a user by piping
+### Example 3: Remove a user by piping
 
-```
+```powershell
 PS C:\> Get-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69 | Remove-AzADUser
 ```
 

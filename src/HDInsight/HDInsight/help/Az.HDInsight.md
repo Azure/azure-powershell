@@ -96,7 +96,7 @@ Removes an persisted script action from an HDInsight cluster.
 Restarts the specific hosts of HDInsight cluster.
 
 ### [Set-AzHDInsightClusterDiskEncryptionKey](Set-AzHDInsightClusterDiskEncryptionKey.md)
-Rotate the disk encryption key of the specified HDInsight cluster.
+Rotates the disk encryption key of the specified HDInsight cluster.
 
 ### [Set-AzHDInsightClusterSize](Set-AzHDInsightClusterSize.md)
 Sets the number of Worker nodes in a specified cluster.

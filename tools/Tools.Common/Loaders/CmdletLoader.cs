@@ -108,15 +108,15 @@ namespace Tools.Common.Loaders
 
                     foreach (var parameter in parameters)
                     {
-                        if (string.Equals(parameter.Name, "Force", StringComparison.OrdinalIgnoreCase) && parameter.PropertyType == typeof(SwitchParameter))
+                        if (string.Equals(parameter.MemberInfo.Name, "Force", StringComparison.OrdinalIgnoreCase) && parameter.ParameterType == typeof(SwitchParameter))
                         {
                             cmdletMetadata.HasForceSwitch = true;
                         }
 
                         var parameterData = new Models.ParameterMetadata
                         {
-                            Type = parameter.PropertyType,
-                            Name = parameter.Name
+                            Type = parameter.ParameterType,
+                            Name = parameter.MemberInfo.Name
                         };
 
                         if (parameter.HasAttribute<AliasAttribute>())

@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 }
 
                 PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
-                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 

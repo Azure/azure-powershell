@@ -12,22 +12,66 @@ Creates a configuration store with the specified parameters.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> -Location <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -Sku <String>
+ [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Creates a configuration store with the specified parameters.
 
+## EXAMPLES
+
+### Example 1: Create an app configuration store
+```powershell
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
+```
+
+This command creates an app configuration store.
+
+### Example 2: Create an app configuration with the IdentityType set to "UserAssigned"
+```powershell
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
+```
+
+This command creates an app configuration and assign a user-assigned managed identity to it.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
+
+### Example 3: Create an app configuration with the IdentityType set to "SystemAssigned" 
+```powershell
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
+```
+
+This command creates an app configuration and enables the system-assigned managed identity associated with the resource.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
+
+### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
+```powershell
+PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
+```
+
+You can enable system-assigned managed identity and give user-assigned identities at the same time.
+See the example of `Update-AzAppConfigurationStore` for the following steps to enable CMK (cusomer managed key).
 
 ## PARAMETERS
 
@@ -61,19 +105,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -IdentityType
+The type of managed identity used.
+The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+The type 'None' will remove any identities.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -98,7 +143,7 @@ The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -128,7 +173,22 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sku
+The SKU name of the configuration store.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -143,7 +203,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,6 +218,22 @@ The tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The list of user-assigned identities associated with the resource.
+The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -204,26 +280,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  - `[ConfigStoreName <String>]`: The name of the configuration store.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
-
 ## RELATED LINKS
+
+
+
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 

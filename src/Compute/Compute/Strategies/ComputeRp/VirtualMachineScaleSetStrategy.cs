@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string evictionPolicy,
             double? maxPrice,
             string[] scaleInPolicy,
-            bool doNotRunExtensionsOnOverprovisionedVMs)
+            bool doNotRunExtensionsOnOverprovisionedVMs,
+            bool encryptionAtHost)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -80,6 +81,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
+                        SecurityProfile = new SecurityProfile
+                        {
+                            EncryptionAtHost = encryptionAtHost
+                        },
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),

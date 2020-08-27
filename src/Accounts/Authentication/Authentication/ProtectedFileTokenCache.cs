@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.IO;
 using System.Security.Cryptography;
+using System.Threading;
 
 #if NETSTANDARD
 namespace Microsoft.Azure.Commands.Common.Authentication.Core
@@ -41,7 +43,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #endif
                  "TokenCache.dat");
 
-        private static readonly object fileLock = new object();
+        /// <summary>
+        /// A mutex to prevent IO to token cache file across threads / processes.
+        /// </summary>
+        private static readonly Mutex fileLock = new Mutex(false, @"Local\AzurePowerShellAdalTokenCacheFile");
 
         private static readonly Lazy<ProtectedFileTokenCache> instance = new Lazy<ProtectedFileTokenCache>(() => new ProtectedFileTokenCache());
 
@@ -123,12 +128,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void ReadFileIntoCache(string cacheFileName = null)
         {
-            if(cacheFileName == null)
+            if (cacheFileName == null)
             {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
             }
 
-            lock (fileLock)
+            fileLock.WaitOne();
+            try
             {
                 if (_store.FileExists(cacheFileName))
                 {
@@ -150,11 +156,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                 }
             }
+            finally
+            {
+                fileLock.ReleaseMutex();
+            }
         }
 
         private void WriteCacheIntoFile(string cacheFileName = null)
         {
-            if(cacheFileName == null)
+            if (cacheFileName == null)
             {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
             }
@@ -165,19 +175,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var dataToWrite = Serialize();
 #endif
 
-            lock(fileLock)
+            fileLock.WaitOne();
+            try
             {
                 if (HasStateChanged)
                 {
                     _store.WriteFile(cacheFileName, dataToWrite);
-                    HasStateChanged =  false;
+                    HasStateChanged = false;
                 }
+            }
+            finally
+            {
+                fileLock.ReleaseMutex();
             }
         }
 
         private void EnsureCacheFile(string cacheFileName = null)
         {
-            lock (fileLock)
+            fileLock.WaitOne();
+            try
             {
                 if (_store.FileExists(cacheFileName))
                 {
@@ -206,6 +222,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 var dataToWrite = Serialize();
 #endif
                 _store.WriteFile(cacheFileName, dataToWrite);
+            }
+            finally
+            {
+                fileLock.ReleaseMutex();
             }
         }
     }

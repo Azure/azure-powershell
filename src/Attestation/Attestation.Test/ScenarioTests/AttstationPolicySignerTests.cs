@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviderPolicySigners()
+        {
+            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-GetDefaultProviderPolicySigners");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAttestationPolicySigner()
         {
             AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-AddAttestationPolicySigner");

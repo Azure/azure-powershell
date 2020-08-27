@@ -29,6 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage;
 
     /// <summary>
     /// Blob management
@@ -143,6 +145,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return this.BlobClient.GetContainerReference(name);
         }
+
+        /// <summary>
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        public BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null)
+        {
+            return GetBlobServiceClient(options).GetBlobContainerClient(name);
+        }
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        public BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null)
+        {
+            if (blobServiceClient == null)
+            {
+                if (this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                }
+                else if (this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, 
+                        new StorageSharedKeyCredential(this.StorageContext.StorageAccountName, this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+                }
+                else //sas, Anonymous
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                }
+            }
+            return blobServiceClient;
+        }
+        private BlobServiceClient blobServiceClient = null;
 
         /// <summary>
         /// Create the container if not exists
@@ -570,11 +609,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
-        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             try
             {
-                CloudBlob blob = container.GetBlobReference(blobName);
+                CloudBlob blob = container.GetBlobReference(blobName, snapshotTime);
                 await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
 
                 return Util.GetCorrespondingTypeBlobReference(blob, operationContext);
@@ -890,22 +929,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 DateTimeOffset userDelegationKeyEndTime = keyEnd == null ? userDelegationKeyStartTime.AddHours(1) : keyEnd.Value;
 
                 //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
-                const double MAX_LIFE_TIME_DAYS = 7;
-                TimeSpan maxLifeTime = TimeSpan.FromDays(MAX_LIFE_TIME_DAYS);
-                if (userDelegationKeyEndTime <= DateTimeOffset.UtcNow)
-                {
-                    throw new ArgumentException(string.Format("Expiry time {0} is earlier than now.", userDelegationKeyEndTime.ToString()));
-                }
-                else if (userDelegationKeyStartTime >= userDelegationKeyEndTime)
-                {
-                    throw new ArgumentException(string.Format("Start time {0} is later than expiry time {1}.", userDelegationKeyStartTime.ToString(), userDelegationKeyEndTime.ToString()));
-                }
-                else if (userDelegationKeyEndTime - DateTimeOffset.UtcNow > maxLifeTime)
-                {
-                    throw new ArgumentException(string.Format("Generate User Delegation SAS with OAuth bases Storage context. User Delegate Key expiry time {0} must be in {1} days from now.",
-                        userDelegationKeyEndTime.ToString(),
-                        MAX_LIFE_TIME_DAYS));
-                }
+                Util.ValidateUserDelegationKeyStartEndTime(userDelegationKeyStartTime, userDelegationKeyEndTime);
 
                 return this.BlobClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime, accessCondition, options, operationContext);
             }

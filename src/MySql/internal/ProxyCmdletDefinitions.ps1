@@ -33,6 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -615,6 +616,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -788,6 +790,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -965,6 +968,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -1153,6 +1157,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -1376,6 +1381,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -1585,9 +1591,21 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Example
 PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.0        0.0.0.1
+.Example
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
+
+Name                                StartIPAddress EndIPAddress
+----                                -------------- ------------
+ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+.Example
+PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
+
+Name                         StartIPAddress EndIPAddress
+----                         -------------- ------------
+AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
@@ -1597,6 +1615,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -1619,9 +1638,10 @@ https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlfirewallr
 #>
 function New-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -1629,6 +1649,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -1636,12 +1657,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1664,6 +1687,7 @@ param(
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
@@ -1671,6 +1695,7 @@ param(
     # Must be IPv4 format.
     ${EndIPAddress},
 
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
@@ -1747,10 +1772,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.MySql.private\New-AzMySqlFirewallRule_Create';
+            CreateExpanded = 'Az.MySql.private\New-AzMySqlFirewallRule_CreateExpanded';
             CreateViaIdentity = 'Az.MySql.private\New-AzMySqlFirewallRule_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.MySql.private\New-AzMySqlFirewallRule_CreateViaIdentityExpanded';
         }
-        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1817,6 +1843,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -2040,6 +2067,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -2293,9 +2321,9 @@ The update action will overwrite the existing server.
 .Example
 PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreate
@@ -2305,6 +2333,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -2665,6 +2694,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -2885,6 +2915,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -3079,6 +3110,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -3266,6 +3298,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IDatabase>: Represents a Database.
@@ -3460,6 +3493,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministrator
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
@@ -3652,6 +3686,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlert
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
@@ -3889,6 +3924,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -3911,9 +3947,10 @@ https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlconfig
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
-[CmdletBinding(DefaultParameterSetName='UpdateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('ConfigurationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -3921,6 +3958,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -3928,12 +3966,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3941,18 +3981,34 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration]
     # Represents a Configuration.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Source of the configuration.
+    ${Source},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Value of the configuration.
+    ${Value},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4023,9 +4079,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Update = 'Az.MySql.private\Update-AzMySqlConfiguration_Update';
+            UpdateExpanded = 'Az.MySql.private\Update-AzMySqlConfiguration_UpdateExpanded';
             UpdateViaIdentity = 'Az.MySql.private\Update-AzMySqlConfiguration_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.MySql.private\Update-AzMySqlConfiguration_UpdateViaIdentityExpanded';
         }
-        if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4086,6 +4144,13 @@ PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -Start
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.2        0.0.0.3
+.Example
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
+PS C:\> Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
@@ -4095,6 +4160,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -4117,9 +4183,10 @@ https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlfirewa
 #>
 function Update-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='UpdateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -4127,6 +4194,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -4134,12 +4202,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4147,18 +4217,36 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule]
     # Represents a server firewall rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4229,9 +4317,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Update = 'Az.MySql.private\Update-AzMySqlFirewallRule_Update';
+            UpdateExpanded = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateExpanded';
             UpdateViaIdentity = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.MySql.private\Update-AzMySqlFirewallRule_UpdateViaIdentityExpanded';
         }
-        if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4284,15 +4374,15 @@ The request body can contain one to many of the properties present in the normal
 .Example
 PS C:\> Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
 .Example
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters
@@ -4302,6 +4392,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -4660,6 +4751,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter

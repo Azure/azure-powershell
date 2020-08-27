@@ -108,5 +108,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 dataFactory.RepoConfiguration = value;
             }
         }
+
+        public IDictionary<string, GlobalParameterSpecification> GlobalParameters
+        {
+            get
+            {
+                return dataFactory.GlobalParameters;
+            }
+            set
+            {
+                dataFactory.GlobalParameters = value;
+            }
+        }
     }
 }
