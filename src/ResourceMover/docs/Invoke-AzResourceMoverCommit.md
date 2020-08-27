@@ -8,25 +8,18 @@ schema: 2.0.0
 # Invoke-AzResourceMoverCommit
 
 ## SYNOPSIS
-
 Commit the resources in the Move collection.
-
-
-
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String> -MoveResource <String[]>
+ [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Commits the set of resources in the MoveCollection.
-
 On a successful completion, the moveResources state changes from "Commit Pending" to "Committed".
-
 An unsuccessful Prepare operation, the MoveResources state changes from "Commit Pending" to "Commit failed".
 
 ## EXAMPLES
@@ -93,7 +86,6 @@ Status         : Succeeded
 ```
 
 Commit the set of resources in the Move Collection using "SourceARMID" as input
-
 ## PARAMETERS
 
 ### -AsJob
@@ -209,9 +201,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

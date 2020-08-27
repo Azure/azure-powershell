@@ -8,20 +8,17 @@ schema: 2.0.0
 # Remove-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-
 Remove the resource from the Move collection.
 
 ## SYNTAX
 
 ```
 Remove-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-
 Remove the resource from the Move Collection within the specified subscription.
 
 ## EXAMPLES
@@ -44,8 +41,7 @@ PS C:\> Remove-AzResourceMoverMoveResource -SubscriptionId  e80eb9fa-c996-4435-a
 
 ```
 
- Remove the resource from the Move collection within the specified subscription.
-
+Remove the resource from the Move collection within the specified subscription.
 
 ## PARAMETERS
 
@@ -162,9 +158,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

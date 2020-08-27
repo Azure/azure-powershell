@@ -8,31 +8,28 @@ schema: 2.0.0
 # Get-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
 Get details of the Move Collection.
-
-
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzResourceMoverMoveCollection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceMoverMoveCollection [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzResourceMoverMoveCollection -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzResourceMoverMoveCollection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Get details of the Move Collection in the subscription.
 
 ## EXAMPLES
@@ -61,7 +58,8 @@ Location    Name                              Type
 eastus2     PS-centralus-westcentralus-demoRM Microsoft.Migrate/moveCollections
 
 ```
- Get details of the Move collection with a specified move collection name in the subscription.
+
+Get details of the Move collection with a specified move collection name in the subscription.
 
 ### Example 3: Get details of the Move collection with a specified resource group name in the subscription
 ```powershell
@@ -95,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -110,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -132,9 +130,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

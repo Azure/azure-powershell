@@ -8,19 +8,17 @@ schema: 2.0.0
 # Get-AzResourceMoverUnresolvedDependency
 
 ## SYNOPSIS
-
-Get list of unresolved dependent resources for a Move collection. 
+Get list of unresolved dependent resources for a Move collection.
 
 ## SYNTAX
 
 ```
 Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Get list of unresolved dependent resources for a Move collection. 
+Get list of unresolved dependent resources for a Move collection.
 
 ## EXAMPLES
 
@@ -92,9 +90,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

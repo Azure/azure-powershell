@@ -8,20 +8,18 @@ schema: 2.0.0
 # New-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
 Create a new Move collection.
 
 ## SYNTAX
 
 ```
-New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-SourceRegion <String>] [-Tag <Hashtable>] [-TargetRegion <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Create a new Move collection within a subscription.
 
 ## EXAMPLES
@@ -36,7 +34,6 @@ eastus2  PS-centralus-westcentralus-demoRM  Microsoft.Migrate/moveCollections
 ```
 
 Create a new Move collection within a subscription.
-
 
 ## PARAMETERS
 
@@ -101,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+The geo-location where the resource lives.
 
 ```yaml
 Type: System.String
@@ -168,9 +165,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

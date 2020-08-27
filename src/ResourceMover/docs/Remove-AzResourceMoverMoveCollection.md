@@ -8,18 +8,16 @@ schema: 2.0.0
 # Remove-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-
 Remove resources from the Move collection.
 
 ## SYNTAX
 
 ```
-Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Remove resources from the Move collection.
 
 ## EXAMPLES
@@ -76,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -143,9 +141,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

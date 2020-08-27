@@ -8,26 +8,19 @@ schema: 2.0.0
 # Invoke-AzResourceMoverPrepare
 
 ## SYNOPSIS
-
-Initiate prepare for the resources in the Move collection. 
-
-
+Initiate prepare for the resources in the Move collection.
 ## SYNTAX
 
 ```
 Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ -MoveResource <String[]> [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>]
  [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Initiate prepare for the resources in the Move collection. 
-
 The prepare operation is done on the moveresources within the Move Collection.On a successful completion, the moveresources state changes from "Prepare Pending" to "InitiateMovePending".
-
 An unsuccessful Prepare operation, the MoveResources state changes from "Prepare Pending" to "Prepare failed".
-
 
 ## EXAMPLES
 
@@ -208,9 +201,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

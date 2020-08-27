@@ -8,50 +8,43 @@ Locale: en-US
 
 # Az.ResourceMover Module
 ## Description
-Microsoft Azure PowerShell: Az.ResourceMover cmdlets
+Microsoft Azure PowerShell: ResourceMover cmdlets.
+This topic provides an overview of Azure Resource Mover to move Azure resources across regions using Azure PowerShell cmdlets.
 
 ## Az.ResourceMover Cmdlets
 ### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
-Creates or updates a Move Resource in the move collection.
+Adding a resource to the Move collection.
 
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
-Gets the move collection.
+Get details of the Move Collection.
 
 ### [Get-AzResourceMoverMoveResource](Get-AzResourceMoverMoveResource.md)
-Gets the Move Resource.
+Get details of the resources in Move collection.
 
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
-Gets a list of unresolved dependencies.
+Get list of unresolved dependent resources for a Move collection.
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
-Commits the set of resources included in the request body.
-The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+Commit the resources in the Move collection.
 
 ### [Invoke-AzResourceMoverDiscard](Invoke-AzResourceMoverDiscard.md)
-Discards the set of resources included in the request body.
-The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+Discards the move of the resources.
 
 ### [Invoke-AzResourceMoverInitiateMove](Invoke-AzResourceMoverInitiateMove.md)
-Moves the set of resources included in the request body.
-The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+Initiate Move for the resources in the Move collection.
 
 ### [Invoke-AzResourceMoverPrepare](Invoke-AzResourceMoverPrepare.md)
-Initiates prepare for the set of resources included in the request body.
-The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+Initiate prepare for the resources in the Move collection.
 
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-Creates a move collection.
+Create a new Move collection within a subscription.
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
-Deletes a move collection.
+Remove resources from the Move collection.
 
 ### [Remove-AzResourceMoverMoveResource](Remove-AzResourceMoverMoveResource.md)
-Deletes a Move Resource from the move collection.
+Remove the resource from the Move Collection within the specified subscription.
 
 ### [Resolve-AzResourceMoverMoveCollectionDependency](Resolve-AzResourceMoverMoveCollectionDependency.md)
-Computes, resolves and validate the dependencies of the moveResources in the move collection.
+Computes, resolves and validate the dependencies of the moveresources in the Move collection.
 

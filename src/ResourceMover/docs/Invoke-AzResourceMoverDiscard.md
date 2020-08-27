@@ -8,24 +8,18 @@ schema: 2.0.0
 # Invoke-AzResourceMoverDiscard
 
 ## SYNOPSIS
-
-Discards the move of the resources. 
-
-
-
+Discards the move of the resources.
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
+Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -MoveResource <String[]>
+ [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Discards the move of the resources.
-
 On a successful operation, the moveResource moveState changes from "Commit Pending" to "Initiate MovePending".
-
 For an unsuccessful Discard operation, the MoveResources state changes "Commit Pending" to "Discard Failed".
 
 ## EXAMPLES
@@ -49,7 +43,6 @@ Status         : Succeeded
 ```
 
 Validate the dependecies before Discard of  the resources.
-
 
 ### Example 2: Discards the move of the resources using "MoveResource Name" as input
 ```powershell
@@ -91,7 +84,6 @@ Status         : Succeeded
 ```
 
 Discards the move of the resources using "SourceARMID" as input
-
 ## PARAMETERS
 
 ### -AsJob
@@ -207,9 +199,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -8,25 +8,22 @@ schema: 2.0.0
 # Get-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-
 Get details of the resources in Move collection.
-
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Get details of the resources in Move collection.
 
 ## EXAMPLES
@@ -290,9 +287,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

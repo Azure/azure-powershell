@@ -9,23 +9,18 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Initiate Move for the resources in the Move collection.
-
 ## SYNTAX
 
 ```
 Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ -MoveResource <String[]> [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>]
  [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Initiate Move for the resources in the Move collection.
-
 On a successful completion, the moveResources state changes from "Initiate Move Pending" to "CommitPending".
-
 For an unsuccessful operation, the MoveResources state changes from "InitiateMove Pending" to "InitiateMovefailed".
-
 
 ## EXAMPLES
 
@@ -49,7 +44,6 @@ Status         : Succeeded
 ```
 
 Validate the dependecies before Initiate Move for the resources.
-
 
 ### Example 2: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input
 ```powershell
@@ -124,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCollectionName
-.
+The Move Collection Name.
 
 ```yaml
 Type: System.String
@@ -206,9 +200,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
