@@ -3854,6 +3854,7 @@ function Test-LowPriorityVirtualMachine
     }
 }
 
+
 <#
 .SYNOPSIS
 Test EncryptionAtHost Virtual Machine
@@ -3872,15 +3873,17 @@ function Test-EncryptionAtHostVM
 
         $vmsize = 'Standard_DS2_v2';
         $vmname = 'vm' + $rgname;
-        [string]$domainNameLabel = "$vmname-$vmname".tolower();
-
+        
         $user = "Foo2";
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
+        $vmWithoutEncAtHost = New-AzVM -ResourceGroupName $rgname -Name "vm1" -Credential $cred ;
+        Assert-AreEqual $null $vmWithoutEncAtHost.encryptionAtHost
+
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -EncryptionAtHost;
 
         # Get VM
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;

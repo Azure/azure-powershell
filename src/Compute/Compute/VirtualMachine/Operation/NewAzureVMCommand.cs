@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
                 else
@@ -420,8 +420,8 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
-                        );
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                    );
                 }
             }
         }
