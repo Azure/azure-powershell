@@ -3013,10 +3013,7 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
     try
     {
         # Common
-        if ($loc -eq $null)
-        {
-            $loc = Get-ComputeVMLocation;
-        }
+        $loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
