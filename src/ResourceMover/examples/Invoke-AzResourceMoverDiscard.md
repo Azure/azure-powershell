@@ -38,3 +38,24 @@ Status         : Succeeded
 ```
 
 Discards the move of the resources using "MoveResource Name" as input.
+
+### Example 3: Discards the move of the resources using "SourceARMID" as input
+```powershell
+PS C:\>  Invoke-AzResourceMoverDiscard -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+
+AdditionalInfo :
+Code           :
+Detail         :
+EndTime        : 8/21/2020 5:33:37 AM
+Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migrate/MoveColl
+                 ections/PS-centralus-westcentralus-demoRM/operations/b842efcd-e5fd-42b0-a277-01ee8225deed
+Message        :
+Name           : b842efcd-e5fd-42b0-a277-01ee8225deed
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationStatusProperties
+StartTime      : 8/21/2020 5:33:23 AM
+Status         : Succeeded
+
+
+```
+
+Discards the move of the resources using "SourceARMID" as input.
