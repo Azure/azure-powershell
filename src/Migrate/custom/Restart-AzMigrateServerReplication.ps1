@@ -119,6 +119,10 @@ function Restart-AzMigrateServerReplication{
     process {
         try {
             $parameterSet = $PSCmdlet.ParameterSetName
+           
+            $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtResyncInput]::new()
+            $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
+            $ProviderSepcificDetail.SkipCbtReset = 'true'
 
             if($parameterSet  -eq 'ByMachineId'){
                 $null = $PSBoundParameters.Remove('MachineId')
@@ -130,24 +134,19 @@ function Restart-AzMigrateServerReplication{
                 $ProtectionContainerName = $MachineIdArray[12]
                 $MachineName = $MachineIdArray[14] 
 
+                
+
                 $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
                 $null = $PSBoundParameters.Add("ResourceName", $VaultName)
                 $null = $PSBoundParameters.Add("FabricName", $FabricName)
                 $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-
+               
                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
-                    
-                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
-                    $null = $PSBoundParameters.Remove("FabricName")
-                    $null = $PSBoundParameters.Remove("MigrationItemName")
-                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
-                    
-                    $null = $PSBoundParameters.Add('JobName', $JobName)
-                    return Az.Migrate.internal\Restart-AzMigrateReplicationJob @PSBoundParameters 
+                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
+                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
+                    return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
                 }
-
                 return
             }
 
@@ -174,20 +173,12 @@ function Restart-AzMigrateServerReplication{
  
                  $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
                  $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
- 
                  $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
-                    
-                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
-                    $null = $PSBoundParameters.Remove("FabricName")
-                    $null = $PSBoundParameters.Remove("MigrationItemName")
-                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
-                    
-                    $null = $PSBoundParameters.Add('JobName', $JobName)
-                    return Az.Migrate.internal\Restart-AzMigrateReplicationJob @PSBoundParameters 
-                }
-
-                return
+                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
+                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
+                    return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
+                 }
+                 return
             }
 
         } catch {

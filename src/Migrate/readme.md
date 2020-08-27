@@ -62,6 +62,7 @@ directive:
     - TestMigrateProviderSpecificInput
     - MigrationProviderSpecificSettings
     - MigrateProviderSpecificInput
+    - ResyncProviderSpecificInput
   # Remove variants not in scope
   - where:
       verb: Test$
@@ -84,9 +85,9 @@ directive:
       variant: ^MigrateViaIdentityExpanded$|^Migrate$|^MigrateViaIdentity$
     remove: true
   - where:
-      verb: Restart$
-      subject: ^ReplicationJob
-      variant: ^RestartViaIdentity$
+      verb: Invoke$
+      subject: ^ResyncReplicationMigrationItem
+      variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
     remove: true
   # Remove cmdlets not in scope
   - where:
@@ -96,7 +97,7 @@ directive:
       verb: Export$|Find$|Switch$|Clear$
     remove: true
   - where:
-      subject: ^Commit|^Planned|^Renew|^Reprotect|^Resync|^Unplanned|VaultHealth$|vCenter$|ComputeSize$|FabricConsistency$
+      subject: ^Commit|^Planned|^Renew|^Reprotect|^Unplanned|VaultHealth$|vCenter$|ComputeSize$|FabricConsistency$
     remove: true
   - where:
       verb: New$|Remove$
@@ -107,7 +108,7 @@ directive:
       subject: Fabric$|MigrationItem$|Policy$|ProtectionContainer$
     remove: true
   - where:
-      verb: Stop$|Resume$
+      verb: Stop$|Resume$|Restart$
       subject: Job$
     remove: true
   # Hide cmldets used by custom
@@ -130,4 +131,8 @@ directive:
   - where:
       verb: Restart$
       subject: ^ReplicationJob
+    hide: true
+  - where:
+      verb: Invoke$
+      subject: ^ResyncReplicationMigrationItem
     hide: true
