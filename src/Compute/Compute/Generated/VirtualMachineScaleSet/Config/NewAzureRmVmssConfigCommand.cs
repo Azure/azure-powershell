@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter EncryptionAtHost { get; set; }
 
         [Parameter(ParameterSetName = "ExplicitIdentityParameterSet", Mandatory = false,
-            HelpMessage = "Set the orchestration mode of the scale set. This will be either the VM mode or the traditional mode.")]
+            HelpMessage = "Set the orchestration mode of the scale set.")]
         [Parameter(ParameterSetName = "DefaultParameterSet", Mandatory = false,
-            HelpMessage = "Set the orchestration mode of the scale set. This will be either the VM mode or the traditional mode.")]
+            HelpMessage = "Set the orchestration mode of the scale set.")]
         public string OrchestrationMode { get; set; }
 
         protected override void ProcessRecord()
