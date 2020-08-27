@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the name of the instance database to use.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the instance database to retrieve.")]
         [Alias("InstanceDatabaseName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
@@ -42,10 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the name of the instance
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
 
@@ -53,8 +54,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 2,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]

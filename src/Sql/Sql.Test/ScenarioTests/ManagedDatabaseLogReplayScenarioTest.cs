@@ -24,11 +24,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
-
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var networkClient = GetNetworkClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
         }
 
         public ManagedDatabaseLogReplayScenarioTest(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances",
+                "Microsoft.Sql/managedInstances/databases"
+            };
         }
 
         [Fact]
@@ -36,6 +43,34 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestManagedDatabaseLogReplayService()
         {
             RunPowerShellTest("Test-ManagedDatabaseLogReplay");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCompleteManagedDatabaseLogReplayService()
+        {
+            RunPowerShellTest("Test-CompleteManagedDatabaseLogReplay");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCancelManagedDatabaseLogReplayService()
+        {
+            RunPowerShellTest("Test-CancelManagedDatabaseLogReplay");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingManagedDatabaseLogReplayService()
+        {
+            RunPowerShellTest("Test-ManagedDatabaseLogReplayPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingCompleteCancelManagedDatabaseLogReplayService()
+        {
+            RunPowerShellTest("Test-PipingCompleteCancelManagedDatabaseLogReplay");
         }
     }
 }
