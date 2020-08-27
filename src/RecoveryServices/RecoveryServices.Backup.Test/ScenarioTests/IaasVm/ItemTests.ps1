@@ -14,13 +14,13 @@
 
 function Test-AzureBackupDataMove
 {
-	$sourceLocation = "centraluseuap"
-	$sourceResourceGroup = Create-ResourceGroup $sourceLocation 7
+	$sourceLocation = "eastus2euap"
+	$sourceResourceGroup = Create-ResourceGroup $sourceLocation 21
 
-	$targetLocation = "eastus2euap"
-	$targetResourceGroup = Create-ResourceGroup $targetLocation 8
+	$targetLocation = "centraluseuap"
+	$targetResourceGroup = Create-ResourceGroup $targetLocation 23
 		
-	$vm = Create-VM "hiagaSrcRG2" $sourceLocation 3
+	$vm = Create-VM $sourceResourceGroup $sourceLocation 3
 	$vault1 = Create-RecoveryServicesVault $sourceResourceGroup $sourceLocation
 	$vault2 = Create-RecoveryServicesVault $targetResourceGroup $targetLocation
 	Enable-Protection $vault1 $vm
