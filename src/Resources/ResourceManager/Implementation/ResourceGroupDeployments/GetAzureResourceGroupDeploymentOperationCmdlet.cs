@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the subscription id parameter.
         /// </summary>
+        [CmdletParameterBreakingChange("SubscriptionId", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
