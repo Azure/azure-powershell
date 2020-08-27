@@ -89,6 +89,7 @@ function Install-AzModule{
         $module_name = @()
         $version = @{}
         $module = @()
+        $latest = ''
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $PSBoundParameters['Name'] | Foreach-Object {
@@ -129,16 +130,18 @@ function Install-AzModule{
 
             if ($PSCmdlet.ParameterSetName -eq 'All') {
                 #Install Az package
-                $index.Keys | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_; 'Version'=index[$_]}}
+                $index.Keys | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
             } elseif ($PSCmdlet.ParameterSetName -eq 'ByName') {
                 #Install Az modules by name
-                $module_name | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_; 'Version'=index[$_]}}
+                $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
             }
 
         } else {
             
             #With preview
             Write-Warning 'Please use `Install-Module -Name Az.Accounts -AllowPrerelease` to install preview version for Az.Accounts'
+
+            $latest = ' latest'
 
             if ($PSCmdlet.ParameterSetName -eq 'AllAndPreview') {
 
@@ -150,20 +153,23 @@ function Install-AzModule{
                 }
             }
             
-            $module_name | Foreach-Object {$module += [PSCustomObject] @{'Name'=$_}}
+            $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
         }
 
         if ($PSBoundParameters.ContainsKey('RemoveAzureRm')) {
             remove_installed_module -Name 'AzureRm*'
+            remove_installed_module -Name 'Azure.*'
         }
 
         if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
-            
-            $module_name | remove_installed_module
+            $module | remove_installed_module
         }
 
-        $module.Keys | Foreach-Object {
-            $module | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
-        }
+        $module | Foreach-Object {
+            $name = $_.Name
+            $version = $_.version
+            Write-Host "Install$latest $name $version"
+            Write-Output $_
+        } | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
     }
 }

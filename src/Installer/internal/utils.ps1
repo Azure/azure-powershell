@@ -99,6 +99,11 @@ function remove_installed_module {
         ${Name}
     )
 
-    #TODO: catch exceptions when no previous versions found
-    Get-InstalledModule -Name $Name | Uninstall-Module -AllVersions -AllowPrerelease
+    process {
+        Get-InstalledModule -Name $Name -ErrorAction SilentlyContinue | Foreach-Object {
+            $name = $_.Name
+            Write-Warning "Remove all previous versions of Module: $name"
+            Write-Output $_
+        } | Uninstall-Module -AllVersions -AllowPrerelease
+    }
 }
