@@ -286,6 +286,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionAtHostVMNull()
+        {
+            TestRunner.RunTestScript("Test-EncryptionAtHostVMNull");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEncryptionAtHostVM()
         {
             TestRunner.RunTestScript("Test-EncryptionAtHostVM");
