@@ -26,7 +26,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Resource currently in private preview, testing requires very specific conditions, will implement these tests in future.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.billingandtelemetry)]
         public void TestCustomIpPrefixCRUD()
