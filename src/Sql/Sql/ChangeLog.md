@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for Managed Database Log Replay service
+	- `Start-AzSqlInstanceDatabaseLogReplay`
+	- `Get-AzSqlInstanceDatabaseLogReplay`
+	- `Complete-AzSqlInstanceDatabaseLogReplay`
+	- `Cancel-AzSqlInstanceDatabaseLogReplay`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
