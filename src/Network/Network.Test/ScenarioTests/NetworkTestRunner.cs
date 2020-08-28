@@ -8,6 +8,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.ManagedServiceIdentity;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.PrivateDns;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -70,7 +71,8 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                     GetComputeManagementClient,
                     GetStorageManagementClient,
                     GetKeyVaultClient,
-                    GetAzureRestClient
+                    GetAzureRestClient,
+                    GetPrivateDnsManagementClient
                 )
                 .Build();
         }
@@ -108,6 +110,11 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         private static AzureRestClient GetAzureRestClient(MockContext context)
         {
             return context.GetServiceClient<AzureRestClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static PrivateDnsManagementClient GetPrivateDnsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<PrivateDnsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static KeyVaultClient GetKeyVaultClient(MockContext context)
