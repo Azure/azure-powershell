@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateFactoryGlobalParameters()
+        {
+            RunPowerShellTest(_logger, "Test-UpdateFactoryGlobalParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryV2()
         {
             RunPowerShellTest(_logger, "Test-GetNonExistingDataFactory");

@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzAppConfigurationStore' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $appConfList = Get-AzAppConfigurationStore
+        $appConfList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $appConfList = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup
+        $appConfList.Count | Should -Be 2
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $appConf = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup -Name $env.appconfName00
+        $appConf.Name | Should -Be $env.appconfName00
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $appConf = Get-AzAppConfigurationStore -ResourceGroupName $env.resourceGroup -Name $env.appconfName00
+        $appConf = Get-AzAppConfigurationStore -InputObject $appConf 
+        $appConf.Name | Should -Be $env.appconfName00
     }
 }

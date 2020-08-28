@@ -29,10 +29,10 @@ For more information about the text representation of a certificate see the *Pub
 ## EXAMPLES
 
 ### Example 1: Remove a client root certificate from a virtual network gateway
-```
+```powershell
 PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway"-VpnClientRootCertificateName "ContosoRootCertificate"
+PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoRootCertificate"
 ```
 
 This example removes a client root certificate named ContosoRootCertificate from the virtual network gateway ContosoVirtualGateway.

@@ -25,3 +25,13 @@ function Test-GetResourceSku
 	Assert-True { $output.Contains("virtualMachines"); }
 	Assert-True { $output.Contains("Zones"); }
 }
+
+<#
+.SYNOPSIS
+Test List Resource Skus by Location
+#>
+function Test-GetResourceSkuByLocation
+{
+	$skulist = Get-AzComputeResourceSku "westus" | where {$_.Locations -eq "eastus"};
+	Assert-True { $skulist.Count -eq 0; }
+}

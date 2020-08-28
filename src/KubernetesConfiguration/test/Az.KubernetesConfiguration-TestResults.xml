@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-07-07" time="19:51:35">
+  <environment clr-version="Unknown" nunit-version="2.5.8.0" os-version="10.0.18363" user-domain="FAREAST" cwd="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration" machine-name="DESKTOP-5DFLPGL" user="yunwang" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="2.6906" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\Get-AzKubernetesConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="1.3311" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\Get-AzKubernetesConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzKubernetesConfiguration" executed="True" result="Success" success="True" time="0.7617" asserts="0" description="Get-AzKubernetesConfiguration">
+            <results>
+              <test-case description="List" name="Get-AzKubernetesConfiguration.List" time="0.249" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzKubernetesConfiguration.Get" time="0.0528" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzKubernetesConfiguration.GetViaIdentity" time="0.049" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\New-AzKubernetesConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.6964" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\New-AzKubernetesConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzKubernetesConfiguration" executed="True" result="Success" success="True" time="0.2095" asserts="0" description="New-AzKubernetesConfiguration">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzKubernetesConfiguration.CreateExpanded" time="0.0804" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\Remove-AzKubernetesConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.6631" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\KubernetesConfiguration\test\Remove-AzKubernetesConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzKubernetesConfiguration" executed="True" result="Success" success="True" time="0.2498" asserts="0" description="Remove-AzKubernetesConfiguration">
+            <results>
+              <test-case description="Delete" name="Remove-AzKubernetesConfiguration.Delete" time="0.0845" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzKubernetesConfiguration.DeleteViaIdentity" time="0.0382" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -42,8 +42,14 @@ namespace Microsoft.Azure.Commands.Marketplace.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ETag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Azure subscription id")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            var isSubscriptionScope = !string.IsNullOrEmpty(SubscriptionId);
+
             var offerToUpdate = new Offer
             {
                 SpecificPlanIdsLimitation = this.SpecificPlanIdsLimitation
@@ -56,7 +62,8 @@ namespace Microsoft.Azure.Commands.Marketplace.Cmdlets
 
             if (ShouldProcess(OfferId, $"Adding offer {OfferId} under private store {PrivateStoreId}"))
             {
-                var updatedOffer = ResourceMarketplaceClient.PrivateStoreOffer.CreateOrUpdate(PrivateStoreId, OfferId, offerToUpdate);
+                var updatedOffer = isSubscriptionScope ? ResourceMarketplaceClient.PrivateStorePrivateOffer.CreateOrUpdate(SubscriptionId, PrivateStoreId, OfferId, offerToUpdate) : 
+                                                         ResourceMarketplaceClient.PrivateStoreOffer.CreateOrUpdate(PrivateStoreId, OfferId, offerToUpdate);
 
                 WriteObject(updatedOffer.ToPSPrivateStoreOffer());
             }

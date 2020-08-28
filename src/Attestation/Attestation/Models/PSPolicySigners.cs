@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 try
                 {
                     var parsedBody = JoseHelper.ExtractJosePart(jwt, 1);
-                    var parsedCertificates = parsedBody["aas-policyCertificates"]["keys"].ToArray();
+                    var parsedCertificates = parsedBody["maa-policyCertificates"]["keys"].ToArray();
                     certificates = parsedCertificates.Select(c => c.ToString()).ToArray();
                 }
                 catch (Exception)

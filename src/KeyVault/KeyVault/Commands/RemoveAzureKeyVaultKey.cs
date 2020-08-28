@@ -17,9 +17,13 @@ using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange("If you have soft - delete protection enabled on this key vault, this key will be moved to the soft deleted state. " +
+        "You will not be able to create a key with the same name within this key vault until the key has been purged from the soft-deleted state. " +
+        "Please see the following documentation for additional guidance.https://docs.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultKey))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase

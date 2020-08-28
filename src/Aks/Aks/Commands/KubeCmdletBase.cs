@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -24,6 +26,7 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
+
 using CloudException = Microsoft.Rest.Azure.CloudException;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -83,5 +86,23 @@ namespace Microsoft.Azure.Commands.Aks
             ".azure");
 
         protected string AcsSpFilePath => Path.Combine(AzConfigDir, "acsServicePrincipal.json");
+
+        protected static IList<T> ListPaged<T>(
+            Func<Rest.Azure.IPage<T>> listFirstPage,
+            Func<string, Rest.Azure.IPage<T>> listNextPage)
+        {
+            var resultsList = new List<T>();
+
+            var pagedResponse = listFirstPage();
+            resultsList.AddRange(pagedResponse);
+
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = listNextPage(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
+        }
     }
 }

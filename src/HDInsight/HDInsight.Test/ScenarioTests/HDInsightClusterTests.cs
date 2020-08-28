@@ -42,5 +42,26 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CmkClusterRelatedCommands");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithEncryptionInTransit()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionInTransit");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithPrivateLink()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithPrivateLink");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithEncryptionAtHost()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TestCreateClusterWithEncryptionAtHost");
+        }
     }
 }

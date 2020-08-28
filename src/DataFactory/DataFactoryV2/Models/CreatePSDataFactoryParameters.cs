@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.DataFactory.Models;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -24,5 +25,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public Hashtable Tags { get; set; }
 
         public FactoryRepoConfiguration RepoConfiguration { get; set; }
+
+        public IDictionary<string, GlobalParameterSpecification> GlobalParameters { get; set; }
     }
 }

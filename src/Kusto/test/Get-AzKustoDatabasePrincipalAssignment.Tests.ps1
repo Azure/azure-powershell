@@ -7,7 +7,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoDatabasePrincipalAssignment.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -25,7 +25,11 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
         [array]$principalAssignmentGet = Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
-        $principalAssignment = $principalAssignmentGet[0]
+        foreach ($principalAssignmentItem in $principalAssignmentGet) {
+            if ($principalAssignmentItem.Name -eq $principalAssignmentFullName) {
+                $principalAssignment = $principalAssignmentItem
+            }
+        }
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
     }
 
