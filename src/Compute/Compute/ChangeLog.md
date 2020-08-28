@@ -17,9 +17,15 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+-->        
 ## Upcoming Release
 * Added ``vmHealh`` property to the virtual machine's instance view, which is the returned object when ``Get-AzVm`` is invoked with ``-Status``
+* Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
+* Added `SupportAutomaticPlacement` to New-AzHostGroup 
+* Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
+* Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
+* Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
+* Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
 
 ## Version 4.3.0
 * Added `-EncryptionAtHost` parameter to `New-AzVm`, `New-AzVmss`, `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss`

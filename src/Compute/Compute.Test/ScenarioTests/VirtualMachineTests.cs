@@ -220,6 +220,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithHealhtExtension");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetStatusWithAssignedHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithAssignedHost");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -317,6 +324,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSetAzVMOperatingSystemError()
         {
             TestRunner.RunTestScript("Test-SetAzVMOperatingSystemError");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHostGroupPropertySetOnVirtualMachine()
+        {
+            TestRunner.RunTestScript("Test-HostGroupPropertySetOnVirtualMachine");
         }
     }
 }
