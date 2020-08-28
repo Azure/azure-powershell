@@ -20,7 +20,6 @@
 
 
 ## Upcoming Release
-* Added isolated trust model example to the documentation for `Reset-AzAttestationPolicy`
 
 ## Version 0.1.8
 * Added default provider support to `Az.Attestation` module
