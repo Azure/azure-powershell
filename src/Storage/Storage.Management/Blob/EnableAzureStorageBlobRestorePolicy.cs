@@ -22,10 +22,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSRestorePolicy), ChangeDescription = "The deprecated proeprty LastEnabledTime will be removed in a future release.")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobRestorePolicy, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRestorePolicy))]
     public class EnableAzStorageBlobRestorePolicyCommand : StorageBlobBaseCmdlet
     {
