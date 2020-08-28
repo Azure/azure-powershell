@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 OsName = virtualMachineInstanceView.OsName,
                 OsVersion = virtualMachineInstanceView.OsVersion,
                 HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
-                VMHealth = virtualMachineInstanceView.VmHealth
+                VMHealth = virtualMachineInstanceView.VmHealth,
                 AssignedHost = virtualMachineInstanceView.AssignedHost
             };
 
