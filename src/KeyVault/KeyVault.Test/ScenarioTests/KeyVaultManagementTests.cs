@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
-                () => { return new[] { "Test-CreateNewVault" }; }, // done
+                () => { return new[] { "Test-CreateNewVault" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
-                () => { return new[] { "Test-GetVault" }; }, // done
+                () => { return new[] { "Test-GetVault" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                _logger,
-               () => { return new[] { "Test-UpdateKeyVault" }; }, // done
+               () => { return new[] { "Test-UpdateKeyVault" }; },
                null,
                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                MethodBase.GetCurrentMethod().Name
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
-                () => { return new[] { "Test-ListVaults" }; }, // done
+                () => { return new[] { "Test-ListVaults" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
-                () => { return new[] { "Test-DeleteVaultByName" }; }, //done
+                () => { return new[] { "Test-DeleteVaultByName" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
