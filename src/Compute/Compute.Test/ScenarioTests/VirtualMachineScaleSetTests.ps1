@@ -2689,7 +2689,53 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
             -ImageReferencePublisher $imgRef.PublisherName ;
        
         Assert-ThrowsContains { $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssNamePipeParameters -VirtualMachineScaleSet $vmss; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null.";  
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+    testing encryptionAtHost cmdlet for
+    new-azvmss - create vmss using simple parameter set and hostencryption tag.
+    update-azvmss test boolean parameter 
+    new-azvmssconfig
+#>
+function Test-VirtualMachineScaleSetAssignedHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+ 
+    try
+    {
+        # Common
+        $zone = "2"
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Host
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+
+        $Sku = "Esv3-Type1"
+        $hostName = $rgname + "Host"
+        $host_ = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
+
+        # Creating a new vmss
+        $VmSku = "Standard_E2s_v3"
+        $domainNameLabel = "domainlabel"
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+
+        $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
         
+        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.AssignedHost;
     }
     finally
     {
@@ -2697,4 +2743,3 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
         Clean-ResourceGroup $rgname
     }
 }
-

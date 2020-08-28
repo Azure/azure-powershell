@@ -8,6 +8,7 @@
     using Commands.Common.Authentication.Abstractions;
     using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
+    using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
 
     public class PSDeploymentWhatIfCmdletParameters
@@ -105,8 +106,10 @@
             }
             else
             {
-                string parametersContent = this.TemplateParametersObject != null
-                    ? PSJsonSerializer.Serialize(this.TemplateParametersObject)
+                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
+                Dictionary<string, object> parametersDictionary = this.TemplateParametersObject?.ToDictionary(false);
+                string parametersContent = parametersDictionary != null
+                    ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
                     ? JObject.Parse(parametersContent)
