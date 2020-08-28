@@ -58,6 +58,11 @@
 * Onboarded Application Gateway to Private Link Common Cmdlets
 * Onboarded StorageSync to Private Link Common Cmdlets
 * Onboarded SignalR to Private Link Common Cmdlets
+* Updated below commands for feature: Enable internet security set/remove on VirtualWan P2SVpnGateway.
+- Updated `New-AzP2sVpnGateway`: Added optional switch parameter `EnableInternetSecurityFlag` for customers to set true to enable internet security on P2SVpnGateway, which will be applied for Point to site clients.
+- Updated `Update-AzP2sVpnGateway`: Added optional switch parameters `EnableInternetSecurityFlag` or `DisableInternetSecurityFlag` for customers to set true/false to enable/disable internet security on P2SVpnGateway, which will be applied for Point to site clients.
+* Added new cmdlet `Reset-AzP2sVpnGateway` for customers to reset/reboot their VirtualWan P2SVpnGateway for troubleshooting.
+* Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
