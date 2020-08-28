@@ -48,89 +48,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         public void Initialize(string className)
         {
-            if (_initialized)
-                return;
-
-            if (_mode == HttpRecorderMode.Record)
-            {
-                using (MockContext context = MockContext.Start(new StackTrace().GetFrame(1).GetMethod().ReflectedType?.ToString(), new StackTrace().GetFrame(1).GetMethod().Name))
-                {
-                    var resourcesClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-                    var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-                    var tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
-
-                    //Figure out which locations are available for Key Vault
-                    Location = GetKeyVaultLocation(resourcesClient);
-
-                    //Create a resource group in that location
-                    PreCreatedVault = TestUtilities.GenerateName("pshtestvault");
-                    ResourceGroupName = TestUtilities.GenerateName("pshtestrg");
-
-                    resourcesClient.ResourceGroups.CreateOrUpdate(ResourceGroupName, new ResourceGroup { Location = Location });
-                    CreateVault(mgmtClient, Location, tenantId);
-                }
-            }
-
             _initialized = true;
         }
 
-        private static string GetKeyVaultLocation(ResourceManagementClient resourcesClient)
-        {
-            var provider = resourcesClient.Providers.Get("Microsoft.KeyVault");
-            var location = provider.ResourceTypes.First(resType => resType.ResourceType.Contains("vaults")).Locations.FirstOrDefault();
-            return location?.ToLowerInvariant().Replace(" ", "");
-        }
+        //public void ResetPreCreatedVault()
+        //{
+        //    if (_mode == HttpRecorderMode.Record)
+        //    {
+        //        using (MockContext context = MockContext.Start(new StackTrace().GetFrame(1).GetMethod().ReflectedType?.ToString(), new StackTrace().GetFrame(1).GetMethod().Name))
+        //        {
+        //            var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        //            var tenantId = Guid.Parse(TestEnvironmentFactory.GetTestEnvironment().Tenant);
 
-        private void CreateVault(KeyVaultManagementClient mgmtClient, string location, string tenantId)
-        {
-            mgmtClient.Vaults.CreateOrUpdate(
-                ResourceGroupName,
-                PreCreatedVault,
-                new VaultCreateOrUpdateParameters
-                {
-                    Location = location,
-                    Tags = new Dictionary<string, string> { { TagName, TagValue } },
-                    Properties = new VaultProperties
-                    {
-                        EnabledForDeployment = false,
-                        Sku = new Sku { Name = SkuName.Premium },
-                        TenantId = Guid.Parse(tenantId),
-                        VaultUri = "",
-                        AccessPolicies = new AccessPolicyEntry[]{ }
-                    }
-                });
-        }
+        //            var policies = new AccessPolicyEntry[] { };
 
-        public void ResetPreCreatedVault()
-        {
-            if (_mode == HttpRecorderMode.Record)
-            {
-                using (MockContext context = MockContext.Start(new StackTrace().GetFrame(1).GetMethod().ReflectedType?.ToString(), new StackTrace().GetFrame(1).GetMethod().Name))
-                {
-                    var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-                    var tenantId = Guid.Parse(TestEnvironmentFactory.GetTestEnvironment().Tenant);
-
-                    var policies = new AccessPolicyEntry[] { };
-
-                    mgmtClient.Vaults.CreateOrUpdate(
-                    ResourceGroupName,
-                    PreCreatedVault,
-                    new VaultCreateOrUpdateParameters
-                    {
-                        Location = Location,
-                        Tags = new Dictionary<string, string> { { TagName, TagValue } },
-                        Properties = new VaultProperties
-                        {
-                            EnabledForDeployment = false,
-                            Sku = new Sku { Name = SkuName.Premium },
-                            TenantId = tenantId,
-                            VaultUri = "",
-                            AccessPolicies = policies
-                        }
-                    });
-                }
-            }
-        }
+        //            mgmtClient.Vaults.CreateOrUpdate(
+        //            ResourceGroupName,
+        //            PreCreatedVault,
+        //            new VaultCreateOrUpdateParameters
+        //            {
+        //                Location = Location,
+        //                Tags = new Dictionary<string, string> { { TagName, TagValue } },
+        //                Properties = new VaultProperties
+        //                {
+        //                    EnabledForDeployment = false,
+        //                    Sku = new Sku { Name = SkuName.Premium },
+        //                    TenantId = tenantId,
+        //                    VaultUri = "",
+        //                    AccessPolicies = policies
+        //                }
+        //            });
+        //        }
+        //    }
+        //}
         public void Dispose()
         {
             Dispose(false);
