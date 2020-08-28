@@ -20,8 +20,24 @@ elseif ($null -eq $module) {
     Import-Module PowerShellGet -MinimumVersion 2.1.3 -Scope Global 
 }
 
-$exportedPS1Files = Get-ChildItem -Path $PSScriptRoot/exports -Recurse -Include '*.ps1' -File
-$internalPS1Files = Get-ChildItem -Path $PSScriptRoot/internal -Recurse -Include '*.ps1' -File
-$exportedPS1Files | ForEach-Object { . $_.FullName }
-$internalPS1Files | ForEach-Object { . $_.FullName }
-Export-ModuleMember -Function $exportedPS1Files.Basename
+$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
+$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
+
+
+$allFunctions = $exportedFunctions + $internalFunctions
+foreach($function in $allFunctions) {
+    try {
+        . $function.Fullname
+    }
+    catch {
+        Write-Error -Message "Failed to import function $($function.fullname): $_"
+    }
+}
+Export-ModuleMember -Function $exportedFunctions.Basename
+
+$commandsWithRepositoryParameter = @(
+    "Update-AzModule"
+)
+
+Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
+Add-RepositoryDefaultValue -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
