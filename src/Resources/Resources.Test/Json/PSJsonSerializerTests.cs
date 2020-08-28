@@ -74,7 +74,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
                         123,
                         new Hashtable
                         {
-                            ["deepNested"] = new PSObject("leaf")
+                            ["deepNested"] = new PSObject("leaf"),
+                            ["array"] = new object[]
+                            {
+                                new PSObject("abc"),
+                                new PSObject(new
+                                {
+                                    stuff = false
+                                })
+                            }
                         }
                     }
                 }
@@ -97,7 +105,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
                         123,
                         new
                         {
-                            deepNested = "leaf"
+                            deepNested = "leaf",
+                            array = new object[]
+                            {
+                                "abc",
+                                new
+                                {
+                                    stuff = false
+                                }
+                            }
                         }
                     }
                 }
