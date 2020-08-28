@@ -12,25 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Sku = Microsoft.Azure.Management.KeyVault.Models.Sku;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
     public class KeyVaultTestFixture : RMTestBase, IDisposable
     {
-        private readonly HttpRecorderMode _mode;
-
         public string TagName { get; set; } = "testtag";
         public string TagValue { get; set; } = "testvalue";
 
@@ -38,68 +26,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public string Location { get; set; }
         public string PreCreatedVault { get; set; }
 
-        private bool _initialized;
         public KeyVaultTestFixture()
         {
-            // Initialize has bug which causes null reference exception
-            HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();            
-            _mode = HttpMockServer.GetCurrentMode();
         }
 
         public void Initialize(string className)
         {
-            _initialized = true;
+            // no op
         }
 
-        //public void ResetPreCreatedVault()
-        //{
-        //    if (_mode == HttpRecorderMode.Record)
-        //    {
-        //        using (MockContext context = MockContext.Start(new StackTrace().GetFrame(1).GetMethod().ReflectedType?.ToString(), new StackTrace().GetFrame(1).GetMethod().Name))
-        //        {
-        //            var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        //            var tenantId = Guid.Parse(TestEnvironmentFactory.GetTestEnvironment().Tenant);
-
-        //            var policies = new AccessPolicyEntry[] { };
-
-        //            mgmtClient.Vaults.CreateOrUpdate(
-        //            ResourceGroupName,
-        //            PreCreatedVault,
-        //            new VaultCreateOrUpdateParameters
-        //            {
-        //                Location = Location,
-        //                Tags = new Dictionary<string, string> { { TagName, TagValue } },
-        //                Properties = new VaultProperties
-        //                {
-        //                    EnabledForDeployment = false,
-        //                    Sku = new Sku { Name = SkuName.Premium },
-        //                    TenantId = tenantId,
-        //                    VaultUri = "",
-        //                    AccessPolicies = policies
-        //                }
-        //            });
-        //        }
-        //    }
-        //}
         public void Dispose()
         {
-            Dispose(false);
             GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_mode == HttpRecorderMode.Record && _initialized)
-                {
-                    using (MockContext context = MockContext.Start(new StackTrace().GetFrame(1).GetMethod().ReflectedType?.ToString(), new StackTrace().GetFrame(1).GetMethod().Name))
-                    {
-                        var resourcesClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-                        resourcesClient.ResourceGroups.Delete(ResourceGroupName);
-                    }
-                }
-            }
         }
     }
 }
