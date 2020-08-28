@@ -25,7 +25,7 @@
 * Added optional parameters '-DiskAccessId' and '-NetworkAccessPolicy' to New-AzSnapshotConfig
 * Added optional parameters '-DiskAccessId' and '-NetworkAccessPolicy' to New-AzDiskConfig
 * Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
-* Added `SupportAutomaticPlacement` to New-AzHostGroup 
+* Added optional parameter '-SupportAutomaticPlacement' to New-AzHostGroup 
 * Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
 
 ## Version 4.3.0
