@@ -19,8 +19,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 4.3.1
 * Patched -EncryptionAtHost parameter to remove default value of false
 
 ## Version 4.3.0
