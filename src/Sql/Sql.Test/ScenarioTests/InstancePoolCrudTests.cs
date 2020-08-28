@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests getting an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePool()
         {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests creation of a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceInInstancePool()
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests updating a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagedInstanceInInstancePool()
         {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests updating a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteManagedInstanceInInstancePool()
         {

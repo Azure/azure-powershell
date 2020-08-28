@@ -978,17 +978,16 @@ function Remove-ManagedInstancesInInstancePool($instancePool)
 function Get-InstancePoolTestProperties()
 {
     $tags = @{ instance="Pools" };
-    $rg1 = Create-ResourceGroupForTest
 
     $instancePoolTestProperties = @{
-        resourceGroup = $rg1.ResourceGroupName
-        name = "cssinstancepool0"
-        subnetName = "Cool"
-        vnetName = "cl_initial"
+        resourceGroup = "ps3995"
+        name = "myinstancepool1"
+        subnetName = "ManagedInsanceSubnet"
+        vnetName = "MIVirtualNetwork"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
-        location = $rg1.Location
+        location = "westeurope"
         licenseType = "LicenseIncluded"
         vCores = 16
     }
@@ -1002,7 +1001,7 @@ function Get-InstancePoolTestProperties()
 function Create-InstancePoolForTest()
 {
     $props = Get-InstancePoolTestProperties
-    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location $props.resourceGroup
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location "v-urmila"
     $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
     $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
                 -Location $props.location -SubnetId $subnetId -VCore $props.vCores `
