@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`.
 * Updated ARM template What-If cmdlets to show "Ignore" resource changes last.
-* Fixed an issue where dynamic secure string parameters for deployment cmdlets are not correctly serialized.
+* Fixed secure and array parameter serialization issues for deployment cmdlets.
 
 ## Version 2.5.0
 * Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
