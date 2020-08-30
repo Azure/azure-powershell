@@ -13,14 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.RecoveryServices.Backup;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
@@ -29,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Used for Data Source Move operation. Currently we only support vault level data move from one region to another.
     /// </summary>
-    [Cmdlet("Copy", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVault"), OutputType(typeof(String))]
+    [Cmdlet("Copy", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVault", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class CopyAzureRmRecoveryServicesVault : RecoveryServicesBackupCmdletBase
     {
         #region Parameters
@@ -53,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Retries data move only with unmoved containers in the source vault
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.DSMove.RetryOnlyFailed)]
-        public SwitchParameter RetryOnlyWithFailedItems;
+        public SwitchParameter RetryOnlyFailed;
 
         /// <summary>
         /// Prevents the confirmation dialog when specified.
@@ -112,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         /// currently only allowing vault level data move
                         prepareMoveRequest.DataMoveLevel = "Vault";
 
-                        if (RetryOnlyWithFailedItems.IsPresent)
+                        if (RetryOnlyFailed.IsPresent)
                         {
                             prepareMoveRequest.IgnoreMoved = true;
                         }
@@ -142,7 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         WriteObject(ParamHelpMsgs.DSMove.CmdletOutput);
                     }
                 );
-            }, ShouldProcess(TargetVault.Name, VerbsLifecycle.Disable));
+            }, ShouldProcess(TargetVault.Name, VerbsCommon.Set));
         }
 
         /// <summary>

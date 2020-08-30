@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                                                          q.ItemType == DataSourceType);
 
                 List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
-                string skipToken = null;
+                
                 var listResponse = serviceClientAdapter.ListProtectedItem(
                     queryParams,
-                    skipToken,
+                    skipToken: null,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
                 protectedItems.AddRange(listResponse);

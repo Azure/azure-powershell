@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Newtonsoft.Json;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 

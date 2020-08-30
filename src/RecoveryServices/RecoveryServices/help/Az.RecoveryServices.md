@@ -185,9 +185,6 @@ Creates an ASR storage classification mapping in the Recovery Services vault.
 ### [New-AzRecoveryServicesAsrvCenter](New-AzRecoveryServicesAsrvCenter.md)
 Adds a vCenter server to discover protectable items from.
 
-### [New-AzRecoveryServicesAsrVMNicConfig](New-AzRecoveryServicesAsrVMNicConfig.md)
-Creates an ASR NIC config that contains the failover and test failover related configuration details.
-
 ### [New-AzRecoveryServicesBackupProtectionPolicy](New-AzRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.
 
@@ -217,9 +214,6 @@ Deletes the specified ASR recovery plan from Recovery Services vault.
 
 ### [Remove-AzRecoveryServicesAsrReplicationProtectedItem](Remove-AzRecoveryServicesAsrReplicationProtectedItem.md)
 Stops/Disables replication for an Azure Site Recovery replication protected item.
-
-### [Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk](Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
-Removes disks to replication protected item.
 
 ### [Remove-AzRecoveryServicesAsrServicesProvider](Remove-AzRecoveryServicesAsrServicesProvider.md)
 Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
@@ -286,9 +280,6 @@ Starts the test failover cleanup operation.
 
 ### [Start-AzRecoveryServicesAsrTestFailoverJob](Start-AzRecoveryServicesAsrTestFailoverJob.md)
 Starts a test failover operation.
-
-### [Start-AzRecoveryServicesAsrUnplannedFailoverJob](Start-AzRecoveryServicesAsrUnplannedFailoverJob.md)
-Starts an unplanned failover operation.
 
 ### [Stop-AzRecoveryServicesAsrJob](Stop-AzRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.

@@ -14,7 +14,7 @@ Copies data from a vault in one region to a vault in another region.
 
 ```
 Copy-AzRecoveryServicesVault [-Force] [-DefaultProfile <IAzureContextContainer>] [-SourceVault] <ARSVault>
- [-TargetVault] <ARSVault> [-RetryOnlyWithFailedItems] [<CommonParameters>]
+ [-TargetVault] <ARSVault> [-RetryOnlyFailed] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ The second command triggers a complete data move from vault1 to vault2.
 ```powershell
 PS C:\> $sourceVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName1" -Name "vault1"
 PS C:\> $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName2" -Name "vault2"
-PS C:\> Copy-AzRecoveryServicesVault -SourceVault $sourceVault -TargetVault $targetVault -RetryOnlyWithFailedItems
+PS C:\> Copy-AzRecoveryServicesVault -SourceVault $sourceVault -TargetVault $targetVault -RetryOnlyFailed
 ```git 
 
 The first two cmdlets fetch Recovery Services Vault - vault1 and vault2 respectively.
@@ -74,7 +74,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RetryOnlyWithFailedItems
+### -RetryOnlyFailed
 Switch parameter to try data move only for containers in the source vault which are not yet moved.
 
 ```yaml

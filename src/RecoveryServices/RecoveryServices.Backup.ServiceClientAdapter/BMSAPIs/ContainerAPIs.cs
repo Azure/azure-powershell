@@ -131,13 +131,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns></returns>
         public IEnumerable<BackupManagementUsage> GetBackupUsageSummary(string vaultName, string resourceGroupName,
             ODataQuery<BMSBackupSummariesQueryObject> queryFilter)
-        {
-            string skipToken = null;
+        {            
             Func<IEnumerable<BackupManagementUsage>> listAsync = () => BmsAdapter.Client.BackupUsageSummaries.ListWithHttpMessagesAsync(
                     vaultName,
                     resourceGroupName,
                     queryFilter,
-                    skipToken,
+                    skipToken: null,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
             
             return listAsync();
