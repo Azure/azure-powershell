@@ -167,8 +167,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case DeleteNodeTypeById:
                     SetParametersByResourceId(this.ResourceId);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
             }
         }
 

@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     newCert.IssuerThumbprint = this.IssuerThumbprint != null ? string.Join(",", this.IssuerThumbprint) : null;
                     break;
                 default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+                    throw new ArgumentException("Invalid parameter set", ParameterSetName);
             }
 
             currentCluster.Clients.Add(newCert);
@@ -164,8 +164,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
 
             }
         }

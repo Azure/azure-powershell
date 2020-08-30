@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(new Type[] { typeof(bool), typeof(PSManagedNodeType) })]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = WithParamsByName, SupportsShouldProcess = true), OutputType(new Type[] { typeof(bool), typeof(PSManagedNodeType) })]
     public class SetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
         protected const string ReimageByName = "ReimageByName";
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = WithParamsByName,
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = WithParamsByName,
             HelpMessage = "Specify the name of the node type.")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ReimageByName,
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ReimageByName,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         [Alias("NodeTypeName")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         updatedNodeTypeParams = this.InputObject;
                         break;
                     default:
-                        throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+                        throw new ArgumentException("Invalid parameter set", ParameterSetName);
                 }
 
                 if (ShouldProcess(target: this.Name, action: string.Format("Update node type name {0}, cluster: {1}", this.Name, this.ClusterName)))
@@ -243,8 +243,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case ReimageById:
                     SetParametersByResourceId(this.ResourceId);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
             }
         }
 

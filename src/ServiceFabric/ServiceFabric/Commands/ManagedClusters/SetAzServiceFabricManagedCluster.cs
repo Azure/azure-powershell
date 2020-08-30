@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             updatedClusterParams = this.InputObject;
                             break;
                         default:
-                            throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+                            throw new ArgumentException("Invalid parameter set", ParameterSetName);
                     }
 
                     var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedClusterParams)
@@ -194,8 +194,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case WithParamsById:
                     SetParametersByResourceId(this.ResourceId);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
             }
         }
 

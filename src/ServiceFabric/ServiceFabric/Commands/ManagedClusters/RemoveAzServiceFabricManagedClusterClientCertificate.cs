@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     currentCluster.Clients = currentCluster.Clients.Where(cert => !string.Equals(cert.CommonName, this.CommonName, StringComparison.OrdinalIgnoreCase)).ToList();
                     break;
                 default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
+                    throw new ArgumentException("Invalid parameter set", ParameterSetName);
             }
 
             if(initialSize == currentCluster.Clients.Count())
@@ -161,8 +161,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
 
             }
         }

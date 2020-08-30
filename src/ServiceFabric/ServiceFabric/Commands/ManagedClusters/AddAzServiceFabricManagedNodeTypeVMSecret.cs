@@ -148,8 +148,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
-                default:
-                    throw new ArgumentException("Invalid parameter set {0}", ParameterSetName);
 
             }
         }
