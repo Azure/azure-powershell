@@ -281,6 +281,9 @@ Starts the test failover cleanup operation.
 ### [Start-AzRecoveryServicesAsrTestFailoverJob](Start-AzRecoveryServicesAsrTestFailoverJob.md)
 Starts a test failover operation.
 
+### [Start-AzRecoveryServicesAsrUnplannedFailoverJob](Start-AzRecoveryServicesAsrUnplannedFailoverJob.md)
+Starts a unplanned failover operation.
+
 ### [Stop-AzRecoveryServicesAsrJob](Stop-AzRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.
 
