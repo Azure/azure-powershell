@@ -28,10 +28,12 @@ The **Remove-AzNetworkInterfaceIpConfig** cmdlet removes a network interface IP 
 $nic = Get-AzNetworkInterface -Name mynic -ResourceGroupName myrg
 
 Remove-AzNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
+
+Set-AzNetworkInterface -NetworkInterface $nic
 ```
 
 The first command gets a network interface called mynic and stores it in the variable $nic. The second command
-    removes the IP configuration called IPConfig-1 associated with this network interface.
+    removes the IP configuration called IPConfig-1 associated with this network interface. The third command sets changes made to the network interface.
 
 ## PARAMETERS
 
