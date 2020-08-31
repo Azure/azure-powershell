@@ -14,8 +14,9 @@ Restarts nodes of a cache.
 ## SYNTAX
 
 ```
-Reset-AzRedisCache [-ResourceGroupName <String>] -Name <String> -RebootType <String> [-ShardId <Int32>]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-RebootType <String>] [-ShardId <Int32>]
+ [-Ports <Int32[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Ports
+Specifies the ports of nodes to be rebooted.
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -RebootType
 Specifies which node or nodes to restart.
 The acceptable values for this parameter are:
@@ -106,7 +122,7 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: PrimaryNode, SecondaryNode, AllNodes
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

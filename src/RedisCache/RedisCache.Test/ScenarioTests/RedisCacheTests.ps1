@@ -567,6 +567,10 @@ function Test-ImportExportReboot
     Reset-AzRedisCache -Name $cacheName -RebootType $rebootType -Force
     Start-TestSleep 120000
 
+    $ports = [15000]
+    Reset-AzRedisCache -Name $cacheName -Ports $ports -Force
+    Start-TestSleep 120000
+
     ############################# CleanUp #############################
     # Delete cache
     Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
