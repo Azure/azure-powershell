@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.Cdn.Properties;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
@@ -57,7 +58,6 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
                 ProfileName = parsedResourceId.GetProfileName();
                 EndpointName = parsedResourceId.GetEndpointName();
                 OriginName = parsedResourceId.ResourceName;
-
             }
 
             ConfirmAction(MyInvocation.InvocationName, OriginName, DeleteOrigin);
@@ -70,11 +70,21 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
 
         public void DeleteOrigin()
         {
-            CdnManagementClient.Origins.Delete(
+            try
+            {
+                CdnManagementClient.Origins.Delete(
                 ResourceGroupName,
                 ProfileName,
                 EndpointName,
                 OriginName);
+
+                WriteVerbose(Resources.Success);
+            }
+            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

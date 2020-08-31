@@ -715,6 +715,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Type = origin.Type,
                 ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), origin.ProvisioningState),
                 ResourceState = (PSOriginResourceState)Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
+
+                // origin specifc properties
                 HostName = origin.HostName,
                 HttpPort = origin.HttpPort,
                 HttpsPort = origin.HttpsPort,
@@ -723,7 +725,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 PrivateLinkAlias = origin.PrivateLinkAlias,
                 PrivateLinkApprovalMessage = origin.PrivateLinkApprovalMessage,
                 PrivateLinkLocation = origin.PrivateLinkLocation,
-                PrivateLinkResourceId = origin.PrivateLinkResourceId
+                PrivateLinkResourceId = origin.PrivateLinkResourceId,
+                Weight = origin.Weight
             };
         }
 
@@ -732,9 +735,33 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             Debug.Assert(originGroup.ProvisioningState != null, "originGroup.ProvisioningState != null");
             Debug.Assert(originGroup.ResourceState != null, "originGroup.ResourceState != null");
 
+            int? probeIntervalInSeconds = null;
+            string probePath = null;
+            string probeProtocol = null;
+            string probeRequestType = null;
+
+            if (originGroup.HealthProbeSettings != null)
+            {
+                probeIntervalInSeconds = originGroup.HealthProbeSettings.ProbeIntervalInSeconds;
+                probePath = originGroup.HealthProbeSettings.ProbePath;
+                probeProtocol = originGroup.HealthProbeSettings.ProbeProtocol.Value.ToString();
+                probeRequestType = originGroup.HealthProbeSettings.ProbeRequestType.Value.ToString();
+            }
+
             return new PSOriginGroup
             {
-                // populate origin group properties
+                Id = originGroup.Id,
+                Name = originGroup.Name,
+                Type = originGroup.Type,
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), originGroup.ProvisioningState),
+                ResourceState = (PSOriginGroupResourceState)Enum.Parse(typeof(PSOriginGroupResourceState), originGroup.ResourceState),
+                
+                // origin group specific properties
+                Origins = originGroup.Origins,
+                ProbeIntervalInSeconds = probeIntervalInSeconds,
+                ProbePath = probePath,
+                ProbeProtocol = probeProtocol,
+                ProbeRequestType = probeRequestType
             };
         }
 

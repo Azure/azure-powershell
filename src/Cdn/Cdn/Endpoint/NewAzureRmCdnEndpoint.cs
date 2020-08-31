@@ -103,33 +103,56 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin groups.", ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public Object OriginGroups { get; set; } //PSOriginGroup[]
+        //[Parameter(Mandatory = false, HelpMessage = "Azure CDN origin groups.", ParameterSetName = FieldsParameterSet)]
+        //[ValidateNotNullOrEmpty]
+        //public Object OriginGroups { get; set; } //PSOriginGroup[]
 
         [Parameter(Mandatory = false, HelpMessage = "The default origin group.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public Object DefaultOriginGroup { get; set; } //PSDefaultOriginGroup
+        public string DefaultOriginGroup { get; set; } 
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin priority.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin priority.")]
         [ValidateNotNullOrEmpty]
         public int? Priority { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin weight.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin weight.")]
         [ValidateNotNullOrEmpty]
         public int? Weight { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.")]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkApprovalMessage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link location.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link location.")]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkLocation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link resource id.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link resource id.")]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin group ids.")]
+        [ValidateNotNullOrEmpty]
+        public List<string> OriginIds { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The name of the origin group.")]
+        public string OriginGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.")]
+        [ValidateNotNullOrEmpty]
+        public int? OriginGroupProbeIntervalInSeconds { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The path relative to the origin that is used to determine the health of the origin.")]
+        [ValidateNotNullOrEmpty]
+        public string OriginGroupProbePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Protocol to use for health probe.")]
+        [ValidateNotNullOrEmpty]
+        public string OriginGroupProbeProtocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The type of health probe request that is made.")]
+        [ValidateNotNullOrEmpty]
+        public string OriginGroupProbeRequestType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -159,37 +182,126 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             try
             {
-                var endpoint = CdnManagementClient.Endpoints.Create(
-                    ResourceGroupName,
-                    ProfileName,
-                    EndpointName, new Management.Cdn.Models.Endpoint
+                //var endpoint = CdnManagementClient.Endpoints.Create(
+                //    ResourceGroupName,
+                //    ProfileName,
+                //    EndpointName, new Management.Cdn.Models.Endpoint
+                //{
+                //    ContentTypesToCompress = ContentTypesToCompress,
+                //    IsCompressionEnabled = IsCompressionEnabled,
+                //    IsHttpAllowed = IsHttpAllowed,
+                //    IsHttpsAllowed = IsHttpsAllowed,
+                //    Location = Location,
+                //    OriginHostHeader = OriginHostHeader,
+                //    OriginPath = OriginPath,
+                //    Origins = new List<DeepCreatedOrigin> { origin },
+                //    QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
+                //                QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
+                //                (QueryStringCachingBehavior?)null,
+                //    OptimizationType = OptimizationType,
+                //    ProbePath = ProbePath,
+                //    GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
+                //    DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                //    Tags = Tag.ToDictionaryTags()
+                //});
+
+                Management.Cdn.Models.Endpoint endpoint = new Management.Cdn.Models.Endpoint();
+                endpoint.ContentTypesToCompress = ContentTypesToCompress;
+                endpoint.IsCompressionEnabled = IsCompressionEnabled;
+                endpoint.IsHttpAllowed = IsHttpAllowed;
+                endpoint.IsHttpsAllowed = IsHttpsAllowed;
+                endpoint.Location = Location;
+                endpoint.OriginHostHeader = OriginHostHeader;
+                endpoint.OriginPath = OriginPath;
+                endpoint.OptimizationType = OptimizationType;
+                endpoint.ProbePath = ProbePath;
+                endpoint.DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy();
+                endpoint.GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList();
+                endpoint.Tags = Tag.ToDictionaryTags();
+
+                endpoint.Origins = new List<DeepCreatedOrigin>();
+                endpoint.Origins.Add(CreateOrigin());
+
+                if (!String.IsNullOrWhiteSpace(OriginGroupName))
                 {
-                    ContentTypesToCompress = ContentTypesToCompress,
-                    IsCompressionEnabled = IsCompressionEnabled,
-                    IsHttpAllowed = IsHttpAllowed,
-                    IsHttpsAllowed = IsHttpsAllowed,
-                    Location = Location,
-                    OriginHostHeader = OriginHostHeader,
-                    OriginPath = OriginPath,
-                    Origins = new List<DeepCreatedOrigin> { new DeepCreatedOrigin(OriginName, OriginHostName, HttpPort, HttpsPort) },
-                    QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
-                                QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
-                                (QueryStringCachingBehavior?)null,
-                    OptimizationType = OptimizationType,
-                    ProbePath = ProbePath,
-                    GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
-                    DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
-                    Tags = Tag.ToDictionaryTags()
-                });
+                    endpoint.OriginGroups = new List<DeepCreatedOriginGroup>();
+                    endpoint.OriginGroups.Add(CreateOriginGroup());
+                }
+               
+                if (QueryStringCachingBehavior != null)
+                {
+                    endpoint.QueryStringCachingBehavior = QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>();
+                }
+                else
+                {
+                    endpoint.QueryStringCachingBehavior = (QueryStringCachingBehavior?)null;
+                }
+
+                if(!String.IsNullOrWhiteSpace(DefaultOriginGroup))
+                {
+                    endpoint.DefaultOriginGroup = new ResourceReference(DefaultOriginGroup);
+                }
+
+
+                var createdEndpoint = CdnManagementClient.Endpoints.Create(ResourceGroupName, ProfileName, EndpointName, endpoint);
 
                 WriteVerbose(Resources.Success);
-                WriteObject(endpoint.ToPsEndpoint());
+                WriteObject(createdEndpoint.ToPsEndpoint());
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            catch (ErrorResponseException e)
             {
                 throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
                                      e.Response.Content));
             }
+        }
+
+        private DeepCreatedOrigin CreateOrigin()
+        {
+            DeepCreatedOrigin origin = new DeepCreatedOrigin();
+            origin.Name = OriginName;
+            origin.HostName = OriginHostName;
+            origin.HttpPort = HttpPort;
+            origin.HttpsPort = HttpsPort;
+            origin.OriginHostHeader = OriginHostHeader;
+            origin.Priority = Priority;
+            origin.Weight = Weight;
+            origin.PrivateLinkApprovalMessage = PrivateLinkApprovalMessage;
+            origin.PrivateLinkLocation = PrivateLinkLocation;
+            origin.PrivateLinkResourceId = PrivateLinkResourceId;
+
+            return origin;
+        }
+
+        private DeepCreatedOriginGroup CreateOriginGroup()
+        {
+            DeepCreatedOriginGroup originGroup = new DeepCreatedOriginGroup();
+
+            originGroup.Name = OriginGroupName;
+
+            originGroup.Origins = new List<ResourceReference>();
+
+            if (OriginIds != null)
+            {
+                foreach (string originId in OriginIds)
+                {
+                    ResourceReference originIdResourceReference = new ResourceReference(originId);
+                    originGroup.Origins.Add(originIdResourceReference);
+                }
+            }
+           
+
+            if (OriginGroupProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(OriginGroupProbePath) || !String.IsNullOrWhiteSpace(OriginGroupProbeProtocol) || !String.IsNullOrWhiteSpace(OriginGroupProbeRequestType))
+            {
+                originGroup.HealthProbeSettings = new HealthProbeParameters
+                {
+                    ProbeIntervalInSeconds = OriginGroupProbeIntervalInSeconds,
+                    ProbePath = OriginGroupProbePath,
+                    ProbeProtocol = OriginGroupUtilities.NormalizeProbeProtocol(OriginGroupProbeProtocol),
+                    ProbeRequestType = OriginGroupUtilities.NormalizeProbeRequestType(OriginGroupProbeRequestType)
+                };
+            }
+
+            return originGroup;
         }
     }
 }

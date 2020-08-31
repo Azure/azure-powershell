@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Commands.Cdn.Properties;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin group ids.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public List<Object> OriginIds { get; set; } //PSOriginId[]
+        public List<string> OriginIds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -70,30 +72,67 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
         {
             if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = CdnOriginGroup.ResourceGroupName;
-                ProfileName = CdnOriginGroup.ProfileName;
                 EndpointName = CdnOriginGroup.EndpointName;
                 OriginGroupName = CdnOriginGroup.Name;
+                ProfileName = CdnOriginGroup.ProfileName;
+                ResourceGroupName = CdnOriginGroup.ResourceGroupName;
 
-                // todo : implement remaining properties on the origin group
+                ProbeIntervalInSeconds = CdnOriginGroup.ProbeIntervalInSeconds;
+                ProbePath = CdnOriginGroup.ProbePath;
+                ProbeProtocol = CdnOriginGroup.ProbeProtocol;
+                ProbeRequestType = CdnOriginGroup.ProbeRequestType;     
             }
 
             ConfirmAction(MyInvocation.InvocationName, OriginGroupName, CreateOriginGroup);
-
         }
 
         public void CreateOriginGroup()
         {
-            Management.Cdn.Models.OriginGroup originGroupProperties = new Management.Cdn.Models.OriginGroup();
+            Management.Cdn.Models.OriginGroup originGroup = new Management.Cdn.Models.OriginGroup();
 
-            // populate properties here
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                originGroup.Origins = CdnOriginGroup.Origins;
+            }
+            else
+            {
+                originGroup.Origins = new List<Management.Cdn.Models.ResourceReference>();
 
-            CdnManagementClient.OriginGroups.Create(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName,
-                OriginGroupName,
-                originGroupProperties);
+                foreach (string originId in OriginIds)
+                {
+                    Management.Cdn.Models.ResourceReference originIdResourceReference = new Management.Cdn.Models.ResourceReference(originId);
+                    originGroup.Origins.Add(originIdResourceReference);
+                }
+            }
+
+            if (ProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(ProbePath) || !String.IsNullOrWhiteSpace(ProbeProtocol) || !String.IsNullOrWhiteSpace(ProbeRequestType))
+            {
+                originGroup.HealthProbeSettings = new Management.Cdn.Models.HealthProbeParameters
+                {
+                    ProbeIntervalInSeconds = ProbeIntervalInSeconds,
+                    ProbePath = ProbePath,
+                    ProbeProtocol = OriginGroupUtilities.NormalizeProbeProtocol(ProbeProtocol),
+                    ProbeRequestType = OriginGroupUtilities.NormalizeProbeRequestType(ProbeRequestType)
+                };
+            }
+
+            try
+            {
+                var createdOriginGroup = CdnManagementClient.OriginGroups.Create(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName,
+                    OriginGroupName,
+                    originGroup);
+
+                WriteVerbose(Resources.Success);
+                WriteObject(createdOriginGroup.ToPsOriginGroup());
+            }
+            catch (Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

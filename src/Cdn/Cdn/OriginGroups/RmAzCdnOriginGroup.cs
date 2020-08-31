@@ -69,11 +69,19 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         public void DeleteOriginGroup()
         {
-            CdnManagementClient.OriginGroups.Delete(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName,
-                OriginGroupName);
+            try
+            {
+                CdnManagementClient.OriginGroups.Delete(
+                               ResourceGroupName,
+                               ProfileName,
+                               EndpointName,
+                               OriginGroupName);
+            }
+            catch (Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

@@ -13,10 +13,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
-using System;
 using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using Microsoft.Azure.Commands.Cdn.Helpers;
+using Microsoft.Azure.Commands.Cdn.Properties;
+using System;
 
 namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 {
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin group ids.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public List<Object> OriginIds { get; set; } //PSOriginId[]
+        public List<string> OriginIds { get; set; } 
 
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -73,6 +75,12 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
                 ProfileName = CdnOriginGroup.ProfileName;
                 EndpointName = CdnOriginGroup.EndpointName;
                 OriginGroupName = CdnOriginGroup.Name;
+
+                ProbeIntervalInSeconds = CdnOriginGroup.ProbeIntervalInSeconds;
+                ProbePath = CdnOriginGroup.ProbePath;
+                ProbeProtocol = CdnOriginGroup.ProbeProtocol;
+                ProbeRequestType = CdnOriginGroup.ProbeRequestType;
+                
             }
 
             ConfirmAction(MyInvocation.InvocationName, OriginGroupName, SetOriginGroup);
@@ -80,17 +88,59 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         public void SetOriginGroup()
         {
-            Management.Cdn.Models.OriginGroupUpdateParameters originGroupProperties = new OriginGroupUpdateParameters
-            {
-                // todo : populate the origin group properties
-            };
+            OriginGroupUpdateParameters originGroup = new OriginGroupUpdateParameters();
 
-            CdnManagementClient.OriginGroups.Update(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName,
-                OriginGroupName,
-                originGroupProperties);
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                originGroup.Origins = CdnOriginGroup.Origins;
+            }
+            else
+            {
+                originGroup.Origins = new List<ResourceReference>();
+
+                foreach (string originId in OriginIds)
+                {
+                   ResourceReference originIdResourceReference = new ResourceReference(originId);
+                    originGroup.Origins.Add(originIdResourceReference);
+                }
+            }
+
+            if (ProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(ProbePath) || !String.IsNullOrWhiteSpace(ProbeProtocol) || !String.IsNullOrWhiteSpace(ProbeRequestType))
+            {
+                // Console.WriteLine("health probe settings populate");
+                originGroup.HealthProbeSettings = new HealthProbeParameters
+                {
+                    ProbeIntervalInSeconds = ProbeIntervalInSeconds,
+                    ProbePath = ProbePath,
+                    ProbeProtocol = OriginGroupUtilities.NormalizeProbeProtocol(ProbeProtocol),
+                    ProbeRequestType = OriginGroupUtilities.NormalizeProbeRequestType(ProbeRequestType)
+                };
+            }
+            else
+            {
+                // Console.WriteLine("health probe settings null");
+                // why does assigning null to hps not update the resource?
+                originGroup.HealthProbeSettings = null;
+            }
+
+            try
+            {
+                Console.WriteLine($"health probe settings status : {originGroup.HealthProbeSettings}");
+                var updatedOriginGroup = CdnManagementClient.OriginGroups.Update(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName,
+                    OriginGroupName,
+                    originGroup);
+
+                WriteVerbose(Resources.Success);
+                WriteObject(updatedOriginGroup.ToPsOriginGroup());
+            }
+            catch (ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

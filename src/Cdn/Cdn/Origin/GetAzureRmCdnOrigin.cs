@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Cdn;
 using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
@@ -60,6 +61,15 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
                 EndpointName = CdnEndpoint.Name;
                 ProfileName = CdnEndpoint.ProfileName;
                 ResourceGroupName = CdnEndpoint.ResourceGroupName;
+            }
+
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+                ProfileName = parsedResourceId.GetProfileName();
+                EndpointName = parsedResourceId.GetEndpointName();
+                OriginName = parsedResourceId.ResourceName;
             }
 
             if (OriginName == null)

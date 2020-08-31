@@ -58,10 +58,17 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
                 OriginGroupName = parsedResourceId.ResourceName;
             }
 
-            var originGroup = CdnManagementClient.OriginGroups.Get(ResourceGroupName, ProfileName, EndpointName, OriginGroupName);
-            WriteVerbose(Resources.Success);
-            WriteObject(originGroup.ToPsOriginGroup());
-
+            try
+            {
+                var originGroup = CdnManagementClient.OriginGroups.Get(ResourceGroupName, ProfileName, EndpointName, OriginGroupName);
+                WriteVerbose(Resources.Success);
+                WriteObject(originGroup.ToPsOriginGroup());
+            }
+            catch (Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

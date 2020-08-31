@@ -25,61 +25,66 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOrigin))]
     public class NewAzCdnOrigin : AzureCdnCmdletBase
     {
-
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin host name.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin http port.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? HttpPort { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin https port.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? HttpsPort { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin host header.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string OriginHostHeader { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin name.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string OriginName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin priority.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? Priority { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link alias.", ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string PrivateLinkAlias { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link.", ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkApprovalMessage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link location.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin private link location.", ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkLocation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin private link resource id.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin private link resource id.", ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin weight.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ByFieldsPrivateLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? Weight { get; set; }
 
@@ -91,21 +96,19 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         {
             if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = CdnOrigin.ResourceGroupName;
-                ProfileName = CdnOrigin.ProfileName;
                 EndpointName = CdnOrigin.EndpointName;
-                OriginName = CdnOrigin.Name;
                 HostName = CdnOrigin.HostName;
                 HttpPort = CdnOrigin.HttpPort;
                 HttpsPort = CdnOrigin.HttpsPort;
                 OriginHostHeader = CdnOrigin.OriginHostHeader;
+                OriginName = CdnOrigin.Name;
                 Priority = CdnOrigin.Priority;
-                PrivateLinkAlias = CdnOrigin.PrivateLinkAlias;
                 PrivateLinkApprovalMessage = CdnOrigin.PrivateLinkApprovalMessage;
                 PrivateLinkLocation = CdnOrigin.PrivateLinkLocation;
                 PrivateLinkResourceId = CdnOrigin.PrivateLinkResourceId;
+                ProfileName = CdnOrigin.ProfileName;
+                ResourceGroupName = CdnOrigin.ResourceGroupName;
                 Weight = CdnOrigin.Weight;
-
             }
 
             ConfirmAction(MyInvocation.InvocationName, OriginName, CreateOrigin);
@@ -113,31 +116,31 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
 
         private void CreateOrigin()
         {
-            Management.Cdn.Models.Origin originProperties = new Management.Cdn.Models.Origin();
+            Management.Cdn.Models.Origin origin = new Management.Cdn.Models.Origin();
 
-            originProperties.HostName = HostName;
-            originProperties.HttpPort = HttpPort;
-            originProperties.HttpsPort = HttpsPort;
-            originProperties.OriginHostHeader = OriginHostHeader;
-            originProperties.Priority = Priority;
-            originProperties.PrivateLinkAlias = PrivateLinkAlias;
-            originProperties.PrivateLinkApprovalMessage = PrivateLinkApprovalMessage;
-            originProperties.PrivateLinkLocation = PrivateLinkLocation;
-            originProperties.Weight = Weight;
+            origin.HostName = HostName;
+            origin.HttpPort = HttpPort;
+            origin.HttpsPort = HttpsPort;
+            origin.OriginHostHeader = OriginHostHeader;
+            origin.Priority = Priority;
+            origin.PrivateLinkResourceId = PrivateLinkResourceId;
+            origin.PrivateLinkApprovalMessage = PrivateLinkApprovalMessage;
+            origin.PrivateLinkLocation = PrivateLinkLocation;
+            origin.Weight = Weight;
 
             try
             {
-                var origin = CdnManagementClient.Origins.Create(
+                var createdOrigin = CdnManagementClient.Origins.Create(
                     ResourceGroupName,
                     ProfileName,
                     EndpointName,
                     OriginName,
-                    originProperties);
-
+                    origin);
+               
                 WriteVerbose(Resources.Success);
-                WriteObject(origin.ToPsOrigin());
+                WriteObject(createdOrigin.ToPsOrigin());
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            catch (Management.Cdn.Models.ErrorResponseException e)
             {
                 throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
                                      e.Response.Content));
