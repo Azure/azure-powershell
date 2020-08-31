@@ -34,6 +34,11 @@
     - `Update-AzNetworkVirtualAppliance`
     - `Get-AzNetworkVirtualApplianceSku`
     - `New-AzVirtualApplianceSkuProperty`
+* Added new cmdlets for VirtualWan
+    - `Start-AzVpnGatewayPacketCapture`
+    - `Stop-AzVpnGatewayPacketCapture`
+    - `Start-AzVpnConnectionPacketCapture`
+    - `Stop-AzVpnConnectionPacketCapture`
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
 
