@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->        
 ## Upcoming Release
+* Added ``VMHealth`` property to the virtual machine's instance view, which is the returned object when ``Get-AzVm`` is invoked with ``-Status``
 * Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
 * Added `SupportAutomaticPlacement` to New-AzHostGroup 
 * Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
