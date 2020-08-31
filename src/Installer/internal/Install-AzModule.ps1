@@ -14,7 +14,7 @@
 
 function Install-AzModule{
     [OutputType([System.Collections.Hashtable])]
-    [CmdletBinding(DefaultParameterSetName = 'All', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'All', PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ParameterSetName = 'All',HelpMessage = 'Maximum Az Version.')]
         [Parameter(ParameterSetName = 'ByName',HelpMessage = 'Maximum Az Version.')]
@@ -117,16 +117,22 @@ function Install-AzModule{
             $parameter = @{}
             $parameter.Add('Repository', $Repository)
             $parameter.Add('Name', 'Az')
-            $index = @{}          
+            $parameter.Add('ErrorAction', 'Stop')
+            $index = @{}         
             $version.Keys | Foreach-Object {$parameter.Add($_, $version[$_])}
             $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $parameter
 
-            #TODO: catch exception when Az was not found
-            (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
-                if ($_.Name -ne 'Az.Accounts') {
-                    $index.Add($_.Name, $_.RequiredVersion)
+            try {
+                (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
+                    if ($_.Name -ne 'Az.Accounts') {
+                        $index.Add($_.Name, $_.RequiredVersion)
+                    }
                 }
+            } catch {
+                Write-Error $_
+                break
             }
+            
 
             if ($PSCmdlet.ParameterSetName -eq 'All') {
                 #Install Az package
@@ -146,30 +152,42 @@ function Install-AzModule{
             if ($PSCmdlet.ParameterSetName -eq 'AllAndPreview') {
 
                 # all latest modules
-                Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
-                    if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts')) {
-                        $module_name += $_.Name
+                try {
+                    Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
+                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts')) {
+                            $module_name += $_.Name
+                        }
                     }
+                } catch {
+                    Write-Error $_
+                    break
                 }
             }
             
             $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
         }
-
-        if ($PSBoundParameters.ContainsKey('RemoveAzureRm')) {
+        
+        if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove')) {
             remove_installed_module -Name 'AzureRm*'
             remove_installed_module -Name 'Azure.*'
         }
 
         if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
-            $module | remove_installed_module
+            $module | Foreach-Object {
+                $name = $_.Name
+                if ($PSCmdlet.ShouldProcess("Remove all previous versions of $name", "$name", "Remove")) {
+                    Write-Output $_
+                }
+            } | remove_installed_module
         }
 
         $module | Foreach-Object {
             $name = $_.Name
             $version = $_.version
-            Write-Host "Install$latest $name $version"
-            Write-Output $_
+            if ($PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
+                Write-Debug "Install$latest $name $version"
+                Write-Output $_
+            }
         } | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
     }
 }

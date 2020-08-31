@@ -102,7 +102,7 @@ function remove_installed_module {
     process {
         Get-InstalledModule -Name $Name -ErrorAction SilentlyContinue | Foreach-Object {
             $name = $_.Name
-            Write-Warning "Remove all previous versions of Module: $name"
+            Write-Debug "Remove all previous versions of Module: $name"
             Write-Output $_
         } | Uninstall-Module -AllVersions -AllowPrerelease
     }
