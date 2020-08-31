@@ -1793,13 +1793,11 @@
         },
         "settings": {
           "description": "Public settings for the extension",
-          "type": "object",
-          "additionalProperties": true
+          "type": "object"
         },
         "protectedSettings": {
           "description": "Protected settings for the extension which are encrypted before sent to the VM",
-          "type": "object",
-          "additionalProperties": true
+          "type": "object"
         },
         "provisioningState": {
           "description": "The provisioning state, which only appears in the response.",

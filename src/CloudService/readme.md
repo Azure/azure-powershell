@@ -65,7 +65,8 @@ directive:
   - where:
       subject: ^CloudService$
       verb: Set
-    remove: true
+    set:
+      verb: Update
   - where:
       subject: ^CloudServiceUpdateDomain$
       verb: Get

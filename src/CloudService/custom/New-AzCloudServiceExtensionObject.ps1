@@ -28,25 +28,29 @@ function New-AzCloudServiceExtensionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Parameter()]
+
+        [Parameter(HelpMessage="Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available.")]
+        [bool]
+        $AutoUpgradeMinorVersion,
+        [Parameter(HelpMessage=".")]
         [string]
         $Name,
         [Parameter(HelpMessage="Protected settings for the extension which are encrypted before sent to the VM.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesProtectedSettings]
         $ProtectedSetting,
-        [Parameter()]
+        [Parameter(HelpMessage=".")]
         [string]
         $Publisher,
-        [Parameter()]
+        [Parameter(HelpMessage=".")]
         [string[]]
         $RolesAppliedTo,
         [Parameter(HelpMessage="Public settings for the extension.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesSettings]
         $Setting,
-        [Parameter()]
+        [Parameter(HelpMessage=".")]
         [string]
         $Type,
-        [Parameter()]
+        [Parameter(HelpMessage=".")]
         [string]
         $TypeHandlerVersion
     )
@@ -54,6 +58,7 @@ function New-AzCloudServiceExtensionObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension]::New()
 
+        $Object.AutoUpgradeMinorVersion = $AutoUpgradeMinorVersion
         $Object.Name = $Name
         $Object.ProtectedSetting = $ProtectedSetting
         $Object.Publisher = $Publisher
