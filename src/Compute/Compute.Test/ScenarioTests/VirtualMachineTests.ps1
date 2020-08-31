@@ -2959,6 +2959,7 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
@@ -2983,6 +2984,69 @@ function Test-VirtualMachineGetStatus
         $vms[0].DisplayHint = "Expand"
         $a = $vms[0] | Format-Custom | Out-String;
         Assert-True{$a.Contains("Sku");};
+
+        # Remove
+        Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines's Status With Health Extension
+Description:
+This test creates a virtual machine and adds a vm health extension
+and gets the virtual machine with -Status flag which returns the instance
+view of the virtual machine. Since the vm has a health extension,
+the vm's instance view should have the "vmHealth" field present in its return
+object.
+#>
+function Test-VirtualMachineGetStatusWithHealhtExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+
+        # OS & Image
+        $username = "admin01";
+        $password = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "vcrptestps7691-6f2166";
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -DomainNameLabel $domainNameLabel -Name $vmname -Credential $cred -Size $vmsize;
+
+        # Adding health extension on VM
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension"
+        $extensionType = "ApplicationHealthWindows"
+        $publisher = "Microsoft.ManagedServices"
+        Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0"
+
+        # Get VM
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+        # Check for VmHealth Property
+        Assert-NotNull $vm.VMHealth
+        Assert-NotNull $vm.VMHealth.Status
+        Assert-NotNull $vm.VMHealth.Status.Code
+        Assert-NotNull $vm.VMHealth.Status.Level
+        Assert-NotNull $vm.VMHealth.Status.DisplayStatus
+        Assert-NotNull $vm.VMHealth.Status.Time
 
         # Remove
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
@@ -3897,6 +3961,47 @@ function Test-LowPriorityVirtualMachine
         # Update the max price of the VM
         Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2; } `
             "Max price change is not allowed.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test EncryptionAtHost Virtual Machine
+#>
+function Test-EncryptionAtHostVMNull
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        Assert-AreEqual $null $vm.SecurityProfile.encryptionathost
+
+        # Get VM
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $null $vm.SecurityProfile.encryptionAtHost
+        Assert-AreEqual $null $vm.encryptionAtHost
+
     }
     finally
     {

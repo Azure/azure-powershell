@@ -216,6 +216,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualMachineGetStatusWithHealhtExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithHealhtExtension");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatusWithAssignedHost()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithAssignedHost");
@@ -289,6 +296,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestLowPriorityVirtualMachine()
         {
             TestRunner.RunTestScript("Test-LowPriorityVirtualMachine");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionAtHostVMNull()
+        {
+            TestRunner.RunTestScript("Test-EncryptionAtHostVMNull");
         }
 
         [Fact]

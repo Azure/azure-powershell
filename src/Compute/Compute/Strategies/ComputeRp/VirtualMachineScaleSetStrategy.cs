@@ -82,10 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = new SecurityProfile
-                        {
-                            EncryptionAtHost = encryptionAtHost
-                        },
+                        SecurityProfile = (encryptionAtHost == true) ? new SecurityProfile(encryptionAtHost) : null,
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
