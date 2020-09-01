@@ -125,6 +125,7 @@
 * Azure Backup SQL Restore support to accept filestream DBs.
 
 #### Az.RedisCache
+* Added 'Ports' parameter in 'Reset-AzRedisCache' cmdlet.
 * Added 'MinimumTlsVersion' parameter in 'New-AzRedisCache' and 'Set-AzRedisCache' cmdlets. Also, added 'MinimumTlsVersion' in the output of 'Get-AzRedisCache' cmdlet.
 * Added validation on '-Size' parameter for 'Set-AzRedisCache' and 'New-AzRedisCache' cmdlets
 
