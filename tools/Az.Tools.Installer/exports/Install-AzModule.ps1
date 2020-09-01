@@ -88,10 +88,11 @@ function Install-AzModule{
             }
         }
 
-        $module_name = @()
+        [System.Collections.ArrayList]$module_name = @()
         $version = @{}
         $module = @()
         $latest = ''
+        $prerelease = $false
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $PSBoundParameters['Name'] | Foreach-Object {
@@ -156,6 +157,7 @@ function Install-AzModule{
             Write-Warning "this cmdlet will not install preview version for Az.Accounts."
 
             $latest = ' latest'
+            $prerelease = $true
 
             if ($PSCmdlet.ParameterSetName -eq 'AllAndPreview') {
 
@@ -171,7 +173,10 @@ function Install-AzModule{
                     break
                 }
             }
-            
+
+            $remove = @()
+            $module_name | Where-Object {$_.StartsWith('Az.Tools')} | Foreach-Object {$remove += $_}
+            $remove | Foreach-Object {$module_name.Remove($_)}
             $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
         }
 
@@ -184,9 +189,9 @@ function Install-AzModule{
             $module | Foreach-Object {
                 $name = $_.Name
                 if ($Force -or $PSCmdlet.ShouldProcess("Remove all previous versions of $name", "All previous $name", "Remove")) {
-                    Write-Output $_
+                    $_ | remove_installed_module
                 }
-            } | remove_installed_module
+            } #| remove_installed_module
         }
 
         $module | Foreach-Object {
@@ -194,8 +199,12 @@ function Install-AzModule{
             $version = $_.version
             if ($Force -or $PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
                 Write-Debug "Install$latest $name $version"
-                Write-Output $_
+                if ($prerelease) {
+                    $_ | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
+                } else {
+                    $_ | Install-Module -Repository $Repository -AllowClobber -Force
+                }
             }
-        } | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
+        } #| Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease
     }
 }
