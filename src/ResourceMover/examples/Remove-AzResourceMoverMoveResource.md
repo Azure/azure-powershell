@@ -1,6 +1,6 @@
 ### Example 1: Remove the resource from the Move collection
 ```powershell
-PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM
+PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -Name "psdemorm"
 
     AdditionalInfo :
     Code           :

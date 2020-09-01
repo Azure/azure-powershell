@@ -1,6 +1,6 @@
 ### Example 1: Validate the dependecies before commit of the resources
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm'') -ValidateOnly
+PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm') -ValidateOnly
 
 
 AdditionalInfo :
