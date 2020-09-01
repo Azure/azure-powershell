@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualrouterpeeradvertisedroute
 schema: 2.0.0
 ---
 
 # Get-AzVirtualRouterPeerAdvertisedRoute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+List routes being advertised by specific virtual router peer
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzVirtualRouterPeerAdvertisedRoute -InputObject <PSVirtualRouterPeer> [-AsJo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Given A virtual router peer either by name or by object, enumerate routes being advertised to that peer by a specific virtual router.
 
 ## EXAMPLES
 
