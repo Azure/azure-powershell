@@ -220,13 +220,13 @@ Accept wildcard characters: False
 ```
 
 ### -BackupStorageRedundancy
-The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: None, LRS, ZRS and RA-GRS
+The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: LRS, ZRS, RA-GRS
+Accepted values: Local, Zone, Geo
 
 Required: False
 Position: Named
