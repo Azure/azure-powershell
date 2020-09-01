@@ -30,6 +30,8 @@
     - `Get-AzVirtualRouterPeer`
     - `Remove-AzVirtualRouterPeer`
 * Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
+* Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
+* Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
