@@ -111,9 +111,10 @@ namespace Microsoft.Azure.Commands.Resources
                 throw new ArgumentException("Changing a property other than 'Description', 'Condition' or 'Condition Version' is currently not supported.");
             }
 
+            // TODO check cases when going from null to something or from something to null
             // If ConditionVersion is changed, validate it's in the allowed values
-            var oldConditionVersion = double.Parse(InputObject.ConditionVersion);
-            var newConditionVersion = double.Parse(fetchedRole.ConditionVersion);
+            var oldConditionVersion = double.Parse(InputObject.ConditionVersion ?? "0.0");
+            var newConditionVersion = double.Parse(fetchedRole.ConditionVersion ?? "2.0");
 
             // A condition version can change but currently we don't support downgrading to 1.0
             // we only verify the change if it's a downgrade
