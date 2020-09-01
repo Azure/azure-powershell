@@ -69,6 +69,8 @@ function Install-AzModule{
 
     process {
 
+        Import-Module "$PSScriptRoot\..\internal\utils.psm1"
+
         $author = 'Microsoft Corporation'
         $company_name = 'azure-sdk'
 
