@@ -38,7 +38,7 @@ function Test-CreateManagedInstance
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
-	$backupStorageRedundancy = "LRS"
+	$backupStorageRedundancy = "Local"
 
  	try
  	{

@@ -248,31 +248,41 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Map external BackupStorageRedundancy to Internal
         /// </summary>
-        /// <param name="tier">Azure Sql database edition</param>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
         public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
         {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            switch (backupStorageRedundancy)
             {
-                return "GRS";
+                case "Geo":
+                    return "GRS";
+                case "Local":
+                    return "LRS";
+                case "Zone":
+                    return "ZRS";
+                default:
+                    return "GRS";
             }
-
-            return backupStorageRedundancy.Equals("RA-GRS") ? "GRS" : backupStorageRedundancy;
         }
 
         /// <summary>
         /// Map internal BackupStorageRedundancy to external
         /// </summary>
-        /// <param name="tier">Azure Sql database edition</param>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
         public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
         {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            switch (backupStorageRedundancy)
             {
-                return "RA-GRS";
+                case "GRS":
+                    return "Geo";
+                case "LRS":
+                    return "Local";
+                case "ZRS":
+                    return "Zone";
+                default:
+                    return "Geo";
             }
-
-            return backupStorageRedundancy.Equals("GRS") ? "RA-GRS" : backupStorageRedundancy;
         }
     }
 }
