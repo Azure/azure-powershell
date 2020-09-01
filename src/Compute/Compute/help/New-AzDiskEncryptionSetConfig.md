@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionType
-Use this to set the encryption type of the disk encryption set
+Use this to set the encryption type of the disk encryption set. Available values are: 'EncryptionAtRestWithPlatformKey', 'EncryptionAtRestWithCustomerKey'.
 
 ```yaml
 Type: System.String
