@@ -2558,14 +2558,15 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $domainName = 'domain' + $rgname;
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
+        $orchestrationMode = "VM";
 
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
         
   
-        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
-        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1 -OrchestrationMode $orchestrationMode
+        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile 
 
         $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
 
@@ -2585,7 +2586,7 @@ function Test-VirtualMachineScaleSetOrchestrationVM
     Testing the new OrchestrationMode and PlatformFaultDomainCount parameters when creating VMSS objects. 
     OrchestrationMode has several requirements
     -PlatformFaultDomainCount is passed in.
-    -The VMSS VMProfile is not passed in.
+    -The VMSS VMProfile is null. This applies to all parameters that would create the profile. 
     -The Zone has only 1 zone.
     -The SinglePlacementGroup parameter is false 
 #>
@@ -2613,27 +2614,36 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
         $username = "admin01";
         $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $upgradePolicyMode = 'Manual';
 
-        ### PlatformFaultDomainCount tests
+
+
+
+        ### PlatformFaultDomainCount New-AzVmss and OrchestrationMode New-AzVmssConfig tests
         $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
         
         Assert-NotNull $vmss; 
         Assert-AreEqual $vmss.PlatformFaultDomainCount $platformFaultDomainCount;
+
+        # If multiple zones are provided with an orchestration mode, it should fail. TODO: Move to further down in the test. 
+        $vmssNameZone = $vmssname + "Zone";
+        Assert-ThrowsContains { New-AzVmss -Name $vmssNameZone -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount 1 -Zone $zones; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.";
 
 
         $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig;
         Assert-NotNull $vmssConfigFaultDomain;
         Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
 
+        
         #If a VMProfile exists in the config exists, the cmdlet fails. 
-        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -LicenseType $licenseType -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4'; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The configuration caused the 'VirtualMachineScaleSetVMProfile' to be created, which is not allowed with the orchestration mode."; 
-
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -LicenseType $licenseType -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4'; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null. Please check the link 'aka.ms/vmProfileProperties' for more information about which parameters are part of a profile."; 
+        
         #If OrchestrationMode is given without PlatformFaultDomainCount, the cmdlet fails. 
         Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'PlatformFaultDomainCount' is required with an orchestration mode.";
         
         #If SinglePlacementGroup is passed as 'true' with OrchestrationMode, the cmdlet fails. 
         Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -SinglePlacementGroup $true; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'SinglePlacementGroup' is not allowed with an orchestration mode."; 
-
+        
         #If multiple zones are passed in with OrchestrationMode, the cmdlet fails. 
         Assert-ThrowsContains { New-AzVmssConfig -Location $loc -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig -Zone $zones; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.";
 
@@ -2648,15 +2658,24 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
         $vmssDefaultParamSet = New-AzVmss -Name $vmssnameOMode -ResourceGroup $rgname -VirtualMachineScaleSet $vmssConfigOMode;
         Assert-AreEqual $null $vmssDefaultParamSet.VirtualMachineProfile;#Comment for Review: I'm pretty sure this assumption is correct.
 
-        # Test if the OrchestrationMode requirements are met in Simple Parameter Set. 
-        $vmssSimpleParamSet = New-AzVmss -Name $vmssnameOMode -ResourceGroup $rgname -Credential $cred -Zone $zone -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount 1 -OrchestrationMode $orchestrationMode;
-        Assert-AreEqual $null $vmssSimpleParamSet.VirtualMachineProfile; #I am sure this assumption is correct. 
-        #Comment for Review:
-        #currently an error stating 'Parameter sku is not allowed' with the new VMSSStrategy method if I include those params in the Strategy method.
-        #I think the sku cannot be passed in (on a CRP level) wihtout some of the other stuff. 
-        #TODO: Had to remove SKu and UpgradePolicy from the VMSSStrategy method. Worth including my own error? Include those in the OrchestrationMode requirements?
+        
 
-        # Test the OrchestrationMode requirements are enforced when parameters used to create the VMProfile values were set by piped in cmdlets. 
+        # Test if the OrchestrationMode requirements are met in Simple Parameter Set. 
+        $vmssNameSimple = $vmssname + "Simple";
+        $vmssSimpleParamSet = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount 1 -OrchestrationMode $orchestrationMode;
+        Assert-AreEqual $null $vmssSimpleParamSet.VirtualMachineProfile; #I am sure this assumption is correct. 
+        
+        # Test if only valid OrchestrationMode values are allowed. 
+        # TODO: write the code so only the text 'VM' causes any behaviour to change. But VM and ScaleSetVM are both valid inputs.
+        $orchestrationModeTest = "test";
+        $vmssNameIncorrectOMode = $vmssName + "Test";
+        Assert-ThrowsContains { $vmssTest = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount -OrchestrationMode $orchestrationModeTest; } "The selected orchestration mode is not a valid value. Please select 'VM' or 'ScaleSetVM'.";
+
+        
+
+        Assert-ThrowsContains { $vmssSimpleParamsEncryptionAtHost = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount 1 -OrchestrationMode $orchestrationMode -EncryptionAtHost; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'EncryptionAtHost' would create a 'VirtualMachineScaleSetVMProfile' which is not compatible with an orchestration mode.";
+   
+        ### Test the OrchestrationMode requirements are enforced when parameters used to create the VMProfile values were set by piped in cmdlets. 
 
         # SRP
         $stoname = 'sto' + $rgname;
@@ -2669,9 +2688,9 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-
+        
         # New VMSS Parameters
-        $vmssNamePipeParameters = 'vmssWithPipedParams';
+        $vmssNamePipedParams = 'vmssWithPipedParams';
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
 
@@ -2680,64 +2699,99 @@ function Test-VirtualMachineScaleSetOrchestrationModeFaultDomain
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig `
+        
+        $vmssConfigPipedParams = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -OrchestrationMode $orchestrationMode -PlatformFaultDomainCount $platformFaultDomainCountConfig `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName ;
        
-        Assert-ThrowsContains { $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssNamePipeParameters -VirtualMachineScaleSet $vmss; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null.";  
+        Assert-ThrowsContains { $vmssPipedResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssNamePipedParams -VirtualMachineScaleSet $vmssConfigPipedParams; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null. Please check the link 'aka.ms/vmProfileProperties' for more information about which parameters are part of a profile.";  
+        
+        
+        $vmssNameVMProfileNull = $vmssname + "ProfileNull";
+        $vmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1; 
+        Assert-ThrowsContains { $vmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssNameVMProfileNull -virtualmachinescaleset $vmssConfigWithoutVmProfile; } "The 'VirtualMachineScaleSetVMProfile' is null, indicating an orchestration mode is required. Please check the link 'aka.ms/vmProfileProperties' for more information about which parameters are part of a profile.";
+        
+                #Comment for Review:
+        #currently an error stating 'Parameter sku is not allowed' with the new VMSSStrategy method if I include those params in the Strategy method.
+        #I think the sku cannot be passed in (on a CRP level) wihtout some of the other stuff. 
+        # Had to remove SKu and UpgradePolicy from the VMSSStrategy method. Worth including my own error? Include those in the OrchestrationMode requirements?
+        #There seems to be a CRP level error if UpgradePOlicy and Sku are set and no other parameters that would make a VMProfile are allowed. DOn't need to pursue. 
+
+            #Throw error on Sku or Upgrade POlicy and no OrchestrationMode. These values can only be inputted to a Config object, but utilized in NEw-Azvmss. CHeck in Azvmss. 
+        ##since only used in aconfig object, could only be used in the default param set. 
+        # to set the sku I need what parameters? 
+            #New-Azvmss = vmsize, instanceCOunt. 
+            #New-AzVmssconfig = SkuCapacity, Skuname, Skutier. These all cause a sku object made in config. So with default params, need to check Sku. 
+
+        #upgradepolicy
+            #New-Azvmss = UpgradePolicyMode.
+            #New-AzvmssConfig = UpgradePolicyMode, ROllingUpgradePOlicy, AutoOSUpgrade.
+
+        #Check both of these in the NEw-AzVmss. DIfferent checks for DEfaultPAramSet and Simple.
+        #Default = check OrchestrationMode on Config and if the UpgradePolicyMode, ROllingUpgradePOlicy, or AutoOSUpgrade values have been set. 
+            #Can't as those are subsumed into UpgradePolicy, check that instead? 
+        #$vmssNameUpgrade = "vmssNameUpgrade"
+        #$vmssConfigWithUpgradePolicy = new-azvmssconfig -location $loc -platformfaultdomain 1 -OrchestrationMode $orchestrationMode -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4';#-UpgradePolicyMode $upgradePolicyMode ;#-SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4'; 
+        #$vmssUpgradePolicy = New-AzVmss -ResourceGroupName $rgname -Name $vmssNameUpgrade -VirtualMachineScaleSet $vmssConfigWithUpgradePolicy;
+        #received an error that UpgradePolicy is not allowed. Why? trying with the VMProfile is null error commented out and no OMode to see if that is from OMode. 
+        #Sku included did not help. Seems to always throw a CrP error .
+        #Both UpgradePolicy and Sku seem to need other parameters that would create a VMProfile. That would already get caught though. So don't need this at all?
+        #No, just don't need it in default param set in NEw-AzVmss. WIll need it in SImple though I think.
+        Assert-ThrowsContains { $vmssSku = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount 1 -OrchestrationMode $orchestrationMode; } "The selected orchestration mode is in preview, and does not support the specified VMSS configuration.";
+        #"The selected orchestration mode is in preview, and does not support the specified VMSS configuration."
+
+        #SImple = check ORchestrationMode, and if the UpgradePolicyMode has been set.
+        Assert-ThrowsContains { $vmssUpgrade = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount 1 -OrchestrationMode $orchestrationMode -UpgradePolicyMode $upgradePolicyMode;} "The selected orchestration mode is in preview, and does not support the specified VMSS configuration.";
+
+        #Default = check OrchestrationMode on config, and if sku is on config. 
+        #not needed. a CRP level error throws if OMode and/or Sku and UpgradePOlicy are being set. 
+
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }
 
-<#
-.SYNOPSIS
-    testing encryptionAtHost cmdlet for
-    new-azvmss - create vmss using simple parameter set and hostencryption tag.
-    update-azvmss test boolean parameter 
-    new-azvmssconfig
-#>
-function Test-VirtualMachineScaleSetAssignedHost
+function Test-VirtualMachineScaleSetOrchestrationModeFaultDomainDEMO
 {
-    # Setup
-    $rgname = Get-ComputeTestResourceName
- 
+# Setup
+    $rgname = Get-ComputeTestResourceName
+
     try
     {
         # Common
-        $zone = "2"
-        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        # Hostgroup and Host
-        $hostGroupName = $rgname + "HostGroup"
-        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
-
-        $Sku = "Esv3-Type1"
-        $hostName = $rgname + "Host"
-        $host_ = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
-
-        # Creating a new vmss
-        $VmSku = "Standard_E2s_v3"
-        $domainNameLabel = "domainlabel"
-        $vmssname = "MyVmss"
-        $username = "admin01"
-        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $orchestrationMode = "VM";
+        $licenseType = "Windows_Server";
+        $platformFaultDomainCount = 5;
+        $platformFaultDomainCountConfig = 3;
+        $zone = "2";
+        $zones = @("2", "3");
+        $domainNameLabel = $rgname + "domain";
+        $VmSku = "Standard_D2s_v3";
+        $vmssname = "MyVmss";
+        $username = "admin01";
+        $password = "ComepresaP13123fdsa" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+        $upgradePolicyMode = 'Manual';
 
-        $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+                        #Test valid orchestrationMode values
+        $orchestrationModeTest = "test";
+        $vmssNameIncorrectOMode = $vmssName + "Test";
+        Assert-ThrowsContains { $vmssTest = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -Zone $zone -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount -OrchestrationMode $orchestrationModeTest; } "The selected orchestration mode is not a valid value. Please select 'VM' or 'ScaleSetVM'.";
+
         
-        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.AssignedHost;
+
     }
-    finally
+        finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname

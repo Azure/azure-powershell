@@ -635,9 +635,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
                 }
             }
-
-            if (this.IsParameterBound(c => c.OrchestrationMode))
-            { 
+            
+            if (this.IsParameterBound(c => c.OrchestrationMode) && this.OrchestrationMode == "VM")
+            {
                 CheckOrchestrationModeRequirements(vVirtualMachineProfile);
             }
 
@@ -668,24 +668,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void CheckOrchestrationModeRequirements(PSVirtualMachineScaleSetVMProfile virtualMachineProfile)
         {
-            if (virtualMachineProfile != null)
+            if (this.OrchestrationMode != "ScaleSetVM" & this.OrchestrationMode != "VM")
             {
-                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The configuration caused the 'VirtualMachineScaleSetVMProfile' to be created, which is not allowed with the orchestration mode.", this.OrchestrationMode);
+                WriteError("The selected orchestration mode is not a valid value. Please select 'VM' or 'ScaleSetVM'.", this.OrchestrationMode);
+            }
+            else if (virtualMachineProfile != null)
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The 'VirtualMachineScaleSetVMProfile' is not null. Please check the link 'aka.ms/vmProfileProperties' for more information about which parameters are part of a profile.", this.OrchestrationMode);
             }
             else if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'SinglePlacementGroup' is not allowed with an orchestration mode.", this.SinglePlacementGroup);
-            }
-            else if (this.IsParameterBound(c => c.Zone))
-            {
-                if (this.Zone.Length > 1)
-                {
-                    WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.", this.Zone);
-                } 
-            }
+            } 
             else if (!this.IsParameterBound(c => c.PlatformFaultDomainCount))
             {
                 WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'PlatformFaultDomainCount' is required with an orchestration mode.", this.PlatformFaultDomainCount);
+            }
+
+            if (this.IsParameterBound(c => c.Zone) && this.Zone.Length > 1)
+            {
+                WriteError("The selected orchestration mode is in preview, and does not support the specified VMSS configuration. The parameter 'Zone' cannot have more than one zone with an orchestration mode.", this.Zone);
             }
         }
 

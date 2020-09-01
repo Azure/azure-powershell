@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System.Linq;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
-using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
+using System.Linq;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
-            Func<IEngine, SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
@@ -131,7 +130,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
-                    HostGroup = hostGroup(engine),
                     ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                     {
                         Rules = scaleInPolicy
@@ -142,11 +140,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         internal static ResourceConfig<VirtualMachineScaleSet> CreateVirtualMachineScaleSetConfigOrchestrationMode(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            string vmSize,
-            int instanceCount,
             VirtualMachineScaleSetIdentity identity,
             bool singlePlacementGroup,
-            UpgradeMode? upgradeMode,
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
@@ -159,15 +154,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
-                    /*UpgradePolicy = new UpgradePolicy
-                    {
-                        Mode = upgradeMode ?? UpgradeMode.Manual
-                    },
-                    Sku = new Azure.Management.Compute.Models.Sku()
-                    {
-                        Capacity = instanceCount,
-                        Name = vmSize,
-                    },*/
                     Identity = identity,
                     SinglePlacementGroup = singlePlacementGroup,
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
