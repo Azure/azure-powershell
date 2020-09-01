@@ -311,7 +311,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: None, LRS, ZRS and RA-GRS ")]
         [ValidateSet("LRS", "ZRS", "RA-GRS")]
-        [PSArgumentCompleter("LRS", "ZRS", "RA-GRS")]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
