@@ -185,19 +185,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationVM");
         }
+          
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAssignedHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAssignedHost");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetOrchestrationModeFaultDomain()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationModeFaultDomain");
-        }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetAssignedHost()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAssignedHost");
         }
     }
 }

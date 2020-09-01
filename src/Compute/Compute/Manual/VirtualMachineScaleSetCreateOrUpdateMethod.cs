@@ -303,7 +303,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
-                
+
+                var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
                 if (_cmdlet.IsParameterBound(c => c.OrchestrationMode) && _cmdlet.OrchestrationMode == "VM")
                 {
 
@@ -316,6 +318,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         proximityPlacementGroup: proximityPlacementGroup,
+                        hostGroup: hostGroup,
                         scaleInPolicy: _cmdlet.ScaleInPolicy,
                         doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                         platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : null
@@ -343,6 +346,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
                     singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
                     proximityPlacementGroup: proximityPlacementGroup,
+                    hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,

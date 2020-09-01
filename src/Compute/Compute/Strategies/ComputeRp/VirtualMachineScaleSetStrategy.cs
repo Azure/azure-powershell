@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
+            Func<IEngine, SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
@@ -130,6 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    HostGroup = hostGroup(engine),
                     ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                     {
                         Rules = scaleInPolicy
@@ -145,6 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
+            Func<IEngine, SubResource> hostGroup,
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
             int? platformFaultDomainCount)
@@ -159,6 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    HostGroup = hostGroup(engine),
                     ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                     {
                         Rules = scaleInPolicy

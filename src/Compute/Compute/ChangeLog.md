@@ -25,6 +25,7 @@
 * Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
 * Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
 * Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
+* Added the `-OrchestrationMode` optional parameter to `New-AzVmss`
 
 ## Version 4.3.1
 * Patched `-EncryptionAtHost` parameter in `New-AzVm` to remove default value of false [#12776]
