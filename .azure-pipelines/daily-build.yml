@@ -7,22 +7,77 @@ schedules:
     include:
     - master
 
+
+variables:
+  WindowsName: windows
+  WindowsImage: vs2017-win2016
+  LinuxName: linux
+  LinuxImage: ubuntu-18.04
+  MacOSName: macOS
+  MacOSImage: macOS-10.13
+  Configuration: Release
+
 pr: none
+trigger: none
+
+strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
 
 pool:
-  vmImage: 'windows-2019'
+    vmImage: $(ImageName)
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Build for Version Bump
+- task: PowerShell@2
+  displayName: Clean Existing Modules
   inputs:
-    command: 'custom'
-    custom: 'msbuild'
-    arguments: 'build.proj'
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if(!$modules){
+        $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
+        Remove-Item –path $dirctory –recurse
+      }
 
-- task: ComponentGovernanceComponentDetection@0
-  displayName: Component Detection
+      # Remove AzureRM.* modules
+      $modules = Get-Module -Name AzureRM.* -ListAvailable
+      if(!$modules){
+        $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
+        Remove-Item –path $dirctory –recurse
+      }
+
+- task: PowerShell@2
+  displayName: Connect AzAccount 
   inputs:
-    scanType: 'Register'
-    verbosity: 'Normal'
-    alertWarningLevel: 'High'
+    targetType: 'inline'
+    script: |
+      Enable-AzContextAutosave
+      $servicePrincipal=$(servicePrincipal)
+      $password=$(password)
+      $secret = ConvertTo-SecureString -String $password -AsPlainText -Force
+      $tenantId=$(tenantId)
+      $credential = New-Object -TypeName System.Management.Automation.PSCredential($servicePrincipal, $secret)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $tenantId
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    targetType: filePath
+    filePath: ./tools
+
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    targetType: filePath
+    filePath: ./tools
+    arguments: '-Reverse'
