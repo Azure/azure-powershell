@@ -60,8 +60,8 @@ function Install-AzModule{
         [Switch]
         ${AllowPrerelease},
 
-        [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to install.')]
-        [Parameter(ParameterSetName = 'ByNameAndPreview', Mandatory, HelpMessage = 'Az modules to install.')]
+        [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'ByNameAndPreview', Mandatory, HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
         [String[]]
         ${Name}
@@ -145,7 +145,7 @@ function Install-AzModule{
         } else {
             
             #With preview
-            Write-Warning 'Please use `Install-Module -Name Az.Accounts -AllowPrerelease` to install preview version for Az.Accounts'
+            Write-Warning "this cmdlet will not install preview version for Az.Accounts."
 
             $latest = ' latest'
 
@@ -166,8 +166,8 @@ function Install-AzModule{
             
             $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
         }
-        
-        if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove')) {
+
+        if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
             remove_installed_module -Name 'AzureRm*'
             remove_installed_module -Name 'Azure.*'
         }
@@ -175,7 +175,7 @@ function Install-AzModule{
         if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
             $module | Foreach-Object {
                 $name = $_.Name
-                if ($PSCmdlet.ShouldProcess("Remove all previous versions of $name", "$name", "Remove")) {
+                if ($Force -or $PSCmdlet.ShouldProcess("Remove all previous versions of $name", "All previous $name", "Remove")) {
                     Write-Output $_
                 }
             } | remove_installed_module
@@ -184,7 +184,7 @@ function Install-AzModule{
         $module | Foreach-Object {
             $name = $_.Name
             $version = $_.version
-            if ($PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
+            if ($Force -or $PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
                 Write-Debug "Install$latest $name $version"
                 Write-Output $_
             }
