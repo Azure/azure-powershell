@@ -17,6 +17,9 @@ Add the disk for protection for already protected azure virtual machine.
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
 
+### [Copy-AzRecoveryServicesVault](Copy-AzRecoveryServicesVault.md)
+Copies data from a vault in one region to a vault in another region.
+
 ### [Disable-AzRecoveryServicesBackupAutoProtection](Disable-AzRecoveryServicesBackupAutoProtection.md)
 Disables auto backup for a protectable item.
 
