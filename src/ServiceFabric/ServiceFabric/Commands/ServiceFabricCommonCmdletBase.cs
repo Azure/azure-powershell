@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricCommonCmdletBase : AzureRMCmdlet
     {
-        private static int WriteVerboseIntervalInSec = 20;
+        internal static int WriteVerboseIntervalInSec = 20;
 
         private Lazy<ServiceFabricManagementClient> sfrpClient;
         private Lazy<IResourceManagementClient> resourcesClient;
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                             if (op != null)
                             {
-                                string progressMessage = $"Operation Status: {op.Status}";
+                                string progressMessage = $"Operation Status: {op.Status}. Progress: {op.PercentComplete} %";
                                 WriteDebugWithTimestamp(progressMessage);
                                 progress.StatusDescription = progressMessage;
                                 progress.PercentComplete = Convert.ToInt32(op.PercentComplete);

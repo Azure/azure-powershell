@@ -21,11 +21,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
-    public class ServiceFabricApplicationTests : RMTestBase
+    public class ServiceFabricManagedClustersTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public ServiceFabricApplicationTests(ITestOutputHelper output)
+        public ServiceFabricManagedClustersTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -36,30 +36,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAppType()
+        public void TestCreateBasicCluster()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AppType");
+            TestController.NewInstance.RunPsTest(_logger, "Test-CreateBasicCluster");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAppTypeVersion()
+        public void TestNodeTypeOperations()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AppTypeVersion");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NodeTypeOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApp()
+        public void TestCertAndExtension()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-App");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestService()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-Service");
+            TestController.NewInstance.RunPsTest(_logger, "Test-CertAndExtension");
         }
     }
 }

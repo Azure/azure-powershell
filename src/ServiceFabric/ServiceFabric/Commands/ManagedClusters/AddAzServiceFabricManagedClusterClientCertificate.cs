@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void SetParametersByResourceId(string resourceId)
         {
-            this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName);
+            this.GetParametersByResourceId(resourceId, Constants.ManagedClusterProvider, out string resourceGroup, out string resourceName);
             this.ResourceGroupName = resourceGroup;
             this.Name = resourceName;
         }

@@ -182,6 +182,33 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
     return $false
 }
 
+function WaitForAllJob($timeoutInSeconds = 1200)
+{
+    $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
+    $allJobs = Get-Job
+    do
+    {
+        $completed = Get-Job | Where-Object {  $_.State -eq "Completed" }
+        if ($completed.Count -eq $allJobs.Count)
+        {
+            return $true
+            break
+		}
+
+        $failed = Get-Job | Where-Object {  $_.State -eq "Failed" }
+        if ($failed.Count -gt 0)
+        {
+            Write-Error "At least one Job failed" $failed
+            return $false
+		}
+
+        Start-Sleep -Seconds 15
+    } while ((Get-Date) -lt $timeoutTime)
+
+    Write-Error "WaitForJob timed out"
+    return $false
+}
+
 # Application functions
 
 function Get-AppTypeName

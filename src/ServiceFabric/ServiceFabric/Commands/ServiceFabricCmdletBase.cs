@@ -54,8 +54,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         internal static int NewCreatedKeyVaultWaitTimeInSec = 15;
 
-        internal static int WriteVerboseIntervalInSec = 20;
-
         #region TEST
         internal static bool RunningTest = false;
         internal static string TestThumbprint = string.Empty;

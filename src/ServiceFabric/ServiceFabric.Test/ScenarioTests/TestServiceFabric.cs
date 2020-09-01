@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
 
             AddAzureRmServiceFabricNodeType.dontRandom = true;
-            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 0;
+            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    name: nodeType.Name,
                    type: nodeType.Type,
                    tags: nodeType.Tags,
+                   provisioningState: nodeType.ProvisioningState,
                    placementProperties: nodeType.PlacementProperties,
                    capacities: nodeType.Capacities,
                    applicationPorts: nodeType.ApplicationPorts,
