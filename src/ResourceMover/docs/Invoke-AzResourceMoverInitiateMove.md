@@ -26,7 +26,7 @@ For an unsuccessful operation, the MoveResources state changes from "InitiateMov
 
 ### Example 1: Validate the dependecies before Initiate Move for the resources.
 ```powershell
-PS C:\> Invoke-AzResourceMoverInitiateMove -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg')  -ValidateOnly
+PS C:\> Invoke-AzResourceMoverInitiateMove -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg')  -ValidateOnly
 
 
 AdditionalInfo :
@@ -47,7 +47,7 @@ Validate the dependecies before Initiate Move for the resources.
 
 ### Example 2: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input
 ```powershell
-PS C:\>Invoke-AzResourceMoverInitiateMove -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg') 
+PS C:\>Invoke-AzResourceMoverInitiateMove -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :
@@ -67,7 +67,7 @@ Initiate Move for the set of resources in the Move collection using "MoveResourc
 
 ### Example 3: Initiate Move for the set of resources in the Move Collection using "SourceARMID" as input
 ```powershell
-PS C:\> Invoke-AzResourceMoverInitiateMove -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+PS C:\> Invoke-AzResourceMoverInitiateMove -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :

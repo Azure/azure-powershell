@@ -26,7 +26,7 @@ An unsuccessful Prepare operation, the MoveResources state changes from "Commit 
 
 ### Example 1: Validate the dependecies before commit of the resources
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm'') -ValidateOnly
+PS C:\>Invoke-AzResourceMoverCommit -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm') -ValidateOnly
 
 
 AdditionalInfo :
@@ -47,7 +47,7 @@ Validate the dependecies before commit of the resources.
 
 ### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input
 ```powershell
-PS C:\>Invoke-AzResourceMoverCommit -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm')
+PS C:\>Invoke-AzResourceMoverCommit -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResource $('psdemorm')
 
 AdditionalInfo :
 Code           :
@@ -68,7 +68,7 @@ Commit the set of resources in the Move Collection using "MoveResource Name" as 
 
 ### Example 3: Commit the set of resources in the Move Collection using "SourceARMID" as input
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM')
+PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM')
 
 AdditionalInfo :
 Code           :

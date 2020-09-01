@@ -1,6 +1,6 @@
 ### Example 1: Remove the Move Collection from the specified subscription
 ```powershell
-PS C:\> Remove-AzResourceMoverMoveCollection -SubscriptionId  "e80eb9fa-c996-4435-aa32-5af6f3d3077c" -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM"
+PS C:\> Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM"
 
     AdditionalInfo :
     Code           :

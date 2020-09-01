@@ -24,7 +24,7 @@ Get list of unresolved dependent resources for a Move collection.
 
 ### Example 1: Get list of unresolved dependent resources
 ```powershell
-PS C:\> Get-AzResourceMoverUnresolvedDependency -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c
+PS C:\> Get-AzResourceMoverUnresolvedDependency -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM
 
 Count Id
 ----- --

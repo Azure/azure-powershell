@@ -63,7 +63,7 @@ Get details of the Move collection with a specified move collection name in the 
 
 ### Example 3: Get details of the Move collection with a specified resource group name in the subscription
 ```powershell
-PS C:\> Get-AzResourceMoverMoveCollection  -SubscriptionId e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM 
+PS C:\> Get-AzResourceMoverMoveCollection -ResourceGroupName RG-MoveCollection-demoRM 
 
 Location    Name                               Type
 --------    ----                               ----

@@ -30,7 +30,7 @@ Get details of the resources in Move collection.
 
 ### Example 1: Get details of all the resources in the Move collection.
 ```powershell
-PS C:\>  Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c          
+PS C:\>  Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM
 
 Code                                    :
 DependsOn                               : {/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Networ
@@ -127,7 +127,7 @@ Get details of all the resources in the move collection.
 
 ### Example 2: Get details of a specific resources in a Move collection using move resource name .
 ```powershell
-PS C:\> Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c  -Name PSDemoVM   
+PS C:\> Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -Name PSDemoVM   
                                                      
 Code                                    :
 DependsOn                               : {/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Networ
@@ -165,7 +165,7 @@ Get details of a specific resources in a Move collection using move resource nam
 
 ### Example 3:Get details of a specific resources in a Move collection using filters such as : SourceResourceName, SourceId, MoveState, IsResolveRequired, ProvisioningState
 ```powershell
-PS C:\>Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -Filter "Properties/SourceResourceName eq 'PSDemoVM'"
+PS C:\>Get-AzResourceMoverMoveResource -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM -Filter "Properties/SourceResourceName eq 'PSDemoVM'"
 
 Code                                    :
 DependsOn                               : {/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Networ

@@ -14,12 +14,9 @@ Adding a resource to the Move collection.
 
 ```
 Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-ErrorCode <String>]
- [-ErrorDetail <IMoveResourceErrorBody[]>] [-ErrorMessage <String>] [-ErrorTarget <String>]
- [-ExistingTargetId <String>] [-MoveStatusCode <String>] [-MoveStatusDetail <IMoveResourceErrorBody[]>]
- [-MoveStatusJobName <JobName>] [-MoveStatusJobProgress <String>] [-MoveStatusMessage <String>]
- [-MoveStatusMoveState <MoveState>] [-MoveStatusTarget <String>] [-MoveStatusTargetId <String>]
- [-ResourceSettingResourceType <String>] [-ResourceSettingTargetResourceName <String>] [-SourceId <String>]
+ [-SubscriptionId <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
+ [-ExistingTargetId <String>] [-ResourceSettingResourceType <String>]
+ [-ResourceSettingTargetResourceName <String>] [-SourceId <String>]
  [-SourceResourceSettingResourceType <String>] [-SourceResourceSettingTargetResourceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,7 +28,7 @@ Adding a resource to the Move collection within the specified subscription.
 
 ### Example 1: Adding a resource to the move collection.
 ```powershell
-PS C:\> Add-AzResourceMoverMoveResource -SubscriptionId e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM" -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name PSDemoVM -ResourceSettingResourceType "Microsoft.Compute/virtualMachines" -ResourceSettingTargetResourceName PSDemoVM
+PS C:\> Add-AzResourceMoverMoveResource -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name PSDemoVM -ResourceSettingResourceType "Microsoft.Compute/virtualMachines" -ResourceSettingTargetResourceName PSDemoVM
 
 Output:
 
@@ -119,69 +116,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ErrorCode
-An identifier for the error.
-Codes are invariant and are intended to be consumed programmatically.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ErrorDetail
-A list of additional details about the error.
-To construct, see NOTES section for ERRORDETAIL properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceErrorBody[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ErrorMessage
-A message describing the error, intended to be suitable for display in a user interface.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ErrorTarget
-The target of the particular error.
-For example, the name of the property in error.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExistingTargetId
 Gets or sets the existing target ARM Id of the resource.
 
@@ -206,129 +140,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusCode
-An identifier for the error.
-Codes are invariant and are intended to be consumed programmatically.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusDetail
-A list of additional details about the error.
-To construct, see NOTES section for MOVESTATUSDETAIL properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceErrorBody[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusJobName
-Defines the job name.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusJobProgress
-Gets or sets the monitoring job percentage.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusMessage
-A message describing the error, intended to be suitable for display in a user interface.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusMoveState
-Defines the MoveResource states.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusTarget
-The target of the particular error.
-For example, the name of the property in error.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoveStatusTargetId
-Gets the Target ARM Id of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -524,18 +335,6 @@ To create the parameters described below, construct a hash table containing the 
 DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>: Gets or sets the move resource dependencies overrides.
   - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.
   - `[TargetId <String>]`: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
-
-ERRORDETAIL <IMoveResourceErrorBody[]>: A list of additional details about the error.
-  - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  - `[Detail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
-  - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
-  - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
-
-MOVESTATUSDETAIL <IMoveResourceErrorBody[]>: A list of additional details about the error.
-  - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  - `[Detail <IMoveResourceErrorBody[]>]`: A list of additional details about the error.
-  - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
-  - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
 ## RELATED LINKS
 

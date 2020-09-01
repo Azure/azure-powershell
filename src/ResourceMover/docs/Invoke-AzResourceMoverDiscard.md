@@ -26,7 +26,7 @@ For an unsuccessful Discard operation, the MoveResources state changes "Commit P
 
 ### Example 1: Validate the dependecies before Discard of  the resources.
 ```powershell
-PS C:\> Invoke-AzResourceMoverDiscard -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg') -ValidateOnly
+PS C:\> Invoke-AzResourceMoverDiscard -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM  -MoveResource $('PSDemoVM-nsg') -ValidateOnly
 
 AdditionalInfo :
 Code           :
@@ -46,7 +46,7 @@ Validate the dependecies before Discard of  the resources.
 
 ### Example 2: Discards the move of the resources using "MoveResource Name" as input
 ```powershell
-PS C:\> Invoke-AzResourceMoverDiscard -SubscriptionId  "e80eb9fa-c996-4435-aa32-5af6f3d3077c" -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('PSDemoVM-nsg')
+PS C:\> Invoke-AzResourceMoverDiscard -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :
@@ -66,7 +66,7 @@ Discards the move of the resources using "MoveResource Name" as input.
 
 ### Example 3: Discards the move of the resources using "SourceARMID" as input
 ```powershell
-PS C:\>  Invoke-AzResourceMoverDiscard -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+PS C:\>  Invoke-AzResourceMoverDiscard -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :

@@ -1,6 +1,6 @@
 ### Example 1: Validate the dependecies before prepare for the resources
 ```powershell
-PS C:\> Invoke-AzResourceMoverPrepare -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('psdemovm') -ValidateOnly
+PS C:\> Invoke-AzResourceMoverPrepare -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('psdemovm') -ValidateOnly
 
 AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
@@ -23,7 +23,7 @@ Validate the dependecies before prepare for the resources.
 
 ### Example 2: Initiate prepare for the set of resources in the Move Collection using "MoveResource Name" as input
 ```powershell
-PS C:\> Invoke-AzResourceMoverPrepare -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('psdemovm',psdemovm62', 'PSDemoVM-ip', 'PSDemoRM-vnet','PSDemoVM-nsg')
+PS C:\> Invoke-AzResourceMoverPrepare -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName "PS-centralus-westcentralus-demoRM"  -MoveResource $('psdemovm',psdemovm62', 'PSDemoVM-ip', 'PSDemoRM-vnet','PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :
@@ -42,7 +42,7 @@ Initiate prepare for the set of resources in the Move Collection using "MoveReso
 
 ### Example 3: Initiate prepare for the set of resources in the Move Collection using "SourceARMID"
 ```powershell
-PS C:\> Invoke-AzResourceMoverPrepare -SubscriptionId  e80eb9fa-c996-4435-aa32-5af6f3d3077c -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+PS C:\> Invoke-AzResourceMoverPrepare -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
 
 AdditionalInfo :
 Code           :
