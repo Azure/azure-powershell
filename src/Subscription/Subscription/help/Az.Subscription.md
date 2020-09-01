@@ -11,9 +11,15 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Subscription in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Subscription namespace.
 
 ## Az.Subscription Cmdlets
-### [New-AzSubscription](New-AzSubscription.md)
-Creates an Azure subscription.
-
 ### [Update-AzSubscription](Update-AzSubscription.md)
-Updates the Azure subscription
+Updates an Azure Subscription
+
+### [New-AzSubscriptionAlias](New-AzSubscriptionAlias.md)
+Creates new Alias and Subscription
+
+### [Get-AzSubscriptionAlias](Get-AzSubscriptionAlias.md)
+Gets subscription alias details
+
+### [Remove-AzSubscriptionAlias](Remove-AzSubscriptionAlias.md)
+Remove subscription alias
 

@@ -1,46 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/update-azsubscription
+online version:
 schema: 2.0.0
 ---
 
-# Update-AzSubscription
+# New-AzSubscriptionAlias
 
 ## SYNOPSIS
-Updates an Azure Subscription
+Creates new alias and subscription
 
 ## SYNTAX
 
 ```
-Update-AzSubscription -SubscriptionId <String> -Action <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSubscriptionAlias -AliasName <String> -BillingScope <String> -Workload <String>
+ -SubscriptionName <String> [-SubscriptionId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSubscription** cmdlet updates an Azure subscription
+The **New-AzSubscriptionAlias** cmdlet creates new alias and subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Cancel"
-
-Name        : My Subscription
-Id          : 86869d42-1782-4337-98b0-c905fb937d46
-TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
-State       : Enabled
+PS C:\> New-AzSubscriptionAlias -AliasName "NewAliasName" -SubscriptionName "SubscriptionName" -BillingScope "BillingScope" -Workload "WorkloadType"
 ```
 
-Updates the subscription
+Creates new alias and subscription
 
 ## PARAMETERS
 
-### -Action
-Action to perform on subscription
+### -AliasName
+Alias for the subscription
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,11 +51,26 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BillingScope
+Billing Scope
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -70,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,11 +92,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the subscription
+### -SubscriptionId
+Existing Subscription Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,11 +107,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Subscription Id to update
+### -SubscriptionName
+Name of the subscription
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Workload
+Type of Workload
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -131,7 +157,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
