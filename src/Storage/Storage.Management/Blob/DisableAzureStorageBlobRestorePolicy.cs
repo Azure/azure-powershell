@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSBlobServiceProperties), ChangeDescription = "The deprecated proeprty RestorePolicy.LastEnabledTime will be removed in a future release.")]
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobServiceProperty, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSBlobServiceProperties))]
-    public class UpdateAzStorageBlobServicePropertyCommand : StorageBlobBaseCmdlet
+    [CmdletOutputBreakingChange(typeof(PSRestorePolicy), ChangeDescription = "The deprecated proeprty LastEnabledTime will be removed in a future release.")]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobRestorePolicy, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSRestorePolicy))]
+    public class DisableAzStorageBlobRestorePolicyCommand : StorageBlobBaseCmdlet
     {
+
         /// <summary>
         /// AccountName Parameter Set
         /// </summary>
@@ -81,48 +82,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Default Service Version to Set")]
-        [ValidateNotNull]
-        public string DefaultServiceVersion { get; set; }
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableChangeFeed
-        {
-            get
-            {
-                return enableChangeFeed is null ? false : enableChangeFeed.Value;
-            }
-            set
-            {
-                enableChangeFeed = value;
-            }
-        }
-        private bool? enableChangeFeed = null;
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Gets or sets versioning is enabled if set to true.")]
-        [ValidateNotNullOrEmpty]
-        public bool IsVersioningEnabled
-        {
-            get
-            {
-                return isVersioningEnabled is null ? false : isVersioningEnabled.Value;
-            }
-            set
-            {
-                isVersioningEnabled = value;
-            }
-        }
-        private bool? isVersioningEnabled = null;
+        [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess("BlobServiceProperties", "Update"))
+            if (ShouldProcess("BlobRestorePolicy", "Disable"))
             {
                 switch (ParameterSetName)
                 {
@@ -139,27 +105,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = null;
+                BlobServiceProperties serviceProperties = this.StorageClient.BlobServices.GetServiceProperties( this.ResourceGroupName, this.StorageAccountName);
 
-                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
-
-                if (DefaultServiceVersion != null)
-                {
-                    serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
-                }
-                if (enableChangeFeed != null)
-                {
-                    serviceProperties.ChangeFeed = new ChangeFeed();
-                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
-                }
-                if (isVersioningEnabled != null)
-                {
-                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
-                }
+                serviceProperties.RestorePolicy = new RestorePolicyProperties();
+                serviceProperties.RestorePolicy.Enabled = false;
+                serviceProperties.RestorePolicy.Days = null;
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 
-                WriteObject(new PSBlobServiceProperties(serviceProperties));
+                if (PassThru)
+                {
+                    WriteObject(new PSRestorePolicy(serviceProperties.RestorePolicy));
+                }
+
             }
         }
     }
