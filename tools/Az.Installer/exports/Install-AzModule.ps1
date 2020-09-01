@@ -141,7 +141,13 @@ function Install-AzModule{
                 $index.Keys | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
             } elseif ($PSCmdlet.ParameterSetName -eq 'ByName') {
                 #Install Az modules by name
-                $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
+                $module_name | Foreach-Object {
+                    if (!$index.ContainsKey($_)) {
+                        Write-Warning "module $_ will not be installed since it is not a GAed Az module, please try add -AllowPrerelease option."
+                    } else {
+                        $module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})
+                    }
+                }
             }
 
         } else {
