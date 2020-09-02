@@ -95,11 +95,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _pipelineClient.StartDeletePipeline(pipelineName);
         }
 
-        public string CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
+        public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
-            var document = JsonDocument.Parse(operation.GetRawResponse().ContentStream);
-            return document.RootElement.GetProperty("runId").ToString();
+            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
         }
 
         #endregion
