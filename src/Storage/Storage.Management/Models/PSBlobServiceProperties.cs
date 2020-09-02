@@ -162,6 +162,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
         public DateTime? LastEnabledTime { get; set; }
+        public DateTime? MinRestoreTime { get; set; }
 
         public PSRestorePolicy()
         {
@@ -172,6 +173,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
             this.LastEnabledTime = policy.LastEnabledTime;
+            this.MinRestoreTime = policy.MinRestoreTime;
 
         }
         public RestorePolicyProperties ParseRestorePolicy()

@@ -32,6 +32,7 @@
 * Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 * Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
+* Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Formatted the breaking change messages
 * Updated Azure.Core to 1.4.1
 
 ## Version 1.9.3

@@ -604,4 +604,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureFileSourceFilePathRedundantException" xml:space="preserve">
     <value>Both source file path and multiple source file paths provided. Please give only one option</value>
   </data>
+  <data name="TargetVaultNotEmptyException" xml:space="preserve">
+    <value>Please provide an empty target vault. The target vault should not have any backup items or backup containers</value>
+  </data>
+  <data name="TargetVaultStorageRedundancy" xml:space="preserve">
+    <value>Are you sure you want to copy items to the {0} whose storage redundancy is {1}</value>
+  </data>
 </root>
