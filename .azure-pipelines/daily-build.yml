@@ -13,6 +13,7 @@ trigger: none
 pool:
   vmImage: 'windows-2019'
 
+steps:
 - task: PowerShell@2
   displayName: Connect AzAccount 
   inputs:
@@ -28,7 +29,6 @@ pool:
       Set-AzContext -Subscription "Azure SDK Powershell Test"
     pwsh: true
 
-steps:
 - task: PowerShell@2
   displayName: Clean Existing Modules
   inputs:
