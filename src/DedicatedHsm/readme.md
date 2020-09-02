@@ -83,6 +83,10 @@ directive:
       parameter-name: SkuName
     set:
       parameter-name: Sku
+  - where:
+      parameter-name: NetworkProfileNetworkInterface
+    set:
+      parameter-name: NetworkInterface
 
   # Service team asked us to use 2018-10-31, should be the same as 2018-10-31-preview, but it's not ready on swagger yet
   - from: swagger-document
@@ -91,6 +95,4 @@ directive:
 
   # TODO:
   # Get-: remove -top?
-  # New-: NetworkProfileNetworkInterface: rename? convert to array?
-
 ```
