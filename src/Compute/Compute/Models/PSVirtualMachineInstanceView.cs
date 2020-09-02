@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string OsName { get; set; }
         public string OsVersion { get; set; }
         public string HyperVGeneration { get; set; }
+        public string AssignedHost {get; set; }
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
         public VirtualMachinePatchStatus PatchStatus { get; set; }
+        public VirtualMachineHealthStatus VMHealth { get; set; }
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -72,6 +74,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 OsVersion = virtualMachineInstanceView.OsVersion,
                 HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
                 PatchStatus = virtualMachineInstanceView.PatchStatus
+                VMHealth = virtualMachineInstanceView.VmHealth,
+                AssignedHost = virtualMachineInstanceView.AssignedHost
             };
 
             return result;

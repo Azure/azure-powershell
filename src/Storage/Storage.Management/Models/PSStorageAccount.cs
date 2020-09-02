@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
             this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
             this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
 
         }
 
@@ -120,6 +121,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string LargeFileSharesState { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
 
         public PSGeoReplicationStats GeoReplicationStats { get; set; }
 

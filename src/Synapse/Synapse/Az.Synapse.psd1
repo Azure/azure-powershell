@@ -58,7 +58,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll', 
                'Azure.Analytics.Synapse.Spark.dll', 
-               'Azure.Analytics.Synapse.AccessControl.dll'
+               'Azure.Analytics.Synapse.AccessControl.dll',
+               'Azure.Analytics.Synapse.Artifacts.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -106,13 +107,26 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Set-AzSynapseIntegrationRuntime', 
                'Sync-AzSynapseIntegrationRuntimeCredential', 
                'Update-AzSynapseIntegrationRuntime', 
-               'Update-AzSynapseIntegrationRuntimeNode'
+               'Update-AzSynapseIntegrationRuntimeNode', 
+               'Get-AzSynapsePipeline', 'Remove-AzSynapsePipeline', 
+               'Set-AzSynapsePipeline', 'Invoke-AzSynapsePipeline', 
+               'Get-AzSynapsePipelineRun', 'Stop-AzSynapsePipelineRun', 
+               'Get-AzSynapseActivityRun', 'Get-AzSynapseLinkedService', 
+               'Set-AzSynapseLinkedService', 'Remove-AzSynapseLinkedService', 
+               'Get-AzSynapseNotebook', 'Set-AzSynapseNotebook', 
+               'Remove-AzSynapseNotebook', 'Export-AzSynapseNotebook', 
+               'Set-AzSynapseTrigger', 'Get-AzSynapseTrigger', 'Remove-AzSynapseTrigger', 
+               'Get-AzSynapseTriggerSubscriptionStatus', 'Add-AzSynapseTriggerSubscription', 
+               'Remove-AzSynapseTriggerSubscription', 'Start-AzSynapseTrigger', 
+               'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
+                'New-AzSynapseNotebook', 'Import-AzSynapseNotebook',
+                'New-AzSynapseTrigger'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

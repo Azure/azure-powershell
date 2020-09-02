@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Network</PsModuleName>
@@ -15,12 +15,16 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="38.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
   </ItemGroup>
 
   <ItemGroup>

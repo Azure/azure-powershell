@@ -434,8 +434,66 @@ function Test-StorageBlobServiceProperties
     }
 }
 
+<#
+.SYNOPSIS
+Test StorageAccount Blob Restore
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobRestore
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
 
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+        # Enable Blob Delete Retension Policy, Enable Changefeed, then enabled blob restore policy, then get blob service proeprties and check the setting
+        Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RetentionDays 5
+        Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true
+        # If record, need sleep before enable the blob restore policy, or will get server error
+        #sleep 100 
+        Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RestoreDays 4
+        $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+        Assert-AreEqual $true $property.ChangeFeed.Enabled
+        Assert-AreEqual $true $property.DeleteRetentionPolicy.Enabled
+        Assert-AreEqual 5 $property.DeleteRetentionPolicy.Days
+        Assert-AreEqual $true $property.RestorePolicy.Enabled
+        Assert-AreEqual 4 $property.RestorePolicy.Days
 
+        # restore blobs by -asjob
+        $range1 = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
+        $range2 = New-AzStorageBlobRangeToRestore -StartRange container3/blob3 -EndRange ""
+        $job = Restore-AzStorageBlobRange -ResourceGroupName $rgname -StorageAccountName $stoname -TimeToRestore (Get-Date).AddSeconds(-1) -BlobRestoreRange $range1,$range2 -asjob
+
+        # Get  Storage Account with Blob Restore Status
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
+
+        # wait for restore job finish, and check Blob Restore Status in Storage Account	
+        $job | Wait-Job
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
+        Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS
