@@ -13,6 +13,21 @@ trigger: none
 pool:
   vmImage: 'windows-2019'
 
+- task: PowerShell@2
+  displayName: Connect AzAccount 
+  inputs:
+    targetType: 'inline'
+    script: |
+      Enable-AzContextAutosave
+      $servicePrincipal=$(servicePrincipal)
+      $password=$(password)
+      $secret = ConvertTo-SecureString -String $password -AsPlainText -Force
+      $tenantId=$(tenantId)
+      $credential = New-Object -TypeName System.Management.Automation.PSCredential($servicePrincipal, $secret)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $tenantId
+      Set-AzContext -Subscription "Azure SDK Powershell Test"
+    pwsh: true
+
 steps:
 - task: PowerShell@2
   displayName: Clean Existing Modules
@@ -34,18 +49,17 @@ steps:
       }
 
 - task: PowerShell@2
-  displayName: Connect AzAccount 
+  displayName: Install Az Modules from PSGallery
   inputs:
     targetType: 'inline'
     script: |
-      Enable-AzContextAutosave
-      $servicePrincipal=$(servicePrincipal)
-      $password=$(password)
-      $secret = ConvertTo-SecureString -String $password -AsPlainText -Force
-      $tenantId=$(tenantId)
-      $credential = New-Object -TypeName System.Management.Automation.PSCredential($servicePrincipal, $secret)
-      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $tenantId
-    pwsh: true
+      # Check PSGallery
+      $psGallery = Get-PSRepository -Name PSGallery
+      if(!$psGallery){
+        # Set up PSGallery
+        Register-PSRepository -Default -InstallationPolicy Trusted
+      }
+      Install-Module -Name Az -Repository PSGallery   
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
