@@ -32,9 +32,6 @@ Adds a Key Vault key to a SQL server.
 ### [Add-AzSqlServerTransparentDataEncryptionCertificate](Add-AzSqlServerTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
-### [Stop-AzSqlInstanceDatabaseLogReplay](Stop-AzSqlInstanceDatabaseLogReplay.md)
-Cancels a log replay service for the given SQL Managed Database.
-
 ### [Clear-AzSqlDatabaseAdvancedThreatProtectionSetting](Clear-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
 Removes the advanced threat protection settings from a database.
 
@@ -60,7 +57,7 @@ Removes the advanced threat protection settings from a server.
 Clears the vulnerability assessment settings of a server.
 
 ### [Complete-AzSqlInstanceDatabaseLogReplay](Complete-AzSqlInstanceDatabaseLogReplay.md)
-Completes a log replay service for the given SQL Managed Database.
+Completes Log Replay service for the given database.
 
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
@@ -255,7 +252,7 @@ Gets a backup short term retention policy.
 Returns information about Azure SQL Managed Instance database redundant backup.
 
 ### [Get-AzSqlInstanceDatabaseLogReplay](Get-AzSqlInstanceDatabaseLogReplay.md)
-Returns a log replay service restore details for the given SQL Managed Database.
+Gets the Log Replay service status.
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
@@ -698,14 +695,14 @@ Starts a vulnerability assessment scan.
 ### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
 Starts a job, returning a job execution id that can be polled to view it's status
 
+### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
+Starts a Log Replay service with the given parameters.
+
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
-
-### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
-Starts a log replay service for the given SQL Managed Database.
 
 ### [Stop-AzSqlDatabaseActivity](Stop-AzSqlDatabaseActivity.md)
 Cancels the asynchronous updates operation on the database.
@@ -718,6 +715,9 @@ Stops a job given it's job execution id
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
+
+### [Stop-AzSqlInstanceDatabaseLogReplay](Stop-AzSqlInstanceDatabaseLogReplay.md)
+Stops the Log Replay service by dropping the database.
 
 ### [Stop-AzSqlInstanceOperation](Stop-AzSqlInstanceOperation.md)
 Stops a SQL managed instance's operations.

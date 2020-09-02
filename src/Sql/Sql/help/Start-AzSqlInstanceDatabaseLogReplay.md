@@ -12,19 +12,20 @@ Starts a Log Replay service with the given parameters.
 
 ## SYNTAX
 
-### LogReplayInstanceDatabaseFromInputParameters
+### LogReplayInstanceDatabaseFromInputParameters (Default)
 ```
 Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
  [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-Name] <String>
  [-InstanceName] <String> [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
  [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-PassThru]
- [-InputObject] <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InputObject] <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +58,7 @@ This command will create new managed database and will start restoring backups f
 The indicator whether or not to auto-complete restore upon completion.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +73,7 @@ Accept wildcard characters: False
 The collation of the instance database to use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -102,7 +103,7 @@ Accept wildcard characters: False
 The instance database object.
 
 ```yaml
-Type: AzureSqlManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 Aliases: InstanceDatabase
 
@@ -117,7 +118,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases: ManagedInstanceName
 
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 {{ Fill LastBackupName Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +148,7 @@ Accept wildcard characters: False
 The name of the instance database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases: InstanceDatabaseName
 
@@ -162,7 +163,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +178,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -192,7 +193,7 @@ Accept wildcard characters: False
 The storage container Sas token.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SasToken
 
@@ -207,11 +208,41 @@ Accept wildcard characters: False
 The storage container URI.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Storage
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,7 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
 ## NOTES
 
 ## RELATED LINKS

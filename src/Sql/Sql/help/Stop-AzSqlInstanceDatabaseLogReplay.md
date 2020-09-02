@@ -12,16 +12,17 @@ Cancels the Log Replay service by dropping the database.
 
 ## SYNTAX
 
-### LogReplayInstanceDatabaseFromInputParameters
+### LogReplayInstanceDatabaseFromInputParameters (Default)
 ```
 Stop-AzSqlInstanceDatabaseLogReplay [-Force] [-Name] <String> [-InstanceName] <String>
- [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Stop-AzSqlInstanceDatabaseLogReplay [-Force] [-PassThru] [-InputObject] <AzureSqlManagedDatabaseModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +43,7 @@ This command will cancel log replay service on the given database.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +58,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +73,7 @@ Accept wildcard characters: False
 The instance database object.
 
 ```yaml
-Type: AzureSqlManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 Aliases: InstanceDatabase
 
@@ -87,7 +88,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases: ManagedInstanceName
 
@@ -102,7 +103,7 @@ Accept wildcard characters: False
 The name of the instance database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases: InstanceDatabaseName
 
@@ -117,7 +118,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -140,6 +141,36 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,7 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
 ## NOTES
 
 ## RELATED LINKS
