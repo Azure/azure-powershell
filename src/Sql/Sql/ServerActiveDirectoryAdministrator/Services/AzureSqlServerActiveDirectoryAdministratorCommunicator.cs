@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         public Management.Sql.Models.ServerAzureADAdministrator Disable(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADAdministrators.DisableAzureADOnlyAuthenticationAsync(resourceGroupName, serverName).Result;
+            return null;
         }
 
         /// <summary>

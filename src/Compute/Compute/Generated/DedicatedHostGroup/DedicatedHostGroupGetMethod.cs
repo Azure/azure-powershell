@@ -56,21 +56,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(hostGroupName))
                 {
+                    DedicatedHostGroup result;
                     if (this.InstanceView.IsPresent)
                     {
-                        var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName, InstanceViewTypes.InstanceView).InstanceView;
-                        var psObject = new PSHostGroupInstanceView();
-                        ComputeAutoMapperProfile.Mapper.Map<DedicatedHostGroupInstanceView, PSHostGroupInstanceView>(result, psObject);
-                        WriteObject(psObject);
+                        result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName, InstanceViewTypes.InstanceView);
                     }
                     else 
                     {
-                        var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
-                        var psObject = new PSHostGroup();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
-                        WriteObject(psObject);
+                        result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
                     }
-
+                    var psObject = new PSHostGroup();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
+                    WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName))
                 {

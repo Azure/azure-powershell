@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`
+* Updated ARM template What-If cmdlets to show "Ignore" resource changes last
+* Fixed secure and array parameter serialization issues for deployment cmdlets [#12773]
+
+## Version 2.5.0
 * Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
 * Created new cmdlet `Set-AzRoleAssignment`
 * Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope

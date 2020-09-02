@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Formatted the breaking change messages
+* Updated Azure.Core to 1.4.1
+
+## Version 1.9.3
 * Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
 * Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
 
