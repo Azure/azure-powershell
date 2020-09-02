@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
            //See if the type of the param is changing
             if (OldParamaterType != null && !string.IsNullOrWhiteSpace(NewParameterTypeName))
             {
-                message.Append("\n" + string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName));
+                message.Append(string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName));
             }
             return message.ToString();
         }

@@ -98,17 +98,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             }
 
             List<GenericBreakingChangeAttribute> attributes = new List<GenericBreakingChangeAttribute>(GetAllBreakingChangeAttributesInType(type, invocationInfo));
+            StringBuilder sb = new StringBuilder();
+            Action<string> appendBreakingChangeInfo = (string s) => sb.Append(s);
 
             if (attributes != null && attributes.Count > 0)
             {
-                writeOutput(string.Format(Resources.BreakingChangesAttributesHeaderMessage, Utilities.GetNameFromCmdletType(type)));
+                appendBreakingChangeInfo(string.Format(Resources.BreakingChangesAttributesHeaderMessage, Utilities.GetNameFromCmdletType(type)));
 
                 foreach (GenericBreakingChangeAttribute attribute in attributes)
                 {
-                    attribute.PrintCustomAttributeInfo(type, false, writeOutput);
+                    attribute.PrintCustomAttributeInfo(type, false, appendBreakingChangeInfo);
                 }
 
-                writeOutput(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
+                appendBreakingChangeInfo(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
+                
+                writeOutput(sb.ToString());
             }
         }
 
