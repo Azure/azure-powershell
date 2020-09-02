@@ -1,3 +1,7 @@
+## 4.6.2 - August 2020
+#### Az.WebApp
+* Added '-dotnetcore' to Set-AzWebApp' to update runtime stack of Azure Web App to dotnetcore [#12883]
+
 ## 4.6.1 - August 2020
 #### Az.Compute
 * Patched '-EncryptionAtHost' parameter in 'New-AzVm' to remove default value of false [#12776]
