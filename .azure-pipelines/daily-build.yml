@@ -7,33 +7,11 @@ schedules:
     include:
     - master
 
-
-variables:
-  WindowsName: windows
-  WindowsImage: vs2017-win2016
-  LinuxName: linux
-  LinuxImage: ubuntu-18.04
-  MacOSName: macOS
-  MacOSImage: macOS-10.13
-  Configuration: Release
-
 pr: none
 trigger: none
 
-strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
-
 pool:
-    vmImage: $(ImageName)
+  vmImage: 'windows-2019'
 
 steps:
 - task: PowerShell@2
