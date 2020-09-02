@@ -297,7 +297,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzSqlSyncGroup](./Set-AzSqlSyncGroup.md)
+[New-AzSqlSyncGroup](./New-AzSqlSyncGroup.md)
 
 [Remove-AzSqlSyncGroup](./Remove-AzSqlSyncGroup.md)
 
