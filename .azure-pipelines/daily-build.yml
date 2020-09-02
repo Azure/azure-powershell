@@ -43,14 +43,14 @@ steps:
     script: |
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
-      if(!$modules){
+      if($modules){
         $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
         Remove-Item –path $dirctory –recurse
       }
 
       # Remove AzureRM.* modules
       $modules = Get-Module -Name AzureRM.* -ListAvailable
-      if(!$modules){
+      if($modules){
         $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
         Remove-Item –path $dirctory –recurse
       }
@@ -72,12 +72,12 @@ steps:
 - task: PowerShell@2
   displayName: Run Smoke Test 
   inputs:
-    targetType: filePath
-    filePath: ./tools
+    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    pwsh: true
 
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
   inputs:
-    targetType: filePath
-    filePath: ./tools
+    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
+    pwsh: true
