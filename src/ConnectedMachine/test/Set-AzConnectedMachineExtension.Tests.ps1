@@ -103,5 +103,12 @@ Describe 'Set-AzConnectedMachineExtension' {
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
         $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]
+
+        # Now modify the object and set it again
+        $res.Setting["commandToExecute"] = "updated"
+        $update = $res | Set-AzConnectedMachineExtension @splat
+        $update.Name | Should -Be $extensionName
+        $update.ProvisioningState | Should -Be "Succeeded"
+        $update.Setting["commandToExecute"] | Should -Be "updated"
     }
 }
