@@ -121,7 +121,16 @@ steps:
         # Install previous version of Az
         $previousVersion = $versions[1]
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        
+        # Check Az
+        Get-Module -Name Az.* -ListAvailable
+
+        #Update Az
         Update-Module -Name Az
+        
+        # Check Az
+        Get-Module -Name Az.* -ListAvailable
+
         # Reuse connected account and select subscription for test
         Enable-AzureRmAlias
         Set-AzContext -Subscription "Azure SDK Powershell Test"
@@ -139,4 +148,61 @@ steps:
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
+        Remove-Item –path $dirctory –recurse -force
+        Write-Host "Az modules removed."
+      }
+
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Install an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force 
+      Get-AzVM
+      Get-Module
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Update an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Get previous version of Az.Compute
+      $versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version |
+       %{[system.version]$_} | 
+       sort -Descending -Top 2 | 
+       %{[System.String]$_}
+
+      if($versions.Count -ge 2){
+        # Install previous version of Az.Compute
+        $previousVersion = $versions[1]
+        Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        
+        # Check Az.Compute
+        Get-Module -Name Az.Compute
+
+        #Update Az.Compute
+        Update-Module -Name Az.Compute
+        
+        Get-AzVM
+
+        # Check Az.Compute
+        Get-Module
+      }
     pwsh: true
