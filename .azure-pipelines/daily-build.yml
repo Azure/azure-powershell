@@ -61,6 +61,7 @@ steps:
       $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
       Set-AzContext -Subscription "Azure SDK Powershell Test"
+      Enable-AzureRmAlias
     pwsh: true
 
 - task: PowerShell@2
