@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 0.7.4
-* Added new cmdlets `New-AzSubscriptionAlias`, deprecating cmdlet `New-AzSubscription`
+* Added new cmdlets `New-AzSubscriptionAlias`
 
 ## Version 0.7.3
 * Added new cmdlet `Update-AzSubscription`

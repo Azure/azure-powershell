@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionPreview", "SubscriptionPreview\SubscriptionPreview.csproj", "{BE89A8DC-5572-4607-9AAC-6C3AC3177D45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE89A8DC-5572-4607-9AAC-6C3AC3177D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE89A8DC-5572-4607-9AAC-6C3AC3177D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE89A8DC-5572-4607-9AAC-6C3AC3177D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE89A8DC-5572-4607-9AAC-6C3AC3177D45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

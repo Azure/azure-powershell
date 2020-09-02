@@ -16,6 +16,22 @@
 .SYNOPSIS
 Create subscription
 #>
+function Test-NewSubscription	
+{	
+    # $accounts = Get-AzEnrollmentAccount	
+    $accounts = @(@{ ObjectId = "455fd0a7-b04e-4a92-9e1b-d0650c8ba276" })	
+
+    # Verify the caller has at least one enrollment account.	
+    Assert-True { $accounts.Count -gt 0 }	
+
+    $myNewSubName = GetAssetName	
+
+    $newSub = New-AzSubscription -EnrollmentAccountObjectId $accounts[0].ObjectId -Name $myNewSubName -OfferType MS-AZR-0017P	
+
+    Assert-AreEqual $myNewSubName $newSub.Name	
+	Assert-NotNull $newSub.SubscriptionId	
+}
+
 function Test-UpdateRenameSubscription
 {
     $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
