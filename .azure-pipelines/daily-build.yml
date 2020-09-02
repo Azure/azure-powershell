@@ -46,9 +46,10 @@ steps:
       $psGallery = Get-PSRepository -Name PSGallery
       if(!$psGallery){
         # Set up PSGallery
-        Write-Host "Registering AzureRM modules..."
+        Write-Host "Registering PSGallery..."
         Register-PSRepository -Default -InstallationPolicy Trusted
       }else{
+        Write-Host "Setting PSGallery Trusted..."
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery   
