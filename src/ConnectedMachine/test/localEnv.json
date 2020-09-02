@@ -1,9 +1,9 @@
 {
+  "Location": "eastus",
   "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d",
-  "MachineName2": "kg3m7l",
+  "azcmagentPath": "azcmagent",
+  "MachineName1": "b8mkfl",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "MachineName1": "rbfx2a",
-  "azcmagentPath": "C:\\Program Files\\AzureConnectedMachineAgent\\azcmagent.exe",
-  "ResourceGroupName": "connectedmachine-rg-byemgn",
-  "Location": "eastus"
+  "MachineName2": "qpmwxr",
+  "ResourceGroupName": "connectedmachine-rg-w9go6m"
 }

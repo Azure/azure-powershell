@@ -60,7 +60,7 @@ Describe 'New-AzConnectedMachineExtension' {
             MachineName = $machineName
             Name = $extensionName
             Location = $env.location
-            Settings = @{
+            Setting = @{
                 commandToExecute = "dir"
             }
         }
@@ -78,7 +78,7 @@ Describe 'New-AzConnectedMachineExtension' {
         $res = New-AzConnectedMachineExtension @splat
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
-        $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]
+        $res.Setting["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
     }
 
     It 'Create parameter set' {
@@ -99,6 +99,7 @@ Describe 'New-AzConnectedMachineExtension' {
             MachineName = $machineName
             Name = $extensionName
         }
+
         $res = $extension | New-AzConnectedMachineExtension @splat
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
@@ -113,7 +114,7 @@ Describe 'New-AzConnectedMachineExtension' {
 
         $splat = @{
             Location = $env.location
-            Settings = @{
+            Setting = @{
                 commandToExecute = "dir"
             }
         }
@@ -128,7 +129,16 @@ Describe 'New-AzConnectedMachineExtension' {
             $splat.TypeHandlerVersion = "1.10"
         }
     
-        $res = $identity | New-AzConnectedMachineExtension @splat
+        # Tests include -SubscriptionId automatically but it causes
+        # piping to fail. This temporarily removes that default value for
+        # this test.
+        $before = $PSDefaultParameterValues["*:SubscriptionId"]
+        $PSDefaultParameterValues.Remove("*:SubscriptionId")
+        try {
+            $res = $identity | New-AzConnectedMachineExtension @splat
+        } finally {
+            $PSDefaultParameterValues["*:SubscriptionId"] = $before
+        }
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
         $res.Setting["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
@@ -147,7 +157,16 @@ Describe 'New-AzConnectedMachineExtension' {
             Publisher            = if($IsWindows) { "Microsoft.Compute"     } else { "Microsoft.Azure.Extensions" }
         }
 
-        $res = $extension | New-AzConnectedMachineExtension -ExtensionParameter $extension
+        # Tests include -SubscriptionId automatically but it causes
+        # piping to fail. This temporarily removes that default value for
+        # this test.
+        $before = $PSDefaultParameterValues["*:SubscriptionId"]
+        $PSDefaultParameterValues.Remove("*:SubscriptionId")
+        try {
+            $res = $extension | New-AzConnectedMachineExtension -ExtensionParameter $extension
+        } finally {
+            $PSDefaultParameterValues["*:SubscriptionId"] = $before
+        }
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
         $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]
