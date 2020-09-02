@@ -20,6 +20,9 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
+### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
+The operation to create or update the extension.
+
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to remove a hybrid machine identity in Azure.
 
@@ -27,5 +30,8 @@ The operation to remove a hybrid machine identity in Azure.
 The operation to delete the extension.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
+The operation to create or update the extension.
+
+### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 

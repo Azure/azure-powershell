@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedMachine.private.dll'
   FormatsToProcess = './Az.ConnectedMachine.format.ps1xml'
-  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Set-AzConnectedMachineExtension', '*'
+  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'New-AzConnectedMachineExtension', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Set-AzConnectedMachineExtension', 'Update-AzConnectedMachineExtension', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

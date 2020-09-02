@@ -1,20 +1,20 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/set-azconnectedmachineextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/new-azconnectedmachineextension
 schema: 2.0.0
 ---
 
-# Set-AzConnectedMachineExtension
+# New-AzConnectedMachineExtension
 
 ## SYNOPSIS
 The operation to create or update the extension.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ExtensionType <String>]
  [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewStatusCode <String>]
  [-InstanceViewStatusDisplayStatus <String>] [-InstanceViewStatusLevel <StatusLevelTypes>]
@@ -25,11 +25,30 @@ Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
  [<CommonParameters>]
 ```
 
-### Update
+### Create
 ```
-Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  -ExtensionParameter <IMachineExtension> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
+ -ExtensionParameter <IMachineExtension> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> -Location <String>
+ [-AutoUpgradeMinorVersion] [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>]
+ [-InstanceViewStatusCode <String>] [-InstanceViewStatusDisplayStatus <String>]
+ [-InstanceViewStatusLevel <StatusLevelTypes>] [-InstanceViewStatusMessage <String>]
+ [-InstanceViewStatusTime <DateTime>] [-InstanceViewType <String>] [-InstanceViewTypeHandlerVersion <String>]
+ [-ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>] [-Publisher <String>]
+ [-Setting <IMachineExtensionPropertiesSettings>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,10 +56,10 @@ The operation to create or update the extension.
 
 ## EXAMPLES
 
-### Example 1: Set an extension on a machine
+### Example 1: Add a new extension to a machine
 ```powershell
 PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-PS C:\> Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
 
 Name   Location ProvisioningState
 ----   -------- -----------------
@@ -72,7 +91,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -103,7 +122,7 @@ To construct, see NOTES section for EXTENSIONPARAMETER properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
-Parameter Sets: Update
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -118,7 +137,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -133,7 +152,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -143,12 +162,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceViewName
 The machine extension name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -163,7 +198,7 @@ The status code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -178,7 +213,7 @@ The short localizable label for the status.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -193,7 +228,7 @@ The level code.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -208,7 +243,7 @@ The detailed status message, including for alerts and error messages.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -223,7 +258,7 @@ The time of the status.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -238,7 +273,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -253,7 +288,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -268,7 +303,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -283,7 +318,7 @@ The name of the machine where the extension should be created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -298,7 +333,7 @@ The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -328,7 +363,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesProtectedSettings
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: ProtectedSettings
 
 Required: False
@@ -343,7 +378,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -358,7 +393,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -373,7 +408,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesSettings
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: Settings
 
 Required: False
@@ -389,7 +424,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: False
@@ -404,7 +439,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -419,7 +454,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -467,6 +502,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
 
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
@@ -499,6 +536,13 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   - `[Publisher <String>]`: The name of the extension handler publisher.
   - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[Id <String>]`: Resource identity path
+  - `[Name <String>]`: The name of the hybrid machine.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

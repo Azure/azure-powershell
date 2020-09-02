@@ -3,7 +3,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview
 {
-    public partial class MachineExtensionPropertiesProtectedSettings : Hashtable
+    public partial class MachineExtensionUpdatePropertiesProtectedSettings : Hashtable
     {
         partial void AfterDeserializeDictionary(IDictionary content)
         {

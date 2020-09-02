@@ -170,7 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -240,7 +241,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the hybrid machine.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

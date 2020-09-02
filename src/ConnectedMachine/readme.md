@@ -46,7 +46,7 @@ module-version: 0.1.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2019-12-12/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2020-07-30-preview/HybridCompute.json
 
 directive:
   - where:
@@ -57,29 +57,19 @@ directive:
 
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
-      verb: New
+      verb: Get
       variant: ^GetViaIdentity\d?$
     remove: true
 
-  # Set correct variants for PUT and PATCH verbs
-  - where:
-      verb: New
-      variant: ^CreateViaIdentity\d?$|^Create\d?$
-    remove: true
-  - where:
-      verb: Set
-      variant: ^Update\d?$|^UpdateViaIdentity\d?$
-    remove: true
-  - where:
-      verb: Update
-      variant: ^Update\d?$|^UpdateViaIdentity\d?$
-    remove: true
-
-  # New, Update, and Set all do the same thing so we hide New and Update.
-  - where:
-      verb: Update|New
-      subject: MachineExtension
-    hide: true
+  # # These variants don't work
+  # - where:
+  #     verb: New
+  #     variant: ^CreateViaIdentity\d?$|^Create\d?$
+  #   remove: true
+  # - where:
+  #     verb: Set
+  #     variant: ^Update\d?$ |^UpdateViaIdentity\d?$
+  #   remove: true
 
   # Make parameters friendlier for extensions
   - where:
@@ -138,6 +128,22 @@ directive:
           - Location
           - PropertiesType
           - ProvisioningState
+  
+  # Completers
+  - where:
+      parameter-name: Location
+    set:
+      completer:
+        name: Location Completer
+        description: Gets the list of locations available for this resource.
+        script: Get-AzLocation | Where-Object Providers -Contains "Microsoft.HybridCompute" | Select-Object -ExpandProperty Location
+  - where:
+      parameter-name: ResourceGroupName
+    set:
+      completer:
+        name: ResourceGroupName Completer
+        description: Gets the list of ResourceGroupName's available for this subscription.
+        script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
 
   # These APIs are used by the agent so they do not need to be in the cmdlets.
   - remove-operation:

@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzConnectedMachineExtension.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConnectedMachineExtension.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Import-Module "$PSScriptRoot/helper.psm1" -Force
 
-Describe 'Set-AzConnectedMachineExtension' {
+Describe 'New-AzConnectedMachineExtension' {
     BeforeAll {
         $machineName = $env.MachineName1
 
@@ -53,7 +53,7 @@ Describe 'Set-AzConnectedMachineExtension' {
         Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
     }
 
-    It 'Can set an extension' {
+    It 'CreateExpanded parameter set' {
         $extensionName = "custom$(New-Guid)"
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
@@ -75,12 +75,13 @@ Describe 'Set-AzConnectedMachineExtension' {
             $splat.TypeHandlerVersion = "1.10"
         }
 
-        $ext = Set-AzConnectedMachineExtension @splat
-        $ext.Name | Should -Be $extensionName
-        $ext.Setting["commandToExecute"] | Should -Be $splat.Settings["commandToExecute"]
+        $res = New-AzConnectedMachineExtension @splat
+        $res.Name | Should -Be $extensionName
+        $res.ProvisioningState | Should -Be "Succeeded"
+        $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]
     }
 
-    It 'Can set an extension via the pipeline' {
+    It 'Create parameter set' {
         $extensionName = "custom$(New-Guid)"
         $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
@@ -98,8 +99,55 @@ Describe 'Set-AzConnectedMachineExtension' {
             MachineName = $machineName
             Name = $extensionName
         }
+        $res = $extension | New-AzConnectedMachineExtension @splat
+        $res.Name | Should -Be $extensionName
+        $res.ProvisioningState | Should -Be "Succeeded"
+        $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]
+    }
 
-        $res = $extension | Set-AzConnectedMachineExtension @splat
+    It 'CreateViaIdentityExpanded parameter set' {
+        $extensionName = "custom$(New-Guid)"
+        $identity = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ConnectedMachineIdentity]@{
+            Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
+        }
+
+        $splat = @{
+            Location = $env.location
+            Settings = @{
+                commandToExecute = "dir"
+            }
+        }
+    
+        if ($IsLinux) {
+            $splat.ExtensionType = "CustomScript"
+            $splat.Publisher = "Microsoft.Azure.Extensions"
+            $splat.TypeHandlerVersion = "2.1"
+        } elseif ($IsWindows) {
+            $splat.ExtensionType = "CustomScriptExtension"
+            $splat.Publisher = "Microsoft.Compute"
+            $splat.TypeHandlerVersion = "1.10"
+        }
+    
+        $res = $identity | New-AzConnectedMachineExtension @splat
+        $res.Name | Should -Be $extensionName
+        $res.ProvisioningState | Should -Be "Succeeded"
+        $res.Setting["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
+    }
+
+    It 'CreateViaIdentity parameter set' {
+        $extensionName = "custom$(New-Guid)"
+        $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
+            Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
+            Type                 = "Microsoft.HybridCompute/machines/extensions"
+            Name                 = $extensionName
+            Location             = "eastus"
+            ProvisioningState    = "Succeeded"
+            Setting              = @{ commandToExecute = "dir" }
+            MachineExtensionType = if($IsWindows) { "CustomScriptExtension" } else { "CustomScript" }
+            Publisher            = if($IsWindows) { "Microsoft.Compute"     } else { "Microsoft.Azure.Extensions" }
+        }
+
+        $res = $extension | New-AzConnectedMachineExtension -ExtensionParameter $extension
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
         $res.Setting["commandToExecute"] | Should -Be $extension.Setting["commandToExecute"]

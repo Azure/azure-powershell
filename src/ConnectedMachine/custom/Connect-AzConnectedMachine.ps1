@@ -66,7 +66,7 @@ function Connect-AzConnectedMachine {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api201912.IUpdateResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IUpdateResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
