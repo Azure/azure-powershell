@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
 * Added cmdlets for Managed Database Log Replay service
 	- `Start-AzSqlInstanceDatabaseLogReplay`
 	- `Get-AzSqlInstanceDatabaseLogReplay`
