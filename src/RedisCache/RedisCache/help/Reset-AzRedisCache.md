@@ -15,7 +15,7 @@ Restarts nodes of a cache.
 
 ```
 Reset-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-RebootType <String>] [-ShardId <Int32>]
- [-Ports <Int32[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Port <Int32[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -94,8 +94,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ports
-Specifies the ports of nodes to be rebooted.
+### -Port
+Specifies the Port of nodes to be rebooted.
 
 ```yaml
 Type: System.Int32[]

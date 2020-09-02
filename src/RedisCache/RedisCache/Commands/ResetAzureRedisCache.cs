@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public int? ShardId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specifies the ports of nodes to be rebooted.")]
-        public int[] Ports { get; set; }
+        public int[] Port { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 string.Format(Resources.RebootingRedisCache, Name, RebootType),
                 string.Format(Resources.RebootRedisCache, Name),
                 Name,
-                () => CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId, Ports));
+                () => CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId, Port));
 
             if (PassThru)
             {
