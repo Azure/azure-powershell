@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
                 return value;
             }
 
+            if (value is JValue jValue)
+            {
+                return jValue.Value<object>();
+            }
+
             if (value is JObject jObject)
             {
                 return jObject.ToObject<Dictionary<object, object>>();

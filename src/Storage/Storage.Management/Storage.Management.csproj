@@ -14,7 +14,7 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.1" />
     <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.1.1" />
     <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.1.1" />
