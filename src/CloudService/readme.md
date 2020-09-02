@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(this-folder)/resources/CloudService.json
-  # - $(this-folder)/resources/LoadBalancer.json
+  - $(this-folder)/resources/LoadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
@@ -86,10 +86,22 @@ directive:
     hide: true
   - where:
       subject: ^CloudService$|^CloudServiceRoleInstance$
-      verb: Restart|Update
+      verb: Restart
     hide: true
   - where:
       subject: ^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
       verb: Invoke
+    hide: true
+  - where:
+      subject: ^LoadBalancerProbe|^LoadBalancerNetworkInterface|^LoadBalancerOutboundRule|^LoadBalancerLoadBalancingRule|^LoadBalancerInboundNatRule|^LoadBalancerFrontendIPConfiguration|^LoadBalancerBackendAddressPool|^InboundNatRule$|^LoadBalancer$
+    Remove: true
+  - no-inline:  # choose ONE of these models to disable inlining
+    - PublicIPAddressPropertiesFormat
+    - IPConfiguration
+    - IPConfigurationPropertiesFormat
+    - PublicIPAddress
+  - where:
+      subject: ^LoadBalancerPublicIPAddress$
+      verb: Switch
     hide: true
 ```
