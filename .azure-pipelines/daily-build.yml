@@ -52,9 +52,9 @@ steps:
         Write-Host "Setting PSGallery Trusted..."
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
-      Install-Module -Name Az -Repository PSGallery   
+      Install-Module -Name Az -Repository PSGallery -AllowClobber -Force 
       Get-Module -Name Az.* -ListAvailable
-
+    pwsh: true
 - task: PowerShell@2
   displayName: Connect AzAccount 
   inputs:
