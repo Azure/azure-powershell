@@ -12,11 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzAppConfigurationStoreNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'CheckExpanded' {
+        $nameAvailability = Test-AzAppConfigurationStoreNameAvailability -Name "appconf-randomname"
+        $nameAvailability.NameAvailable | Should -BeTrue
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $nameAvailability = Test-AzAppConfigurationStoreNameAvailability -Name $env.appconfName00
+        $nameAvailability.NameAvailable | Should -BeFalse
     }
 }

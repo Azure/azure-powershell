@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Backup added a new cmdlet Copy-AzRecoveryServicesVault for DS move feature.
+* Get-AzRecoveryServicesBackupJob cmdlet now supports operation type 'BackupDataMove'.
+
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
 
 ## Version 2.11.0
 * Removed project reference to Authentication

@@ -18,7 +18,40 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Point In Time Restore
+    - Enable-AzStorageBlobRestorePolicy
+    - Disable-AzStorageBlobRestorePolicy
+    - New-AzStorageBlobRangeToRestore
+    - Restore-AzStorageBlobRange
+* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - Get-AzureRMStorageAccount
+    
+## Version 2.5.0
+* Supported blob query acceleration
+    -  `Get-AzStorageBlobQueryResult`
+    -  `New-AzStorageBlobQueryConfig`
+* Updated help file, added more description, and fixed typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
+* Fixed download blob fail when related sub directory not exist [#12592]
+    -  `Get-AzStorageBlobContent`
+* Supported Set/Get/Remove Object Replication Policy on Storage accounts
+    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
+    - `Get-AzStorageObjectReplicationPolicy`
+    - `Remove-AzStorageObjectReplicationPolicy`
+* Supported enable/disable ChangeFeed on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
 
+## Version 2.4.0
+* Supported create container/blob Sas token with new permission x,t
+    -  `New-AzStorageBlobSASToken`
+    -  `New-AzStorageContainerSASToken`
+* Supported create account Sas token with new permission x,t,f
+    -  `New-AzStorageAccountSASToken`
+* Supported get single file share usage
+    - `Get-AzRmStorageShare`
+        
 ## Version 2.3.0
 * Fixed the issue that UserAgent is not added for some data plane cmdlets.
 * Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess

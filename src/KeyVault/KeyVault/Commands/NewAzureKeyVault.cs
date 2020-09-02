@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
+    [GenericBreakingChange("The ability to create new key vaults with soft delete disabled will be deprecated by December 2020. " +
+        "All key vaults will be required to have soft delete enabled. Please see the following documentation for additional guidance. " +
+        "https://docs.microsoft.com/azure/key-vault/general/soft-delete-change")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
@@ -84,6 +87,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
+        public const String DisableSoftDeleteChangeDesc = "DisableSoftDelete will be deprecated without being replaced.";
+
+        [CmdletParameterBreakingChange("DisableSoftDelete", "3.0.0", ChangeDescription = DisableSoftDeleteChangeDesc)]
         [Parameter(Mandatory = false,
             HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
         public SwitchParameter DisableSoftDelete { get; set; }

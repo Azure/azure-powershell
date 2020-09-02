@@ -306,6 +306,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance backup storage redundancy
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -435,7 +443,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 TimezoneId = this.TimezoneId,
                 DnsZonePartner = this.DnsZonePartner,
                 InstancePoolName = this.InstancePoolName,
-                MinimalTlsVersion = this.MinimalTlsVersion
+                MinimalTlsVersion = this.MinimalTlsVersion,
+                BackupStorageRedundancy = this.BackupStorageRedundancy
             });
             return newEntity;
         }

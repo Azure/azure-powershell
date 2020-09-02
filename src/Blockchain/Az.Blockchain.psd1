@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Blockchain.private.dll'
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.1'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
   FormatsToProcess = './Az.Blockchain.format.ps1xml'
   FunctionsToExport = 'Get-AzBlockchainConsortium', 'Get-AzBlockchainMember', 'Get-AzBlockchainMemberApiKey', 'Get-AzBlockchainMemberConsortiumMember', 'Get-AzBlockchainSku', 'Get-AzBlockchainTransactionNode', 'Get-AzBlockchainTransactionNodeApiKey', 'New-AzBlockchainMember', 'New-AzBlockchainMemberApiKey', 'New-AzBlockchainTransactionNode', 'New-AzBlockchainTransactionNodeApiKey', 'Remove-AzBlockchainMember', 'Remove-AzBlockchainTransactionNode', 'Test-AzBlockchainLocationNameAvailability', 'Update-AzBlockchainMember', 'Update-AzBlockchainTransactionNode'
   AliasesToExport = '*'

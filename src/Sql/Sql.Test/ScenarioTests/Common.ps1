@@ -201,7 +201,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
 
 	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
@@ -919,7 +919,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
@@ -978,15 +978,16 @@ function Remove-ManagedInstancesInInstancePool($instancePool)
 function Get-InstancePoolTestProperties()
 {
     $tags = @{ instance="Pools" };
+
     $instancePoolTestProperties = @{
-        resourceGroup = "instancePoolCSSdemo"
-        name = "cssinstancepool0"
-        subnetName = "InstancePool"
-        vnetName = "vnet-cssinstancepool0"
+        resourceGroup = "ps3995"
+        name = "myinstancepool1"
+        subnetName = "ManagedInsanceSubnet"
+        vnetName = "MIVirtualNetwork"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
-        location = "canadacentral"
+        location = "westeurope"
         licenseType = "LicenseIncluded"
         vCores = 16
     }
@@ -1000,7 +1001,7 @@ function Get-InstancePoolTestProperties()
 function Create-InstancePoolForTest()
 {
     $props = Get-InstancePoolTestProperties
-    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location $props.resourceGroup
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location "v-urmila"
     $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
     $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
                 -Location $props.location -SubnetId $subnetId -VCore $props.vCores `

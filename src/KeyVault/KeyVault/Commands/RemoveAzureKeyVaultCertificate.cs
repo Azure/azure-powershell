@@ -17,12 +17,16 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// The Remove-AzKeyVaultCertificate cmdlet deletes a certificate in an Azure Key Vault. 
     /// </summary>
+    [GenericBreakingChange("If you have soft-delete protection enabled on this key vault, this certificate will be moved to the soft deleted state. " +
+        "You will not be able to create a certificate with the same name within this key vault until the certificate has been purged from the soft-deleted state. " +
+        "Please see the following documentation for additional guidance. https://docs.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameAndNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase

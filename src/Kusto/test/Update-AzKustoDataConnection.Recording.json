@@ -1,189 +1,54 @@
 {
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"EventHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"compression\": \"None\",\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"EventHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"compression\": \"None\",\r\n    \"consumerGroup\": \"$Default\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\"\r\n  }\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "3eb419b7-b9c2-4081-98af-ad9d394f75b9" ],
-        "CommandName": [ "Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_Update" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "428" ]
+        "Content-Length": [ "333" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a5dedbfd-49e6-4c77-8d51-92b53de6162a" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/b10e487b-8991-4ce6-bfe2-b9723d186cfb?api-version=2020-02-15" ],
+        "ETag": [ "\"\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/96d77c67-a748-44f0-a097-0fc40820d6e3?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "145b3d31-a82b-464a-a982-da9f2e664c2f" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/96d77c67-a748-44f0-a097-0fc40820d6e3?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
-        "x-ms-correlation-request-id": [ "d8b80254-5f10-484a-9c38-ba67a11dc61d" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200405T083908Z:d8b80254-5f10-484a-9c38-ba67a11dc61d" ],
+        "x-ms-correlation-request-id": [ "93ca7ea2-cdc1-48b8-963b-21f3e3234c38" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020646Z:93ca7ea2-cdc1-48b8-963b-21f3e3234c38" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 05 Apr 2020 08:39:07 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/b10e487b-8991-4ce6-bfe2-b9723d186cfb?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=def3577d5629c723d9b553853d2d2a7d752681ef975b90fbd494f770f8090156;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:06:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "742" ],
+        "Content-Length": [ "690" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"compression\":\"None\",\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"mappingRuleName\":\"EventsMapping1\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexs\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"compression\":\"None\",\"consumerGroup\":\"$Default\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\",\"provisioningState\":\"Accepted\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/b10e487b-8991-4ce6-bfe2-b9723d186cfb?api-version=2020-02-15+2": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/96d77c67-a748-44f0-a097-0fc40820d6e3?api-version=2020-06-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/b10e487b-8991-4ce6-bfe2-b9723d186cfb?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/96d77c67-a748-44f0-a097-0fc40820d6e3?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "14", "15" ],
-        "x-ms-client-request-id": [ "3eb419b7-b9c2-4081-98af-ad9d394f75b9", "3eb419b7-b9c2-4081-98af-ad9d394f75b9" ],
-        "CommandName": [ "Update-AzKustoDataConnection", "Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "e8e22c63-97b9-466d-8e0b-258080a1c640" ],
-        "x-ms-correlation-request-id": [ "66b8158b-195e-4387-a7be-e412b86f2dbd" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200405T083938Z:66b8158b-195e-4387-a7be-e412b86f2dbd" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 05 Apr 2020 08:39:37 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=ed41ca322a49669b612bcebf273fd24041177ae99ea92e4ec42dded8575d2518;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "481" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/b10e487b-8991-4ce6-bfe2-b9723d186cfb\",\"name\":\"b10e487b-8991-4ce6-bfe2-b9723d186cfb\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-05T08:39:07.9112739Z\",\"endTime\":\"2020-04-05T08:39:11.0987295Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventHubObtainerAdd\",\"RootActivityId\":\"bf8a0f07-6395-445d-beb7-1aa6ac5adf10\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "14", "15", "16" ],
-        "x-ms-client-request-id": [ "3eb419b7-b9c2-4081-98af-ad9d394f75b9", "3eb419b7-b9c2-4081-98af-ad9d394f75b9", "3eb419b7-b9c2-4081-98af-ad9d394f75b9" ],
-        "CommandName": [ "Update-AzKustoDataConnection", "Update-AzKustoDataConnection", "Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "e9c35803-7035-42d7-b0ed-a27d4bae34c5" ],
-        "x-ms-correlation-request-id": [ "51338030-ecf1-4e35-a8bf-3cd51ae79c2a" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200405T083938Z:51338030-ecf1-4e35-a8bf-3cd51ae79c2a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 05 Apr 2020 08:39:38 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=e34cd42d8bdf1120fb4b3a4d2cc62821863228e00fd30154bbfab9ed251bfdc1;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "770" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15+1": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"EventGrid\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
-      "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_Update" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "579" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d2d7577d-7697-4465-8a23-228954527a46" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/b3bd756d-a473-4835-a68f-fe7413f261d0?api-version=2020-02-15" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
-        "x-ms-correlation-request-id": [ "6d02aa61-c8e9-4805-a1ce-0e97d2eb9d49" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125606Z:6d02aa61-c8e9-4805-a1ce-0e97d2eb9d49" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:56:06 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/b3bd756d-a473-4835-a68f-fe7413f261d0?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=ef3de0f4cd17f8e9f7d2fa3d3db2dfb16b68de461929f7c4880cf75c0d094a4e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "895" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectiong\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\"mappingRuleName\":\"EventsMapping1\",\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/b3bd756d-a473-4835-a68f-fe7413f261d0?api-version=2020-02-15+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/b3bd756d-a473-4835-a68f-fe7413f261d0?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "29", "30" ],
-        "x-ms-client-request-id": [ "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9", "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9" ],
+        "x-ms-unique-id": [ "649", "650" ],
+        "x-ms-client-request-id": [ "3e7f83c2-a619-450c-a3a8-a23b45eff5a6", "3e7f83c2-a619-450c-a3a8-a23b45eff5a6" ],
         "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
         "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -192,39 +57,39 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "e71a78be-f020-4ce9-820b-549f099fa018" ],
-        "x-ms-correlation-request-id": [ "5fe3ea08-1524-4172-90cf-1bb6808fae03" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125636Z:5fe3ea08-1524-4172-90cf-1bb6808fae03" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "285" ],
+        "x-ms-request-id": [ "e903e87e-1682-4104-a5d6-1ee65fc07fb6" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "0f6c6815-59d6-4a6c-9b63-38d722cf21fa" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020716Z:0f6c6815-59d6-4a6c-9b63-38d722cf21fa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:56:36 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=215f89ce1e3b7fe16702b151d790214d3e419a6068dd5b2f7cbbd791a4ac2087;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "489" ],
+        "Content-Length": [ "347" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/b3bd756d-a473-4835-a68f-fe7413f261d0\",\"name\":\"b3bd756d-a473-4835-a68f-fe7413f261d0\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T12:56:06.2592753Z\",\"endTime\":\"2020-04-07T12:56:09.8217868Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventGridIngestionSourceAdd\",\"RootActivityId\":\"d356c22f-abee-46eb-a10e-4c04d7e6d8f7\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/96d77c67-a748-44f0-a097-0fc40820d6e3\",\"name\":\"96d77c67-a748-44f0-a097-0fc40820d6e3\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:06:45.9943391Z\",\"endTime\":\"2020-08-03T02:06:48.5883448Z\",\"percentComplete\":1.0,\"properties\":{}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15+3": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "29", "30", "31" ],
-        "x-ms-client-request-id": [ "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9", "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9", "a1b6f30d-3cc7-4279-ac93-d2063df1e0a9" ],
+        "x-ms-unique-id": [ "649", "650", "651" ],
+        "x-ms-client-request-id": [ "3e7f83c2-a619-450c-a3a8-a23b45eff5a6", "3e7f83c2-a619-450c-a3a8-a23b45eff5a6", "3e7f83c2-a619-450c-a3a8-a23b45eff5a6" ],
         "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
         "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -233,85 +98,78 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "edbb2438-6b06-426e-8553-c72db2f15aec" ],
-        "x-ms-correlation-request-id": [ "30343c45-93d8-432e-8b73-92247b126f10" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125637Z:30343c45-93d8-432e-8b73-92247b126f10" ],
+        "x-ms-request-id": [ "4766c3fb-005b-4b58-b0c3-c6cfbef45a27" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "434ce6fa-2cfd-430c-931f-75d27910cd03" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020716Z:434ce6fa-2cfd-430c-931f-75d27910cd03" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:56:36 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=deac3c942b2a72b721942f97372cf2a3052effbe4aa0b896664f8887a4bd559d;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "896" ],
+        "Content-Length": [ "776" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectiong\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexs\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15+1": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"IotHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"sharedAccessPolicyName\": \"iothubforread\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"EventGrid\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\r\n    \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\"\r\n  }\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "2b6c465e-2509-4b29-9792-8466a333b4b5" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_Update" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "412" ]
+        "Content-Length": [ "488" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "118a97d1-8498-4d74-b577-9d90a1f95856" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/5c4124bb-aabb-4c42-bf1c-83adc061c138?api-version=2020-02-15" ],
+        "ETag": [ "\"\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/0f64297c-f922-4b5f-ab11-e61421cd25b9?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "dfbd7e95-6ed4-42d7-921f-f85a967fd4c5" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/0f64297c-f922-4b5f-ab11-e61421cd25b9?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
-        "x-ms-correlation-request-id": [ "eca50628-372b-4c84-8a6f-8a2cd29dfbe5" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125639Z:eca50628-372b-4c84-8a6f-8a2cd29dfbe5" ],
+        "x-ms-correlation-request-id": [ "55b694ef-d561-4ba5-9d1e-1a222de1f283" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020717Z:55b694ef-d561-4ba5-9d1e-1a222de1f283" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:56:38 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/5c4124bb-aabb-4c42-bf1c-83adc061c138?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=def3577d5629c723d9b553853d2d2a7d752681ef975b90fbd494f770f8090156;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "728" ],
+        "Content-Length": [ "847" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectionh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\"mappingRuleName\":\"EventsMapping1\",\"sharedAccessPolicyName\":\"iothubforread\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsg\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\",\"provisioningState\":\"Accepted\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/5c4124bb-aabb-4c42-bf1c-83adc061c138?api-version=2020-02-15+2": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/0f64297c-f922-4b5f-ab11-e61421cd25b9?api-version=2020-06-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/5c4124bb-aabb-4c42-bf1c-83adc061c138?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/0f64297c-f922-4b5f-ab11-e61421cd25b9?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "32", "33" ],
-        "x-ms-client-request-id": [ "2b6c465e-2509-4b29-9792-8466a333b4b5", "2b6c465e-2509-4b29-9792-8466a333b4b5" ],
+        "x-ms-unique-id": [ "652", "653" ],
+        "x-ms-client-request-id": [ "39472226-e662-4273-bd36-948771accbde", "39472226-e662-4273-bd36-948771accbde" ],
         "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
         "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -320,39 +178,39 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-correlation-request-id": [ "98d2eb06-a539-4c6e-b1b2-67fd9ff1b0d7" ],
-        "x-ms-request-id": [ "bdfcb9ab-bc96-4150-8a61-249539be07fc" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125709Z:98d2eb06-a539-4c6e-b1b2-67fd9ff1b0d7" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "284" ],
+        "x-ms-request-id": [ "43d06002-5fff-41a9-a10c-018cedd15c13" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "249494af-1479-4f2a-bdad-5a79e2f44af5" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020747Z:249494af-1479-4f2a-bdad-5a79e2f44af5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:57:08 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=5d8f46e797674adfa6f345dd92c7bb8ccffb7a39a253ecaf84bf8923217e3248;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "481" ],
+        "Content-Length": [ "347" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/5c4124bb-aabb-4c42-bf1c-83adc061c138\",\"name\":\"5c4124bb-aabb-4c42-bf1c-83adc061c138\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T12:56:38.9220196Z\",\"endTime\":\"2020-04-07T12:56:39.2814354Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventHubObtainerAdd\",\"RootActivityId\":\"9d9017ce-626e-4886-8d0b-4c1df8844883\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/0f64297c-f922-4b5f-ab11-e61421cd25b9\",\"name\":\"0f64297c-f922-4b5f-ab11-e61421cd25b9\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:07:17.4705436Z\",\"endTime\":\"2020-08-03T02:07:21.1426983Z\",\"percentComplete\":1.0,\"properties\":{}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15+3": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "32", "33", "34" ],
-        "x-ms-client-request-id": [ "2b6c465e-2509-4b29-9792-8466a333b4b5", "2b6c465e-2509-4b29-9792-8466a333b4b5", "2b6c465e-2509-4b29-9792-8466a333b4b5" ],
+        "x-ms-unique-id": [ "652", "653", "654" ],
+        "x-ms-client-request-id": [ "39472226-e662-4273-bd36-948771accbde", "39472226-e662-4273-bd36-948771accbde", "39472226-e662-4273-bd36-948771accbde" ],
         "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
         "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -361,467 +219,78 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-request-id": [ "7ff014a6-b69b-4a7f-aa2c-1f88721d0bdc" ],
-        "x-ms-correlation-request-id": [ "47d04ab3-875e-407f-829e-4241d99d46e6" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T125710Z:47d04ab3-875e-407f-829e-4241d99d46e6" ],
+        "x-ms-request-id": [ "38db2660-83a9-4cc1-9185-af46ff6ab165" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "87857f26-972b-4d9d-ac32-bb8ca9d8143c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020748Z:87857f26-972b-4d9d-ac32-bb8ca9d8143c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 12:57:10 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=7e1ae2d9d6ffff3dfc0a49ef14149354611612ab62434b1ba4813a66a18e1335;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "756" ],
+        "Content-Length": [ "960" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectionh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"iothubforread\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsg\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"blobStorageEventType\":null,\"ignoreFirstRecord\":false,\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "e6af83cd-9210-4009-bde7-bff4cfcbbc00" ],
-        "CommandName": [ "Get-AzKustoDataConnection" ],
-        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
-        "x-ms-request-id": [ "d1af24d9-6ae3-4a73-b8b1-fb49d52034a1" ],
-        "x-ms-correlation-request-id": [ "2cd87fa3-8188-4d2b-95ba-23c48c0d64d2" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131311Z:2cd87fa3-8188-4d2b-95ba-23c48c0d64d2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:10 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=b3c2d4d5282ede81ed15f3f78d2ac82595f2901483fcb7962c29f71395856c9e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "770" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+2": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"EventHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"compression\": \"None\",\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"IotHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\r\n    \"sharedAccessPolicyName\": \"registryRead\"\r\n  }\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "72800a62-1dfe-4bde-8bb0-9a56018dd8e3" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "428" ]
+        "Content-Length": [ "315" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c7cc7112-041f-4bc2-a17d-20ea9f97c9ee" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/1c2558f3-9344-41c0-9cb7-38fed9777b07?api-version=2020-02-15" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
-        "x-ms-correlation-request-id": [ "d26f241b-48c5-4755-b83d-f8ebea16f487" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131312Z:d26f241b-48c5-4755-b83d-f8ebea16f487" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:11 GMT" ],
+        "Pragma": [ "no-cache" ],
         "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/1c2558f3-9344-41c0-9cb7-38fed9777b07?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=215f89ce1e3b7fe16702b151d790214d3e419a6068dd5b2f7cbbd791a4ac2087;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "742" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"compression\":\"None\",\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"mappingRuleName\":\"EventsMapping1\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/1c2558f3-9344-41c0-9cb7-38fed9777b07?api-version=2020-02-15+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/1c2558f3-9344-41c0-9cb7-38fed9777b07?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "51", "52" ],
-        "x-ms-client-request-id": [ "72800a62-1dfe-4bde-8bb0-9a56018dd8e3", "72800a62-1dfe-4bde-8bb0-9a56018dd8e3" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-request-id": [ "737082fd-bd1b-4215-a90f-a8d6da45d918" ],
-        "x-ms-correlation-request-id": [ "752e8ff6-0232-4cb9-be47-782060c72778" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131342Z:752e8ff6-0232-4cb9-be47-782060c72778" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:42 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=5d8f46e797674adfa6f345dd92c7bb8ccffb7a39a253ecaf84bf8923217e3248;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "480" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/1c2558f3-9344-41c0-9cb7-38fed9777b07\",\"name\":\"1c2558f3-9344-41c0-9cb7-38fed9777b07\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T13:13:12.469762Z\",\"endTime\":\"2020-04-07T13:13:15.2041384Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventHubObtainerAdd\",\"RootActivityId\":\"88aa55df-edb4-46ce-9e40-e95909960811\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "51", "52", "53" ],
-        "x-ms-client-request-id": [ "72800a62-1dfe-4bde-8bb0-9a56018dd8e3", "72800a62-1dfe-4bde-8bb0-9a56018dd8e3", "72800a62-1dfe-4bde-8bb0-9a56018dd8e3" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
-        "x-ms-request-id": [ "693b453f-a053-47ce-96c0-fc381583ab4e" ],
-        "x-ms-correlation-request-id": [ "12b984ff-9a64-4a91-a97a-87c5d5d42f49" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131343Z:12b984ff-9a64-4a91-a97a-87c5d5d42f49" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:43 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=e34cd42d8bdf1120fb4b3a4d2cc62821863228e00fd30154bbfab9ed251bfdc1;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "770" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "e5e78e11-9097-41dd-a77a-d99f03eac18d" ],
-        "CommandName": [ "Get-AzKustoDataConnection" ],
-        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
-        "x-ms-request-id": [ "b7fa4f1c-a78a-417c-8648-30e02b5bbedd" ],
-        "x-ms-correlation-request-id": [ "954ea9ca-14a4-45e5-9a7a-aa7821d03b37" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131344Z:954ea9ca-14a4-45e5-9a7a-aa7821d03b37" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:44 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=ef3de0f4cd17f8e9f7d2fa3d3db2dfb16b68de461929f7c4880cf75c0d094a4e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "896" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectiong\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15+2": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"EventGrid\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
-      "Headers": {
-        "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "9ef265f0-2586-4fb1-ae9e-f8ec824e139d" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "579" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "651d0ec1-9241-405f-8b42-975818eff678" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/d80a5718-8dda-4eb9-ac27-19b648e56ffd?api-version=2020-02-15" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
-        "x-ms-correlation-request-id": [ "de2623b4-14fe-4353-b46b-b647de6b6bfb" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131345Z:de2623b4-14fe-4353-b46b-b647de6b6bfb" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:13:45 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/d80a5718-8dda-4eb9-ac27-19b648e56ffd?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=7e1ae2d9d6ffff3dfc0a49ef14149354611612ab62434b1ba4813a66a18e1335;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "895" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectiong\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\"mappingRuleName\":\"EventsMapping1\",\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/d80a5718-8dda-4eb9-ac27-19b648e56ffd?api-version=2020-02-15+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/d80a5718-8dda-4eb9-ac27-19b648e56ffd?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "55", "56" ],
-        "x-ms-client-request-id": [ "9ef265f0-2586-4fb1-ae9e-f8ec824e139d", "9ef265f0-2586-4fb1-ae9e-f8ec824e139d" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-correlation-request-id": [ "d152f071-d781-41b2-a2ab-67d596550bb8" ],
-        "x-ms-request-id": [ "67157ce9-7acb-4d18-8697-00da0b938a11" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131415Z:d152f071-d781-41b2-a2ab-67d596550bb8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:15 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=b3c2d4d5282ede81ed15f3f78d2ac82595f2901483fcb7962c29f71395856c9e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "489" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/d80a5718-8dda-4eb9-ac27-19b648e56ffd\",\"name\":\"d80a5718-8dda-4eb9-ac27-19b648e56ffd\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T13:13:45.3745626Z\",\"endTime\":\"2020-04-07T13:13:49.0151244Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventGridIngestionSourceAdd\",\"RootActivityId\":\"2de6eb9b-69c8-4b1c-957d-05bbe6a618c7\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "55", "56", "57" ],
-        "x-ms-client-request-id": [ "9ef265f0-2586-4fb1-ae9e-f8ec824e139d", "9ef265f0-2586-4fb1-ae9e-f8ec824e139d", "9ef265f0-2586-4fb1-ae9e-f8ec824e139d" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
-        "x-ms-request-id": [ "ec6492fa-873b-4608-8dbd-d533047abff5" ],
-        "x-ms-correlation-request-id": [ "74cbc020-e17e-469e-81a6-09f29f2b64f3" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131416Z:74cbc020-e17e-469e-81a6-09f29f2b64f3" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:16 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=7e1ae2d9d6ffff3dfc0a49ef14149354611612ab62434b1ba4813a66a18e1335;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "896" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectiong\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectiong\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Storage/storageAccounts/sdkpsstorage\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubnsg/eventhubs/sdkpseventhubg\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "fe8d2d52-6ce3-4a57-8d2d-dd63a4e42bb1" ],
-        "CommandName": [ "Get-AzKustoDataConnection" ],
-        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
-        "x-ms-request-id": [ "1d7ee8e9-4d73-410a-af58-37f34f11efe9" ],
-        "x-ms-correlation-request-id": [ "8129f2b4-3905-4e77-8eb3-23d847e46429" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131417Z:8129f2b4-3905-4e77-8eb3-23d847e46429" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:17 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=ef3de0f4cd17f8e9f7d2fa3d3db2dfb16b68de461929f7c4880cf75c0d094a4e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "756" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectionh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"iothubforread\",\"provisioningState\":\"Succeeded\"}}"
-    }
-  },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15+2": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15",
-      "Content": "{\r\n  \"kind\": \"IotHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"dataFormat\": \"JSON\",\r\n    \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\r\n    \"mappingRuleName\": \"EventsMapping1\",\r\n    \"sharedAccessPolicyName\": \"iothubforread\",\r\n    \"tableName\": \"Events\"\r\n  }\r\n}",
-      "Headers": {
-        "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "412" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9482df6b-5406-4c12-b6dc-5087f982a9c8" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/184ea9ee-34df-4f28-bb6e-13546bb76edb?api-version=2020-02-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/46a5a042-b5b5-4740-9b7f-97ac73e48f4c?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "dbda5219-96ec-46f6-96b3-de15455312d4" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/46a5a042-b5b5-4740-9b7f-97ac73e48f4c?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "197" ],
-        "x-ms-correlation-request-id": [ "56a94e24-3aca-429b-945b-44933e34a28a" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131419Z:56a94e24-3aca-429b-945b-44933e34a28a" ],
+        "x-ms-correlation-request-id": [ "aa046aff-77f9-412d-a41e-9d3dd52e1bf5" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020749Z:aa046aff-77f9-412d-a41e-9d3dd52e1bf5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:18 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/184ea9ee-34df-4f28-bb6e-13546bb76edb?api-version=2020-02-15\u0026operationResultResponseType=Location" ],
-        "Set-Cookie": [ "ARRAffinity=231057e07a83c4308bf983e7dc86c3ea07391dfcb2e933d9998a48444064ed8d;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:07:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "728" ],
+        "Content-Length": [ "674" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectionh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"dataFormat\":\"JSON\",\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\"mappingRuleName\":\"EventsMapping1\",\"sharedAccessPolicyName\":\"iothubforread\",\"tableName\":\"Events\",\"provisioningState\":\"Accepted\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\"sharedAccessPolicyName\":\"registryRead\",\"provisioningState\":\"Accepted\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/184ea9ee-34df-4f28-bb6e-13546bb76edb?api-version=2020-02-15+3": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/46a5a042-b5b5-4740-9b7f-97ac73e48f4c?api-version=2020-06-14+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/184ea9ee-34df-4f28-bb6e-13546bb76edb?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/46a5a042-b5b5-4740-9b7f-97ac73e48f4c?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "59", "60" ],
-        "x-ms-client-request-id": [ "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef", "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef" ],
+        "x-ms-unique-id": [ "655", "656" ],
+        "x-ms-client-request-id": [ "569ed5ea-e68a-40c4-a1ed-f3000047f517", "569ed5ea-e68a-40c4-a1ed-f3000047f517" ],
         "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -830,39 +299,81 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "283" ],
+        "x-ms-request-id": [ "091b84a5-c3e7-4cfa-8b46-3d3d80238a91" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "ee8361c0-b595-4413-b1a5-834e7d34bfc6" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020819Z:ee8361c0-b595-4413-b1a5-834e7d34bfc6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "347" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/46a5a042-b5b5-4740-9b7f-97ac73e48f4c\",\"name\":\"46a5a042-b5b5-4740-9b7f-97ac73e48f4c\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:07:49.0922345Z\",\"endTime\":\"2020-08-03T02:07:49.4203933Z\",\"percentComplete\":1.0,\"properties\":{}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "655", "656", "657" ],
+        "x-ms-client-request-id": [ "569ed5ea-e68a-40c4-a1ed-f3000047f517", "569ed5ea-e68a-40c4-a1ed-f3000047f517", "569ed5ea-e68a-40c4-a1ed-f3000047f517" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update", "Update-AzKustoDataConnection_Update" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
-        "x-ms-request-id": [ "d8c6eb46-3965-4570-aadf-e6d884f32232" ],
-        "x-ms-correlation-request-id": [ "3c03144c-650e-4d87-b733-d04e89433880" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131449Z:3c03144c-650e-4d87-b733-d04e89433880" ],
+        "x-ms-request-id": [ "2b6fcace-b186-4f60-9861-2090ba278adb" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "ef636559-6156-4f62-9afe-5411191c33ac" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020820Z:ef636559-6156-4f62-9afe-5411191c33ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:48 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=deac3c942b2a72b721942f97372cf2a3052effbe4aa0b896664f8887a4bd559d;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:08:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "481" ],
+        "Content-Length": [ "760" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/184ea9ee-34df-4f28-bb6e-13546bb76edb\",\"name\":\"184ea9ee-34df-4f28-bb6e-13546bb76edb\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T13:14:19.0561373Z\",\"endTime\":\"2020-04-07T13:14:19.8686606Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DmServiceEventHubObtainerAdd\",\"RootActivityId\":\"c366274a-5e2b-4c25-b0b2-ff22eebbea9a\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"registryRead\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15+4": {
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "59", "60", "61" ],
-        "x-ms-client-request-id": [ "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef", "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef", "841d6abe-a5d7-4c12-9f3c-a958d96fb5ef" ],
-        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
-        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview", "AzurePowerShell/Az4.0.0-preview" ],
+        "x-ms-unique-id": [ "658" ],
+        "x-ms-client-request-id": [ "ffc4c05f-0bb2-4620-bb1c-0760f4e6adcd" ],
+        "CommandName": [ "Get-AzKustoDataConnection" ],
+        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -871,26 +382,473 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "291" ],
-        "x-ms-request-id": [ "c19e1633-e380-4ebe-b7eb-b7b941aa11cc" ],
-        "x-ms-correlation-request-id": [ "376666e8-2008-474c-a1b0-d15ed02a2298" ],
-        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200407T131450Z:376666e8-2008-474c-a1b0-d15ed02a2298" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
+        "x-ms-request-id": [ "246d48d4-83e2-4f79-a9f4-c8d7801ba5a2" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "3ac1e8c5-be11-4e09-8016-520af22faeaf" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020820Z:3ac1e8c5-be11-4e09-8016-520af22faeaf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 13:14:49 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Set-Cookie": [ "ARRAffinity=5d8f46e797674adfa6f345dd92c7bb8ccffb7a39a253ecaf84bf8923217e3248;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Mon, 03 Aug 2020 02:08:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "756" ],
+        "Content-Length": [ "776" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnectionh\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnectionh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.Devices/IotHubs/sdkpsiothub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping1\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"iothubforread\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexs\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"EventHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"compression\": \"None\",\r\n    \"consumerGroup\": \"$Default\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "333" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/57b04bb4-d8fc-4fcc-9571-2ae8f307613d?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "4801b599-01f8-4edf-99ea-ae7a948685b6" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/57b04bb4-d8fc-4fcc-9571-2ae8f307613d?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "196" ],
+        "x-ms-correlation-request-id": [ "7e6b9195-19b6-4d97-9d2a-ddb89d1513d2" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020821Z:7e6b9195-19b6-4d97-9d2a-ddb89d1513d2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "690" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexs\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"compression\":\"None\",\"consumerGroup\":\"$Default\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\",\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/57b04bb4-d8fc-4fcc-9571-2ae8f307613d?api-version=2020-06-14+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/57b04bb4-d8fc-4fcc-9571-2ae8f307613d?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "659", "660" ],
+        "x-ms-client-request-id": [ "0ee29084-0498-42f3-9e86-10182e317466", "0ee29084-0498-42f3-9e86-10182e317466" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "282" ],
+        "x-ms-request-id": [ "6f71c4b7-be7e-49ff-a429-09f2756d83ed" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "553449ec-e1b7-4d41-9d8e-916cecd17f46" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020851Z:553449ec-e1b7-4d41-9d8e-916cecd17f46" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "347" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/57b04bb4-d8fc-4fcc-9571-2ae8f307613d\",\"name\":\"57b04bb4-d8fc-4fcc-9571-2ae8f307613d\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:08:21.0630901Z\",\"endTime\":\"2020-08-03T02:08:23.3757689Z\",\"percentComplete\":1.0,\"properties\":{}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "659", "660", "661" ],
+        "x-ms-client-request-id": [ "0ee29084-0498-42f3-9e86-10182e317466", "0ee29084-0498-42f3-9e86-10182e317466", "0ee29084-0498-42f3-9e86-10182e317466" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
+        "x-ms-request-id": [ "e196ee30-8694-4d7e-ae16-5b40b846c2d6" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "9459b2ee-22d5-4681-95a4-7ac7ee4c8c94" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020851Z:9459b2ee-22d5-4681-95a4-7ac7ee4c8c94" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "776" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexs\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexs\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnslbfexs/eventhubs/eventhublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "662" ],
+        "x-ms-client-request-id": [ "35eda697-8844-4c39-bb22-87b8e4e3ad96" ],
+        "CommandName": [ "Get-AzKustoDataConnection" ],
+        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
+        "x-ms-request-id": [ "97b9eb22-f1f7-4231-b4fe-4eedd3abad1d" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "e374ffa6-5698-4b24-82fe-f08546358d7c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020852Z:e374ffa6-5698-4b24-82fe-f08546358d7c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "960" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsg\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"blobStorageEventType\":null,\"ignoreFirstRecord\":false,\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"EventGrid\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\r\n    \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "488" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/f867cb52-368b-437a-a103-28a0fb506c7a?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "e1d68eee-ea3f-4e94-b8e5-4a9f2c332e59" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/f867cb52-368b-437a-a103-28a0fb506c7a?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "195" ],
+        "x-ms-correlation-request-id": [ "b9665be1-0438-4a54-a47c-d046651e82bd" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020853Z:b9665be1-0438-4a54-a47c-d046651e82bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:08:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsg\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\",\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/f867cb52-368b-437a-a103-28a0fb506c7a?api-version=2020-06-14+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/f867cb52-368b-437a-a103-28a0fb506c7a?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "663", "664" ],
+        "x-ms-client-request-id": [ "bcaf4b6f-303a-4aaa-afd5-3b7fbe88e386", "bcaf4b6f-303a-4aaa-afd5-3b7fbe88e386" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "281" ],
+        "x-ms-request-id": [ "3cb20928-768a-4e06-903b-803dbd9fe934" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "809a0c76-e4f5-4982-8d02-82fcb0b3355a" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020923Z:809a0c76-e4f5-4982-8d02-82fcb0b3355a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "347" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/f867cb52-368b-437a-a103-28a0fb506c7a\",\"name\":\"f867cb52-368b-437a-a103-28a0fb506c7a\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:08:53.0565133Z\",\"endTime\":\"2020-08-03T02:08:56.7082658Z\",\"percentComplete\":1.0,\"properties\":{}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "663", "664", "665" ],
+        "x-ms-client-request-id": [ "bcaf4b6f-303a-4aaa-afd5-3b7fbe88e386", "bcaf4b6f-303a-4aaa-afd5-3b7fbe88e386", "bcaf4b6f-303a-4aaa-afd5-3b7fbe88e386" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
+        "x-ms-request-id": [ "7400b14a-5669-4f48-a43b-c0589f98e015" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "8681e0a2-0ed9-40d7-9bb4-2f2534fddf76" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020924Z:8681e0a2-0ed9-40d7-9bb4-2f2534fddf76" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "960" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsg\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsg\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventGrid\",\"tags\":{},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Storage/storageAccounts/storagelbfexs\",\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.EventHub/namespaces/eventhubnsgridbgiwc7/eventhubs/eventgridbgiwc7\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"blobStorageEventType\":null,\"ignoreFirstRecord\":false,\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "666" ],
+        "x-ms-client-request-id": [ "d65f3a52-8f89-49cb-8991-09bb5fb6c1a9" ],
+        "CommandName": [ "Get-AzKustoDataConnection" ],
+        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
+        "x-ms-request-id": [ "3b11ce74-433f-492e-8297-703b9c1354e5" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "167fcdac-a663-47f4-8ee2-49a7ff0e63cb" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020924Z:167fcdac-a663-47f4-8ee2-49a7ff0e63cb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"registryRead\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$PATCH+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14",
+      "Content": "{\r\n  \"kind\": \"IotHub\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consumerGroup\": \"$Default\",\r\n    \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\r\n    \"sharedAccessPolicyName\": \"registryRead\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "315" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/74ac0ab4-10dd-43fd-8c55-9d7419951095?api-version=2020-06-14\u0026operationResultResponseType=Location" ],
+        "x-ms-request-id": [ "a2df2ba1-d5fa-4ed2-bcfb-178f5a37dd22" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/74ac0ab4-10dd-43fd-8c55-9d7419951095?api-version=2020-06-14" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "194" ],
+        "x-ms-correlation-request-id": [ "9c35899d-b9fe-4b73-9677-90383d3f722d" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020925Z:9c35899d-b9fe-4b73-9677-90383d3f722d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "674" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"consumerGroup\":\"$Default\",\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\"sharedAccessPolicyName\":\"registryRead\",\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/74ac0ab4-10dd-43fd-8c55-9d7419951095?api-version=2020-06-14+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/74ac0ab4-10dd-43fd-8c55-9d7419951095?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "667", "668" ],
+        "x-ms-client-request-id": [ "19498a8d-1b2c-466f-a291-dcde9c2d6bcd", "19498a8d-1b2c-466f-a291-dcde9c2d6bcd" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "280" ],
+        "x-ms-request-id": [ "1334a49e-0c07-4bbd-9dbb-808294a71a8a" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "68a66769-546f-4bfe-b2ab-510440f06191" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020956Z:68a66769-546f-4bfe-b2ab-510440f06191" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "347" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/74ac0ab4-10dd-43fd-8c55-9d7419951095\",\"name\":\"74ac0ab4-10dd-43fd-8c55-9d7419951095\",\"status\":\"Succeeded\",\"startTime\":\"2020-08-03T02:09:25.5993559Z\",\"endTime\":\"2020-08-03T02:09:25.9274932Z\",\"percentComplete\":1.0,\"properties\":{}}"
+    }
+  },
+  "Update-AzKustoDataConnection+[NoContext]+UpdateViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh?api-version=2020-06-14",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "667", "668", "669" ],
+        "x-ms-client-request-id": [ "19498a8d-1b2c-466f-a291-dcde9c2d6bcd", "19498a8d-1b2c-466f-a291-dcde9c2d6bcd", "19498a8d-1b2c-466f-a291-dcde9c2d6bcd" ],
+        "CommandName": [ "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection", "Az.Kusto.internal\\Update-AzKustoDataConnection" ],
+        "FullCommandName": [ "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity", "Update-AzKustoDataConnection_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "291" ],
+        "x-ms-request-id": [ "2c6f9925-1ca1-4e59-b31c-db45d051c2d9" ],
+        "Set-Cookie": [ "ARRAffinity=ee13eefe4ea373fa5ef5790d247e631fbf86d1836803eb84090a9ff65767d97e;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "2f0aa4ab-a1e0-4642-86b9-bb43b587bf56" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200803T020957Z:2f0aa4ab-a1e0-4642-86b9-bb43b587bf56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Aug 2020 02:09:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/DataConnections/testdataconnectionlbfexsh\",\"name\":\"testclusterlbfexs/testdatabaselbfexs/testdataconnectionlbfexsh\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"IotHub\",\"tags\":{},\"properties\":{\"iotHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/testgrouplbfexs/providers/Microsoft.Devices/IotHubs/iothublbfexs\",\"consumerGroup\":\"$Default\",\"tableName\":null,\"mappingRuleName\":null,\"dataFormat\":null,\"eventSystemProperties\":[],\"sharedAccessPolicyName\":\"registryRead\",\"provisioningState\":\"Succeeded\"}}"
     }
   }
 }

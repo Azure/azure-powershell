@@ -14,15 +14,13 @@ while(-not $mockingPath) {
 Describe 'Update-AzDatabricksWorkspace' {
     It 'UpdateExpanded' {
         $res = Update-AzDatabricksWorkspace -Name $env.testWorkspace1 -ResourceGroupName $env.resourceGroup -Tag @{mark="home"}
-        # tag count default 2
-        $res.Tag.Count | Should -Be 3
+        $res.Tag.Count | Should -Be 1
     }
 
     It 'UpdateViaIdentityExpanded' {
         $workspace = Get-AzDatabricksWorkspace -Name $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
         $res = Update-AzDatabricksWorkspace -InputObject $workspace -Tag @{mark="home";owner="Charlie";purpose="job"}
-        # tag count default 2
-        $res.Tag.Count | Should -Be 5
+        $res.Tag.Count | Should -Be 3
     }
     It 'UpdateViaIdentityForEncryption' {
         $dbr = Get-AzDatabricksWorkspace -Name $env.testWorkspace3 -ResourceGroupName $env.resourceGroup

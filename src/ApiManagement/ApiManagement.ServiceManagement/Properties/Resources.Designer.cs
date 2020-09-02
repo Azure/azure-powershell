@@ -349,6 +349,42 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Gateway Hostname Configuration &quot;{0}&quot; for Gateway &quot;{1}&quot;..
+        /// </summary>
+        internal static string GatewayHostnameConfigurationRemoveDescription {
+            get {
+                return ResourceManager.GetString("GatewayHostnameConfigurationRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Gateway Hostname Configuration &quot;{0}&quot; for Gateway &quot;{1}&quot;?.
+        /// </summary>
+        internal static string GatewayHostnameConfigurationRemoveWarning {
+            get {
+                return ResourceManager.GetString("GatewayHostnameConfigurationRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Gateway &quot;{0}&quot;..
+        /// </summary>
+        internal static string GatewayRemoveDescription {
+            get {
+                return ResourceManager.GetString("GatewayRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Gateway &quot;{0}&quot;?.
+        /// </summary>
+        internal static string GatewayRemoveWarning {
+            get {
+                return ResourceManager.GetString("GatewayRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Group &quot;{0}&quot;..
         /// </summary>
         internal static string GroupRemoveDescription {
@@ -597,6 +633,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SetDiagnostics {
             get {
                 return ResourceManager.GetString("SetDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Gateway.
+        /// </summary>
+        internal static string SetGateway {
+            get {
+                return ResourceManager.GetString("SetGateway", resourceCulture);
             }
         }
         

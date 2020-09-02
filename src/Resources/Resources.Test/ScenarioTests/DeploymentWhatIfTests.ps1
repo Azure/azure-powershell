@@ -428,3 +428,220 @@ function Test-WhatIfExcludeChangeTypesAtSubscriptionScope
 	Assert-NotNull $result.Changes
 	Assert-True { $result.Changes.Count -eq 0 }
 }
+
+<#
+.SYNOPSIS
+Tests management group level deployment what-if with resource creation.
+#>
+function Test-WhatIfCreateResourcesAtManagementGroupScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzManagementGroupDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ManagementGroupId $managementGroupId `
+		-TemplateFile management_group_level_template.json `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-AreEqual "Create" $change.ChangeType
+	}
+}
+
+<#
+.SYNOPSIS
+Tests management group level deployment what-if with ResultFormat=ResourceIdOnly.
+#>
+function Test-WhatIfWithResourceIdOnlyAtManagementGroupScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzManagementGroupDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ManagementGroupId $managementGroupId `
+		-TemplateFile management_group_level_template.json `
+		-ResultFormat ResourceIdOnly `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-NotNull $change.FullyQualifiedResourceId
+		Assert-AreNotEqual $change.FullyQualifiedResourceId ""
+		Assert-Null $change.Before
+		Assert-Null $change.After
+		Assert-Null $change.Delta
+	}
+}
+
+<#
+.SYNOPSIS
+Tests management group level deployment what-if with ExcludeChangeType.
+#>
+function Test-WhatIfExcludeChangeTypesAtManagementGroupScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzManagementGroupDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ManagementGroupId $managementGroupId `
+		-TemplateFile management_group_level_template.json `
+		-ResultFormat ResourceIdOnly `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName `
+		-ExcludeChangeType Create
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Tests tenant level deployment what-if with resource creation.
+#>
+function Test-WhatIfCreateResourcesAtTenantScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzTenantDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-TemplateFile management_group_level_template.json `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-AreEqual "Create" $change.ChangeType
+	}
+}
+
+<#
+.SYNOPSIS
+Tests tenant level deployment what-if with ResultFormat=ResourceIdOnly.
+#>
+function Test-WhatIfWithResourceIdOnlyAtTenantScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzTenantDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-TemplateFile management_group_level_template.json `
+		-ResultFormat ResourceIdOnly `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-NotNull $change.FullyQualifiedResourceId
+		Assert-AreNotEqual $change.FullyQualifiedResourceId ""
+		Assert-Null $change.Before
+		Assert-Null $change.After
+		Assert-Null $change.Delta
+	}
+}
+
+<#
+.SYNOPSIS
+Tests tenant level deployment what-if with ExcludeChangeType.
+#>
+function Test-WhatIfExcludeChangeTypesAtTenantScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+
+	# Act.
+	$result = Get-AzTenantDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-TemplateFile management_group_level_template.json `
+		-ResultFormat ResourceIdOnly `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName `
+		-ExcludeChangeType Create
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -eq 0 }
+}

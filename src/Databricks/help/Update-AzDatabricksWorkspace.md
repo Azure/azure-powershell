@@ -55,11 +55,11 @@ Name            Location       Managed Resource Group ID
 workspaceypae6l East US 2 EUAP /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceypae6l-wzefrgv2b075t
 ```
 
-Enabling encryption on a Databricks workspace takes two steps:
-1.
-Update a workspace with `-PrepareEncryption` (if the workspace was not created with `-PrepareEncryption`)
-1.
-Update the encryption key with the following parameters:
+Enabling encryption on a Databricks workspace takes three steps:
+
+1. Update the workspace with `-PrepareEncryption` (if it was not created so).
+1. Find `StorageAccountIdentityPrincipalId` in the output of the last step. Grant key permissions to the principal.
+1. Update the workspace again to fill in information about the encryption key:
     - `-EncryptionKeySource`
     - `-EncryptionKeyVaultUri`
     - `-EncryptionKeyName`
@@ -326,6 +326,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   - `[Id <String>]`: Resource identity path
+  - `[PeeringName <String>]`: The name of the workspace vNet peering.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
