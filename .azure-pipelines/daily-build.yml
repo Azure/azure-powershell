@@ -46,16 +46,17 @@ steps:
       $psGallery = Get-PSRepository -Name PSGallery
       if(!$psGallery){
         # Set up PSGallery
+        Write-Host "Registering AzureRM modules..."
         Register-PSRepository -Default -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery   
+      Get-Module -Name Az.* -ListAvailable
 
 - task: PowerShell@2
   displayName: Connect AzAccount 
   inputs:
     targetType: 'inline'
     script: |
-      Enable-AzContextAutosave
       $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
       $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
