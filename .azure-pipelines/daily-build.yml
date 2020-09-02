@@ -23,14 +23,14 @@ steps:
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
         $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse
+        Remove-Item –path $dirctory –recurse -force
       }
 
       # Remove AzureRM.* modules
       $modules = Get-Module -Name AzureRM.* -ListAvailable
       if($modules){
         $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse
+        Remove-Item –path $dirctory –recurse -force
       }
 
 - task: PowerShell@2
