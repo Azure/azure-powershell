@@ -19,7 +19,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Enable-AzContextAutosave
       $servicePrincipal=$(servicePrincipal)
       $password=$(password)
       $secret = ConvertTo-SecureString -String $password -AsPlainText -Force
