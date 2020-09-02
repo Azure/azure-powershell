@@ -15,17 +15,6 @@ pool:
 
 steps:
 - task: PowerShell@2
-  displayName: Connect AzAccount 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
-      $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
-      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
-      Set-AzContext -Subscription "Azure SDK Powershell Test"
-    pwsh: true
-
-- task: PowerShell@2
   displayName: Clean Existing Modules
   inputs:
     targetType: 'inline'
@@ -60,6 +49,18 @@ steps:
         Register-PSRepository -Default -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery   
+
+- task: PowerShell@2
+  displayName: Connect AzAccount 
+  inputs:
+    targetType: 'inline'
+    script: |
+      Enable-AzContextAutosave
+      $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
+      $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
+      Set-AzContext -Subscription "Azure SDK Powershell Test"
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
