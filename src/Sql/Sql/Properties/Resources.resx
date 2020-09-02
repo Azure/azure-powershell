@@ -634,11 +634,11 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
-  <data name="CancelAzureSqlInstanceDatabaseLogReplayDescription" xml:space="preserve">
-    <value>Canceling Azure Sql Managed Database Log Replay by removing '{0}' database.</value>
+  <data name="StopAzureSqlInstanceDatabaseLogReplayDescription" xml:space="preserve">
+    <value>Stopping Azure Sql Managed Database Log Replay by removing '{0}' database.</value>
   </data>
-  <data name="CancelAzureSqlInstanceDatabaseLogReplayWarning" xml:space="preserve">
-    <value>Are you sure you want to cancel Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed.</value>
+  <data name="StopAzureSqlInstanceDatabaseLogReplayWarning" xml:space="preserve">
+    <value>Are you sure you want to stop Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed.</value>
   </data>
   <data name="StartManagedDatabaseLogReplay_LastBackupName_Warning" xml:space="preserve">
     <value>LastBackupName is required parameter when AutoCompleteRestore is set to true. Please explicitly provide it.</value>

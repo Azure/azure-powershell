@@ -20,7 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to complete an Azure Sql Managed Database Log Replay
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Complete, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay")]
+    [Cmdlet(VerbsLifecycle.Complete, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay",
+         DefaultParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
+        SupportsShouldProcess = true),
+    OutputType(typeof(bool))]
     public class CompleteAzureSqlInstanceDatabaseLogReplay : AzureSqlManagedDatabaseLogReplayCmdletBase
     {
         /// <summary>

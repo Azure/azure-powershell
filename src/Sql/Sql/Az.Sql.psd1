@@ -262,7 +262,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Invoke-AzSqlInstanceFailover',
 			   'Start-AzSqlInstanceDatabaseLogReplay',
 			   'Complete-AzSqlInstanceDatabaseLogReplay',
-			   'Cancel-AzSqlInstanceDatabaseLogReplay',
+			   'Stop-AzSqlInstanceDatabaseLogReplay',
 			   'Get-AzSqlInstanceDatabaseLogReplay'
 
 # Variables to export from this module

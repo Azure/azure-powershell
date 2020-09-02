@@ -233,7 +233,7 @@ function Test-CancelManagedDatabaseLogReplay
             }
         }
 
-		Cancel-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName -Force
+		Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName -Force
 		
 		try {
 			$db = Get-AzSqlInstanceDatabase `
@@ -405,7 +405,7 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
             }
         }
 
-		$db | Cancel-AzSqlInstanceDatabaseLogReplay -Force
+		$db | Stop-AzSqlInstanceDatabaseLogReplay -Force
 		
 		try {
 			$dbRemoved = Get-AzSqlInstanceDatabase `

@@ -23,7 +23,7 @@
 	- `Start-AzSqlInstanceDatabaseLogReplay`
 	- `Get-AzSqlInstanceDatabaseLogReplay`
 	- `Complete-AzSqlInstanceDatabaseLogReplay`
-	- `Cancel-AzSqlInstanceDatabaseLogReplay`
+	- `Stop-AzSqlInstanceDatabaseLogReplay`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`

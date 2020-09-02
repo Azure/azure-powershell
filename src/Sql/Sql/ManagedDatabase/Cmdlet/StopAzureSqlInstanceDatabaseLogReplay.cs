@@ -18,10 +18,13 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to cancel an Azure Sql Managed Database Log Replay
+    /// Cmdlet to stop an Azure Sql Managed Database Log Replay
     /// </summary>
-    [Cmdlet("Cancel", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay")]
-    public class CancelAzureSqlInstanceDatabaseLogReplay : AzureSqlManagedDatabaseLogReplayCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay",
+        DefaultParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
+        SupportsShouldProcess = true),
+    OutputType(typeof(AzureSqlManagedDatabaseModel))]
+    public class StopAzureSqlInstanceDatabaseLogReplay : AzureSqlManagedDatabaseLogReplayCmdletBase
     {
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -31,8 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected override AzureSqlManagedDatabaseModel PersistChanges(AzureSqlManagedDatabaseModel entity)
         {
-
-            ModelAdapter.CancelManagedDatabaseLogReplay(entity);
+            ModelAdapter.StopManagedDatabaseLogReplay(entity);
             return entity;
         }
 
@@ -42,8 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldContinue(
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.CancelAzureSqlInstanceDatabaseLogReplayDescription, this.Name),
-                Microsoft.Azure.Commands.Sql.Properties.Resources.CancelAzureSqlInstanceDatabaseLogReplayWarning))
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceDatabaseLogReplayDescription, this.Name),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceDatabaseLogReplayWarning))
             {
                 return;
             }

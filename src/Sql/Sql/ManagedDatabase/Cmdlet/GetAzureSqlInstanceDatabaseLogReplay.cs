@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to get an Azure Sql Managed Database Log Replay status
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay"),
+    OutputType(typeof(AzureSqlManagedDatabaseRestoreDetailsResultModel))]
     public class GetAzureSqlInstanceDatabaseLogReplay : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseRestoreDetailsResultModel>
     {
         /// <summary>

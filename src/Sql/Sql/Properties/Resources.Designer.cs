@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Canceling Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
         /// </summary>
-        internal static string CancelAzureSqlInstanceDatabaseLogReplayDescription {
+        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
             get {
                 return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
         /// </summary>
-        internal static string CancelAzureSqlInstanceDatabaseLogReplayWarning {
+        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
             get {
                 return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
             }

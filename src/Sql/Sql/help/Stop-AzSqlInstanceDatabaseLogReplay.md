@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Cancel-AzSqlInstanceDatabaseLogReplay
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Stop-AzSqlInstanceDatabaseLogReplay
 schema: 2.0.0
 ---
 
-# Cancel-AzSqlInstanceDatabaseLogReplay
+# Stop-AzSqlInstanceDatabaseLogReplay
 
 ## SYNOPSIS
 Cancels the Log Replay service by dropping the database.
@@ -14,24 +14,24 @@ Cancels the Log Replay service by dropping the database.
 
 ### LogReplayInstanceDatabaseFromInputParameters
 ```
-Cancel-AzSqlInstanceDatabaseLogReplay [-Force] [-Name] <String> [-InstanceName] <String>
+Stop-AzSqlInstanceDatabaseLogReplay [-Force] [-Name] <String> [-InstanceName] <String>
  [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Cancel-AzSqlInstanceDatabaseLogReplay [-Force] [-PassThru] [-InputObject] <AzureSqlManagedDatabaseModel>
+Stop-AzSqlInstanceDatabaseLogReplay [-Force] [-PassThru] [-InputObject] <AzureSqlManagedDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Cancel-AzSqlInstanceDatabaseLogReplay** cmdlet drops the database and thus cancel Log Replay service.
+The **Stop-AzSqlInstanceDatabaseLogReplay** cmdlet drops the database and thus cancel Log Replay service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Cancel-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
+PS C:\> Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
 ```
 
 This command will cancel log replay service on the given database.

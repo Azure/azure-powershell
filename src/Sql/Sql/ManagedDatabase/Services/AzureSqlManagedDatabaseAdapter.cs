@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// Removes managed database in order to stop log replay service
         /// </summary>
         /// <param name="parameters">The parameters for log replay cancel action</param>
-        public void CancelManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
             Communicator.Remove(
                 parameters.ResourceGroupName,

@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to start a Azure Sql Managed Database Log Replay
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay")]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLogReplay",
+        DefaultParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
+        SupportsShouldProcess = true),
+    OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class StartAzureSqlInstanceDatabaseLogReplay : AzureSqlManagedDatabaseLogReplayCmdletBase
     {
         /// <summary>
@@ -78,10 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             }
             catch (CloudException ex)
             {
-                Console.WriteLine("EXCEPTION CATCHED");
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    Console.WriteLine("-----> NOT FOUND");
                     // This is what we want.  We looked and there is no instance database with this name.
                     return null;
                 }
