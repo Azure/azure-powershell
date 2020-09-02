@@ -12,7 +12,7 @@ Sets node type resource properties or run reimage actions on specific ndes of th
 
 ## SYNTAX
 
-### WithParamsByName
+### WithParamsByName (Default)
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  [-AsJob] [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
@@ -278,7 +278,7 @@ Parameter Sets: WithParamsByName, ReimageByName
 Aliases: NodeTypeName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
