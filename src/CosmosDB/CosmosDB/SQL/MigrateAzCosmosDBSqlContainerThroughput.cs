@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabaseThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    class MigrateAzCosmosDBSqlContainerThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class MigrateAzCosmosDBSqlContainerThroughput : MigrateAzCosmosDBThroughput
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]

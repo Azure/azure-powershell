@@ -292,6 +292,61 @@ function Test-CassandraThroughputCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+Test Cassandra migrate throughput cmdlets 
+#>
+function Test-CassandraMigrateThroughputCmdlets
+{
+
+  $AccountName = "db2725"
+  $rgName = "CosmosDBResourceGroup2510"
+  $KeyspaceName = "KeyspaceName3"
+  $TableName = "tableName"
+
+  $ThroughputValue = 1200
+  $TableThroughputValue = 800
+
+  $Autoscale = "Autoscale"
+  $Manual = "Manual"
+
+  Try{
+      $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
+      $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
+      $clusterkey1 = New-AzCosmosDBCassandraClusterKey -Name "ColumnB" -OrderBy "Asc"
+      $schema = New-AzCosmosDBCassandraSchema -Column $Column1,$Column2 -ClusterKey $clusterkey1 -PartitionKey "ColumnA"
+
+      $NewKeyspace =  New-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput $ThroughputValue
+      $Throughput = Get-AzCosmosDBCassandraKeyspaceThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
+      Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
+
+      $AutoscaleThroughput = Migrate-AzCosmosDBCassandraKeyspaceThroughput -InputObject $NewKeyspace -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
+      $ManualThroughput = Migrate-AzCosmosDBCassandraKeyspaceThroughput -ParentObject $CosmosDBAccount -Name $KeyspaceName -ThroughputType $Manual
+      Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $NewTable = New-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Schema $schema -Throughput $TableThroughputValue
+      $TableThroughput = Get-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
+      Assert-AreEqual $TableThroughput.Throughput $TableThroughputValue
+
+      $AutoscaledTableThroughput = Migrate-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaledTableThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $ManuaTableThroughput = Migrate-AzCosmosDBCassandraTableThroughput -InputObject $NewTable -ThroughputType $Manual
+      Assert-AreEqual $ManuaTableThroughput.AutoscaleSettings.MaxThroughput 0
+
+      Remove-AzCosmosDBCassandraTable -InputObject $NewTable 
+      Remove-AzCosmosDBCassandraKeyspace -InputObject $NewKeyspace
+  }
+  Finally{
+      Remove-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
+      Remove-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName
+  }
+}
+
 function Validate-EqualColumns($Column1, $Column2)
 {
     Assert-AreEqual $Column1.Name $Column2.Name
