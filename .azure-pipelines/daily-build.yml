@@ -28,6 +28,9 @@ steps:
         Write-Host "Az modules removed."
       }
 
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
+
       # Remove AzureRM.* modules
       $modules = Get-Module -Name AzureRM.* -ListAvailable
       if($modules){
@@ -37,6 +40,10 @@ steps:
         Write-Host "AzureRM modules removed."
       }
 
+      # Check AzureRM
+      Get-Module -Name AzureRM.* -ListAvailable
+    pwsh: true
+   
 - task: PowerShell@2
   displayName: Install Az Modules from PSGallery
   inputs:
@@ -53,7 +60,6 @@ steps:
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery -AllowClobber -Force 
-      Get-Module -Name Az.* -ListAvailable
     pwsh: true
 - task: PowerShell@2
   displayName: Connect AzAccount 
