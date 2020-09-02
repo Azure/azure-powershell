@@ -126,10 +126,6 @@ steps:
         Write-Host '$previousVersion:' $previousVersion
 
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
-        
-        # Check Az
-        Write-Host "Get previous version of Az"
-        Get-Module -Name Az.* -ListAvailable
 
         #Update Az
         Update-Module -Name Az
@@ -253,8 +249,8 @@ steps:
         #Install Az
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force        
         
-        Get-AzVM
         Write-Host "Installed latest version of Az"
+        Get-AzVM
         Get-Module
       }
     pwsh: true
@@ -293,16 +289,12 @@ steps:
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:' $previousVersion
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
-        
-        # Check Az
-        Write-Host "Installed previous version of Az"
-        Get-Module -Name Az.* -ListAvailable
 
         #Install Az.Compute
         Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force        
         
-        Get-AzVM
         Write-Host "Installed latest Az.Compute"
+        Get-AzVM
         Get-Module
       }
     pwsh: true
