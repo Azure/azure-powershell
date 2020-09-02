@@ -60,6 +60,9 @@ steps:
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery -AllowClobber -Force 
+      
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
     pwsh: true
 - task: PowerShell@2
   displayName: Connect AzAccount 
@@ -123,12 +126,14 @@ steps:
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
         
         # Check Az
+        Write-Host "Get previous version of Az"
         Get-Module -Name Az.* -ListAvailable
 
         #Update Az
         Update-Module -Name Az
         
         # Check Az
+        Write-Host "Get latest version of Az"
         Get-Module -Name Az.* -ListAvailable
 
         # Reuse connected account and select subscription for test
