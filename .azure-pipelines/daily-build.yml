@@ -85,3 +85,58 @@ steps:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
     pwsh: true
+
+
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
+        Remove-Item –path $dirctory –recurse -force
+        Write-Host "Az modules removed."
+      }
+
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
+    pwsh: true
+
+
+- task: PowerShell@2
+  displayName: Update Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Get previous version of az
+      $versions = (find-module az -Repository PSGallery -AllVersions).Version |
+       %{[system.version]$_} | 
+       sort -Descending -Top 2 | 
+       %{[System.String]$_}
+
+      if($versions.Count -ge 2){
+        # Install previous version of Az
+        $previousVersion = $versions[1]
+        Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Update-Module -Name Az
+        # Reuse connected account and select subscription for test
+        Enable-AzureRmAlias
+        Set-AzContext -Subscription "Azure SDK Powershell Test"
+      }
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    arguments: '-Reverse'
+    pwsh: true
