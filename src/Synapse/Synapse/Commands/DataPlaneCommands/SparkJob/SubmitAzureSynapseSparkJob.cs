@@ -171,7 +171,6 @@ namespace Microsoft.Azure.Commands.Synapse
             archives?.ForEach(item => batchRequest.Archives.Add(item));
             this.Configuration?.ToDictionary()?.ForEach(item => batchRequest.Configuration.Add(item));
 
-
             // Ensure the relative path of UDFs is add to "--conf".
             if (isSparkDotNet)
             {
