@@ -59,6 +59,8 @@ steps:
         Write-Host "Setting PSGallery Trusted..."
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
+
+      Write-Host "Installing Az..."
       Install-Module -Name Az -Repository PSGallery -AllowClobber -Force 
       
       # Check Az
@@ -69,6 +71,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      Write-Host "Connecting Az.Account..."
       $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
       $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
@@ -123,7 +126,7 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
-        Write-Host '$previousVersion:' $previousVersion
+        Write-Host '$previousVersion:',$previousVersion
 
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
 
@@ -195,16 +198,15 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az.Compute
         $previousVersion = $versions[1]
-        Write-Host '$previousVersion:' $previousVersion
+        Write-Host '$previousVersion:', $previousVersion
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Update Az.Compute
         Update-Module -Name Az.Compute
-        
-        Get-AzVM
-
-        # Check Az.Compute        
         Write-Host "Installed latest version of Az.Compute"
+
+        # Check Az.Compute
+        Get-AzVM
         Get-Module
       }
     pwsh: true
@@ -241,7 +243,7 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az.Compute        
         $previousVersion = $versions[1]
-        Write-Host '$previousVersion:' $previousVersion
+        Write-Host '$previousVersion:', $previousVersion
         Write-Host "Installed previous version of Az.Compute"
 
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
@@ -287,7 +289,7 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
-        Write-Host '$previousVersion:' $previousVersion
+        Write-Host '$previousVersion:', $previousVersion
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Install Az.Compute
