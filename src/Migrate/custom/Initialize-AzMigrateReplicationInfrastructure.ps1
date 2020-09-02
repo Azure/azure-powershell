@@ -15,16 +15,10 @@
 
 <#
 .Synopsis
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Initializes the replication infrastructure.
 .Description
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
 .Link
-# TODO PLEASE FIX BEFORE RELEASE
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
 function Initialize-AzMigrateReplicationInfrastructure {
@@ -34,20 +28,26 @@ function Initialize-AzMigrateReplicationInfrastructure {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
+        # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate project.
+        # Specifies the name of the Azure Migrate project to be used for server migration.
         ${ProjectName},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Switch]
-        # Swicth Parameter to indicate provider.
+        # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
         ${Vmwareagentless},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Switch]
+        # Specifies the target Azure region for server migrations.
+        ${TargetRegion},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

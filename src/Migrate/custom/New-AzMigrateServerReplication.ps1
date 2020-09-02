@@ -15,67 +15,117 @@
 
 <#
 .Synopsis
-Enable Migration
+Starts replication for the specified server.
 .Description
-Enable Migration
+The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='DefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate project.
-        ${VmWareMachineId},
+        # Specifies the machine ID of the discovered server to be migrated.
+        ${VMwareMachineId},
+
+        [Parameter(ParameterSetName='PowerUser', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]
+        # Specifies the disks on the source server to be included for replication.
+        ${DisksToInclude},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate project.
+        # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${LicenseType},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate project.
+        # Specifies the destination Azure subscription id to which the server needs to be migrated.
+        ${TargetSubscriptionId},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
         ${TargetResourceGroupId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate protected VM.
+        # Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
         ${TargetNetworkId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate protected VM.
+        # Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
         ${TargetSubnetName},
 
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Mapping.
+        ${ReplicationContainerMapping},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Account id.
+        ${VMWarerunasaccountID},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate protected VM.
+        # Specifies the name of the Azure VM to be created.
+        ${TargetVMName},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the SKU of the Azure VM to be created.
+        ${TargetVMSize},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.
+        ${PerformAutoResync},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Availability Set to be used for VM creationSpecifies the Availability Set to be used for VM creation.
+        ${TargetAvailabilitySet},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Availability Zone to be used for VM creation.
+        ${TargetAvailabilityZone},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the storage account to be used for boot diagnostics.
+        ${TargetBootDiagnosticsStorageAccount},
+
+        [Parameter(ParameterSetName='DefaultUser', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the type of disks to be used for the Azure VM.
         ${DiskType},
         
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='DefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate protected VM.
+        # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
-        
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${TargetLogStorageAccount},
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${TargetVMName},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -149,36 +199,26 @@ function New-AzMigrateServerReplication {
           
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
             $test = $PSBoundParameters
+
+            $ParameterSetName = $PSCmdlet.ParameterSetName
             if($VmWareMachineId.Contains('VMwareSites')){
                 $MachineIdArray = $VmWareMachineId.Split("/")
+                #$MachineName = 
+                #$SourceResourceGroup = 
+                #$SiteName = 
+
+                #$ProjectName = 
+
+                if ($ParameterSetName -eq 'DefaultUser'){
+
+                }else{
+
+                }
+
             }else{
                 Write-Host 'Not a Vmware machine'
             }
-            $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-            $Source = @"
-using System;
-public class HashFunctions
-{
-public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
-            }
-            return Math.Abs(hash);
-    }
-}
-"@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                
-           
+            
         } catch {
            throw
         }

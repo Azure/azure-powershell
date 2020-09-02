@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: Migrate cmdlets
 
 ## Az.Migrate Cmdlets
+### [Get-AzMigrateDiskMapping](Get-AzMigrateDiskMapping.md)
+The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
+
 ### [Get-AzmigrateJob](Get-AzmigrateJob.md)
 Get job.
 
@@ -18,11 +21,7 @@ Get job.
 Get Replication items.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
 
 ### [Mock-AzMigrateGetRunAsAccountId](Mock-AzMigrateGetRunAsAccountId.md)
 Mock
@@ -34,7 +33,7 @@ Mock
 Mock
 
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
-Enable Migration
+The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Remove Migration item.

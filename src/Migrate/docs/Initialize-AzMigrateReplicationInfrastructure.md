@@ -8,23 +8,18 @@ schema: 2.0.0
 # Initialize-AzMigrateReplicationInfrastructure
 
 ## SYNOPSIS
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Initializes the replication infrastructure.
 
 ## SYNTAX
 
 ```
-Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String> -TargetRegion
+ -Vmwareagentless [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
 
 ## EXAMPLES
 
@@ -94,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of an Azure Migrate project.
+Specifies the name of the Azure Migrate project to be used for server migration.
 
 ```yaml
 Type: System.String
@@ -109,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of an Azure Resource group.
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
 
 ```yaml
 Type: System.String
@@ -138,15 +133,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vmwareagentless
-Swicth Parameter to indicate provider.
+### -TargetRegion
+Specifies the target Azure region for server migrations.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vmwareagentless
+Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,7 +208,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 
