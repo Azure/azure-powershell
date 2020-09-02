@@ -1527,5 +1527,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("YearlyScheduleMonthsOfYearException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide an empty target vault. The target vault should not have any backup items or backup containers.
+        /// </summary>
+        public static string TargetVaultNotEmptyException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetVaultNotEmptyException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to copy items to the <TargetVault> whose storage redundancy is <StorageRedundancyType>.
+        /// </summary>
+        public static string TargetVaultStorageRedundancy
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetVaultStorageRedundancy", resourceCulture);
+            }
+        }
     }
 }
