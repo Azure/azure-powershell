@@ -21,7 +21,7 @@ steps:
     script: |
       $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
       $credential = New-Object -TypeName System.Management.Automation.PSCredential("$(servicePrincipal)", $secret)
-      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant "$(tenantId)"
       Set-AzContext -Subscription "Azure SDK Powershell Test"
     pwsh: true
 
