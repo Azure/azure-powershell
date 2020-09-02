@@ -123,6 +123,8 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
+        Write-Host '$previousVersion:' $previousVersion
+
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
         
         # Check Az
@@ -197,17 +199,16 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az.Compute
         $previousVersion = $versions[1]
+        Write-Host '$previousVersion:' $previousVersion
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
-        
-        # Check Az.Compute
-        Get-Module -Name Az.Compute
 
         #Update Az.Compute
         Update-Module -Name Az.Compute
         
         Get-AzVM
 
-        # Check Az.Compute
+        # Check Az.Compute        
+        Write-Host "Installed latest version of Az.Compute"
         Get-Module
       }
     pwsh: true
@@ -242,17 +243,18 @@ steps:
        %{[System.String]$_}
 
       if($versions.Count -ge 2){
-        # Install previous version of Az.Compute
+        # Install previous version of Az.Compute        
         $previousVersion = $versions[1]
+        Write-Host '$previousVersion:' $previousVersion
+        Write-Host "Installed previous version of Az.Compute"
+
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
-        
-        # Check Az.Compute
-        Get-Module -Name Az.Compute
 
         #Install Az
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force        
         
         Get-AzVM
+        Write-Host "Installed latest version of Az"
         Get-Module
       }
     pwsh: true
@@ -289,15 +291,18 @@ steps:
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
+        Write-Host '$previousVersion:' $previousVersion
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
         
         # Check Az
+        Write-Host "Installed previous version of Az"
         Get-Module -Name Az.* -ListAvailable
 
         #Install Az.Compute
         Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force        
         
         Get-AzVM
+        Write-Host "Installed latest Az.Compute"
         Get-Module
       }
     pwsh: true
