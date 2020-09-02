@@ -390,21 +390,10 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 
 		$db | Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName $lastBackupName
 
-		while($true){
-            $statusResponse = $db | Get-AzSqlInstanceDatabaseLogReplay
-
-			# Wait until restore state is Complted - this means restore has completed
-            #
-            $status = $statusResponse.Status
-            if($status -eq $statusCompleted){
-				break;
-            }
-			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
-        }
-
+		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+			Start-Sleep -s 10
+		}
+		
 		$db | Stop-AzSqlInstanceDatabaseLogReplay -Force
 		
 		try {
