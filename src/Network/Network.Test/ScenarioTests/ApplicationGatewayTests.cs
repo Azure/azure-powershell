@@ -14,6 +14,8 @@
 
 using System;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -64,6 +66,30 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayCRUD3()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD3 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestKeyVaultIntegrationTest()
+        {
+            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+            string servicePrincipal = "fakefakefake";
+            if (!string.IsNullOrEmpty(environmentConnectionString))
+            {
+                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
+                var mode = connectionInfo.GetValue<string>(ConnectionStringKeys.HttpRecorderModeKey);
+                if (mode == HttpRecorderMode.Playback.ToString())
+                {
+                    servicePrincipal = HttpMockServer.GetVariable("spn", "fake");
+                }
+                else
+                {
+                    servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
+                    HttpMockServer.Variables["spn"] = servicePrincipal;
+                }
+            }
+            TestRunner.RunTestScript(string.Format("Test-KeyVaultIntegrationTest -baseDir '{0}' -spn '{1}'", AppDomain.CurrentDomain.BaseDirectory, servicePrincipal));
         }
 
         [Fact]
