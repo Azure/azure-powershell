@@ -123,7 +123,40 @@ function Start-AzMigrateServerMigration {
     )
     
     process {
-        
+        if($parameterSet  -eq 'ByMachineId'){
+            $null = $PSBoundParameters.Remove('MachineId')
+            $hasTurnOffSourceServer = $PSBoundParameters.ContainsKey('TurnOffSourceServer')
+            $null = $PSBoundParameters.Remove('TurnOffSourceServer')
+
+            $MachineIdArray = $MachineId.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
+
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'Migrate' )){
+                $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrateInput]::new()
+                $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
+                if($hasTurnOffSourceServer){
+                    $null = $ProviderSpecificDetailInput.Add('TurnOffSourceServer', $TurnOffSourceServer)
+                }
+                $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
+                Az.Migrate.internal\Move-AzMigrateReplicationMigrationItem @PSBoundParameters
+            }else{
+                Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
+            }
+            
+
+            return
+        }
             
     }
 

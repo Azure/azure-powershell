@@ -28,19 +28,54 @@ function New-AzMigrateServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
+        # Name of an Azure Migrate project.
+        ${VmWareMachineId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate project.
-        ${ProjectName},
+        ${LicenseType},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate project.
+        ${TargetResourceGroupId},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${TargetNetworkId},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${TargetSubnetName},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${DiskType},
+        
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${OSDiskID},
+        
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Name of an Azure Migrate protected VM.
+        ${TargetLogStorageAccount},
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Name of an Azure Migrate protected VM.
-        ${MachineName},
+        ${TargetVMName},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -111,15 +146,16 @@ function New-AzMigrateServerReplication {
     
     process {
         try {
-            # TODO PLEASE FIX BEFORE RELEASE
+          
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
+            $test = $PSBoundParameters
+            if($VmWareMachineId.Contains('VMwareSites')){
+                $MachineIdArray = $VmWareMachineId.Split("/")
+            }else{
+                Write-Host 'Not a Vmware machine'
+            }
+            $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
+            $Source = @"
 using System;
 public class HashFunctions
 {
@@ -142,10 +178,7 @@ public static int hashForArtifact(String artifact)
                 Write-Host $hash
                
                 
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
-            }
+           
         } catch {
            throw
         }

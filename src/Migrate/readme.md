@@ -64,6 +64,7 @@ directive:
     - MigrateProviderSpecificInput
     - ResyncProviderSpecificInput
     - EnableMigrationProviderSpecificInput
+    - UpdateMigrationItemProviderSpecificInput
   # Remove variants not in scope
   - where:
       verb: Test$
@@ -95,6 +96,11 @@ directive:
       subject: ^ReplicationMigrationItem
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
     remove: true
+  - where:
+      verb: Update$
+      subject: ^ReplicationMigrationItem
+      variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
+    remove: true
   # Remove cmdlets not in scope
   - where:
       subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
@@ -111,7 +117,7 @@ directive:
     remove: true
   - where:
       verb: Update$
-      subject: Fabric$|MigrationItem$|Policy$|ProtectionContainer$
+      subject: Fabric$|Policy$|ProtectionContainer$
     remove: true
   - where:
       verb: Stop$|Resume$|Restart$
@@ -141,4 +147,8 @@ directive:
   - where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
+    hide: true
+  - where:
+      verb: Update$
+      subject: ^ReplicationMigrationItem
     hide: true

@@ -24,6 +24,15 @@ This has to be done only once, before enabling replication for first
 VmWare virtual machine.
 Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
 
+### [Mock-AzMigrateGetRunAsAccountId](Mock-AzMigrateGetRunAsAccountId.md)
+Mock
+
+### [Mock-AzMigrateGetSite](Mock-AzMigrateGetSite.md)
+Mock
+
+### [Mock-AzMigrateGetSolution](Mock-AzMigrateGetSolution.md)
+Mock
+
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 Enable Migration
 
