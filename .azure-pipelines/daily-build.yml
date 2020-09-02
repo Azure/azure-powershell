@@ -48,6 +48,8 @@ steps:
         # Set up PSGallery
         Write-Host "Registering AzureRM modules..."
         Register-PSRepository -Default -InstallationPolicy Trusted
+      }else{
+        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
       Install-Module -Name Az -Repository PSGallery   
       Get-Module -Name Az.* -ListAvailable
