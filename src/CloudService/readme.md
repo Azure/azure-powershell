@@ -89,12 +89,21 @@ directive:
       verb: Restart
     hide: true
   - where:
+      subject: ^CloudServiceRoleInstance$|^CloudService$
+      verb: Update
+    hide: true
+  - where:
       subject: ^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
       verb: Invoke
     hide: true
   - where:
-      subject: ^LoadBalancerProbe|^LoadBalancerNetworkInterface|^LoadBalancerOutboundRule|^LoadBalancerLoadBalancingRule|^LoadBalancerInboundNatRule|^LoadBalancerFrontendIPConfiguration|^LoadBalancerBackendAddressPool|^InboundNatRule$|^LoadBalancer$
-    Remove: true
+      subject: ^CloudServiceRole$
+      verb: Get
+    hide: true
+
+  - where:
+      subject: ^LoadBalancerProbe$|^LoadBalancerNetworkInterface$|^LoadBalancerOutboundRule$|^LoadBalancerLoadBalancingRule$|^LoadBalancerInboundNatRule$|^LoadBalancerFrontendIPConfiguration$|^LoadBalancerBackendAddressPool$|^InboundNatRule$|^LoadBalancer$|^LoadBalancerTag$
+    remove: true
   - no-inline:  # choose ONE of these models to disable inlining
     - PublicIPAddressPropertiesFormat
     - IPConfiguration

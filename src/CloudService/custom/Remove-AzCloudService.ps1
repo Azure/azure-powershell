@@ -159,7 +159,7 @@ function Remove-AzCloudService {
         if ($PSBoundParameters.ContainsKey('RoleInstance')) {
             $Name = $PSBoundParameters.Remove('Name')
             $PSBoundParameters.Add('CloudServiceName', $Name)
-            Az.CloudService.internal\Remove-AzCloudServiceInstance @PSBoundParameters
+            Az.CloudService.internal\Remove-AzCloudServiceRoleInstance @PSBoundParameters
         } else {
             Az.CloudService.internal\Remove-AzCloudService @PSBoundParameters
         }
