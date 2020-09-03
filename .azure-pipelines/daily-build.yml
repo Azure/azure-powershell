@@ -59,12 +59,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      if( $(GALLERY_NAME) -eq 'PSGallery' ){
+      $gallery = $(GALLERY_NAME)
+      if( $gallery -eq 'PSGallery' ){
         Write-Host "Setting $(GALLERY_NAME) Trusted..."
         Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
       }
 
-      if( $(GALLERY_NAME) -eq 'TestGallery' ){
+      if( $gallery -eq 'TestGallery' ){
         Write-Host "Registering $(GALLERY_NAME)..."
         Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
       }    
