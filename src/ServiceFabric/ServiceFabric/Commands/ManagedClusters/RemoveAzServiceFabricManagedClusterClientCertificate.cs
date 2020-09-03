@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterClientCertificate", DefaultParameterSetName = ClientCertByTpByName, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterClientCertificate", DefaultParameterSetName = ClientCertByTpByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
     public class RemoveAzServiceFabricManagedClusterClientCertificate : ServiceFabricCommonCmdletBase
     {
         protected const string ClientCertByTpByName = "ClientCertByCnTpName";

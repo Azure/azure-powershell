@@ -12,7 +12,13 @@ Set cluster resource properties.
 
 ## SYNTAX
 
-### WithPramsByName (Default)
+### ByObj (Default)
+```
+Set-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithPramsByName
 ```
 Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>]
@@ -26,12 +32,6 @@ Set-AzServiceFabricManagedCluster [-ResourceId] <String> [-UpgradeMode <ClusterU
  [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>]
  [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObj
-```
-Set-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

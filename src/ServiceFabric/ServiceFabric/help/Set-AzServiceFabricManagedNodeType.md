@@ -12,7 +12,13 @@ Sets node type resource properties or run reimage actions on specific ndes of th
 
 ## SYNTAX
 
-### WithParamsByName (Default)
+### ByObj (Default)
+```
+Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithParamsByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  [-AsJob] [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
@@ -38,12 +44,6 @@ Set-AzServiceFabricManagedNodeType [-ResourceId] <String> [-AsJob] [-DefaultProf
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-Reimage] [-ForceReimage]
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObj
-```
-Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReimageByObj

@@ -12,7 +12,13 @@ Remvoe client certificate by thumbprint or common name.
 
 ## SYNTAX
 
-### ClientCertByCnTpName (Default)
+### ClientCertByTpByObj (Default)
+```
+Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> -Thumbprint <String>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ClientCertByCnTpName
 ```
 Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  -Thumbprint <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -24,12 +30,6 @@ Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <Stri
 Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  -CommonName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### ClientCertByTpByObj
-```
-Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> -Thumbprint <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientCertByCnByObj
@@ -184,7 +184,7 @@ Client certificate thumbprint.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByCnTpName, ClientCertByTpByObj
+Parameter Sets: ClientCertByTpByObj, ClientCertByCnTpName
 Aliases:
 
 Required: True

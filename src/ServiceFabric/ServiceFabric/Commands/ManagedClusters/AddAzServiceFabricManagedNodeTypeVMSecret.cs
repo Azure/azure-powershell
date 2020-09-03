@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMSecret", DefaultParameterSetName = ByName, SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMSecret", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
     public class AddAzServiceFabricManagedNodeTypeVMSecret : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";

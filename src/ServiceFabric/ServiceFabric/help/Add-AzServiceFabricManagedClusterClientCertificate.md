@@ -12,7 +12,14 @@ Add certificate common name or thumbprint to the cluster. This will register the
 
 ## SYNTAX
 
-### ClientCertByTpByName (Default)
+### ClientCertByTpByObj (Default)
+```
+Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> [-Admin]
+ -Thumbprint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ClientCertByTpByName
 ```
 Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String> [-Admin]
  -Thumbprint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -24,13 +31,6 @@ Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String>
 Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String> [-Admin]
  -CommonName <String> [-IssuerThumbprint <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ClientCertByTpByObj
-```
-Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedCluster> [-Admin]
- -Thumbprint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### ClientCertByCnByObj
@@ -201,7 +201,7 @@ Client certificate thumbprint.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientCertByTpByName, ClientCertByTpByObj
+Parameter Sets: ClientCertByTpByObj, ClientCertByTpByName
 Aliases:
 
 Required: True
