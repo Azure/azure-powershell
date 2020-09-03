@@ -343,7 +343,7 @@ function Test-subnetNetworkSecurityGroupCRUD {
     # Setup
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
-    $subnetName = Get-ResourceName
+    $subnet1Name = Get-ResourceName
     $subnet2Name = Get-ResourceName
     $subnet3Name = Get-ResourceName
     $networkSecurityGroupName = Get-ResourceName
@@ -359,7 +359,7 @@ function Test-subnetNetworkSecurityGroupCRUD {
         $networkSecurityGroup = New-AzNetworkSecurityGroup -Name $networkSecurityGroupName -ResourceGroupName $rgname -Location $location
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $networkSecurityGroup
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $networkSecurityGroup
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -373,10 +373,13 @@ function Test-subnetNetworkSecurityGroupCRUD {
         # Get VirtualNetwork
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 1 @($vnetExpected.Subnets[0].NetworkSecurityGroup).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[1].NetworkSecurityGroup).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[2].NetworkSecurityGroup).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual $subnet1Name $vnetExpected.Subnets[0].Name
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
+        Assert-AreEqual $subnet3Name $vnetExpected.Subnets[2].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].NetworkSecurityGroup.Count
 
         # Associate a network security group to a subnet using the NetworkSecurityGroup parameter
         Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -NetworkSecurityGroup $networkSecurityGroup
@@ -387,24 +390,24 @@ function Test-subnetNetworkSecurityGroupCRUD {
         Set-AzVirtualNetwork -VirtualNetwork $vnet
 
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 1 @($vnetExpected.Subnets[0].NetworkSecurityGroup).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
         Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[0].NetworkSecurityGroup.Id
-        Assert-AreEqual 1 @($vnetExpected.Subnets[1].NetworkSecurityGroup).Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
         Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[1].NetworkSecurityGroup.Id
-        Assert-AreEqual 1 @($vnetExpected.Subnets[2].NetworkSecurityGroup).Count
+        Assert-AreEqual 1 ($vnetExpected.Subnets[2].NetworkSecurityGroup).Count
         Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[2].NetworkSecurityGroup.Id
 
         # Get subnets
         $subnet1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet1Name
-        Assert-AreEqual 1 @($subnet1.NetworkSecurityGroup).Count
+        Assert-AreEqual 1 $subnet1.NetworkSecurityGroup.Count
         $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
-        Assert-AreEqual 1 @($subnet2.NetworkSecurityGroup).Count
+        Assert-AreEqual 1 $subnet2.NetworkSecurityGroup.Count
         $subnet3 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet3Name
-        Assert-AreEqual 1 @($subnet3.NetworkSecurityGroup).Count
+        Assert-AreEqual 1 $subnet3.NetworkSecurityGroup.Count
         $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
 
-        Assert-AreEqual 3 @($subnetAll).Count
+        Assert-AreEqual 3 $subnetAll.Count
 
         # Disassociate a network security group with the NetworkSecurityGroup parameter as $null
         Set-AzVirtualNetworkSubnetConfig -Name $subnet1Name -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $null
@@ -419,10 +422,10 @@ function Test-subnetNetworkSecurityGroupCRUD {
         Set-AzVirtualNetwork -VirtualNetwork $vnet
         
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[0].NetworkSecurityGroup).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[1].NetworkSecurityGroup).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[2].NetworkSecurityGroup).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].NetworkSecurityGroup.Count
     }
     finally {
         # Cleanup
@@ -440,7 +443,7 @@ function Test-subnetRouteTableCRUD {
     # Setup
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
-    $subnetName = Get-ResourceName
+    $subnet1Name = Get-ResourceName
     $subnet2Name = Get-ResourceName
     $subnet3Name = Get-ResourceName
     $routeTableName = Get-ResourceName
@@ -456,7 +459,7 @@ function Test-subnetRouteTableCRUD {
         $routeTable = New-AzRouteTable -Name $routeTableName -ResourceGroupName $rgname -Location $location
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -RouteTable $routeTable
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -RouteTable $routeTable
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -470,10 +473,13 @@ function Test-subnetRouteTableCRUD {
         # Get VirtualNetwork
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 1 @($vnetExpected.Subnets[0].RouteTable).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[1].RouteTable).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[2].RouteTable).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual $subnet1Name $vnetExpected.Subnets[0].Name
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].RouteTable.Count
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].RouteTable.Count
+        Assert-AreEqual $subnet3Name $vnetExpected.Subnets[2].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].RouteTable.Count
 
         # Associate a route table to a subnet using the RouteTable parameter
         Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -RouteTable $routeTable
@@ -484,24 +490,24 @@ function Test-subnetRouteTableCRUD {
         Set-AzVirtualNetwork -VirtualNetwork $vnet
 
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 1 @($vnetExpected.Subnets[0].RouteTable).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].RouteTable.Count
         Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[0].RouteTable.Id
-        Assert-AreEqual 1 @($vnetExpected.Subnets[1].RouteTable).Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[1].RouteTable.Count
         Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[1].RouteTable.Id
-        Assert-AreEqual 1 @($vnetExpected.Subnets[2].RouteTable).Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[2].RouteTable.Count
         Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[2].RouteTable.Id
 
         # Get subnets
         $subnet1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet1Name
-        Assert-AreEqual 1 @($subnet1.RouteTable).Count
+        Assert-AreEqual 1 $subnet1.RouteTable.Count
         $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
-        Assert-AreEqual 1 @($subnet2.RouteTable).Count
+        Assert-AreEqual 1 $subnet2.RouteTable.Count
         $subnet3 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet3Name
-        Assert-AreEqual 1 @($subnet3.RouteTable).Count
+        Assert-AreEqual 1 $subnet3.RouteTable.Count
         $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
 
-        Assert-AreEqual 3 @($subnetAll).Count
+        Assert-AreEqual 3 $subnetAll.Count
 
         # Disassociate a route table with the RouteTable parameter as $null
         Set-AzVirtualNetworkSubnetConfig -Name $subnet1Name -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -RouteTable $null
@@ -516,10 +522,10 @@ function Test-subnetRouteTableCRUD {
         Set-AzVirtualNetwork -VirtualNetwork $vnet
         
         $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 3 @($vnetExpected.Subnets).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[0].RouteTable).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[1].RouteTable).Count
-        Assert-AreEqual 0 @($vnetExpected.Subnets[2].RouteTable).Count
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[0].RouteTable.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].RouteTable.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].RouteTable.Count
     }
     finally {
         # Cleanup
