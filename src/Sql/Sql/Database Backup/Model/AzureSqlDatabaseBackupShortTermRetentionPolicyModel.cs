@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the retention days of this policy.
         /// </summary>
-        public int RetentionDays { get; set; }
+        public int? RetentionDays { get; set; }
 
         /// <summary>
         /// Gets or sets the differential backup interval of this policy.

@@ -29,19 +29,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets backup retention days.
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 3,
             HelpMessage = "The backup retention setting, in days.")]
-        [ValidateNotNullOrEmpty]
-        public int RetentionDays{ get; set; }
+        public int? RetentionDays { get; set; }
 
         /// <summary>
         /// Gets or sets differential backup interval hours.
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The differential backup interval, in hours.")]
-        public int? DiffBackupIntervalInHours { get; set; }
-
+        public int? DiffBackupIntervalInHours { get; set; }	
+			
         /// <summary>
         /// Get the entities from the service
         /// </summary>
