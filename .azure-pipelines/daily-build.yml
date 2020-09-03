@@ -106,6 +106,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Connecting Az.Account..."
+      Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
       $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
       $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
