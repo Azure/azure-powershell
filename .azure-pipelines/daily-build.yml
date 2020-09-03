@@ -10,18 +10,40 @@ schedules:
 pr: none
 trigger: none
 
-pool:
-  vmImage: 'windows-2019'
-
 strategy:
   matrix:
-    TestGallery:
-      GALLERY_NAME: 'TestGallery'
-      GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    PSGallery:
-      GALLERY_NAME: 'PSGallery'
-      GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
+    Windows PS 5.1.14:
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 5.1.14
+      TurnOn_Core: false
+    # Windows PS 6.2.4:
+    #   IMAGE_NAME: 'vs2017-win2016'
+    #   PSVersion: 6.2.4
+    #   TurnOn_Core: false
+    # Windows PS 7.0.3:
+    #   IMAGE_NAME: 'vs2017-win2016'
+    #   PSVersion: 7.0.3
+    #   TurnOn_Core: false
+    # Linux TestGallery:
+    #   IMAGE_NAME: 'ubuntu-18.04'
+    #   GALLERY_NAME: 'TestGallery'
+    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
+    # Linux PSGallery:
+    #   IMAGE_NAME: 'ubuntu-18.04'
+    #   GALLERY_NAME: 'PSGallery'
+    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
+    # MacOS TestGallery:
+    #   IMAGE_NAME: 'macOS-10.14'
+    #   GALLERY_NAME: 'TestGallery'
+    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
+    # MacOS PSGallery:
+    #   IMAGE_NAME: 'macOS-10.14'
+    #   GALLERY_NAME: 'PSGallery'
+    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
   maxParallel: 2
+
+pool:
+  vmImage: 'windows-2019'
 
 steps:
 - task: PowerShell@2
@@ -52,7 +74,6 @@ steps:
 
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
-    pwsh: true
    
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
@@ -81,7 +102,7 @@ steps:
       if(!$azVersions){
         throw "No Az is installed"
       }
-    pwsh: true
+      
 - task: PowerShell@2
   displayName: Connect AzAccount 
   inputs:
@@ -93,7 +114,6 @@ steps:
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
       Set-AzContext -Subscription "Azure SDK Powershell Test"
       Enable-AzureRmAlias
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
@@ -106,8 +126,6 @@ steps:
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
-    pwsh: true
-
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -125,8 +143,6 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
-    pwsh: true
-
 
 - task: PowerShell@2
   displayName: Update Az Modules
@@ -164,21 +180,18 @@ steps:
         Enable-AzureRmAlias
         Set-AzContext -Subscription "Azure SDK Powershell Test"
       }
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    pwsh: true
-
+    
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
-    pwsh: true
-
+    
 - task: PowerShell@2
   displayName: Clean Az Modules
   inputs:
@@ -195,8 +208,7 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
-    pwsh: true
-
+    
 - task: PowerShell@2
   displayName: Install an individual module
   inputs:
@@ -211,8 +223,6 @@ steps:
       if(!$azComputeVersion){
         throw "No Az.Compute is installed"
       }
-      
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Update an individual module
@@ -245,7 +255,6 @@ steps:
           throw "Update Az.Compute failed"
         }
       }
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -263,7 +272,6 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Install Az on top of an individual module
@@ -298,7 +306,6 @@ steps:
           throw "Install Az on top of Az.Compute failed"
         }
       }
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -316,7 +323,6 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
-    pwsh: true
 
 - task: PowerShell@2
   displayName: Install an individual module on top of Az
@@ -354,4 +360,3 @@ steps:
           throw "Install Az on top of Az.Compute failed"
         }
       }
-    pwsh: true
