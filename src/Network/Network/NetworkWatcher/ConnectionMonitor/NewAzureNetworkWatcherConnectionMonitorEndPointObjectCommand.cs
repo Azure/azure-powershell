@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
@@ -33,6 +32,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The type of the connection monitor endpoint. Supported types are AzureVM, AzureVNet, AzureSubnet, ExternalAddress, MMAWorkspaceMachine, MMAWorkspaceNetwork.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("AzureVM", "AzureVNet", "AzureSubnet", "ExternalAddress", "MMAWorkspaceMachine", "MMAWorkspaceNetwork")]
+        public string Type { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Resource ID of the connection monitor endpoint.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
@@ -47,18 +53,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.",
+            HelpMessage = "List of items which need to be included into endpont scope.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Include")]
-        public string FilterType { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items in the filter.",
+            HelpMessage = "List of items which need to be excluded from endpoint scope.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorEndpointFilterItem[] FilterItem { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full")]
+        public string CoverageLevel { get; set; }
 
         public override void Execute()
         {
@@ -81,29 +93,38 @@ namespace Microsoft.Azure.Commands.Network
             PSNetworkWatcherConnectionMonitorEndpointObject endpoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
                 Name = this.Name,
+                Type = this.Type,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
+                CoverageLevel = this.CoverageLevel
             };
 
-            if (this.FilterItem != null)
+            if (this.IncludeItem != null || this.ExcludeItem != null)
             {
-                endpoint.Filter = new PSNetworkWatcherConnectionMonitorEndpointFilter()
-                {
-                    Type = FilterType == null ? "Include" : this.FilterType
-                };
+                endpoint.Scope = new PSNetworkWatcherConnectionMonitorEndpointScope();
 
-                foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem Item in this.FilterItem)
+                if (this.IncludeItem != null)
                 {
-                    if (endpoint.Filter.Items == null)
+                    endpoint.Scope.Include = new List<PSNetworkWatcherConnectionMonitorEndpointScopeItem>();
+                    foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in this.IncludeItem)
                     {
-                        endpoint.Filter.Items = new List<PSNetworkWatcherConnectionMonitorEndpointFilterItem>();
+                        endpoint.Scope.Include.Add(new PSNetworkWatcherConnectionMonitorEndpointScopeItem()
+                        {
+                            Address = item.Address
+                        });
                     }
+                }
 
-                    endpoint.Filter.Items.Add(new PSNetworkWatcherConnectionMonitorEndpointFilterItem()
+                if (this.ExcludeItem != null)
+                {
+                    endpoint.Scope.Exclude = new List<PSNetworkWatcherConnectionMonitorEndpointScopeItem>();
+                    foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in this.ExcludeItem)
                     {
-                        Type = string.IsNullOrEmpty(Item.Type) ? "AgentAddress" : Item.Type,
-                        Address = Item.Address
-                    });
+                        endpoint.Scope.Exclude.Add(new PSNetworkWatcherConnectionMonitorEndpointScopeItem()
+                        {
+                            Address = item.Address
+                        });
+                    }
                 }
             }
 
