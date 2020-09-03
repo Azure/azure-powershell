@@ -65,6 +65,12 @@ steps:
       
       # Check Az
       Get-Module -Name Az.* -ListAvailable
+
+      # Check version
+      $azVersions = get-module Az -ListAvailable
+      if(!$azVersions){
+        throw "No Az is installed"
+      }
     pwsh: true
 - task: PowerShell@2
   displayName: Connect AzAccount 
@@ -137,6 +143,13 @@ steps:
         Write-Host "Get latest version of Az"
         Get-Module -Name Az.* -ListAvailable
 
+        # Check version
+        $azVersion = (get-module Az -ListAvailable).Version | 
+        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        if($azVersions -ne $ $versions[0]){
+          throw "Update Az failed"
+        }
+
         # Reuse connected account and select subscription for test
         Enable-AzureRmAlias
         Set-AzContext -Subscription "Azure SDK Powershell Test"
@@ -181,7 +194,13 @@ steps:
     script: |
       Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force 
       Get-AzVM
-      Get-Module
+
+      # Check version
+      $azComputeVersion = (Get-Module Az.Compute).Version
+      if(!$azComputeVersion){
+        throw "No Az.Compute is installed"
+      }
+      
     pwsh: true
 
 - task: PowerShell@2
@@ -207,7 +226,13 @@ steps:
 
         # Check Az.Compute
         Get-AzVM
-        Get-Module
+        
+        # Check version
+        $azComputeVersion = (Get-Module Az.Compute).Version | 
+        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        if($azComputeVersion -ne $ $versions[0]){
+          throw "Update Az.Compute failed"
+        }
       }
     pwsh: true
 
@@ -254,6 +279,13 @@ steps:
         Write-Host "Installed latest version of Az"
         Get-AzVM
         Get-Module
+
+        # Check version
+        $azComputeVersion = (Get-Module Az.Compute).Version | 
+        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        if($azComputeVersion -ne $ $versions[0]){
+          throw "Install Az on top of Az.Compute failed"
+        }
       }
     pwsh: true
 
@@ -292,11 +324,22 @@ steps:
         Write-Host '$previousVersion:', $previousVersion
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
 
+        # Get previous version of Az.Compute
+        $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version | 
+        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+
         #Install Az.Compute
         Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force        
         
         Write-Host "Installed latest Az.Compute"
         Get-AzVM
         Get-Module
+
+        # Check version
+        $azComputeVersion = (Get-Module Az.Compute).Version | 
+        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        if($azComputeVersion -gt [System.Version]$azComputePreviousVersion){
+          throw "Install Az on top of Az.Compute failed"
+        }
       }
     pwsh: true
