@@ -13,6 +13,16 @@ trigger: none
 pool:
   vmImage: 'windows-2019'
 
+strategy:
+  matrix:
+    TestGallery:
+      GALLERY_NAME: 'TestGallery'
+      GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
+    PSGallery:
+      GALLERY_NAME: 'PSGallery'
+      GALLERY_LOCATION: 'https //www.powershellgallery.com/api/v2'
+  maxParallel: 2
+
 steps:
 - task: PowerShell@2
   displayName: Clean Existing Modules
@@ -45,23 +55,23 @@ steps:
     pwsh: true
    
 - task: PowerShell@2
-  displayName: Install Az Modules from PSGallery
+  displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
     targetType: 'inline'
     script: |
       # Check PSGallery
-      $psGallery = Get-PSRepository -Name PSGallery
-      if(!$psGallery){
+      $gallery = Get-PSRepository -Name $(GALLERY_NAME)
+      if(!$gallery){
         # Set up PSGallery
-        Write-Host "Registering PSGallery..."
-        Register-PSRepository -Default -InstallationPolicy Trusted
+        Write-Host "Registering $(GALLERY_NAME)..."
+        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
       }else{
-        Write-Host "Setting PSGallery Trusted..."
-        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+        Write-Host "Setting $(GALLERY_NAME) Trusted..."
+        Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
       }
 
       Write-Host "Installing Az..."
-      Install-Module -Name Az -Repository PSGallery -AllowClobber -Force 
+      Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
       
       # Check Az
       Get-Module -Name Az.* -ListAvailable
@@ -124,7 +134,7 @@ steps:
     targetType: 'inline'
     script: |
       # Get previous version of az
-      $versions = (find-module az -Repository PSGallery -AllVersions).Version |
+      $versions = (find-module az -Repository $(GALLERY_NAME) -AllVersions).Version |
        %{[system.version]$_} | 
        sort -Descending -Top 2 | 
        %{[System.String]$_}
@@ -134,7 +144,7 @@ steps:
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:',$previousVersion
 
-        Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Update Az
         Update-Module -Name Az
@@ -193,7 +203,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Installing Az.Compute..."
-      Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force 
+      Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -AllowClobber -Force 
       Get-AzVM
 
       # Check version
@@ -210,7 +220,7 @@ steps:
     targetType: 'inline'
     script: |
       # Get previous version of Az.Compute
-      $versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version |
+      $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
        %{[system.version]$_} | 
        sort -Descending -Top 2 | 
        %{[System.String]$_}
@@ -219,7 +229,7 @@ steps:
         # Install previous version of Az.Compute
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:', $previousVersion
-        Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Update Az.Compute
         Update-Module -Name Az.Compute
@@ -261,7 +271,7 @@ steps:
     targetType: 'inline'
     script: |
       # Get previous version of Az.Compute
-      $versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version |
+      $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
        %{[system.version]$_} | 
        sort -Descending -Top 2 | 
        %{[System.String]$_}
@@ -272,10 +282,10 @@ steps:
         Write-Host '$previousVersion:', $previousVersion
         Write-Host "Installed previous version of Az.Compute"
 
-        Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Install Az
-        Install-Module -Name Az -Repository PSGallery -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force
         
         Write-Host "Installed latest version of Az"
         Get-AzVM
@@ -314,7 +324,7 @@ steps:
     targetType: 'inline'
     script: |
       # Get previous version of Az
-      $versions = (find-module Az -Repository PSGallery -AllVersions).Version |
+      $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
        %{[system.version]$_} | 
        sort -Descending -Top 2 | 
        %{[System.String]$_}
@@ -323,7 +333,7 @@ steps:
         # Install previous version of Az
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:', $previousVersion
-        Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
         Write-Host 'Installed the previous version of Az'
 
         # Get previous version of Az.Compute
@@ -331,7 +341,7 @@ steps:
         %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
 
         #Install Az.Compute
-        Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force        
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -AllowClobber -Force        
         
         Write-Host "Installed latest Az.Compute"
         Get-AzVM
