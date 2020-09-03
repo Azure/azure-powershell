@@ -249,7 +249,7 @@ steps:
         Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
 
         #Install Az
-        Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force        
+        Install-Module -Name Az -Repository PSGallery -AllowClobber -Force
         
         Write-Host "Installed latest version of Az"
         Get-AzVM
