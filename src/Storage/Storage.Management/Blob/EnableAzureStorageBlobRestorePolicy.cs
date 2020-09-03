@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSRestorePolicy), ChangeDescription = "The deprecated proeprty LastEnabledTime will be removed in a future release.")]
+    [CmdletOutputBreakingChange(typeof(PSRestorePolicy), ChangeDescription = "The deprecated property LastEnabledTime will be removed in a future release.")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobRestorePolicy, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRestorePolicy))]
     public class EnableAzStorageBlobRestorePolicyCommand : StorageBlobBaseCmdlet
     {

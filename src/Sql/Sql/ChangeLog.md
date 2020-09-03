@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
+* Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlets for Managed Database Log Replay service
 	- `Start-AzSqlInstanceDatabaseLogReplay`
 	- `Get-AzSqlInstanceDatabaseLogReplay`
@@ -28,6 +30,7 @@
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
 * Fixed wrong database name returned on existing database error in `New-AzSqlDatabaseSecondary`
+* Added operation parameters and steps in `Get-AzSqlInstanceOperation`
 
 ## Version 2.9.0
 * Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`

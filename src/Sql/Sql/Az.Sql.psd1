@@ -260,6 +260,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy', 
                'Disable-AzSqlServerActiveDirectoryOnlyAuthentication', 
                'Invoke-AzSqlInstanceFailover',
+               'Enable-AzSqlServerActiveDirectoryOnlyAuthentication',
+               'Get-AzSqlServerActiveDirectoryOnlyAuthentication'
 			   'Start-AzSqlInstanceDatabaseLogReplay',
 			   'Complete-AzSqlInstanceDatabaseLogReplay',
 			   'Stop-AzSqlInstanceDatabaseLogReplay',
