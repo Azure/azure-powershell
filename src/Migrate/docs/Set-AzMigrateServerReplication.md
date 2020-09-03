@@ -8,22 +8,21 @@ schema: 2.0.0
 # Set-AzMigrateServerReplication
 
 ## SYNOPSIS
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Updates the target properties for the replicating server.
 
 ## SYNTAX
 
 ```
-Set-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Vmwareagentless] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
+ [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
+ [-TargetResourceGroupID <String>] [-TargetSubnetName <String>] [-TargetVMName <String>]
+ [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
 
 ## EXAMPLES
 
@@ -92,38 +91,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectName
-Name of an Azure Migrate project.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of an Azure Resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
-Azure Subscription ID.
+The subscription Id.
 
 ```yaml
 Type: System.String
@@ -137,11 +106,178 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vmwareagentless
-Name of an Azure Migrate project.
+### -TargetAvailabilitySet
+Specifies the Availability Set to be used for VM creation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetAvailabilityZone
+Specifies the Availability Zone to be used for VM creation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNetworkId
+Updates the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNicIP
+Specifies the IP within the destination subnet to be used for the NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNicSelectionType
+Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNicSubnet
+Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetObjectID
+Specifies the replcating server for which the properties need to be updated.
+The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceGroupID
+Updates the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubnetName
+Updates the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMName
+Specifies the replcating server for which the properties need to be updated.
+The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSize
+Updates the SKU of the Azure VM to be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateNic
+Updates the NIC for the Azure VM to be created.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,14 +326,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Void
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 

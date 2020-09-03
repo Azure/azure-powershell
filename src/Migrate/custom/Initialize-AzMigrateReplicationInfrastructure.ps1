@@ -22,7 +22,7 @@ The Initialize-AzMigrateReplicationInfrastructure deploys and configures the rep
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
 function Initialize-AzMigrateReplicationInfrastructure {
-    [OutputType([System.Void])]
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -95,6 +95,12 @@ function Initialize-AzMigrateReplicationInfrastructure {
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -148,11 +154,17 @@ public static int hashForArtifact(String artifact)
                 $hash = [HashFunctions]::hashForArtifact($artifactName) 
                 Write-Host $hash
                
-                
+                if($PassThru.IsPresent){
+                    return $true
+                }
             } else {
                 # TODO PLEASE FIX BEFORE RELEASE
                 Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
+                if($PassThru.IsPresent){
+                    return $false
+                }
             }
+            
         } catch {
            throw
         }

@@ -15,45 +15,93 @@
 
 <#
 .Synopsis
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
+Updates the target properties for the replicating server.
 .Description
-# TODO PLEASE FIX BEFORE RELEASE
-Create a deployment in the specified subscription and resource group.
-This has to be done only once, before enabling replication for first 
-VmWare virtual machine.
-Initialize-AzMigrateReplicationInfrastructure -ProjectName a -ResourceGroupName b -SubscriptionId c -Vmwareagentless
+The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
 .Link
-# TODO PLEASE FIX BEFORE RELEASE
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-    [OutputType([System.Void])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
     [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
+        # Specifies the replcating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
-        # Name of an Azure Migrate project.
-        ${Vmwareagentless},
-    
+        [System.String]
+        # Specifies the replcating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetVMName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Updates the SKU of the Azure VM to be created.
+        ${TargetVMSize},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
+        ${TargetNetworkId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Updates the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+        ${TargetSubnetName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Updates the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
+        ${TargetResourceGroupID},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Updates the NIC for the Azure VM to be created.
+        ${UpdateNic},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
+        ${TargetNicSelectionType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be migrated.
+        ${TargetNicSubnet},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the IP within the destination subnet to be used for the NIC.
+        ${TargetNicIP},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Availability Set to be used for VM creation.
+        ${TargetAvailabilitySet},
+        
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Availability Zone to be used for VM creation.
+        ${TargetAvailabilityZone},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # Azure Subscription ID.
+        # The subscription Id.
         ${SubscriptionId},
 
         [Parameter()]
@@ -63,52 +111,52 @@ function Set-AzMigrateServerReplication {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -117,45 +165,85 @@ function Set-AzMigrateServerReplication {
     )
     
     process {
-        try {
-            # TODO PLEASE FIX BEFORE RELEASE
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
-using System;
-public class HashFunctions
-{
-public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
+            $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
+            $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
+            $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
+            $HasTargetSubnetName = $PSBoundParameters.ContainsKey('TargetSubnetName')
+            $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
+            $HasUpdateNic = $PSBoundParameters.ContainsKey('UpdateNic')
+            $HasTargetNicSelectionType = $PSBoundParameters.ContainsKey('TargetNicSelectionType')
+            $HasTargetNicSubnet = $PSBoundParameters.ContainsKey('TargetNicSubnet')
+            $HasTargetNicIP = $PSBoundParameters.ContainsKey('TargetNicIP')
+            $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
+            $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+
+            $null = $PSBoundParameters.Remove('TargetObjectID')
+            $null = $PSBoundParameters.Remove('TargetVMName')
+            $null = $PSBoundParameters.Remove('TargetVMSize')
+            $null = $PSBoundParameters.Remove('TargetNetworkId')
+            $null = $PSBoundParameters.Remove('TargetSubnetName')
+            $null = $PSBoundParameters.Remove('TargetResourceGroupID')
+            $null = $PSBoundParameters.Remove('UpdateNic')
+            $null = $PSBoundParameters.Remove('TargetNicSelectionType')
+            $null = $PSBoundParameters.Remove('TargetNicSubnet')
+            $null = $PSBoundParameters.Remove('TargetNicIP')
+            $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
+            $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
+
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
+                $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtUpdateMigrationItemInput]::new()
+                $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
+                if($HasTargetAvailabilitySet){
+                    $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
+                }
+                if($HasTargetAvailabilityZone){
+                    $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
+                }
+                if($HasTargetNetworkId){
+                    $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
+                }
+                if($HasTargetVMName){
+                    $ProviderSpecificDetails.TargetVMName = $TargetVMName
+                }
+                if($HasTargetResourceGroupID){
+                    $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
+                }
+                if($HasTargetVmSize){
+                    $ProviderSpecificDetails.TargetVMSize = $HasTargetVmSize
+                }
+                if($HasUpdateNic){
+                    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput[]]$Nics = @()
+                    $VmNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
+                    $VmNic.TargetSubnetName = $TargetNicSubnet
+                    $VmNic.TargetStaticIPAddress = $TargetNicIP
+                    if($HasTargetNicSelectionType){
+                        if($TargetNicSelectionType -eq 'Primary'){
+                            $VmNic.IsPrimaryNic = "true"
+                        } 
+                        $VmNic.IsSelectedForMigration = "true"
+                    }
+                    $Nics += $VmNic
+                    $ProviderSpecificDetails.VMNic = $Nics
+                }
+                $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetails)
+                return Az.Migrate.internal\Update-AzMigrateReplicationMigrationItem @PSBoundParameters
+                    
+            }else{
+                Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
             }
-            return Math.Abs(hash);
-    }
-}
-"@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
-            }
-        } catch {
-           throw
-        }
+
     }
 
 }   

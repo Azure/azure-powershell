@@ -39,7 +39,7 @@ function New-AzMigrateServerReplication {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.LicenseType]
         # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${LicenseType},
 
@@ -73,7 +73,7 @@ function New-AzMigrateServerReplication {
         # Mapping.
         ${ReplicationContainerMapping},
 
-        [Parameter(DontShow)]
+        [Parameter(ParameterSetName='PowerUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Account id.
@@ -91,7 +91,8 @@ function New-AzMigrateServerReplication {
         # Specifies the SKU of the Azure VM to be created.
         ${TargetVMSize},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='DefaultUser')]
+        [Parameter(ParameterSetName='PowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.
@@ -117,7 +118,7 @@ function New-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName='DefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
         # Specifies the type of disks to be used for the Azure VM.
         ${DiskType},
         
@@ -201,19 +202,119 @@ function New-AzMigrateServerReplication {
             $test = $PSBoundParameters
 
             $ParameterSetName = $PSCmdlet.ParameterSetName
-            if($VmWareMachineId.Contains('VMwareSites')){
-                $MachineIdArray = $VmWareMachineId.Split("/")
-                #$MachineName = 
-                #$SourceResourceGroup = 
-                #$SiteName = 
+            $MachineIdArray = $VmWareMachineId.Split("/")
+            $SiteType = $MachineIdArray[7]
+            $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
+            $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
+            $HasTargetAVZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+            $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
+            $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
 
-                #$ProjectName = 
+            if(!$HasRunAsAccountId){
+                # TODO 
+                $VMWarerunasaccountObject = Mock-AzMigrateGetRunAsAccountId -ResourceGroupName $SourceResourceGroup -SiteName $SiteName
+                $VMWarerunasaccountID = $VMWarerunasaccountObject.value[0].id
+            }
+            #TODO
+            $PolicyId = "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy"
+            $LogStorageAccountID = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101"
+            $LogStorageAccountSas = $LogStorageAccountID.Split("/")[8] + '-cacheSas'
+            if(!$HasTargetBDStorage){
+                # TODO
+                $TargetBootDiagnosticsStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101"
+            }
+            if(!$HasResync){
+                $PerformAutoResync = "true"
+            }
+
+            $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
+            $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
+            $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
+            $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
+            $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
+            $null = $PSBoundParameters.Remove('VMwareMachineId')
+            $null = $PSBoundParameters.Remove('DisksToInclude')
+            $null = $PSBoundParameters.Remove('TargetSubscriptionId')
+            $null = $PSBoundParameters.Remove('TargetResourceGroupId')
+            $null = $PSBoundParameters.Remove('TargetNetworkId')
+            $null = $PSBoundParameters.Remove('TargetSubnetName')
+            $null = $PSBoundParameters.Remove('TargetVMName')
+            $null = $PSBoundParameters.Remove('TargetVMSize')
+            $null = $PSBoundParameters.Remove('PerformAutoResync')
+            $null = $PSBoundParameters.Remove('DiskType')
+            $null = $PSBoundParameters.Remove('OSDiskID')
+            $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
+
+            if($SiteType -eq 'VMwareSites'){
+                
+                $MachineName = $MachineIdArray[10]
+                $SourceResourceGroup = $MachineIdArray[4]
+                $SiteName = $MachineIdArray[8]
+                
+                # TODO make them PSBoundPArameter
+                $SiteObject = Mock-AzMigrateGetSite -ResourceGroupName $SourceResourceGroup -SiteName $SiteName
+                $ProjectName = $SiteObject.properties.discoverySolutionId.Split("/")[8]
+
+                $Solutions = Mock-AzMigrateGetSolution -ResourceGroupName $SourceResourceGroup -ProjectName $ProjectName
+                $VaultName = $Solutions.value[0].properties.details.extendeddetails.vaultId.Split("/")[8]
+
+                $null = $PSBoundParameters.Add('ResourceGroupName', $SourceResourceGroup)
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+                if($allFabrics -and ($allFabrics.length -gt 0)){
+                    $FabricName = $allFabrics[0].Name
+                }
+                
+                $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                if($peContainers -and ($peContainers.length -gt 0)){
+                    $ProtectionContainerName = $peContainers[0].Name
+                }
+                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+                $null = $PSBoundParameters.Add("PolicyId", $PolicyId)
+
+                $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtEnableMigrationInput]::new()
+                $ProviderSpecificDetails.DataMoverRunAsAccountId = $VMWarerunasaccountID
+                $ProviderSpecificDetails.SnapshotRunAsAccountId = $VMWarerunasaccountID
+                $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
+                $ProviderSpecificDetails.LicenseType = $LicenseType
+                $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
+                if($HasTargetAVSet){
+                    $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
+                }
+                if($HasTargetAVZone){
+                    $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
+                }
+                $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId  = $TargetBootDiagnosticsStorageAccount
+                $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
+                $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
+                $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
+                $ProviderSpecificDetails.TargetVMName = $TargetVMName
+                $ProviderSpecificDetails.TargetVMSize = $TargetVMSize
+                $ProviderSpecificDetails.VmwareMachineId = $VMwareMachineId
+
 
                 if ($ParameterSetName -eq 'DefaultUser'){
-
+                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
+                    $DiskObject.DiskId = $DiskID
+                    $DiskObject.DiskType = $DiskType
+                    $DiskObject.IsOSDisk = $IsOSDisk
+                    $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
+                    $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                    
+                    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DisksToInclude = @()
+                    $DisksToInclude+=$DiskObject
+                    $ProviderSpecificDetails.DisksToInclude = $DisksToInclude
                 }else{
-
+                    foreach ($DiskObject in $DisksToInclude) {
+                        $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
+                        $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                    }
+                    $ProviderSpecificDetails.DisksToInclude = $DisksToInclude
                 }
+                $null = $PSBoundParameters.add('ProviderSpecificDetail', $ProviderSpecificDetails)
+                return Az.Migrate.internal\New-AzMigrateReplicationMigrationItem @PSBoundParameters
 
             }else{
                 Write-Host 'Not a Vmware machine'

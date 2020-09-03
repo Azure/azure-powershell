@@ -152,3 +152,36 @@ directive:
       verb: Update$
       subject: ^ReplicationMigrationItem
     hide: true
+  # Table output formatting
+  - where:
+      model-name: MigrationItem
+    set:
+      format-table:
+        properties:
+          - MachineName
+          - MigrationStateDescription
+          - Id
+        labels:
+          MachineName: Name
+          MigrationStateDescription: State
+          Id: Id
+        width:
+          MachineName: 40
+          MigrationStateDescription: 80
+          Id: 300
+  - where:
+      model-name: Job
+    set:
+      format-table:
+        properties:
+          - FriendlyName
+          - StateDescription
+          - TargetObjectName
+        labels:
+          FriendlyName: Name
+          StateDescription: Status
+          TargetObjectName: Item
+        width:
+          FriendlyName: 40
+          StateDescription: 80
+          TargetObjectName: 40
