@@ -20,7 +20,7 @@ strategy:
       GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
     PSGallery:
       GALLERY_NAME: 'PSGallery'
-      GALLERY_LOCATION: 'https //www.powershellgallery.com/api/v2'
+      GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
   maxParallel: 2
 
 steps:
@@ -59,16 +59,15 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Check PSGallery
-      $gallery = Get-PSRepository -Name $(GALLERY_NAME)
-      if(!$gallery){
-        # Set up Gallery
-        Write-Host "Registering $(GALLERY_NAME)..."
-        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
-      }else{
+      if( $(GALLERY_NAME) -eq 'PSGallery' ){
         Write-Host "Setting $(GALLERY_NAME) Trusted..."
         Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
       }
+
+      if( $(GALLERY_NAME) -eq 'TestGallery' ){
+        Write-Host "Registering $(GALLERY_NAME)..."
+        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
+      }    
 
       Write-Host "Installing Az..."
       Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
