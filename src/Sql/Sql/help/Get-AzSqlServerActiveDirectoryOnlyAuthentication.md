@@ -1,36 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlserveractivedirectoryonlyauthentication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserveractivedirectoryonlyauthentication
 schema: 2.0.0
 ---
 
-# Disable-AzSqlServerActiveDirectoryOnlyAuthentication
+# Get-AzSqlServerActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Disables Azure AD only authentication for a specific SQL Server.
+Gets Azure AD only authentication for a specific SQL Server.
 
 ## SYNTAX
 
 ```
-Disable-AzSqlServerActiveDirectoryOnlyAuthentication [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlServerActiveDirectoryOnlyAuthentication [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Server in the current subscription.
+The **Get-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet gets Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Server in the current subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceGroupName ServerName AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
-ResourceGroup01   Server01   False
+ResourceGroup01   Server01   True
 ```
 
-This command disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
+This command gets Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -127,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](./Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 
-[Get-AzSqlServerActiveDirectoryOnlyAuthentication](./Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+[Disable-AzSqlServerActiveDirectoryOnlyAuthentication](./Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 
 [Set-AzSqlServerActiveDirectoryAdministrator](./Set-AzSqlServerActiveDirectoryAdministrator.md)
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for RBAC authorization [#10557]
 * Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
 
 ## Version 2.1.0
