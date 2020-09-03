@@ -19,8 +19,8 @@ Checks that the data connection parameters are valid.
 .Description
 Checks that the data connection parameters are valid.
 .Example
-PS C:\>  $dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='$Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
-PS C:\>  $dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
+PS C:\>  $dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='$Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
+PS C:\>  $dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
 PS C:\> Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Parameter $dataConnectionValidation
 
 ErrorMessage
@@ -31,7 +31,7 @@ event hub resource id and consumer group tuple provided are already used
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidationResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidationResult])]
     [CmdletBinding(DefaultParameterSetName = 'DataExpandedEventHub', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'DataExpandedEventHub', Mandatory)]
@@ -105,12 +105,21 @@ function Invoke-AzKustoDataConnectionValidation {
         # The event/iot hub consumer group.
         ${ConsumerGroup},
 
-        [Parameter(ParameterSetName = 'DataExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType]
+        # The name of blob storage event type to process.
+        ${BlobStorageEventType},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If set to true, indicates that ingestion should ignore the first record of every file.
+        ${IgnoreFirstRecord},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
         # The data format of the message. Optionally the data format can be added to each message.
@@ -131,12 +140,7 @@ function Invoke-AzKustoDataConnectionValidation {
         # The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
         ${MappingRuleName},
 
-        [Parameter(ParameterSetName = 'DataExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The table where the data should be ingested. Optionally the table information can be added to each message.
@@ -226,13 +230,13 @@ function Invoke-AzKustoDataConnectionValidation {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.DataConnectionValidation]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidation]::new()
 
             $Parameter.DataConnectionName = $PSBoundParameters['DataConnectionName']            
             $null = $PSBoundParameters.Remove('DataConnectionName')
 
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.EventHubDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection]::new()
                 
                 $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -248,16 +252,26 @@ function Invoke-AzKustoDataConnectionValidation {
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.EventGridDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection]::new()
             
                 $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
                 $Parameter.Property.StorageAccountResourceId = $PSBoundParameters['StorageAccountResourceId']
                 $null = $PSBoundParameters.Remove('StorageAccountResourceId')
+
+                if ($PSBoundParameters.ContainsKey('BlobStorageEventType')) {
+                    $Parameter.BlobStorageEventType = $PSBoundParameters['BlobStorageEventType']
+                    $null = $PSBoundParameters.Remove('BlobStorageEventType')
+                }
+
+                if ($PSBoundParameters.ContainsKey('IgnoreFirstRecord')) {
+                    $Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
+                    $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
+                }
             }
             else {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IotHubDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection]::new()
 
                 $Parameter.Property.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')

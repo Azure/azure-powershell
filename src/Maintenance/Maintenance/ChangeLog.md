@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed typo in New-AzConfigurationAssignment.md 
+
+## Version 1.1.0
+* Added optional schedule related fields to `New-AzMaintenanceConfiguration`
+* Added new cmdlet for `Get-AzMaintenancePublicConfiguration`
 
 ## Version 1.0.0
 * Publishing release version of Maintenance cmdlets for GA

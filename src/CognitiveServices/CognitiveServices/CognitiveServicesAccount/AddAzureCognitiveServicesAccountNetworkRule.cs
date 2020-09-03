@@ -104,6 +104,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
+                    // Deny is the default action value from server side, 
+                    // Specifically make default action Deny in client side as server side might want this value to be always provided in future.
+                    accountACL.DefaultAction = NetworkRuleAction.Deny;
                 }
 
                 switch (ParameterSetName)

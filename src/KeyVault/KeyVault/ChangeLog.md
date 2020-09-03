@@ -19,7 +19,12 @@
 -->
 ## Upcoming Release
 * Added support for RBAC authorization [#10557]
-	
+* Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
+
+## Version 2.1.0
+* Added warning messages for planning to disable soft delete
+* Added warning messages for planning to remove attribute SecretValueText
+
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
 * Enabled soft delete by default when creating a key vault

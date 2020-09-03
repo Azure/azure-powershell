@@ -27,6 +27,12 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
+        public string StartDateTime { get; set; }
+        public string ExpirationDateTime { get; set; }
+        public string Duration { get; set; }
+        public string Timezone { get; set; }
+        public string Visibility { get; set; }
+        public string RecurEvery { get; set; }
 
     }
 }

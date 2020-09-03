@@ -6,7 +6,7 @@
       "Name": "Get-AzTag",
       "ClassName": "Microsoft.Azure.Commands.Tags.Tag.GetAzureTagCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -88,7 +88,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -187,7 +187,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -426,7 +426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -881,7 +881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -974,7 +974,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1097,7 +1097,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1165,7 +1165,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1257,7 +1257,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1332,7 +1332,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -1425,7 +1425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1615,7 +1615,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Tags.Model",
                   "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2207,7 +2207,7 @@
     "Microsoft.Azure.Commands.Tags.Model.PSTagsObject": {
       "Namespace": "Microsoft.Azure.Commands.Tags.Model",
       "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TagsProperty": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },

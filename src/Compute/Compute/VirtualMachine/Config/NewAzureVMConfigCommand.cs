@@ -118,6 +118,12 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        public SwitchParameter EncryptionAtHost { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -189,6 +195,14 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.MaxPrice))
             {
                 vm.BillingProfile = new BillingProfile(this.MaxPrice);
+            }
+            
+            if (this.EncryptionAtHost.IsPresent)
+            {
+                if (vm.SecurityProfile == null)
+                    vm.SecurityProfile = new SecurityProfile();
+
+                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
             WriteObject(vm);

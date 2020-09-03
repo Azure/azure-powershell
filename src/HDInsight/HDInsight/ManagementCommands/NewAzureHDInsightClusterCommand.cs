@@ -142,7 +142,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                     EncryptionAlgorithm = EncryptionAlgorithm,
                     EncryptionKeyName = EncryptionKeyName,
                     EncryptionKeyVersion = EncryptionKeyVersion,
-                    EncryptionVaultUri = EncryptionVaultUri
+                    EncryptionVaultUri = EncryptionVaultUri,
+                    PublicNetworkAccessType = PublicNetworkAccessType,
+                    OutboundPublicNetworkAccessType = OutboundPublicNetworkAccessType,
+                    EncryptionInTransit = EncryptionInTransit,
+                    EncryptionAtHost = EncryptionAtHost
                 };
                 foreach (
                     var storageAccount in
@@ -202,6 +206,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 EncryptionKeyName = value.EncryptionKeyName;
                 EncryptionKeyVersion = value.EncryptionKeyVersion;
                 EncryptionVaultUri = value.EncryptionVaultUri;
+                PublicNetworkAccessType = value.PublicNetworkAccessType;
+                OutboundPublicNetworkAccessType = value.OutboundPublicNetworkAccessType;
+                EncryptionInTransit = value.EncryptionInTransit;
+                EncryptionAtHost = value.EncryptionAtHost;
 
                 foreach (
                     var storageAccount in
@@ -384,6 +392,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the encryption vault uri.")]
         public string EncryptionVaultUri { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the public network access type.")]
+        [ValidateSet(PublicNetworkAccess.InboundAndOutbound, PublicNetworkAccess.OutboundOnly, IgnoreCase = true)]
+        public string PublicNetworkAccessType { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the outbound access type to the public network.")]
+        [ValidateSet(OutboundOnlyPublicNetworkAccessType.PublicLoadBalancer, OutboundOnlyPublicNetworkAccessType.UDR, IgnoreCase = true)]
+        public string OutboundPublicNetworkAccessType { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption in transit or not.")]
+        public bool? EncryptionInTransit { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption at host or not.")]
+        public bool? EncryptionAtHost { get; set; }
+
         #endregion
 
         public NewAzureHDInsightClusterCommand()
@@ -523,7 +545,22 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId);
+            if (EncryptionAtHost != null)
+            {
+                if (parameters.DiskEncryptionProperties != null)
+                {
+                    parameters.DiskEncryptionProperties.EncryptionAtHost = EncryptionAtHost;
+                }
+                else
+                {
+                    parameters.DiskEncryptionProperties = new DiskEncryptionProperties()
+                    {
+                        EncryptionAtHost = EncryptionAtHost
+                    };
+                }
+            }
+
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId, PublicNetworkAccessType, OutboundPublicNetworkAccessType, EncryptionInTransit);
 
             if (cluster != null)
             {

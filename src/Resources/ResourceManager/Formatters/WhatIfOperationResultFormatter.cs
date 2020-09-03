@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static string Format(PSWhatIfOperationResult result)
         {
+            if (result == null)
+            {
+                return null;
+            }
+
             var builder = new ColoredStringBuilder();
             var formatter = new WhatIfOperationResultFormatter(builder);
 
@@ -319,6 +324,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     break;
 
                 case PropertyChangeType.Array:
+                    this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
                     this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
                     break;
 
@@ -338,7 +344,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             int paddingWidth = maxPathLength - path.Length + 1;
             bool hasChildren = children != null && children.Count > 0;
 
-            if (valueAfterPath.IsNonEmptyArray())
+            if (valueAfterPath.IsNonEmptyArray() || (propertyChangeType == PropertyChangeType.Array && hasChildren))
             {
                 paddingWidth = 1;
             }

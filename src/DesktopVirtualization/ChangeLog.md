@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 
+
 ## Version 2.0.0
 * Require Location property for creating top level arm objects.
 * Made `ApplicationGroupType` required for `New-AzWvdApplicationGroup`.

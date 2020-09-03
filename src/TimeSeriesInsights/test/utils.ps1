@@ -135,8 +135,8 @@ function setupEnv() {
 
 
     # create TimeSeriesInsightsEnvironment for test.
-    $tsiEnvParamObj = @{TsiEnvName = $env.tsiEnvName;Kind='Standard'; SkuName='S1'; Location=$env.location}
-    $tsiEnvParamObj01 = @{TsiEnvName = $env.tsiEnvName01;Kind='LongTerm'; SkuName='L1'; Location=$env.location}
+    $tsiEnvParamObj = @{TsiEnvName = $env.tsiEnvName;Kind='Gen1'; SkuName='S1'; Location=$env.location}
+    $tsiEnvParamObj01 = @{TsiEnvName = $env.tsiEnvName01;Kind='Gen2'; SkuName='L1'; Location=$env.location}
     $tsiEnv = (GetOrCreateTsiEnv -forceCreate $true -tsiEnvParamObj $tsiEnvParamObj -resourceGroup $env.resourceGroup)
     $tsiEnv01 = (GetOrCreateTsiEnv -forceCreate $true -tsiEnvParamObj $tsiEnvParamObj01 -resourceGroup $env.resourceGroup -staccountParamObj $staAccountParam)
     
