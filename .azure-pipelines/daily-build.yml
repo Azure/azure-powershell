@@ -20,22 +20,22 @@ strategy:
       IMAGE_NAME: 'vs2017-win2016'
       GALLERY_NAME: 'PSGallery'
       GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-    Linux TestGallery:
-      IMAGE_NAME: 'ubuntu-18.04'
-      GALLERY_NAME: 'TestGallery'
-      GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    Linux PSGallery:
-      IMAGE_NAME: 'ubuntu-18.04'
-      GALLERY_NAME: 'PSGallery'
-      GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-    MacOS TestGallery:
-      IMAGE_NAME: 'macOS-10.14'
-      GALLERY_NAME: 'TestGallery'
-      GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    MacOS PSGallery:
-      IMAGE_NAME: 'macOS-10.14'
-      GALLERY_NAME: 'PSGallery'
-      GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
+    # Linux TestGallery:
+    #   IMAGE_NAME: 'ubuntu-18.04'
+    #   GALLERY_NAME: 'TestGallery'
+    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
+    # Linux PSGallery:
+    #   IMAGE_NAME: 'ubuntu-18.04'
+    #   GALLERY_NAME: 'PSGallery'
+    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
+    # MacOS TestGallery:
+    #   IMAGE_NAME: 'macOS-10.14'
+    #   GALLERY_NAME: 'TestGallery'
+    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
+    # MacOS PSGallery:
+    #   IMAGE_NAME: 'macOS-10.14'
+    #   GALLERY_NAME: 'PSGallery'
+    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
   maxParallel: 6
 
 pool:
@@ -92,6 +92,7 @@ steps:
       Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
       
       # Check Az
+      Get-Module -Name Az.* -ListAvailable
       Get-Module -Name Az -ListAvailable
 
       # Check version
