@@ -76,6 +76,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $PSVersionTable
       $gallery = '$(GALLERY_NAME)'
       if( $gallery -eq 'PSGallery' ){
         Write-Host "Setting $(GALLERY_NAME) Trusted..."
