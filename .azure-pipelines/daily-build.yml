@@ -91,11 +91,12 @@ steps:
       Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
       
       # Check Az
-      Get-Module -Name Az.* -ListAvailable
+      Get-Module -Name Az -ListAvailable
 
       # Check version
       $azVersions = get-module Az -ListAvailable
       if(!$azVersions){
+        Write-Host '$azVersions', $azVersions
         throw "No Az is installed"
       }
 - task: PowerShell@2
