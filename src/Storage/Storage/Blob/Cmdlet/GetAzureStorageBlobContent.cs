@@ -218,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
             }
 
-            string filePath = GetFullReceiveFilePath(fileName, blobName, null);
+            // Don't need get File full path here, since will get file full path in GetBlobContent() with blob object.
 
             ValidatePipelineCloudBlobContainer(container);
 
@@ -226,7 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, Channel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = track2container.GetBlobBaseClient(blobName);
-                GetBlobContent(blobClient, filePath, true);
+                GetBlobContent(blobClient, fileName, true);
             }
             else
             {
@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 BlobRequestOptions requestOptions = RequestOptions;
                 CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
-                GetBlobContent(blob, filePath, true);
+                GetBlobContent(blob, fileName, true);
             }
         }
 

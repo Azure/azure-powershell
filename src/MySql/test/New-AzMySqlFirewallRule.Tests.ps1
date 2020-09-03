@@ -19,4 +19,22 @@ Describe 'New-AzMySqlFirewallRule' {
         $rule.EndIPAddress | Should -Be 0.0.0.1
         Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
     }
+
+    It 'ClientIPAddress' {
+        #Use only one parameter when only one IP
+        $rule = New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -ClientIPAddress 0.0.0.1
+        $rule.Name | Should -Be $env.firewallRuleName
+        $rule.StartIPAddress | Should -Be 0.0.0.1
+        $rule.EndIPAddress | Should -Be 0.0.0.1
+        Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+    }
+
+    It 'AllowAll' {
+        $allowAllName = 'AllowAll_2020-08-11_21-28-19'
+        $rule = New-AzMySqlFirewallRule -Name $allowAllName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -AllowAll
+        $rule.Name | Should -Be $allowAllName
+        $rule.StartIPAddress | Should -Be 0.0.0.0
+        $rule.EndIPAddress | Should -Be 255.255.255.255
+        Remove-AzMySqlFirewallRule -Name $rule.Name -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+    }
 }

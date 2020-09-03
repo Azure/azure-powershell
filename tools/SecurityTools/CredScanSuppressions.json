@@ -510,6 +510,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithEncryptionAtHost.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCmkClusterRelatedCommands.json",
       "_justification": "Test resource is deleted"
     },
@@ -951,6 +955,14 @@
     },
     {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentServerSettingsTest.json",
+      "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstancePoolCrudTests\\TestGetManagedInstanceInInstancePool.json",
+      "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\\TestGetManagedInstance.json",
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     },
     {

@@ -39,23 +39,29 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string Version { get; }
 
-        public PSSignalRResource(SignalRResource signalRResource)
-            : base(signalRResource)
+        public PSSignalRNetworkAcls NetworkAcls { get; }
+
+        public PSServerlessUpstreamSettings Upstream { get; }
+
+        public PSSignalRResource(SignalRResource signalR)
+            : base(signalR)
         {
-            ExternalIp = signalRResource.ExternalIP;
-            HostName = signalRResource.HostName;
-            HostNamePrefix = signalRResource.HostNamePrefix;
-            ProvisioningState = signalRResource.ProvisioningState;
-            PublicPort = signalRResource.PublicPort;
-            ServerPort = signalRResource.ServerPort;
-            Sku = new PSResourceSku(signalRResource.Sku);
+            ExternalIp = signalR.ExternalIP;
+            HostName = signalR.HostName;
+            HostNamePrefix = signalR.HostNamePrefix;
+            ProvisioningState = signalR.ProvisioningState;
+            PublicPort = signalR.PublicPort;
+            ServerPort = signalR.ServerPort;
+            Sku = new PSResourceSku(signalR.Sku);
             Features = new List<PSSignalRFeature>();
-            foreach (var feature in signalRResource.Features)
+            foreach (var feature in signalR.Features)
             {
                 Features.Add(new PSSignalRFeature(feature));
             }
-            Cors = new PSSignalRCorsSettings(signalRResource.Cors);
-            Version = signalRResource.Version;
+            Cors = new PSSignalRCorsSettings(signalR.Cors);
+            Version = signalR.Version;
+            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkACLs);
+            Upstream = new PSServerlessUpstreamSettings(signalR.Upstream);
         }
     }
 }

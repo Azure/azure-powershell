@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Configuration.Internal;
 using System.Runtime.CompilerServices;
 
@@ -180,6 +181,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoeAsFiles = "Specifies to restore Database as files in a machine.";
             public const string FilePath = "Specifies the filepath which is used for restore operation.";
             public const string FromFull = "Specifies the Full RecoveryPoint to which Log backups will be applied.";
+        }
+
+        internal static class DSMove
+        {
+            public const string SourceVault = "The source vault object to trigger data move.";
+            public const string TargetVault = "The target vault object where the data has to be moved.";
+            public const string ForceOption = "Forces the data move operation (prevents confirmation dialog). This parameter is optional.";
+            public const string CmdletOutput = "Please monitor the operation using Get-AzRecoveryServicesBackupJob cmdlet";
+            public const string RetryOnlyFailed = "Switch parameter to try data move only for containers in the source vault which are not yet moved.";
         }
     }
 }

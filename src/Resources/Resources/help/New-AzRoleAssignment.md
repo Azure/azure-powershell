@@ -86,6 +86,12 @@ New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionNa
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### InputFileParameterSet
+```
+New-AzRoleAssignment -InputFile <String> [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Use the New-AzRoleAssignment command to grant access.
 Access is granted by assigning the appropriate RBAC role to them at the right scope.
@@ -187,7 +193,7 @@ Condition to be applied to the RoleAssignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
 Required: False
@@ -202,7 +208,7 @@ Version of the condition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
 Required: False
@@ -232,10 +238,25 @@ Brief description of the role assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputFile
+Path to role assignment json
+
+```yaml
+Type: System.String
+Parameter Sets: InputFileParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
