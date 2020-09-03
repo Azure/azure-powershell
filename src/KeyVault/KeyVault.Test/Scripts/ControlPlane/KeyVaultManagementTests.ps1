@@ -693,20 +693,32 @@ function Test-ModifyAccessPolicyEnabledForDiskEncryption {
 }
 
 function Test-ModifyAccessPolicyNegativeCases {
-    Param($existingVaultName, $rgName, $objId)
+    $objId = "" # INTENTIONAL
+    $rgName = getAssetName
+    $vaultName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
 
-    # random string in perms
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets blah, get }
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToCertificates blah, get }
+    try {
+        New-AzKeyVault -Name $vaultName -ResourceGroupName $rgName -Location $vaultLocation
 
-    # invalid set of params
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName }
-    Assert-Throws { Remove-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
-    Assert-Throws { Remove-AzKeyVaultAccessPolicy -VaultName $existingVaultName }
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $objId }
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $objId }
-    Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId }
+        # random string in perms
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets blah, get }
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToCertificates blah, get }
+
+        # invalid set of params
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName }
+        Assert-Throws { Remove-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
+        Assert-Throws { Remove-AzKeyVaultAccessPolicy -VaultName $existingVaultName }
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $objId }
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $objId }
+        Assert-Throws { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId }
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
 }
 
 function Test-RemoveNonExistentAccessPolicyDoesNotThrow {
