@@ -59,7 +59,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $gallery = $(GALLERY_NAME)
+      $gallery = '$(GALLERY_NAME)'
       if( $gallery -eq 'PSGallery' ){
         Write-Host "Setting $(GALLERY_NAME) Trusted..."
         Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
