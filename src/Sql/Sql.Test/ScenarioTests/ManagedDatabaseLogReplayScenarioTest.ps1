@@ -12,6 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$vnetName = "cl_initial"
+$subnetName = "Cool"
+$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
+#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+$testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
+$lastBackupName = "full.bak";
+
 <#
 .SYNOPSIS
 Tests Managed Database Log Replay.
@@ -20,11 +27,6 @@ function Test-ManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-    $testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-	$lastBackupName = "full.bak";
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
@@ -90,11 +92,6 @@ function Test-CompleteManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-    $testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-	$lastBackupName = "full.bak";
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
@@ -183,11 +180,6 @@ function Test-CancelManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-    $testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-	$lastBackupName = "full.bak";
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
@@ -264,11 +256,6 @@ function Test-ManagedDatabaseLogReplayPiping
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-    $testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-	$lastBackupName = "full.bak";
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
@@ -333,11 +320,6 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-    $testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-	$lastBackupName = "full.bak";
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
