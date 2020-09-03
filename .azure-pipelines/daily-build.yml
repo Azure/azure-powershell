@@ -88,7 +88,7 @@ steps:
 
       if( $gallery -eq 'TestGallery' ){
         Write-Host "Registering $(GALLERY_NAME)..."
-        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
       }    
 
       Write-Host "Installing Az..."
@@ -98,7 +98,8 @@ steps:
       Get-Module -Name Az.* -ListAvailable
 
       # Check version
-      $azVersions = get-module Az -ListAvailable
+      $azVersions = Get-Module -Name Az.* -ListAvailable
+
       if(!$azVersions){
         throw "No Az is installed"
       }
@@ -119,7 +120,6 @@ steps:
   displayName: Run Smoke Test 
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    pwsh: true
 
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
