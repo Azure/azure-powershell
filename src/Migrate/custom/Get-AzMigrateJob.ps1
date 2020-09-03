@@ -15,39 +15,21 @@
 
 <#
 .Synopsis
-Get job.
+Retrieves the status of an Azure Migrate job.
 .Description
-Get job.
+The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzmigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
-
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineName},
+        # Specifies the job id for which the details needs to be retrieved.
+        ${JobID},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -116,82 +98,16 @@ function Get-AzmigrateJob {
         ${ProxyUseDefaultCredentials}
     )
     
-    process {
-        try {
-            $parameterSet = $PSCmdlet.ParameterSetName
-
-            if($parameterSet  -eq 'ByMachineId'){
-                $null = $PSBoundParameters.Remove('MachineId')
-
-                $MachineIdArray = $MachineId.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14] 
-
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-                $null = $PSBoundParameters.Add("FabricName", $FabricName)
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
-                    
-                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
-                    $null = $PSBoundParameters.Remove("FabricName")
-                    $null = $PSBoundParameters.Remove("MigrationItemName")
-                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
-                    
-                    $null = $PSBoundParameters.Add('JobName', $JobName)
-                    return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
-                }
-
-                return
-            }
-
-            if($parameterSet -eq "ByMachineName"){
-                 # TODO
-                 $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-                 $FabricName = ""
-                 $ProtectionContainerName = ""
-                 
-                 $null = $PSBoundParameters.Remove('ProjectName')
-                 $null = $PSBoundParameters.Remove('MachineName')
- 
-                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                 $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-                 if($allFabrics -and ($allFabrics.length -gt 0)){
-                     $FabricName = $allFabrics[0].Name
-                 }
-                 
-                 $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                 $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                 if($peContainers -and ($peContainers.length -gt 0)){
-                     $ProtectionContainerName = $peContainers[0].Name
-                 }
- 
-                 $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
- 
-                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.CurrentJobName -ne "None")){
-                    
-                    $JobName = $ReplicationMigrationItem.CurrentJobId.split('/')[10] 
-                    $null = $PSBoundParameters.Remove("FabricName")
-                    $null = $PSBoundParameters.Remove("MigrationItemName")
-                    $null = $PSBoundParameters.Remove("ProtectionContainerName")
-                    
-                    $null = $PSBoundParameters.Add('JobName', $JobName)
-                    return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
-                }
-
-                return
-            }
-        } catch {
-           throw
-        }
+    process {   
+            $JobIdArray = $JobID.split('/')
+            $JobName = $JobIdArray[10]
+            $ResourceName = $JobIdArray[8]
+            $ResourceGroupName = $JobIdArray[4]
+            
+            $null = $PSBoundParameters.Add('JobName', $JobName)
+            $null = $PSBoundParameters.Add('ResourceName', $ResourceName)
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            
+            return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
     }
-
 }   

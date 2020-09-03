@@ -1,25 +1,24 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskmapping
 schema: 2.0.0
 ---
 
-# Start-AzMigrateServerMigration
+# New-AzMigrateDiskMapping
 
 ## SYNOPSIS
-Starts the migration for the replicating server.
+Creates a new disk mapping
 
 ## SYNTAX
 
 ```
-Start-AzMigrateServerMigration -TargetObjectID <String> [-SubscriptionId <String>]
- [-TurnOffSourceServer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzMigrateDiskMapping -DiskID <String> -DiskType <DiskAccountType> -IsOSDisk <String> [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts the migration for the replicating server.
+The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 
 ## EXAMPLES
 
@@ -43,69 +42,8 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure Subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetObjectID
-Specifies the replcating server for which the test migration needs to be initiated.
-The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+### -DiskID
+Specifies the disk ID of the disk attached to the discovered server to be migrated.
 
 ```yaml
 Type: System.String
@@ -119,15 +57,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TurnOffSourceServer
-Specifies whether the source server should be turned off post migration.
+### -DiskType
+Specifies the type of disks to be used for the Azure VM.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsOSDisk
+Specifies whether the disk contains the Operating System for the source server to be migrated.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -172,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput
 
 ## NOTES
 

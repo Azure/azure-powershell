@@ -8,52 +8,28 @@ schema: 2.0.0
 # Get-AzmigrateJob
 
 ## SYNOPSIS
-Get job.
+Retrieves the status of an Azure Migrate job.
 
 ## SYNTAX
 
-### ByMachineName (Default)
 ```
-Get-AzmigrateJob -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByMachineId
-```
-Get-AzmigrateJob -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzmigrateJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get job.
+The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 
 ## EXAMPLES
 
-### Example 1: By Machine Id
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMigrateJob -MachineId '/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
+PS C:\> {{ Add code here }}
 
-Location Name                                 Type                                                                                 
--------- ----                                 ----                                                                                          
-         b7290585-1839-44f8-953d-7e07e827b8b7 Microsoft.RecoveryServices/vaults/replicationJobs
-
+{{ Add output here }}
 ```
 
-
-
-### Example 2: By Machine Name
-```powershell
-PS C:\> Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH' -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
-
-
-Location Name                                 Type                                                                                 
--------- ----                                 ----                                                                                          
-         b7290585-1839-44f8-953d-7e07e827b8b7 Microsoft.RecoveryServices/vaults/replicationJobs
-
-```
-
-
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -87,27 +63,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-Id of an Azure Migrate protected VM.
+### -JobID
+Specifies the job id for which the details needs to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByMachineId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineName
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -126,36 +87,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Name of an Azure Migrate project.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of an Azure Resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -66,94 +66,115 @@ directive:
     - EnableMigrationProviderSpecificInput
     - UpdateMigrationItemProviderSpecificInput
   # Remove variants not in scope
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Test$
       subject: ^ReplicationMigrationItemMigrate
       variant: ^TestViaIdentity$|^TestViaIdentityExpanded$|^Test$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Get$
       subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
       variant: ^GetViaIdentity$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Remove$
       subject: ^ReplicationMigrationItem
       variant: ^DeleteViaIdentity$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Move$
       subject: ^ReplicationMigrationItem
       variant: ^MigrateViaIdentityExpanded$|^Migrate$|^MigrateViaIdentity$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
       variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: New$
       subject: ^ReplicationMigrationItem
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Update$
       subject: ^ReplicationMigrationItem
       variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
     remove: true
   # Remove cmdlets not in scope
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Export$|Find$|Switch$|Clear$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       subject: ^Commit|^Planned|^Renew|^Reprotect|^Unplanned|VaultHealth$|vCenter$|ComputeSize$|FabricConsistency$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: New$|Remove$
       subject: Fabric$|Policy$|ProtectionContainer$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Update$
       subject: Fabric$|Policy$|ProtectionContainer$
     remove: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Stop$|Resume$|Restart$
       subject: Job$
     remove: true
   # Hide cmldets used by custom
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Get$
       subject: ReplicationPolicy$|ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Test$
       subject: ^ReplicationMigrationItemMigrate
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: New$|Remove$
       subject: ^ReplicationMigrationItem
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Move$
       subject: ^ReplicationMigrationItem
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Restart$
       subject: ^ReplicationJob
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
     hide: true
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       verb: Update$
       subject: ^ReplicationMigrationItem
     hide: true
   # Table output formatting
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       model-name: MigrationItem
     set:
       format-table:
@@ -169,7 +190,8 @@ directive:
           MachineName: 40
           MigrationStateDescription: 80
           Id: 300
-  - where:
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
       model-name: Job
     set:
       format-table:

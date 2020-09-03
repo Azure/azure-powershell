@@ -8,24 +8,10 @@ schema: 2.0.0
 # Get-AzMigrateReplicationItem
 
 ## SYNOPSIS
-Get Replication items.
+Retrieves the details of the replicating server.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzMigrateReplicationItem -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByMachineId
-```
-Get-AzMigrateReplicationItem -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByMachineName
 ```
 Get-AzMigrateReplicationItem -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -33,22 +19,11 @@ Get-AzMigrateReplicationItem -MachineName <String> -ProjectName <String> -Resour
 ```
 
 ## DESCRIPTION
-Get Replication items.
+The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 
 ## EXAMPLES
 
-### Example 1: List
-```powershell
-PS C:\> Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH'
-
-Location Name                                                                                                      Type             
--------- ----                                                                                                      ----                      
-         bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f Microsoft.Recov…      
-```
-
-
-
-### Example 2: Get By Machine Name
+### Example 1: 
 ```powershell
 PS C:\> Get-AzMigrateReplicationItem -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH' -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
 
@@ -57,17 +32,7 @@ Location Name                                                                   
          bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f Microsoft.Recov…      
 ```
 
-
-
-### Example 3: Get By Machine Id
-```powershell
-PS C:\> Get-AzMigrateReplicationItem -MachineId  '/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
-Location Name                                                                                                      Type             
--------- ----                                                                                                      ----                      
-         bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f Microsoft.Recov…      
-```
-
-
+Retrieves the details of the replicating server
 
 ## PARAMETERS
 
@@ -101,42 +66,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter options.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineId
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MachineName
-Name of an Azure Migrate protected VM.
+Specifies the server for which the details needs to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByMachineName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -162,11 +97,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of an Azure Migrate project.
+Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByMachineName, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -177,29 +112,14 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of an Azure Resource group.
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByMachineName, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-The pagination token.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,44 +15,26 @@
 
 <#
 .Synopsis
-Migrates a VM.
+Starts the migration for the replicating server.
 .Description
-Migrates a VM.
+Starts the migration for the replicating server.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
 #>
 function Start-AzMigrateServerMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${MachineName},
-
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
+        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Turn off source VM.
+        # Specifies whether the source server should be turned off post migration.
         ${TurnOffSourceServer},
     
         [Parameter()]
@@ -123,12 +105,11 @@ function Start-AzMigrateServerMigration {
     )
     
     process {
-        if($parameterSet  -eq 'ByMachineId'){
-            $null = $PSBoundParameters.Remove('MachineId')
+            $null = $PSBoundParameters.Remove('TargetObjectID')
             $hasTurnOffSourceServer = $PSBoundParameters.ContainsKey('TurnOffSourceServer')
             $null = $PSBoundParameters.Remove('TurnOffSourceServer')
 
-            $MachineIdArray = $MachineId.Split("/")
+            $MachineIdArray = $TargetObjectID.Split("/")
             $ResourceGroupName = $MachineIdArray[4]
             $VaultName = $MachineIdArray[8]
             $FabricName = $MachineIdArray[10]
@@ -149,15 +130,9 @@ function Start-AzMigrateServerMigration {
                     $null = $ProviderSpecificDetailInput.Add('TurnOffSourceServer', $TurnOffSourceServer)
                 }
                 $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
-                Az.Migrate.internal\Move-AzMigrateReplicationMigrationItem @PSBoundParameters
+                return Az.Migrate.internal\Move-AzMigrateReplicationMigrationItem @PSBoundParameters
             }else{
                 Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
-            }
-            
-
-            return
-        }
-            
+            }        
     }
-
 }   

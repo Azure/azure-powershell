@@ -15,39 +15,21 @@
 
 <#
 .Synopsis
-Starts test migration cleanup
+Cleans up the test migration for the replicating server.
 .Description
-Cleanup Test Migrate a protected VM. 
+The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the test migration for the replicating server. 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigrationcleanup
 #>
 function Start-AzMigrateTestMigrationCleanup {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${MachineName},
-    
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
+        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -117,72 +99,28 @@ function Start-AzMigrateTestMigrationCleanup {
     )
     
     process {
-        try {
-            $parameterSet = $PSCmdlet.ParameterSetName
+            $null = $PSBoundParameters.Remove('TargetObjectID')
 
-            if ($parameterSet -eq 'ByMachineName') {
-                $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-                $FabricName = ""
-                $ProtectionContainerName = ""
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
+
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrateCleanup' )){
                 
-                $null = $PSBoundParameters.Remove('ProjectName')
-                $null = $PSBoundParameters.Remove('MachineName')
-
-                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-                if($allFabrics -and ($allFabrics.length -gt 0)){
-                    $FabricName = $allFabrics[0].Name
-                }
-                
-                $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                if($peContainers -and ($peContainers.length -gt 0)){
-                    $ProtectionContainerName = $peContainers[0].Name
-                }
-
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrateCleanup' )){
-                    
-                    $null = $PSBoundParameters.Add('Comment', "test migrate cleanup from powershell")
-                    Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrateCleanup @PSBoundParameters
-                }else{
-                    Write-Host "Operation not supported"
-                }
-               return
-            } 
-
-            if($parameterSet  -eq 'ByMachineId'){
-                $null = $PSBoundParameters.Remove('MachineId')
-
-                $MachineIdArray = $MachineId.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14] 
-
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-                $null = $PSBoundParameters.Add("FabricName", $FabricName)
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrateCleanup' )){
-                    
-                    $null = $PSBoundParameters.Add('Comment', "test migrate cleanup from powershell")
-                    Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrateCleanup @PSBoundParameters
-                }else{
-                    Write-Host "Operation Not supported"
-                }
-
-                return
-            }
-        } catch {
-           throw
-        }
+                $null = $PSBoundParameters.Add('Comment', "test migrate cleanup from powershell")
+                return Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrateCleanup @PSBoundParameters
+            }else{
+                Write-Host "Operation Not supported"
+            }           
     }
-
 }   

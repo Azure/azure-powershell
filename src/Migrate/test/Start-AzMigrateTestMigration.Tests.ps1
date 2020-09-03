@@ -12,17 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzMigrateTestMigration' {
-    It 'ByMachineName'  {
-        $output = Start-AzMigrateTestMigration -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup  -MachineName $env.srsMachineName -TestNetworkId $env.srsTestNetworkId
-        $output.Name | Should -Be $env.srsMachineName
-        $cleanupOutput = Start-AzMigrateTestMigrationCleanup -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup  -MachineName $env.srsMachineName 
-	    $cleanupOutput.Name | Should -Be $env.srsMachineName
+    It 'ByMachineName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ByMachineId' {
-        $output = Start-AzMigrateTestMigration -MachineId $env.srsMachineId -TestNetworkId $env.srsTestNetworkId
-        $output.Name | Should -Be $env.srsMachineName
-	    $cleanupOutput = Start-AzMigrateTestMigrationCleanup -MachineId $env.srsMachineId
-	    $cleanupOutput.Name | Should -Be $env.srsMachineName
+    It 'ByMachineId' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

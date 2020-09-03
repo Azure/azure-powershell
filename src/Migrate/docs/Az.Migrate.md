@@ -12,10 +12,10 @@ Microsoft Azure PowerShell: Migrate cmdlets
 
 ## Az.Migrate Cmdlets
 ### [Get-AzmigrateJob](Get-AzmigrateJob.md)
-Get job.
+The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 
 ### [Get-AzMigrateReplicationItem](Get-AzMigrateReplicationItem.md)
-Get Replication items.
+The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
@@ -36,20 +36,20 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
-Remove Migration item.
+The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server.
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
-Restart job.
+The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
 The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
 
 ### [Start-AzMigrateServerMigration](Start-AzMigrateServerMigration.md)
-Migrates a VM.
+Starts the migration for the replicating server.
 
 ### [Start-AzMigrateTestMigration](Start-AzMigrateTestMigration.md)
-Test Migrate a protected VM.
+The Start-AzMigrateTestMigration cmdlet initiates the test migration for the replicating server.
 
 ### [Start-AzMigrateTestMigrationCleanup](Start-AzMigrateTestMigrationCleanup.md)
-Cleanup Test Migrate a protected VM.
+The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the test migration for the replicating server.
 

@@ -15,39 +15,27 @@
 
 <#
 .Synopsis
-Remove Migration item. 
+Stops replication for the migrated server. 
 .Description
-Remove Migration item. 
+The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server. 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
+        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${MachineName},
-
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
+        # Specifies whether the replication needs to be force removed.
+        ${ForceRemove},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -55,12 +43,6 @@ function Remove-AzMigrateServerReplication {
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
-        [System.String]
-        # The delete option.
-        ${DeleteOption},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -108,6 +90,12 @@ function Remove-AzMigrateServerReplication {
         # The URI for the proxy server to use
         ${Proxy},
     
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -122,69 +110,29 @@ function Remove-AzMigrateServerReplication {
         ${ProxyUseDefaultCredentials}
     )
     
-    process {
-        try {
-            # TODO PLEASE FIX BEFORE RELEASE
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            $test = $PSBoundParameters
-            $parameterSet = $PSCmdlet.ParameterSetName
-            
-            $hasDeleteOption = $PSBoundParameters.ContainsKey('DeleteOption')
-            $null = $PSBoundParameters.Remove('DeleteOption')
-            if ($parameterSet -eq 'ByMachineName') {
-                # TODO
-                $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-                $FabricName = ""
-                $ProtectionContainerName = ""
-                
-                $null = $PSBoundParameters.Remove('ProjectName')
-                $null = $PSBoundParameters.Remove('MachineName')
+    process {            
+            $hasDeleteOption = $PSBoundParameters.ContainsKey('ForceRemove')
+            $null = $PSBoundParameters.Remove('ForceRemove')
+            $null = $PSBoundParameters.Remove('TargetObjectID')
 
-                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-                if($allFabrics -and ($allFabrics.length -gt 0)){
-                    $FabricName = $allFabrics[0].Name
-                }
-                
-                $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                if($peContainers -and ($peContainers.length -gt 0)){
-                    $ProtectionContainerName = $peContainers[0].Name
-                }
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
 
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-                if($hasDeleteOption){
-                    $null = $PSBoundParameters.Add('DeleteOption', $DeleteOption)
-                }
-
-                return Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters
-            } 
-
-            if($parameterSet  -eq 'ByMachineId'){
-                $null = $PSBoundParameters.Remove('MachineId')
-
-                $MachineIdArray = $MachineId.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14] 
-
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-                $null = $PSBoundParameters.Add("FabricName", $FabricName)
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-                if($hasDeleteOption){
-                    $null = $PSBoundParameters.Add('DeleteOption', $DeleteOption)
-                }
-                return Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters
-                
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+            if($hasDeleteOption){
+                $null = $PSBoundParameters.Add('DeleteOption', $ForceRemove)
             }
-        } catch {
-           throw
-        }
+            Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters  
+            if($PassThru.IsPresent){
+                return $true
+            }      
     }
-
 }   

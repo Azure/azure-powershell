@@ -15,47 +15,28 @@
 
 <#
 .Synopsis
-Starts test migration process
+Starts the test migration for the replicating server.
 .Description
-Test Migrate a protected VM. 
+The Start-AzMigrateTestMigration cmdlet initiates the test migration for the replicating server. 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
+        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate protected VM.
-        ${MachineName},
-
-        [Parameter(ParameterSetName='ByMachineId', Mandatory)]
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Virtual Network.
+        # Updates the Virtual Network id within the destination Azure subscription to be used for test migration.
         ${TestNetworkID},
     
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
-
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -124,87 +105,35 @@ function Start-AzMigrateTestMigration {
     )
     
     process {
-        try {
-            $parameterSet = $PSCmdlet.ParameterSetName
+            $null = $PSBoundParameters.Remove('TargetObjectID')
+            $null = $PSBoundParameters.Remove('TestNetworkID')
 
-            if ($parameterSet -eq 'ByMachineName') {
-                # TODO
-                $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-                $FabricName = ""
-                $ProtectionContainerName = ""
-                
-                $null = $PSBoundParameters.Remove('ProjectName')
-                $null = $PSBoundParameters.Remove('MachineName')
-                $null = $PSBoundParameters.Remove('TestNetworkID')
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
 
-                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-                if($allFabrics -and ($allFabrics.length -gt 0)){
-                    $FabricName = $allFabrics[0].Name
-                }
-                
-                $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                if($peContainers -and ($peContainers.length -gt 0)){
-                    $ProtectionContainerName = $peContainers[0].Name
-                }
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )){
+                $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtTestMigrateInput]::new()
+                $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
+                $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
+                $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
 
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )){
-                    $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtTestMigrateInput]::new()
-                    $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
-                    $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
-                    $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
-
-                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
-                    Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrate @PSBoundParameters
-                }else{
-                    Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
-                }
-                
-
-               return
-            } 
-
-            if($parameterSet  -eq 'ByMachineId'){
-                $null = $PSBoundParameters.Remove('MachineId')
-                $null = $PSBoundParameters.Remove('TestNetworkID')
-
-                $MachineIdArray = $MachineId.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14] 
-
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-                $null = $PSBoundParameters.Add("FabricName", $FabricName)
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )){
-                    $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtTestMigrateInput]::new()
-                    $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
-                    $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
-                    $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
-
-                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
-                    Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrate @PSBoundParameters
-                }else{
-                    Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
-                }
-                
-
-                return
+                $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
+                return Az.Migrate.internal\Test-AzMigrateReplicationMigrationItemMigrate @PSBoundParameters
+            }else{
+                Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
             }
-        } catch {
-           throw
-        }
+            
     }
 
 }   

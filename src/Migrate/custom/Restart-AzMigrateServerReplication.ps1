@@ -15,39 +15,21 @@
 
 <#
 .Synopsis
-Restart job.
+Restarts the replication for specified server.
 .Description
-Restart job.
+The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='ByMachineName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Name of an Azure Resource group.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByMachineId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineId},
-
-        [Parameter(ParameterSetName='ByMachineName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Id of an Azure Migrate protected VM.
-        ${MachineName},
-
-        [Parameter(ParameterSetName='ByMachineName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Name of an Azure Migrate project.
-        ${ProjectName},
+        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${TargetObjectID},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -116,74 +98,29 @@ function Restart-AzMigrateServerReplication{
         ${ProxyUseDefaultCredentials}
     )
     
-    process {
-        try {
-            $parameterSet = $PSCmdlet.ParameterSetName
-           
+    process {           
             $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtResyncInput]::new()
             $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
             $ProviderSepcificDetail.SkipCbtReset = 'true'
+            
+            $null = $PSBoundParameters.Remove('TargetObjectID')
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14] 
 
-            if($parameterSet  -eq 'ByMachineId'){
-                $null = $PSBoundParameters.Remove('MachineId')
-
-                $MachineIdArray = $MachineId.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14] 
-
-                
-
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-                $null = $PSBoundParameters.Add("FabricName", $FabricName)
-                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-               
-                $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
-                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
-                    return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
-                }
-                return
-            }
-
-            if($parameterSet -eq "ByMachineName"){
-                 # TODO
-                 $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-                 $FabricName = ""
-                 $ProtectionContainerName = ""
-                 
-                 $null = $PSBoundParameters.Remove('ProjectName')
-                 $null = $PSBoundParameters.Remove('MachineName')
- 
-                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                 $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-                 if($allFabrics -and ($allFabrics.length -gt 0)){
-                     $FabricName = $allFabrics[0].Name
-                 }
-                 
-                 $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                 $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                 if($peContainers -and ($peContainers.length -gt 0)){
-                     $ProtectionContainerName = $peContainers[0].Name
-                 }
- 
-                 $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-                 $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-                 $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-                 if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
-                    $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
-                    return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
-                 }
-                 return
-            }
-
-        } catch {
-           throw
-        }
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+            $null = $PSBoundParameters.Add("FabricName", $FabricName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+            
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
+                $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
+                return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
+            }            
     }
-
 }   

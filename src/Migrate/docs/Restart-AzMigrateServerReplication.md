@@ -8,25 +8,17 @@ schema: 2.0.0
 # Restart-AzMigrateServerReplication
 
 ## SYNOPSIS
-Restart job.
+Restarts the replication for specified server.
 
 ## SYNTAX
 
-### ByMachineName (Default)
 ```
-Restart-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByMachineId
-```
-Restart-AzMigrateServerReplication -MachineId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart job.
+The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 
 ## EXAMPLES
 
@@ -88,36 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineName
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -127,36 +89,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Name of an Azure Migrate project.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of an Azure Resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -174,6 +106,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetObjectID
+Specifies the replcating server for which the test migration needs to be initiated.
+The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 
 ## NOTES
 

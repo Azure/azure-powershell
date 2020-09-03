@@ -8,25 +8,17 @@ schema: 2.0.0
 # Start-AzMigrateTestMigrationCleanup
 
 ## SYNOPSIS
-Starts test migration cleanup
+Cleans up the test migration for the replicating server.
 
 ## SYNTAX
 
-### ByMachineName (Default)
 ```
-Start-AzMigrateTestMigrationCleanup -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByMachineId
-```
-Start-AzMigrateTestMigrationCleanup -MachineId <String> [-SubscriptionId <String>]
+Start-AzMigrateTestMigrationCleanup -TargetObjectID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Cleanup Test Migrate a protected VM.
+The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the test migration for the replicating server.
 
 ## EXAMPLES
 
@@ -84,36 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineName
-Name of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -123,36 +85,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Name of an Azure Migrate project.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of an Azure Resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,6 +102,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetObjectID
+Specifies the replcating server for which the test migration needs to be initiated.
+The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

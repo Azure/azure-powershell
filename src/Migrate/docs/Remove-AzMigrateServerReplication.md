@@ -8,46 +8,37 @@ schema: 2.0.0
 # Remove-AzMigrateServerReplication
 
 ## SYNOPSIS
-Remove Migration item.
+Stops replication for the migrated server.
 
 ## SYNTAX
 
-### ByMachineName (Default)
 ```
-Remove-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DeleteOption <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByMachineId
-```
-Remove-AzMigrateServerReplication -MachineId <String> [-SubscriptionId <String>] [-DeleteOption <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>] [-ForceRemove <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove Migration item.
+The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server.
 
 ## EXAMPLES
 
-### Example 1: By Machine Name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzMigrateServerReplication -MachineId '/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
+{{ Add description here }}
 
-
-### Example 2: 
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzMigrateServerReplication -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH' -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
-
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -81,8 +72,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeleteOption
-The delete option.
+### -ForceRemove
+Specifies whether the replication needs to be force removed.
 
 ```yaml
 Type: System.String
@@ -90,36 +81,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineId
-Id of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineName
-Name of an Azure Migrate protected VM.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,30 +102,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectName
-Name of an Azure Migrate project.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: ByMachineName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of an Azure Resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByMachineName
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,6 +128,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetObjectID
+Specifies the replcating server for which the test migration needs to be initiated.
+The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
