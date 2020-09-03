@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                             asyncOpStatusRequest = this.CloneAndDisposeRequest(asyncOpStatusRequest, asyncOperationStatusEndpoint, HttpMethod.Get);
                             HttpResponseMessage responseJson = client.SendAsync(asyncOpStatusRequest).GetAwaiter().GetResult();
-                            string content = responseJson.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
+                            string content = responseJson.Content.ReadAsStringAsync().Result;
                             Operation op = this.ConvertToOperation(content);
 
                             if (op != null)
