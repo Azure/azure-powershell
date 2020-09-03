@@ -10,36 +10,18 @@ schedules:
 pr: none
 trigger: none
 
+pool:
+  vmImage: 'windows-2019'
+
 strategy:
   matrix:
-    Windows TestGallery:
-      IMAGE_NAME: 'vs2017-win2016'
+    TestGallery:
       GALLERY_NAME: 'TestGallery'
       GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    Windows PSGallery:
-      IMAGE_NAME: 'vs2017-win2016'
+    PSGallery:
       GALLERY_NAME: 'PSGallery'
       GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-    # Linux TestGallery:
-    #   IMAGE_NAME: 'ubuntu-18.04'
-    #   GALLERY_NAME: 'TestGallery'
-    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    # Linux PSGallery:
-    #   IMAGE_NAME: 'ubuntu-18.04'
-    #   GALLERY_NAME: 'PSGallery'
-    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-    # MacOS TestGallery:
-    #   IMAGE_NAME: 'macOS-10.14'
-    #   GALLERY_NAME: 'TestGallery'
-    #   GALLERY_LOCATION: 'https://www.poshtestgallery.com/api/v2'
-    # MacOS PSGallery:
-    #   IMAGE_NAME: 'macOS-10.14'
-    #   GALLERY_NAME: 'PSGallery'
-    #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-  maxParallel: 6
-
-pool:
-  vmImage: $(IMAGE_NAME)
+  maxParallel: 2
 
 steps:
 - task: PowerShell@2
@@ -70,13 +52,13 @@ steps:
 
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
+    pwsh: true
    
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
     targetType: 'inline'
     script: |
-      $PSVersionTable
       $gallery = '$(GALLERY_NAME)'
       if( $gallery -eq 'PSGallery' ){
         Write-Host "Setting $(GALLERY_NAME) Trusted..."
@@ -89,18 +71,17 @@ steps:
       }    
 
       Write-Host "Installing Az..."
-      Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
+      Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
       
       # Check Az
       Get-Module -Name Az.* -ListAvailable
-      Get-Module -Name Az -ListAvailable
 
       # Check version
-      $azVersion = get-module Az -ListAvailable
-      if(!$azVersion){
-        Write-Host '$azVersion', $azVersion
+      $azVersions = get-module Az -ListAvailable
+      if(!$azVersions){
         throw "No Az is installed"
       }
+    pwsh: true
 - task: PowerShell@2
   displayName: Connect AzAccount 
   inputs:
@@ -112,17 +93,20 @@ steps:
       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
       Set-AzContext -Subscription "Azure SDK Powershell Test"
       Enable-AzureRmAlias
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    pwsh: true
 
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
+    pwsh: true
 
 
 - task: PowerShell@2
@@ -141,6 +125,8 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
+    pwsh: true
+
 
 - task: PowerShell@2
   displayName: Update Az Modules
@@ -178,17 +164,20 @@ steps:
         Enable-AzureRmAlias
         Set-AzContext -Subscription "Azure SDK Powershell Test"
       }
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    pwsh: true
 
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
   inputs:
     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     arguments: '-Reverse'
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -206,6 +195,7 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Install an individual module
@@ -222,6 +212,7 @@ steps:
         throw "No Az.Compute is installed"
       }
       
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Update an individual module
@@ -254,6 +245,7 @@ steps:
           throw "Update Az.Compute failed"
         }
       }
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -271,6 +263,7 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Install Az on top of an individual module
@@ -305,6 +298,7 @@ steps:
           throw "Install Az on top of Az.Compute failed"
         }
       }
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -322,6 +316,7 @@ steps:
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
+    pwsh: true
 
 - task: PowerShell@2
   displayName: Install an individual module on top of Az
@@ -359,3 +354,4 @@ steps:
           throw "Install Az on top of Az.Compute failed"
         }
       }
+    pwsh: true
