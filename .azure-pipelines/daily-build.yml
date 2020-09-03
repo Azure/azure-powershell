@@ -146,7 +146,7 @@ steps:
         # Check version
         $azVersion = (get-module Az -ListAvailable).Version | 
         %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
-        if($azVersions -ne $versions[0]){
+        if($azVersion -ne $versions[0]){
           throw "Update Az failed"
         }
 
