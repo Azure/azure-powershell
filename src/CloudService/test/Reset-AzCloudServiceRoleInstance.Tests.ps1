@@ -10,11 +10,9 @@ Describe 'Reset-AzCloudServiceRoleInstance' {
     Reset-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName -Restart
   }
 
-  # TODO: Enable once PowerShell Team fixes the cmdlet
-  
-  # It 'Reimage Cloud Service role instance' {
-  #   Reset-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName -Reimage
-  # }
+  It 'Reimage Cloud Service role instance' {
+    Reset-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName -Reimage
+  }
 
   # TODO: Enable this once Rebuild option is supported
 

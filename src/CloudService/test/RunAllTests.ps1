@@ -17,9 +17,13 @@ if (($cloudServiceInstanceView -eq $NULL) -or ($cloudServiceInstanceView.Statuse
 
 & "$PSScriptRoot\Get-AzCloudService.Tests.ps1"
 & "$PSScriptRoot\Get-AzCloudServiceRoleInstance.Tests.ps1"
+& "$PSScriptRoot\Update-AzCloudService.Tests.ps1"
 & "$PSScriptRoot\Reset-AzCloudServiceRoleInstance.Tests.ps1"
 & "$PSScriptRoot\Reset-AzCloudService.Tests.ps1"
 & "$PSScriptRoot\Stop-AzCloudService.Tests.ps1"
 & "$PSScriptRoot\Start-AzCloudService.Tests.ps1"
 & "$PSScriptRoot\Remove-AzCloudServiceRoleInstance.Tests.ps1"
 & "$PSScriptRoot\Remove-AzCloudService.Tests.ps1"
+
+# Delete the Resource Group
+Remove-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Force

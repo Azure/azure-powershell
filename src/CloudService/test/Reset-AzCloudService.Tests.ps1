@@ -10,11 +10,9 @@ Describe 'Reset-AzCloudService' {
     Reset-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -Restart
   }
 
-  # TODO: Enable once PowerShell Team fixes the cmdlet
-
-  # It 'Reimage Cloud Service' {
-  #   Reset-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -Reimage
-  # }
+  It 'Reimage Cloud Service' {
+    Reset-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -Reimage
+  }
 
   # TODO: Enable this once Rebuild option is supported
 
