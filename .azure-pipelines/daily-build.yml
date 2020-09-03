@@ -89,16 +89,16 @@ steps:
       }    
 
       Write-Host "Installing Az..."
-      Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
+      Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
       
       # Check Az
       Get-Module -Name Az.* -ListAvailable
       Get-Module -Name Az -ListAvailable
 
       # Check version
-      $azVersions = get-module Az -ListAvailable
-      if(!$azVersions){
-        Write-Host '$azVersions', $azVersions
+      $azVersion = get-module Az -ListAvailable
+      if(!$azVersion){
+        Write-Host '$azVersion', $azVersion
         throw "No Az is installed"
       }
 - task: PowerShell@2
