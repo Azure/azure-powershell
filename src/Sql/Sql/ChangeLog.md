@@ -18,10 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
+
+## Version 2.9.1
+* Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
+* Fixed wrong database name returned on existing database error in `New-AzSqlDatabaseSecondary`
+
+## Version 2.9.0
 * Added support for Service principal and guest users in Set-AzSqlInstanceActiveDirectoryAdministrator cmdlet`
 * Fixed a bug in Data Classification cmdlets.`
 * Added support for Azure SQL Managed Instance failover: `Invoke-AzSqlInstanceFailover`
-
 
 ## Version 2.8.0
 * Added support for service principal for Set SQL Server Azure Active Directory Admin cmdlet

@@ -70,11 +70,11 @@ function Test-File
         Assert-AreEqual $file[0].Name $objectName1
 		if ($Env:OS -eq "Windows_NT")
 		{
-			$file[0].FetchAttributes()
+			$file[0].CloudFile.FetchAttributes()
 			$localFileProperties = Get-ItemProperty $localSrcFile
-			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.CreationTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.LastWriteTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].CloudFile.Properties.NtfsAttributes.ToString()
 		}
 
         Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath $objectName1 -DestShareName $shareName -DestFilePath $objectName2 -Force -Context $storageContext -DestContext $storageContext
@@ -103,9 +103,9 @@ function Test-File
 		{
 			$file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
 			$localFileProperties = Get-ItemProperty $localSrcFile
-			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.CreationTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.LastWriteTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].CloudFile.Properties.NtfsAttributes.ToString()
 		}
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
@@ -113,19 +113,19 @@ function Test-File
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
 
-        $dirName = "filetestdir"
+         $dirName = "filetestdir"
         New-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext    
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 2
         Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "CloudFile"
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"
         Assert-AreEqual $file[1].Name $dirName
-        Assert-AreEqual $file[1].GetType().Name "CloudFileDirectory"
+        Assert-AreEqual $file[1].GetType().Name "AzureStorageFileDirectory"
         Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "CloudFile"  
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"   
 
         # Clean Storage Account
         Remove-AzStorageShare -Name $shareName -Force -Context $storageContext
@@ -244,6 +244,15 @@ function Test-Blob
 		Assert-AreEqual $t.State "Completed"
 		Assert-AreEqual $t.Error $null
         Assert-AreEqual (Get-FileHash -Path $localDestFile2 -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+
+		# upload/download blob which name include "/"
+		$blobNameWithFolder = "aa/bb/cc/dd.txt"
+		$localFileNameWithFolder= "aa\bb\cc\dd.txt"
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
+		Get-AzStorageBlobContent -Container $containerName -Blob $blobNameWithFolder -Destination . -Force -Context $storageContext 
+        Assert-AreEqual (Get-FileHash -Path $localFileNameWithFolder -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		Remove-Item -Path "aa" -Force -Recurse
+        Remove-AzStorageBlob -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
 
         Remove-AzStorageBlob -Container $containerName -Blob $objectName2 -Force -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
@@ -806,7 +815,7 @@ function Test-DatalakeGen2
 		Assert-NotNull $items[0].Permissions
 		$items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -Recurse 
         Assert-AreEqual $items.Count 4
-		Assert-Null $items[0].Permissions
+		Assert-AreEqual "rw-rw--wx" $items[0].Permissions.ToSymbolicPermissions()
 
 		#download File
 		$t  = Get-AzDataLakeGen2ItemContent -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Destination $localDestFile -AsJob -Force
@@ -820,16 +829,16 @@ function Test-DatalakeGen2
         $file3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -DestFileSystem $filesystemName -DestPath $filePath3 -Force
 		$file3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath3
 		Assert-AreEqual $file3.Path $filePath3
-        Assert-AreEqual $file3.Permissions $file2.Permissions
+        Assert-AreEqual $file3.Permissions.ToSymbolicPermissions() $file2.Permissions.ToSymbolicPermissions()
 		$file2 = $file3 | Move-AzDataLakeGen2Item -DestFileSystem $filesystemName -DestPath $filePath2
 		$file2 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2
 		Assert-AreEqual $file2.Path $filePath2
-        Assert-AreEqual $file2.Permissions $file3.Permissions
+        Assert-AreEqual $file2.Permissions.ToSymbolicPermissions() $file3.Permissions.ToSymbolicPermissions()
 		## Move Folder
         $dir3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -DestFileSystem $filesystemName -DestPath $directoryPath3 
 		$dir3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath3
 		Assert-AreEqual $dir3.Path $directoryPath3
-        Assert-AreEqual $dir3.Permissions $dir1.Permissions
+        Assert-AreEqual $dir3.Permissions.ToSymbolicPermissions() $dir1.Permissions.ToSymbolicPermissions()
 		$dir1 = $dir3 | Move-AzDataLakeGen2Item -DestFileSystem $filesystemName -DestPath $directoryPath1
 		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
 		Assert-AreEqual $dir1.Path $directoryPath1

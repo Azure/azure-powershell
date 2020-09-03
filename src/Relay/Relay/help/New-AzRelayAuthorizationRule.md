@@ -37,8 +37,8 @@ The **New-AzRelayAuthorizationRule** cmdlet creates a new authorization rule for
 
 ## EXAMPLES
 
-### Example 1 - Namespace
-```
+### Example 1: Namespace
+```powershell
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}
@@ -49,8 +49,8 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
 
-### Example 2 - WcfRelay
-```
+### Example 2: WcfRelay
+```powershell
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}
@@ -61,8 +61,8 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Creates authorization rule `AuthoRule1` with **Listen** rights for the WcfRelay `TestWCFRelay1`.
 
-### Example 3 - HybridConnection
-```
+### Example 3: HybridConnection
+```powershell
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}

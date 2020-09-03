@@ -2,8 +2,9 @@
     { "regex": "ApiManagement", "alias": "API Management" },
 
     { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" },
-    { "regex": "MlOp", "group": "Machine Learning Compute", "alias": "Machine Learning Compute" },
     { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" },
+
+    { "regex": "ImageBuilder", "alias": "Image Builder" },
 
     { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" },
     { "regex": "Image", "group": "Virtual Machines", "alias": "VM Images" },
@@ -48,7 +49,7 @@
     { "regex": "StorageSync", "alias": "StorageSync" },
     { "regex": "Storage", "alias": "Storage" },
     { "regex": "Synapse", "alias": "Synapse Analytics" },
-	
+
     { "regex": "Relay", "alias": "Relay" },
 
     { "regex": "ServiceBus", "alias": "Service Bus" },
@@ -59,9 +60,11 @@
 
     { "regex": "KeyVault", "alias": "Key Vault" },
 
-    { "regex": "Iot", "alias": "IoT" },
+    { "regex": "IotCentral", "alias": "IotCentral" },
 
-	  { "regex": "DeviceProvisioningServices", "alias": "DPS" },
+    { "regex": "IotHub", "alias": "IotHub" },
+
+	{ "regex": "DeviceProvisioningServices", "alias": "DPS" },
 
     { "regex": "Batch", "alias": "Batch" },
 
@@ -111,9 +114,6 @@
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" },
     { "regex": "Billing", "group": "Billing", "alias": "Billing" },
 
-    { "regex": "ApplicationInsights", "alias": "Monitor" },
-    { "regex": "Monitor", "alias": "Monitor" },
-
     { "regex": "Media", "alias": "Media Services" },
 
     { "regex": "UsageAggregates", "alias": "Usage Aggregates" },
@@ -130,7 +130,7 @@
 
     { "regex": "Subscription", "alias": "Subscription" },
 
-    { "regex": "Policy", "group": "Resources", "alias": "Policies" },
+    { "regex": "Policy", "group": "Resources", "alias": "Policy" },
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" },
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
@@ -173,9 +173,19 @@
     { "regex": "Sql", "alias": "SQL" },
     { "regex": "Blockchain", "alias": "Blockchain Service" },
     { "regex": "ImportExport", "alias": "Import/Export" },
-    { "regex": "ImageBuilder", "alias": "Image Builder" },
     { "regex": "Functions", "alias": "Functions" },
     { "regex": "DesktopVirtualization", "alias": "DesktopVirtualization" },
     { "regex": "AppConfiguration", "alias": "App Configuration" },
-    { "regex": "StackEdge", "alias": "Stack Edge" }
+    { "regex": "HanaOnAzure", "alias": "SAP HANA on Azure" },
+    { "regex": "CustomProviders", "alias": "Custom Resource Providers" },
+    { "regex": "MonitorLogAnalytics", "alias": "Monitoring Solutions" },
+
+    { "regex": "ApplicationInsights", "alias": "Monitor" },
+    { "regex": "Monitor", "alias": "Monitor" },
+
+    { "regex": "StackEdge", "alias": "Stack Edge" },
+    { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
+    { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" },
+    { "regex": "StackHCI", "alias": "Stack HCI" },
+    { "regex": "SpringCloud", "alias": "SpringCloud" }
 ]

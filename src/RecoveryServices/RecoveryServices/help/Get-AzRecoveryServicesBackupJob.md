@@ -77,18 +77,25 @@ This script polls the first job that is currently in progress until the job has 
 
 Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azure Backup job to finish instead of While loop.
 
+### Example 4: Get all AzureVM jobs in last 2 days which finished successfully
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob  -VaultId $vault.ID  -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
+```
+First cmdlet fetches the vault object. Second cmdlet stores all the AzureVM jobs in the given vault which completed in last 2 days to $jobs. Change the value of BackupManagementType parameter to MAB in order to fetch MAB agent jobs.
+
 ## PARAMETERS
 
 ### -BackupManagementType
 
-Specifies the Backup management type.
-Currently, only AzureVM, AzureStorage is supported.
+The class of resources being protected. Currently the values supported for this cmdlet are AzureVM, AzureStorage, AzureWorkload, MAB.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
 
 Required: False
 Position: Named
@@ -175,6 +182,7 @@ The acceptable values for this parameter are:
 - DeleteBackupData
 - DisableBackup
 - Restore
+- BackupDataMove
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]

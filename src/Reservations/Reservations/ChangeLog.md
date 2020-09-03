@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Added new reserved resource types.
+
 ## Version 0.8.2
 * Spelling fix in the docs.
 

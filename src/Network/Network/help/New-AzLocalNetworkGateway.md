@@ -37,8 +37,8 @@ Address Prefix of the On-Premises network which will be connecting to Azure.
 
 ## EXAMPLES
 
-### 1: Create a Local Network Gateway
-```
+### Example 1: Create a Local Network Gateway
+```powershell
 New-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
 ```
 

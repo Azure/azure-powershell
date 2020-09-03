@@ -23,8 +23,8 @@ Create an environment in the specified subscription and resource group.
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource])]
-    [CmdletBinding(DefaultParameterSetName='standard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
+    [CmdletBinding(DefaultParameterSetName='Gen1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('EnvironmentName')]
@@ -47,7 +47,7 @@ function New-AzTimeSeriesInsightsEnvironment {
         ${SubscriptionId},
     
         [Parameter(Mandatory)]
-        [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Standard', 'LongTerm')})]
+        [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Gen1', 'Gen2')})]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind]
         # The kind of the environment.
@@ -59,26 +59,26 @@ function New-AzTimeSeriesInsightsEnvironment {
         # The location of the resource.
         ${Location},
     
-        [Parameter(ParameterSetName='standard', Mandatory)]
+        [Parameter(ParameterSetName='Gen1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.Int32]
         # The capacity of the sku.
-        # For standard environments, this value can be changed to support scale out of environments after they have been created.
+        # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
         ${Capacity},
     
-        [Parameter(ParameterSetName='standard', Mandatory)]
+        [Parameter(ParameterSetName='Gen1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.TimeSpan]
         # The data retention time.
         ${DataRetentionTime},
 
-        [Parameter(ParameterSetName='standard')]
+        [Parameter(ParameterSetName='Gen1')]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
         # The list of event properties which will be used to partition data in the environment.
         ${PartitionKeyProperty},
 
-        [Parameter(ParameterSetName='standard')]
+        [Parameter(ParameterSetName='Gen1')]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.String]
         # The behavior the Time Series Insights service should take when the environment's capacity has been exceeded
@@ -91,25 +91,25 @@ function New-AzTimeSeriesInsightsEnvironment {
         # The name of this SKU.
         ${Sku},
     
-        [Parameter(ParameterSetName='longterm', Mandatory)]
+        [Parameter(ParameterSetName='Gen2', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
         # The list of event properties which will be used to define the environment's time series id.
         ${TimeSeriesIdProperty},
 
-        [Parameter(ParameterSetName='longterm', Mandatory)]
+        [Parameter(ParameterSetName='Gen2', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.String]
         # The name of the storage account that will hold the environment's long term data.
         ${StorageAccountName},
 
-        [Parameter(ParameterSetName='longterm', Mandatory)]
+        [Parameter(ParameterSetName='Gen2', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.Security.SecureString]
         # The value of the management key that grants the Time Series Insights service write access to the storage account.
         ${StorageAccountKey},
 
-        [Parameter(ParameterSetName='longterm')]
+        [Parameter(ParameterSetName='Gen2')]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
         [System.TimeSpan]
         # ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
@@ -117,7 +117,7 @@ function New-AzTimeSeriesInsightsEnvironment {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
         [System.Collections.Hashtable]
         # Key-value pairs of additional properties for the resource.
         ${Tag},
@@ -186,9 +186,9 @@ function New-AzTimeSeriesInsightsEnvironment {
     
     process {
         try {
-            if ($PSBoundParameters['Kind'] -eq 'Standard') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.StandardEnvironmentCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.StandardEnvironmentCreationProperties]::new()
+            if ($PSBoundParameters['Kind'] -eq 'Gen1') {
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen1EnvironmentCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen1EnvironmentCreationProperties]::new()
                 
                 $Parameter.SkuCapacity = $PSBoundParameters['Capacity']
                 $null = $PSBoundParameters.Remove('Capacity')
@@ -206,8 +206,8 @@ function New-AzTimeSeriesInsightsEnvironment {
                     $null = $PSBoundParameters.Remove('StorageLimitExceededBehavior')
                 }
             } else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.LongTermEnvironmentCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.LongTermEnvironmentCreationProperties]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen2EnvironmentCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen2EnvironmentCreationProperties]::new()
                 
                 $Parameter.Property.StorageConfigurationAccountName = $PSBoundParameters['StorageAccountName']
                 $null = $PSBoundParameters.Remove('StorageAccountName')

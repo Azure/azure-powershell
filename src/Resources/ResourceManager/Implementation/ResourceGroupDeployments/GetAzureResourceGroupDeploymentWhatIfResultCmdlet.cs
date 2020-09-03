@@ -14,19 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System;
-    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName),
     OutputType(typeof(PSWhatIfOperationResult))]
-    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class GetAzureResourceGroupDeploymentWhatIfResultCmdlet : DeploymentWhatIfCmdlet
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -50,43 +50,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] ExcludeChangeType { get; set; }
 
-        protected override void OnProcessRecord()
-        {
-            const string statusMessage = "Getting the latest status of all resources...";
-            var clearMessage = new string(' ', statusMessage.Length);
-            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
-            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
-            var tags = new[] { "PSHOST" };
-
-            try
-            {
-                // Write status message.
-                this.WriteInformation(information, tags);
-
-                var parameters = new PSDeploymentWhatIfCmdletParameters
-                {
-                    DeploymentName = this.Name,
-                    Mode = this.Mode,
-                    ResourceGroupName = this.ResourceGroupName,
-                    TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                    TemplateObject = this.TemplateObject,
-                    TemplateParametersUri = this.TemplateParameterUri,
-                    TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
-                    ResultFormat = this.ResultFormat
-                };
-
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters, this.ExcludeChangeType);
-
-                // Clear status before returning result.
-                this.WriteInformation(clearInformation, tags);
-                this.WriteObject(whatIfResult);
-            }
-            catch (Exception)
-            {
-                // Clear status before on exception.
-                this.WriteInformation(clearInformation, tags);
-                throw;
-            }
-        }
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.ResourceGroup,
+            deploymentName: this.Name,
+            mode: this.Mode,
+            resourceGroupName: this.ResourceGroupName,
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            templateObject: this.TemplateObject,
+            templateParametersUri: this.TemplateParameterUri,
+            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat: this.ResultFormat,
+            excludeChangeTypes: this.ExcludeChangeType);
     }
 }

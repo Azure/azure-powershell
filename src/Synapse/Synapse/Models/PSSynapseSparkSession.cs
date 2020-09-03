@@ -1,14 +1,15 @@
-﻿using Microsoft.Azure.Synapse.Models;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSynapseSparkSession : PSSynapseSparkJobInformationBase
     {
-        public PSSynapseSparkSession(ExtendedLivySessionResponse session) : this(null, session)
+        public PSSynapseSparkSession(SparkSession session) : this(null, session)
         {
         }
 
-        public PSSynapseSparkSession(string language, ExtendedLivySessionResponse session) :
+        public PSSynapseSparkSession(string language, SparkSession session) :
             base(session?.Name,
                 session?.WorkspaceName,
                 session?.SparkPoolName,
@@ -16,16 +17,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 session?.SubmitterId,
                 session?.ArtifactId,
                 session?.JobType,
-                session?.Result,
-                session?.SchedulerInfo,
-                session?.PluginInfo,
-                session?.ErrorInfo,
-                session?.Tags,
+                session?.Result.ToString(),
+                session?.Scheduler,
+                session?.Plugin,
+                session?.Errors,
+                session?.Tags.ToDictionary(kvp => kvp.Key, kvp => kvp.Value),
                 session?.Id,
                 session?.AppId,
                 session?.AppInfo,
                 session?.State,
-                session?.Log)
+                session?.LogLines)
         {
             this.Language = language;
             this.LivyInfo = session?.LivyInfo != null ? new PSLivySessionStateInformation(session?.LivyInfo) : null;

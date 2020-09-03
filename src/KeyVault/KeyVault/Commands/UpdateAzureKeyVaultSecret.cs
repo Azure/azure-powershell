@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",DefaultParameterSetName = DefaultParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecretAttribute")]

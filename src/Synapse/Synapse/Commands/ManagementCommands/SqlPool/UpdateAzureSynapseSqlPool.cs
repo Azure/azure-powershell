@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Synapse
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
-    public class UpdateAzureSynapseSqlPool : SynapseCmdletBase
+    public class UpdateAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
         private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";
@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.Synapse
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = PauseByNameParameterSet, HelpMessage = HelpMessages.SuspendSqlPool)]
         [Parameter(Mandatory = true, ParameterSetName = PauseByInputObjectParameterSet, HelpMessage = HelpMessages.SuspendSqlPool)]
@@ -165,54 +169,107 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            SqlPool existingSqlPool = null;
-            try
+            if (this.Version == 3)
             {
-                existingSqlPool = this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                SqlPoolV3 existingSqlPool = null;
+                try
+                {
+                    existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                }
+                catch
+                {
+                    existingSqlPool = null;
+                }
+
+                if (existingSqlPool == null)
+                {
+                    throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                }
+
+                switch (this.ParameterSetName)
+                {
+                    case UpdateByNameParameterSet:
+                    case UpdateByInputObjectParameterSet:
+                    case UpdateByParentObjectParameterSet:
+                    case UpdateByResourceIdParameterSet:
+                        UpdateSqlPoolV3(existingSqlPool);
+                        break;
+
+                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                }
             }
-            catch
+            else
             {
-                existingSqlPool = null;
-            }
+                SqlPool existingSqlPool = null;
+                try
+                {
+                    existingSqlPool = this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                }
+                catch
+                {
+                    existingSqlPool = null;
+                }
 
-            if (existingSqlPool == null)
+                if (existingSqlPool == null)
+                {
+                    throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                }
+
+                switch (this.ParameterSetName)
+                {
+                    case UpdateByNameParameterSet:
+                    case UpdateByInputObjectParameterSet:
+                    case UpdateByParentObjectParameterSet:
+                    case UpdateByResourceIdParameterSet:
+                        UpdateSqlPool(existingSqlPool);
+                        break;
+
+                    case PauseByNameParameterSet:
+                    case PauseByInputObjectParameterSet:
+                    case PauseByParentObjectParameterSet:
+                    case PauseByResourceIdParameterSet:
+                        PauseSqlPool();
+                        break;
+
+                    case ResumeByNameParameterSet:
+                    case ResumeByInputObjectParameterSet:
+                    case ResumeByParentObjectParameterSet:
+                    case ResumeByResourceIdParameterSet:
+                        ResumeSqlPool();
+                        break;
+
+                    case RenameByNameParameterSet:
+                    case RenameByInputObjectParameterSet:
+                    case RenameByParentObjectParameterSet:
+                    case RenameByResourceIdParameterSet:
+                        RenameSqlPool();
+                        break;
+
+                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                }
+            }
+        }
+
+        private void UpdateSqlPoolV3(SqlPoolV3 existingSqlPool)
+        {
+            SqlPoolUpdate sqlPoolPatchInfo = new SqlPoolUpdate
             {
-                throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
-            }
+                Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingSqlPool.Tags,
+                Sku = !this.IsParameterBound(c => c.PerformanceLevel) ? existingSqlPool.Sku : new Sku
+                {
+                    Name = this.PerformanceLevel
+                }
+            };
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                case UpdateByNameParameterSet:
-                case UpdateByInputObjectParameterSet:
-                case UpdateByParentObjectParameterSet:
-                case UpdateByResourceIdParameterSet:
-                    UpdateSqlPool(existingSqlPool);
-                    break;
-
-                case PauseByNameParameterSet:
-                case PauseByInputObjectParameterSet:
-                case PauseByParentObjectParameterSet:
-                case PauseByResourceIdParameterSet:
-                    PauseSqlPool();
-                    break;
-
-                case ResumeByNameParameterSet:
-                case ResumeByInputObjectParameterSet:
-                case ResumeByParentObjectParameterSet:
-                case ResumeByResourceIdParameterSet:
-                    ResumeSqlPool();
-                    break;
-
-                case RenameByNameParameterSet:
-                case RenameByInputObjectParameterSet:
-                case RenameByParentObjectParameterSet:
-                case RenameByResourceIdParameterSet:
-                    RenameSqlPool();
-                    break;
-
-                default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                this.SynapseAnalyticsClient.UpdateSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name, sqlPoolPatchInfo);
+                if (this.PassThru.IsPresent)
+                {
+                    var result = this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                    WriteObject(result);
+                }
             }
-
         }
 
         private void UpdateSqlPool(SqlPool existingSqlPool)

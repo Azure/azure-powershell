@@ -1,0 +1,314 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Extensions;
+
+    /// <summary>Properties to create a Source Control Configuration resource</summary>
+    public partial class SourceControlConfigurationProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal
+    {
+
+        /// <summary>Backing field for <see cref="ComplianceStatus" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatus _complianceStatus;
+
+        /// <summary>Compliance Status of the Configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatus ComplianceStatus { get => (this._complianceStatus = this._complianceStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ComplianceStatus()); }
+
+        /// <summary>The compliance state of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceState? ComplianceStatusComplianceState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).ComplianceState; }
+
+        /// <summary>Datetime the configuration was last applied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public global::System.DateTime? ComplianceStatusLastConfigApplied { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).LastConfigApplied; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).LastConfigApplied = value; }
+
+        /// <summary>Message from when the configuration was applied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public string ComplianceStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).Message = value; }
+
+        /// <summary>Level of the message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel? ComplianceStatusMessageLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).MessageLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).MessageLevel = value; }
+
+        /// <summary>Backing field for <see cref="EnableHelmOperator" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator? _enableHelmOperator;
+
+        /// <summary>Option to enable Helm Operator for this git configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator? EnableHelmOperator { get => this._enableHelmOperator; set => this._enableHelmOperator = value; }
+
+        /// <summary>Backing field for <see cref="HelmOperatorProperty" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorProperties _helmOperatorProperty;
+
+        /// <summary>Properties for Helm operator.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorProperties HelmOperatorProperty { get => (this._helmOperatorProperty = this._helmOperatorProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.HelmOperatorProperties()); set => this._helmOperatorProperty = value; }
+
+        /// <summary>Values override for the operator Helm chart.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public string HelmOperatorPropertyChartValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorPropertiesInternal)HelmOperatorProperty).ChartValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorPropertiesInternal)HelmOperatorProperty).ChartValue = value; }
+
+        /// <summary>Version of the operator Helm chart.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
+        public string HelmOperatorPropertyChartVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorPropertiesInternal)HelmOperatorProperty).ChartVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorPropertiesInternal)HelmOperatorProperty).ChartVersion = value; }
+
+        /// <summary>Internal Acessors for ComplianceStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatus Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal.ComplianceStatus { get => (this._complianceStatus = this._complianceStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ComplianceStatus()); set { {_complianceStatus = value;} } }
+
+        /// <summary>Internal Acessors for ComplianceStatusComplianceState</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceState? Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal.ComplianceStatusComplianceState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).ComplianceState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatusInternal)ComplianceStatus).ComplianceState = value; }
+
+        /// <summary>Internal Acessors for HelmOperatorProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorProperties Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal.HelmOperatorProperty { get => (this._helmOperatorProperty = this._helmOperatorProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.HelmOperatorProperties()); set { {_helmOperatorProperty = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState? Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for RepositoryPublicKey</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfigurationPropertiesInternal.RepositoryPublicKey { get => this._repositoryPublicKey; set { {_repositoryPublicKey = value;} } }
+
+        /// <summary>Backing field for <see cref="OperatorInstanceName" /> property.</summary>
+        private string _operatorInstanceName;
+
+        /// <summary>Instance name of the operator - identifying the specific configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string OperatorInstanceName { get => this._operatorInstanceName; set => this._operatorInstanceName = value; }
+
+        /// <summary>Backing field for <see cref="OperatorNamespace" /> property.</summary>
+        private string _operatorNamespace;
+
+        /// <summary>
+        /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period
+        /// only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string OperatorNamespace { get => this._operatorNamespace; set => this._operatorNamespace = value; }
+
+        /// <summary>Backing field for <see cref="OperatorParam" /> property.</summary>
+        private string _operatorParam;
+
+        /// <summary>Any Parameters for the Operator instance in string format.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string OperatorParam { get => this._operatorParam; set => this._operatorParam = value; }
+
+        /// <summary>Backing field for <see cref="OperatorScope" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope? _operatorScope;
+
+        /// <summary>Scope at which the operator will be installed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope? OperatorScope { get => this._operatorScope; set => this._operatorScope = value; }
+
+        /// <summary>Backing field for <see cref="OperatorType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? _operatorType;
+
+        /// <summary>Type of the operator</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? OperatorType { get => this._operatorType; set => this._operatorType = value; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState? _provisioningState;
+
+        /// <summary>The provisioning state of the resource provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState? ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="RepositoryPublicKey" /> property.</summary>
+        private string _repositoryPublicKey;
+
+        /// <summary>
+        /// Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string RepositoryPublicKey { get => this._repositoryPublicKey; }
+
+        /// <summary>Backing field for <see cref="RepositoryUrl" /> property.</summary>
+        private string _repositoryUrl;
+
+        /// <summary>Url of the SourceControl Repository.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string RepositoryUrl { get => this._repositoryUrl; set => this._repositoryUrl = value; }
+
+        /// <summary>Creates an new <see cref="SourceControlConfigurationProperties" /> instance.</summary>
+        public SourceControlConfigurationProperties()
+        {
+
+        }
+    }
+    /// Properties to create a Source Control Configuration resource
+    public partial interface ISourceControlConfigurationProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IJsonSerializable
+    {
+        /// <summary>The compliance state of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The compliance state of the configuration.",
+        SerializedName = @"complianceState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceState? ComplianceStatusComplianceState { get;  }
+        /// <summary>Datetime the configuration was last applied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Datetime the configuration was last applied.",
+        SerializedName = @"lastConfigApplied",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ComplianceStatusLastConfigApplied { get; set; }
+        /// <summary>Message from when the configuration was applied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Message from when the configuration was applied.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        string ComplianceStatusMessage { get; set; }
+        /// <summary>Level of the message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Level of the message.",
+        SerializedName = @"messageLevel",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel? ComplianceStatusMessageLevel { get; set; }
+        /// <summary>Option to enable Helm Operator for this git configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Option to enable Helm Operator for this git configuration.",
+        SerializedName = @"enableHelmOperator",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator? EnableHelmOperator { get; set; }
+        /// <summary>Values override for the operator Helm chart.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Values override for the operator Helm chart.",
+        SerializedName = @"chartValues",
+        PossibleTypes = new [] { typeof(string) })]
+        string HelmOperatorPropertyChartValue { get; set; }
+        /// <summary>Version of the operator Helm chart.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Version of the operator Helm chart.",
+        SerializedName = @"chartVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string HelmOperatorPropertyChartVersion { get; set; }
+        /// <summary>Instance name of the operator - identifying the specific configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Instance name of the operator - identifying the specific configuration.",
+        SerializedName = @"operatorInstanceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperatorInstanceName { get; set; }
+        /// <summary>
+        /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period
+        /// only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.",
+        SerializedName = @"operatorNamespace",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperatorNamespace { get; set; }
+        /// <summary>Any Parameters for the Operator instance in string format.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Any Parameters for the Operator instance in string format.",
+        SerializedName = @"operatorParams",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperatorParam { get; set; }
+        /// <summary>Scope at which the operator will be installed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Scope at which the operator will be installed.",
+        SerializedName = @"operatorScope",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope? OperatorScope { get; set; }
+        /// <summary>Type of the operator</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of the operator",
+        SerializedName = @"operatorType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? OperatorType { get; set; }
+        /// <summary>The provisioning state of the resource provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The provisioning state of the resource provider.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState? ProvisioningState { get;  }
+        /// <summary>
+        /// Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).",
+        SerializedName = @"repositoryPublicKey",
+        PossibleTypes = new [] { typeof(string) })]
+        string RepositoryPublicKey { get;  }
+        /// <summary>Url of the SourceControl Repository.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Url of the SourceControl Repository.",
+        SerializedName = @"repositoryUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string RepositoryUrl { get; set; }
+
+    }
+    /// Properties to create a Source Control Configuration resource
+    internal partial interface ISourceControlConfigurationPropertiesInternal
+
+    {
+        /// <summary>Compliance Status of the Configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IComplianceStatus ComplianceStatus { get; set; }
+        /// <summary>The compliance state of the configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceState? ComplianceStatusComplianceState { get; set; }
+        /// <summary>Datetime the configuration was last applied.</summary>
+        global::System.DateTime? ComplianceStatusLastConfigApplied { get; set; }
+        /// <summary>Message from when the configuration was applied.</summary>
+        string ComplianceStatusMessage { get; set; }
+        /// <summary>Level of the message.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel? ComplianceStatusMessageLevel { get; set; }
+        /// <summary>Option to enable Helm Operator for this git configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator? EnableHelmOperator { get; set; }
+        /// <summary>Properties for Helm operator.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IHelmOperatorProperties HelmOperatorProperty { get; set; }
+        /// <summary>Values override for the operator Helm chart.</summary>
+        string HelmOperatorPropertyChartValue { get; set; }
+        /// <summary>Version of the operator Helm chart.</summary>
+        string HelmOperatorPropertyChartVersion { get; set; }
+        /// <summary>Instance name of the operator - identifying the specific configuration.</summary>
+        string OperatorInstanceName { get; set; }
+        /// <summary>
+        /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period
+        /// only.
+        /// </summary>
+        string OperatorNamespace { get; set; }
+        /// <summary>Any Parameters for the Operator instance in string format.</summary>
+        string OperatorParam { get; set; }
+        /// <summary>Scope at which the operator will be installed.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope? OperatorScope { get; set; }
+        /// <summary>Type of the operator</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? OperatorType { get; set; }
+        /// <summary>The provisioning state of the resource provider.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState? ProvisioningState { get; set; }
+        /// <summary>
+        /// Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).
+        /// </summary>
+        string RepositoryPublicKey { get; set; }
+        /// <summary>Url of the SourceControl Repository.</summary>
+        string RepositoryUrl { get; set; }
+
+    }
+}

@@ -37,6 +37,12 @@ Get-AzApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByGatewayId
+```
+Get-AzApiManagementApi -Context <PsApiManagementContext> -GatewayId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzApiManagementApi** cmdlet gets one or more Azure API Management APIs.
 
@@ -65,6 +71,14 @@ PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 ```
 
 This command gets the API with the specified name.
+
+### Example 4: Get a management API by GatewayId
+```
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -GatewayId "g01"
+```
+
+This command gets the API for the specified GatewayId.
 
 ## PARAMETERS
 
@@ -125,6 +139,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayId
+If specified will try to get all Gateway APIs.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByGatewayId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

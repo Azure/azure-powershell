@@ -23,16 +23,16 @@ The **New-AzFirewallNatRuleCollection** cmdlet creates a collection of Firewall 
 
 ## EXAMPLES
 
-### 1:  Create a collection with one rule
-```
+### Example 1: Create a collection with one rule
+```powershell
 $rule1 = New-AzFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
 New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 1000 -Rule $rule1
 ```
 
 This example creates a collection with one rule. All traffic that matches the conditions identified in $rule1 will be DNAT'ed to translated address and port.
 
-### 2:  Add a rule to a rule collection
-```
+### Example 2: Add a rule to a rule collection
+```powershell
 $rule1 = New-AzFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
 $ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
 
@@ -43,8 +43,8 @@ $ruleCollection.AddRule($rule2)
 This example creates a new NAT rule collection with one rule and then adds a second rule to the rule collection using method
 AddRule on the rule collection object. Each rule name in a given rule collection must have an unique name and is case insensitive.
 
-### 3:  Get a rule from a rule collection
-```
+### Example 3: Get a rule from a rule collection
+```powershell
 $rule1 = New-AzFirewallNatRule -Name R1 -Protocol "TCP" -SourceAddress "10.0.0.0/24" -DestinationAddress "10.0.1.0/24" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
 $ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
 
@@ -54,8 +54,8 @@ $rule=$ruleCollection.GetRuleByName("r1")
 This example creates a new NAT rule collection with one rule and then gets the rule by name, calling method GetRuleByName on the 
 rule collection object. The rule name for method GetRuleByName is case-insensitive.
 
-### 4:  Remove a rule from a rule collection
-```
+### Example 4: Remove a rule from a rule collection
+```powershell
 $rule1 = New-AzFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
 $rule2 = New-AzFirewallNatRule -Name R2 -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
 $ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1, $rule2

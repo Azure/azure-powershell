@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzTimeSeriesInsightsReferenceDataSet' {
     It 'Delete' {
-        $kind = 'Standard'
+        $kind = 'Gen1'
         $sku01 = 'S1'
         $timeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
         $capacity = 2

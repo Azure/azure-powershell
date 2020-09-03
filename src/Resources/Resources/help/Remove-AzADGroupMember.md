@@ -59,17 +59,17 @@ Removes a user from an AD group.
 
 ## EXAMPLES
 
-### Example 1 - Remove a user from a group by object id
+### Example 1: Remove a user from a group by object id
 
-```
-PS C:\> Remove-AzADGroup -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405 -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+```powershell
+PS C:\> Remove-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405 -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Removes the user with object id 'D9076BBC-D62C-4105-9C78-A7F5BC4A3405' from the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 
-### Example 2 - Remove a user from a group by piping
+### Example 2: Remove a user from a group by piping
 
-```
+```powershell
 PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Remove-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405
 ```
 

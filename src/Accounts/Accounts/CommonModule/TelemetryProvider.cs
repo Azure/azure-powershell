@@ -16,13 +16,16 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -111,6 +114,7 @@ namespace Microsoft.Azure.Commands.Common
             AzurePSQoSEvent qos;
             if (this.TryGetValue(key, out qos))
             {
+                qos.FinishQosEvent();
                 _helper.LogQoSEvent(qos, enabled, enabled);
                 this.Remove(key);
             }
@@ -133,10 +137,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns></returns>
         public virtual AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId)
         {
-            var data = new AzurePSQoSEvent
+            var qosEvent = new AzurePSQoSEvent
             {
                 CommandName = invocationInfo?.MyCommand?.Name,
-                ModuleName = invocationInfo?.MyCommand?.ModuleName,
                 ModuleVersion = invocationInfo?.MyCommand?.Module?.Version?.ToString(),
                 SessionId = correlationId,
                 ParameterSetName = parameterSetName,
@@ -144,38 +147,39 @@ namespace Microsoft.Azure.Commands.Common
                 InputFromPipeline = invocationInfo?.PipelineLength > 0
             };
 
-            data.CustomProperties.Add("PSPreviewVersion", "4.0.0");
-            data.CustomProperties.Add("UserAgent", "AzurePowershell/Az4.0.0-preview");
-            if(invocationInfo?.BoundParameters?.ContainsKey(SubscriptionIdString) == true)
+            // below is workaround that current invocationInfo only contains private module name. Trimming '.private' is a workaround for the time being.
+            const string privateModuleSuffix = ".private";
+            string moduleName = invocationInfo?.MyCommand?.ModuleName;
+            if (moduleName != null && moduleName.StartsWith("Az.") && moduleName.EndsWith(privateModuleSuffix))
             {
-                object rawValue = invocationInfo.BoundParameters[SubscriptionIdString];
-                string subscriptionId = null;
-                if(rawValue is string)
-                {
-                    subscriptionId = rawValue as string;
-                }
-                else if(rawValue is string[])
-                {
-                    string[] rawValueArray = rawValue as string[] ;
-                    if (rawValueArray.Length > 0)
-                    {
-                        subscriptionId = string.Join(";", rawValueArray);
-                    }
-                }
-                if(!string.IsNullOrEmpty(subscriptionId))
-                {
-                    data.CustomProperties.Add(SubscriptionIdString, subscriptionId);
-                }
+                moduleName = moduleName.Substring(0, moduleName.Length - privateModuleSuffix.Length);
             }
+            qosEvent.ModuleName = moduleName;
+
+            qosEvent.UserAgent = AzurePSCmdlet.UserAgent;
+            qosEvent.AzVersion = AzurePSCmdlet.AzVersion;
 
             if (invocationInfo != null)
             {
-                data.Parameters = string.Join(",", invocationInfo?.BoundParameters?.Keys?.ToArray());
-
+                qosEvent.Parameters = string.Join(" ",
+                    invocationInfo.BoundParameters.Keys.Select(
+                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
-            this[processRecordId] = data;
-            return data;
+            IAzureContextContainer profile = AzureRmProfileProvider.Instance?.Profile;
+            if(profile?.DefaultContext != null)
+            {
+                IAzureContext context = profile?.DefaultContext;
+                qosEvent.SubscriptionId = context.Subscription?.Id;
+                qosEvent.TenantId = context.Tenant?.Id;
+                if (context.Account != null && !String.IsNullOrWhiteSpace(context.Account.Id))
+                {
+                    qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
+                }
+            }
+
+            this[processRecordId] = qosEvent;
+            return qosEvent;
         }
 
 

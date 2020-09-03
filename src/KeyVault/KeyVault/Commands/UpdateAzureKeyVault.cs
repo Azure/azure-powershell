@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateByResourceIdParameterSet, HelpMessage = "Resource ID of the key vault.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+        
+        public const String EnableSoftDeleteChangeDesc = "EnableSoftDelete will be deprecated without being replaced.";
 
+        [CmdletParameterBreakingChange("EnableSoftDelete", "3.0.0", ChangeDescription = EnableSoftDeleteChangeDesc)]
         [Parameter(Mandatory = false, HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 

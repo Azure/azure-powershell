@@ -1,0 +1,202 @@
+{
+  "Update-AzSpringCloudApp+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth?api-version=2019-05-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth?api-version=2019-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"activeDeploymentName\": \"prod\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "60" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "58169d97-b1f1-4de7-b61c-481096bd0636" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "1d796a2d-3f9e-4ba1-b84f-f666b6d8ac86" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "58169d97-b1f1-4de7-b61c-481096bd0636" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200811T074509Z:58169d97-b1f1-4de7-b61c-481096bd0636" ],
+        "Date": [ "Tue, 11 Aug 2020 07:45:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"activeDeploymentName\":\"prod\",\"fqdn\":\"spring-6v5cyo.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T08:34:43.626Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth\",\"name\":\"auth\"}"
+    }
+  },
+  "Update-AzSpringCloudApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth/deployments/prod?api-version=2019-05-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth/deployments/prod?api-version=2019-05-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "551e865f-85ac-42db-bc85-6d830643ec69" ],
+        "CommandName": [ "Get-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Get-AzSpringCloudAppDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "ccddb520-64a5-482e-a8ce-1ac04700c89a" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "551e865f-85ac-42db-bc85-6d830643ec69" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "ccddb520-64a5-482e-a8ce-1ac04700c89a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200811T074510Z:ccddb520-64a5-482e-a8ce-1ac04700c89a" ],
+        "Date": [ "Tue, 11 Aug 2020 07:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "718" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\",\"version\":\"0.0.1\"},\"appName\":\"auth\",\"deploymentSettings\":{\"cpu\":2,\"memoryInGB\":3,\"instanceCount\":1,\"environmentVariables\":{\"env\":\"prod\"},\"runtimeVersion\":\"Java_8\"},\"provisioningState\":\"Succeeded\",\"status\":\"Running\",\"active\":true,\"instances\":[{\"name\":\"auth-prod-4-78b9896c9c-85scb\",\"status\":\"Running\",\"discoveryStatus\":\"UP\",\"startTime\":\"2020-08-11T06:30:56Z\"}]},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/auth/deployments/prod\",\"name\":\"prod\"}"
+    }
+  },
+  "Update-AzSpringCloudApp+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account?api-version=2019-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account?api-version=2019-05-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "8fc1ea03-2861-42f7-88a6-501dd4837b72" ],
+        "CommandName": [ "Get-AzSpringCloudApp" ],
+        "FullCommandName": [ "Get-AzSpringCloudApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "8e66d873-86e1-441e-b55f-9406ec4a91d3" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8fc1ea03-2861-42f7-88a6-501dd4837b72" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "8e66d873-86e1-441e-b55f-9406ec4a91d3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200811T074510Z:8e66d873-86e1-441e-b55f-9406ec4a91d3" ],
+        "Date": [ "Tue, 11 Aug 2020 07:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "559" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"activeDeploymentName\":\"prod\",\"fqdn\":\"spring-6v5cyo.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T08:31:59.637Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account\",\"name\":\"account\"}"
+    }
+  },
+  "Update-AzSpringCloudApp+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account?api-version=2019-05-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account?api-version=2019-05-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"activeDeploymentName\": \"test\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "60" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "74efc388-fb00-48ca-b70b-bd1574a70459" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c2e4cc27-2a9f-4534-b3e0-4a5df675ba99" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "74efc388-fb00-48ca-b70b-bd1574a70459" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200811T074515Z:74efc388-fb00-48ca-b70b-bd1574a70459" ],
+        "Date": [ "Tue, 11 Aug 2020 07:45:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "559" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"public\":false,\"provisioningState\":\"Succeeded\",\"activeDeploymentName\":\"test\",\"fqdn\":\"spring-6v5cyo.azuremicroservices.io\",\"httpsOnly\":false,\"createdTime\":\"2020-08-10T08:31:59.637Z\",\"temporaryDisk\":{\"sizeInGB\":5,\"mountPath\":\"/tmp\"},\"persistentDisk\":{\"sizeInGB\":0,\"mountPath\":\"/persistent\"}},\"type\":\"Microsoft.AppPlatform/Spring/apps\",\"identity\":null,\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account\",\"name\":\"account\"}"
+    }
+  },
+  "Update-AzSpringCloudApp+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account/deployments/test?api-version=2019-05-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account/deployments/test?api-version=2019-05-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3dbc844b-0b05-40dd-ad2d-6c7ac3320a41" ],
+        "CommandName": [ "Get-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Get-AzSpringCloudAppDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "5434164f-3b64-46c4-ae34-68a5a35920ec" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "3dbc844b-0b05-40dd-ad2d-6c7ac3320a41" ],
+        "x-rp-server-mvid": [ "cbbb5e32-ca1b-4329-803f-b812c8974fd4" ],
+        "Server": [ "nginx/1.17.7" ],
+        "x-ms-correlation-request-id": [ "5434164f-3b64-46c4-ae34-68a5a35920ec" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200811T074517Z:5434164f-3b64-46c4-ae34-68a5a35920ec" ],
+        "Date": [ "Tue, 11 Aug 2020 07:45:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "590" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\"},\"appName\":\"account\",\"deploymentSettings\":{\"cpu\":1,\"memoryInGB\":3,\"instanceCount\":1,\"environmentVariables\":{\"env\":\"test\"},\"runtimeVersion\":\"Java_8\"},\"provisioningState\":\"Succeeded\",\"status\":\"Stopped\",\"active\":true,\"instances\":[]},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.AppPlatform/Spring/spring-6v5cyo/apps/account/deployments/test\",\"name\":\"test\"}"
+    }
+  }
+}
