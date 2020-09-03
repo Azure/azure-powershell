@@ -62,7 +62,7 @@ steps:
       # Check PSGallery
       $gallery = Get-PSRepository -Name $(GALLERY_NAME)
       if(!$gallery){
-        # Set up PSGallery
+        # Set up Gallery
         Write-Host "Registering $(GALLERY_NAME)..."
         Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation  $(GALLERY_LOCATION) -PackageManagementProvider NuGet -InstallationPolicy Trusted
       }else{
