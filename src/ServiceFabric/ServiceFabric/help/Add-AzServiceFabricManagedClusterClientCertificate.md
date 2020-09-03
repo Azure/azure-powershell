@@ -12,7 +12,7 @@ Add certificate common name or thumbprint to the cluster. This will register the
 
 ## SYNTAX
 
-### ClientCertByTpByName
+### ClientCertByTpByName (Default)
 ```
 Add-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String> [-Admin]
  -Thumbprint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

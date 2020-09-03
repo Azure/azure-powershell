@@ -12,7 +12,7 @@ Create new managed cluster.
 
 ## SYNTAX
 
-### ClientCertByTp
+### ClientCertByTp (Default)
 ```
 New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-ClientCertIsAdmin]

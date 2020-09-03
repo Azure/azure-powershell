@@ -27,7 +27,7 @@ using Sku = Microsoft.Azure.Management.ServiceFabric.Models.Sku;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = ClientCertByTp, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
     public class NewAzServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
         protected const string ClientCertByTp = "ClientCertByTp";

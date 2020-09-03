@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = ByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";

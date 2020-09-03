@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = DeleteNodeTypeByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
         protected const string DeleteNodeTypeByName = "DeleteNodeTypeByName";

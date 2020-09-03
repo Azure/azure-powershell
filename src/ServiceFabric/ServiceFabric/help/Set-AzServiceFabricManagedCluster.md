@@ -12,7 +12,7 @@ Set cluster resource properties.
 
 ## SYNTAX
 
-### WithPramsByName
+### WithPramsByName (Default)
 ```
 Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>]

@@ -12,7 +12,7 @@ Add vm extension to the node type.
 
 ## SYNTAX
 
-### ByName
+### ByName (Default)
 ```
 Add-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-ClusterName] <String>
  [-NodeTypeName] <String> -Name <String> [-ForceUpdateTag <String>] -Publisher <String> -Type <String>

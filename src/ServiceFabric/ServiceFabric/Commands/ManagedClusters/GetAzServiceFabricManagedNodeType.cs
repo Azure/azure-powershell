@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType"), OutputType(typeof(PSManagedNodeType))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = ByName), OutputType(typeof(PSManagedNodeType))]
     public class GetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
     {
         protected const string ByName = "ByName";

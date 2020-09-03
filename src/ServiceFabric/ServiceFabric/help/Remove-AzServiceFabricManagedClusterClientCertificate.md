@@ -12,7 +12,7 @@ Remvoe client certificate by thumbprint or common name.
 
 ## SYNTAX
 
-### ClientCertByCnTpName
+### ClientCertByCnTpName (Default)
 ```
 Remove-AzServiceFabricManagedClusterClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  -Thumbprint <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

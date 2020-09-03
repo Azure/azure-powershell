@@ -12,7 +12,7 @@ Remove cluster resource.
 
 ## SYNTAX
 
-### ByName
+### ByName (Default)
 ```
 Remove-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

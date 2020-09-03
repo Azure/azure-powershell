@@ -12,7 +12,7 @@ Remove vm extension from the node type.
 
 ## SYNTAX
 
-### ByName
+### ByName (Default)
 ```
 Remove-AzServiceFabricManagedNodeTypeVMExtension [-ResourceGroupName] <String> [-ClusterName] <String>
  [-NodeTypeName] <String> -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]

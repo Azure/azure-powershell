@@ -12,7 +12,7 @@ Remove the node type or specific nodes within the node type.
 
 ## SYNTAX
 
-### DeleteNodeTypeByName
+### DeleteNodeTypeByName (Default)
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

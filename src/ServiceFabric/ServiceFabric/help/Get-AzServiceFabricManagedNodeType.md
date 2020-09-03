@@ -12,7 +12,7 @@ Get the managed node type resource details.
 
 ## SYNTAX
 
-### ByName
+### ByName (Default)
 ```
 Get-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    result = this.SFRPClient.GetLongRunningOperationResultAsync(beginRequestResponse, null, default).GetAwaiter().GetResult();
+                    result = this.SFRPClient.GetLongRunningOperationResultAsync(beginRequestResponse, null, CancellationToken.None).GetAwaiter().GetResult();
                 }
                 finally
                 {
