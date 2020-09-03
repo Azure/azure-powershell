@@ -21,11 +21,6 @@ function Update-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Repository},
-
         [Parameter(HelpMessage = 'Present to decide whether to remove the previous versions of the modules.')]
         [switch]
         ${RemovePrevious},
@@ -37,49 +32,51 @@ function Update-AzModule {
     )
 
     process {
-        Write-Host "Powershell $($PSVersionTable.PSEdition) Version $($PSVersionTable.PSVersion)"
-        $parameters = @{}
-        if ($Name) {
-            $parameters['Name'] = ($Name | Sort-Object -Unique)
+        $ppsedition = $PSVersionTable.PSEdition
+        Write-Host "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
+
+        if ($ppsedition -eq "Core") {
+            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop).Where({$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
+            $allPahts = ($allPahts | Select-String -Pattern "WindowsPowerShell")
+            if ($allPahts) {
+                Write-Warning "Az modules are also installed in WindowsPowerShell. Please update them using WindowsPowerShell."
+            }
         }
 
-        if ($Repository) {
-            $parameters['Repository'] = $Repository
+        $parameters = @{}
+        if ($Name) {
+            $Name = $Name.Foreach({"Az." + $_}) | Sort-Object -Unique
+            $parameters['Name'] = $Name
         }
         
-        Write-Debug "Time Elapsed: $((Measure-Command { $allToUpdate = Get-AzModuleWithUpdate @parameters }).TotalSeconds) s"
+        Write-Debug "Time Elapsed: $((Measure-Command { $allToUpdate = Get-AzModuleUpdateList @parameters }).TotalSeconds)s"
 
         Write-Host -ForegroundColor DarkGreen "The modules to Upddate:$($allToUpdate | Out-String)"
 
-        if($allToUpdate) {
-            $azModule = $allToUpdate.Where({$_.Name -eq "Az"})
-            $allToUpdate | Foreach-Object {
-                if ($RemovePrevious) {
-                    if ($_.InstalledVersion -and ($Force -or $PSCmdlet.ShouldProcess($_.Name, "Uninstall the versions: $($_.InstalledVersion)"))) {
-                        if ($Force) {
-                            Write-Debug "Uninstall $($_.Name) of versions $($_.InstalledVersion)."
-                        }
-                        PowerShellGet\Uninstall-Module -Name $_.Name -AllVersions
-                    }
-                }
-                if (-not $azModule -and ($Force -or $PSCmdlet.ShouldProcess($_.Name, "Upgrade to the latest version $($_.VersionToUpgrade) from $($_.Repository)"))) {
+        if($allToUpdate.Count) {
+            foreach ($module in $allToUpdate) {
+                if ($Force -or $PSCmdlet.ShouldProcess($module.Name, "Upgrade to the latest version $($module.VersionToUpgrade) from $($module.Repository)")) {
                     if ($Force) {
-                        Write-Debug "Upgrade $($_.Name) to the latest version $($_.VersionToUpgrade) from $($_.Repository)."
+                        Write-Debug "Upgrade $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
                     }
-                    PowerShellGet\Install-Module -Name $_.Name -Repository $_.Repository -Force
+                    PowerShellGet\Update-Module -Name $module.Name -Force:$Force
                 }
-            }
-            if($azModule -and ($Force -or $PSCmdlet.ShouldProcess($azModule.Name, "Upgrade to the latest version $($azModule.VersionToUpgrade) from $($azModule.Repository)"))) {
-                if ($Force) {
-                    Write-Debug "Upgrade $($azModule.Name) to the latest version $($azModule.VersionToUpgrade) from $($azModule.Repository)."
+                if ($RemovePrevious) {
+                    if ($module.InstalledVersion -and ($Force -or $PSCmdlet.ShouldProcess($module.Name, "Uninstall the versions: $($module.InstalledVersion)"))) {
+                        if ($Force) {
+                            Write-Debug "Uninstall $($module.Name) of versions $($module.InstalledVersion)."
+                        }
+                        foreach($version in $module.InstalledVersion) {
+                            PowerShellGet\Uninstall-Module -Name $module.Name -RequiredVersion $version
+                        }
+                    }
                 }
-                PowerShellGet\Install-Module -Name $azModule.Name -Repository $azModule.Repository -Force
             }
 
             $output = @()
-            $allToUpdate.Name | Foreach-Object {
+            foreach($name in $allToUpdate.Name) {
                 try {
-                    $output += (Get-InstalledModule -Name $_ -ErrorAction Stop)
+                    $output += (Get-InstalledModule -Name $name -ErrorAction Stop)
                 }
                 catch {
                     Write-Warning $_

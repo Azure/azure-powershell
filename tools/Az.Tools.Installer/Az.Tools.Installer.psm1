@@ -23,7 +23,6 @@ elseif ($null -eq $module) {
 $exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
 $internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
 
-
 $allFunctions = $exportedFunctions + $internalFunctions
 foreach($function in $allFunctions) {
     try {
@@ -36,8 +35,7 @@ foreach($function in $allFunctions) {
 Export-ModuleMember -Function $exportedFunctions.Basename
 
 $commandsWithRepositoryParameter = @(
-    "Update-AzModule"
+    "Install-AzModule"
 )
 
 Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
-Add-RepositoryDefaultValue -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
