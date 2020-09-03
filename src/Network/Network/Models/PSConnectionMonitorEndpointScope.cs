@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,17 +19,24 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using System.Collections.Generic;
 
-    public class PSNetworkWatcherConnectionMonitorEndpointFilter
+    public class PSNetworkWatcherConnectionMonitorEndpointScope
     {
-        public string Type { get; set; }
+        [Ps1Xml(Target = ViewControl.List)]
+        public List<PSNetworkWatcherConnectionMonitorEndpointScopeItem> Include { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> Items { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointScopeItem> Exclude { get; set; }
 
         [JsonIgnore]
-        public string ItemsText
+        public string IncludeText
         {
-            get { return JsonConvert.SerializeObject(this.Items, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Include, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExcludeText
+        {
+            get { return JsonConvert.SerializeObject(this.Exclude, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
