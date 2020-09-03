@@ -113,6 +113,8 @@ function Test-CreateNewVault {
         # Soft delete and purge protection defaults to true
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
+        # RbacAuthorization defaults to false
+        Assert-False { $actual.EnableRbacAuthorization } "By default EnableRbacAuthorization should be false"
         # Default retention days
         Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
@@ -136,6 +138,10 @@ function Test-CreateNewVault {
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-True { $actual.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be null"
         Assert-AreEqual 10 $actual.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
+
+        # Test enable RbacAuthorization
+        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -EnableRbacAuthorization
+        Assert-True { $actual.EnableRbacAuthorization } "If specified, EnableRbacAuthorization should be true"
 
         # # Test use -DisableSoftDelete -EnablePurgeProtection together (TODO: uncomment this assert after keyvault team deploys their fix)
         # Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete -EnablePurgeProtection }
@@ -810,6 +816,15 @@ function Test-UpdateKeyVault {
         # Assert-Throws { $vault = $vault | Update-AzKeyVault -EnablePurgeProtection }
         # # Retention cannot be updated once set
         # Assert-Throws { $vault = $vault | Update-AzKeyVault -SoftDeleteRetentionInDays 80}
+
+        #Set EnableRbacAuthorization true
+        $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $true
+        Assert-True { $vault.EnableRbacAuthorization } "5. EnableRbacAuthorization should be true"
+
+        #Set EnableRbacAuthorization false
+        $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
+        Assert-False { $vault.EnableRbacAuthorization } "6. EnableRbacAuthorization should be false"
+
     }
     finally {
         $rg | Remove-AzResourceGroup -Force
