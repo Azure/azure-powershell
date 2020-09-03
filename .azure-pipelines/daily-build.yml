@@ -192,6 +192,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      Write-Host "Installing Az.Compute..."
       Install-Module -Name Az.Compute -Repository PSGallery -AllowClobber -Force 
       Get-AzVM
 
@@ -323,6 +324,7 @@ steps:
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:', $previousVersion
         Install-Module -Name Az -Repository PSGallery -RequiredVersion $previousVersion -AllowClobber -Force
+        Write-Host 'Installed the previous version of Az'
 
         # Get previous version of Az.Compute
         $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version | 
@@ -338,7 +340,7 @@ steps:
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
         %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
-        if($azComputeVersion -gt [System.Version]$azComputePreviousVersion){
+        if([System.Version]$azComputeVersion -le [System.Version]$azComputePreviousVersion){
           throw "Install Az on top of Az.Compute failed"
         }
       }
