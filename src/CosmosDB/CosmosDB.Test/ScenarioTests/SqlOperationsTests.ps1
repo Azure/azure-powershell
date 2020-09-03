@@ -598,22 +598,22 @@ function Test-SqlMigrateThroughputCmdlets
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
       Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
 
-      $AutoscaleThroughput = Migrate-AzCosmosDBSqlDatabaseThroughput -InputObject $NewDatabase -ThroughputType $Autoscale
-      Assert-AreNotEqual $UpdatedThroughput.AutoscaleSettings.MaxThroughput 0
+      $AutoscaleThroughput = Invoke-AzCosmosDBSqlDatabaseThroughputMigration -InputObject $NewDatabase -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
 
       $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Migrate-AzCosmosDBSqlDatabaseThroughput -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
+      $ManualThroughput = Invoke-AzCosmosDBSqlDatabaseThroughputMigration -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
       Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
 
       $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
       $ContainerThroughput = Get-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
       Assert-AreEqual $ContainerThroughput.Throughput $ContainerThroughputValue
 
-      $AutoscaledContainerThroughput = Migrate-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ThroughputType $Autoscale
-      Assert-AreNotEqual $UpdatedContainerThroughput.AutoscaleSettings.MaxThroughput 0
+      $AutoscaledContainerThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaledContainerThroughput.AutoscaleSettings.MaxThroughput 0
 
-      $ManualContainerThroughput = Migrate-AzCosmosDBSqlContainerThroughput  -InputObject $NewContainer -ThroughputType $Manual
-      Assert-AreEqual $UpdatedContainerThroughput.AutoscaleSettings.MaxThroughput 0
+      $ManualContainerThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration  -InputObject $NewContainer -ThroughputType $Manual
+      Assert-AreEqual $ManualContainerThroughput.AutoscaleSettings.MaxThroughput 0
 
       Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
       Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase

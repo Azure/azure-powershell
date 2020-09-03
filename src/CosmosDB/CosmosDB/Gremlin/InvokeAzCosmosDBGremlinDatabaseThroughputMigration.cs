@@ -12,61 +12,54 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBMongoDBCollectionThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinDatabaseThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBGremlinDatabaseThroughputMigration : MigrateAzCosmosDBThroughput
     {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.CollectionNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.MongoDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSMongoDBDatabaseGetResults ParentObject { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.MongoCollectionObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSMongoDBCollectionGetResults InputObject { get; set; }
+        public PSGremlinDatabaseGetResults InputObject { get; set; }
 
         public override void PopulateFromParentObject() 
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            DatabaseName = resourceIdentifier.ResourceName;
-            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+            AccountName = resourceIdentifier.ResourceName;
         }
 
-        public override void PopulateFromInputObject()
+        public override void PopulateFromInputObject() 
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
-            DatabaseName = ResourceIdentifierExtensions.GetMongoDBDatabaseName(resourceIdentifier);
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+
         }
 
         public override void MigrateToAutoscaleSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB MongoDB Collection throughput to Autoscale Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Database throughput to Autoscale Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.MongoDBResources.MigrateMongoDBCollectionToAutoscale(
+                ThroughputSettingsGetResults throughputSettingsGetResults =
+                    CosmosDBManagementClient.GremlinResources.MigrateGremlinDatabaseToAutoscale(
                     ResourceGroupName,
                     AccountName,
-                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
@@ -75,17 +68,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void MigrateToManualSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB MongoDB Collection throughput to Manual Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Database throughput to Manual Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.MongoDBResources.MigrateMongoDBCollectionToManualThroughput(
+                ThroughputSettingsGetResults throughputSettingsGetResults =
+                    CosmosDBManagementClient.GremlinResources.MigrateGremlinDatabaseToManualThroughput(
                     ResourceGroupName,
                     AccountName,
-                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
         }
+
     }
 }

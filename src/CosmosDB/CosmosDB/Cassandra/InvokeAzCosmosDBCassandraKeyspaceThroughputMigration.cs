@@ -12,42 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinGraphThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBGremlinGraphThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraKeyspaceThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBCassandraKeyspaceThroughputMigration : MigrateAzCosmosDBThroughput
     {
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.GraphNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.KeyspaceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSGremlinDatabaseGetResults ParentObject { get; set; }
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinGraphObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSGremlinGraphGetResults InputObject { get; set; }
+        public PSCassandraKeyspaceGetResults InputObject { get; set; }
 
         public override void PopulateFromParentObject() 
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            DatabaseName = resourceIdentifier.ResourceName;
-            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+            AccountName = resourceIdentifier.ResourceName;
         }
 
         public override void PopulateFromInputObject() 
@@ -55,19 +48,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
-            DatabaseName = ResourceIdentifierExtensions.GetGremlinDatabaseName(resourceIdentifier);
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
         }
 
         public override void MigrateToAutoscaleSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Graph throughput to Autoscale Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Keyspace throughput to Autoscale Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.GremlinResources.MigrateGremlinGraphToAutoscale(
+                    CosmosDBManagementClient.CassandraResources.MigrateCassandraKeyspaceToAutoscale(
                     ResourceGroupName,
                     AccountName,
-                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
@@ -76,17 +67,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void MigrateToManualSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Graph throughput to Manual Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Keyspace throughput to Manual Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.GremlinResources.MigrateGremlinGraphToManualThroughput(
+                    CosmosDBManagementClient.CassandraResources.MigrateCassandraKeyspaceToManualThroughput(
                     ResourceGroupName,
                     AccountName,
-                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
         }
+
     }
 }

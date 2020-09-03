@@ -186,11 +186,11 @@ function Test-TableMigrateThroughputCmdlets
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
       Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
 
-      $AutoscaleThroughput = Migrate-AzCosmosDBTableThroughput -InputObject $NewTable -ThroughputType $Autoscale
+      $AutoscaleThroughput = Invoke-AzCosmosDBTableThroughputMigration -InputObject $NewTable -ThroughputType $Autoscale
       Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
 
       $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Migrate-AzCosmosDBTableThroughput -ParentObject $CosmosDBAccount -Name $TableName -ThroughputType $Manual
+      $ManualThroughput = Invoke-AzCosmosDBTableThroughputMigration -ParentObject $CosmosDBAccount -Name $TableName -ThroughputType $Manual
       Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
 
       Remove-AzCosmosDBTable -InputObject $NewTable 

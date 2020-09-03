@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
@@ -22,45 +21,50 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBTableThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBTableThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBSqlContainerThroughputMigration : MigrateAzCosmosDBThroughput
     {
-        [Parameter(Mandatory = false, HelpMessage = Constants.TableNameHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.ContainerNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccountGetResults ParentObject { get; set; }
+        public PSSqlDatabaseGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.TableObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTableGetResults InputObject { get; set; }
+        public PSSqlContainerGetResults InputObject { get; set; }
 
-        public override void PopulateFromParentObject() 
+        public override void PopulateFromParentObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            AccountName = resourceIdentifier.ResourceName;
+            DatabaseName = resourceIdentifier.ResourceName;
+            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
         }
 
-        public override void PopulateFromInputObject() 
+        public override void PopulateFromInputObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
+            DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-
         }
 
-        public override void MigrateToAutoscaleSDKMethod()
+        public override void MigrateToAutoscaleSDKMethod() 
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Table throughput to Autoscale Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Sql Container throughput to Autoscale Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.TableResources.MigrateTableToAutoscale(
+                ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.MigrateSqlContainerToAutoscale(
                     ResourceGroupName,
                     AccountName,
+                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
@@ -69,12 +73,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void MigrateToManualSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Table throughput to Manual Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Sql Container throughput to Manual Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.TableResources.MigrateTableToManualThroughput(
+                ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.MigrateSqlContainerToManualThroughput(
                     ResourceGroupName,
                     AccountName,
+                    DatabaseName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));

@@ -148,15 +148,15 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBMongoDBDatabase', 
                'New-AzCosmosDBMongoDBCollection',
                'New-AzCosmosDBMongoDBDatabase',
-               'Migrate-AzCosmosDBSqlContainerThroughput', 
-               'Migrate-AzCosmosDBSqlDatabaseThroughput', 
-               'Migrate-AzCosmosDBMongoDBCollectionThroughput', 
-               'Migrate-AzCosmosDBMongoDBDatabaseThroughput', 
-               'Migrate-AzCosmosDBGremlinGraphThroughput', 
-               'Migrate-AzCosmosDBGremlinDatabaseThroughput', 
-               'Migrate-AzCosmosDBCassandraTableThroughput', 
-               'Migrate-AzCosmosDBCassandraKeyspaceThroughput', 
-               'Migrate-AzCosmosDBTableThroughput'
+               'Invoke-AzCosmosDBSqlContainerThroughputMigration', 
+               'Invoke-AzCosmosDBSqlDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration', 
+               'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBGremlinGraphThroughputMigration', 
+               'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBCassandraTableThroughputMigration', 
+               'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration', 
+               'Invoke-AzCosmosDBTableThroughputMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

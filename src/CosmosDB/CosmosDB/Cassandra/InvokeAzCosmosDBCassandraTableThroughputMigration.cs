@@ -12,54 +12,60 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraKeyspaceThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBCassandraKeyspaceThroughput : MigrateAzCosmosDBThroughput
-    {
-        [Parameter(Mandatory = false, HelpMessage = Constants.KeyspaceNameHelpMessage)]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTableThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBCassandraTableThroughputMigration : MigrateAzCosmosDBThroughput
+    { 
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.KeyspaceNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string KeyspaceName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccountGetResults ParentObject { get; set; }
+        public PSCassandraKeyspaceGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.CassandraTableObjectHelpMessage)]
         [ValidateNotNull]
-        public PSCassandraKeyspaceGetResults InputObject { get; set; }
+        public PSCassandraTableGetResults InputObject { get; set; }
 
-        public override void PopulateFromParentObject() 
+        public override void PopulateFromParentObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            AccountName = resourceIdentifier.ResourceName;
+            KeyspaceName = resourceIdentifier.ResourceName;
+            AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
         }
 
-        public override void PopulateFromInputObject() 
+        public override void PopulateFromInputObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
+            KeyspaceName = ResourceIdentifierExtensions.GetCassandraKeyspaceName(resourceIdentifier);
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
         }
 
         public override void MigrateToAutoscaleSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Keyspace throughput to Autoscale Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Table throughput to Autoscale Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.CassandraResources.MigrateCassandraKeyspaceToAutoscale(
+                    CosmosDBManagementClient.CassandraResources.MigrateCassandraTableToAutoscale(
                     ResourceGroupName,
                     AccountName,
+                    KeyspaceName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
@@ -68,17 +74,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void MigrateToManualSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Keyspace throughput to Manual Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Cassandra Table throughput to Manual Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.CassandraResources.MigrateCassandraKeyspaceToManualThroughput(
+                    CosmosDBManagementClient.CassandraResources.MigrateCassandraTableToManualThroughput(
                     ResourceGroupName,
                     AccountName,
+                    KeyspaceName,
                     Name);
 
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
         }
-
     }
 }

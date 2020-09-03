@@ -22,8 +22,8 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBDatabaseThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBMongoDBDatabaseThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBDatabaseThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBMongoDBDatabaseThroughputMigration : MigrateAzCosmosDBThroughput
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]

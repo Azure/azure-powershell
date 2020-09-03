@@ -334,21 +334,21 @@ function Test-GremlinMigrateThroughputCmdlets
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
       Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
 
-      $AutoscaleThroughput = Migrate-AzCosmosDBGremlinDatabaseThroughput -InputObject $NewDatabase -ThroughputType $Autoscale
+      $AutoscaleThroughput = Invoke-AzCosmosDBGremlinDatabaseThroughputMigration -InputObject $NewDatabase -ThroughputType $Autoscale
       Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
 
       $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Migrate-AzCosmosDBGremlinDatabaseThroughput -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
+      $ManualThroughput = Invoke-AzCosmosDBGremlinDatabaseThroughputMigration -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
       Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
 
       $NewGraph =  New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $GraphThroughputValue -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
       $GraphThroughput = Get-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
       Assert-AreEqual $GraphThroughput.Throughput $GraphThroughputValue
 
-      $AutoscaledGraphThroughput = Migrate-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -ThroughputType $Autoscale
+      $AutoscaledGraphThroughput = Invoke-AzCosmosDBGremlinGraphThroughputMigration -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -ThroughputType $Autoscale
       Assert-AreNotEqual $AutoscaledGraphThroughput.AutoscaleSettings.MaxThroughput 0
 
-      $ManualGraphThroughput = Migrate-AzCosmosDBGremlinGraphThroughput  -InputObject $NewGraph -ThroughputType $Manual
+      $ManualGraphThroughput = Invoke-AzCosmosDBGremlinGraphThroughputMigration  -InputObject $NewGraph -ThroughputType $Manual
       Assert-AreEqual $ManualGraphThroughput.AutoscaleSettings.MaxThroughput 0
 
       Remove-AzCosmosDBGremlinGraph -InputObject $NewGraph 

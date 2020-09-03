@@ -321,21 +321,21 @@ function Test-CassandraMigrateThroughputCmdlets
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
       Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
 
-      $AutoscaleThroughput = Migrate-AzCosmosDBCassandraKeyspaceThroughput -InputObject $NewKeyspace -ThroughputType $Autoscale
+      $AutoscaleThroughput = Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration -InputObject $NewKeyspace -ThroughputType $Autoscale
       Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
 
       $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Migrate-AzCosmosDBCassandraKeyspaceThroughput -ParentObject $CosmosDBAccount -Name $KeyspaceName -ThroughputType $Manual
+      $ManualThroughput = Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration -ParentObject $CosmosDBAccount -Name $KeyspaceName -ThroughputType $Manual
       Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
 
       $NewTable = New-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Schema $schema -Throughput $TableThroughputValue
       $TableThroughput = Get-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
       Assert-AreEqual $TableThroughput.Throughput $TableThroughputValue
 
-      $AutoscaledTableThroughput = Migrate-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -ThroughputType $Autoscale
+      $AutoscaledTableThroughput = Invoke-AzCosmosDBCassandraTableThroughputMigration -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -ThroughputType $Autoscale
       Assert-AreNotEqual $AutoscaledTableThroughput.AutoscaleSettings.MaxThroughput 0
 
-      $ManuaTableThroughput = Migrate-AzCosmosDBCassandraTableThroughput -InputObject $NewTable -ThroughputType $Manual
+      $ManuaTableThroughput = Invoke-AzCosmosDBCassandraTableThroughputMigration -InputObject $NewTable -ThroughputType $Manual
       Assert-AreEqual $ManuaTableThroughput.AutoscaleSettings.MaxThroughput 0
 
       Remove-AzCosmosDBCassandraTable -InputObject $NewTable 

@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Migrate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinDatabaseThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class MigrateAzCosmosDBGremlinDatabaseThroughput : MigrateAzCosmosDBThroughput
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabaseThroughputMigration", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBSqlDatabaseThroughputMigration : MigrateAzCosmosDBThroughput
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -32,32 +32,31 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSGremlinDatabaseGetResults InputObject { get; set; }
+        public PSSqlDatabaseGetResults InputObject { get; set; }
 
-        public override void PopulateFromParentObject() 
+        public override void PopulateFromParentObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             AccountName = resourceIdentifier.ResourceName;
         }
 
-        public override void PopulateFromInputObject() 
+        public override void PopulateFromInputObject()
         {
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-
         }
 
         public override void MigrateToAutoscaleSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Database throughput to Autoscale Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Sql Database throughput to Autoscale Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.GremlinResources.MigrateGremlinDatabaseToAutoscale(
+                ThroughputSettingsGetResults throughputSettingsGetResults = 
+                    CosmosDBManagementClient.SqlResources.MigrateSqlDatabaseToAutoscale(
                     ResourceGroupName,
                     AccountName,
                     Name);
@@ -68,10 +67,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void MigrateToManualSDKMethod()
         {
-            if (ShouldProcess(Name, "Migrating the CosmosDB Gremlin Database throughput to Manual Provisioning Policy."))
+            if (ShouldProcess(Name, "Migrating the CosmosDB Sql Database throughput to Manual Provisioning Policy."))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults =
-                    CosmosDBManagementClient.GremlinResources.MigrateGremlinDatabaseToManualThroughput(
+                ThroughputSettingsGetResults throughputSettingsGetResults = 
+                    CosmosDBManagementClient.SqlResources.MigrateSqlDatabaseToManualThroughput(
                     ResourceGroupName,
                     AccountName,
                     Name);
@@ -79,6 +78,5 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
         }
-
     }
 }

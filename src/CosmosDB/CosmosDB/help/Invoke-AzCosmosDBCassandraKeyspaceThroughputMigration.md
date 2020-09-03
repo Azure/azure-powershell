@@ -1,51 +1,47 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbtablethroughput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/invoke-azcosmosdbcassandrakeyspacethroughputmigration
 schema: 2.0.0
 ---
 
-# Update-AzCosmosDBTableThroughput
+# Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration
 
 ## SYNOPSIS
-Updates the throughput value of a CosmosDB Table.
+Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -ResourceGroupName <String> -AccountName <String>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration [-Name <String>] -ResourceGroupName <String>
+ -AccountName <String> -ThroughputType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -ParentObject <PSDatabaseAccountGetResults>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration [-Name <String>]
+ -ParentObject <PSDatabaseAccountGetResults> -ThroughputType <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -InputObject <PSTableGetResults> [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration [-Name <String>]
+ -InputObject <PSCassandraKeyspaceGetResults> -ThroughputType <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the throughput value of a CosmosDB Table.
+ThroughpyteType paramter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBTableThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -Name {myTableName} -Throughput {updatedThroughputValue}
-Name                : mxGp
-Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/table/{myTableName}/throughputSettings/default
-Throughput          : {updatedThroughputValue}
-MinimumThroughput   : 400
-OfferReplacePending :
+PS C:\> $NewKeyspace =  New-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput  700
+$AutoscaleThroughput = Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration -InputObject $NewKeyspace -ThroughputType Autoscale
 ```
 
 ## PARAMETERS
@@ -59,21 +55,6 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutoscaleMaxThroughput
-Maximum Throughput value if autoscale is enabled.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,10 +92,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-CosmosDB Account object
+Cassandra Keyspace object.
 
 ```yaml
-Type: PSTableGetResults
+Type: PSCassandraKeyspaceGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -126,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Table.
+Cassandra Keyspace Name.
 
 ```yaml
 Type: String
@@ -170,16 +151,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Throughput
-The throughput of Table (RU/s).
-Default value is 400.
+### -ThroughputType
+Throughput type to migrate to.
+Possible values are: Autoscale, Manual.
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,7 +188,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraKeyspaceGetResults
 
 ## OUTPUTS
 
