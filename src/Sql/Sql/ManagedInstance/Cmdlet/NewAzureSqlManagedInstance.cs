@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Sql.Models;
@@ -50,6 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
         protected const string NewByInstancePoolResourceIdParameterSet =
             "NewByInstancePoolResourceIdParameterSet";
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth" };
 
         /// <summary>
         /// Gets or sets the instance pool parent object
@@ -320,6 +323,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -363,6 +372,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
                     // Unexpected exception
                     throw;
+                }
+            }
+
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(this.Location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChoosenWarning, this.Name)))
+                    {
+                        return;
+                    }
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChoosenWarning, this.Name)))
+                    {
+                        return;
+                    }
                 }
             }
 
