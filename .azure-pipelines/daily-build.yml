@@ -39,7 +39,7 @@ strategy:
     #   IMAGE_NAME: 'macOS-10.14'
     #   GALLERY_NAME: 'PSGallery'
     #   GALLERY_LOCATION: 'https://www.powershellgallery.com/api/v2'
-  maxParallel: 2
+  maxParallel: 1
 
 pool:
   vmImage: $(Image_Name)
@@ -51,26 +51,30 @@ steps:
     targetType: 'inline'
     script: |
       # Remove Az.* modules
-      $modules = (Get-Module -Name Az.* -ListAvailable).Path
-      Write-Host "Removing Az modules..."
-      $modules | ForEach-Object { 
-        $dirctory = $_ | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
+        Write-Host "Az modules removed."
       }
-      Write-Host "Az modules removed."
+
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
 
       # Remove AzureRM.* modules
-      $modules = (Get-Module -Name AzureRM.* -ListAvailable).Path
-      Write-Host "Removing AzureRM modules..."
-      $modules | ForEach-Object { 
-        $dirctory = $_ | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+      $modules = Get-Module -Name AzureRM.* -ListAvailable
+      if($modules){
+        Write-Host "Removing AzureRM modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
+        Write-Host "AzureRM modules removed."
       }
-      Write-Host "AzureRM modules removed."
-
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
    
@@ -132,13 +136,15 @@ steps:
     targetType: 'inline'
     script: |
       # Remove Az.* modules
-      $modules = (Get-Module -Name Az.* -ListAvailable).Path
-      Write-Host "Removing Az modules..."
-      $modules | ForEach-Object { 
-        $dirctory = $_ | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
+        Write-Host "Az modules removed."
       }
-      Write-Host "Az modules removed."
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
@@ -199,9 +205,11 @@ steps:
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
-        Write-Host "Removing Az modules..."
-        $dirctory = Split-Path $modules[0].Path | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+         Write-Host "Removing Az modules..."
+         $modules.Path | ForEach-Object { 
+         $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
         Write-Host "Az modules removed."
       }
 
@@ -261,14 +269,16 @@ steps:
     targetType: 'inline'
     script: |
       # Remove Az.* modules
-      $modules = (Get-Module -Name Az.* -ListAvailable).Path
-      Write-Host "Removing Az modules..."
-      $modules | ForEach-Object { 
-        $dirctory = $_ | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
+        Write-Host "Az modules removed."
       }
-      Write-Host "Az modules removed."
-
+      
       # Check Az
       Get-Module -Name Az.* -ListAvailable
 
@@ -312,13 +322,15 @@ steps:
     targetType: 'inline'
     script: |
       # Remove Az.* modules
-      $modules = (Get-Module -Name Az.* -ListAvailable).Path
-      Write-Host "Removing Az modules..."
-      $modules | ForEach-Object { 
-        $dirctory = $_ | Split-Path | Split-Path
-        Remove-Item –path $dirctory –recurse -force
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          Remove-Item –path $dirctory –recurse -force
+        }
+        Write-Host "Az modules removed."
       }
-      Write-Host "Az modules removed."
 
       # Check Az
       Get-Module -Name Az.* -ListAvailable
