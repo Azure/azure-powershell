@@ -27,7 +27,7 @@ Get `ReservationOrder`
 Get list of applicable `ReservationOrder` Ids.
 
 ### [Get-AzReservationQuote](Get-AzReservationQuote.md)
-{{ Fill in the Synopsis }}
+Get a new quote for a reservation.
 
 ### [Merge-AzReservation](Merge-AzReservation.md)
 Merges two `Reservation`s.
