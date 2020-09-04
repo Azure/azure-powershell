@@ -406,6 +406,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption at host or not.")]
         public bool? EncryptionAtHost { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the autoscale configuration")]
+        public AzureHDInsightAutoscale AutoscaleConfiguration { get; set; }
+
         #endregion
 
         public NewAzureHDInsightClusterCommand()
@@ -560,7 +563,13 @@ namespace Microsoft.Azure.Commands.HDInsight
                 }
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId, PublicNetworkAccessType, OutboundPublicNetworkAccessType, EncryptionInTransit);
+            Autoscale autoscaleParameter = null;
+            if (AutoscaleConfiguration != null)
+            {
+                autoscaleParameter = AutoscaleConfiguration.ToAutoscale();
+            }
+
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId, PublicNetworkAccessType, OutboundPublicNetworkAccessType, EncryptionInTransit, autoscaleParameter);
 
             if (cluster != null)
             {

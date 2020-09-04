@@ -1,53 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/restart-azhdinsighthost
+ms.assetid: 5B1D72ED-7A1C-4360-B256-0066CC366E28
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/remove-azhdinsightclusterautoscaleconfiguration
 schema: 2.0.0
 ---
 
-# Restart-AzHDInsightHost
+# Remove-AzHDInsightClusterAutoscaleConfiguration
 
 ## SYNOPSIS
-Restarts the specific hosts of HDInsight cluster.
+Removes the autoscale configuration of the HDInsight cluster.
 
 ## SYNTAX
 
 ### SetByNameParameterSet (Default)
 ```
-Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String> [-Name] <String[]> [-AsJob]
- [[-DefaultProfile] <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByAzureHDInsightHostInfoParameterSet
+### SetByResourceIdParameterSet
 ```
-Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-AzureHDInsightHostInfo] <AzureHDInsightHostInfo[]> [-AsJob] [[-DefaultProfile] <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByInputObjectParameterSet
+```
+Remove-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This **Restart-AzHDInsightHost** cmdlet restart the specific hosts of HDInsight cluster.
+The **Remove-AzHDInsightClusterAutoscaleConfiguration** cmdlet removes the autoscale configuration of the HDInsight cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove the autoscale configuration of the HDInsight cluster.
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> Restart-AzHDInsightHost -ClusterName $clusterName -Name wn0, wn1
+PS C:\> $clusterResourceGroup="group"
+PS C:\> $clusterName="MyCluster"
+PS C:\> Remove-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
 ```
 
-This command restarts two hosts of the cluster: worknode1, worknode2.
-
-### Example 2
-```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $worknode1= Get-AzHDInsightHost -ClusterName $clusterName | Where-Object {$_.Name -like "wn1*"}
-PS C:\> $worknode1 | Restart-AzHDInsightHost -ClusterName $clusterName
-```
-
-This command shows how to cooperate with the cmdlet 'Get-AzHDInsightHost'.
+This command removes the autoscale configuration of the HDInsight cluster.
 
 ## PARAMETERS
 
@@ -66,27 +62,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureHDInsightHostInfo
-Gets or sets the name of the host.
-
-```yaml
-Type: Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo[]
-Parameter Sets: SetByAzureHDInsightHostInfoParameterSet
-Aliases: Host
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ClusterName
 Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -111,33 +92,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Gets or sets the name of the host.
+### -InputObject
+Gets or sets the input object.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: SetByNameParameterSet
-Aliases: HostName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-{{ Fill PassThru Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
+Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,13 +112,28 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Gets or sets the resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -192,12 +173,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo, Microsoft.Azure.PowerShell.Cmdlets.HDInsight, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.String
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.Cluster
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzHDInsightClusterAutoscaleConfiguration](./New-AzHDInsightClusterAutoscaleConfiguration.md)
+[Set-AzHDInsightClusterAutoscaleConfiguration](./Set-AzHDInsightClusterAutoscaleConfiguration.md)
+[Get-AzHDInsightClusterAutoscaleConfiguration](./Get-AzHDInsightClusterAutoscaleConfiguration.md)

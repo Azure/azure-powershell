@@ -41,6 +41,9 @@ Enables monitoring in a HDInsight cluster and relevant logs will be sent to the 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
 
+### [Get-AzHDInsightClusterAutoscaleConfiguration](Get-AzHDInsightClusterAutoscaleConfiguration.md)
+Gets the autoscale configuration of HDInsight cluster.
+
 ### [Get-AzHDInsightHost](Get-AzHDInsightHost.md)
 Lists the hosts of the HDInsight cluster.
 
@@ -68,6 +71,9 @@ Submits a Hive query to an HDInsight cluster and retrieves query results in one 
 ### [New-AzHDInsightCluster](New-AzHDInsightCluster.md)
 Creates an Azure HDInsight cluster in the specified resource group for the current subscription.
 
+### [New-AzHDInsightClusterAutoscaleConfiguration](New-AzHDInsightClusterAutoscaleConfiguration.md)
+Creates a non-persisted object that describes the autoscale configuration of an Azure HDInsight cluster.
+
 ### [New-AzHDInsightClusterConfig](New-AzHDInsightClusterConfig.md)
 Creates a non-persisted cluster configuration object that describes an Azure HDInsight cluster configuration.
 
@@ -89,11 +95,17 @@ Creates a Streaming MapReduce job object.
 ### [Remove-AzHDInsightCluster](Remove-AzHDInsightCluster.md)
 Removes the specified HDInsight cluster from the current subscription.
 
+### [Remove-AzHDInsightClusterAutoscaleConfiguration](Remove-AzHDInsightClusterAutoscaleConfiguration.md)
+Removes the autoscale configuration of the HDInsight cluster.
+
 ### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
 
 ### [Restart-AzHDInsightHost](Restart-AzHDInsightHost.md)
 Restarts the specific hosts of HDInsight cluster.
+
+### [Set-AzHDInsightClusterAutoscaleConfiguration](Set-AzHDInsightClusterAutoscaleConfiguration.md)
+Sets the autoscale configuration of an Azure HDInsight cluster.
 
 ### [Set-AzHDInsightClusterDiskEncryptionKey](Set-AzHDInsightClusterDiskEncryptionKey.md)
 Rotates the disk encryption key of the specified HDInsight cluster.
