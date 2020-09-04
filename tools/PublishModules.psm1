@@ -273,6 +273,12 @@ function Get-AllModules {
     Write-Host "Getting Azure client modules"
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
     Write-Host " "
+    
+    if($clientModules.Length -le 2) {
+        return @{
+            ClientModules = $clientModules
+        }
+    }
 
     Write-Host "Getting admin modules"
     $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope

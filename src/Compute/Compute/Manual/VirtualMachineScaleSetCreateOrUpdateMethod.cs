@@ -134,6 +134,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string ProximityPlacementGroupId { get; set; }
 
+        [Alias("HostGroup")]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies the dedicated host group the virtual machine scale set will reside in.",
+            ValueFromPipelineByPropertyName = true
+        )]
+        public string HostGroupId { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The priority for the virtual machine in the scale set. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
         [PSArgumentCompleter("Regular", "Spot")]
@@ -285,6 +294,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
+                var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,                    
@@ -305,6 +316,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
                     singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent,
                     proximityPlacementGroup: proximityPlacementGroup,
+                    hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,

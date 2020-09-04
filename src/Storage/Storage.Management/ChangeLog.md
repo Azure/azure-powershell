@@ -18,20 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Point In Time Restore
+    - Enable-AzStorageBlobRestorePolicy
+    - Disable-AzStorageBlobRestorePolicy
+    - New-AzStorageBlobRangeToRestore
+    - Restore-AzStorageBlobRange
+* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - Get-AzureRMStorageAccount
+    
+## Version 2.5.0
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
     -  `New-AzStorageBlobQueryConfig`
-* Update help file, and add more description and fix typo
+* Updated help file, added more description, and fixed typo
     -  `Start-AzStorageBlobCopy`
     -  `Get-AzDataLakeGen2Item`
-* Fixed [#12592]: Fix download blob fail when related sub directory not exist.
+* Fixed download blob fail when related sub directory not exist [#12592]
     -  `Get-AzStorageBlobContent`
-* Support Set/Get/Remove Object Replication Policy on Storage accounts
+* Supported Set/Get/Remove Object Replication Policy on Storage accounts
     - `New-AzStorageObjectReplicationPolicyRule`
     - `Set-AzStorageObjectReplicationPolicy`
     - `Get-AzStorageObjectReplicationPolicy`
     - `Remove-AzStorageObjectReplicationPolicy`
-* Support enable/disable Changefeed on Blob Service of a Storage account
+* Supported enable/disable ChangeFeed on Blob Service of a Storage account
     - `Update-AzStorageBlobServiceProperty`
 
 ## Version 2.4.0
