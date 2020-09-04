@@ -32,10 +32,24 @@ Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceAccessRuleObject
+```
+Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
+ -ResourceAccessRule <PSResourceAccessRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### IpRuleString
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPAddressOrRange <String[]>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceAccessRuleString
+```
+Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -TenantId <String>
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,6 +164,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceAccessRule
+Storage Account NetworkRule ResourceAccessRules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule[]
+Parameter Sets: ResourceAccessRuleObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group contains the Storage account.
 
@@ -162,6 +191,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Storage Account ResourceAccessRule ResourceId  in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceAccessRuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Storage Account ResourceAccessRule TenantId  in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceAccessRuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

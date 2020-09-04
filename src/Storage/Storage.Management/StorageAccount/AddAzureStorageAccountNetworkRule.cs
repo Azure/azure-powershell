@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
+    [OutputType(typeof(PSResourceAccessRule), ParameterSetName = new string[] { ResourceAccessRuleStringParameterSet, ResourceAccessRuleObjectParameterSet })]
     public class AddAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -48,6 +49,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// IpRule Objects pipeline parameter set
         /// </summary>
         private const string IpRuleObjectParameterSet = "IpRuleObject";
+
+        /// <summary>
+        /// ResourceAccess Objects pipeline parameter set
+        /// </summary>
+        private const string ResourceAccessRuleStringParameterSet = "ResourceAccessRuleString";
+
+        /// <summary>
+        /// ResourceAccess Objects pipeline parameter set
+        /// </summary>
+        private const string ResourceAccessRuleObjectParameterSet = "ResourceAccessRuleObject";
 
         [Parameter(
             Position = 0,
@@ -81,6 +92,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule ResourceAccessRules.",
+            ValueFromPipeline = true, ParameterSetName = ResourceAccessRuleObjectParameterSet)]
+        public PSResourceAccessRule[] ResourceAccessRule { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Storage Account NetworkRule IPRules IPAddressOrRange in string.",
             ParameterSetName = IpRuleStringParameterSet)]
         public string[] IPAddressOrRange { get; set; }
@@ -91,6 +108,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = NetWorkRuleStringParameterSet)]
         [Alias("SubnetId", "VirtualNetworkId")]
         public string[] VirtualNetworkResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Storage Account ResourceAccessRule TenantId  in string.",
+            ParameterSetName = ResourceAccessRuleStringParameterSet)]
+        public string TenantId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account ResourceAccessRule ResourceId  in string.",
+            ParameterSetName = ResourceAccessRuleStringParameterSet)]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -161,6 +191,32 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                         }
                         break;
+                    case ResourceAccessRuleStringParameterSet:
+                        if (storageACL.ResourceAccessRules == null)
+                        {
+                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
+                        }
+                        //foreach (string s in IPAddressOrRange)
+                        //{
+                        bool ResourceAccessruleExist = false;
+                        foreach (ResourceAccessRule originRule in storageACL.ResourceAccessRules)
+                        {
+                            if (originRule.TenantId.Equals(this.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                            && originRule.ResourceId.Equals(this.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                ResourceAccessruleExist = true;
+                                WriteDebug(string.Format("Skip add ResourceAccessRule as it already exist, TenantId: {0}, ResourceId: {1}", this.TenantId, this.ResourceId));
+                                break;
+                            }
+                        }
+                        if (!ResourceAccessruleExist)
+                        {
+                            ResourceAccessRule rule = new ResourceAccessRule(this.TenantId, this.ResourceId);
+                            storageACL.ResourceAccessRules.Add(rule);
+                            ruleChanged = true;
+                        }
+                        //}
+                        break;
                     case NetworkRuleObjectParameterSet:
                         if (storageACL.VirtualNetworkRules == null)
                             storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
@@ -179,6 +235,32 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             if (!ruleExist)
                             {
                                 storageACL.VirtualNetworkRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleVirtualNetworkRule(rule));
+                                ruleChanged = true;
+                            }
+                        }
+                        break;
+                    case ResourceAccessRuleObjectParameterSet:
+                        if (storageACL.ResourceAccessRules == null)
+                        {
+                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
+                        }
+                        foreach (PSResourceAccessRule rule in ResourceAccessRule)
+                        {
+                            bool ruleExist = false;
+                            foreach (ResourceAccessRule originRule in storageACL.ResourceAccessRules)
+                            {
+                                if (originRule.TenantId.Equals(rule.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                                && originRule.ResourceId.Equals(rule.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add ResourceAccessRule as it already exist, TenantId: {0}, ResourceId: {1}", rule.TenantId, rule.ResourceId));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+
+                                storageACL.ResourceAccessRules.Add(PSNetworkRuleSet.ParseStorageResourceAccessRule(rule));
                                 ruleChanged = true;
                             }
                         }
@@ -230,6 +312,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
+                        break;
+                    case ResourceAccessRuleStringParameterSet:
+                    case ResourceAccessRuleObjectParameterSet:
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).ResourceAccessRules);
                         break;
                 }
             }
