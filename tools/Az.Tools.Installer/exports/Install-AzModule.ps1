@@ -71,6 +71,8 @@ function Install-AzModule{
 
     process {
 
+        $cmdStarted = Get-Date
+
         Import-Module "$PSScriptRoot\..\internal\utils.psm1"
 
         $author = 'Microsoft Corporation'
@@ -214,5 +216,10 @@ function Install-AzModule{
                 $_ | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease:$allow_prerelease -SkipPublisherCheck:$skip_publisher_check
             }
         }
+
+        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+            -IsSuccess $true `
+            -StartDateTime $cmdStarted `
+            -Duration ((Get-Date) - $cmdStarted)
     }
 }

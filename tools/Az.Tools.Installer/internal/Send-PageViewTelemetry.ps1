@@ -6,10 +6,16 @@ function Send-PageViewTelemetry
     (
         [Parameter(
             Mandatory=$true,
-            HelpMessage='Specify the page or operation name.')]
-        [System.Management.Automation.CommandInfo]
+            HelpMessage='Specify the source cmdlet object.')]
+        [System.Management.Automation.PSCmdlet]
         [ValidateNotNullOrEmpty()]
-        $CommandInfo,
+        $SourcePSCmdlet,
+
+        [Parameter(
+            Mandatory=$false,
+            HelpMessage='Specify the parameter set name.')]
+        [System.Boolean]
+        $IsSuccess,
 
         [Parameter(
             Mandatory=$false,
@@ -31,13 +37,32 @@ function Send-PageViewTelemetry
     )
     Process
     {
-        if($null -eq [Constants]::TelemetryClient) 
-        {
+        if($null -eq [Constants]::TelemetryClient) {
+            Write-Verbose -Message 'Initialize telemetry client'
             $TelemetryClient = New-Object Microsoft.ApplicationInsights.TelemetryClient
             $TelemetryClient.InstrumentationKey = [Constants]::PublicTelemetryInstrumentationKey
             $TelemetryClient.Context.Session.Id = $CurrentSessionId
             $TelemetryClient.Context.Device.OperatingSystem = [System.Environment]::OSVersion.ToString()
             [Constants]::TelemetryClient = $TelemetryClient
+        }
+
+        if([string]::IsNullOrWhiteSpace([Constants]::HashMacAddress)) {
+            Write-Verbose -Message 'hash mac address'
+            $macAddress = ''
+            $nics = [System.Net.NetworkInformation.NetworkInterface]::GetAllNetworkInterfaces()
+            foreach ($nic in $nics) {
+                if($nic.OperationalStatus -eq 'Up' -and -not [string]::IsNullOrWhiteSpace($nic.GetPhysicalAddress())) {
+                    $macAddress = $nic.GetPhysicalAddress().ToString()
+                }
+            }
+
+            if($macAddress -ne '') {
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($macAddress)
+                $sha256 = New-Object -TypeName System.Security.Cryptography.SHA256CryptoServiceProvider
+                $macAddress = [System.BitConverter]::ToString($sha256.ComputeHash($bytes))
+                $macAddress = $macAddress.Replace('-', '').ToLowerInvariant()
+            }
+            [Constants]::HashMacAddress = $macAddress
         }
 
         $client = [Constants]::TelemetryClient
@@ -46,11 +71,27 @@ function Send-PageViewTelemetry
         $page.Name = "cmdletInvocation"
         $page.Duration = $Duration
 
-        $page.Properties["IsSuccess"] = $True.ToString()
-        $page.Properties["OS"] = [System.Environment]::OSVersion.ToString()
+        if ($PSBoundParameters.ContainsKey('IsSuccess')) {
+            $page.Properties['IsSuccess'] = $PSBoundParameters['IsSuccess'].ToString()
+        } else {
+            $page.Properties['IsSuccess'] = $true.ToString()
+        }
+        $page.Properties['x-ms-client-request-id'] = [Constants]::CurrentSessionId
+        $page.Properties['OS'] = [System.Environment]::OSVersion.ToString()
+        $page.Properties['HostVersion'] = $PSCmdlet.Host.Version
+        $page.Properties['HashMacAddress'] = [Constants]::HashMacAddress
+        $page.Properties['PowerShellVersion'] = $PSVersionTable.PSVersion.ToString()
+        $page.Properties['Command'] = $SourcePSCmdlet.MyInvocation.MyCommand.Name
+        $page.Properties['CommandParameterSetName'] = $SourcePSCmdlet.ParameterSetName
+        $page.Properties['CommandInvocationName'] = $SourcePSCmdlet.MyInvocation.InvocationName
 
-        $page.Properties["x-ms-client-request-id"]= [Constants]::CurrentSessionId
-        $page.Properties["PowerShellVersion"]= $PSVersionTable.PSVersion.ToString();
+        if($null -ne $SourcePSCmdlet.MyInvocation.BoundParameters) {
+            $parameters = ""
+            foreach ($Key in $SourcePSCmdlet.MyInvocation.BoundParameters.Keys) {
+                $parameters += "-$Key *** "
+            }            
+            $page.Properties['CommandParameters'] = $parameters
+        }
         
         if($null -ne $MyInvocation.MyCommand)
         {
@@ -60,7 +101,7 @@ function Send-PageViewTelemetry
                 $page.Properties["ModuleVersion"] = $MyInvocation.MyCommand.Module.Version.ToString()
             }
         }
-        $page.Properties["start-time"]= $StartDateTime
+        $page.Properties["start-time"]= $StartDateTime.ToUniversalTime().ToString("o")
         $page.Properties["end-time"]= (Get-Date).ToUniversalTime().ToString("o")
         $page.Properties["duration"]= $Duration.ToString("c");
         
@@ -75,16 +116,11 @@ function Send-PageViewTelemetry
             }
         }
 
-        foreach ($Key in $page.Properties) 
-        {
-            Write-Debug "collect telemetry data[$Key]=$($CustomProperties[$Key])"
-        }
-
         $client.TrackPageView($page)
 
         try
         {
-            //$client.Flush()
+            $client.Flush()
         }
         catch 
         {
