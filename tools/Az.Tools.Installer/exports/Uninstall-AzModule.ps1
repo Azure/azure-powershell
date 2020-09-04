@@ -12,11 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Install-AzModule{
+function Uninstall-AzModule {
     [OutputType()]
-    [CmdletBinding(DefaultParameterSetName = 'WithoutPreview', 
-    PositionalBinding = $false, 
-    SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'WithoutPreview', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
@@ -33,16 +31,6 @@ function Install-AzModule{
         [String]
         ${RequiredVersion},
 
-        [Parameter(Mandatory, HelpMessage = 'The Registered Repostory.')]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Repository},
-
-        [Parameter(HelpMessage = 'Remove given module installed previously.')]
-        [ValidateNotNullOrEmpty()]
-        [Switch]
-        ${RemovePrevious},
-
         [Parameter(HelpMessage = 'Remove all AzureRm modules.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
@@ -54,6 +42,7 @@ function Install-AzModule{
         ${Force},
 
         [Parameter(ParameterSetName = 'WithPreview', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
+        [Parameter(ParameterSetName = 'WithPreviewAndAllVersion', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
         ${AllowPrerelease},
@@ -63,44 +52,32 @@ function Install-AzModule{
         [String[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'Skip publisher check.')]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(ParameterSetName = 'WithPreviewAndAllVersion', Mandatory, HelpMessage = 'Remove all versions')]
+        [Parameter(ParameterSetName = 'WithoutPreviewAndAllVersion', Mandatory, HelpMessage = 'Remove all versions')]
         [Switch]
-        ${SkipPublisherCheck}
+        ${AllVersion},
+
+        [Parameter(ParameterSetName = 'WithoutPreview', Mandatory, HelpMessage = 'The Registered Repostory.')]
+        [Parameter(ParameterSetName = 'WithoutPreviewAndAllVersion', Mandatory, HelpMessage = 'The Registered Repostory.')]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        ${Repository}
     )
 
     process {
-
         Import-Module "$PSScriptRoot\..\internal\utils.psm1"
 
         $author = 'Microsoft Corporation'
         $company_name = 'azure-sdk'
 
-        If ((Get-PSRepository -Name $Repository).InstallationPolicy -ne 'Trusted' -and !$PSBoundParameters.ContainsKey('Force')) {
-            $confirmation = Read-Host "You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the `nSet-PSRepository cmdlet. Are you sure you want to install the modules from"$Repository"?`n[Y] Yes  [N] No  (default is `"N`")"
-            switch ($confirmation) {
-                'Y' {
-                    $PSBoundParameters.Add('Force', $true)
-                }
-
-                'N' {
-                    Return
-                }
-            }
-        }
-
         [System.Collections.ArrayList]$module_name = @()
         $version = @{}
-        $module = @()
+        $module = @{}
         $latest = ''
-        $skip_publisher_check = $false
-        $allow_prerelease = $false
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $PSBoundParameters['Name'] | Foreach-Object {
-                if ($_ -ne 'Az.Accounts') {
-                    $module_name += $_
-                }
+                $module_name += $_
             }
         }
 
@@ -116,20 +93,12 @@ function Install-AzModule{
             $version.Add('RequiredVersion', $PSBoundParameters['RequiredVersion'])
         }
 
-        if ($PSBoundParameters.ContainsKey('SkipPublisherCheck')) {
-            $skip_publisher_check = $SkipPublisherCheck
-        }
-
-        if ($PSBoundParameters.ContainsKey('AllowPrerelease')) {
-            $allow_prerelease = $AllowPrerelease
-        }
-
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Name = FullAzName -Name $Name
         }
 
-        if ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
-         
+        if (!$PSBoundParameters.ContainsKey("AllowPrerelease")) {
+
             #Without preview
             $parameter = @{}
             $parameter.Add('Repository', $Repository)
@@ -143,23 +112,25 @@ function Install-AzModule{
                 (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
                     if ($_.Name -ne 'Az.Accounts') {
                         $index.Add($_.Name, $_.RequiredVersion)
+                    } else {
+                        $index.Add($_.Name, $_.MinimumVersion)
                     }
                 }
             } catch {
                 Write-Error "No related Az modules were found in $Repository"
                 break
             }
-            
+
             if (!$PSBoundParameters.ContainsKey('Name')) {
-                #Install Az package
-                $index.Keys | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
+                #Uninstall Az package
+                $index.Keys | Foreach-Object {$module.Add($_, $index[$_])}
             } else {
-                #Install Az modules by name
+                #Uninstall Az modules by name
                 $module_name | Foreach-Object {
                     if (!$index.ContainsKey($_)) {
-                        Write-Warning "module $_ will not be installed since it is not a GAed Az module, please try add -AllowPrerelease option."
+                        Write-Warning "module $_ will not be uninstalled since it is not a GAed Az module, please try adding -AllowPrerelease option."
                     } else {
-                        $module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})
+                        $module.Add($_, $index[$_])
                     }
                 }
             }
@@ -167,16 +138,14 @@ function Install-AzModule{
         } else {
             
             #With preview
-            Write-Warning "this cmdlet will not install preview version for Az.Accounts."
-
             $latest = ' latest version of'
 
             if (!$PSBoundParameters.ContainsKey('Name')) {
 
                 # all latest modules
                 try {
-                    Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
-                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts')) {
+                    Get-InstalledModule -Name 'Az.*' | ForEach-Object {
+                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name)) {
                             $module_name += $_.Name
                         }
                     }
@@ -189,7 +158,7 @@ function Install-AzModule{
             $remove = @()
             $module_name | Where-Object {$_.StartsWith('Az.Tools')} | Foreach-Object {$remove += $_}
             $remove | Foreach-Object {$module_name.Remove($_)}
-            $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
+            $module_name | Foreach-Object {$module.Add($_, '')}
         }
 
         if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
@@ -197,21 +166,17 @@ function Install-AzModule{
             remove_installed_module -Name 'Azure.*' -AllVersion
         }
 
-        if ($PSBoundParameters.ContainsKey('RemovePrevious')) {
-            $module | Foreach-Object {
-                $name = $_.Name
-                if ($PSCmdlet.ShouldProcess("Remove all previous versions of $name", "All previous $name", "Remove")) {
-                    $_ | remove_installed_module -AllVersion
+        $module.Keys | Foreach-Object {
+            $version = $module[$_]
+            if ($PSCmdlet.ShouldProcess("Uninstall$latest $_ $version", "$latest $_ $version", "Uninstall")) {
+                Write-Debug "Uninstall$latest $_ $version"
+                if ($PSBoundParameters.ContainsKey('AllVersion')) {
+                    remove_installed_module -Name $_ -AllVersion
+                } elseif ($PSBoundParameters.ContainsKey('AllowPrerelease')) {
+                    remove_installed_module -Name $_
+                } else {
+                    remove_installed_module -Name $_ -RequiredVersion $version
                 }
-            }
-        }
-
-        $module | Foreach-Object {
-            $name = $_.Name
-            $version = $_.version
-            if ($PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
-                Write-Debug "Install$latest $name $version"
-                $_ | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease:$allow_prerelease -SkipPublisherCheck:$skip_publisher_check
             }
         }
     }
