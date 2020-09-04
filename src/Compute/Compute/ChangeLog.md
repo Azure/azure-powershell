@@ -29,6 +29,7 @@
 * Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
 * Added optional parameter '-SupportAutomaticPlacement' to New-AzHostGroup 
 * Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
+* Added `-VmssId` parameter to `New-AzVm`
 
 ## Version 4.3.1
 * Patched `-EncryptionAtHost` parameter in `New-AzVm` to remove default value of false [#12776]
