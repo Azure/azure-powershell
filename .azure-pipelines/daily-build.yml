@@ -124,16 +124,16 @@ steps:
       Set-AzContext -Subscription "Azure SDK Powershell Test"
       Enable-AzureRmAlias
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
 
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    arguments: '-Reverse'
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+#     arguments: '-Reverse'
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -191,16 +191,16 @@ steps:
         Set-AzContext -Subscription "Azure SDK Powershell Test"
       }
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
     
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    arguments: '-Reverse'
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+#     arguments: '-Reverse'
     
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -314,9 +314,8 @@ steps:
         Get-Module
 
         # Check version
-        $azComputeVersion = (Get-Module Az.Compute).Version | 
-        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-        if($azComputeVersion[0] -ne $versions[0]){
+        $azComputeVersion = (Get-Module Az.Compute).Version
+        if($azComputeVersion -ne $versions[0]){
           throw "Install Az on top of Az.Compute failed"
         }
       }
@@ -349,9 +348,7 @@ steps:
     script: |
       # Get previous version of Az
       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
-       %{[system.version]$_} | 
-       Sort-Object -Descending | 
-       %{[System.String]$_}
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
       if($versions.Count -ge 2){
         # Install previous version of Az
@@ -361,8 +358,7 @@ steps:
         Write-Host 'Installed the previous version of Az'
 
         # Get previous version of Az.Compute
-        $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version | 
-        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+        $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version
 
         #Install Az.Compute
         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force        
@@ -374,7 +370,7 @@ steps:
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
         %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-        if([System.Version]$azComputeVersion[0] -le [System.Version]$azComputePreviousVersion[0]){
+        if([System.Version]$azComputeVersion -le [System.Version]$azComputePreviousVersion){
           throw "Install Az on top of Az.Compute failed"
         }
       }
