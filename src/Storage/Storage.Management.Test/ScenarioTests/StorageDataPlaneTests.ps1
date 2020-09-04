@@ -518,7 +518,7 @@ function Test-Common
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
-        # wait at most 120*5s=600s for the set sevice proeprty updated on server.
+        # wait at most 120*5s=600s for the set sevice property updated on server.
         $retryTimes = 120
         
         # B/F/Q Service properties, in same code path

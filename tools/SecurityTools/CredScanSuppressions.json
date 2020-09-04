@@ -958,6 +958,14 @@
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     },
     {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstancePoolCrudTests\\TestGetManagedInstanceInInstancePool.json",
+      "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\\TestGetManagedInstance.json",
+      "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
+    },
+    {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedInstanceSettingsTest.json",
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     },

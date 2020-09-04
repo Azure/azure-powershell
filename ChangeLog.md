@@ -1,3 +1,7 @@
+## 4.6.1 - August 2020
+#### Az.Compute
+* Patched '-EncryptionAtHost' parameter in 'New-AzVm' to remove default value of false [#12776]
+
 ## 4.6.0 - August 2020
 #### Az.Accounts
 * Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
