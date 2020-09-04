@@ -13,6 +13,7 @@ trigger: none
 strategy:
   matrix:
     Windows PS 5.1.14:
+      Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
       PSVersion: '5.1.14'
     # Windows PS 6.2.4:
@@ -21,12 +22,14 @@ strategy:
     # Windows PS 7.0.3:
     #   IMAGE_NAME: 'vs2017-win2016'
     #   PSVersion: 7.0.3
-    # Linux PS 7.0.3:
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '7.0.3'
-    # MacOS PS 7.0.3:
-    #   Image_Name: 'macOS-10.14'
-    #   PSVersion: '7.0.3'
+    Linux PS 7.0.3:
+      Platform_Name: 'Linux'
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '7.0.3'
+    MacOS PS 7.0.3:
+      Platform_Name: 'MacOS'
+      Image_Name: 'macOS-10.14'
+      PSVersion: '7.0.3'
   maxParallel: 3
 
 pool:
