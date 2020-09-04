@@ -568,7 +568,7 @@ $PropertiesObject = @{
 }
 New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName "Default-Web-WestUS" -ResourceType Microsoft.Web/sites/config -ResourceName "ContosoWebApp/metadata" -ApiVersion 2018-02-01 -Force
 
-Replace the values of Default-Web-WestUS with your respource group name of the webapp and ContosoWebApp with the webapp name.
+Replace the values of Default-Web-WestUS with your resource group name of the webapp and ContosoWebApp with the webapp name.
  
 ## RELATED LINKS
 
