@@ -12,20 +12,24 @@ trigger: none
 
 strategy:
   matrix:
-    Windows PS 5.1.14:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: '5.1.14'
-    # Windows PS 6.2.4:
-    #   IMAGE_NAME: 'vs2017-win2016'
-    #   PSVersion: 6.2.4
+    # Windows PS 5.1.14:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: '5.1.14'
+    #   Download_Uri: ''
+    #   DestinationPath: 'C:\\PowerShell\\'
+    Windows PS 6.2.4:
+      IMAGE_NAME: 'vs2017-win2016'
+      PSVersion: 6.2.4
+      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+      DestinationPath: 'C:\\PowerShell\\'
     # Windows PS 7.0.3:
     #   IMAGE_NAME: 'vs2017-win2016'
     #   PSVersion: 7.0.3
-    Linux PS 7.0.3:
-      Platform_Name: 'Linux'
-      Image_Name: 'ubuntu-18.04'
-      PSVersion: '7.0.3'
+    # Linux PS 7.0.3:
+    #   Platform_Name: 'Linux'
+    #   Image_Name: 'ubuntu-18.04'
+    #   PSVersion: '7.0.3'
     # MacOS PS 7.0.3:
     #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
@@ -37,7 +41,7 @@ pool:
 
 steps:
 - task: PowerShell@2
-  displayName: Clean Existing Modules
+  displayName: Prepare Powershell $(PSVersion) 
   inputs:
     targetType: 'inline'
     script: |
@@ -74,6 +78,19 @@ steps:
       }
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
+
+      $OSSystem = '$(Platform_Name)'
+      switch($OSSystem){
+        case 'Windows':
+          $outFile = $(DestinationPath)+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
+          Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
+          $psPath = $(DestinationPath)+'$(PSVersion)'
+          Expand-Archive -Path $outFile -DestinationPath $psPath
+          $psPath += 'pwsh.exe'
+          Write-Host $psPath
+          break;
+        default:
+      }
    
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
