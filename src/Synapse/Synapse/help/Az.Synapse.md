@@ -20,6 +20,12 @@ Exports notbooks.
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
+### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
+Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
+Gets information about datasets in workspace.
+
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
@@ -113,6 +119,12 @@ Creates a Synapse Analytics SQL pool.
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
 Creates a Synapse Analytics workspace.
 
+### [Remove-AzSynapseDataFlow](Remove-AzSynapseDataFlow.md)
+Removes a data flow from workspace.
+
+### [Remove-AzSynapseDataset](Remove-AzSynapseDataset.md)
+Removes a dataset from workspace.
+
 ### [Remove-AzSynapseFirewallRule](Remove-AzSynapseFirewallRule.md)
 Deletes a Synapse Analytics Firewall Rule.
 
@@ -157,6 +169,12 @@ Resets timeout of a Synapse Analytics Spark session.
 
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
+
+### [Set-AzSynapseDataFlow](Set-AzSynapseDataFlow.md)
+Creates or updates a data flow in workspace.
+
+### [Set-AzSynapseDataset](Set-AzSynapseDataset.md)
+Creates or updates a dataset in workspace.
 
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
