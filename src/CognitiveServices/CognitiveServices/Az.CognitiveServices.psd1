@@ -86,7 +86,8 @@ CmdletsToExport = 'Get-AzCognitiveServicesAccount',
                'Get-AzCognitiveServicesAccountNetworkRuleSet', 
                'Update-AzCognitiveServicesAccountNetworkRuleSet', 
                'Add-AzCognitiveServicesAccountNetworkRule', 
-               'Remove-AzCognitiveServicesAccountNetworkRule'
+               'Remove-AzCognitiveServicesAccountNetworkRule', 
+               'New-AzCognitiveServicesAccountApiProperties'
 
 # Variables to export from this module
 # VariablesToExport = @()

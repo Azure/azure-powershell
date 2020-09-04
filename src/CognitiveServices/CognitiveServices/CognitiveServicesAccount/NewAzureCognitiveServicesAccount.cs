@@ -161,6 +161,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ApiProperties of Cognitive Services Account. Required by specific account types.")]
+        public CognitiveServicesAccountApiProperties ApiProperties { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -179,6 +184,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (NetworkRuleSet != null)
                 {
                     properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
+                }
+
+                if (ApiProperties != null)
+                {
+                    properties.ApiProperties = ApiProperties;
                 }
 
                 CognitiveServicesAccount createParameters = new CognitiveServicesAccount()
@@ -270,10 +280,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                         Name,
                                         createParameters);
                     }
+                    catch (ErrorException ex)
+                    {
+                        // If the Exception is ErrorException, clone the exception with modified message.
+                        var newEx = new ErrorException($"Failed to create Cognitive Services account. {ex.Message}", ex);
+                        newEx.Body = ex.Body;
+                        newEx.Request = ex.Request;
+                        newEx.Response = ex.Response;
+                        throw newEx;
+                    }
                     catch (Exception ex)
                     {
                         // Give users a specific message says `Failed to create Cognitive Services account.`
-                        // Details should able be found in the exception.
+                        // Details should able be found in the inner exception.
                         throw new Exception("Failed to create Cognitive Services account.", ex);
                     }
 
