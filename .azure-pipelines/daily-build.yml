@@ -110,8 +110,6 @@ steps:
 
       if(!$azVersion){
         throw "No Az is installed"
-      }else{
-        Remove-Module Az
       }
       
 - task: PowerShell@2
@@ -175,7 +173,7 @@ steps:
         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
         #Update Az
-        Update-Module -Name Az
+        Update-Module -Name Az -Scope CurrentUser -Force
         
         # Check Az
         Write-Host "Get latest version of Az"
@@ -183,13 +181,11 @@ steps:
 
         # Check version
         Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-        $azVersion = (get-module Az).Version | %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-        Export-Module Az
+        $azVersion = (get-module Az).Version
         if($azVersion -ne $versions[0]){
           throw "Update Az failed"
         }
-
-
+        
         # Reuse connected account and select subscription for test
         Enable-AzureRmAlias
         Set-AzContext -Subscription "Azure SDK Powershell Test"
@@ -258,7 +254,7 @@ steps:
         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
         #Update Az.Compute
-        Update-Module -Name Az.Compute
+        Update-Module -Name Az.Compute -Scope CurrentUser -Force
         Write-Host "Installed latest version of Az.Compute"
 
         # Check Az.Compute
