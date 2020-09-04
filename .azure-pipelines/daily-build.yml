@@ -81,7 +81,8 @@ steps:
 
       $OSSystem = '$(Platform_Name)'
       switch($OSSystem){
-        case 'Windows':
+        'Windows'
+        {
           $outFile = $(DestinationPath)+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
           Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
           $psPath = $(DestinationPath)+'$(PSVersion)'
@@ -89,7 +90,7 @@ steps:
           $psPath += 'pwsh.exe'
           Write-Host $psPath
           break;
-        default:
+        }
       }
    
 - task: PowerShell@2
