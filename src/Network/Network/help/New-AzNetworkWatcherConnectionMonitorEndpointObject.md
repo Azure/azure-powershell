@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
+online version:
 schema: 2.0.0
 ---
 
@@ -14,17 +14,16 @@ Creates connection monitor endpoint.
 
 ### SetByResourceId
 ```
-New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] -ResourceId <String>
- [-FilterType <String>]
- [-FilterItem <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]>]
+New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] -Type <String> -ResourceId <String>
+ [-IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>]
+ [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByAddress
 ```
-New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] [-Address <String>] [-FilterType <String>]
- [-FilterItem <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] -Type <String> [-Address <String>]
+ [-CoverageLevel <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,20 +32,18 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject cmdlet creates connection mo
 ## EXAMPLES
 
 ### Example 1
-```powershell
 PS C:\>$MySrcResourceId1 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
-PS C:\>$SrcEndpointFilterItem1 =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type "AgentAddress" -Address "WIN-P0HGNDO2S1B"
-PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name "workspaceEndpoint" -ResourceId $MySrcResourceId1 -FilterType Include -FilterItem $SrcEndpointFilterItem1
+PS C:\>$SrcEndpointScopeItem1 = New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject -Address "WIN-P0HGNDO2S1B"
+PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndpointObject -Name "workspaceEndpoint" -Type "MMAWorkspaceMachine" -ResourceId $MySrcResourceId1 -IncludeItem $SrcEndpointScopeItem1
 ```
 
 Name       : workspaceEndpoint
+Type       : MMAWorkspaceMachine
 ResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace
 Address    :
-Filter     : {
-               "Type": "Include",
-               "Items": [
+Scope     : {
+               "Include": [
                  {
-                   "Type": "AgentAddress",
                    "Address": "WIN-P0HGNDO2S1B"
                  }
                ]
@@ -60,6 +57,22 @@ Address of the connection monitor endpoint (IP or domain name).
 ```yaml
 Type: System.String
 Parameter Sets: SetByAddress
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoverageLevel
+Test coverage for the endpoint.
+Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -84,12 +97,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FilterItem
-List of items in the filter.
+### -ExcludeItem
+List of items which need to be excluded from endpoint scope.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: False
@@ -99,12 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FilterType
-The behavior of the endpoint filter. Currently only 'Include' is supported.
+### -IncludeItem
+List of items which need to be included into endpont scope.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: False
@@ -135,6 +148,22 @@ Resource ID of the connection monitor endpoint.
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The type of the connection monitor endpoint.
+Supported types are AzureVM, AzureVNet, AzureSubnet, ExternalAddress, MMAWorkspaceMachine, MMAWorkspaceNetwork.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
