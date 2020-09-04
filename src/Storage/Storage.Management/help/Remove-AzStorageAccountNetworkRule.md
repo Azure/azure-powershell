@@ -32,10 +32,24 @@ Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String
  [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceAccessRuleObject
+```
+Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
+ -ResourceAccessRule <PSResourceAccessRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### IpRuleString
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPAddressOrRange <String[]>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceAccessRuleString
+```
+Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -TenantId <String>
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +84,21 @@ PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -
 ```
 
 This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
+
+### Example 5: Remove a resource access rule with TenantId and ResourceId.
+```
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"  -TenantId $tenantId -ResourceId $ResourceId
+```
+
+This command removes a resource access rule with TenantId and ResourceId.
+
+### Example 6: Remove the first 3 resource access rules from a storage account
+```
+PS C:\> (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount").ResourceAccessRules | Select-Object -First 3 | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" 
+```
+
+This command removes the first 3 resource access rules from a storage account.
+
 
 ## PARAMETERS
 
@@ -148,6 +177,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceAccessRule
+Storage Account NetworkRule ResourceAccessRules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule[]
+Parameter Sets: ResourceAccessRuleObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group contains the Storage account.
 
@@ -160,6 +204,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Storage Account ResourceAccessRule ResourceId  in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceAccessRuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Storage Account ResourceAccessRule TenantId  in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceAccessRuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

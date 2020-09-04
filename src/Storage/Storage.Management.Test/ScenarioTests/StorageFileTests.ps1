@@ -129,7 +129,7 @@ function Test-ShareSoftDelete
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$shareName1 = "share1"+ $rgname
 		$shareName2 = "share2"+ $rgname
@@ -230,7 +230,7 @@ function Test-StorageFileShareGetUsage
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$shareName = "share"+ $rgname
 
@@ -285,7 +285,7 @@ function Test-FileServiceProperties
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-         $loc = Get-ProviderLocation_Canary ResourceManagement;
+        # $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
