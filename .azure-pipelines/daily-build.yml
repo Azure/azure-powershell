@@ -12,10 +12,10 @@ trigger: none
 
 strategy:
   matrix:
-    # Windows PS 5.1.14:
-    #   Platform_Name: 'Windows'
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: '5.1.14'
+    Windows PS 5.1.14:
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
+      PSVersion: '5.1.14'
     # Windows PS 6.2.4:
     #   IMAGE_NAME: 'vs2017-win2016'
     #   PSVersion: 6.2.4
@@ -41,6 +41,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $PSVersionTable
+      
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
