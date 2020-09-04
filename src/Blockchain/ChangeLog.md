@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue https://github.com/Azure/azure-powershell/issues/12707
 
 ## Version 0.1.0
 * the first preview release
