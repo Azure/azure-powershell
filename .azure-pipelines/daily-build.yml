@@ -126,61 +126,61 @@ steps:
 # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
 # #     arguments: '-Reverse'
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "Az modules removed."
+      }
 
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
 
-# - task: PowerShell@2
-#   displayName: Update Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of az
-#       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+- task: PowerShell@2
+  displayName: Update Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Get previous version of az
+      $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:',$previousVersion
+      if($versions.Count -ge 2){
+        # Install previous version of Az
+        $previousVersion = $versions[1]
+        Write-Host '$previousVersion:',$previousVersion
 
-#         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
-#         #Update Az
-#         Update-Module -Name Az -Scope CurrentUser -Force
+        #Update Az
+        Update-Module -Name Az -Scope CurrentUser -Force
         
-#         # Check Az
-#         Write-Host "Get latest version of Az"
-#         Get-Module -Name Az.* -ListAvailable
+        # Check Az
+        Write-Host "Get latest version of Az"
+        Get-Module -Name Az.* -ListAvailable
 
-#         # Check version
-#         Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-#         $azVersion = (get-module Az).Version
-#         if($azVersion -ne $versions[0]){
-#           throw "Update Az failed"
-#         }
+        # Check version
+        Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+        $azVersion = (get-module Az).Version
+        if($azVersion -ne $versions[0]){
+          throw "Update Az failed"
+        }
         
-#         # Reuse connected account and select subscription for test
-#         Enable-AzureRmAlias
-#         Set-AzContext -Subscription "Azure SDK Powershell Test"
-#       }
+        # Reuse connected account and select subscription for test
+        Enable-AzureRmAlias
+        Set-AzContext -Subscription "Azure SDK Powershell Test"
+      }
 
 # # - task: PowerShell@2
 # #   displayName: Run Smoke Test 
@@ -193,123 +193,123 @@ steps:
 # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
 # #     arguments: '-Reverse'
     
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#          Write-Host "Removing Az modules..."
-#          $modules.Path | ForEach-Object { 
-#          $dirctory = $_ | Split-Path | Split-Path
-#          if(Test-Path $dirctory ){
-#            Remove-Item –path $dirctory –recurse -force
-#          }
-#         }
-#         Write-Host "Az modules removed."
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+         Write-Host "Removing Az modules..."
+         $modules.Path | ForEach-Object { 
+         $dirctory = $_ | Split-Path | Split-Path
+         if(Test-Path $dirctory ){
+           Remove-Item –path $dirctory –recurse -force
+         }
+        }
+        Write-Host "Az modules removed."
+      }
 
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
     
-# - task: PowerShell@2
-#   displayName: Install an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       Write-Host "Installing Az.Compute..."
-#       Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
-#       Get-AzVM
+- task: PowerShell@2
+  displayName: Install an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Installing Az.Compute..."
+      Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
+      Get-AzVM
 
-#       # Check version
-#       $azComputeVersion = (Get-Module Az.Compute).Version
-#       if(!$azComputeVersion){
-#         throw "No Az.Compute is installed"
-#       }
+      # Check version
+      $azComputeVersion = (Get-Module Az.Compute).Version
+      if(!$azComputeVersion){
+        throw "No Az.Compute is installed"
+      }
 
-# - task: PowerShell@2
-#   displayName: Update an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of Az.Compute
-#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+- task: PowerShell@2
+  displayName: Update an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Get previous version of Az.Compute
+      $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az.Compute
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:', $previousVersion
-#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+      if($versions.Count -ge 2){
+        # Install previous version of Az.Compute
+        $previousVersion = $versions[1]
+        Write-Host '$previousVersion:', $previousVersion
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
-#         #Update Az.Compute
-#         Update-Module -Name Az.Compute -Scope CurrentUser -Force
-#         Write-Host "Installed latest version of Az.Compute"
+        #Update Az.Compute
+        Update-Module -Name Az.Compute -Scope CurrentUser -Force
+        Write-Host "Installed latest version of Az.Compute"
 
-#         # Check Az.Compute
-#         Get-AzVM
+        # Check Az.Compute
+        Get-AzVM
         
-#         # Check version
-#         $azComputeVersion = (Get-Module Az.Compute).Version | 
-#         %{[system.version]$_} | Sort -Descending | %{[System.String]$_}
-#         if($azComputeVersion -ne $versions[0]){
-#           throw "Update Az.Compute failed"
-#         }
-#       }
+        # Check version
+        $azComputeVersion = (Get-Module Az.Compute).Version | 
+        %{[system.version]$_} | Sort -Descending | %{[System.String]$_}
+        if($azComputeVersion -ne $versions[0]){
+          throw "Update Az.Compute failed"
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "Az modules removed."
+      }
       
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
 
-# - task: PowerShell@2
-#   displayName: Install Az on top of an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of Az.Compute
-#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+- task: PowerShell@2
+  displayName: Install Az on top of an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Get previous version of Az.Compute
+      $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az.Compute        
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:', $previousVersion
-#         Write-Host "Installed previous version of Az.Compute"
+      if($versions.Count -ge 2){
+        # Install previous version of Az.Compute        
+        $previousVersion = $versions[1]
+        Write-Host '$previousVersion:', $previousVersion
+        Write-Host "Installed previous version of Az.Compute"
 
-#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
-#         #Install Az
-#         Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force
+        #Install Az
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force
         
-#         Write-Host "Installed latest version of Az"
-#         Get-AzVM
-#         Get-Module
+        Write-Host "Installed latest version of Az"
+        Get-AzVM
+        Get-Module
 
-#         # Check version
-#         $azComputeVersion = (Get-Module Az.Compute).Version
-#         if($azComputeVersion -ne $versions[0]){
-#           throw "Install Az on top of Az.Compute failed"
-#         }
-#       }
+        # Check version
+        $azComputeVersion = (Get-Module Az.Compute).Version
+        if($azComputeVersion -ne $versions[0]){
+          throw "Install Az on top of Az.Compute failed"
+        }
+      }
 
 - task: PowerShell@2
   displayName: Clean Az Modules
