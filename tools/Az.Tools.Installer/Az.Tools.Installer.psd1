@@ -54,7 +54,9 @@
     RequiredModules = @(@{ModuleName = 'PowerShellGet'; ModuleVersion = '2.1.3'; })
     
     # Assemblies that must be loaded prior to importing this module
-    #RequiredAssemblies = ''
+    RequiredAssemblies = @(
+        '.\assembly\Microsoft.ApplicationInsights.2.12.0\Microsoft.ApplicationInsights.dll'
+    )
     
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -116,7 +118,7 @@
             # RequireLicenseAcceptance = $false
     
             # External dependent modules of this module
-            # ExternalModuleDependencies = @()
+            ExternalModuleDependencies = @('PowerShellGet')
     
         } # End of PSData hashtable
     
