@@ -12,9 +12,24 @@ Stops replication for the migrated server.
 
 ## SYNTAX
 
+### ByNameVMwareCbt (Default)
+```
+Remove-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByIDVMwareCbt
 ```
 Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>] [-ForceRemove <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByInputObjectVMwareCbt
+```
+Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +102,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Specifies the machine object of the replicating server.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Parameter Sets: ByInputObjectVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+Specifies the machine name of the replicating server.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -117,6 +163,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectName
+Specifies the migrate project name of the replicating server.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the resource group of the replicating server.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -138,7 +214,7 @@ The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByIDVMwareCbt
 Aliases:
 
 Required: True
@@ -191,6 +267,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
+  - `[Location <String>]`: Resource Location
+  - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
+  - `[CurrentJobName <String>]`: The job name.
+  - `[CurrentJobStartTime <DateTime?>]`: The start time of the job.
+  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
 
 ## RELATED LINKS
 

@@ -12,9 +12,29 @@ Retrieves the details of the replicating server.
 
 ## SYNTAX
 
+### GetByName (Default)
 ```
 Get-AzMigrateReplicationItem -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GetByID
+```
+Get-AzMigrateReplicationItem -TargetObjectID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzMigrateReplicationItem -InputObject <IMigrationItem> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListByName
+```
+Get-AzMigrateReplicationItem -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -66,12 +86,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+OData filter options.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Specifies the machine object of the replicating server.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Parameter Sets: GetByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MachineName
 Specifies the server for which the details needs to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByName
 Aliases:
 
 Required: True
@@ -101,7 +152,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByName, ListByName
 Aliases:
 
 Required: True
@@ -116,10 +167,25 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByName, ListByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+The pagination token.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByName
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,6 +203,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetObjectID
+Specifies the replicating server.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByID
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -184,6 +265,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
+  - `[Location <String>]`: Resource Location
+  - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
+  - `[CurrentJobName <String>]`: The job name.
+  - `[CurrentJobStartTime <DateTime?>]`: The start time of the job.
+  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
 
 ## RELATED LINKS
 

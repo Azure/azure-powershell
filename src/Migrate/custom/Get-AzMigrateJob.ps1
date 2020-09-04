@@ -21,15 +21,39 @@ The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
-function Get-AzmigrateJob {
+function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='GetByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='GetByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the job id for which the details needs to be retrieved.
         ${JobID},
+
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # The name of the resource group where the recovery services vault is present.
+        ${ResourceGroupName},
+
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # The name of the migrate project.
+        ${ProjectName},
+
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Job identifier
+        ${JobName},
+
+        [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob]
+        # Specifies the job object of the replicating server.
+        ${InputObject},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

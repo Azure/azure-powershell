@@ -12,7 +12,7 @@ Starts replication for the specified server.
 
 ## SYNTAX
 
-### DefaultUser (Default)
+### ByIdDefaultUser (Default)
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -OSDiskID <String>
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
@@ -22,15 +22,36 @@ New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <License
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PowerUser
+### ByIdPowerUser
 ```
 New-AzMigrateServerReplication -DisksToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
  -PerformAutoResync <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
  -TargetSubnetName <String> -TargetSubscriptionId <String> -TargetVMName <String> -TargetVMSize <String>
  -VMwareMachineId <String> [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
  [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByNameDefaultUser
+```
+New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
+ -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetSubscriptionId <String>
+ -TargetVMName <String> -TargetVMSize <String> [-PerformAutoResync <String>] [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByNamePowerUser
+```
+New-AzMigrateServerReplication -DisksToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
+ -MachineName <String> -PerformAutoResync <String> -ProjectName <String> -ResourceGroupName <String>
+ -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
+ -TargetSubscriptionId <String> -TargetVMName <String> -TargetVMSize <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +115,7 @@ To construct, see NOTES section for DISKSTOINCLUDE properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]
-Parameter Sets: PowerUser
+Parameter Sets: ByIdPowerUser, ByNamePowerUser
 Aliases:
 
 Required: True
@@ -109,7 +130,7 @@ Specifies the type of disks to be used for the Azure VM.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType
-Parameter Sets: DefaultUser
+Parameter Sets: ByIdDefaultUser, ByNameDefaultUser
 Aliases:
 
 Required: True
@@ -125,6 +146,21 @@ Specifies if Azure Hybrid benefit is applicable for the source server to be migr
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.LicenseType
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+Specifies the discovered machine name of the discovered server to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameDefaultUser, ByNamePowerUser
 Aliases:
 
 Required: True
@@ -154,7 +190,7 @@ Specifies the Operating System disk for the source server to be migrated.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultUser
+Parameter Sets: ByIdDefaultUser, ByNameDefaultUser
 Aliases:
 
 Required: True
@@ -170,6 +206,36 @@ Specifies if replication be auto-repaired in case change tracking is lost for th
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectName
+Specifies the migrate project name of the discovered server to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameDefaultUser, ByNamePowerUser
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the resource group of the discovered server to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameDefaultUser, ByNamePowerUser
 Aliases:
 
 Required: True
@@ -334,7 +400,7 @@ Specifies the machine ID of the discovered server to be migrated.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByIdDefaultUser, ByIdPowerUser
 Aliases:
 
 Required: True
@@ -349,7 +415,7 @@ Account id.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerUser
+Parameter Sets: ByNameDefaultUser, ByNamePowerUser
 Aliases:
 
 Required: False

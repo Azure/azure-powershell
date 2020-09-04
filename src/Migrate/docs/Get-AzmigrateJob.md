@@ -12,9 +12,23 @@ Retrieves the status of an Azure Migrate job.
 
 ## SYNTAX
 
+### GetByName (Default)
+```
+Get-AzmigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GetByID
 ```
 Get-AzmigrateJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzmigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,12 +77,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Specifies the job object of the replicating server.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
+Parameter Sets: GetByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JobID
 Specifies the job id for which the details needs to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByID
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobName
+Job identifier
+
+```yaml
+Type: System.String
+Parameter Sets: GetByName
 Aliases:
 
 Required: True
@@ -87,6 +132,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectName
+The name of the migrate project.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,6 +226,55 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
+  - `[Location <String>]`: Resource Location
+  - `[ActivityId <String>]`: The activity id.
+  - `[AllowedAction <String[]>]`: The Allowed action the job.
+  - `[CustomDetailAffectedObjectDetail <IJobDetailsAffectedObjectDetails>]`: The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[EndTime <DateTime?>]`: The end time.
+  - `[Error <IJobErrorDetails[]>]`: The errors.
+    - `[CreationTime <DateTime?>]`: The creation time of job error.
+    - `[ErrorLevel <String>]`: Error level of error.
+    - `[ProviderErrorDetailErrorCode <Int32?>]`: The Error code.
+    - `[ProviderErrorDetailErrorId <String>]`: The Provider error Id.
+    - `[ProviderErrorDetailErrorMessage <String>]`: The Error message.
+    - `[ProviderErrorDetailPossibleCaus <String>]`: The possible causes for the error.
+    - `[ProviderErrorDetailRecommendedAction <String>]`: The recommended action to resolve the error.
+    - `[ServiceErrorDetailActivityId <String>]`: Activity Id.
+    - `[ServiceErrorDetailCode <String>]`: Error code.
+    - `[ServiceErrorDetailMessage <String>]`: Error message.
+    - `[ServiceErrorDetailPossibleCaus <String>]`: Possible causes of error.
+    - `[ServiceErrorDetailRecommendedAction <String>]`: Recommended action to resolve error.
+    - `[TaskId <String>]`: The Id of the task.
+  - `[FriendlyName <String>]`: The DisplayName.
+  - `[ScenarioName <String>]`: The ScenarioName.
+  - `[StartTime <DateTime?>]`: The start time.
+  - `[State <String>]`: The status of the Job. It is one of these values - NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
+  - `[StateDescription <String>]`: The description of the state of the Job. For e.g. - For Succeeded state, description can be Completed, PartiallySucceeded, CompletedWithInformation or Skipped.
+  - `[TargetInstanceType <String>]`: The type of the affected object which is of {Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType} class.
+  - `[TargetObjectId <String>]`: The affected Object Id.
+  - `[TargetObjectName <String>]`: The name of the affected object.
+  - `[Task <IAsrTask[]>]`: The tasks.
+    - `[AllowedAction <String[]>]`: The state/actions applicable on this task.
+    - `[CustomDetailInstanceType <String>]`: The type of task details.
+    - `[EndTime <DateTime?>]`: The end time.
+    - `[Error <IJobErrorDetails[]>]`: The task error details.
+    - `[FriendlyName <String>]`: The name.
+    - `[GroupTaskCustomDetailChildTask <IAsrTask[]>]`: The child tasks.
+    - `[GroupTaskCustomDetailInstanceType <String>]`: The type of task details.
+    - `[Name <String>]`: The unique Task name.
+    - `[StartTime <DateTime?>]`: The start time.
+    - `[State <String>]`: The State. It is one of these values - NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
+    - `[StateDescription <String>]`: The description of the task state. For example - For Succeeded state, description can be Completed, PartiallySucceeded, CompletedWithInformation or Skipped.
+    - `[TaskId <String>]`: The Id.
+    - `[TaskType <String>]`: The type of task. Details in CustomDetails property depend on this type.
 
 ## RELATED LINKS
 

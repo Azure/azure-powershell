@@ -45,7 +45,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
+        [System.String
         # Specifies the target Azure region for server migrations.
         ${TargetRegion},
     

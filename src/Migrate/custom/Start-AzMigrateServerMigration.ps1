@@ -23,13 +23,37 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterse
 #>
 function Start-AzMigrateServerMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByNameVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the resource group of the replicating server.
+        ${ResourceGroupName},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the migrate project name of the replicating server.
+        ${ProjectName},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the machine name of the replicating server.
+        ${MachineName},
+
+        [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+        # Specifies the machine object of the replicating server.
+        ${InputObject},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

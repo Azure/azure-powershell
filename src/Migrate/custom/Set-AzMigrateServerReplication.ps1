@@ -23,13 +23,37 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserve
 #>
 function Set-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByNameVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the replcating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the resource group of the replicating server to be updated.
+        ${ResourceGroupName},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the migrate project name of the replicating server to be updated.
+        ${ProjectName},
+
+        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the machine name of the replicating server to be updated.
+        ${MachineName},
+
+        [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+        # Specifies the machine object of the replicating server to be updated.
+        ${InputObject},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
