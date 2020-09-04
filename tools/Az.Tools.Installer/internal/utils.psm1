@@ -96,14 +96,49 @@ function remove_installed_module {
         ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
         [String]
-        ${Name}
+        ${Name},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [Switch]
+        ${AllVersion},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        ${RequiredVersion}
     )
 
     process {
         Get-InstalledModule -Name $Name -ErrorAction SilentlyContinue | Foreach-Object {
-            $name = $_.Name
-            Write-Debug "Remove all previous versions of Module: $name"
-            $_ | Uninstall-Module -AllVersions -AllowPrerelease
-        } #| Uninstall-Module -AllVersions -AllowPrerelease
+            if ($PSBoundParameters.ContainsKey('AllVersion')) {
+                $name = $_.Name
+                Write-Debug "Remove all versions of Module: $name"
+                $_ | Uninstall-Module -AllVersions -AllowPrerelease
+            } elseif ($PSBoundParameters.ContainsKey('RequiredVersion')) {
+                $name = $_.Name
+                $version = $_.Version
+                Write-Debug "Remove Module: $name $version"
+                Uninstall-Module -AllowPrerelease -Name $name -RequiredVersion $version
+            } else {
+                $name = $_.Name
+                Write-Debug "Remove Module: $name $version"
+                $_ | Uninstall-Module -AllowPrerelease
+            }
+        }
     }
+}
+
+function Get-FullAzName {
+    [OutputType([String[]])]
+    [CmdletBinding()]
+    param(
+        [String[]]
+        ${Name}
+    )
+
+    $output = @()
+    $Name | Foreach-Object {$output += "Az.$_"}
+    
+    Write-Output $output
 }
