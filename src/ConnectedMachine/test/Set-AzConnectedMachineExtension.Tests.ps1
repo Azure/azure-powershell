@@ -108,7 +108,6 @@ Describe 'Set-AzConnectedMachineExtension' {
         $res.Setting["commandToExecute"] = "updated"
         $update = $res | Set-AzConnectedMachineExtension @splat
         $update.Name | Should -Be $extensionName
-        $update.ProvisioningState | Should -Be "Succeeded"
         $update.Setting["commandToExecute"] | Should -Be "updated"
     }
 }
