@@ -56,7 +56,9 @@ steps:
         Write-Host "Removing Az modules..."
         $modules.Path | ForEach-Object { 
           $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
         }
         Write-Host "Az modules removed."
       }
@@ -71,7 +73,9 @@ steps:
         Write-Host "Removing AzureRM modules..."
         $modules.Path | ForEach-Object { 
           $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
         }
         Write-Host "AzureRM modules removed."
       }
@@ -95,16 +99,19 @@ steps:
       }    
 
       Write-Host "Installing Az..."
-      Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force 
+      Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
       
+      # Check version
+      Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+      $azVersion = (get-module Az).Version
+
       # Check Az
       Get-Module -Name Az.* -ListAvailable
 
-      # Check version
-      $azVersions = Get-Module -Name Az.* -ListAvailable
-
-      if(!$azVersions){
+      if(!$azVersion){
         throw "No Az is installed"
+      }else{
+        Remove-Module Az
       }
       
 - task: PowerShell@2
@@ -141,7 +148,9 @@ steps:
         Write-Host "Removing Az modules..."
         $modules.Path | ForEach-Object { 
           $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
         }
         Write-Host "Az modules removed."
       }
@@ -155,17 +164,15 @@ steps:
     targetType: 'inline'
     script: |
       # Get previous version of az
-      $versions = (find-module az -Repository $(GALLERY_NAME) -AllVersions).Version |
-       %{[system.version]$_} | 
-       sort -Descending -Top 2 | 
-       %{[System.String]$_}
+      $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:',$previousVersion
 
-        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
         #Update Az
         Update-Module -Name Az
@@ -175,8 +182,8 @@ steps:
         Get-Module -Name Az.* -ListAvailable
 
         # Check version
-        $azVersion = (get-module Az -ListAvailable).Version | 
-        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+        $azVersion = (get-module Az).Version | %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
         if($azVersion -ne $versions[0]){
           throw "Update Az failed"
         }
@@ -208,7 +215,9 @@ steps:
          Write-Host "Removing Az modules..."
          $modules.Path | ForEach-Object { 
          $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+         if(Test-Path $dirctory ){
+           Remove-Item –path $dirctory –recurse -force
+         }
         }
         Write-Host "Az modules removed."
       }
@@ -222,7 +231,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Installing Az.Compute..."
-      Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -AllowClobber -Force 
+      Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
       Get-AzVM
 
       # Check version
@@ -238,15 +247,13 @@ steps:
     script: |
       # Get previous version of Az.Compute
       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-       %{[system.version]$_} | 
-       sort -Descending -Top 2 | 
-       %{[System.String]$_}
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
       if($versions.Count -ge 2){
         # Install previous version of Az.Compute
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:', $previousVersion
-        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
         #Update Az.Compute
         Update-Module -Name Az.Compute
@@ -257,7 +264,7 @@ steps:
         
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
-        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        %{[system.version]$_} | Sort -Descending | %{[System.String]$_}
         if($azComputeVersion -ne $versions[0]){
           throw "Update Az.Compute failed"
         }
@@ -274,7 +281,9 @@ steps:
         Write-Host "Removing Az modules..."
         $modules.Path | ForEach-Object { 
           $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
         }
         Write-Host "Az modules removed."
       }
@@ -289,9 +298,7 @@ steps:
     script: |
       # Get previous version of Az.Compute
       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-       %{[system.version]$_} | 
-       sort -Descending -Top 2 | 
-       %{[System.String]$_}
+       %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
       if($versions.Count -ge 2){
         # Install previous version of Az.Compute        
@@ -299,10 +306,10 @@ steps:
         Write-Host '$previousVersion:', $previousVersion
         Write-Host "Installed previous version of Az.Compute"
 
-        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
         #Install Az
-        Install-Module -Name Az -Repository $(GALLERY_NAME) -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force
         
         Write-Host "Installed latest version of Az"
         Get-AzVM
@@ -310,8 +317,8 @@ steps:
 
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
-        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
-        if($azComputeVersion -ne $versions[0]){
+        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+        if($azComputeVersion[0] -ne $versions[0]){
           throw "Install Az on top of Az.Compute failed"
         }
       }
@@ -327,7 +334,9 @@ steps:
         Write-Host "Removing Az modules..."
         $modules.Path | ForEach-Object { 
           $dirctory = $_ | Split-Path | Split-Path
-          Remove-Item –path $dirctory –recurse -force
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
         }
         Write-Host "Az modules removed."
       }
@@ -343,22 +352,22 @@ steps:
       # Get previous version of Az
       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
        %{[system.version]$_} | 
-       sort -Descending -Top 2 | 
+       Sort-Object -Descending | 
        %{[System.String]$_}
 
       if($versions.Count -ge 2){
         # Install previous version of Az
         $previousVersion = $versions[1]
         Write-Host '$previousVersion:', $previousVersion
-        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -AllowClobber -Force
+        Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
         Write-Host 'Installed the previous version of Az'
 
         # Get previous version of Az.Compute
         $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version | 
-        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
+        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
 
         #Install Az.Compute
-        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -AllowClobber -Force        
+        Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force        
         
         Write-Host "Installed latest Az.Compute"
         Get-AzVM
@@ -366,8 +375,8 @@ steps:
 
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
-        %{[system.version]$_} | sort -Descending -Top 1 | %{[System.String]$_}
-        if([System.Version]$azComputeVersion -le [System.Version]$azComputePreviousVersion){
+        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+        if([System.Version]$azComputeVersion[0] -le [System.Version]$azComputePreviousVersion[0]){
           throw "Install Az on top of Az.Compute failed"
         }
       }
