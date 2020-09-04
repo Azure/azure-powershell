@@ -12,10 +12,10 @@ trigger: none
 
 strategy:
   matrix:
-    Windows PS 5.1.14:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: '5.1.14'
+    # Windows PS 5.1.14:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: '5.1.14'
     # Windows PS 6.2.4:
     #   IMAGE_NAME: 'vs2017-win2016'
     #   PSVersion: 6.2.4
@@ -26,10 +26,10 @@ strategy:
       Platform_Name: 'Linux'
       Image_Name: 'ubuntu-18.04'
       PSVersion: '7.0.3'
-    MacOS PS 7.0.3:
-      Platform_Name: 'MacOS'
-      Image_Name: 'macOS-10.14'
-      PSVersion: '7.0.3'
+    # MacOS PS 7.0.3:
+    #   Platform_Name: 'MacOS'
+    #   Image_Name: 'macOS-10.14'
+    #   PSVersion: '7.0.3'
   maxParallel: 3
 
 pool:
@@ -253,7 +253,7 @@ steps:
         
         # Check version
         $azComputeVersion = (Get-Module Az.Compute).Version | 
-        %{[system.version]$_} | Sort -Descending | %{[System.String]$_}
+        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
         if($azComputeVersion -ne $versions[0]){
           throw "Update Az.Compute failed"
         }
