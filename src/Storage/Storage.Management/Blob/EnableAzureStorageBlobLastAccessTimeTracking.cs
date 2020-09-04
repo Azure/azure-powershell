@@ -15,13 +15,10 @@
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Storage;
     using Microsoft.Azure.Management.Storage.Models;
-    using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     /// <summary>
     /// Modify Azure Storage service properties
@@ -71,14 +68,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
-        ////[Parameter(Mandatory = true, HelpMessage = "Sets the field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.")]
-        //[Parameter(Mandatory = false, HelpMessage = "Sets the field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.")]
-        //public int TrackingGranularityInDay { get; set; }
-
-        //[Parameter(Mandatory = false, HelpMessage = "Sets an array of predefined supported blob types, like 'blockBlob'.")]
-        //[ValidateNotNullOrEmpty]
-        //public string[] BlobType { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
@@ -97,13 +86,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = this.StorageClient.BlobServices.GetServiceProperties( this.ResourceGroupName, this.StorageAccountName);
+                BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
                 serviceProperties.LastAccessTimeTrackingPolicy = new LastAccessTimeTrackingPolicy();
                 serviceProperties.LastAccessTimeTrackingPolicy.Enable = true;
-                //serviceProperties.LastAccessTimeTrackingPolicy.Name = "AccessTimeTracking";
-                //serviceProperties.LastAccessTimeTrackingPolicy.TrackingGranularityInDays = this.TrackingGranularityInDay;
-                //serviceProperties.LastAccessTimeTrackingPolicy.BlobType = new string[] { "blockblob" };
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 

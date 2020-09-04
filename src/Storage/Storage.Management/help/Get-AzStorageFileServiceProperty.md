@@ -39,9 +39,11 @@ The **Get-AzStorageFileServiceProperty** cmdlet gets the service properties for 
 ```powershell
 PS C:\> Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 
-StorageAccountName ResourceGroupName ShareDeleteRetentionPolicy.Enabled ShareDeleteRetentionPolicy.Days
------------------- ----------------- ---------------------------------- -------------------------------
-mystorageaccount   myresourcegroup   True                               5
+StorageAccountName                        : mystorageaccount
+ResourceGroupName                         : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled        : 
+ShareDeleteRetentionPolicy.Days           : 
+ProtocolSettings.Smb.Multichannel.Enabled : False
 ```
 
 This command gets the File services property of a specified Storage Account.
@@ -124,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

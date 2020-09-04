@@ -51,7 +51,8 @@ ProtocolSettings.Smb.Multichannel.Enabled : False
 
 This command enables File share softdelete delete with retention days as 5
 
-### Example 1: Enable Smb Multichannel
+### Example 2: Enable Smb Multichannel
+```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
 
 StorageAccountName                        : mystorageaccount
