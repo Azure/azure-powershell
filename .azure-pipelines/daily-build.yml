@@ -184,9 +184,11 @@ steps:
         # Check version
         Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
         $azVersion = (get-module Az).Version | %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+        Export-Module Az
         if($azVersion -ne $versions[0]){
           throw "Update Az failed"
         }
+
 
         # Reuse connected account and select subscription for test
         Enable-AzureRmAlias
