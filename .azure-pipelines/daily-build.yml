@@ -70,47 +70,47 @@ steps:
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
    
-# - task: PowerShell@2
-#   displayName: Install Az Modules from $(GALLERY_NAME)
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $gallery = '$(GALLERY_NAME)'
-#       if( $gallery -eq 'PSGallery' ){
-#         Write-Host "Setting $(GALLERY_NAME) Trusted..."
-#         Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
-#       }
+- task: PowerShell@2
+  displayName: Install Az Modules from $(GALLERY_NAME)
+  inputs:
+    targetType: 'inline'
+    script: |
+      $gallery = '$(GALLERY_NAME)'
+      if( $gallery -eq 'PSGallery' ){
+        Write-Host "Setting $(GALLERY_NAME) Trusted..."
+        Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
+      }
 
-#       if( $gallery -eq 'TestGallery' ){
-#         Write-Host "Registering $(GALLERY_NAME)..."
-#         Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
-#       }    
+      if( $gallery -eq 'TestGallery' ){
+        Write-Host "Registering $(GALLERY_NAME)..."
+        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+      }    
 
-#       Write-Host "Installing Az..."
-#       Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
+      Write-Host "Installing Az..."
+      Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
       
-#       # Check version
-#       Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-#       $azVersion = (get-module Az).Version
+      # Check version
+      Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+      $azVersion = (get-module Az).Version
 
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
 
-#       if(!$azVersion){
-#         throw "No Az is installed"
-#       }
+      if(!$azVersion){
+        throw "No Az is installed"
+      }
       
-# - task: PowerShell@2
-#   displayName: Connect AzAccount 
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       Write-Host "Connecting Az.Account..."
-#       $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
-#       $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
-#       Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
-#       Set-AzContext -Subscription "Azure SDK Powershell Test"
-#       Enable-AzureRmAlias
+- task: PowerShell@2
+  displayName: Connect AzAccount 
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Connecting Az.Account..."
+      $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
+      $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
+      Set-AzContext -Subscription "Azure SDK Powershell Test"
+      Enable-AzureRmAlias
 
 # # - task: PowerShell@2
 # #   displayName: Run Smoke Test 
@@ -308,26 +308,26 @@ steps:
 #         }
 #       }
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "Az modules removed."
+      }
 
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
 
 - task: PowerShell@2
   displayName: Install an individual module on top of Az
