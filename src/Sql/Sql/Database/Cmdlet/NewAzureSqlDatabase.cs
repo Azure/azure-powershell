@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the sample schema to apply when creating this database.")]
-        [ValidateSet(Management.Sql.Models.SampleName.AdventureWorksLT)]
+        [ValidateSet("AdventureWorksLT")]
         public string SampleName { get; set; }
 
         /// <summary>
@@ -156,8 +156,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(
-            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
-            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+            "LicenseIncluded",
+            "BasePrice")]
         public string LicenseType { get; set; }
 
         /// <summary>

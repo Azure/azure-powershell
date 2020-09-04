@@ -173,8 +173,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter(
-            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
-            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+            "LicenseIncluded",
+            "BasePrice")]
         public string LicenseType { get; set; }
 
         /// <summary>

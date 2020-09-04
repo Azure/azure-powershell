@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.44.0-preview" />
+    <!-- <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.44.0-preview" /> -->
+    <Reference Include="D:\git\azure-sdk-for-net\artifacts\obj\Microsoft.Azure.Management.Sql\Debug\net461\Microsoft.Azure.Management.Sql.dll" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
