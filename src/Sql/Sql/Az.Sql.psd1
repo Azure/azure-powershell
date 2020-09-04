@@ -259,7 +259,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy', 
                'Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy', 
                'Disable-AzSqlServerActiveDirectoryOnlyAuthentication', 
-               'Invoke-AzSqlInstanceFailover'
+               'Invoke-AzSqlInstanceFailover',
+               'Enable-AzSqlServerActiveDirectoryOnlyAuthentication',
+               'Get-AzSqlServerActiveDirectoryOnlyAuthentication'
 
 # Variables to export from this module
 # VariablesToExport = @()
