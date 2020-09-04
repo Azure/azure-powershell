@@ -14,24 +14,25 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVpnGateway : PSTopLevelResource
+    public class PSCustomIpPrefix : PSTopLevelResource
     {
-        public List<PSVpnConnection> Connections { get; set; }
+        public string Cidr { get; set; }
 
-        public PSBgpSettings BgpSettings { get; set; }
+        public string CommissionedState { get; set; }
 
-        [Ps1Xml(Label = "Virtual Hub", Target = ViewControl.Table, ScriptBlock = "$_.VirtualHub.Id")]
-        public PSResourceId VirtualHub { get; set; }
+        public List<PSResourceId> PublicIpPrefixes { get; set; }
 
-        [Ps1Xml(Label = "Scale Unit", Target = ViewControl.Table)]
-        public int VpnGatewayScaleUnit { get; set; }
+        public List<string> Zones { get; set; }
 
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        public List<PSVpnGatewayIpConfiguration> IpConfigurations { get; set;} 
+        [JsonIgnore]
+        public string PublicIpPrefixesText
+        {
+            get { return JsonConvert.SerializeObject(PublicIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

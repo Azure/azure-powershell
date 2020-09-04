@@ -394,6 +394,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpPrefixTag>();
                 cfg.CreateMap<MNM.ReferencedPublicIpAddress, CNM.PSPublicIpAddress>();
 
+                // CustomIpPrefix
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSCustomIpPrefix, MNM.CustomIpPrefix>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.CustomIpPrefix, CNM.PSCustomIpPrefix>();
+
                 // NetworkInterface
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
@@ -1081,6 +1088,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTableV2>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRouteV2>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSVpnGatewayIpConfiguration, MNM.VpnGatewayIpConfiguration>();
                 cfg.CreateMap<CNM.PSVpnSiteLinkConnection, MNM.VpnSiteLinkConnection>();
                 cfg.CreateMap<CNM.PSVpnSiteLink, MNM.VpnSiteLink>();
                 cfg.CreateMap<CNM.PSVpnLinkProviderProperties, MNM.VpnLinkProviderProperties>();
@@ -1114,6 +1122,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualHubRouteTableV2, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRouteV2, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
+                cfg.CreateMap<MNM.VpnGatewayIpConfiguration, CNM.PSVpnGatewayIpConfiguration>();
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
                 cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>().AfterMap((src, dest) =>
                 {
