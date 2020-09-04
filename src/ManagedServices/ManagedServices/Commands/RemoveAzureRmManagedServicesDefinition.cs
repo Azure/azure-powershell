@@ -12,25 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Management.Automation;
-
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
-    [Cmdlet(
-    VerbsCommon.Remove,
-    Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
-    DefaultParameterSetName = DefaultParameterSet,
-    SupportsShouldProcess = true), OutputType(typeof(void))]
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
 
+    [Cmdlet(
+        VerbsCommon.Remove,
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
+        DefaultParameterSetName = DefaultParameterSet,
+        SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
         protected const string ByInputObjectParameterSet = "ByInputObject";
+
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration definition created.")]
+        [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
+        public string Scope { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
@@ -40,13 +45,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [ValidateNotNull]
         public PSRegistrationDefinition InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            string scope = null;
+            string scope = this.GetDefaultScope();
             string definitionId = null;
+
             if (this.IsParameterBound(x => x.Name))
             {
                 if (!this.Name.IsGuid())
@@ -54,20 +57,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     throw new ApplicationException("Name must be a valid GUID.");
                 }
 
-                scope = this.GetDefaultScope();
-                definitionId = this.Name;
+                definitionId = (new Guid(this.Name)).ToString();
             }
-            else if (this.IsParameterBound(x => x.InputObject))
+
+            if (this.IsParameterBound(x => x.Scope))
             {
-                definitionId = this.InputObject.Id.GetResourceName();
-                if(!ManagedServicesUtility.TryParseDefinitionScopeFromResourceId(this.InputObject.Id, out scope))
+                scope = this.Scope;
+            }
+
+            if (this.IsParameterBound(x => x.InputObject))
+            {
+                if (!ManagedServicesUtility.TryParseDefinitionScopeFromResourceId(this.InputObject.Id, out scope) &&
+                    string.IsNullOrWhiteSpace(scope))
                 {
                     throw new ApplicationException($"Unable to parse the scope from [{this.InputObject.Id}]");
                 }
+
+                if (string.IsNullOrWhiteSpace(this.InputObject.Name) || !this.InputObject.Name.IsGuid())
+                {
+                    throw new ApplicationException("Invalid registration definition name provided in input object.");
+                }
+
+                definitionId = this.InputObject.Name;
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                $"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions{definitionId}",
+                $"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{definitionId}",
                 () =>
                 {
                     this.PSManagedServicesClient.RemoveRegistrationDefinition(

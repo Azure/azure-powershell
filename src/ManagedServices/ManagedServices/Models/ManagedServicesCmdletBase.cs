@@ -26,9 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
     /// </summary>
     public abstract class ManagedServicesCmdletBase : AzureRMCmdlet
     {
-        public string SubscriptionScopeStringFormat = "/subscriptions/{0}";
-        public string RegistrationAssignmentFormat = "/{0}/providers/Microsoft.ManagedServices/registrationAssignments/{1}";
+        public const string SubscriptionScopeStringFormat = "/subscriptions/{0}";
+
         private PSManagedServicesClient client;
+
         public PSManagedServicesClient PSManagedServicesClient
         {
             get
@@ -45,51 +46,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
             }
         }
 
-        public string SubscriptionId
+        protected void WriteRegistrationAssignmentList(IPage<RegistrationAssignment> assignments)
         {
-            get
-            {
-                return DefaultContext.Subscription.Id;
-            }
-        }
-        protected void WriteRegistrationAssignmentList(IPage<RegistrationAssignment> assignments, string scope)
-        {
-            if (assignments != null)
-            {
-                List<PSGetRegistrationAssignment> output = new List<PSGetRegistrationAssignment>();
-                assignments.ForEach(assignment => output.Add(new PSGetRegistrationAssignment(assignment, scope)));
-                WriteObject(output, true);
-            }
+            List<PSRegistrationAssignment> output = new List<PSRegistrationAssignment>();
+            assignments?.ForEach(assignment => output.Add(new PSRegistrationAssignment(assignment)));
+            WriteObject(output, true);
         }
 
-        protected void WriteRegistrationDefinitionsList(IPage<RegistrationDefinition> definitions, string scope)
+        protected void WriteRegistrationDefinitionsList(IPage<RegistrationDefinition> definitions)
         {
-            if (definitions != null)
-            {
-                List<PSGetRegistrationDefinition> output = new List<PSGetRegistrationDefinition>();
-                definitions.ForEach(definition => output.Add(new PSGetRegistrationDefinition(definition, scope)));
-                WriteObject(output, true);
-            }
+            List<PSRegistrationDefinition> output = new List<PSRegistrationDefinition>();
+            definitions?.ForEach(definition => output.Add(new PSRegistrationDefinition(definition)));
+            WriteObject(output, true);
         }
 
         public string GetDefaultScope()
         {
-            return string.Format(this.SubscriptionScopeStringFormat, DefaultContext.Subscription.Id);
-        }
-
-        public string GetSubscriptionScope(string subscriptionId = null)
-        {
-            if (string.IsNullOrEmpty(subscriptionId))
-            {
-                return GetDefaultScope();
-            }
-
-            if (!subscriptionId.IsGuid())
-            {
-                throw new ApplicationException("subscriptionId must be a valid GUID.");
-            }
-
-            return string.Format(this.SubscriptionScopeStringFormat, subscriptionId);
+            return string.Format(ManagedServicesCmdletBase.SubscriptionScopeStringFormat, DefaultContext.Subscription.Id);
         }
     }
 }

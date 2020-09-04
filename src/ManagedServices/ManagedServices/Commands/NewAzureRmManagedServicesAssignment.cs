@@ -12,67 +12,53 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Text;
-
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
+
     // TODO (rajivnan) move strings to resources?
     [Cmdlet(
-    VerbsCommon.New,
-    Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
-    DefaultParameterSetName = DefaultParameterSet,
-    SupportsShouldProcess = true), OutputType(typeof(PSRegistrationAssignment))]
+        VerbsCommon.New,
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
+        DefaultParameterSetName = DefaultParameterSet,
+        SupportsShouldProcess = true), OutputType(typeof(PSRegistrationAssignment))]
     public class NewAzureRmManagedServicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Assignment.")]
+        [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Assignment.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
-        [Parameter(Position = 0, ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
+        [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
         [ScopeCompleter]
+        [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Definition.")]
-        [ValidateNotNullOrEmpty]
-        public string RegistrationDefinitionName { get; set; }
-
         [Parameter(ParameterSetName = ByInputObjectParameterSet, ValueFromPipeline = true, Mandatory = true, HelpMessage = "The registration definition input object.")]
+        [ValidateNotNull]
         public PSRegistrationDefinition RegistrationDefinition { get; set; }
+
+        [Parameter(ParameterSetName = DefaultParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The fully qualified resource id of the registration definition.")]
+        [ValidateNotNullOrEmpty]
+        public string RegistrationDefinitionId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public Guid RegistrationAssignmentId { get; set; } = default(Guid);
-
         public override void ExecuteCmdlet()
         {
-            string scope = this.GetDefaultScope();
-            string definitionId = String.Empty;
-
-            if (this.IsParameterBound(x => x.RegistrationDefinitionName))
-            {
-                scope = this.Scope ?? this.GetDefaultScope();
-                var subscriptionScope = scope.GetSubscriptionId().ToSubscriptionResourceId();
-
-                // registation definitions can only exist at the subscription level.
-                definitionId = $"{subscriptionScope}/providers/Microsoft.ManagedServices/registrationDefinitions/{this.RegistrationDefinitionName}";
-            }
-            else if (this.IsParameterBound(x => x.RegistrationDefinition))
-            {
-                definitionId = this.RegistrationDefinition.Id;
-                scope = this.Scope ?? this.GetDefaultScope();
-            }
+            var definitionId = String.Empty;
+            var assignmentId = Guid.NewGuid().ToString();
+            var scope = this.GetDefaultScope();
 
             if (!String.IsNullOrWhiteSpace(this.Name))
             {
@@ -81,21 +67,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     throw new ApplicationException("Name must be a valid GUID.");
                 }
 
-                this.RegistrationAssignmentId = new Guid(this.Name);
+                assignmentId = (new Guid(this.Name)).ToString();
             }
-            else
+
+            if (this.IsParameterBound(x => x.RegistrationDefinition))
             {
-                this.RegistrationAssignmentId = Guid.NewGuid();
+                definitionId = this.RegistrationDefinition.Id;
+            }
+
+            if (this.IsParameterBound(x => x.RegistrationDefinitionId))
+            {
+                definitionId = this.RegistrationDefinitionId;
+            }
+
+            if (this.IsParameterBound(x => x.Scope))
+            {
+                scope = this.Scope;
+            }
+
+            if (string.IsNullOrWhiteSpace(definitionId))
+            {
+                throw new ApplicationException("RegistrationDefinition details are required. Please provider either RegistrationDefinition or RegistrationDefinitionId parameters.");
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                 $"{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{this.RegistrationAssignmentId}",
+                $"{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentId}",
                 () =>
                 {
                     var result = this.PSManagedServicesClient.CreateOrUpdateRegistrationAssignment(
                         scope: scope,
                         registrationDefinitionId: definitionId,
-                        registrationAssignmentId: this.RegistrationAssignmentId);
+                        registrationAssignmentId: assignmentId);
 
                     WriteObject(new PSRegistrationAssignment(result), true);
                 });

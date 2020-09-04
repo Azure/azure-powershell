@@ -14,14 +14,15 @@ Creates or updates a registration assignment.
 
 ### Default (Default)
 ```
-New-AzManagedServicesAssignment [[-Scope] <String>] -RegistrationDefinitionName <String> [-Name <String>] [-AsJob]
+New-AzManagedServicesAssignment [-Name <String>] [-Scope <String>] -RegistrationDefinitionId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-New-AzManagedServicesAssignment [[-Scope] <String>] -RegistrationDefinition <PSRegistrationDefinition> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagedServicesAssignment [-Name <String>] [-Scope <String>]
+ -RegistrationDefinition <PSRegistrationDefinition> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,54 +31,73 @@ Creates or updates a registration assignment.
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzManagedServicesAssignment -RegistrationDefinitionName d4d14a4c-9b54-4dc3-b755-6d0659e0224b
-Name                                 RegistrationDefinitionId
-----                                 ------------------------
-3b3d5411-ec8c-4a52-8972-73f4952724b2 /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/d4d14a4c-9b54-4dc3-b755-6d0659e0224b
+```
+PS C:\> $definition = Get-AzManagedServicesDefinition
+PS C:\> $definition
+
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+55a89269-0347-4a9c-a778-c3f37b9f8672 /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationDefinitions/55a89269-0347-4a9c-a778-c3f37b9f8672 Succeeded
+
+PS C:\> New-AzManagedServicesAssignment -RegistrationDefinitionId /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationDefinitions/55a89269-0347-4a9c-a778-c3f37b9f8672
+
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+12b05f0f-3426-48da-9e67-738e1dbf775f /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationAssignments/12b05f0f-3426-48da-9e67-738e1dbf775f Succeeded
+
+
+PS C:\>
 ```
 
-Creates a new registration assignment given the fully qualified resource id of the registration definition.
-
+Creates a registration assignment at the default scope using the registration definition identifier.
 
 ### Example 2
-```powershell
-New-AzManagedServicesAssignment -Scope /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/resourceGroups/mygroup1 -RegistrationDefinitionName 47f471b3-ff5f-463c-8a1f-286501b01ddc
+```
+PS C:\> $auths = @(
+>>   [Microsoft.Azure.Management.ManagedServices.Models.Authorization]@{RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"; PrincipalId = "714160ec-87d5-42bb-8b17-287c0dd7417d" }
+>>  );
+PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -Authorizations $auths
+PS C:\> $definition
 
-Name                                 RegistrationDefinitionId
-----                                 ------------------------
-5aa0d921-64b8-40e8-af33-31993f0deaa8 /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/47f471b3-ff5f-463c-8a1f-286501b01ddc
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+55a89269-0347-4a9c-a778-c3f37b9f8672 /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationDefinitions/55a89269-0347-4a9c-a778-c3f37b9f8672 Succeeded
+
+
+PS C:\> New-AzManagedServicesAssignment -RegistrationDefinition $definition
+
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+b279ec53-b42f-4952-bd62-cd49982e9572 /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationAssignments/b279ec53-b42f-4952-bd62-cd49982e9572 Succeeded
+
+
+PS C:\>
 ```
 
-Creates a the registration assignment given a scope and the registration definition name.
+Creates a registration assignment with a registration definition object as input.
 
 ### Example 3
-```powershell
-PS C:\> $def = New-AzManagedServicesDefinition -DisplayName MyRegistrationDefinition -ManagedByTenantId "bab3375b-6197-4a15-a44b-16c41faa91d7" -PrincipalId "d6f6c88a-5b7a-455e-ba40-ce146d4d3671" -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-PS C:\> New-AzManagedServicesAssignment -RegistrationDefinition $def
-
-Name                                 RegistrationDefinitionId
-----                                 ------------------------
-a25f63d9-605c-4878-99bd-0d315480d46b /subscriptions/38bd4bef-41ff-45b5-b3af-d03e55a4ca15/providers/Microsoft.ManagedServices/registrationDefinitions/4a50f8eb-96b3-44c4-a397-e1e57035fe65
 ```
-Creates a the registration assignment given a registration definition object.
+PS C:\> New-AzManagedServicesAssignment -RegistrationDefinitionId /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationDefinitions/55a89269-0347-4a9c-a778-c3f37b9f8672
+
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+12b05f0f-3426-48da-9e67-738e1dbf775f /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationAssignments/12b05f0f-3426-48da-9e67-738e1dbf775f Succeeded
+
+
+PS C:\> New-AzManagedServicesAssignment -RegistrationDefinitionId /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationDefinitions/55a89269-0347-4a9c-a778-c3f37b9f8672 -Name 12b05f0f-3426-48da-9e67-738e1dbf775f
+
+Name                                 Id                                                                                                                                                   ProvisioningState
+----                                 --                                                                                                                                                   -----------------
+12b05f0f-3426-48da-9e67-738e1dbf775f /subscriptions/24ab6047-da91-48c0-66e5-20a8c6daefc8/providers/Microsoft.ManagedServices/registrationAssignments/12b05f0f-3426-48da-9e67-738e1dbf775f Succeeded
+
+PS C:\>
+```
+
+Updates a registration assignment with a registration definition identifier and name.
+
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -95,11 +115,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The unique name of the Registration Assignment (for example 26c128c2-fefa-4340-9bb1-6e081c90ada2).
+The unique name of the Registration Assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,8 +144,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RegistrationDefinitionName
-The unique name of the Registration Definition (for example b0c052e5-c437-4771-a476-8b1201158a57).
+### -RegistrationDefinitionId
+The fully qualified resource id of the registration definition.
 
 ```yaml
 Type: System.String
@@ -135,7 +155,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -148,7 +168,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -164,7 +199,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -180,7 +215,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -190,12 +225,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
+### System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationAssignment
-
 ## NOTES
 
 ## RELATED LINKS
