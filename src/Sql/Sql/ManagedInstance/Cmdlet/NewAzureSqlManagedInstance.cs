@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected const string NewByInstancePoolResourceIdParameterSet =
             "NewByInstancePoolResourceIdParameterSet";
 
-        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth" };
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
         /// Gets or sets the instance pool parent object
