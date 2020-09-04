@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
 schema: 2.0.0
 ---
 
@@ -31,7 +31,8 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject cmdlet creates connection mo
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create an endpoint with one included scope item
+```
 PS C:\>$MySrcResourceId1 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
 PS C:\>$SrcEndpointScopeItem1 = New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject -Address "WIN-P0HGNDO2S1B"
 PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndpointObject -Name "workspaceEndpoint" -Type "MMAWorkspaceMachine" -ResourceId $MySrcResourceId1 -IncludeItem $SrcEndpointScopeItem1
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 
 ### -CoverageLevel
 Test coverage for the endpoint.
-Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.
+Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.
 
 ```yaml
 Type: System.String
