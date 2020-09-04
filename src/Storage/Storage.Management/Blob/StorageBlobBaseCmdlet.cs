@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageBlobServiceProperty = "StorageBlobServiceProperty";
         protected const string StorageBlobDeleteRetentionPolicy = "StorageBlobDeleteRetentionPolicy";
         protected const string StorageBlobRestorePolicy = "StorageBlobRestorePolicy";
+        protected const string StorageBlobLastAccessTimeTracking = "StorageBlobLastAccessTimeTracking";
+        
 
         public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 

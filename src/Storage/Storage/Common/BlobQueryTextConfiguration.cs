@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public BlobQueryConfigType Type { get; set; }
         public string RecordSeparator { get; set; }       
 
-        public IBlobQueryTextOptions ParseBlobQueryTextConfiguration()
+        public BlobQueryTextOptions ParseBlobQueryTextConfiguration()
         {
             if (this.Type == BlobQueryConfigType.Csv) //csv
             {
@@ -66,15 +66,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     {
         public PSBlobQueryJsonTextConfiguration() { }
 
-        public PSBlobQueryJsonTextConfiguration(BlobQueryJsonTextConfiguration config)
+        public PSBlobQueryJsonTextConfiguration(BlobQueryJsonTextOptions config)
         {
             this.RecordSeparator = config.RecordSeparator;
             this.Type = BlobQueryConfigType.Json;
         }
 
-        public BlobQueryJsonTextConfiguration ParseBlobQueryJsonTextConfiguration()
+        public BlobQueryJsonTextOptions ParseBlobQueryJsonTextConfiguration()
         {
-            return new BlobQueryJsonTextConfiguration()
+            return new BlobQueryJsonTextOptions()
             {
                 RecordSeparator = this.RecordSeparator
             };
