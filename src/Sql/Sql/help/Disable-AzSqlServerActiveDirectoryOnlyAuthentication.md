@@ -25,9 +25,9 @@ The **Disable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet disables Azu
 ### Example 1
 ```powershell
 PS C:\>Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
-ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
+ResourceGroupName ServerName AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
-ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
+ResourceGroup01   Server01   False
 ```
 
 This command disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
@@ -38,7 +38,7 @@ This command disables Azure Active Directory (Azure AD) only authentication requ
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,10 +65,10 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Azure Active Directory administrator is in.
+The name of the Azure SQL Server the Azure Active Directory only authentication is in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -99,7 +99,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -119,13 +119,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model.AzureSqlServerActiveDirectoryAdministratorModel
+### Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model.AzureSqlServerActiveDirectoryOnlyAuthenticationModel
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Remove-AzSqlServerActiveDirectoryAdministrator](./Remove-AzSqlServerActiveDirectoryAdministrator.md)
+[Enable-AzSqlServerActiveDirectoryOnlyAuthentication](./Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+
+[Get-AzSqlServerActiveDirectoryOnlyAuthentication](./Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 
 [Set-AzSqlServerActiveDirectoryAdministrator](./Set-AzSqlServerActiveDirectoryAdministrator.md)
 
