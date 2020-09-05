@@ -180,6 +180,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public SwitchParameter EncryptionAtHost { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Fault Domain count for each placement group.")]
+        public int? PlatformFaultDomainCount { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -322,7 +327,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent
+                    encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : null
                     );
             }
         }

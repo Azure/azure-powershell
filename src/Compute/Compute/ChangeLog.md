@@ -30,6 +30,7 @@
 * Added optional parameter '-SupportAutomaticPlacement' to New-AzHostGroup 
 * Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
 * Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
 
 ## Version 4.3.1
 * Patched `-EncryptionAtHost` parameter in `New-AzVm` to remove default value of false [#12776]
