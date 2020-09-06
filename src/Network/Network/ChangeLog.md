@@ -37,7 +37,7 @@
 * Onboarded StorageSync to Private Link Common Cmdlets
 * Onboarded SignalR to Private Link Common Cmdlets
 * Updated `Set-AzVirtualNetworkSubnetConfig`
-    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548]
+    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548][#9718]
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
