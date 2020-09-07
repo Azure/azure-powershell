@@ -12,11 +12,11 @@ trigger: none
 
 strategy:
   matrix:
-    Windows PS 5.1.14:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 5.1
-      Download_Uri: ''
+    # Windows PS 5.1.14:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 5.1
+    #   Download_Uri: ''
   
     # Windows PS 6.2.4:
     #   Platform_Name: 'Windows'
