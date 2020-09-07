@@ -19,12 +19,13 @@ strategy:
     #   Download_Uri: ''
     #   DestinationPath: 'C:\PowerShell\'
     Windows PS 6.2.4:
-      IMAGE_NAME: 'vs2017-win2016'
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
       PSVersion: 6.2.4
       Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
       DestinationPath: 'C:\PowerShell\'
     # Windows PS 7.0.3:
-    #   IMAGE_NAME: 'vs2017-win2016'
+    #   Image_Name: 'vs2017-win2016'
     #   PSVersion: 7.0.3
     # Linux PS 7.0.3:
     #   Platform_Name: 'Linux'
@@ -78,7 +79,7 @@ steps:
       # # Check AzureRM
       # Get-Module -Name AzureRM.* -ListAvailable
 
-      $OSSystem = $(Platform_Name)
+      $OSSystem = '$(Platform_Name)''
       Write-Host "Installing PS $(PSVersion) for ", $OSSystem
       Write-Host "Installing PS $(PSVersion) for Windows"
       $outFile = '$(DestinationPath)'+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
