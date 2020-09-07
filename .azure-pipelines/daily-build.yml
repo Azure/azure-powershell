@@ -45,46 +45,44 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $PSVersionTable
-      
-      # Remove Az.* modules
-      $modules = Get-Module -Name Az.* -ListAvailable
-      if($modules){
-        Write-Host "Removing Az modules..."
-        $modules.Path | ForEach-Object { 
-          $dirctory = $_ | Split-Path | Split-Path
-          if(Test-Path $dirctory ){
-            Remove-Item –path $dirctory –recurse -force
-          }
-        }
-        Write-Host "Az modules removed."
-      }
+     
+      # # Remove Az.* modules
+      # $modules = Get-Module -Name Az.* -ListAvailable
+      # if($modules){
+      #   Write-Host "Removing Az modules..."
+      #   $modules.Path | ForEach-Object { 
+      #     $dirctory = $_ | Split-Path | Split-Path
+      #     if(Test-Path $dirctory ){
+      #       Remove-Item –path $dirctory –recurse -force
+      #     }
+      #   }
+      #   Write-Host "Az modules removed."
+      # }
 
 
-      # Check Az
-      Get-Module -Name Az.* -ListAvailable
+      # # Check Az
+      # Get-Module -Name Az.* -ListAvailable
 
-      # Remove AzureRM.* modules
-      $modules = Get-Module -Name AzureRM.* -ListAvailable
-      if($modules){
-        Write-Host "Removing AzureRM modules..."
-        $modules.Path | ForEach-Object { 
-          $dirctory = $_ | Split-Path | Split-Path
-          if(Test-Path $dirctory ){
-            Remove-Item –path $dirctory –recurse -force
-          }
-        }
-        Write-Host "AzureRM modules removed."
-      }
-      # Check AzureRM
-      Get-Module -Name AzureRM.* -ListAvailable
-
-      Write-Host "Installing PS $(PSVersion)"
+      # # Remove AzureRM.* modules
+      # $modules = Get-Module -Name AzureRM.* -ListAvailable
+      # if($modules){
+      #   Write-Host "Removing AzureRM modules..."
+      #   $modules.Path | ForEach-Object { 
+      #     $dirctory = $_ | Split-Path | Split-Path
+      #     if(Test-Path $dirctory ){
+      #       Remove-Item –path $dirctory –recurse -force
+      #     }
+      #   }
+      #   Write-Host "AzureRM modules removed."
+      # }
+      # # Check AzureRM
+      # Get-Module -Name AzureRM.* -ListAvailable
 
       $OSSystem = '$(Platform_Name)'
       switch($OSSystem){
         'Windows'
         {
+          Write-Host "Installing PS $(PSVersion) for Windows"
           $outFile = $(DestinationPath)+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
           Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
           $psPath = $(DestinationPath)+'$(PSVersion)'
@@ -144,6 +142,14 @@ steps:
     script: |
       $command = " `
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
+      $pspath = ''
+      switch($OSSystem){
+        'Windows'
+        {
+          $psPath = $(DestinationPath)+'$(PSVersion)' + 'pwsh.exe'
+          break;
+        }
+      }
       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
 - task: PowerShell@2
