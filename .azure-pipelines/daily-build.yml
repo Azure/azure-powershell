@@ -140,9 +140,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $command = "`$PSVersionTable `
+      $command = " `
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-      $psPath -command $command
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
