@@ -25,6 +25,7 @@ strategy:
       Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
      
     Windows PS 7.0.3:
+      Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
       PSVersion: 7.0.3
       Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/PowerShell-7.0.3-win-x64.zip​​​​​​​'
