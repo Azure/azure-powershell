@@ -37,6 +37,10 @@ function Send-PageViewTelemetry
     )
     Process
     {
+        if ('false' -eq $env:Azure_PS_Data_Collection) {
+            Write-Verbose -Message 'Skip telemtry because it is disabled'
+        }
+
         if($null -eq [Constants]::TelemetryClient) {
             Write-Verbose -Message 'Initialize telemetry client'
             $TelemetryClient = New-Object Microsoft.ApplicationInsights.TelemetryClient
