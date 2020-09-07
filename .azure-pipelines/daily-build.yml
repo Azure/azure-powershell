@@ -80,8 +80,7 @@ steps:
       # Get-Module -Name AzureRM.* -ListAvailable
 
       $OSSystem = "$(Platform_Name)"
-      Write-Host "Installing PS $(PSVersion) for ", $OSSystem
-      Write-Host "Installing PS $(PSVersion) for Windows"
+      Write-Host "Installing PS $(PSVersion) for", $OSSystem
       $outFile = "$(DestinationPath)" + "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
       Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
       $psPath = "$(DestinationPath)" + "$(PSVersion)"
