@@ -18,11 +18,11 @@ strategy:
       PSVersion: 5.1
       Download_Uri: ''
   
-    Windows PS 6.2.4:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 6.2.4
-      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+    # Windows PS 6.2.4:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 6.2.4
+    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
      
     Windows PS 7.0.3:
       Platform_Name: 'Windows'
@@ -38,7 +38,7 @@ strategy:
     #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
     #   PSVersion: '7.0.3'
-  maxParallel: 3
+  maxParallel: 2
 
 pool:
   vmImage: $(Image_Name)
