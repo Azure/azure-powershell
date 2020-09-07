@@ -429,10 +429,6 @@
 		<PropertyName>TenantName</PropertyName>
 	      </ListItem>
 	      <ListItem>
-		<Label>Security Domain ID</Label>
-		<PropertyName>SecurityDomainName</PropertyName>
-	      </ListItem>
-	      <ListItem>
 		<Label>Initial Admin Object Ids</Label>
 		<PropertyName>InitialAdminObjectIds</PropertyName>
 	      </ListItem>
