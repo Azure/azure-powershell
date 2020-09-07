@@ -12,11 +12,11 @@ trigger: none
 
 strategy:
   matrix:
-    # Windows PS 5.1.14:
-    #   Platform_Name: 'Windows'
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 5.1.14
-    #   Download_Uri: ''
+    Windows PS 5.1.14:
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 5.1
+      Download_Uri: ''
   
     Windows PS 6.2.4:
       Platform_Name: 'Windows'
@@ -86,15 +86,18 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
-          New-Item -Path . -Name "PowerShell" -ItemType "directory"
-          $outFile = "./PowerShell/" + $fileName
-          New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
-          Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
-          $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
-          Expand-Archive -Path $outFile -DestinationPath $psPath
-          $psPath += 'pwsh.exe'
-          Write-Host "Installed ", $psPath
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "5.1"){
+            $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
+            New-Item -Path . -Name "PowerShell" -ItemType "directory"
+            $outFile = "./PowerShell/" + $fileName
+            New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
+            Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
+            $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
+            Expand-Archive -Path $outFile -DestinationPath $psPath
+            $psPath += 'pwsh.exe'
+            Write-Host "Installed ", $psPath
+          }
           break;
         }
       }
@@ -110,7 +113,12 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
           break;
         }
       }
@@ -127,7 +135,12 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
           break;
         }
       }
@@ -144,7 +157,12 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
           break;
         }
       }
@@ -161,7 +179,12 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
           break;
         }
       }
@@ -178,7 +201,12 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
           break;
         }
       }
