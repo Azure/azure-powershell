@@ -58,7 +58,6 @@ steps:
         Write-Host "Az modules removed."
       }
 
-
       # Check Az
       Get-Module -Name Az.* -ListAvailable
 
@@ -99,31 +98,18 @@ steps:
   displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
     targetType: 'inline'
-    script: |
-      $gallery = '$(GALLERY_NAME)'
-      if( $gallery -eq 'PSGallery' ){
-        Write-Host "Setting $(GALLERY_NAME) Trusted..."
-        Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
+    script: |    
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/InstallAzModules.ps1 "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
       }
-
-      if( $gallery -eq 'TestGallery' ){
-        Write-Host "Registering $(GALLERY_NAME)..."
-        Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
-      }    
-
-      Write-Host "Installing Az..."
-      Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
-      
-      # Check version
-      Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-      $azVersion = (get-module Az).Version
-
-      # Check Az
-      Get-Module -Name Az.* -ListAvailable
-
-      if(!$azVersion){
-        throw "No Az is installed"
-      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
       
 - task: PowerShell@2
   displayName: Connect AzAccount 
@@ -171,26 +157,22 @@ steps:
       }
       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
-
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
 
 # - task: PowerShell@2
 #   displayName: Update Az Modules
