@@ -99,7 +99,8 @@ function Install-AzModule{
         $allow_prerelease = $false
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] | Foreach-Object {
+            $Name = FullAzName -Name $Name
+            $Name | Foreach-Object {
                 if ($_ -ne 'Az.Accounts') {
                     $module_name += $_
                 }
@@ -124,10 +125,6 @@ function Install-AzModule{
 
         if ($PSBoundParameters.ContainsKey('AllowPrerelease')) {
             $allow_prerelease = $AllowPrerelease
-        }
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Name = FullAzName -Name $Name
         }
 
         if ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {

@@ -65,6 +65,9 @@ function Uninstall-AzModule {
     )
 
     process {
+
+        $cmdStarted = Get-Date
+
         Import-Module "$PSScriptRoot\..\internal\utils.psm1"
 
         $author = 'Microsoft Corporation'
@@ -76,7 +79,8 @@ function Uninstall-AzModule {
         $latest = ''
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] | Foreach-Object {
+            $Name = FullAzName -Name $Name
+            $Name | Foreach-Object {
                 $module_name += $_
             }
         }
@@ -91,10 +95,6 @@ function Uninstall-AzModule {
 
         if ($PSBoundParameters.ContainsKey('RequiredVersion')) {
             $version.Add('RequiredVersion', $PSBoundParameters['RequiredVersion'])
-        }
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Name = FullAzName -Name $Name
         }
 
         if (!$PSBoundParameters.ContainsKey("AllowPrerelease")) {
@@ -179,5 +179,10 @@ function Uninstall-AzModule {
                 }
             }
         }
+
+        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+            -IsSuccess $true `
+            -StartDateTime $cmdStarted `
+            -Duration ((Get-Date) - $cmdStarted)
     }
 }
