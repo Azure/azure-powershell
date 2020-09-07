@@ -79,6 +79,8 @@ steps:
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
 
+      Write-Host "Installing PS $(PSVersion)"
+
       $OSSystem = '$(Platform_Name)'
       switch($OSSystem){
         'Windows'
@@ -88,7 +90,7 @@ steps:
           $psPath = $(DestinationPath)+'$(PSVersion)'
           Expand-Archive -Path $outFile -DestinationPath $psPath
           $psPath += 'pwsh.exe'
-          Write-Host $psPath
+          Write-Host "Installed ", $psPath
           break;
         }
       }
