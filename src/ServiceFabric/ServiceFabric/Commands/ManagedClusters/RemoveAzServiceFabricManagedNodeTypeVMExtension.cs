@@ -105,8 +105,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (currentNodeType.VmExtensions != null)
             {
-
+                var originalLength = currentNodeType.VmExtensions.Count();
                 currentNodeType.VmExtensions = currentNodeType.VmExtensions.Where(ext => !string.Equals(ext.Name, this.Name, StringComparison.OrdinalIgnoreCase)).ToList();
+                if (originalLength == currentNodeType.VmExtensions.Count())
+                {
+                    throw new ArgumentException(string.Format("extension with name {0} not found", this.Name));
+                }
             }
 
             return currentNodeType;

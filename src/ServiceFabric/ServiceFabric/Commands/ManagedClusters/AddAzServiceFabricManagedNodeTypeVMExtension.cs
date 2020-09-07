@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.")]
         public string ForceUpdateTag { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the extension handler publisher.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the extension handler publisher. This can use the Get-AzVMImagePublisher cmdlet to get the publisher.")]
         public string Publisher { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\".")]
+        [Parameter(Mandatory = true, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\". You can use the Get-AzVMExtensionImageType cmdlet to get the extension type.")]
         public string Type { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Specifies the version of the script handler.")]
