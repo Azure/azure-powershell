@@ -1,16 +1,22 @@
-$gallery = '$(GALLERY_NAME)'
+[cmdletbinding()]
+param(
+    [string]
+    [Parameter(Mandatory = $true, Position=0)]
+    $gallery
+)
+
 if( $gallery -eq 'PSGallery' ){
-    Write-Host "Setting $(GALLERY_NAME) Trusted..."
-    Set-PSRepository -Name $(GALLERY_NAME) -InstallationPolicy Trusted
+    Write-Host "Setting $gallery Trusted..."
+    Set-PSRepository -Name $gallery -InstallationPolicy Trusted
 }
 
 if( $gallery -eq 'TestGallery' ){
-    Write-Host "Registering $(GALLERY_NAME)..."
-    Register-PSRepository -Name $(GALLERY_NAME) -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+    Write-Host "Registering $gallery..."
+    Register-PSRepository -Name $gallery -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
 }    
 
 Write-Host "Installing Az..."
-Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
+Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
       
 # Check version
 Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
