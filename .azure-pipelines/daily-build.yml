@@ -81,8 +81,9 @@ steps:
 
       $OSSystem = "$(Platform_Name)"
       Write-Host "Installing PS $(PSVersion) for", $OSSystem
-      $outFile = "$(DestinationPath)" + "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
-      New-Item -Path $(DestinationPath) -Name "PowerShell-" + "$(PSVersion)" + "-win-x64.zip" -ItemType "file"
+      $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
+      $outFile = "$(DestinationPath)" + $fileName
+      New-Item -Path $(DestinationPath) -Name $fileName -ItemType "file"
       Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
       $psPath = "$(DestinationPath)" + "$(PSVersion)"
       Expand-Archive -Path $outFile -DestinationPath $psPath
