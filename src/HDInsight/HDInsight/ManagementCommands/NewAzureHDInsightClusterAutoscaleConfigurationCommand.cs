@@ -24,7 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
+namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterAutoscaleConfiguration",
         DefaultParameterSetName = LoadAutoscaleParameterSet), OutputType(typeof(AzureHDInsightAutoscale))]

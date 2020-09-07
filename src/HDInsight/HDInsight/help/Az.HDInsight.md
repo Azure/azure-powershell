@@ -74,6 +74,9 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ### [New-AzHDInsightClusterAutoscaleConfiguration](New-AzHDInsightClusterAutoscaleConfiguration.md)
 Creates a non-persisted object that describes the autoscale configuration of an Azure HDInsight cluster.
 
+### [New-AzHDInsightClusterAutoscaleScheduleCondition](New-AzHDInsightClusterAutoscaleScheduleCondition.md)
+Creates Schedule-based autoscale condition.
+
 ### [New-AzHDInsightClusterConfig](New-AzHDInsightClusterConfig.md)
 Creates a non-persisted cluster configuration object that describes an Azure HDInsight cluster configuration.
 

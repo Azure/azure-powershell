@@ -49,7 +49,7 @@ This command creates a condition where cluster autoscale to 5 worker nodes at 09
 Gets or sets the days of Autoscale schedule condition.
 
 ```yaml
-Type: AzureHDInsightDaysOfWeek[]
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightDaysOfWeek[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Gets or sets the time of Autoscale schedule condition.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Gets or sets the schedule workernode count of Autoscale schedule condition.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
