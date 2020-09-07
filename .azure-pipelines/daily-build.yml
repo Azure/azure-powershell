@@ -49,7 +49,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     
+      # Fix unstable network
+      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
