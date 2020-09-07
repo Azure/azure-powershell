@@ -65,6 +65,9 @@ function Uninstall-AzModule {
     )
 
     process {
+
+        $cmdStarted = Get-Date
+
         Import-Module "$PSScriptRoot\..\internal\utils.psm1"
 
         $author = 'Microsoft Corporation'
@@ -179,5 +182,10 @@ function Uninstall-AzModule {
                 }
             }
         }
+
+        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+            -IsSuccess $true `
+            -StartDateTime $cmdStarted `
+            -Duration ((Get-Date) - $cmdStarted)
     }
 }
