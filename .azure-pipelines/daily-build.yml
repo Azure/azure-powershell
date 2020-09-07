@@ -17,13 +17,11 @@ strategy:
     #   Image_Name: 'vs2017-win2016'
     #   PSVersion: '5.1.14'
     #   Download_Uri: ''
-    #   DestinationPath: './PowerShell/'
     Windows PS 6.2.4:
       Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
       PSVersion: 6.2.4
       Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
-      DestinationPath: './PowerShell/'
     # Windows PS 7.0.3:
     #   Image_Name: 'vs2017-win2016'
     #   PSVersion: 7.0.3
@@ -86,10 +84,10 @@ steps:
         {
           $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
           New-Item -Path . -Name "PowerShell" -ItemType "directory"
-          $outFile = "$(DestinationPath)" + $fileName
-          New-Item -Path $(DestinationPath) -Name $fileName -ItemType "file"
+          $outFile = "./PowerShell/" + $fileName
+          New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
           Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
-          $psPath = "$(DestinationPath)" + "$(PSVersion)"+"/"
+          $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
           Expand-Archive -Path $outFile -DestinationPath $psPath
           $psPath += 'pwsh.exe'
           Write-Host "Installed ", $psPath
@@ -144,13 +142,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $command = " `
+      $command = "`$PSVersionTable`
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-      $pspath = '$(DestinationPath)'+'$(PSVersion)' + 'pwsh.exe'
       switch($OSSystem){
         'Windows'
         {
-          $psPath = '$(DestinationPath)'+'$(PSVersion)' + 'pwsh.exe'
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
           break;
         }
       }
