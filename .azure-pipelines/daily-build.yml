@@ -45,37 +45,37 @@ steps:
     targetType: 'inline'
     script: |
      
-      # # Remove Az.* modules
-      # $modules = Get-Module -Name Az.* -ListAvailable
-      # if($modules){
-      #   Write-Host "Removing Az modules..."
-      #   $modules.Path | ForEach-Object { 
-      #     $dirctory = $_ | Split-Path | Split-Path
-      #     if(Test-Path $dirctory ){
-      #       Remove-Item –path $dirctory –recurse -force
-      #     }
-      #   }
-      #   Write-Host "Az modules removed."
-      # }
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "Az modules removed."
+      }
 
 
-      # # Check Az
-      # Get-Module -Name Az.* -ListAvailable
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
 
-      # # Remove AzureRM.* modules
-      # $modules = Get-Module -Name AzureRM.* -ListAvailable
-      # if($modules){
-      #   Write-Host "Removing AzureRM modules..."
-      #   $modules.Path | ForEach-Object { 
-      #     $dirctory = $_ | Split-Path | Split-Path
-      #     if(Test-Path $dirctory ){
-      #       Remove-Item –path $dirctory –recurse -force
-      #     }
-      #   }
-      #   Write-Host "AzureRM modules removed."
-      # }
-      # # Check AzureRM
-      # Get-Module -Name AzureRM.* -ListAvailable
+      # Remove AzureRM.* modules
+      $modules = Get-Module -Name AzureRM.* -ListAvailable
+      if($modules){
+        Write-Host "Removing AzureRM modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "AzureRM modules removed."
+      }
+      # Check AzureRM
+      Get-Module -Name AzureRM.* -ListAvailable
 
       $OSSystem = "$(Platform_Name)"
       Write-Host "Installing PS $(PSVersion) for", $OSSystem      
