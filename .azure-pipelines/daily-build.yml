@@ -15,7 +15,7 @@ strategy:
     # Windows PS 5.1.14:
     #   Platform_Name: 'Windows'
     #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: '5.1.14'
+    #   PSVersion: 5.1.14
     #   Download_Uri: ''
     Windows PS 6.2.4:
       Platform_Name: 'Windows'
