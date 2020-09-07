@@ -79,6 +79,15 @@ steps:
       # Get-Module -Name AzureRM.* -ListAvailable
 
       $OSSystem = '$(Platform_Name)'
+      Write-Host "Installing PS $(PSVersion) for ", $OSSystem
+      Write-Host "Installing PS $(PSVersion) for Windows"
+      $outFile = $(DestinationPath)+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
+      Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
+      $psPath = $(DestinationPath)+'$(PSVersion)'
+      Expand-Archive -Path $outFile -DestinationPath $psPath
+      $psPath += 'pwsh.exe'
+      Write-Host "Installed ", $psPath
+      
       switch($OSSystem){
         'Windows'
         {
@@ -142,11 +151,11 @@ steps:
     script: |
       $command = " `
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-      $pspath = ''
+      $pspath = '$(DestinationPath)'+'$(PSVersion)' + 'pwsh.exe'
       switch($OSSystem){
         'Windows'
         {
-          $psPath = $(DestinationPath)+'$(PSVersion)' + 'pwsh.exe'
+          $psPath = '$(DestinationPath)'+'$(PSVersion)' + 'pwsh.exe'
           break;
         }
       }
