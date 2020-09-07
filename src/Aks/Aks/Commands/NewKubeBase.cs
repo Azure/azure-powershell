@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Low", "Regular")]
         public string NodeSetPriority { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
+        [PSArgumentCompleter("System", "User")]
+        public string NodePoolMode { get; set; } = "System";
+
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
         [PSArgumentCompleter("Delete", "Deallocate")]
         public string NodeScaleSetEvictionPolicy { get; set; }
@@ -223,6 +227,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
             }
+            defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
         }

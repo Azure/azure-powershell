@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update api version to 2020-06-01.
 
 ## Version 1.2.0
 * Removed `ClientIdAndSecret` to `ServicePrincipalIdAndSecret` and set `ClientIdAndSecret` as an alias [#12381].
