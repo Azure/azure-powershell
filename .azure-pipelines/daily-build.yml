@@ -144,6 +144,7 @@ steps:
     script: |
       $command = "`$PSVersionTable`
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
+      $OSSystem = "$(Platform_Name)"
       switch($OSSystem){
         'Windows'
         {
@@ -156,8 +157,19 @@ steps:
 - task: PowerShell@2
   displayName: 'Run Smoke Test Reversely'
   inputs:
-    filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    arguments: '-Reverse'
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
 - task: PowerShell@2
   displayName: Clean Az Modules
