@@ -92,10 +92,9 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          Write-Host "Installing PS $(PSVersion) for Windows"
-          $outFile = '$(DestinationPath)'+'PowerShell-'+'$(PSVersion)'+'-win-x64.zip'
+          $outFile = "$(DestinationPath)" + "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
           Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
-          $psPath = '$(DestinationPath)'+'$(PSVersion)'
+          $psPath = "$(DestinationPath)" + "$(PSVersion)"
           Expand-Archive -Path $outFile -DestinationPath $psPath
           $psPath += 'pwsh.exe'
           Write-Host "Installed ", $psPath
