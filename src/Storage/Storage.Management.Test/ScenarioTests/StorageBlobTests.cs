@@ -86,5 +86,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobORS");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobLastAccessTimeTracking()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobLastAccessTimeTracking");
+        }
     }
 }

@@ -538,15 +538,15 @@ function Test-StorageBlobRestore
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
 		# Enable Blob Delete Retension Policy, Enable Changefeed, then enabled blob restore policy, then get blob service proeprties and check the setting
 		Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RetentionDays 5
-		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true -IsVersioningEnabled $true
 		# If record, need sleep before enable the blob restore policy, or will get server error
-		#sleep 100 
+		# sleep 100 
 		Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RestoreDays 4
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual $true $property.ChangeFeed.Enabled
@@ -566,7 +566,7 @@ function Test-StorageBlobRestore
 		# wait for restore job finish, and check Blob Restore Status in Storage Account	
 		$job | Wait-Job
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
-		Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
+		# Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -681,16 +681,13 @@ function Test-StorageBlobORS
     }
 }
 
-
-
-
 <#
 .SYNOPSIS
-Test StorageAccount Object Replication
+Test StorageAccount Blob LastAccessTimeTracking
 .DESCRIPTION
 SmokeTest
 #>
-function Test-StorageBlobORS
+function Test-StorageBlobLastAccessTimeTracking
 {
     # Setup
     $rgname = Get-StorageManagementTestResourceName;
@@ -698,87 +695,48 @@ function Test-StorageBlobORS
     try
     {
         # Test
-        $stoname1 = 'sto' + $rgname + 'src';
-        $stoname2 = 'sto' + $rgname + 'dest';
-        $stotype = 'Standard_LRS';
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'StorageV2'
 	
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Canary ResourceManagement;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname1 -Location $loc -Type $stotype -Kind $kind 
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -Type $stotype -Kind $kind 
+        $loc = Get-ProviderLocation_canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
-		# Enable Blob Enable Changefeed and versioning
-		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname1 -EnableChangeFeed $true -IsVersioningEnabled $true
-		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -EnableChangeFeed $true -IsVersioningEnabled $true
-		$property1 = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname1
-		Assert-AreEqual $true $property1.ChangeFeed.Enabled
-		Assert-AreEqual $true $property1.IsVersioningEnabled 
-		$property2 = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
-		Assert-AreEqual $true $property2.ChangeFeed.Enabled
-		Assert-AreEqual $true $property2.IsVersioningEnabled 
+		# Enable Blob LastAccessTimeTracking
+		$policy = Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru
+		Assert-AreEqual $true $policy.Enable
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.LastAccessTimeTrackingPolicy.Enable
 
-		# create containers		
-		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname1  | New-AzRmStorageContainer -name src
-		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 | New-AzRmStorageContainer -name dest
-		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname1  | New-AzRmStorageContainer -name src1
-		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 | New-AzRmStorageContainer -name dest1
+		# set management policy
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -DaysAfterLastAccessTimeGreaterThan 50  -InputObject $action
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
+        $action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
+        $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch prefix1,prefix2
+        $rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+        $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -Rule $rule
+		Assert-AreEqual $true $policy.Rules[0].Definition.Actions.BaseBlob.EnableAutoTierToHotFromCool
+		Assert-AreEqual  30 $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan
+		Assert-AreEqual  50 $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan
+		Assert-AreEqual  100 $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
 
-		# create rules
-		$minCreationTime = "2019-01-01T16:00:00Z"
-		$rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
-		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
+		# remove management policy
+		Remove-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname 
 
-		# set policy to dest account
-		$destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $stoname1  -Rule $rule1,$rule2
-		$policyID = $destPolicy.PolicyId
-		Assert-AreEqual $stoname1 $destPolicy.SourceAccount
-		Assert-AreEqual $stoname2 $destPolicy.DestinationAccount
-		Assert-AreEqual 2 $destPolicy.Rules.Count
-		Assert-AreEqual src1 $destPolicy.Rules[0].SourceContainer
-		Assert-AreEqual dest1 $destPolicy.Rules[0].DestinationContainer
-		Assert-AreEqual $null $destPolicy.Rules[0].Filters
-		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
-		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
-		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
-		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
-		Assert-AreEqual $policyID $destPolicy.PolicyId
-		Assert-AreEqual $stoname1 $destPolicy.SourceAccount
-		Assert-AreEqual $stoname2 $destPolicy.DestinationAccount
-		Assert-AreEqual 2 $destPolicy.Rules.Count
-		Assert-AreEqual src1 $destPolicy.Rules[0].SourceContainer
-		Assert-AreEqual dest1 $destPolicy.Rules[0].DestinationContainer
-		Assert-AreEqual $null $destPolicy.Rules[0].Filters
-		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
-		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
-		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
+		# Disable Blob LastAccessTimeTracking
+		$policy = Disable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru
+		# Assert-AreEqual $true (($policy.Enable -eq $false) -or ($policy -eq $null))
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		#Assert-AreEqual $true (($property.LastAccessTimeTrackingPolicy.Enable -eq $false) -or ($property.LastAccessTimeTrackingPolicy -eq $null))
+		# Assert-AreEqual $false $property.LastAccessTimeTrackingPolicy.Enable
 
-		#Set policy to source account
-		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -InputObject $destPolicy
-		$srcPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1
-		Assert-AreEqual $policyID $srcPolicy.PolicyId
-		Assert-AreEqual $stoname1 $srcPolicy.SourceAccount
-		Assert-AreEqual $stoname2 $srcPolicy.DestinationAccount
-		Assert-AreEqual 2 $srcPolicy.Rules.Count
-		Assert-AreEqual src1 $srcPolicy.Rules[0].SourceContainer
-		Assert-AreEqual dest1 $srcPolicy.Rules[0].DestinationContainer
-		Assert-AreEqual $null $srcPolicy.Rules[0].Filters
-		Assert-AreEqual src $srcPolicy.Rules[1].SourceContainer
-		Assert-AreEqual dest $srcPolicy.Rules[1].DestinationContainer
-		Assert-AreEqual 3 $srcPolicy.Rules[1].Filters.PrefixMatch.Count
-		Assert-AreEqual $minCreationTime ($srcPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
-
-		#remove policies		
-		Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
-		Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -PolicyId $srcPolicy.PolicyId
-		
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname1;
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
