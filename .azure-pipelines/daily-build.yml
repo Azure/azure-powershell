@@ -116,12 +116,17 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "Connecting Az.Account..."
-      $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
-      $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
-      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
-      Set-AzContext -Subscription "Azure SDK Powershell Test"
-      Enable-AzureRmAlias
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
