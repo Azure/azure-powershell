@@ -100,7 +100,7 @@ steps:
     targetType: 'inline'
     script: |    
       $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/InstallAzModules.ps1 "
+      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
       $OSSystem = "$(Platform_Name)"
       switch($OSSystem){
         'Windows'
