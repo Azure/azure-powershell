@@ -8,21 +8,386 @@ schedules:
     - master
 
 pr: none
+trigger: none
+
+strategy:
+  matrix:
+    # Windows PS 5.1.14:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: '5.1.14'
+    #   Download_Uri: ''
+    Windows PS 6.2.4:
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 6.2.4
+      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+    # Windows PS 7.0.3:
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 7.0.3
+    # Linux PS 7.0.3:
+    #   Platform_Name: 'Linux'
+    #   Image_Name: 'ubuntu-18.04'
+    #   PSVersion: '7.0.3'
+    # MacOS PS 7.0.3:
+    #   Platform_Name: 'MacOS'
+    #   Image_Name: 'macOS-10.14'
+    #   PSVersion: '7.0.3'
+  maxParallel: 3
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: $(Image_Name)
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Build for Version Bump
+- task: PowerShell@2
+  displayName: Prepare Powershell $(PSVersion) 
   inputs:
-    command: 'custom'
-    custom: 'msbuild'
-    arguments: 'build.proj'
+    targetType: 'inline'
+    script: |
+     
+      # Remove Az.* modules
+      $modules = Get-Module -Name Az.* -ListAvailable
+      if($modules){
+        Write-Host "Removing Az modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "Az modules removed."
+      }
 
-- task: ComponentGovernanceComponentDetection@0
-  displayName: Component Detection
+      # Check Az
+      Get-Module -Name Az.* -ListAvailable
+
+      # Remove AzureRM.* modules
+      $modules = Get-Module -Name AzureRM.* -ListAvailable
+      if($modules){
+        Write-Host "Removing AzureRM modules..."
+        $modules.Path | ForEach-Object { 
+          $dirctory = $_ | Split-Path | Split-Path
+          if(Test-Path $dirctory ){
+            Remove-Item –path $dirctory –recurse -force
+          }
+        }
+        Write-Host "AzureRM modules removed."
+      }
+      # Check AzureRM
+      Get-Module -Name AzureRM.* -ListAvailable
+
+      $OSSystem = "$(Platform_Name)"
+      Write-Host "Installing PS $(PSVersion) for", $OSSystem      
+      switch($OSSystem){
+        'Windows'
+        {
+          $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
+          New-Item -Path . -Name "PowerShell" -ItemType "directory"
+          $outFile = "./PowerShell/" + $fileName
+          New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
+          Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
+          $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
+          Expand-Archive -Path $outFile -DestinationPath $psPath
+          $psPath += 'pwsh.exe'
+          Write-Host "Installed ", $psPath
+          break;
+        }
+      }
+   
+- task: PowerShell@2
+  displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
-    scanType: 'Register'
-    verbosity: 'Normal'
-    alertWarningLevel: 'High'
+    targetType: 'inline'
+    script: |    
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/InstallAzModules.ps1 "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+      
+- task: PowerShell@2
+  displayName: Connect AzAccount 
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Connecting Az.Account..."
+      $secret = ConvertTo-SecureString -String $(password) -AsPlainText -Force
+      $credential = New-Object -TypeName System.Management.Automation.PSCredential($(servicePrincipal), $secret)
+      Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $(tenantId)
+      Set-AzContext -Subscription "Azure SDK Powershell Test"
+      Enable-AzureRmAlias
+
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 "
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $pspath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          break;
+        }
+      }
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+
+# - task: PowerShell@2
+#   displayName: Update Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Get previous version of az
+#       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
+#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+
+#       if($versions.Count -ge 2){
+#         # Install previous version of Az
+#         $previousVersion = $versions[1]
+#         Write-Host '$previousVersion:',$previousVersion
+
+#         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+
+#         #Update Az
+#         Update-Module -Name Az -Scope CurrentUser -Force
+        
+#         # Check Az
+#         Write-Host "Get latest version of Az"
+#         Get-Module -Name Az.* -ListAvailable
+
+#         # Check version
+#         Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+#         $azVersion = (get-module Az).Version
+#         if($azVersion -ne $versions[0]){
+#           throw "Update Az failed"
+#         }
+        
+#         # Reuse connected account and select subscription for test
+#         Enable-AzureRmAlias
+#         Set-AzContext -Subscription "Azure SDK Powershell Test"
+#       }
+
+# # # - task: PowerShell@2
+# # #   displayName: Run Smoke Test 
+# # #   inputs:
+# # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+    
+# # # - task: PowerShell@2
+# # #   displayName: 'Run Smoke Test Reversely'
+# # #   inputs:
+# # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
+# # #     arguments: '-Reverse'
+    
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Remove Az.* modules
+#       $modules = Get-Module -Name Az.* -ListAvailable
+#       if($modules){
+#          Write-Host "Removing Az modules..."
+#          $modules.Path | ForEach-Object { 
+#          $dirctory = $_ | Split-Path | Split-Path
+#          if(Test-Path $dirctory ){
+#            Remove-Item –path $dirctory –recurse -force
+#          }
+#         }
+#         Write-Host "Az modules removed."
+#       }
+
+#       # Check Az
+#       Get-Module -Name Az.* -ListAvailable
+    
+# - task: PowerShell@2
+#   displayName: Install an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       Write-Host "Installing Az.Compute..."
+#       Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
+#       Get-AzVM
+
+#       # Check version
+#       $azComputeVersion = (Get-Module Az.Compute).Version
+#       if(!$azComputeVersion){
+#         throw "No Az.Compute is installed"
+#       }
+
+# - task: PowerShell@2
+#   displayName: Update an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Get previous version of Az.Compute
+#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
+#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+
+#       if($versions.Count -ge 2){
+#         # Install previous version of Az.Compute
+#         $previousVersion = $versions[1]
+#         Write-Host '$previousVersion:', $previousVersion
+#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+
+#         #Update Az.Compute
+#         Update-Module -Name Az.Compute -Scope CurrentUser -Force
+#         Write-Host "Installed latest version of Az.Compute"
+
+#         # Check Az.Compute
+#         Get-AzVM
+        
+#         # Check version
+#         $azComputeVersion = (Get-Module Az.Compute).Version | 
+#         %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+#         if($azComputeVersion -ne $versions[0]){
+#           throw "Update Az.Compute failed"
+#         }
+#       }
+
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Remove Az.* modules
+#       $modules = Get-Module -Name Az.* -ListAvailable
+#       if($modules){
+#         Write-Host "Removing Az modules..."
+#         $modules.Path | ForEach-Object { 
+#           $dirctory = $_ | Split-Path | Split-Path
+#           if(Test-Path $dirctory ){
+#             Remove-Item –path $dirctory –recurse -force
+#           }
+#         }
+#         Write-Host "Az modules removed."
+#       }
+      
+#       # Check Az
+#       Get-Module -Name Az.* -ListAvailable
+
+# - task: PowerShell@2
+#   displayName: Install Az on top of an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Get previous version of Az.Compute
+#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
+#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+
+#       if($versions.Count -ge 2){
+#         # Install previous version of Az.Compute        
+#         $previousVersion = $versions[1]
+#         Write-Host '$previousVersion:', $previousVersion
+#         Write-Host "Installed previous version of Az.Compute"
+
+#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+
+#         #Install Az
+#         Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force
+        
+#         Write-Host "Installed latest version of Az"
+#         Get-AzVM
+#         Get-Module
+
+#         # Check version
+#         $azComputeVersion = (Get-Module Az.Compute).Version
+#         if($azComputeVersion -ne $versions[0]){
+#           throw "Install Az on top of Az.Compute failed"
+#         }
+#       }
+
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Remove Az.* modules
+#       $modules = Get-Module -Name Az.* -ListAvailable
+#       if($modules){
+#         Write-Host "Removing Az modules..."
+#         $modules.Path | ForEach-Object { 
+#           $dirctory = $_ | Split-Path | Split-Path
+#           if(Test-Path $dirctory ){
+#             Remove-Item –path $dirctory –recurse -force
+#           }
+#         }
+#         Write-Host "Az modules removed."
+#       }
+
+#       # Check Az
+#       Get-Module -Name Az.* -ListAvailable
+
+# - task: PowerShell@2
+#   displayName: Install an individual module on top of Az
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Get previous version of Az
+#       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
+#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+
+#       if($versions.Count -ge 2){
+#         # Install previous version of Az
+#         $previousVersion = $versions[1]
+#         Write-Host '$previousVersion:', $previousVersion
+#         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+#         Write-Host 'Installed the previous version of Az'
+
+#         # Get previous version of Az.Compute
+#         $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version
+
+#         #Install Az.Compute
+#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force        
+        
+#         Write-Host "Installed latest Az.Compute"
+#         Get-AzVM
+#         Get-Module
+
+#         # Check version
+#         $azComputeVersion = (Get-Module Az.Compute).Version
+#         if($azComputeVersion -le $azComputePreviousVersion){
+#           throw "Install Az on top of Az.Compute failed"
+#         }
+#       }
