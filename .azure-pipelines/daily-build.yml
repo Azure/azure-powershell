@@ -17,14 +17,18 @@ strategy:
     #   Image_Name: 'vs2017-win2016'
     #   PSVersion: 5.1.14
     #   Download_Uri: ''
+  
     Windows PS 6.2.4:
       Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
       PSVersion: 6.2.4
       Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
-    # Windows PS 7.0.3:
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 7.0.3
+     
+    Windows PS 7.0.3:
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 7.0.3
+      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/PowerShell-7.0.3-win-x64.zip​​​​​​​'
+
     # Linux PS 7.0.3:
     #   Platform_Name: 'Linux'
     #   Image_Name: 'ubuntu-18.04'
