@@ -12,82 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-CommandAsString{
-    [OutputType([String[]])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [String]
-        ${Base},
-
-        [ValidateNotNullOrEmpty()]
-        [HashTable]
-        ${BoundParameter},
-
-        [Parameter()]
-        [HashTable]
-        ${Index}
-    )
-
-    $cmdlist = @()
-    $cmd = $Base
-    
-    if ($PSBoundParameters.ContainsKey('BoundParameter')) {
-        $BoundParameter.Keys | Foreach-Object {
-            $parameter = ''
-            if (($BoundParameter[$_].GetType().Name -eq 'Boolean') -or ($BoundParameter[$_].GetType().Name -eq 'SwitchParameter')) {
-                if ($BoundParameter[$_] -eq $true) {
-                    $parameter = Get-ParameterAsString -Key $_
-                }
-            } else {
-                $parameter = Get-ParameterAsString -Key $_ -Val $BoundParameter[$_]         
-            }
-            
-            $cmd += $parameter
-        }
-    }
-
-    if ($PSBoundParameters.ContainsKey('Index')) {
-        $Index.Keys | Foreach-Object {
-            $parameter = ''
-            $parameter += Get-ParameterAsString -Key 'Name' -Val $_
-            if ($Index[$_] -ne $null) {
-                $parameter += Get-ParameterAsString -Key 'RequiredVersion' -Val $Index[$_]
-            }
-            $cmdlist += $cmd + $parameter
-        }
-    } else {
-        $cmdlist += $cmd
-    }
-
-    return $cmdlist
-}
-
-function Get-ParameterAsString{
-    [OutputType([String])]
-    [CmdletBinding()]
-    param(
-        [String]
-        ${Key},
-
-        [String]
-        ${Val}
-    )
-
-    $param = ''
-
-    if (($PSBoundParameters.ContainsKey('Key')) -and ($Key.Length -gt 0)) {
-        $param += ' -' + $Key
-    }
-
-    if (($PSBoundParameters.ContainsKey('Val')) -and ($Val.Length -gt 0)) {
-        $param += ' ' + $Val
-    }
-
-    return $param
-}
-
 function remove_installed_module {
     [CmdletBinding()]
     param(
@@ -111,20 +35,19 @@ function remove_installed_module {
 
     process {
         Get-InstalledModule -Name $Name -ErrorAction SilentlyContinue | Foreach-Object {
+            $name = $_.Name
+            $version = $_.Version
+            $parameter = @{'AllowPrerelease' = $true}
             if ($PSBoundParameters.ContainsKey('AllVersion')) {
-                $name = $_.Name
                 Write-Debug "Remove all versions of Module: $name"
-                $_ | Uninstall-Module -AllVersions -AllowPrerelease
+                $parameter.Add('AllVersion', $AllVersion)
             } elseif ($PSBoundParameters.ContainsKey('RequiredVersion')) {
-                $name = $_.Name
-                $version = $_.Version
                 Write-Debug "Remove Module: $name $version"
-                Uninstall-Module -AllowPrerelease -Name $name -RequiredVersion $version
+                $parameter.Add('RequiredVersion', $version)
             } else {
-                $name = $_.Name
                 Write-Debug "Remove Module: $name $version"
-                $_ | Uninstall-Module -AllowPrerelease
             }
+            $_ | Uninstall-Module @parameter
         }
     }
 }

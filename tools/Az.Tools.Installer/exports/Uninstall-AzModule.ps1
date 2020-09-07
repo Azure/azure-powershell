@@ -76,7 +76,10 @@ function Uninstall-AzModule {
         [System.Collections.ArrayList]$module_name = @()
         $version = @{}
         $module = @{}
+        $job = @()
+        $result = @()
         $latest = ''
+        $max_job_count = 15
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Name = FullAzName -Name $Name
@@ -106,32 +109,32 @@ function Uninstall-AzModule {
             $parameter.Add('ErrorAction', 'Stop')
             $index = @{}         
             $version.Keys | Foreach-Object {$parameter.Add($_, $version[$_])}
-            $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $parameter
 
             try {
-                (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
-                    if ($_.Name -ne 'Az.Accounts') {
-                        $index.Add($_.Name, $_.RequiredVersion)
-                    } else {
-                        $index.Add($_.Name, $_.MinimumVersion)
-                    }
-                }
+                $az = Find-Module @parameter
             } catch {
-                Write-Error "No related Az modules were found in $Repository"
+                Write-Error "No related Az modules were found in $Repository, $_"
                 break
             }
 
-            if (!$PSBoundParameters.ContainsKey('Name')) {
-                #Uninstall Az package
-                $index.Keys | Foreach-Object {$module.Add($_, $index[$_])}
-            } else {
-                #Uninstall Az modules by name
-                $module_name | Foreach-Object {
-                    if (!$index.ContainsKey($_)) {
-                        Write-Warning "module $_ will not be uninstalled since it is not a GAed Az module, please try adding -AllowPrerelease option."
-                    } else {
-                        $module.Add($_, $index[$_])
-                    }
+            $version = $az.Version
+            $az.Dependencies | Foreach-Object {
+                if ($_.Name -ne 'Az.Accounts') {
+                    $index.Add($_.Name, $_.RequiredVersion)
+                } else {
+                    $index.Add($_.Name, $_.MinimumVersion)
+                }
+                if (!$PSBoundParameters.ContainsKey('Name')) {
+                    $module_name += $_.Name
+                }
+            }
+
+            #Uninstall Az modules by name
+            $module_name | Foreach-Object {
+                if (!$index.ContainsKey($_)) {
+                    Write-Warning "module $_ will not be uninstalled since it is not a GAed Az module in Az $version, please try adding -AllowPrerelease option."
+                } else {
+                    $module.Add($_, $index[$_])
                 }
             }
 
@@ -141,7 +144,6 @@ function Uninstall-AzModule {
             $latest = ' latest version of'
 
             if (!$PSBoundParameters.ContainsKey('Name')) {
-
                 # all latest modules
                 try {
                     Get-InstalledModule -Name 'Az.*' | ForEach-Object {
@@ -150,7 +152,7 @@ function Uninstall-AzModule {
                         }
                     }
                 } catch {
-                    Write-Error $_
+                    Write-Error "Nothing to delete, no Az modules found: $_"
                     break
                 }
             }
@@ -168,16 +170,38 @@ function Uninstall-AzModule {
 
         $module.Keys | Foreach-Object {
             $version = $module[$_]
+
+            if ((Get-Job -State 'Running').Count -eq $max_job_count) {
+                $null = ($job | Wait-Job -Any)
+            }
+
             if ($PSCmdlet.ShouldProcess("Uninstall$latest $_ $version", "$latest $_ $version", "Uninstall")) {
                 Write-Debug "Uninstall$latest $_ $version"
+                $parameter = @{'Name' = $_}
+                $parameter.Add('ErrorAction', 'SilentlyContinue')
                 if ($PSBoundParameters.ContainsKey('AllVersion')) {
-                    remove_installed_module -Name $_ -AllVersion
-                } elseif ($PSBoundParameters.ContainsKey('AllowPrerelease')) {
-                    remove_installed_module -Name $_
-                } else {
-                    remove_installed_module -Name $_ -RequiredVersion $version
+                    $parameter.Add('AllVersion', $AllVersion)
+                    if ($PSCmdlet.ParameterSetName -eq 'WithPreviewAndAllVersion') {
+                        $parameter.Add('AllowPrerelease', $AllowPrerelease)
+                    }
+                } elseif ($PSCmdlet.ParameterSetName -eq 'WithPreview') {
+                    parameter.Add('AllowPrerelease', $AllowPrerelease)
+                } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
+                    $parameter.Add('RequiredVersion', $version)
+                }
+                $job += Start-Job {
+                    Uninstall-Module @using:parameter
                 }
             }
+        }
+
+        while ($job.State -eq 'Running') {
+            $null = $job | Wait-Job
+        }
+
+        $job | Foreach-Object {
+            $result += Receive-Job $_
+            Remove-Job $_
         }
 
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `

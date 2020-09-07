@@ -93,8 +93,11 @@ function Install-AzModule{
 
         [System.Collections.ArrayList]$module_name = @()
         $version = @{}
-        $module = @()
+        $module = @{}
+        $job = @()
+        $result = @()
         $latest = ''
+        $max_job_count = 15
         $skip_publisher_check = $false
         $allow_prerelease = $false
 
@@ -136,29 +139,33 @@ function Install-AzModule{
             $parameter.Add('ErrorAction', 'Stop')
             $index = @{}         
             $version.Keys | Foreach-Object {$parameter.Add($_, $version[$_])}
-            $cmd = Get-CommandAsString -Base 'Find-Module' -BoundParameter $parameter
 
             try {
-                (Invoke-Expression -Command $cmd).Dependencies | Foreach-Object {
-                    if ($_.Name -ne 'Az.Accounts') {
-                        $index.Add($_.Name, $_.RequiredVersion)
-                    }
-                }
+                $az = Find-Module @parameter
             } catch {
-                Write-Error "No related Az modules were found in $Repository"
+                Write-Error "No related Az modules were found in $Repository, $_"
                 break
+            }
+
+            $version = $az.Version
+            $az.Dependencies | Foreach-Object {
+                if ($_.Name -ne 'Az.Accounts') {
+                    $index.Add($_.Name, $_.RequiredVersion)
+                } else {
+                    $index.Add($_.Name, $_.MinimumVersion)
+                }
             }
             
             if (!$PSBoundParameters.ContainsKey('Name')) {
                 #Install Az package
-                $index.Keys | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})}
+                $index.Keys | Foreach-Object {$module.Add($_, $index[$_])}
             } else {
                 #Install Az modules by name
                 $module_name | Foreach-Object {
                     if (!$index.ContainsKey($_)) {
-                        Write-Warning "module $_ will not be installed since it is not a GAed Az module, please try add -AllowPrerelease option."
+                        Write-Warning "module $_ will not be installed since it is not a GAed Az module in Az $version, please try add -AllowPrerelease option."
                     } else {
-                        $module += ([PSCustomObject] @{'Name'=$_; 'Version'=$index[$_]})
+                        $module.Add($_, $index[$_])
                     }
                 }
             }
@@ -166,7 +173,7 @@ function Install-AzModule{
         } else {
             
             #With preview
-            Write-Warning "this cmdlet will not install preview version for Az.Accounts."
+            Write-Warning "This cmdlet will not install preview version for Az.Accounts."
 
             $latest = ' latest version of'
 
@@ -188,7 +195,7 @@ function Install-AzModule{
             $remove = @()
             $module_name | Where-Object {$_.StartsWith('Az.Tools')} | Foreach-Object {$remove += $_}
             $remove | Foreach-Object {$module_name.Remove($_)}
-            $module_name | Foreach-Object {$module += ([PSCustomObject] @{'Name'=$_})}
+            $module_name | Foreach-Object {$module.Add($_, $null)}
         }
 
         if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
@@ -205,13 +212,50 @@ function Install-AzModule{
             }
         }
 
-        $module | Foreach-Object {
-            $name = $_.Name
-            $version = $_.version
+        #install Az.Accounts first
+        $parameter = @{}
+        $parameter.Add('Repository', $Repository)
+        $parameter.Add('AllowClobber', $true)
+        $parameter.Add('SkipPublisherCheck', $skip_publisher_check)
+        $parameter.Add('Name', 'Az.Accounts')
+        if ($module.ContainsKey('Az.Accounts')) {
+            $parameter.Add('RequiredVersion', $module['Az.Accounts'])
+            $module.Remove('Az.Accounts')
+        }
+        Install-Module @parameter
+
+        $module.Keys | Foreach-Object {
+            $name = $_
+            $version = $module[$_]
+            $parameter = @{}
+            $parameter.Add('Name', $name)
+            if ($version -ne $null) {
+                $parameter.Add('RequiredVersion', $version)
+            }
+            $parameter.Add('Repository', $Repository)
+            $parameter.Add('AllowClobber', $true)
+            $parameter.Add('AllowPrerelease', $allow_prerelease)
+            $parameter.Add('SkipPublisherCheck', $skip_publisher_check)
+
+            if ((Get-Job -State 'Running').Count -eq $max_job_count) {
+                $null = ($job | Wait-Job -Any)
+            }
+
             if ($PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
                 Write-Debug "Install$latest $name $version"
-                $_ | Install-Module -Repository $Repository -AllowClobber -Force -AllowPrerelease:$allow_prerelease -SkipPublisherCheck:$skip_publisher_check
+                $job += Start-Job {
+                    Install-Module @using:parameter
+                }
             }
+        }
+
+        while ($job.State -eq 'Running') {
+            $null = $job | Wait-Job
+        }
+
+        $job | Foreach-Object {
+            $result += Receive-Job $_
+            Remove-Job $_
         }
 
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
