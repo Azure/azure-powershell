@@ -199,8 +199,8 @@ function Install-AzModule{
         }
 
         if ($RemoveAzureRm -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            Uninstall-Module -Name 'AzureRm*' -AllVersion
-            Uninstall-Module -Name 'Azure.*' -AllVersion
+            Uninstall-Module -Name 'AzureRm*' -AllVersion -ErrorAction SilentlyContinue
+            Uninstall-Module -Name 'Azure.*' -AllVersion -ErrorAction SilentlyContinue
         }
 
         #install Az.Accounts first
@@ -229,29 +229,27 @@ function Install-AzModule{
                 $null = ($running | Wait-Job -Any)
             }
 
-            Get-Job | Where-Object {$_.State -eq 'Completed'} | Foreach-Object {
+            Get-Job -State 'Completed' | Foreach-Object {
                 $result += Receive-Job $_
-                Remove-Job $_
+                Remove-Job $_ -Confirm:$false
             }
 
             if ($PSCmdlet.ShouldProcess("Install $name $version", "$name $version", "Install")) {
                 Write-Debug "Install $name $version"
                 $null = Start-Job {
                     if ($using:RemovePrevious) {
-                        Uninstall-Module -Name $using:name -AllVersion
+                        Uninstall-Module -Name $using:name -AllVersion -ErrorAction SilentlyContinue
                     }
                     Install-Module @using:parameter
                 }
             }
         }
 
-        while (Get-Job -State 'Running') {
-            $null = Get-Job | Wait-Job
-        }
-
+        $null = Get-Job | Wait-Job
         Get-Job | Foreach-Object {
+            Write-Host $_.State
             $result += Receive-Job $_
-            Remove-Job $_
+            Remove-Job $_ -Confirm:$false
         }
 
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `

@@ -155,8 +155,8 @@ function Uninstall-AzModule {
         }
 
         if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            Uninstall-Module -Name 'AzureRm*' -AllVersion
-            Uninstall-Module -Name 'Azure.*' -AllVersion
+            Uninstall-Module -Name 'AzureRm*' -AllVersion -ErrorAction SilentlyContinue
+            Uninstall-Module -Name 'Azure.*' -AllVersion -ErrorAction SilentlyContinue
         }
 
         $module.Keys | Foreach-Object {
@@ -167,9 +167,9 @@ function Uninstall-AzModule {
                 $null = ($running | Wait-Job -Any)
             }
 
-            Get-Job | Where-Object {$_.State -eq 'Completed'} | Foreach-Object {
+            Get-Job -State 'Completed' | Foreach-Object {
                 $result += Receive-Job $_
-                Remove-Job $_
+                Remove-Job $_ -Confirm:$false
             }
 
             if ($PSCmdlet.ShouldProcess("Uninstall$latest $_ $version", "$latest $_ $version", "Uninstall")) {
@@ -189,13 +189,10 @@ function Uninstall-AzModule {
             }
         }
 
-        while (Get-Job -State 'Running') {
-            $null = Get-Job | Wait-Job
-        }
-
+        $null = Get-Job | Wait-Job
         Get-Job | Foreach-Object {
             $result += Receive-Job $_
-            Remove-Job $_
+            Remove-Job $_ -Confirm:$false
         }
 
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
