@@ -71,6 +71,8 @@
 - Updated `Update-AzP2sVpnGateway`: Added optional switch parameters `EnableInternetSecurityFlag` or `DisableInternetSecurityFlag` for customers to set true/false to enable/disable internet security on P2SVpnGateway, which will be applied for Point to site clients.
 * Added new cmdlet `Reset-AzP2sVpnGateway` for customers to reset/reboot their VirtualWan P2SVpnGateway for troubleshooting.
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
+* Updated `Set-AzVirtualNetworkSubnetConfig`
+    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548][#9718]
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
