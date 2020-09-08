@@ -116,7 +116,7 @@ steps:
             dotnet new tool-manifest
             dotnet tool install PowerShell --version 6.2.4
             dotnet tool list
-            dotnet tool run pwsh -c "exit"
+            dotnet tool run pwsh 
             dotnet --info
           }
           break;
