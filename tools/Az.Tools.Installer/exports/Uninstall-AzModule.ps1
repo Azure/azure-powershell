@@ -74,7 +74,6 @@ function Uninstall-AzModule {
         $company_name = 'azure-sdk'
 
         [System.Collections.ArrayList]$module_name = @()
-        $version = @{}
         $module = @{}
         $result = @()
         $latest = ''
@@ -87,18 +86,6 @@ function Uninstall-AzModule {
             }
         }
 
-        if ($PSBoundParameters.ContainsKey('MaximumVersion')) {
-            $version.Add('MaximumVersion', $PSBoundParameters['MaximumVersion'])
-        }
-
-        if ($PSBoundParameters.ContainsKey('MinimumVersion')) {
-            $version.Add('MinimumVersion', $PSBoundParameters['MinimumVersion'])
-        }
-
-        if ($PSBoundParameters.ContainsKey('RequiredVersion')) {
-            $version.Add('RequiredVersion', $PSBoundParameters['RequiredVersion'])
-        }
-
         if (!$PSBoundParameters.ContainsKey("AllowPrerelease")) {
 
             #Without preview
@@ -107,7 +94,17 @@ function Uninstall-AzModule {
             $parameter.Add('Name', 'Az')
             $parameter.Add('ErrorAction', 'Stop')
             $index = @{}         
-            $version.Keys | Foreach-Object {$parameter.Add($_, $version[$_])}
+            if ($PSBoundParameters.ContainsKey('MaximumVersion')) {
+                $parameter.Add('MaximumVersion', $MaximumVersion)
+            }
+    
+            if ($PSBoundParameters.ContainsKey('MinimumVersion')) {
+                $parameter.Add('MinimumVersion', $MinimumVersion)
+            }
+    
+            if ($PSBoundParameters.ContainsKey('RequiredVersion')) {
+                $parameter.Add('RequiredVersion', $RequiredVersion)
+            }
 
             try {
                 $az = Find-Module @parameter
@@ -146,7 +143,7 @@ function Uninstall-AzModule {
                 # all latest modules
                 try {
                     Get-InstalledModule -Name 'Az.*' | ForEach-Object {
-                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name)) {
+                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts') -and (!$_.Name.StartsWith('Az.Tools'))) {
                             $module_name += $_.Name
                         }
                     }
@@ -156,15 +153,12 @@ function Uninstall-AzModule {
                 }
             }
 
-            $remove = @()
-            $module_name | Where-Object {$_.StartsWith('Az.Tools')} | Foreach-Object {$remove += $_}
-            $remove | Foreach-Object {$module_name.Remove($_)}
             $module_name | Foreach-Object {$module.Add($_, '')}
         }
 
         if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            remove_installed_module -Name 'AzureRm*' -AllVersion
-            remove_installed_module -Name 'Azure.*' -AllVersion
+            Uninstall-Module -Name 'AzureRm*' -AllVersion
+            Uninstall-Module -Name 'Azure.*' -AllVersion
         }
 
         $module.Keys | Foreach-Object {
@@ -186,15 +180,12 @@ function Uninstall-AzModule {
                 $parameter.Add('ErrorAction', 'SilentlyContinue')
                 if ($PSBoundParameters.ContainsKey('AllVersion')) {
                     $parameter.Add('AllVersion', $AllVersion)
-                    if ($PSCmdlet.ParameterSetName -eq 'WithPreviewAndAllVersion') {
-                        $parameter.Add('AllowPrerelease', $AllowPrerelease)
-                    }
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithPreview') {
                     parameter.Add('AllowPrerelease', $AllowPrerelease)
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
                     $parameter.Add('RequiredVersion', $version)
                 }
-                $null += Start-Job {
+                $null = Start-Job {
                     Uninstall-Module @using:parameter
                 }
             }
