@@ -38,16 +38,16 @@ Revert-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Revert a volume to the snapshot specified in the SnapshotId paramter
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Revert-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -SnapshotId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 ```
 
-{{ Add example description here }}
+This command reverts the volume MyVolume to one of its snapshots with the snapshotId of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 
 ## PARAMETERS
 
