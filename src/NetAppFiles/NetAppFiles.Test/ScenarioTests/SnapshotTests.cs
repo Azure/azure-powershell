@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRevertVolumeFromSnapshot()
+        public void TestRestoreVolumeFromSnapshot()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RevertVolumeFromSnapshot");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreVolumeFromSnapshot");
         }
     }
 }

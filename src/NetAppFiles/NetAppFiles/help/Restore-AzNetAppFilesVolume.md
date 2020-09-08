@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/revert-aznetappfilesvolume
+online version:https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/restore-aznetappfilesvolume
 schema: 2.0.0
 ---
 
-# Revert-AzNetAppFilesVolume
+# Restore-AzNetAppFilesVolume
 
 ## SYNOPSIS
-Revert a volume to one of its snapshots
+Restore/Revert a volume to one of its snapshots
 
 ## SYNTAX
 
@@ -21,33 +21,33 @@ Revert-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -Po
 
 ### ByParentObjectParameterSet
 ```
-Revert-AzNetAppFilesVolume -Name <String> -PoolObject <PSNetAppFilesPool> [-PassThru]
+Restore-AzNetAppFilesVolume -Name <String> -PoolObject <PSNetAppFilesPool> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Revert-AzNetAppFilesVolume -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Restore-AzNetAppFilesVolume -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Revert-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
+Restore-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Revert a volume to the snapshot specified in the SnapshotId paramter
+Restore/Revert a volume to the snapshot specified in the SnapshotId paramter
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Revert-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -SnapshotId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
+PS C:\> Restore-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -SnapshotId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 ```
 
-This command reverts the volume MyVolume to one of its snapshots with the snapshotId of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
+This command Restores/Reverts the volume MyVolume to one of its snapshots with the snapshotId of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 
 ## PARAMETERS
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified volume was successfully reverted
+Return whether the specified volume was successfully restored/reverted
 
 ```yaml
 Type: SwitchParameter

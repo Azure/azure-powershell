@@ -235,9 +235,9 @@ function Test-CreateVolumeFromSnapshot
 
 <#
 .SYNOPSIS
-Test Revert Volume from one of its Snapshots
+Test Restore/Revert Volume from one of its Snapshots
 #>
-function Test-RevertVolumeFromSnapshot
+function Test-RestoreVolumeFromSnapshot
 {
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
@@ -296,7 +296,7 @@ function Test-RevertVolumeFromSnapshot
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # revert the volume from snapshot
-        Revert-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId
+        Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId
         
     }
     finally

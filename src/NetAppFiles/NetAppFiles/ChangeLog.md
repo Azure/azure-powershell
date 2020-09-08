@@ -22,7 +22,7 @@
 ## Version 0.1.6
 
 * Added SnapshotId parameter to New-NetAppFilesVolume to create volume from a snapshot
-* Added Revert-AzNetAppFilesVolume to revert a volume to one of its snapshots
+* Added Restore-AzNetAppFilesVolume to restore/revert a volume to one of its snapshots
 * FileSystemId removed from Snapshot
 * Added BackupOperators to ActiveDirectory, list of users to add to Backup Operator active directory group
 * Added Status, OrganizationalUnit and Site properties to ActiveDirectory

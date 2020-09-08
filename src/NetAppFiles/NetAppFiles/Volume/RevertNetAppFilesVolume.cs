@@ -22,12 +22,16 @@ using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
+    /// <summary>
+    /// Revert was renamed Restore here due to list of approved verbs violation 
+    /// https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands?view=powershell-7
+    /// </summary>
     [Cmdlet(
-        "Revert",
+        "Restore",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Revert-AnfVolume")]
+    [Alias("Restore-AnfVolume")]
     public class RevertAzureRmNetAppFilesVolume : AzureNetAppFilesCmdletBase
     {
         [Parameter(
@@ -103,13 +107,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume object to remove")]
+            HelpMessage = "The volume object to restore")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Return whether the specified volume was successfully reverted")]
+            HelpMessage = "Return whether the specified volume was successfully restored/reverted")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

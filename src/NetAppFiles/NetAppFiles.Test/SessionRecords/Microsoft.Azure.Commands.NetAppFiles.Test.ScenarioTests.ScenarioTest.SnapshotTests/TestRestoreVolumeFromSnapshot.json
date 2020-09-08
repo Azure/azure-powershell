@@ -7310,7 +7310,7 @@
     }
   ],
   "Names": {
-    "Test-RevertVolumeFromSnapshot": [
+    "Test-RestoreVolumeFromSnapshot": [
       "ps167",
       "ps1546",
       "ps5075",
