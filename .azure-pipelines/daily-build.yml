@@ -116,34 +116,41 @@ steps:
             dotnet new tool-manifest
             dotnet tool install PowerShell --version 6.2.4
             dotnet tool list
-            dotnet tool run pwsh 
-            dotnet --info
           }
           break;
         }
       }
    
-# - task: PowerShell@2
-#   displayName: Install Az Modules from $(GALLERY_NAME)
-#   inputs:
-#     targetType: 'inline'
-#     script: |    
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+- task: PowerShell@2
+  displayName: Install Az Modules from $(GALLERY_NAME)
+  inputs:
+    targetType: 'inline'
+    script: |    
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        'Linux'
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            $command +="`exit"
+            dotnet tool run pwsh -c $command
+          }
+          break;
+        }
+      }
       
 # - task: PowerShell@2
 #   displayName: Connect AzAccount 
