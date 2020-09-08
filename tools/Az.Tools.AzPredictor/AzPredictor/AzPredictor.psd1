@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell: Provide prediction while user typing 
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-#RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.0'; })
+RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.1.0'; })
 
 NestedModules = @("Microsoft.Azure.PowerShell.AzPredictor.dll")
 
