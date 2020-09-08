@@ -127,7 +127,8 @@ steps:
     targetType: 'inline'
     script: |    
       $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
+      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
+      Exit "
       $OSSystem = "$(Platform_Name)"
       switch($OSSystem){
         'Windows'
@@ -145,7 +146,6 @@ steps:
         {          
           $psVersion = "$(PSVersion)"
           if($psVersion -ne "7.0.3"){
-            $command +="`exit"
             dotnet tool run pwsh -c $command
           }
           break;
