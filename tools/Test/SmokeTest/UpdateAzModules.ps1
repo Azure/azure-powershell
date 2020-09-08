@@ -4,6 +4,8 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     $gallery
 )
+# Update PowershellGet 
+Update-Module -Name PowerShellGet -Scope CurrentUser -Force
 
 # Get previous version of az
 $versions = (find-module Az -Repository $gallery -AllVersions).Version | Sort-Object -Descending
