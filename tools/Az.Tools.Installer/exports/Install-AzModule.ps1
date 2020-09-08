@@ -215,14 +215,17 @@ function Install-AzModule{
         }
         Install-Module @parameter
 
-        $parameter.Add('AllowPrerelease', $AllowPrerelease)
         $module.Keys | Foreach-Object {
             $name = $_
             $version = $module[$_]
-            $parameter['Name'] = $name
+            $parameter = @{'Name' = $name}
             if ($version -ne $null) {
-                $parameter['RequiredVersion'] = $version
+                $parameter.Add('RequiredVersion', $version)
             }
+            $parameter.Add('Repository', $Repository)
+            $parameter.Add('AllowClobber', $true)
+            $parameter.Add('SkipPublisherCheck', $SkipPublisherCheck)
+            $parameter.Add('AllowPrerelease', $AllowPrerelease)
 
             $running = Get-Job -State 'Running'
             if ($running.Count -eq $max_job_count) {
