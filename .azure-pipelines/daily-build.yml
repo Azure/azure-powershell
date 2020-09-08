@@ -18,11 +18,11 @@ strategy:
     #   PSVersion: 5.1
     #   Download_Uri: ''
   
-    Windows PS 6.2.4:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 6.2.4
-      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+    # Windows PS 6.2.4:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 6.2.4
+    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
      
     # Windows PS 7.0.2:
     #   Platform_Name: 'Windows'
@@ -30,11 +30,11 @@ strategy:
     #   PSVersion: 7.0.2
     #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
 
-    # Linux PS 7.0.3:
-    #   Platform_Name: 'Linux'
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '7.0.3'
-    #   Download_Uri: ''
+    Linux PS 7.0.3:
+      Platform_Name: 'Linux'
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '7.0.3'
+      Download_Uri: ''
 
     Linux PS 6.2.4:
       Platform_Name: 'Linux'
@@ -93,33 +93,19 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          dotnet new tool-manifest
-          dotnet tool install PowerShell --version $(PSVersion)
-          dotnet tool list
-          # $psVersion = "$(PSVersion)"
-          # if($psVersion -ne "5.1"){
-          #   $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
-          #   New-Item -Path . -Name "PowerShell" -ItemType "directory"
-          #   $outFile = "./PowerShell/" + $fileName
-          #   $uri = "$(Download_Uri)"
-          #   New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
-          #   (New-Object System.Net.WebClient).DownloadFile($uri, $outFile)
-          #   # Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
-          #   $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
-          #   Expand-Archive -Path $outFile -DestinationPath $psPath
-          #   $psPath += 'pwsh.exe'
-          #   Write-Host "Installed ", $psPath
-          # }
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "5.1"){
+            dotnet new tool-manifest
+            dotnet tool install PowerShell --version $(PSVersion)
+            dotnet tool list
+          }
           break;
         }
         Default 
         {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet new tool-manifest
-            dotnet tool install PowerShell --version 6.2.4
-            dotnet tool list
-          }
+          dotnet new tool-manifest
+          dotnet tool install PowerShell --version $(PSVersion)
+          dotnet tool list
         }
       }
    
@@ -180,47 +166,37 @@ steps:
         }
         Default  
         {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet tool run pwsh -c $command
-          }else{
-            pwsh -c $command
-          }
+          dotnet tool run pwsh -c $command         
         }
       }
 
-# - task: PowerShell@2
-#   displayName: Run Smoke Test 
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
-#       Exit"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           # $psVersion = "$(PSVersion)"
-#           # if($psVersion -eq "5.1"){
-#           #   $psPath = "powershell.exe"
-#           # }else{
-#           #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           # }
-#           # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
-#           dotnet tool run pwsh -c $command
-#           break;
-#         }
-#         Default  
-#         {          
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -ne "7.0.3"){
-#             dotnet tool run pwsh -c $command
-#           }else{
-#             pwsh -c $command
-#           }
-#         }
-#       }
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          # $psVersion = "$(PSVersion)"
+          # if($psVersion -eq "5.1"){
+          #   $psPath = "powershell.exe"
+          # }else{
+          #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          # }
+          # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          dotnet tool run pwsh -c $command
+          break;
+        }
+        Default  
+        {          
+          dotnet tool run pwsh -c $command
+        }
+      }
 
 # - task: PowerShell@2
 #   displayName: 'Run Smoke Test Reversely'
@@ -276,13 +252,8 @@ steps:
           break;
         }
         Default  
-        {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet tool run pwsh -c $command
-          }else{
-            pwsh -c $command
-          }
+        {
+          dotnet tool run pwsh -c $command
         }
       }
 
@@ -308,13 +279,8 @@ steps:
           break;
         }
         Default  
-        {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet tool run pwsh -c $command
-          }else{
-            pwsh -c $command
-          }
+        {
+          dotnet tool run pwsh -c $command
         }
       }
 
