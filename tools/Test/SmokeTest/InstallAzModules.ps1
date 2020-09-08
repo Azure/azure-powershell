@@ -24,6 +24,7 @@ $azVersion = (get-module Az).Version
 
 # Check Az
 Get-Module -Name Az.* -ListAvailable
+Write-Host "Current version of Az", $azVersion
 
 if(!$azVersion){
     throw "No Az is installed"

@@ -10,6 +10,8 @@ Get-AzVM
 
 # Check version
 $azComputeVersion = (Get-Module Az.Compute).Version
+Write-Host "Current version of Az.Compute", $azComputeVersion
+
 if (!$azComputeVersion) {
     throw "No Az.Compute is installed"
 }
