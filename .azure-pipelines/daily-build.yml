@@ -109,7 +109,7 @@ steps:
           #   Expand-Archive -Path $outFile -DestinationPath $psPath
           #   $psPath += 'pwsh.exe'
           #   Write-Host "Installed ", $psPath
-          }
+          # }
           break;
         }
         Default 
