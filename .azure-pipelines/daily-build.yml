@@ -12,17 +12,15 @@ trigger: none
 
 strategy:
   matrix:
-    # Windows PS 5.1.14:
-    #   Platform_Name: 'Windows'
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 5.1
-    #   Download_Uri: ''
+    Windows PS 5.1.14:
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 5.1
   
-    # Windows PS 6.2.4:
-    #   Platform_Name: 'Windows'
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 6.2.4
-    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+    Windows PS 6.2.4:
+      Platform_Name: 'Windows'
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 6.2.4
      
     # Windows PS 7.0.2:
     #   Platform_Name: 'Windows'
@@ -34,13 +32,11 @@ strategy:
       Platform_Name: 'Linux'
       Image_Name: 'ubuntu-18.04'
       PSVersion: '7.0.3'
-      Download_Uri: ''
 
     Linux PS 6.2.4:
       Platform_Name: 'Linux'
       Image_Name: 'ubuntu-18.04'
       PSVersion: '6.2.4'
-      Download_Uri: ''
   
     # MacOS PS 7.0.3:
     #   Platform_Name: 'MacOS'
@@ -133,12 +129,7 @@ steps:
         }
         Default 
         {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet tool run pwsh -c $command
-          }else{
-            pwsh -c $command
-          }
+          dotnet tool run pwsh -c $command
         }
       }
       
