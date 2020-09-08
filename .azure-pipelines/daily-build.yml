@@ -42,7 +42,7 @@ strategy:
     #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
     #   PSVersion: '7.0.3'
-  maxParallel: 2
+  maxParallel: 4
 
 pool:
   vmImage: $(Image_Name)
