@@ -141,7 +141,7 @@ function Uninstall-AzModule {
                 # all latest modules
                 try {
                     Get-InstalledModule -Name 'Az.*' | ForEach-Object {
-                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts') -and (!$_.Name.StartsWith('Az.Tools'))) {
+                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and (!$_.Name.StartsWith('Az.Tools'))) {
                             $module_name += $_.Name
                         }
                     }
