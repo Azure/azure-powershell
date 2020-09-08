@@ -94,10 +94,9 @@ function Install-AzModule{
         [System.Collections.ArrayList]$module_name = @()
         $version = @{}
         $module = @{}
-        $job = @()
         $result = @()
         $latest = ''
-        $max_job_count = 15
+        $max_job_count = 5
         $skip_publisher_check = $false
         $allow_prerelease = $false
 
@@ -237,23 +236,29 @@ function Install-AzModule{
             $parameter.Add('AllowPrerelease', $allow_prerelease)
             $parameter.Add('SkipPublisherCheck', $skip_publisher_check)
 
-            if ((Get-Job -State 'Running').Count -eq $max_job_count) {
-                $null = ($job | Wait-Job -Any)
+            $running = Get-Job -State 'Running'
+            if ($running.Count -eq $max_job_count) {
+                $null = ($running | Wait-Job -Any)
+            }
+
+            Get-Job | Where-Object {$_.State -eq 'Completed'} | Foreach-Object {
+                $result += Receive-Job $_
+                Remove-Job $_
             }
 
             if ($PSCmdlet.ShouldProcess("Install$latest $name $version", "$latest $name $version", "Install")) {
                 Write-Debug "Install$latest $name $version"
-                $job += Start-Job {
+                $null += Start-Job {
                     Install-Module @using:parameter
                 }
             }
         }
 
-        while ($job.State -eq 'Running') {
-            $null = $job | Wait-Job
+        while (Get-Job -State 'Running') {
+            $null = Get-Job | Wait-Job
         }
 
-        $job | Foreach-Object {
+        Get-Job | Foreach-Object {
             $result += Receive-Job $_
             Remove-Job $_
         }

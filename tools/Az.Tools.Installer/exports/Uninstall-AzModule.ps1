@@ -76,10 +76,9 @@ function Uninstall-AzModule {
         [System.Collections.ArrayList]$module_name = @()
         $version = @{}
         $module = @{}
-        $job = @()
         $result = @()
         $latest = ''
-        $max_job_count = 15
+        $max_job_count = 5
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Name = FullAzName -Name $Name
@@ -171,8 +170,14 @@ function Uninstall-AzModule {
         $module.Keys | Foreach-Object {
             $version = $module[$_]
 
-            if ((Get-Job -State 'Running').Count -eq $max_job_count) {
-                $null = ($job | Wait-Job -Any)
+            $running = Get-Job -State 'Running'
+            if ($running.Count -eq $max_job_count) {
+                $null = ($running | Wait-Job -Any)
+            }
+
+            Get-Job | Where-Object {$_.State -eq 'Completed'} | Foreach-Object {
+                $result += Receive-Job $_
+                Remove-Job $_
             }
 
             if ($PSCmdlet.ShouldProcess("Uninstall$latest $_ $version", "$latest $_ $version", "Uninstall")) {
@@ -189,17 +194,17 @@ function Uninstall-AzModule {
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
                     $parameter.Add('RequiredVersion', $version)
                 }
-                $job += Start-Job {
+                $null += Start-Job {
                     Uninstall-Module @using:parameter
                 }
             }
         }
 
-        while ($job.State -eq 'Running') {
-            $null = $job | Wait-Job
+        while (Get-Job -State 'Running') {
+            $null = Get-Job | Wait-Job
         }
 
-        $job | Foreach-Object {
+        Get-Job | Foreach-Object {
             $result += Receive-Job $_
             Remove-Job $_
         }
