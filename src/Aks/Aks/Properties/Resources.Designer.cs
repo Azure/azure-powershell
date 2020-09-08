@@ -727,6 +727,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating NodePoolMode..
+        /// </summary>
+        internal static string UpdatingNodePoolMode {
+            get {
+                return ResourceManager.GetString("UpdatingNodePoolMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating node VM size.
         /// </summary>
         internal static string UpdatingNodeVmSize {

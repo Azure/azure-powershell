@@ -14,14 +14,14 @@ Create a new managed Kubernetes cluster.
 
 ```
 New-AzAksCluster [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
- [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodeScaleSetEvictionPolicy <String>]
- [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-LoadBalancerSku <String>]
- [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-GenerateSshKey] [-AsJob] [-Tag <Hashtable>]
+ [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AcrNameToAttach <String>] [-EnableRbac]
+ [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-NetworkPlugin <String>] [-LoadBalancerSku <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-GenerateSshKey] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -352,6 +352,21 @@ Accept wildcard characters: False
 
 ### -NodeOsType
 OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolMode
+NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String

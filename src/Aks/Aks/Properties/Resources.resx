@@ -378,4 +378,7 @@
   <data name="EnableSsh" xml:space="preserve">
     <value>Cannot find ssh-keygen. Please enable OpenSSH on your local machine.</value>
   </data>
+  <data name="UpdatingNodePoolMode" xml:space="preserve">
+    <value>Updating NodePoolMode.</value>
+  </data>
 </root>
