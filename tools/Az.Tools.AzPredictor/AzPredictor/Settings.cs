@@ -78,12 +78,23 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
 
             string profileDirectoryPath = Path.Join(homePath, AzPredictorConstants.AzureProfileDirectoryName);
             string profileSettingFilePath = Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
-            var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
-            var profileSettings = JsonConvert.DeserializeObject<Settings>(fileContent);
 
-            if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
+            if (File.Exists(profileSettingFilePath))
             {
-                this.ServiceUri = profileSettings.ServiceUri;
+                try
+                {
+                    var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
+                    var profileSettings = JsonConvert.DeserializeObject<Settings>(fileContent);
+
+                    if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
+                    {
+                        this.ServiceUri = profileSettings.ServiceUri;
+                    }
+                }
+                catch
+                {
+                    // Ignore all the exception and not to update the settings.
+                }
             }
         }
 
