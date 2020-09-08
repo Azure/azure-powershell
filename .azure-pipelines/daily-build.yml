@@ -94,7 +94,8 @@ steps:
             New-Item -Path . -Name "PowerShell" -ItemType "directory"
             $outFile = "./PowerShell/" + $fileName
             New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
-            Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
+            (New-Object System.Net.WebClient).DownloadFile($(Download_Uri), $outFile)
+            # Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
             $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
             Expand-Archive -Path $outFile -DestinationPath $psPath
             $psPath += 'pwsh.exe'
