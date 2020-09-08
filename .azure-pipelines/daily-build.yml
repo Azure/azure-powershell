@@ -189,38 +189,38 @@ steps:
         }
       }
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
-      Exit"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          # $psVersion = "$(PSVersion)"
-          # if($psVersion -eq "5.1"){
-          #   $psPath = "powershell.exe"
-          # }else{
-          #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          # }
-          # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
-          dotnet tool run pwsh -c $command
-          break;
-        }
-        Default  
-        {          
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "7.0.3"){
-            dotnet tool run pwsh -c $command
-          }else{
-            pwsh -c $command
-          }
-        }
-      }
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+#       Exit"
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           # $psVersion = "$(PSVersion)"
+#           # if($psVersion -eq "5.1"){
+#           #   $psPath = "powershell.exe"
+#           # }else{
+#           #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           # }
+#           # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+#           dotnet tool run pwsh -c $command
+#           break;
+#         }
+#         Default  
+#         {          
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -ne "7.0.3"){
+#             dotnet tool run pwsh -c $command
+#           }else{
+#             pwsh -c $command
+#           }
+#         }
+#       }
 
 # - task: PowerShell@2
 #   displayName: 'Run Smoke Test Reversely'
@@ -254,69 +254,69 @@ steps:
 #         }
 #       }
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |   
-#       $command = "`$PSVersionTable `
-#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-#       Exit"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
-#           break;
-#         }
-#         Default  
-#         {          
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -ne "7.0.3"){
-#             dotnet tool run pwsh -c $command
-#           }else{
-#             pwsh -c $command
-#           }
-#         }
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Update Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable `
-#       ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
-#       Exit"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
-#           break;
-#         }
-#         Default  
-#         {          
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -ne "7.0.3"){
-#             dotnet tool run pwsh -c $command
-#           }else{
-#             pwsh -c $command
-#           }
-#         }
-#       }
+- task: PowerShell@2
+  displayName: Update Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
 # - task: PowerShell@2
 #   displayName: Run Smoke Test 
