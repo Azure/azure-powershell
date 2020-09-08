@@ -30,8 +30,10 @@ if ($versions.Count -ge 2) {
     Write-Host "Current version of Az.Compute", $azComputeVersion
 
     if ($azComputeVersion -le $azComputePreviousVersion) {
-        throw "Install Az on top of Az.Compute failed"
+        throw "Install Az.Compute on top of Az failed"
     }
 }else {
-    throw "Install Az on top of Az.Compute failed"
+    Write-Warning "Only one version available for Az"
+    Write-Host 'Az versions:', $versions
+    throw "Install Az.Compute on top of Az failed"
 }       
