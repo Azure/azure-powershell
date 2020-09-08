@@ -27,6 +27,8 @@ if ($versions.Count -ge 2) {
 
     # Check version
     $azComputeVersion = (Get-Module Az.Compute).Version
+    Write-Host "Current version of Az.Compute", $azComputeVersion
+
     if ($azComputeVersion -le $azComputePreviousVersion) {
         throw "Install Az on top of Az.Compute failed"
     }
