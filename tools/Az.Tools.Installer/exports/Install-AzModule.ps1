@@ -247,7 +247,6 @@ function Install-AzModule{
 
         $null = Get-Job | Wait-Job
         Get-Job | Foreach-Object {
-            Write-Host $_.State
             $result += Receive-Job $_
             Remove-Job $_ -Confirm:$false
         }
