@@ -8,7 +8,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-#RootModule = './AzPredictor.psm1'
+RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.1.0'
@@ -82,5 +82,9 @@ PrivateData = @{
 
 FunctionsToExport = 'PSConsoleHostPredictor'
 
+# Script files (.ps1) that are run in the caller's environment prior to importing this module.
+ScriptsToProcess = @('AzPredictor.ps1')
+
 }
+
 

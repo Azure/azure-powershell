@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <None Include="AzPredictor.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="AzPredictor.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
