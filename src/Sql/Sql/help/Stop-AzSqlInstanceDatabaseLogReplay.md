@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Defines Whether return the sync group.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

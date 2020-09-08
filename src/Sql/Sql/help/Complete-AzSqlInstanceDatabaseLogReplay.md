@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -LastBackupName
-{{ Fill LastBackupName Description }}
+The name of the last backup file to restore.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Defines Whether return the sync group.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
