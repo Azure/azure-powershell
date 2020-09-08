@@ -68,8 +68,6 @@ function Uninstall-AzModule {
 
         $cmdStarted = Get-Date
 
-        Import-Module "$PSScriptRoot\..\internal\utils.psm1"
-
         $author = 'Microsoft Corporation'
         $company_name = 'azure-sdk'
 
@@ -80,7 +78,7 @@ function Uninstall-AzModule {
         $max_job_count = 5
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $Name = FullAzName -Name $Name
+            $Name = $Name.Foreach({"Az." + $_})
             $Name | Foreach-Object {
                 $module_name += $_
             }
