@@ -173,13 +173,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName, Mandatory = true,
             HelpMessage = "The database edition to use for the restored database.")]
         [PSArgumentCompleter("None",
-            Management.Sql.Models.DatabaseEdition.Basic,
-            Management.Sql.Models.DatabaseEdition.Standard,
-            Management.Sql.Models.DatabaseEdition.Premium,
-            Management.Sql.Models.DatabaseEdition.DataWarehouse,
-            Management.Sql.Models.DatabaseEdition.Free,
-            Management.Sql.Models.DatabaseEdition.Stretch,
-            "GeneralPurpose", "BusinessCritical")]
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose", 
+            "BusinessCritical")]
         public string Edition { get; set; }
 
         /// <summary>
