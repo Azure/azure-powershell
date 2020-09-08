@@ -5,11 +5,14 @@ if ($modules) {
     $modules.Path | ForEach-Object { 
         $dirctory = $_ | Split-Path | Split-Path
         if (Test-Path $dirctory ) {
-            Remove-Item –path $dirctory –recurse -force
+            Get-ChildItem $dirctory -Recurse | Remove-Item -Force
         }
     }
     Write-Host "Az modules removed."
 }
 
 # Check Az
-Get-Module -Name Az.* -ListAvailable
+$modules = Get-Module -Name Az.* -ListAvailable
+if($modules){
+    throw "Clean Az modules failed"
+}
