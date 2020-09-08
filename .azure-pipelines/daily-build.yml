@@ -28,15 +28,15 @@ strategy:
     #   PSVersion: 7.0.2
     #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
 
-    Linux PS 7.0.3:
-      Platform_Name: 'Linux'
-      Image_Name: 'ubuntu-18.04'
-      PSVersion: '7.0.3'
+    # Linux PS 7.0.3:
+    #   Platform_Name: 'Linux'
+    #   Image_Name: 'ubuntu-18.04'
+    #   PSVersion: '7.0.3'
 
-    Linux PS 6.2.4:
-      Platform_Name: 'Linux'
-      Image_Name: 'ubuntu-18.04'
-      PSVersion: '6.2.4'
+    # Linux PS 6.2.4:
+    #   Platform_Name: 'Linux'
+    #   Image_Name: 'ubuntu-18.04'
+    #   PSVersion: '6.2.4'
   
     # MacOS PS 7.0.3:
     #   Platform_Name: 'MacOS'
