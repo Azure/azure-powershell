@@ -30,12 +30,18 @@ strategy:
     #   PSVersion: 7.0.2
     #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
 
-    Linux PS 7.0.3:
+    # Linux PS 7.0.3:
+    #   Platform_Name: 'Linux'
+    #   Image_Name: 'ubuntu-18.04'
+    #   PSVersion: '7.0.3'
+    #   Download_Uri: ''
+
+    Linux PS 6.2.4:
       Platform_Name: 'Linux'
       Image_Name: 'ubuntu-18.04'
-      PSVersion: '7.0.3'
+      PSVersion: '6.2.4'
       Download_Uri: ''
-
+  
     # MacOS PS 7.0.3:
     #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
@@ -107,120 +113,121 @@ steps:
         {          
           $psVersion = "$(PSVersion)"
           if($psVersion -ne "7.0.3"){
-
+            dotnet tool install PowerShell --version 6.2.4 --tool-path ./PowerShell/
           }
+          break;
         }
       }
    
-- task: PowerShell@2
-  displayName: Install Az Modules from $(GALLERY_NAME)
-  inputs:
-    targetType: 'inline'
-    script: |    
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          break;
-        }
-      }
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+# - task: PowerShell@2
+#   displayName: Install Az Modules from $(GALLERY_NAME)
+#   inputs:
+#     targetType: 'inline'
+#     script: |    
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME)"
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
       
-- task: PowerShell@2
-  displayName: Connect AzAccount 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) "
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          break;
-        }
-      }
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+# - task: PowerShell@2
+#   displayName: Connect AzAccount 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) "
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          break;
-        }
-      }
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          break;
-        }
-      }
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 "
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          break;
-        }
-      }
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 "
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
 
 # - task: PowerShell@2
 #   displayName: Update Az Modules
@@ -256,17 +263,49 @@ steps:
 #         Enable-AzureRmAlias
 #         Set-AzContext -Subscription "Azure SDK Powershell Test"
 #       }
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
 
-# # # - task: PowerShell@2
-# # #   displayName: Run Smoke Test 
-# # #   inputs:
-# # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-    
-# # # - task: PowerShell@2
-# # #   displayName: 'Run Smoke Test Reversely'
-# # #   inputs:
-# # #     filePath: './tools/Test/SmokeTest/RmCoreSmokeTests.ps1'
-# # #     arguments: '-Reverse'
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
+#       $OSSystem = "$(Platform_Name)"
+#       switch($OSSystem){
+#         'Windows'
+#         {
+#           $psVersion = "$(PSVersion)"
+#           if($psVersion -eq "5.1"){
+#             $psPath = "powershell.exe"
+#           }else{
+#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+#           }
+#           break;
+#         }
+#       }
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
     
 # - task: PowerShell@2
 #   displayName: Clean Az Modules
