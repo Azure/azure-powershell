@@ -19,7 +19,7 @@ Write-Host "Installing Az..."
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
       
 # Check version
-Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force
 $azVersion = (get-module Az).Version
 
 # Check Az

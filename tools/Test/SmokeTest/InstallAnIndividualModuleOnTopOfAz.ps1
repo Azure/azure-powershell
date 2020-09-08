@@ -32,4 +32,6 @@ if ($versions.Count -ge 2) {
     if ($azComputeVersion -le $azComputePreviousVersion) {
         throw "Install Az on top of Az.Compute failed"
     }
-}
+}else {
+    throw "Install Az on top of Az.Compute failed"
+}       

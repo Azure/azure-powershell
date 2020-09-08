@@ -30,4 +30,6 @@ if ($versions.Count -ge 2) {
     if ($azComputeVersion -ne $versions[0]) {
         throw "Update Az.Compute failed"
     }
+}else{
+    throw "Update Az.Compute failed"
 }

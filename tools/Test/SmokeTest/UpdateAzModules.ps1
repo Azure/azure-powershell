@@ -34,4 +34,6 @@ if ($versions.Count -ge 2) {
     # Reuse connected account and select subscription for test
     Enable-AzureRmAlias
     Set-AzContext -Subscription "Azure SDK Powershell Test"
+}else{
+    throw "Update Az failed"
 }
