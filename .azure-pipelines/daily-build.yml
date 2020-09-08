@@ -169,7 +169,6 @@ steps:
       $command = "`$PSVersionTable `
       ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
       Exit"
-      $OSSystem = "$(Platform_Name)"
       $psVersion = "$(PSVersion)"
       if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
