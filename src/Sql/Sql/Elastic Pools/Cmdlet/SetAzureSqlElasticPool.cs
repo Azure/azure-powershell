@@ -49,13 +49,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [PSArgumentCompleter("None",
-            Management.Sql.Models.DatabaseEdition.Basic,
-            Management.Sql.Models.DatabaseEdition.Standard,
-            Management.Sql.Models.DatabaseEdition.Premium,
-            Management.Sql.Models.DatabaseEdition.DataWarehouse,
-            Management.Sql.Models.DatabaseEdition.Free,
-            Management.Sql.Models.DatabaseEdition.Stretch,
-            "GeneralPurpose", "BusinessCritical")]
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose",
+            "BusinessCritical")]
         [ValidateNotNullOrEmpty]
         public string Edition { get; set; }
 

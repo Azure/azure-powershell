@@ -19,7 +19,8 @@
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.44.0-preview" />
+    <!-- <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.44.0-preview" /> -->
+    <Reference Include="D:\git\azure-sdk-for-net\artifacts\obj\Microsoft.Azure.Management.Sql\Debug\net461\Microsoft.Azure.Management.Sql.dll" />
   </ItemGroup>
 
   <ItemGroup>
