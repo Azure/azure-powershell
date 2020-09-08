@@ -25,9 +25,8 @@ if ($versions.Count -ge 2) {
     # Check version
     $azComputeVersion = (Get-Module Az.Compute).Version | 
     % { [system.version]$_ } | Sort-Object -Descending | % { [System.String]$_ }
-
     Write-Host "Current version of Az.Compute", $azComputeVersion
-    
+
     if ($azComputeVersion -ne $versions[0]) {
         throw "Update Az.Compute failed"
     }

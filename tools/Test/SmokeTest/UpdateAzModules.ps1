@@ -26,6 +26,7 @@ if ($versions.Count -ge 2) {
     Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
     $azVersion = (get-module Az).Version
     Write-Host "Current version of Az", $azVersion
+
     if ($azVersion -ne $versions[0]) {
         throw "Update Az failed"
     }

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.6.0'
+ModuleVersion = '4.6.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -63,7 +63,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; },
                @{ModuleName = 'Az.Billing'; RequiredVersion = '1.0.3'; }, 
                @{ModuleName = 'Az.Cdn'; RequiredVersion = '1.4.3'; }, 
                @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.5.1'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '4.3.0'; }, 
+               @{ModuleName = 'Az.Compute'; RequiredVersion = '4.3.1'; }, 
                @{ModuleName = 'Az.ContainerInstance'; RequiredVersion = '1.0.3'; }, 
                @{ModuleName = 'Az.ContainerRegistry'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }, 
