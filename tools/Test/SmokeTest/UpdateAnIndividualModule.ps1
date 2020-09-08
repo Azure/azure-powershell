@@ -31,7 +31,7 @@ if ($versions.Count -ge 2) {
         throw "Update Az.Compute failed"
     }
 }else{
-    Write-Warning "Only one version available for Az"
-    Write-Host 'az versions:', $versions
-    get-help find-module
+    Write-Warning "Only one version available for Az.Compute"
+    Write-Host 'Az.Compute versions:', $versions
+    throw "Update Az.Compute failed"
 }
