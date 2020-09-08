@@ -114,7 +114,7 @@ steps:
           $psVersion = "$(PSVersion)"
           if($psVersion -ne "7.0.3"){
             dotnet tool install PowerShell --version 6.2.4 --tool-path ./PowerShell/
-            dir ./PowerShell/
+            dir ./PowerShell/ -Recurse -Filter pwsh*
           }
           break;
         }
