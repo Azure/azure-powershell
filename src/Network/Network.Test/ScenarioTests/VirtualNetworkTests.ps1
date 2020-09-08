@@ -211,7 +211,10 @@ function Test-bgpCommunitiesCRUD
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $vnetName = Get-ResourceName
+    $vnet1Name = Get-ResourceName
+    $vnet2Name = Get-ResourceName
+    $peering1Name = Get-ResourceName
+    $peering2Name = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
@@ -221,20 +224,37 @@ function Test-bgpCommunitiesCRUD
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # Create q virtual network with a BGP community
-        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -BgpCommunity 12076:30000
+        # Create two virtual networks with BGP communities
+        New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -BgpCommunity 12076:20001
+        New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -BgpCommunity 12076:20002
 
-        # Get the virtual network and verify that the community is set to the expected value
-        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual "12076:30000" $vnet.BgpCommunities.VirtualNetworkCommunity
+        # Perform GET operations to retrieve both virtual networks and verify that the VirtualNetworkCommunity is set to the expected value
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "12076:20001" $vnet1.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20002" $vnet2.BgpCommunities.VirtualNetworkCommunity
 
-        # Update the virtual network with a different BGP community
-        $vnet.BgpCommunities.VirtualNetworkCommunity = "12076:30001"
-        $vnet | Set-AzVirtualNetwork
+        # Update the VirtualNetworkCommunity on both virtual networks
+        $vnet1.BgpCommunities.VirtualNetworkCommunity = "12076:20111"
+        $vnet2.BgpCommunities.VirtualNetworkCommunity = "12076:20222"
+        $vnet1 | Set-AzVirtualNetwork
+        $vnet2 | Set-AzVirtualNetwork
 
-        # Get the virtual network and verify that the community is set to the new value
-        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual "12076:30001" $vnet.BgpCommunities.VirtualNetworkCommunity
+        # Perform GET operations to retrieve both virtual networks and verify that the VirtualNetworkCommunity is set to the expected value
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "12076:20111" $vnet1.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20222" $vnet2.BgpCommunities.VirtualNetworkCommunity
+
+        # Peer both virtual networks
+        Add-AzVirtualNetworkPeering -Name $peering1Name -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+        Add-AzVirtualNetworkPeering -Name $peering2Name -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+
+        # Perform GET operations to retrieve both virtual networks and validate the RemoteBgpCommunity property on the child peering resource
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname   
+        Assert-AreEqual "12076:20222" $vnet1.VirtualNetworkPeerings[0].RemoteBgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20111" $vnet2.VirtualNetworkPeerings[0].RemoteBgpCommunities.VirtualNetworkCommunity
     }
     finally
     {
