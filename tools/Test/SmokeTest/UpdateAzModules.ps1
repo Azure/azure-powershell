@@ -8,8 +8,6 @@ param(
 $versions = (find-module Az -Repository $gallery -AllVersions).Version | 
 % { [system.version]$_ } | Sort-Object -Descending | % { [System.String]$_ }
 
-Write-Host 'az versions:', $versions, $versions.Count
-
 if ($versions.Count -ge 2) {
     # Install previous version of Az
     $previousVersion = $versions[1]
@@ -36,4 +34,7 @@ if ($versions.Count -ge 2) {
     # Reuse connected account and select subscription for test
     Enable-AzureRmAlias
     Set-AzContext -Subscription "Azure SDK Powershell Test"
+}else{
+    Write-Warning "Only one version available for Az"
+    Write-Host 'az versions:', $versions
 }
