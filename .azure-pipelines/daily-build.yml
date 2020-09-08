@@ -93,8 +93,9 @@ steps:
             $fileName = "PowerShell-" + "$(PSVersion)" + "-win-x64.zip"
             New-Item -Path . -Name "PowerShell" -ItemType "directory"
             $outFile = "./PowerShell/" + $fileName
+            $uri = "$(Download_Uri)"
             New-Item -Path "./PowerShell/" -Name $fileName -ItemType "file"
-            (New-Object System.Net.WebClient).DownloadFile($(Download_Uri), $outFile)
+            (New-Object System.Net.WebClient).DownloadFile($uri, $outFile)
             # Invoke-WebRequest -Uri $(Download_Uri) -OutFile $outFile
             $psPath = "./PowerShell/" + "$(PSVersion)"+"/"
             Expand-Archive -Path $outFile -DestinationPath $psPath
