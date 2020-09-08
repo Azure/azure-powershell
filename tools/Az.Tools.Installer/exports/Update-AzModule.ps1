@@ -32,6 +32,10 @@ function Update-AzModule {
     )
 
     process {
+        $cmdStarted = Get-Date
+
+        $WhatIf = $PSBoundParameters.ContainsKey('WhatIf')
+
         $ppsedition = $PSVersionTable.PSEdition
         Write-Host "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -49,41 +53,75 @@ function Update-AzModule {
             $parameters['Name'] = $Name
         }
         
-        Write-Debug "Time Elapsed: $((Measure-Command { $allToUpdate = Get-AzModuleUpdateList @parameters }).TotalSeconds)s"
+        $totalSeconds = (Measure-Command { $allToUpdate = Get-AzModuleUpdateList @parameters }).TotalSeconds
+        Write-Debug "Time Elapsed: ${totalSeconds}s"
 
         Write-Host -ForegroundColor DarkGreen "The modules to Upddate:$($allToUpdate | Out-String)"
 
-        if($allToUpdate.Count) {
-            foreach ($module in $allToUpdate) {
-                if ($Force -or $PSCmdlet.ShouldProcess($module.Name, "Upgrade to the latest version $($module.VersionToUpgrade) from $($module.Repository)")) {
-                    if ($Force) {
-                        Write-Debug "Upgrade $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
-                    }
-                    PowerShellGet\Update-Module -Name $module.Name -Force:$Force
+        if($allToUpdate) {
+            $allToUpdateReordered = @() + $allToUpdate.Where({$_.Name -eq "Az"})
+            $allToUpdateReordered += $allToUpdate.Where({$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"})
+            $allToUpdateReordered += $allToUpdate.Where({$_.Name -eq "Az.Accounts"})
+            Write-Host "Count:$($allToUpdateReordered.Count); list: ($allToUpdateReordered | Out-String)"
+
+            foreach ($module in $allToUpdateReordered) {
+                if (-not $module) {
+                    continue
                 }
                 if ($RemovePrevious) {
-                    if ($module.InstalledVersion -and ($Force -or $PSCmdlet.ShouldProcess($module.Name, "Uninstall the versions: $($module.InstalledVersion)"))) {
+                    if ($module.InstalledVersion -and ($Force -or $PSCmdlet.ShouldProcess("Remove $($module.Name) of the versions: $($module.InstalledVersion)", $module.Name, "Remove"))) {
                         if ($Force) {
-                            Write-Debug "Uninstall $($module.Name) of versions $($module.InstalledVersion)."
+                            Write-Debug "Remove $($module.Name) of versions $($module.InstalledVersion)."
                         }
-                        foreach($version in $module.InstalledVersion) {
+                        foreach ($version in $module.InstalledVersion) {
                             PowerShellGet\Uninstall-Module -Name $module.Name -RequiredVersion $version
                         }
                     }
                 }
-            }
+                
+                if ($Force -or $PSCmdlet.ShouldProcess("Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)", $module.Name, "Update")) {
+                    if ($Force) {
+                        Write-Debug "Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
+                    }
+
+                    try {
+                        $installModule = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
+                    }
+                    catch {
+                        Write-Debug $_
+                    }
+                    if (-not $installModule -or $installModule.Repository -ne $module.Repository) {
+                        $parameters = @{}
+                        $parameters['Name'] = $module.Name
+                        $parameters['Repository'] = $module.Repository
+                        $parameters['RequiredVersion'] = $module.VersionToUpgrade
+                        $parameters['Force'] = $installModule.Repository -ne $module.Repository -or $Force
+                        PowerShellGet\Install-Module @parameters
+                    }
+                }
+            } 
 
             $output = @()
-            foreach($name in $allToUpdate.Name) {
-                try {
-                    $output += (Get-InstalledModule -Name $name -ErrorAction Stop)
-                }
-                catch {
-                    Write-Warning $_
+            if (-not $WhatIf) {
+                foreach($name in $allToUpdate.Name) {
+                    try {
+                        $output += (Get-InstalledModule -Name $name -ErrorAction Stop)
+                    }
+                    catch {
+                        Write-Warning $_
+                    }
                 }
             }
             Write-Output $output
         }
+
+        $Duration = (Get-Date) - $cmdStarted
+        Write-Debug "Time Elapsed Total: ${Duration}s"
+
+        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+        -IsSuccess $true `
+        -StartDateTime $cmdStarted `
+        -Duration $Duration
     }
 }
 
