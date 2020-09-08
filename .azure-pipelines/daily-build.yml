@@ -12,28 +12,30 @@ trigger: none
 
 strategy:
   matrix:
-    Windows PS 5.1.14:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 5.1
-      Download_Uri: ''
+    # Windows PS 5.1.14:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 5.1
+    #   Download_Uri: ''
   
-    Windows PS 6.2.4:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 6.2.4
-      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
+    # Windows PS 6.2.4:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 6.2.4
+    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v6.2.4/PowerShell-6.2.4-win-x64.zip'
      
-    Windows PS 7.0.2:
-      Platform_Name: 'Windows'
-      Image_Name: 'vs2017-win2016'
-      PSVersion: 7.0.2
-      Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
+    # Windows PS 7.0.2:
+    #   Platform_Name: 'Windows'
+    #   Image_Name: 'vs2017-win2016'
+    #   PSVersion: 7.0.2
+    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
 
-    # Linux PS 7.0.3:
-    #   Platform_Name: 'Linux'
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '7.0.3'
+    Linux PS 7.0.3:
+      Platform_Name: 'Linux'
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '7.0.3'
+      Download_Uri: ''
+
     # MacOS PS 7.0.3:
     #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
@@ -49,9 +51,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Fix unstable network
-      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
@@ -103,6 +102,13 @@ steps:
             Write-Host "Installed ", $psPath
           }
           break;
+        }
+        'Linux'
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+
+          }
         }
       }
    
