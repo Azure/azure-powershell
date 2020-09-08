@@ -40,5 +40,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SnapshotPipelines");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateVolumeFromSnapshot()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateVolumeFromSnapshot");
+        }
+               
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevertVolumeFromSnapshot()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RevertVolumeFromSnapshot");
+        }
     }
 }

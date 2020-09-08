@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.6
+
+* Added SnapshotId parameter to New-NetAppFilesVolume to create volume from a snapshot
+* Added Revert-AzNetAppFilesVolume to revert a volume to one of its snapshots
+* FileSystemId removed from Snapshot
+* Added BackupOperators to ActiveDirectory, list of users to add to Backup Operator active directory group
+* Added Status, OrganizationalUnit and Site properties to ActiveDirectory
+* Added SnapshotDirectoryVisible to Volume, If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+* Added Snapshot to Volume DataProtection
+ 
 ## Version 0.1.5
 
 * Includes replication operations
