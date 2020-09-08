@@ -89,12 +89,9 @@ steps:
       switch($OSSystem){
         'Windows'
         {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -ne "5.1"){
-            dotnet new tool-manifest
-            dotnet tool install PowerShell --version $(PSVersion)
-            dotnet tool list
-          }
+          dotnet new tool-manifest
+          dotnet tool install PowerShell --version $(PSVersion)
+          dotnet tool list
           break;
         }
         Default 
