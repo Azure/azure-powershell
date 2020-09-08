@@ -5,7 +5,8 @@ if ($modules) {
     $modules.Path | ForEach-Object { 
         $dirctory = $_ | Split-Path | Split-Path
         if (Test-Path $dirctory ) {
-            Get-ChildItem $dirctory -Recurse | Remove-Item -Force
+            Remove-Item -Force -Recurse -Path "$dirctory\*"
+            Remove-Item -Path $dirctory -Force
         }
     }
     Write-Host "Az modules removed."
