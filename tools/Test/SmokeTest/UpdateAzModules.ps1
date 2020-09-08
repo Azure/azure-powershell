@@ -37,4 +37,5 @@ if ($versions.Count -ge 2) {
 }else{
     Write-Warning "Only one version available for Az"
     Write-Host 'az versions:', $versions
+    throw "Update Az failed"
 }
