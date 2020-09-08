@@ -46,7 +46,7 @@ function Get-AzModuleUpdateList {
 
         Write-Debug "The Az modules currently installed: $($installModules.Keys)"
 
-        if ($installModules.Keys) {
+        if ($installModules.Keys -gt 0) {
             foreach ($key in $installModules.Keys.Clone()) {
                 $installedModules = (PowerShellGet\Get-InstalledModule -Name $key -AllVersions).Where( { -not $_.AdditionalMetadata.IsPrerelease })
                 foreach ($installed in $installedModules) {
@@ -76,7 +76,7 @@ function Get-AzModuleUpdateList {
         $index = 0
         while($index -lt $modulesToCheck.Count) {
             $moduleName = $modulesToCheck[$index].Item1
-            $repo = if ($Repository) {$Repository} else {$modulesToCheck[$index].Item2}
+            $repo = if ($Repository) {$Repository} elseif ($installModules.ContainsKey($moduleName)) {$installModules[$moduleName].Item2} else {$modulesToCheck[$index].Item2}
             if($repo) {
                 $module = PowerShellGet\Find-Module -Name $moduleName -Repository $repo
                 if ($module) {

@@ -56,13 +56,12 @@ function Update-AzModule {
         $totalSeconds = (Measure-Command { $allToUpdate = Get-AzModuleUpdateList @parameters }).TotalSeconds
         Write-Debug "Time Elapsed: ${totalSeconds}s"
 
-        Write-Host -ForegroundColor DarkGreen "The modules to Upddate:$($allToUpdate | Out-String)"
-
         if($allToUpdate) {
+            Write-Host -ForegroundColor DarkGreen "The modules to Upddate:$($allToUpdate | Out-String)"
+
             $allToUpdateReordered = @() + $allToUpdate.Where({$_.Name -eq "Az"})
             $allToUpdateReordered += $allToUpdate.Where({$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"})
             $allToUpdateReordered += $allToUpdate.Where({$_.Name -eq "Az.Accounts"})
-            Write-Host "Count:$($allToUpdateReordered.Count); list: ($allToUpdateReordered | Out-String)"
 
             foreach ($module in $allToUpdateReordered) {
                 if (-not $module) {
@@ -116,7 +115,7 @@ function Update-AzModule {
         }
 
         $Duration = (Get-Date) - $cmdStarted
-        Write-Debug "Time Elapsed Total: ${Duration}s"
+        Write-Debug "Time Elapsed Total: $($Duration.TotalSeconds)s"
 
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
         -IsSuccess $true `
@@ -124,4 +123,3 @@ function Update-AzModule {
         -Duration $Duration
     }
 }
-
