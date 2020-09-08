@@ -91,17 +91,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Enables auto tiering of a blob from cool to hot on a blob access. It only works with TierToCool action and DaysAfterLastAccessTimeGreaterThan.",
             ParameterSetName = BaseBlobLastAccessTimeParameterSet)]
         public SwitchParameter EnableAutoTierToHotFromCool { get; set; }
-        //{
-        //    get
-        //    {
-        //        return enableAutoTierToHotFromCool is null ? false : enableAutoTierToHotFromCool.Value;
-        //    }
-        //    set
-        //    {
-        //        enableAutoTierToHotFromCool = value;
-        //    }
-        //}
-        //public bool? enableAutoTierToHotFromCool;
 
         [Parameter(Mandatory = false,
             HelpMessage = "If input the ManagementPolicy Action object, will set the action to the input action object. If not input, will create a new action object.",
