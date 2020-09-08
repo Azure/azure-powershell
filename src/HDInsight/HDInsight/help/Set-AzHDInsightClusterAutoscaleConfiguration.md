@@ -95,8 +95,8 @@ This command sets the Load-based autoscale configuration of an Azure HDInsight c
 ### Example 2: Set the Schedule-based autoscale of the HDInsight cluster
 ```powershell
 # Create autoscale conditions
-PS C:\> $condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Days Monday,Wednesday
-PS C:\> $condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 4 -Days Friday
+PS C:\> $condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Day Monday,Wednesday
+PS C:\> $condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 4 -Day Friday
 
 # Set autoscale configuration
 PS C:\> $clusterResourceGroup="group"

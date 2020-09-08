@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public int WorkerNodeCount { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the days of Autoscale schedule condition.", Mandatory = true)]
-        public AzureHDInsightDaysOfWeek[] Days { get; set; }
+        public AzureHDInsightDaysOfWeek[] Day { get; set; }
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             _condition.Time = Time.ToString("HH:mm");
             _condition.WorkerNodeCount = WorkerNodeCount;
-            _condition.Days = Days.ToList();
+            _condition.Days = Day.ToList();
             WriteObject(_condition);
         }
     }

@@ -41,7 +41,7 @@ This command creates an object which describes Load-based autoscale configuratio
 ### Example 2: Create an object which describes Schedule-based autoscale configuration
 ```powershell
 # Create an autoscale condition firstly
-PS C:\> $condition=New-AzHDInsightClusterAutoscaleScheduleCondition -Days Monday -Time 09:00 -WorkerNodeCount 5
+PS C:\> $condition=New-AzHDInsightClusterAutoscaleScheduleCondition -Day Monday -Time 09:00 -WorkerNodeCount 5
 PS C:\> New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `
         -Condition $condition
 ```

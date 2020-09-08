@@ -250,8 +250,8 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 		$params= Prepare-ClusterCreateParameterForWASB -location "East US"
 
 		# create autoscale schedule condition
-		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "09:00" -WorkerNodeCount 4 -Days Monday,Tuesday
-		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "08:00" -WorkerNodeCount 5 -Days Friday
+		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "09:00" -WorkerNodeCount 4 -Day Monday,Tuesday
+		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "08:00" -WorkerNodeCount 5 -Day Friday
 
 		# create autoscale configuration
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `

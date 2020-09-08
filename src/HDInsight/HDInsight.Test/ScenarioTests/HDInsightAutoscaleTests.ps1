@@ -52,8 +52,8 @@ function Test-AutoscaleRelatedCommands{
 		
 		# test Set-AzHDInsightClusterAutoscaleConfiguration: enable Schedule-based autoscale
 		# test New-AzHDInsightAutoscaleScheduleCondition
-		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Days Monday,Tuesday
-		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 08:00 -WorkerNodeCount 4 -Days Friday
+		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Day Monday,Tuesday
+		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 08:00 -WorkerNodeCount 4 -Day Friday
 
 		$scheduleAutoscaleCluster=Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $cluster.ResourceGroup `
 		-ClusterName $cluster.Name -TimeZone "Pacific Standard Time" -Condition $condition1,$condition2
