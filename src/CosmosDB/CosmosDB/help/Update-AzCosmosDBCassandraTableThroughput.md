@@ -14,23 +14,23 @@ Updates the throughput value of a CosmosDB Cassandra Table.
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBCassandraTableThroughput -ResourceGroupName <String> -AccountName <String>
- -KeyspaceName <String> [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+Update-AzCosmosDBCassandraTableThroughput -KeyspaceName <String> [-Name <String>] -ResourceGroupName <String>
+ -AccountName <String> [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBCassandraTableThroughput [-Name <String>] [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] -ParentObject <PSCassandraKeyspaceGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCosmosDBCassandraTableThroughput [-Name <String>] -ParentObject <PSCassandraKeyspaceGetResults>
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBCassandraTableThroughput [-Name <String>] [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] -InputObject <PSCassandraTableGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCosmosDBCassandraTableThroughput [-Name <String>] -InputObject <PSCassandraTableGetResults>
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -69,6 +69,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkSubnetNetworkSecurityGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-subnetNetworkSecurityGroupCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkSubnetRouteTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-subnetRouteTableCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkMultiPrefixSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-multiPrefixSubnetCRUD");
