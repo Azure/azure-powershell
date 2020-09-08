@@ -1,52 +1,47 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbtablethroughput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration
 schema: 2.0.0
 ---
 
-# Update-AzCosmosDBTableThroughput
+# Invoke-AzCosmosDBSqlContainerThroughputMigration
 
 ## SYNOPSIS
-Updates the throughput value of a CosmosDB Table.
+Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -ResourceGroupName <String> -AccountName <String>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzCosmosDBSqlContainerThroughputMigration -DatabaseName <String> [-Name <String>]
+ -ResourceGroupName <String> -AccountName <String> -ThroughputType <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -ParentObject <PSDatabaseAccountGetResults>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzCosmosDBSqlContainerThroughputMigration [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
+ -ThroughputType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBTableThroughput [-Name <String>] -InputObject <PSTableGetResults> [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzCosmosDBSqlContainerThroughputMigration [-Name <String>] -InputObject <PSSqlContainerGetResults>
+ -ThroughputType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the throughput value of a CosmosDB Table.
+ThroughpyteType paramter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBTableThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -Name {myTableName} -Throughput {updatedThroughputValue}
-Name                : mxGp
-Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/table/{myTableName}/throughputSettings/default
-Throughput          : {updatedThroughputValue}
-MinimumThroughput   : 400
-OfferReplacePending :
+PS C:\>$NewSqlContainer =  New-AzCosmosDBSqlContainer -AccountName myAccountName -ResourceGroupName myRgName -Name myContainerName  -Throughput  700 -DatabaseName myDbName
+      $AutoscaleThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration -InputObject $NewSqlContainer -ThroughputType Autoscale
 ```
+
 
 ## PARAMETERS
 
@@ -65,21 +60,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoscaleMaxThroughput
-Maximum Throughput value if autoscale is enabled.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -89,6 +69,21 @@ Parameter Sets: (All)
 Aliases: cf
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+Database name.
+
+```yaml
+Type: String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-CosmosDB Account object
+Sql Container object.
 
 ```yaml
-Type: PSTableGetResults
+Type: PSSqlContainerGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -126,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Table.
+Container name.
 
 ```yaml
 Type: String
@@ -141,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-CosmosDB Account object
+Sql Database object.
 
 ```yaml
-Type: PSDatabaseAccountGetResults
+Type: PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -170,16 +165,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Throughput
-The throughput of Table (RU/s).
-Default value is 400.
+### -ThroughputType
+Throughput type to migrate to.
+Possible values are: Autoscale, Manual.
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,7 +202,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
 
 ## OUTPUTS
 
