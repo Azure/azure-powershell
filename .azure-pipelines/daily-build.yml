@@ -13,35 +13,29 @@ trigger: none
 strategy:
   matrix:
     Windows PS 5.1.14:
-      Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
-      PSVersion: 5.1
+      PSVersion: 5.1.14
   
     Windows PS 6.2.4:
-      Platform_Name: 'Windows'
       Image_Name: 'vs2017-win2016'
       PSVersion: 6.2.4
      
-    # Windows PS 7.0.2:
-    #   Platform_Name: 'Windows'
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 7.0.2
-    #   Download_Uri: 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip'
+    Windows PS 7.0.2:
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 7.0.2
 
-    # Linux PS 7.0.3:
-    #   Platform_Name: 'Linux'
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '7.0.3'
+    Linux PS 7.0.3:
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '7.0.3'
 
-    # Linux PS 6.2.4:
-    #   Platform_Name: 'Linux'
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '6.2.4'
+    Linux PS 6.2.4:
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '6.2.4'
   
     # MacOS PS 7.0.3:
-    #   Platform_Name: 'MacOS'
     #   Image_Name: 'macOS-10.14'
     #   PSVersion: '7.0.3'
+
   maxParallel: 4
 
 pool:
@@ -84,22 +78,12 @@ steps:
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
 
-      $OSSystem = "$(Platform_Name)"
-      Write-Host "Installing PS $(PSVersion) for", $OSSystem      
-      switch($OSSystem){
-        'Windows'
-        {
+      $psVersion = "$(PSVersion)"
+      Write-Host "Installing PS $psVersion..."  
+      if($psVersion -ne "5.1.14"){
           dotnet new tool-manifest
           dotnet tool install PowerShell --version $(PSVersion)
           dotnet tool list
-          break;
-        }
-        Default 
-        {          
-          dotnet new tool-manifest
-          dotnet tool install PowerShell --version $(PSVersion)
-          dotnet tool list
-        }
       }
    
 - task: PowerShell@2
@@ -110,24 +94,11 @@ steps:
       $command = "`$PSVersionTable`
       ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
       Exit "
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          # $psVersion = "$(PSVersion)"
-          # if($psVersion -eq "5.1"){
-          #   $psPath = "powershell.exe"
-          # }else{
-          #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          # }
-          # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
-          break;
-        }
-        Default 
-        {          
-          dotnet tool run pwsh -c $command
-        }
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
       
 - task: PowerShell@2
@@ -138,24 +109,11 @@ steps:
       $command = "`$PSVersionTable`
       ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) `
       Exit"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          # $psVersion = "$(PSVersion)"
-          # if($psVersion -eq "5.1"){
-          #   $psPath = "powershell.exe"
-          # }else{
-          #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          # }
-          # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
-          break;
-        }
-        Default  
-        {          
-          dotnet tool run pwsh -c $command         
-        }
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
 
 - task: PowerShell@2
@@ -166,57 +124,27 @@ steps:
       $command = "`$PSVersionTable`
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
       Exit"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          # $psVersion = "$(PSVersion)"
-          # if($psVersion -eq "5.1"){
-          #   $psPath = "powershell.exe"
-          # }else{
-          #   $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          # }
-          # Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
-          break;
-        }
-        Default  
-        {          
-          dotnet tool run pwsh -c $command
-        }
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
 
-# - task: PowerShell@2
-#   displayName: 'Run Smoke Test Reversely'
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable `
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
-#       Exit"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
-#           break;
-#         }
-#         Default  
-#         {          
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -ne "7.0.3"){
-#             dotnet tool run pwsh -c $command
-#           }else{
-#             pwsh -c $command
-#           }
-#         }
-#       }
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
+      Exit"
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
+          dotnet tool run pwsh -c $command
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+      }
 
 - task: PowerShell@2
   displayName: Clean Az Modules
@@ -226,23 +154,11 @@ steps:
       $command = "`$PSVersionTable `
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
-      $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
-          break;
-        }
-        Default  
-        {
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
-        }
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
 
 - task: PowerShell@2
@@ -254,23 +170,13 @@ steps:
       ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
       Exit"
       $OSSystem = "$(Platform_Name)"
-      switch($OSSystem){
-        'Windows'
-        {
-          $psVersion = "$(PSVersion)"
-          if($psVersion -eq "5.1"){
-            $psPath = "powershell.exe"
-          }else{
-            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-          }
-          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
-          break;
-        }
-        Default  
-        {
+      $psVersion = "$(PSVersion)"
+      if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
-        }
+      }else{
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
+
 
 # - task: PowerShell@2
 #   displayName: Run Smoke Test 
