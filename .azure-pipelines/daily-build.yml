@@ -109,7 +109,7 @@ steps:
           }
           break;
         }
-        'Linux'
+        Default 
         {          
           $psVersion = "$(PSVersion)"
           if($psVersion -ne "7.0.3"){
@@ -117,7 +117,6 @@ steps:
             dotnet tool install PowerShell --version 6.2.4
             dotnet tool list
           }
-          break;
         }
       }
    
@@ -142,350 +141,493 @@ steps:
           Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
           break;
         }
-        'Linux'
+        Default 
         {          
           $psVersion = "$(PSVersion)"
           if($psVersion -ne "7.0.3"){
             dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
           }
-          break;
         }
       }
       
-# - task: PowerShell@2
-#   displayName: Connect AzAccount 
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) "
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+- task: PowerShell@2
+  displayName: Connect AzAccount 
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Run Smoke Test 
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: 'Run Smoke Test Reversely'
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |   
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/CleanAzModules.ps1 "
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Update Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of az
-#       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+- task: PowerShell@2
+  displayName: Update Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:',$previousVersion
+- task: PowerShell@2
+  displayName: Run Smoke Test 
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable`
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
-
-#         #Update Az
-#         Update-Module -Name Az -Scope CurrentUser -Force
-        
-#         # Check Az
-#         Write-Host "Get latest version of Az"
-#         Get-Module -Name Az.* -ListAvailable
-
-#         # Check version
-#         Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-#         $azVersion = (get-module Az).Version
-#         if($azVersion -ne $versions[0]){
-#           throw "Update Az failed"
-#         }
-        
-#         # Reuse connected account and select subscription for test
-#         Enable-AzureRmAlias
-#         Set-AzContext -Subscription "Azure SDK Powershell Test"
-#       }
-# - task: PowerShell@2
-#   displayName: Run Smoke Test 
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
-
-# - task: PowerShell@2
-#   displayName: 'Run Smoke Test Reversely'
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $command = "`$PSVersionTable`
-#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"
-#       $OSSystem = "$(Platform_Name)"
-#       switch($OSSystem){
-#         'Windows'
-#         {
-#           $psVersion = "$(PSVersion)"
-#           if($psVersion -eq "5.1"){
-#             $psPath = "powershell.exe"
-#           }else{
-#             $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
-#           }
-#           break;
-#         }
-#       }
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+- task: PowerShell@2
+  displayName: 'Run Smoke Test Reversely'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath,$command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
     
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#          Write-Host "Removing Az modules..."
-#          $modules.Path | ForEach-Object { 
-#          $dirctory = $_ | Split-Path | Split-Path
-#          if(Test-Path $dirctory ){
-#            Remove-Item –path $dirctory –recurse -force
-#          }
-#         }
-#         Write-Host "Az modules removed."
-#       }
-
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
     
-# - task: PowerShell@2
-#   displayName: Install an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       Write-Host "Installing Az.Compute..."
-#       Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force 
-#       Get-AzVM
+- task: PowerShell@2
+  displayName: Install an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#       # Check version
-#       $azComputeVersion = (Get-Module Az.Compute).Version
-#       if(!$azComputeVersion){
-#         throw "No Az.Compute is installed"
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Update an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of Az.Compute
-#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
+- task: PowerShell@2
+  displayName: Update an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az.Compute
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:', $previousVersion
-#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#         #Update Az.Compute
-#         Update-Module -Name Az.Compute -Scope CurrentUser -Force
-#         Write-Host "Installed latest version of Az.Compute"
+- task: PowerShell@2
+  displayName: Install Az on top of an individual module
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-#         # Check Az.Compute
-#         Get-AzVM
-        
-#         # Check version
-#         $azComputeVersion = (Get-Module Az.Compute).Version | 
-#         %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-#         if($azComputeVersion -ne $versions[0]){
-#           throw "Update Az.Compute failed"
-#         }
-#       }
+- task: PowerShell@2
+  displayName: Clean Az Modules
+  inputs:
+    targetType: 'inline'
+    script: |   
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
 
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
-      
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
-
-# - task: PowerShell@2
-#   displayName: Install Az on top of an individual module
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of Az.Compute
-#       $versions = (find-module Az.Compute -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az.Compute        
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:', $previousVersion
-#         Write-Host "Installed previous version of Az.Compute"
-
-#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
-
-#         #Install Az
-#         Install-Module -Name Az -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force
-        
-#         Write-Host "Installed latest version of Az"
-#         Get-AzVM
-#         Get-Module
-
-#         # Check version
-#         $azComputeVersion = (Get-Module Az.Compute).Version
-#         if($azComputeVersion -ne $versions[0]){
-#           throw "Install Az on top of Az.Compute failed"
-#         }
-#       }
-
-# - task: PowerShell@2
-#   displayName: Clean Az Modules
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Remove Az.* modules
-#       $modules = Get-Module -Name Az.* -ListAvailable
-#       if($modules){
-#         Write-Host "Removing Az modules..."
-#         $modules.Path | ForEach-Object { 
-#           $dirctory = $_ | Split-Path | Split-Path
-#           if(Test-Path $dirctory ){
-#             Remove-Item –path $dirctory –recurse -force
-#           }
-#         }
-#         Write-Host "Az modules removed."
-#       }
-
-#       # Check Az
-#       Get-Module -Name Az.* -ListAvailable
-
-# - task: PowerShell@2
-#   displayName: Install an individual module on top of Az
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Get previous version of Az
-#       $versions = (find-module Az -Repository $(GALLERY_NAME) -AllVersions).Version |
-#        %{[system.version]$_} | Sort-Object -Descending | %{[System.String]$_}
-
-#       if($versions.Count -ge 2){
-#         # Install previous version of Az
-#         $previousVersion = $versions[1]
-#         Write-Host '$previousVersion:', $previousVersion
-#         Install-Module -Name Az -Repository $(GALLERY_NAME) -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
-#         Write-Host 'Installed the previous version of Az'
-
-#         # Get previous version of Az.Compute
-#         $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version
-
-#         #Install Az.Compute
-#         Install-Module -Name Az.Compute -Repository $(GALLERY_NAME) -Scope CurrentUser -AllowClobber -Force        
-        
-#         Write-Host "Installed latest Az.Compute"
-#         Get-AzVM
-#         Get-Module
-
-#         # Check version
-#         $azComputeVersion = (Get-Module Az.Compute).Version
-#         if($azComputeVersion -le $azComputePreviousVersion){
-#           throw "Install Az on top of Az.Compute failed"
-#         }
-#       }
+- task: PowerShell@2
+  displayName: Install an individual module on top of Az
+  inputs:
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+      ./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 $(GALLERY_NAME) `
+      Exit"
+      $OSSystem = "$(Platform_Name)"
+      switch($OSSystem){
+        'Windows'
+        {
+          $psVersion = "$(PSVersion)"
+          if($psVersion -eq "5.1"){
+            $psPath = "powershell.exe"
+          }else{
+            $psPath = "./PowerShell/"+"$(PSVersion)" + "/pwsh.exe"
+          }
+          Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+          break;
+        }
+        Default  
+        {          
+          $psVersion = "$(PSVersion)"
+          if($psVersion -ne "7.0.3"){
+            dotnet tool run pwsh -c $command
+          }else{
+            pwsh -c $command
+          }
+        }
+      }
