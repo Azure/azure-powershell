@@ -42,11 +42,11 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-module-version: 0.1.0
+module-version: 0.2.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2020-07-30-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2020-08-02/HybridCompute.json
 
 directive:
   - where:
@@ -60,16 +60,6 @@ directive:
       verb: Get
       variant: ^GetViaIdentity\d?$
     remove: true
-
-  # # These variants don't work
-  # - where:
-  #     verb: New
-  #     variant: ^CreateViaIdentity\d?$|^Create\d?$
-  #   remove: true
-  # - where:
-  #     verb: Set
-  #     variant: ^Update\d?$ |^UpdateViaIdentity\d?$
-  #   remove: true
 
   # Make parameters friendlier for extensions
   - where:
