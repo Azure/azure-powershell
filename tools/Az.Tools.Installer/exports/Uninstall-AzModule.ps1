@@ -14,7 +14,7 @@
 
 function Uninstall-AzModule {
     [OutputType()]
-    [CmdletBinding(DefaultParameterSetName = 'WithoutPreview', PositionalBinding = $false, SupportsShouldProcess = $true)]
+    [CmdletBinding(DefaultParameterSetName = 'RemoveAll', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
@@ -87,13 +87,12 @@ function Uninstall-AzModule {
 
         
         try {
-            $installed = Get-InstalledModule -Name 'Az.*' 
+            $installed = Get-InstalledModule -Name 'Az.*','Az' -ErrorAction SilentlyContinue
         } catch {
-            Write-Error "Nothing to delete, no Az modules found: $_"
-            break
+            
         }
 
-        if (!$PSBoundParameters.ContainsKey("AllowPrerelease")) {
+        if (!$PSBoundParameters.ContainsKey("AllowPrerelease") -and ($PSCmdlet.ParameterSetName -ne 'RemoveAll')) {
 
             #Without preview
             $parameter = @{}
@@ -188,6 +187,9 @@ function Uninstall-AzModule {
                     $parameter.Add('AllowPrerelease', $AllowPrerelease)
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
                     $parameter.Add('RequiredVersion', $version)
+                } else {
+                    $parameter.Add('AllVersion', $AllVersion)
+                    $parameter.Add('AllowPrerelease', $AllowPrerelease)
                 }
                 $null = Start-Job {
                     Uninstall-Module @using:parameter
