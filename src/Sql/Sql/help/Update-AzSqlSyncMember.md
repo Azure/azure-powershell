@@ -13,7 +13,7 @@ Updates an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Update-AzSqlSyncMember -Name <String> -MemberDatabaseCredential <PSCredential>
+Update-AzSqlSyncMember -Name <String> [-MemberDatabaseCredential <PSCredential>]
  [-UsePrivateLinkConnection <Boolean>] [-SyncMemberAzureDatabaseResourceId <String>] [-SyncGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -88,7 +88,7 @@ Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
