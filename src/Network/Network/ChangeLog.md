@@ -33,7 +33,7 @@
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 * Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
 * Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
-* Add `AllowActiveFTP` parameter to `AzureFirewall`
+* Added `AllowActiveFTP` parameter to `AzureFirewall`
 * Updated below commands for feature: Enable internet security set/remove on VirtualWan P2SVpnGateway.
 - Updated `New-AzP2sVpnGateway`: Added optional switch parameter `EnableInternetSecurityFlag` for customers to set true to enable internet security on P2SVpnGateway, which will be applied for Point to site clients.
 - Updated `Update-AzP2sVpnGateway`: Added optional switch parameters `EnableInternetSecurityFlag` or `DisableInternetSecurityFlag` for customers to set true/false to enable/disable internet security on P2SVpnGateway, which will be applied for Point to site clients.
