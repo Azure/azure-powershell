@@ -60,14 +60,13 @@ Describe 'Remove-AzConnectedMachineExtension' {
         # Tests include -SubscriptionId automatically but it causes
         # piping to fail. This temporarily removes that default value for
         # this test.
-        $before = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
+        $PSDefaultParameterValues["Remove-AzConnectedMachineExtension:SubscriptionId"] = @{}
         try {
             { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 } | Should -Not -Throw
             Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 | Remove-AzConnectedMachineExtension
             { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom2 } | Should -Throw
         } finally {
-            $PSDefaultParameterValues["*:SubscriptionId"] = $before
+            $PSDefaultParameterValues.Remove("Remove-AzConnectedMachineExtension:SubscriptionId")
         }
     }
 }
