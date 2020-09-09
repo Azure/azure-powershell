@@ -21,7 +21,7 @@ function Get-AzModuleUpdateList {
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(HelpMessage = 'The registered repostory.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository}
@@ -107,7 +107,7 @@ function Get-AzModuleUpdateList {
         }
 
         If (-not $modulesToUpdate) {
-            Write-Warning "None of your specifed module needs upgrading."
+            Write-Warning "None of your specified module needs upgrading."
         }
         else {
             Write-Debug "The modules contain update: $($modulesToUpdate.Name)"
