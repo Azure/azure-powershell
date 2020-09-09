@@ -185,7 +185,7 @@ function Uninstall-AzModule {
                 if ($PSBoundParameters.ContainsKey('AllVersion')) {
                     $parameter.Add('AllVersion', $AllVersion)
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithPreview') {
-                    parameter.Add('AllowPrerelease', $AllowPrerelease)
+                    $parameter.Add('AllowPrerelease', $AllowPrerelease)
                 } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
                     $parameter.Add('RequiredVersion', $version)
                 }
