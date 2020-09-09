@@ -33,6 +33,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -47,11 +48,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public List<object> ManagementClients { get; private set; }
 
+        private List<DelegatingHandler> DelegatingHandlers { get; set; }
+
+        private ClientFactory RealClientFactory = new ClientFactory();
+
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
             UniqueUserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
+            DelegatingHandlers = new List<DelegatingHandler>();
         }
 
         public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
@@ -193,7 +199,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
-            // Do nothing
+            RealClientFactory.AddHandler<T>(handler);
+            DelegatingHandlers.Add(handler);
         }
 
         public void RemoveHandler(Type handlerType)
@@ -245,8 +252,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
             var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
                 context.Subscription.Id);
-            return client;
 
+            return client;
         }
 
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
@@ -262,11 +269,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 }
                 else
                 {
-                    var realClientFactory = new ClientFactory();
                     var newParameters = new object[parameters.Length + 1];
                     Array.Copy(parameters, 0, newParameters, 1, parameters.Length);
                     newParameters[0] = HttpMockServer.CreateInstance();
-                    var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
+                    var realClient = RealClientFactory.CreateCustomArmClient<TClient>(newParameters);
                     return realClient;
                 }
             }

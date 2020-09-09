@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureSqlDatabaseExportAttributes()
+        public void ExportAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(NewAzureSqlDatabaseExport);
+            Type type = typeof(ExportAzureSqlDatabase);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
@@ -47,9 +47,25 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureSqlDatabaseImportAttributes()
+        public void ImportExistingAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(NewAzureSqlDatabaseImport);
+            Type type = typeof(ImportExistingAzureSqlDatabase);
+
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageKeyType", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageKey", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageUri", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "AdministratorLogin", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "AdministratorLoginPassword", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "AuthenticationType", isMandatory: false, valueFromPipelineByName: false);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ImportNewAzureSqlDatabaseAttributes()
+        {
+            Type type = typeof(ImportNewAzureSqlDatabase);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);

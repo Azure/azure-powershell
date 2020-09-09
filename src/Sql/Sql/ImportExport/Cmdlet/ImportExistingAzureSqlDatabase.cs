@@ -13,27 +13,51 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
     /// <summary>
-    /// Defines the StartAzureSqlDatabaseExport cmdlet
+    /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class NewAzureSqlDatabaseExport : ImportExportCmdletBase
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExisting", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+    public class ImportExistingAzureSqlDatabase : ImportExportCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
             HelpMessage = "SQL Database name.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Get the Firewall Rule to update
+        /// </summary>
+        /// <returns>The Firewall Rule being updated</returns>
+        protected override Model.AzureSqlDatabaseImportExportBaseModel GetEntity()
+        {
+            return new AzureSqlDatabaseImportModel();
+        }
+
+        /// <summary>
+        /// Creates a new import request
+        /// </summary>
+        /// <param name="entity">Import Request Model</param>
+        /// <returns>Import Request Response</returns>
+        protected override AzureSqlDatabaseImportExportBaseModel PersistChanges(AzureSqlDatabaseImportExportBaseModel entity)
+        {
+            AzureSqlDatabaseImportModel importModel = entity as AzureSqlDatabaseImportModel;
+            if (importModel == null)
+            {
+                throw new ArgumentNullException("importModel");
+            }
+            return ModelAdapter.ImportExistingDatabase(importModel);
+        }
 
         /// <summary>
         /// Updates the given model element with the cmdlet specific operation 
@@ -41,7 +65,9 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
-            AzureSqlDatabaseImportExportBaseModel exportRequest = new AzureSqlDatabaseImportExportBaseModel()
+            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
+
+            AzureSqlDatabaseImportModel exportRequest = new AzureSqlDatabaseImportModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 AdministratorLogin = AdministratorLogin,
@@ -51,28 +77,11 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 ServerName = ServerName,
                 StorageKey = StorageKey,
                 StorageKeyType = StorageKeyType,
-                StorageUri = StorageUri
+                StorageUri = StorageUri,
+                NetworkIsolationSettings = networkIsolationSettings,
+                WaitForOperationComplete = WaitForOperationToComplete
             };
             return exportRequest;
-        }
-
-        /// <summary>
-        /// Creates a new export request
-        /// </summary>
-        /// <param name="entity">Import Request Model</param>
-        /// <returns>Import Request Response</returns>
-        protected override AzureSqlDatabaseImportExportBaseModel PersistChanges(AzureSqlDatabaseImportExportBaseModel entity)
-        {
-            return ModelAdapter.Export(entity);
-        }
-
-        /// <summary>
-        /// Get the Firewall Rule to update
-        /// </summary>
-        /// <returns>The Firewall Rule being updated</returns>
-        protected override Model.AzureSqlDatabaseImportExportBaseModel GetEntity()
-        {
-            return new AzureSqlDatabaseImportExportBaseModel();
         }
     }
 }

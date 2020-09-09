@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseNew", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+    public class ImportNewAzureSqlDatabase : ImportExportCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -85,8 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             {
                 throw new ArgumentNullException("importModel");
             }
-            return ModelAdapter.Import(importModel);
-
+            return ModelAdapter.ImportNewDatabase(importModel);
         }
 
         /// <summary>
@@ -95,6 +94,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
+            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
+
             AzureSqlDatabaseImportModel exportRequest = new AzureSqlDatabaseImportModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 StorageUri = StorageUri,
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
-                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
+                NetworkIsolationSettings = networkIsolationSettings
             };
             return exportRequest;
         }

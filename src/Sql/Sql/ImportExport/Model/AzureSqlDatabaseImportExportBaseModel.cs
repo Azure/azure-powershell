@@ -100,6 +100,14 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to wait for operation to complete
+        /// </summary>
+        public bool WaitForOperationComplete
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Gets or sets the status message returned from the server.
         /// </summary>
         public string Status { get; set; }
@@ -108,6 +116,11 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         /// Gets or sets the error message returned from the server.
         /// </summary>
         public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network isolation settings
+        /// </summary>
+        public NetworkIsolationSettings NetworkIsolationSettings { get; set; }
 
         /// <summary>
         /// Copies the model to a new class
@@ -122,7 +135,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
                 AuthenticationType = AuthenticationType,
                 DatabaseName = DatabaseName,
                 StorageKeyType = StorageKeyType,
-                StorageUri = StorageUri
+                StorageUri = StorageUri,
+                NetworkIsolationSettings = NetworkIsolationSettings
             };
         }
     }
