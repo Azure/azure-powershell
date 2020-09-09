@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"Australia East\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "174eb211-0fb0-4d43-930f-2ea3a77898ed"
+          "87242926-48f7-4d4a-956b-0617c0b5127b"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1192"
         ],
         "x-ms-request-id": [
-          "d5dd2d12-af27-4d42-9f8b-983ef92a4761"
+          "ebccbb4c-2c38-4c10-bf55-716aa93f6782"
         ],
         "x-ms-correlation-request-id": [
-          "d5dd2d12-af27-4d42-9f8b-983ef92a4761"
+          "ebccbb4c-2c38-4c10-bf55-716aa93f6782"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034512Z:d5dd2d12-af27-4d42-9f8b-983ef92a4761"
+          "BRAZILUS:20200909T224203Z:ebccbb4c-2c38-4c10-bf55-716aa93f6782"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:12 GMT"
+          "Wed, 09 Sep 2020 22:42:03 GMT"
         ],
         "Content-Length": [
           "212"
@@ -73,7 +73,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "637d33e5-ad11-4a72-975f-ba03f61108b3"
+          "4f258854-9592-4f6c-8008-476d02c7bcaa"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a2a8e490-a8f9-4bbf-b985-fa60aca62fb1"
+          "3cfccf76-47be-4dba-b1d4-3b47c1321c4d"
         ],
         "x-ms-correlation-request-id": [
-          "a2a8e490-a8f9-4bbf-b985-fa60aca62fb1"
+          "3cfccf76-47be-4dba-b1d4-3b47c1321c4d"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034513Z:a2a8e490-a8f9-4bbf-b985-fa60aca62fb1"
+          "BRAZILUS:20200909T224204Z:3cfccf76-47be-4dba-b1d4-3b47c1321c4d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:12 GMT"
+          "Wed, 09 Sep 2020 22:42:04 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -147,19 +147,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "14ef097d-fadb-4267-a3e4-905bf805230f"
+          "a3a97af0-fd8c-4b9c-ae09-d079f0b606ef"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11951"
         ],
         "x-ms-correlation-request-id": [
-          "7d3cc83c-dec4-433d-ab29-05a317686a13"
+          "ddb85f06-14fd-4ac7-887f-43c000a0909b"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034603Z:7d3cc83c-dec4-433d-ab29-05a317686a13"
+          "BRAZILUS:20200909T224256Z:ddb85f06-14fd-4ac7-887f-43c000a0909b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -168,7 +168,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:03 GMT"
+          "Wed, 09 Sep 2020 22:42:56 GMT"
         ],
         "Content-Length": [
           "488"
@@ -187,10 +187,10 @@
       "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90071?api-version=2019-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testuser\",\r\n    \"administratorLoginPassword\": \"IEp@ssw0rd5251\",\r\n    \"version\": \"12.0\"\r\n  },\r\n  \"location\": \"Australia East\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testuser\",\r\n    \"administratorLoginPassword\": \"IEp@ssw0rd9576\",\r\n    \"version\": \"12.0\"\r\n  },\r\n  \"location\": \"Australia East\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8912e387-bab7-4ddf-a015-1ae1090c604e"
+          "da4b9a08-31dc-4a47-a014-24d9d79fa2f4"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,28 +216,28 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverOperationResults/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview"
+          "https://brazilus.management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverOperationResults/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview"
         ],
         "Retry-After": [
           "1"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview"
+          "https://brazilus.management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview"
         ],
         "x-ms-request-id": [
-          "87a54544-5159-47ba-91e9-4d27dc356cf7"
+          "43cfd7b1-4747-41fc-ae6a-cc6c5600af20"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1191"
         ],
         "x-ms-correlation-request-id": [
-          "53ea8952-b840-4400-adab-bd997d9da08a"
+          "78113cd3-5e2c-49a3-8d31-04cf17d440ea"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034517Z:53ea8952-b840-4400-adab-bd997d9da08a"
+          "BRAZILUS:20200909T224210Z:78113cd3-5e2c-49a3-8d31-04cf17d440ea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,7 +246,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:17 GMT"
+          "Wed, 09 Sep 2020 22:42:09 GMT"
         ],
         "Content-Length": [
           "74"
@@ -258,12 +258,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"UpsertLogicalServer\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertLogicalServer\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -285,19 +285,19 @@
           "1"
         ],
         "x-ms-request-id": [
-          "ff1d709b-dbab-4afe-b052-d4b0af0ea6ac"
+          "bb9273c9-b02a-4c1d-9a28-9c58df0eaa31"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11957"
         ],
         "x-ms-correlation-request-id": [
-          "f60eb26f-cc3b-4807-b23b-ceb2b55c4f5d"
+          "5b93b657-9657-4b0d-9a5a-33baaf03e59a"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034519Z:f60eb26f-cc3b-4807-b23b-ceb2b55c4f5d"
+          "BRAZILUS:20200909T224211Z:5b93b657-9657-4b0d-9a5a-33baaf03e59a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -306,7 +306,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:18 GMT"
+          "Wed, 09 Sep 2020 22:42:10 GMT"
         ],
         "Content-Length": [
           "108"
@@ -318,12 +318,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -345,19 +345,19 @@
           "1"
         ],
         "x-ms-request-id": [
-          "a2ada723-f665-4b7a-8b42-0a599ee63c5f"
+          "a382bf14-7a0c-4b70-87a1-d1cad912f112"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11956"
         ],
         "x-ms-correlation-request-id": [
-          "3cf62927-eacb-4709-a7e3-b1f15a5ee3be"
+          "cfe9299f-1b97-4637-87cc-218b89cb6b73"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034520Z:3cf62927-eacb-4709-a7e3-b1f15a5ee3be"
+          "BRAZILUS:20200909T224212Z:cfe9299f-1b97-4637-87cc-218b89cb6b73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -366,7 +366,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:19 GMT"
+          "Wed, 09 Sep 2020 22:42:12 GMT"
         ],
         "Content-Length": [
           "108"
@@ -378,12 +378,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -405,19 +405,19 @@
           "1"
         ],
         "x-ms-request-id": [
-          "588ca263-f89e-49c9-a180-bcd8fde0f871"
+          "7849b584-dfa1-47ee-ab66-b90a9519ec21"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11955"
         ],
         "x-ms-correlation-request-id": [
-          "fbec632b-5c4e-469c-98f7-41d093f8bc21"
+          "b6cfabf5-c6ba-41f0-85db-a64f35bc9f93"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034521Z:fbec632b-5c4e-469c-98f7-41d093f8bc21"
+          "BRAZILUS:20200909T224214Z:b6cfabf5-c6ba-41f0-85db-a64f35bc9f93"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -426,7 +426,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:20 GMT"
+          "Wed, 09 Sep 2020 22:42:13 GMT"
         ],
         "Content-Length": [
           "108"
@@ -438,12 +438,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -465,19 +465,19 @@
           "20"
         ],
         "x-ms-request-id": [
-          "ecc7247d-bf06-4bcc-8c67-84c1a61fff41"
+          "ae916872-1af6-4586-a7a8-05fd67b23064"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11954"
         ],
         "x-ms-correlation-request-id": [
-          "4497d692-16ee-4744-8aef-a755856ece21"
+          "bdf588b5-91f8-48c9-a869-af1a5b295873"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034522Z:4497d692-16ee-4744-8aef-a755856ece21"
+          "BRAZILUS:20200909T224215Z:bdf588b5-91f8-48c9-a869-af1a5b295873"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -486,7 +486,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:22 GMT"
+          "Wed, 09 Sep 2020 22:42:14 GMT"
         ],
         "Content-Length": [
           "108"
@@ -498,12 +498,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -525,19 +525,19 @@
           "20"
         ],
         "x-ms-request-id": [
-          "16228315-ee5a-4074-9c81-f19a691dd964"
+          "77bef69d-e6b3-4d2f-9d23-b7f1d3c94a6e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11953"
         ],
         "x-ms-correlation-request-id": [
-          "829f8474-2e2b-49fe-b2ba-e6e60e5c7c9e"
+          "a5beccc3-804c-4c47-a1c8-86b83be78a0d"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034543Z:829f8474-2e2b-49fe-b2ba-e6e60e5c7c9e"
+          "BRAZILUS:20200909T224235Z:a5beccc3-804c-4c47-a1c8-86b83be78a0d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -546,7 +546,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:45:42 GMT"
+          "Wed, 09 Sep 2020 22:42:35 GMT"
         ],
         "Content-Length": [
           "108"
@@ -558,12 +558,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/87a54544-5159-47ba-91e9-4d27dc356cf7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vODdhNTQ1NDQtNTE1OS00N2JhLTkxZTktNGQyN2RjMzU2Y2Y3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/locations/australiaeast/serverAzureAsyncOperation/43cfd7b1-4747-41fc-ae6a-cc6c5600af20?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9hdXN0cmFsaWFlYXN0L3NlcnZlckF6dXJlQXN5bmNPcGVyYXRpb24vNDNjZmQ3YjEtNDc0Ny00MWZjLWFlNmEtY2M2YzU2MDBhZjIwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -585,19 +585,19 @@
           "15"
         ],
         "x-ms-request-id": [
-          "07ec13bf-0934-4a37-af90-8a955f6648ac"
+          "889a07ac-2f2d-4207-8b9a-f371f9a5a1f7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11952"
         ],
         "x-ms-correlation-request-id": [
-          "72765488-dc2c-45e6-b364-2635cbf017e4"
+          "da660ec4-e814-4279-8de2-5eefbe2b2c74"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034603Z:72765488-dc2c-45e6-b364-2635cbf017e4"
+          "BRAZILUS:20200909T224255Z:da660ec4-e814-4279-8de2-5eefbe2b2c74"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -606,7 +606,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:03 GMT"
+          "Wed, 09 Sep 2020 22:42:55 GMT"
         ],
         "Content-Length": [
           "107"
@@ -618,7 +618,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"87a54544-5159-47ba-91e9-4d27dc356cf7\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-09-09T03:45:17.703Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"43cfd7b1-4747-41fc-ae6a-cc6c5600af20\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-09-09T22:42:10.167Z\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -636,7 +636,7 @@
           "no-store, no-cache"
         ],
         "x-ms-request-id": [
-          "656055cc-1085-44c2-b3d4-316dec9d20c0"
+          "22a22d68-7dfe-433b-8b64-4af2749ede4c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -651,16 +651,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11950"
         ],
         "x-ms-correlation-request-id": [
-          "71fb3007-9c89-4b49-a91d-3549c1f22fe7"
+          "3a337762-fa88-499e-9972-0f7085b4b089"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034604Z:71fb3007-9c89-4b49-a91d-3549c1f22fe7"
+          "BRAZILUS:20200909T224256Z:3a337762-fa88-499e-9972-0f7085b4b089"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:03 GMT"
+          "Wed, 09 Sep 2020 22:42:56 GMT"
         ],
         "Content-Length": [
           "136"
@@ -693,7 +693,7 @@
           "no-store, no-cache"
         ],
         "x-ms-request-id": [
-          "a3a54632-4a2c-4b17-bf67-56041cd9b45e"
+          "e4e0edc6-f497-496e-a0ce-6606823a2e36"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -711,16 +711,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1190"
         ],
         "x-ms-correlation-request-id": [
-          "2de6a065-5629-4575-80bf-b01663056eb9"
+          "85d80015-275c-45c1-be05-d4eb8b99b133"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034605Z:2de6a065-5629-4575-80bf-b01663056eb9"
+          "BRAZILUS:20200909T224257Z:85d80015-275c-45c1-be05-d4eb8b99b133"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:04 GMT"
+          "Wed, 09 Sep 2020 22:42:57 GMT"
         ],
         "Content-Length": [
           "372"
@@ -739,7 +739,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f0db0b3e-4948-48e2-91b3-04b2ea74cc9b"
+          "2a8ff0e5-adaa-49ca-89e9-7ec017c1ac65"
         ],
         "Accept-Language": [
           "en-US"
@@ -765,16 +765,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14996"
         ],
         "x-ms-request-id": [
-          "b4b3e2ca-f751-4bf8-8cd9-6b435df54111"
+          "6e6af27a-6938-475f-ad0e-f7dc9d8a2e23"
         ],
         "x-ms-correlation-request-id": [
-          "b4b3e2ca-f751-4bf8-8cd9-6b435df54111"
+          "6e6af27a-6938-475f-ad0e-f7dc9d8a2e23"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034609Z:b4b3e2ca-f751-4bf8-8cd9-6b435df54111"
+          "BRAZILUS:20200909T224301Z:6e6af27a-6938-475f-ad0e-f7dc9d8a2e23"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -783,7 +783,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:08 GMT"
+          "Wed, 09 Sep 2020 22:43:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -822,16 +822,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11949"
         ],
         "x-ms-request-id": [
-          "ff2f787c-13a0-4a91-831d-698435d73d90"
+          "9f33fe39-c569-4145-ad3c-377d75e9d654"
         ],
         "x-ms-correlation-request-id": [
-          "ff2f787c-13a0-4a91-831d-698435d73d90"
+          "9f33fe39-c569-4145-ad3c-377d75e9d654"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034624Z:ff2f787c-13a0-4a91-831d-698435d73d90"
+          "BRAZILUS:20200909T224316Z:9f33fe39-c569-4145-ad3c-377d75e9d654"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -840,7 +840,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:24 GMT"
+          "Wed, 09 Sep 2020 22:43:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -879,16 +879,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11948"
         ],
         "x-ms-request-id": [
-          "033dcc44-9301-49a3-9d5c-2af3093fd04c"
+          "cc5208be-6356-4ea3-a5f3-b404d056db53"
         ],
         "x-ms-correlation-request-id": [
-          "033dcc44-9301-49a3-9d5c-2af3093fd04c"
+          "cc5208be-6356-4ea3-a5f3-b404d056db53"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034640Z:033dcc44-9301-49a3-9d5c-2af3093fd04c"
+          "BRAZILUS:20200909T224332Z:cc5208be-6356-4ea3-a5f3-b404d056db53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -897,7 +897,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:46:40 GMT"
+          "Wed, 09 Sep 2020 22:43:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -936,16 +936,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11947"
         ],
         "x-ms-request-id": [
-          "bba66dbb-4a7e-4e9f-92eb-e8875f70f2d6"
+          "cee200b4-649c-45d0-8dbf-d5b5fe155d7b"
         ],
         "x-ms-correlation-request-id": [
-          "bba66dbb-4a7e-4e9f-92eb-e8875f70f2d6"
+          "cee200b4-649c-45d0-8dbf-d5b5fe155d7b"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034708Z:bba66dbb-4a7e-4e9f-92eb-e8875f70f2d6"
+          "BRAZILUS:20200909T224347Z:cee200b4-649c-45d0-8dbf-d5b5fe155d7b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -954,7 +954,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:47:07 GMT"
+          "Wed, 09 Sep 2020 22:43:47 GMT"
         ],
         "Expires": [
           "-1"
@@ -993,16 +993,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11946"
         ],
         "x-ms-request-id": [
-          "c2aeca0b-4f25-4f20-a76e-471508f6d9c0"
+          "73a43831-1429-4a27-9524-0c301eeebd01"
         ],
         "x-ms-correlation-request-id": [
-          "c2aeca0b-4f25-4f20-a76e-471508f6d9c0"
+          "73a43831-1429-4a27-9524-0c301eeebd01"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034724Z:c2aeca0b-4f25-4f20-a76e-471508f6d9c0"
+          "BRAZILUS:20200909T224403Z:73a43831-1429-4a27-9524-0c301eeebd01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1011,7 +1011,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:47:23 GMT"
+          "Wed, 09 Sep 2020 22:44:02 GMT"
         ],
         "Expires": [
           "-1"
@@ -1050,16 +1050,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11945"
         ],
         "x-ms-request-id": [
-          "cfc3e219-7972-4419-9588-e758fd557a7b"
+          "58188939-17bb-4592-ae3c-9bb221938a2d"
         ],
         "x-ms-correlation-request-id": [
-          "cfc3e219-7972-4419-9588-e758fd557a7b"
+          "58188939-17bb-4592-ae3c-9bb221938a2d"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034739Z:cfc3e219-7972-4419-9588-e758fd557a7b"
+          "BRAZILUS:20200909T224418Z:58188939-17bb-4592-ae3c-9bb221938a2d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1068,7 +1068,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:47:38 GMT"
+          "Wed, 09 Sep 2020 22:44:17 GMT"
         ],
         "Expires": [
           "-1"
@@ -1107,16 +1107,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
+          "11944"
         ],
         "x-ms-request-id": [
-          "0cce4fdb-762b-4c2b-bbcd-d6704592f0de"
+          "62230222-9cf2-4e82-9b1c-2fed136ae03d"
         ],
         "x-ms-correlation-request-id": [
-          "0cce4fdb-762b-4c2b-bbcd-d6704592f0de"
+          "62230222-9cf2-4e82-9b1c-2fed136ae03d"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034754Z:0cce4fdb-762b-4c2b-bbcd-d6704592f0de"
+          "BRAZILUS:20200909T224434Z:62230222-9cf2-4e82-9b1c-2fed136ae03d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1125,7 +1125,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:47:54 GMT"
+          "Wed, 09 Sep 2020 22:44:33 GMT"
         ],
         "Expires": [
           "-1"
@@ -1164,16 +1164,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
+          "11943"
         ],
         "x-ms-request-id": [
-          "f259f69d-d0ef-48d4-92e8-ec9adec88007"
+          "74a50beb-a474-4ec0-831b-18d03ec59741"
         ],
         "x-ms-correlation-request-id": [
-          "f259f69d-d0ef-48d4-92e8-ec9adec88007"
+          "74a50beb-a474-4ec0-831b-18d03ec59741"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034810Z:f259f69d-d0ef-48d4-92e8-ec9adec88007"
+          "BRAZILUS:20200909T224449Z:74a50beb-a474-4ec0-831b-18d03ec59741"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1182,7 +1182,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:48:10 GMT"
+          "Wed, 09 Sep 2020 22:44:49 GMT"
         ],
         "Expires": [
           "-1"
@@ -1221,16 +1221,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11956"
         ],
         "x-ms-request-id": [
-          "cb0e4c80-4e5b-4353-9ba4-36a9fb7dbef8"
+          "8388e29b-a1a0-441a-9bd5-dde56c7323c2"
         ],
         "x-ms-correlation-request-id": [
-          "cb0e4c80-4e5b-4353-9ba4-36a9fb7dbef8"
+          "8388e29b-a1a0-441a-9bd5-dde56c7323c2"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034825Z:cb0e4c80-4e5b-4353-9ba4-36a9fb7dbef8"
+          "BRAZILUS:20200909T224504Z:8388e29b-a1a0-441a-9bd5-dde56c7323c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1239,7 +1239,64 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:48:25 GMT"
+          "Wed, 09 Sep 2020 22:45:04 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRJRToyRENNRExFVDoyRFRFU1Q6MkRSRzkwMDcxLUFVU1RSQUxJQUVBU1QiLCJqb2JMb2NhdGlvbiI6ImF1c3RyYWxpYWVhc3QifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkpSVG95UkVOTlJFeEZWRG95UkZSRlUxUTZNa1JTUnprd01EY3hMVUZWVTFSU1FVeEpRVVZCVTFRaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW1GMWMzUnlZV3hwWVdWaGMzUWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29130.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://brazilus.management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRJRToyRENNRExFVDoyRFRFU1Q6MkRSRzkwMDcxLUFVU1RSQUxJQUVBU1QiLCJqb2JMb2NhdGlvbiI6ImF1c3RyYWxpYWVhc3QifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11955"
+        ],
+        "x-ms-request-id": [
+          "59a6bc68-4253-439d-ab7e-5494980df65c"
+        ],
+        "x-ms-correlation-request-id": [
+          "59a6bc68-4253-439d-ab7e-5494980df65c"
+        ],
+        "x-ms-routing-request-id": [
+          "BRAZILUS:20200909T224520Z:59a6bc68-4253-439d-ab7e-5494980df65c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 09 Sep 2020 22:45:20 GMT"
         ],
         "Expires": [
           "-1"
@@ -1272,16 +1329,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "11954"
         ],
         "x-ms-request-id": [
-          "4afb2b70-b42b-449b-849b-4ecc4cae2b0e"
+          "0c14dcaf-9687-4a8a-96d9-dc0edb296ab7"
         ],
         "x-ms-correlation-request-id": [
-          "4afb2b70-b42b-449b-849b-4ecc4cae2b0e"
+          "0c14dcaf-9687-4a8a-96d9-dc0edb296ab7"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034841Z:4afb2b70-b42b-449b-849b-4ecc4cae2b0e"
+          "BRAZILUS:20200909T224535Z:0c14dcaf-9687-4a8a-96d9-dc0edb296ab7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1290,7 +1347,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:48:40 GMT"
+          "Wed, 09 Sep 2020 22:45:35 GMT"
         ],
         "Expires": [
           "-1"
@@ -1323,16 +1380,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11953"
         ],
         "x-ms-request-id": [
-          "d316c706-71e2-40f7-911a-8a881c119f2b"
+          "55d42140-89ec-4432-aa29-1dbdc18db152"
         ],
         "x-ms-correlation-request-id": [
-          "d316c706-71e2-40f7-911a-8a881c119f2b"
+          "55d42140-89ec-4432-aa29-1dbdc18db152"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20200909T034841Z:d316c706-71e2-40f7-911a-8a881c119f2b"
+          "BRAZILUS:20200909T224536Z:55d42140-89ec-4432-aa29-1dbdc18db152"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1341,7 +1398,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Sep 2020 03:48:41 GMT"
+          "Wed, 09 Sep 2020 22:45:35 GMT"
         ],
         "Expires": [
           "-1"
@@ -1356,7 +1413,7 @@
   ],
   "Names": {
     "testframework_failed": [
-      "IEp@ssw0rd5251"
+      "IEp@ssw0rd9576"
     ]
   },
   "Variables": {

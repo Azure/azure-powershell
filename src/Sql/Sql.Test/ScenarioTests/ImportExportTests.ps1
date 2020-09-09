@@ -66,7 +66,7 @@ function Test-ImportNewDatabase
     $importNew = "ImportNew"
 
 	try
-	{       
+	{
         Assert-NotNull $params.storageKey
         Assert-NotNull $params.importBacpacUri
         Assert-NotNull $params.exportBacpacUri
@@ -90,7 +90,7 @@ function Test-ImportNewDatabase
                 
         if($operationName -eq $export){
             # Export database.       
-            $exportResponse = Export-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType -WaitForOperationToComplete $true
+            $exportResponse = New-AzSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
             Write-Output "Assert-NotNull exportResponse"
             Assert-NotNull $exportResponse
             Write-Output (ConvertTo-Json $exportResponse)
@@ -107,7 +107,7 @@ function Test-ImportNewDatabase
         }
 
         if($operationName -eq $importExisting){
-            $importResponse = Import-AzSqlDatabaseExisting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType  -WaitForOperationToComplete $true
+            $importResponse = New-AzSqlDatabaseImportExisting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
             Write-Output "Assert-NotNull importResponse"
             Assert-NotNull $importResponse
             Write-Output (ConvertTo-Json $importResponse)
@@ -123,8 +123,8 @@ function Test-ImportNewDatabase
             #Assert-AreEqual $importResponse.AuthenticationType $params.authType
         }
 
-        if($operationName -eq $importExisting){
-            $importResponse = Import-AzSqlDatabaseNew -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType  -WaitForOperationToComplete $true
+        if($operationName -eq $importNew){
+            $importResponse = New-AzSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType
             Write-Output "Assert-NotNull importResponse"
             Assert-NotNull $importResponse
             Write-Output (ConvertTo-Json $importResponse)

@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
@@ -25,7 +24,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    [CmdletDeprecation(ChangeDescription = "This CmdLet is deprecated and will be retired in future powershell version.", OldWay = "New-AzSqlDatabaseImport", NewWay = "Import-AzSqlDatabaseNew")]
     public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>
@@ -87,8 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             {
                 throw new ArgumentNullException("importModel");
             }
-            return ModelAdapter.Import(importModel);
-
+            return ModelAdapter.ImportNewDatabase(importModel);
         }
 
         /// <summary>
@@ -97,6 +94,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
+            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
+
             AzureSqlDatabaseImportModel exportRequest = new AzureSqlDatabaseImportModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 StorageUri = StorageUri,
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
-                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
             };
             return exportRequest;
         }

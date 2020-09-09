@@ -62,8 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
                 DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
-                NetworkIsolationSettings = NetworkIsolationSettings,
-                WaitForOperationComplete = WaitForOperationComplete
+                NetworkIsolationSettings = NetworkIsolationSettings
             };
         }
     }

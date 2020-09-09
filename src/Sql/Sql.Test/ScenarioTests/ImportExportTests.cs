@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ImportNewDatabase");
         }
 
-        [Fact(Skip = "Still working on this, will fix before PR merge")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportExistingDatabase()

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExportAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(ExportAzureSqlDatabase);
+            Type type = typeof(NewAzureSqlDatabaseImport);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportExistingAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(ImportExistingAzureSqlDatabase);
+            Type type = typeof(NewAzureSqlDatabaseImportExisting);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportNewAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(ImportNewAzureSqlDatabase);
+            Type type = typeof(NewAzureSqlDatabaseImport);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureRmSqlDatabaseImportExportStatusAttributes()
         {
-            Type type = typeof(GetAzureSqlDatabaseImportExportOperation);
+            Type type = typeof(GetAzureSqlDatabaseImportExportStatus);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "OperationStatusLink", isMandatory: true, valueFromPipelineByName: true);
         }

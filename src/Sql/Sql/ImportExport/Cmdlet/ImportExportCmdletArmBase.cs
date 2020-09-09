@@ -24,7 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
-    public abstract class ImportExportCmdletArmBase : AzureSqlCmdletBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseArmAdapter>
+    public abstract class ImportExportCmdletBase : AzureSqlCmdletBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -125,20 +125,13 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             get; set;
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "If true, will poll until the Import or Export operation is complete. If false, will immediately return with operation status link.")]
-        [ResourceIdCompleter("Microsoft.sql/servers")]
-        public bool WaitForOperationToComplete
-        {
-            get; set;
-        }
-
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
-        protected override ImportExportDatabaseArmAdapter InitModelAdapter()
+        protected override ImportExportDatabaseAdapter InitModelAdapter()
         {
-            return new ImportExportDatabaseArmAdapter(DefaultProfile.DefaultContext);
+            return new ImportExportDatabaseAdapter(DefaultProfile.DefaultContext);
         }
 
         protected NetworkIsolationSettings ValidateAndGetNetworkIsolationSettings()

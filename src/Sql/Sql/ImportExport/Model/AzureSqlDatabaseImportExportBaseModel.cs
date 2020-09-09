@@ -100,14 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to wait for operation to complete
-        /// </summary>
-        public bool WaitForOperationComplete
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// Gets or sets the status message returned from the server.
         /// </summary>
         public string Status { get; set; }
