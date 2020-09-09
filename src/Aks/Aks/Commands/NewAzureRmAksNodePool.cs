@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
@@ -81,6 +82,10 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
         public string VmSetType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Represents type of windows os type. Possible values include: 'aks-windows-2004'")]
+        [PSArgumentCompleter("aks-windows-2004")]
+        public string WindowsOSType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
 
@@ -99,7 +104,15 @@ namespace Microsoft.Azure.Commands.Aks
                     ClusterName = ClusterObject.Name;
                 }
                 var agentPool = GetAgentPool();
-                var pool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
+                Dictionary<string, List<string>> customHeaders = null;
+                if (this.IsParameterBound(c => c.WindowsOSType))
+                {
+                    customHeaders = new Dictionary<string, List<string>>
+                    {
+                        { "CustomizedWindows", new List<string> { WindowsOSType } }
+                    };
+                }
+                var pool = Client.AgentPools.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, Name, agentPool, customHeaders).GetAwaiter().GetResult().Body;
                 var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
                 WriteObject(psPool);
             };
