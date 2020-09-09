@@ -11,36 +11,38 @@ Install-Module -Name PowerShellGet -Scope CurrentUser -Force
 $versions = (find-module Az -Repository $gallery -AllVersions).Version | Sort-Object -Descending
 Write-Host 'az versions:', $versions
 
-if ($versions.Count -ge 2) {
-    # Install previous version of Az
-    $previousVersion = $versions[1]
-    Write-Host '$previousVersion:', $previousVersion
+Get-Module PowerShellGet -ListAvailable
 
-    Install-Module -Name Az -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+# if ($versions.Count -ge 2) {
+#     # Install previous version of Az
+#     $previousVersion = $versions[1]
+#     Write-Host '$previousVersion:', $previousVersion
 
-    #Update Az
-    Update-Module -Name Az -Scope CurrentUser -Force
+#     Install-Module -Name Az -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+
+#     #Update Az
+#     Update-Module -Name Az -Scope CurrentUser -Force
         
-    # Check Az
-    Write-Host "Get latest version of Az"
-    Get-Module -Name Az.* -ListAvailable
+#     # Check Az
+#     Write-Host "Get latest version of Az"
+#     Get-Module -Name Az.* -ListAvailable
 
-    # Check version
-    Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
-    $azVersion = (get-module Az).Version
-    Write-Host "Current version of Az", $azVersion
+#     # Check version
+#     Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
+#     $azVersion = (get-module Az).Version
+#     Write-Host "Current version of Az", $azVersion
 
-    if ($azVersion -ne $versions[0]) {
-        throw "Update Az failed"
-    }
+#     if ($azVersion -ne $versions[0]) {
+#         throw "Update Az failed"
+#     }
         
-    # Reuse connected account and select subscription for test
-    Enable-AzureRmAlias
-    Set-AzContext -Subscription "Azure SDK Powershell Test"
-}else{
-    Write-Warning "Only one version available for Az"
-    Write-Host 'az versions:', $versions
-    get-help find-module
-    get-command find-module
-    throw "Update Az failed"
-}
+#     # Reuse connected account and select subscription for test
+#     Enable-AzureRmAlias
+#     Set-AzContext -Subscription "Azure SDK Powershell Test"
+# }else{
+#     Write-Warning "Only one version available for Az"
+#     Write-Host 'az versions:', $versions
+#     get-help find-module
+#     get-command find-module
+#     throw "Update Az failed"
+# }
