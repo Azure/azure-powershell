@@ -87,7 +87,7 @@ steps:
       if($psVersion -ne "5.1.14"){
           dotnet --version
           # dotnet new tool-manifest
-          dotnet tool install PowerShell --version $(PSVersion)
+          dotnet tool install --global PowerShell --version $(PSVersion)
           dotnet tool list
           
           # Update PowershellGet 
