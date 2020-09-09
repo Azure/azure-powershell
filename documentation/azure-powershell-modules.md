@@ -92,6 +92,7 @@ Redis Cache                           | `Az.RedisCache`                         
 Relay                                 | `Az.Relay`                              | [![Relay]][RelayGallery]
 Reservations                          | `Az.Reservations`                       | [![Reservations]][ReservationsGallery]
 Resource Graph                        | `Az.ResourceGraph`                      | [![ResourceGraph]][ResourceGraphGallery]
+Resource Mover                        | `Az.ResourceMover`                      | [![ResourceMover]][ResourceMoverGallery]
 Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery]
 Search                                | `Az.Search`                             | [![Search]][SearchGallery]
 Security                              | `Az.Security`                           | [![Security]][SecurityGallery]
@@ -199,6 +200,7 @@ Web App Service                       | `Az.Websites`                           
 [Relay]:                      https://img.shields.io/powershellgallery/v/Az.Relay.svg?style=flat-square&label=Az.Relay
 [Reservations]:               https://img.shields.io/powershellgallery/v/Az.Reservations.svg?style=flat-square&label=Az.Reservations
 [ResourceGraph]:              https://img.shields.io/powershellgallery/v/Az.ResourceGraph.svg?style=flat-square&label=Az.ResourceGraph
+[ResourceMover]:              https://img.shields.io/powershellgallery/v/Az.ResourceMover.svg?style=flat-square&label=Az.ResourceMover
 [Resources]:                  https://img.shields.io/powershellgallery/v/Az.Resources.svg?style=flat-square&label=Az.Resources
 [Search]:                     https://img.shields.io/powershellgallery/v/Az.Search.svg?style=flat-square&label=Az.Search
 [Security]:                   https://img.shields.io/powershellgallery/v/Az.Security.svg?style=flat-square&label=Az.Security
@@ -304,6 +306,7 @@ Web App Service                       | `Az.Websites`                           
 [RelayGallery]:                      https://www.powershellgallery.com/packages/Az.Relay/
 [ReservationsGallery]:               https://www.powershellgallery.com/packages/Az.Reservations/
 [ResourceGraphGallery]:              https://www.powershellgallery.com/packages/Az.ResourceGraph/
+[ResourceMoverGallery]:              https://www.powershellgallery.com/packages/Az.ResourceMover/
 [ResourcesGallery]:                  https://www.powershellgallery.com/packages/Az.Resources/
 [SearchGallery]:                     https://www.powershellgallery.com/packages/Az.Search/
 [SecurityGallery]:                   https://www.powershellgallery.com/packages/Az.Security/
