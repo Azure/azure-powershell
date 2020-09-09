@@ -5,8 +5,7 @@ param(
     $gallery
 )
 # Get previous version of Az
-$versions = (find-module Az -Repository $gallery -AllVersions).Version |
-% { [system.version]$_ } | Sort-Object -Descending | % { [System.String]$_ }
+$versions = (find-module Az -Repository $gallery -AllVersions).Version | Sort-Object -Descending
 
 if ($versions.Count -ge 2) {
     # Install previous version of Az
