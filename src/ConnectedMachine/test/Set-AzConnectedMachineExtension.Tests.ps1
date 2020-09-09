@@ -49,12 +49,17 @@ Describe 'Set-AzConnectedMachineExtension' {
     }
 
     AfterEach {
+        if ($TestMode -eq 'playback') {
+            # Skip removing extensions
+            return
+        }
+
         # Extensions must be removed first before the machine is disconnected.
         Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
     }
 
     It 'Can set an extension' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
             MachineName = $machineName
@@ -81,7 +86,7 @@ Describe 'Set-AzConnectedMachineExtension' {
     }
 
     It 'Can set an extension via the pipeline' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
             Type                 = "Microsoft.HybridCompute/machines/extensions"

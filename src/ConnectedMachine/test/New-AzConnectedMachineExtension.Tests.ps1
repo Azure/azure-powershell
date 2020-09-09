@@ -49,12 +49,17 @@ Describe 'New-AzConnectedMachineExtension' {
     }
 
     AfterEach {
+        if ($TestMode -eq 'playback') {
+            # Skip removing extensions
+            return
+        }
+
         # Extensions must be removed first before the machine is disconnected.
         Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
     }
 
     It 'CreateExpanded parameter set' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
             MachineName = $machineName
@@ -82,7 +87,7 @@ Describe 'New-AzConnectedMachineExtension' {
     }
 
     It 'Create parameter set' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
             Type                 = "Microsoft.HybridCompute/machines/extensions"
@@ -107,7 +112,7 @@ Describe 'New-AzConnectedMachineExtension' {
     }
 
     It 'CreateViaIdentityExpanded parameter set' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $identity = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ConnectedMachineIdentity]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
         }
@@ -145,7 +150,7 @@ Describe 'New-AzConnectedMachineExtension' {
     }
 
     It 'CreateViaIdentity parameter set' {
-        $extensionName = "custom$(New-Guid)"
+        $extensionName = "custom1"
         $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
             Type                 = "Microsoft.HybridCompute/machines/extensions"
