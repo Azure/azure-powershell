@@ -13,15 +13,15 @@ Create a new managed Kubernetes cluster.
 ## SYNTAX
 
 ```
-New-AzAksCluster [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
- [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
+New-AzAksCluster [-Force] [-GenerateSshKey] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>]
+ [-NodeMaxPodCount <Int32>] [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
  [-NodeScaleSetEvictionPolicy <String>] [-AcrNameToAttach <String>] [-EnableRbac]
  [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
  [-NetworkPlugin <String>] [-LoadBalancerSku <String>] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-SshKeyValue <String>] [-GenerateSshKey] [-AsJob] [-Tag <Hashtable>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -DnsNamePrefix
-The DNS name prefix for the cluster.
+The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.
 
 ```yaml
 Type: System.String
