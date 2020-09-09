@@ -50,7 +50,8 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2019-05-01-preview/appplatform.json
+  - $(this-folder)/resources/appplatform.json
+  # - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2020-07-01/appplatform.json
 
 title: SpringCloud
 module-version: 0.1.0
