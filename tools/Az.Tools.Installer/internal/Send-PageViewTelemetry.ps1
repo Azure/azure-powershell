@@ -38,12 +38,12 @@ function Send-PageViewTelemetry
     Process
     {
         if ('false' -eq $env:Azure_PS_Data_Collection) {
-            Write-Verbose -Message 'Skip telemtry because of environment setting'
+            Write-Debug -Message 'Skip telemtry because of environment setting'
             return
         }
 
         if ($null -eq [Constants]::TelemetryClient) {
-            Write-Verbose -Message 'Initialize telemetry client'
+            Write-Debug -Message 'Initialize telemetry client'
             $TelemetryClient = New-Object Microsoft.ApplicationInsights.TelemetryClient
             $TelemetryClient.InstrumentationKey = [Constants]::PublicTelemetryInstrumentationKey
             $TelemetryClient.Context.Session.Id = $CurrentSessionId
@@ -52,7 +52,6 @@ function Send-PageViewTelemetry
         }
 
         if ([string]::IsNullOrWhiteSpace([Constants]::HashMacAddress)) {
-            Write-Verbose -Message 'hash mac address'
             $macAddress = ''
             $nics = [System.Net.NetworkInformation.NetworkInterface]::GetAllNetworkInterfaces()
             foreach ($nic in $nics) {
@@ -123,7 +122,8 @@ function Send-PageViewTelemetry
         }
 
         $client.TrackPageView($page)
-
+        Write-Debug -Message "Finish sending metric"
+        
         try
         {
             $client.Flush()

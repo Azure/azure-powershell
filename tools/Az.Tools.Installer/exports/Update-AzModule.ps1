@@ -13,6 +13,24 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzModule {
+
+<#
+    .Synopsis
+        Updates Azure PowerShell modules.
+    
+    .Description
+        Updates Azure PowerShell modules.
+
+    .Example
+        C:\PS> Install-AzModule -Name Storage,Compute,Network -Repository PSGallery
+
+        Version              Name                                Repository           Description
+        -------              ----                                ----------           -----------
+        4.3.1                Az.Compute                          PSGallery            Microsoft Azure PowerShell - Compute ser…
+        3.3.0                Az.Network                          PSGallery            Microsoft Azure PowerShell - Networking …
+        2.5.0                Az.Storage                          PSGallery            Microsoft Azure PowerShell - Storage ser…
+
+#>
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
@@ -37,7 +55,7 @@ function Update-AzModule {
         $WhatIf = $PSBoundParameters.ContainsKey('WhatIf')
 
         $ppsedition = $PSVersionTable.PSEdition
-        Write-Host "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
+        Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
         if ($ppsedition -eq "Core") {
             $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop).Where({$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
@@ -57,7 +75,7 @@ function Update-AzModule {
         Write-Debug "Time Elapsed: ${totalSeconds}s"
 
         if($allToUpdate) {
-            Write-Host -ForegroundColor DarkGreen "The modules to Upddate:$($allToUpdate | Out-String)"
+            Write-Host -ForegroundColor DarkGreen "The modules to Update:$($allToUpdate | Out-String)"
 
             $allToUpdateReordered = @() + $allToUpdate.Where({$_.Name -eq "Az"})
             $allToUpdateReordered += $allToUpdate.Where({$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"})

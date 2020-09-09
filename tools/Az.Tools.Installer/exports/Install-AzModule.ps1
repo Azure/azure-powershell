@@ -12,7 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Install-AzModule{
+function Install-AzModule {
+
+<#
+    .Synopsis
+        Installs Azure PowerShell modules.
+    
+    .Description
+        Installs Azure PowerShell modules.
+
+    .Example
+        C:\PS> Install-AzModule -Name Storage,Compute,Network -Repository PSGallery
+
+#>
+
     [OutputType()]
     [CmdletBinding(DefaultParameterSetName = 'WithoutPreview', 
     PositionalBinding = $false, 

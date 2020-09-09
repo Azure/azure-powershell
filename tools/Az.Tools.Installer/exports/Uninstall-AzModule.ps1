@@ -13,8 +13,21 @@
 # ----------------------------------------------------------------------------------
 
 function Uninstall-AzModule {
+
+<#
+    .Synopsis
+        Uninstalls Azure PowerShell modules.
+    
+    .Description
+        Uninstalls Azure PowerShell modules.
+
+    .Example
+        C:\PS> Uninstall-AzModule -AllowPrerelease -AllVersion
+
+#>
+
     [OutputType()]
-    [CmdletBinding(DefaultParameterSetName = 'WithoutPreview', PositionalBinding = $false, SupportsShouldProcess = $true)]
+    [CmdletBinding(DefaultParameterSetName = 'WithPreviewAndAllVersion', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
