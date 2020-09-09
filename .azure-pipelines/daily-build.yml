@@ -120,50 +120,50 @@ steps:
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
 - task: PowerShell@2
   displayName: Update Az Modules
@@ -181,152 +181,152 @@ steps:
       }
 
 
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Run Smoke Test 
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable`
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: 'Run Smoke Test Reversely'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
     
-- task: PowerShell@2
-  displayName: Install an individual module
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 $(GALLERY_NAME) `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Install an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 $(GALLERY_NAME) `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Update an individual module
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 $(GALLERY_NAME) `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Update an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 $(GALLERY_NAME) `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Install Az on top of an individual module
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 $(GALLERY_NAME) `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Install Az on top of an individual module
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 $(GALLERY_NAME) `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    targetType: 'inline'
-    script: |   
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/CleanAzModules.ps1 `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Clean Az Modules
+#   inputs:
+#     targetType: 'inline'
+#     script: |   
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
 
-- task: PowerShell@2
-  displayName: Install an individual module on top of Az
-  inputs:
-    targetType: 'inline'
-    script: |
-      $command = "`$PSVersionTable `
-      ./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 $(GALLERY_NAME) `
-      Exit"
-      $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
-      }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
-      }
+# - task: PowerShell@2
+#   displayName: Install an individual module on top of Az
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $command = "`$PSVersionTable `
+#       ./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 $(GALLERY_NAME) `
+#       Exit"
+#       $psVersion = "$(PSVersion)"
+#       if($psVersion -ne "5.1.14"){
+#           dotnet tool run pwsh -c $command
+#       }else{
+#         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+#       }
