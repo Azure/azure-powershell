@@ -13,19 +13,19 @@ Removes the autoscale configuration of the HDInsight cluster.
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### RemoveByNameParameterSet (Default)
 ```
 Remove-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### RemoveByResourceIdParameterSet
 ```
 Remove-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### RemoveByInputObjectParameterSet
 ```
 Remove-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -67,7 +67,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
@@ -97,7 +97,7 @@ Gets or sets the input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
-Parameter Sets: SetByInputObjectParameterSet
+Parameter Sets: RemoveByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -112,7 +112,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: False
@@ -127,7 +127,7 @@ Gets or sets the resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
 Required: True

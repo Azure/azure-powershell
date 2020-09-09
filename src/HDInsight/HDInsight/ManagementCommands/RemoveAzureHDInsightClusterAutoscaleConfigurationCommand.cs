@@ -24,18 +24,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterAutoscaleConfiguration", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureHDInsightCluster))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterAutoscaleConfiguration", DefaultParameterSetName = RemoveByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureHDInsightCluster))]
     public class RemoveAzureHDInsightClusterAutoscaleConfigurationCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string RemoveByNameParameterSet = "RemoveByNameParameterSet";
+        private const string RemoveByResourceIdParameterSet = "RemoveByResourceIdParameterSet";
+        private const string RemoveByInputObjectParameterSet = "RemoveByInputObjectParameterSet";
 
         [Parameter(
             Position = 0,
             Mandatory = false,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = RemoveByNameParameterSet,
             HelpMessage = "Gets or sets the name of the resource group.")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = RemoveByNameParameterSet,
             HelpMessage = "Gets or sets the name of the cluster.")]
         [ResourceNameCompleter("Microsoft.HDInsight/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = SetByResourceIdParameterSet,
+            ParameterSetName = RemoveByResourceIdParameterSet,
             HelpMessage = "Gets or sets the resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = SetByInputObjectParameterSet,
+            ParameterSetName = RemoveByInputObjectParameterSet,
             HelpMessage = "Gets or sets the input object.")]
         [ValidateNotNull]
         public AzureHDInsightCluster InputObject { get; set; }
