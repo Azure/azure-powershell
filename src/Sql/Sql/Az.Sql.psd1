@@ -264,7 +264,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlServerActiveDirectoryOnlyAuthentication',
                'Import-AzSqlDatabaseNew',
                'Import-AzSqlDatabaseExisting',
-               'Export-AzSqlDatabase'
+               'Export-AzSqlDatabase',
 			   'Start-AzSqlInstanceDatabaseLogReplay',
 			   'Complete-AzSqlInstanceDatabaseLogReplay',
 			   'Stop-AzSqlInstanceDatabaseLogReplay',
