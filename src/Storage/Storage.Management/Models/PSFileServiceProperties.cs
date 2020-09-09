@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "DeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Days", Position = 3)]
         public PSDeleteRetentionPolicy ShareDeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
+        public PSProtocolSettings ProtocolSettings { get; set; }
 
         public PSFileServiceProperties()
         { }
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Type = policy.Type;
             this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
             this.ShareDeleteRetentionPolicy = policy.ShareDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ShareDeleteRetentionPolicy);
+            this.ProtocolSettings = policy.ProtocolSettings is null? null : new PSProtocolSettings(policy.ProtocolSettings);
         }
         public FileServiceProperties ParseBlobServiceProperties()
         {
@@ -59,6 +61,36 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             };
         }
     }
+    public class PSProtocolSettings
+    {
+        public PSSmbSetting Smb { get; set; }
+
+        public PSProtocolSettings(ProtocolSettings protocolSettings)
+        {
+            this.Smb = protocolSettings.Smb is null ? null : new PSSmbSetting(protocolSettings.Smb);
+        }
+    }
+
+    public class PSSmbSetting
+    {
+        public PSMultichannel Multichannel { get; set; }
+
+        public PSSmbSetting(SmbSetting smbSetting)
+        {
+            this.Multichannel = smbSetting.Multichannel is null ? null : new PSMultichannel(smbSetting.Multichannel);
+        }
+    }
+
+    public class PSMultichannel
+    {
+        public bool? Enabled { get; set; }
+
+        public PSMultichannel(Multichannel multichannel)
+        {
+            this.Enabled = multichannel.Enabled;
+        }
+    }
+
 }
 
   

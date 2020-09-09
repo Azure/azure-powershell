@@ -137,7 +137,6 @@ function Test-ShareSoftDelete
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
@@ -253,6 +252,52 @@ function Test-StorageFileShareGetUsage
 		Assert-AreEqual 0 $share.ShareUsageBytes
 		Assert-AreEqual $null $share.Deleted
 
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Storage File Service Properties
+.DESCRIPTION
+SmokeTest
+#>
+function Test-FileServiceProperties
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'FileStorage'
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+         $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# Enable MC
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+
+		# Disable MC
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

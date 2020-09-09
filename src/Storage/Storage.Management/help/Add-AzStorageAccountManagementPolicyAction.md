@@ -18,6 +18,13 @@ Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterMo
  [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### BaseBlobLastAccessTime
+```
+Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterLastAccessTimeGreaterThan <Int32>
+ [-EnableAutoTierToHotFromCool] [-InputObject <PSManagementPolicyActionGroup>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### Snapshot
 ```
 Add-AzStorageAccountManagementPolicyAction -SnapshotAction <String> -DaysAfterCreationGreaterThan <Int32>
@@ -33,14 +40,18 @@ The **Add-AzStorageAccountManagementPolicyAction** cmdlet adds an action to the 
 ```
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30 -InputObject $action
+PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
 PS C:\>$action 
 
-BaseBlob.TierToCool.DaysAfterModificationGreaterThan    : 30
-BaseBlob.TierToArchive.DaysAfterModificationGreaterThan : 50
-BaseBlob.Delete.DaysAfterModificationGreaterThan        : 100
-Snapshot.Delete.DaysAfterCreationGreaterThan            : 100
+BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
+BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 30
+BaseBlob.EnableAutoTierToHotFromCool                      : True
+BaseBlob.TierToArchive.DaysAfterModificationGreaterThan   : 50
+BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan : 
+BaseBlob.Delete.DaysAfterModificationGreaterThan          : 100
+BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan        : 
+Snapshot.Delete.DaysAfterCreationGreaterThan              : 100
 
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
@@ -56,7 +67,7 @@ The management policy action for baseblob.
 
 ```yaml
 Type: System.String
-Parameter Sets: BaseBlob
+Parameter Sets: BaseBlob, BaseBlobLastAccessTime
 Aliases:
 Accepted values: Delete, TierToArchive, TierToCool
 
@@ -73,6 +84,21 @@ Integer value indicating the age in days after creation.
 ```yaml
 Type: System.Int32
 Parameter Sets: Snapshot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DaysAfterLastAccessTimeGreaterThan
+Integer value indicating the age in days after last blob access. This property can only be used in conjuction with last access time tracking policy.
+
+```yaml
+Type: System.Int32
+Parameter Sets: BaseBlobLastAccessTime
 Aliases:
 
 Required: True
@@ -104,6 +130,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutoTierToHotFromCool
+Enables auto tiering of a blob from cool to hot on a blob access. It only works with TierToCool action and DaysAfterLastAccessTimeGreaterThan.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: BaseBlobLastAccessTime
+Aliases:
 
 Required: False
 Position: Named

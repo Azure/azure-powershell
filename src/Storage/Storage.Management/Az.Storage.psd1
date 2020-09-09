@@ -181,7 +181,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzStorageBlobTag', 'Get-AzStorageBlobByTag', 
                'Set-AzDataLakeGen2AclRecursive', 
                'Update-AzDataLakeGen2AclRecursive', 
-               'Remove-AzDataLakeGen2AclRecursive'
+               'Remove-AzDataLakeGen2AclRecursive', 
+               'Enable-AzStorageBlobLastAccessTimeTracking', 
+               'Disable-AzStorageBlobLastAccessTimeTracking'
 
 # Variables to export from this module
 # VariablesToExport = @()

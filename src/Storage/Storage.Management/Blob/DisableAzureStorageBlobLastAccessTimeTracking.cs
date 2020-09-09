@@ -15,19 +15,16 @@
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Storage;
     using Microsoft.Azure.Management.Storage.Models;
-    using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobDeleteRetentionPolicy, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSDeleteRetentionPolicy))]
-    public class DisableAzStorageBlobDeleteRetentionPolicyCommand : StorageBlobBaseCmdlet
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobLastAccessTimeTracking, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(bool))]
+    public class DisableAzStorageBlobLastAccessTimeTrackingCommand : StorageBlobBaseCmdlet
     {
 
         /// <summary>
@@ -39,11 +36,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
-
-        /// <summary>
-        /// BlobServiceProperties ResourceId  parameter set 
-        /// </summary>
-        private const string PropertiesResourceIdParameterSet = "BlobServicePropertiesResourceId";
 
         [Parameter(
           Position = 0,
@@ -71,22 +63,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Input a Storage account Resource Id, or a Blob service properties Resource Id.",
-           ParameterSetName = PropertiesResourceIdParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess("BlobDeleteRetentionPolicy", "Disable"))
+            if (ShouldProcess("BlobLastAccessTimeTracking", "Disable"))
             {
                 switch (ParameterSetName)
                 {
@@ -94,26 +77,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.ResourceGroupName = StorageAccount.ResourceGroupName;
                         this.StorageAccountName = StorageAccount.StorageAccountName;
                         break;
-                    case PropertiesResourceIdParameterSet:
-                        ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
-                        this.ResourceGroupName = blobServicePropertiesResource.ResourceGroupName;
-                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
-                        break;
                     default:
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
                 BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
-                serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
-                serviceProperties.DeleteRetentionPolicy.Enabled = false;
-                serviceProperties.DeleteRetentionPolicy.Days = null;
+                serviceProperties.LastAccessTimeTrackingPolicy = new LastAccessTimeTrackingPolicy();
+                serviceProperties.LastAccessTimeTrackingPolicy.Enable = false;
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 
                 if (PassThru)
                 {
-                    WriteObject(new PSDeleteRetentionPolicy(serviceProperties.DeleteRetentionPolicy));
+                    WriteObject(true);
                 }
 
             }

@@ -15,20 +15,18 @@
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Storage;
     using Microsoft.Azure.Management.Storage.Models;
-    using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobServiceProperty, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSBlobServiceProperties))]
-    public class UpdateAzStorageBlobServicePropertyCommand : StorageBlobBaseCmdlet
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobLastAccessTimeTracking, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRestorePolicy))]
+    public class EnableAzStorageBlobLastAccessTimeTrackingCommand : StorageBlobBaseCmdlet
     {
+
         /// <summary>
         /// AccountName Parameter Set
         /// </summary>
@@ -70,57 +68,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Input a Storage account Resource Id, or a Blob service properties Resource Id.",
-           ParameterSetName = PropertiesResourceIdParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Default Service Version to Set")]
-        [ValidateNotNull]
-        public string DefaultServiceVersion { get; set; }
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableChangeFeed
-        {
-            get
-            {
-                return enableChangeFeed is null ? false : enableChangeFeed.Value;
-            }
-            set
-            {
-                enableChangeFeed = value;
-            }
-        }
-        private bool? enableChangeFeed = null;
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Gets or sets versioning is enabled if set to true.")]
-        [ValidateNotNullOrEmpty]
-        public bool IsVersioningEnabled
-        {
-            get
-            {
-                return isVersioningEnabled is null ? false : isVersioningEnabled.Value;
-            }
-            set
-            {
-                isVersioningEnabled = value;
-            }
-        }
-        private bool? isVersioningEnabled = null;
+        [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess("BlobServiceProperties", "Update"))
+            if (ShouldProcess("BlobLastAccessTimeTracking", "Enable"))
             {
                 switch (ParameterSetName)
                 {
@@ -128,37 +82,26 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.ResourceGroupName = StorageAccount.ResourceGroupName;
                         this.StorageAccountName = StorageAccount.StorageAccountName;
                         break;
-                    case PropertiesResourceIdParameterSet:
-                        ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
-                        this.ResourceGroupName = blobServicePropertiesResource.ResourceGroupName;
-                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
-                        break;
                     default:
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
                 BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
-                if (DefaultServiceVersion != null)
-                {
-                    serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
-                }
-                if (enableChangeFeed != null)
-                {
-                    serviceProperties.ChangeFeed = new ChangeFeed();
-                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
-                }
-                if (isVersioningEnabled != null)
-                {
-                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
-                }
+                serviceProperties.LastAccessTimeTrackingPolicy = new LastAccessTimeTrackingPolicy();
+                serviceProperties.LastAccessTimeTrackingPolicy.Enable = true;
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 
-                //Get the full service properties for output
-                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
 
-                WriteObject(new PSBlobServiceProperties(serviceProperties));
+                if (PassThru)
+                {
+                    //Get the full service properties from server for output
+                    serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+
+                    WriteObject(new PSLastAccessTimeTrackingPolicy(serviceProperties.LastAccessTimeTrackingPolicy));
+                }
+
             }
         }
     }

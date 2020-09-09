@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported enable Smb Multichannel on File service
+    -  `Update-AzStorageFileServiceProperty`
+* Supported Blob Last Access Time
+    -  `Enable-AzStorageBlobLastAccessTimeTracking`
+    -  `Disable-AzStorageBlobLastAccessTimeTracking`
+    -  `Add-AzStorageAccountManagementPolicyAction`
 
 ## Version 2.5.2
 * Supported Container access policy with new permission x,t

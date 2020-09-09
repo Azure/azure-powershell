@@ -59,7 +59,7 @@ The **Set-AzStorageAccountManagementPolicy** cmdlet creates or modifies the mana
 ```
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50
-PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
+PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30 -EnableAutoTierToHotFromCool
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -SnapshotAction Delete -daysAfterCreationGreaterThan 100
 PS C:\>$filter1 = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
 PS C:\>$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action1 -Filter $filter1
@@ -84,14 +84,18 @@ Rules              : [
                                                 "Actions":  {
                                                                 "BaseBlob":  {
                                                                                  "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  30
+                                                                                                    "DaysAfterModificationGreaterThan":  null,
+                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30
                                                                                                 },
                                                                                  "TierToArchive":  {
-                                                                                                       "DaysAfterModificationGreaterThan":  50
+                                                                                                       "DaysAfterModificationGreaterThan":  50,
+                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null
                                                                                                    },
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
+                                                                                                "DaysAfterModificationGreaterThan":  100,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                            },
+                                                                                 "EnableAutoTierToHotFromCool":  true
                                                                              },
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
@@ -101,8 +105,8 @@ Rules              : [
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  [
-                                                                                    "prefix1",
-                                                                                    "prefix2"
+                                                                                    "ab",
+                                                                                    "cd"
                                                                                 ],
                                                                 "BlobTypes":  [
                                                                                   "blockBlob"
@@ -119,8 +123,10 @@ Rules              : [
                                                                                  "TierToCool":  null,
                                                                                  "TierToArchive":  null,
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
+                                                                                                "DaysAfterModificationGreaterThan":  100,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                            },
+                                                                                 "EnableAutoTierToHotFromCool":  null
                                                                              },
                                                                 "Snapshot":  null
                                                             },
@@ -146,12 +152,13 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
-                    TierToCool=30;
-                    TierToArchive=50;
-                    Delete=100;
+                    TierToCool=@{DaysAfterLastAccessTimeGreaterThan=30};
+                    TierToArchive=@{DaysAfterModificationGreaterThan=50};
+                    Delete=@{DaysAfterModificationGreaterThan=100};
+                    EnableAutoTierToHotFromCool="true";
                 });
                 Snapshot=(@{
-                    Delete=100
+                    Delete=@{DaysAfterCreationGreaterThan=100}
                 });
             });
             Filters=(@{
@@ -166,7 +173,7 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
-                    TierToCool=80;
+                    TierToCool=@{DaysAfterModificationGreaterThan=80};
                 });
             });
             Filters=(@{
@@ -181,7 +188,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 10:24:55 AM
+LastModifiedTime   : 9/4/2020 11:12:29 AM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -190,14 +197,18 @@ Rules              : [
                                                 "Actions":  {
                                                                 "BaseBlob":  {
                                                                                  "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  30
+                                                                                                    "DaysAfterModificationGreaterThan":  null,
+                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30
                                                                                                 },
                                                                                  "TierToArchive":  {
-                                                                                                       "DaysAfterModificationGreaterThan":  50
+                                                                                                       "DaysAfterModificationGreaterThan":  50,
+                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null
                                                                                                    },
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
+                                                                                                "DaysAfterModificationGreaterThan":  100,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                            },
+                                                                                 "EnableAutoTierToHotFromCool":  true
                                                                              },
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
@@ -223,10 +234,12 @@ Rules              : [
                                                 "Actions":  {
                                                                 "BaseBlob":  {
                                                                                  "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  80
+                                                                                                    "DaysAfterModificationGreaterThan":  80,
+                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  null
                                                                                                 },
                                                                                  "TierToArchive":  null,
-                                                                                 "Delete":  null
+                                                                                 "Delete":  null,
+                                                                                 "EnableAutoTierToHotFromCool":  null
                                                                              },
                                                                 "Snapshot":  null
                                                             },
