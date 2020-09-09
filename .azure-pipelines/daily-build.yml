@@ -24,21 +24,21 @@ strategy:
     #   Image_Name: 'vs2017-win2016'
     #   PSVersion: 7.0.3
 
-    # Linux PS 6.2.4:
-    #   Image_Name: 'ubuntu-18.04'
-    #   PSVersion: '6.2.4'
+    Linux PS 6.2.4:
+      Image_Name: 'ubuntu-18.04'
+      PSVersion: '6.2.4'
       
     # Linux PS 7.0.3:
     #   Image_Name: 'ubuntu-18.04'
     #   PSVersion: '7.0.3'
   
     MacOS PS 6.2.4:
-      Image_Name: 'macOS-10.14'
+      Image_Name: 'macOS-10.15'
       PSVersion: '6.2.4'
 
-    MacOS PS 7.0.3:
-      Image_Name: 'macOS-10.14'
-      PSVersion: '7.0.3'
+    # MacOS PS 7.0.3:
+    #   Image_Name: 'macOS-10.14'
+    #   PSVersion: '7.0.3'
 
   maxParallel: 5
 
@@ -86,8 +86,8 @@ steps:
       Write-Host "Installing PS $psVersion..."  
       if($psVersion -ne "5.1.14"){
           dotnet --version
-          # dotnet new tool-manifest
-          dotnet tool install --global PowerShell --version $(PSVersion)
+          dotnet new tool-manifest
+          dotnet tool install PowerShell --version $(PSVersion)
           dotnet tool list
           
           # Update PowershellGet 
