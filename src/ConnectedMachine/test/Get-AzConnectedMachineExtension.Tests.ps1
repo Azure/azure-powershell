@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzConnectedMachine.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzConnectedMachineExtension.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Import-Module "$PSScriptRoot/helper.psm1" -Force
 
-Describe 'Get-AzConnectedMachine' {
+Describe 'Get-AzConnectedMachineExtension' {
     BeforeAll {
         $machineName = $env.MachineName1
 
@@ -30,6 +30,7 @@ Describe 'Get-AzConnectedMachine' {
         }
 
         Start-Agent -MachineName $machineName -Env $env
+        Start-ExtensionPopulate -MachineName $machineName -Env $env
     }
 
     AfterAll {
@@ -44,22 +45,23 @@ Describe 'Get-AzConnectedMachine' {
             return
         }
 
-        Stop-Agent $env.azcmagentPath
+        # Extensions must be removed first before the machine is disconnected.
+        Start-ExtensionRemoval -ResourceGroupName $env.ResourceGroupName -MachineName $machineName
+        Stop-Agent -AgentPath $env.azcmagentPath
     }
 
-    It 'Get all connected machines in a subscription' {
-        $machines = Get-AzConnectedMachine
-        $machines.Count | Should -Be 1
+    It 'List all extensions' {
+        $all = @(Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName)
+        $all | Should -HaveCount 2
+        $all[0].Name | Should -Be "custom1"
+        $all[0].Setting["commandToExecute"] | Should -Not -BeNullOrEmpty
+        $all[1].Name | Should -Be "custom2"
+        $all[1].MachineExtensionType | Should -BeLike "DependencyAgent*"
     }
 
-    It 'Get all connected machines in a resource group' {
-        $machines = Get-AzConnectedMachine -ResourceGroupName $env.ResourceGroupName
-        $machines.Count | Should -Be 1
-    }
-
-    It 'Get a connected machine by machine name' {
-        $machine = Get-AzConnectedMachine -Name $machineName -ResourceGroupName $env.ResourceGroupName
-        $machine | Should -Not -Be $null
-        $machine.Location | Should -MatchExactly $env.location
+    It 'Get a specific extension' {
+        $all = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
+        $all.Name | Should -Be "custom1"
+        $all.Setting["commandToExecute"] | Should -Not -BeNullOrEmpty
     }
 }
