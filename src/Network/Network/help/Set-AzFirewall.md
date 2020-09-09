@@ -145,6 +145,16 @@ Set-AzFirewall -AzureFirewall $azFw
 
 This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
 
+### 11:	Allow Active FTP on Azure Firewall
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.AllowActiveFTP = $true
+
+$azFw | Set-AzFirewall
+```
+
+In this example, Active FTP is allowed on the Firewall.
+
 ## PARAMETERS
 
 ### -AsJob

@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                         {"Microsoft.Compute", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
+                        {"Microsoft.Network", null},
                         {"Microsoft.Storage", null},
                         {"Microsoft.Sql", null},
                         {"Microsoft.KeyVault", null},
