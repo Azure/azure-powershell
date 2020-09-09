@@ -16,9 +16,9 @@ strategy:
     #   Image_Name: 'vs2017-win2016'
     #   PSVersion: 5.1.14
   
-    # Windows PS 6.2.4:
-    #   Image_Name: 'vs2017-win2016'
-    #   PSVersion: 6.2.4
+    Windows PS 6.2.4:
+      Image_Name: 'vs2017-win2016'
+      PSVersion: 6.2.4
      
     # Windows PS 7.0.3:
     #   Image_Name: 'vs2017-win2016'
