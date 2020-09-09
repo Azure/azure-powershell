@@ -87,8 +87,9 @@ steps:
       if($psVersion -ne "5.1.14"){
           dotnet --version
           # dotnet new tool-manifest
-          dotnet tool install PowerShell --version $(PSVersion) --local
+          dotnet tool install PowerShell --version $(PSVersion)
           dotnet tool list
+          
           # Update PowershellGet 
           $command = "Install-Module -Name PowerShellGet -Scope CurrentUser -Force `
           Exit "
