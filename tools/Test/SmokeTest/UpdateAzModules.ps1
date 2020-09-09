@@ -9,9 +9,10 @@ Install-Module -Name PowerShellGet -Scope CurrentUser -Force
 
 # Get previous version of az
 $versions = (find-module Az -Repository $gallery -AllVersions).Version | Sort-Object -Descending
+
 Write-Host 'az versions:', $versions
 
-Get-Module PowerShellGet -ListAvailable
+Get-Module PowerShellGet
 
 # if ($versions.Count -ge 2) {
 #     # Install previous version of Az
