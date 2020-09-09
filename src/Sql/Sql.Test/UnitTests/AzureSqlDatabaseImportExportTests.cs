@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureRmSqlDatabaseImportExportStatusAttributes()
         {
-            Type type = typeof(GetAzureSqlDatabaseImportExportStatus);
+            Type type = typeof(GetAzureSqlDatabaseImportExportOperation);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "OperationStatusLink", isMandatory: true, valueFromPipelineByName: true);
         }

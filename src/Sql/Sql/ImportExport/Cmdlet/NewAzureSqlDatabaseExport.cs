@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
@@ -21,8 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the StartAzureSqlDatabaseExport cmdlet
     /// </summary>
-    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class ExportAzureSqlDatabase : ImportExportCmdletArmBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+    [CmdletDeprecation(ChangeDescription = "This CmdLet is deprecated and will be retired in future powershell version.", OldWay = "New-AzSqlDatabaseExport", NewWay = "Export-AzSqlDatabase")]
+    public class NewAzureSqlDatabaseExport : ImportExportCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -41,8 +43,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
-            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
-
             AzureSqlDatabaseImportExportBaseModel exportRequest = new AzureSqlDatabaseImportExportBaseModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -53,9 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 ServerName = ServerName,
                 StorageKey = StorageKey,
                 StorageKeyType = StorageKeyType,
-                StorageUri = StorageUri,
-                NetworkIsolationSettings = networkIsolationSettings,
-                WaitForOperationComplete = WaitForOperationToComplete
+                StorageUri = StorageUri
             };
             return exportRequest;
         }

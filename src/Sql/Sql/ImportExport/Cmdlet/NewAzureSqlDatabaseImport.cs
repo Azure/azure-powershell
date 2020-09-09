@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
@@ -23,8 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExisting", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class ImportExistingAzureSqlDatabase : ImportExportCmdletArmBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+    [CmdletDeprecation(ChangeDescription = "This CmdLet is deprecated and will be retired in future powershell version.", OldWay = "New-AzSqlDatabaseImport", NewWay = "Import-AzSqlDatabaseNew")]
+    public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -34,6 +36,35 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The edition of the database")]
+        [ValidateNotNull]
+        public DatabaseEdition Edition
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the service objective to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceObjectiveName
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the maximum size for the newly imported database
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The maximum size in bytes for the newly imported database")]
+        public long DatabaseMaxSizeBytes
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Get the Firewall Rule to update
@@ -56,7 +87,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             {
                 throw new ArgumentNullException("importModel");
             }
-            return ModelAdapter.ImportExistingDatabase(importModel);
+            return ModelAdapter.Import(importModel);
+
         }
 
         /// <summary>
@@ -65,8 +97,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
-            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
-
             AzureSqlDatabaseImportModel exportRequest = new AzureSqlDatabaseImportModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -78,8 +108,9 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 StorageKey = StorageKey,
                 StorageKeyType = StorageKeyType,
                 StorageUri = StorageUri,
-                NetworkIsolationSettings = networkIsolationSettings,
-                WaitForOperationComplete = WaitForOperationToComplete
+                Edition = Edition,
+                ServiceObjectiveName = ServiceObjectiveName,
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
             };
             return exportRequest;
         }

@@ -75,6 +75,15 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         }
 
         /// <summary>
+        /// Gets or sets the status message returned from the server.
+        /// </summary>
+        public string StatusMessage
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the 
         /// </summary>
         public PrivateEndpointRequestStatus[] PrivateEndpointRequestStatus

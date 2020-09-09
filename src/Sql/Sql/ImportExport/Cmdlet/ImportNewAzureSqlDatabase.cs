@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseNew", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class ImportNewAzureSqlDatabase : ImportExportCmdletBase
+    public class ImportNewAzureSqlDatabase : ImportExportCmdletArmBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.

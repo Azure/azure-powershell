@@ -24,7 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
-    public abstract class ImportExportCmdletBase : AzureSqlCmdletBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseAdapter>
+    public abstract class ImportExportCmdletArmBase : AzureSqlCmdletBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseArmAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -97,19 +97,37 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
 
         /// <summary>
-        /// Gets or sets the sql server resource ID for network isolation
+        /// Gets or sets a value indicating whether to use network isolation
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The SQL Server resource ID for network isolation")]
-        public string SqlServerResourceId
+        [Parameter(Mandatory = false, HelpMessage = "If set, will create private link for storage account and/or SQL server")]
+        public bool UseNetworkIsolation
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the storage account resource ID for network isolation
+        /// Gets or sets the resource id for storage account private link
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The storage account resource ID for network isolation")]
-        public string StorageAccountResourceId
+        [Parameter(Mandatory = false, HelpMessage = "The storage account resource id to create private link")]
+        [ResourceIdCompleter("Microsoft.storage/storageAccounts")]
+        public string StorageAccountResourceIdForPrivateLink
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the resource id for sql server private link
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The sql server resource id to create private link")]
+        [ResourceIdCompleter("Microsoft.sql/servers")]
+        public string SqlServerResourceIdForPrivateLink
+        {
+            get; set;
+        }
+
+        [Parameter(Mandatory = false, HelpMessage = "If true, will poll until the Import or Export operation is complete. If false, will immediately return with operation status link.")]
+        [ResourceIdCompleter("Microsoft.sql/servers")]
+        public bool WaitForOperationToComplete
         {
             get; set;
         }
@@ -118,9 +136,33 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// Intializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
-        protected override ImportExportDatabaseAdapter InitModelAdapter()
+        protected override ImportExportDatabaseArmAdapter InitModelAdapter()
         {
-            return new ImportExportDatabaseAdapter(DefaultProfile.DefaultContext);
+            return new ImportExportDatabaseArmAdapter(DefaultProfile.DefaultContext);
+        }
+
+        protected NetworkIsolationSettings ValidateAndGetNetworkIsolationSettings()
+        {
+            ValidateNetworkIsolationSettings();
+
+            return new NetworkIsolationSettings()
+            {
+                StorageAccountResourceId = StorageAccountResourceIdForPrivateLink,
+                SqlServerResourceId = SqlServerResourceIdForPrivateLink
+            };
+        }
+
+        private void ValidateNetworkIsolationSettings()
+        {
+            if (UseNetworkIsolation && string.IsNullOrEmpty(StorageAccountResourceIdForPrivateLink) && string.IsNullOrEmpty(SqlServerResourceIdForPrivateLink))
+            {
+                throw new InvalidOperationException("If UseNetworkIsolation is set, at least one of StorageAccountResourceIdForPrivateLink or SqlServerResourceIdForPrivateLink must also be set.");
+            }
+
+            if (!UseNetworkIsolation && (!string.IsNullOrEmpty(StorageAccountResourceIdForPrivateLink) || !string.IsNullOrEmpty(SqlServerResourceIdForPrivateLink)))
+            {
+                throw new InvalidOperationException("UseNetworkIsolation flag must be set in order to specify either StorageAccountResourceIdForPrivateLink or SqlServerResourceIdForPrivateLink.");
+            }
         }
     }
 }
