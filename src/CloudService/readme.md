@@ -81,7 +81,7 @@ directive:
       verb: Get
     hide: true
   - where:
-      subject: ^CloudServiceInstance$|^CloudService$
+      subject: ^CloudServiceRoleInstance$|^CloudService$|^CloudServiceInstance$
       verb: Remove
     hide: true
   - where:
