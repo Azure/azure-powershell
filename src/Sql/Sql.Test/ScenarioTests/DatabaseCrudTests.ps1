@@ -54,6 +54,8 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.CurrentServiceObjectiveName
 		Assert-NotNull $db.CollationName
 
+		Write-Output "passed first db"
+
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
@@ -69,10 +71,13 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
 		Assert-AreEqual $dwdb.CollationName $collationName
 
+		Write-Output "passed third db"
+
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
+			-BackupStorageRedundancy "Geo"
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -81,11 +86,15 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+		Assert-AreEqual $db.BackupStorageRedundancy "Geo"
+
+		Write-Output "passed fourth db"
 
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
+			-BackupStorageRedundancy "Geo"
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -94,6 +103,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+		Assert-AreEqual $db.BackupStorageRedundancy "Geo"
 	}
 	finally
 	{
@@ -292,6 +302,33 @@ function Test-CreateDatabaseWithZoneRedundancy
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.ZoneRedundant
 		Assert-AreEqual "false" $db.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with Backup Storage Redundancy
+#>
+function Test-CreateDatabaseWithConfiguredBackupStorageRedundancy
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -BackupStorageRedundancy "Local"
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.BackupStorageRedundancy
+		Assert-AreEqual $db.BackupStorageRedundancy "Local"
 	}
 	finally
 	{
@@ -744,6 +781,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		Assert-AreEqual $db1.CollationName $gdb1.CollationName
 		Assert-AreEqual $db1.CurrentServiceObjectiveName $gdb1.CurrentServiceObjectiveName
 		Assert-AreEqual $db1.MaxSizeBytes $gdb1.MaxSizeBytes
+		Assert-NotNull $db1.BackupStorageRedundancy
 
 		$gdb2 = $db2 | Get-AzSqlDatabase
 		Assert-NotNull $gdb2
@@ -752,6 +790,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		Assert-AreEqual $db2.CollationName $gdb2.CollationName
 		Assert-AreEqual $db2.CurrentServiceObjectiveName $gdb2.CurrentServiceObjectiveName
 		Assert-AreEqual $db2.MaxSizeBytes $gdb2.MaxSizeBytes
+		Assert-NotNull $db2.BackupStorageRedundancy
 	}
 	finally
 	{

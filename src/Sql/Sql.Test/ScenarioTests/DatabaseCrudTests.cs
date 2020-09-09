@@ -154,5 +154,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CancelDatabaseOperation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDatabaseWithConfiguredBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateDatabaseWithConfiguredBackupStorageRedundancy");
+        }
     }
 }
