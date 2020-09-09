@@ -27,6 +27,8 @@
 	- `Get-AzSqlInstanceDatabaseLogReplay`
 	- `Complete-AzSqlInstanceDatabaseLogReplay`
 	- `Stop-AzSqlInstanceDatabaseLogReplay`
+* Add new cmdlets for SQL database ImportExport which support network isolation functionality
+* Update to Databases cmdlets to support backup storage type specification
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
