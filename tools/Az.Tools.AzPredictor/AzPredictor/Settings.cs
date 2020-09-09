@@ -64,19 +64,8 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
 
         private void OverrideSettingsFromProfile()
         {
-            string homePath = null;
-            var platform = Environment.OSVersion.Platform;
-
-            if (platform == PlatformID.Unix)
-            {
-                homePath = Environment.GetEnvironmentVariable("$HOME");
-            }
-            else
-            {
-                homePath = Path.Join(Environment.GetEnvironmentVariable("HOMEDRIVE"), Environment.GetEnvironmentVariable("HOMEPATH"));
-            }
-
-            string profileDirectoryPath = Path.Join(homePath, AzPredictorConstants.AzureProfileDirectoryName);
+            var userProfileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string profileDirectoryPath = Path.Join(userProfileDirectory, AzPredictorConstants.AzureProfileDirectoryName);
             string profileSettingFilePath = Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
 
             if (File.Exists(profileSettingFilePath))

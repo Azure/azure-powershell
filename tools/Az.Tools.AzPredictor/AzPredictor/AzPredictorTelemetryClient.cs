@@ -18,7 +18,9 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace Microsoft.Azure.PowerShell.AzPredictor
@@ -28,12 +30,46 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
     /// </summary>
     sealed class AzPredictorTelemetryClient : ITelemetryClient
     {
+        /// <summary>
+        /// A simple session class that provides neccessary information to get the profile.
+        /// </summary>
+        private sealed class TelemetrySession : AzureSession
+        {
+            /// <summary>
+            /// Constructs a new instance of <see cref="TelemetrySession" />
+            /// </summary>
+            public TelemetrySession()
+            {
+                this.DataStore = new DiskDataStore();
+                this.ProfileDirectory = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                    AzPredictorConstants.AzureProfileDirectoryName);
+            }
+
+            /// <inheritdoc/>
+            public override TraceLevel AuthenticationLegacyTraceLevel
+            {
+                get => TraceLevel.Off;
+                set { }
+            }
+
+            /// <inheritdoc/>
+            public override TraceListenerCollection AuthenticationTraceListeners => Trace.Listeners;
+
+            /// <inheritdoc/>
+            public override SourceLevels AuthenticationTraceSourceLevel
+            {
+                get => SourceLevels.Off;
+                set { }
+            }
+        }
+
         private readonly TelemetryClient _telemetryClient;
         private int _accepts;
         private readonly string _sessionId;
 
         private object lockObject = new object();
-        private AzurePSDataCollectionProfile _cachedProfile = null;
+        private AzurePSDataCollectionProfile _cachedProfile;
 
         private AzurePSDataCollectionProfile DataCollectionProfile
         {
@@ -41,35 +77,15 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
             {
                 lock (lockObject)
                 {
-                    DataCollectionController controller;
-                    if (_cachedProfile == null && AzureSession.Instance.TryGetComponent(DataCollectionController.RegistryKey, out controller))
+                    if (_cachedProfile == null)
                     {
-                        _cachedProfile = controller.GetProfile(() => {});
-                    }
-                    else if (_cachedProfile == null)
-                    {
-                        _cachedProfile = new AzurePSDataCollectionProfile(true);
+                        var controller = DataCollectionController.Create(new TelemetrySession());
+                        this._cachedProfile = controller.GetProfile(() => { });
                     }
 
-                    return _cachedProfile;
+                    return this._cachedProfile;
                 }
             }
-        }
-
-        /// <summary>
-        /// Check whether the data collection is opted in from user
-        /// </summary>
-        /// <returns>true if allowed</returns>
-        private bool IsDataCollectionAllowed()
-        {
-            if (DataCollectionProfile != null &&
-                DataCollectionProfile.EnableAzureDataCollection.HasValue &&
-                DataCollectionProfile.EnableAzureDataCollection.Value)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         /// <summary>
@@ -125,6 +141,22 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
             {
                 return;
             }
+        }
+
+        /// <summary>
+        /// Check whether the data collection is opted in from user
+        /// </summary>
+        /// <returns>true if allowed</returns>
+        private bool IsDataCollectionAllowed()
+        {
+            if (DataCollectionProfile != null &&
+                DataCollectionProfile.EnableAzureDataCollection.HasValue &&
+                DataCollectionProfile.EnableAzureDataCollection.Value)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,9 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
     /// <summary>
     /// A service that talk to Aladdin endpoints to get the commands and predictions.
     /// </summary>
-    public class AzPredictorService : IAzPredictorService
+    public class AzPredictorService : IAzPredictorService, IDisposable
     {
+        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -36,22 +38,25 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
                 public Guid CorrelationId { get; set; } = Guid.Empty;
                 public Guid SessionId { get; set; } = Guid.Empty;
                 public Guid SubscriptionId { get; set; } = Guid.Empty;
-                public Version Version { get; set; } = new Version(1, 0);
+                public Version VersionNumber{ get; set; } = new Version(1, 0);
             }
 
             public string History { get; set; }
             public string ClientType { get; set; } = "AzurePowerShell";
-            public RequestContext Context { get; set; }
+            public RequestContext Context { get; set; } = new RequestContext();
 
             public PredictionRequestBody(string history) => this.History = history;
         };
 
+        private const int PredictionRequestInProgress = 1;
+        private const int PredictionRequestNotInProgress = 0;
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
         private volatile Predictor _suggestions;
         private volatile Predictor _commands;
         private HashSet<string> _commandSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private CancellationTokenSource _predictionRequestCancellationSource;
 
         /// <summary>
         /// The AzPredictor service interacts with the Aladdin service specified in serviceUri.
@@ -74,16 +79,41 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
             RequestCommands();
         }
 
+        /// <inhericdoc/>
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+        }
+
+        /// <summary>
+        /// Dispose the object
+        /// </summary>
+        /// <param name="disposing">Indicate if this is called from <see cref="Dispose()"/></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (this._predictionRequestCancellationSource != null)
+                {
+                    this._predictionRequestCancellationSource.Dispose();
+                    this._predictionRequestCancellationSource = null;
+                }
+            }
+        }
+
         /// <inheritdoc/>
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
         public string GetSuggestion(Ast input, CancellationToken cancellationToken)
         {
-            string result = null;
             var suggestions = this._suggestions;
 
-            result = suggestions?.Query(input, cancellationToken);
+            // We've already used _suggestions. There is no need to wait the request to complete at this point.
+            // Cancel it.
+            this._predictionRequestCancellationSource?.Cancel();
+
+            string result = suggestions?.Query(input, cancellationToken);
 
             if (result == null)
             {
@@ -97,16 +127,23 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
         /// <inheritdoc/>
         public virtual void RequestPredictions(string history)
         {
-            Task.Run(async () =>
-                    {
-                        var requestBody = JsonConvert.SerializeObject(new PredictionRequestBody(history));
-                        var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBody, Encoding.UTF8, "application/json"));
+            // Even if it's called multiple times, we only need to keep the one for the latest history.
 
-                        var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                        var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
+            this._predictionRequestCancellationSource?.Cancel();
+            this._predictionRequestCancellationSource = new CancellationTokenSource();
+            var cancellationToken = this._predictionRequestCancellationSource.Token;
 
-                        this.SetSuggestionPredictor(suggestionsList);
-                    });
+            // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+            Task.Run(async () => {
+                    var requestBody = JsonConvert.SerializeObject(new PredictionRequestBody(history));
+                    var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBody, Encoding.UTF8, "application/json"), cancellationToken);
+
+                    var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
+                    var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
+
+                    this.SetSuggestionPredictor(suggestionsList);
+                },
+                cancellationToken);
         }
 
         /// <summary>
@@ -114,17 +151,23 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
         /// </summary>
         public int? GetRankOfSuggestion(CommandAst command, Ast input)
         {
-            return _suggestions?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
+            var suggestions = this._suggestions;
+            return suggestions?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
         }
 
         /// <inheritdoc/>
         public int? GetRankOfFallback(CommandAst command, Ast input)
         {
-            return _commands?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
+            var commands = this._commands;
+            return commands?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
         }
 
         /// <inheritdoc/>
-        public IEnumerable<string> GetTopNSuggestions(int n) => _suggestions?.GetTopNPrediction(n);
+        public IEnumerable<string> GetTopNSuggestions(int n)
+        {
+            var suggestions = this._suggestions;
+            return suggestions?.GetTopNPrediction(n);
+        }
 
         /// <inheritdoc/>
         public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && _commandSet.Contains(cmd);
@@ -135,6 +178,7 @@ namespace Microsoft.Azure.PowerShell.AzPredictor
         /// </summary>
         protected virtual void RequestCommands()
         {
+            // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
                         var httpResponseMessage = await AzPredictorService._client.GetAsync(this._commandsEndpoint);
