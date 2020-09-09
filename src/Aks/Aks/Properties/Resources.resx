@@ -369,6 +369,15 @@
   <data name="WindowsNodePoolNameLengthLimitation" xml:space="preserve">
     <value>Windows agent pool name can not be longer than 6 characters.</value>
   </data>
+  <data name="DonotUseGenerateSshKeyWithSshKeyValue" xml:space="preserve">
+    <value>Don't use -GenerateSshKey and -SshKeyVaule at the same time.</value>
+  </data>
+  <data name="DefaultSshKeyAlreadyExist" xml:space="preserve">
+    <value>Default ssh key already exists. Please use -SshKeyVaule.</value>
+  </data>
+  <data name="EnableSsh" xml:space="preserve">
+    <value>Cannot find ssh-keygen. Please enable OpenSSH on your local machine.</value>
+  </data>
   <data name="UpdatingNodePoolMode" xml:space="preserve">
     <value>Updating NodePoolMode.</value>
   </data>
