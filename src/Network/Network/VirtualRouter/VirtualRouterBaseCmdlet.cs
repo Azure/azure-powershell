@@ -15,28 +15,38 @@
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public class VirtualRouterBaseCmdlet : NetworkBaseCmdlet
     {
-        // Gateway ASN which gets populated for VirtualRouter as VR resides inside GW
+        // Gateway ASN which gets populated for VirtualHub as VR resides inside GW
         public const int GatewayAsn = 65515;
 
-        public void AddPeeringsToPSVirtualRouter (VirtualRouter vVirtualRouter, 
-                                                  CNM.PSVirtualRouter vVirtualRouterModel,
+        public void AddBgpConnectionsToPSVirtualHub(VirtualHub virtualHub,
+                                                  CNM.PSVirtualHub virtualHubModel,
                                                   string resourceGroupName,
                                                   string routerName)
         {
-            if (vVirtualRouter.Peerings != null && vVirtualRouter.Peerings.Count > 0)
+            var bgpConnections = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.List(resourceGroupName, routerName);
+            var bgpConnectionList = ListNextLink<BgpConnection>.GetAllResourcesByPollingNextLink(bgpConnections, this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.ListNext);
+            foreach (var connection in bgpConnectionList)
             {
-                var vVirtualRouterPeering = this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.List(resourceGroupName, routerName);
-                var vVirtualRouterPeeringList = ListNextLink<VirtualRouterPeering>.GetAllResourcesByPollingNextLink(vVirtualRouterPeering, this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.ListNext);
-                foreach (var peering in vVirtualRouterPeeringList)
-                {
-                    vVirtualRouterModel.Peerings.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(peering));
-                }
+                virtualHubModel.BgpConnections.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSBgpConnection>(connection));
             }
+        }
+
+        public void AddIpConfigurtaionToPSVirtualHub(CNM.PSVirtualHub virtualHubModel,
+                                                    string resourceGroupName,
+                                                    string routerName,
+                                                    string ipConfigName)
+        {
+            var ipConfigModel = this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Get(resourceGroupName, routerName, ipConfigName);
+            var ipconfig = NetworkResourceManagerProfile.Mapper.Map<CNM.PSHubIpConfiguration>(ipConfigModel);
+            virtualHubModel.IpConfigurations = new List<CNM.PSHubIpConfiguration>();
+            virtualHubModel.IpConfigurations.Add(ipconfig);
         }
     }
 }

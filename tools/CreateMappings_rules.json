@@ -187,5 +187,6 @@
     { "regex": "ConnectedKubernetes", "alias": "Connected Kubernetes" },
     { "regex": "KubernetesConfiguration", "alias": "Kubernetes Configuration" },
     { "regex": "StackHCI", "alias": "Stack HCI" },
-    { "regex": "SpringCloud", "alias": "SpringCloud" }
+    { "regex": "SpringCloud", "alias": "SpringCloud" },
+    { "regex": "ResourceMover", "alias": "ResourceMover" }
 ]

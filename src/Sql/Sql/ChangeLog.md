@@ -21,6 +21,12 @@
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
 * Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added Force parameter to `New-AzSqlInstance`
+* Added cmdlets for Managed Database Log Replay service
+	- `Start-AzSqlInstanceDatabaseLogReplay`
+	- `Get-AzSqlInstanceDatabaseLogReplay`
+	- `Complete-AzSqlInstanceDatabaseLogReplay`
+	- `Stop-AzSqlInstanceDatabaseLogReplay`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`

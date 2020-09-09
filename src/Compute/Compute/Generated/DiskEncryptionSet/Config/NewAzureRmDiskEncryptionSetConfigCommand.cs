@@ -66,6 +66,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string KeyUrl { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Use this to set the encryption type of the disk encryption set")]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("DiskEncryptionSet", "New"))
@@ -117,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                EncryptionType = this.IsParameterBound(c => c.EncryptionType) ? this.EncryptionType : null,
                 Identity = vIdentity,
                 ActiveKey = vActiveKey,
             };
