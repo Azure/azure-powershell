@@ -18,7 +18,7 @@
 #>
 function Test-CreateDatabase
 {
-	Test-CreateDatabaseInternal "Southeast Asia"
+	Test-CreateDatabaseInternal "westcentralus"
 }
 
 <#
@@ -33,7 +33,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 
 	try
 	{
-		# Create with default values
+		Write-Debug "Create with default values"
 		$databaseName = Get-DatabaseName
 		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AsJob
 		$job1 | Wait-Job
@@ -45,7 +45,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.CurrentServiceObjectiveName
 		Assert-NotNull $db.CollationName
 
-		# Create with default values via piping
+		Write-Debug "Create with default values via piping"
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName
 		Assert-AreEqual $db.DatabaseName $databaseName
@@ -54,7 +54,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.CurrentServiceObjectiveName
 		Assert-NotNull $db.CollationName
 
-		# Create data warehouse database with all parameters.
+		Write-Debug "Create data warehouse database with all parameters."
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
@@ -63,16 +63,19 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$job2 | Wait-Job
 		$dwdb  = $job2.Output
 
+		Write-Debug (ConvertTo-Json $job2)
+
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 		Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb.Edition DataWarehouse
 		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
 		Assert-AreEqual $dwdb.CollationName $collationName
 
-		# Create with all parameters
+		Write-Debug "Create with all parameters"
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -82,10 +85,11 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
 
-		# Create with all parameters
+		Write-Debug "Create with all parameters"
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -108,7 +112,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 function Test-CreateVcoreDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -306,7 +310,7 @@ function Test-CreateDatabaseWithZoneRedundancy
 function Test-CreateDatabaseWithBackupStorageRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -332,7 +336,7 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "Southeast Asia"
+	Test-UpdateDatabaseInternal "westcentralus"
 }
 
 <#
@@ -411,7 +415,7 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -491,7 +495,7 @@ function Test-UpdateVcoreDatabase()
 function Test-UpdateVcoreDatabaseLicenseType()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -532,7 +536,7 @@ function Test-UpdateVcoreDatabaseLicenseType()
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -647,7 +651,7 @@ function Test-UpdateServerlessDatabase()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -724,7 +728,7 @@ function Test-RenameDatabase
 #>
 function Test-GetDatabase
 {
-	Test-GetDatabaseInternal "Southeast Asia"
+	Test-GetDatabaseInternal "westcentralus"
 }
 
 <#
@@ -850,7 +854,7 @@ function Test-GetDatabaseWithZoneRedundancy
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "Southeast Asia"
+	Test-RemoveDatabaseInternal "westcentralus"
 }
 
 <#
@@ -917,7 +921,7 @@ function Test-CancelDatabaseOperation
 function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
