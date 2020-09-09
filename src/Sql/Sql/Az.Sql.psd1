@@ -265,6 +265,10 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Import-AzSqlDatabaseNew',
                'Import-AzSqlDatabaseExisting',
                'Export-AzSqlDatabase'
+			   'Start-AzSqlInstanceDatabaseLogReplay',
+			   'Complete-AzSqlInstanceDatabaseLogReplay',
+			   'Stop-AzSqlInstanceDatabaseLogReplay',
+			   'Get-AzSqlInstanceDatabaseLogReplay'
 
 # Variables to export from this module
 # VariablesToExport = @()

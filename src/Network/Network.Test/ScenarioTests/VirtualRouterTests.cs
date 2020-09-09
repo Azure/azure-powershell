@@ -25,12 +25,20 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Fails with Internal Server Error")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestVirtualRouterCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualRouterCRUD"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestVirtualRouterPeerCRUD()
+        {
+            TestRunner.RunTestScript(string.Format("Test-VirtualRouterPeerCRUD"));
         }
     }
 }
