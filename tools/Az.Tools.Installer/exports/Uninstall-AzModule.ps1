@@ -74,6 +74,7 @@ function Uninstall-AzModule {
         [System.Collections.ArrayList]$module_name = @()
         $module = @{}
         $result = @()
+        $installed = @()
         $latest = ''
         $max_job_count = 5
 
@@ -82,6 +83,14 @@ function Uninstall-AzModule {
             $Name | Foreach-Object {
                 $module_name += $_
             }
+        }
+
+        
+        try {
+            $installed = Get-InstalledModule -Name 'Az.*' 
+        } catch {
+            Write-Error "Nothing to delete, no Az modules found: $_"
+            break
         }
 
         if (!$PSBoundParameters.ContainsKey("AllowPrerelease")) {
@@ -111,6 +120,8 @@ function Uninstall-AzModule {
                 break
             }
 
+            $installed_name = ($installed | Foreach-Object{$_.Name})
+
             $version = $az.Version
             $az.Dependencies | Foreach-Object {
                 if ($_.Name -ne 'Az.Accounts') {
@@ -118,7 +129,7 @@ function Uninstall-AzModule {
                 } else {
                     $index.Add($_.Name, $_.MinimumVersion)
                 }
-                if (!$PSBoundParameters.ContainsKey('Name')) {
+                if (!$PSBoundParameters.ContainsKey('Name') -and ($installed_name -contains $_.Name)) {
                     $module_name += $_.Name
                 }
             }
@@ -139,15 +150,10 @@ function Uninstall-AzModule {
 
             if (!$PSBoundParameters.ContainsKey('Name')) {
                 # all latest modules
-                try {
-                    Get-InstalledModule -Name 'Az.*' | ForEach-Object {
-                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and (!$_.Name.StartsWith('Az.Tools'))) {
-                            $module_name += $_.Name
-                        }
+                $installed | ForEach-Object {
+                    if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and (!$_.Name.StartsWith('Az.Tools'))) {
+                        $module_name += $_.Name
                     }
-                } catch {
-                    Write-Error "Nothing to delete, no Az modules found: $_"
-                    break
                 }
             }
 
