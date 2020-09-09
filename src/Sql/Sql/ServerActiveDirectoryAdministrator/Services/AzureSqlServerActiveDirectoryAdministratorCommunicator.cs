@@ -98,14 +98,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         }
 
         /// <summary>
-        /// Disables Azure Active Directory only authentication on a Azure SQL Server
-        /// </summary>
-        public Management.Sql.Models.ServerAzureADAdministrator Disable(string resourceGroupName, string serverName)
-        {
-            return null;
-        }
-
-        /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>

@@ -21,6 +21,19 @@
 ## Upcoming Release
 * Added new cmdlet for Azure Express Route Port
     - `New-AzExpressRoutePortLOA`
+* [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
+    - `New-AzVirtualRouter`: 
+        - Added -HostedSubnet parameter to support IP configuration child resource
+        - deleted -HostedGateway and -HostedGatewayId
+    - `Get-AzVirtualRouter`:
+        - Added subcription level parameter set
+    - `Remove-AzVirtualRouter`
+    - `Add-AzVirtualRouterPeer`
+    - `Get-AzVirtualRouterPeer`
+    - `Remove-AzVirtualRouterPeer`
+* Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
+* Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
+* Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
 * Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
 
 ## Version 3.3.0
@@ -45,6 +58,7 @@
     - `Get-AzNetworkVirtualApplianceSku`
     - `New-AzVirtualApplianceSkuProperty`
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
 * Add `AllowActiveFTP` parameter to `AzureFirewall`
@@ -53,6 +67,26 @@
 * Onboarded StorageSync to Private Link Common Cmdlets
 * Onboarded SignalR to Private Link Common Cmdlets
 >>>>>>> 00bc26d7f02562e54f4474e0cda73981b67cff6d
+=======
+* Added new cmdlets for VirtualWan
+    - `Start-AzVpnGatewayPacketCapture`
+    - `Stop-AzVpnGatewayPacketCapture`
+    - `Start-AzVpnConnectionPacketCapture`
+    - `Stop-AzVpnConnectionPacketCapture`
+* Onboard Application Gateway to Private Link Common Cmdlets
+* Onboard StorageSync to Private Link Common Cmdlets
+* Add `AllowActiveFTP` parameter to `AzureFirewall`
+* Onboarded Application Gateway to Private Link Common Cmdlets
+* Onboarded StorageSync to Private Link Common Cmdlets
+* Onboarded SignalR to Private Link Common Cmdlets
+* Updated below commands for feature: Enable internet security set/remove on VirtualWan P2SVpnGateway.
+- Updated `New-AzP2sVpnGateway`: Added optional switch parameter `EnableInternetSecurityFlag` for customers to set true to enable internet security on P2SVpnGateway, which will be applied for Point to site clients.
+- Updated `Update-AzP2sVpnGateway`: Added optional switch parameters `EnableInternetSecurityFlag` or `DisableInternetSecurityFlag` for customers to set true/false to enable/disable internet security on P2SVpnGateway, which will be applied for Point to site clients.
+* Added new cmdlet `Reset-AzP2sVpnGateway` for customers to reset/reboot their VirtualWan P2SVpnGateway for troubleshooting.
+* Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
+* Updated `Set-AzVirtualNetworkSubnetConfig`
+    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548][#9718]
+>>>>>>> bcb49468faa053add80c87357c9f56ffb360c730
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

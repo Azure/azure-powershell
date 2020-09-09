@@ -1,4 +1,8 @@
 # To make sure Network PRs go to the right branch, e.g. network-april
+<<<<<<< HEAD
 /src/Network/    @number213
 
+=======
+/src/Network/    @MikhailTryakhov
+>>>>>>> bcb49468faa053add80c87357c9f56ffb360c730
 /src/Compute/    @bilaakpan-ms @sandido @dkulkarni-ms @haagha @madewithsmiles @MS-syh2qs @grizzlytheodore
