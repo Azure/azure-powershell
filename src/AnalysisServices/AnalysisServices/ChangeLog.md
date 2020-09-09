@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update help info of Sku parameter for New-AzAnalysisServicesServer and Set-AzAnalysisServicesServer
 
 ## Version 1.1.4
 * Removed project reference to Authentication
