@@ -227,6 +227,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int ReadReplicaCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -268,6 +276,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

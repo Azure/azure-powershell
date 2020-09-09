@@ -72,7 +72,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -85,7 +85,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} `
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
@@ -292,6 +292,33 @@ function Test-CreateDatabaseWithZoneRedundancy
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.ZoneRedundant
 		Assert-AreEqual "false" $db.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with Backup Storage Redundancy
+#>
+function Test-CreateDatabaseWithBackupStorageRedundancy
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -BackupStorageRedundancy "Local"
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.BackupStorageRedundancy
+		Assert-AreEqual $db.BackupStorageRedundancy "Local"
 	}
 	finally
 	{
@@ -757,6 +784,26 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a database
+#>
+function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	# Create with default values
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -BackupStorageRedundancy Geo	
+	Assert-AreEqual $db1.DatabaseName $databaseName
+	Assert-NotNull $db1.BackupStorageRedundancy
+	Assert-AreEqual	$db1.BackupStorageRedundancy "Geo"
+
+	Remove-ResourceGroupForTest $rg
 }
 
 <#
