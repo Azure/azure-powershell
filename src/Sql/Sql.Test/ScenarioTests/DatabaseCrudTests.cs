@@ -157,9 +157,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDatabaseWithConfiguredBackupStorageRedundancy()
+        public void TestDatabaseCreateWithBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateDatabaseWithConfiguredBackupStorageRedundancy");
+            RunPowerShellTest("Test-CreateDatabaseWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-GetDatabaseWithBackupStorageRedundancy");
         }
     }
 }
