@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Aks
             using (Process process = new Process())
             {
                 process.StartInfo.FileName = "ssh-keygen";
-                process.StartInfo.Arguments = "-f " + generateSshKeyPath;
+                process.StartInfo.Arguments = String.Format("-f \"{0}\"", generateSshKeyPath);
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardInput = true;
                 process.StartInfo.RedirectStandardError = true;
