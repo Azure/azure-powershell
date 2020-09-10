@@ -179,6 +179,12 @@ Adds or updates app settings in a function app.
 ### [ValidateFunctionName](ValidateFunctionName.md)
 
 
+### [ValidateFunctionsV2NotAvailableLocation](ValidateFunctionsV2NotAvailableLocation.md)
+
+
+### [ValidateFunctionsVersion](ValidateFunctionsVersion.md)
+
+
 ### [ValidatePlanLocation](ValidatePlanLocation.md)
 
 

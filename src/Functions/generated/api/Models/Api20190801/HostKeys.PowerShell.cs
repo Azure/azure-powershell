@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysFunctionKeys) content.GetValueForProperty("FunctionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeysTypeConverter.ConvertFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).MasterKey = (string) content.GetValueForProperty("MasterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).MasterKey, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysFunctionKeys) content.GetValueForProperty("FunctionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeysTypeConverter.ConvertFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).SystemKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysSystemKeys) content.GetValueForProperty("SystemKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).SystemKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysSystemKeysTypeConverter.ConvertFrom);
             AfterDeserializeDictionary(content);
         }
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysFunctionKeys) content.GetValueForProperty("FunctionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeysTypeConverter.ConvertFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).MasterKey = (string) content.GetValueForProperty("MasterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).MasterKey, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysFunctionKeys) content.GetValueForProperty("FunctionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).FunctionKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeysTypeConverter.ConvertFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).SystemKey = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysSystemKeys) content.GetValueForProperty("SystemKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostKeysInternal)this).SystemKey, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysSystemKeysTypeConverter.ConvertFrom);
             AfterDeserializePSObject(content);
         }

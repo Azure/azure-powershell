@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Backing field for <see cref="Container" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers _container;
 
+        /// <summary>Dictionary of <ContainerInfo></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get => (this._container = this._container ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.WebSiteInstanceStatusPropertiesContainers()); set => this._container = value; }
 
@@ -59,11 +60,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"consoleUrl",
         PossibleTypes = new [] { typeof(string) })]
         string ConsoleUrl { get; set; }
-
+        /// <summary>Dictionary of <ContainerInfo></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Dictionary of <ContainerInfo>",
         SerializedName = @"containers",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get; set; }
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     {
         /// <summary>Link to the Diagnose and Solve Portal</summary>
         string ConsoleUrl { get; set; }
-
+        /// <summary>Dictionary of <ContainerInfo></summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get; set; }
         /// <summary>Link to the Diagnose and Solve Portal</summary>
         string DetectorUrl { get; set; }

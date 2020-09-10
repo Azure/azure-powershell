@@ -44,7 +44,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order.
+  [CertificateOrderName <String>]: Name of the certificate order..
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
@@ -57,7 +57,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Resource identity path
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
   [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   [Instance <String>]: Name of the instance in the multi-role pool.
   [InstanceId <String>]: 
@@ -77,12 +78,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the identity resource.
+  [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
-  [Slot <String>]: Name of the deployment slot. By default, this API returns the production slot.
+  [Slot <String>]: Slot Name
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -553,7 +554,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order.
+  [CertificateOrderName <String>]: Name of the certificate order..
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
@@ -566,7 +567,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Resource identity path
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
   [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   [Instance <String>]: Name of the instance in the multi-role pool.
   [InstanceId <String>]: 
@@ -586,12 +588,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the identity resource.
+  [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
-  [Slot <String>]: Name of the deployment slot. By default, this API returns the production slot.
+  [Slot <String>]: Slot Name
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -1091,7 +1093,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order.
+  [CertificateOrderName <String>]: Name of the certificate order..
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
@@ -1104,7 +1106,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Resource identity path
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
   [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   [Instance <String>]: Name of the instance in the multi-role pool.
   [InstanceId <String>]: 
@@ -1124,12 +1127,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the identity resource.
+  [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
-  [Slot <String>]: Name of the deployment slot. By default, this API returns the production slot.
+  [Slot <String>]: Slot Name
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -1338,7 +1341,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order.
+  [CertificateOrderName <String>]: Name of the certificate order..
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
@@ -1351,7 +1354,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Resource identity path
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
   [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   [Instance <String>]: Name of the instance in the multi-role pool.
   [InstanceId <String>]: 
@@ -1371,12 +1375,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the identity resource.
+  [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
-  [Slot <String>]: Name of the deployment slot. By default, this API returns the production slot.
+  [Slot <String>]: Slot Name
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -1568,7 +1572,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order.
+  [CertificateOrderName <String>]: Name of the certificate order..
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
@@ -1581,7 +1585,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Resource identity path
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
   [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   [Instance <String>]: Name of the instance in the multi-role pool.
   [InstanceId <String>]: 
@@ -1601,12 +1606,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the identity resource.
+  [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
-  [Slot <String>]: Name of the deployment slot. By default, this API returns the production slot.
+  [Slot <String>]: Slot Name
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -5173,7 +5178,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The plan sku.
-    # Valid inputs are: EP1, P2, EP3
+    # Valid inputs are: EP1, EP2, EP3
     ${Sku},
 
     [Parameter()]
@@ -8084,7 +8089,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The plan sku.
-    # Valid inputs are: EP1, P2, EP3
+    # Valid inputs are: EP1, EP2, EP3
     ${Sku},
 
     [Parameter()]
@@ -8686,6 +8691,162 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             __AllParameterSets = 'Az.Functions.custom\ValidateFunctionName';
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+
+.Description
+
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Outputs
+System.Object
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionsv2notavailablelocation
+#>
+function ValidateFunctionsV2NotAvailableLocation {
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Position=0, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    ${Location}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            __AllParameterSets = 'Az.Functions.custom\ValidateFunctionsV2NotAvailableLocation';
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+
+.Description
+
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Outputs
+System.Object
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionsversion
+#>
+function ValidateFunctionsVersion {
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Position=0, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    ${FunctionsVersion}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            __AllParameterSets = 'Az.Functions.custom\ValidateFunctionsVersion';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}

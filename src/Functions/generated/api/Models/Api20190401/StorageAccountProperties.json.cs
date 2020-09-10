@@ -70,25 +70,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_azureFilesIdentityBasedAuthentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureFilesIdentityBasedAuthentication"), out var __jsonAzureFilesIdentityBasedAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.AzureFilesIdentityBasedAuthentication.FromJson(__jsonAzureFilesIdentityBasedAuthentication) : AzureFilesIdentityBasedAuthentication;}
-            {_customDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("customDomain"), out var __jsonCustomDomain) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CustomDomain.FromJson(__jsonCustomDomain) : CustomDomain;}
-            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Encryption.FromJson(__jsonEncryption) : Encryption;}
-            {_geoReplicationStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("geoReplicationStats"), out var __jsonGeoReplicationStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.GeoReplicationStats.FromJson(__jsonGeoReplicationStats) : GeoReplicationStat;}
-            {_networkAcls = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("networkAcls"), out var __jsonNetworkAcls) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet.FromJson(__jsonNetworkAcls) : NetworkAcls;}
             {_primaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("primaryEndpoints"), out var __jsonPrimaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Endpoints.FromJson(__jsonPrimaryEndpoints) : PrimaryEndpoint;}
+            {_customDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("customDomain"), out var __jsonCustomDomain) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CustomDomain.FromJson(__jsonCustomDomain) : CustomDomain;}
             {_secondaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("secondaryEndpoints"), out var __jsonSecondaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Endpoints.FromJson(__jsonSecondaryEndpoints) : SecondaryEndpoint;}
-            {_accessTier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("accessTier"), out var __jsonAccessTier) ? (string)__jsonAccessTier : (string)AccessTier;}
-            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? global::System.DateTime.TryParse((string)__jsonCreationTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationTimeValue) ? __jsonCreationTimeValue : CreationTime : CreationTime;}
-            {_failoverInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("failoverInProgress"), out var __jsonFailoverInProgress) ? (bool?)__jsonFailoverInProgress : FailoverInProgress;}
-            {_isHnsEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isHnsEnabled"), out var __jsonIsHnsEnabled) ? (bool?)__jsonIsHnsEnabled : IsHnsEnabled;}
-            {_largeFileSharesState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("largeFileSharesState"), out var __jsonLargeFileSharesState) ? (string)__jsonLargeFileSharesState : (string)LargeFileSharesState;}
-            {_lastGeoFailoverTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastGeoFailoverTime"), out var __jsonLastGeoFailoverTime) ? global::System.DateTime.TryParse((string)__jsonLastGeoFailoverTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastGeoFailoverTimeValue) ? __jsonLastGeoFailoverTimeValue : LastGeoFailoverTime : LastGeoFailoverTime;}
-            {_primaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("primaryLocation"), out var __jsonPrimaryLocation) ? (string)__jsonPrimaryLocation : (string)PrimaryLocation;}
+            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Encryption.FromJson(__jsonEncryption) : Encryption;}
+            {_azureFilesIdentityBasedAuthentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureFilesIdentityBasedAuthentication"), out var __jsonAzureFilesIdentityBasedAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.AzureFilesIdentityBasedAuthentication.FromJson(__jsonAzureFilesIdentityBasedAuthentication) : AzureFilesIdentityBasedAuthentication;}
+            {_networkRuleSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("networkAcls"), out var __jsonNetworkAcls) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet.FromJson(__jsonNetworkAcls) : NetworkRuleSet;}
+            {_geoReplicationStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("geoReplicationStats"), out var __jsonGeoReplicationStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.GeoReplicationStats.FromJson(__jsonGeoReplicationStats) : GeoReplicationStat;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
-            {_secondaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("secondaryLocation"), out var __jsonSecondaryLocation) ? (string)__jsonSecondaryLocation : (string)SecondaryLocation;}
+            {_primaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("primaryLocation"), out var __jsonPrimaryLocation) ? (string)__jsonPrimaryLocation : (string)PrimaryLocation;}
             {_statusOfPrimary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("statusOfPrimary"), out var __jsonStatusOfPrimary) ? (string)__jsonStatusOfPrimary : (string)StatusOfPrimary;}
+            {_lastGeoFailoverTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastGeoFailoverTime"), out var __jsonLastGeoFailoverTime) ? global::System.DateTime.TryParse((string)__jsonLastGeoFailoverTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastGeoFailoverTimeValue) ? __jsonLastGeoFailoverTimeValue : LastGeoFailoverTime : LastGeoFailoverTime;}
+            {_secondaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("secondaryLocation"), out var __jsonSecondaryLocation) ? (string)__jsonSecondaryLocation : (string)SecondaryLocation;}
             {_statusOfSecondary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("statusOfSecondary"), out var __jsonStatusOfSecondary) ? (string)__jsonStatusOfSecondary : (string)StatusOfSecondary;}
+            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? global::System.DateTime.TryParse((string)__jsonCreationTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationTimeValue) ? __jsonCreationTimeValue : CreationTime : CreationTime;}
+            {_accessTier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("accessTier"), out var __jsonAccessTier) ? (string)__jsonAccessTier : (string)AccessTier;}
             {_enableHttpsTrafficOnly = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("supportsHttpsTrafficOnly"), out var __jsonSupportsHttpsTrafficOnly) ? (bool?)__jsonSupportsHttpsTrafficOnly : EnableHttpsTrafficOnly;}
+            {_isHnsEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isHnsEnabled"), out var __jsonIsHnsEnabled) ? (bool?)__jsonIsHnsEnabled : IsHnsEnabled;}
+            {_failoverInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("failoverInProgress"), out var __jsonFailoverInProgress) ? (bool?)__jsonFailoverInProgress : FailoverInProgress;}
+            {_largeFileSharesState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("largeFileSharesState"), out var __jsonLargeFileSharesState) ? (string)__jsonLargeFileSharesState : (string)LargeFileSharesState;}
             AfterFromJson(json);
         }
 
@@ -111,26 +111,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return container;
             }
-            AddIf( null != this._azureFilesIdentityBasedAuthentication ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureFilesIdentityBasedAuthentication.ToJson(null,serializationMode) : null, "azureFilesIdentityBasedAuthentication" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._customDomain ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._customDomain.ToJson(null,serializationMode) : null, "customDomain" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._geoReplicationStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._geoReplicationStat.ToJson(null,serializationMode) : null, "geoReplicationStats" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._networkAcls ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._networkAcls.ToJson(null,serializationMode) : null, "networkAcls" ,container.Add );
-            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._primaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._primaryEndpoint.ToJson(null,serializationMode) : null, "primaryEndpoints" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._customDomain ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._customDomain.ToJson(null,serializationMode) : null, "customDomain" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -138,25 +125,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._accessTier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._accessTier.ToString()) : null, "accessTier" ,container.Add );
+                AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
+            }
+            AddIf( null != this._azureFilesIdentityBasedAuthentication ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureFilesIdentityBasedAuthentication.ToJson(null,serializationMode) : null, "azureFilesIdentityBasedAuthentication" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._networkRuleSet ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._networkRuleSet.ToJson(null,serializationMode) : null, "networkAcls" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._creationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._creationTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "creationTime" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._failoverInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._failoverInProgress) : null, "failoverInProgress" ,container.Add );
-            }
-            AddIf( null != this._isHnsEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isHnsEnabled) : null, "isHnsEnabled" ,container.Add );
-            AddIf( null != (((object)this._largeFileSharesState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._largeFileSharesState.ToString()) : null, "largeFileSharesState" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._lastGeoFailoverTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastGeoFailoverTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastGeoFailoverTime" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._primaryLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._primaryLocation.ToString()) : null, "primaryLocation" ,container.Add );
+                AddIf( null != this._geoReplicationStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._geoReplicationStat.ToJson(null,serializationMode) : null, "geoReplicationStats" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -164,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._secondaryLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._secondaryLocation.ToString()) : null, "secondaryLocation" ,container.Add );
+                AddIf( null != (((object)this._primaryLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._primaryLocation.ToString()) : null, "primaryLocation" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -172,9 +150,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != this._lastGeoFailoverTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastGeoFailoverTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastGeoFailoverTime" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._secondaryLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._secondaryLocation.ToString()) : null, "secondaryLocation" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 AddIf( null != (((object)this._statusOfSecondary)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._statusOfSecondary.ToString()) : null, "statusOfSecondary" ,container.Add );
             }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._creationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._creationTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "creationTime" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._accessTier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._accessTier.ToString()) : null, "accessTier" ,container.Add );
+            }
             AddIf( null != this._enableHttpsTrafficOnly ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._enableHttpsTrafficOnly) : null, "supportsHttpsTrafficOnly" ,container.Add );
+            AddIf( null != this._isHnsEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isHnsEnabled) : null, "isHnsEnabled" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._failoverInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._failoverInProgress) : null, "failoverInProgress" ,container.Add );
+            }
+            AddIf( null != (((object)this._largeFileSharesState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._largeFileSharesState.ToString()) : null, "largeFileSharesState" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

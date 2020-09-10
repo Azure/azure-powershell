@@ -70,12 +70,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_siteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("siteName"), out var __jsonSiteName) ? (string)__jsonSiteName : (string)SiteName;}
+            {_domainId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainId"), out var __jsonDomainId) ? (string)__jsonDomainId : (string)DomainId;}
             {_azureResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azureResourceName"), out var __jsonAzureResourceName) ? (string)__jsonAzureResourceName : (string)AzureResourceName;}
             {_azureResourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azureResourceType"), out var __jsonAzureResourceType) ? (string)__jsonAzureResourceType : (string)AzureResourceType;}
             {_customHostNameDnsRecordType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("customHostNameDnsRecordType"), out var __jsonCustomHostNameDnsRecordType) ? (string)__jsonCustomHostNameDnsRecordType : (string)CustomHostNameDnsRecordType;}
-            {_domainId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainId"), out var __jsonDomainId) ? (string)__jsonDomainId : (string)DomainId;}
             {_hostNameType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("hostNameType"), out var __jsonHostNameType) ? (string)__jsonHostNameType : (string)HostNameType;}
-            {_siteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("siteName"), out var __jsonSiteName) ? (string)__jsonSiteName : (string)SiteName;}
             {_sslState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sslState"), out var __jsonSslState) ? (string)__jsonSslState : (string)SslState;}
             {_thumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("thumbprint"), out var __jsonThumbprint) ? (string)__jsonThumbprint : (string)Thumbprint;}
             {_virtualIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualIP"), out var __jsonVirtualIP) ? (string)__jsonVirtualIP : (string)VirtualIP;}
@@ -101,12 +101,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._siteName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._siteName.ToString()) : null, "siteName" ,container.Add );
+            AddIf( null != (((object)this._domainId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainId.ToString()) : null, "domainId" ,container.Add );
             AddIf( null != (((object)this._azureResourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azureResourceName.ToString()) : null, "azureResourceName" ,container.Add );
             AddIf( null != (((object)this._azureResourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azureResourceType.ToString()) : null, "azureResourceType" ,container.Add );
             AddIf( null != (((object)this._customHostNameDnsRecordType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._customHostNameDnsRecordType.ToString()) : null, "customHostNameDnsRecordType" ,container.Add );
-            AddIf( null != (((object)this._domainId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainId.ToString()) : null, "domainId" ,container.Add );
             AddIf( null != (((object)this._hostNameType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._hostNameType.ToString()) : null, "hostNameType" ,container.Add );
-            AddIf( null != (((object)this._siteName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._siteName.ToString()) : null, "siteName" ,container.Add );
             AddIf( null != (((object)this._sslState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._sslState.ToString()) : null, "sslState" ,container.Add );
             AddIf( null != (((object)this._thumbprint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._thumbprint.ToString()) : null, "thumbprint" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))

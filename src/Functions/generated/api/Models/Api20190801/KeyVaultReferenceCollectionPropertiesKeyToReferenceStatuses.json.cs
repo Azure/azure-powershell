@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
 
+    /// <summary>Dictionary of <ApiKVReference></summary>
     public partial class KeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses
     {
 
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiKvReference>)this).AdditionalProperties, null ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiKvReference>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ApiKvReference.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 

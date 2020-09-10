@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for This is to allow calling via powershell and ARM template.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_ListSyncStatusSlot=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus"
+    /// [OpenAPI] ListSyncStatusSlot=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppSyncStatusSlot_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
