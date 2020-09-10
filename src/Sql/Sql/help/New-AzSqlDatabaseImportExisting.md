@@ -8,38 +8,51 @@ schema: 2.0.0
 # New-AzSqlDatabaseImportExisting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Imports a .bacpac file into a preexisting database on the server.
 
 ## SYNTAX
 
 ```
-New-AzSqlDatabaseImportExisting -DatabaseName <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
- -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
- [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
- [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzSqlDatabaseImportExisting [-ServerName] <String> [-DatabaseName] <String>
+ -StorageKeyType <StorageKeyType> -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String>
+ -AdministratorLoginPassword <SecureString> [-AuthenticationType <AuthenticationType>]
+ [-UseNetworkIsolation <Boolean>] [-StorageAccountResourceIdForPrivateLink <String>]
+ [-SqlServerResourceIdForPrivateLink <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSqlDatabaseImport** cmdlet imports a bacpac file from an Azure storage account to an existing Azure SQL Database.
+The get import database status request may be sent to retrieve status information for this request.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create an import request for a bacpac file
+```
+PS C:\>New-AzSqlDatabaseImportExisting -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword $SecureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000
+ResourceGroupName          : RG01
+ServerName                 : Server01
+DatabaseName               : Database01
+StorageKeyType             : StorageAccessKey
+StorageKey                 : 
+StorageUri                 : http://account01.blob.core.contoso.net/bacpacs/database01.bacpac
+AdministratorLogin         : User
+AdministratorLoginPassword : 
+AuthenticationType         : None
+OperationStatusLink        : https://management.contoso.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource01/providers/Microsoft.Sql/servers/server01/databases/database01/importExportOperationResults/00000000-00
+                             0-0000-0000-000000000000?api-version=2014-04-01
+Status                     : InProgress
+ErrorMessage               :
 ```
 
-{{ Add example description here }}
-
+This command creates an import request to import a .bacpac to an existing database.
 ## PARAMETERS
 
 ### -AdministratorLogin
 The Azure SQL Server administrator login username
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +67,7 @@ Accept wildcard characters: False
 The Azure SQL Server administrator password
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +84,7 @@ Only available in the latest SQL Database version (V12).
 Default is Sql
 
 ```yaml
-Type: AuthenticationType
+Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Sql, AdPassword
@@ -87,12 +100,12 @@ Accept wildcard characters: False
 SQL Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -102,7 +115,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -117,7 +130,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +145,7 @@ Accept wildcard characters: False
 SQL Database server name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +160,7 @@ Accept wildcard characters: False
 The sql server resource id to create private link
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +175,7 @@ Accept wildcard characters: False
 The storage account resource id to create private link
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +190,7 @@ Accept wildcard characters: False
 The storage key
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +205,7 @@ Accept wildcard characters: False
 The type of the storage key
 
 ```yaml
-Type: StorageKeyType
+Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType
 Parameter Sets: (All)
 Aliases:
 Accepted values: StorageAccessKey, SharedAccessKey
@@ -208,7 +221,7 @@ Accept wildcard characters: False
 The blob URI of the .bacpac file
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +236,7 @@ Accept wildcard characters: False
 If set, will create private link for storage account and/or SQL server
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +251,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -254,7 +267,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -277,5 +290,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Sql.ImportExport.Model.AzureSqlDatabaseImportExportBaseModel
 
 ## NOTES
+* Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql
 
 ## RELATED LINKS
+[Get-AzSqlDatabaseImportExportStatus](./Get-AzSqlDatabaseImportExportStatus.md)
+
+[New-AzSqlDatabaseExport](./New-AzSqlDatabaseExport.md)
+
+[New-AzSqlDatabaseImport](./New-AzSqlDatabaseImport.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

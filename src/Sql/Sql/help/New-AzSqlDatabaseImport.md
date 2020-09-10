@@ -14,8 +14,8 @@ Imports a .bacpac file and create a new database on the server.
 ## SYNTAX
 
 ```
-New-AzSqlDatabaseImport -DatabaseName <String> -Edition <DatabaseEdition> -ServiceObjectiveName <String>
- -DatabaseMaxSizeBytes <Int64> [-ServerName] <String> -StorageKeyType <StorageKeyType> -StorageKey <String>
+New-AzSqlDatabaseImport -Edition <DatabaseEdition> -ServiceObjectiveName <String> -DatabaseMaxSizeBytes <Int64>
+ [-ServerName] <String> [-DatabaseName] <String> -StorageKeyType <StorageKeyType> -StorageKey <String>
  -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
  [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
  [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
@@ -130,7 +130,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -364,6 +364,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzSqlDatabaseImportExportStatus](./Get-AzSqlDatabaseImportExportStatus.md)
 
 [New-AzSqlDatabaseExport](./New-AzSqlDatabaseExport.md)
+
+[New-AzSqlDatabaseImportExisting](./New-AzSqlDatabaseImportExisting.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -14,7 +14,7 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ## SYNTAX
 
 ```
-New-AzSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
+New-AzSqlDatabaseExport [-ServerName] <String> [-DatabaseName] <String> -StorageKeyType <StorageKeyType>
  -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
  [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
  [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
@@ -117,7 +117,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -312,5 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzSqlDatabaseImportExportStatus](./Get-AzSqlDatabaseImportExportStatus.md)
 
 [New-AzSqlDatabaseImport](./New-AzSqlDatabaseImport.md)
+
+[New-AzSqlDatabaseImportExisting](./New-AzSqlDatabaseImportExisting.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
