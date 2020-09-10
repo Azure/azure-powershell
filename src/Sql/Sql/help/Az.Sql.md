@@ -68,6 +68,9 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the database.
 
+### [Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Disables Azure AD only authentication for a specific SQL Managed Instance.
+
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
@@ -85,6 +88,9 @@ Disables Advanced Threat Protection on a server.
 
 ### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
+
+### [Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Managed Instance.
 
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
@@ -241,6 +247,9 @@ Returns information about Azure SQL Managed Database Instance.
 
 ### [Get-AzSqlInstanceActiveDirectoryAdministrator](Get-AzSqlInstanceActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Managed Instance.
+
+### [Get-AzSqlInstanceActiveDirectoryOnlyAuthentication](Get-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Managed Instance.
 
 ### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a managed instance.

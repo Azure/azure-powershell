@@ -12,24 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Models
+using System;
+
+namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication.Model
 {
-    public class PSNetAppFilesVolumeDataProtection
+    /// <summary>
+    /// Represents an Azure SQL Managed Instance Active Directory only authentication
+    /// </summary>
+    public class AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel
     {
         /// <summary>
-        /// Gets or sets replication
+        /// Gets or sets the name of the resource group
         /// </summary>
-        /// <remark>
-        /// Replication properties
-        /// </remark>
-        public PSNetAppFilesReplicationObject Replication { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets snapshot
+        /// Gets or sets the name of the instance
         /// </summary>
-        /// <remark>
-        /// Snapshot properties
-        /// </remark>        
-        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        public string InstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to indicate Azure AD Only authentication
+        /// </summary>
+        public bool AzureADOnlyAuthentication { get; set; }
     }
 }

@@ -27,7 +27,11 @@
 	- `Get-AzSqlInstanceDatabaseLogReplay`
 	- `Complete-AzSqlInstanceDatabaseLogReplay`
 	- `Stop-AzSqlInstanceDatabaseLogReplay`
-* Add new cmdlets for SQL database ImportExport which support network isolation functionality
+* Added cmdlet `Get-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
+* Added cmdlet `New-AzSqlDatabaseImportExisting`
 * Update to Databases cmdlets to support backup storage type specification
 
 ## Version 2.9.1

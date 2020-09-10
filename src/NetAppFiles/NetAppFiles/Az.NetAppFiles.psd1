@@ -86,7 +86,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesReplicationStatus', 
                'Suspend-AzNetAppFilesReplication', 
                'Remove-AzNetAppFilesReplication', 
-               'Resume-AzNetAppFilesReplication'
+               'Resume-AzNetAppFilesReplication',
+               'Restore-AzNetAppFilesVolume'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -98,7 +99,8 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Remove-AnfVolume', 'Update-AnfVolume', 'Get-AnfSnapshot', 
                'New-AnfSnapshot', 'Remove-AnfSnapshot', 'Approve-AnfReplication', 
                'Get-AnfReplicationStatus', 'Suspend-AnfReplication', 
-               'Remove-AnfReplication', 'Resume-AnfReplication'
+               'Remove-AnfReplication', 'Resume-AnfReplication',
+               'Restore-AnfVolume'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
