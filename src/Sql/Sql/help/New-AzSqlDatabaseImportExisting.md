@@ -13,12 +13,12 @@ Imports a .bacpac file into a preexisting database on the server.
 ## SYNTAX
 
 ```
-New-AzSqlDatabaseImportExisting [-ServerName] <String> [-DatabaseName] <String>
- -StorageKeyType <StorageKeyType> -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String>
- -AdministratorLoginPassword <SecureString> [-AuthenticationType <AuthenticationType>]
- [-UseNetworkIsolation <Boolean>] [-StorageAccountResourceIdForPrivateLink <String>]
- [-SqlServerResourceIdForPrivateLink <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSqlDatabaseImportExisting -DatabaseName <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
+ -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
+ [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
+ [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,7 @@ ErrorMessage               :
 ```
 
 This command creates an import request to import a .bacpac to an existing database.
+
 ## PARAMETERS
 
 ### -AdministratorLogin
@@ -105,7 +106,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -293,6 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql
 
 ## RELATED LINKS
+
 [Get-AzSqlDatabaseImportExportStatus](./Get-AzSqlDatabaseImportExportStatus.md)
 
 [New-AzSqlDatabaseExport](./New-AzSqlDatabaseExport.md)

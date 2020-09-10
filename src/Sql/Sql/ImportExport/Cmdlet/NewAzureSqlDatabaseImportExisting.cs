@@ -27,6 +27,15 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     public class NewAzureSqlDatabaseImportExisting : ImportExportCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            HelpMessage = "SQL Database name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        /// <summary>
         /// Get the Firewall Rule to update
         /// </summary>
         /// <returns>The Firewall Rule being updated</returns>

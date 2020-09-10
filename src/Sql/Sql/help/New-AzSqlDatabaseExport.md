@@ -14,7 +14,7 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ## SYNTAX
 
 ```
-New-AzSqlDatabaseExport [-ServerName] <String> [-DatabaseName] <String> -StorageKeyType <StorageKeyType>
+New-AzSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
  -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
  [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
  [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
@@ -117,7 +117,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
