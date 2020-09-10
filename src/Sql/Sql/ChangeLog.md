@@ -27,6 +27,9 @@
 	- `Get-AzSqlInstanceDatabaseLogReplay`
 	- `Complete-AzSqlInstanceDatabaseLogReplay`
 	- `Stop-AzSqlInstanceDatabaseLogReplay`
+* Added cmdlet `Get-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
