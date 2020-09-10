@@ -87,7 +87,7 @@ steps:
           dotnet tool run pwsh -c $command
       }
 - task: DownloadPipelineArtifact@2
-  condition: and(succeeded(), eq($(GALLERY_NAME), 'LocalRepo'))
+  condition: and(succeeded(), eq('$(GALLERY_NAME)', 'LocalRepo'))
   displayName: Download Artifacts from Build Pipeline
   inputs:
     buildType: specific
