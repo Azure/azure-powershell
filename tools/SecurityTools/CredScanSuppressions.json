@@ -1181,5 +1181,9 @@
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\\TestImportDatabase.json",
       "_justification": "temporary storage account deleted after PR merge"
     },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\\TestImportNewDatabase.json",
+      "_justification": "temporary storage account deleted after PR merge"
+    },
   ]
 }
