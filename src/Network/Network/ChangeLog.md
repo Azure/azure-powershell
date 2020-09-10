@@ -57,17 +57,12 @@
     - `Update-AzNetworkVirtualAppliance`
     - `Get-AzNetworkVirtualApplianceSku`
     - `New-AzVirtualApplianceSkuProperty`
-<<<<<<< HEAD
-<<<<<<< HEAD
 * Onboard Application Gateway to Private Link Common Cmdlets
 * Onboard StorageSync to Private Link Common Cmdlets
 * Add `AllowActiveFTP` parameter to `AzureFirewall`
-=======
 * Onboarded Application Gateway to Private Link Common Cmdlets
 * Onboarded StorageSync to Private Link Common Cmdlets
 * Onboarded SignalR to Private Link Common Cmdlets
->>>>>>> 00bc26d7f02562e54f4474e0cda73981b67cff6d
-=======
 * Added new cmdlets for VirtualWan
     - `Start-AzVpnGatewayPacketCapture`
     - `Stop-AzVpnGatewayPacketCapture`
@@ -86,7 +81,6 @@
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 * Updated `Set-AzVirtualNetworkSubnetConfig`
     - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548][#9718]
->>>>>>> bcb49468faa053add80c87357c9f56ffb360c730
 
 ## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
