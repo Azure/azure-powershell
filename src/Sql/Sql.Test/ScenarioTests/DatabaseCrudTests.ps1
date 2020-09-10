@@ -692,7 +692,7 @@ function Test-RenameDatabase
 
 	try
 	{
-		$location = "westcentralus"
+		$location = "southeastasia"
 		$server = Create-ServerForTest $rg $location
 
 		# Create with default values
