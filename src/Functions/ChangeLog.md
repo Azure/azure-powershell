@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Remove the ability to create v2 Functions in regions that do not support it.
-* PowerShell 6.2 has been deprecated. Added a warning for when a user creates a PowerShell 6.2 function app that advises them to create a PowerShell 7.0 function app instead.
+* Removed the ability to create v2 Functions in regions that do not support it.
+* Deprecated PowerShell 6.2. Added a warning for when a user creates a PowerShell 6.2 function app that advises them to create a PowerShell 7.0 function app instead.
 
 ## Version 1.0.1
 * Added support to create PowerShell 7.0 and Java 11 function apps
