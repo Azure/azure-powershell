@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Subsystem;
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._fixture = modelFixture;
             var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
 
-            this._service = new MockAzPredictorService(this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
+            this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
             this._telemetryClient = new MockAzPredictorTelemetryClient();
             this._azPredictor = new AzPredictor(this._service, this._telemetryClient);
         }
@@ -143,12 +142,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
             if (actual == null)
             {
-                Assert.Null(expected);
+                Assert.Null(expected?.Item1);
             }
             else
             {
                 Assert.Single(actual);
-                Assert.Equal(expected, actual.First().SuggestionText);
+                Assert.Equal(expected.Item1, actual.First().SuggestionText);
             }
 
         }

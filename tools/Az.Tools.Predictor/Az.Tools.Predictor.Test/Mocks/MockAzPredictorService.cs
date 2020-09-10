@@ -29,12 +29,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
         /// </summary>
+        /// <param name="history">The history that the suggestion is for</param>
         /// <param name="suggestions">The suggestions collection</param>
         /// <param name="commands">The commands collection</param>
-        public MockAzPredictorService(IList<string> suggestions, IList<string> commands)
+        public MockAzPredictorService(string history, IList<string> suggestions, IList<string> commands)
         {
+            SetHistory(history);
             SetCommandsPredictor(commands);
-            SetSuggestionPredictor(suggestions);
+            SetSuggestionPredictor(history, suggestions);
         }
 
         /// <inheritdoc/>

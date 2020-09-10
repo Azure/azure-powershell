@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 currentLog["Top5Suggestions"] = string.Join(',', topSuggestions.Take(5));
             }
 
-            this._telemetryClient.TrackEvent("GetSuggestion", currentLog);
+            this._telemetryClient.TrackEvent("ProcessHistory", currentLog);
         }
 
         /// <inheritdoc/>
@@ -141,6 +141,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 return;
             }
+
+            var properties = new Dictionary<string, string>()
+            {
+                { "AcceptedSuggestion", acceptedSuggestion }
+            };
+
+            this._telemetryClient.TrackEvent("AcceptSuggestion", properties);
+        }
+
+        /// <inheritdoc/>
+        public void OnGetSuggestion(PredictionSource predictionSource)
+        {
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            var properties = new Dictionary<string, string>()
+            {
+                { "PredictionSource", predictionSource.ToString() }
+            };
+
+            this._telemetryClient.TrackEvent("GetSuggestion", properties);
         }
 
         /// <summary>

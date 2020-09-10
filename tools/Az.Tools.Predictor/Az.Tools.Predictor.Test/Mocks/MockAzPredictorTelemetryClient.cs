@@ -46,5 +46,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         {
             ++this.SuggestionAccepted;
         }
+
+        /// <inheritdoc/>
+        public void OnGetSuggestion(PredictionSource predictionSource)
+        {
+        }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="input">User input from PSReadLine</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        public string GetSuggestion(Ast input, CancellationToken cancellationToken);
+        public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests predictions, given a history string.

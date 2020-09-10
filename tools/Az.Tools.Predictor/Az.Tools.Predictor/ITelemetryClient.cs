@@ -35,5 +35,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="acceptedSuggestion">The suggestion that's accepted by the user.</param>
         public void OnSuggestionAccepted(string acceptedSuggestion);
+
+        /// <summary>
+        /// Collects when we return a suggestion
+        /// </summary>
+        /// <param name="predictionSource">The source to get the prediction</param>
+        public void OnGetSuggestion(PredictionSource predictionSource);
     }
 }

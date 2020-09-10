@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._suggestionsPredictor = new Predictor(this._fixture.PredictionCollection[startHistory]);
             this._commandsPredictor = new Predictor(this._fixture.CommandCollection);
 
-            this._service = new MockAzPredictorService(this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
+            this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
         }
 
 
@@ -63,10 +63,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var expected = this._suggestionsPredictor.Query(predictionContext.InputAst, CancellationToken.None);
             var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.Equal(expected, actual);
             Assert.NotNull(actual);
+            Assert.NotNull(actual.Item1);
+            Assert.Equal(expected, actual.Item1);
+            Assert.Equal(PredictionSource.CurrentHistory, actual.Item2);
         }
-
 
         /// <summary>
         /// Verifies that when no prediction is in the suggestion list, we'll use the command list.
@@ -79,8 +80,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var expected = this._commandsPredictor.Query(predictionContext.InputAst, CancellationToken.None);
             var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.Equal(expected, actual);
             Assert.NotNull(actual);
+            Assert.NotNull(actual.Item1);
+            Assert.Equal(expected, actual.Item1);
+            Assert.Equal(PredictionSource.Commands, actual.Item2);
         }
 
         /// <summary>
@@ -98,7 +101,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var predictionContext = PredictionContext.Create(userInput);
             var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.Null(actual);
+            Assert.Null(actual.Item1);
+            Assert.Equal(PredictionSource.None, actual.Item2);
         }
     }
 }

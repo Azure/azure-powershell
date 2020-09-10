@@ -53,8 +53,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
-        private volatile Predictor _suggestions;
+        private volatile Tuple<string, Predictor> _historySuggestions; // The history and the prediction for that.
         private volatile Predictor _commands;
+        private volatile string _history;
         private HashSet<string> _commandSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         private CancellationTokenSource _predictionRequestCancellationSource;
 
@@ -105,23 +106,41 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public string GetSuggestion(Ast input, CancellationToken cancellationToken)
+        public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken)
         {
-            var suggestions = this._suggestions;
+            var historySuggestions = this._historySuggestions;
+            var history = this._history;
+            var predictionSource = PredictionSource.None;
 
-            // We've already used _suggestions. There is no need to wait the request to complete at this point.
+            // We've already used _historySuggestions. There is no need to wait the request to complete at this point.
             // Cancel it.
             this._predictionRequestCancellationSource?.Cancel();
 
-            string result = suggestions?.Query(input, cancellationToken);
+            string result = historySuggestions?.Item2?.Query(input, cancellationToken);
 
-            if (result == null)
+            if (result != null)
+            {
+                if (string.Equals(history, historySuggestions?.Item1, StringComparison.Ordinal))
+                {
+                    predictionSource = PredictionSource.CurrentHistory;
+                }
+                else
+                {
+                    predictionSource = PredictionSource.PreviousHistory;
+                }
+            }
+            else
             {
                 var commands = this._commands;
                 result = commands?.Query(input, cancellationToken);
+
+                if (result != null)
+                {
+                    predictionSource = PredictionSource.Commands;
+                }
             }
 
-            return result;
+            return Tuple.Create(result, predictionSource);
         }
 
         /// <inheritdoc/>
@@ -132,6 +151,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             this._predictionRequestCancellationSource?.Cancel();
             this._predictionRequestCancellationSource = new CancellationTokenSource();
             var cancellationToken = this._predictionRequestCancellationSource.Token;
+            this._history = history;
 
             // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
             Task.Run(async () => {
@@ -141,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
                     var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
 
-                    this.SetSuggestionPredictor(suggestionsList);
+                    this.SetSuggestionPredictor(history, suggestionsList);
                 },
                 cancellationToken);
         }
@@ -151,8 +171,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public int? GetRankOfSuggestion(CommandAst command, Ast input)
         {
-            var suggestions = this._suggestions;
-            return suggestions?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
+            var historySuggestions = this._historySuggestions;
+            return historySuggestions?.Item2?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
         }
 
         /// <inheritdoc/>
@@ -165,8 +185,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public IEnumerable<string> GetTopNSuggestions(int n)
         {
-            var suggestions = this._suggestions;
-            return suggestions?.GetTopNPrediction(n);
+            var historySuggestions = this._historySuggestions;
+            return historySuggestions?.Item2?.GetTopNPrediction(n);
         }
 
         /// <inheritdoc/>
@@ -188,7 +208,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         this.SetCommandsPredictor(commands_reply);
 
                         // Initialize predictions
-                        RequestPredictions("start_of_snippet\nstart_of_snippet");
+                        var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
+                        RequestPredictions(startHistory);
                     });
         }
 
@@ -206,10 +227,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Sets the suggestiosn predictor.
         /// </summary>
+        /// <param name="history">The history that the suggestions are for</param>
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
-        protected void SetSuggestionPredictor(IList<string> suggestions)
+        protected void SetSuggestionPredictor(string history, IList<string> suggestions)
         {
-            this._suggestions = new Predictor(suggestions);
+            this._historySuggestions = Tuple.Create(history, new Predictor(suggestions));
+        }
+
+        /// <summary>
+        /// Updates the history for prediction.
+        /// </summary>
+        /// <param name="history">The value to update the history</param>
+        protected void SetHistory(string history)
+        {
+            this._history = history;
         }
 
         /// <summary>
