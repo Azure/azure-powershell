@@ -112,7 +112,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 function Test-CreateVcoreDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -120,25 +120,27 @@ function Test-CreateVcoreDatabase
 	{
 		# Create with Edition and RequestedServiceObjectiveName
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_2 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
+		Write-Debug (ConvertTo-Json $job1)
+
 		Assert-AreEqual $databaseName $db.DatabaseName
 		Assert-NotNull $db.MaxSizeBytes
-		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual GP_Gen5_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
 		Assert-AreEqual GeneralPurpose $db.Edition
 
 		# Create with VCore parameter set
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
 		Assert-AreEqual $databaseName $db.DatabaseName
 		Assert-NotNull $db.MaxSizeBytes
-		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual GP_Gen5_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
 		Assert-AreEqual GeneralPurpose $db.Edition
 	}
@@ -155,7 +157,7 @@ function Test-CreateVcoreDatabase
 function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Central US"
+	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -163,22 +165,22 @@ function Test-CreateVcoreDatabaseWithLicenseType
 	{
 		# Create with Edition and RequestedServiceObjectiveName - Base Price
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType BasePrice
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType BasePrice
 		Assert-AreEqual BasePrice $db.LicenseType
 
 		# Create with Edition and RequestedServiceObjectiveName - LicenseIncluded
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType LicenseIncluded
 		Assert-AreEqual LicenseIncluded $db.LicenseType
 
 		# Create with VCore parameter set - BasePrice
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType BasePrice
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType BasePrice
 		Assert-AreEqual BasePrice $db.LicenseType
 
 		# Create with VCore parameter set - LicenseIncluded
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType LicenseIncluded
 		Assert-AreEqual LicenseIncluded $db.LicenseType
 	}
 	finally
@@ -415,13 +417,13 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -439,14 +441,14 @@ function Test-UpdateVcoreDatabase()
 
 		# Alter with all properties
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 5GB -VCore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+			-MaxSizeBytes 5GB -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -Tags @{"tag_key"="tag_new_value"} -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.MaxSizeBytes 5GB
 		Assert-AreEqual $db1.Edition GeneralPurpose
-		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_1
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen5_2
 		Assert-AreEqual $db1.CollationName $db.CollationName
 		Assert-NotNull $db1.Tags
 		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
@@ -454,12 +456,12 @@ function Test-UpdateVcoreDatabase()
 
 		# Alter Edition only (can't only specify -Edition since Edition is shared parameter in two difference parameter sets)
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Edition BusinessCritical -ComputeGeneration Gen4 -AsJob
+			-Edition BusinessCritical -ComputeGeneration Gen5 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition BusinessCritical
-		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_1
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen5_2
 
 		# Alter Vcore only
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
@@ -468,16 +470,16 @@ function Test-UpdateVcoreDatabase()
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition BusinessCritical
-		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_2
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen5_2
 
 		# Alter with Dtu based parameters (-Edition and -RequestedServiceObjectiveName)
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4_2 -AsJob
+			-Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition GeneralPurpose
-		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_2
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen5_2
 
 		# Alter ComputeGeneration only
 		# Need to add later, currently the service not support other Generations besides Gen4
@@ -495,13 +497,13 @@ function Test-UpdateVcoreDatabase()
 function Test-UpdateVcoreDatabaseLicenseType()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	# Create vcore database
 	$databaseName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose
 	Assert-AreEqual $db.DatabaseName $databaseName
 	Assert-AreEqual $db.LicenseType LicenseIncluded # Default license type
 
