@@ -93,8 +93,6 @@ steps:
     buildType: specific
     project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
     definition: 693
-    # artifactName: '$(Parameters.artifact)'
-    artifactName: 'setup'
 
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
