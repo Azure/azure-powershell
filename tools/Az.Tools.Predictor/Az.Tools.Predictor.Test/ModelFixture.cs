@@ -19,7 +19,7 @@ using System.IO;
 using System.IO.Compression;
 using Xunit;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor.Test
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
     /// The class to prepare model for all the tests.

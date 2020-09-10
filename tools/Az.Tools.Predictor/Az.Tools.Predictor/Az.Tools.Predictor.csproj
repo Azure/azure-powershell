@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.AzPredictor</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.AzPredictor</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -12,7 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.xml</DocumentationFile>
+    <PackageId>Az.Tools.Predictor</PackageId>
+    <Version>0.1.0-preview</Version>
+    <Author>Microsoft Corporation</Author>
+    <Company>Microsoft Corporation</Company>
+    <Description>Microsoft Azure PowerShell Predictor: Provide prediction while user types Azure PowerShell commands</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.Tools.AzPredictor.xml</DocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
@@ -24,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="AzPredictor.psd1" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="AzPredictor.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Az.Tools.Predictor.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor.Test
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
     /// Test cases for <see cref="Predictor" />

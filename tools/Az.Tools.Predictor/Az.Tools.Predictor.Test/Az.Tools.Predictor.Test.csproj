@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.AzPredictor.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.AzPredictor.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</RootNamespace>
     <IsPackable>false</IsPackable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Test.xml</DocumentationFile>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Tools.Test.xml</DocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
@@ -23,7 +23,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <ProjectReference Include="..\AzPredictor\AzPredictor.csproj" />
+    <ProjectReference Include="..\Az.Tools.Predictor\Az.Tools.Predictor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

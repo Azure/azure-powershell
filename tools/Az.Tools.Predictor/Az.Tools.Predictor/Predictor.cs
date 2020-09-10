@@ -19,7 +19,7 @@ using System.Management.Automation.Language;
 using System.Text;
 using System.Threading;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// Caches predictions from Aladdin service, queries user input, e.g. "Connec" and returns autocompleted version, or null.

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor.Test.Mocks
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
     sealed class MockAzPredictorTelemetryClient : ITelemetryClient
     {

@@ -23,7 +23,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// A telemetry client implementation to collect the telemetry data for AzPredictor

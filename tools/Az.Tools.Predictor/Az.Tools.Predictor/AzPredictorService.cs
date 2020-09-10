@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// A service that talk to Aladdin endpoints to get the commands and predictions.

@@ -18,7 +18,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// Represents the settings used in AzPredictor.

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// The telemetry client that collects and sends the telemetry data.

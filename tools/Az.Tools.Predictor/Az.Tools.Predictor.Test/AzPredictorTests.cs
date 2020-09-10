@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.AzPredictor.Test.Mocks;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor.Test
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
     /// Tests for <see cref="AzPredictor"/>

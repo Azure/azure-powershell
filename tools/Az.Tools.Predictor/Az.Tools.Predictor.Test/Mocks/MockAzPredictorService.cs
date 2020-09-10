@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor.Test.Mocks
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
     /// <summary>
     /// Mock <see cref="AzPredictorService"/> so that it doesn't do httpd request to get the commands and predictions.

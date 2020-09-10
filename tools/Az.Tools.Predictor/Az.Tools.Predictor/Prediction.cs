@@ -15,7 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// A prediction candidate consists of the command AST node and list of parameter sets,

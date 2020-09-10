@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// The interface to provide the prediction results in PSReadLine.

@@ -21,7 +21,7 @@ using System.Management.Automation.Subsystem;
 using System.Text;
 using System.Threading;
 
-namespace Microsoft.Azure.PowerShell.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestion in PSReadLine.
