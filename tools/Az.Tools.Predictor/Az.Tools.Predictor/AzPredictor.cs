@@ -18,8 +18,11 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+
+[assembly:InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {

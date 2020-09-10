@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// A service that talk to Aladdin endpoints to get the commands and predictions.
     /// </summary>
-    public class AzPredictorService : IAzPredictorService, IDisposable
+    internal class AzPredictorService : IAzPredictorService, IDisposable
     {
         [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class PredictionRequestBody

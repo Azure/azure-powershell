@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// Caches predictions from Aladdin service, queries user input, e.g. "Connec" and returns autocompleted version, or null.
     /// </summary>
-    public sealed class Predictor
+    internal sealed class Predictor
     {
         private readonly IList<string> _raw;
         private readonly IList<Prediction> _predictions;

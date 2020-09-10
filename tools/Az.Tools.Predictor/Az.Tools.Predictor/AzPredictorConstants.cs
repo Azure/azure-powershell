@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The constants shared in the project.
     /// </summary>
-    public static class AzPredictorConstants
+    internal static class AzPredictorConstants
     {
         /// <summary>
         /// The value to use when the command isn't an Az command.

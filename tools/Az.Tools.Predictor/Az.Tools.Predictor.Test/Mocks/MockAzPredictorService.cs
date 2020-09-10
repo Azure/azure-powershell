@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     /// <summary>
     /// Mock <see cref="AzPredictorService"/> so that it doesn't do httpd request to get the commands and predictions.
     /// </summary>
-    public sealed class MockAzPredictorService : AzPredictorService
+    sealed class MockAzPredictorService : AzPredictorService
     {
         /// <summary>
         /// Gets or sets if a predictions is requested.
