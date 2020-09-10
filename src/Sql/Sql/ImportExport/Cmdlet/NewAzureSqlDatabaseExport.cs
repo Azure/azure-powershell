@@ -25,17 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     public class NewAzureSqlDatabaseExport : ImportExportCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "SQL Database name.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
