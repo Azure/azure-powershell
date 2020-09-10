@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
         [Ps1Xml(Label = "RestorePolicy.LastEnabledTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.LastEnabledTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
+        [Ps1Xml(Label = "ContainerDeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.ContainerDeleteRetentionPolicy.Days", Position = 8)]
+        public PSDeleteRetentionPolicy ContainerDeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
         public bool? IsVersioningEnabled { get; set; }
         public PSLastAccessTimeTrackingPolicy LastAccessTimeTrackingPolicy { get; set; }
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
             this.IsVersioningEnabled = policy.IsVersioningEnabled;
             this.LastAccessTimeTrackingPolicy = policy.LastAccessTimeTrackingPolicy is null? null : new PSLastAccessTimeTrackingPolicy(policy.LastAccessTimeTrackingPolicy);
+            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -75,7 +78,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
                 IsVersioningEnabled = this.IsVersioningEnabled,
-                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy()
+                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy(),
+                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
             };
         }
 

@@ -32,6 +32,9 @@ Disable last access time tracking for the Azure Storage Blob service.
 ### [Disable-AzStorageBlobRestorePolicy](Disable-AzStorageBlobRestorePolicy.md)
 Disables Blob Restore Policy on a Storage account.
 
+### [Disable-AzStorageContainerDeleteRetentionPolicy](Disable-AzStorageContainerDeleteRetentionPolicy.md)
+Disable delete retention policy for Azure Storage blob contatiners.
+
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
@@ -46,6 +49,9 @@ Enable last access time tracking for the Azure Storage Blob service.
 
 ### [Enable-AzStorageBlobRestorePolicy](Enable-AzStorageBlobRestorePolicy.md)
 Enables Blob Restore Policy on a Storage account.
+
+### [Enable-AzStorageContainerDeleteRetentionPolicy](Enable-AzStorageContainerDeleteRetentionPolicy.md)
+Enable delete retention policy for Azure Storage blob contatiners.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -331,6 +337,9 @@ Restores a deleted file share.
 
 ### [Restore-AzStorageBlobRange](Restore-AzStorageBlobRange.md)
 Restores a Storage account for specific blob ranges.
+
+### [Restore-AzStorageContainer](Restore-AzStorageContainer.md)
+Restores a previously deleted Azure storage blob container.
 
 ### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
 Revoke all User Delegation keys of a Storage account.

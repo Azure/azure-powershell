@@ -36,7 +36,7 @@ FailedEntries                   :
 TotalDirectoriesSuccessfulCount : 7
 TotalFilesSuccessfulCount       : 5
 TotalFailureCount               : 0
-ContinuationToken               : 
+ContinuationToken               :
 ```
 
 This command first creates an ACL object with 2 acl entries, then removes ACL recursively on a root directory of a file system.
@@ -71,8 +71,7 @@ FailedEntries                   :
 TotalDirectoriesSuccessfulCount : 100
 TotalFilesSuccessfulCount       : 1000
 TotalFailureCount               : 0
-ContinuationToken               : 
-
+ContinuationToken               :
 ```
 
 This command first removes ACL recursively on a directory and failed, then resume with ContinuationToken after user fix the failed file.

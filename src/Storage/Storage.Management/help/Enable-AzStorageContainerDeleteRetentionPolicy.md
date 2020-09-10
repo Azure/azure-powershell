@@ -1,64 +1,51 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/enable-azstorageblobrestorepolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/enable-azstoragecontainerdeleteretentionpolicy
 schema: 2.0.0
 ---
 
-# Enable-AzStorageBlobRestorePolicy
+# Enable-AzStorageContainerDeleteRetentionPolicy
 
 ## SYNOPSIS
-Enables Blob Restore Policy on a Storage account.
+Enable delete retention policy for Azure Storage blob contatiners.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-Enable-AzStorageBlobRestorePolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -RestoreDays <Int32> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Enable-AzStorageContainerDeleteRetentionPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ -RetentionDays <Int32> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Enable-AzStorageBlobRestorePolicy -StorageAccount <PSStorageAccount> -RestoreDays <Int32> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzStorageContainerDeleteRetentionPolicy -StorageAccount <PSStorageAccount> -RetentionDays <Int32>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
-Enable-AzStorageBlobRestorePolicy [-ResourceId] <String> -RestoreDays <Int32> [-PassThru]
+Enable-AzStorageContainerDeleteRetentionPolicy [-ResourceId] <String> -RetentionDays <Int32> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzStorageBlobRestorePolicy** cmdlet enables Blob Restore Policy for the Azure Storage Blob service.
+The **Enable-AzStorageContainerDeleteRetentionPolicy** cmdlet enables delete retention policy for Azure Storage blob Contatiner.
 
 ## EXAMPLES
 
-### Example 1: Enables Blob Restore Policy for the Azure Storage Blob service on a Storage account
-```powershell
-PS C:\> Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" $accountName -RetentionDays 5
+### Example 1: Enable delete retention policy for Blob containers
+```
+C:\PS>Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru -RetentionDays 3
 
-PS C:\> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -EnableChangeFeed $true
-
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days RestorePolicy.Enabled RestorePolicy.Days ChangeFeed
------------------- ----------------- --------------------- ----------------------------- -------------------------- --------------------- ------------------ ----------
-mystorageaccount   myresourcegoup                          True                          5                          False                                    True     
-
-PS C:\> Enable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -RestoreDays 4
-
-PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
-
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days RestorePolicy.Enabled RestorePolicy.Days ChangeFeed
------------------- ----------------- --------------------- ----------------------------- -------------------------- --------------------- ------------------ ----------
-mystorageaccount   myresourcegoup                          True                          5                          True                  4                  True
+Enabled Days
+------- ----
+   True    3
 ```
 
-This command first enable Blob softdelet and changefeed, then enables Blob Restore Policy, finally check the setting in Blob service properties.
-The Blob RestoreDays much be smaller than Blob delete RetentionDays.
-ChangeFeed must be enabled before enable lob Restore Policy.
-If softdelete and Changefeed are just enabled, need wait for some time for server to handle the setting, before enable Blob restore policy.
+This command enables delete retention policy for Blob Contatiners, and set deleted blob retention days to 3.
 
 ## PARAMETERS
 
@@ -122,8 +109,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RestoreDays
-Sets the number of days for the blob can be restored..
+### -RetentionDays
+Sets the number of retention days for the DeleteRetentionPolicy.
 
 ```yaml
 Type: System.Int32
@@ -209,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.Storage.Models.PSRestorePolicy
+### Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties
 
 ## NOTES
 

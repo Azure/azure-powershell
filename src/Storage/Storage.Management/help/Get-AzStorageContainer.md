@@ -16,15 +16,17 @@ Lists the storage containers.
 ### ContainerName (Default)
 ```
 Get-AzStorageContainer [[-Name] <String>] [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-IncludeDeleted] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### ContainerPrefix
 ```
 Get-AzStorageContainer -Prefix <String> [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-IncludeDeleted] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +47,40 @@ PS C:\>Get-AzStorageContainer -Prefix "container"
 ```
 
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
+
+### Example 3: List Azure Storage container, include deleted containers
+```
+PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
+
+PS C:\> $containers
+
+   Blob End Point: https://storageaccountname.blob.core.windows.net/
+
+Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                      
+----                 ------------         ------------                   ---------  ---------                                                                                                                                                                   
+testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
+testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
+
+PS C:\> $c[1].BlobContainerProperties
+
+LastModified                   : 9/4/2020 12:52:37 PM +00:00
+LeaseStatus                    : Unlocked
+LeaseState                     : Expired
+LeaseDuration                  : 
+PublicAccess                   : 
+HasImmutabilityPolicy          : False
+HasLegalHold                   : False
+DefaultEncryptionScope         : $account-encryption-key
+PreventEncryptionScopeOverride : False
+DeletedOn                      : 9/8/2020 4:29:59 AM +00:00
+RemainingRetentionDays         : 299
+ETag                           : "0x8D850D167059285"
+Metadata                       : {}
+```
+
+This example lists all containers of a storage account, include deleted containers.
+Then show the deleted container properties, include : DeletedOn, RemainingRetentionDays.
+Deleted containers will only exist after enabled Container softdelete with Enable-AzStorageBlobDeleteRetentionPolicy.
 
 ## PARAMETERS
 
@@ -123,6 +159,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDeleted
+Include deleted containers, by default list containers won't include deleted containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

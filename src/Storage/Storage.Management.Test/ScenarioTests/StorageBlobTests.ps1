@@ -746,3 +746,65 @@ function Test-StorageBlobLastAccessTimeTracking
 }
 
 
+
+<#
+.SYNOPSIS
+Test StorageAccount Blob Container SoftDelete in Service Properties
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobContainerSoftDelete
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		# Enable Blob Delete Retention Policy
+		$policy = Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 30
+		Assert-AreEqual $true $policy.Enabled
+		Assert-AreEqual 30 $policy.Days
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.ContainerDeleteRetentionPolicy.Enabled
+		Assert-AreEqual 30 $property.ContainerDeleteRetentionPolicy.Days
+
+		# Create and delete container, then get container
+		$contaierName = "testcontaienr"
+		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $contaierName 
+		Remove-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $contaierName -Force
+		$cons = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual 0 $cons.Count
+		$cons = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeDeleted
+		Assert-AreEqual 1 $cons.Count
+		Assert-AreEqual $contaierName $cons[0].Name
+		Assert-AreEqual $true $cons[0].Deleted
+
+
+		# Disable Blob Delete Retention Policy
+		$policy = Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -PassThru
+		Assert-AreEqual $false $policy.Enabled
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $false $property.ContainerDeleteRetentionPolicy.Enabled
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+

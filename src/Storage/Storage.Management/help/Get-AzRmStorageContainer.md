@@ -14,13 +14,13 @@ Gets or lists Storage blob containers
 
 ### AccountName (Default)
 ```
-Get-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
+ [-IncludeDeleted] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzRmStorageContainer -StorageAccount <PSStorageAccount> [-Name <String>] [-AsJob]
+Get-AzRmStorageContainer -StorageAccount <PSStorageAccount> [-Name <String>] [-IncludeDeleted] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,6 +51,21 @@ PS C:\>Get-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 
 This command gets a Storage blob container with Storage account object and container name.
 
+### Example 4: List Storage blob container of a Storage account, include deleted containers.
+```
+PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IncludeDeleted
+
+   ResourceGroupName: myResourceGroup, StorageAccountName: myStorageAccount
+
+Name         PublicAccess LastModified         HasLegalHold HasImmutabilityPolicy Deleted VersionId  
+----         ------------ ------------         ------------ --------------------- ------- ---------  
+testcon      None         2020-08-28 10:18:13Z False        False                 False   01D685BC91A88F22
+testcon2     None         2020-09-04 12:52:37Z False        False                 True    01D67D248986B6DA
+```
+
+This example lists all containers of a storage account, include deleted containers.
+Deleted containers will only exist after enabled Container softdelete with Enable-AzStorageBlobDeleteRetentionPolicy.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -75,6 +90,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDeleted
+Include deleted containers, by default list containers won't include deleted containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

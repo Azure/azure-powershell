@@ -36,7 +36,7 @@ FailedEntries                   :
 TotalDirectoriesSuccessfulCount : 7
 TotalFilesSuccessfulCount       : 5
 TotalFailureCount               : 0
-ContinuationToken               : 
+ContinuationToken               :
 ```
 
 This command first creates an ACL object with 3 acl entries, then sets ACL recursively on a directory.
@@ -69,8 +69,7 @@ FailedEntries                   :
 TotalDirectoriesSuccessfulCount : 100
 TotalFilesSuccessfulCount       : 1000
 TotalFailureCount               : 0
-ContinuationToken               : 
-
+ContinuationToken               :
 ```
 
 This command first sets ACL recursively to a root directory and failed, then resume with ContinuationToken after user fix the failed file.
