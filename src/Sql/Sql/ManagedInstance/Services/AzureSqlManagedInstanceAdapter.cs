@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 case "Zone":
                     return "ZRS";
                 default:
-                    return "GRS";
+                    return null;
             }
         }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 case "ZRS":
                     return "Zone";
                 default:
-                    return "Geo";
+                    return null;
             }
         }
     }
