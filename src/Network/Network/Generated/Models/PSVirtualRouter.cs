@@ -16,19 +16,58 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSVirtualRouter : PSTopLevelResource
     {
-        [Ps1Xml(Target = ViewControl.Table)]
-        public PSResourceId HostedGateway { get; set; }
+        public PSVirtualRouter()
+        {
+        }
+
+        public PSVirtualRouter(PSVirtualHub virtualHub)
+        {
+            this.Name = virtualHub.Name;
+            this.Id = virtualHub.Id;
+            this.ResourceGroupName = virtualHub.ResourceGroupName;
+            this.Location = virtualHub.Location;
+            this.ResourceGuid = virtualHub.ResourceGuid;
+            this.Type = virtualHub.Type;
+            this.VirtualNetworkConnections = new List<PSHubIpConfiguration>();
+            var ipconfig = virtualHub.IpConfigurations.FirstOrDefault<PSHubIpConfiguration>();
+            var virtualNetworkConnection = new PSHubIpConfiguration()
+            {
+                Name = ipconfig.Name,
+                HostedSubnet = ipconfig.Id,
+                ProvisioningState = ipconfig.ProvisioningState
+            };
+            this.VirtualNetworkConnections.Add(virtualNetworkConnection);
+            this.VirtualRouterAsn = virtualHub.VirtualRouterAsn;
+            this.VirtualRouterIps = virtualHub.VirtualRouterIps;
+            this.ProvisioningState = virtualHub.ProvisioningState;
+            this.Peerings = new List<PSVirtualRouterPeer>();
+            foreach (var connection in virtualHub.BgpConnections)
+            {
+                var peering = new PSVirtualRouterPeer()
+                {
+                    Name = connection.Name,
+                    PeerIp = connection.PeerIp,
+                    PeerAsn = connection.PeerAsn,
+                    ProvisioningState = connection.ProvisioningState
+                };
+                this.Peerings.Add(peering);
+            }
+        }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public uint VirtualRouterAsn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public List<string> VirtualRouterIps { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        public List<PSHubIpConfiguration> VirtualNetworkConnections { get; set; }
         public List<PSVirtualRouterPeer> Peerings { get; set; }
 
         [JsonIgnore]
@@ -38,9 +77,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string HostedGatewayText
+        public string VirtualNetworkConnectionsText
         {
-            get { return JsonConvert.SerializeObject(HostedGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

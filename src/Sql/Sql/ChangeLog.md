@@ -22,6 +22,11 @@
 * Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added Force parameter to `New-AzSqlInstance`
+* Added cmdlets for Managed Database Log Replay service
+	- `Start-AzSqlInstanceDatabaseLogReplay`
+	- `Get-AzSqlInstanceDatabaseLogReplay`
+	- `Complete-AzSqlInstanceDatabaseLogReplay`
+	- `Stop-AzSqlInstanceDatabaseLogReplay`
 * Added cmdlet `Get-AzSqlInstanceActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`

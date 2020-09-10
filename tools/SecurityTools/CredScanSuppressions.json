@@ -346,6 +346,26 @@
       "_justification": "Legitimate test session record"
     },
     {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseLogReplayScenarioTest\\TestManagedDatabaseLogReplayService.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseLogReplayScenarioTest\\TestCancelManagedDatabaseLogReplayService.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseLogReplayScenarioTest\\TestCompleteManagedDatabaseLogReplayService.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseLogReplayScenarioTest\\TestPipingCompleteCancelManagedDatabaseLogReplayService.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseLogReplayScenarioTest\\TestPipingManagedDatabaseLogReplayService.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
       "file": "src\\SignalR\\SignalR.Test\\SessionRecords\\Microsoft.Azure.Commands.SignalR.Test.ScenarioTests.AzureRmSignalRTests\\TestAzureRmSignalR.json",
       "_justification": "Legitimate test session record"
     },
