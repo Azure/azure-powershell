@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get admin credential of private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWarePrivateCloudAdminCredentials -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
-{{ Add output here }}
+NsxtPassword NsxtUsername VcenterPassword VcenterUsername
+------------ ------------ --------------- ---------------
+************ admin        ************    cloudadmin@vsphere.local
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get admin credential of private cloud
 

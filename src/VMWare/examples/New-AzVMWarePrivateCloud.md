@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
 
-{{ Add output here }}
+Location      Name            Type
+--------      ----            ----
+australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create private cloud
 

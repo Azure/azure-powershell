@@ -70,4 +70,13 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Hide cmdlets.
+  - where:
+      verb: New
+      subject: PrivateCloud
+    hide: true
+  - where:
+      verb: New|Get|Remove
+      subject: HcxEnterpriseSite
+    hide: true
 ```

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create cluster
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group -ClusterSize 3 -SkuName av36
 
-{{ Add output here }}
+Name              Type
+----              ----
+azps-test-cluster Microsoft.AVS/privateClouds/clusters
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create cluster
 

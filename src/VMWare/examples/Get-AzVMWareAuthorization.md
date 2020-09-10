@@ -1,18 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get authorization
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
-{{ Add output here }}
+
+
+Name           Type
+----           ----
+azps-test-auth Microsoft.AVS/privateClouds/authorizations
 ```
 
-{{ Add description here }}
+This cmdlet gets authorization `azps-test-auth` under private cloud `azps-test-cloud`
 
-### Example 2: {{ Add title here }}
+### Example 2: List authorization
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
-{{ Add output here }}
+
+
+Name           Type
+----           ----
+azps-test-auth Microsoft.AVS/privateClouds/authorizations
 ```
 
-{{ Add description here }}
-
+This cmdlet lists authorization `azps-test-auth` under private cloud `azps-test-cloud`

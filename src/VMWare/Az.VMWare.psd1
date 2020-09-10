@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.VMWare.private.dll'
   FormatsToProcess = './Az.VMWare.format.ps1xml'
-  FunctionsToExport = 'Get-AzVMWareAuthorization', 'Get-AzVMWareCluster', 'Get-AzVMWareHcxEnterpriseSite', 'Get-AzVMWarePrivateCloud', 'Get-AzVMWarePrivateCloudAdminCredentials', 'New-AzVMWareAuthorization', 'New-AzVMWareCluster', 'New-AzVMWareHcxEnterpriseSite', 'New-AzVMWarePrivateCloud', 'Remove-AzVMWareAuthorization', 'Remove-AzVMWareCluster', 'Remove-AzVMWareHcxEnterpriseSite', 'Remove-AzVMWarePrivateCloud', 'Test-AzVMWareLocationQuotaAvailability', 'Test-AzVMWareLocationTrialAvailability', 'Update-AzVMWareCluster', 'Update-AzVMWarePrivateCloud', '*'
+  FunctionsToExport = 'Get-AzVMWareAuthorization', 'Get-AzVMWareCluster', 'Get-AzVMWarePrivateCloud', 'Get-AzVMWarePrivateCloudAdminCredentials', 'New-AzVMWareAuthorization', 'New-AzVMWareCluster', 'New-AzVMWarePrivateCloud', 'Remove-AzVMWareAuthorization', 'Remove-AzVMWareCluster', 'Remove-AzVMWarePrivateCloud', 'Test-AzVMWareLocationQuotaAvailability', 'Test-AzVMWareLocationTrialAvailability', 'Update-AzVMWareCluster', 'Update-AzVMWarePrivateCloud', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
