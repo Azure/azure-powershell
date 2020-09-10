@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
                 case "ZRS":
                     return "Zone";
                 default:
-                    return "Geo";
+                    return null;
             }
         }
     }
