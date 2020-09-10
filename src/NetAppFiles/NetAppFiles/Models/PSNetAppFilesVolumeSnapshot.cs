@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+//namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Models
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-    public class PSNetAppFilesVolumeDataProtection
+    public class PSNetAppFilesVolumeSnapshot
     {
         /// <summary>
-        /// Gets or sets replication
+        /// Snapshot Policy ResourceId
         /// </summary>
-        /// <remark>
-        /// Replication properties
-        /// </remark>
-        public PSNetAppFilesReplicationObject Replication { get; set; }
-
-        /// <summary>
-        /// Gets or sets snapshot
-        /// </summary>
-        /// <remark>
-        /// Snapshot properties
-        /// </remark>        
-        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        public string SnapshotPolicyId { get; set; }
     }
 }
