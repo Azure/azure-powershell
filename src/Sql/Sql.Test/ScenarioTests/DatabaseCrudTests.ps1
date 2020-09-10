@@ -263,7 +263,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -653,10 +653,9 @@ function Test-UpdateServerlessDatabase()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
-
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Premium -ZoneRedundant
@@ -856,14 +855,14 @@ function Test-GetDatabaseWithZoneRedundancy
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "westcentralus"
+	Test-RemoveDatabaseInternal "southeastasia"
 }
 
 <#
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($location = "westcentralus")
+function Test-RemoveDatabaseInternal  ($location = "southeastasia")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -923,7 +922,7 @@ function Test-CancelDatabaseOperation
 function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = Get-Location "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
