@@ -86,7 +86,16 @@ steps:
           Exit "
           dotnet tool run pwsh -c $command
       }
-   
+- task: DownloadPipelineArtifact@2
+  condition: and(succeeded(), eq('$(GALLERY_NAME)', 'LocalRepo'))
+  displayName: Download Artifacts from Build Pipeline
+  inputs:
+    buildType: specific
+    project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
+    definition: 693
+    # artifactName: '$(Parameters.artifact)'
+    artifactName: 'setup'
+
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
