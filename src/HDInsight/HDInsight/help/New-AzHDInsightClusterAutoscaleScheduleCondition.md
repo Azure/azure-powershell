@@ -38,7 +38,7 @@ PS C:\> $condition=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 
 # Set the cluster autoscale configuration
 PS C:\> $clusterResourceGroup="group"
 PS C:\> $clusterName="MyCluster"
-PS C:\> Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName -TimeZone "Pacific Standard Time" -Condition $condition
+PS C:\> Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName -Schedule -TimeZone "Pacific Standard Time" -Condition $condition
 ```
 
 This command creates a condition where cluster autoscale to 5 worker nodes at 09:00 every Monday, Wednesday.

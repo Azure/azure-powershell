@@ -189,6 +189,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ValidateNotNullOrEmpty]
         public AzureHDInsightAutoscale AutoscaleConfiguration { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Set schedule-based parameters",
+            ParameterSetName = ScheduleAutoscaleByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Set schedule-based parameters",
+            ParameterSetName = ScheduleAutoscaleByResourceIdParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Set schedule-based parameters",
+            ParameterSetName = ScheduleAutoscaleByInputObjectParameterSet)]
+        public SwitchParameter Schedule { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 

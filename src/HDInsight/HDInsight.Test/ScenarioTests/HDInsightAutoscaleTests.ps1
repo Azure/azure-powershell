@@ -56,7 +56,7 @@ function Test-AutoscaleRelatedCommands{
 		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 08:00 -WorkerNodeCount 4 -Day Friday
 
 		$scheduleAutoscaleCluster=Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $cluster.ResourceGroup `
-		-ClusterName $cluster.Name -TimeZone "Pacific Standard Time" -Condition $condition1,$condition2
+		-ClusterName $cluster.Name -Schedule -TimeZone "Pacific Standard Time" -Condition $condition1,$condition2
 
 		Assert-AreEqual $scheduleAutoscaleCluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.TimeZone "Pacific Standard Time"
 		Assert-AreEqual $scheduleAutoscaleCluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.Condition[0].WorkerNodeCount 5

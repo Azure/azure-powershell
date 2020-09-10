@@ -257,7 +257,7 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `
 		-Condition $condition1,$condition2
 
-		# create cluster with load-based autoscale
+		# create cluster with schedule-based autoscale
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
