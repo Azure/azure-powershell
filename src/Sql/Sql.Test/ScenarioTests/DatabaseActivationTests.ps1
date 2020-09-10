@@ -91,7 +91,7 @@ function Test-DatabasePauseResumePiped
 		Assert-AreEqual $dwdb2.DatabaseName $databaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
-		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW100c
+		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW100
 		Assert-AreEqual $dwdb2.CollationName $collationName
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
@@ -102,7 +102,7 @@ function Test-DatabasePauseResumePiped
 		Assert-AreEqual $dwdb3.Edition DataWarehouse
 		Assert-AreEqual $dwdb3.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb3.CollationName $collationName
-		Assert-AreEqual $dwdb3.Status "Online"
+		Assert-AreEqual $dwdb3.Status "OnlineChangingDwPerformanceTiers"
 	}
 	finally
 	{

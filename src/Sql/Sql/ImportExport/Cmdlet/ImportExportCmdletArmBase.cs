@@ -38,6 +38,16 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            HelpMessage = "SQL Database name.",
+            Position = 2)]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        /// <summary>
         /// Gets or sets the type of the storage key to use.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The type of the storage key")]
