@@ -57,12 +57,6 @@
     - `Update-AzNetworkVirtualAppliance`
     - `Get-AzNetworkVirtualApplianceSku`
     - `New-AzVirtualApplianceSkuProperty`
-* Onboard Application Gateway to Private Link Common Cmdlets
-* Onboard StorageSync to Private Link Common Cmdlets
-* Add `AllowActiveFTP` parameter to `AzureFirewall`
-* Onboarded Application Gateway to Private Link Common Cmdlets
-* Onboarded StorageSync to Private Link Common Cmdlets
-* Onboarded SignalR to Private Link Common Cmdlets
 * Added new cmdlets for VirtualWan
     - `Start-AzVpnGatewayPacketCapture`
     - `Stop-AzVpnGatewayPacketCapture`
