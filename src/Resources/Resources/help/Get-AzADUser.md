@@ -252,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzADUser](./New-AzADUser.md)
 
-[Set-AzADUser](./Set-AzADUser.md)
+[New-AzADUser](./New-AzADUser.md)
 
 [Remove-AzADUser](./Remove-AzADUser.md)
 

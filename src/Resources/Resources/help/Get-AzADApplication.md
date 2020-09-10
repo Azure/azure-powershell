@@ -250,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzADApplication](./Remove-AzADApplication.md)
 
-[Set-AzADApplication](./Set-AzADApplication.md)
+[New-AzADApplication](./New-AzADApplication.md)
 
 [New-AzADApplication](./New-AzADApplication.md)
 

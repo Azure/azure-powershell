@@ -273,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
-[Set-AzADServicePrincipal](./Set-AzADServicePrincipal.md)
+[New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
 [Remove-AzADServicePrincipal](./Remove-AzADServicePrincipal.md)
 
