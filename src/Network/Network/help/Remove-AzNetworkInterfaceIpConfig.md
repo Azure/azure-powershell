@@ -23,8 +23,8 @@ The **Remove-AzNetworkInterfaceIpConfig** cmdlet removes a network interface IP 
 
 ## EXAMPLES
 
-### 1: Delete an IP configuration from a network interface
-```
+### Example 1: Delete an IP configuration from a network interface
+```powershell
 $nic = Get-AzNetworkInterface -Name mynic -ResourceGroupName myrg
 
 Remove-AzNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
