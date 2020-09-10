@@ -116,7 +116,8 @@ directive:
     transform: delete $."x-ms-examples"
   - from: swagger-document
     where: $..produces
-    transform: $ = $.filter( each => each === 'application/json');
+    #transform: $ = $.filter( each => each === 'application/json');
+    transform: $ = ["application/json"];
     reason: this spec adds produces application/xml and text/json erronously.
   - where:
       subject: Operation

@@ -27,6 +27,7 @@ Describe 'New-AzAppConfigurationStore' {
 
         $appConf.IdentityType | Should -Be "UserAssigned"
         $appConf.IdentityUserAssignedIdentity.Count | Should -BeGreaterThan 0
+        $appConf.IdentityUserAssignedIdentity[$env.assignedIdentityId] | Should -Not -BeNullOrEmpty
         $appConf.ProvisioningState | Should -Be "Succeeded"
 
         Remove-AzAppConfigurationStore -InputObject $appConf

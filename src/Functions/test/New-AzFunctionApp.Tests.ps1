@@ -68,7 +68,7 @@ Describe 'New-AzFunctionApp' {
             "3" =  @{
                 "Node" = "10"
                 "DotNet" = "3"
-                "PowerShell" = "6.2"
+                "PowerShell" = "7.0"
                 "Java" = "8"
             }
         }
