@@ -42,9 +42,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Your Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000).
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='List1', Mandatory)]

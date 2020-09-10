@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of the DNS record.</summary>
+    /// <summary>TypeConverter implementation for CustomHostNameDnsRecordType.</summary>
     public partial class CustomHostNameDnsRecordTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

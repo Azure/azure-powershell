@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Action type.</summary>
+    /// <summary>Argument completer implementation for CertificateOrderActionType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionTypeTypeConverter))]
     public partial struct CertificateOrderActionType :
         System.Management.Automation.IArgumentCompleter

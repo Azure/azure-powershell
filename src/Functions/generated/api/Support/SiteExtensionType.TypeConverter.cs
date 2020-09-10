@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Site extension type.</summary>
+    /// <summary>TypeConverter implementation for SiteExtensionType.</summary>
     public partial class SiteExtensionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

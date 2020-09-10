@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Represents the type of the Detector</summary>
     public partial struct IssueType :
         System.IEquatable<IssueType>
     {

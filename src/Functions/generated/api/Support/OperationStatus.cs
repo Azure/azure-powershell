@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The current status of the operation.</summary>
     public partial struct OperationStatus :
         System.IEquatable<OperationStatus>
     {

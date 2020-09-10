@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
-    /// </summary>
+    /// <summary>TypeConverter implementation for InternalLoadBalancingMode.</summary>
     public partial class InternalLoadBalancingModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

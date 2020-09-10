@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Indicates the type of storage account.</summary>
+    /// <summary>Argument completer implementation for Kind.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.KindTypeConverter))]
     public partial struct Kind :
         System.Management.Automation.IArgumentCompleter

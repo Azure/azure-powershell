@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Current order status.</summary>
+    /// <summary>Argument completer implementation for CertificateOrderStatus.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderStatusTypeConverter))]
     public partial struct CertificateOrderStatus :
         System.Management.Automation.IArgumentCompleter

@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Required for storage accounts where kind = BlobStorage. The access tier used for billing.
-    /// </summary>
+    /// <summary>TypeConverter implementation for AccessTier.</summary>
     public partial class AccessTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Gets the unit of measurement.</summary>
     public partial struct UsageUnit :
         System.IEquatable<UsageUnit>
     {

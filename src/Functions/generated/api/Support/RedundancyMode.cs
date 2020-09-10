@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Site redundancy mode</summary>
     public partial struct RedundancyMode :
         System.IEquatable<RedundancyMode>
     {

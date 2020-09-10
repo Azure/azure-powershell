@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Describes what tool created this Application Insights component. Customers using this API should set this to the default
-    /// 'rest'.
-    /// </summary>
+    /// <summary>TypeConverter implementation for RequestSource.</summary>
     public partial class RequestSourceTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

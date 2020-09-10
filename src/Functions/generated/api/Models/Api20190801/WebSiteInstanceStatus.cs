@@ -17,7 +17,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string ConsoleUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesInternal)Property).ConsoleUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesInternal)Property).ConsoleUrl = value; }
 
-        /// <summary>Dictionary of <ContainerInfo></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesInternal)Property).Container; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesInternal)Property).Container = value; }
 
@@ -97,11 +96,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"consoleUrl",
         PossibleTypes = new [] { typeof(string) })]
         string ConsoleUrl { get; set; }
-        /// <summary>Dictionary of <ContainerInfo></summary>
+
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dictionary of <ContainerInfo>",
+        Description = @"",
         SerializedName = @"containers",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get; set; }
@@ -136,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     {
         /// <summary>Link to the Diagnose and Solve Portal</summary>
         string ConsoleUrl { get; set; }
-        /// <summary>Dictionary of <ContainerInfo></summary>
+
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWebSiteInstanceStatusPropertiesContainers Container { get; set; }
         /// <summary>Link to the Diagnose and Solve Portal</summary>
         string DetectorUrl { get; set; }

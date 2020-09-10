@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Certificate product type.</summary>
+    /// <summary>TypeConverter implementation for CertificateProductType.</summary>
     public partial class CertificateProductTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

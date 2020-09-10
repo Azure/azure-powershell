@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Log level.</summary>
+    /// <summary>Argument completer implementation for LogLevel.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevelTypeConverter))]
     public partial struct LogLevel :
         System.Management.Automation.IArgumentCompleter

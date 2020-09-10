@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Log entry type</summary>
+    /// <summary>TypeConverter implementation for MSDeployLogEntryType.</summary>
     public partial class MSDeployLogEntryTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

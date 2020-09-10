@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Current order status.</summary>
+    /// <summary>TypeConverter implementation for CertificateOrderStatus.</summary>
     public partial class CertificateOrderStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

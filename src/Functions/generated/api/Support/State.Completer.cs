@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Gets the state of virtual network rule.</summary>
+    /// <summary>Argument completer implementation for State.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StateTypeConverter))]
     public partial struct State :
         System.Management.Automation.IArgumentCompleter

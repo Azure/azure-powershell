@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Indicates the directory service used.</summary>
     public partial struct DirectoryServiceOptions :
         System.IEquatable<DirectoryServiceOptions>
     {

@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
-    /// to 'Bluefield' when creating/updating a component via the REST API.
-    /// </summary>
+    /// <summary>TypeConverter implementation for FlowType.</summary>
     public partial class FlowTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

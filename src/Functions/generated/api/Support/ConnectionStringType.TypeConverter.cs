@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of database.</summary>
+    /// <summary>TypeConverter implementation for ConnectionStringType.</summary>
     public partial class ConnectionStringTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

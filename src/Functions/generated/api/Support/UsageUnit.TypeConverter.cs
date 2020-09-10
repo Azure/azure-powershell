@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Gets the unit of measurement.</summary>
+    /// <summary>TypeConverter implementation for UsageUnit.</summary>
     public partial class UsageUnitTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

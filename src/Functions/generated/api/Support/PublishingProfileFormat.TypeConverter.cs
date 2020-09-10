@@ -6,12 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Name of the format. Valid values are:
-    /// FileZilla3
-    /// WebDeploy -- default
-    /// Ftp
-    /// </summary>
+    /// <summary>TypeConverter implementation for PublishingProfileFormat.</summary>
     public partial class PublishingProfileFormatTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

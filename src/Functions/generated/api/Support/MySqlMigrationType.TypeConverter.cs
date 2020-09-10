@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The type of migration operation to be done</summary>
+    /// <summary>TypeConverter implementation for MySqlMigrationType.</summary>
     public partial class MySqlMigrationTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

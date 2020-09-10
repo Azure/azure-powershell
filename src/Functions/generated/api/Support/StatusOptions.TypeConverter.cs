@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>App Service plan status.</summary>
+    /// <summary>TypeConverter implementation for StatusOptions.</summary>
     public partial class StatusOptionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

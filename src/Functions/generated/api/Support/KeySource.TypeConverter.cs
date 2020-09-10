@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault
-    /// </summary>
+    /// <summary>TypeConverter implementation for KeySource.</summary>
     public partial class KeySourceTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

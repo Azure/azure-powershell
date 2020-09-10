@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Provisioning state</summary>
+    /// <summary>Argument completer implementation for MSDeployProvisioningState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployProvisioningStateTypeConverter))]
     public partial struct MSDeployProvisioningState :
         System.Management.Automation.IArgumentCompleter

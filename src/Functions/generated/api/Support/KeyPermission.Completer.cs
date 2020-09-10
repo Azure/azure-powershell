@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Permissions for the key -- read-only or full permissions.</summary>
+    /// <summary>Argument completer implementation for KeyPermission.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.KeyPermissionTypeConverter))]
     public partial struct KeyPermission :
         System.Management.Automation.IArgumentCompleter

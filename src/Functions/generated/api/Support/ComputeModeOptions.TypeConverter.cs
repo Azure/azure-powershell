@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Shared/dedicated workers.</summary>
+    /// <summary>TypeConverter implementation for ComputeModeOptions.</summary>
     public partial class ComputeModeOptionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Status of the Key Vault secret.</summary>
     public partial struct KeyVaultSecretStatus :
         System.IEquatable<KeyVaultSecretStatus>
     {

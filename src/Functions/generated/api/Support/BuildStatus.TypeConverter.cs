@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The status of the static site build.</summary>
+    /// <summary>TypeConverter implementation for BuildStatus.</summary>
     public partial class BuildStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

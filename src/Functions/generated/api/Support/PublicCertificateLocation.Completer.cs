@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Public Certificate Location</summary>
+    /// <summary>Argument completer implementation for PublicCertificateLocation.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocationTypeConverter))]
     public partial struct PublicCertificateLocation :
         System.Management.Automation.IArgumentCompleter

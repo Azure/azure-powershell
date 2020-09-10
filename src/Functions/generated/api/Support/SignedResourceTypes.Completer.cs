@@ -6,11 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container
-    /// (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities,
-    /// and files.
-    /// </summary>
+    /// <summary>Argument completer implementation for SignedResourceTypes.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SignedResourceTypesTypeConverter))]
     public partial struct SignedResourceTypes :
         System.Management.Automation.IArgumentCompleter

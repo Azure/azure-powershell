@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Site redundancy mode</summary>
+    /// <summary>Argument completer implementation for RedundancyMode.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyModeTypeConverter))]
     public partial struct RedundancyMode :
         System.Management.Automation.IArgumentCompleter

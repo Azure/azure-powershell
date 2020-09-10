@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of application being monitored.</summary>
     public partial struct ApplicationType :
         System.IEquatable<ApplicationType>
     {

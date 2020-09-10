@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Action type.</summary>
     public partial struct CertificateOrderActionType :
         System.IEquatable<CertificateOrderActionType>
     {

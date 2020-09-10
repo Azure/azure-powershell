@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of the hostname.</summary>
+    /// <summary>TypeConverter implementation for HostNameType.</summary>
     public partial class HostNameTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Action type.</summary>
+    /// <summary>TypeConverter implementation for CertificateOrderActionType.</summary>
     public partial class CertificateOrderActionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

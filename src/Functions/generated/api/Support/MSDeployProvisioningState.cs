@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Provisioning state</summary>
     public partial struct MSDeployProvisioningState :
         System.IEquatable<MSDeployProvisioningState>
     {

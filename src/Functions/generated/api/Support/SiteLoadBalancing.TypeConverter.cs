@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Site load balancing.</summary>
+    /// <summary>TypeConverter implementation for SiteLoadBalancing.</summary>
     public partial class SiteLoadBalancingTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

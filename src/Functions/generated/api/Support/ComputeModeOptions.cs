@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Shared/dedicated workers.</summary>
     public partial struct ComputeModeOptions :
         System.IEquatable<ComputeModeOptions>
     {

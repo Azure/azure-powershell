@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Management information availability state for the app.</summary>
+    /// <summary>Argument completer implementation for SiteAvailabilityState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteAvailabilityStateTypeConverter))]
     public partial struct SiteAvailabilityState :
         System.Management.Automation.IArgumentCompleter

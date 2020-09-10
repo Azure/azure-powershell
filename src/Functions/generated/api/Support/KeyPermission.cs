@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Permissions for the key -- read-only or full permissions.</summary>
     public partial struct KeyPermission :
         System.IEquatable<KeyPermission>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Backup status.</summary>
+    /// <summary>TypeConverter implementation for BackupItemStatus.</summary>
     public partial class BackupItemStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

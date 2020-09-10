@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval
-    /// should be set to 7)
-    /// </summary>
+    /// <summary>TypeConverter implementation for FrequencyUnit.</summary>
     public partial class FrequencyUnitTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

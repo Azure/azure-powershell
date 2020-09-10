@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Lease state of the container.</summary>
     public partial struct LeaseState :
         System.IEquatable<LeaseState>
     {

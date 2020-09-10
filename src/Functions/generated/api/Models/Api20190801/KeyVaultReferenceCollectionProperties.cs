@@ -11,7 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Backing field for <see cref="KeyToReferenceStatuses" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses _keyToReferenceStatuses;
 
-        /// <summary>Dictionary of <ApiKVReference></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get => (this._keyToReferenceStatuses = this._keyToReferenceStatuses ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.KeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses()); set => this._keyToReferenceStatuses = value; }
 
@@ -25,11 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     public partial interface IKeyVaultReferenceCollectionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable
     {
-        /// <summary>Dictionary of <ApiKVReference></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dictionary of <ApiKVReference>",
+        Description = @"",
         SerializedName = @"keyToReferenceStatuses",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get; set; }
@@ -39,7 +37,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     internal partial interface IKeyVaultReferenceCollectionPropertiesInternal
 
     {
-        /// <summary>Dictionary of <ApiKVReference></summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get; set; }
 
     }

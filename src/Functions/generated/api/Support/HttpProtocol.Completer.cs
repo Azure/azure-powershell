@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The protocol permitted for a request made with the account SAS.</summary>
+    /// <summary>Argument completer implementation for HttpProtocol.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HttpProtocolTypeConverter))]
     public partial struct HttpProtocol :
         System.Management.Automation.IArgumentCompleter

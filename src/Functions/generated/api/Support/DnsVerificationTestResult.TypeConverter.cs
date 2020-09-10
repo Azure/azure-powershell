@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>DNS verification test result.</summary>
+    /// <summary>TypeConverter implementation for DnsVerificationTestResult.</summary>
     public partial class DnsVerificationTestResultTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

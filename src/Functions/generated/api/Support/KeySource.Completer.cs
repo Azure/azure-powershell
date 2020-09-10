@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault
-    /// </summary>
+    /// <summary>Argument completer implementation for KeySource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.KeySourceTypeConverter))]
     public partial struct KeySource :
         System.Management.Automation.IArgumentCompleter

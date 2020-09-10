@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is
-    /// false.
-    /// </summary>
+    /// <summary>TypeConverter implementation for Reason.</summary>
     public partial class ReasonTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

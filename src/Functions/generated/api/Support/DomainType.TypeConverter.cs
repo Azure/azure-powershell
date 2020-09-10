@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this
-    /// domain will simply restore it and this operation will not cost anything.
-    /// </summary>
+    /// <summary>TypeConverter implementation for DomainType.</summary>
     public partial class DomainTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>App Service plan status.</summary>
     public partial struct StatusOptions :
         System.IEquatable<StatusOptions>
     {

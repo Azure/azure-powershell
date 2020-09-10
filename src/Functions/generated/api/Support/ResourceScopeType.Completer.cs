@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Name of a resource type this recommendation applies, e.g. Subscription, ServerFarm, Site.
-    /// </summary>
+    /// <summary>Argument completer implementation for ResourceScopeType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceScopeTypeTypeConverter))]
     public partial struct ResourceScopeType :
         System.Management.Automation.IArgumentCompleter

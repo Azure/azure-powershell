@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Describes what tool created this Application Insights component. Customers using this API should set this to the default
-    /// 'rest'.
-    /// </summary>
+    /// <summary>Argument completer implementation for RequestSource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSourceTypeConverter))]
     public partial struct RequestSource :
         System.Management.Automation.IArgumentCompleter

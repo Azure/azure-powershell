@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of the hostname.</summary>
     public partial struct HostNameType :
         System.IEquatable<HostNameType>
     {

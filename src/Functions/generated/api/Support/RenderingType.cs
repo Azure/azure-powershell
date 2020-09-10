@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Rendering Type</summary>
     public partial struct RenderingType :
         System.IEquatable<RenderingType>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The lease status of the container.</summary>
+    /// <summary>TypeConverter implementation for LeaseStatus.</summary>
     public partial class LeaseStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

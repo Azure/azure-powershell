@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Log entry type</summary>
     public partial struct MSDeployLogEntryType :
         System.IEquatable<MSDeployLogEntryType>
     {

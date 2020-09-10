@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>State of the storage account.</summary>
+    /// <summary>TypeConverter implementation for AzureStorageState.</summary>
     public partial class AzureStorageStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

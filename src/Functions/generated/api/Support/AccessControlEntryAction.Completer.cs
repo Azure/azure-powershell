@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Action object.</summary>
+    /// <summary>Argument completer implementation for AccessControlEntryAction.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryActionTypeConverter))]
     public partial struct AccessControlEntryAction :
         System.Management.Automation.IArgumentCompleter

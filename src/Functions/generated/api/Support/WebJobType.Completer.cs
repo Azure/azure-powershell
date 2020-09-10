@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Job type.</summary>
+    /// <summary>Argument completer implementation for WebJobType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WebJobTypeTypeConverter))]
     public partial struct WebJobType :
         System.Management.Automation.IArgumentCompleter

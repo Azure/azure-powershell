@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The action to take when an unauthenticated client attempts to access the app.</summary>
     public partial struct UnauthenticatedClientAction :
         System.IEquatable<UnauthenticatedClientAction>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Current status of the App Service Environment.</summary>
+    /// <summary>TypeConverter implementation for HostingEnvironmentStatus.</summary>
     public partial class HostingEnvironmentStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

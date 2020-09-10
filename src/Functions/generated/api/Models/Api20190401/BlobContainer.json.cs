@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             __azureEntityResource = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.AzureEntityResource(json);
-            {_containerProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ContainerProperties.FromJson(__jsonProperties) : ContainerProperty;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ContainerProperties.FromJson(__jsonProperties) : Property;}
             AfterFromJson(json);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return container;
             }
             __azureEntityResource?.ToJson(container, serializationMode);
-            AddIf( null != this._containerProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._containerProperty.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

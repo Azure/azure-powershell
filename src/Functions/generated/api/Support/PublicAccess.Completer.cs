@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Specifies whether data in the container may be accessed publicly and the level of access.
-    /// </summary>
+    /// <summary>Argument completer implementation for PublicAccess.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccessTypeConverter))]
     public partial struct PublicAccess :
         System.Management.Automation.IArgumentCompleter

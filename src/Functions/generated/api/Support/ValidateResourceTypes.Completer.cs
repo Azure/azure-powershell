@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Resource type used for verification.</summary>
+    /// <summary>Argument completer implementation for ValidateResourceTypes.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypesTypeConverter))]
     public partial struct ValidateResourceTypes :
         System.Management.Automation.IArgumentCompleter
