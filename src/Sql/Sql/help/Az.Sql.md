@@ -410,9 +410,6 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
-### [New-AzSqlDatabaseImportExisting](New-AzSqlDatabaseImportExisting.md)
-Imports a .bacpac file into a preexisting database on the server.
-
 ### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
 This command creates a new Azure SQL Database Instance Failover Group.
 

@@ -30,19 +30,6 @@ function Test-ExportDatabase
     Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded
 }
 
-function Test-ImportExistingDatabase
-{
-	# Setup	
-    $testSuffix = 90070
-    $createServer = $true
-    $createDatabase = $true
-    $createFirewallRule = $true
-    $operationName = "ImportExisting"
-    $succeeded = $true
-
-    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded
-}
-
 function Test-ImportNewDatabase
 {
 	# Setup	
@@ -62,7 +49,6 @@ function Test-ImportNewDatabase
     $params = Get-SqlDatabaseImportExportTestEnvironmentParameters  $testSuffix
     $rg = New-AzResourceGroup -Name $params.rgname -Location $params.location
     $export = "Export"
-    $importExisting = "ImportExisting"
     $importNew = "ImportNew"
 
 	try
@@ -104,23 +90,6 @@ function Test-ImportNewDatabase
             #Assert-AreEqual $exportResponse.AdministratorLogin $params.userName
             #Assert-Null $exportResponse.AdministratorLoginPassword
             #Assert-AreEqual $exportResponse.AuthenticationType $params.authType
-        }
-
-        if($operationName -eq $importExisting){
-            $importResponse = New-AzSqlDatabaseImportExisting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
-            Write-Output "Assert-NotNull importResponse"
-            Assert-NotNull $importResponse
-            Write-Output (ConvertTo-Json $importResponse)
-            #$operationStatusLink = $importResponse.OperationStatusLink
-            #Assert-AreEqual $importResponse.ResourceGroupName $params.rgname
-            #Assert-AreEqual $importResponse.ServerName $params.serverName
-            #Assert-AreEqual $importResponse.DatabaseName $params.databaseName
-            #Assert-AreEqual $importResponse.StorageKeyType $params.storageKeyType
-            #Assert-Null $importResponse.StorageKey
-            #Assert-AreEqual $importResponse.StorageUri $params.importBacpacUri
-            #Assert-AreEqual $importResponse.AdministratorLogin $params.userName
-            #Assert-Null $importResponse.AdministratorLoginPassword
-            #Assert-AreEqual $importResponse.AuthenticationType $params.authType
         }
 
         if($operationName -eq $importNew){

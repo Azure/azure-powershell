@@ -121,40 +121,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         }
 
         /// <summary>
-        /// Creates a new import request
-        /// </summary>
-        /// <param name="importRequest">Import request parameters</param>
-        /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
-        public AzureSqlDatabaseImportExportBaseModel ImportExistingDatabase(AzureSqlDatabaseImportModel importRequest)
-        {
-            Management.Sql.Models.ImportExistingDatabaseDefinition parameters = new Management.Sql.Models.ImportExistingDatabaseDefinition()
-            {
-                AdministratorLogin = importRequest.AdministratorLogin,
-                AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword),
-                StorageKey = importRequest.StorageKey,
-                StorageKeyType = importRequest.StorageKeyType.ToString(),
-                StorageUri = importRequest.StorageUri.ToString(),
-                NetworkIsolation = new Management.Sql.Models.NetworkIsolationSettings()
-                {
-                    SqlServerResourceId = importRequest.NetworkIsolationSettings.SqlServerResourceId,
-                    StorageAccountResourceId = importRequest.NetworkIsolationSettings.StorageAccountResourceId
-                }
-            };
-
-            if (importRequest.AuthenticationType != AuthenticationType.None)
-            {
-                parameters.AuthenticationType = importRequest.AuthenticationType.ToString().ToLowerInvariant();
-            }
-
-            Uri azureAsyncOperation = null;
-            ImportExportOperationResult response;
-
-            response = Communicator.BeginImportExistingDatabase(importRequest.ResourceGroupName, importRequest.ServerName, importRequest.DatabaseName, parameters, out azureAsyncOperation);
-
-            return CreateImportExportResponse(response, importRequest, azureAsyncOperation);
-        }
-
-        /// <summary>
         /// Gets the status of an import/export operation
         /// </summary>
         /// <param name="operationStatusLink">The operation status link</param>

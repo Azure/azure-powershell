@@ -42,13 +42,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ImportNewDatabase");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Sql, "Needs to be re-recorded")]
-        public void TestImportExistingDatabase()
-        {
-            RunPowerShellTest("Test-ImportExistingDatabase");
-        }
     }
 }

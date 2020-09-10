@@ -114,19 +114,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return result;
         }
 
-        /// <summary>
-        /// Creates new import request for existing database
-        /// </summary>
-        public ImportExportOperationResult BeginImportExistingDatabase(string resourceGroupName, string serverName, string databaseName, ImportExistingDatabaseDefinition parameters, out Uri operationStatusLink)
-        {
-            this.LastLocationHeader = null;
-            LocationHeaderResetEvent.Reset();
-            ImportExportOperationResult result = GetCurrentSqlClient().ImportExport.BeginImport(resourceGroupName, serverName, databaseName, parameters);
-            LocationHeaderResetEvent.WaitOne(3000);
-            operationStatusLink = this.LastLocationHeader;
-            return result;
-        }
-
         public ImportExportOperationResult GetOperationStatus(string operationStatusLink)
         {
             var client = GetCurrentSqlClient();
