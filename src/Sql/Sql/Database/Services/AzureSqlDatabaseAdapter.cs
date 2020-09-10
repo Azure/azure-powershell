@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 case "Zone":
                     return "ZRS";
                 default:
-                    return "GRS";
+                    return null;
             }
         }
     }
