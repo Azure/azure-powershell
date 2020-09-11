@@ -5,15 +5,28 @@ param(
     $gallery
 )
 
-if( $gallery -eq 'PSGallery' ){
-    Write-Host "Setting $gallery Trusted..."
-    Set-PSRepository -Name $gallery -InstallationPolicy Trusted
+switch ($gallery) {
+    'PSGallery' 
+    {  
+        break;
+    }
+    'TestGallery'
+    { 
+        Write-Host "Registering $gallery..."
+        Register-PSRepository -Name $gallery -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        break;
+    }
+    'LocalRepo'
+    {
+        Write-Host "Setting $gallery Trusted..."
+        Register-PSRepository -Name $gallery -SourceLocation 'https://bezstorage101.file.core.windows.net/localrepo/local repository' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        break;
+    }
+    Default 
+    {
+        throw "Invalid gallery"
+    }
 }
-
-if( $gallery -eq 'TestGallery' ){
-    Write-Host "Registering $gallery..."
-    Register-PSRepository -Name $gallery -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
-}    
 
 Write-Host "Installing Az..."
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
