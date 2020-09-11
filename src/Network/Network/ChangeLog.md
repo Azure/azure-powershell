@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for Azure Express Route Port
+    - `New-AzExpressRoutePortLOA`
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
         - Added -HostedSubnet parameter to support IP configuration child resource
