@@ -24,6 +24,14 @@
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
     -  `Add-AzStorageAccountManagementPolicyAction`
+* Supported enable/disable Blob container soft delete
+    -  `Enable-AzStorageContainerDeleteRetentionPolicy`
+    -  `Disable-AzStorageContainerDeleteRetentionPolicy`
+* Supported list deleted Blob containers
+    -  `Get-AzRmStorageContainer`
+    -  `Get-AzStorageContainer`
+* Supported restore deleted Blob container
+    -  `Restore-AzStorageContainer`
 
 ## Version 2.5.2
 * Supported Container access policy with new permission x,t

@@ -22,6 +22,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     /// <summary>
     /// remove specified azure container
@@ -79,29 +81,52 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
             }
-
-            BlobRequestOptions requestOptions = RequestOptions;
-            AccessCondition accessCondition = null;
-
-            CloudBlobContainer container = localChannel.GetContainerReference(name);
-
-            if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
-            }
-
             string result = string.Empty;
             bool removed = false;
 
-            if (force || ContainerIsEmpty(container) || OutputStream.ConfirmAsync(String.Format("Remove container and all content in it: {0}", name)).Result)
+            CloudBlobContainer container = localChannel.GetContainerReference(name);
+
+            if (!UseTrack2Sdk())//Track1
             {
-                await localChannel.DeleteContainerAsync(container, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-                result = String.Format(Resources.RemoveContainerSuccessfully, name);
-                removed = true;
+
+                BlobRequestOptions requestOptions = RequestOptions;
+                AccessCondition accessCondition = null;
+
+                if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
+                {
+                    throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
+                }
+
+                if (force || ContainerIsEmpty(container) || OutputStream.ConfirmAsync(String.Format("Remove container and all content in it: {0}", name)).Result)
+                {
+                    await localChannel.DeleteContainerAsync(container, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                    result = String.Format(Resources.RemoveContainerSuccessfully, name);
+                    removed = true;
+                }
+                else
+                {
+                    result = String.Format(Resources.RemoveContainerCancelled, name);
+                }
             }
             else
             {
-                result = String.Format(Resources.RemoveContainerCancelled, name);
+                BlobContainerClient containerClient = AzureStorageContainer.GetTrack2BlobContainerClient(container, this.Channel.StorageContext, ClientOptions);
+
+                if (!containerClient.Exists(this.CmdletCancellationToken))
+                {
+                    throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
+                }
+
+                if (force || ContainerIsEmpty(container) || OutputStream.ConfirmAsync(String.Format("Remove container and all content in it: {0}", name)).Result)
+                {
+                    await containerClient.DeleteAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                    result = String.Format(Resources.RemoveContainerSuccessfully, name);
+                    removed = true;
+                }
+                else
+                {
+                    result = String.Format(Resources.RemoveContainerCancelled, name);
+                }
             }
 
             OutputStream.WriteVerbose(taskId, result);

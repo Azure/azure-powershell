@@ -306,7 +306,43 @@ function Test-Blob
 		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
 		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
 		Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
-		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
+		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext	
+
+		# container softdelete test
+		## Enabled container softdelete,then create and delete a container
+		Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -RetentionDays 3
+		$containerNamesoftdelete = "softdeletecontainer"
+		$newcontainerName = "newcontainer"
+		New-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
+		Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
+		## Get container without -IncludeDeleted, won't list out deleted containers
+		$deletedcontainer = Get-AzStorageContainer -Context $storageContext | ?{$_.IsDeleted}
+		Assert-AreEqual 0 $deletedcontainer.Count
+		## Get container with -IncludeDeleted, will list out deleted containers
+		$deletedcontainer = Get-AzStorageContainer -Context $storageContext -IncludeDeleted | ?{$_.IsDeleted}
+		Assert-AreEqual 1 $deletedcontainer.Count
+		Assert-AreEqual $true $deletedcontainer.IsDeleted
+		Assert-NotNull $deletedcontainer.VersionId
+		## restore container with pipeline, to same container name
+		sleep 60 # need wait for some time, or restore will fail with 409 (The specified container is being deleted.)
+		$deletedcontainer | Restore-AzStorageContainer  
+		$container =  Get-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
+		Assert-AreEqual 1 $container.Count
+		Assert-Null $container.IsDeleted
+		Assert-Null $container.VersionId
+		## restore container with parameter, to a new container name
+		Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
+		$deletedcontainer = Get-AzStorageContainer -Context $storageContext -IncludeDeleted | ?{$_.IsDeleted}
+		Assert-AreEqual 1 $deletedcontainer.Count
+		sleep 60 # need wait for some time, or restore will fail with 409 (The specified container is being deleted.)
+		Restore-AzStorageContainer -Name $deletedcontainer[0].Name -VersionId $deletedcontainer[0].VersionId -DestinationContainerName $newcontainerName -Context $storageContext
+		$container =  Get-AzStorageContainer -Name $newcontainerName -Context $storageContext
+		Assert-AreEqual 1 $container.Count
+		Assert-AreEqual $newcontainerName $container.Name
+		Assert-Null $container.IsDeleted
+		Assert-Null $container.VersionId
+		Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName 
+		Remove-AzStorageContainer -Name $newcontainerName -Context $storageContext -Force	
 
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext

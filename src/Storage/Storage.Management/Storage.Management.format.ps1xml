@@ -159,6 +159,14 @@
             <Label>HasImmutabilityPolicy</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Deleted</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VersionId</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -177,6 +185,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.HasImmutabilityPolicy</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Deleted</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Version</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -355,6 +369,14 @@
               <ListItem>
                 <Label>DeleteRetentionPolicy.Days</Label>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ContainerDeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.ContainerDeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ContainerDeleteRetentionPolicy.Days</Label>
+                <ScriptBlock>$_.ContainerDeleteRetentionPolicy.Days</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>RestorePolicy.Enabled</Label>

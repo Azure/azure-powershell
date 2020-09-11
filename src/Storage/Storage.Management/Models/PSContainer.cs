@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+            this.Deleted = container.Deleted;
+            this.RemainingRetentionDays = container.RemainingRetentionDays;
+            this.DeletedTime = container.DeletedTime;
+            this.Version = container.Version;
         }
 
         public PSContainer(BlobContainer container)
@@ -69,6 +73,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+            this.Deleted = container.Deleted;
+            this.RemainingRetentionDays = container.RemainingRetentionDays;
+            this.DeletedTime = container.DeletedTime;
+            this.Version = container.Version;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -113,6 +121,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string DefaultEncryptionScope { get; set; }
         
         public bool? DenyEncryptionScopeOverride { get; set; }
+
+        public int? RemainingRetentionDays { get; }
+
+        public DateTime? DeletedTime { get; }
+
+        public bool? Deleted { get; }
+
+        public string Version { get; }
 
 
         public static string ParseResourceGroupFromId(string idFromServer)

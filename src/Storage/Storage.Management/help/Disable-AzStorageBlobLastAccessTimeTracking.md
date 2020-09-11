@@ -31,7 +31,7 @@ The **Disable-AzStorageBlobDeleteRetentionPolicy** cmdlet disables delete retent
 
 ### Example 1: Disable last access time tracking for the Blob service
 ```
-C:\PS>Disable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
+C:\PS>Disable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```
 
 This command disables last access time tracking for the Blob service.

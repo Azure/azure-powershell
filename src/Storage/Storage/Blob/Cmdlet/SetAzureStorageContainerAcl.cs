@@ -23,6 +23,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// set access level for specified container
@@ -82,27 +84,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
             }
 
             BlobRequestOptions requestOptions = RequestOptions;
-            AccessCondition accessCondition = null;
 
             CloudBlobContainer container = localChannel.GetContainerReference(name);
+            BlobContainerClient containerClient = AzureStorageContainer.GetTrack2BlobContainerClient(container, this.Channel.StorageContext, ClientOptions);
 
             // Get container permission and set the public access as input
-            BlobContainerPermissions permissions;
+            BlobContainerAccessPolicy accessPolicy;
             try
             {
-                permissions = localChannel.GetContainerPermissions(container, null, requestOptions, OperationContext);
+                accessPolicy = containerClient.GetAccessPolicy(null, this.CmdletCancellationToken);
             }
-            catch (StorageException e) when (e.IsNotFoundException())
+            catch (global::Azure.RequestFailedException e) when (e.Status == 404)
             {
                 throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
             }
-            permissions.PublicAccess = accessLevel;
+            PublicAccessType publicAccessType = PublicAccessType.None;
+            switch (accessLevel)
+            {
+                case BlobContainerPublicAccessType.Blob:
+                    publicAccessType = PublicAccessType.Blob;
+                    break;
+                case BlobContainerPublicAccessType.Container:
+                    publicAccessType = PublicAccessType.BlobContainer;
+                    break;
+                case BlobContainerPublicAccessType.Off:
+                    publicAccessType = PublicAccessType.None;
+                    break;
+                default:
+                case BlobContainerPublicAccessType.Unknown:
+                    throw new ArgumentOutOfRangeException("Permission");
 
-            await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+            }
+            await containerClient.SetAccessPolicyAsync(publicAccessType, accessPolicy.SignedIdentifiers, null, this.CmdletCancellationToken).ConfigureAwait(false);
 
             if (PassThru)
             {
-                WriteCloudContainerObject(taskId, localChannel, container, permissions);
+                AzureStorageContainer storageContainer = new AzureStorageContainer(containerClient, Channel.StorageContext);
+                storageContainer.SetTrack2Permission();
+                OutputStream.WriteObject(taskId, storageContainer);
             }
         }
 

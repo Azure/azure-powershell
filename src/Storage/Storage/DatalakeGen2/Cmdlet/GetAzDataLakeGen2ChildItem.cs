@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             Page<PathItem> page;
             enumerator.MoveNext();
             page = enumerator.Current;
-            if(page.ContinuationToken != null && (MaxCount == null || page.Values.Count < MaxCount.Value))
+            if(string.IsNullOrEmpty(page.ContinuationToken) && (MaxCount == null || page.Values.Count < MaxCount.Value))
             {
                 WriteWarning(string.Format("Not all result returned, to list the left items run this cmdlet again with parameter: '-ContinuationToken {0}'.", page.ContinuationToken));
             }

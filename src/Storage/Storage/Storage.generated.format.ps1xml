@@ -187,6 +187,17 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>LastModified</Label>
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IsDeleted</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VersionId</Label>
+            <Width>17</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -203,6 +214,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>LastModified</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IsDeleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VersionId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

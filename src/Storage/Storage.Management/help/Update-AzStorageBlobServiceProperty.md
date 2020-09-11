@@ -50,7 +50,7 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : 
-IsVersioningEnabled           : 
+IsVersioningEnabled           :
 ```
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
@@ -67,7 +67,7 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : True
-IsVersioningEnabled           : 
+IsVersioningEnabled           :
 ```
 
 This command enables Changefeed on Blob service of a Storage account
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
