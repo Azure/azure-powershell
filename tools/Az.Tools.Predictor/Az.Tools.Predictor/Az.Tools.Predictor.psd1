@@ -77,10 +77,4 @@ PrivateData = @{
 # HelpInfo URI of this module
 # HelpInfoURI = ''
 
-# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
-
-# Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @('Az.Tools.Predictor.ps1')
-
 }

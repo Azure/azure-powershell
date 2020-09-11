@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="Az.Tools.Predictor.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
