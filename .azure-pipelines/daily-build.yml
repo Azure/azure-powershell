@@ -124,7 +124,8 @@ steps:
           dotnet tool run pwsh -c $command
       }else{
         [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
-        Write-Host "Get source location", [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
+        $srcLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
+        Write-Host "Get source location", $srcLocation
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
       
