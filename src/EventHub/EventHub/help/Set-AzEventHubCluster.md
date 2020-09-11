@@ -8,19 +8,19 @@ schema: 2.0.0
 # Set-AzEventHubCluster
 
 ## SYNOPSIS
-Updates the Tags for the given Cluster
+Updates the Tag for the given Cluster
 
 ## SYNTAX
 
 ### ClusterPropertiesSet (Default)
 ```
 Set-AzEventHubCluster [-ResourceGroupName] <String> [-Name] <String> [-Location <String>] [-Capacity <Int32>]
- [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClusterResourceIdParameterSet
 ```
-Set-AzEventHubCluster [-Name] <String> [-ResourceId] <String> [-Tags <Hashtable>]
+Set-AzEventHubCluster [-Name] <String> [-ResourceId] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ The Set-AzEventHubCluster cmdlet updates tags of the given cluster
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557 -Tags @{"ClusterTag3" = "Tag3"; "ClusterTag4" = "Tag4";}
+PS C:\> Set-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557 -Tag @{"ClusterTag3" = "Tag3"; "ClusterTag4" = "Tag4";}
 
 Id        : /subscriptions/{SubID}/resourceGroups/RSG-Cluster27651/providers/Microsoft.EventHub/clusters/Eventhub-Cluster-5557
 Name      : Eventhub-Cluster-5557
@@ -159,8 +159,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Hashtables which represents resource Tags for Clusters
+### -Tag
+Hashtables which represents resource Tag for Clusters
 
 ```yaml
 Type: System.Collections.Hashtable

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags for Clusters")]
         [Parameter(Mandatory = false, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags for Clusters")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
             if (ParameterSetName.Equals(ClusterPropertiesParameterSet))
             {
-                if (Tags != null)
+                if (Tag != null)
                 {
-                    cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+                    cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                 }               
 
                 if (Capacity != null)

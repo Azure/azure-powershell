@@ -45,6 +45,6 @@ function ClusterTest
 	Assert-AreEqual $getResponse.Sku.Capacity "1" "Cluster get : Capacity matches"
 
 	#Update Cluster
-	$resultUpdate = Set-AzEventHubCluster -ResourceGroup $resourceGroupName -Name $clusterName -Location $location -Tags @{"ClusterTag1" = "Tag3"; "ClusterTag2" = "Tag4";}
+	$resultUpdate = Set-AzEventHubCluster -ResourceGroup $resourceGroupName -Name $clusterName -Location $location -Tag @{"ClusterTag1" = "Tag3"; "ClusterTag2" = "Tag4";}
 	Assert-AreEqual $resultUpdate.Name $clusterName "Updated Cluster Name matches"    
 }
