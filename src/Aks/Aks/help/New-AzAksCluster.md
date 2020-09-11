@@ -13,16 +13,16 @@ Create a new managed Kubernetes cluster.
 ## SYNTAX
 
 ```
-New-AzAksCluster [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
- [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodeScaleSetEvictionPolicy <String>]
- [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-LoadBalancerSku <String>]
- [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzAksCluster [-Force] [-GenerateSshKey] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>]
+ [-NodeMaxPodCount <Int32>] [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AcrNameToAttach <String>] [-EnableRbac]
+ [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-NetworkPlugin <String>] [-LoadBalancerSku <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -DnsNamePrefix
-The DNS name prefix for the cluster.
+The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.
 
 ```yaml
 Type: System.String
@@ -141,6 +141,21 @@ Accept wildcard characters: False
 
 ### -Force
 Create cluster even if it already exists
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateSshKey
+Generate ssh key file to {HOME}/.ssh/id_rsa.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -337,6 +352,21 @@ Accept wildcard characters: False
 
 ### -NodeOsType
 OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolMode
+NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String

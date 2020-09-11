@@ -19,7 +19,7 @@
 function Test-DatabasePauseResume
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "westcentralus"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
@@ -29,7 +29,7 @@ function Test-DatabasePauseResume
 	$collationName = "SQL_Latin1_General_CP1_CI_AS"
 	$maxSizeBytes = 250GB
 	$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c
 
 	try
 	{
@@ -38,7 +38,7 @@ function Test-DatabasePauseResume
 		Assert-AreEqual $dwdb2.DatabaseName $databaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
-		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb2.CollationName $collationName
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
@@ -50,7 +50,7 @@ function Test-DatabasePauseResume
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb3.Edition DataWarehouse
-		Assert-AreEqual $dwdb3.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb3.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb3.CollationName $collationName
 		Assert-AreEqual $dwdb3.Status "Online"
 	}
@@ -80,7 +80,7 @@ function Test-DatabasePauseResumePiped
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c
 
 
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.
@@ -100,9 +100,9 @@ function Test-DatabasePauseResumePiped
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb3.Edition DataWarehouse
-		Assert-AreEqual $dwdb3.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb3.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb3.CollationName $collationName
-		Assert-AreEqual $dwdb3.Status "Online"
+		Assert-AreEqual $dwdb3.Status "OnlineChangingDwPerformanceTiers"
 	}
 	finally
 	{
