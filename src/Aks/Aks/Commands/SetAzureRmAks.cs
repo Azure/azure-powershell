@@ -90,7 +90,15 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 RunCmdLet(() =>
                 {
-                    if (Exists())
+                    bool isClusterInputed = false;
+                    if (ParameterSetName.Equals(InputObjectParameterSet))
+                    {
+                        isClusterInputed = true;
+                    } else
+                    {
+                        isClusterInputed = Exists();
+                    }
+                    if (isClusterInputed)
                     {
                         if (cluster == null)
                         {

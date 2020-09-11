@@ -357,9 +357,10 @@ namespace Microsoft.Azure.Commands.Aks
                 WriteVerbose(string.Format(Resources.ClusterExists, exists));
                 return exists;
             }
-            catch (CloudException)
+            catch (CloudException exception)
             {
-                WriteVerbose(Resources.ClusterDoesNotExist);
+                // Write exception out to error channel.
+                WriteError(new ErrorRecord(exception, Resources.ClusterDoesNotExist, ErrorCategory.CloseError, null));
                 return false;
             }
         }
