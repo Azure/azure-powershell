@@ -115,14 +115,17 @@ steps:
   displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
     targetType: 'inline'
-    script: |    
-      $command = "`$PSVersionTable`
-      ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
-      Exit "
-      $psVersion = "$(PSVersion)"
-      [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
-      $srcLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
-      Write-Host "Get source location", $srcLocation
+    script: |
+      $gallery = "$(GALLERY_NAME)"
+      if($gallery -eq "LocalRepo"){
+        $command = "`$PSVersionTable`
+        ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) $(Pipeline.Workspace)/LocalRepo `
+        Exit "
+      }else{
+        $command = "`$PSVersionTable`
+        ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
+        Exit "
+      }
       if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
       }else{
