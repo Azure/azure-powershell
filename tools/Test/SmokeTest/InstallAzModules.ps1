@@ -7,7 +7,9 @@ param(
 
 switch ($gallery) {
     'PSGallery' 
-    {  
+    {   
+        Write-Host "Setting $gallery Trusted..."
+        Set-PSRepository -Name $gallery -InstallationPolicy Trusted
         break;
     }
     'TestGallery'
@@ -18,8 +20,9 @@ switch ($gallery) {
     }
     'LocalRepo'
     {
-        Write-Host "Setting $gallery Trusted..."
-        Register-PSRepository -Name $gallery -SourceLocation 'https://bezstorage101.file.core.windows.net/localrepo/local repository' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        Write-Host "Registering $gallery Trusted..."
+        $sourceLocation = Join-Path -Path $env:PIPELINE.WORKSPACE -ChildPath "LocalRepo"
+        Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
         break;
     }
     Default 
