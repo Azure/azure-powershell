@@ -32,7 +32,7 @@
 * Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
 * Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
 * Added cmdlet `New-AzSqlDatabaseImportExisting`
-* Update to Databases cmdlets to support backup storage type specification
+* Updated Databases cmdlets to support backup storage type specification
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
