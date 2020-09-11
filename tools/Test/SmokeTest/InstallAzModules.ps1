@@ -2,7 +2,10 @@
 param(
     [string]
     [Parameter(Mandatory = $true, Position=0)]
-    $gallery
+    $gallery,
+    [string]
+    [Parameter(Mandatory = $false, Position=1)]
+    $sourceLocation
 )
 
 switch ($gallery) {
@@ -21,8 +24,6 @@ switch ($gallery) {
     'LocalRepo'
     {
         Write-Host "Registering $gallery Trusted..."
-        $sourceLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
-        Write-Host "Get source location", [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
         Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
         break;
     }
