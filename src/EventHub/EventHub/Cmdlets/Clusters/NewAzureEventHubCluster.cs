@@ -48,10 +48,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags for Clusters")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ClusterInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Cluster InputObject")]
-        [ValidateNotNullOrEmpty]
-        public PSEventHubClusterAttributes InputObject { get; set; }
-
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Resource ID of Cluster")]
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Cluster")]
         [ValidateNotNullOrEmpty]
@@ -75,17 +71,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                     cluster.Sku.Capacity = 1;
                 }
 
-
                 if (Tag != null)
                 {
                     cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                 }                               
-            }
-
-            if (ParameterSetName.Equals(ClusterInputObjectParameterSet))
-            {
-                cluster = InputObject;
-                cluster.Name = Name;
             }
 
             if (ParameterSetName.Equals(ClusterResourceIdParameterSet))
@@ -94,7 +83,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 cluster = Client.GetEventHubCluster(identifier.ResourceGroupName, identifier.ResourceName);
                 cluster.Name = Name; 
             }
-
 
             if (ShouldProcess(target:cluster.Name, action:string.Format(Resources.CreateEventHub,cluster.Name,Name)))
             {

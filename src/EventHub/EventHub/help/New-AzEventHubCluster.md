@@ -25,12 +25,6 @@ New-AzEventHubCluster [-Name] <String> [-ResourceId] <String> [-DefaultProfile <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ClusterInputObjectSet
-```
-New-AzEventHubCluster -InputObject <PSEventHubClusterAttributes> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The New-AzEventHubCluster cmdlet creates the dedicated eventhub cluster in the given resource group
 
@@ -86,21 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Cluster InputObject
-
-```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes
-Parameter Sets: ClusterInputObjectSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Location
 Location of Cluster
 
@@ -121,7 +100,7 @@ Cluster Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet, ClusterResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -229,8 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Hashtable
-
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes
 
 ## OUTPUTS
 

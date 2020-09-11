@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 sasRule.Rights = new List<string>();
                 if (Rights != null && Rights.Length > 0)
                 {
-
                     if (Array.Exists(Rights, element => element.Equals(Manage) && (!Array.Exists(Rights, element1 => element1.Equals(Listen)) || !Array.Exists(Rights, element1 => element1.Equals(Send)))))
                     {
                         Exception exManage = new Exception("Assigning 'Manage' to rights requires ‘Listen and ‘Send' to be included with. e.g. @(\"Manage\",\"Listen\",\"Send\")");

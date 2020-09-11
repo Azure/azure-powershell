@@ -125,8 +125,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string Basic = "Basic";
             internal const string Standard = "Standard";
             internal const string Premium = "Premium";
-        }
-        
+        }        
         protected struct RegeneKeys
         {
             internal const string PrimaryKey = "PrimaryKey";
