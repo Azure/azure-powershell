@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -241,6 +241,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default ssh key already exists. Please use -SshKeyVaule..
+        /// </summary>
+        internal static string DefaultSshKeyAlreadyExist {
+            get {
+                return ResourceManager.GetString("DefaultSshKeyAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deploying your managed Kubernetes cluster..
         /// </summary>
         internal static string DeployingYourManagedKubeCluster {
@@ -255,6 +264,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string DidNotFindJob {
             get {
                 return ResourceManager.GetString("DidNotFindJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t use -GenerateSshKey and -SshKeyVaule at the same time..
+        /// </summary>
+        internal static string DonotUseGenerateSshKeyWithSshKeyValue {
+            get {
+                return ResourceManager.GetString("DonotUseGenerateSshKeyWithSshKeyValue", resourceCulture);
             }
         }
         
@@ -318,6 +336,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string DoYouWantToOverwriteExistingFile {
             get {
                 return ResourceManager.GetString("DoYouWantToOverwriteExistingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find ssh-keygen. Please enable OpenSSH on your local machine..
+        /// </summary>
+        internal static string EnableSsh {
+            get {
+                return ResourceManager.GetString("EnableSsh", resourceCulture);
             }
         }
         
@@ -399,6 +426,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string LocationCannotBeUpdateForExistingCluster {
             get {
                 return ResourceManager.GetString("LocationCannotBeUpdateForExistingCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NetworkPlugin must be azure if you want to use Windows..
+        /// </summary>
+        internal static string NetworkPluginShouldBeAzure {
+            get {
+                return ResourceManager.GetString("NetworkPluginShouldBeAzure", resourceCulture);
             }
         }
         
@@ -534,6 +570,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string RunningKubectlGetPodsKubeconfigNamespaceSelector {
             get {
                 return ResourceManager.GetString("RunningKubectlGetPodsKubeconfigNamespaceSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plain text of SecureString should match the patten {0}..
+        /// </summary>
+        internal static string SecureStringNotValid {
+            get {
+                return ResourceManager.GetString("SecureStringNotValid", resourceCulture);
             }
         }
         
@@ -700,6 +745,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating NodePoolMode..
+        /// </summary>
+        internal static string UpdatingNodePoolMode {
+            get {
+                return ResourceManager.GetString("UpdatingNodePoolMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating node VM size.
         /// </summary>
         internal static string UpdatingNodeVmSize {
@@ -813,6 +867,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string WindowsNodePoolNameLengthLimitation {
             get {
                 return ResourceManager.GetString("WindowsNodePoolNameLengthLimitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowsProfileAdminUser and WindowsProfileAdminUserPassword must appear together..
+        /// </summary>
+        internal static string WindowsUserNameAndPasswordShouldAppearTogether {
+            get {
+                return ResourceManager.GetString("WindowsUserNameAndPasswordShouldAppearTogether", resourceCulture);
             }
         }
     }

@@ -21,9 +21,11 @@ using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
+    [CmdletOutputBreakingChange(typeof(PSManagementPolicyActionGroup), ChangeDescription = "The type of sub child property DaysAfterModificationGreaterThan will change from int to int? in a future release.")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = AccountNamePolicyRuleParameterSet), OutputType(typeof(PSManagementPolicy))]
     public class SetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {

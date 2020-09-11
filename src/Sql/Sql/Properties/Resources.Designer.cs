@@ -304,6 +304,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Canceling Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
+            get {
+                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
+            get {
+                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot change hardware family..
         /// </summary>
         internal static string CannotChangeHardwareFamily {
@@ -559,7 +577,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
         /// </summary>
         internal static string GeoBackupRedundancyChosenWarning {
-            get {
+            get 
+            {
                 return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
             }
         }
@@ -568,7 +587,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
         /// </summary>
         internal static string GeoBackupRedundancyNotChosenWarning {
-            get {
+            get 
+            {
                 return ResourceManager.GetString("GeoBackupRedundancyNotChosenWarning", resourceCulture);
             }
         }

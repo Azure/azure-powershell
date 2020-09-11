@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string BackupStorageRedundancy { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
-
+        
         /// <summary>
         /// Overriding to add warning message
         /// </summary>

@@ -43,7 +43,7 @@ function Test-Capabilities
 function Validate-Capabilities ($capabilities)
 {
 	Assert-NotNull $capabilities
-	Assert-AreEqual $capabilities.Status "Default"
+	Assert-AreEqual $capabilities.Status "Available"
 	Assert-True {$capabilities.SupportedServerVersions.Count -gt 0}
 
 	foreach($version in $capabilities.SupportedServerVersions) {

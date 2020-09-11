@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
 
     /// <summary>Lists the transaction nodes for a blockchain member.</summary>
     /// <remarks>
-    /// [OpenAPI] TransactionNodes_List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzBlockchainTransactionNode_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode))]
