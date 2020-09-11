@@ -26,15 +26,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId NetworkInterfaceIpConfiguration { get; set; }
 
         [JsonProperty(Order = 2)]
-        public PSResourceId VirtualNetwork { get; set; }
+        public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
 
         [JsonProperty(Order = 3)]
+        public PSResourceId VirtualNetwork { get; set; }
+
+        [JsonProperty(Order = 4)]
         public string IpAddress { get; set; }
 
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText
         {
             get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancerFrontendIPConfigurationIdText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancerFrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
