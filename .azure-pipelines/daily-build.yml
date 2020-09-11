@@ -31,7 +31,7 @@ strategy:
       Image_Name: 'macOS-10.15'
       PSVersion: '7.0.3'
 
-  maxParallel: 5
+  maxParallel: 4
 
 pool:
   vmImage: $(Image_Name)
@@ -86,7 +86,14 @@ steps:
           Exit "
           dotnet tool run pwsh -c $command
       }
-   
+- task: DownloadPipelineArtifact@2
+  condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
+  displayName: Download Artifacts from Build Pipeline
+  inputs:
+    buildType: specific
+    project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
+    definition: 693
+
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
   inputs:
