@@ -78,5 +78,5 @@ directive:
   - where:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
-    hide: true
+    remove: true
 ```

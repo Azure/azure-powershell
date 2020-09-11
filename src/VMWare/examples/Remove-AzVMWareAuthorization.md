@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete authorization for private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVMWareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete authorization for private cloud
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

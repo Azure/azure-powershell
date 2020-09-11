@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update cluster size by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group -ClusterSize 4
 
-{{ Add output here }}
+Name              Type
+----              ----
+azps-test-cluster Microsoft.AVS/privateClouds/clusters
 ```
 
-{{ Add description here }}
+Update cluster size by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Update cluster size by input object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group | Update-AzVMWareCluster -ClusterSize 4
 
-{{ Add output here }}
+Name              Type
+----              ----
+azps-test-cluster Microsoft.AVS/privateClouds/clusters
 ```
 
-{{ Add description here }}
+Update cluster size by input object
 

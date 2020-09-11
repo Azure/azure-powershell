@@ -93,7 +93,7 @@ function New-AzVMWarePrivateCloud {
         # Connectivity to internet is enabled or disabled
         ${Internet},
     
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Body')]
         [System.String]
         # Resource location

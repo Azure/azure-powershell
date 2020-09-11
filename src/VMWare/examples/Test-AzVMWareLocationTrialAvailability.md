@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check trial availability
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzVMWareLocationTrialAvailability -Location australiaeast
 
-{{ Add output here }}
+AvailableHost Status
+------------- ------
+0             TrialDisabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check trial availability
 

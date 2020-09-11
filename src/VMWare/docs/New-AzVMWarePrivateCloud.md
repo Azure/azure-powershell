@@ -13,9 +13,9 @@ Create or update a private cloud
 ## SYNTAX
 
 ```
-New-AzVMWarePrivateCloud -Name <String> -ResourceGroupName <String> -ManagementClusterSize <Int32>
- -NetworkBlock <String> -SkuName <String> [-SubscriptionId <String>] [-Internet <InternetEnum>]
- [-Location <String>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
+New-AzVMWarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
+ -ManagementClusterSize <Int32> -NetworkBlock <String> -SkuName <String> [-SubscriptionId <String>]
+ [-Internet <InternetEnum>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,23 +24,16 @@ Create or update a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
 
-{{ Add output here }}
+Location      Name            Type
+--------      ----            ----
+australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create private cloud
 
 ## PARAMETERS
 
@@ -97,7 +90,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

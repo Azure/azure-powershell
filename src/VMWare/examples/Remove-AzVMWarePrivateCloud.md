@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete private cloud
 

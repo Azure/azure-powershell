@@ -1,18 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check quota availability
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzVMWareLocationQuotaAvailability -Location australiaeast
 
-{{ Add output here }}
+Enabled
+-------
+Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzVMWareLocationQuotaAvailability -Location eastus
 
-{{ Add output here }}
+Enabled
+-------
+Disabled
 ```
 
-{{ Add description here }}
+Check quota availability
 
