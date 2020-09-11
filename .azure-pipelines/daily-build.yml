@@ -123,10 +123,8 @@ steps:
       if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
       }else{
-        $gallery = "$(GALLERY_NAME)"
-        if($Gallery -eq "LocalRepo"){
-          [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
-        }
+        [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
+        Write-Host "Get source location", [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
       
