@@ -252,5 +252,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzADApplication](./New-AzADApplication.md)
 
-[New-AzADApplication](./New-AzADApplication.md)
+[Update-AzADApplication](./Update-AzADApplication.md)
 

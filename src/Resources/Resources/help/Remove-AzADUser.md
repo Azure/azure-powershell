@@ -246,5 +246,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzADUser](./Get-AzADUser.md)
 
-[New-AzADUser](./New-AzADUser.md)
+[Update-AzADUser](./Update-AzADUser.md)
 
