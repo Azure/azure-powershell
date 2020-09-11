@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NetworkPlugin must be azure if you want to use Windows..
+        /// </summary>
+        internal static string NetworkPluginShouldBeAzure {
+            get {
+                return ResourceManager.GetString("NetworkPluginShouldBeAzure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No config file located at {0}. Creating Kube config..
         /// </summary>
         internal static string NoConfigFileLocatedAtCreatingKubeConfig {
@@ -561,6 +570,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string RunningKubectlGetPodsKubeconfigNamespaceSelector {
             get {
                 return ResourceManager.GetString("RunningKubectlGetPodsKubeconfigNamespaceSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plain text of SecureString should match the patten {0}..
+        /// </summary>
+        internal static string SecureStringNotValid {
+            get {
+                return ResourceManager.GetString("SecureStringNotValid", resourceCulture);
             }
         }
         
@@ -849,6 +867,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string WindowsNodePoolNameLengthLimitation {
             get {
                 return ResourceManager.GetString("WindowsNodePoolNameLengthLimitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowsProfileAdminUser and WindowsProfileAdminUserPassword must appear together..
+        /// </summary>
+        internal static string WindowsUserNameAndPasswordShouldAppearTogether {
+            get {
+                return ResourceManager.GetString("WindowsUserNameAndPasswordShouldAppearTogether", resourceCulture);
             }
         }
     }

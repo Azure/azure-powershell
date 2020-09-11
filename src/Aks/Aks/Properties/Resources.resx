@@ -381,4 +381,13 @@
   <data name="UpdatingNodePoolMode" xml:space="preserve">
     <value>Updating NodePoolMode.</value>
   </data>
+  <data name="SecureStringNotValid" xml:space="preserve">
+    <value>Plain text of SecureString should match the patten {0}.</value>
+  </data>
+  <data name="WindowsUserNameAndPasswordShouldAppearTogether" xml:space="preserve">
+    <value>WindowsProfileAdminUser and WindowsProfileAdminUserPassword must appear together.</value>
+  </data>
+  <data name="NetworkPluginShouldBeAzure" xml:space="preserve">
+    <value>NetworkPlugin must be azure if you want to use Windows.</value>
+  </data>
 </root>
