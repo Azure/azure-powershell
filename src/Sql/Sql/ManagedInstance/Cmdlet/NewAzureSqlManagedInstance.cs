@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Sql.Models;
@@ -50,6 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
         protected const string NewByInstancePoolResourceIdParameterSet =
             "NewByInstancePoolResourceIdParameterSet";
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
         /// Gets or sets the instance pool parent object
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The connection type used for connecting to the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        [PSArgumentCompleter("Proxy", "Redirect", "Default")]
         public string ProxyOverride { get; set; }
 
         /// <summary>
@@ -310,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
-        [ValidateSet("Local", "Zone", "Geo")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
@@ -318,6 +321,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -363,6 +372,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
                     // Unexpected exception
                     throw;
+                }
+            }
+
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(this.Location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.Name)))
+                    {
+                        return;
+                    }
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.Name)))
+                    {
+                        return;
+                    }
                 }
             }
 

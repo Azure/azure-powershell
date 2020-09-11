@@ -21,6 +21,19 @@
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
 * Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added Force parameter to `New-AzSqlInstance`
+* Added cmdlets for Managed Database Log Replay service
+	- `Start-AzSqlInstanceDatabaseLogReplay`
+	- `Get-AzSqlInstanceDatabaseLogReplay`
+	- `Complete-AzSqlInstanceDatabaseLogReplay`
+	- `Stop-AzSqlInstanceDatabaseLogReplay`
+* Added cmdlet `Get-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
+* Added cmdlet `New-AzSqlDatabaseImportExisting`
+* Update to Databases cmdlets to support backup storage type specification
+* Added Force parameter to `New-AzSqlDatabase`
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
