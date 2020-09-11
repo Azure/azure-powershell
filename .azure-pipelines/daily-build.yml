@@ -120,12 +120,12 @@ steps:
       ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
       Exit "
       $psVersion = "$(PSVersion)"
+      [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
+      $srcLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
+      Write-Host "Get source location", $srcLocation
       if($psVersion -ne "5.1.14"){
           dotnet tool run pwsh -c $command
       }else{
-        [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
-        $srcLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
-        Write-Host "Get source location", $srcLocation
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
       
