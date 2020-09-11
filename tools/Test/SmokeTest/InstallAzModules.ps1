@@ -22,6 +22,7 @@ switch ($gallery) {
     {
         Write-Host "Registering $gallery Trusted..."
         $sourceLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
+        Write-Host "Get source location", [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
         Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
         break;
     }
