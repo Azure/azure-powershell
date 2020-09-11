@@ -21,7 +21,8 @@ switch ($gallery) {
     'LocalRepo'
     {
         Write-Host "Registering $gallery Trusted..."
-        Register-PSRepository -Name $gallery -SourceLocation $env:SourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        $sourceLocation = [System.Environment]::GetEnvironmentVariable('SourceLocation',[System.EnvironmentVariableTarget]::User)
+        Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
         break;
     }
     Default 
