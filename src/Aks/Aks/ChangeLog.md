@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added client side parameter validation logic for `New-AzAksCluster`, `Set-AzAksCluster` and `New-AzAksNodePool`.
+* Added parameter `GenerateSshKey` for `New-AzAksCluster`.
+* Updated api version to 2020-06-01.
 
 ## Version 1.2.0
 * Removed `ClientIdAndSecret` to `ServicePrincipalIdAndSecret` and set `ClientIdAndSecret` as an alias [#12381].
