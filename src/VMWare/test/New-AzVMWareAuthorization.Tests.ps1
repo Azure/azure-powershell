@@ -12,7 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMWareAuthorization' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $cloud = New-AzVMWarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location $env.location
+
+        $auth = New-AzVMWareAuthorization -Name $env.rstr2 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+
+        $auth_get = Get-AzVMWareAuthorization -Name $env.rstr2 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
     }
 }
