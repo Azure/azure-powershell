@@ -21,8 +21,7 @@ switch ($gallery) {
     'LocalRepo'
     {
         Write-Host "Registering $gallery Trusted..."
-        $sourceLocation = Join-Path -Path $env:PIPELINE.WORKSPACE -ChildPath "LocalRepo"
-        Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
+        Register-PSRepository -Name $gallery -SourceLocation $env:SourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
         break;
     }
     Default 
