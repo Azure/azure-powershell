@@ -215,6 +215,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ModelAdapter = InitModelAdapter();
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
             {
