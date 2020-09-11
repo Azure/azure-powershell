@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ErrorIsThrownWhenInvalidClassificationIsSet");
         }
 
-        [Fact]
+        [Fact(Skip = "not able to re - record because 'Managed Instance is not accepting creation of instances with General Purpose edition and Generation 4 hardware in this region.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBasicDataClassificationOnSqlManagedDatabase()
         {

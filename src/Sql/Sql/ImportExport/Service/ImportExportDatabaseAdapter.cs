@@ -15,7 +15,10 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 {
@@ -52,13 +55,13 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
         public AzureSqlDatabaseImportExportBaseModel Export(AzureSqlDatabaseImportExportBaseModel exportRequest)
         {
-            ExportRequestParameters parameters = new ExportRequestParameters()
+            ExportDatabaseDefinition parameters = new ExportDatabaseDefinition()
             {
                 AdministratorLogin = exportRequest.AdministratorLogin,
                 AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(exportRequest.AdministratorLoginPassword),
                 StorageKey = exportRequest.StorageKey,
                 StorageKeyType = exportRequest.StorageKeyType.ToString(),
-                StorageUri = exportRequest.StorageUri
+                StorageUri = exportRequest.StorageUri.ToString()
             };
 
             if (exportRequest.AuthenticationType != AuthenticationType.None)
@@ -66,9 +69,17 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 parameters.AuthenticationType = exportRequest.AuthenticationType.ToString().ToLowerInvariant();
             }
 
-            ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName,
-                exportRequest.DatabaseName, parameters);
-            return CreateImportExportResponse(response, exportRequest);
+            Uri azureAsyncOperation = null;
+            ImportExportOperationResult response;
+
+            response = Communicator.BeginExport(
+                exportRequest.ResourceGroupName,
+                exportRequest.ServerName,
+                exportRequest.DatabaseName,
+                parameters,
+                out azureAsyncOperation);
+
+            return CreateImportExportResponse(response, exportRequest, azureAsyncOperation);
         }
 
         /// <summary>
@@ -76,19 +87,24 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// </summary>
         /// <param name="importRequest">Import request parameters</param>
         /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
-        public AzureSqlDatabaseImportExportBaseModel Import(AzureSqlDatabaseImportModel importRequest)
+        public AzureSqlDatabaseImportExportBaseModel ImportNewDatabase(AzureSqlDatabaseImportModel importRequest)
         {
-            ImportRequestParameters parameters = new ImportRequestParameters()
+            Management.Sql.Models.ImportNewDatabaseDefinition parameters = new Management.Sql.Models.ImportNewDatabaseDefinition()
             {
                 AdministratorLogin = importRequest.AdministratorLogin,
                 AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword),
                 StorageKey = importRequest.StorageKey,
                 StorageKeyType = importRequest.StorageKeyType.ToString(),
-                StorageUri = importRequest.StorageUri,
-                DatabaseMaxSize = importRequest.DatabaseMaxSizeBytes,
+                StorageUri = importRequest.StorageUri.ToString(),
+                MaxSizeBytes = importRequest.DatabaseMaxSizeBytes.ToString(),
                 Edition = importRequest.Edition != Database.Model.DatabaseEdition.None ? importRequest.Edition.ToString() : string.Empty,
                 ServiceObjectiveName = importRequest.ServiceObjectiveName,
-                DatabaseName = importRequest.DatabaseName
+                DatabaseName = importRequest.DatabaseName,
+                NetworkIsolation = new Management.Sql.Models.NetworkIsolationSettings()
+                {
+                    SqlServerResourceId = importRequest.NetworkIsolationSettings.SqlServerResourceId,
+                    StorageAccountResourceId = importRequest.NetworkIsolationSettings.StorageAccountResourceId
+                }
             };
 
             if (importRequest.AuthenticationType != AuthenticationType.None)
@@ -96,9 +112,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 parameters.AuthenticationType = importRequest.AuthenticationType.ToString().ToLowerInvariant();
             }
 
-            ImportExportResponse response = Communicator.Import(importRequest.ResourceGroupName, importRequest.ServerName, parameters);
+            Uri azureAsyncOperation = null;
+            ImportExportOperationResult response;
 
-            return CreateImportExportResponse(response, importRequest);
+            response = Communicator.BeginImportNewDatabase(importRequest.ResourceGroupName, importRequest.ServerName, parameters, out azureAsyncOperation);
+
+            return CreateImportExportResponse(response, importRequest, azureAsyncOperation);
         }
 
         /// <summary>
@@ -108,15 +127,21 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// <returns>Operation status response</returns>
         public AzureSqlDatabaseImportExportStatusModel GetStatus(string operationStatusLink)
         {
-            ImportExportOperationStatusResponse resposne = Communicator.GetStatus(operationStatusLink);
+            ImportExportOperationResult response = Communicator.GetOperationStatus(operationStatusLink);
 
             AzureSqlDatabaseImportExportStatusModel status = new AzureSqlDatabaseImportExportStatusModel()
             {
-                ErrorMessage = resposne.ErrorMessage,
-                LastModifiedTime = resposne.LastModifiedTime,
-                QueuedTime = resposne.QueuedTime,
-                StatusMessage = resposne.StatusMessage,
-                Status = resposne.Status.ToString(),
+                ErrorMessage = response.ErrorMessage,
+                LastModifiedTime = response.LastModifiedTime,
+                QueuedTime = response.QueuedTime,
+                Status = response.Status,
+                RequestType = response.RequestType,
+                PrivateEndpointRequestStatus = response.PrivateEndpointConnections?.Select(pec => new PrivateEndpointRequestStatus()
+                {
+                    PrivateEndpointConnectionName = pec.PrivateEndpointConnectionName,
+                    PrivateLinkServiceId = pec.PrivateLinkServiceId,
+                    Status = pec.Status
+                }).ToArray(),
                 OperationStatusLink = operationStatusLink
             };
 
@@ -128,12 +153,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// </summary>
         /// <param name="response">Server Response</param>
         /// <returns>Response Model</returns>
-        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportResponse response, AzureSqlDatabaseImportExportBaseModel originalModel)
+        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportOperationResult response, AzureSqlDatabaseImportExportBaseModel originalModel, Uri statusLink)
         {
             AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
-            model.OperationStatusLink = response.OperationStatusLink;
-            model.Status = response.Status.ToString();
-            model.ErrorMessage = response.Error == null ? "" : response.Error.Message;
+            model.OperationStatusLink = statusLink?.ToString();
+            ////model.Status = response.Status.ToString();
+            ////model.ErrorMessage = response.Error == null ? "" : response.Error.Message;
             return model;
         }
     }
