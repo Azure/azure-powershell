@@ -93,6 +93,23 @@ steps:
     buildType: specific
     project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
     definition: 693
+    artifactName: artifacts
+
+- task: AzureCLI@2
+  condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
+  displayName: 'Prepare local repo'
+  inputs:
+    azureSubscription: 'Azure SDK Powershell Test - Manual (9e223dbe-3399-4e19-88eb-0975f02ac87f)'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "https://bezstorage101.file.core.windows.net/localrepo/previous release/"
+     az storage remove --account-name $(account_name) --account-key $(account_key) -s localrepo -p "current release/*"
+     az storage copy -s "$(Pipeline.Workspace)/*.nupkg" -d "https://bezstorage101.file.core.windows.net/localrepo/current release"
+      # create local repo
+      mkdir "./LocalRepo"
+      az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
+      az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/previous release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
 
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
