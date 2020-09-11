@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// </summary>
         internal static string GeoBackupRedundancyChoosenWarning {
             get {
-                return ResourceManager.GetString("GeoBackupRedundancyChoosenWarning", resourceCulture);
+                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
             }
         }
         
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// </summary>
         internal static string GeoBackupRedundancyNotChoosenWarning {
             get {
-                return ResourceManager.GetString("GeoBackupRedundancyNotChoosenWarning", resourceCulture);
+                return ResourceManager.GetString("GeoBackupRedundancyNotChosenWarning", resourceCulture);
             }
         }
         
