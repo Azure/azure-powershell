@@ -125,7 +125,7 @@ steps:
       }else{
         $gallery = "$(GALLERY_NAME)"
         if($Gallery -eq "LocalRepo"){
-          $env:SourceLocation = "$(Pipeline.Workspace)/LocalRepo"
+          [System.Environment]::SetEnvironmentVariable("SourceLocation","$(Pipeline.Workspace)/LocalRepo",[System.EnvironmentVariableTarget]::User)
         }
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
       }
