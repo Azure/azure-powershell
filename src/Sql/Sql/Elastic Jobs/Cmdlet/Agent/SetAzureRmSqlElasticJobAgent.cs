@@ -99,8 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(HelpMessage = "The agent tags", ParameterSetName = InputObjectParameterSet)]
         [Parameter(HelpMessage = "The agent tags", ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
