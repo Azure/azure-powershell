@@ -106,10 +106,10 @@ steps:
      az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "https://bezstorage101.file.core.windows.net/localrepo/previous release/"
      az storage remove --account-name $(account_name) --account-key $(account_key) -s localrepo -p "current release/*"
      az storage copy -s "$(Pipeline.Workspace)/*.nupkg" -d "https://bezstorage101.file.core.windows.net/localrepo/current release"
-      # create local repo
-      mkdir "$(Pipeline.Workspace)/LocalRepo"
-      az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
-      az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/previous release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
+     # create local repo
+     mkdir "$(Pipeline.Workspace)/LocalRepo"
+     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
+     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/previous release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
 
 - task: PowerShell@2
   displayName: Install Az Modules from $(GALLERY_NAME)
