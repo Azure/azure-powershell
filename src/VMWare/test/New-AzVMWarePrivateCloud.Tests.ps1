@@ -12,7 +12,21 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMWarePrivateCloud' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $job_cloud_new = New-AzVMWarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location $env.location
+        $job_cloud_new | Wait-Job
+        $cloud = ($job_cloud_new | Receive-Job)
+        $cloud_get = Get-AzVMWarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr1
+
+        $credential = Get-AzVMWarePrivateCloudAdminCredentials -PrivateCloudName $env.rstr1 -ResourceGroupName $env.resourceGroup
+
+        $job_cloud_update = Update-AzVMWarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -ManagementClusterSize 4
+        $job_cloud_update | Wait-Job
+        $cloud_update = ($job_cloud_update | Receive-Job)
+        $cloud_get = Get-AzVMWarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr1
+
+        $job_cloud_remove = Remove-AzVMWarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr1
+        $job_cloud_remove | Wait-Job
+        $cloud_remove = ($job_cloud_remove | Receive-Job)
     }
 }

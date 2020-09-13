@@ -1,6 +1,6 @@
 ### Example 1: Delete private cloud
 ```powershell
-PS C:\> Get-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
+PS C:\> Remove-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
 
 ```
 

@@ -13,10 +13,17 @@ while(-not $mockingPath) {
 
 Describe 'New-AzVMWareAuthorization' {
     It 'CreateExpanded' {
-        $cloud = New-AzVMWarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location $env.location
 
-        $auth = New-AzVMWareAuthorization -Name $env.rstr2 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+        $job_cloud_new = New-AzVMWarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location $env.location
+        $job_cloud_new | Wait-Job
+        $cloud = ($job_cloud_new | Receive-Job)
 
-        $auth_get = Get-AzVMWareAuthorization -Name $env.rstr2 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+        $auth = New-AzVMWareAuthorization -Name $env.rstr3 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+        $auth_get = Get-AzVMWareAuthorization -Name $env.rstr3 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+        $auth_remove = Remove-AzVMWareAuthorization -Name $env.rstr3 -PrivateCloudName $cloud.Name -ResourceGroupName $env.resourceGroup
+
+        $job_cloud_remove = Remove-AzVMWarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr1
+        $job_cloud_remove | Wait-Job
+        $cloud_remove = ($job_cloud_remove | Receive-Job)
     }
 }
