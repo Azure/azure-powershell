@@ -155,29 +155,55 @@ function Install-AzModule {
                 }
             }
             
+            $count = 0
             $module_name | Foreach-Object {
                 if (!$index.ContainsKey($_)) {
                     Write-Warning "module $_ will not be installed since it is not a GAed Az module in Az $version, please try add -AllowPrerelease option."
+                    $count += 1
                 } else {
                     $module.Add($_, $index[$_])
                 }
+            }
+            
+            #validate input module names
+            if ($count -eq $module_name.Count) {
+                Write-Host "None of the given module names are valid Az modules"
+                return
             }
 
         } else {
             #With preview
             Write-Warning "This cmdlet will not install preview version for Az.Accounts."
 
-            if (!$PSBoundParameters.ContainsKey('Name')) {
-                # all latest modules
-                try {
-                    Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
-                        if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts') -and (!$_.Name.StartsWith('Az.Tools'))) {
-                            $module_name += $_.Name
-                        }
+            # all latest modules
+            $all = @()
+            try {
+                Find-Module -Name 'Az.*' -Repository $Repository | ForEach-Object {
+                    if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and ($_.Name -ne 'Az.Accounts') -and (!$_.Name.StartsWith('Az.Tools'))) {
+                        $all += $_.Name
                     }
-                } catch {
-                    Write-Error $_
-                    break
+                }
+            } catch {
+                Write-Error $_
+                break
+            }
+            
+            #validate input module names
+            if ($PSBoundParameters.ContainsKey('Name')) {
+                $count = 0
+                $module_name | Foreach_Object {
+                    if (!$all.Contains($_)) {
+                        Write-Warning "module $_ will not be installed since it is not a valid Az module."
+                        $count += 1
+                    }
+                }
+                if ($count -eq $module_name.Count) {
+                    Write-Host "None of the given module names are valid Az modules"
+                    return
+                }
+            } else {
+                $all | Foreach-Object {
+                    $module_name += $_
                 }
             }
 
