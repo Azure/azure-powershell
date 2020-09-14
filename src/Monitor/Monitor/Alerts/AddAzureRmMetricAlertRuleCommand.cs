@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.")]
         [ValidateNotNullOrEmpty]
-        public string SkipMetricValidation { get; set; }
+        public Boolean SkipMetricValidation { get; set; }
 
         /// <summary>
         /// Gets or sets the TimeAggregationType parameter
