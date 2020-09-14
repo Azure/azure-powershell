@@ -15,7 +15,6 @@ if($gallery -eq "LocalRepo"){
 }
 
 # Install previous version of Az.Compute
-$previousVersion = $versions[1]
 Write-Host '$previousVersion:', $previousVersion
 Install-Module -Name Az.Compute -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
 
