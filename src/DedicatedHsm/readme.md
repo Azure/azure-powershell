@@ -96,4 +96,18 @@ directive:
 
   # TODO:
   # Get-: remove -top?
+
+  # table format
+  - where:
+      model-name: DedicatedHsm
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - SkuName
+          - Location
+        labels:
+          ProvisioningState: Provisioning State
+          SkuName: SKU
 ```
