@@ -49,8 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
+branch: 3dddb7090671b48ce3f569557ed8a1c6ba36c2a7
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/3dddb7090671b48ce3f569557ed8a1c6ba36c2a7/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/preview/2018-10-31-preview/dedicatedhsm.json
+  - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/preview/2018-10-31-preview/dedicatedhsm.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0

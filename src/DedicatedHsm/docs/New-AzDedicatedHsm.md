@@ -14,9 +14,9 @@ Create or Update a dedicated HSM in the specified subscription.
 
 ```
 New-AzDedicatedHsm -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-NetworkProfileNetworkInterface <INetworkInterface[]>] [-Sku <String>] [-StampId <String>]
- [-SubnetId <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkInterface <INetworkInterface[]>] [-Sku <String>] [-StampId <String>] [-SubnetId <String>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,9 +104,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileNetworkInterface
+### -NetworkInterface
 Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
-To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
+To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]
@@ -290,7 +290,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
+NETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
   - `[PrivateIPAddress <String>]`: Private Ip address of the interface
 
 ## RELATED LINKS
