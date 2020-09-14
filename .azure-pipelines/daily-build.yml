@@ -82,7 +82,7 @@ steps:
           dotnet tool list
           
           # Update PowershellGet 
-          $command = "Install-Module -Name PowerShellGet -Scope CurrentUser -Force `
+          $command = "Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -Force `
           Exit "
           dotnet tool run pwsh -c $command
       }
