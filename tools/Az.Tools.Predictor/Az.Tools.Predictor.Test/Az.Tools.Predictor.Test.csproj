@@ -7,8 +7,10 @@
     <IsPackable>false</IsPackable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
     <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Tools.Test.xml</DocumentationFile>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>

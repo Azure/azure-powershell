@@ -4,6 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
