@@ -3,7 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.AzPredictor</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RootNamespace>Microsoft.Azure.PowerShell.AzPredictor</RootNamespace>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="AzPredictor.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
