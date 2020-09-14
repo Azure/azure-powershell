@@ -74,8 +74,8 @@ steps:
       Get-Module -Name AzureRM.* -ListAvailable
 
       $psVersion = "$(PSVersion)"
-      Write-Host "Installing PS $psVersion..."  
       if($psVersion -ne "5.1.14"){
+          Write-Host "Installing PS $psVersion..."  
           dotnet --version
           dotnet new tool-manifest
           dotnet tool install PowerShell --version $(PSVersion)
