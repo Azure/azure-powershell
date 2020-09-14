@@ -13,17 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
-{    
+{
     /// <summary>
-    /// 'Get-AzEventHub' Cmdlet gives the details of a / List of EventHub(s)
-    /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
-    /// <para> If EventHub name not provided, list of EventHub will be returned</para>
+    /// 'Get-AzEventHubClustersAvailableRegion' Cmdlet gives  List of regions where pre-provisioned Event Hubs Clusters are available
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubClustersAvailableRegion", DefaultParameterSetName = ClusterGetPropertiesParameterSet), OutputType(typeof(IEnumerable<PSEventHubsAvailableCluster>))]
     public class GetAzureEventHubAvailableClusters : AzureEventHubsCmdletBase

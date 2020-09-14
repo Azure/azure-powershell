@@ -14,16 +14,17 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
-{    
+{
     /// <summary>
-    /// 'Get-AzEventHub' Cmdlet gives the details of a / List of EventHub(s)
-    /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
-    /// <para> If EventHub name not provided, list of EventHub will be returned</para>
+    /// 'Get-AzEventHubCluster' Cmdlet gives the details of a / List of Cluster(s)
+    /// <para> If Cluster name provided, a single Cluster detials will be returned</para>
+    /// <para> If Cluster name not provided, list of Cluster will be returned</para>
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster"), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHubCluster : AzureEventHubsCmdletBase
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             try
             {
 
-                if (!string.IsNullOrEmpty(Name))
+                if (this.IsParameterBound(c => c.Name))
                 {
                     // Get a Cluster
                     PSEventHubClusterAttributes cluster = Client.GetEventHubCluster(ResourceGroupName, Name);

@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
-    /// 'Remove-AzEventHubCluster' Cmdlet removes the specified EventHub
+    /// 'Remove-AzEventHubCluster' Cmdlet removes the specified Cluster
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster", DefaultParameterSetName = ClusterPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventHubCluster : AzureEventHubsCmdletBase
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             }
 
             // delete a Cluster 
-            if(ShouldProcess(target:Name, action:string.Format(Resources.RemovingEventHub,Name)))
+            if(ShouldProcess(target:Name, action:string.Format("Removing cluster {0} from Resourgroup - {1}",Name,ResourceGroupName)))
             {
                 try
                 {

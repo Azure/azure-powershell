@@ -15,13 +15,14 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
-    /// 'Set-AzEventHub' Cmdlet updates the specified EventHub
+    /// 'Set-AzEventHubCluster' Cmdlet updates the specified Cluster details
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster", DefaultParameterSetName = ClusterPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubClusterAttributes))]
     public class SetAzureEventHubCluster : AzureEventHubsCmdletBase
@@ -69,12 +70,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
             if (ParameterSetName.Equals(ClusterPropertiesParameterSet))
             {
-                if (Tag != null)
+                if (this.IsParameterBound(c => c.Tag))
                 {
                     cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                 }               
 
-                if (Capacity != null)
+                if (this.IsParameterBound(c => c.Capacity))
                 {
                     cluster.Sku.Capacity = Capacity;
                 }
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                     cluster.Sku.Capacity = 1;
                 }
 
-                if (Location != null)
+                if (this.IsParameterBound(c => c.Location))
                 {
                     cluster.Location = Location;
                 }
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 }
             }
 
-            if (ShouldProcess(target: cluster.Name, action: string.Format(Resources.CreateEventHub, cluster.Name, Name)))
+            if (ShouldProcess(target: cluster.Name, action: string.Format("Update cluster {0} in ResourceGroup {1}", cluster.Name, ResourceGroupName)))
             {
                 try
                 {

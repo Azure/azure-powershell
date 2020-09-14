@@ -17,12 +17,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
-    /// 'New-AzEventHub' Cmdlet creates a new EventHub
+    /// 'New-AzEventHubCluster' Cmdlet creates a new Cluster in the specified ResourceGroup and Location
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster", DefaultParameterSetName = ClusterPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubClusterAttributes))]
     public class NewAzureRmEventHubCluster : AzureEventHubsCmdletBase
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (ParameterSetName.Equals(ClusterPropertiesParameterSet))
             {
                 cluster.Location = Location;
-                if (Capacity != null)
+                if (this.IsParameterBound(c => c.Capacity))
                 {
                     cluster.Sku.Capacity = Capacity;
                 }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                     cluster.Sku.Capacity = 1;
                 }
 
-                if (Tag != null)
+                if (this.IsParameterBound(c => c.Tag))
                 {
                     cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                 }                               
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 cluster.Name = Name; 
             }
 
-            if (ShouldProcess(target:cluster.Name, action:string.Format(Resources.CreateEventHub,cluster.Name,Name)))
+            if (ShouldProcess(target:cluster.Name, action:string.Format("Create cluster {0} in ResourveGroup - {1}",cluster.Name,ResourceGroupName)))
             {
                 try
                 {
