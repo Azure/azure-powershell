@@ -5,15 +5,15 @@ strategy:
   matrix:
     Windows PS 5.1.14:
       Image_Name: 'vs2017-win2016'
-      PSVersion: 5.1.14
+      PSVersion: '5.1.14'
   
     Windows PS 6.2.4:
       Image_Name: 'vs2017-win2016'
-      PSVersion: 6.2.4
+      PSVersion: '6.2.4'
      
     Windows PS 7.0.3:
       Image_Name: 'vs2017-win2016'
-      PSVersion: 7.0.3
+      PSVersion: '7.0.3'
 
     Linux PS 6.2.4:
       Image_Name: 'ubuntu-18.04'
@@ -123,10 +123,10 @@ steps:
         ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
         Exit "
       }
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
       
 - task: PowerShell@2
@@ -138,10 +138,10 @@ steps:
       ./tools/Test/SmokeTest/ConnectAzAccount.ps1 -pwd $(password) -servicePrincipal $(servicePrincipal) -tenantId $(tenantId) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -153,10 +153,10 @@ steps:
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -168,10 +168,10 @@ steps:
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -183,10 +183,10 @@ steps:
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -198,12 +198,11 @@ steps:
       ./tools/Test/SmokeTest/UpdateAzModules.ps1 $(GALLERY_NAME) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
-
 
 - task: PowerShell@2
   displayName: Run Smoke Test 
@@ -214,10 +213,10 @@ steps:
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -229,10 +228,10 @@ steps:
       ./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -244,10 +243,10 @@ steps:
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
     
 - task: PowerShell@2
@@ -259,10 +258,10 @@ steps:
       ./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 $(GALLERY_NAME) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -274,10 +273,10 @@ steps:
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -289,10 +288,10 @@ steps:
       ./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 $(GALLERY_NAME) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -304,10 +303,10 @@ steps:
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -319,10 +318,10 @@ steps:
       ./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 $(GALLERY_NAME) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -334,10 +333,10 @@ steps:
       ./tools/Test/SmokeTest/CleanAzModules.ps1 `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
 
 - task: PowerShell@2
@@ -349,8 +348,8 @@ steps:
       ./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 $(GALLERY_NAME) `
       Exit"
       $psVersion = "$(PSVersion)"
-      if($psVersion -ne "5.1.14"){
-          dotnet tool run pwsh -c $command
+      if($psVersion -eq "5.1.14"){
+        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
-        Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command
+        dotnet tool run pwsh -c $command
       }
