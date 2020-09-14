@@ -105,9 +105,9 @@ steps:
     inlineScript: |
      # create local repo
      mkdir "$(Pipeline.Workspace)\LocalRepo"
-     az storage copy -s "$(Pipeline.Workspace)\*.nupkg" -d "$(Pipeline.Workspace)\LocalRepo\"
+     az storage copy -s "$(Pipeline.Workspace)/" -d "$(Pipeline.Workspace)/LocalRepo/"
      ls "$(Pipeline.Workspace)/LocalRepo"
-     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)\LocalRepo\"
+     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)/LocalRepo/"
      ls "$(Pipeline.Workspace)/LocalRepo"
 
 - task: PowerShell@2
