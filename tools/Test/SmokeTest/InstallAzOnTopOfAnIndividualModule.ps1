@@ -5,32 +5,32 @@ param(
     $gallery
 )
 # Get previous version of Az.Compute
-$versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version | Sort-Object -Descending
-
-if ($versions.Count -ge 2) {
-    # Install previous version of Az.Compute        
-    $previousVersion = $versions[1]
-    Write-Host '$previousVersion:', $previousVersion
-    Write-Host "Installed previous version of Az.Compute"
-
-    Install-Module -Name Az.Compute -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
-
-    #Install Az
-    Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force
-        
-    Write-Host "Installed latest version of Az"
-    Get-AzVM
-    Get-Module
-
-    # Check version
-    $azComputeVersion = (Get-Module Az.Compute).Version
-    Write-Host "Current version of Az.Compute", $azComputeVersion
-
-    if ($azComputeVersion -ne $versions[0]) {
-        throw "Install Az on top of Az.Compute failed"
-    }
+if($gallery -eq "LocalRepo"){
+    $versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version | Sort-Object -Descending
+    $previousVersion = $versions[0]
 }else{
-    Write-Warning "Only one version available for Az.Compute"
-    Write-Host 'Az.Compute versions:', $versions
-    throw "Install Az on top of Az.Compute failed"
+    $versions = (find-module Az.Compute -Repository $gallery -AllVersions).Version | Sort-Object -Descending
+    $previousVersion = $versions[1]
+}
+
+# Install previous version of Az.Compute
+$previousVersion = $versions[1]
+Write-Host '$previousVersion:', $previousVersion
+Write-Host "Installed previous version of Az.Compute"
+
+Install-Module -Name Az.Compute -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
+
+#Install Az
+Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force
+        
+Write-Host "Installed latest version of Az"
+Get-AzVM
+Get-Module
+
+# Check version
+$azComputeVersion = (Get-Module Az.Compute).Version
+Write-Host "Current version of Az.Compute", $azComputeVersion
+
+if ([System.Version]$azComputeVersion -le [System.Version]$previousVersion) {
+ throw "Install Az on top of Az.Compute failed"
 }
