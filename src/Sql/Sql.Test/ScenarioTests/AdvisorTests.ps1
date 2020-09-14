@@ -345,7 +345,7 @@ function Test-GetElasticPoolAdvisor
 #>
 function SetupServer($resourceGroup)
 {
-	$location = "Southeast Asia"
+	$location = "westcentralus"
 	$server = Create-ServerForTest $resourceGroup $location
 	return $server
 }
