@@ -29,29 +29,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     {
         protected const string DefaultParameterSet = "Default";
         protected const string ByPlanParameterSet = "ByPlan";
-        protected const string ByAuthorizationsParameterSet = "ByAuthorizations";
+        protected const string ByAuthorizationParameterSet = "ByAuthorization";
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByAuthorizationsParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByAuthorizationsParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
-        [Parameter(ParameterSetName = ByAuthorizationsParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
         [ValidateNotNullOrEmpty]
         public string ManagedByTenantId { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByAuthorizationsParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         public string RoleDefinitionId { get; set; }
 
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The authorization mapping list with principalId - roleDefinitionId.")]
-        [Parameter(ParameterSetName = ByAuthorizationsParameterSet, Mandatory = true, HelpMessage = "The authorization mapping list with principalId - roleDefinitionId.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The authorization mapping list with principalId - roleDefinitionId.")]
         [ValidateNotNull]
-        public Authorization[] Authorizations { get; set; }
+        public Authorization[] Authorization { get; set; }
 
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the plan.")]
         [ValidateNotNullOrEmpty]
@@ -112,23 +112,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 managedByTenantId = (new Guid(this.ManagedByTenantId)).ToString();
             }
 
-            if (this.IsParameterBound(x => x.Authorizations) &&
+            if (this.IsParameterBound(x => x.Authorization) &&
                 (this.IsParameterBound(x => x.PrincipalId) || this.IsParameterBound(x => x.RoleDefinitionId)))
             {
-                throw new ApplicationException("Authorizations are supported when RoleDefinitionId and PrincipalId are null.");
+                throw new ApplicationException("Authorization parameter is supported only when RoleDefinitionId and PrincipalId are null.");
             }
 
-            if (!this.IsParameterBound(x => x.Authorizations) &&
+            if (!this.IsParameterBound(x => x.Authorization) &&
                 (!this.IsParameterBound(x => x.PrincipalId) || !this.IsParameterBound(x => x.RoleDefinitionId)))
             {
-                throw new ApplicationException("Please provide RoleDefinitionId and PrincipalId parameters together or Authorizations parameter.");
+                throw new ApplicationException("Please provide RoleDefinitionId and PrincipalId parameters together or Authorization parameter.");
             }
 
-            if (this.Authorizations == null &&
+            if (this.Authorization == null &&
                 this.IsParameterBound(x => x.PrincipalId) &&
                 this.IsParameterBound(x => x.RoleDefinitionId))
             {
-                this.Authorizations = new Authorization[]
+                this.Authorization = new Authorization[]
                 {
                     new Authorization
                     {
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                         Description = this.Description,
                         RegistrationDefinitionName = this.DisplayName,
                         ManagedByTenantId = managedByTenantId,
-                        Authorizations = this.Authorizations
+                        Authorizations = this.Authorization
                     }
                 };
 

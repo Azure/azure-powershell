@@ -45,6 +45,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [ValidateNotNull]
         public PSRegistrationDefinition InputObject { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string scope = this.GetDefaultScope();
@@ -88,6 +91,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     this.PSManagedServicesClient.RemoveRegistrationDefinition(
                         scope: scope,
                         registrationDefinitionId: definitionId);
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 });
         }
     }

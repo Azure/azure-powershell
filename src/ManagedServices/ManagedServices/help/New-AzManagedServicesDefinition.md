@@ -22,15 +22,15 @@ New-AzManagedServicesDefinition [-Name <String>] -DisplayName <String> -ManagedB
 ### ByPlan
 ```
 New-AzManagedServicesDefinition [-Name <String>] -DisplayName <String> -ManagedByTenantId <String>
- [-Description <String>] -Authorizations <Authorization[]> -PlanName <String> -PlanPublisher <String>
+ [-Description <String>] -Authorization <Authorization[]> -PlanName <String> -PlanPublisher <String>
  -PlanProduct <String> -PlanVersion <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByAuthorizations
+### ByAuthorization
 ```
 New-AzManagedServicesDefinition [-Name <String>] -DisplayName <String> -ManagedByTenantId <String>
- [-Description <String>] -Authorizations <Authorization[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Description <String>] -Authorization <Authorization[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Creates a registration definition by roleDefinitionId and principalId values giv
 PS C:\> $auths = @(
 >>   [Microsoft.Azure.Management.ManagedServices.Models.Authorization]@{RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"; PrincipalId = "714160ec-87d5-42bb-8b17-287c0dd7417d" }
 >>  );
-PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -Authorizations $auths
+PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -Authorization $auths
 PS C:\> $definition
 
 Name                                 Id                                                                                                                                                   ProvisioningState
@@ -87,7 +87,7 @@ PrincipalId                          RoleDefinitionId
 
 PS C:\> $definition.Name
 55a89269-0347-4a9c-a778-c3f37b9f8672
-PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -Authorizations $auths -Name 55a89269-0347-4a9c-a778-c3f37b9f8672
+PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -Authorization $auths -Name 55a89269-0347-4a9c-a778-c3f37b9f8672
 PS C:\> $definition.Properties.Authorization
 
 PrincipalId                          RoleDefinitionId
@@ -102,12 +102,12 @@ Updates a registration definition with authorization details and name of the reg
 
 ## PARAMETERS
 
-### -Authorizations
+### -Authorization
 The authorization mapping list with principalId - roleDefinitionId.
 
 ```yaml
 Type: Microsoft.Azure.Management.ManagedServices.Models.Authorization[]
-Parameter Sets: ByPlan, ByAuthorizations
+Parameter Sets: ByPlan, ByAuthorization
 Aliases:
 
 Required: True

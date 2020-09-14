@@ -48,6 +48,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string scope = this.GetDefaultScope();
@@ -91,6 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     this.PSManagedServicesClient.RemoveRegistrationAssignment(
                         scope: scope,
                         registrationAssignmentId: assignmentId);
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 });
         }
     }
