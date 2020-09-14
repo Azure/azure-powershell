@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
@@ -146,7 +146,17 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBTableThroughput', 
                'Update-AzCosmosDBMongoDBCollection', 
                'Update-AzCosmosDBMongoDBDatabase', 
-               'New-AzCosmosDBMongoDBCollection', 'New-AzCosmosDBMongoDBDatabase'
+               'New-AzCosmosDBMongoDBCollection',
+               'New-AzCosmosDBMongoDBDatabase',
+               'Invoke-AzCosmosDBSqlContainerThroughputMigration', 
+               'Invoke-AzCosmosDBSqlDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration', 
+               'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBGremlinGraphThroughputMigration', 
+               'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration', 
+               'Invoke-AzCosmosDBCassandraTableThroughputMigration', 
+               'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration', 
+               'Invoke-AzCosmosDBTableThroughputMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

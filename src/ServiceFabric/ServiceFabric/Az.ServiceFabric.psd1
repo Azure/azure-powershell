@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
@@ -97,7 +97,22 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Get-AzServiceFabricService', 'Remove-AzServiceFabricApplication', 
                'Remove-AzServiceFabricApplicationType', 
                'Remove-AzServiceFabricApplicationTypeVersion', 
-               'Remove-AzServiceFabricService'
+               'Remove-AzServiceFabricService',
+               # ManagedClusters cmdlets
+               'New-AzServiceFabricManagedCluster',
+               'Get-AzServiceFabricManagedCluster',
+               'Set-AzServiceFabricManagedCluster',
+               'Remove-AzServiceFabricManagedCluster',
+               'Add-AzServiceFabricManagedClusterClientCertificate',
+               'Remove-AzServiceFabricManagedClusterClientCertificate',
+               'New-AzServiceFabricManagedNodeType',
+               'Get-AzServiceFabricManagedNodeType',
+               'Set-AzServiceFabricManagedNodeType',
+               'Remove-AzServiceFabricManagedNodeType',
+               'Add-AzServiceFabricManagedNodeTypeVMExtension',
+               'Add-AzServiceFabricManagedNodeTypeVMSecret',
+               'Remove-AzServiceFabricManagedNodeTypeVMExtension',
+               'Restart-AzServiceFabricManagedNodeType'
 
 # Variables to export from this module
 # VariablesToExport = @()

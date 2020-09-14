@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Common;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Model.Contract;
     using System;
     using System.Globalization;
@@ -25,6 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(SharedAccessBlobPolicy), ChangeDescription = "The output type will change from 'SharedAccessBlobPolicy' to 'PSObject', with the child property 'Permissions' type change from enum to string in a future release.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {

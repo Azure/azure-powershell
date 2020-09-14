@@ -36,6 +36,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
+
         [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
@@ -90,7 +94,15 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                if (this.Version == 3)
+                {
+                    this.SynapseAnalyticsClient.DeleteSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                }
+                else
+                {
+                    this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                }
+
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);

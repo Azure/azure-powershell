@@ -17,16 +17,19 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Aks.Utils;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
     public abstract class NewKubeBase : CreateOrUpdateKubeBase
     {
+        [CmdletParameterBreakingChange("NodeVmSetType", ChangeDescription = "Default value will be changed from AvailabilitySet to VirtualMachineScaleSets.")]
         [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
         [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
         public string NodeVmSetType { get; set; }
@@ -37,6 +40,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Maximum number of pods that can run on node.")]
         public int NodeMaxPodCount { get; set; }
 
+        [CmdletParameterBreakingChange("NodeOsType", ChangeDescription = "NodeOsType will be removed as it supports only one value Linux.")]
         [Parameter(Mandatory = false, HelpMessage = "OsType to be used to specify os type, currently support 'Linux' only here.")]
         [PSArgumentCompleter("Linux")]
         public string NodeOsType { get; set; }
@@ -48,6 +52,10 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
         [PSArgumentCompleter("Low", "Regular")]
         public string NodeSetPriority { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
+        [PSArgumentCompleter("System", "User")]
+        public string NodePoolMode { get; set; } = "System";
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
         [PSArgumentCompleter("Delete", "Deallocate")]
@@ -90,8 +98,10 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
           + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
+        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$")]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 
+        [CmdletParameterBreakingChange("NetworkPlugin", ChangeDescription = "Default value will be changed from None to azure.")]
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
         public string NetworkPlugin { get; set; }
@@ -219,6 +229,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
             }
+            defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
         }

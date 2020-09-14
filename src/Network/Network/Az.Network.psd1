@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll'
@@ -399,8 +399,12 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzVirtualHub', 'Set-AzVirtualHub', 'New-AzVirtualHubRoute', 
                'Add-AzVirtualHubRoute', 'New-AzVirtualHubRouteTable', 
                'Add-AzVirtualHubRouteTable', 'Get-AzVirtualHubRouteTable', 
-               'Remove-AzVirtualHubRouteTable', 'New-AzVpnGateway', 
+               'Remove-AzVirtualHubRouteTable', 'New-AzVpnGateway', 'Reset-AzVpnGateway',
                'Get-AzVpnGateway', 'Update-AzVpnGateway', 'Remove-AzVpnGateway', 
+               'Start-AzVpnGatewayPacketCapture', 
+               'Stop-AzVpnGatewayPacketCapture', 
+               'Start-AzVpnConnectionPacketCapture', 
+               'Stop-AzVpnConnectionPacketCapture', 
                'New-AzVpnSite', 'New-AzVpnSiteLink', 'New-AzVpnSiteLinkConnection', 
                'Get-AzVpnSite', 'Update-AzVpnSite', 'Remove-AzVpnSite', 
                'New-AzVpnConnection', 'Get-AzVpnConnection', 
@@ -414,7 +418,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzP2sVpnGatewayConnectionHealth', 
                'Get-AzP2sVpnGatewayDetailedConnectionHealth', 
                'Get-AzP2sVpnGatewayVpnProfile', 'New-AzP2sVpnGateway', 
-               'Remove-AzP2sVpnGateway', 'Update-AzP2sVpnGateway', 
+               'Remove-AzP2sVpnGateway', 'Update-AzP2sVpnGateway', 'Reset-AzP2sVpnGateway',
                'Get-AzVirtualWanVpnConfiguration', 'Get-AzFirewall', 
                'Set-AzFirewall', 'New-AzFirewall', 'Remove-AzFirewall', 
                'New-AzFirewallApplicationRuleCollection', 
@@ -496,7 +500,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzVirtualApplianceSite', 'Remove-AzVirtualApplianceSite', 
                'Update-AzVirtualApplianceSite', 'New-AzOffice365PolicyProperty', 
                'Get-AzNetworkVirtualApplianceSku', 
-               'New-AzVirtualApplianceSkuProperty'
+               'New-AzVirtualApplianceSkuProperty',
+			   'New-AzCustomIpPrefix', 'Update-AzCustomIpPrefix',
+               'Get-AzCustomIpPrefix', 'Remove-AzCustomIpPrefix',
+               'New-AzExpressRoutePortLOA'
+
 
 # Variables to export from this module
 # VariablesToExport = @()

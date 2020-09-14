@@ -526,22 +526,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LicenseType = model.LicenseType
             };
 
-            switch (model.CreateMode)
+            if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
             {
-                case Management.Sql.Models.CreateMode.Recovery:
-                    dbModel.RecoverableDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.Restore:
-                    dbModel.RestorableDroppedDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.PointInTimeRestore:
-                    dbModel.SourceDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup:
-                    dbModel.LongTermRetentionBackupResourceId = resourceId;
-                    break;
-                default:
-                    throw new ArgumentException("Restore mode not supported");
+                dbModel.RecoverableDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
+            {
+                dbModel.RestorableDroppedDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
+            {
+                dbModel.SourceDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+            {
+                dbModel.LongTermRetentionBackupResourceId = resourceId;
+            }
+            else
+            {
+                throw new ArgumentException("Restore mode not supported");
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
