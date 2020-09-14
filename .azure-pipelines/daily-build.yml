@@ -123,6 +123,7 @@ steps:
         ./tools/Test/SmokeTest/InstallAzModules.ps1 $(GALLERY_NAME) `
         Exit "
       }
+      $psVersion = "$(PSVersion)"
       if($psVersion -eq "5.1.14"){
         Invoke-Command -ScriptBlock { param ($command) & "powershell.exe" -Command $command } -ArgumentList $command 
       }else{
