@@ -14,7 +14,6 @@ if($gallery -eq "LocalRepo"){
 }
 
 # Install previous version of Az.Compute
-$previousVersion = $versions[1]
 Write-Host '$previousVersion:', $previousVersion
 Write-Host "Installed previous version of Az.Compute"
 
