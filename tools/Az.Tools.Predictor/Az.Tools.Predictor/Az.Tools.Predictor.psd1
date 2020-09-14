@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell Predictor: Provide prediction while us
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.1.0'; }, @{ModuleName = 'Az'; ModuleVersion = '3.0.0'; })
+RequiredModules = @(@{ModuleName = 'Az'; ModuleVersion = '3.0.0'; })
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
@@ -62,7 +62,7 @@ PrivateData = @{
         ReleaseNotes = '* the first preview release'
 
         # Prerelease string of this module
-        Prerelease = 'beta'
+        Prerelease = 'beta1'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
