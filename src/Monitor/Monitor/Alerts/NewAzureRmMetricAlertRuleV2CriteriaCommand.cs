@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public String MetricNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets MetricNamespace parameter of the cmdlet
+        /// Gets or sets SkipMetricValidation parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped")]
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped")]
