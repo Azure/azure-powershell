@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of 'Az.Kusto' module
 
 ## Version 0.2.0
 * Updated API version to 2020-06-14; added new properties to data connection and cluster
