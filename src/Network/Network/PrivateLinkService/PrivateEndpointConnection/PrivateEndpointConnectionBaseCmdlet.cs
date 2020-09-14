@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class PrivateEndpointConnectionBaseCmdlet : NetworkBaseCmdlet
+    public abstract class PrivateEndpointConnectionBaseCmdlet : NetworkBaseCmdlet, IDynamicParameters
     {
         [Parameter(
             Mandatory = true,
@@ -38,14 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The private link service name.",
-           ParameterSetName = "ByResource")]
-        [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
@@ -55,10 +47,28 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-          Mandatory = false,
+          Mandatory = true,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The private link resource type.",
-          ParameterSetName = "ByResource")]
+             HelpMessage = "The private link service name.",
+           ParameterSetName = "ByResource")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceName { get; set; }
+
+        protected RuntimeDefinedParameterDictionary DynamicParameters;
+
+        string NamedContextParameterSet = "ByResource";
+        public object GetDynamicParameters()
+        {
+            var parameters = new RuntimeDefinedParameterDictionary();
+            RuntimeDefinedParameter namedParameter;
+            if (ProviderConfiguration.TryGetProvideServiceParameter("PrivateLinkResourceType", NamedContextParameterSet, out namedParameter))
+            {
+                parameters.Add("PrivateLinkResourceType", namedParameter);
+            }
+            DynamicParameters = parameters;
+            return parameters;
+        }
+
         public string PrivateLinkResourceType { get; set; }
 
         public string Subscription { get; set; }
