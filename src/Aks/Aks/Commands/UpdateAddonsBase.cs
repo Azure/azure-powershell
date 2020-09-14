@@ -120,9 +120,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 WriteVerbose(string.Format(Resources.ClusterExists, cluster.Id));
                 return cluster;
             }
-            catch (CloudException)
+            catch (CloudException exception)
             {
-                WriteVerbose(Resources.ClusterDoesNotExist);
+                // Write exception out to error channel.
+                WriteError(new ErrorRecord(exception, Resources.ClusterDoesNotExist, ErrorCategory.CloseError, null));
                 return null;
             }
         }
