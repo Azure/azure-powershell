@@ -303,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzApiManagementBackend](./Get-AzApiManagementBackend)
+[Get-AzApiManagementBackend](./Get-AzApiManagementBackend.md)
 
 [New-AzApiManagementBackendCredential](./New-AzApiManagementBackendCredential.md)
 

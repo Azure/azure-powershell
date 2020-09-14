@@ -1,0 +1,40 @@
+{
+  "Get-AzResourceMoverUnresolvedDependency+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/unresolvedDependencies?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/unresolvedDependencies?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "d8dbbfa1-775e-4e8f-a5d7-7180b8d51b5c" ],
+        "CommandName": [ "Get-AzResourceMoverUnresolvedDependency" ],
+        "FullCommandName": [ "Get-AzResourceMoverUnresolvedDependency_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "39efe24a-7c0f-4816-a9cf-bce5fc523b11" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "2557ada9-2c8a-4a65-bc33-f1c03db42882" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102439Z:2557ada9-2c8a-4a65-bc33-f1c03db42882" ],
+        "Date": [ "Tue, 25 Aug 2020 10:24:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}"
+    }
+  }
+}

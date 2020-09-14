@@ -526,7 +526,7 @@ function Test-StorageBlobRestore
 {
     # Setup
     $rgname = Get-StorageManagementTestResourceName;
-
+    
     try
     {
         # Test
@@ -576,7 +576,6 @@ function Test-StorageBlobRestore
         Clean-ResourceGroup $rgname
     }
 }
-
 
 <#
 .SYNOPSIS

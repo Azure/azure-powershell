@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Blobs.Models;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Model.Contract;
     using System;
     using System.Collections.Generic;
@@ -29,7 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [CmdletOutputBreakingChange(typeof(SharedAccessBlobPolicy), ChangeDescription = "The output type will change from 'SharedAccessBlobPolicy' to 'PSObject', with the child property 'Permissions' type change from enum to string in a future release.")]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]

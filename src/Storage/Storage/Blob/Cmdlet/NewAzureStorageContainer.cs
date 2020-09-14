@@ -128,10 +128,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 containerPublicAccess = PublicAccessType.BlobContainer;
             }
 
-            BlobContainerEncryptionScopeOptions encryptionScopeOption = null;
+            global::Azure.Storage.Blobs.Models.BlobContainerEncryptionScopeOptions encryptionScopeOption = null;
             if (this.DefaultEncryptionScope != null)
             {
-                encryptionScopeOption = new BlobContainerEncryptionScopeOptions()
+                encryptionScopeOption = new global::Azure.Storage.Blobs.Models.BlobContainerEncryptionScopeOptions()
                 {
                     // parameterset can ensure the 2 parameters must be set together.
                     DefaultEncryptionScope = this.DefaultEncryptionScope,
