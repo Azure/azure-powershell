@@ -10,7 +10,7 @@ If you would like to become an active contributor to this project (or any other 
 
 ### Onboarding
 
-All users must sign the [Microsoft Contributor License Agreement (CLA)](https://cla.opensource.microsoft.com/) before any code contribution can be made. For Microsoft employees, make sure that your GitHub account is part of the Azure organization. [Use this page](http://aka.ms/azuregithub) to link your account.
+All users must sign the [Microsoft Contributor License Agreement (CLA)](https://cla.opensource.microsoft.com/) before any code contribution can be made. For Microsoft employees, make sure that your GitHub account is part of the Azure organization. [Use this page](https://aka.ms/azuregithub) to link your account.
 
 ### Code of Conduct
 

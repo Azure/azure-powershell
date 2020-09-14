@@ -25,8 +25,8 @@ be attached to and is used to route traffic in a Virtual Hub.
 
 ### Example 1
 ```powershell
-PS C:\> $route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
-PS C:\> Add-AzVirtualHubRouteTable -Route @($route1) -Connection @("All_Vnets") -Name "routeTable1"
+PS C:\> $route1ï¿½=ï¿½Add-AzVirtualHubRouteï¿½-DestinationTypeï¿½"CIDR"ï¿½-Destinationï¿½@("10.4.0.0/16",ï¿½"10.5.0.0/16")ï¿½-NextHopTypeï¿½"IPAddress"ï¿½-NextHopï¿½@("10.0.0.68")
+PS C:\> Add-AzVirtualHubRouteTableï¿½-Routeï¿½@($route1)ï¿½-Connectionï¿½@("All_Vnets")ï¿½-Nameï¿½"routeTable1"
 
 Name                : routeTable1
 Id                  :
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

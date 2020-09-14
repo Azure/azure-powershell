@@ -70,12 +70,12 @@ For any of these operations, you can provide key attributes or accept default se
 If you create or import a key that has the same name as an existing key in your key vault, the
 original key is updated with the values that you specify for the new key. You can access the
 previous values by using the version-specific URI for that version of the key. To learn about key
-versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
+versions and the URI structure, see [About Keys and Secrets](https://go.microsoft.com/fwlink/?linkid=518560)
 in the Key Vault REST API documentation.
 Note: To import a key from your own hardware security module, you must first generate a BYOK
 package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset. For
 more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=522252).
 As a best practice, back up your key after it is created or updated, by using the
 Backup-AzKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
 your key or delete it and then change your mind, the key is not recoverable unless you have a
@@ -177,7 +177,7 @@ This command imports the key named ITByok from the location that the *KeyFilePat
 specifies. The imported key is an HSM-protected key.
 To import a key from your own hardware security module, you must first generate a BYOK package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset.
 For more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=522252).
 
 ### Example 5: Import a software-protected key
 ```powershell
@@ -265,7 +265,7 @@ Specifies whether to add the key as a software-protected key or an HSM-protected
 Valid values are: HSM and Software.
 Note: To use HSM as your destination, you must have a key vault that supports HSMs. For more
 information about the service tiers and capabilities for Azure Key Vault, see the
-[Azure Key Vault Pricing website](http://go.microsoft.com/fwlink/?linkid=512521).
+[Azure Key Vault Pricing website](https://go.microsoft.com/fwlink/?linkid=512521).
 This parameter is required when you create a new key. If you import a key by using the
 *KeyFilePath* parameter, this parameter is optional:
 - If you do not specify this parameter, and this cmdlet imports a key that has .byok file name
@@ -392,7 +392,7 @@ Accept wildcard characters: False
 Specifies an array of operations that can be performed by using the key that this cmdlet adds.
 If you do not specify this parameter, all operations can be performed.
 The acceptable values for this parameter are a comma-separated list of key operations as defined by
-the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=613300):
+the [JSON Web Key (JWK) specification](https://go.microsoft.com/fwlink/?LinkID=613300):
 - encrypt
 - decrypt
 - wrapKey
@@ -542,7 +542,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

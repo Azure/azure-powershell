@@ -440,7 +440,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -456,9 +456,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Recover an Azure SQL Database from an outage](http://go.microsoft.com/fwlink/?LinkId=746882)
+[Recover an Azure SQL Database from an outage](https://go.microsoft.com/fwlink/?LinkId=746882)
 
-[Recover an Azure SQL Database from a user error](http://go.microsoft.com/fwlink/?LinkId=746944)
+[Recover an Azure SQL Database from a user error](https://go.microsoft.com/fwlink/?LinkId=746944)
 
 [Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
 
