@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add a GenV2 Metric Alert rule
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceId, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
-    public class AddAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceId, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+    public class UpdateAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string CreateAlertByResourceId = "CreateAlertByResourceId";
         const string CreateAlertByScopes = "CreateAlertByScopes";
