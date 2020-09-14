@@ -57,14 +57,6 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster ClusterObject { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = IdParameterSet,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Id of a managed Kubernetes cluster.")]
-        [ValidateNotNullOrEmpty]
-        public string ClusterRecourceId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Add-on names to be enabled when cluster is created.")]
         [ValidateNotNullOrEmpty()]
         [PSArgumentCompleter("HttpApplicationRouting", "Monitoring", "VirtualNode", "AzurePolicy", "KubeDashboard")]
@@ -75,13 +67,6 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             ManagedCluster cluster = null;
             switch (ParameterSetName)
             {
-                case IdParameterSet:
-                    {
-                        var resource = new ResourceIdentifier(ClusterRecourceId);
-                        ResourceGroupName = resource.ResourceGroupName;
-                        ClusterName = resource.ResourceName;
-                        break;
-                    }
                 case InputObjectParameterSet:
                     {
                         WriteVerbose(Resources.UsingClusterFromPipeline);

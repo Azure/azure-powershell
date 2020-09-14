@@ -58,14 +58,7 @@ namespace Microsoft.Azure.Commands.Aks.Utils
 
         private static IDictionary<string, ManagedClusterAddonProfile> EnableAddonsProfile(IDictionary<string, ManagedClusterAddonProfile> addonProfiles, string addonServiceName, ManagedClusterAddonProfile addonProfile)
         {
-            if (!addonProfiles.ContainsKey(addonServiceName))
-            {
-                addonProfiles.Add(addonServiceName, addonProfile);
-            }
-            else
-            {
-                addonProfiles[addonServiceName] = addonProfile;
-            }
+            addonProfiles[addonServiceName] = addonProfile;
 
             return addonProfiles;
         }

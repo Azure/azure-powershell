@@ -25,12 +25,6 @@ Enable-AzAksAddOn [-WorkspaceResourceId <String>] [-SubnetName <String>] -Cluste
  [-Name <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### IdParameterSet
-```
-Enable-AzAksAddOn [-WorkspaceResourceId <String>] [-SubnetName <String>] [-ClusterRecourceId] <String>
- [-Name <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Enable the addons for aks.
 
@@ -72,21 +66,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ClusterRecourceId
-Id of a managed Kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
