@@ -645,6 +645,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
+            networkRuleSet.TrustedServiceAccessEnabled = psNetworkRuleSetAttributes.TrustedServiceAccessEnabled;
 
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {

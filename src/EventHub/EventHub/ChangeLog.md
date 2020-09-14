@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Optionnal switch parameter 'TrustedServiceAccessEnabled' to 'Set-AzEventHubNetworkRuleSet' cmdlet
 
 ## Version 1.5.0
 * Added Managed Identity parameters to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` cmdlets
