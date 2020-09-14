@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.3.0'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -558,7 +558,7 @@ PrivateData = @{
 * Modified the warning message for ''New-AzLoadBalancerFrontendIpConfig'', ''New-AzPublicIpAddress'' and ''New-AzPublicIpPrefix''.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
