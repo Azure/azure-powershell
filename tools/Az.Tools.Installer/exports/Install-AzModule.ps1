@@ -158,7 +158,7 @@ function Install-AzModule {
             $count = 0
             $module_name | Foreach-Object {
                 if (!$index.ContainsKey($_)) {
-                    Write-Warning "module $_ will not be installed since it is not a GAed Az module in Az $version, please try add -AllowPrerelease option."
+                    Write-Warning "module $_ will not be installed because it is not a GAed Az module in Az $version, please try add -AllowPrerelease option."
                     $count += 1
                 } else {
                     $module.Add($_, $index[$_])
@@ -167,7 +167,6 @@ function Install-AzModule {
             
             #validate input module names
             if ($count -eq $module_name.Count) {
-                Write-Host "None of the given module names are valid Az modules"
                 return
             }
 
@@ -191,14 +190,13 @@ function Install-AzModule {
             #validate input module names
             if ($PSBoundParameters.ContainsKey('Name')) {
                 $count = 0
-                $module_name | Foreach_Object {
+                $module_name | Foreach-Object {
                     if (!$all.Contains($_)) {
-                        Write-Warning "module $_ will not be installed since it is not a valid Az module."
+                        Write-Warning "module $_ will not be installed because it is not a valid Az module."
                         $count += 1
                     }
                 }
                 if ($count -eq $module_name.Count) {
-                    Write-Host "None of the given module names are valid Az modules"
                     return
                 }
             } else {
