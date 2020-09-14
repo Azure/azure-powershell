@@ -15,7 +15,7 @@ Create a new managed Kubernetes cluster.
 ```
 New-AzAksCluster [-Force] [-GenerateSshKey] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>]
  [-NodeMaxPodCount <Int32>] [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
- [-NodeScaleSetEvictionPolicy <String>] [-EnableAddOnName <String[]>] [-WorkspaceResourceId <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
  [-SubnetName <String>] [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-LoadBalancerSku <String>]
  [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
@@ -65,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AddOnNameToBeEnabled
+Add-on names to be enabled when cluster is created.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -100,21 +115,6 @@ The DNS name prefix for the cluster. The length must be <= 9 if users plan to ad
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAddOnName
-Add-on names to be enabled when cluster is created.
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

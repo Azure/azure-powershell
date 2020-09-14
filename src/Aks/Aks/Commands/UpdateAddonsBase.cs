@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster.")]
         [ValidateNotNullOrEmpty]
-        [Alias("ResourceId")]
-        public string Id { get; set; }
+        public string ClusterRecourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Add-on names to be enabled when cluster is created.")]
         [ValidateNotNullOrEmpty()]
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             {
                 case IdParameterSet:
                     {
-                        var resource = new ResourceIdentifier(Id);
+                        var resource = new ResourceIdentifier(ClusterRecourceId);
                         ResourceGroupName = resource.ResourceGroupName;
                         ClusterName = resource.ResourceName;
                         break;
@@ -98,20 +97,16 @@ namespace Microsoft.Azure.Commands.Aks.Commands
 
             if (ShouldProcess(msg, Resources.UpdateOrCreateAManagedKubernetesCluster))
             {
-                var queriedCluster = GetManagedClusterWithResourceGroupNameAndName();
-                if (queriedCluster != null)
+                if (cluster == null)
                 {
-                    if (cluster == null)
-                    {
-                        cluster = queriedCluster;
-                    }
-                    cluster.AddonProfiles = UpdateAddonsProfile(cluster.AddonProfiles);
-                    cluster.ServicePrincipalProfile = null;
-                    cluster.AadProfile = null;
-                    cluster.AgentPoolProfiles = null;
-                    var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, ClusterName, cluster);
-                    WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                    cluster = GetManagedClusterWithResourceGroupNameAndName();
                 }
+                cluster.AddonProfiles = UpdateAddonsProfile(cluster.AddonProfiles);
+                cluster.ServicePrincipalProfile = null;
+                cluster.AadProfile = null;
+                cluster.AgentPoolProfiles = null;
+                var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, ClusterName, cluster);
+                WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
             }
         }
 
@@ -119,10 +114,6 @@ namespace Microsoft.Azure.Commands.Aks.Commands
 
         private ManagedCluster GetManagedClusterWithResourceGroupNameAndName()
         {
-            if (ParameterSetName.Equals(InputObjectParameterSet))
-            {
-                return PSMapper.Instance.Map<ManagedCluster>(ClusterObject);
-            }
             try
             {
                 var cluster = Client.ManagedClusters.Get(ResourceGroupName, ClusterName);

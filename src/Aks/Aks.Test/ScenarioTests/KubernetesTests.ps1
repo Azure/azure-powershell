@@ -157,14 +157,14 @@ function Test-NewAzAksAddons
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-        New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableAddonName KubeDashboard,HttpApplicationRouting
+        New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AddOnNameToBeEnabled KubeDashboard,HttpApplicationRouting
         $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
         Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
 
-        $cluster = $cluster | Disable-AzAksAddon -AddonName HttpApplicationRouting
+        $cluster = $cluster | Disable-AzAksAddon -Name HttpApplicationRouting
         Assert-AreEqual $false $cluster.AddonProfiles['httpapplicationrouting'].Enabled
-        $cluster = $cluster | Enable-AzAksAddon -AddonName HttpApplicationRouting
+        $cluster = $cluster | Enable-AzAksAddon -Name HttpApplicationRouting
         Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
         $cluster | Remove-AzAks -Force
     }
