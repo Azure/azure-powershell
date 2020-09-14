@@ -24,15 +24,17 @@
         - Added -HostedSubnet parameter to support IP configuration child resource
         - deleted -HostedGateway and -HostedGatewayId
     - `Get-AzVirtualRouter`:
-        - Added subcription level parameter set
+        - Added subscription level parameter set
     - `Remove-AzVirtualRouter`
     - `Add-AzVirtualRouterPeer`
     - `Get-AzVirtualRouterPeer`
     - `Remove-AzVirtualRouterPeer`
+* Added new cmdlet for Azure Express Route Port
+    - `New-AzExpressRoutePortLOA`
 * Added RemoteBgpCommunities property to the VirtualNetwork Peering Resource
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 * Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
-* Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
+* Fixed bug for `Set-AzApplicationGatewaySslCertificate` [#9488]
 * Added `AllowActiveFTP` parameter to `AzureFirewall`
 * Updated below commands for feature: Enable internet security set/remove on VirtualWan P2SVpnGateway.
 - Updated `New-AzP2sVpnGateway`: Added optional switch parameter `EnableInternetSecurityFlag` for customers to set true to enable internet security on P2SVpnGateway, which will be applied for Point to site clients.
@@ -40,7 +42,7 @@
 * Added new cmdlet `Reset-AzP2sVpnGateway` for customers to reset/reboot their VirtualWan P2SVpnGateway for troubleshooting.
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 * Updated `Set-AzVirtualNetworkSubnetConfig`
-    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters[#1548][#9718]
+    - Set NSG and Route Table properties of subnet to null if explicitly set in parameters [#1548][#9718]
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

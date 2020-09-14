@@ -33,6 +33,7 @@
     - `Get-AzStorageAccountManagementPolicy`
     - `Add-AzStorageAccountManagementPolicyAction`
     - `New-AzStorageAccountManagementPolicyRule`
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.8
 
     
 ## Version 2.5.0
