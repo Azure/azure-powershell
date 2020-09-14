@@ -66,16 +66,17 @@ namespace Microsoft.Azure.Commands.Network
                 this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
                 this.PrivateLinkResourceType = DynamicParameters["PrivateLinkResourceType"].Value as string;
 
-            IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
-            if (ShouldGetByName(this.ResourceGroupName, this.Name))
-            {
-                var pec = provider.GetPrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
-                WriteObject(pec);
-            }
-            else
-            {
-                var pecs = provider.ListPrivateEndpointConnections(this.ResourceGroupName, this.ServiceName);
-                WriteObject(SubResourceWildcardFilter(Name, pecs), true);
+                IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
+                if (ShouldGetByName(this.ResourceGroupName, this.Name))
+                {
+                    var pec = provider.GetPrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
+                    WriteObject(pec);
+                }
+                else
+                {
+                    var pecs = provider.ListPrivateEndpointConnections(this.ResourceGroupName, this.ServiceName);
+                    WriteObject(SubResourceWildcardFilter(Name, pecs), true);
+                }
             }
         }
     }
