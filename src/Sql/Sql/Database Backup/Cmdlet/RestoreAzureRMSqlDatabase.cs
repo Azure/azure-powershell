@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
@@ -237,6 +239,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
@@ -278,10 +286,43 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        /// <summary>
         /// The start of the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.TargetDatabaseName),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.TargetDatabaseName)))
+                    {
+                        return;
+                    }
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.TargetDatabaseName),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.TargetDatabaseName)))
+                    {
+                        return;
+                    }
+                }
+            }
             base.ExecuteCmdlet();
         }
 
@@ -338,8 +379,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedServiceObjectiveName = ServiceObjectiveName,
                 Edition = Edition,
                 CreateMode = createMode,
-                LicenseType = LicenseType
+                LicenseType = LicenseType,
             };
+
+            //model.BackupStorageRedundancy = string.IsNullOrEmpty(BackupStorageRedundancy)
+            //    ? sourceDb.BackupStorageRedundancy
+            //    : BackupStorageRedundancy;
+
+            model.BackupStorageRedundancy = BackupStorageRedundancy;
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||
                 ParameterSetName == FromGeoBackupWithVcoreSetName || ParameterSetName == FromLongTermRetentionBackupWithVcoreSetName)
