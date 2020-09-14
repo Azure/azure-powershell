@@ -85,7 +85,26 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (this.IsParameterBound(c => c.GenerateSshKey) && this.IsParameterBound(c => c.SshKeyValue))
             {
-                throw new ArgumentException(string.Format(Resources.DonotUseGenerateSshKeyWithSshKeyValue));
+                throw new ArgumentException(Resources.DonotUseGenerateSshKeyWithSshKeyValue);
+            }
+
+            if ((this.IsParameterBound(c => c.WindowsProfileAdminUserName) && !this.IsParameterBound(c => c.WindowsProfileAdminUserPassword)) ||
+                (!this.IsParameterBound(c => c.WindowsProfileAdminUserName) && this.IsParameterBound(c => c.WindowsProfileAdminUserPassword)))
+            {
+                throw new ArgumentException(Resources.WindowsUserNameAndPasswordShouldAppearTogether);
+            }
+
+            if (this.IsParameterBound(c => c.WindowsProfileAdminUserName))
+            {
+                if (!string.Equals(this.NetworkPlugin, "azure"))
+                {
+                    throw new ArgumentException(Resources.NetworkPluginShouldBeAzure);
+                }
+            }
+            if (string.Equals(this.NodeOsType, "Windows"))
+            {
+                if (NodeName?.Length > 6)
+                    throw new PSInvalidOperationException(Resources.WindowsNodePoolNameLengthLimitation);
             }
         }
 

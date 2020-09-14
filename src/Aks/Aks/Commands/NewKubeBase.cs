@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Aks.Utils;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
@@ -97,6 +98,7 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
           + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
+        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$")]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 
         [CmdletParameterBreakingChange("NetworkPlugin", ChangeDescription = "Default value will be changed from None to azure.")]
