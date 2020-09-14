@@ -61,13 +61,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public string MetricName { get; set; }
 
         /// <summary>
-        /// Gets or sets the SkipMetricValidation parameter
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.")]
-        [ValidateNotNullOrEmpty]
-        public Boolean SkipMetricValidation { get; set; }
-
-        /// <summary>
         /// Gets or sets the TimeAggregationType parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval")]
