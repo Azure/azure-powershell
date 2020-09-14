@@ -20,7 +20,7 @@
     <MakeDir Directories="$(ArtifactFolder)" />
     <Exec Command="dotnet --version" />
 
-    <Exec Command="dotnet build AzPredictor.sln -c Release" />
+    <Exec Command="dotnet build Az.Tools.Predictor.sln -c Release" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

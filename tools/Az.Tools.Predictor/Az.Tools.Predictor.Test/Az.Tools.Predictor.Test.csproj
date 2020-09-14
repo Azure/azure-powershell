@@ -9,7 +9,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
-    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor.Test\</OutputPath>
     <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Tools.Test.xml</DocumentationFile>
   </PropertyGroup>
 
