@@ -90,10 +90,13 @@ steps:
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
   displayName: Download Artifacts from Build Pipeline
   inputs:
-    buildType: specific
+    buildType: 'specific'
     project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
-    definition: 693
-    artifactName: artifacts
+    definition: '693'
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/internal/release'
+    artifactName: 'artifacts'
+    targetPath: '$(Pipeline.Workspace)'
 
 - task: PowerShell@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
