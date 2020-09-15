@@ -116,7 +116,8 @@ steps:
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
-     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "$(Pipeline.Workspace)\\LocalRepo\\"
+     cd "$(Pipeline.Workspace)"
+     az storage copy -s "https://bezstorage101.file.core.windows.net/localrepo/current release/*" -d "./LocalRepo"
 
 - task: PowerShell@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
