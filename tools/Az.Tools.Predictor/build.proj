@@ -16,7 +16,7 @@
 
   <Target Name="Clean">
     <Message Text="Clean artifacts folder" />
-    <RemoveDir Directories="$(ArtifactFolder)" />
+    <RemoveDir Directories="$(ArtifactFolder)/$(ModuleName)" />
     <RemoveDir Directories="$(TestOutputDirectory)" />
   </Target>
 
@@ -26,7 +26,7 @@
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
     <Message Text="Build $(ModuleName)" />
-    <MakeDir Directories="$(ArtifactFolder)" />
+    <MakeDir Directories="$(ArtifactFolder)/$(ModuleName)" />
     <Exec Command="dotnet --version" />
 
     <Exec Command="dotnet $(BuildAction) $(ModuleSolutionFile) -c $(Configuration)" />
