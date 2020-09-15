@@ -178,6 +178,7 @@ function Test-ListDatabaseAdvisorsExpanded
 			-ExpandRecommendedActions
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
+		
 		foreach($advisor in $response)
 		{
 			ValidateDatabase $advisor $db
@@ -362,7 +363,7 @@ function SetupDatabase($resourceGroup)
 		-ResourceGroupName $server.ResourceGroupName `
 		-ServerName $server.ServerName `
 		-DatabaseName $databaseName `
-		-Edition Basic
+		-Edition Basic -Force
 	return $db
 }
 
