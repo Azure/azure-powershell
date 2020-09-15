@@ -101,18 +101,19 @@ function Update-AzModule {
                         Write-Debug "Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
                     }
 
+                    $moduleInstalled = $null
                     try {
-                        $installModule = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
+                        $moduleInstalled = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
                     }
                     catch {
                         Write-Debug $_
                     }
-                    if (-not $installModule -or $installModule.Repository -ne $module.Repository) {
+                    if (-not $moduleInstalled -or $moduleInstalled.Repository -ne $module.Repository) {
                         $parameters = @{}
                         $parameters['Name'] = $module.Name
                         $parameters['Repository'] = $module.Repository
                         $parameters['RequiredVersion'] = $module.VersionToUpgrade
-                        $parameters['Force'] = $installModule.Repository -ne $module.Repository -or $Force
+                        $parameters['Force'] = $Force -or ($moduleInstalled -ne $null -and $moduleInstalled.Repository -ne $module.Repository)
                         PowerShellGet\Install-Module @parameters
                     }
                 }
@@ -120,9 +121,9 @@ function Update-AzModule {
 
             $output = @()
             if (-not $WhatIf) {
-                foreach($name in $allToUpdate.Name) {
+                foreach($n in $allToUpdate.Name) {
                     try {
-                        $output += (Get-InstalledModule -Name $name -ErrorAction Stop)
+                        $output += (Get-InstalledModule -Name $n -ErrorAction Stop)
                     }
                     catch {
                         Write-Warning $_

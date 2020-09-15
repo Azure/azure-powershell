@@ -28,7 +28,6 @@ function Get-AzModuleUpdateList {
     )
 
     process {
-
         $modules = New-Object System.Collections.ArrayList
 
         Write-Debug "Retrieving installed Az modules"
@@ -70,18 +69,25 @@ function Get-AzModuleUpdateList {
             $installModules.Keys.ForEach({[System.Tuple]::Create($_, $installModules[$_][0].Item2)})
         }
 
+        $allModuleTable = @{}
         $moduleSet = [System.Collections.Generic.HashSet[string]]::new()
         $null = $modulesToCheck | ForEach-Object {$moduleSet.Add($_.Item1)}
 
         $index = 0
         while($index -lt $modulesToCheck.Count) {
             $moduleName = $modulesToCheck[$index].Item1
-            $repo = if ($Repository) {$Repository} elseif ($installModules.ContainsKey($moduleName)) {$installModules[$moduleName].Item2} else {$modulesToCheck[$index].Item2}
+            $repo = if ($Repository) {$Repository} elseif ($installModules.ContainsKey($moduleName)) {$installModules[$moduleName][0].Item2} else {$modulesToCheck[$index].Item2}
             if($repo) {
-                $module = PowerShellGet\Find-Module -Name $moduleName -Repository $repo
+                if($allModuleTable.ContainsKey($moduleName)) {
+                    $module = $allModuleTable[$moduleName]
+                }
+                else {
+                    $module = PowerShellGet\Find-Module -Name $moduleName -Repository $repo
+                }
                 if ($module) {
                     Write-Progress -Activity "Find Module" -CurrentOperation "$($module.Name) with the latest version $($module.Version)" -PercentComplete ($index / $modulesToCheck.Count * 100)
                     $null = $modules.Add($module)
+                    $dep = $null
                     foreach ($dep in $module.Dependencies.Name) {
                         if (!$moduleSet.Contains($dep)) {
                             $modulesToCheck += [System.Tuple]::Create($dep, $repo)
