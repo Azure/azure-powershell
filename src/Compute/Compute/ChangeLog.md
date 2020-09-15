@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.4.0
 * Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
 * New cmdlets for new resource type: DiskAccess `Get-AzDiskAccess`, `New-AzDiskAccess`, `Get-AzDiskAccess`
 * Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzSnapshotConfig`
