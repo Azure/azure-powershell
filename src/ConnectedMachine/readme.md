@@ -42,7 +42,7 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-module-version: 0.2.0
+module-version: 0.1.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
