@@ -20,47 +20,32 @@ using System.Management.Automation;
 using Tools.Common.Models;
 using Tools.Common.Extensions;
 using System.IO;
+using System.Runtime.Loader;
 
 namespace Tools.Common.Loaders
 {
-// TODO: Remove IfDef
-#if NETSTANDARD
     public class CmdletLoader
-#else
-    public class CmdletLoader : MarshalByRefObject
-#endif
     {
         public static ModuleMetadata ModuleMetadata;
 
-        public ModuleMetadata GetModuleMetadata(string assemblyPath, List<string> commonOutputFolders)
-        {
-            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
-            {
-                foreach (var commonOutputFolder in commonOutputFolders)
-                {
-                    var assemblyName = args.Name.Substring(0, args.Name.IndexOf(","));
-                    var dll = Directory.GetFiles(commonOutputFolder, "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
-                    if (dll == null)
-                    {
-                        continue;
-                    }
-
-                    return Assembly.LoadFrom(dll);
-                }
-
-                return null;
-            };
-
-            return GetModuleMetadata(assemblyPath);
-        }
+        /// <summary>
+        /// Use a custom assembly loader context to load assemblies of each module,
+        /// so they do not conflict with each other or build tools.
+        /// See https://docs.microsoft.com/en-us/dotnet/standard/assembly/unloadability
+        /// and https://docs.microsoft.com/en-us/powershell/scripting/dev-cross-plat/resolving-dependency-conflicts?view=powershell-7#more-robust-solutions
+        /// </summary>
+        private CmdletLoaderAlc _alc;
 
         /// <summary>
         /// Get the ModuleMetadata from a cmdlet assembly.
         /// </summary>
         /// <param name="assmeblyPath">Path to the cmdlet assembly.</param>
         /// <returns>ModuleMetadata containing information about the cmdlets found in the given assembly.</returns>
-        public ModuleMetadata GetModuleMetadata(string assemblyPath)
+        public ModuleMetadata GetModuleMetadata(string assemblyPath, List<string> commonOutputFolders = null)
         {
+            _alc = new CmdletLoaderAlc(commonOutputFolders);
+            AssemblyLoadContext.Default.Resolving += CustomResolving;
+
             var results = new List<CmdletMetadata>();
 
             ModuleMetadata = new ModuleMetadata();
@@ -208,9 +193,40 @@ namespace Tools.Common.Loaders
             {
                 throw ex;
             }
+            finally
+            {
+                AssemblyLoadContext.Default.Resolving -= CustomResolving;
+            }
 
             ModuleMetadata.Cmdlets = results;
             return ModuleMetadata;
+        }
+
+        private Assembly CustomResolving(AssemblyLoadContext assemblyLoadContext, AssemblyName name) => _alc.LoadFromAssemblyName(name);
+    }
+
+    internal class CmdletLoaderAlc : AssemblyLoadContext
+    {
+        private readonly List<string> _assemblyDirectories;
+
+        public CmdletLoaderAlc(List<string> assemblyDirectories = null)
+        {
+            _assemblyDirectories = assemblyDirectories ?? new List<string>();
+        }
+
+        protected override Assembly Load(AssemblyName assemblyName)
+        {
+            foreach (var assemblyPath in _assemblyDirectories)
+            {
+                var dll = Directory.GetFiles(assemblyPath, "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName.Name);
+                if (dll == null)
+                {
+                    continue;
+                }
+
+                return LoadFromAssemblyPath(dll);
+            }
+            return null;
         }
     }
 }
