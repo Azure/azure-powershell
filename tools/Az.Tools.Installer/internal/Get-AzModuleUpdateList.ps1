@@ -59,7 +59,6 @@ function Get-AzModuleUpdateList {
 
         $modulesToCheck = @()
         $modulesToCheck += if ($Name) {
-            #Fixme:Damien
             $Name.Foreach({
                 if ($installModules.ContainsKey($_) -and $installModules[$_]) {
                     [System.Tuple]::Create($_, $installModules[$_][0].Item2)
