@@ -47,7 +47,7 @@ Name           Location OSName   Status     ProvisioningState
 win_eastus1_1  eastus   windows  Connected  Succeeded
 
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/Connect-AzConnectedMachine
+https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/connect-azconnectedmachine
 #>
 function Connect-AzConnectedMachine {
 [CmdletBinding(PositionalBinding=$false)]
@@ -89,7 +89,7 @@ param(
 
     [Parameter(Position=6)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IUpdateResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IUpdateResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
