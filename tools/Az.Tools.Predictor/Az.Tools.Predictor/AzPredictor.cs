@@ -51,7 +51,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private const int SuggestionCountForTelemetry = 5;
         private const string ParameterValueMask = "***";
         private const char ParameterValueSeperator = ':';
-        private const char ParameterIndicator = '-';
 
         private static readonly string[] CommonParameters = new string[] { "location" };
 
@@ -74,45 +73,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (history.Count > 0)
             {
-                var historyLines = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).ToList();
+                var historyLines = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess);
 
-                while (historyLines.Count < AzPredictorConstants.CommandHistoryCountToProcess)
+                while (historyLines.Count() < AzPredictorConstants.CommandHistoryCountToProcess)
                 {
-                    historyLines.Insert(0, AzPredictorConstants.CommandHistoryPlaceholder);
+                    historyLines = historyLines.Prepend(AzPredictorConstants.CommandHistoryPlaceholder);
                 }
 
-                for (int i = historyLines.Count - 1; i >= 0; --i)
+                var commandAsts = historyLines.Select((h) =>
+                        {
+                            var ast = Parser.ParseInput(h, out Token[] tokens, out _);
+                            var allAsts = ast?.FindAll((ast) => ast is CommandAst, true);
+                            return allAsts?.LastOrDefault() as CommandAst;
+                        }).ToArray();
+
+                var maskedHistoryLines = commandAsts.Select((c) =>
+                        {
+                            var commandName = c?.CommandElements?.FirstOrDefault().ToString();
+
+                            if (!_service.IsSupportedCommand(commandName))
+                            {
+                                return AzPredictorConstants.CommandHistoryPlaceholder;
+                            }
+
+                            return AzPredictor.MaskCommandLine(c);
+                        });
+
+                var lastMaskedHistoryLines = maskedHistoryLines.Last();
+
+                if (lastMaskedHistoryLines != AzPredictorConstants.CommandHistoryPlaceholder)
                 {
-                    var ast = Parser.ParseInput(historyLines[i], out Token[] tokens, out _);
-                    var commandAsts = ast.FindAll((ast) => ast is CommandAst, true);
-
-                    if (!commandAsts.Any())
-                    {
-                        historyLines[i] = AzPredictorConstants.CommandHistoryPlaceholder;
-                        continue;
-                    }
-
-                    var lastCommandAst = commandAsts.Last() as CommandAst;
-                    var lastCommand = lastCommandAst?.CommandElements?.FirstOrDefault()?.ToString();
-
-                    if (string.IsNullOrWhiteSpace(lastCommand) || !_service.IsSupportedCommand(lastCommand))
-                    {
-                        historyLines[i] = AzPredictorConstants.CommandHistoryPlaceholder;
-                        continue;
-                    }
-
-                    historyLines[i] = MaskCommandLine(lastCommandAst);
-
-                    if (i == historyLines.Count - 1)
-                    {
-                        var suggestionIndex = _service.GetRankOfSuggestion(lastCommandAst, ast);
-                        var fallbackIndex = _service.GetRankOfFallback(lastCommandAst, ast);
-                        var topFiveSuggestion = _service.GetTopNSuggestions(AzPredictor.SuggestionCountForTelemetry);
-                        _telemetryClient.OnSuggestionForHistory(historyLines[i], suggestionIndex, fallbackIndex, topFiveSuggestion);
-                    }
+                    var commandName = (commandAsts.LastOrDefault()?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+                    var suggestionIndex = _service.GetRankOfSuggestion(commandName);
+                    var fallbackIndex = _service.GetRankOfFallback(commandName);
+                    var topFiveSuggestion = _service.GetTopNSuggestions(AzPredictor.SuggestionCountForTelemetry);
+                    _telemetryClient.OnSuggestionForHistory(maskedHistoryLines.LastOrDefault(), suggestionIndex, fallbackIndex, topFiveSuggestion);
                 }
 
-                _service.RequestPredictions(String.Join(AzPredictorConstants.CommandConcatenator, historyLines));
+                _service.RecordHistory(commandAsts);
+                _service.RequestPredictions(maskedHistoryLines);
             }
         }
 
@@ -175,7 +174,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="cmdAst">The last user input command</param>
         private static string MaskCommandLine(CommandAst cmdAst)
         {
-            var commandElements = cmdAst.CommandElements;
+            var commandElements = cmdAst?.CommandElements;
+
+            if (commandElements == null)
+            {
+                return null;
+            }
 
             if (commandElements.Count == 1)
             {
@@ -196,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 if (param.Argument != null)
                 {
                     // Parameter is in the form of `-Name:name`
-                    _ = sb.Append(AzPredictor.ParameterIndicator)
+                    _ = sb.Append(AzPredictorConstants.ParameterIndicator)
                         .Append(param.ParameterName)
                         .Append(AzPredictor.ParameterValueSeperator)
                         .Append(AzPredictor.ParameterValueMask);
@@ -204,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 else
                 {
                     // Parameter is in the form of `-Name`
-                    _ = sb.Append(AzPredictor.ParameterIndicator)
+                    _ = sb.Append(AzPredictorConstants.ParameterIndicator)
                         .Append(param.ParameterName)
                         .Append(AzPredictorConstants.CommandParameterSeperator)
                         .Append(AzPredictor.ParameterValueMask);
@@ -223,8 +227,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnImport()
         {
             var settings = Settings.GetSettings();
-            var azPredictorService = new AzPredictorService(settings.ServiceUri);
             var telemetryClient = new AzPredictorTelemetryClient();
+            var azPredictorService = new AzPredictorService(settings.ServiceUri);
             var predictor = new AzPredictor(azPredictorService, telemetryClient);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
