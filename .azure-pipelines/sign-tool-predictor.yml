@@ -4,15 +4,10 @@ pool:
   vmImage: 'windows-2019'
 steps:
 - task: PowerShell@2
-  displayName: Install dotnet 5.0.100-rc.1.20452.10 and PS 7.1.0-preview.7
+  displayName: Install PS 7.1.0-preview.7
   inputs:
     targetType: 'inline'
     script: |
-      $url = "https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1"
-      $output = "./dotnet-install.ps1"
-      Invoke-WebRequest -Uri $url -OutFile $output
-      ./dotnet-install.ps1 -Version "5.0.100-rc.1.20452.10"
-
       $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.1.0-preview.7/PowerShell-7.1.0-preview.7-win-x64.zip"
       $output = "./PowerShell-7.1.0-preview.7-win-x64.zip"
       Invoke-WebRequest -Uri $url -OutFile $output
@@ -21,10 +16,25 @@ steps:
       ls $pwshPath
 
 - task: PowerShell@2
+  displayName: Install dotnet 5.0.100-rc.1.20452.10
+  inputs:
+    targetType: 'inline'
+    script: |
+      $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
+      $command = '$PSVersionTable `
+      $url = "https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1" `
+      $output = "./dotnet-install.ps1" `
+      Invoke-WebRequest -Uri $url -OutFile $output `
+      ./dotnet-install.ps1 -Version "5.0.100-rc.1.20452.10" `
+      dotnet --info `
+      Exit'
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+
+- task: PowerShell@2
   displayName: MSBuild
   inputs:
     targetType: 'inline'
     script: |
       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
       $command = 'dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package"'
-      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.tostring() -Command $command } -ArgumentList $pspath, $command
+      Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath -Command $command } -ArgumentList $pspath, $command
