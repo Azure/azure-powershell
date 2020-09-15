@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryOnlyAuthentication", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryOnlyAuthentication", DefaultParameterSetName = UseResourceGroupAndServerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerActiveDirectoryOnlyAuthenticationModel))]
     public class GetAzureSqlServerActiveDirectoryOnlyAuthentication : AzureSqlServerActiveDirectoryOnlyAuthenticationCmdletBase
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.C
         {
             ICollection<AzureSqlServerActiveDirectoryOnlyAuthenticationModel> results;
 
-            results = ModelAdapter.ListServerActiveDirectoryOnlyAuthentications(this.ResourceGroupName, this.ServerName);
+            results = ModelAdapter.ListServerActiveDirectoryOnlyAuthentications(GetResourceGroupName(), GetServerName());
 
             return results;
         }

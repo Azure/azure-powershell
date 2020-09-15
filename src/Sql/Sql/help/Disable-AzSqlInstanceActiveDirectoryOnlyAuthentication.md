@@ -12,8 +12,21 @@ Disables Azure AD only authentication for a specific SQL Managed Instance.
 
 ## SYNTAX
 
+### UseResourceGroupAndInstanceNameParameterSet (Default)
 ```
-Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication [-InstanceName] <String> [-ResourceGroupName] <String>
+Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UseInputObjectParameterSet
+```
+Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication -InputObject <AzureSqlManagedInstanceModel>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UserResourceIdParameterSet
+```
+Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,12 +62,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The managed instance object to use.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: UseInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The name of the Azure SQL Managed Instance the Azure Active Directory only authentication is in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True
@@ -69,7 +97,22 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of instance to use
+
+```yaml
+Type: System.String
+Parameter Sets: UserResourceIdParameterSet
 Aliases:
 
 Required: True
