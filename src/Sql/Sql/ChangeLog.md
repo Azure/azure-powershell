@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed complaint on Managed instance's system database for vulnerability assessment
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
 * Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
