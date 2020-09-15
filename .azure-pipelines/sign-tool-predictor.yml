@@ -21,10 +21,10 @@ steps:
     targetType: 'inline'
     script: |
       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
-      $command = '$PSVersionTable `
-      $url = "https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1" `
-      $output = "./dotnet-install.ps1" `
-      Invoke-WebRequest -Uri $url -OutFile $output `
+      $command = '`$PSVersionTable `
+      `$url = "https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1" `
+      `$output = "./dotnet-install.ps1" `
+      Invoke-WebRequest -Uri `$url -OutFile `$output `
       ./dotnet-install.ps1 -Version "5.0.100-rc.1.20452.10" `
       dotnet --info `
       Exit'
