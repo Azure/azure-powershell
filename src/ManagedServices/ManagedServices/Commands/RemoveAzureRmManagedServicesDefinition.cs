@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         VerbsCommon.Remove,
         AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
         DefaultParameterSetName = DefaultParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
