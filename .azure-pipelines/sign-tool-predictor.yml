@@ -33,6 +33,6 @@ steps:
     script: |
       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
       $command = '`$PSVersionTable`
-      dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package" `
+      dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package" /p:Configuration=Release`
       Exit'
       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath -Command $command } -ArgumentList $pspath, $command
