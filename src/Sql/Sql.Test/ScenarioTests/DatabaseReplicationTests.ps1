@@ -19,7 +19,7 @@
 function Test-CreateDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -121,7 +121,7 @@ function Test-CreateVcoreDatabaseCopy()
 function Test-CreateSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -162,7 +162,7 @@ function Test-CreateSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -204,7 +204,7 @@ function Test-CreateNamedSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabaseNegative()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -238,7 +238,7 @@ function Test-CreateNamedSecondaryDatabaseNegative()
 function Test-GetReplicationLink()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -283,7 +283,7 @@ function Test-GetReplicationLink()
 function Test-RemoveSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -314,7 +314,7 @@ function Test-RemoveSecondaryDatabase()
 function Test-FailoverSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server

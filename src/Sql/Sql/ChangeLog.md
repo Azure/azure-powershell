@@ -33,6 +33,8 @@
 * Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
 * Added cmdlet `New-AzSqlDatabaseImportExisting`
 * Updated Databases cmdlets to support backup storage type specification
+* Added Force parameter to `New-AzSqlDatabase`
+* Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase`
 * Updated ActiveDirectoryOnlyAuthentication cmdlets for server and instance to include ResourceId and InputObject
 
 ## Version 2.9.1
