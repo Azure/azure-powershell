@@ -106,7 +106,7 @@ steps:
     script: |
      New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
      Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
-     ls "$(Pipeline.Workspace)\\LocalRepo\\"
+     Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\" -Depth 2
 
 - task: AzureCLI@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
