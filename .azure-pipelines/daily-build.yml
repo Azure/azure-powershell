@@ -90,13 +90,13 @@ steps:
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
   displayName: Download Artifacts from Build Pipeline
   inputs:
-    buildType: 'specific'
+    buildType: specific
     project: '590cfd2a-581c-4dcb-a12e-6568ce786175'
-    definition: '693'
-    buildVersionToDownload: 'latestFromBranch'
-    branchName: 'refs/heads/internal/release'
-    artifactName: 'artifacts'
-    targetPath: '$(Pipeline.Workspace)'
+    definition: 693
+    buildVersionToDownload: latestFromBranch
+    branchName: refs/heads/internal/release
+    artifactName: artifacts
+    targetPath: $(Pipeline.Workspace)
 
 - task: PowerShell@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
@@ -106,7 +106,7 @@ steps:
     script: |
      New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
      Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
-     dir "$(Pipeline.Workspace)\\LocalRepo\\"
+     ls "$(Pipeline.Workspace)\\LocalRepo\\"
 
 - task: AzureCLI@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
