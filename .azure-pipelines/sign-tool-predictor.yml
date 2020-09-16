@@ -18,14 +18,15 @@ steps:
       Write-Host $pwshFullPath
 
 - task: PowerShell@2
-  displayName: 'Install platyPS and PowerShellGet'
+  displayName: 'Install platyPS, PowerShellGet, Az 3.0.0'
   inputs:
     targetType: inline
     script: |
       $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.1.0-preview.7/pwsh.exe"        
       $command = "`$PSVersionTable `
         Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
-        Install-Module PowerShellGet -Force -Confirm:`$false -Scope CurrentUser -SkipPublisherCheck "      
+        Install-Module PowerShellGet -Force -Confirm:`$false -Scope CurrentUser -SkipPublisherCheck `
+        Install-Module Az -Repository PSGallery -RequiredVersion 3.0.0 -Force -Confirm:`$false -Scope CurrentUser "      
       Invoke-Command -ScriptBlock { param ($pwshPath, $command) & $pwshPath -Command $command } -ArgumentList $pwshPath, $command 
 
 - task: UseDotNet@2
