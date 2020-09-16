@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultAction
-Default Action of SignalR network ACLs, either allow or deny
+Default Action of SignalR network ACLs, either allow or deny. It decides whether deny network ACLs or allow network ACLs take effect. For example, if the default action is allow, then only the deny ACLs matters.
 
 ```yaml
 Type: System.String
