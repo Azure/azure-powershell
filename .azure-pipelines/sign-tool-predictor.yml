@@ -26,7 +26,7 @@ steps:
       $command = "`$PSVersionTable `
         Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
         Install-Module PowerShellGet -Force -Confirm:`$false -Scope CurrentUser -SkipPublisherCheck `
-        Install-Module Az -Repository PSGallery -RequiredVersion 3.0.0 -Force -Confirm:`$false -Scope CurrentUser -AllowClobber -Force"      
+        Install-Module Az -Repository PSGallery -RequiredVersion 3.0.0 -Confirm:`$false -Scope CurrentUser -AllowClobber -Force"      
       Invoke-Command -ScriptBlock { param ($pwshPath, $command) & $pwshPath -Command $command } -ArgumentList $pwshPath, $command 
 
 - task: UseDotNet@2
