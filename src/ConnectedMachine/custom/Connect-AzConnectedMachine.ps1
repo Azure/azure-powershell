@@ -18,8 +18,6 @@ API to register a new machine and thereby create a tracked resource in ARM
 .Description
 API to register a new machine and thereby create a tracked resource in ARM
 
-.Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/Connect-AzConnectedMachine
 #>
 function Connect-AzConnectedMachine {
     [CmdletBinding()]
