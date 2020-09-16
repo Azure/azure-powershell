@@ -2,6 +2,7 @@ pr: none
 trigger: none
 pool:
   vmImage: 'windows-2019'
+
 steps:
 - task: PowerShell@2
   displayName: Install PS 7.1.0-preview.7
@@ -14,6 +15,18 @@ steps:
       $pwshPath= "./PowerShell-7.1.0-preview.7/"
       Expand-Archive -Path $output -DestinationPath $pwshPath
 
+- task: PowerShell@2
+  displayName: 'Install platyPS'
+  inputs:
+    targetType: inline
+    script: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+
+- task: PowerShell@2
+  displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
+  inputs:
+    targetType: inline
+    script: 'Install-Module PowerShellGet -Force -Confirm:$false -Scope CurrentUser -SkipPublisherCheck'
+
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
   inputs:
@@ -21,31 +34,58 @@ steps:
     version: 5.0.100-rc.1.20452.10
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: 'Build'
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package" /p:Configuration=Release'
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build" /p:Configuration=Release'
 
-# - task: PowerShell@2
-#   displayName: MSBuild
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
-#       $command = '`$PSVersionTable `
-#       dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package" /p:Configuration=Release `
-#       Exit'
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath -Command $command } -ArgumentList $pspath, $command
-    
+- task: EsrpCodeSigning@1
+  displayName: 'Signing'
+  inputs:
+    ConnectedServiceName: $(signServiceConnection)
+    FolderPath: artifacts
+    Pattern: |
+     Tools/**/*.ps1
+     Tools/**/*.psd1
+     Tools/**/*.psm1
+     Tools/**/*.ps1xml
+    UseMinimatch: true
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolSign",
+         "Parameters": {
+           "OpusName": "Microsoft",
+           "OpusInfo": "http://www.microsoft.com",
+           "FileDigest": "/fd \"SHA256\"",
+           "PageHash": "/NPH",
+           "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+         },
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       }
+     ]
 
-# - task: PowerShell@2
-#   displayName: Package
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
-#       $command = '`$PSVersionTable `
-#       dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release`
-#       Exit'
-#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.toString() -Command $command } -ArgumentList $pspath, $command
+- task: DotNetCoreCLI@2
+  displayName: Package
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release'
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Save artifacts'
+  inputs:
+    artifactName: artifacts
+    targetPath: artifacts
+  condition: succeededOrFailed()
