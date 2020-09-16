@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.C
     /// <summary>
     /// Disables the Azure Active Directory only authentication of a specific SQL server.
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryOnlyAuthentication", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryOnlyAuthentication", DefaultParameterSetName = UseResourceGroupAndServerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerActiveDirectoryOnlyAuthenticationModel))]
     public class DisableAzureSqlServerActiveDirectoryOnlyAuthentication : AzureSqlServerActiveDirectoryOnlyAuthenticationCmdletBase
     {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.C
 
             try
             {
-                AzureSqlServerActiveDirectoryOnlyAuthenticationModel model = ModelAdapter.GetServerActiveDirectoryOnlyAuthentication(this.ResourceGroupName, this.ServerName);
+                AzureSqlServerActiveDirectoryOnlyAuthenticationModel model = ModelAdapter.GetServerActiveDirectoryOnlyAuthentication(GetResourceGroupName(), GetServerName());
 
                 if (model != null)
                 {
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.C
             List<Model.AzureSqlServerActiveDirectoryOnlyAuthenticationModel> newEntity = new List<AzureSqlServerActiveDirectoryOnlyAuthenticationModel>();
             newEntity.Add(new AzureSqlServerActiveDirectoryOnlyAuthenticationModel()
             {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
+                ResourceGroupName = GetResourceGroupName(),
+                ServerName = GetServerName(),
                 AzureADOnlyAuthentication = false
             });
             return newEntity;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.C
         protected override IEnumerable<AzureSqlServerActiveDirectoryOnlyAuthenticationModel> PersistChanges(IEnumerable<AzureSqlServerActiveDirectoryOnlyAuthenticationModel> entity)
         {
             return new List<AzureSqlServerActiveDirectoryOnlyAuthenticationModel>() {
-                ModelAdapter.UpsertAzureADOnlyAuthenticaion(this.ResourceGroupName, this.ServerName, entity.FirstOrDefault())
+                ModelAdapter.UpsertAzureADOnlyAuthenticaion(GetResourceGroupName(), GetServerName(), entity.FirstOrDefault())
             };
         }
     }

@@ -145,3 +145,31 @@ function Test-NewAzAks
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-NewAzAksAddons
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AddOnNameToBeEnabled KubeDashboard,HttpApplicationRouting
+        $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+
+        $cluster = $cluster | Disable-AzAksAddon -Name HttpApplicationRouting
+        Assert-AreEqual $false $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+        $cluster = $cluster | Enable-AzAksAddon -Name HttpApplicationRouting
+        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+        $cluster | Remove-AzAks -Force
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
