@@ -43,7 +43,59 @@ steps:
     arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build" /p:Configuration=Release'
 
 - task: EsrpCodeSigning@1
-  displayName: 'Signing'
+  displayName: 'Dll Signing [Authenticode + Strong Name]'
+  inputs:
+    ConnectedServiceName: 'azps-sign'
+    FolderPath: artifacts
+    Pattern: |
+     Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
+     Release/**/Az.*.private.dll
+     Release/**/Microsoft.Azure.PowerShell.Authentication.dll
+     Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
+     Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
+     !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
+    UseMinimatch: true
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [
+       {
+         "KeyCode": "CP-233863-SN",
+         "OperationCode": "StrongNameSign",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-233863-SN",
+         "OperationCode": "StrongNameVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolSign",
+         "Parameters": {
+           "OpusName": "Microsoft",
+           "OpusInfo": "http://www.microsoft.com",
+           "FileDigest": "/fd \"SHA256\"",
+           "PageHash": "/NPH",
+           "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+         },
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       }
+     ]
+
+- task: EsrpCodeSigning@1
+  displayName: 'Signing ps*'
   inputs:
     ConnectedServiceName: $(signServiceConnection)
     FolderPath: artifacts
