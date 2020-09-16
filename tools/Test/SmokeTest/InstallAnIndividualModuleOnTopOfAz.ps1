@@ -33,7 +33,9 @@ Get-Module
 $azComputeVersion = (Get-Module Az.Compute).Version
 Write-Host "Current version of Az.Compute", $azComputeVersion
 
-if ($azComputeVersion -le $azComputePreviousVersion) {
+if ([System.Version]$azComputeVersion -lt [System.Version]$azComputePreviousVersion) {
     throw "Install Az.Compute on top of Az failed"
+}else if([System.Version]$azComputeVersion -eq [System.Version]$azComputePreviousVersion){
+    Write-Warning "Az.Compute did not update"
 }
  
