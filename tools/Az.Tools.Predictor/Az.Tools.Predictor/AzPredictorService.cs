@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private volatile Tuple<string, Predictor> _historySuggestions; // The history and the prediction for that.
         private volatile Predictor _commands;
         private volatile string _history;
-        private HashSet<string> _commandSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
 
         /// <summary>
@@ -220,8 +220,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         protected void SetCommandsPredictor(IList<string> commands)
         {
             this._commands = new Predictor(commands);
-            this._commandSet = new HashSet<string>(commands.Select(x => AzPredictorService.GetCommandName(x))); // this could be slow
-
+            this._commandSet = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
         /// <summary>

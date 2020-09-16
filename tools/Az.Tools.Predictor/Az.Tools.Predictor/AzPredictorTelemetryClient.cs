@@ -16,6 +16,7 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,8 +41,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             /// </summary>
             public TelemetrySession()
             {
-                this.DataStore = new DiskDataStore();
-                this.ProfileDirectory = Path.Combine(
+                DataStore = new DiskDataStore();
+                ProfileDirectory = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                     AzPredictorConstants.AzureProfileDirectoryName);
             }
@@ -65,8 +66,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         private readonly TelemetryClient _telemetryClient;
-        private int _accepts;
         private readonly string _sessionId;
+        private string _suggestionId = Guid.NewGuid().ToString();
 
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile;
@@ -80,10 +81,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     if (_cachedProfile == null)
                     {
                         var controller = DataCollectionController.Create(new TelemetrySession());
-                        this._cachedProfile = controller.GetProfile(() => { });
+                        _cachedProfile = controller.GetProfile(() => { });
                     }
 
-                    return this._cachedProfile;
+                    return _cachedProfile;
                 }
             }
         }
@@ -113,6 +114,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var currentLog = new Dictionary<string, string>();
             currentLog["History"] = historyLine;
             currentLog["SessionId"] = _sessionId;
+            currentLog["SuggestionId"] = _suggestionId;
 
             if (suggestionIndex.HasValue)
             {
@@ -129,14 +131,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 currentLog["Top5Suggestions"] = string.Join(',', topSuggestions.Take(5));
             }
 
-            this._telemetryClient.TrackEvent("ProcessHistory", currentLog);
+            _telemetryClient.TrackEvent("ProcessHistory", currentLog);
         }
 
         /// <inheritdoc/>
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
-            ++this._accepts;
-
             if (!IsDataCollectionAllowed())
             {
                 return;
@@ -144,26 +144,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var properties = new Dictionary<string, string>()
             {
-                { "AcceptedSuggestion", acceptedSuggestion }
+                { "AcceptedSuggestion", acceptedSuggestion },
+                { "SuggestionId", _suggestionId },
             };
 
-            this._telemetryClient.TrackEvent("AcceptSuggestion", properties);
+            _telemetryClient.TrackEvent("AcceptSuggestion", properties);
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(PredictionSource predictionSource)
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
+            _suggestionId = Guid.NewGuid().ToString();
+
             var properties = new Dictionary<string, string>()
             {
-                { "PredictionSource", predictionSource.ToString() }
+                { "Suggestion", JsonConvert.SerializeObject(suggestions) },
+                { "SuggestionId", _suggestionId },
             };
 
-            this._telemetryClient.TrackEvent("GetSuggestion", properties);
+            _telemetryClient.TrackEvent("GetSuggestion", properties);
         }
 
         /// <summary>

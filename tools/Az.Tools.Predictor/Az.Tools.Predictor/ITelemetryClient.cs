@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
-        /// <param name="predictionSource">The source to get the prediction</param>
-        public void OnGetSuggestion(PredictionSource predictionSource);
+        /// <param name="suggestions">The list of suggestion and its source</param>
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions);
     }
 }

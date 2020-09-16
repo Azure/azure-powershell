@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(PredictionSource predictionSource)
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions)
         {
         }
     }

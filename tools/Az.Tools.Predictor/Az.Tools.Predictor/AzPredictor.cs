@@ -135,14 +135,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var userInput = context.InputAst.Extent.Text;
             var result = _service.GetSuggestion(context.InputAst, cancellationToken);
 
+            _telemetryClient.OnGetSuggestion(new Tuple<string, PredictionSource>[] { result });
+
             if (result?.Item1 != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 var fullSuggestion = MergeStrings(userInput, result.Item1);
                 return new List<PredictiveSuggestion>() { new PredictiveSuggestion(fullSuggestion) };
             }
-
-            this._telemetryClient.OnGetSuggestion(result?.Item2 ?? PredictionSource.None);
 
             return null;
         }
