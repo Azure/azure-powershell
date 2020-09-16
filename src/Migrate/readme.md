@@ -50,6 +50,8 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
+    - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2018-01-10/service.json
 
 module-version: 0.1.0
@@ -57,6 +59,31 @@ title: Migrate
 subject-prefix: 'Migrate'
 
 directive:
+  # Correct some swagger operationIds
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_GetAll(.*)$/g, "$1_List")
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_Get(.*)$/g, "$1_Get")
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_Put(.*)$/g, "$1_CreateOrUpdate")
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_Patch(.*)$/g, "$1_Update")
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_Refresh(.*)$/g, "$1_Refresh")
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where: $
+    transform: return $.replace(/IEdm/g, "Iedm")
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where: $
+    transform: return $.replace(/IServiceProvider/g, "IserviceProvider")
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(.*)_Enumerate(.*)$/g, "$1_List")
   # Correct some generated models
   - no-inline:
     - TestMigrateProviderSpecificInput
@@ -65,6 +92,8 @@ directive:
     - ResyncProviderSpecificInput
     - EnableMigrationProviderSpecificInput
     - UpdateMigrationItemProviderSpecificInput
+    - IedmStructuredType
+    - IedmNavigationProperty
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -107,6 +136,26 @@ directive:
       verb: Update$
       subject: ^ReplicationMigrationItem
       variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: New$|Set$|Update$|Remove$|Start$|Stop$
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      subject: ^HyperV
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      subject: ^Job|^VCenter|^VMwareOperationsStatus
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Invoke$|Register$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      subject: ^Database|^DatabaseInstance|^SolutionConfig|^Event
     remove: true
   # Remove cmdlets not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
@@ -172,38 +221,40 @@ directive:
       verb: Update$
       subject: ^ReplicationMigrationItem
     hide: true
+  # Rename verbs to friendly names.
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Set$
+      subject: HyperV(Cluster|Host)$|VCenter$
+    set:
+      verb: Update
+  # Hide cmdlets not to be visible to user.
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Set$
+      subject: (HyperV)?Site$
+    hide: true
+  - where:
+      verb: New$|Update$
+      variant: ^(Update|Create)(?!.*?Expanded)
+    hide: true
+  - where:
+      verb: New$
+      variant: ^CreateViaIdentity
+    hide: true
+  - where:
+      verb: New$|Set$|Update$
+      subject: Site$|VCenter$
+      parameter-name: Name
+    clear-alias: true
   # Table output formatting
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       model-name: MigrationItem
     set:
-      format-table:
-        properties:
-          - MachineName
-          - MigrationStateDescription
-          - Id
-        labels:
-          MachineName: Name
-          MigrationStateDescription: State
-          Id: Id
-        width:
-          MachineName: 40
-          MigrationStateDescription: 80
-          Id: 300
+      suppress-format: true 
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       model-name: Job
     set:
-      format-table:
-        properties:
-          - FriendlyName
-          - StateDescription
-          - TargetObjectName
-        labels:
-          FriendlyName: Name
-          StateDescription: Status
-          TargetObjectName: Item
-        width:
-          FriendlyName: 40
-          StateDescription: 80
-          TargetObjectName: 40
+      suppress-format: true

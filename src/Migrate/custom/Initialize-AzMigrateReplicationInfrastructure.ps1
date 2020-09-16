@@ -39,7 +39,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [#TODO]
+        [System.String]
         # Specifies the Azure Migrate project for server migration. The project object can be retrieved using the Get-AzMigrateProject cmdlet.
         ${InputObject},
 
@@ -63,7 +63,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String
+        [System.String]
         # Specifies the target Azure region for server migrations.
         ${TargetRegion},
     
@@ -145,6 +145,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
             # TODO PLEASE FIX BEFORE RELEASE
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
             if ($Vmwareagentless.IsPresent) {
+                $ParameterSetName = $PSCmdlet.ParameterSetName
                 # TODO PLEASE FIX BEFORE RELEASE
                 # Get Site name from project name
                 

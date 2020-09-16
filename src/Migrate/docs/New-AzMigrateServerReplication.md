@@ -12,7 +12,18 @@ Starts replication for the specified server.
 
 ## SYNTAX
 
-### ByIdDefaultUser (Default)
+### ByNameDefaultUser (Default)
+```
+New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
+ -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetSubscriptionId <String>
+ -TargetVMName <String> -TargetVMSize <String> [-PerformAutoResync <String>] [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByIdDefaultUser
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -OSDiskID <String>
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
@@ -30,17 +41,6 @@ New-AzMigrateServerReplication -DisksToInclude <IVMwareCbtDiskInput[]> -LicenseT
  -VMwareMachineId <String> [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
  [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByNameDefaultUser
-```
-New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
- -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
- -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetSubscriptionId <String>
- -TargetVMName <String> -TargetVMSize <String> [-PerformAutoResync <String>] [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByNamePowerUser

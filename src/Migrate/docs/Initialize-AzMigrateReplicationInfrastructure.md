@@ -12,10 +12,25 @@ Initializes the replication infrastructure.
 
 ## SYNTAX
 
+### ByNameVMwareCbt (Default)
 ```
-Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String> -TargetRegion
- -Vmwareagentless [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
+ -TargetRegion <String> -Vmwareagentless [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByIdVMwareCbt
+```
+Initialize-AzMigrateReplicationInfrastructure -ProjectID <String> -ResourceGroupID <String>
+ -TargetRegion <String> -Vmwareagentless [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByInputObjectVMwareCbt
+```
+Initialize-AzMigrateReplicationInfrastructure -InputObject <String> -TargetRegion <String> -Vmwareagentless
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +88,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Specifies the Azure Migrate project for server migration.
+The project object can be retrieved using the Get-AzMigrateProject cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: ByInputObjectVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -103,12 +134,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectID
+Specifies the name of the Azure Migrate project to be used for server migration.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIdVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 Specifies the name of the Azure Migrate project to be used for server migration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameVMwareCbt
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupID
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIdVMwareCbt
 Aliases:
 
 Required: True
@@ -123,7 +184,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameVMwareCbt
 Aliases:
 
 Required: True
@@ -152,7 +213,7 @@ Accept wildcard characters: False
 Specifies the target Azure region for server migrations.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

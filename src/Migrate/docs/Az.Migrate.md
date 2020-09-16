@@ -11,11 +11,26 @@ Locale: en-US
 Microsoft Azure PowerShell: Migrate cmdlets
 
 ## Az.Migrate Cmdlets
-### [Get-AzmigrateJob](Get-AzmigrateJob.md)
+### [Get-AzMigrateJob](Get-AzMigrateJob.md)
 The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 
-### [Get-AzMigrateReplicationItem](Get-AzMigrateReplicationItem.md)
+### [Get-AzMigrateMachine](Get-AzMigrateMachine.md)
+Method to get machine.
+
+### [Get-AzMigrateProject](Get-AzMigrateProject.md)
+Method to get a migrate project.
+
+### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
+Method to get run as account.
+
+### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
+
+### [Get-AzMigrateSite](Get-AzMigrateSite.md)
+Method to get a site.
+
+### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
+Gets a solution in the migrate project.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.

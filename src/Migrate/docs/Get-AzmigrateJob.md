@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/ge
 schema: 2.0.0
 ---
 
-# Get-AzmigrateJob
+# Get-AzMigrateJob
 
 ## SYNOPSIS
 Retrieves the status of an Azure Migrate job.
@@ -14,20 +14,20 @@ Retrieves the status of an Azure Migrate job.
 
 ### GetByName (Default)
 ```
-Get-AzmigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
+Get-AzMigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GetByID
 ```
-Get-AzmigrateJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Get-AzMigrateJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzmigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Get-AzMigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

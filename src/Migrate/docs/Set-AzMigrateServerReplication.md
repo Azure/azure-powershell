@@ -12,7 +12,17 @@ Updates the target properties for the replicating server.
 
 ## SYNTAX
 
-### ByIDVMwareCbt (Default)
+### ByNameVMwareCbt (Default)
+```
+Set-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetNetworkId <String>] [-TargetNicIP <String>] [-TargetNicSelectionType <String>]
+ [-TargetNicSubnet <String>] [-TargetResourceGroupID <String>] [-TargetSubnetName <String>]
+ [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByIDVMwareCbt
 ```
 Set-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
@@ -30,16 +40,6 @@ Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <S
  [-TargetResourceGroupID <String>] [-TargetSubnetName <String>] [-TargetVMName <String>]
  [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### ByNameVMwareCbt
-```
-Set-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetNetworkId <String>] [-TargetNicIP <String>] [-TargetNicSelectionType <String>]
- [-TargetNicSubnet <String>] [-TargetResourceGroupID <String>] [-TargetSubnetName <String>]
- [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
