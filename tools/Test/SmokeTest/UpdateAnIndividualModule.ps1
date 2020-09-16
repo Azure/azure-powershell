@@ -29,6 +29,8 @@ Get-AzVM
 $azComputeVersion = (Get-Module Az.Compute).Version | Sort-Object -Descending
 Write-Host "Current version of Az.Compute", $azComputeVersion
 
-if ([System.Version]$azComputeVersion -le [System.Version]$previousVersion) {
+if ([System.Version]$azComputeVersion -lt [System.Version]$previousVersion) {
     throw "Update Az.Compute failed"
+}else if([System.Version]$azComputeVersion -eq [System.Version]$previousVersion){
+    Write-Warning "Az.Compute did not update"
 }
