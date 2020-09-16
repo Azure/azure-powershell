@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
@@ -11,6 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\full.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\full.bak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.25.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
@@ -20,6 +30,7 @@
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.44.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,12 +12,60 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$vnetName = "cl_initial"
+$vnetName = "logReplayPS"
 $subnetName = "Cool"
-$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-$testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
+$location = "westcentralus"
 $lastBackupName = "full.bak";
+$resourceGroupName = "mibrkiclogreplay"
+
+$storageAccountName = "testlogreplayps"
+$containerName = "logreplaypstest"
+$testStorageContainerUri = "https://testlogreplayps.blob.core.windows.net/logreplaypstest";
+
+function SetupEnvForTests
+{
+	try
+	{
+		# Create new resource group
+		$global:rg = New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+		# Create storage account
+		$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+			-Name $storageAccountName `
+			-Type "Standard_LRS" `
+			-Location $location
+
+		Wait-Seconds 10
+
+		# Get context of the storage account
+		$key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+		$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key[0].Value
+
+		# Create storage container
+		New-AzStorageContainer -Name $containerName -Context $ctx
+
+		# Add file to container to use for log replay
+		Set-AzStorageBlobContent -File ".\Resources\full.bak" `
+			-Container $containerName `
+			-Blob "full.bak" `
+			-Context $ctx
+
+		# Get sas token as we will need to initiate log replay
+		$global:testStorageContainerSasToken = New-AzStorageContainerSASToken -Context $ctx -Name "testSas" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Permission "rl" -FullUri
+
+		# Setup VNET
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $resourceGroupName
+		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+
+		$managedInstance = Create-ManagedInstanceForTest $global:rg $subnetId
+		$global:managedInstanceName = $managedInstance.ManagedInstanceName
+	}
+	catch
+	{
+	    #Remove-ResourceGroupForTest $global:rg
+		throw
+	}
+}
 
 <#
 .SYNOPSIS
@@ -25,63 +73,83 @@ Tests Managed Database Log Replay.
 #>
 function Test-ManagedDatabaseLogReplay
 {
-	# Setup
-	$rg = Create-ResourceGroupForTest
+	# Create new resource group
+	$rg = New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+	# Create storage account
+	$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+		-Name $storageAccountName `
+		-Type "Standard_LRS" `
+		-Location $location
+
+	Start-Sleep -s 10
+
+	# Get context of the storage account
+	$key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+	$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key[0].Value
+
+	# Create storage container
+	New-AzStorageContainer -Name $containerName -Context $ctx
+
+	# Add file to container to use for log replay
+	Set-AzStorageBlobContent -File ".\Resources\full.bak" `
+		-Container $containerName `
+		-Blob "full.bak" `
+		-Context $ctx
+
+	# Generates sas token as we will need to initiate log replay
+	$testStorageContainerSasToken = New-AzStorageContainerSASToken `
+		-Name $containerName -Permission "rl" `
+		-StartTime ([System.DateTime]::Now).AddMinutes(-20) `
+		-ExpiryTime ([System.DateTime]::Now).AddHours(5) `
+		-Context $ctx -FullUri
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $resourceGroupName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 
-	$rgName = $rg.ResourceGroupName
-	$managedInstance = $managedInstance.ManagedInstanceName
-	try
-	{
-		# Start log replay
-		$managedDatabaseName = Get-ManagedDatabaseName
-		$collation = "SQL_Latin1_General_CP1_CI_AS"
+	# Start log replay
+	$managedDatabaseName = Get-ManagedDatabaseName
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
 		
-		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance `
-			-Name $managedDatabaseName -Collation $collation `
-			-StorageContainerUri $testStorageContainerUri `
-			-StorageContainerSasToken $testStorageContainerSasToken `
-			-AutoComplete -LastBackupName $lastBackupName
+	Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
+		-Name $managedDatabaseName -Collation $collation `
+		-StorageContainerUri $testStorageContainerUri `
+		-StorageContainerSasToken $testStorageContainerSasToken `
+		-AutoComplete -LastBackupName $lastBackupName
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
+	if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+		Start-Sleep -s 10
+    }
+
+	# Fetch status of the operation
+	$status = "InProgress"
+    $statusCompleted = "Completed"
+	$statusResponse = ""
+
+	while($true){
+        $statusResponse = Get-AzSqlInstanceDatabaseLogReplay `
+		-ResourceGroupName $resourceGroupName `
+		-InstanceName $managedInstanceName `
+		-Name $managedDatabaseName
+
+		# Wait until restore state is Completed - this means that all files have been restored from storage container.
+        #
+        $status = $statusResponse.Status
+        if($status -eq $statusCompleted){
+			break;
         }
-
-		# Fetch status of the operation
-		$status = "InProgress"
-        $statusCompleted = "Completed"
-		$statusResponse = ""
-
-		while($true){
-            $statusResponse = Get-AzSqlInstanceDatabaseLogReplay `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
-			-Name $managedDatabaseName
-
-			# Wait until restore state is Completed - this means that all files have been restored from storage container.
-            #
-            $status = $statusResponse.Status
-            if($status -eq $statusCompleted){
-				break;
-            }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+        if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+			Start-Sleep -s 15
         }
+    }
 
-		Assert-NotNull $statusResponse
-		Assert-AreEqual $status $statusCompleted
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	Assert-NotNull $statusResponse
+	Assert-AreEqual $status $statusCompleted
 }
 
 <#

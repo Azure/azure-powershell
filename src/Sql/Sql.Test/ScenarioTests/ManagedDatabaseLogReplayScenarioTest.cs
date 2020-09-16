@@ -27,7 +27,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var sqlClient = GetSqlClient(context);
             var newResourcesClient = GetResourcesClient(context);
             var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
+            var storageClient = GetStorageManagementClient(context);
+            var sdkStorageClient = GetSDKStorageManagementClient(context);
+            Helper.SetupSomeOfManagementClients(
+                sqlClient, 
+                storageClient,
+                sdkStorageClient,
+                newResourcesClient,
+                networkClient);
         }
 
         public ManagedDatabaseLogReplayScenarioTest(ITestOutputHelper output) : base(output)
@@ -38,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact(Skip = "Depends on hardcoded resource to rerecord")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedDatabaseLogReplayService()
         {

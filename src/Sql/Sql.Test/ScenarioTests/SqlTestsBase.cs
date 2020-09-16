@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
+using SDKStorage = Microsoft.Azure.Management.Storage;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     Helper.RMProfileModule,
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
-                    "AzureRM.Storage.ps1",
+                    Helper.RMStorageModule,
                     "AzureRM.Resources.ps1",
                     Helper.RMOperationalInsightsModule,
                     Helper.RMEventHubModule,
@@ -184,6 +185,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+        protected static SDKStorage.StorageManagementClient GetSDKStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
     }
