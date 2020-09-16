@@ -10,9 +10,9 @@ steps:
     targetType: 'inline'
     script: |
       $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.1.0-preview.7/PowerShell-7.1.0-preview.7-win-x64.zip"
-      $output = "./PowerShell-7.1.0-preview.7-win-x64.zip"
+      $output = Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.1.0-preview.7-win-x64.zip"
       (New-Object System.Net.WebClient).DownloadFile($url, $output)
-      $pwshPath= "./PowerShell-7.1.0-preview.7/"
+      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.1.0-preview.7/"
       Expand-Archive -Path $output -DestinationPath $pwshPath
       $pwshFullPath = Convert-Path $pwshPath
       Write-Host $pwshFullPath
@@ -83,7 +83,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)/PowerShell-7.1.0-preview.7/pwsh.exe -NonInteractive -NoLogo -NoProfile -Command" '
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="Join-Path -Path $(Pipeline.Workspace) -ChildPath ./PowerShell-7.1.0-preview.7/pwsh.exe -NonInteractive -NoLogo -NoProfile -Command" '
 
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'
