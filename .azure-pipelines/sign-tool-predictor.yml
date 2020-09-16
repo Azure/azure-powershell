@@ -14,6 +14,8 @@ steps:
       (New-Object System.Net.WebClient).DownloadFile($url, $output)
       $pwshPath= "./PowerShell-7.1.0-preview.7/"
       Expand-Archive -Path $output -DestinationPath $pwshPath
+      $pwshFullPath = Convert-Path $pwshPath
+      Write-Host $pwshFullPath
 
 - task: PowerShell@2
   displayName: 'Install platyPS'
