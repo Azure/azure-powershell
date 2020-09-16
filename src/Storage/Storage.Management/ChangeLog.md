@@ -32,6 +32,22 @@
     -  `Get-AzStorageContainer`
 * Supported restore deleted Blob container
     -  `Restore-AzStorageContainer`
+* Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
+* Supported Point In Time Restore
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `New-AzStorageBlobRangeToRestore`
+    - `Restore-AzStorageBlobRange`
+* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - `Get-AzureRMStorageAccount`
+* Added breaking change warning message for upcoming cmdlet output change
+    - `Get-AzStorageContainerStoredAccessPolicy`
+    - `Set-AzStorageContainerStoredAccessPolicy`
+    - `Set-AzStorageAccountManagementPolicy`
+    - `Get-AzStorageAccountManagementPolicy`
+    - `Add-AzStorageAccountManagementPolicyAction`
+    - `New-AzStorageAccountManagementPolicyRule`
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.8
 
 ## Version 2.5.2
 * Supported Container access policy with new permission x,t
@@ -50,7 +66,7 @@
     -  `Set-AzDataLakeGen2AclRecursive` 
     -  `Update-AzDataLakeGen2AclRecursive` 
     -  `Remove-AzDataLakeGen2AclRecursive`
-
+    
  ## Version 2.5.0
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`

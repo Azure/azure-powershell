@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -304,6 +304,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Canceling Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
+            get {
+                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
+            get {
+                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot change hardware family..
         /// </summary>
         internal static string CannotChangeHardwareFamily {
@@ -552,6 +570,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string FailoverGroupRemoveDatabaseNotExists {
             get {
                 return ResourceManager.GetString("FailoverGroupRemoveDatabaseNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions..
+        /// </summary>
+        internal static string GeoBackupRedundancyChoosenWarning {
+            get {
+                return ResourceManager.GetString("GeoBackupRedundancyChoosenWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions..
+        /// </summary>
+        internal static string GeoBackupRedundancyNotChoosenWarning {
+            get {
+                return ResourceManager.GetString("GeoBackupRedundancyNotChoosenWarning", resourceCulture);
             }
         }
         
@@ -1229,7 +1265,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The server name &apos;{0}&apos; cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists..
         /// </summary>
@@ -1398,6 +1434,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StandaloneDatabaseActivityNotSupported {
             get {
                 return ResourceManager.GetString("StandaloneDatabaseActivityNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastBackupName is required parameter when AutoCompleteRestore is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string StartManagedDatabaseLogReplay_LastBackupName_Warning {
+            get {
+                return ResourceManager.GetString("StartManagedDatabaseLogReplay_LastBackupName_Warning", resourceCulture);
             }
         }
         

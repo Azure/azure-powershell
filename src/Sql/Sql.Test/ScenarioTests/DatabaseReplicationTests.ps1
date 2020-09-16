@@ -67,10 +67,10 @@ function Test-CreateDatabaseCopy()
 function Test-CreateVcoreDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
-	$db = Create-VcoreDatabaseForTest $rg $server 1 BasePrice
+	$db = Create-VcoreDatabaseForTest $rg $server 2 BasePrice
 
 	try
 	{
@@ -355,8 +355,8 @@ function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 	.SYNOPSIS
 	Creates test database
 #>
-function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 1, $licenseType = "LicenseIncluded")
+function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType
 }

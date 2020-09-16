@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
             this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
             this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]

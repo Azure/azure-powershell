@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System;
     using System.Collections.Generic;
 
-    public class PSResourceManagerErrorFormatter
+    public static class PSResourceManagerErrorFormatter
     {
         public static string Format(PSResourceManagerError error)
         {
