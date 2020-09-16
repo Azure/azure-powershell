@@ -15,57 +15,59 @@
 
 <#
 .Synopsis
-Initializes the replication infrastructure.
+Retrieves the details of the replicating server.
 .Description
-The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
+The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
-function Initialize-AzMigrateReplicationInfrastructure {
-    [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ByNameVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzMigrateServerReplication {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [CmdletBinding(DefaultParameterSetName='GetByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName='GetByID', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the replicating server.
+        ${TargetObjectID},
+
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Parameter(ParameterSetName='ListByName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Parameter(ParameterSetName='ListByName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the name of the Azure Migrate project to be used for server migration.
+        # Specifies the Azure Migrate project  in the current subscription.
         ${ProjectName},
 
-        [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName='GetByName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [#TODO]
-        # Specifies the Azure Migrate project for server migration. The project object can be retrieved using the Get-AzMigrateProject cmdlet.
+        [System.String]
+        # Specifies the server for which the details needs to be retrieved.
+        ${MachineName},
+
+        [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+        # Specifies the machine object of the replicating server.
         ${InputObject},
 
-        [Parameter(ParameterSetName='ByIdVMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Parameter(ParameterSetName='ListByName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
-        # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
-        ${ResourceGroupID},
-
-        [Parameter(ParameterSetName='ByIdVMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        # OData filter options.
+        ${Filter},
+    
+        [Parameter(ParameterSetName='ListByName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
-        # Specifies the name of the Azure Migrate project to be used for server migration.
-        ${ProjectID},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
-        # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
-        ${Vmwareagentless},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String
-        # Specifies the target Azure region for server migrations.
-        ${TargetRegion},
+        # The pagination token.
+        ${SkipToken},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -113,12 +115,6 @@ function Initialize-AzMigrateReplicationInfrastructure {
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -141,51 +137,26 @@ function Initialize-AzMigrateReplicationInfrastructure {
     )
     
     process {
-        try {
-            # TODO PLEASE FIX BEFORE RELEASE
-            Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
-using System;
-public class HashFunctions
-{
-public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
-            }
-            return Math.Abs(hash);
-    }
-}
-"@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                if($PassThru.IsPresent){
-                    return $true
-                }
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
-                if($PassThru.IsPresent){
-                    return $false
-                }
+            #TODO
+            $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
+
+            $null = $PSBoundParameters.Remove('ProjectName')
+            $null = $PSBoundParameters.Remove('MachineName')
+
+            $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+            $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+            if($allFabrics -and ($allFabrics.length -gt 0)){
+                $FabricName = $allFabrics[0].Name
             }
             
-        } catch {
-           throw
-        }
-    }
+            $null = $PSBoundParameters.Add('FabricName', $FabricName)
+            $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+            if($peContainers -and ($peContainers.length -gt 0)){
+                $ProtectionContainerName = $peContainers[0].Name
+            }
 
+            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+            return Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+        } 
 }   
