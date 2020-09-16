@@ -25,7 +25,7 @@ steps:
       (New-Object System.Net.WebClient).DownloadFile($url, $output)
       ./dotnet-install.ps1 -Version "5.0.100-rc.1.20452.10"
       dotnet --info
-
+      
 - task: PowerShell@2
   displayName: MSBuild
   inputs:
@@ -36,3 +36,27 @@ steps:
       dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;Package" /p:Configuration=Release`
       Exit'
       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath -Command $command } -ArgumentList $pspath, $command
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 5.0.100-rc.1.20452.10
+    
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build"'
+
+# - task: PowerShell@2
+#   displayName: Package
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $psPath = "./PowerShell-7.1.0-preview.7" + "/pwsh.exe"
+#       $command = '`$PSVersionTable`
+#       dotnet msbuild tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release`
+#       Exit'
+#       Invoke-Command -ScriptBlock { param ($pspath, $command) & $pspath.toString() -Command $command } -ArgumentList $pspath, $command
