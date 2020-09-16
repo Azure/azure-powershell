@@ -109,6 +109,10 @@ directive:
       parameter-name: RequireInfrastructureEncryptionValue
     set:
       parameter-name: RequireInfrastructureEncryption
+  - where:
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name 
   # Remove the set Workspace cmdlet
   - where:
       verb: Set

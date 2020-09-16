@@ -30,7 +30,7 @@ Deletes the workspace vNetPeering.
 Deletes the workspace.
 
 ### [Update-AzDatabricksVNetPeering](Update-AzDatabricksVNetPeering.md)
-Creates vNet Peering for workspace.
+Update vNet Peering for workspace.
 
 ### [Update-AzDatabricksWorkspace](Update-AzDatabricksWorkspace.md)
 Updates a workspace.

@@ -14,7 +14,7 @@ Deletes the workspace vNetPeering.
 
 ### Delete (Default)
 ```
-Remove-AzDatabricksVNetPeering -PeeringName <String> -ResourceGroupName <String> -WorkspaceName <String>
+Remove-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,22 +30,21 @@ Deletes the workspace vNetPeering.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a vnet peering of databricks by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a vnet peering of databricks by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a vnet peering of databricks by object
 ```powershell
 PS C:\> Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01 | Remove-AzDatabricksVNetPeering
 
 ```
 
-{{ Add description here }}
+This command removes a vnet peering of databricks by object
 
 ## PARAMETERS
 
@@ -95,6 +94,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the workspace vNet peering.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -119,21 +133,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringName
-The name of the workspace vNet peering.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

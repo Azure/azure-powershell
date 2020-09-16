@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDatabricksVNetPeering' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
+        $vnetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
+        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname01
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $ventPeering = New-AzDatabricksVNetPeering -Name $env.vnetpeeringname02 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId $env.virtualNetwork
+        Remove-AzDatabricksVNetPeering -InputObject $ventPeering
+        $vnetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
+        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname02
     }
 }

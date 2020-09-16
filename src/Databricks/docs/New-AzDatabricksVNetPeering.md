@@ -13,7 +13,7 @@ Creates vNet Peering for workspace.
 ## SYNTAX
 
 ```
-New-AzDatabricksVNetPeering -PeeringName <String> -ResourceGroupName <String> -WorkspaceName <String>
+New-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVirtualNetworkAccess]
  [-DatabrickAddressSpaceAddressPrefix <String[]>] [-DatabrickVirtualNetworkId <String>]
  [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway]
@@ -25,23 +25,16 @@ Creates vNet Peering for workspace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a vnet peering for databricks
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxxx-xxxx-xxx-xxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test01'
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetpeering-t01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a vnet peering for databricks.
 
 ## PARAMETERS
 
@@ -150,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the workspace vNet peering.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -159,21 +167,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringName
-The name of the workspace vNet peering.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

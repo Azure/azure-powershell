@@ -1,17 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a vnet peering of databricks by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a vnet peering of databricks by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a vnet peering of databricks by object
 ```powershell
 PS C:\> Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01 | Remove-AzDatabricksVNetPeering
 
 ```
 
-{{ Add description here }}
+This command removes a vnet peering of databricks by object
 

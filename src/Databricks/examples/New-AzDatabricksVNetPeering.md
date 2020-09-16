@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a vnet peering for databricks
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxxx-xxxx-xxx-xxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test01'
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetpeering-t01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command creates a vnet peering for databricks.

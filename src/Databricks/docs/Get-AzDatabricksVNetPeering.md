@@ -20,7 +20,7 @@ Get-AzDatabricksVNetPeering -ResourceGroupName <String> -WorkspaceName <String> 
 
 ### Get
 ```
-Get-AzDatabricksVNetPeering -PeeringName <String> -ResourceGroupName <String> -WorkspaceName <String>
+Get-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -35,25 +35,39 @@ Gets the workspace vNet Peering.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all vnet peering under a databricks
 ```powershell
-PS C:\>  Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01
+PS C:\> Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test
+
+Name            Type
+----            ----
+vnetpeering-t01
+vnetpeering-t02
+```
+
+This command lists all vnet peering under a databricks.
+
+### Example 2: Get a vnet peering
+```powershell
+PS C:\> Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01
 
 Name             Type
 ----             ----
 MyPeering-test01
 ```
 
-{{ Add description here }}
+This command gets a vnet peering.
 
-### Example 2: {{ Add title here }}
+### Example 3: Get a vnet peering by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDatabricksVNetPeering -Name vnetpeering-t02 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxx-xxxx-xxx-xxxxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test02' | Get-AzDatabricksVNetPeering
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetpeering-t02
 ```
 
-{{ Add description here }}
+This command gets a vnet peering by object.
 
 ## PARAMETERS
 
@@ -88,6 +102,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the workspace vNet peering.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -97,21 +126,6 @@ Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringName
-The name of the workspace vNet peering.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

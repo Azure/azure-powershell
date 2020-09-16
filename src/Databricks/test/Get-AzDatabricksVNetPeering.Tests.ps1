@@ -12,15 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDatabricksVNetPeering' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+       $vetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace1 -ResourceGroupName $env.resourceGroup
+       $vetPeeringList.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get'{
+        $vetPeering = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace1 -ResourceGroupName $env.resourceGroup -Name $env.vnetpeeringname01
+        $vetPeering.Name | Should -Be $env.vnetpeeringname01
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $vetPeering = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace1 -ResourceGroupName $env.resourceGroup -Name $env.vnetpeeringname01
+        $vetPeering = Get-AzDatabricksVNetPeering -InputObject  $vetPeering
+        $vetPeering.Name | Should -Be $env.vnetpeeringname01
     }
 }

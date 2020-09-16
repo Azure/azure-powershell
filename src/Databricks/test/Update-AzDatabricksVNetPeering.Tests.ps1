@@ -12,7 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDatabricksVNetPeering' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $vnetPeering = Update-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $env.testWorkspace1 -ResourceGroupName $env.resourceGroup -AllowForwardedTraffic $True
+        $vnetPeering.AllowForwardedTraffic | Should -Be $True
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $vnetPeering = Get-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $env.testWorkspace1 -ResourceGroupName $env.resourceGroup
+        $vnetPeering = Update-AzDatabricksVNetPeering -InputObject $vnetPeering  -AllowForwardedTraffic $False
+        $vnetPeering.AllowForwardedTraffic | Should -Be $False
     }
 }

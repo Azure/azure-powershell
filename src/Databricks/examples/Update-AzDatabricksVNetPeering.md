@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update AllowForwardedTraffic of vnet peering
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 -AllowForwardedTraffic $True
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetpeering-t01
 ```
 
-{{ Add description here }}
+This command updates AllowForwardedTraffic of vnet peering.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update AllowForwardedTraffic of vnet peering by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetpeering-t01
+
 ```
 
-{{ Add description here }}
+This command updates AllowForwardedTraffic of vnet peering by object.
+
 
