@@ -33,5 +33,5 @@ Write-Host "Current version of Az.Compute", $azComputeVersion
 if ([System.Version]$azComputeVersion -lt [System.Version]$previousVersion) {
  throw "Install Az on top of Az.Compute failed"
 }else if([System.Version]$azComputeVersion -eq [System.Version]$previousVersion){
-    Write-Warning "Az did not update"
+    Write-Warning "Az.Compute did not update"
 }
