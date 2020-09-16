@@ -25,7 +25,12 @@ steps:
       (New-Object System.Net.WebClient).DownloadFile($url, $output)
       ./dotnet-install.ps1 -Version "5.0.100-rc.1.20452.10"
       dotnet --info
-
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 5.0.100-rc.1.20452.10
+    
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
