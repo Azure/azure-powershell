@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.1
 * Supported enable Smb Multichannel on File service
     -  `Update-AzStorageFileServiceProperty`
 * Supported Blob Last Access Time

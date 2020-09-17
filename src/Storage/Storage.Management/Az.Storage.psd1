@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.5.2'
+ModuleVersion = '2.6.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -230,22 +230,36 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported Container access policy with new permission x,t
-    -  ''New-AzStorageContainerStoredAccessPolicy''
-    -  ''Set-AzStorageContainerStoredAccessPolicy''
-* Change the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
-    -  ''Get-AzStorageContainerStoredAccessPolicy''
-    -  ''Set-AzStorageContainerStoredAccessPolicy''
-    -  ''Get-AzStorageShareStoredAccessPolicy''
-    -  ''Set-AzStorageShareStoredAccessPolicy''
-    -  ''Get-AzStorageQueueStoredAccessPolicy''
-    -  ''Set-AzStorageQueueStoredAccessPolicy''
-    -  ''Get-AzStorageTableStoredAccessPolicy''
-    -  ''Set-AzStorageTableStoredAccessPolicy''
-* Support set/update/remove Acl recursively on Datalake Gen2 item 
-    -  ''Set-AzDataLakeGen2AclRecursive'' 
-    -  ''Update-AzDataLakeGen2AclRecursive'' 
-    -  ''Remove-AzDataLakeGen2AclRecursive'''
+        ReleaseNotes = '* Supported enable Smb Multichannel on File service
+        -  `Update-AzStorageFileServiceProperty`
+    * Supported Blob Last Access Time
+        -  `Enable-AzStorageBlobLastAccessTimeTracking`
+        -  `Disable-AzStorageBlobLastAccessTimeTracking`
+        -  `Add-AzStorageAccountManagementPolicyAction`
+    * Supported enable/disable Blob container soft delete
+        -  `Enable-AzStorageContainerDeleteRetentionPolicy`
+        -  `Disable-AzStorageContainerDeleteRetentionPolicy`
+    * Supported list deleted Blob containers
+        -  `Get-AzRmStorageContainer`
+        -  `Get-AzStorageContainer`
+    * Supported restore deleted Blob container
+        -  `Restore-AzStorageContainer`
+    * Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
+    * Supported Point In Time Restore
+        - `Enable-AzStorageBlobRestorePolicy`
+        - `Disable-AzStorageBlobRestorePolicy`
+        - `New-AzStorageBlobRangeToRestore`
+        - `Restore-AzStorageBlobRange`
+    * Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+        - `Get-AzureRMStorageAccount`
+    * Added breaking change warning message for upcoming cmdlet output change
+        - `Get-AzStorageContainerStoredAccessPolicy`
+        - `Set-AzStorageContainerStoredAccessPolicy`
+        - `Set-AzStorageAccountManagementPolicy`
+        - `Get-AzStorageAccountManagementPolicy`
+        - `Add-AzStorageAccountManagementPolicyAction`
+        - `New-AzStorageAccountManagementPolicyRule`
+    * Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.8'
 
         # Prerelease string of this module
         Prerelease = 'preview'
