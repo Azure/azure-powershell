@@ -26,6 +26,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestVirtualNetworkLocalGatewayCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkLocalGatewayCRUD");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

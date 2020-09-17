@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -70,6 +75,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
@@ -98,6 +108,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+            HelpMessage = "location.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "location.")]
         [LocationCompleter("Microsoft.Network/virtualNetworkGateways")]
@@ -114,10 +129,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
+            HelpMessage = "The type of this virtual network gateway: Vpn, ExpressRoute, LocalGateway")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+            HelpMessage = "The type of this virtual network gateway: Vpn, ExpressRoute, LocalGateway")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayType.Vpn,
             MNM.VirtualNetworkGatewayType.ExpressRoute,
+            MNM.VirtualNetworkGatewayType.LocalGateway,
             IgnoreCase = true)]
         public string GatewayType { get; set; }
 
@@ -160,6 +181,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw4,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
@@ -307,6 +329,31 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnGatewayGeneration.Generation2)]
         public string VpnGatewayGeneration { get; set; }
 
+        [Alias("VirtualNetworkResourceId")]
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true,
+             ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+             HelpMessage = "MAS FIJI customer vnet resource id.VirtualNetworkGateway of type local gateway is associated with the customer vnet.")]
+        public string virtualNetworkExtendedLocationResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+            HelpMessage = "The type of extended location")]
+        [ValidateSet(
+            MNM.ExtendedLocationType.EgdeZone,
+            IgnoreCase = true)]
+        public string ExtendedLocationType { get; set; }
+
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true,
+             ParameterSetName = VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration,
+             HelpMessage = "The name of extended location")]
+        public string ExtendedLocationName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -352,6 +399,19 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.Name = this.Name;
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
+
+            if ((this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration) && !this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway)) ||
+                (!this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration) && this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway)))
+            {
+                throw new ArgumentException("Extended Location and Virtual Network Resource Id are mandatory only if Virtual Network Gateway Type is " + MNM.VirtualNetworkGatewayType.LocalGateway);
+            }
+            else
+            {
+                vnetGateway.ExtendedLocation = new PSExtendedLocation();
+                vnetGateway.ExtendedLocation.Name = this.ExtendedLocationName;
+                vnetGateway.ExtendedLocation.Type = this.ExtendedLocationType;
+                vnetGateway.VirtualNetworkExtendedLocationResourceId = this.virtualNetworkExtendedLocationResourceId;
+            }
 
             if (this.GatewaySku != null)
             {
@@ -549,12 +609,26 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var vnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
+
             vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            // Execute the Create VirtualNetwork call
-            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
-
-            var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
+            var getVirtualNetworkGateway = new PSVirtualNetworkGateway();
+            if (!this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration))
+            {
+                // Execute the Create VirtualNetwork call
+                this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
+                getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
+            }
+            else
+            {
+                getVirtualNetworkGateway.Name = this.Name;
+                getVirtualNetworkGateway.ResourceGroupName = this.ResourceGroupName;
+                getVirtualNetworkGateway.Location = this.Location;
+                getVirtualNetworkGateway.ExtendedLocation = new PSExtendedLocation();
+                getVirtualNetworkGateway.ExtendedLocation.Name = this.ExtendedLocationName;
+                getVirtualNetworkGateway.ExtendedLocation.Type = this.ExtendedLocationType;
+                getVirtualNetworkGateway.VirtualNetworkExtendedLocationResourceId = this.virtualNetworkExtendedLocationResourceId;
+            }
 
             return getVirtualNetworkGateway;
         }

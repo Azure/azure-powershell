@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 
+* Added New GatewayType `LocalGateway` to cmdlet `New-AzVirtualNetworkGateway`
+
 ## Upcoming Release
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
