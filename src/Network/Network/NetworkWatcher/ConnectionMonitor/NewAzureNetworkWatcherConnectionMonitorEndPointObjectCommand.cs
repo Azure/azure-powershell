@@ -136,15 +136,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.",
+            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
              ParameterSetName = "AzureVNet")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.",
+            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
              ParameterSetName = "AzureSubnet")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.",
+            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
              ParameterSetName = "MMAWorkspaceNetwork")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full")]
