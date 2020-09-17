@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public PredictorTests(ModelFixture fixture)
         {
             this._fixture = fixture;
-            var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
             this._predictor = new Predictor(this._fixture.PredictionCollection[startHistory]);
         }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("NEW-AZCONTEXT")]
         [InlineData("Get-AzStorageAccount ")] // A complete command and we have exact the same on in the model.
         [InlineData("get-azaccount ")]
-        [InlineData(AzPredictorConstants.CommandHistoryPlaceholder)]
+        [InlineData(AzPredictorConstants.CommandPlaceholder)]
         [InlineData("git status")]
         [InlineData("Get-ChildItem")]
         public void GetNullPredictionWithCommandName(string userInput)

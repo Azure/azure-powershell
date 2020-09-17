@@ -34,13 +34,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         Commands,
 
         /// <summary>
-        /// The prediction is from the list for the old history.
+        /// The prediction is from the list for the older command.
         /// </summary>
-        PreviousHistory,
+        PreviousCommand,
 
         /// <summary>
-        /// The prediction is from the list for the current history.
+        /// The prediction is from the list for the currentc command.
         /// </summary>
-        CurrentHistory
+        CurrentCommand
     }
 }

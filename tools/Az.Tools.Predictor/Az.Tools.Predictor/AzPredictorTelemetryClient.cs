@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -65,9 +64,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        /// <inheritdoc/>
+        public string SessionId { get; } = Guid.NewGuid().ToString();
+
+        /// <inheritdoc/>
+        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
+
         private readonly TelemetryClient _telemetryClient;
-        private readonly string _sessionId;
-        private string _suggestionId = Guid.NewGuid().ToString();
 
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile;
@@ -76,6 +79,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             get
             {
+                if (_cachedProfile != null)
+                {
+                    return _cachedProfile;
+                }
+
                 lock (lockObject)
                 {
                     if (_cachedProfile == null)
@@ -97,41 +105,52 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
             configuration.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"; // Use Azuer-PowerShell instrumentation key. see https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs
             _telemetryClient = new TelemetryClient(configuration);
-            _sessionId = Guid.NewGuid().ToString();
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionForHistory(string historyLine,
-                             int? suggestionIndex,
-                             int? fallbackIndex,
-                             IEnumerable<string> topSuggestions)
+        public void OnHistory(string historyLine)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
-            var currentLog = new Dictionary<string, string>();
-            currentLog["History"] = historyLine;
-            currentLog["SessionId"] = _sessionId;
-            currentLog["SuggestionId"] = _suggestionId;
-
-            if (suggestionIndex.HasValue)
+            var currentLog = new Dictionary<string, string>()
             {
-                currentLog["SuggestionIndex"] = suggestionIndex.Value.ToString(CultureInfo.InvariantCulture);
+                { "History", historyLine },
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+            };
+
+            _telemetryClient.TrackEvent("CommandHistory", currentLog);
+
+#if DEBUG
+            Console.WriteLine("Recording CommandHistory");
+#endif
+        }
+
+        /// <inheritdoc/>
+        public void OnRequestPrediction(string command)
+        {
+            if (!IsDataCollectionAllowed())
+            {
+                return;
             }
 
-            if (fallbackIndex.HasValue)
-            {
-                currentLog["FallbackIndex"] = fallbackIndex.Value.ToString(CultureInfo.InvariantCulture);
-            }
+            CorrelationId = Guid.NewGuid().ToString();
 
-            if (topSuggestions != null)
+            var currentLog = new Dictionary<string, string>()
             {
-                currentLog["Top5Suggestions"] = string.Join(',', topSuggestions.Take(5));
-            }
+                { "Command", command },
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+            };
 
-            _telemetryClient.TrackEvent("ProcessHistory", currentLog);
+            _telemetryClient.TrackEvent("RequestPrediction", currentLog);
+
+#if DEBUG
+            Console.WriteLine("Recording RequestPrediction");
+#endif
         }
 
         /// <inheritdoc/>
@@ -145,29 +164,38 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var properties = new Dictionary<string, string>()
             {
                 { "AcceptedSuggestion", acceptedSuggestion },
-                { "SuggestionId", _suggestionId },
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
             };
 
             _telemetryClient.TrackEvent("AcceptSuggestion", properties);
+
+#if DEBUG
+            Console.WriteLine("Recording AcceptSuggestion");
+#endif
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions)
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
-            _suggestionId = Guid.NewGuid().ToString();
-
             var properties = new Dictionary<string, string>()
             {
                 { "Suggestion", JsonConvert.SerializeObject(suggestions) },
-                { "SuggestionId", _suggestionId },
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+                { "IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture) },
             };
 
             _telemetryClient.TrackEvent("GetSuggestion", properties);
+
+#if DEBUG
+            Console.WriteLine("Recording GetSuggestioin");
+#endif
         }
 
         /// <summary>

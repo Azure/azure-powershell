@@ -23,13 +23,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     public interface ITelemetryClient
     {
         /// <summary>
-        /// Collects the event for the top 5 predeiction for the history.
+        /// Gets the correlation id for the telemetry events.
         /// </summary>
-        /// <param name="historyLine">The history command that triggers the suggestion.</param>
-        /// <param name="suggestionIndex">The index of the suggestion from the suggestion model.</param>
-        /// <param name="fallbackIndex">The index in the command list as a fallback.</param>
-        /// <param name="topSuggestions">The top suggestions.</param>
-        public void OnSuggestionForHistory(string historyLine, int? suggestionIndex, int? fallbackIndex, IEnumerable<string> topSuggestions);
+        public string CorrelationId { get; }
+
+        /// <summary>
+        /// Gets the session id for the telemetry events.
+        /// </summary>
+        public string SessionId { get; }
+
+        /// <summary>
+        /// Collects the event of the history command.
+        /// </summary>
+        /// <param name="historyLine">The history command from PSReadLine.</param>
+        public void OnHistory(string historyLine);
+
+        /// <summary>
+        /// Collects the event when a prediction is requested.
+        /// </summary>
+        /// <param name="command">The command to that we request the prediction for.</param>
+        public void OnRequestPrediction(string command);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
@@ -41,6 +54,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Collects when we return a suggestion
         /// </summary>
         /// <param name="suggestions">The list of suggestion and its source</param>
-        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions);
+        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled);
     }
 }

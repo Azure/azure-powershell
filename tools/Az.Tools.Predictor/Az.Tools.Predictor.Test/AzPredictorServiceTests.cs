@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public AzPredictorServiceTests(ModelFixture fixture)
         {
             this._fixture = fixture;
-            var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
             this._suggestionsPredictor = new Predictor(this._fixture.PredictionCollection[startHistory]);
             this._commandsPredictor = new Predictor(this._fixture.CommandCollection);
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.NotNull(actual);
             Assert.NotNull(actual.Item1);
             Assert.Equal(expected, actual.Item1);
-            Assert.Equal(PredictionSource.CurrentHistory, actual.Item2);
+            Assert.Equal(PredictionSource.CurrentCommand, actual.Item2);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify that no prediction for the user input, meaning it's not in the prediction list or the command list.
         /// </summary>
         [Theory]
-        [InlineData(AzPredictorConstants.CommandHistoryPlaceholder)]
+        [InlineData(AzPredictorConstants.CommandPlaceholder)]
         [InlineData("git status")]
         [InlineData("Get-ChildItem")]
         [InlineData("new-azresourcegroup -NoExistingParam")]

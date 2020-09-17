@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
 
@@ -32,29 +31,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Requests predictions, given a history string.
+        /// Requests predictions, given a command string.
         /// </summary>
-        /// <param name="history">A history string could look like: "Get-AzContext -Name NAME\nSet-AzContext"</param>
-        public void RequestPredictions(string history);
-
-        /// <summary>
-        /// For logging purposes, get the rank of the user input in the model suggestions list.
-        /// </summary>
-        public int? GetRankOfSuggestion(CommandAst command, Ast input);
+        /// <param name="command">A history string could look like: "Get-AzContext -Name NAME\nSet-AzContext"</param>
+        public void RequestPredictions(string command);
 
         /// <summary>
         /// Return true if command is part of known set of Az cmdlets, false otherwise.
         /// </summary>
         public bool IsSupportedCommand(string cmd);
-
-        /// <summary>
-        /// For logging purposes, get the rank of the user input in the fallback commands cache.
-        /// </summary>
-        public int? GetRankOfFallback(CommandAst command, Ast input);
-
-        /// <summary>
-        /// For logging purposes, get the top N suggestions from the model suggestions list.
-        /// </summary>
-        public IEnumerable<string> GetTopNSuggestions(int n);
     }
 }

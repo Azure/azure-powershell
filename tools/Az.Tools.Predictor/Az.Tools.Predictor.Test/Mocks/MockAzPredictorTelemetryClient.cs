@@ -22,24 +22,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public class RecordedSuggestionForHistory
         {
             public string HistoryLine { get; set; }
-            public int? SuggestionIndex { get; set; }
-            public int? FallbackIndex { get; set; }
-            public IEnumerable<string> TopSuggestions { get; set; }
         }
+
+        /// <inheritdoc/>
+        public string SessionId { get; } = Guid.NewGuid().ToString();
+
+        /// <inheritdoc/>
+        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
 
         public RecordedSuggestionForHistory RecordedSuggestion { get; set; }
         public int SuggestionAccepted { get; set; }
 
         /// <inheritdoc/>
-        public void OnSuggestionForHistory(string historyLine, int? suggestionIndex, int? fallbackIndex, IEnumerable<string> topSuggestions)
+        public void OnHistory(string historyLine)
         {
             this.RecordedSuggestion = new RecordedSuggestionForHistory()
             {
                 HistoryLine = historyLine,
-                SuggestionIndex = suggestionIndex,
-                FallbackIndex = fallbackIndex,
-                TopSuggestions = topSuggestions
             };
+        }
+
+        /// <inheritdoc/>
+        public void OnRequestPrediction(string command)
+        {
         }
 
         /// <inheritdoc/>
@@ -49,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions)
+        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled)
         {
         }
     }

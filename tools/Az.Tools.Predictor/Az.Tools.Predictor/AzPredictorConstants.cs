@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// The value to use when the command isn't an Az command.
         /// </summary>
-        public const string CommandHistoryPlaceholder = "start_of_snippet";
+        public const string CommandPlaceholder = "start_of_snippet";
 
         /// <summary>
         /// The value to check to determine if it's an Az command.
