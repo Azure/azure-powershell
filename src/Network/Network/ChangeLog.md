@@ -18,8 +18,6 @@
         - Additional information about change #1
 --->
 
-* Added New GatewayType `LocalGateway` to cmdlet `New-AzVirtualNetworkGateway`
-
 ## Upcoming Release
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
@@ -35,6 +33,7 @@
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 * Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
 * Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
+* Added New GatewayType `LocalGateway` to cmdlet `New-AzVirtualNetworkGateway`
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

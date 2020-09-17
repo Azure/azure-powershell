@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw4,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
-            MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
@@ -612,23 +611,10 @@ namespace Microsoft.Azure.Commands.Network
 
             vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            var getVirtualNetworkGateway = new PSVirtualNetworkGateway();
-            if (!this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration))
-            {
-                // Execute the Create VirtualNetwork call
-                this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
-                getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
-            }
-            else
-            {
-                getVirtualNetworkGateway.Name = this.Name;
-                getVirtualNetworkGateway.ResourceGroupName = this.ResourceGroupName;
-                getVirtualNetworkGateway.Location = this.Location;
-                getVirtualNetworkGateway.ExtendedLocation = new PSExtendedLocation();
-                getVirtualNetworkGateway.ExtendedLocation.Name = this.ExtendedLocationName;
-                getVirtualNetworkGateway.ExtendedLocation.Type = this.ExtendedLocationType;
-                getVirtualNetworkGateway.VirtualNetworkExtendedLocationResourceId = this.virtualNetworkExtendedLocationResourceId;
-            }
+            // Execute the Create VirtualNetwork call
+            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);  
+
+            var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
 
             return getVirtualNetworkGateway;
         }
