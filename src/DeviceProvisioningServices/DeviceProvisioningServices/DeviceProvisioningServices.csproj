@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.6.3" />
-    <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.10.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
