@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+
 * Added new cmdlets for managed clusters and node types:
     - `New-AzServiceFabricManagedCluster`
     - `Get-AzServiceFabricManagedCluster`
