@@ -138,14 +138,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     var fullSuggestion = MergeStrings(userInput, result.Item1);
                     return new List<PredictiveSuggestion>() { new PredictiveSuggestion(fullSuggestion) };
                 }
-
-                return null;
+            }
+            catch (Exception e) when (!(e is OperationCanceledException))
+            {
+                this._telemetryClient.OnGetSuggestionError(e);
             }
             finally
             {
                 _telemetryClient.OnGetSuggestion(new Tuple<string, PredictionSource>[] { result },
                         cancellationToken.IsCancellationRequested);
             }
+
+            return null;
         }
 
         // Merge strings a and b such that the prefix of b is deleted if it is the suffix of a

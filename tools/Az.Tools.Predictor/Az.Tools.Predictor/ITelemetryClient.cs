@@ -45,6 +45,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnRequestPrediction(string command);
 
         /// <summary>
+        /// Collects the event when we fail to get the prediction for the command
+        /// </summary>
+        /// <param name="command">The command to that we request the prediction for.</param>
+        /// <param name="e">The exception</param>
+        public void OnRequestPredictionError(string command, Exception e);
+
+        /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
         /// <param name="acceptedSuggestion">The suggestion that's accepted by the user.</param>
@@ -56,5 +63,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="suggestions">The list of suggestion and its source</param>
         /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
         public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled);
+
+        /// <summary>
+        /// Collects when an exception is thrown when we return a suggestion.
+        /// </summary>
+        /// <param name="e">The exception</param>
+
+        public void OnGetSuggestionError(Exception e);
     }
 }

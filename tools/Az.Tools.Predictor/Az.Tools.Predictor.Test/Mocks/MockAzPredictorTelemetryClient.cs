@@ -48,6 +48,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
+        public void OnRequestPredictionError(string command, Exception e)
+        {
+        }
+
+        /// <inheritdoc/>
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
             ++this.SuggestionAccepted;
@@ -55,6 +60,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         /// <inheritdoc/>
         public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled)
+        {
+        }
+
+        /// <inheritdoc/>
+        public void OnGetSuggestionError(Exception e)
         {
         }
     }

@@ -154,6 +154,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
+        public void OnRequestPredictionError(string command, Exception e)
+        {
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            var currentLog = new Dictionary<string, string>()
+            {
+                { "Command", command },
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+                { "Exception", e.ToString() },
+            };
+
+            _telemetryClient.TrackEvent("RequestPredictionError", currentLog);
+
+#if DEBUG
+            Console.WriteLine("Recording RequestPredictionError");
+#endif
+        }
+
+        /// <inheritdoc/>
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
             if (!IsDataCollectionAllowed())
@@ -195,6 +218,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
 #if DEBUG
             Console.WriteLine("Recording GetSuggestioin");
+#endif
+        }
+
+        /// <inheritdoc/>
+        public void OnGetSuggestionError(Exception e)
+        {
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            var properties = new Dictionary<string, string>()
+            {
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+                { "Exception", e.ToString() },
+            };
+
+            _telemetryClient.TrackEvent("GetSuggestionError", properties);
+
+#if DEBUG
+            Console.WriteLine("Recording GetSuggestioinError");
 #endif
         }
 

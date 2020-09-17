@@ -160,6 +160,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
             Task.Run(async () => {
+                try
+                {
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
                         SessionId = this._telemetryClient.SessionId,
@@ -177,8 +179,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
 
                     this.SetSuggestionPredictor(command, suggestionsList);
-                },
-                cancellationToken);
+                }
+                catch (Exception e) when (!(e is OperationCanceledException))
+                {
+                    this._telemetryClient.OnRequestPredictionError(command, e);
+                }
+            },
+            cancellationToken);
         }
 
         /// <inheritdoc/>
