@@ -52,7 +52,7 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
@@ -64,8 +64,14 @@ param(
     [System.String]
     # The start IP address of the server firewall rule.
     # Must be IPv4 format.
-    # If range contains one IP, use StartIPAddress only.
     ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
 
     [Parameter(ParameterSetName='AllowAll', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -146,15 +152,23 @@ process {
 
             $null = $PSBoundParameters.Remove('AllowAll')
         }
+        elseif($PSBoundParameters.ContainsKey('ClientIPAddress'))
+        {
+            $PSBoundParameters['StartIPAddress'] = $PSBoundParameters['ClientIPAddress']
+            $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['ClientIPAddress']
+
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "ClientIPAddress_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss")
+            }
+
+            $null = $PSBoundParameters.Remove('ClientIPAddress')
+        }
         else
         {
             if(!$PSBoundParameters.ContainsKey('Name'))
             {
                 $PSBoundParameters['Name'] = "undefined"
-            }
-            if(!$PSBoundParameters.ContainsKey('EndIPAddress'))
-            {
-                $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['StartIPAddress']
             }
         }
 

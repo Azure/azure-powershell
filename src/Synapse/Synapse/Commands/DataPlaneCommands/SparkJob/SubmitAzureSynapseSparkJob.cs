@@ -14,7 +14,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName)]
+    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkJob))]
     public class SubmitAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
@@ -152,27 +152,28 @@ namespace Microsoft.Azure.Commands.Synapse
                 ClassName = isSparkDotNet
                     ? SynapseConstants.SparkDotNetClassName
                     : (this.Language == LanguageType.PySpark ? null : this.MainClassName),
-                Arguments = isSparkDotNet
-                    ? new List<string> { this.MainDefinitionFile, this.MainClassName }
-                        .Concat(this.CommandLineArgument ?? new string[0]).ToArray()
-                    : this.CommandLineArgument,
-                Jars = jars,
-                Files = files,
-                Archives = isSparkDotNet
-                    ? new List<string> { $"{this.MainDefinitionFile}#{SynapseConstants.SparkDotNetUdfsFolderName}" }
-                    : null,
-                Configuration = this.Configuration?.ToDictionary(),
                 ExecutorMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 ExecutorCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 DriverMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 DriverCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 ExecutorCount = this.ExecutorCount
             };
+            var arguments = isSparkDotNet
+                    ? new List<string> { this.MainDefinitionFile, this.MainClassName }
+                        .Concat(this.CommandLineArgument ?? new string[0]).ToArray()
+                    : this.CommandLineArgument;
+            arguments?.ForEach(item => batchRequest.Arguments.Add(item));
+            jars?.ForEach(item => batchRequest.Jars.Add(item));
+            files?.ForEach(item => batchRequest.Files.Add(item));
+            var archives = isSparkDotNet
+                    ? new List<string> { $"{this.MainDefinitionFile}#{SynapseConstants.SparkDotNetUdfsFolderName}" }
+                    : null;
+            archives?.ForEach(item => batchRequest.Archives.Add(item));
+            this.Configuration?.ToDictionary()?.ForEach(item => batchRequest.Configuration.Add(item));
 
             // Ensure the relative path of UDFs is add to "--conf".
             if (isSparkDotNet)
             {
-                batchRequest.Configuration = batchRequest.Configuration ?? new Dictionary<string, string>();
                 string udfsRelativePath = "./" + SynapseConstants.SparkDotNetUdfsFolderName;
                 batchRequest.Configuration.TryGetValue(SynapseConstants.SparkDotNetAssemblySearchPathsKey, out string pathValue);
                 var paths = pathValue?.Split(',').Select(path => path.Trim()).Where(path => !string.IsNullOrEmpty(path)).ToList() ?? new List<string>();
@@ -184,8 +185,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 batchRequest.Configuration[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
             }
 
-            var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion:false);
-            WriteObject(new PSSynapseSparkJob(jobInformation));
+            if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.SubmittingSynapseSparkJob, this.SparkPoolName, this.WorkspaceName)))
+            {
+                var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion: false);
+                WriteObject(new PSSynapseSparkJob(jobInformation));
+            }
         }
     }
 }

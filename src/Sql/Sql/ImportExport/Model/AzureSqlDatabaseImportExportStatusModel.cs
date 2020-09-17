@@ -56,11 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
             set;
         }
 
-
         /// <summary>
-        /// Gets or sets the status message returned from the server.
+        /// Gets or sets the operation request type
         /// </summary>
-        public string StatusMessage
+        public string RequestType
         {
             get;
             set;
@@ -74,5 +73,44 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the status message returned from the server.
+        /// </summary>
+        public string StatusMessage
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the 
+        /// </summary>
+        public PrivateEndpointRequestStatus[] PrivateEndpointRequestStatus
+        {
+            get;
+            set;
+        }
+    }
+
+    /// <summary>
+    /// Represents private endpoint connection status
+    /// </summary>
+    public class PrivateEndpointRequestStatus
+    {
+        /// <summary>
+        /// Gets the resource id for private endpoint connection
+        /// </summary>
+        public string PrivateLinkServiceId { get; set; }
+
+        /// <summary>
+        /// Gets the private endpoint connection name
+        /// </summary>
+        public string PrivateEndpointConnectionName { get; set; }
+
+        /// <summary>
+        /// Gets the status of the private endpoint connection
+        /// </summary>
+        public string Status { get; set; }
     }
 }

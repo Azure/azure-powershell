@@ -14,8 +14,8 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -StartIPAddress <String>
- [-Name <String>] [-SubscriptionId <String>] [-EndIPAddress <String>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
+ -StartIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,6 +24,13 @@ New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -StartI
 New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -AllowAll [-Name <String>]
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ClientIPAddress
+```
+New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -ClientIPAddress <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,16 +49,16 @@ rule 0.0.0.0        0.0.0.1
 
 This cmdlets create a MySql server Firewall Rule.
 
-### Example 2: Create a new MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized
+### Example 2: Create a new MySql Firewall Rule using -ClientIPAddress.
 ```powershell
-PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -StartIPAddress 0.0.0.1
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
 
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.1        0.0.0.1
+Name                                StartIPAddress EndIPAddress
+----                                -------------- ------------
+ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
 ```
 
-This cmdlets create a MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized.
+This cmdlets create a MySql Firewall Rule using -ClientIPAddress.
 
 ### Example 3: Create a new MySql Firewall Rule to allow all IPs
 ```powershell
@@ -96,6 +103,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -120,7 +143,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +216,6 @@ Accept wildcard characters: False
 ### -StartIPAddress
 The start IP address of the server firewall rule.
 Must be IPv4 format.
-If range contains one IP, use StartIPAddress only.
 
 ```yaml
 Type: System.String

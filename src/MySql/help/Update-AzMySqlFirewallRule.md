@@ -15,13 +15,26 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -StartIPAddress <String> [-SubscriptionId <String>] [-EndIPAddress <String>] [-DefaultProfile <PSObject>]
+ -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddress
+```
+Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -StartIPAddress <String> [-EndIPAddress <String>]
+Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -EndIPAddress <String> -StartIPAddress <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,17 +66,17 @@ rule 0.0.0.2        0.0.0.3
 
 These cmdlets update MySql Firewall Rule by identity.
 
-### Example 3: Update MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized
+### Example 3: Update MySql Firewall Rule by -ClientIPAddress.
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-PS C:\> Update-AzMySqlFirewallRule -InputObject $ID -StartIPAddress 0.0.0.2
+PS C:\> Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
 
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+rule 0.0.0.2        0.0.0.2
 ```
 
-These cmdlets update MySql Firewall Rule use only one parameter StartIPAddress when only one IP needs to be authorized.
+These cmdlets update MySql Firewall Rule by -ClientIPAddress.
 
 ## PARAMETERS
 
@@ -76,6 +89,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress, ClientIPAddressViaIdentity
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,10 +132,10 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +148,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -134,7 +163,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases: FirewallRuleName
 
 Required: True
@@ -165,7 +194,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -180,7 +209,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -193,11 +222,10 @@ Accept wildcard characters: False
 ### -StartIPAddress
 The start IP address of the server firewall rule.
 Must be IPv4 format.
-If range contains one IP, use StartIPAddress only.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -212,7 +240,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: False
