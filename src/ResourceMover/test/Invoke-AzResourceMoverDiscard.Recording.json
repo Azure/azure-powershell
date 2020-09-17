@@ -1,0 +1,112 @@
+{
+  "Invoke-AzResourceMoverDiscard+[NoContext]+DiscardExpanded+$POST+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/discard?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/discard?api-version=2019-10-01-preview",
+      "Content": "{\n  \"moveResources\": [ \"my-sRgVm1\" ]\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "38" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "02c468cf-a5ff-4172-bf69-c62270082053" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a?api-version=2019-10-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "5b1b96fe-0724-4173-a034-211286753a1e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102457Z:5b1b96fe-0724-4173-a034-211286753a1e" ],
+        "Date": [ "Tue, 25 Aug 2020 10:24:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzResourceMoverDiscard+[NoContext]+DiscardExpanded+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a?api-version=2019-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "7332a7c4-a2ca-4629-93cc-e48034886a97" ],
+        "CommandName": [ "Invoke-AzResourceMoverDiscard" ],
+        "FullCommandName": [ "Invoke-AzResourceMoverDiscard_DiscardExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d52895a8-4239-4f2c-bd26-02a8ffa6c65b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "7d32fa04-1578-4487-9b08-14b29c51972e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102512Z:7d32fa04-1578-4487-9b08-14b29c51972e" ],
+        "Date": [ "Tue, 25 Aug 2020 10:25:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1133" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a\",\"name\":\"8fdf3478-4c6a-4291-888c-a885a227398a\",\"status\":\"Failed\",\"startTime\":\"8/25/2020 10:24:57 AM\",\"endTime\":\"8/25/2020 10:24:57 AM\",\"error\":{\"code\":\"MoveCollectionResolveRequired\",\"message\":\"The operation has failed as dependency resolution is required for one or more move resources.\\n    Possible Causes: One or more resources in the move collection has dependcines that are yet to be resolved.\\n    Recommended Action: Resolve dependencies and retry the operation.\\n    \",\"details\":[{\"code\":\"MoveCollectionDiscardOperationInvalidState\",\"message\":\"The resources: [\\r\\n  \\\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\\\",\\r\\n  \\\"PreparePending\\\"\\r\\n]% are not in the valid state.\\n    Possible Causes: The resources are not in valid state\\n    Recommended Action: Resolve the issue, and retry the operation.\\n    \",\"details\":null,\"additionalInfo\":null}],\"additionalInfo\":null},\"properties\":{}}"
+    }
+  },
+  "Invoke-AzResourceMoverDiscard+[NoContext]+DiscardExpanded+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a?api-version=2019-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "7332a7c4-a2ca-4629-93cc-e48034886a97" ],
+        "CommandName": [ "Invoke-AzResourceMoverDiscard" ],
+        "FullCommandName": [ "Invoke-AzResourceMoverDiscard_DiscardExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7f8f87b1-535b-4207-8d4c-0871699260d4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "0e188dde-2bda-4c72-9b39-bcdd3ab891f8" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102513Z:0e188dde-2bda-4c72-9b39-bcdd3ab891f8" ],
+        "Date": [ "Tue, 25 Aug 2020 10:25:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1133" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/operations/8fdf3478-4c6a-4291-888c-a885a227398a\",\"name\":\"8fdf3478-4c6a-4291-888c-a885a227398a\",\"status\":\"Failed\",\"startTime\":\"8/25/2020 10:24:57 AM\",\"endTime\":\"8/25/2020 10:24:57 AM\",\"error\":{\"code\":\"MoveCollectionResolveRequired\",\"message\":\"The operation has failed as dependency resolution is required for one or more move resources.\\n    Possible Causes: One or more resources in the move collection has dependcines that are yet to be resolved.\\n    Recommended Action: Resolve dependencies and retry the operation.\\n    \",\"details\":[{\"code\":\"MoveCollectionDiscardOperationInvalidState\",\"message\":\"The resources: [\\r\\n  \\\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\\\",\\r\\n  \\\"PreparePending\\\"\\r\\n]% are not in the valid state.\\n    Possible Causes: The resources are not in valid state\\n    Recommended Action: Resolve the issue, and retry the operation.\\n    \",\"details\":null,\"additionalInfo\":null}],\"additionalInfo\":null},\"properties\":{}}"
+    }
+  }
+}

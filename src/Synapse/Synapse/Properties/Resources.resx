@@ -402,4 +402,58 @@ Are you sure you want to continue?</value>
   <data name="SubmittingSynapseSparkJob" xml:space="preserve">
     <value>Submitting Spark job in Spark pool '{0}' under workspace '{1}' ...</value>
   </data>
+  <data name="SettingSynapsePipeline" xml:space="preserve">
+    <value>Setting pipeline '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapsePipeline" xml:space="preserve">
+    <value>Deleting pipeline '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="CreatingSynapsePipelineRun" xml:space="preserve">
+    <value>Creating a run of a pipeline in workspace '{0}' with name '{1}'.</value>
+  </data>
+  <data name="StoppingPipelineRun" xml:space="preserve">
+    <value>Stopping Pipeline with Id: '{0}' ...</value>
+  </data>
+  <data name="SettingSynapseLinkedService" xml:space="preserve">
+    <value>Setting linked service '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseLinkedService" xml:space="preserve">
+    <value>Deleting linked service '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseNotebook" xml:space="preserve">
+    <value>Deleting notebook '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseNotebook" xml:space="preserve">
+    <value>Setting notebook '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseTrigger" xml:space="preserve">
+    <value>Setting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseTrigger" xml:space="preserve">
+    <value>Deleting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="AddingSynapseTriggerSubscribe" xml:space="preserve">
+    <value>Subscribe the event trigger '{0}' to external service events.</value>
+  </data>
+  <data name="RemovingSynapseTriggerSubscription" xml:space="preserve">
+    <value>Unsubscribe the event trigger '{0}' from external service events.</value>
+  </data>
+  <data name="StartingSynapseTrigger" xml:space="preserve">
+    <value>Starting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="StoppingSynapseTrigger" xml:space="preserve">
+    <value>Stopping trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseDataset" xml:space="preserve">
+    <value>Setting dataset '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseDataset" xml:space="preserve">
+    <value>Deleting dataset '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseDataFlow" xml:space="preserve">
+    <value>Setting data flow '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseDataFlow" xml:space="preserve">
+    <value>Deleting data flow '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

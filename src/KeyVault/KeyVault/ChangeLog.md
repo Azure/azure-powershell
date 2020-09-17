@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
+* Added support for RBAC authorization [#10557]
+* Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
+
+## Version 2.1.0
 * Added warning messages for planning to disable soft delete
 * Added warning messages for planning to remove attribute SecretValueText
 

@@ -88,6 +88,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
+        public const string Pipeline = nameof(Pipeline);
+
+        public const string PipelineRun = nameof(PipelineRun);
+
+        public const string ActivityRun = nameof(ActivityRun);
+
+        public const string LinkedService = nameof(LinkedService);
+
+        public const string Notebook = nameof(Notebook);
+
+        // TODO: In future, we should expose the default version string of Spark SDK and use that value here.
+        public const string SparkServiceEndpointApiVersion = "2019-11-01-priview";
+
+        public const string Trigger = nameof(Trigger);
+
+        public const string SubscriptionStatus = nameof(SubscriptionStatus);
+
+        public const string Subscription = nameof(Subscription);
+
+        public const string TriggerRun = nameof(TriggerRun);
+
+        public const string Dataset = nameof(Dataset);
+
+        public const string DataFlow = nameof(DataFlow);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

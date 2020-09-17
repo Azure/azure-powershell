@@ -12,7 +12,12 @@ Get an Azure VirtualRouter
 
 ## SYNTAX
 
-### VirtualRouterNameParameterSet (Default)
+### VirtualRouterSubscriptionIdParameterSet (Default)
+```
+Get-AzVirtualRouter [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### VirtualRouterNameParameterSet
 ```
 Get-AzVirtualRouter -ResourceGroupName <String> [-RouterName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -30,7 +35,7 @@ The **Get-AzVirtualRouter** cmdlet gets an Azure VirtualRouter
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouter -ResourceGroupName virtualRouterRG -RouterName virtualRouter 
+Get-AzVirtualRouter -ResourceGroupName virtualRouterRG -RouterName virtualRouter
 ```
 
 ### Example 2
@@ -45,7 +50,7 @@ Get-AzVirtualRouter -ResourceId $virtualRouterId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,11 +65,11 @@ Accept wildcard characters: False
 The resource group name of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -75,7 +80,7 @@ Accept wildcard characters: False
 ResourceId of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterResourceIdParameterSet
 Aliases:
 
@@ -90,7 +95,7 @@ Accept wildcard characters: False
 The name of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterNameParameterSet
 Aliases: ResourceName
 
@@ -102,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
