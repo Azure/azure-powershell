@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.1.1
+* Fixed bug that always displayed warning Message when executing cmdlet based on MonitorCmdletBase [#12889]
+
 ## Version 2.1.0
 * Extended the parameter set in `Set-AzDiagnosticSetting` for separation of Logs and Metrics enablement [#12482]
 * Fixed bug for `Add-AzMetricAlertRuleV2` when getting metric alert from pipeline
