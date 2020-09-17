@@ -42,6 +42,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      # Image 'macOS-10.15' preinstalled Az modules
       # Remove Az.* modules
       $modules = Get-Module -Name Az.* -ListAvailable
       if($modules){
@@ -58,6 +59,7 @@ steps:
       # Check Az
       Get-Module -Name Az.* -ListAvailable
 
+      # Image 'vs2017-win2016' and 'ubuntu-18.04' preinstalled AzureRM modules. If they all update AzureRm to Az, below codes should be deleted.
       # Remove AzureRM.* modules
       $modules = Get-Module -Name AzureRM.* -ListAvailable
       if($modules){
@@ -73,6 +75,8 @@ steps:
       # Check AzureRM
       Get-Module -Name AzureRM.* -ListAvailable
 
+      # Image 'vs2017-win2016' and 'ubuntu-18.04' preinstalled AzureRM modules. If they all update AzureRm to Az, above codes should be deleted.
+
       $psVersion = "$(PSVersion)"
       if($psVersion -ne "5.1.14"){
           Write-Host "Installing PS $psVersion..."  
@@ -86,6 +90,7 @@ steps:
           Exit "
           dotnet tool run pwsh -c $command
       }
+      
 - task: DownloadPipelineArtifact@2
   condition: and(succeeded(), eq(variables['GALLERY_NAME'], 'LocalRepo'))
   displayName: Download Artifacts from Build Pipeline
