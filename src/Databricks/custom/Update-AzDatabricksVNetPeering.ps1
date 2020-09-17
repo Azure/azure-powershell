@@ -196,7 +196,7 @@ function Update-AzDatabricksVNetPeering {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            if ($PSCmdlet.ShouldProcess("Databricks vnet peering $($vnetPeering.Name)", "Create or update")) {
+            if ($PSCmdlet.ShouldProcess("Databricks vnet peering $($vnetPeering.Name)", "Update")) {
                 Az.Databricks.private\New-AzDatabricksVNetPeering_CreateViaIdentity -InputObject $vnetPeering -VirtualNetworkPeeringParameter $vnetPeering @PSBoundParameters
             }
         } catch {

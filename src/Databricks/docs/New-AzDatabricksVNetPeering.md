@@ -15,8 +15,8 @@ Creates vNet Peering for workspace.
 ```
 New-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVirtualNetworkAccess]
- [-DatabrickAddressSpaceAddressPrefix <String[]>] [-DatabrickVirtualNetworkId <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway]
+ [-DatabricksAddressSpacePrefix <String[]>] [-DatabricksVirtualNetworkId <String>]
+ [-RemoteAddressSpacePrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabrickAddressSpaceAddressPrefix
+### -DatabricksAddressSpacePrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -113,7 +113,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabrickVirtualNetworkId
+### -DatabricksVirtualNetworkId
 The Id of the databricks virtual network.
 
 ```yaml
@@ -173,7 +173,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemoteAddressSpaceAddressPrefix
+### -RemoteAddressSpacePrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml

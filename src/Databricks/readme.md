@@ -113,6 +113,25 @@ directive:
       parameter-name: PeeringName
     set:
       parameter-name: Name 
+  # Rename parameters of Set VNetPeering cmdlet
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickVirtualNetworkId 
+    set:
+      parameter-name: DatabricksVirtualNetworkId 
   # Remove the set Workspace cmdlet
   - where:
       verb: Set
@@ -128,7 +147,7 @@ directive:
       verb: Update
       subject: Workspace
     hide: true
-  # Hide the Update VNetPeering cmdlet for customization
+  # Hide the Set VNetPeering cmdlet for customization
   - where:
       verb: Set
       subject: VNetPeering
@@ -174,4 +193,5 @@ directive:
       property-name: RequireInfrastructureEncryptionValue
     set:
       property-name: RequireInfrastructureEncryption
+
 ```
