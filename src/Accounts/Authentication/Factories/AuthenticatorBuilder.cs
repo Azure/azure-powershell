@@ -49,5 +49,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             session.RegisterComponent<IAuthenticatorBuilder>(AuthenticatorBuilderKey, () => AuthenticatorBuilder.Instance);
         }
+
+        public void Reset(bool allowCacheFallback)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

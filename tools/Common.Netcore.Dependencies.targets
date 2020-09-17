@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <!--
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20"/>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.3.23-preview"/>
@@ -18,6 +19,11 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.3.23-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.3.23-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.23-preview"/>
+    -->
+    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\azure-powershell-common\src\Common\Common.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\azure-powershell-common\src\Websites\Websites.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0">

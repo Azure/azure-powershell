@@ -26,6 +26,7 @@
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
     <Copy SourceFiles="$(RepoSrc)lib\PreloadAssemblyInfo.json" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />
   </Target>
 
   <ItemGroup>
@@ -42,7 +43,8 @@
    
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
-    <ProjectReference Include="..\Authentication\Authentication.csproj" />  
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
   </ItemGroup>
    
   <ItemGroup>

@@ -2,7 +2,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authenticators</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Authenticators</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -21,10 +21,6 @@
     <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Authentication\Authentication.csproj" />

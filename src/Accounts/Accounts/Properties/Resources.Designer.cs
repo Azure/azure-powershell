@@ -115,6 +115,33 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment..
+        /// </summary>
+        internal static string AutosaveNotSupported {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment and has been disabled temporarily..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithFallback {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithFallback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithSuggestion {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Using Autosave scope &apos;{0}&apos;.
         /// </summary>
         internal static string AutosaveSettingFinalValue {
@@ -241,6 +268,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing public environment is not supported..
+        /// </summary>
+        internal static string ChangingDefaultEnvironmentNotSupported {
+            get {
+                return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove all accounts and subscriptions for the current process..
         /// </summary>
         internal static string ClearContextProcessMessage {
@@ -282,6 +318,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ClearContextUserTarget {
             get {
                 return ResourceManager.GetString("ClearContextUserTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to clear the cache..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredClear {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to remove contexts for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredRemoval {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredRemoval", resourceCulture);
             }
         }
         
@@ -439,6 +493,33 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment name needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
+        /// </summary>
+        internal static string EnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos;..
         /// </summary>
         internal static string ErrorRetrievingAutosaveSetting {
@@ -552,6 +633,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoAccountProvided {
             get {
                 return ResourceManager.GetString("NoAccountProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No contexts remain for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string NoContextsRemain {
+            get {
+                return ResourceManager.GetString("NoContextsRemain", resourceCulture);
             }
         }
         
@@ -736,6 +826,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing public environment is not supported..
+        /// </summary>
+        internal static string RemovingDefaultEnvironmentsNotSupported {
+            get {
+                return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -817,6 +916,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter your email if you are interested in providing follow up information:.
+        /// </summary>
+        internal static string SendFeedbackEmailQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackEmailQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upon what could Azure PowerShell improve? .
+        /// </summary>
+        internal static string SendFeedbackNegativeCommentsQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackNegativeCommentsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must be issued in interactive mode..
         /// </summary>
         internal static string SendFeedbackNonInteractiveMessage {
@@ -825,6 +942,33 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to The value entered was either not convertible to an integer or out of range [0, 10]..
+        /// </summary>
+        internal static string SendFeedbackOutOfRangeMessage {
+            get {
+                return ResourceManager.GetString("SendFeedbackOutOfRangeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What does Azure PowerShell do well?.
+        /// </summary>
+        internal static string SendFeedbackPositiveCommentsQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackPositiveCommentsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?.
+        /// </summary>
+        internal static string SendFeedbackRecommendationQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
+            }
+        }
+                
         /// <summary>
         ///   Looks up a localized string similar to Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N).
         /// </summary>

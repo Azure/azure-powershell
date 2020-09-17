@@ -11,7 +11,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -19,7 +19,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         internal const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2", 
             PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob", 
-            EnableEbdMagicCookie= "site_id=501358&display=popup";
+            EnableEbdMagicCookie = "site_id=501358&display=popup",
+            UserImpersonationScope = "{0}/user_impersonation",
+            DefaultScope = "{0}/.default",
+            AdfsScope = "{0}/openid";
+
         /// <summary>
         /// Get the authority string given a tenant and environment
         /// </summary>
@@ -28,8 +32,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         /// <returns>The authrotity string, from the AAD endpoint and tenant ID</returns>
         internal static string GetAuthority(IAzureEnvironment environment, string tenant)
         {
-            var tenantString = tenant ?? environment?.AdTenant ?? "Common";
-            return $"{environment.ActiveDirectoryAuthority}{tenant}";
+            var tenantString = tenant ?? environment?.AdTenant ?? "organizations";
+            return $"{environment.ActiveDirectoryAuthority}{tenantString}";
         }
 
         /// <summary>
@@ -37,18 +41,29 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         /// </summary>
         /// <param name="showDialog"></param>
         /// <returns></returns>
-        internal static PromptBehavior GetPromptBehavior(string showDialog)
+        internal static Prompt GetPromptBehavior(string showDialog)
         {
             switch (showDialog)
             {
                 case ShowDialog.Always:
-                    return PromptBehavior.Always;
+                    return Prompt.ForceLogin;
                 case ShowDialog.Never:
-                    return PromptBehavior.Never;
+                    return Prompt.NoPrompt;
                 default:
-                    return PromptBehavior.Auto;
+                    return Prompt.SelectAccount;
             }
         }
 
+        /// <summary>
+        /// Get the scopes array for a given resource
+        /// </summary>
+        /// <param name="onPremise">determines which scope to use</param>
+        /// <param name="resource">which resource will be requested</param>
+        /// <returns></returns>
+        internal static string[] GetScope(bool onPremise, string resource)
+        {
+            var scopeTemplate = onPremise ? AdfsScope : DefaultScope;
+            return new string[] { string.Format(scopeTemplate, resource) };
+        }
     }
 }

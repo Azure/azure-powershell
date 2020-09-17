@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-namespace Microsoft.Azure.PowerShell.Authenticators
+namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 {
     /// <summary>
-    /// An implementation of <see cref="IWin32Window"/> that gives the
-    /// windows handle for the current console window.
+    /// Serialization format of token cache.
     /// </summary>
-    public class ConsoleParentWindow : IWin32Window
+    public enum CacheFormat
     {
-        public IntPtr Handle { get { return NativeMethods.GetConsoleWindow(); } }
-
-        static class NativeMethods
-        {
-            [DllImport("kernel32.dll")]
-            public static extern IntPtr GetConsoleWindow();
-        }
+        /// <summary>
+        /// Older Az.Accounts versions work with this format
+        /// </summary>
+        AdalV3,
+        /// <summary>
+        /// This is the format that's currently used
+        /// </summary>
+        MsalV3
     }
 }

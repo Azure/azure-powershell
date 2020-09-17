@@ -13,11 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Security;
+using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -26,20 +33,68 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class UsernamePasswordAuthenticator : DelegatingAuthenticator
     {
-        public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        private bool EnablePersistenceCache { get; set; }
+        private ConcurrentDictionary<string, UsernamePasswordCredential> UserCredentialMap = new ConcurrentDictionary<string, UsernamePasswordCredential>(StringComparer.OrdinalIgnoreCase);
+
+        public UsernamePasswordAuthenticator(bool enablePersistentCache = true)
         {
-            var audience = environment.GetEndpoint(resourceId);
-            var context = new AuthenticationContext(
-                AuthenticationHelpers.GetAuthority(environment, tenant), 
-                environment?.OnPremise ?? true, 
-                tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var result = context.AcquireTokenAsync(audience, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
-            return AuthenticationResultToken.GetAccessTokenAsync(result);
+            EnablePersistenceCache = enablePersistentCache;
         }
 
-        public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrEmpty(environment.GetEndpoint(resourceId)) && !string.IsNullOrWhiteSpace(tenant) && password != null && tokenCache != null);
+            var upParameters = parameters as UsernamePasswordParameters;
+            var onPremise = upParameters.Environment.OnPremise;
+            var tenantId = onPremise ? AdfsTenant : upParameters.TenantId; //Is user name + password valid in Adfs env?
+            var authenticationClientFactory = upParameters.AuthenticationClientFactory;
+            var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
+            var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
+            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var authority = onPremise ?
+                                upParameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+
+            var requestContext = new TokenRequestContext(scopes);
+            UsernamePasswordCredential passwordCredential;
+            Action action = EmptyAction;
+
+            AzureSession.Instance.TryGetComponent(
+                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                out PowerShellTokenCacheProvider provider);
+            AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
+            //If have both user name + password, use new Credential
+            var credentialOptions = new UsernamePasswordCredentialOptions()
+            {
+                AuthorityHost = new Uri(authority),
+                //CacheProvider = provider
+                TokenCache = tokenCache
+                //EnablePersistentCache = EnablePersistenceCache,
+                //AllowUnencryptedCache = true
+            };
+            if (upParameters.Password != null)
+            {
+                passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
+                var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested();
+                return MsalAccessToken.GetAccessTokenAsync(
+                    authTask,
+                    () => passwordCredential.GetTokenAsync(requestContext, cancellationToken),
+                    (AuthenticationRecord record) => { UserCredentialMap[record.HomeAccountId] = passwordCredential; });
+            }
+            else if (UserCredentialMap.TryGetValue(upParameters.HomeAccountId, out passwordCredential))
+            {
+                var tokenTask = passwordCredential.GetTokenAsync(requestContext, cancellationToken);
+                return MsalAccessToken.GetAccessTokenAsync(tokenTask, upParameters.TenantId, upParameters.UserId);
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.MissingPasswordAndNoCache);
+            }
+        }
+
+        public override bool CanAuthenticate(AuthenticationParameters parameters)
+        {
+            return (parameters as UsernamePasswordParameters) != null;
         }
     }
 }

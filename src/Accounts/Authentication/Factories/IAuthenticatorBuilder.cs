@@ -21,5 +21,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         IAuthenticator Authenticator { get; }
         bool AppendAuthenticator(Func<IAuthenticator> constructor);
+        void Reset(bool allowCacheFallback);
     }
 }

@@ -13,11 +13,21 @@
 // ----------------------------------------------------------------------------------
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Security;
 using System.Security.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Net;
+using System.IO;
+using Microsoft.Identity.Client.Extensibility;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -70,22 +80,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             TracingAdapter.Information(
                 Resources.UPNRenewTokenTrace,
-                token.AuthResult.AccessTokenType,
+                "Bearer",
                 token.AuthResult.ExpiresOn,
                 true,
                 token.AuthResult.TenantId,
                 token.UserId);
 
-            var user = token.AuthResult.UserInfo;
+            var user = token.AuthResult.Account;
             if (user != null)
             {
                 TracingAdapter.Information(
                     Resources.UPNRenewTokenUserInfoTrace,
-                    user.DisplayableId,
-                    user.FamilyName,
-                    user.GivenName,
-                    user.IdentityProvider,
-                    user.UniqueId);
+                    user.Username,
+                    user.HomeAccountId.ObjectId,
+                    user.Environment,
+                    token.AuthResult.UniqueId);
             }
             if (IsExpired(token))
             {
@@ -103,12 +112,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private AuthenticationContext CreateContext(AdalConfiguration config)
-        {
-            return new AuthenticationContext(config.AdEndpoint + config.AdDomain,
-                config.ValidateAuthority, config.TokenCache);
-        }
-
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
         private AuthenticationResult AcquireToken(AdalConfiguration config, Action<string> promptAction,
@@ -119,12 +122,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             result = SafeAquireToken(config, promptAction, userId, password, out ex);
             if (ex != null)
             {
-                var adex = ex as AdalException;
-                if (adex != null)
+                var msalException = ex as MsalClientException;
+                if (msalException != null)
                 {
-                    if (adex.ErrorCode == AdalError.AuthenticationCanceled)
+                    if (msalException.ErrorCode == MsalError.AuthenticationCanceledError)
                     {
-                        throw new AadAuthenticationCanceledException(adex.Message, adex);
+                        throw new AadAuthenticationCanceledException(msalException.Message, msalException);
                     }
                 }
                 if (ex is AadAuthenticationException)
@@ -150,27 +153,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                 return DoAcquireToken(config, userId, password, promptAction);
             }
-            catch (AdalException adalEx)
+            catch (MsalException msalException)
             {
-                if (adalEx.ErrorCode == AdalError.UserInteractionRequired ||
-                    adalEx.ErrorCode == AdalError.MultipleTokensMatched)
+                if (msalException.ErrorCode == MsalError.AuthenticationUiFailedError ||
+                    msalException.ErrorCode == MsalError.MultipleTokensMatchedError)
                 {
                     string message = Resources.AdalUserInteractionRequired;
-                    if (adalEx.ErrorCode == AdalError.MultipleTokensMatched)
+                    if (msalException.ErrorCode == MsalError.MultipleTokensMatchedError)
                     {
                         message = Resources.AdalMultipleTokens;
                     }
 
-                    ex = new AadAuthenticationFailedWithoutPopupException(message, adalEx);
+                    ex = new AadAuthenticationFailedWithoutPopupException(message, msalException);
                 }
-                else if (adalEx.ErrorCode == AdalError.MissingFederationMetadataUrl ||
-                         adalEx.ErrorCode == AdalError.FederatedServiceReturnedError)
+                else if (msalException.ErrorCode == MsalError.MissingFederationMetadataUrl ||
+                         msalException.ErrorCode == MsalError.FederatedServiceReturnedError)
                 {
-                    ex = new AadAuthenticationFailedException(Resources.CredentialOrganizationIdMessage, adalEx);
+                    ex = new AadAuthenticationFailedException(Resources.CredentialOrganizationIdMessage, msalException);
                 }
                 else
                 {
-                    ex = adalEx;
+                    ex = msalException;
                 }
             }
             catch (Exception threadEx)
@@ -187,43 +190,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             Action<string> promptAction,
             bool renew = false)
         {
-            AuthenticationResult result;
-            var context = CreateContext(config);
+            AuthenticationClientFactory authenticationClientFactory;
+            if (AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+            {
+                throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
+            }
+
+            var clientId = config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
 
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenContextTrace,
-                context.Authority,
-                context.CorrelationId,
-                context.ValidateAuthority);
+                authority,
+                clientId);
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenConfigTrace,
                 config.AdDomain,
                 config.AdEndpoint,
                 config.ClientId,
                 config.ClientRedirectUri);
+            var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
             if (promptAction == null || renew)
             {
-                result =context.AcquireTokenSilentAsync(config.ResourceClientUri, config.ClientId,
-                    new UserIdentifier(userId, UserIdentifierType.OptionalDisplayableId))
+                var accounts = publicClient.GetAccountsAsync()
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
+                return publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == userId)).ExecuteAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
             }
             else if (string.IsNullOrEmpty(userId) || password == null)
             {
-                var code = context.AcquireDeviceCodeAsync(config.ResourceClientUri, config.ClientId)
-                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                promptAction(code?.Message);
-
-                result = context.AcquireTokenByDeviceCodeAsync(code)
-                    .ConfigureAwait(false).GetAwaiter().GetResult();
+                return publicClient.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
+                {
+                    Console.WriteLine(deviceCodeResult?.Message);
+                    return Task.FromResult(0);
+                }).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             }
             else
             {
-                    UserCredential credential = new UserCredential(userId);
-                    result = context.AcquireTokenAsync(config.ResourceClientUri, config.ClientId, credential)
+                return publicClient.AcquireTokenByUsernamePassword(scopes, userId, password).ExecuteAsync()
                         .ConfigureAwait(false).GetAwaiter().GetResult();
             }
-
-            return result;
         }
 
         private string GetExceptionMessage(Exception ex)
@@ -260,20 +267,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             public void AuthorizeRequest(Action<string, string> authTokenSetter)
             {
                 tokenProvider.Renew(this);
-                authTokenSetter(AuthResult.AccessTokenType, AuthResult.AccessToken);
+                authTokenSetter("Bearer", AuthResult.AccessToken);
             }
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
-            public string UserId { get { return AuthResult.UserInfo.DisplayableId; } }
+            public string UserId { get { return AuthResult.Account.Username; } }
 
             public string TenantId { get { return AuthResult.TenantId; } }
+
+            public string HomeAccountId => null;
+
+            public IDictionary<string, string> ExtendedProperties { get; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
             public string LoginType
             {
                 get
                 {
-                    if (AuthResult.UserInfo.IdentityProvider != null)
+                    if (AuthResult.Account.Environment != null)
                     {
                         return Common.Authentication.LoginType.LiveId;
                     }

@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -20,6 +23,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -79,11 +83,31 @@ namespace Microsoft.Azure.Commands.Profile.Context
                             if (profile.Contexts.ContainsKey(name))
                             {
                                 var removedContext = profile.Contexts[name];
-                                if (client.TryRemoveContext(name) && PassThru.IsPresent)
+                                if (client.TryRemoveContext(name))
+                                {
+                                    if (removedContext.Account.Type == AzureAccount.AccountType.User &&
+                                        !profile.Contexts.Any(c => c.Value.Account.Id == removedContext.Account.Id))
+                                    {
+                                        PowerShellTokenCacheProvider authenticationClientFactory;
+                                        if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out authenticationClientFactory))
+                                        {
+                                            WriteWarning(string.Format(Resources.ClientFactoryNotRegisteredRemoval, removedContext.Account.Id));
+                                        }
+                                        else
+                                        {
+                                            if (!authenticationClientFactory.TryRemoveAccount(removedContext.Account.Id))
+                                            {
+                                                WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
+                                            }
+                                        }
+                                    }
+
+                                    if (this.IsParameterBound(c => c.PassThru))
                                 {
                                     var outContext = new PSAzureContext(removedContext);
                                     outContext.Name = name;
                                     WriteObject(outContext);
+                                    }
                                 }
                             }
                         });

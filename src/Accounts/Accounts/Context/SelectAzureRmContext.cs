@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }
 
+        /// <summary>
+        /// This cmdlet should work even if there isn't a default context
+        /// </summary>
+        protected override bool RequireDefaultContext() { return false; }
+
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();

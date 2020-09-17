@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 lock (_lockObject)
                 {
                     Instance._loggers.Add(logger);
-                    LoggerCallbackHandler.LogCallback = Instance.Log;
-                    LoggerCallbackHandler.PiiLoggingEnabled = true;
+                    //LoggerCallbackHandler.LogCallback = Instance.Log;
+                    //LoggerCallbackHandler.PiiLoggingEnabled = true;
                 }
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 lock (_lockObject)
                 {
                     Instance._loggers.Clear();
-                    LoggerCallbackHandler.UseDefaultLogging = false;
+                    //LoggerCallbackHandler.UseDefaultLogging = false;
                 }
             }
 

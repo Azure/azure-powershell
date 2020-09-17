@@ -14,13 +14,15 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -87,12 +89,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 (adalConfig, appId) => this.RenewWithCertificate(adalConfig, appId, certificateThumbprint), clientId);
         }
 
-        private AuthenticationContext GetContext(AdalConfiguration config)
-        {
-            string authority = config.AdEndpoint + config.AdDomain;
-            return new AuthenticationContext(authority, config.ValidateAuthority, config.TokenCache);
-        }
-
         private AuthenticationResult AcquireTokenWithSecret(AdalConfiguration config, string appId, SecureString appKey)
         {
             if (appKey == null)
@@ -101,9 +97,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-            var context = GetContext(config);
-            var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
-            return context.AcquireTokenAsync(config.ResourceClientUri, credential).ConfigureAwait(false).GetAwaiter().GetResult();
+            AuthenticationClientFactory authenticationClientFactory;
+            if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+            {
+                throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
+            }
+
+            var clientId = appId ?? config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var redirectUri = config.ResourceClientUri;
+            var confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: appKey);
+            var scopes = new string[] { config.ResourceClientUri + "/.default" };
+            return confidentialClient.AcquireTokenForClient(scopes)
+                                        .ExecuteAsync()
+                                        .ConfigureAwait(false)
+                                        .GetAwaiter()
+                                        .GetResult();
         }
 
         private AuthenticationResult AcquireTokenWithCertificate(
@@ -117,8 +126,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
             }
 
-            var context = GetContext(config);
-            return context.AcquireTokenAsync(config.ResourceClientUri, new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(appId, certificate))
+            AuthenticationClientFactory authenticationClientFactory;
+            if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+            {
+                throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
+            }
+
+            var clientId = appId ?? config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var redirectUri = config.ResourceClientUri;
+            var confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
+            var scopes = new string[] { config.ResourceClientUri + "/.default" };
+            return confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync()
                           .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
@@ -185,7 +204,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     AuthResult = tokenRenewer(Configuration, appId);
                 }
 
-                authTokenSetter(AuthResult.AccessTokenType, AuthResult.AccessToken);
+                authTokenSetter("Bearer", AuthResult.AccessToken);
             }
 
             public string UserId { get { return appId; } }
@@ -221,7 +240,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             public DateTimeOffset ExpiresOn { get { return AuthResult.ExpiresOn; } }
+
+            public string HomeAccountId { get { return AuthResult.Account?.HomeAccountId?.ObjectId; } }
+
+            public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
         }
     }
 }
-
