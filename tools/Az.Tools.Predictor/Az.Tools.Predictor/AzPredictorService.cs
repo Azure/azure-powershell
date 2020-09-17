@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 if (result != null)
                 {
-                    predictionSource = PredictionSource.Commands;
+                    predictionSource = PredictionSource.StaticCommands;
                 }
             }
 

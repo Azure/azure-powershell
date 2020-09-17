@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.NotNull(actual);
             Assert.NotNull(actual.Item1);
             Assert.Equal(expected, actual.Item1);
-            Assert.Equal(PredictionSource.Commands, actual.Item2);
+            Assert.Equal(PredictionSource.StaticCommands, actual.Item2);
         }
 
         /// <summary>
