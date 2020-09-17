@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'New-AzDatabricksVNetPeering' {
     It 'CreateExpanded' {
         $ventPeering = New-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId $env.virtualNetwork
-        $ventPeering.ProvisioningState | Should -Be 'Succeeded'
+        $ventPeering.ProvisioningState | Should -Be 'Updating'
     }
 }
