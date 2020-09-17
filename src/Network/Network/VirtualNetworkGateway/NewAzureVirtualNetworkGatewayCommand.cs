@@ -385,33 +385,67 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var virtualNetworkGateway = CreateVirtualNetworkGateway();
-                    WriteObject(virtualNetworkGateway);
+                    var vnetGateway = new PSVirtualNetworkGateway();
+                    vnetGateway.Name = this.Name;
+                    vnetGateway.ResourceGroupName = this.ResourceGroupName;
+                    vnetGateway.Location = this.Location;
+
+                    if (this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration))
+                    {
+                        if (!this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway))
+                        {
+                            throw new ArgumentException("ExtendedLocation and VirtualNetworkResourceId are required only if Virtual Network Gateway Type is " + MNM.VirtualNetworkGatewayType.LocalGateway);
+                        }
+                        else if (this.VpnGatewayGeneration != null || this.CustomRoute != null || 
+                                this.IpConfigurationBgpPeeringAddresses != null || this.PeerWeight > 0 || 
+                                this.Asn > 0 || this.VpnClientIpsecPolicy != null || 
+                                this.VpnClientRevokedCertificates != null || this.VpnClientRootCertificates != null || 
+                                this.VpnClientProtocol != null || this.VpnClientAddressPool != null || 
+                                this.GatewayDefaultSite != null || this.GatewaySku != null || 
+                                this.EnablePrivateIpAddress != null || this.EnableActiveActiveFeature != null || 
+                                this.EnableBgp == true || this.VpnType != null || 
+                                this.IpConfigurations != null)
+                        {
+                            throw new ArgumentException("Only parameters ExtendedLocation and VirtualNetworkResourceId are allowed for type " + MNM.VirtualNetworkGatewayType.LocalGateway);
+                        }
+                        else
+                        {
+                            vnetGateway.ExtendedLocation = new PSExtendedLocation();
+                            vnetGateway.ExtendedLocation.Name = this.ExtendedLocationName;
+                            vnetGateway.ExtendedLocation.Type = this.ExtendedLocationType;
+                            vnetGateway.VirtualNetworkExtendedLocationResourceId = this.virtualNetworkExtendedLocationResourceId;
+                        }
+                    }
+                    else
+                    {
+                        if (this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway))
+                        {
+                            throw new ArgumentException("ExtendedLocation and VirtualNetworkResourceId are required when Virtual Network Gateway Type is " + MNM.VirtualNetworkGatewayType.LocalGateway);
+                        }
+                        else
+                        {
+                            CreateVirtualNetworkGateway(vnetGateway);
+                        }
+                    }
+
+                    // Map to the sdk object
+                    var vnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
+
+                    vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+                    // Execute the Create VirtualNetwork call
+                    this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
+
+                    var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
+
+                    WriteObject(getVirtualNetworkGateway);
                 },
-                () => present);
+            () => present);
 
         }
 
-        private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
-        {
-            var vnetGateway = new PSVirtualNetworkGateway();
-            vnetGateway.Name = this.Name;
-            vnetGateway.ResourceGroupName = this.ResourceGroupName;
-            vnetGateway.Location = this.Location;
-
-            if ((this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration) && !this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway)) ||
-                (!this.ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.TypeLocalGatewayConfiguration) && this.GatewayType.Equals(MNM.VirtualNetworkGatewayType.LocalGateway)))
-            {
-                throw new ArgumentException("Extended Location and Virtual Network Resource Id are mandatory only if Virtual Network Gateway Type is " + MNM.VirtualNetworkGatewayType.LocalGateway);
-            }
-            else
-            {
-                vnetGateway.ExtendedLocation = new PSExtendedLocation();
-                vnetGateway.ExtendedLocation.Name = this.ExtendedLocationName;
-                vnetGateway.ExtendedLocation.Type = this.ExtendedLocationType;
-                vnetGateway.VirtualNetworkExtendedLocationResourceId = this.virtualNetworkExtendedLocationResourceId;
-            }
-
+        private void CreateVirtualNetworkGateway(PSVirtualNetworkGateway vnetGateway)
+        { 
             if (this.GatewaySku != null)
             {
                 vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -605,18 +639,6 @@ namespace Microsoft.Azure.Commands.Network
 
                 vnetGateway.VpnGatewayGeneration = this.VpnGatewayGeneration;
             }
-
-            // Map to the sdk object
-            var vnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
-
-            vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-
-            // Execute the Create VirtualNetwork call
-            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);  
-
-            var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
-
-            return getVirtualNetworkGateway;
         }
     }
 }
