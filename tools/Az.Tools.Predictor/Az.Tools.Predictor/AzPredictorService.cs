@@ -41,11 +41,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public Version VersionNumber{ get; set; } = new Version(1, 0);
             }
 
-            public string Command { get; set; }
+            public string History { get; set; }
             public string ClientType { get; set; } = "AzurePowerShell";
             public RequestContext Context { get; set; } = new RequestContext();
 
-            public PredictionRequestBody(string command) => this.Command = command;
+            public PredictionRequestBody(string command) => this.History = command;
         };
 
         private const int PredictionRequestInProgress = 1;
