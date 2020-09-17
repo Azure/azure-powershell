@@ -10,5 +10,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
     {
         public const string Default = @"Default";
         public const string UpdateResourceWithTags = @"UpdateResourceWithTags";
+
+        public const string TypeLocalGatewayConfiguration = @"TypeLocalGatewayConfiguration";
     }
 }

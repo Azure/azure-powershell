@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 
+* Added New GatewayType `LocalGateway` to cmdlet `New-AzVirtualNetworkGateway`
+
 ## Upcoming Release
 * Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
 * Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
