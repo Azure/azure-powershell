@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChoosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.Name)))
                     {
                         return;
                     }
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChoosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.Name)))
                     {
                         return;
                     }
