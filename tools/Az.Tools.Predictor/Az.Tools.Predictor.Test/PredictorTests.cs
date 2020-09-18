@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             this._fixture = fixture;
             var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
-            this._predictor = new Predictor(this._fixture.PredictionCollection[startHistory]);
+            this._predictor = new Predictor(this._fixture.PredictionCollection[startHistory], null);
         }
 
         /// <summary>

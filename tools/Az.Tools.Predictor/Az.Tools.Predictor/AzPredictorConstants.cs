@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// The value to check to determine if it's an Az command.
         /// </summary>
-        public const string AzCommandMoniktor = "az";
+        public const string AzCommandMoniker = "-Az";
 
         /// <summary>
         /// The character to use when we join the commands together.
@@ -53,6 +53,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// The character to join the command name and parameter and the value.
         /// </summary>
         public const char CommandParameterSeperator = ' ';
+
+        /// <summary>
+        /// The character that begins a parameter.
+        /// </summary>
+        public const char ParameterIndicator = '-';
 
         /// <summary>
         /// The setting file name.

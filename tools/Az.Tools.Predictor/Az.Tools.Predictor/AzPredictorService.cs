@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
@@ -48,16 +50,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             public PredictionRequestBody(string history) => this.History = history;
         };
 
-        private const int PredictionRequestInProgress = 1;
-        private const int PredictionRequestNotInProgress = 0;
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
         private volatile Tuple<string, Predictor> _historySuggestions; // The history and the prediction for that.
         private volatile Predictor _commands;
         private volatile string _history;
-        private HashSet<string> _commandSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
+        private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
 
         /// <summary>
         /// The AzPredictor service interacts with the Aladdin service specified in serviceUri.
@@ -144,45 +145,50 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RequestPredictions(string history)
+        public virtual void RequestPredictions(IEnumerable<string> history)
         {
             // Even if it's called multiple times, we only need to keep the one for the latest history.
 
             this._predictionRequestCancellationSource?.Cancel();
             this._predictionRequestCancellationSource = new CancellationTokenSource();
             var cancellationToken = this._predictionRequestCancellationSource.Token;
-            this._history = history;
+            var localHistory = string.Join(AzPredictorConstants.CommandConcatenator, history);
+            this._history = localHistory;
 
             // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
             Task.Run(async () => {
-                    var requestBody = JsonConvert.SerializeObject(new PredictionRequestBody(history));
+                    var requestBody = JsonConvert.SerializeObject(new PredictionRequestBody(localHistory));
                     var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBody, Encoding.UTF8, "application/json"), cancellationToken);
 
                     var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
                     var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
 
-                    this.SetSuggestionPredictor(history, suggestionsList);
+                    this.SetSuggestionPredictor(localHistory, suggestionsList);
                 },
                 cancellationToken);
         }
 
-        /// <summary>
-        /// For logging purposes, get the rank of the user input in the model suggestions list.
-        /// </summary>
-        public int? GetRankOfSuggestion(CommandAst command, Ast input)
+        /// <inheritdoc/>
+        public virtual void RecordHistory(IEnumerable<CommandAst> history)
+        {
+            history.ForEach((h) => this._parameterValuePredictor.ProcessHistoryCommand(h));
+        }
+
+        /// <inhericdoc/>
+        public int? GetRankOfSuggestion(string commandName)
         {
             var historySuggestions = this._historySuggestions;
-            return historySuggestions?.Item2?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
+            return historySuggestions?.Item2?.GetCommandPrediction(commandName, isCommandNameComplete: true, cancellationToken:CancellationToken.None).Item2;
         }
 
-        /// <inheritdoc/>
-        public int? GetRankOfFallback(CommandAst command, Ast input)
+        /// <inhericdoc/>
+        public int? GetRankOfFallback(string commandName)
         {
             var commands = this._commands;
-            return commands?.GetCommandPrediction(command, input, CancellationToken.None).Item2;
+            return commands?.GetCommandPrediction(commandName, isCommandNameComplete:true, cancellationToken:CancellationToken.None).Item2;
         }
 
-        /// <inheritdoc/>
+        /// <inhericdoc/>
         public IEnumerable<string> GetTopNSuggestions(int n)
         {
             var historySuggestions = this._historySuggestions;
@@ -190,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && _commandSet.Contains(cmd);
+        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_commandSet?.Contains(cmd) == true);
 
         /// <summary>
         /// Requests a list of popular commands from service. These commands are used as fallback suggestion
@@ -209,7 +215,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         // Initialize predictions
                         var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
-                        RequestPredictions(startHistory);
+                        RequestPredictions(new string[] {
+                                AzPredictorConstants.CommandHistoryPlaceholder,
+                                AzPredictorConstants.CommandHistoryPlaceholder});
+
                     });
         }
 
@@ -219,8 +228,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="commands">The command collection to set the predictor</param>
         protected void SetCommandsPredictor(IList<string> commands)
         {
-            this._commands = new Predictor(commands);
-            this._commandSet = new HashSet<string>(commands.Select(x => AzPredictorService.GetCommandName(x))); // this could be slow
+            this._commands = new Predictor(commands, this._parameterValuePredictor);
+            this._commandSet = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
 
         }
 
@@ -231,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
         protected void SetSuggestionPredictor(string history, IList<string> suggestions)
         {
-            this._historySuggestions = Tuple.Create(history, new Predictor(suggestions));
+            this._historySuggestions = Tuple.Create(history, new Predictor(suggestions, this._parameterValuePredictor));
         }
 
         /// <summary>

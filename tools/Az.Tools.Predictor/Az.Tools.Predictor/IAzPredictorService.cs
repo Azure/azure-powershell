@@ -34,13 +34,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Requests predictions, given a history string.
         /// </summary>
-        /// <param name="history">A history string could look like: "Get-AzContext -Name NAME\nSet-AzContext"</param>
-        public void RequestPredictions(string history);
+        /// <param name="history">A list of history commands</param>
+        public void RequestPredictions(IEnumerable<string> history);
 
         /// <summary>
-        /// For logging purposes, get the rank of the user input in the model suggestions list.
+        /// Record the history from PSReadLine.
         /// </summary>
-        public int? GetRankOfSuggestion(CommandAst command, Ast input);
+        /// <param name="history">A list of history commands</param>
+        public void RecordHistory(IEnumerable<CommandAst> history);
 
         /// <summary>
         /// Return true if command is part of known set of Az cmdlets, false otherwise.
@@ -48,9 +49,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool IsSupportedCommand(string cmd);
 
         /// <summary>
+        /// For logging purposes, get the rank of the user input in the model suggestions list.
+        /// </summary>
+        public int? GetRankOfSuggestion(string commandName);
+
+        /// <summary>
         /// For logging purposes, get the rank of the user input in the fallback commands cache.
         /// </summary>
-        public int? GetRankOfFallback(CommandAst command, Ast input);
+        public int? GetRankOfFallback(string commandName);
 
         /// <summary>
         /// For logging purposes, get the top N suggestions from the model suggestions list.
