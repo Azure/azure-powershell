@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedMachine service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -46,7 +46,7 @@ module-version: 0.1.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2020-07-30-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2020-08-02/HybridCompute.json
 
 directive:
   - where:
@@ -60,16 +60,6 @@ directive:
       verb: Get
       variant: ^GetViaIdentity\d?$
     remove: true
-
-  # # These variants don't work
-  # - where:
-  #     verb: New
-  #     variant: ^CreateViaIdentity\d?$|^Create\d?$
-  #   remove: true
-  # - where:
-  #     verb: Set
-  #     variant: ^Update\d?$ |^UpdateViaIdentity\d?$
-  #   remove: true
 
   # Make parameters friendlier for extensions
   - where:
