@@ -4,11 +4,14 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     $gallery
 )
+# Install Az.Compute
 Write-Host "Installing Az.Compute..."
 Install-Module -Name Az.Compute -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
+
+# Load Az.Compute
 Get-AzVM
 
-# Check version
+# Check Az.Compute version
 $azComputeVersion = (Get-Module Az.Compute).Version
 Write-Host "Current version of Az.Compute", $azComputeVersion
 

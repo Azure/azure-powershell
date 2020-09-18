@@ -15,23 +15,22 @@ if($gallery -eq "LocalRepo"){
 }
 
 # Install previous version of Az
-Write-Host '$previousVersion:', $previousVersion
+Write-Host 'Installing the previous version of Az:', $previousVersion
 Install-Module -Name Az -Repository $gallery -RequiredVersion $previousVersion -Scope CurrentUser -AllowClobber -Force
-Write-Host 'Installed the previous version of Az'
 
 # Get previous version of Az.Compute
 $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version
 
 #Install Az.Compute
+Write-Host "Installing latest Az.Compute"
 Install-Module -Name Az.Compute -Repository $gallery -Scope CurrentUser -AllowClobber -Force        
-        
-Write-Host "Installed latest Az.Compute"
+
+# Load Az.Compute
 Get-AzVM
-Get-Module
 
 # Check version
 $azComputeVersion = (Get-Module Az.Compute).Version
-Write-Host "Current version of Az.Compute", $azComputeVersion
+Write-Host "Current version of Az.Compute,", $azComputeVersion
 
 if ([System.Version]$azComputeVersion -lt [System.Version]$azComputePreviousVersion) {
     throw "Install Az.Compute on top of Az failed"

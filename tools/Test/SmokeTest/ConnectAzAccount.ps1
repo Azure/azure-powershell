@@ -1,15 +1,15 @@
 [cmdletbinding()]
 param(
     [string]
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, Position = 0)]
     $pwd,
     
     [string]
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, Position = 1)]
     $servicePrincipal,
 
     [string]
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, Position = 2)]
     $tenantId
 )
 
