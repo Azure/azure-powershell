@@ -52,13 +52,6 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateClusterWithPrivateLink()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithPrivateLink");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionAtHost()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionAtHost");

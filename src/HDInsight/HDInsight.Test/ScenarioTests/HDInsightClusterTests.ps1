@@ -127,45 +127,6 @@ function Test-CreateClusterWithEncryptionInTransit{
 
 <#
 .SYNOPSIS
-Test Create Azure HDInsight Cluster which Private Link
-#>
-
-function Test-CreateClusterWithPrivateLink{
-
-	# Create some resources that will be used throughout test
-	try
-	{
-		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameterForWASB -location "South Central US"
-
-		# Prepare virtual network
-		$vnetName=Generate-Name("hdi-ps-vnet")
-		$vnet=Create-VnetkWithSubnet -location $params.location -resourceGroupName $params.resourceGroupName `
-		-vnetName $vnetName -subnetPrivateLinkServiceNetworkPoliciesFlag $false 
-
-		# create cluster
-		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnet.Id -SubnetName $vnet.Subnets[0].Id `
-		-PublicNetworkAccessType OutboundOnly -OutboundPublicNetworkAccessType PublicLoadBalancer
-
-		Assert-AreEqual $cluster.PublicNetworkAccessType OutboundOnly
-		Assert-AreEqual $cluster.OutboundPublicNetworkAccessType PublicLoadBalancer
-		
-	}
-	finally
-	{
-		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
-	}
-}
-
-<#
-.SYNOPSIS
 Test Create Azure HDInsight Cluster which enalbes Encryption At Host
 #>
 

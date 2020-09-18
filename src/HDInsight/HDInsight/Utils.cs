@@ -24,5 +24,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             return cluster?.Properties?.ComputeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals("workernode"));
         }
+
+        public static Role ExtractRole(string nodeType, ComputeProfile computeProfile)
+        {
+            return computeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
+        }
     }
 }

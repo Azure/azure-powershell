@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
+        public virtual Cluster CreateCluster(string resourceGroupName, string clusterName, ClusterCreateParametersExtended createParams)
+        {
+            return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
+        }
+
         public virtual List<Cluster> GetCluster(string resourceGroupName, string clusterName)
         {
             var result = new List<Cluster>();

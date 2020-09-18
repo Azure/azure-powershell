@@ -1,0 +1,407 @@
+﻿//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.HDInsight.Models
+{
+    public static class ClusterCreateHelper
+    {
+        public static void AddClusterCredentialToGatewayConfig( PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.Gateway);
+            if (!string.IsNullOrEmpty(httpCredential?.UserName))
+            {
+                gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
+                gatewayConfig[Constants.GatewayConfigurations.UserNameKey] = httpCredential?.UserName;
+                gatewayConfig[Constants.GatewayConfigurations.PasswordKey] = httpCredential?.Password?.ConvertToString();
+            }
+            else
+            {
+                gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
+            }
+
+            configurations[ConfigurationKey.Gateway] = gatewayConfig;
+        }
+
+        public static void AddAzureStorageToCoreSiteConfig(string clusterName, string storageAccountName, string storageAccountKey, string storageContainer, string defaultAzureStorageSuffix, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            //ToDo to remvoe, this logic should not be here.
+            if (string.IsNullOrWhiteSpace(storageAccountKey))
+            {
+                throw new ArgumentException(Constants.Errors.ERROR_INPUT_CANNOT_BE_EMPTY, "storageAccountKey");
+            }
+
+            if (!storageAccountName.Contains("."))
+            {
+                storageAccountName = storageAccountName + string.Format(Constants.StorageConfigurations.BlobStorageSuffixValueFormat, defaultAzureStorageSuffix);
+            }
+
+            //Get existing core configs.
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+
+            //Add configurations for default WASB storage.
+            string container = string.IsNullOrWhiteSpace(storageContainer) ? clusterName : storageContainer;
+
+            coreConfig[Constants.StorageConfigurations.DefaultFsKey] = string.Format(Constants.StorageConfigurations.DefaultFsWasbValueFormat,
+                container, storageAccountName);
+
+            string defaultStorageConfigKey = string.Format(Constants.StorageConfigurations.WasbStorageAccountKeyFormat, storageAccountName);
+            if (!string.IsNullOrEmpty(storageAccountKey))
+            {
+                coreConfig[defaultStorageConfigKey] = storageAccountKey;
+            }
+
+            configurations[ConfigurationKey.CoreSite] = coreConfig;
+        }
+
+        public static void AddAzureDataLakeStorageGen1ToCoreConfig(string storageAccountName, string storageRootPath, string defaultAzureDataLakeStoreFileSystemEndpointSuffix, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            // for public the defaultAzureDataLakeStoreFileSystemEndpointSuffix is "azuredatalakestore.net"
+            //ToDo to remvoe, this logic should not be here.
+            if (string.IsNullOrWhiteSpace(storageRootPath))
+            {
+                throw new ArgumentException(Constants.Errors.ERROR_INPUT_CANNOT_BE_EMPTY, "storageRootPath");
+            }
+
+            if (!storageAccountName.Contains("."))
+            {
+                storageAccountName = string.Format("{0}.{1}", storageAccountName, defaultAzureDataLakeStoreFileSystemEndpointSuffix);
+            }
+
+            //Get existing core configs.
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+
+            //Add configurations for default ADL storage.
+            coreConfig[Constants.StorageConfigurations.DefaultFsKey] = Constants.StorageConfigurations.DefaultFsAdlValue;
+            coreConfig[Constants.StorageConfigurations.AdlHostNameKey] = storageAccountName;
+            coreConfig[Constants.StorageConfigurations.AdlMountPointKey] = storageRootPath;
+
+            configurations[ConfigurationKey.CoreSite] = coreConfig;
+        }
+
+        public static void AddAdditionalStorageAccountsToCoreConfig(Dictionary<string, string> additionalStorageAccounts, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            //Get existing core configs.
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+
+            foreach (KeyValuePair<string, string> storageAccount in additionalStorageAccounts)
+            {
+                string configKey = string.Format(Constants.StorageConfigurations.WasbStorageAccountKeyFormat, storageAccount.Key);
+                coreConfig[configKey] = storageAccount.Value;
+            }
+
+            configurations[ConfigurationKey.CoreSite] = coreConfig;
+        }
+
+        public static void AddDataLakeStorageGen1IdentityToIdentityConfig(Guid applicationId, Guid aadTenantId, byte[] certificateFileBytes, string certificatePassword,
+            IDictionary<string, Dictionary<string, string>> configurations, string cloudAadAuthority = default(string), string dataLakeEndpointResourceId = default(string))
+        {
+            Dictionary<string, string> datalakeConfig = new Dictionary<string, string>
+            {
+                {Constants.DataLakeConfigurations.ApplicationIdKey, applicationId.ToString()},
+                {
+                    // Converting the Tenant ID to URI as RP expects this to be URI.
+                    Constants.DataLakeConfigurations.TenantIdKey, string.Format("{0}{1}", cloudAadAuthority, aadTenantId)
+                },
+                {Constants.DataLakeConfigurations.CertificateKey, Convert.ToBase64String(certificateFileBytes)},
+                {Constants.DataLakeConfigurations.CertificatePasswordKey, certificatePassword},
+                {Constants.DataLakeConfigurations.ResourceUriKey, dataLakeEndpointResourceId}
+            };
+
+            configurations[ConfigurationKey.ClusterIdentity] = datalakeConfig;
+        }
+
+        public static StorageAccount CreateAdlsGen2StorageAccount(string storageAccountName, string storageFileSystem, string storageResourceId, string storageAccountKey, string msiResourceId, string defaultAzureStorageSuffix)
+        {
+            if (!storageAccountName.Contains("."))
+            {
+                storageAccountName = storageAccountName + string.Format(Constants.StorageConfigurations.Adlsgen2StorageSuffixValueFormat, defaultAzureStorageSuffix);
+            }
+
+            return new StorageAccount()
+            {
+                Name = storageAccountName,
+                IsDefault = true,
+                FileSystem = storageFileSystem,
+                ResourceId = storageResourceId,// To Do: to get the resource id based the storage account name
+                Key=storageAccountKey,
+                MsiResourceId = msiResourceId
+            };
+        }
+
+        public static void AddHiveMetastoreToConfigurations(AzureHDInsightMetastore hiveMetastore, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            if (!hiveMetastore.SqlAzureServerName.Contains("."))
+            {
+                throw new ArgumentException("Please provide the fully qualified metastore name.");
+            }
+
+            string connectionUrl =
+                string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, hiveMetastore.SqlAzureServerName, hiveMetastore.DatabaseName);
+
+            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveSite, new Dictionary<string, string>
+                {
+                    {Constants.MetastoreConfigurations.HiveSite.ConnectionUrlKey, connectionUrl},
+                    {Constants.MetastoreConfigurations.HiveSite.ConnectionUserNameKey, hiveMetastore.Credential.UserName},
+                    {Constants.MetastoreConfigurations.HiveSite.ConnectionPasswordKey, hiveMetastore.Credential.Password.ConvertToString()},
+                    {Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameKey, Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameValue}
+                });
+
+            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveEnv, new Dictionary<string, string>
+                {
+                    {Constants.MetastoreConfigurations.HiveEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
+                    {Constants.MetastoreConfigurations.HiveEnv.DatabaseNameKey, hiveMetastore.DatabaseName},
+                    {Constants.MetastoreConfigurations.HiveEnv.DatabaseTypeKey, Constants.MetastoreConfigurations.DatabaseTypeValue},
+                    {Constants.MetastoreConfigurations.HiveEnv.ExistingDatabaseKey, hiveMetastore.DatabaseName},
+                    {Constants.MetastoreConfigurations.HiveEnv.ExistingHostKey, hiveMetastore.SqlAzureServerName},
+                    {Constants.MetastoreConfigurations.HiveEnv.HostNameKey, hiveMetastore.SqlAzureServerName}
+                });
+        }
+
+        public static void AddOozieMetastoreToConfigurations(AzureHDInsightMetastore oozieMetastore, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            if (Uri.CheckHostName(oozieMetastore.SqlAzureServerName) != UriHostNameType.Dns)
+            {
+                throw new ArgumentException("Please provide the fully qualified metastore name.");
+            }
+            string connectionUrl = string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, oozieMetastore.SqlAzureServerName, oozieMetastore.DatabaseName);
+
+            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieSite, new Dictionary<string, string>
+                {
+                    {Constants.MetastoreConfigurations.OozieSite.UrlKey, connectionUrl},
+                    {Constants.MetastoreConfigurations.OozieSite.UserNameKey, oozieMetastore.Credential.UserName},
+                    {Constants.MetastoreConfigurations.OozieSite.PasswordKey, oozieMetastore.Credential.Password.ConvertToString()},
+                    {Constants.MetastoreConfigurations.OozieSite.DriverKey, Constants.MetastoreConfigurations.OozieSite.DriverValue},
+                    {Constants.MetastoreConfigurations.OozieSite.SchemaKey, Constants.MetastoreConfigurations.OozieSite.SchemaValue}
+                });
+
+            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieEnv, new Dictionary<string, string>
+                {
+                    {Constants.MetastoreConfigurations.OozieEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
+                    {Constants.MetastoreConfigurations.OozieEnv.DatabaseNameKey, oozieMetastore.DatabaseName},
+                    {Constants.MetastoreConfigurations.OozieEnv.DatabaseTypeKey, Constants.MetastoreConfigurations.DatabaseTypeValue},
+                    {Constants.MetastoreConfigurations.OozieEnv.ExistingDatabaseKey, oozieMetastore.DatabaseName},
+                    {Constants.MetastoreConfigurations.OozieEnv.ExistingHostKey, oozieMetastore.SqlAzureServerName},
+                    {Constants.MetastoreConfigurations.OozieEnv.HostNameKey, oozieMetastore.SqlAzureServerName}
+                });
+        }
+
+        public static VirtualNetworkProfile CreateVirtualNetworkProfile(string virtualNetworkId, string subnetName)
+        {
+            if (string.IsNullOrEmpty(virtualNetworkId) && string.IsNullOrEmpty(subnetName))
+            {
+                return null;
+            }
+
+            VirtualNetworkProfile vnetProfile = new VirtualNetworkProfile(virtualNetworkId, subnetName);
+            return vnetProfile;
+        }
+
+        public static OsProfile CreateOsProfile(PSCredential sshCredential, string sshPublicKey)
+        {
+            string sshUserName = sshCredential?.UserName;
+            string sshPassword = sshCredential?.Password?.ConvertToString();
+            List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>();
+            if (!string.IsNullOrEmpty(sshPublicKey))
+            {
+                sshPublicKeys.Add(new SshPublicKey
+                {
+                    CertificateData = sshPublicKey
+                });
+            }
+
+            SshProfile sshProfile = null;
+            if (sshPublicKeys.Count > 0)
+            {
+                sshProfile = new SshProfile
+                {
+                    PublicKeys = sshPublicKeys.ToArray()
+                };
+            }
+
+            return new OsProfile
+            {
+                LinuxOperatingSystemProfile = new LinuxOperatingSystemProfile
+                {
+                    SshProfile = sshProfile,
+                    Password = sshPassword,
+                    Username = sshUserName
+                }
+            };
+        }
+
+        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null)
+        {
+            List<Role> roles = new List<Role>();
+
+            // create head node
+            headNodeSize = headNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.HeadNode);
+            List<ScriptAction> headNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.HeadNode);
+            Role headNode = CreateHeadNodeRole(osProfile, vnetProfile, headNodeScriptActions, headNodeSize);
+            roles.Add(headNode);
+
+            // construct worker node
+            workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.WorkerNode);
+            List<ScriptAction> workerNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.WorkerNode);
+            Role workerNode = CreateWorkerNodeRole(osProfile, vnetProfile, workerNodeScriptActions, workerNodeCount, workerNodeSize);
+            roles.Add(workerNode);
+
+            // ToDo: This may cause breaking change we need to fix this issue
+            if (!string.IsNullOrEmpty(zookeeperNodeSize))
+            {
+                List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
+                Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
+                roles.Add(zookeeperNode);
+            }
+
+            //RServer & MLServices clusters contain an additional edge node. Return here for all other types.
+            if (new[] { "RServer", "MLServices" }.Contains(clusterType, StringComparer.OrdinalIgnoreCase))
+            {
+                //Set up edgenode and add to collection.
+                const int edgeNodeCount = 1;
+                edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.EdgeNode);
+                Role edgeNode = CreateEdgeNodeRole(osProfile, vnetProfile, null, edgeNodeCount, edgeNodeSize);
+                roles.Add(edgeNode);
+            }
+
+            return new ComputeProfile(roles);
+        }
+
+        public static Role CreateHeadNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> headNodeScriptActions, string headNodeSize)
+        {
+            const int headNodeCount = 2;
+            return CreateCommonRole(osProfile, vnetProfile, ClusterNodeType.HeadNode.ToString().ToLower(), headNodeScriptActions, headNodeCount, headNodeSize);
+        }
+
+        public static Role CreateWorkerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> workerNodeScriptActions, int workerNodeCount, string workerNodeSize)
+        {
+            return CreateCommonRole(osProfile, vnetProfile, ClusterNodeType.WorkerNode.ToString().ToLower(), workerNodeScriptActions, workerNodeCount, workerNodeSize);
+        }
+
+        public static Role CreateZookeeperNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> zookeeperNodeScriptActions, string zookeeperNodeSize)
+        {
+            const int zookeeperNodeCount = 3;
+            return CreateCommonRole(osProfile, vnetProfile, ClusterNodeType.ZookeeperNode.ToString().ToLower(), zookeeperNodeScriptActions, zookeeperNodeCount, zookeeperNodeSize);
+        }
+
+        public static Role CreateEdgeNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> edgeNodeScriptActions, int edgeNodeCount, string edgeNodeSize)
+        {
+            return CreateCommonRole(osProfile, vnetProfile, ClusterNodeType.EdgeNode.ToString().ToLower(), edgeNodeScriptActions, edgeNodeCount, edgeNodeSize);
+        }
+
+        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> scriptActions, int instanceCount, string vmSize)
+        {
+            string idBrokerNodeName = "idbrokernode";
+            return CreateCommonRole(osProfile, vnetProfile, idBrokerNodeName, scriptActions, instanceCount, vmSize);
+        }
+
+        private static Role CreateCommonRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, string nodeName, List<ScriptAction> scriptActions, int instanceCount,
+            string vmSize)
+        {
+            return new Role
+            {
+                Name = nodeName,
+                TargetInstanceCount = instanceCount,
+                HardwareProfile = new HardwareProfile
+                {
+                    VmSize = vmSize
+                },
+                VirtualNetworkProfile = vnetProfile,
+                OsProfile = osProfile,
+                ScriptActions = scriptActions
+            };
+        }
+
+        public static string GetNodeSize(string clusterType, ClusterNodeType nodeType)
+        {
+            switch (nodeType)
+            {
+                case ClusterNodeType.HeadNode:
+                    return DefaultVmSizes.HeadNode.GetSize(clusterType);
+                case ClusterNodeType.WorkerNode:
+                    return DefaultVmSizes.WorkerNode.GetSize(clusterType);
+                case ClusterNodeType.ZookeeperNode:
+                    return DefaultVmSizes.ZookeeperNode.GetSize(clusterType);
+                case ClusterNodeType.EdgeNode:
+                    return DefaultVmSizes.EdgeNode.GetSize(clusterType);
+                default:
+                    throw new ArgumentOutOfRangeException("nodeType");
+            }
+        }
+
+        public static SecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile)
+        {
+            if (azureHDInsightSecurityProfile == null) return null;
+
+            SecurityProfile securityProfile = new SecurityProfile(DirectoryType.ActiveDirectory);
+            securityProfile.Domain = azureHDInsightSecurityProfile.Domain;
+            securityProfile.OrganizationalUnitDN = azureHDInsightSecurityProfile.OrganizationalUnitDN;
+            securityProfile.LdapsUrls = azureHDInsightSecurityProfile.LdapsUrls;
+            if (azureHDInsightSecurityProfile.DomainUserCredential != null)
+            {
+                securityProfile.DomainUsername = azureHDInsightSecurityProfile.DomainUserCredential.UserName;
+                securityProfile.DomainUserPassword = azureHDInsightSecurityProfile.DomainUserCredential.Password?.ConvertToString();
+            }
+            securityProfile.ClusterUsersGroupDNs = azureHDInsightSecurityProfile.ClusterUsersGroupDNs;
+
+            return securityProfile;
+        }
+
+        private static List<ScriptAction> GetScriptActionsForRoleType(Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, ClusterNodeType nodeType)
+        {
+            if (clusterScriptActions == null) return null;
+            List<ScriptAction> scriptActions;
+            clusterScriptActions.TryGetValue(nodeType, out scriptActions);
+            return scriptActions;
+        }
+
+        public static Dictionary<string, string> GetExistingConfigurationsForType(IDictionary<string, Dictionary<string, string>> configurations, string configurationType)
+        {
+            Dictionary<string, string> config;
+            if (!configurations.TryGetValue(configurationType, out config))
+            {
+                config = new Dictionary<string, string>();
+            }
+
+            return config;
+        }
+
+        private static void AddOrCombineConfigurations(this IDictionary<string, Dictionary<string, string>> configurations, string configKey, Dictionary<string, string> newConfigurations)
+        {
+            if (configurations.ContainsKey(configKey))
+            {
+                IEnumerable<string> duplicateConfigs = newConfigurations.Keys.Intersect(configurations[configKey].Keys);
+                if (duplicateConfigs.Any())
+                {
+                    throw new ArgumentException(string.Format($"Configuration already specified: {string.Join(", ", duplicateConfigs)}"));
+                }
+                configurations[configKey] = MergedDictionaries(configurations[configKey], newConfigurations);
+            }
+            else
+            {
+                configurations.Add(configKey, newConfigurations);
+            }
+        }
+
+        private static Dictionary<TKey, TValue> MergedDictionaries<TKey, TValue>(IDictionary<TKey, TValue> dict1, IDictionary<TKey, TValue> dict2)
+        {
+            return dict1.Union(dict2).ToDictionary(p => p.Key, p => p.Value);
+        }
+    }
+}
