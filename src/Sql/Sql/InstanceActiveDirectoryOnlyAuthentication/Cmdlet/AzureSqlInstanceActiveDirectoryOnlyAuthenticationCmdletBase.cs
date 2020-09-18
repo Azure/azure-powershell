@@ -16,6 +16,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication.Model;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication.Services;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,16 +26,84 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
 {
     public abstract class AzureSqlInstanceActiveDirectoryOnlyAuthenticationCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel>, AzureSqlInstanceActiveDirectoryOnlyAuthenticationAdapter>
     {
+        protected const string UseInputObjectParameterSet = "UseInputObjectParameterSet";
+        protected const string UseResourceGroupAndInstanceNameParameterSet = "UseResourceGroupAndInstanceNameParameterSet";
+        protected const string UserResourceIdParameterSet = "UserResourceIdParameterSet";
+
         /// <summary>
-        /// Gets or sets the name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator.
+        /// Server resource
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = UseInputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The managed instance object to use.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlManagedInstanceModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the instance
+        /// </summary>
+        [Parameter(ParameterSetName = UserResourceIdParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of instance to use")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the managed instance to use.
+        /// </summary>
+        [Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Managed Instance the Azure Active Directory only authentication is in.")]
+            HelpMessage = "SQL Managed Instance name.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
+
+        protected string GetResourceGroupName()
+        {
+            if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                return InputObject.ResourceGroupName;
+            }
+            else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                return resourceInfo.ResourceGroupName;
+            }
+
+            return ResourceGroupName;
+        }
+
+        protected string GetInstanceName()
+        {
+            if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                return InputObject.ManagedInstanceName;
+            }
+            else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                return resourceInfo.ResourceName;
+            }
+
+            return InstanceName;
+        }
 
         /// <summary>
         /// Initializes the adapter

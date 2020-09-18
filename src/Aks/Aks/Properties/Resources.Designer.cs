@@ -70,6 +70,42 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Addon {0} is not installed..
+        /// </summary>
+        internal static string AddonIsNotInstalled {
+            get {
+                return ResourceManager.GetString("AddonIsNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Addon Monitoring should work with WorkspaceResourceId..
+        /// </summary>
+        internal static string AddonMonitoringShouldWorkWithWorkspaceResourceId {
+            get {
+                return ResourceManager.GetString("AddonMonitoringShouldWorkWithWorkspaceResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Addon {0} is not defined..
+        /// </summary>
+        internal static string AddonNotDefined {
+            get {
+                return ResourceManager.GetString("AddonNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Addon VirtualNode should work with SubnetName..
+        /// </summary>
+        internal static string AddonVirtualNodeShouldWorkWithSubnetName {
+            get {
+                return ResourceManager.GetString("AddonVirtualNodeShouldWorkWithSubnetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Role Assignment.
         /// </summary>
         internal static string AddRoleAssignment {

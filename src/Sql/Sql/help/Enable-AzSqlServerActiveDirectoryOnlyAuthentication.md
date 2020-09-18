@@ -12,8 +12,21 @@ Enables Azure AD only authentication for a specific SQL Server.
 
 ## SYNTAX
 
+### UseResourceGroupAndServerNameParameterSet (Default)
 ```
-Enable-AzSqlServerActiveDirectoryOnlyAuthentication [-ServerName] <String> [-ResourceGroupName] <String>
+Enable-AzSqlServerActiveDirectoryOnlyAuthentication [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UseInputObjectParameterSet
+```
+Enable-AzSqlServerActiveDirectoryOnlyAuthentication -InputObject <AzureSqlServerModel>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UserResourceIdParameterSet
+```
+Enable-AzSqlServerActiveDirectoryOnlyAuthentication [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,12 +62,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The SQL server object to use.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+Parameter Sets: UseInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndServerNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of instance to use
+
+```yaml
+Type: System.String
+Parameter Sets: UserResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -69,7 +112,7 @@ The name of the Azure SQL Server the Azure Active Directory only authentication 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndServerNameParameterSet
 Aliases:
 
 Required: True

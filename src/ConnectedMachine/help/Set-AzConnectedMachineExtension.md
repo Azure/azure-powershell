@@ -16,10 +16,7 @@ The operation to create or update the extension.
 ```
 Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ExtensionType <String>]
- [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewStatusCode <String>]
- [-InstanceViewStatusDisplayStatus <String>] [-InstanceViewStatusLevel <StatusLevelTypes>]
- [-InstanceViewStatusMessage <String>] [-InstanceViewStatusTime <DateTime>] [-InstanceViewType <String>]
- [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]
+ [-ForceRerun <String>] [-ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]
  [-Publisher <String>] [-Setting <IMachineExtensionPropertiesSettings>] [-Tag <Hashtable>]
  [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -115,7 +112,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
 Parameter Sets: Update
 Aliases:
 
@@ -143,126 +140,6 @@ Accept wildcard characters: False
 
 ### -ForceRerun
 How the extension handler should be forced to update even if the extension configuration has not changed.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewName
-The machine extension name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewStatusCode
-The status code.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewStatusDisplayStatus
-The short localizable label for the status.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewStatusLevel
-The level code.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewStatusMessage
-The detailed status message, including for alerts and error messages.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewStatusTime
-The time of the status.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewType
-Specifies the type of the extension; an example is "CustomScriptExtension".
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewTypeHandlerVersion
-Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
@@ -340,7 +217,7 @@ Accept wildcard characters: False
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesProtectedSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesProtectedSettings
 Parameter Sets: UpdateExpanded
 Aliases: ProtectedSettings
 
@@ -385,7 +262,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesSettings
 Parameter Sets: UpdateExpanded
 Aliases: Settings
 
@@ -478,11 +355,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
 
 ## NOTES
 
@@ -499,14 +376,6 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[InstanceViewName <String>]`: The machine extension name.
-  - `[InstanceViewStatusCode <String>]`: The status code.
-  - `[InstanceViewStatusDisplayStatus <String>]`: The short localizable label for the status.
-  - `[InstanceViewStatusLevel <StatusLevelTypes?>]`: The level code.
-  - `[InstanceViewStatusMessage <String>]`: The detailed status message, including for alerts and error messages.
-  - `[InstanceViewStatusTime <DateTime?>]`: The time of the status.
-  - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
   - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
   - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   - `[Publisher <String>]`: The name of the extension handler publisher.
