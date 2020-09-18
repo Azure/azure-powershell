@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountapiproperties
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountapiproperty
 schema: 2.0.0
 ---
 
-# New-AzCognitiveServicesAccountApiProperties
+# New-AzCognitiveServicesAccountApiProperty
 
 ## SYNOPSIS
 Generate a new instance of Cognitive Services Account ApiProperties
@@ -13,7 +13,7 @@ Generate a new instance of Cognitive Services Account ApiProperties
 ## SYNTAX
 
 ```
-New-AzCognitiveServicesAccountApiProperties [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzCognitiveServicesAccountApiProperty [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,12 +26,13 @@ ApiProperties is required by certain account types.
 
 ### Example 1
 ```powershell
-PS C:\> $apiProperties = New-AzCognitiveServicesAccountApiProperties
+PS C:\> $apiProperties = New-AzCognitiveServicesAccountApiProperty
 PS C:\> $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Locatio WestUS -ApiProperties $apiProperties
+PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Locatio WestUS -ApiProperty $apiProperties
 ```
 
 Above example will create an QnAMaker account, with API property "QnaRuntimeEndpoint".
+
 
 ## PARAMETERS
 
@@ -39,7 +40,7 @@ Above example will create an QnAMaker account, with API property "QnaRuntimeEndp
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -54,7 +55,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -70,7 +71,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

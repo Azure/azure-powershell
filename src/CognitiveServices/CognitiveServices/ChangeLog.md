@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Show additional legal terms for certain APIs.
-* Add `New-AzCognitiveServicesAccountApiProperties` command.
-* Support "ApiProperties" parameter for `New-AzCognitiveServicesAccount` and `Set-AzCognitiveServicesAccount`
+* Add `New-AzCognitiveServicesAccountApiProperty` command.
+* Support "ApiProperty" parameter for `New-AzCognitiveServicesAccount` and `Set-AzCognitiveServicesAccount`
 
 ## Version 1.5.1
 * Used `Deny` specifically as NetworkRules default action.

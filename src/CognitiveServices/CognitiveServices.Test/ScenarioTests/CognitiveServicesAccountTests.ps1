@@ -1323,15 +1323,15 @@ function Test-ApiProperties
         $loc = "West US";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        $apiProperties = New-AzCognitiveServicesAccountApiProperties
+        $apiProperties = New-AzCognitiveServicesAccountApiProperty
         $apiProperties.QnaRuntimeEndpoint = "https://sdk-test-qna-maker.azurewebsites.net"
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -ApiProperties $apiProperties -Force;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -ApiProperty $apiProperties -Force;
         Assert-NotNull $createdAccount;
         Assert-True {$createdAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://sdk-test-qna-maker.azurewebsites.net"}
         
         $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
         
-        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -ApiProperties $apiProperties -Force;
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -ApiProperty $apiProperties -Force;
         Assert-NotNull $updatedAccount;
         Assert-True {$updatedAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://qnamaker.azurewebsites.net"}
     }

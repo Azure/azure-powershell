@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Generate Cognitive Services Account ApiProperties class
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountApiProperties", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountApiProperties))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountApiProperty", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountApiProperties))]
     public class NewAzureCognitiveServicesAccountApiPropertiesCommand : CognitiveServicesAccountBaseCmdlet
     {
         public override void ExecuteCmdlet()

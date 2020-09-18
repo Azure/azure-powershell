@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "The ApiProperties of Cognitive Services Account. Required by specific account types.")]
-        public CognitiveServicesAccountApiProperties ApiProperties { get; set; }
+        public CognitiveServicesAccountApiProperties ApiProperty { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
                 }
 
-                if (ApiProperties != null)
+                if (ApiProperty != null)
                 {
-                    properties.ApiProperties = ApiProperties;
+                    properties.ApiProperties = ApiProperty;
                 }
 
                 CognitiveServicesAccount createParameters = new CognitiveServicesAccount()
