@@ -808,7 +808,7 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
     $storageKey = "StorageKey"
-	$storageResourceId = "/subscriptions/xys/resourcegroups/default/providers/Microsoft.Storage/test"
+    $storageResourceId = "/subscriptions/xys/resourcegroups/default/providers/Microsoft.Storage/test"
 
     $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
     if($testMode -eq "Record"){
