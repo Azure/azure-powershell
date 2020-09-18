@@ -74,9 +74,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             OutboundPublicNetworkAccessType = cluster.Properties?.NetworkSettings?.OutboundOnlyPublicNetworkAccessType;
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
-            var vnet = cluster.Properties?.ComputeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals("workernode"))?.VirtualNetworkProfile;
+            var vnet = Utils.ExtractWorkerNode(cluster)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
             SubnetName = vnet?.Subnet;
+            ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -109,7 +110,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {
                         DefaultStorageContainer = string.Empty;
                     }
-
 
                     AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
                 }
@@ -257,5 +257,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the subnet name.
         /// </summary>
         public string SubnetName;
+
+        /// <summary>
+        /// Gets or sets the compute profile
+        /// </summary>
+        public AzureHDInsightComputeProfile ComputeProfile;
     }
 }

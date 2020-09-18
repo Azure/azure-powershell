@@ -109,6 +109,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string TriggerRun = nameof(TriggerRun);
 
+        public const string Dataset = nameof(Dataset);
+
+        public const string DataFlow = nameof(DataFlow);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

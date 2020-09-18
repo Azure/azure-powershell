@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ResourceId of the virtual router peer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Network/virtualRouters/peerings")]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs/bgpConnections")]
         public string ResourceId { get; set; }
 
         public override void Execute()
@@ -79,9 +79,10 @@ namespace Microsoft.Azure.Commands.Network
                 VirtualRouterName = resourceInfo.ParentResource;
             }
 
-            var vVirtualRouterPeer = this.NetworkClient.NetworkManagementClient.VirtualRouterPeerings.Get(ResourceGroupName, VirtualRouterName, PeerName);
-            var vVirtualRouterPeerModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(vVirtualRouterPeer);
-            WriteObject(vVirtualRouterPeerModel, true);
+            var bgpConnection = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Get(ResourceGroupName, VirtualRouterName, PeerName);
+            var peerModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualRouterPeer>(bgpConnection);
+
+            WriteObject(peerModel, true);
         }
     }
 }

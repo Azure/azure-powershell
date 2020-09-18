@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.1
+* Added missing check for Set-AzRoleAssignment
 * Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`
 * Updated ARM template What-If cmdlets to show "Ignore" resource changes last
 * Fixed secure and array parameter serialization issues for deployment cmdlets [#12773]
