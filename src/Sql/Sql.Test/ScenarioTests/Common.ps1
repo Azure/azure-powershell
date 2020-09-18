@@ -826,7 +826,7 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
        if ([System.string]::IsNullOrEmpty($storageKey)){
           throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
        }
-	   if ([System.string]::IsNullOrEmpty($storageResourceId)){
+    if ([System.string]::IsNullOrEmpty($storageResourceId)){
           throw "The  TEST_STORAGE_RESOURCE_ID environment variable should point to the resource id for the storage account"
        }
     }
