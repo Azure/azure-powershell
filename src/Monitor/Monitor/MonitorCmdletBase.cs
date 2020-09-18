@@ -86,19 +86,19 @@ namespace Microsoft.Azure.Commands.Insights
             string reasonPhrase = null;
             string message = null;
             string exName = null;
-            string warningEnvironmentParam = "SuppressAzurePowerShellBreakingChangeWarnings";
-            bool isWarning = false;
+            string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
+            bool supressWarningOrError = false;
             try
             {
-                if (System.Environment.GetEnvironmentVariable(warningEnvironmentParam) == null)
+                if (System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME) == null)
                 {
-                    isWarning = false;
+                    supressWarningOrError = false;
                 }
                 else
                 {
-                    isWarning = bool.Parse(System.Environment.GetEnvironmentVariable(warningEnvironmentParam));
+                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
                 }
-                if (!isWarning)
+                if (!supressWarningOrError)
                 {
                     WriteWarningWithTimestamp("The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
                     WriteWarningWithTimestamp("The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
