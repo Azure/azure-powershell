@@ -61,7 +61,7 @@ function Test-ImportNewDatabase
 
 function Test-ImportNewDatabaseNetworkIsolation
 {
-	# Setup	
+    # Setup
     $testSuffix = 90071
     $createServer = $true
     $createDatabase = $false
