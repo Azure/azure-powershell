@@ -1,37 +1,44 @@
 [cmdletbinding()]
 param(
+  [string]
+  [Parameter(Mandatory = $true, Position = 0)]
+  $gallery,
+  [string]
+  [Parameter(Mandatory = $false, Position = 1)]
+  $localRepoLocation
+)
+function Register-Gallery {
+  param(
     [string]
-    [Parameter(Mandatory = $true, Position=0)]
+    [Parameter(Mandatory = $true, Position = 0)]
     $gallery,
     [string]
-    [Parameter(Mandatory = $false, Position=1)]
-    $sourceLocation
-)
-
-switch ($gallery) {
-    'PSGallery' 
-    {   
-        Write-Host "Setting $gallery Trusted..."
-        Set-PSRepository -Name $gallery -InstallationPolicy Trusted
-        break;
+    [Parameter(Mandatory = $false, Position = 1)]
+    $localRepoLocation
+  )  
+  switch ($gallery) {
+    'PSGallery' {   
+      Write-Host "Setting $gallery Trusted..."
+      Set-PSRepository -Name $gallery -InstallationPolicy Trusted
+      break;
     }
-    'TestGallery'
-    { 
-        Write-Host "Registering $gallery..."
-        Register-PSRepository -Name $gallery -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
-        break;
+    'TestGallery' { 
+      Write-Host "Registering $gallery Trusted..."
+      Register-PSRepository -Name $gallery -SourceLocation 'https://www.poshtestgallery.com/api/v2' -PackageManagementProvider NuGet -InstallationPolicy Trusted
+      break;
     }
-    'LocalRepo'
-    {
-        Write-Host "Registering $gallery Trusted..."
-        Register-PSRepository -Name $gallery -SourceLocation $sourceLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
-        break;
+    'LocalRepo' {
+      Write-Host "Registering $gallery Trusted..."
+      Register-PSRepository -Name $gallery -SourceLocation $localRepoLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
+      break;
     }
-    Default 
-    {
-        throw "Invalid gallery"
+    Default {
+      throw "Invalid gallery", $gallery
     }
+  }
 }
+
+Register-Gallery $gallery $localRepoLocation
 
 Write-Host "Installing Az..."
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
@@ -44,6 +51,6 @@ $azVersion = (get-module Az).Version
 Get-Module -Name Az.* -ListAvailable
 Write-Host "Current version of Az", $azVersion
 
-if(!$azVersion){
-    throw "No Az is installed"
+if (!$azVersion) {
+  throw "No Az is installed"
 }
