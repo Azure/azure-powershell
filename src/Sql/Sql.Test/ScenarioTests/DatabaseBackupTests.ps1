@@ -89,7 +89,7 @@ function Test-RestoreDeletedDatabaseBackup
 	{
 		$server = Create-ServerForTest $rg $location
 	
-		# Create data warehouse database with all parameters.
+		# Create a new sql database
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
 	
