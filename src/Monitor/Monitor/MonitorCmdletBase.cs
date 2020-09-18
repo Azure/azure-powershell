@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Commands.Insights
 
             try
             {
-                var isWarning =  bool.Parse(System.Environment.GetEnvironmentVariable("SuppressAzurePowerShellBreakingChangeWarnings"));
+                var isWarning = System.Environment.GetEnvironmentVariable("SuppressAzurePowerShellBreakingChangeWarnings") == null? false : bool.Parse(System.Environment.GetEnvironmentVariable("SuppressAzurePowerShellBreakingChangeWarnings"));
                 if (!isWarning)
                 {
                     WriteWarningWithTimestamp("The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
-                    WriteWarningWithTimestamp("The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
+                    WriteWarningWithTimestamp("The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes,such as 'Microsoft.Azure.Commands'");
                 }
                 this.ProcessRecordInternal();
             }
