@@ -33,7 +33,7 @@ function Test-ExportDatabase
 
 function Test-ExportDatabaseNetworkIsolation
 {
-	# Setup	
+    # Setup
     $testSuffix = 90070
     $createServer = $true
     $createDatabase = $true
