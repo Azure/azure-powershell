@@ -102,10 +102,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 codeCredential = new DeviceCodeCredential(DeviceCodeFunc, options);
                 var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
-                return MsalAccessToken.GetAccessTokenAsync(
-                    authTask,
-                    () => codeCredential.GetTokenAsync(requestContext, cancellationToken),
-                    (AuthenticationRecord record) => { UserCredentialMap[record.HomeAccountId] = codeCredential; });
+                return MsalAccessToken.GetAccessTokenAsync(authTask);
             }
         }
 

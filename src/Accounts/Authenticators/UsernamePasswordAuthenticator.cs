@@ -76,10 +76,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
-                return MsalAccessToken.GetAccessTokenAsync(
-                    authTask,
-                    () => passwordCredential.GetTokenAsync(requestContext, cancellationToken),
-                    (AuthenticationRecord record) => { UserCredentialMap[record.HomeAccountId] = passwordCredential; });
+                return MsalAccessToken.GetAccessTokenAsync(authTask);
             }
             else if (UserCredentialMap.TryGetValue(upParameters.HomeAccountId, out passwordCredential))
             {

@@ -65,13 +65,16 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var clientId = AuthenticationHelpers.PowerShellClientId;
 
             var requestContext = new TokenRequestContext(scopes);
+            var authority = onPremise ?
+                    interactiveParameters.Environment.ActiveDirectoryAuthority :
+                    AuthenticationHelpers.GetAuthority(parameters.Environment, tenantId);
 
             InteractiveBrowserCredential browserCredential = null;
             AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
             if (!string.IsNullOrEmpty(interactiveParameters.UserId))
             {
                 if (!UserCredentialMap.TryGetValue(interactiveParameters.UserId, out browserCredential))
-        {
+                {
                     AzureSession.Instance.TryGetComponent(
                         PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
                         out PowerShellTokenCacheProvider provider);
@@ -108,16 +111,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     TenantId = tenantId,
                     //CacheProvider = DefaultTokenCacheProvider.WithUnencryptedFallback
                     TokenCache = tokenCache,
+                    AuthorityHost = new Uri(authority),
+                    //RedirectUri = new Uri("https://adfs.redmond.azurestack.corp.microsoft.com/adfs/common/oauth2/nativeclient")
                     //EnablePersistentCache = EnablePersistenceCache,
                     //AllowUnencryptedCache = true,
                 };
                 browserCredential = new InteractiveBrowserCredential(options);
-                var authTask = browserCredential.AuthenticateAsync(cancellationToken);
-                return MsalAccessToken.GetAccessTokenAsync(
-                    authTask,
-                    () => browserCredential.GetTokenAsync(requestContext, cancellationToken),
-                    (AuthenticationRecord record) => { UserCredentialMap[record.Username] = browserCredential; });
-        }
+                var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
+                return MsalAccessToken.GetAccessTokenAsync(authTask);
+            }
         }
 
         //private string GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)

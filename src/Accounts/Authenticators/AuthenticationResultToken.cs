@@ -135,14 +135,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
         public static async Task<IAccessToken> GetAccessTokenAsync(
-                Task<AuthenticationRecord> authTask,
-                Func<ValueTask<AccessToken>> getTokenAction,
-                Action<AuthenticationRecord> setRecord)
+                Task<AuthenticationRecord> authTask)
         {
             var record = await authTask;
-            setRecord(record);
-            var token = await getTokenAction();
-            return new MsalAccessToken(token.Token, record.TenantId, record.Username, record.HomeAccountId);
+            var tokenRecord = record as AuthenticationTokenRecord;
+            return new MsalAccessToken(tokenRecord.AccessToken.Token, record.TenantId, record.Username, record.HomeAccountId);
         }
     }
 }
