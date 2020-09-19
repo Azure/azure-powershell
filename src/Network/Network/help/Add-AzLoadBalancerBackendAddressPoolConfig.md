@@ -23,8 +23,8 @@ The **Add-AzLoadBalancerBackend** cmdlet adds a backend address pool to an Azure
 
 ## EXAMPLES
 
-### Example 1 Add a backend address pool configuration to a load balancer
-```
+### Example 1: Add a backend address pool configuration to a load balancer
+```powershell
 PS C:\>Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myrg" | Add-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzLoadBalancer
 ```
 

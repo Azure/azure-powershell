@@ -12,9 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDatabricksWorkspace' {
-    # service team had a bug when listing a lot of workspace items. Skip the case for now
-    # TODO: enable it when the bug is fixed
-    It 'List1' -skip {
+    It 'List1' {
         $workspaces = Get-AzDatabricksWorkspace
         $workspaces.Count | Should -BeGreaterOrEqual 3
     }

@@ -46,8 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// <summary>Internal Acessors for LastUpdateTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHostPropertiesInternal.LastUpdateTime { get => this._lastUpdateTime; set { {_lastUpdateTime = value;} } }
 
+        /// <summary>Internal Acessors for ResourceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHostPropertiesInternal.ResourceId { get => this._resourceId; set { {_resourceId = value;} } }
+
         /// <summary>Internal Acessors for StatusTimestamp</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHostPropertiesInternal.StatusTimestamp { get => this._statusTimestamp; set { {_statusTimestamp = value;} } }
+
+        /// <summary>Internal Acessors for VirtualMachineId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHostPropertiesInternal.VirtualMachineId { get => this._virtualMachineId; set { {_virtualMachineId = value;} } }
 
         /// <summary>Backing field for <see cref="OSVersion" /> property.</summary>
         private string _oSVersion;
@@ -55,6 +61,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// <summary>The version of the OS on the session host.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string OSVersion { get => this._oSVersion; set => this._oSVersion = value; }
+
+        /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
+        private string _resourceId;
+
+        /// <summary>Resource Id of SessionHost's underlying virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string ResourceId { get => this._resourceId; }
 
         /// <summary>Backing field for <see cref="Session" /> property.</summary>
         private int? _session;
@@ -97,6 +110,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         /// <summary>Update state of a SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState? UpdateState { get => this._updateState; set => this._updateState = value; }
+
+        /// <summary>Backing field for <see cref="VirtualMachineId" /> property.</summary>
+        private string _virtualMachineId;
+
+        /// <summary>Virtual Machine Id of SessionHost's underlying virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string VirtualMachineId { get => this._virtualMachineId; }
 
         /// <summary>Creates an new <see cref="SessionHostProperties" /> instance.</summary>
         public SessionHostProperties()
@@ -156,6 +176,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         SerializedName = @"osVersion",
         PossibleTypes = new [] { typeof(string) })]
         string OSVersion { get; set; }
+        /// <summary>Resource Id of SessionHost's underlying virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Resource Id of SessionHost's underlying virtual machine.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceId { get;  }
         /// <summary>Number of sessions on SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -204,6 +232,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         SerializedName = @"updateState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState) })]
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState? UpdateState { get; set; }
+        /// <summary>Virtual Machine Id of SessionHost's underlying virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Virtual Machine Id of SessionHost's underlying virtual machine.",
+        SerializedName = @"virtualMachineId",
+        PossibleTypes = new [] { typeof(string) })]
+        string VirtualMachineId { get;  }
 
     }
     /// Schema for SessionHost properties.
@@ -222,6 +258,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         global::System.DateTime? LastUpdateTime { get; set; }
         /// <summary>The version of the OS on the session host.</summary>
         string OSVersion { get; set; }
+        /// <summary>Resource Id of SessionHost's underlying virtual machine.</summary>
+        string ResourceId { get; set; }
         /// <summary>Number of sessions on SessionHost.</summary>
         int? Session { get; set; }
         /// <summary>Status for a SessionHost.</summary>
@@ -234,6 +272,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         string UpdateErrorMessage { get; set; }
         /// <summary>Update state of a SessionHost.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState? UpdateState { get; set; }
+        /// <summary>Virtual Machine Id of SessionHost's underlying virtual machine.</summary>
+        string VirtualMachineId { get; set; }
 
     }
 }

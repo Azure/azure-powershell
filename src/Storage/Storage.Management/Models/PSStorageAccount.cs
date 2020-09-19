@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
+            this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
+            this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
 
         }
 
@@ -119,7 +122,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
+        public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
+
         public PSGeoReplicationStats GeoReplicationStats { get; set; }
+
+        public bool? AllowBlobPublicAccess { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

@@ -25,19 +25,20 @@ Name       Type          Filter                    SearchCriterion              
 ----       ----          ------                    ---------------                -----------
 WindUpdate WindowsUpdate {BrowseOnly, IsInstalled} BrowseOnly=0 and IsInstalled=0 100
 .Example
-PS C:\> New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName 'filecus' -Sha256Checksum 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93' -Destination 'c:\\buildArtifacts\\index.html' -SourceUri 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+PS C:\> New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName 'filecus' -Destination 'c:\\buildArtifacts\\index.html' -SourceUri 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
 
-Name    Type Destination                    Sha256Checksum                                                   SourceUri
-----    ---- -----------                    --------------                                                   ---------
-filecus File c:\\buildArtifacts\\index.html ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93 https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html
+Name    Type Destination                    Sha256Checksum SourceUri
+----    ---- -----------                    -------------- ---------
+filecus File c:\\buildArtifacts\\index.html                https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/…
 
 .Example
 PS C:\> $inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
-PS C:\> New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName settingUpMgmtAgtPath -RunElevated $false -Sha256Checksum ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93 -Inline $inline
+PS C:\> New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName settingUpMgmtAgtPath -RunElevated $false -Inline $inline
 
-Name                 Type       Inline                                                                                                  RunElevated ScriptUri Sha256Checksum                                      ValidExitC                                                                                                                                                                                                                                                                                                                                                                                                                                        e
-----                 ----       ------                                                                                                  ----------- --------- --------------                                       --
-settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False                 ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93
+Name                 Type       Inline                                                                                                  RunElevated ScriptUri Sha256Checksum
+----                 ----       ------                                                                                                  ----------- --------- --------------
+settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False
+
 .Example
 PS C:\> New-AzImageBuilderCustomizerObject -RestartCustomizer -CustomizerName 'restcus' -RestartCommand 'shutdown /f /r /t 0 /c \"packer restart\"' -RestartCheckCommand 'powershell -command "& {Write-Output "restarted."}"' -RestartTimeout '10m'
 
@@ -45,11 +46,11 @@ Name    Type           RestartCheckCommand                                 Resta
 ----    ----           -------------------                                 --------------                            --------------
 restcus WindowsRestart powershell -command "& {Write-Output "restarted."}" shutdown /f /r /t 0 /c \"packer restart\" 10m
 .Example
-PS C:\> New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" -Sha256Checksum ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93 
+PS C:\> New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" 
 
 Name                   Type  Inline ScriptUri                                                                                                      Sha256Checksum
 ----                   ----  ------ ---------                                                                                                      --------------
-downloadBuildArtifacts Shell        https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93
+downloadBuildArtifacts Shell        https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer

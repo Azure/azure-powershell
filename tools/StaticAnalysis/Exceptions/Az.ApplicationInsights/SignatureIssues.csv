@@ -1,1 +1,2 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll","Microsoft.Azure.Commands.ApplicationInsights.NewAzureApplicationInsights","New-AzApplicationInsights","1","8420","Parameter set '__AllParameterSets' of cmdlet 'New-AzApplicationInsights' contains at least one parameter with a position larger than four, which is discouraged.","Limit the number of positional parameters in a single parameter set to four or fewer."

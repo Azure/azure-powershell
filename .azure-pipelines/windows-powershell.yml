@@ -1,7 +1,7 @@
 variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
-  TestFramework: netcoreapp2.2
+  TestFramework: netcoreapp2.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
@@ -57,7 +57,7 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: succeeded()
-  timeoutInMinutes: 120
+  timeoutInMinutes: 180
   pool:
     vmImage: ${{ variables.WindowsImage }}
 

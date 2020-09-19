@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             if (ShouldProcess(policyName, "Remove policy"))
             {
                 permissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetSharePermissions(share, permissions);
+                localChannel.SetSharePermissions(share, permissions, null, null, OperationContext);
                 success = true;
             }
 

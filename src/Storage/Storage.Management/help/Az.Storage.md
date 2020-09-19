@@ -26,6 +26,9 @@ Closes file handles of a file share, a file directory or a file.
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.
 
+### [Disable-AzStorageBlobRestorePolicy](Disable-AzStorageBlobRestorePolicy.md)
+Disables Blob Restore Policy on a Storage account.
+
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
@@ -34,6 +37,9 @@ Disable static website for the Azure Storage account.
 
 ### [Enable-AzStorageBlobDeleteRetentionPolicy](Enable-AzStorageBlobDeleteRetentionPolicy.md)
 Enable delete retention policy for the Azure Storage Blob service.
+
+### [Enable-AzStorageBlobRestorePolicy](Enable-AzStorageBlobRestorePolicy.md)
+Enables Blob Restore Policy on a Storage account.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -83,6 +89,9 @@ Downloads a storage blob.
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
 
+### [Get-AzStorageBlobQueryResult](Get-AzStorageBlobQueryResult.md)
+Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
+
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
 
@@ -106,6 +115,9 @@ Gets the state of a copy operation.
 
 ### [Get-AzStorageFileHandle](Get-AzStorageFileHandle.md)
 Lists file handles of a file share, a file directory or a file.
+
+### [Get-AzStorageObjectReplicationPolicy](Get-AzStorageObjectReplicationPolicy.md)
+Gets or lists object replication policy of a Storage account.
 
 ### [Get-AzStorageQueue](Get-AzStorageQueue.md)
 Lists storage queues.
@@ -170,6 +182,12 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
 
+### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
+Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
+
+### [New-AzStorageBlobRangeToRestore](New-AzStorageBlobRangeToRestore.md)
+Creates a Blob Range object to restores a Storage account.
+
 ### [New-AzStorageBlobSASToken](New-AzStorageBlobSASToken.md)
 Generates a SAS token for an Azure storage blob.
 
@@ -190,6 +208,9 @@ Creates a directory.
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
+
+### [New-AzStorageObjectReplicationPolicyRule](New-AzStorageObjectReplicationPolicyRule.md)
+Creates an object replication policy rule.
 
 ### [New-AzStorageQueue](New-AzStorageQueue.md)
 Creates a storage queue.
@@ -260,6 +281,9 @@ Deletes a directory.
 ### [Remove-AzStorageFile](Remove-AzStorageFile.md)
 Deletes a file.
 
+### [Remove-AzStorageObjectReplicationPolicy](Remove-AzStorageObjectReplicationPolicy.md)
+Removes the specified object replication policy from a Storage account.
+
 ### [Remove-AzStorageQueue](Remove-AzStorageQueue.md)
 Removes a storage queue.
 
@@ -277,6 +301,9 @@ Removes a storage table.
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
+
+### [Restore-AzStorageBlobRange](Restore-AzStorageBlobRange.md)
+Restores a Storage account for specific blob ranges.
 
 ### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
 Revoke all User Delegation keys of a Storage account.
@@ -310,6 +337,9 @@ Sets the CORS rules for a type of Storage service.
 
 ### [Set-AzStorageFileContent](Set-AzStorageFileContent.md)
 Uploads the contents of a file.
+
+### [Set-AzStorageObjectReplicationPolicy](Set-AzStorageObjectReplicationPolicy.md)
+Creates or updates the specified object replication policy in a Storage account.
 
 ### [Set-AzStorageQueueStoredAccessPolicy](Set-AzStorageQueueStoredAccessPolicy.md)
 Sets a stored access policy for an Azure storage queue.

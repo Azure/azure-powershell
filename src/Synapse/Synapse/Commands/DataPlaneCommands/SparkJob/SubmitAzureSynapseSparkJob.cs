@@ -1,11 +1,11 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.Azure.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName)]
+    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJob, DefaultParameterSetName = RunSparkJobParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSparkJob))]
-    public class SubmitAzureSynapseSparkJob : SynapseCmdletBase
+    public class SubmitAzureSynapseSparkJob : SynapseSparkCmdletBase
     {
         private const string RunSparkJobParameterSetName = nameof(RunSparkJobParameterSetName);
         private const string RunSparkJobByParentObjectParameterSet = nameof(RunSparkJobByParentObjectParameterSet);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
+        public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Synapse
             "ResourceGroupName",
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
-        public string SparkPoolName { get; set; }
+        public override string SparkPoolName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = RunSparkJobByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
@@ -147,49 +147,49 @@ namespace Microsoft.Azure.Commands.Synapse
 
             Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
             bool isSparkDotNet = this.Language == LanguageType.SparkDotNet;
-            var batchRequest = new ExtendedLivyBatchRequest
+            var batchRequest = new SparkBatchJobOptions(this.Name, isSparkDotNet ? SynapseConstants.SparkDotNetJarFile : this.MainDefinitionFile)
             {
-                Name = this.Name,
-                File = isSparkDotNet
-                    ? SynapseConstants.SparkDotNetJarFile
-                    : this.MainDefinitionFile,
                 ClassName = isSparkDotNet
                     ? SynapseConstants.SparkDotNetClassName
                     : (this.Language == LanguageType.PySpark ? null : this.MainClassName),
-                Args = isSparkDotNet
-                    ? new List<string> { this.MainDefinitionFile, this.MainClassName }
-                        .Concat(this.CommandLineArgument ?? new string[0]).ToArray()
-                    : this.CommandLineArgument,
-                Jars = jars,
-                Files = files,
-                Archives = isSparkDotNet
-                    ? new List<string> { $"{this.MainDefinitionFile}#{SynapseConstants.SparkDotNetUdfsFolderName}" }
-                    : null,
-                Conf = this.Configuration?.ToDictionary(),
                 ExecutorMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 ExecutorCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 DriverMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 DriverCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
-                NumExecutors = this.ExecutorCount
+                ExecutorCount = this.ExecutorCount
             };
+            var arguments = isSparkDotNet
+                    ? new List<string> { this.MainDefinitionFile, this.MainClassName }
+                        .Concat(this.CommandLineArgument ?? new string[0]).ToArray()
+                    : this.CommandLineArgument;
+            arguments?.ForEach(item => batchRequest.Arguments.Add(item));
+            jars?.ForEach(item => batchRequest.Jars.Add(item));
+            files?.ForEach(item => batchRequest.Files.Add(item));
+            var archives = isSparkDotNet
+                    ? new List<string> { $"{this.MainDefinitionFile}#{SynapseConstants.SparkDotNetUdfsFolderName}" }
+                    : null;
+            archives?.ForEach(item => batchRequest.Archives.Add(item));
+            this.Configuration?.ToDictionary()?.ForEach(item => batchRequest.Configuration.Add(item));
 
             // Ensure the relative path of UDFs is add to "--conf".
             if (isSparkDotNet)
             {
-                batchRequest.Conf = batchRequest.Conf ?? new Dictionary<string, string>();
                 string udfsRelativePath = "./" + SynapseConstants.SparkDotNetUdfsFolderName;
-                batchRequest.Conf.TryGetValue(SynapseConstants.SparkDotNetAssemblySearchPathsKey, out string pathValue);
+                batchRequest.Configuration.TryGetValue(SynapseConstants.SparkDotNetAssemblySearchPathsKey, out string pathValue);
                 var paths = pathValue?.Split(',').Select(path => path.Trim()).Where(path => !string.IsNullOrEmpty(path)).ToList() ?? new List<string>();
                 if (!paths.Contains(udfsRelativePath))
                 {
                     paths.Add(udfsRelativePath);
                 }
 
-                batchRequest.Conf[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
+                batchRequest.Configuration[SynapseConstants.SparkDotNetAssemblySearchPathsKey] = string.Join(",", paths);
             }
 
-            var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(this.WorkspaceName, this.SparkPoolName, batchRequest, waitForCompletion:false);
-            WriteObject(new PSSynapseSparkJob(jobInformation));
+            if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.SubmittingSynapseSparkJob, this.SparkPoolName, this.WorkspaceName)))
+            {
+                var jobInformation = SynapseAnalyticsClient.SubmitSparkBatchJob(batchRequest, waitForCompletion: false);
+                WriteObject(new PSSynapseSparkJob(jobInformation));
+            }
         }
     }
 }

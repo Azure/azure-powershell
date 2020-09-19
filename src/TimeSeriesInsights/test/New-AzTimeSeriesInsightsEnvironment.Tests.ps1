@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzTimeSeriesInsightsEnvironment' {
-    It 'standard' {
-        $kind = 'Standard'
+    It 'Gen1' {
+        $kind = 'Gen1'
         $sku01 = 'S1'
         $sku02 = 'S2'
         $timeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
@@ -28,8 +28,8 @@ Describe 'New-AzTimeSeriesInsightsEnvironment' {
         $tsiEnv03.Name | Should -Be $env.rstrenv03
     }
 
-    It 'longterm' {
-        $kind = 'LongTerm'
+    It 'Gen2' {
+        $kind = 'Gen2'
         $sku = 'L1'
         $capacity = 2
         $timeSeriesIdProperty = @{name='cdc';type='string'}

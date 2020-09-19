@@ -251,8 +251,8 @@ namespace Common.Authentication.Test
                 VersionProfile = "2017_09_25"
             };
 
-            context.SetProperty("ContextProeprty1", "ContextProperty1Value1", "ContextProperty1Value2");
-            context.SetProperty("ContextProeprty2", "ContextProperty2Value1", "ContextProperty2Value2");
+            context.SetProperty("ContextProperty1", "ContextProperty1Value1", "ContextProperty1Value2");
+            context.SetProperty("ContextProperty2", "ContextProperty2Value1", "ContextProperty2Value2");
 
             return context;
         }

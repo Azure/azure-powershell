@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
 
     /// <summary>
     /// Blob management interface
@@ -75,6 +76,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="name">Container name</param>
         /// <returns>A CloudBlobContainer in local memory</returns>
         CloudBlobContainer GetContainerReference(String name);
+
+        /// <summary>
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null);
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null);
 
         /// <summary>
         /// Get blob reference with properties and meta data from server
@@ -258,7 +273,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
-        Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+        Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
 
         /// <summary>
         /// Return a task that asynchronously fetch blob attributes

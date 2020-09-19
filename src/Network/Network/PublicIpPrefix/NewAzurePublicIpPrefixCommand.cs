@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Zone = [] means the Standard PublicIpPrefix is zone-redundant",
-        NewWay = "Zone = [] means the Standard PublicIpPrefix has no zones. If you want to create a zone-redundant PublicIpPrefix, please specify all the zones in the region. For example, Zone = [\"1\", \"2\", \"3\"].To learn more visit aka.ms/standardpublicip")]
+    [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard PublicIpPrefix is zone-redundant.",
+        NewWay = "Sku = Standard and Zone = {} means the Standard PublicIpPrefix has no zones. If you want to create a zone-redundant PublicIpPrefix, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
@@ -99,6 +99,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The CustomIpPrefix that this PublicIpPrefix will be associated with")]
+        public PSCustomIpPrefix CustomIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -164,6 +170,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIpPrefix.IpTags = this.IpTag?.ToList();
             }
+
+            publicIpPrefix.CustomIpPrefix = this.CustomIpPrefix;
 
             var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 

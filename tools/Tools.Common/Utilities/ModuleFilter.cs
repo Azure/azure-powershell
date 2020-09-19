@@ -16,7 +16,7 @@ namespace Tools.Common.Utilities
             }
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
-            var whiteListFile = Path.Combine(versionControllerDirectory, "WhiteList.csv");
+            var whiteListFile = Path.Combine(versionControllerDirectory, "AllowList.csv");
             if (File.Exists(whiteListFile))
             {
                 var lines = File.ReadAllLines(whiteListFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
