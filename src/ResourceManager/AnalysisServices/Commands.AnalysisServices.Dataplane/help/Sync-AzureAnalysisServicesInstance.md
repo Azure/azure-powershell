@@ -30,7 +30,7 @@ The Sync-AzureAnalysisServicesInstance cmdlet synchronizes a specified database 
 PS C:\>Sync-AzureAnalysisServicesInstance -Instance asazure://westus.asazure.windows.net/contoso -Database SalesOrders
 ```
 
-This command will synchronize the database named SalesOrders in the server named 'contoso' in the environment westus.asazure.windows.net provided the user has logged-in to this enviroment using Add-AzureAnalysisServicesAccount command.
+This command will synchronize the database named SalesOrders in the server named 'contoso' in the environment westus.asazure.windows.net provided the user has logged-in to this environment using Add-AzureAnalysisServicesAccount command.
 
 ## PARAMETERS
 
