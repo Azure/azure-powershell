@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -44,7 +45,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        protected string GetDefaultFileForOperation( string operationName, string vaultName, string entityName )
+        internal IKeyVaultDataServiceClient Track2DataClient
+        {
+
+            get
+            {
+                if (_track2DataServiceClient == null)
+                {
+                    _track2DataServiceClient = new Track2KeyVaultDataServiceClient(
+                        AzureSession.Instance.AuthenticationFactory,
+                        DefaultContext);
+                }
+
+                return _track2DataServiceClient;
+            }
+            set
+            {
+                _track2DataServiceClient = value;
+            }
+        }
+
+        protected string GetDefaultFileForOperation(string operationName, string vaultName, string entityName)
         {
             // caller is responsible for parameter validation
             var currentPath = CurrentPath();
@@ -54,6 +75,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         private IKeyVaultDataServiceClient dataServiceClient;
+        private IKeyVaultDataServiceClient _track2DataServiceClient;
 
         /// <summary>
         /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options
@@ -70,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 WriteObject(pageResults, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
-        
+
         public List<T> KVSubResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
         {
             if (!string.IsNullOrEmpty(name))

@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.1.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.1" />
