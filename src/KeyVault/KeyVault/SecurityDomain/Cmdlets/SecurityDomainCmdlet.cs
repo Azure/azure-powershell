@@ -7,7 +7,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
-    public class SecurityDomainCmdlet: AzureRMCmdlet
+    public abstract class SecurityDomainCmdlet: AzureRMCmdlet
     {
         protected const string ByName = "By Name";
         protected const string ByInputObject = "By InputObject";

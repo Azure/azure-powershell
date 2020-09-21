@@ -343,6 +343,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To encrypt the security domain data, please provide at least {0} and at most {1} certificates..
+        /// </summary>
+        internal static string HsmCertRangeWarning {
+            get {
+                return ResourceManager.GetString("HsmCertRangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {

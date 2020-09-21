@@ -498,4 +498,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="HsmCertRangeWarning" xml:space="preserve">
+    <value>To encrypt the security domain data, please provide at least {0} and at most {1} certificates.</value>
+  </data>
 </root>
