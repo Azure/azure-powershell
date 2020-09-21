@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='GetByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='GetByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -151,13 +151,13 @@ function Get-AzMigrateJob {
     
     process {   
 
-
             $parameterSet = $PSCmdlet.ParameterSetName
             $null = $PSBoundParameters.Remove('JobID')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ProjectName')
             $null = $PSBoundParameters.Remove('JobName')
             $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('InputServerObject')
             $null = $PSBoundParameters.Remove('ResourceGroupID')
             $null = $PSBoundParameters.Remove('ProjectID')
             $HasFilter = $PSBoundParameters.ContainsKey('Filter')
@@ -169,8 +169,19 @@ function Get-AzMigrateJob {
                     $ProjectName = $ProjectID.Split("/")[8]
                     $ResourceGroupName = $ResourceGroupID.Split("/")[4]
                 }
-                # TODO Get Vault Name from Project Name
-                $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
+                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+                if($solution -and ($solution.Count -ge 1)){
+                    $ResourceName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                }else{
+                    throw "Solution not found."
+                }
+                $null = $PSBoundParameters.Remove("Name")
+                $null = $PSBoundParameters.Remove("MigrateProjectName")
+                $null = $PSBoundParameters.Remove("ResourceGroupName")
             }else{
                 if($parameterSet -eq 'GetByInputObject'){
                     $JobID = $InputObject.Id

@@ -16,40 +16,40 @@ Starts replication for the specified server.
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
  -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
- -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String> -TargetVMSize <String>
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
  [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>] [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdDefaultUser
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -OSDiskID <String>
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
- -TargetVMSize <String> -VMwareMachineId <String> [-DiskEncryptionSetID <String>]
- [-PerformAutoResync <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VMwareMachineId <String> [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
 ```
 New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
  -PerformAutoResync <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> -TargetVMSize <String> -VMwareMachineId <String>
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -TargetSubnetName <String> -TargetVMName <String> -VMwareMachineId <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -InputObject <IVMwareMachine>
  -LicenseType <LicenseType> -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> -TargetVMSize <String> [-DiskEncryptionSetID <String>]
+ -TargetSubnetName <String> -TargetVMName <String> [-DiskEncryptionSetID <String>]
  [-PerformAutoResync <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
+ [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -57,10 +57,10 @@ New-AzMigrateServerReplication -DiskType <DiskAccountType> -InputObject <IVMware
 ```
 New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine>
  -LicenseType <LicenseType> -PerformAutoResync <String> -TargetNetworkId <String>
- -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String> -TargetVMSize <String>
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByNamePowerUser
@@ -68,10 +68,9 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObje
 New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
  -MachineName <String> -PerformAutoResync <String> -ProjectName <String> -ResourceGroupName <String>
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
- -TargetVMSize <String> [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -425,7 +424,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

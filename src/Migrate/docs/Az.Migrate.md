@@ -41,12 +41,6 @@ Gets a solution in the migrate project.
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
 
-### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
-Gets a solution in the migrate project.
-
-### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
-The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
-
 ### [Invoke-AzMigrateCleanupSolutionData](Invoke-AzMigrateCleanupSolutionData.md)
 Cleanup the solution data in the migrate project.
 

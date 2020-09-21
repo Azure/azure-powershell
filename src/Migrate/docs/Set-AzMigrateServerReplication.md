@@ -17,10 +17,9 @@ Updates the target properties for the replicating server.
 Set-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-TargetNetworkId <String>] [-TargetNicIP <String>] [-TargetNicSelectionType <String>]
- [-TargetNicSubnet <String>] [-TargetResourceGroupID <String>] [-TargetSubnetName <String>]
- [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-
+ [-TargetNicSubnet <String>] [-TargetResourceGroupID <String>] [-TargetVMName <String>]
+ [-TargetVMSize <String>] [-UpdateNic] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByIDVMwareCbt
@@ -39,10 +38,6 @@ Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <S
  [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
  [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-
- [-TargetResourceGroupID <String>] [-TargetSubnetName <String>] [-TargetVMName <String>]
- [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
