@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
 
 ## Version 2.10.0
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
