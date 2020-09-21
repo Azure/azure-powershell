@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1231
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
@@ -21,16 +21,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Identity", "..\..\..\azure-sdk-for-net\sdk\identity\Azure.Identity\src\Azure.Identity.csproj", "{BC2D50E1-0D63-4713-B8C8-20C6C4C0B61E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Core", "..\..\..\azure-sdk-for-net\sdk\core\Azure.Core\src\Azure.Core.csproj", "{E2542019-2845-4D6D-8794-9B6DC3F9746F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Abstractions", "..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj", "{690A81E8-6120-4C92-BAF3-571303FEDE91}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\..\azure-powershell-common\src\Common\Common.csproj", "{59A52975-6B19-40B8-83C2-DCFEB1EF15E3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj", "{2A89771D-64D9-4113-9680-893533F50362}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aks", "..\..\..\azure-powershell-common\src\Aks\Aks.csproj", "{2C0F6B6D-4A16-4F2E-8600-4337781FA942}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites", "..\..\..\azure-powershell-common\src\Websites\Websites.csproj", "{EC3E81E5-117B-4350-83AA-51EC614362C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,26 +64,6 @@ Global
 		{E2542019-2845-4D6D-8794-9B6DC3F9746F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2542019-2845-4D6D-8794-9B6DC3F9746F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2542019-2845-4D6D-8794-9B6DC3F9746F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{690A81E8-6120-4C92-BAF3-571303FEDE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{690A81E8-6120-4C92-BAF3-571303FEDE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{690A81E8-6120-4C92-BAF3-571303FEDE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{690A81E8-6120-4C92-BAF3-571303FEDE91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59A52975-6B19-40B8-83C2-DCFEB1EF15E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59A52975-6B19-40B8-83C2-DCFEB1EF15E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59A52975-6B19-40B8-83C2-DCFEB1EF15E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59A52975-6B19-40B8-83C2-DCFEB1EF15E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A89771D-64D9-4113-9680-893533F50362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A89771D-64D9-4113-9680-893533F50362}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A89771D-64D9-4113-9680-893533F50362}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A89771D-64D9-4113-9680-893533F50362}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C0F6B6D-4A16-4F2E-8600-4337781FA942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C0F6B6D-4A16-4F2E-8600-4337781FA942}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C0F6B6D-4A16-4F2E-8600-4337781FA942}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C0F6B6D-4A16-4F2E-8600-4337781FA942}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC3E81E5-117B-4350-83AA-51EC614362C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC3E81E5-117B-4350-83AA-51EC614362C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC3E81E5-117B-4350-83AA-51EC614362C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC3E81E5-117B-4350-83AA-51EC614362C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

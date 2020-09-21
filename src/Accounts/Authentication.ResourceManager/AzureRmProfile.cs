@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Xml.Serialization;
-using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
-using System.Collections.Concurrent;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using System.Management.Automation;
+using System.Xml.Serialization;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -177,7 +176,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool success = false;
             try
             {
-                result = converter == null? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
+                result = converter == null ? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
                 success = true;
             }
             catch (JsonException)
@@ -491,7 +490,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TrySetContext(string name, IAzureContext context)
         {
             bool result = false;
-            if (Contexts!= null)
+            if (Contexts != null)
             {
                 Contexts[name] = context;
                 result = true;
@@ -572,7 +571,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 if (EnvironmentTable.ContainsKey(environment.Name))
                 {
-                    mergedEnvironment = mergedEnvironment.Merge( EnvironmentTable[environment.Name]);
+                    mergedEnvironment = mergedEnvironment.Merge(EnvironmentTable[environment.Name]);
                 }
 
                 EnvironmentTable[environment.Name] = mergedEnvironment;
@@ -646,7 +645,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return this;
         }
 
-        protected virtual void Dispose( bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             // do nothing
         }
@@ -663,7 +662,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 int i = text.IndexOf('{');
 
-                if ( i >= 0 && i < text.Length)
+                if (i >= 0 && i < text.Length)
                 {
                     result = text.Substring(i);
                 }
@@ -684,7 +683,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void EnqueueDebugMessage(string message)
         {
             EventHandler<StreamEventArgs> enqueueDebugEvent;
-            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
             {
                 enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
             }
@@ -781,7 +780,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
                         //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.

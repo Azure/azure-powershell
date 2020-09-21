@@ -110,7 +110,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
-            //var header = _result.CreateAuthorizationHeader();
             authTokenSetter("Bearer", AccessToken);
         }
 

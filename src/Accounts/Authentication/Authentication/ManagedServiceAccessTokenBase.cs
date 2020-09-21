@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -103,13 +104,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string UserId => Account.Id;
 
-        //public string HomeAccountId => Account.GetProperty(AzureAccount.Property.HomeAccountId);
-
         public DateTimeOffset ExpiresOn => Expiration;
 
-        public string HomeAccountId => throw new NotImplementedException();
+        public string HomeAccountId { get; } = null;
 
-        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+        public IDictionary<string, string> ExtendedProperties { get; }
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {

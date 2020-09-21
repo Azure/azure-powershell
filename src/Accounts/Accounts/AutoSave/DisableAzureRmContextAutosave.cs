@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation;
+
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 //using Microsoft.Identity.Client;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-using Azure.Identity;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -90,8 +92,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 cacheProvider.UpdateTokenDataWithoutFlush(token);
                 cacheProvider.FlushTokenData();
             }
-            AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey);
-            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider);
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
 
             TokenCache newTokenCache = null;
             if(AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache))

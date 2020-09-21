@@ -61,20 +61,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return Task.CompletedTask;
         }
 
-        //private static async Task<AuthenticationRecord> GetAuthenticationRecordAsync(Task)
-        //{
-
-        //}
-
-        //public async Task<AuthenticationResult> GetResponseAsync(IPublicClientApplication client, string[] scopes, CancellationToken cancellationToken)
-        //{
-        //    return await client.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
-        //    {
-        //        WriteWarning(deviceCodeResult?.Message);
-        //        return Task.FromResult(0);
-        //    }).ExecuteAsync(cancellationToken);
-        //}
-
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
             return (parameters as DeviceCodeParameters) != null;

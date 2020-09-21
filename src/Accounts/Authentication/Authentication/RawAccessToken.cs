@@ -49,6 +49,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string HomeAccountId { get; set; }
 
-        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+        public IDictionary<string, string> ExtendedProperties { get; set; }
     }
 }

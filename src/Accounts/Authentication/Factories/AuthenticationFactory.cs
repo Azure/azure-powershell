@@ -20,13 +20,10 @@ using System.Threading.Tasks;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
-
-using Microsoft.Azure.Commands.Common.Authentication.Authentication;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -427,44 +424,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return resourceId;
-        }
-
-        private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,
-            string resourceId, TokenCache tokenCache)
-        {
-            if (environment == null)
-            {
-                throw new ArgumentNullException("environment");
-            }
-
-            var adEndpoint = environment.ActiveDirectoryAuthority;
-            if (null == adEndpoint)
-            {
-                throw new ArgumentOutOfRangeException(
-                    "environment",
-                    string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
-            }
-
-            var audience = environment.GetEndpoint(resourceId) ?? resourceId;
-            if (string.IsNullOrWhiteSpace(audience))
-            {
-                string message = Resources.InvalidManagementTokenAudience;
-                if (resourceId == AzureEnvironment.Endpoint.GraphEndpointResourceId)
-                {
-                    message = Resources.InvalidGraphTokenAudience;
-                }
-
-                throw new ArgumentOutOfRangeException("environment", string.Format(message, environment.Name));
-            }
-
-            return new AdalConfiguration
-            {
-                AdEndpoint = adEndpoint.ToString(),
-                ResourceClientUri = audience,
-                AdDomain = tenantId,
-                ValidateAuthority = !environment.OnPremise,
-                //TokenCache = tokenCache
-            };
         }
 
         private string GetEndpointToken(IAzureAccount account, string targetEndpoint)

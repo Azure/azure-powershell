@@ -13,13 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Security;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -29,7 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
         protected const string AdfsTenant = "adfs";
-        protected Action EmptyAction = () => { };
 
         public IAuthenticator Next { get; set; }
         public abstract bool CanAuthenticate(AuthenticationParameters parameters);

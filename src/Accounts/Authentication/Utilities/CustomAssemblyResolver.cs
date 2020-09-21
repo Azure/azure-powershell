@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 {"Azure.Core", new Version("1.4.1.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
+                {"Microsoft.Identity.Client", new Version("4.16.1.0") },
+                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.12.0.0") },
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
                 {"Newtonsoft.Json", new Version("10.0.0.0")},

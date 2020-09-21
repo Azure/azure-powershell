@@ -16,14 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public abstract class PowerShellTokenCacheProvider //: TokenCacheProvider
+    public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
         protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";

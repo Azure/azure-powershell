@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string ResourceClientUri { get; set; }
 
-        //public TokenCache TokenCache { get; set; }
-
         public AdalConfiguration()
         {
             ClientId = PowerShellClientId;

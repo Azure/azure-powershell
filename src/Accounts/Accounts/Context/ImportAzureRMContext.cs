@@ -82,15 +82,15 @@ namespace Microsoft.Azure.Commands.Profile
                 if (AzureSession.Instance.TryGetComponent(
                     PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
                     out PowerShellTokenCacheProvider authenticationClientFactory))
-            {
-                    authenticationClientFactory.FlushTokenData();
-            }
-                }
-                catch
                 {
-                    WriteWarning(Resources.ImportAuthenticationFailure);
+                    authenticationClientFactory.FlushTokenData();
                 }
             }
+            catch
+            {
+                WriteWarning(Resources.ImportAuthenticationFailure);
+            }
+        }
 
         public override void ExecuteCmdlet()
         {

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Implements logging callback for ADAL - since only a single logger is allowed, allow
     /// reporting logs to multiple logging mechanisms
     /// </summary>
+    /// TODO: AdalLogger should be useless, will verify after engineering bits
     public class AdalLogger :  IDisposable
     {
         Action<string> _logger;

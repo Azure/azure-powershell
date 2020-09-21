@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using Azure.Identity;
-using System.IO;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -38,19 +40,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override bool CanRead => true;
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(IAzureContext) //|| objectType == typeof(AzureContext)
-                || objectType == typeof(IAzureAccount) //|| objectType == typeof(AzureAccount)
-                || objectType == typeof(IAzureSubscription) //|| objectType == typeof(AzureSubscription)
-                || objectType == typeof(IAzureEnvironment) //|| objectType == typeof(AzureEnvironment)
-                || objectType == typeof(IAzureTenant) //|| objectType == typeof(AzureTenant)
+            return objectType == typeof(IAzureContext)
+                || objectType == typeof(IAzureAccount)
+                || objectType == typeof(IAzureSubscription)
+                || objectType == typeof(IAzureEnvironment)
+                || objectType == typeof(IAzureTenant)
                 || objectType == typeof(IAzureTokenCache) || objectType == typeof(AzureTokenCache)
-                || objectType == typeof(IAzureContextContainer); //|| objectType == typeof(IAzureContextContainer);
+                || objectType == typeof(IAzureContextContainer);
 
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (objectType == typeof(IAzureContextContainer))// || objectType == typeof(IAzureContextContainer))
+            if (objectType == typeof(IAzureContextContainer))
             {
                 return serializer.Deserialize<AzureRmProfile>(reader);
             }
@@ -58,19 +60,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 return serializer.Deserialize<AzureContext>(reader);
             }
-            else if (objectType == typeof(IAzureAccount))// || objectType == typeof(AzureAccount))
+            else if (objectType == typeof(IAzureAccount))
             {
                 return serializer.Deserialize<AzureAccount>(reader);
             }
-            else if (objectType  == typeof(IAzureSubscription))// || objectType == typeof(AzureSubscription))
+            else if (objectType  == typeof(IAzureSubscription))
             {
                 return serializer.Deserialize<AzureSubscription>(reader);
             }
-            else if (objectType == typeof(IAzureTenant) )//|| objectType == typeof(AzureTenant))
+            else if (objectType == typeof(IAzureTenant) )
             {
                 return serializer.Deserialize<AzureTenant>(reader);
             }
-            else if (objectType == typeof(IAzureEnvironment))// || objectType == typeof(AzureEnvironment))
+            else if (objectType == typeof(IAzureEnvironment))
             {
                 return serializer.Deserialize<AzureEnvironment>(reader);
             }
@@ -79,21 +81,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
                 if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
-
-                    if(AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser)
+                    if(AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache oldTokenCache))
                     {
-                        if (AzureSession.Instance.TryGetComponent(
-                            PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                            out PowerShellTokenCacheProvider authenticationClientFactory))
+                        if(oldTokenCache.GetType() == typeof(TokenCache))
                         {
-                            authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                            var stream = new MemoryStream(tempResult.CacheData);
+                            var tokenCache = TokenCache.Deserialize(stream);
+                            AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
                         }
-                    }
-                    else
-                    {
-                        var stream = new MemoryStream(tempResult.CacheData);
-                        var tokenCache = TokenCache.Deserialize(stream);
-                        AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
+                        else
+                        {
+                            if (AzureSession.Instance.TryGetComponent(
+                                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                                out PowerShellTokenCacheProvider authenticationClientFactory))
+                            {
+                                authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                            }
+                        }
                     }
                 }
                 // cache data is not for direct use, so we do not return anything

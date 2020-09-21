@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Profile.Models.Core
-#else
-namespace Microsoft.Azure.Commands.Profile.Models
-#endif
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.

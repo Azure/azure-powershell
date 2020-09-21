@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.IO;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
-                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage,
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget,
                         () => ModifyContext(ClearContext),
-                        () => 
+                        () =>
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
@@ -74,15 +74,15 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                 PowerShellTokenCacheProvider authenticationClientFactory;
                 if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out authenticationClientFactory))
-                        {
+                {
                     WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
                 else
                 {
                     authenticationClientFactory.ClearCache();
                     var defaultContext = new AzureContext();
-                profile.TrySetDefaultContext(defaultContext);
-                result = true;
+                    profile.TrySetDefaultContext(defaultContext);
+                    result = true;
                 }
             }
 
