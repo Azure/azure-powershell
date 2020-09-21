@@ -11,25 +11,25 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class DefaultAuthenticatorBuilder : IAuthenticatorBuilder
     {
-        public DefaultAuthenticatorBuilder(bool allowCacheFallback)
+        public DefaultAuthenticatorBuilder()
         {
-            Reset(allowCacheFallback);
+            Reset();
         }
 
-        public void Reset(bool allowCacheFallback)
+        public void Reset()
         {
             Authenticator = null;
-            AppendAuthenticator(() => { return new InteractiveUserAuthenticator(allowCacheFallback); });
-            AppendAuthenticator(() => { return new DeviceCodeAuthenticator(allowCacheFallback); });
-            AppendAuthenticator(() => { return new UsernamePasswordAuthenticator(allowCacheFallback); });
-            AppendAuthenticator(() => { return new ServicePrincipalAuthenticator(allowCacheFallback); });
+            AppendAuthenticator(() => { return new InteractiveUserAuthenticator(); });
+            AppendAuthenticator(() => { return new DeviceCodeAuthenticator(); });
+            AppendAuthenticator(() => { return new UsernamePasswordAuthenticator(); });
+            AppendAuthenticator(() => { return new ServicePrincipalAuthenticator(); });
             AppendAuthenticator(() => { return new SilentAuthenticator(); });
             AppendAuthenticator(() => { return new ManagedServiceIdentityAuthenticator(); });
             AppendAuthenticator(() => { return new AccessTokenAuthenticator(); });

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -21,6 +20,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         IAuthenticator Authenticator { get; }
         bool AppendAuthenticator(Func<IAuthenticator> constructor);
-        void Reset(bool allowCacheFallback);
+        void Reset();
     }
 }

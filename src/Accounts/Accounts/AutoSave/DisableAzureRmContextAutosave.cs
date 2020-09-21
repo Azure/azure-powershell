@@ -103,17 +103,18 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 else
                 {
                     //TODO: read token data from cache file directly
-                    newTokenCache = TokenCache.Deserialize(memoryStream);
+                    newTokenCache = memoryStream == null ? null : TokenCache.Deserialize(memoryStream);
                 }
             }
-            else
+
+            if(newTokenCache == null)
             {
                 newTokenCache = new TokenCache();
             }
             AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => newTokenCache, true);
             if(AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out IAuthenticatorBuilder builder))
             {
-                builder.Reset(false);
+                builder.Reset();
             }
 
             if (writeAutoSaveFile)

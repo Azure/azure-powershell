@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using Azure.Core;
 using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {

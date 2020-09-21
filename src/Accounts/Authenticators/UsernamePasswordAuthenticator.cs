@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +21,6 @@ using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
 
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     public class UsernamePasswordAuthenticator : DelegatingAuthenticator
     {
         private bool EnablePersistenceCache { get; set; }
-        private ConcurrentDictionary<string, UsernamePasswordCredential> UserCredentialMap = new ConcurrentDictionary<string, UsernamePasswordCredential>(StringComparer.OrdinalIgnoreCase);
 
         public UsernamePasswordAuthenticator(bool enablePersistentCache = true)
         {
@@ -56,20 +53,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var requestContext = new TokenRequestContext(scopes);
             UsernamePasswordCredential passwordCredential;
-            Action action = EmptyAction;
 
-            AzureSession.Instance.TryGetComponent(
-                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                out PowerShellTokenCacheProvider provider);
             AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
-            //If have both user name + password, use new Credential
+
             var credentialOptions = new UsernamePasswordCredentialOptions()
             {
                 AuthorityHost = new Uri(authority),
-                //CacheProvider = provider
                 TokenCache = tokenCache
-                //EnablePersistentCache = EnablePersistenceCache,
-                //AllowUnencryptedCache = true
             };
             if (upParameters.Password != null)
             {
@@ -77,11 +67,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
                 return MsalAccessToken.GetAccessTokenAsync(authTask);
-            }
-            else if (UserCredentialMap.TryGetValue(upParameters.HomeAccountId, out passwordCredential))
-            {
-                var tokenTask = passwordCredential.GetTokenAsync(requestContext, cancellationToken);
-                return MsalAccessToken.GetAccessTokenAsync(tokenTask, upParameters.TenantId, upParameters.UserId);
             }
             else
             {

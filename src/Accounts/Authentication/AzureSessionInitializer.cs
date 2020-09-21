@@ -235,6 +235,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
+            session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
         }
 

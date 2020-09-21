@@ -13,22 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Concurrent;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -45,15 +39,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private const int AadPortStart = 8400;
         private const int AadPortEnd = 9000;
 
-        private bool EnablePersistenceCache { get; set; }
-
-        private ConcurrentDictionary<string, InteractiveBrowserCredential> UserCredentialMap = new ConcurrentDictionary<string, InteractiveBrowserCredential>(StringComparer.OrdinalIgnoreCase);
-
-        public InteractiveUserAuthenticator(bool enablePersistentCache = true)
-        {
-            EnablePersistenceCache = enablePersistentCache;
-        }
-
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var interactiveParameters = parameters as InteractiveParameters;
@@ -69,54 +54,22 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     interactiveParameters.Environment.ActiveDirectoryAuthority :
                     AuthenticationHelpers.GetAuthority(parameters.Environment, tenantId);
 
-            InteractiveBrowserCredential browserCredential = null;
             AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
-            if (!string.IsNullOrEmpty(interactiveParameters.UserId))
-            {
-                if (!UserCredentialMap.TryGetValue(interactiveParameters.UserId, out browserCredential))
-                {
-                    AzureSession.Instance.TryGetComponent(
-                        PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                        out PowerShellTokenCacheProvider provider);
 
-                    var options = new InteractiveBrowserCredentialOptions()
-                    {
-                        ClientId = clientId,
-                        TenantId = tenantId,
-                        //CacheProvider = DefaultTokenCacheProvider.WithUnencryptedFallback,
-                        TokenCache = tokenCache,
-                        //EnablePersistentCache = EnablePersistenceCache,
-                        //AllowUnencryptedCache = true,
-                        AuthenticationRecord = IdentityModelFactory.AuthenticationRecord(
-                            interactiveParameters.UserId,
-                            authority: null,
-                            homeAccountId: interactiveParameters.HomeAccountId,
-                            tenantId: parameters.TenantId,
-                            clientId: clientId)
-                    };
-                    browserCredential = new InteractiveBrowserCredential(options);
-                    UserCredentialMap[interactiveParameters.UserId] = browserCredential;
-                }
-                var tokenTask = browserCredential.GetTokenAsync(requestContext, cancellationToken);
-                return MsalAccessToken.GetAccessTokenAsync(tokenTask, parameters.TenantId, interactiveParameters.UserId);
-            }
-            else//first time login
+            AzureSession.Instance.TryGetComponent(
+                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                out PowerShellTokenCacheProvider provider);
+            var options = new InteractiveBrowserCredentialOptions()
             {
-                AzureSession.Instance.TryGetComponent(
-                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                    out PowerShellTokenCacheProvider provider);
-                var options = new InteractiveBrowserCredentialOptions()
-                {
-                    ClientId = clientId,
-                    TenantId = tenantId,
-                    TokenCache = tokenCache,
-                    AuthorityHost = new Uri(authority),
-                    RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
-                };
-                browserCredential = new InteractiveBrowserCredential(options);
-                var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
-                return MsalAccessToken.GetAccessTokenAsync(authTask);
-            }
+                ClientId = clientId,
+                TenantId = tenantId,
+                TokenCache = tokenCache,
+                AuthorityHost = new Uri(authority),
+                RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
+            };
+            var browserCredential = new InteractiveBrowserCredential(options);
+            var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
+            return MsalAccessToken.GetAccessTokenAsync(authTask);
         }
 
         private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)

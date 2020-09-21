@@ -315,11 +315,7 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     break;
                 default:
-                    //if (ParameterSetName == UserWithCredentialParameterSet && string.Equals(SessionState?.PSVariable?.GetValue("PSEdition") as string, "Core"))
-                    //{
-                    //    throw new InvalidOperationException(Resources.PasswordNotSupported);
-                    //}
-
+                    //Support username + password for powershell 6+
                     azureAccount.Type = AzureAccount.AccountType.User;
                     break;
             }
@@ -497,16 +493,14 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 bool shouldModifyContext = false;
-                //bool tokenFallbackAsPlainText = false;
                 if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
                 {
                     // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                     // We cannot just throw an exception here because this is called when importing the module
-                    // autoSaveEnabled = false;
-                    //tokenFallbackAsPlainText = true;
+                    autoSaveEnabled = false;
                     WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     WriteInitializationWarnings(message);
-                    //shouldModifyContext = true;
+                    shouldModifyContext = true;
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
@@ -535,7 +529,7 @@ namespace Microsoft.Azure.Commands.Profile
                 IAuthenticatorBuilder builder = null;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
                 {
-                    builder = new DefaultAuthenticatorBuilder(autoSaveEnabled);
+                    builder = new DefaultAuthenticatorBuilder();
                     AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
                 }
 
@@ -553,12 +547,9 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
-
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => new AzureEventListenerFactory());
-
                 AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache);
 
-                //new TokenCache()
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

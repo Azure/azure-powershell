@@ -43,9 +43,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 Username = silentParameters.UserId,
                 AuthorityHost = new Uri(authority),
-                //ClientId = AuthenticationHelpers.PowerShellClientId,
                 TenantId = tenantId,
-                //AllowUnencryptedCache = true
             };
 
             var cacheCredential = new SharedTokenCacheCredential(options);
