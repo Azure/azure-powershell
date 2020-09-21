@@ -19,8 +19,9 @@
 --->
 
 ## Upcoming Release
-* Add Office365 Policy to VPNSite Resource
+* Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
+    
 ## Version 3.4.0
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
     - `New-AzVirtualRouter`: 
