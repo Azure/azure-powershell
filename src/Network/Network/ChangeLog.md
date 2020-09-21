@@ -19,8 +19,6 @@
 --->
 
 ## Upcoming Release
-* Fix for Parameter Help 
-    - Remove-AzExpressRouteCircuitConnectionConfig
 
 ## Version 3.4.0
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
