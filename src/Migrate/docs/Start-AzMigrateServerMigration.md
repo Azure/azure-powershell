@@ -15,22 +15,20 @@ Starts the migration for the replicating server.
 ### ByNameVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-TurnOffSourceServer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIDVMwareCbt
 ```
-Start-AzMigrateServerMigration -TargetObjectID <String> [-SubscriptionId <String>]
- [-TurnOffSourceServer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzMigrateServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-TurnOffSourceServer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-SubscriptionId <String>] [-TurnOffSourceServer]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the machine object of the replicating server.
+Specifies the replicating server for which migration needs to be initiated.
+The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -105,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-Specifies the machine name of the replicating server.
+Specifies the machine name of the replicating server for which migration needs to be initiated.
 
 ```yaml
 Type: System.String
@@ -135,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Specifies the migrate project name of the replicating server.
+Specifies the Azure Migrate Project in which servers are replicating.
 
 ```yaml
 Type: System.String
@@ -150,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the resource group of the replicating server.
+Specifies the Resource Group of the Azure Migrate Project in which servers are replicating.
 
 ```yaml
 Type: System.String
@@ -180,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the test migration needs to be initiated.
+Specifies the replcating server for which migration needs to be initiated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
@@ -199,7 +198,7 @@ Accept wildcard characters: False
 Specifies whether the source server should be turned off post migration.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +258,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
+INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   - `[Location <String>]`: Resource Location
   - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
   - `[CurrentJobName <String>]`: The job name.

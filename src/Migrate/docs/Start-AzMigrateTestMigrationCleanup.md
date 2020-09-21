@@ -91,7 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the machine object of the replicating server.
+Specifies the replicating server for which the test migration cleanup needs to be initiated.
+The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -107,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-Specifies the machine name of the replicating server.
+Specifies the machine name of the replicating server for which the test migration cleanup needs to be initiated.
 
 ```yaml
 Type: System.String
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Specifies the migrate project name of the replicating server.
+Specifies the Azure Migrate Project in which servers are replicating.
 
 ```yaml
 Type: System.String
@@ -152,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the resource group of the replicating server.
+Specifies the Resource Group of the Azure Migrate Project in which servers are replicating.
 
 ```yaml
 Type: System.String
@@ -182,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the test migration needs to be initiated.
+Specifies the replicating server for which the test migration cleanup needs to be initiated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
@@ -246,7 +247,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
+INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the test migration cleanup needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
   - `[Location <String>]`: Resource Location
   - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
   - `[CurrentJobName <String>]`: The job name.

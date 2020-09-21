@@ -94,6 +94,9 @@ directive:
     - UpdateMigrationItemProviderSpecificInput
     - IedmStructuredType
     - IedmNavigationProperty
+    - PolicyProviderSpecificInput
+    - ReplicationProviderSpecificContainerMappingInput
+    - ProtectionContainerMappingProviderSpecificDetails
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -104,7 +107,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: Get$
-      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
+      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$|ReplicationProtectionContainerMapping$
       variant: ^GetViaIdentity$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
@@ -128,7 +131,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: New$
-      subject: ^ReplicationMigrationItem
+      subject: ^ReplicationMigrationItem|ReplicationProtectionContainerMapping$|ReplicationPolicy$
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
@@ -136,10 +139,6 @@ directive:
       verb: Update$
       subject: ^ReplicationMigrationItem
       variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
-    remove: true
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where:
-      verb: New$|Set$|Update$|Remove$|Start$|Stop$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
@@ -151,7 +150,7 @@ directive:
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
-      verb: Invoke$|Register$
+      verb: Register$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -160,7 +159,7 @@ directive:
   # Remove cmdlets not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
-      subject: ^ReplicationRecovery|ReplicationProtectionContainerMapping$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
+      subject: ^ReplicationRecovery|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -173,7 +172,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: New$|Remove$
-      subject: Fabric$|Policy$|ProtectionContainer$
+      subject: Fabric$|ProtectionContainer$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -189,7 +188,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: Get$
-      subject: ReplicationPolicy$|ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
+      subject: ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
     hide: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:

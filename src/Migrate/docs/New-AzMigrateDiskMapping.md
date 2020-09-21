@@ -13,8 +13,8 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateDiskMapping -DiskID <String> -DiskType <DiskAccountType> -IsOSDisk <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMigrateDiskMapping -DiskID <String> -DiskType <DiskAccountType> -IsOSDisk <String>
+ [-DiskEncryptionSetID <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -DiskEncryptionSetID
+Specifies the disk encyption set to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DiskID
 Specifies the disk ID of the disk attached to the discovered server to be migrated.

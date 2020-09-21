@@ -28,9 +28,9 @@ Initialize-AzMigrateReplicationInfrastructure -ProjectID <String> -ResourceGroup
 
 ### ByInputObjectVMwareCbt
 ```
-Initialize-AzMigrateReplicationInfrastructure -InputObject <String> -TargetRegion <String> -Vmwareagentless
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Initialize-AzMigrateReplicationInfrastructure -InputObject <IMigrateProject> -TargetRegion <String>
+ -Vmwareagentless [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,9 +91,10 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the Azure Migrate project for server migration.
 The project object can be retrieved using the Get-AzMigrateProject cmdlet.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -282,6 +283,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IMigrateProject>: Specifies the Azure Migrate project for server migration. The project object can be retrieved using the Get-AzMigrateProject cmdlet.
+  - `[ETag <String>]`: Gets or sets the eTag for concurrency control.
+  - `[Location <String>]`: Gets or sets the Azure location in which migrate project is created.
+  - `[ProvisioningState <ProvisioningState?>]`: Provisioning state of the migrate project.
+  - `[RegisteredTool <String[]>]`: Gets or sets the list of tools registered with the migrate project.
+  - `[TagAdditionalProperty <String>]`: 
 
 ## RELATED LINKS
 

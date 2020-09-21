@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserve
 #>
 function Get-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='GetByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='GetByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -57,13 +57,27 @@ function Get-AzMigrateServerReplication {
         # Specifies the machine object of the replicating server.
         ${InputObject},
 
+        [Parameter(ParameterSetName='ListById', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+        ${ResourceGroupID},
+
+        [Parameter(ParameterSetName='ListById', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Azure Migrate Project in which servers are replicating.
+        ${ProjectID},
+
         [Parameter(ParameterSetName='ListByName')]
+        [Parameter(ParameterSetName='ListById')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
         # OData filter options.
         ${Filter},
     
         [Parameter(ParameterSetName='ListByName')]
+        [Parameter(ParameterSetName='ListById')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
         # The pagination token.
@@ -137,26 +151,101 @@ function Get-AzMigrateServerReplication {
     )
     
     process {
-            #TODO
-            $VaultName = "AzMigrateTestProjectPWSH02aarsvault"
-
+            $parameterSet = $PSCmdlet.ParameterSetName
+            $null = $PSBoundParameters.Remove('TargetObjectID')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ProjectName')
             $null = $PSBoundParameters.Remove('MachineName')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupID')
+            $null = $PSBoundParameters.Remove('ProjectID')
+            $HasFilter = $PSBoundParameters.ContainsKey('Filter')
+            $HasSkipToken = $PSBoundParameters.ContainsKey('SkipToken')
+            $null = $PSBoundParameters.Remove('Filter')
+            $null = $PSBoundParameters.Remove('SkipToken')
+           
+            if(($parameterSet -eq 'GetByName') -or ($parameterSet -match 'List')){
+                if($parameterSet -eq 'ListById'){
+                    $ProjectName = $ProjectID.Split("/")[8]
+                    $ResourceGroupName = $ResourceGroupID.Split("/")[4]
+                }
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
+                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+                if($solution -and ($solution.Count -ge 1)){
+                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
+                    $applianceName = $applianceObj[0].ApplianceName
+                }else{
+                    throw "Solution not found."
+                }
+                $null = $PSBoundParameters.Remove("Name")
+                $null = $PSBoundParameters.Remove("MigrateProjectName")
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+                $FabricName = ""
+                if($allFabrics -and ($allFabrics.length -gt 0)){
+                    foreach ($fabric in $allFabrics) {
+                        if($fabric.Name -match $applianceName){
+                            $FabricName = $fabric.Name
+                            break
+                        }
+                    }
+                }
+                if($FabricName -eq ""){
+                    throw "Fabric not found for given resource group"
+                }
 
-            $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-            $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
-            if($allFabrics -and ($allFabrics.length -gt 0)){
-                $FabricName = $allFabrics[0].Name
-            }
-            
-            $null = $PSBoundParameters.Add('FabricName', $FabricName)
-            $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-            if($peContainers -and ($peContainers.length -gt 0)){
-                $ProtectionContainerName = $peContainers[0].Name
-            }
+                $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                $ProtectionContainerName = ""
+                if($peContainers -and ($peContainers.length -gt 0)){
+                    foreach ($peContainer in $peContainers) {
+                        if($peContainer.Name -match $applianceName){
+                            $ProtectionContainerName = $peContainer.Name
+                            break
+                        }
+                    }
+                }
 
-            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-            return Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+                if($ProtectionContainerName -eq ""){
+                    throw "Container not found for given resource group"
+                }
+
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('ResourceName')
+                $null = $PSBoundParameters.Remove('FabricName')
+            }else {
+                if($parameterSet -eq 'GetByInputObject'){
+                    $TargetObjectID = $InputObject.Id
+                }
+                $MachineIdArray = $TargetObjectID.Split("/")
+                $ResourceGroupName = $MachineIdArray[4]
+                $VaultName = $MachineIdArray[8]
+                $FabricName = $MachineIdArray[10]
+                $ProtectionContainerName = $MachineIdArray[12]
+                $MachineName = $MachineIdArray[14]
+            }
+            if($parameterSet -match 'Get'){
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+                $null = $PSBoundParameters.Add("FabricName", $FabricName)
+                $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+    
+                return Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            }else{
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+                $null = $PSBoundParameters.Add("FabricName", $FabricName)
+                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+                if($HasFilter){$null = $PSBoundParameters.Add("Filter", $Filter)}
+                if($HasSkipToken){$null = $PSBoundParameters.Add("SkipToken", $SkipToken)}
+                
+                return Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            }
+               
         } 
 }   

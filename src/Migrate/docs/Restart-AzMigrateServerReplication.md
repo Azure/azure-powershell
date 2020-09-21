@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the test migration needs to be initiated.
+Specifies the replcating server for which the resync needs to be initiated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml

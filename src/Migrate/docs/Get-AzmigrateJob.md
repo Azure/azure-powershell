@@ -31,12 +31,39 @@ Get-AzMigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GetByInputObjectMigrationItem
+```
+Get-AzMigrateJob -InputServerObject <IMigrationItem> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListById
+```
+Get-AzMigrateJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>] [-Filter <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListByName
+```
+Get-AzMigrateJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
 PS C:\> {{ Add code here }}
 
@@ -77,6 +104,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+OData filter options.
+
+```yaml
+Type: System.String
+Parameter Sets: ListById, ListByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Specifies the job object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -84,6 +126,23 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
 Parameter Sets: GetByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputServerObject
+Specifies the replicating server for which the current job details needs to be initiated.
+The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
+To construct, see NOTES section for INPUTSERVEROBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Parameter Sets: GetByInputObjectMigrationItem
 Aliases:
 
 Required: True
@@ -138,12 +197,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectID
+Specifies the Azure Migrate Project in which servers are replicating.
+
+```yaml
+Type: System.String
+Parameter Sets: ListById
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName
+Parameter Sets: GetByName, ListByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupID
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: ListById
 Aliases:
 
 Required: True
@@ -158,7 +247,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName
+Parameter Sets: GetByName, ListByName
 Aliases:
 
 Required: True
@@ -275,6 +364,13 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
     - `[StateDescription <String>]`: The description of the task state. For example - For Succeeded state, description can be Completed, PartiallySucceeded, CompletedWithInformation or Skipped.
     - `[TaskId <String>]`: The Id.
     - `[TaskType <String>]`: The type of task. Details in CustomDetails property depend on this type.
+
+INPUTSERVEROBJECT <IMigrationItem>: Specifies the replicating server for which the current job details needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
+  - `[Location <String>]`: Resource Location
+  - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
+  - `[CurrentJobName <String>]`: The job name.
+  - `[CurrentJobStartTime <DateTime?>]`: The start time of the job.
+  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
 
 ## RELATED LINKS
 

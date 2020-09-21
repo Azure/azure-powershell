@@ -20,6 +20,7 @@ Set-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -Reso
  [-TargetNicSubnet <String>] [-TargetResourceGroupID <String>] [-TargetSubnetName <String>]
  [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+
 ```
 
 ### ByIDVMwareCbt
@@ -27,9 +28,8 @@ Set-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -Reso
 Set-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
  [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
- [-TargetResourceGroupID <String>] [-TargetSubnetName <String>] [-TargetVMName <String>]
- [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
@@ -37,6 +37,9 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String
 Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
  [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+
  [-TargetResourceGroupID <String>] [-TargetSubnetName <String>] [-TargetVMName <String>]
  [-TargetVMSize <String>] [-UpdateNic <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -98,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the machine object of the replicating server to be updated.
+Specifies the replicating server for which the properties need to be updated.
+The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -309,21 +313,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetSubnetName
-Updates the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TargetVMName
 Specifies the replcating server for which the properties need to be updated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
@@ -359,7 +348,7 @@ Accept wildcard characters: False
 Updates the NIC for the Azure VM to be created.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -419,7 +408,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server to be updated.
+INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   - `[Location <String>]`: Resource Location
   - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
   - `[CurrentJobName <String>]`: The job name.
