@@ -19,13 +19,13 @@ Create or update a private cloud
 .Description
 Create or update a private cloud
 .Example
-PS C:\> {{ Add code here }}
+```powershell
+PS C:\> New-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Location      Name            Type
+--------      ----            ----
+australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+```
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPrivateCloud
