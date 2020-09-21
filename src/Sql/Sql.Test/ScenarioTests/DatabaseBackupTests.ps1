@@ -94,7 +94,7 @@ function Test-RestoreDeletedDatabaseBackup
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
 	
 		# Note: Uncomment below sleep if you are recording so that DB lives long enough to take full backup
-		#Start-Sleep -s 600
+		# Start-Sleep -s 600
 
 		Remove-AzSqlDatabase -DatabaseName $databaseName -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
 	
