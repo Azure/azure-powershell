@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Provided the detailed date of removing property SecretValueText
+
+## Version 2.2.0
 * Added support for RBAC authorization [#10557]
 * Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
 

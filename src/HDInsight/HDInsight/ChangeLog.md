@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.0
 * Supported creating cluster with Autoscale configuration
     - Add new parameter `AutoscaleConfiguration` to the cmdlet `New-AzHDInsightCluster`
 * Supported operating cluster's Autoscale configuration

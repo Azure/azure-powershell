@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Fixed SecureString parameters of `New-AzBlockchainMember` on Linux [12707]
 
 ## Version 0.1.0

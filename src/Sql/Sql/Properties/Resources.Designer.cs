@@ -304,24 +304,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Canceling Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
-        /// </summary>
-        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
-            get {
-                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to cancel Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
-        /// </summary>
-        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
-            get {
-                return ResourceManager.GetString("CancelAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You cannot change hardware family..
         /// </summary>
         internal static string CannotChangeHardwareFamily {
@@ -574,20 +556,20 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions..
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
         /// </summary>
-        internal static string GeoBackupRedundancyChoosenWarning {
+        internal static string GeoBackupRedundancyChosenWarning {
             get {
-                return ResourceManager.GetString("GeoBackupRedundancyChoosenWarning", resourceCulture);
+                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions..
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
         /// </summary>
-        internal static string GeoBackupRedundancyNotChoosenWarning {
+        internal static string GeoBackupRedundancyNotChosenWarning {
             get {
-                return ResourceManager.GetString("GeoBackupRedundancyNotChoosenWarning", resourceCulture);
+                return ResourceManager.GetString("GeoBackupRedundancyNotChosenWarning", resourceCulture);
             }
         }
         
@@ -1447,6 +1429,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to submit request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;?.
         /// </summary>
         internal static string StopAzureSqlInstanceOperationDescription {
@@ -1551,15 +1551,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string UseServerWithoutStorageAccount {
             get {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on managed instance system database. Skipping....
-        /// </summary>
-        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase {
-            get {
-                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase", resourceCulture);
             }
         }
         
