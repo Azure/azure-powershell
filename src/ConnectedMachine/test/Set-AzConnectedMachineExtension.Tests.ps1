@@ -87,11 +87,11 @@ Describe 'Set-AzConnectedMachineExtension' {
 
     It 'Can set an extension via the pipeline' {
         $extensionName = "custom1"
-        $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension]@{
+        $extension = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtension]@{
             Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$machineName/extensions/$extensionName"
             Type                 = "Microsoft.HybridCompute/machines/extensions"
             Name                 = $extensionName
-            Location             = "eastus"
+            Location             = $env.location
             ProvisioningState    = "Succeeded"
             Setting              = @{ commandToExecute = "dir" }
             MachineExtensionType = if($IsWindows) { "CustomScriptExtension" } else { "CustomScript" }
