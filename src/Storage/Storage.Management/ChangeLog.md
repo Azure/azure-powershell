@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change the resource mode cmdlets on blob service properties, won't get the orginal properties from server, but only set the changed properties to server.
+    - `Enable-AzStorageBlobDeleteRetentionPolicy`
+    - `Disable-AzStorageBlobDeleteRetentionPolicy`  
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `Update-AzStorageBlobServiceProperty`
 
 ## Version 2.6.0
 * Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
