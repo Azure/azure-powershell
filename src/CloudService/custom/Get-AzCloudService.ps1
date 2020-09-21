@@ -47,7 +47,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudservice
 #>
 function Get-AzCloudService {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService], [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceInstanceView])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

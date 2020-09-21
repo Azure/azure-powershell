@@ -186,7 +186,7 @@ function Reset-AzCloudServiceRoleInstance {
         }
         if ($PSBoundParameters.ContainsKey('Reimage')) {
             $Null = $PSBoundParameters.Remove('Reimage')
-            Az.CloudService.internal\Get-AzCloudServiceRoleInstance @PSBoundParameters | Az.CloudService.internal\Update-AzCloudServiceRoleInstance
+            Az.CloudService.internal\Update-AzCloudServiceRoleInstance @PSBoundParameters | Az.CloudService.internal\Update-AzCloudServiceRoleInstance
         }
         if ($PSBoundParameters.ContainsKey('Rebuild')) {
             $Null = $PSBoundParameters.Remove('Rebuild')
