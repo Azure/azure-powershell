@@ -1,6 +1,6 @@
 {
   "netfx": {
-    "Azure.Core": "1.2.1.0",
+    "Azure.Core": "1.5.0.0",
     "Microsoft.Bcl.AsyncInterfaces": "1.0.0.0",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.2.6005",
     "Microsoft.IdentityModel.Clients.ActiveDirectory.Platform": "3.19.2.6005",
@@ -23,7 +23,7 @@
     "System.Xml.ReaderWriter": "4.1.0.0"
   },
   "netcore": {
-    "Azure.Core": "1.2.1.0",
+    "Azure.Core": "1.5.0.0",
     "Microsoft.Bcl.AsyncInterfaces": "1.0.0.0",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.2.6005",
     "Microsoft.IdentityModel.Clients.ActiveDirectory.Platform": "3.19.2.6005",
