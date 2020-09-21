@@ -84,7 +84,7 @@ function New-AzVMWarePrivateCloud {
         [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Body')]
         [System.String]
         # The name of the SKU.
-        ${SkuName},
+        ${Sku},
     
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.InternetEnum])]
@@ -186,6 +186,11 @@ function New-AzVMWarePrivateCloud {
     
     process {
         try {
+            if($PSBoundParameters.ContainsKey('Sku')) {
+                $sku = $PSBoundParameters['Sku']
+                $PSBoundParameters.Remove('Sku')
+                $PSBoundParameters.Add('SkuName', $sku)
+            }
             Az.VMWare.internal\New-AzVMWarePrivateCloud @PSBoundParameters
         } catch {
             throw

@@ -31,23 +31,27 @@ Update a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update size of private cloud by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -ManagementClusterSize 4
 
-{{ Add output here }}
+Location      Name            Type
+--------      ----            ----
+australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 ```
 
-{{ Add description here }}
+Update size of private cloud by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Update size of private cloud by input object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud | Update-AzVMWarePrivateCloud -ManagementClusterSize 4
 
-{{ Add output here }}
+Location      Name            Type
+--------      ----            ----
+australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 ```
 
-{{ Add description here }}
+Update size of private cloud by input object
 
 ## PARAMETERS
 
