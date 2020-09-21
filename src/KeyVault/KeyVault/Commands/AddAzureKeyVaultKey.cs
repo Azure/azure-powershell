@@ -23,7 +23,6 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using Track2Sdk = Azure.Security.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -214,23 +213,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ResourceIdCreateParameterSet,
             HelpMessage = "RSA key size, in bits. If not specified, the service will provide a safe default.")]
         public int? Size { get; set; }
-        
-        [Parameter(HelpMessage = "Curve name of the elliptic curve (EC) key.")]
-        [ValidateSet(JsonWebKeyCurveName.P256, JsonWebKeyCurveName.P256K, JsonWebKeyCurveName.P384, JsonWebKeyCurveName.P521)]
-        public string CurveName { get; set; }
-
-        private const string KeyTypeHelpMessage = "Type of the key. Default value is 'RSA'. Supported types are: 'RSA', 'EC', 'OCT'";
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectCreateParameterSet,
-            HelpMessage = KeyTypeHelpMessage)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InteractiveCreateParameterSet,
-            HelpMessage = KeyTypeHelpMessage)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdCreateParameterSet,
-            HelpMessage = KeyTypeHelpMessage)]
-        public string KeyType { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -257,12 +239,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (string.IsNullOrEmpty(KeyFilePath))
                 {
-                    keyBundle = this.Track2DataClient.CreateKey(
+                    keyBundle = this.DataServiceClient.CreateKey(
                             VaultName,
                             Name,
                             CreateKeyAttributes(),
                             Size,
-                            CurveName);
+                            null);
                 }
                 else
                 {
@@ -291,19 +273,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         internal PSKeyVaultKeyAttributes CreateKeyAttributes()
         {
-            // string keyType = string.Empty;
+            string keyType = string.Empty;
 
-            // if (!string.IsNullOrEmpty(Destination))
-            // {
-            // keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
-            // }
+            if (!string.IsNullOrEmpty(Destination))
+            {
+                keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
+            }
 
             return new Models.PSKeyVaultKeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,
-                // keyType,
-                KeyType,
+                keyType,
                 KeyOps,
                 Tag);
         }
