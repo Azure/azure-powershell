@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     /// [OpenAPI] MachineExtensions_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/extensions/{extensionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedMachineExtension_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to create or update the extension.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
     public partial class NewAzConnectedMachineExtension_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
         /// <summary>Backing field for <see cref="ExtensionParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension _extensionParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.MachineExtension();
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension _extensionParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtension();
 
         /// <summary>Describes a Machine Extension.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension ExtensionParametersBody { get => this._extensionParametersBody; set => this._extensionParametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension ExtensionParametersBody { get => this._extensionParametersBody; set => this._extensionParametersBody = value; }
 
         /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\".")]
@@ -117,95 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Path)]
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
-
-        /// <summary>The machine extension name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The machine extension name.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The machine extension name.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewName { get => ExtensionParametersBody.InstanceViewName ?? null; set => ExtensionParametersBody.InstanceViewName = value; }
-
-        /// <summary>The status code.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The status code.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The status code.",
-        SerializedName = @"code",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewStatusCode { get => ExtensionParametersBody.InstanceViewStatusCode ?? null; set => ExtensionParametersBody.InstanceViewStatusCode = value; }
-
-        /// <summary>The short localizable label for the status.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The short localizable label for the status.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The short localizable label for the status.",
-        SerializedName = @"displayStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewStatusDisplayStatus { get => ExtensionParametersBody.InstanceViewStatusDisplayStatus ?? null; set => ExtensionParametersBody.InstanceViewStatusDisplayStatus = value; }
-
-        /// <summary>The level code.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The level code.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The level code.",
-        SerializedName = @"level",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes InstanceViewStatusLevel { get => ExtensionParametersBody.InstanceViewStatusLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes)""); set => ExtensionParametersBody.InstanceViewStatusLevel = value; }
-
-        /// <summary>The detailed status message, including for alerts and error messages.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The detailed status message, including for alerts and error messages.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The detailed status message, including for alerts and error messages.",
-        SerializedName = @"message",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewStatusMessage { get => ExtensionParametersBody.InstanceViewStatusMessage ?? null; set => ExtensionParametersBody.InstanceViewStatusMessage = value; }
-
-        /// <summary>The time of the status.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The time of the status.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The time of the status.",
-        SerializedName = @"time",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime InstanceViewStatusTime { get => ExtensionParametersBody.InstanceViewStatusTime ?? default(global::System.DateTime); set => ExtensionParametersBody.InstanceViewStatusTime = value; }
-
-        /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the type of the extension; an example is ""CustomScriptExtension"".",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewType { get => ExtensionParametersBody.InstanceViewType ?? null; set => ExtensionParametersBody.InstanceViewType = value; }
-
-        /// <summary>Specifies the version of the script handler.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the version of the script handler.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the version of the script handler.",
-        SerializedName = @"typeHandlerVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        public string InstanceViewTypeHandlerVersion { get => ExtensionParametersBody.InstanceViewTypeHandlerVersion ?? null; set => ExtensionParametersBody.InstanceViewTypeHandlerVersion = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -256,9 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         ReadOnly = false,
         Description = @"The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.",
         SerializedName = @"protectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesProtectedSettings) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesProtectedSettings) })]
         [global::System.Management.Automation.Alias("ProtectedSettings")]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesProtectedSettings ProtectedSetting { get => ExtensionParametersBody.ProtectedSetting ?? null /* object */; set => ExtensionParametersBody.ProtectedSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesProtectedSettings ProtectedSetting { get => ExtensionParametersBody.ProtectedSetting ?? null /* object */; set => ExtensionParametersBody.ProtectedSetting = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -295,9 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         ReadOnly = false,
         Description = @"Json formatted public settings for the extension.",
         SerializedName = @"settings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesSettings) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesSettings) })]
         [global::System.Management.Automation.Alias("Settings")]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesSettings Setting { get => ExtensionParametersBody.Setting ?? null /* object */; set => ExtensionParametersBody.Setting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesSettings Setting { get => ExtensionParametersBody.Setting ?? null /* object */; set => ExtensionParametersBody.Setting = value; }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -327,12 +238,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -579,12 +490,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension> response)
         {
             using( NoSynchronizationContext )
             {
@@ -596,7 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
                 WriteObject((await response));
             }
         }
