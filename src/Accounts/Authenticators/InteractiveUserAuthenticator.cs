@@ -109,12 +109,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 {
                     ClientId = clientId,
                     TenantId = tenantId,
-                    //CacheProvider = DefaultTokenCacheProvider.WithUnencryptedFallback
                     TokenCache = tokenCache,
                     AuthorityHost = new Uri(authority),
-                    //RedirectUri = new Uri("https://adfs.redmond.azurestack.corp.microsoft.com/adfs/common/oauth2/nativeclient")
-                    //EnablePersistentCache = EnablePersistenceCache,
-                    //AllowUnencryptedCache = true,
+                    RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
                 };
                 browserCredential = new InteractiveBrowserCredential(options);
                 var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
@@ -122,38 +119,39 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
         }
 
-        //private string GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
-        //{
-        //    return string.Format("http://localhost:{0}", GetReplyUrlPort(onPremise, interactiveParameters));
-        //}
+        private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
+        {
+            var port = GetReplyUrlPort(onPremise, interactiveParameters);
+            return new Uri($"http://localhost:{port}");
+        }
 
-        //private int GetReplyUrlPort(bool onPremise, InteractiveParameters interactiveParameters)
-        //{
-        //    int portStart = onPremise ? AdfsPortStart : AadPortStart;
-        //    int portEnd = onPremise ? AdfsPortEnd : AadPortEnd;
+        private int GetReplyUrlPort(bool onPremise, InteractiveParameters interactiveParameters)
+        {
+            int portStart = onPremise ? AdfsPortStart : AadPortStart;
+            int portEnd = onPremise ? AdfsPortEnd : AadPortEnd;
 
-        //    int port = portStart;
-        //    TcpListener listener = null;
+            int port = portStart;
+            TcpListener listener = null;
 
-        //    do
-        //    {
-        //        try
-        //        {
-        //            listener = new TcpListener(IPAddress.Loopback, port);
-        //            listener.Start();
-        //            listener.Stop();
-        //            return port;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
-        //            listener?.Stop();
-        //        }
-        //    }
-        //    while (++port < portEnd);
+            do
+            {
+                try
+                {
+                    listener = new TcpListener(IPAddress.Loopback, port);
+                    listener.Start();
+                    listener.Stop();
+                    return port;
+                }
+                catch (Exception ex)
+                {
+                    interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
+                    listener?.Stop();
+                }
+            }
+            while (++port < portEnd);
 
-        //    throw new Exception("Cannot find an open port.");
-        //}
+            throw new Exception("Cannot find an open port.");
+        }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {

@@ -79,21 +79,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
                 if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
-                    if (AzureSession.Instance.TryGetComponent(
-                        PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                        out PowerShellTokenCacheProvider authenticationClientFactory))
-                    {
-                        authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
-                }
+                //    if (AzureSession.Instance.TryGetComponent(
+                //        PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                //        out PowerShellTokenCacheProvider authenticationClientFactory))
+                //    {
+                //        authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                //}
 
                     var stream = new MemoryStream(tempResult.CacheData);
 
+                    //TODO: PersistentTokenCache?
                     var tokenCache = TokenCache.Deserialize(stream);
-                    //PersistentTokenCache.Deserialize()
-                    if(AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache token))
-                    {
-
-                    }
+                    AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
                 }
                 // cache data is not for direct use, so we do not return anything
                 return new AzureTokenCache();
