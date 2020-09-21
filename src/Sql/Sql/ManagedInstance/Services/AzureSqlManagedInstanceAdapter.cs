@@ -252,6 +252,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <returns>internal backupStorageRedundancy</returns>
         public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
         {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
             switch (backupStorageRedundancy.ToLower())
             {
                 case "geo":
