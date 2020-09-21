@@ -1,7 +1,7 @@
 using System.Collections;
 using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802
 {
     public partial class MachineExtensionUpdatePropertiesProtectedSettings : Hashtable
     {

@@ -34,9 +34,9 @@ Name   Location ProvisioningState
 custom eastus   Succeeded
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,14 +48,6 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AutoUpgradeMinorVersion <Boolean?>]: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   [ForceUpdateTag <String>]: How the extension handler should be forced to update even if the extension configuration has not changed.
-  [InstanceViewName <String>]: The machine extension name.
-  [InstanceViewStatusCode <String>]: The status code.
-  [InstanceViewStatusDisplayStatus <String>]: The short localizable label for the status.
-  [InstanceViewStatusLevel <StatusLevelTypes?>]: The level code.
-  [InstanceViewStatusMessage <String>]: The detailed status message, including for alerts and error messages.
-  [InstanceViewStatusTime <DateTime?>]: The time of the status.
-  [InstanceViewType <String>]: Specifies the type of the extension; an example is "CustomScriptExtension".
-  [InstanceViewTypeHandlerVersion <String>]: Specifies the version of the script handler.
   [MachineExtensionType <String>]: Specifies the type of the extension; an example is "CustomScriptExtension".
   [ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   [Publisher <String>]: The name of the extension handler publisher.
@@ -65,7 +57,7 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
 https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/set-azconnectedmachineextension
 #>
 function Set-AzConnectedMachineExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -97,7 +89,7 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtension]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension]
     # Describes a Machine Extension.
     # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
@@ -129,58 +121,9 @@ param(
     ${ForceRerun},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The machine extension name.
-    ${InstanceViewName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The status code.
-    ${InstanceViewStatusCode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The short localizable label for the status.
-    ${InstanceViewStatusDisplayStatus},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes]
-    # The level code.
-    ${InstanceViewStatusLevel},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The detailed status message, including for alerts and error messages.
-    ${InstanceViewStatusMessage},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.DateTime]
-    # The time of the status.
-    ${InstanceViewStatusTime},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the type of the extension; an example is "CustomScriptExtension".
-    ${InstanceViewType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the version of the script handler.
-    ${InstanceViewTypeHandlerVersion},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
     [Alias('ProtectedSettings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesProtectedSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesProtectedSettings]
     # The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
     ${ProtectedSetting},
 
@@ -193,7 +136,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Alias('Settings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200730Preview.IMachineExtensionPropertiesSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionPropertiesSettings]
     # Json formatted public settings for the extension.
     ${Setting},
 

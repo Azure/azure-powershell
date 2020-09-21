@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update devices provisioning service sdk
 
 ## Version 0.7.4
 * Fixed debug: Enrollment does not retain/assign linked IotHubs while choosing Custom allocation policy. [#12154]
