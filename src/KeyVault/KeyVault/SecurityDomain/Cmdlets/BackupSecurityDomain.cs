@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     public class BackupSecurityDomain: SecurityDomainCmdlet
     {
         [Parameter(HelpMessage = "Paths to the certificates that are used to encrypt the security domain data.", Mandatory = true)]
+        [ValidateNotNullOrEmpty()]
         public string[] Certificates { get; set; }
 
         [Parameter(HelpMessage = "Specify the path where security domain data will be downloaded to.", Mandatory = true)]
@@ -24,12 +25,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [Parameter(HelpMessage = "When specified, a boolean will be returned when cmdlet succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(HelpMessage = "The minimum number of shares required to decrypt the security domain for recovery.", Mandatory = true)]
+        [ValidateRange(2, 10)]
+        public int Quorum { get; set; }
+
         public override void ExecuteCmdletCore()
         {
-            if (Certificates?.Length < 3 || Certificates?.Length > 10) // todo: check
-            {
-                throw new ArgumentException($"Number of {nameof(Certificates)} should be between 3 and 10"); // todo: resource string; check
-            }
+            ValidateParameters();
 
             var certificates = Certificates.Select(path => new X509Certificate2(path));
 
@@ -45,6 +47,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                         WriteObject(true);
                     }
                 }
+            }
+        }
+
+        private void ValidateParameters()
+        {
+            if (Certificates.Length < 3 || Certificates.Length > 10)
+            {
+                throw new ArgumentException(string.Format(Resources.HsmCertRangeWarning, 3, 10)); // todo: resource string; check
             }
         }
     }
