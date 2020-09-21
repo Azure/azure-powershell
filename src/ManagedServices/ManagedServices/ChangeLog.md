@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated breaking change warnings on cmdlets of managed servics assignment and definition
+* Updated breaking change warnings on cmdlets of managed services assignment and definition
 
 ## Version 1.1.0
 * Added breaking change warnings on cmdlets of managed services assignment and definition
