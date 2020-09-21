@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
 
 ## Version 4.4.0
 * Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
