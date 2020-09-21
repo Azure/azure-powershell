@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
 
@@ -33,8 +34,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Requests predictions, given a command string.
         /// </summary>
-        /// <param name="command">A history string could look like: "Get-AzContext -Name NAME\nSet-AzContext"</param>
-        public void RequestPredictions(string command);
+        /// <param name="commands">A list of commands</param>
+        public void RequestPredictions(IEnumerable<string> commands);
+
+        /// <summary>
+        /// Record the history from PSReadLine.
+        /// </summary>
+        /// <param name="history">A list of history commands</param>
+        public void RecordHistory(IEnumerable<CommandAst> history);
 
         /// <summary>
         /// Return true if command is part of known set of Az cmdlets, false otherwise.

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override void RequestPredictions(string history)
+        public override void RequestPredictions(IEnumerable<string> history)
         {
             this.IsPredictionRequested = true;
         }

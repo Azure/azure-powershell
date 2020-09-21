@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
@@ -48,16 +50,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             public PredictionRequestBody(string command) => this.History = command;
         };
 
-        private const int PredictionRequestInProgress = 1;
-        private const int PredictionRequestNotInProgress = 0;
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
-        private volatile Tuple<string, Predictor> _commandSuggestions; // The commandand the prediction for that.
+        private volatile Tuple<string, Predictor> _commandSuggestions; // The command and the prediction for that.
         private volatile Predictor _commands;
         private volatile string CommandForPrediction;
         private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
+        private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
 
         private readonly ITelemetryClient _telemetryClient;
 
@@ -148,15 +149,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RequestPredictions(string command)
+        public virtual void RequestPredictions(IEnumerable<string> commands)
         {
             // Even if it's called multiple times, we only need to keep the one for the latest command.
 
             this._predictionRequestCancellationSource?.Cancel();
             this._predictionRequestCancellationSource = new CancellationTokenSource();
+
             var cancellationToken = this._predictionRequestCancellationSource.Token;
-            this.CommandForPrediction = command;
-            this._telemetryClient.OnRequestPrediction(command);
+
+            var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
+            this._telemetryClient.OnRequestPrediction(localCommands);
+            this.SetPredictionCommand(localCommands);
 
             // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
             Task.Run(async () => {
@@ -167,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         SessionId = this._telemetryClient.SessionId,
                         CorrelationId = this._telemetryClient.CorrelationId,
                     };
-                    var requestBody = new PredictionRequestBody(command)
+                    var requestBody = new PredictionRequestBody(localCommands)
                     {
                         Context = requestContext,
                     };
@@ -178,18 +182,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
                     var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
 
-                    this.SetSuggestionPredictor(command, suggestionsList);
+                    this.SetSuggestionPredictor(localCommands, suggestionsList);
                 }
                 catch (Exception e) when (!(e is OperationCanceledException))
                 {
-                    this._telemetryClient.OnRequestPredictionError(command, e);
+                    this._telemetryClient.OnRequestPredictionError(localCommands, e);
                 }
             },
             cancellationToken);
         }
 
         /// <inheritdoc/>
-        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && _commandSet.Contains(cmd);
+        public virtual void RecordHistory(IEnumerable<CommandAst> history)
+        {
+            history.ForEach((h) => this._parameterValuePredictor.ProcessHistoryCommand(h));
+        }
+
+        /// <inheritdoc/>
+        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_commandSet?.Contains(cmd) == true);
 
         /// <summary>
         /// Requests a list of popular commands from service. These commands are used as fallback suggestion
@@ -207,8 +217,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         this.SetCommandsPredictor(commands_reply);
 
                         // Initialize predictions
-                        var startCommand = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
-                        RequestPredictions(startCommand);
+                        RequestPredictions(new string[] {
+                                AzPredictorConstants.CommandPlaceholder,
+                                AzPredictorConstants.CommandPlaceholder});
                     });
         }
 
@@ -218,18 +229,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="commands">The command collection to set the predictor</param>
         protected void SetCommandsPredictor(IList<string> commands)
         {
-            this._commands = new Predictor(commands);
+            this._commands = new Predictor(commands, this._parameterValuePredictor);
             this._commandSet = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
         /// <summary>
         /// Sets the suggestiosn predictor.
         /// </summary>
-        /// <param name="command">The command that the suggestions are for</param>
+        /// <param name="commands">The commands that the suggestions are for</param>
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
-        protected void SetSuggestionPredictor(string command, IList<string> suggestions)
+        protected void SetSuggestionPredictor(string commands, IList<string> suggestions)
         {
-            this._commandSuggestions = Tuple.Create(command, new Predictor(suggestions));
+            this._commandSuggestions = Tuple.Create(commands, new Predictor(suggestions, this._parameterValuePredictor));
         }
 
         /// <summary>
