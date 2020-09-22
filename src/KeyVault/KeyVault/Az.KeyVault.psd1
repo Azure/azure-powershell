@@ -58,7 +58,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.2'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
                'Microsoft.Azure.KeyVault.WebKey.dll', 
-               'Microsoft.Azure.Management.KeyVault.dll'
+               'Microsoft.Azure.Management.KeyVault.dll',
+               'Azure.Security.KeyVault.Keys.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
