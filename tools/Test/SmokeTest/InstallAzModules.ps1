@@ -46,10 +46,11 @@ Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -F
 # Check version
 Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force
 $azVersion = (get-module Az).Version
+Write-Host "Current version of Az", $azVersion
 
 # Check Az
+Write-Host "Listing Az details..."
 Get-Module -Name Az.* -ListAvailable
-Write-Host "Current version of Az", $azVersion
 
 if (!$azVersion) {
   throw "No Az is installed"
