@@ -4372,3 +4372,63 @@ function Test-HostGroupPropertySetOnVirtualMachine
     }
 }
 
+<#
+.SYNOPSIS
+Test Virtual Machine Size and Usage
+#>
+function Test-VirtualMachineImageListTopOrderExpand
+{
+    # Setup
+    $passed = $false;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $pubNames = "MicrosoftWindowsServer";#Get-AzVMImagePublisher -Location $locStr | select -ExpandProperty PublisherName;
+        #$maxPubCheck = 3;
+        #$numPubCheck = 1;
+        $pubNameFilter = '*Windows*';
+        $offer = "windowsserver";
+        $sku = "2012-R2-Datacenter";
+
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top 3;
+        Assert-AreEqual 3 $vmImagesTop.Count; 
+
+        #$vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
+        Start-Transcript -Path "transcript.txt"
+        $vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
+        Stop-Transcript
+
+        $wordToFind="operatingSystem";
+        $file = (Get-Content -path "transcript.txt") -join ' ';
+        Assert-True { $file -match $wordToFind } ;
+        <#
+                Start-Transcript -Path "transcript.txt"
+        #create the vmss 
+        New-AzVmss -ResourceGroup $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        Stop-Transcript
+ 
+        $wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
+        $file = (Get-Content -path "transcript.txt") -join ' ';
+        Assert-True { $file -match $wordToFind } ;
+        #>
+
+        $vmImagesOrder = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy "name";
+        # failed properties/osDiskImage , Verify that OData query syntax is valid.
+        # failed properties , Verify that OData query syntax is valid.
+        # failed properties/dataDiskImages , Verify that OData query syntax is valid.
+        # failed properties/plan , Verify that OData query syntax is valid.
+        # failed properties/hyperVGeneration , The value of parameter orderby is invalid.
+        # failed properties/replicaType , The value of parameter orderby is invalid.
+        # failed properties/disallowed ,  Verify that OData query syntax is valid
+
+        $vmImagesOrder = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy "id";
+
+    }
+    finally 
+    {
+    
+	}
+
+}
+

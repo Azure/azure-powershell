@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public string Version { get; set; }
 
-        public string FilterExpression { get; set; }
+        //public string FilterExpression { get; set; }
     }
 
     public class PSVirtualMachineImageDetail : PSVirtualMachineImage
