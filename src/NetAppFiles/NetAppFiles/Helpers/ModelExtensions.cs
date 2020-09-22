@@ -31,9 +31,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Password = psActiveDirectory.Password,
                 Domain = psActiveDirectory.Domain,
                 Dns = psActiveDirectory.Dns,
-                // Status
-                SmbServerName = psActiveDirectory.SmbServerName
-                // OrganizationalUnit
+                Status = psActiveDirectory.Status,
+                SmbServerName = psActiveDirectory.SmbServerName,
+                OrganizationalUnit = psActiveDirectory.OrganizationalUnit,
+                Site = psActiveDirectory.Site,
+                BackupOperators = psActiveDirectory.BackupOperators
             }).ToList();
         }
 
@@ -52,7 +54,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Dns = ActiveDirectory.Dns,
                     Status = ActiveDirectory.Status,
                     SmbServerName = ActiveDirectory.SmbServerName,
-                    OrganizationalUnit = ActiveDirectory.OrganizationalUnit
+                    OrganizationalUnit = ActiveDirectory.OrganizationalUnit,
+                    Site = ActiveDirectory.Site,
+                    BackupOperators = ActiveDirectory.BackupOperators
                 };
 
                 PsActiveDirectories.Add(PsActiveDirectory);
@@ -164,15 +168,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 
         public static PSNetAppFilesVolumeDataProtection ConvertDataProtectionToPs(VolumePropertiesDataProtection DataProtection)
         {
-            var psDataProtection = new PSNetAppFilesVolumeDataProtection();
-            var replication = new PSNetAppFilesReplicationObject();
-
-            // replication.ReplicationId = DataProtection.Replication.ReplicationId;
-            replication.EndpointType = DataProtection.Replication.EndpointType;
-            replication.ReplicationSchedule = DataProtection.Replication.ReplicationSchedule;
-            replication.RemoteVolumeResourceId = DataProtection.Replication.RemoteVolumeResourceId;
-            // replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
-            psDataProtection.Replication = replication;
+            var psDataProtection = new PSNetAppFilesVolumeDataProtection();            
+            if (DataProtection.Replication != null)
+            {
+                var replication = new PSNetAppFilesReplicationObject();
+                // replication.ReplicationId = DataProtection.Replication.ReplicationId;
+                replication.EndpointType = DataProtection.Replication.EndpointType;
+                replication.ReplicationSchedule = DataProtection.Replication.ReplicationSchedule;
+                replication.RemoteVolumeResourceId = DataProtection.Replication.RemoteVolumeResourceId;
+                // replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
+                psDataProtection.Replication = replication;
+            }
+            if (DataProtection.Snapshot != null)
+            {
+                var snapshot = new PSNetAppFilesVolumeSnapshot();
+                snapshot.SnapshotPolicyId = DataProtection.Snapshot.SnapshotPolicyId;
+            }
 
             return psDataProtection;
         }
@@ -181,16 +192,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static VolumePropertiesDataProtection ConvertDataProtectionFromPs(PSNetAppFilesVolumeDataProtection psDataProtection)
         {
             var dataProtection = new VolumePropertiesDataProtection();
-            var replication = new ReplicationObject();
+            if (psDataProtection.Replication != null)
+            {
+                var replication = new ReplicationObject();
 
-            // replication.ReplicationId = psDataProtection.Replication.ReplicationId;
-            replication.EndpointType = psDataProtection.Replication.EndpointType;
-            replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
-            replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
-            // replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
-
-            dataProtection.Replication = replication;
-
+                // replication.ReplicationId = psDataProtection.Replication.ReplicationId;
+                replication.EndpointType = psDataProtection.Replication.EndpointType;
+                replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
+                replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
+                // replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
+                dataProtection.Replication = replication;
+            }
+            
+            if (psDataProtection.Snapshot != null)
+            {
+                var snapshot = new VolumeSnapshotProperties();
+                snapshot.SnapshotPolicyId = psDataProtection.Snapshot.SnapshotPolicyId;
+            }
             return dataProtection;
         }
 
@@ -230,7 +248,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Id = snapshot.Id,
                 Name = snapshot.Name,
                 Type = snapshot.Type,
-                FileSystemId = snapshot.FileSystemId,
                 SnapshotId = snapshot.SnapshotId,
                 Created = snapshot.Created,
                 ProvisioningState = snapshot.ProvisioningState,

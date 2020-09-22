@@ -57,7 +57,7 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: succeeded()
-  timeoutInMinutes: 120
+  timeoutInMinutes: 180
   pool:
     vmImage: ${{ variables.WindowsImage }}
 

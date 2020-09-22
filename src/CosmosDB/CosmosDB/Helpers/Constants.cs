@@ -154,5 +154,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         // Throughput cmdlets for all APIs
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
+        public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
     }
 }

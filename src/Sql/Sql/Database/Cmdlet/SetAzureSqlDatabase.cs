@@ -68,13 +68,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The edition to assign to the Azure SQL Database.",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter("None",
-            Management.Sql.Models.DatabaseEdition.Basic,
-            Management.Sql.Models.DatabaseEdition.Standard,
-            Management.Sql.Models.DatabaseEdition.Premium,
-            Management.Sql.Models.DatabaseEdition.DataWarehouse,
-            Management.Sql.Models.DatabaseEdition.Free,
-            Management.Sql.Models.DatabaseEdition.Stretch,
-            "GeneralPurpose", "BusinessCritical")]
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose",
+            "BusinessCritical")]
         [ValidateNotNullOrEmpty]
         public string Edition { get; set; }
 
@@ -173,8 +174,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter(
-            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
-            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+            "LicenseIncluded",
+            "BasePrice")]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -226,6 +227,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int ReadReplicaCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -267,6 +276,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

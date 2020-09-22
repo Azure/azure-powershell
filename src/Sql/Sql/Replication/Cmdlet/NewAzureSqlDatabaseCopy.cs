@@ -127,8 +127,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database.")]
         [PSArgumentCompleter(
-            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
-            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+            "LicenseIncluded",
+            "BasePrice"
+            )]
         public string LicenseType { get; set; }
 
         /// <summary>

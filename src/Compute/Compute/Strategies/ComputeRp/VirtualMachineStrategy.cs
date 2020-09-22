@@ -53,10 +53,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
+            string hostGroupId,
             string priority,
             string evictionPolicy,
             double? maxPrice,
-            bool? encryptionAtHostEnabled)
+            bool encryptionAtHostPresent)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -94,10 +95,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    HostGroup = string.IsNullOrEmpty(hostGroupId) ? null : new SubResource(hostGroupId),
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostEnabled == null) ? null : new SecurityProfile(encryptionAtHostEnabled)
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHostPresent) : null
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -114,10 +116,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
+            string hostGroupId,
             string priority,
             string evictionPolicy,
             double? maxPrice,
-            bool? encryptionAtHostEnabled
+            bool encryptionAtHostPresent
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -152,13 +155,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    HostGroup = string.IsNullOrEmpty(hostGroupId) ? null : new SubResource(hostGroupId),
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = new SecurityProfile
-                    {
-                        EncryptionAtHost = encryptionAtHostEnabled
-                    }
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHostPresent) : null
                 });
     }
 }
