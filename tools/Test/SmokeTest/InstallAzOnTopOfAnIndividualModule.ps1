@@ -20,13 +20,16 @@ Install-Module -Name Az.Compute -Repository $gallery -RequiredVersion $previousV
 #Install Az
 Write-Host "Installing latest version of Az"
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force
-        
+     
+Write-Host "Running Get-AzVM to load Az.Compute..."
 Get-AzVM
-Get-Module -Name Az.* -ListAvailable
 
 # Check version
 $azComputeVersion = (Get-Module Az.Compute).Version
 Write-Host "Current version of Az.Compute", $azComputeVersion
+
+Write-Host "Checking Az details..."
+Get-Module -Name Az.* -ListAvailable
 
 if ([System.Version]$azComputeVersion -lt [System.Version]$previousVersion) {
  throw "Install Az on top of Az.Compute failed"
