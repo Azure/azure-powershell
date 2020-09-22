@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Fixed complaint on Managed instance's system database for vulnerability assessment
 * Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
-* Remove case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
+* Removed case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
 
 ## Version 2.10.0
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
