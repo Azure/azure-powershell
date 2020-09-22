@@ -11,11 +11,11 @@ function Remove-AzModules {
     [PSDefaultValue(Help = "Az")]
     $ModuleName = "Az"
   )
-
+  
+  Write-Host "Removing $ModuleName modules..."
   $ModuleName = $ModuleName + ".*"
   $modules = Get-Module -Name $ModuleName -ListAvailable
   if ($modules) {
-    Write-Host "Removing $ModuleName modules..."
     $modules.Path | ForEach-Object { 
       $dirctory = $_ | Split-Path | Split-Path
       if (Test-Path $dirctory ) {
@@ -31,6 +31,8 @@ function Remove-AzModules {
     else {
       Write-Host "$ModuleName modules removed."
     }
+  }else{
+    Write-Host "$ModuleName is not found."
   }
 }
 
