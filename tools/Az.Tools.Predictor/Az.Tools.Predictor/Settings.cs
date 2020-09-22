@@ -26,17 +26,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     sealed class Settings
     {
         private static Settings _instance;
+        private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
 
         /// <summary>
         /// The service to get the prediction results back.
         /// </summary>
-        [JsonPropertyName("service_uri")]
         public string ServiceUri { get; set; }
 
         /// <summary>
         /// The number of suggestions to return to PSReadLine
         /// </summary>
-        [JsonPropertyName("suggestion_count")]
         public int? SuggestionCount { get; set; }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var directory = fileInfo.DirectoryName;
             var settingFilePath = Path.Join(directory, AzPredictorConstants.SettingsFileName);
             var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
-            var settings = JsonSerializer.Deserialize<Settings>(fileContent);
+            var settings = JsonSerializer.Deserialize<Settings>(fileContent, Settings._jsonSerializerOptions);
 
             return settings;
         }
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 try
                 {
                     var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
-                    var profileSettings = JsonSerializer.Deserialize<Settings>(fileContent);
+                    var profileSettings = JsonSerializer.Deserialize<Settings>(fileContent, Settings._jsonSerializerOptions);
 
                     if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
                     {
