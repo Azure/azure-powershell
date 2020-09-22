@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// Represents the settings used in AzPredictor.
     /// </summary>
-    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     sealed class Settings
     {
         private static Settings _instance;
@@ -31,8 +30,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// The service to get the prediction results back.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
+        [JsonPropertyName("service_uri")]
         public string ServiceUri { get; set; }
+
+        /// <summary>
+        /// The number of suggestions to return to PSReadLine
+        /// </summary>
+        [JsonPropertyName("suggestion_count")]
+        public int? SuggestionCount { get; set; }
 
         /// <summary>
         /// Gets an instance of the settings.
@@ -57,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var directory = fileInfo.DirectoryName;
             var settingFilePath = Path.Join(directory, AzPredictorConstants.SettingsFileName);
             var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
-            var settings = JsonConvert.DeserializeObject<Settings>(fileContent);
+            var settings = JsonSerializer.Deserialize<Settings>(fileContent);
 
             return settings;
         }
@@ -73,11 +78,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 try
                 {
                     var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
-                    var profileSettings = JsonConvert.DeserializeObject<Settings>(fileContent);
+                    var profileSettings = JsonSerializer.Deserialize<Settings>(fileContent);
 
                     if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
                     {
                         this.ServiceUri = profileSettings.ServiceUri;
+                    }
+
+                    if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
+                    {
+                        this.SuggestionCount = profileSettings.SuggestionCount;
                     }
                 }
                 catch

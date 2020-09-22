@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
+using System.Linq;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
@@ -61,12 +62,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingSuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._suggestionsPredictor.Query(predictionContext.InputAst, CancellationToken.None);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.NotNull(actual);
-            Assert.NotNull(actual.Item1);
-            Assert.Equal(expected, actual.Item1);
-            Assert.Equal(PredictionSource.CurrentHistory, actual.Item2);
+            var expected = this._suggestionsPredictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.NotEmpty(actual);
+            Assert.NotNull(actual.First().Item1);
+            Assert.Equal(expected.First(), actual.First().Item1);
+            Assert.Equal(PredictionSource.CurrentHistory, actual.First().Item2);
         }
 
         /// <summary>
@@ -78,12 +79,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingCommand(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._commandsPredictor.Query(predictionContext.InputAst, CancellationToken.None);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.NotNull(actual);
-            Assert.NotNull(actual.Item1);
-            Assert.Equal(expected, actual.Item1);
-            Assert.Equal(PredictionSource.Commands, actual.Item2);
+            var expected = this._commandsPredictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.NotEmpty(actual);
+            Assert.NotNull(actual.First().Item1);
+            Assert.Equal(expected.First(), actual.First().Item1);
+            Assert.Equal(PredictionSource.Commands, actual.First().Item2);
         }
 
         /// <summary>
@@ -100,9 +101,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyNoPrediction(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
-            Assert.Null(actual.Item1);
-            Assert.Equal(PredictionSource.None, actual.Item2);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.Empty(actual);
         }
     }
 }

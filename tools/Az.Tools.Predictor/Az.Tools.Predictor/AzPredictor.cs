@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestion in PSReadLine.
     /// </summary>
-    public sealed class AzPredictor : ICommandPredictor
+    internal sealed class AzPredictor : ICommandPredictor
     {
         /// <inhericdoc />
         public string Name => "Az Predictor";
@@ -56,16 +56,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private readonly IAzPredictorService _service;
         private readonly ITelemetryClient _telemetryClient;
+        private readonly Settings _settings;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>
         /// </summary>
         /// <param name="service">The service that provides the suggestion</param>
         /// <param name="telemetryClient">The client to collect telemetry</param>
-        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient)
+        /// <param name="settings">The settings of the service</param>
+        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings)
         {
             this._service = service;
             this._telemetryClient = telemetryClient;
+            this._settings = settings;
         }
 
         /// <inhericdoc />
@@ -132,18 +135,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // with `userInput`.
 
             var userInput = context.InputAst.Extent.Text;
-            var result = _service.GetSuggestion(context.InputAst, cancellationToken);
+            var result = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, cancellationToken);
 
-            if (result?.Item1 != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                var fullSuggestion = MergeStrings(userInput, result.Item1);
-                return new List<PredictiveSuggestion>() { new PredictiveSuggestion(fullSuggestion) };
-            }
+            cancellationToken.ThrowIfCancellationRequested();
 
-            this._telemetryClient.OnGetSuggestion(result?.Item2 ?? PredictionSource.None);
+            // This call is changed in another PR.
+            // _telemetryClient.OnGetSuggestion(result?.Item2 ?? PredictionSource.None);
 
-            return null;
+            return result.Select((r, index) =>
+                    {
+                        return new PredictiveSuggestion(MergeStrings(userInput, r.Item1));
+                    })
+                    .ToList();
         }
 
         // Merge strings a and b such that the prefix of b is deleted if it is the suffix of a
@@ -229,7 +232,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var settings = Settings.GetSettings();
             var telemetryClient = new AzPredictorTelemetryClient();
             var azPredictorService = new AzPredictorService(settings.ServiceUri);
-            var predictor = new AzPredictor(azPredictorService, telemetryClient);
+            var predictor = new AzPredictor(azPredictorService, telemetryClient, settings);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
     }

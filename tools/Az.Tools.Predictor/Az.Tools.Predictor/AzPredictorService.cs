@@ -16,7 +16,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
@@ -107,20 +106,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken)
+        public IEnumerable<ValueTuple<string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
         {
             var historySuggestions = this._historySuggestions;
             var history = this._history;
-            var predictionSource = PredictionSource.None;
 
             // We've already used _historySuggestions. There is no need to wait the request to complete at this point.
             // Cancel it.
             this._predictionRequestCancellationSource?.Cancel();
 
-            string result = historySuggestions?.Item2?.Query(input, cancellationToken);
+            IList<ValueTuple<string, PredictionSource>> results = new List<ValueTuple<string, PredictionSource>>();
 
-            if (result != null)
+            var resultsFromSuggestion = historySuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
+
+            if (resultsFromSuggestion != null)
             {
+                var predictionSource = PredictionSource.None;
+
                 if (string.Equals(history, historySuggestions?.Item1, StringComparison.Ordinal))
                 {
                     predictionSource = PredictionSource.CurrentHistory;
@@ -129,19 +131,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     predictionSource = PredictionSource.PreviousHistory;
                 }
-            }
-            else
-            {
-                var commands = this._commands;
-                result = commands?.Query(input, cancellationToken);
 
-                if (result != null)
+                foreach (var r in resultsFromSuggestion)
                 {
-                    predictionSource = PredictionSource.Commands;
+                    results.Add(ValueTuple.Create(r, predictionSource));
                 }
             }
 
-            return Tuple.Create(result, predictionSource);
+            if ((resultsFromSuggestion != null) && (resultsFromSuggestion.Count() < suggestionCount))
+            {
+                var commands = this._commands;
+                var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
+
+                resultsFromCommands?.ExceptWith(resultsFromSuggestion);
+
+                if (resultsFromCommands != null)
+                {
+                    foreach (var r in resultsFromCommands)
+                    {
+                        results.Add(ValueTuple.Create(r, PredictionSource.Commands));
+                    }
+                }
+            }
+
+            return results;
         }
 
         /// <inheritdoc/>
@@ -177,22 +190,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc/>
         public int? GetRankOfSuggestion(string commandName)
         {
-            var historySuggestions = this._historySuggestions;
-            return historySuggestions?.Item2?.GetCommandPrediction(commandName, isCommandNameComplete: true, cancellationToken:CancellationToken.None).Item2;
+            // This function is removed in another PR
+            return null;
         }
 
         /// <inhericdoc/>
         public int? GetRankOfFallback(string commandName)
         {
-            var commands = this._commands;
-            return commands?.GetCommandPrediction(commandName, isCommandNameComplete:true, cancellationToken:CancellationToken.None).Item2;
+            // This function is removed in another PR
+            return null;
         }
 
         /// <inhericdoc/>
         public IEnumerable<string> GetTopNSuggestions(int n)
         {
-            var historySuggestions = this._historySuggestions;
-            return historySuggestions?.Item2?.GetTopNPrediction(n);
+            // This function is removed in another PR
+            return null;
         }
 
         /// <inheritdoc/>
