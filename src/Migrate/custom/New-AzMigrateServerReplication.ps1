@@ -248,7 +248,7 @@ function New-AzMigrateServerReplication {
             $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
             $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
             $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
-            $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
+            $HasTargetVMSize = $PSBoundParameters.ContainsKey('TargetVMSize')
 
             $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
             $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
@@ -470,7 +470,7 @@ public static int hashForArtifact(String artifact)
             $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
             $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
             $ProviderSpecificDetails.TargetVMName = $TargetVMName
-            if($HasTargetVMName){$ProviderSpecificDetails.TargetVMSize = $TargetVMSize}
+            if($HasTargetVMSize){$ProviderSpecificDetails.TargetVMSize = $TargetVMSize}
             $ProviderSpecificDetails.VmwareMachineId = $VMwareMachineId
 
 
