@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
+    [GenericBreakingChange("The ability to create new key vaults with soft delete disabled will be deprecated by December 2020. " +
+        "All key vaults will be required to have soft delete enabled. Please see the following documentation for additional guidance. " +
+        "https://docs.microsoft.com/azure/key-vault/general/soft-delete-change")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
@@ -84,6 +87,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
+        public const String DisableSoftDeleteChangeDesc = "DisableSoftDelete will be deprecated without being replaced.";
+
+        [CmdletParameterBreakingChange("DisableSoftDelete", "3.0.0", ChangeDescription = DisableSoftDeleteChangeDesc)]
         [Parameter(Mandatory = false,
             HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
         public SwitchParameter DisableSoftDelete { get; set; }
@@ -91,6 +97,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "If specified, enables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be ignored. Note that management actions are always authorized with RBAC.")]
+        public SwitchParameter EnableRbacAuthorization { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
@@ -162,6 +172,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
                     EnableSoftDelete = !DisableSoftDelete.IsPresent,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
+                    EnableRbacAuthorization = EnableRbacAuthorization.IsPresent,
+
                     /*
                      * If soft delete is enabled, but retention days is not specified, use the default value,
                      * else use the vault user provides,

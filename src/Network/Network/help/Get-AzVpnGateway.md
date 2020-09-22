@@ -44,6 +44,7 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+IpConfigurations    : {Instance0, Instance1}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 ```
@@ -65,6 +66,7 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+IpConfigurations    : {Instance0, Instance1}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 
@@ -75,6 +77,7 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+IpConfigurations    : {Instance0, Instance1}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 ```

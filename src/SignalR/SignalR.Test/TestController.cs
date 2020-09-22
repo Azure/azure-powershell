@@ -69,7 +69,9 @@ namespace Microsoft.Azure.Commands.SignalR.Test
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.PrivateDns", null},
+                {"Microsoft.Network", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {

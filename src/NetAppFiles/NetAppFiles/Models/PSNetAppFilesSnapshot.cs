@@ -45,14 +45,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets fileSystem ID
-        /// </summary>
-        /// <remarks>
-        /// UUID v4 used to identify the FileSystem
-        /// </remarks>
-        public string FileSystemId { get; set; }
-
-        /// <summary>
         /// Gets snapshotId
         /// </summary>
         /// <remarks>
