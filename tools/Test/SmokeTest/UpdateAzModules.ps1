@@ -23,7 +23,7 @@ Write-Host "Installing latest Az"
 Update-Module -Name Az -Scope CurrentUser -Force
         
 # Check details of Az 
-Write-Host "Check latest version of Az"
+Write-Host "Checking latest version of Az"
 Get-Module -Name Az.* -ListAvailable
 
 # Check Az version
