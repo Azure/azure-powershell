@@ -88,15 +88,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
 
         private static MsalCacheHelper CreateCacheHelper(string clientId)
         {
-            var cacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".IdentityService");
-            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory, clientId)
-                .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
-                .WithLinuxKeyring("msal.cache", "default", "MSALCache",
-                new KeyValuePair<string, string>("MsalClientID", null),
-                new KeyValuePair<string, string>("Microsoft.Developer.IdentityService", null))
-                .Build();
-
-            return MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false).GetAwaiter().GetResult(); ;
+            return MsalCacheHelperProvider.GetCacheHelper();
         }
     }
 }

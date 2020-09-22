@@ -143,16 +143,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private static MsalCacheHelper CreateCacheHelper(string clientId)
         {
-            var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(CacheFilePath), Path.GetDirectoryName(CacheFilePath), clientId);
-            builder = builder.WithMacKeyChain(serviceName: "Microsoft.Developer.IdentityService", accountName: "MSALCache");
-            builder = builder.WithLinuxKeyring(
-                schemaName: "msal.cache",
-                collection: "default",
-                secretLabel: "MSALCache",
-                attribute1: new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
-                attribute2: new KeyValuePair<string, string>("MsalClientVersion", "1.0.0.0"));
-            var storageCreationProperties = builder.Build();
-            return MsalCacheHelper.CreateAsync(storageCreationProperties).ConfigureAwait(false).GetAwaiter().GetResult();
+            return MsalCacheHelperProvider.GetCacheHelper();
         }
 
         public override void ClearCache()

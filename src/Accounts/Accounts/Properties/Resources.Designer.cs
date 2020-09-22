@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported in current environment and has been disabled temporarily..
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment and token cache will be fallen back as plain text..
         /// </summary>
         internal static string AutosaveNotSupportedWithFallback {
             get {
@@ -943,6 +943,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N).
+        /// </summary>
+        internal static string SendFeedbackOpenLinkAutomatically {
+            get {
+                return ResourceManager.GetString("SendFeedbackOpenLinkAutomatically", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a web browser to open the page {0}..
+        /// </summary>
+        internal static string SendFeedbackOpenLinkManually {
+            get {
+                return ResourceManager.GetString("SendFeedbackOpenLinkManually", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value entered was either not convertible to an integer or out of range [0, 10]..
         /// </summary>
         internal static string SendFeedbackOutOfRangeMessage {
@@ -966,24 +984,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SendFeedbackRecommendationQuestion {
             get {
                 return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
-            }
-        }
-                
-        /// <summary>
-        ///   Looks up a localized string similar to Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N).
-        /// </summary>
-        internal static string SendFeedbackOpenLinkAutomatically {
-            get {
-                return ResourceManager.GetString("SendFeedbackOpenLinkAutomatically", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use a web browser to open the page {0}..
-        /// </summary>
-        internal static string SendFeedbackOpenLinkManually {
-            get {
-                return ResourceManager.GetString("SendFeedbackOpenLinkManually", resourceCulture);
             }
         }
         

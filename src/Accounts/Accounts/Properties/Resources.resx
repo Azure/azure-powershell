@@ -499,8 +499,8 @@
     <value>Context autosave is not supported in current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
   <data name="AutosaveNotSupportedWithFallback" xml:space="preserve">
-    <value>Context autosave is not supported in current environment and has been disabled temporarily.</value>
-  </data>  
+    <value>Context autosave is not supported in current environment and token cache will be fallen back as plain text.</value>
+  </data>
   <data name="ProfileFileNotAccessible" xml:space="preserve">
     <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
   </data>

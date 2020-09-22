@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
 #endif
-                AzureSessionInitializer.InitializeAzureSession();
+                 AzureSessionInitializer.InitializeAzureSession();
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
@@ -497,10 +497,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                     // We cannot just throw an exception here because this is called when importing the module
-                    autoSaveEnabled = false;
+                    //autoSaveEnabled = false;
                     WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     WriteInitializationWarnings(message);
-                    shouldModifyContext = true;
+                    //shouldModifyContext = true;
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
@@ -546,8 +546,9 @@ namespace Microsoft.Azure.Commands.Profile
                     tokenCache = new TokenCache();
                 }
 
+                IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
-                AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => new AzureEventListenerFactory());
+                AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache);
 
 #if DEBUG
