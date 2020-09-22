@@ -60,9 +60,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
+        /// <param name="maskedUserInput">The user input that the suggestions are for</param>
         /// <param name="suggestions">The list of suggestion and its source</param>
         /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
-        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled);
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled);
 
         /// <summary>
         /// Collects when an exception is thrown when we return a suggestion.

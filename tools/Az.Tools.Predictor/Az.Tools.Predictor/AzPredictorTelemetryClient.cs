@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled)
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -211,6 +211,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var properties = new Dictionary<string, string>()
             {
+                { "UserInput", maskedUserInput },
                 { "Suggestion", JsonConvert.SerializeObject(suggestions) },
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },

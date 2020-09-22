@@ -125,12 +125,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                var userInput = context.InputAst.Extent.Text;
                 result = _service.GetSuggestion(context.InputAst, cancellationToken);
 
                 if (result?.Item1 != null)
                 {
                     cancellationToken.ThrowIfCancellationRequested();
+                    var userInput = context.InputAst.Extent.Text;
                     var fullSuggestion = MergeStrings(userInput, result.Item1);
                     return new List<PredictiveSuggestion>() { new PredictiveSuggestion(fullSuggestion) };
                 }
@@ -141,7 +141,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
             finally
             {
-                _telemetryClient.OnGetSuggestion(new Tuple<string, PredictionSource>[] { result },
+                var maskedCommandLine = MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+                _telemetryClient.OnGetSuggestion(maskedCommandLine, new Tuple<string, PredictionSource>[] { result },
                         cancellationToken.IsCancellationRequested);
             }
 
