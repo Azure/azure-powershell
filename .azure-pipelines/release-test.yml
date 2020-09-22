@@ -87,7 +87,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg
+      Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg | Copy-Item -Destination "$(Pipeline.Workspace)\\LocalRepo\\" -Force
       dir "$(Pipeline.Workspace)\\LocalRepo\\"
 
 - task: PowerShell@2
