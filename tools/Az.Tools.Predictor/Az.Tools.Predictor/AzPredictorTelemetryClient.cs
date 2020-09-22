@@ -64,6 +64,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        private const string TelemetryEventPrefix = "Az.Tools.Predictor";
+
         /// <inheritdoc/>
         public string SessionId { get; } = Guid.NewGuid().ToString();
 
@@ -125,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "CorrelationId", CorrelationId },
             };
 
-            _telemetryClient.TrackEvent("CommandHistory", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", currentLog);
 
 #if DEBUG
             Console.WriteLine("Recording CommandHistory");
@@ -149,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "CorrelationId", CorrelationId },
             };
 
-            _telemetryClient.TrackEvent("RequestPrediction", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", currentLog);
 
 #if DEBUG
             Console.WriteLine("Recording RequestPrediction");
@@ -172,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "Exception", e.ToString() },
             };
 
-            _telemetryClient.TrackEvent("RequestPredictionError", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", currentLog);
 
 #if DEBUG
             Console.WriteLine("Recording RequestPredictionError");
@@ -194,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "CorrelationId", CorrelationId },
             };
 
-            _telemetryClient.TrackEvent("AcceptSuggestion", properties);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
 
 #if DEBUG
             Console.WriteLine("Recording AcceptSuggestion");
@@ -218,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture) },
             };
 
-            _telemetryClient.TrackEvent("GetSuggestion", properties);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
 #if DEBUG
             Console.WriteLine("Recording GetSuggestioin");
@@ -240,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "Exception", e.ToString() },
             };
 
-            _telemetryClient.TrackEvent("GetSuggestionError", properties);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
 
 #if DEBUG
             Console.WriteLine("Recording GetSuggestioinError");
