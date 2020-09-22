@@ -20,13 +20,15 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.4.0
 * Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
 * New cmdlets for new resource type: DiskAccess `Get-AzDiskAccess`, `New-AzDiskAccess`, `Get-AzDiskAccess`
-* Added optional parameters `DiskAccessId` and `-NetworkAccessPolicy` to `New-AzSnapshotConfig`
+* Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzSnapshotConfig`
 * Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzDiskConfig`
 * Added `PatchStatus` property to VirtualMachine Instance View
-* Added ``VMHealth`` property to the virtual machine's instance view, which is the returned object when ``Get-AzVm`` is invoked with ``-Status``
-* Added `AssignedHost` field to `Get-AzVM` and `Get-AzVmss`'s instance views. The field shows the resource id of the virtual machine instance
+* Added `VMHealth` property to the virtual machine's instance view, which is the returned object when `Get-AzVm` is invoked with `-Status`
+* Added `AssignedHost` field to `Get-AzVM` and `Get-AzVmss` instance views. The field shows the resource id of the virtual machine instance
 * Added optional parameter `-SupportAutomaticPlacement` to `New-AzHostGroup` 
 * Added the `-HostGroupId` parameter to `New-AzVm` and `New-AzVmss`
 
