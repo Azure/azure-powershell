@@ -23,6 +23,7 @@ Write-Host "Updating latest version of Az.Compute"
 Update-Module -Name Az.Compute -Scope CurrentUser -Force
 
 # Load Az.Compute 
+Write-Host "Running Get-AzVM to load Az.Compute..."
 Get-AzVM
         
 # Check Az.Compute version
