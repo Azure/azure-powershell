@@ -63,24 +63,32 @@ steps:
      Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
      Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\" -Depth 2
 
-- task: AzureCLI@2
+# - task: AzureCLI@2
+#   condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
+#   displayName: 'Prepare local repo'
+#   inputs:
+#     azureSubscription: '$(StorageSubscription)'
+#     scriptType: bash
+#     scriptLocation: inlineScript
+#     inlineScript: |
+#      cd "$(Pipeline.Workspace)"
+#      az storage copy -s "$(LocalRepoStorageLink)" -d "./LocalRepo"
+
+- task: NuGetCommand@2
   condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: 'Prepare local repo'
+  displayName: 'Download Previous Release .nupkg Files'
   inputs:
-    azureSubscription: '$(StorageSubscription)'
-    scriptType: bash
-    scriptLocation: inlineScript
-    inlineScript: |
-     cd "$(Pipeline.Workspace)"
-     az storage copy -s "$(LocalRepoStorageLink)" -d "./LocalRepo"
+    command: custom
+    arguments: 'install Az -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
 
 - task: PowerShell@2
   condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: List LocalRepo
+  displayName: 'Copy Previous Release .nupkg files to LocalRepo'
   inputs:
     targetType: 'inline'
     script: |
-     dir "$(Pipeline.Workspace)\\LocalRepo\\"
+      Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg
+      dir "$(Pipeline.Workspace)\\LocalRepo\\"
 
 - task: PowerShell@2
   displayName: Install Az Modules from $(GalleryName)
