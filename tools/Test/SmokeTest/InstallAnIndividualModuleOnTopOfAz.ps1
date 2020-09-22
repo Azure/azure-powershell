@@ -20,12 +20,14 @@ Install-Module -Name Az -Repository $gallery -RequiredVersion $previousVersion -
 
 # Get previous version of Az.Compute
 $azComputePreviousVersion = (Get-Module Az.Compute -ListAvailable).Version
+Write-Host "Current version of Az.Compute,", $azComputePreviousVersion
 
 #Install Az.Compute
 Write-Host "Installing latest Az.Compute"
 Install-Module -Name Az.Compute -Repository $gallery -Scope CurrentUser -AllowClobber -Force        
 
 # Load Az.Compute
+Write-Host "Running Get-AzVM to load Az.Compute..."
 Get-AzVM
 
 # Check version
