@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
@@ -241,9 +241,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
-                BackupStorageRedundancy = string.IsNullOrEmpty(BackupStorageRedundancy) 
-                    ? sourceDb.BackupStorageRedundancy 
-                    : BackupStorageRedundancy
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

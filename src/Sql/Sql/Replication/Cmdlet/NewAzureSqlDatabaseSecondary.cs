@@ -140,6 +140,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -199,7 +207,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                LicenseType = LicenseType
+                LicenseType = LicenseType,
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
