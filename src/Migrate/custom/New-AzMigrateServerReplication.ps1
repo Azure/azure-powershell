@@ -359,8 +359,7 @@ function New-AzMigrateServerReplication {
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove('SiteName')
             }
-            #TODO
-            # migrateAzMigratePWSHTc8d1sitepolicy
+            
             $policyName = "migrate" + $SiteName + "policy"
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
