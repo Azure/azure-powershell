@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            if ((resultsFromSuggestion != null) && (resultsFromSuggestion.Count() < suggestionCount))
+            if ((resultsFromSuggestion == null) || (resultsFromSuggestion.Count() < suggestionCount))
             {
                 var commands = this._commands;
                 var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
