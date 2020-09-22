@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem;
 using System.Text;
 using System.Threading;
 
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             //
             // resultBuilder and usedParams are stored in results to help prediction more flexible.
 
-            for (var i = 0; i < _predictions.Count; ++i)
+            for (var i = 0; i < _predictions.Count && results.Count < suggestionCount; ++i)
             {
                 if (commandNameQuery(_predictions[i].Command))
                 {
