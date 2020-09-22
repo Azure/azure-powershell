@@ -502,7 +502,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkVirtualApplianceSku', 
                'New-AzVirtualApplianceSkuProperty', 'New-AzCustomIpPrefix', 
                'Update-AzCustomIpPrefix', 'Get-AzCustomIpPrefix', 
-               'Remove-AzCustomIpPrefix', 'New-AzExpressRoutePortLOA'
+               'Remove-AzCustomIpPrefix', 'New-AzExpressRoutePortLOA',
+               'New-AzO365PolicyProperty'
 
 # Variables to export from this module
 # VariablesToExport = @()

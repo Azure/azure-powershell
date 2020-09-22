@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added container name validation for workload backup.
 
 ## Version 2.12.1
 * Fixed the Delete State for workload Backup Items.

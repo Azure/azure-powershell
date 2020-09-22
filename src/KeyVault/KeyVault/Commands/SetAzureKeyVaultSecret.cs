@@ -24,6 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange("Property 'SecretValueText' in PSKeyVaultSecret will be removed around 10/27/2020")]
     [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
