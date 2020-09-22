@@ -79,7 +79,7 @@ steps:
     script: |
       Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg | Copy-Item -Destination "$(Pipeline.Workspace)\\LocalRepo\\" -Force
       Write-Host "List localRepo..."
-      dir "$(Pipeline.Workspace)\\LocalRepo\\"
+      Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
 
 - task: PowerShell@2
   displayName: Install Az Modules from $(GalleryName)
