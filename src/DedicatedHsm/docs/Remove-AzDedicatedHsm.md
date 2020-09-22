@@ -29,23 +29,22 @@ Deletes the specified Azure Dedicated HSM.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Dedicated HSM by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This commnad removes a hardware security module(HSM) by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Dedicated HSM  by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $hsm = Get-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName dedicatedhsm-rg-n359cz
+PS C:\> Remove-AzDedicatedHsm -InputObject  $hsm
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This commnad removes a Dedicated HSM by object.
 
 ## PARAMETERS
 

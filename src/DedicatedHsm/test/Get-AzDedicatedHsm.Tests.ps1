@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDedicatedHsm' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $hsmList = Get-AzDedicatedHsm
+        $hsmList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $hsm = Get-AzDedicatedHsm -Name $env.dedicatedHsmName01 -ResourceGroupName $env.resourceGroup
+        $hsm.Name | Should -Be $env.dedicatedHsmName01
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $hsmList = Get-AzDedicatedHsm -ResourceGroupName $env.resourceGroup
+        $hsmList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $hsm = Get-AzDedicatedHsm -Name $env.dedicatedHsmName01 -ResourceGroupName $env.resourceGroup 
+        $hsm = Get-AzDedicatedHsm -InputObject $hsm
+        $hsm.Name | Should -Be $env.dedicatedHsmName01
     }
 }
