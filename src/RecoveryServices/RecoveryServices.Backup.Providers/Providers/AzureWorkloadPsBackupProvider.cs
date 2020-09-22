@@ -379,6 +379,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
+                // validate container name to be a full name
+                AzureWorkloadProviderHelper.ValidateContainerName(wLRecoveryConfig.RecoveryPoint.ContainerName);
+
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
 

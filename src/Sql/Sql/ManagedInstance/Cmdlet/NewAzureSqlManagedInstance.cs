@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
-        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
