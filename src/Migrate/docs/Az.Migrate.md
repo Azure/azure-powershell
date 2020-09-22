@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: 52dd74b5-1c0f-469a-942e-508eb7375c81
+Module Guid: 6aa651c9-203c-47ff-8b46-7cf5534b5a34
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -35,20 +35,18 @@ Gets a solution in the migrate project.
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure deploys and configures the replication infrastructure used for server migration in the Azure Migrate project Resource Group.
 
-### [Mock-AzMigrateGetRunAsAccountId](Mock-AzMigrateGetRunAsAccountId.md)
-Mock
-
-### [Mock-AzMigrateGetSite](Mock-AzMigrateGetSite.md)
-Mock
-
-### [Mock-AzMigrateGetSolution](Mock-AzMigrateGetSolution.md)
-Mock
-
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 
+### [New-AzMigrateProject](New-AzMigrateProject.md)
+Method to create or update a migrate project.
+
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
+
+### [Remove-AzMigrateProject](Remove-AzMigrateProject.md)
+Delete the migrate project.
+Deleting non-existent project is a no-operation.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server.

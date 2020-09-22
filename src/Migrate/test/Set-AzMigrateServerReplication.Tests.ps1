@@ -12,7 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Set-AzMigrateServerReplication' {
-    It 'VMwareCbt' -skip {
+    It 'ByNameVMwareCbt' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ByIDVMwareCbt' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ByInputObjectVMwareCbt' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

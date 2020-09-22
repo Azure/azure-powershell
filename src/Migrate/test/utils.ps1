@@ -20,6 +20,14 @@ function setupEnv() {
     $env.srsMachineId = "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f"
     $env.srsTestNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork"
 
+    $env.migSubscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280"
+    $env.migResourceGroup = "BugBashAVSVMware"
+    $env.migProjectName = "BugBashAVSVMware"
+    $env.migSolutionName = "Servers-Migration-ServerMigration"
+    $env.migSiteName = "BBVMwareAVScbbcsite"
+    $env.migVMwareMachineName = "10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098b08-5701-4c58-f6ad-1daf127a8ed9"
+    $env.migRunAsAccountName = "b090bef3-b733-5e34-bc8f-eb6f2701432a"
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
