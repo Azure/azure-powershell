@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     public class ServicePrincipalAuthenticator : DelegatingAuthenticator
     {
         private const string AuthenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
+        private ConcurrentDictionary<string, ClientCertificateCredential> ClientCertCredentialMap = new ConcurrentDictionary<string, ClientCertificateCredential>(StringComparer.OrdinalIgnoreCase);
 
         //MSAL doesn't cache Service Principal into msal.cache
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
@@ -50,8 +52,30 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 AuthorityHost = new Uri(authority)
             };
 
-            if (spParameters.Secret != null)
+            if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
+                //Service Principal with Certificate
+                ClientCertificateCredential certCredential;
+                if (!ClientCertCredentialMap.TryGetValue(spParameters.ApplicationId, out certCredential))
+                {
+                    //first time login
+                    var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
+                    certCredential = new ClientCertificateCredential(tenantId, spParameters.ApplicationId, certificate, options);
+                    var tokenTask = certCredential.GetTokenAsync(requestContext, cancellationToken);
+                    return MsalAccessToken.GetAccessTokenAsync(tokenTask,
+                        () => { ClientCertCredentialMap[spParameters.ApplicationId] = certCredential; },
+                        spParameters.TenantId,
+                        spParameters.ApplicationId);
+                }
+                else
+                {
+                    var tokenTask = certCredential.GetTokenAsync(requestContext, cancellationToken);
+                    return MsalAccessToken.GetAccessTokenAsync(tokenTask, spParameters.TenantId, spParameters.ApplicationId);
+                }
+            }
+            else if (spParameters.Secret != null)
+            {
+                // service principal with secret
                 var secretCredential = new ClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret.ConvertToString(), options);
                 var tokenTask = secretCredential.GetTokenAsync(requestContext, cancellationToken);
                 return MsalAccessToken.GetAccessTokenAsync(
