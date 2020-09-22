@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size)
+        public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -2000,6 +2000,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new PSKeyVaultManagedStorageAccount(storageAccountBundle, this.vaultUriHelper);
+        }
+
+        public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
+        {
+            throw new NotImplementedException("Creating keys on managed HSM is only possible in track 2 SDK.");
         }
 
         private VaultUriHelper vaultUriHelper;

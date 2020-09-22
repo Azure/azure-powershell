@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Updated Azure.Core to 1.5.0 (for Az.KeyVault)
+
 ## Version 1.9.2
 * Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
 * Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]

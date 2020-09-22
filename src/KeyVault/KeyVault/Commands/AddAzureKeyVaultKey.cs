@@ -243,7 +243,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                             VaultName,
                             Name,
                             CreateKeyAttributes(),
-                            Size);
+                            Size,
+                            null);
                 }
                 else
                 {
