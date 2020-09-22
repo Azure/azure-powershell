@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
@@ -23,13 +22,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
     /// </summary>
     public class InMemoryTokenCacheClientFactory : AuthenticationClientFactory
     {
-        private readonly IMemoryCache _memoryCache;
-        private readonly string _cacheId = "CacheId";
-        private static readonly object _lock = new object();
+        //private readonly IMemoryCache _memoryCache;
+        //private readonly string _cacheId = "CacheId";
+        //private static readonly object _lock = new object();
 
         public InMemoryTokenCacheClientFactory()
         {
-            _memoryCache = new MemoryCache(new MemoryCacheOptions());
+            //_memoryCache = new MemoryCache(new MemoryCacheOptions());
         }
 
         public override void RegisterCache(IClientApplicationBase client)
@@ -40,45 +39,45 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         private void BeforeAccessNotification(TokenCacheNotificationArgs args)
         {
-            lock (_lock)
-            {
-                if (_memoryCache.TryGetValue(_cacheId, out byte[] blob))
-                {
-                    args.TokenCache.DeserializeMsalV3(blob);
-                }
-            }
+            //lock (_lock)
+            //{
+            //    if (_memoryCache.TryGetValue(_cacheId, out byte[] blob))
+            //    {
+            //        args.TokenCache.DeserializeMsalV3(blob);
+            //    }
+            //}
         }
 
         private void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
-            byte[] blob = args.TokenCache.SerializeMsalV3();
-            lock (_lock)
-            {
-                _memoryCache.Set(_cacheId, blob);
-            }
+            //byte[] blob = args.TokenCache.SerializeMsalV3();
+            //lock (_lock)
+            //{
+            //    _memoryCache.Set(_cacheId, blob);
+            //}
         }
 
         public override byte[] ReadTokenData()
         {
-            byte[] blob;
-            lock (_lock)
-            {
-                _memoryCache.TryGetValue(_cacheId, out blob);
-            }
+            byte[] blob = null;
+            //lock (_lock)
+            //{
+            //    _memoryCache.TryGetValue(_cacheId, out blob);
+            //}
             return blob;
         }
 
         public override void FlushTokenData()
         {
-            lock (_lock)
-            {
-                _memoryCache.Set(_cacheId, _tokenCacheDataToFlush);
-            }
+            //lock (_lock)
+            //{
+            //    _memoryCache.Set(_cacheId, _tokenCacheDataToFlush);
+            //}
         }
 
         public override void ClearCache()
         {
-            _memoryCache.Remove(_cacheId);
+            //_memoryCache.Remove(_cacheId);
         }
     }
 }

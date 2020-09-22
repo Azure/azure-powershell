@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.3.0-alpha.999" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

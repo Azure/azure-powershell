@@ -14,62 +14,61 @@
 
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class InMemoryTokenCacheProvider : PowerShellTokenCacheProvider
     {
-        private IMemoryCache MemoryCache { get; }
-        private readonly string cacheId = "CacheId";
-        private static readonly object lockObject = new object();
+        //private IMemoryCache MemoryCache { get; }
+        //private readonly string cacheId = "CacheId";
+        //private static readonly object lockObject = new object();
 
         public InMemoryTokenCacheProvider()
         {
-            MemoryCache = new MemoryCache(new MemoryCacheOptions());
+            //MemoryCache = new MemoryCache(new MemoryCacheOptions());
         }
 
         public override Task<byte[]> ReadAsync()
         {
-            byte[] bytes;
-            lock(lockObject)
-            {
-                MemoryCache.TryGetValue(cacheId, out bytes);
-            }
+            byte[] bytes = null;
+            //lock(lockObject)
+            //{
+            //    MemoryCache.TryGetValue(cacheId, out bytes);
+            //}
             return Task.FromResult(bytes);
         }
 
         public override Task WriteAsync(byte[] bytes)
         {
-            lock(lockObject)
-            {
-                MemoryCache.Set(cacheId, bytes);
-            }
+            //lock(lockObject)
+            //{
+            //    MemoryCache.Set(cacheId, bytes);
+            //}
             return Task.CompletedTask;
         }
 
         public override byte[] ReadTokenData()
         {
-            byte[] bytes;
-            lock (lockObject)
-            {
-                MemoryCache.TryGetValue(cacheId, out bytes);
-            }
+            byte[] bytes = null;
+            //lock (lockObject)
+            //{
+            //    MemoryCache.TryGetValue(cacheId, out bytes);
+            //}
             return bytes;
         }
 
         public override void FlushTokenData()
         {
-            lock (lockObject)
-            {
-                MemoryCache.Set(cacheId, _tokenCacheDataToFlush);
-            }
+            //lock (lockObject)
+            //{
+            //    MemoryCache.Set(cacheId, _tokenCacheDataToFlush);
+            //}
         }
 
         public override void ClearCache()
         {
-            MemoryCache.Remove(cacheId);
+            //MemoryCache.Remove(cacheId);
         }
 
         protected override void RegisterCache(IPublicClientApplication client)
