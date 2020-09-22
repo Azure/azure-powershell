@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         VerbsCommon.Set,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
         DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet)]
-    [OutputType(typeof(PSTemplateSpecSingleVersion))]
+    [OutputType(typeof(PSTemplateSpec))]
     public class SetAzTemplateSpec : TemplateSpecCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
