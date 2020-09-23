@@ -398,13 +398,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>internal backupStorageRedundancy</returns>
         private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
         {
-            switch (backupStorageRedundancy)
+            switch (backupStorageRedundancy.ToLower())
             {
-                case "Geo":
+                case "geo":
                     return "GRS";
-                case "Local":
+                case "local":
                     return "LRS";
-                case "Zone":
+                case "zone":
                     return "ZRS";
                 default:
                     return null;

@@ -380,13 +380,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 Edition = Edition,
                 CreateMode = createMode,
                 LicenseType = LicenseType,
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
-
-            //model.BackupStorageRedundancy = string.IsNullOrEmpty(BackupStorageRedundancy)
-            //    ? sourceDb.BackupStorageRedundancy
-            //    : BackupStorageRedundancy;
-
-            model.BackupStorageRedundancy = BackupStorageRedundancy;
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||
                 ParameterSetName == FromGeoBackupWithVcoreSetName || ParameterSetName == FromLongTermRetentionBackupWithVcoreSetName)

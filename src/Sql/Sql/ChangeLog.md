@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Added BackupStorageRedundancy to the following: 
+    - `Restore-AzureRmSqlDatabase`
+    - `New-AzSqlDatabaseCopy`
+    - `New-AzSqlDatabaseSecondary`
+* Make BackupStorageRedundancy case insensitive throughout SQL DB usage
 
 ## Version 2.10.0
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
