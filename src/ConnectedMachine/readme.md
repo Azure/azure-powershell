@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedMachine service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -40,31 +40,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-powershell: true
-azure: true
-branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
-metadata:
-  authors: Microsoft Corporation
-  owners: Microsoft Corporation
-  description: 'Microsoft Azure PowerShell: $(service-name) cmdlets'
-  copyright: Microsoft Corporation. All rights reserved.
-  tags: Azure ResourceManager ARM PSModule $(service-name)
-  companyName: Microsoft Corporation
-  requireLicenseAcceptance: true
-  licenseUri: https://aka.ms/azps-license
-  projectUri: https://github.com/Azure/azure-powershell
-prefix: Az
-subject-prefix: 'Connected'
-module-name: $(prefix).$(service-name)
-namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
-clear-output-folder: true
-output-folder: .
-input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2019-08-02/HybridCompute.json
-
+require:
+  - $(this-folder)/../readme.azure.noprofile.md
 module-version: 0.1.0
 title: ConnectedMachine
+subject-prefix: 'Connected'
+input-file:
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2020-08-02/HybridCompute.json
 
 directive:
   - where:
@@ -72,13 +54,90 @@ directive:
     hide: true
   - where: $.definitions.Identifier.properties
     suppress: R3019
-  - remove-operation: 
+
+  # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
+  - where:
+      verb: Get
+      variant: ^GetViaIdentity\d?$
+    remove: true
+
+  # Make parameters friendlier for extensions
+  - where:
+      subject: MachineExtension
+      parameter-name: Name
+    set:
+      parameter-name: MachineName
+  - where:
+      subject: MachineExtension
+      parameter-name: ExtensionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: MachineExtension
+      parameter-name: PropertiesType
+    set:
+      parameter-name: ExtensionType
+  - where:
+      model-name: MachineExtension
+      property-name: PropertiesType
+    set:
+      property-name: MachineExtensionType
+  - where:
+      subject: MachineExtension
+      parameter-name: Setting
+    set:
+      alias: Settings
+  - where:
+      subject: MachineExtension
+      parameter-name: ProtectedSetting
+    set:
+      alias: ProtectedSettings
+  - where:
+      subject: MachineExtension
+      parameter-name: ForceUpdateTag
+    set:
+      parameter-name: ForceRerun
+
+  # Formatting
+  - where:
+       model-name: Machine
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSName
+          - Status
+          - ProvisioningState
+  - where:
+       model-name: MachineExtension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - PropertiesType
+          - ProvisioningState
+  
+  # Completers
+  - where:
+      parameter-name: Location
+    set:
+      completer:
+        name: Location Completer
+        description: Gets the list of locations available for this resource.
+        script: Get-AzLocation | Where-Object Providers -Contains "Microsoft.HybridCompute" | Select-Object -ExpandProperty Location
+  - where:
+      parameter-name: ResourceGroupName
+    set:
+      completer:
+        name: ResourceGroupName Completer
+        description: Gets the list of ResourceGroupName's available for this subscription.
+        script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
+
+  # These APIs are used by the agent so they do not need to be in the cmdlets.
+  - remove-operation:
     - Machines_Reconnect
     - Machines_CreateOrUpdate
     - Machines_Update
-    - MachineExtensions_CreateOrUpdate
-    - MachineExtensions_Update
-    - MachineExtensions_Delete
-    - MachineExtensions_Get
-    - MachineExtensions_List
 ```
