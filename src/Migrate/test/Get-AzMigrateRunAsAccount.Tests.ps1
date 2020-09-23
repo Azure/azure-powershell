@@ -13,18 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMigrateRunAsAccount' {
     It 'List' {
-        $solutions = Get-AzMigrateSolution -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
-        $solutions.Count | Should -BeGreaterOrEqual 1 
+        $accounts = Get-AzMigrateRunAsAccount -SiteName  $env.migSiteName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
+        $accounts.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'Get' {
-        $solution = Get-AzMigrateSolution -Name $env.migSolutionName -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
-        $solution.Name | Should -Be $env.migSolutionName
+        $account = Get-AzMigrateRunAsAccount -AccountName $env.migRunAsAccountName -SiteName  $env.migSiteName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
+        $account.Name | Should -Be $env.migRunAsAccountName
     }
 
     It 'GetViaIdentity' -skip {
-        $solution1 = Get-AzMigrateSolution -Name $env.migSolutionName -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
-        $solution2 = Get-AzMigrateSolution -InputObject $solution1
-        $solution2.Name | Should -Be $env.migSolutionName
+        $account1 = Get-AzMigrateRunAsAccount -AccountName $env.migRunAsAccountName -SiteName  $env.migSiteName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
+        $account2 = Get-AzMigrateRunAsAccount -InputObject $account1
+        $account2.Name | Should -Be $env.migRunAsAccountName
     }
 }

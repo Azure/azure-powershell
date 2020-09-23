@@ -12,15 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateMachine' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $machines = Get-AzMigrateMachine -ResourceGroupName $env.migResourceGroup -SiteName $env.migSiteName -SubscriptionId $env.migSubscriptionId
+        $machines.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $machine = Get-AzMigrateMachine -Name $env.migVMwareMachineName -ResourceGroupName $env.migResourceGroup -SiteName $env.migSiteName -SubscriptionId $env.migSubscriptionId
+        $machine.Name | Should -Be $env.migVMwareMachineName
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $machine1 = Get-AzMigrateMachine -Name $env.migVMwareMachineName -ResourceGroupName $env.migResourceGroup -SiteName $env.migSiteName -SubscriptionId $env.migSubscriptionId
+        $machine2 = Get-AzMigrateMachine -InputObject $machine1
+        $machine2.Name | Should -Be $env.migVMwareMachineName
     }
 }
