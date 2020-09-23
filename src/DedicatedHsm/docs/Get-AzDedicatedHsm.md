@@ -72,7 +72,7 @@ Name       Provisioning State SKU                           Location
 hsm-7t2xaf Succeeded          SafeNet Luna Network HSM A790 eastus
 ```
 
-This command get a Dedicated HSM by name.
+This command gets a Dedicated HSM by name.
 
 ### Example 4: Get a Dedicated HSM by object
 ```powershell
@@ -84,7 +84,7 @@ Name       Provisioning State SKU                           Location
 hsm-n7wfxi Succeeded          SafeNet Luna Network HSM A790 eastus
 ```
 
-This command get a Dedicated HSM by object.
+This command gets a Dedicated HSM by object.
 
 ## PARAMETERS
 
