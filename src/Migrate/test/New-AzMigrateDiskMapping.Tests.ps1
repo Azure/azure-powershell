@@ -15,6 +15,6 @@ Describe 'New-AzMigrateDiskMapping' {
     It 'VMwareCbt'  {
         $output = New-AzMigrateDiskMapping -DiskID abc -DiskType Standard_LRS -IsOSDisk true
         $output.Count | Should -BeGreaterOrEqual 1 
-	$output.DiskId | Should -Be abc
+        $output.DiskId | Should -Be abc
     }
 }
