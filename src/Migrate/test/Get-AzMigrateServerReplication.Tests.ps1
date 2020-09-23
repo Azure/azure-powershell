@@ -12,19 +12,29 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateServerReplication' {
-    It 'GetByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByName' {
+        $output = Get-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ListByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByName' {
+        $output = Get-AzMigrateServerReplication -MachineName $env.srsMachineName -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByID' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByID' {
+        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByInputObject' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByInputObject' {
+        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -InputObject $output -SubscriptionId $env.srsSubscriptionId
+        $output.Count | Should -BeGreaterOrEqual 1 
+    }
+
+    It 'ListById' {
+        $output = Get-AzMigrateServerReplication -ProjectID $env.srsProjectId -ResourceGroupID $env.srsResourceGroupId -SubscriptionId $env.srsSubscriptionId
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

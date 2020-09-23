@@ -56,7 +56,7 @@ function New-AzMigrateDiskMapping {
         $DiskObject.DiskId = $DiskID
         $DiskObject.DiskType = $DiskType
         $DiskObject.IsOSDisk = $IsOSDisk
-        if($PSBoundParameters.Contains('DiskEncryptionSetID')){
+        if($PSBoundParameters.ContainsKey('DiskEncryptionSetID')){
             $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
         }
         return $DiskObject 

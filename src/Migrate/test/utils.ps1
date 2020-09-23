@@ -29,6 +29,8 @@ function setupEnv() {
     $env.srsPolicyName = "migrateAzMigratePWSHTc8d1sitepolicy"
     $env.srsMappingName = "containermapping"
     $env.srsProviderName = "AzMigratePWSHTc8d1dra"
+    $env.srsTestPolicy = "samplePolicyabc123"
+    
 
     $env.migSubscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280"
     $env.migResourceGroup = "BugBashAVSVMware"
