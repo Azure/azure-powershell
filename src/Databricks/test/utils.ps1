@@ -6,9 +6,9 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
-Import-Module -Name Az.KeyVault
 function setupEnv() {
     Write-Host -ForegroundColor Yellow "WARNING: Need to use Az.KeyVault module, Please check if installed Az.KeyVault(2.0.0 or Greater)."
+    # Import-Module -Name Az.KeyVault
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -97,6 +97,9 @@ function setupEnv() {
     $null = $env.Add('keyVaultKeyName', $key.Name)
     $null = $env.Add('keyVaultKeyVersion', $key.Version)
     Write-Host -ForegroundColor Green "key Vault deploy completed." 
+
+    # Virtual network subnet id
+    $env.vnetSubnetId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingdhsm/providers/Microsoft.Network/virtualNetworks/myHSM-vnet/subnets/hsmsubnet";
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
