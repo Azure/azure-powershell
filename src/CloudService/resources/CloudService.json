@@ -408,6 +408,60 @@
         "x-ms-long-running-operation": true
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile": {
+      "get": {
+        "tags": [
+          "CloudServiceRoleInstances"
+        ],
+        "description": "Gets a remote desktop file for a role instance in a cloud service.",
+        "operationId": "CloudServiceRoleInstances_GetRemoteDesktopFile",
+        "produces": [
+          "application/x-rdp"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleInstanceName",
+            "description": "Name of the role instance",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cloudServiceName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "binary",
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles/{roleName}": {
       "get": {
         "tags": [
@@ -1446,10 +1500,12 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "readOnly": true
         },
         "tier": {
-          "type": "string"
+          "type": "string",
+          "readOnly": true
         }
       }
     },
@@ -1470,7 +1526,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/SubResource"
-          }
+          },
+          "readOnly": true
         }
       }
     },
@@ -1518,11 +1575,13 @@
       "type": "object",
       "properties": {
         "platformUpdateDomain": {
-          "type": "string",
+          "format": "int32",
+          "type": "integer",
           "readOnly": true
         },
         "platformFaultDomain": {
-          "type": "string",
+          "format": "int32",
+          "type": "integer",
           "readOnly": true
         },
         "statuses": {
@@ -1558,6 +1617,17 @@
         },
         "type": {
           "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "type": "string",
+          "readOnly": true
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
           "readOnly": true
         },
         "sku": {
@@ -1625,6 +1695,10 @@
           "readOnly": true
         },
         "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
           "type": "string",
           "readOnly": true
         },
@@ -1730,6 +1804,12 @@
       "properties": {
         "publicIPAddress": {
           "$ref": "#/definitions/SubResource"
+        },
+        "subnet": {
+          "$ref": "#/definitions/SubResource"
+        },
+        "privateIPAddress": {
+          "type": "string"
         }
       }
     },
@@ -1874,6 +1954,10 @@
         "extensionProfile": {
           "$ref": "#/definitions/CloudServiceExtensionProfile"
         },
+        "provisioningState": {
+          "type": "string",
+          "readOnly": true
+        },
         "uniqueId": {
           "type": "string",
           "readOnly": true
@@ -1898,12 +1982,6 @@
         },
         "location": {
           "type": "string"
-        },
-        "zones": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         },
         "tags": {
           "type": "object",
@@ -1960,35 +2038,12 @@
         }
       }
     },
-    "RoleInstanceExtensionSummary": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "statusesSummary": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StatusCodeCount"
-          },
-          "readOnly": true
-        }
-      }
-    },
     "CloudServiceInstanceView": {
       "description": "InstanceView of VMScaleSet as a whole",
       "type": "object",
       "properties": {
         "roleInstance": {
           "$ref": "#/definitions/InstanceViewStatusesSummary"
-        },
-        "extensions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RoleInstanceExtensionSummary"
-          },
-          "readOnly": true
         },
         "statuses": {
           "type": "array",
