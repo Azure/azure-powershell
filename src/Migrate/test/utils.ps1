@@ -28,6 +28,7 @@ function setupEnv() {
     $env.srsFabricName = "AzMigratePWSHTc8d1replicationfabric"
     $env.srsPolicyName = "migrateAzMigratePWSHTc8d1sitepolicy"
     $env.srsMappingName = "containermapping"
+    $env.srsProviderName = "AzMigratePWSHTc8d1dra"
 
     $env.migSubscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280"
     $env.migResourceGroup = "BugBashAVSVMware"
