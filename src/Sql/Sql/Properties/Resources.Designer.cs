@@ -1555,6 +1555,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on managed instance system database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on master database. Skipping....
         /// </summary>
         internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
