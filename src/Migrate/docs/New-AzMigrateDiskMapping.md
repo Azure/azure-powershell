@@ -22,23 +22,16 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Make disks
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
 
-{{ Add output here }}
+DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------   --------  -------- ------------------- ------------------------------   
+                      a      Standard  true  
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get disks object to provide input for New-AzMigrateServerReplication
 
 ## PARAMETERS
 
