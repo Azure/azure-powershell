@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support vet peering
+* Added support for VNet peering
 
 ## Version 0.2.0
 * Added support for DBFS Double Encryption Support
