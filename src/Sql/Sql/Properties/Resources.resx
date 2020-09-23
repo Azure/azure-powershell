@@ -450,6 +450,9 @@
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on managed instance system database. Skipping...</value>
+  </data>
   <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
     <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
   </data>
