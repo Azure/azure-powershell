@@ -23,6 +23,10 @@ function setupEnv() {
     $env.srsJobName = "997e2a92-5afe-49c7-a81a-89660aec9b7b"
     $env.srsProjectId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/MigrateProjects/AzMigrateTestProjectPWSH"
     $env.srsResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020"
+    $env.srsVaultName = "AzMigrateTestProjectPWSH02aarsvault"
+    $env.srsProtectionContainerName = "AzMigratePWSHTc8d1replicationcontainer"
+    $env.srsFabricName = "AzMigratePWSHTc8d1replicationfabric"
+    $env.srsPolicyName = "migrateAzMigratePWSHTc8d1sitepolicy"
 
     $env.migSubscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280"
     $env.migResourceGroup = "BugBashAVSVMware"
