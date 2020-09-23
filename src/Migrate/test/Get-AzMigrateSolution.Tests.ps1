@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateSolution' {
-    It 'List' {
+    It 'List' -skip {
         $solutions = Get-AzMigrateSolution -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $solutions.Count | Should -BeGreaterOrEqual 1 
     }

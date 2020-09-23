@@ -17,7 +17,7 @@ Describe 'Get-AzMigrateProject' {
         $project.Name | Should -Be $env.migProjectName
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $project1 = Get-AzMigrateProject -Name $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $project2 = Get-AzMigrateProject -InputObject $project1
         $project2.Name | Should -Be $env.migProjectName
