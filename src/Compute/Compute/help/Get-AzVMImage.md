@@ -62,6 +62,7 @@ PublisherName    : MicrosoftWindowsServer
 Offer            : windowsserver
 Skus             : 2012-R2-Datacenter
 Version          : 4.127.20180315
+FilterExpression :
 Name             : 4.127.20180315
 OSDiskImage      : {
                      "operatingSystem": "Windows"
