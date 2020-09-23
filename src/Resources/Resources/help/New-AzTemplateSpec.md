@@ -29,7 +29,7 @@ New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <Stri
 ## DESCRIPTION
 Creates a new Template Spec version with the specified ARM Template content. The content can either come from a raw 
 JSON string (using **FromJsonStringParameterSet** parameter set) or from a specified JSON file
-(using **FromJsonFileParameterSet** parameter set).
+(using **FromJsonFileParameterSet** parameter set).  
 
 If the root Template Spec does not already exist it will be created along with the Template Spec version. If 
 a Template Spec already exists with the given name, it and the specified version will be updated (any other 
@@ -240,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecSingleVersion
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpec
 
 ## NOTES
 

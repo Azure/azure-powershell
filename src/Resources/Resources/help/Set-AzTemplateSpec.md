@@ -285,10 +285,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecSingleVersion
-## NOTES
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpec
 
 ## RELATED LINKS
