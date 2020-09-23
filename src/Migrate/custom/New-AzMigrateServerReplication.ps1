@@ -376,7 +376,7 @@ function New-AzMigrateServerReplication {
 
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-            $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+            $allFabrics = Az.Migrate\Get-AzMigrateReplicationFabric @PSBoundParameters
             $FabricName = ""
             if($allFabrics -and ($allFabrics.length -gt 0)){
                 foreach ($fabric in $allFabrics) {
@@ -391,7 +391,7 @@ function New-AzMigrateServerReplication {
             }
                 
             $null = $PSBoundParameters.Add('FabricName', $FabricName)
-            $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+            $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
             $ProtectionContainerName = ""
             if($peContainers -and ($peContainers.length -gt 0)){
                 foreach ($peContainer in $peContainers) {

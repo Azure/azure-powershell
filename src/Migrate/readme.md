@@ -107,7 +107,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: Get$
-      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$|ReplicationProtectionContainerMapping$
+      subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$|ReplicationProtectionContainerMapping$|ReplicationRecoveryServicesProvider$
       variant: ^GetViaIdentity$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
@@ -181,6 +181,11 @@ directive:
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
+      verb: Invoke$
+      subject: CleanupSolutionData$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
       verb: Set$|Remove$|Update$
       subject: ^Solution|ProjectSummary$
     remove: true
@@ -191,7 +196,7 @@ directive:
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
-      subject: ^ReplicationRecovery|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
+      subject: ^ReplicationRecoveryPlan|ReplicationRecoveryServiceProvider$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -204,12 +209,17 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: New$|Remove$
-      subject: Fabric$|ProtectionContainer$
+      subject: Fabric$|ProtectionContainer$|ReplicationRecoveryServicesProvider$
+    remove: true
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
+      verb: Remove$
+      subject: ReplicationPolicy$|ReplicationProtectionContainerMapping$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: Update$
-      subject: Fabric$|Policy$|ProtectionContainer$
+      subject: Fabric$|Policy$|ProtectionContainer$|ReplicationProtectionContainerMapping$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -220,7 +230,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       verb: Get$
-      subject: ReplicationFabric$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$
+      subject: ReplicationMigrationItem$|ReplicationJob$
     hide: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
