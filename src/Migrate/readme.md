@@ -142,6 +142,29 @@ directive:
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
+      verb: Get$
+      subject: ^Machine
+      variant: ^Get1$|^GetViaIdentity1|^List1
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get$
+      subject: ^Site
+      variant: ^Get1$|^GetViaIdentity1|^Get2$|^GetViaIdentity2
+    remove: true
+  # Remove cmdlets not in scope
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Update$|Start$|Stop$
+      subject: ^Machine
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: New$|Remove$|Update$
+      subject: ^Site
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
       subject: ^HyperV
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
@@ -156,7 +179,16 @@ directive:
     where:
       subject: ^Database|^DatabaseInstance|^SolutionConfig|^Event
     remove: true
-  # Remove cmdlets not in scope
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Set$|Remove$|Update$
+      subject: ^Solution|ProjectSummary$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Update$
+      subject: Project$
+    remove: true
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
       subject: ^ReplicationRecovery|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$
@@ -221,12 +253,12 @@ directive:
       subject: ^ReplicationMigrationItem
     hide: true
   # Rename verbs to friendly names.
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
-      subject: HyperV(Cluster|Host)$|VCenter$
+      subject: Project$
     set:
-      verb: Update
+      verb: New
   # Hide cmdlets not to be visible to user.
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
