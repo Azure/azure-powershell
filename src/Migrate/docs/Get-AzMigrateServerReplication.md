@@ -12,10 +12,10 @@ Retrieves the details of the replicating server.
 
 ## SYNTAX
 
-### GetByName (Default)
+### ListByName (Default)
 ```
-Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -31,9 +31,16 @@ Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ListByName
+### GetByName
 ```
-Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ListById
+```
+Get-AzMigrateServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
  [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -98,7 +105,7 @@ OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName
+Parameter Sets: ListById, ListByName
 Aliases:
 
 Required: False
@@ -154,12 +161,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectID
+Specifies the Azure Migrate Project in which servers are replicating.
+
+```yaml
+Type: System.String
+Parameter Sets: ListById
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByName, ListByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupID
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: ListById
 Aliases:
 
 Required: True
@@ -189,7 +226,7 @@ The pagination token.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName
+Parameter Sets: ListById, ListByName
 Aliases:
 
 Required: False

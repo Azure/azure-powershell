@@ -12,6 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateJob' {
+    It 'ListByName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'GetByName' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -21,6 +25,14 @@ Describe 'Get-AzMigrateJob' {
     }
 
     It 'GetByInputObject' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetByInputObjectMigrationItem' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ListById' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
