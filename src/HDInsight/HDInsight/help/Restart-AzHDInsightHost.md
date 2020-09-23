@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restart-AzHDInsightHost
 
 ## SYNOPSIS
-Restart the specific hosts of HDInsight cluster.
+Restarts the specific hosts of HDInsight cluster.
 
 ## SYNTAX
 

@@ -247,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             SingleTransferContext transferContext = this.GetTransferContext(data);
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            transferContext.SetAttributesCallbackAsync = async (destination) =>
+            transferContext.SetAttributesCallbackAsync = async (source, destination) =>
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             {
                 CloudBlob destBlob = destination as CloudBlob;
