@@ -35,6 +35,9 @@ hsm-n7wfxi Succeeded          SafeNet Luna Network HSM A790 eastus
 
 This command creates a Dedicated HSM into an existing virtual network.
 
+**NOTE:** Currently `New-AzDedicatedHsm` has a limitation that it returns before the HSM is fully provisioned on Azure.
+Therefore after creating a new HSM, please query its state by `Get-AzDedicatedHsm` and make sure its `Provisioning State` is `Succeeded` before using it.
+
 ## PARAMETERS
 
 ### -AsJob
