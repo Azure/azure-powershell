@@ -25,7 +25,7 @@ function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='GetByID', Mandatory)]
+        [Parameter(ParameterSetName='GetById', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the job id for which the details needs to be retrieved.
@@ -56,12 +56,6 @@ function Get-AzMigrateJob {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob]
         # Specifies the job object of the replicating server.
         ${InputObject},
-
-        [Parameter(ParameterSetName='GetByInputObjectMigrationItem', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
-        # Specifies the replicating server for which the current job details needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-        ${InputServerObject},
 
         [Parameter(ParameterSetName='ListById', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -150,7 +144,6 @@ function Get-AzMigrateJob {
     )
     
     process {   
-
             $parameterSet = $PSCmdlet.ParameterSetName
             $null = $PSBoundParameters.Remove('JobID')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -164,7 +157,7 @@ function Get-AzMigrateJob {
             $null = $PSBoundParameters.Remove('Filter')
 
        
-            if(($parameterSet -eq 'GetByName') -or ($parameterSet -match 'List')){
+            if(($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById')){
                 if($parameterSet -eq 'ListById'){
                     $ProjectName = $ProjectID.Split("/")[8]
                     $ResourceGroupName = $ResourceGroupID.Split("/")[4]
@@ -185,11 +178,6 @@ function Get-AzMigrateJob {
             }else{
                 if($parameterSet -eq 'GetByInputObject'){
                     $JobID = $InputObject.Id
-                }else{
-                    if($InputServerObject.CurrentJobName -eq "None"){
-                        throw "No current job running."
-                    }
-                    $JobID = $InputServerObject.CurrentJobId
                 }
                 $JobIdArray = $JobID.split('/')
                 $JobName = $JobIdArray[10]
