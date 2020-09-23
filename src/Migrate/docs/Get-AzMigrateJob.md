@@ -15,7 +15,7 @@ Retrieves the status of an Azure Migrate job.
 ### ListByName (Default)
 ```
 Get-AzMigrateJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetById
@@ -33,8 +33,8 @@ Get-AzMigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile
 ### GetByName
 ```
 Get-AzMigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Filter <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ListById
@@ -169,7 +169,7 @@ OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListById
+Parameter Sets: ListById, ListByName
 Aliases:
 
 Required: False
