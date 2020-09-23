@@ -37,14 +37,18 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         private ISecurityDomainClient _client;
 
         /// <summary>
-        /// Sealed for common logic of parameter set handling. Please override <see cref="ExecuteCmdletCore"/> instead.
+        /// Sub-classes should not override this method, but <see cref="DoExecuteCmdlet"/> instead.
+        /// This is call-super pattern. See https://www.martinfowler.com/bliki/CallSuper.html
         /// </summary>
-        public sealed override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             PreprocessParameterSets();
-            ExecuteCmdletCore();
+            DoExecuteCmdlet();
         }
 
+        /// <summary>
+        /// Unifies different parameter sets. Sub-classes need only to care about Name.
+        /// </summary>
         private void PreprocessParameterSets()
         {
             if (this.IsParameterBound(c => c.InputObject))
@@ -53,6 +57,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             }
         }
 
-        public virtual void ExecuteCmdletCore() { }
+        public virtual void DoExecuteCmdlet() { }
     }
 }

@@ -640,6 +640,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to load security domain data from {0}. Please make sure the file exists and is not modified..
+        /// </summary>
+        internal static string LoadSecurityDomainFileFailed {
+            get {
+                return ResourceManager.GetString("LoadSecurityDomainFileFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault..
         /// </summary>
         internal static string NoDefaultUserAccount {
@@ -1032,6 +1041,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RestoreSecret {
             get {
                 return ResourceManager.GetString("RestoreSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;PublicKey&quot; and &quot;PrivateKey&quot; are mandatory properties in each object in &quot;Keys&quot;..
+        /// </summary>
+        internal static string RestoreSecurityDomainBadKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainBadKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain data..
+        /// </summary>
+        internal static string RestoreSecurityDomainNotEnoughKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainNotEnoughKey", resourceCulture);
             }
         }
         

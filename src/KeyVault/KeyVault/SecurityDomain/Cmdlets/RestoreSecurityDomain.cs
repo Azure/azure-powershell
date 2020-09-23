@@ -1,11 +1,10 @@
-﻿using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
+﻿using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -26,12 +25,12 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [Parameter(HelpMessage = "When specified, a boolean will be returned when cmdlet succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdletCore()
+        public override void DoExecuteCmdlet()
         {
             ValidateParameters();
-            if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file '{SecurityDomainPath}'"))
+            if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
-                var securityDomainData = LoadFromFile(SecurityDomainPath);
+                var securityDomainData = LoadSdFromFile(SecurityDomainPath);
                 var exchangeKey = Client.DownloadSecurityDomainExchangeKeyAsync(Name).ConfigureAwait(false).GetAwaiter().GetResult();
                 var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, securityDomainData, exchangeKey);
                 if (Client.RestoreSecurityDomainAsync(Name, encryptedSecurityDomain).ConfigureAwait(false).GetAwaiter().GetResult())
@@ -48,28 +47,25 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         {
             if (Keys.Length < 2)
             {
-                // todo: resource string
-                throw new ArgumentException(@"There need to be at least 2 keys to decrypt security domain data.");
+                throw new ArgumentException(string.Format(Resources.RestoreSecurityDomainNotEnoughKey, Common.Constants.MinQuorum));
             }
             if (Keys.Any(key => string.IsNullOrEmpty(key.PublicKey) || string.IsNullOrEmpty(key.PrivateKey)))
             {
-                // todo: resource string
-                throw new ArgumentException(@"'PublicKey' and 'PrivateKey' are mandatory in each object in 'Keys'");
+                throw new ArgumentException(Resources.RestoreSecurityDomainBadKey);
             }
         }
 
-        private SecurityDomainData LoadFromFile(string path)
+        private SecurityDomainData LoadSdFromFile(string path)
         {
             try
             {
-                string sec_domain = Utils.FileToString(path);
-                return JsonConvert.DeserializeObject<SecurityDomainData>(sec_domain);
+                string content = Utils.FileToString(path);
+                return JsonConvert.DeserializeObject<SecurityDomainData>(content);
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                Console.WriteLine("Cannot load security domain from file");
-                Console.WriteLine(err.Message);
-                return null;
+                throw new Exception(
+                    string.Format(Resources.LoadSecurityDomainFileFailed, path), ex);
             }
         }
     }

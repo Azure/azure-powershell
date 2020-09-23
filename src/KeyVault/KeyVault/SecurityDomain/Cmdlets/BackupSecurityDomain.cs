@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Linq;
@@ -26,10 +25,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(HelpMessage = "The minimum number of shares required to decrypt the security domain for recovery.", Mandatory = true)]
-        [ValidateRange(2, 10)]
+        [ValidateRange(Common.Constants.MinQuorum, Common.Constants.MaxQuorum)]
         public int Quorum { get; set; }
 
-        public override void ExecuteCmdletCore()
+        public override void DoExecuteCmdlet()
         {
             ValidateParameters();
 
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
             if (ShouldProcess($"managed HSM {Name}", $"download encrypted security domain data to '{OutputPath}'"))
             {
-                var securityDomain = Client.DownloadSecurityDomainAsync(Name, certificates, 2).ConfigureAwait(false).GetAwaiter().GetResult(); // todo: remove required?
+                var securityDomain = Client.DownloadSecurityDomainAsync(Name, certificates, Quorum).ConfigureAwait(false).GetAwaiter().GetResult();
                 if (!AzureSession.Instance.DataStore.FileExists(OutputPath) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, OutputPath), Resources.FileOverwriteCaption))
                 {
                     AzureSession.Instance.DataStore.WriteFile(OutputPath, securityDomain);
@@ -52,9 +51,9 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
         private void ValidateParameters()
         {
-            if (Certificates.Length < 3 || Certificates.Length > 10)
+            if (Certificates.Length < Common.Constants.MinCert || Certificates.Length > Common.Constants.MaxCert)
             {
-                throw new ArgumentException(string.Format(Resources.HsmCertRangeWarning, 3, 10)); // todo: resource string; check
+                throw new ArgumentException(string.Format(Resources.HsmCertRangeWarning, Common.Constants.MinCert, Common.Constants.MaxCert));
             }
         }
     }
