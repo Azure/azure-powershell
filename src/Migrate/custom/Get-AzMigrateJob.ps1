@@ -69,7 +69,7 @@ function Get-AzMigrateJob {
         # Specifies the Azure Migrate Project in which servers are replicating.
         ${ProjectID},
 
-        [Parameter(ParameterSetName='GetByName')]
+        [Parameter(ParameterSetName='ListByName')]
         [Parameter(ParameterSetName='ListById')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
