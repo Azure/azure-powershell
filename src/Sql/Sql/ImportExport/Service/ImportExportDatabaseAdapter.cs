@@ -61,7 +61,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(exportRequest.AdministratorLoginPassword),
                 StorageKey = exportRequest.StorageKey,
                 StorageKeyType = exportRequest.StorageKeyType.ToString(),
-                StorageUri = exportRequest.StorageUri.ToString()
+                StorageUri = exportRequest.StorageUri.ToString(),
+                NetworkIsolation = new Management.Sql.Models.NetworkIsolationSettings()
+                {
+                    SqlServerResourceId = exportRequest.NetworkIsolationSettings.SqlServerResourceId,
+                    StorageAccountResourceId = exportRequest.NetworkIsolationSettings.StorageAccountResourceId
+                }
             };
 
             if (exportRequest.AuthenticationType != AuthenticationType.None)
@@ -157,8 +162,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         {
             AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
             model.OperationStatusLink = statusLink?.ToString();
-            ////model.Status = response.Status.ToString();
-            ////model.ErrorMessage = response.Error == null ? "" : response.Error.Message;
             return model;
         }
     }

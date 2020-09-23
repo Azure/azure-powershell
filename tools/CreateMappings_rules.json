@@ -584,5 +584,9 @@
   {
     "alias": "ConnectedMachine",
     "regex": "ConnectedMachine"
+  },
+  {
+    "regex": "VMWare",
+    "alias": "VMWare"
   }
 ]
