@@ -39,7 +39,8 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject]
+
         # Specifies the Azure Migrate project for server migration. The project object can be retrieved using the Get-AzMigrateProject cmdlet.
         ${InputObject},
 
@@ -57,7 +58,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Switch]
+        [System.Management.Automation.SwitchParameter]
         # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
         ${Vmwareagentless},
 
@@ -141,52 +142,166 @@ function Initialize-AzMigrateReplicationInfrastructure {
     )
     
     process {
-        try {
-            # TODO PLEASE FIX BEFORE RELEASE
+           <#  # TODO PLEASE FIX BEFORE RELEASE
             Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            if ($Vmwareagentless.IsPresent) {
-                $ParameterSetName = $PSCmdlet.ParameterSetName
-                # TODO PLEASE FIX BEFORE RELEASE
-                # Get Site name from project name
-                
-                $test = $PSBoundParameters
-                $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
-                $Source = @"
+            # TODO
+            $ParameterSetName = $PSCmdlet.ParameterSetName
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('ProjectName')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupID')
+            $null = $PSBoundParameters.Remove('ProjectID')
+            $null = $PSBoundParameters.Remove('Vmwareagentless')
+            $null = $PSBoundParameters.Remove('TargetRegion')
+            
+            $availableRegions = Get-AzLocation
+            $isTargetRegionValid = $false
+            foreach($location in $availableRegions){
+                if ($location.Location -eq $TargetRegion){
+                    $isTargetRegionValid = $true
+                break}
+            }
+            if ($isTargetRegionValid -eq $false){
+                throw "Target region doesn't exist" 
+            }
+
+            if($ParameterSetName -eq 'ByInputObjectVMwareCbt'){
+                #TODO $SiteName
+                $idArray = $InputObject.Id.Split("/")
+                $ResourceGroupName = $idArray[4]
+                $ProjectName = $idArray[8]
+            }elseif ($ParameterSetName -eq 'ByIdVMwareCbt') {
+                $ResourceGroupName = $ResourceGroupID.Split("/")[4]
+                $ProjectName = $ProjectID.Split("/")[8]
+            }else{
+
+            }
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            # $null = $PSBoundParameters.Add('MigrateProjectName', )
+            # $SiteName = Az.Migrate\Get-AzMigrateSolution -Name <String> -ResourceGroupName <String>
+            
+            # $HashCodeInput = $SiteName + $TargetRegion
+
+            
+            # TODO PLEASE FIX BEFORE RELEASE
+            # Get Site name from project name
+            $SiteName = "AzMigratePWSHTc8d1site"
+            $test = $PSBoundParameters
+            # $artifactName = "AzMigratePWSHTc8d1sitecentraluseuap"
+            $HashCodeInput = $SiteName + $TargetRegion
+            $Source = @"
 using System;
 public class HashFunctions
 {
 public static int hashForArtifact(String artifact)
-    {
-            int hash = 0;
-            int al = artifact.Length;
-            int tl = 0;
-            char[] ac = artifact.ToCharArray();
-            while (tl < al)
-            {
-                hash = ((hash << 5) - hash) + ac[tl++] | 0;
-            }
-            return Math.Abs(hash);
-    }
+{
+        int hash = 0;
+        int al = artifact.Length;
+        int tl = 0;
+        char[] ac = artifact.ToCharArray();
+        while (tl < al)
+        {
+            hash = ((hash << 5) - hash) + ac[tl++] | 0;
+        }
+        return Math.Abs(hash);
+}
 }
 "@
-                Add-Type -TypeDefinition $Source -Language CSharp 
-                $hash = [HashFunctions]::hashForArtifact($artifactName) 
-                Write-Host $hash
-               
-                if($PassThru.IsPresent){
-                    return $true
-                }
-            } else {
-                # TODO PLEASE FIX BEFORE RELEASE
-                Write-Host "Please specify -Vmwareagentless" -ForegroundColor Red -BackgroundColor Yellow
-                if($PassThru.IsPresent){
-                    return $false
-                }
+            Add-Type -TypeDefinition $Source -Language CSharp 
+            $hash = [HashFunctions]::hashForArtifact($HashCodeInput) 
+            # Write-Host $hash
+
+            $MigratePrefix = "migrate"            
+            $LogStorageAcName = $MigratePrefix + "lsa" + $hash
+            $GateWayStorageAcName = $MigratePrefix + "gwsa" + $hash
+            $StorageType = "Microsoft.Storage/storageAccounts"
+            $StorageApiVersion = "2017-10-01" 
+            $LogStorageProperties =  @{
+                encryption=@{
+                    services=@{
+                        blob=@{enabled=$true};
+                        file=@{enabled=$true};
+                        table=@{enabled=$true};
+                        queue=@{enabled=$true}
+                        };
+                    keySource="Microsoft.Storage"
+                };
+                supportsHttpsTrafficOnly=$true
+               }
+            $ResourceTag =  @{"Migrate Project"=$ProjectName}
+            $StorageSku = @{name="Standard_LRS"}
+            $ResourceKind = "Storage"
+            $null = $PSBoundParameters.Add('Location' , $TargetRegion)
+            $null = $PSBoundParameters.Add('Properties' , $LogStorageProperties)
+            $null = $PSBoundParameters.Add('ResourceName' , $LogStorageAcName)
+            $null = $PSBoundParameters.Add('ResourceType' , $StorageType)
+            $null = $PSBoundParameters.Add('ApiVersion' , $StorageApiVersion)
+            $null = $PSBoundParameters.Add('Kind' , $ResourceKind)
+            $null = $PSBoundParameters.Add('Sku' , $StorageSku)
+            $null = $PSBoundParameters.Add('Tag' , $ResourceTag)
+
+            New-AzResource @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove('ResourceName')
+            $null = $PSBoundParameters.Add('ResourceName' , $GateWayStorageAcName)
+
+            New-AzResource @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove('Properties')
+            $null = $PSBoundParameters.Remove('ResourceName')
+            $null = $PSBoundParameters.Remove('ResourceType')
+            $null = $PSBoundParameters.Remove('ApiVersion')
+            $null = $PSBoundParameters.Remove('Kind')
+            $null = $PSBoundParameters.Remove('Sku')
+
+            $ServiceBusNamespace = $MigratePrefix + "sbns" + $hash
+            $ServiceBusType = "Microsoft.ServiceBus/namespaces"
+            $ServiceBusApiVersion = "2017-04-01"
+            $ServiceBusSku = @{
+                    name = "Standard";
+                    tier = "Standard"
             }
+            $ServiceBusProperties = @{}
+            $ServieBusKind = "ServiceBusNameSpace"
+
+            $null = $PSBoundParameters.Add('Properties' , $ServiceBusProperties)
+            $null = $PSBoundParameters.Add('ResourceName' , $ServiceBusNamespace)
+            $null = $PSBoundParameters.Add('ResourceType' , $ServiceBusType)
+            $null = $PSBoundParameters.Add('ApiVersion' , $ServiceBusApiVersion)
+            $null = $PSBoundParameters.Add('Kind' , $ServieBusKind)
+            $null = $PSBoundParameters.Add('Sku' , $ServiceBusSku)
+
+            New-AzResource @PSBoundParameters
+
+            $KeyVaultName = $MigratePrefix + "kv" + $hash
+            $KeyVaultType = "Microsoft.KeyVault/vaults"
+            $KeyVaultApiVersion = "2016-10-01"
+            $KeyVaultKind = "KeyVault"
+            $keyVaultSKu = @{
+                family = "A";
+                name = "standard"
+            }
+            $context = Get-AzContext
+            $keyVaultTenantID = $context.Tenant.TenantId 
             
-        } catch {
-           throw
-        }
+            $KeyVaultKeys =@("Get","List","Create","Update","Delete")
+            $KeyVaultSecrets = @("Get","Set","List","Delete")
+            $KeyVaultCertificates = @("Get","List")
+            $KeyVaultStorage = @("get","list","delete","set","update","regeneratekey","getsas",
+            "listsas","deletesas","setsas","recover","backup","restore","purge")
+            $KeyVaultPermissions = @{keys=$KeyVaultKeys;secrets=$KeyVaultSecrets;
+                certificates=$KeyVaultCertificates;storage=$KeyVaultStorage}
+
+            $CloudEnvironMent = $context.Environment.Name
+            $HyperVManagerAppId = "b8340c3b-9267-498f-b21a-15d5547fd85e"
+            if($CloudEnvironMent -eq "AzureUSGovernment"){
+                $HyperVManagerAppId = "AFAE2AF7-62E0-4AA4-8F66-B11F74F56326"
+            }
+            if($PassThru.IsPresent){
+                return $true
+            } #>
+            
+       
     }
 
 }   

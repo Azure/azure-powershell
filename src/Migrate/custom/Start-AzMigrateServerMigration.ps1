@@ -28,36 +28,36 @@ function Start-AzMigrateServerMigration {
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replcating server for which migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the resource group of the replicating server.
+        # Specifies the Resource Group of the Azure Migrate Project in which servers are replicating.
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the migrate project name of the replicating server.
+        # Specifies the Azure Migrate Project in which servers are replicating.
         ${ProjectName},
 
         [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the machine name of the replicating server.
+        # Specifies the machine name of the replicating server for which migration needs to be initiated.
         ${MachineName},
 
         [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
-        # Specifies the machine object of the replicating server.
+        # Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [System.Management.Automation.SwitchParameter]
         # Specifies whether the source server should be turned off post migration.
         ${TurnOffSourceServer},
     
@@ -129,16 +129,81 @@ function Start-AzMigrateServerMigration {
     )
     
     process {
-            $null = $PSBoundParameters.Remove('TargetObjectID')
-            $hasTurnOffSourceServer = $PSBoundParameters.ContainsKey('TurnOffSourceServer')
+            if($TurnOffSourceServer.IsPresent){
+                $PerformShutDown = "true"
+            }else{
+                $PerformShutDown = "false"
+            }
             $null = $PSBoundParameters.Remove('TurnOffSourceServer')
+            $null = $PSBoundParameters.Remove('TargetObjectID')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('ProjectName')
+            $null = $PSBoundParameters.Remove('MachineName')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $parameterSet = $PSCmdlet.ParameterSetName
 
-            $MachineIdArray = $TargetObjectID.Split("/")
-            $ResourceGroupName = $MachineIdArray[4]
-            $VaultName = $MachineIdArray[8]
-            $FabricName = $MachineIdArray[10]
-            $ProtectionContainerName = $MachineIdArray[12]
-            $MachineName = $MachineIdArray[14] 
+            if ($parameterSet -eq 'ByNameVMwareCbt') {
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
+                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+                if($solution -and ($solution.Count -ge 1)){
+                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
+                    $applianceName = $applianceObj[0].ApplianceName
+                }else{
+                    throw "Solution not found."
+                }
+                
+                $null = $PSBoundParameters.Remove("Name")
+                $null = $PSBoundParameters.Remove("MigrateProjectName")
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+                $FabricName = ""
+                if($allFabrics -and ($allFabrics.length -gt 0)){
+                    foreach ($fabric in $allFabrics) {
+                        if($fabric.Name -match $applianceName){
+                            $FabricName = $fabric.Name
+                            break
+                        }
+                    }
+                }
+                if($FabricName -eq ""){
+                    throw "Fabric not found for given resource group"
+                }
+
+                $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                $ProtectionContainerName = ""
+                if($peContainers -and ($peContainers.length -gt 0)){
+                    foreach ($peContainer in $peContainers) {
+                        if($peContainer.Name -match $applianceName){
+                            $ProtectionContainerName = $peContainer.Name
+                            break
+                        }
+                    }
+                }
+
+                if($ProtectionContainerName -eq ""){
+                    throw "Container not found for given resource group"
+                }
+
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('ResourceName')
+                $null = $PSBoundParameters.Remove('FabricName')
+
+            }else {
+                if($parameterSet -eq 'ByInputObjectVMwareCbt'){
+                    $TargetObjectID = $InputObject.Id
+                }
+                $MachineIdArray = $TargetObjectID.Split("/")
+                $ResourceGroupName = $MachineIdArray[4]
+                $VaultName = $MachineIdArray[8]
+                $FabricName = $MachineIdArray[10]
+                $ProtectionContainerName = $MachineIdArray[12]
+                $MachineName = $MachineIdArray[14]
+            }
 
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("ResourceName", $VaultName)
@@ -150,13 +215,12 @@ function Start-AzMigrateServerMigration {
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'Migrate' )){
                 $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrateInput]::new()
                 $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
-                if($hasTurnOffSourceServer){
-                    $null = $ProviderSpecificDetailInput.Add('TurnOffSourceServer', $TurnOffSourceServer)
-                }
+                $ProviderSpecificDetailInput.PerformShutdown = $PerformShutDown
+                
                 $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)
                 return Az.Migrate.internal\Move-AzMigrateReplicationMigrationItem @PSBoundParameters
             }else{
-                Write-Host "Either machine doesn't exist or provider/action isn't supported for this machine"
+                throw "Either machine doesn't exist or provider/action isn't supported for this machine"
             }        
     }
 }   

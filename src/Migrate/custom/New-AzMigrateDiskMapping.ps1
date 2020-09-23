@@ -41,7 +41,13 @@ function New-AzMigrateDiskMapping {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
         # Specifies the type of disks to be used for the Azure VM.
-        ${DiskType}
+        ${DiskType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the disk encyption set to be used.
+        ${DiskEncryptionSetID}
     )
     
     process {
@@ -50,6 +56,9 @@ function New-AzMigrateDiskMapping {
         $DiskObject.DiskId = $DiskID
         $DiskObject.DiskType = $DiskType
         $DiskObject.IsOSDisk = $IsOSDisk
+        if($PSBoundParameters.Contains('DiskEncryptionSetID')){
+            $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
+        }
         return $DiskObject 
     }
 

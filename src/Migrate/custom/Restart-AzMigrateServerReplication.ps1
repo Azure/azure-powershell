@@ -28,7 +28,7 @@ function Restart-AzMigrateServerReplication{
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the test migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replcating server for which the resync needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
         
         [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
@@ -122,19 +122,77 @@ function Restart-AzMigrateServerReplication{
         ${ProxyUseDefaultCredentials}
     )
     
-    process {           
-            $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtResyncInput]::new()
-            $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
-            $ProviderSepcificDetail.SkipCbtReset = 'true'
-            
+    process {
             $null = $PSBoundParameters.Remove('TargetObjectID')
-            $MachineIdArray = $TargetObjectID.Split("/")
-            $ResourceGroupName = $MachineIdArray[4]
-            $VaultName = $MachineIdArray[8]
-            $FabricName = $MachineIdArray[10]
-            $ProtectionContainerName = $MachineIdArray[12]
-            $MachineName = $MachineIdArray[14] 
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('ProjectName')
+            $null = $PSBoundParameters.Remove('MachineName')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $parameterSet = $PSCmdlet.ParameterSetName
 
+            if ($parameterSet -eq 'ByNameVMwareCbt') {
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
+                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+                if($solution -and ($solution.Count -ge 1)){
+                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
+                    $applianceName = $applianceObj[0].ApplianceName
+                }else{
+                    throw "Solution not found."
+                }
+                
+                $null = $PSBoundParameters.Remove("Name")
+                $null = $PSBoundParameters.Remove("MigrateProjectName")
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $allFabrics = Az.Migrate.internal\Get-AzMigrateReplicationFabric @PSBoundParameters
+                $FabricName = ""
+                if($allFabrics -and ($allFabrics.length -gt 0)){
+                    foreach ($fabric in $allFabrics) {
+                        if($fabric.Name -match $applianceName){
+                            $FabricName = $fabric.Name
+                            break
+                        }
+                    }
+                }
+                if($FabricName -eq ""){
+                    throw "Fabric not found for given resource group"
+                }
+
+                $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                $peContainers = Az.Migrate.internal\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                $ProtectionContainerName = ""
+                if($peContainers -and ($peContainers.length -gt 0)){
+                    foreach ($peContainer in $peContainers) {
+                        if($peContainer.Name -match $applianceName){
+                            $ProtectionContainerName = $peContainer.Name
+                            break
+                        }
+                    }
+                }
+
+                if($ProtectionContainerName -eq ""){
+                    throw "Container not found for given resource group"
+                }
+
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('ResourceName')
+                $null = $PSBoundParameters.Remove('FabricName')
+
+            }else {
+                if($parameterSet -eq 'ByInputObjectVMwareCbt'){
+                    $TargetObjectID = $InputObject.Id
+                }
+                $MachineIdArray = $TargetObjectID.Split("/")
+                $ResourceGroupName = $MachineIdArray[4]
+                $VaultName = $MachineIdArray[8]
+                $FabricName = $MachineIdArray[10]
+                $ProtectionContainerName = $MachineIdArray[12]
+                $MachineName = $MachineIdArray[14]
+            }  
+        
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("ResourceName", $VaultName)
             $null = $PSBoundParameters.Add("FabricName", $FabricName)
@@ -143,8 +201,13 @@ function Restart-AzMigrateServerReplication{
             
             $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
+                $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtResyncInput]::new()
+                $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
+                $ProviderSepcificDetail.SkipCbtReset = 'true'
                 $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
                 return Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
-            }            
+            }else{
+                throw "Either machine doesn't exist or provider/action isn't supported for this machine"
+            }             
     }
 }   

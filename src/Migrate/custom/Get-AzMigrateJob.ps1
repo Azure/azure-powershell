@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='GetByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='GetByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -32,12 +32,14 @@ function Get-AzMigrateJob {
         ${JobID},
 
         [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Parameter(ParameterSetName='ListByName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # The name of the resource group where the recovery services vault is present.
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='GetByName', Mandatory)]
+        [Parameter(ParameterSetName='ListByName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # The name of the migrate project.
@@ -54,6 +56,31 @@ function Get-AzMigrateJob {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob]
         # Specifies the job object of the replicating server.
         ${InputObject},
+
+        [Parameter(ParameterSetName='GetByInputObjectMigrationItem', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+        # Specifies the replicating server for which the current job details needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        ${InputServerObject},
+
+        [Parameter(ParameterSetName='ListById', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+        ${ResourceGroupID},
+
+        [Parameter(ParameterSetName='ListById', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Azure Migrate Project in which servers are replicating.
+        ${ProjectID},
+
+        [Parameter(ParameterSetName='ListByName')]
+        [Parameter(ParameterSetName='ListById')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+        [System.String]
+        # OData filter options.
+        ${Filter},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -123,15 +150,67 @@ function Get-AzMigrateJob {
     )
     
     process {   
-            $JobIdArray = $JobID.split('/')
-            $JobName = $JobIdArray[10]
-            $ResourceName = $JobIdArray[8]
-            $ResourceGroupName = $JobIdArray[4]
+
+            $parameterSet = $PSCmdlet.ParameterSetName
+            $null = $PSBoundParameters.Remove('JobID')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('ProjectName')
+            $null = $PSBoundParameters.Remove('JobName')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('InputServerObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupID')
+            $null = $PSBoundParameters.Remove('ProjectID')
+            $HasFilter = $PSBoundParameters.ContainsKey('Filter')
+            $null = $PSBoundParameters.Remove('Filter')
+
+       
+            if(($parameterSet -eq 'GetByName') -or ($parameterSet -match 'List')){
+                if($parameterSet -eq 'ListById'){
+                    $ProjectName = $ProjectID.Split("/")[8]
+                    $ResourceGroupName = $ResourceGroupID.Split("/")[4]
+                }
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
+                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+                if($solution -and ($solution.Count -ge 1)){
+                    $ResourceName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                }else{
+                    throw "Solution not found."
+                }
+                $null = $PSBoundParameters.Remove("Name")
+                $null = $PSBoundParameters.Remove("MigrateProjectName")
+                $null = $PSBoundParameters.Remove("ResourceGroupName")
+            }else{
+                if($parameterSet -eq 'GetByInputObject'){
+                    $JobID = $InputObject.Id
+                }else{
+                    if($InputServerObject.CurrentJobName -eq "None"){
+                        throw "No current job running."
+                    }
+                    $JobID = $InputServerObject.CurrentJobId
+                }
+                $JobIdArray = $JobID.split('/')
+                $JobName = $JobIdArray[10]
+                $ResourceName = $JobIdArray[8]
+                $ResourceGroupName = $JobIdArray[4]
+            }
+               
+            if($parameterSet -match 'Get'){
+                $null = $PSBoundParameters.Add('JobName', $JobName)
+                $null = $PSBoundParameters.Add('ResourceName', $ResourceName)
+                $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             
-            $null = $PSBoundParameters.Add('JobName', $JobName)
-            $null = $PSBoundParameters.Add('ResourceName', $ResourceName)
-            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+                return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
+            }else{
+                $null = $PSBoundParameters.Add('ResourceName', $ResourceName)
+                $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+                if($HasFilter){$null = $PSBoundParameters.Add('Filter', $Filter)}
+
+                return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
+            }
             
-            return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
+            
     }
 }   

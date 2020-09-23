@@ -16,42 +16,61 @@ Starts replication for the specified server.
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
  -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
- -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetSubscriptionId <String>
- -TargetVMName <String> -TargetVMSize <String> [-PerformAutoResync <String>] [-SubscriptionId <String>]
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
+ [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>] [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdDefaultUser
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -OSDiskID <String>
- -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
- -TargetSubscriptionId <String> -TargetVMName <String> -TargetVMSize <String> -VMwareMachineId <String>
- [-PerformAutoResync <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
+ -VMwareMachineId <String> [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
 ```
-New-AzMigrateServerReplication -DisksToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
+New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
  -PerformAutoResync <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetSubscriptionId <String> -TargetVMName <String> -TargetVMSize <String>
- -VMwareMachineId <String> [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>]
+ -TargetSubnetName <String> -TargetVMName <String> -VMwareMachineId <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByInputObjectDefaultUser
+```
+New-AzMigrateServerReplication -DiskType <DiskAccountType> -InputObject <IVMwareMachine>
+ -LicenseType <LicenseType> -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
+ -TargetSubnetName <String> -TargetVMName <String> [-DiskEncryptionSetID <String>]
+ [-PerformAutoResync <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
+ [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByInputObjectPowerUser
+```
+New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine>
+ -LicenseType <LicenseType> -PerformAutoResync <String> -TargetNetworkId <String>
+ -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String> [-SubscriptionId <String>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByNamePowerUser
 ```
-New-AzMigrateServerReplication -DisksToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
+New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
  -MachineName <String> -PerformAutoResync <String> -ProjectName <String> -ResourceGroupName <String>
- -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
- -TargetSubscriptionId <String> -TargetVMName <String> -TargetVMSize <String> [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,13 +128,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisksToInclude
+### -DiskEncryptionSetID
+Specifies the disk encyption set to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskToInclude
 Specifies the disks on the source server to be included for replication.
-To construct, see NOTES section for DISKSTOINCLUDE properties and create a hash table.
+To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]
-Parameter Sets: ByIdPowerUser, ByNamePowerUser
+Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser, ByNamePowerUser
 Aliases:
 
 Required: True
@@ -130,7 +164,24 @@ Specifies the type of disks to be used for the Azure VM.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType
-Parameter Sets: ByIdDefaultUser, ByNameDefaultUser
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Specifies the discovered server to be migrated.
+The server object can be retrieved using the Get-AzMigrateServer cmdlet.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+Parameter Sets: ByInputObjectDefaultUser, ByInputObjectPowerUser
 Aliases:
 
 Required: True
@@ -190,7 +241,7 @@ Specifies the Operating System disk for the source server to be migrated.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByIdDefaultUser, ByNameDefaultUser
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
 Aliases:
 
 Required: True
@@ -350,21 +401,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetSubscriptionId
-Specifies the destination Azure subscription id to which the server needs to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TargetVMName
 Specifies the name of the Azure VM to be created.
 
@@ -388,7 +424,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -474,13 +510,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DISKSTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server to be included for replication.
+DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server to be included for replication.
   - `DiskId <String>`: The disk Id.
   - `IsOSDisk <String>`: A value indicating whether the disk is the OS disk.
   - `LogStorageAccountId <String>`: The log storage account ARM Id.
   - `LogStorageAccountSasSecretName <String>`: The key vault secret name of the log storage account.
   - `[DiskEncryptionSetId <String>]`: The DiskEncryptionSet ARM Id.
   - `[DiskType <DiskAccountType?>]`: The disk type.
+
+INPUTOBJECT <IVMwareMachine>: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
+  - `[GuestOSDetailOstype <String>]`: Type of the operating system.
 
 ## RELATED LINKS
 
