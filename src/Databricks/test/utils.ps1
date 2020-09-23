@@ -98,9 +98,6 @@ function setupEnv() {
     $null = $env.Add('keyVaultKeyVersion', $key.Version)
     Write-Host -ForegroundColor Green "key Vault deploy completed." 
 
-    # Virtual network subnet id
-    $env.vnetSubnetId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingdhsm/providers/Microsoft.Network/virtualNetworks/myHSM-vnet/subnets/hsmsubnet";
-
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
