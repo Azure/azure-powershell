@@ -68,7 +68,7 @@ PS C:\> $job.Output
 
 Status   RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
 ------   ---------                            ------------- ------------------------     ---------------------
-Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.9843100Z ["" -> ""]          
+Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.9843100Z ["" -> ""]
 ```
 
 This command restores all blobs in a Storage account from 30 minutes ago, and wait for the restore complete. Since restore blobs might take a long time, run it in the backend with -Asjob parameter, and then wait for the job complete and show the result.
