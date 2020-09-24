@@ -619,6 +619,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>internal backupStorageRedundancy</returns>
         private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
         {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
             switch (backupStorageRedundancy.ToLower())
             {
                 case "geo":
