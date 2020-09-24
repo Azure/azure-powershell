@@ -239,12 +239,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
@@ -306,21 +300,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 if (this.BackupStorageRedundancy == null)
                 {
-                    if (!Force.IsPresent && !ShouldContinue(
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.TargetDatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.TargetDatabaseName)))
-                    {
-                        return;
-                    }
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeSourceWarning));
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    if (!Force.IsPresent && !ShouldContinue(
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.TargetDatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.TargetDatabaseName)))
-                    {
-                        return;
-                    }
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
                 }
             }
             base.ExecuteCmdlet();
