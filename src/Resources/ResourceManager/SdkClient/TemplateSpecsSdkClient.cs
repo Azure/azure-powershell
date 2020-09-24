@@ -252,7 +252,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (versionDeleteResponse.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    // TODO: Localize
                     throw new PSArgumentException(
                         $"Template Spec '{templateSpecName}' version '{version}' in resource group '{resourceGroupName}' not found!"
                     );
@@ -269,7 +268,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (templateSpecDeleteResponse.Response.StatusCode == HttpStatusCode.NoContent)
             {
-                // TODO: Localize
                 throw new PSArgumentException(
                     $"Template Spec '{templateSpecName}' in resource group '{resourceGroupName}' not found!"
                 );
@@ -304,7 +302,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 else
                 {
                     // TODO: Use the resource group location
-                    // TODO: Localize
                     throw new PSInvalidOperationException("Location cannot be inferred and must be specified.");
                 }
             }

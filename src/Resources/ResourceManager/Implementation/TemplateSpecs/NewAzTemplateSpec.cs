@@ -218,7 +218,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     // The template spec version already exists and force is not present, so 
                     // let's confirm with the user that he/she wishes to overwrite (update) it:
 
-                    // TODO: Localize
                     string confirmationMessage =
                         $"Template Spec version '{Version}' already exists and this action will overwrite existing " +
                         "data for this version. Are you sure you'd like to overwrite existing " +
@@ -227,7 +226,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ConfirmAction(
                         Force.IsPresent,
                         confirmationMessage,
-                        "Updating Template Spec...", // TODO: Localize
+                        "Updating Template Spec...",
                         Version,
                         createOrUpdateAction
                     );
