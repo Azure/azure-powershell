@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create (Default)
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $props = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
+PS C:\> $props.RegisteredTool = {}
+PS C:\> New-AzMigrateProject -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus" -ETag "*" -Property $props
 
-{{ Add output here }}
+ETag Location  Name                     Type
+---- --------  ----                     ----
+     centralus kuchaturimpkocrg1pwshp14 Microsoft.Migrate/MigrateProjects
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Method to create or update a migrate project.

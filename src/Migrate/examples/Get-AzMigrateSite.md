@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get (Default)
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMigrateSite -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName BugBashAVSVMware -SiteName BBVMwareAVScbbcsite
 
-{{ Add output here }}
+ETag Location      Name                Type
+---- --------      ----                ----
+     southeastasia BBVMwareAVScbbcsite Microsoft.OffAzure/VMwareSites
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get site by name

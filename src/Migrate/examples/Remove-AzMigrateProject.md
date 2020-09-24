@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete (Default)
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
 
-{{ Add output here }}
+--No output--
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete the migrate project.
+Deleting non-existent project is a no-operation.

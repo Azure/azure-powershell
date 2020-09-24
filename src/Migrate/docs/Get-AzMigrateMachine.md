@@ -35,23 +35,24 @@ Method to get machine.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ List (Default) }}
 ```powershell
 PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+{{ List machines in a site.
+}}
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ Get }}
 ```powershell
 PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+{{ Get machine by name }}
 
 ## PARAMETERS
 

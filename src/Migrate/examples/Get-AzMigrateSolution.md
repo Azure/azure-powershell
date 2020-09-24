@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Get-AzMigrateSolution -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Name Servers-Migration-ServerMigration
 
-{{ Add output here }}
+Etag                                   Name                              Type
+----                                   ----                              ----
+"010097f1-0000-1800-0000-5ee9ae2b0000" Servers-Migration-ServerMigration Microsoft.Migrate/MigrateProjec…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get Migrate project solution by name.

@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: REgister tool.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Register-AzMigrateProjectTool -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Tool Zerto
 
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Registers a tool with the migrate project.
