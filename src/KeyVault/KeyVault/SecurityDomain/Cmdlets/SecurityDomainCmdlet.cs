@@ -4,6 +4,7 @@ using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             {
                 if (_client == null)
                 {
-                    _client = new SecurityDomainClient(AzureSession.Instance.AuthenticationFactory, DefaultContext);
+                    _client = new SecurityDomainClient(AzureSession.Instance.AuthenticationFactory, DefaultContext, s => WriteDebug(s));
                 }
                 return _client;
             }
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         public override void ExecuteCmdlet()
         {
             PreprocessParameterSets();
-            DoExecuteCmdlet();
+            DoExecuteCmdletAsync().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -57,6 +58,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             }
         }
 
-        public virtual void DoExecuteCmdlet() { }
+        public abstract Task DoExecuteCmdletAsync();
     }
 }

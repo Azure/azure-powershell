@@ -1,22 +1,18 @@
-﻿using Hyak.Common.TransientFaultHandling;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
-using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 using System.Threading.Tasks;
 using static Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment;
 
@@ -24,102 +20,103 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
     internal class SecurityDomainClient : ServiceClient<SecurityDomainClient>, ISecurityDomainClient
     {
-        public SecurityDomainClient(IAuthenticationFactory authenticationFactory, IAzureContext defaultContext)
+        public SecurityDomainClient(IAuthenticationFactory authenticationFactory, IAzureContext defaultContext, Action<string> debugWriter)
         {
-            //_credentials = new DataServiceCredential(authenticationFactory, defaultContext, ExtendedEndpoint.ManagedHsmServiceEndpointResourceId).GetServiceClientCredentials();
             _credentials = new DataServiceCredential(authenticationFactory, defaultContext, ExtendedEndpoint.ManagedHsmServiceEndpointResourceId);
 
             _uriHelper = new VaultUriHelper(
                 defaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix),
                 defaultContext.Environment.GetEndpoint(ExtendedEndpoint.ManagedHsmServiceEndpointSuffix));
+
+            HttpClient.DefaultRequestHeaders.TransferEncodingChunked = false;
+
+            _writeDebug = debugWriter;
         }
 
+        private const string _securityDomainPathFragment = "SecurityDomain";
         private DataServiceCredential _credentials;
         private VaultUriHelper _uriHelper;
-        private JsonSerializerSettings _serializationSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+        private readonly JsonSerializerSettings _serializationSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+        private readonly Action<string> _writeDebug;
 
         /// <summary>
         /// Download security domain data.
         /// </summary>
         /// <param name="hsmName">Name of the HSM</param>
         /// <param name="certificates">Certificates used to encrypt the security domain data</param>
-        /// <param name="required">Specify how many keys are required to decrypt the data</param>
+        /// <param name="quorum">Specify how many keys are required to decrypt the data</param>
         /// <returns>Encrypted HSM security domain data in string</returns>
-        public async Task<string> DownloadSecurityDomainAsync(string hsmName, IEnumerable<X509Certificate2> certificates, int required)
+        public async Task<string> DownloadSecurityDomainAsync(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum)
         {
-            ValidateDownloadRequest(hsmName, certificates);
+            var downloadRequest = new DownloadRequest
+            {
+                Required = quorum
+            };
+            certificates.ForEach(cert => downloadRequest.Certificates.Add(new JWK(cert)));
+
+            string requestBody = JsonConvert.SerializeObject(
+                downloadRequest,
+                Formatting.None,
+                _serializationSettings);
+
+            var httpRequest = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
+                {
+                    Path = $"/{_securityDomainPathFragment}/download"
+                }.Uri,
+                Content = new StringContent(requestBody)
+            };
+
+            PrepareRequest(httpRequest);
+
+            var httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                string response = await httpResponseMessage.Content.ReadAsStringAsync();
+                var securityDomainWrapper = JsonConvert.DeserializeObject<SecurityDomainWrapper>(response);
+                ValidateDownloadSecurityDomainResponse(securityDomainWrapper);
+                return securityDomainWrapper.value;
+            }
+            else
+            {
+                string response = await httpResponseMessage.Content.ReadAsStringAsync();
+                //_writeDebug($"Invalid security domain response: {response}");
+                throw new Exception("Failed to download security domain data.");
+            }
+        }
+
+        private void ValidateDownloadSecurityDomainResponse(SecurityDomainWrapper securityDomainWrapper)
+        {
+            if (string.IsNullOrEmpty(securityDomainWrapper.value) || !ValidateSecurityDomainData(securityDomainWrapper.value))
+            {
+                //_writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
+                throw new Exception("Failed to download security domain data.");
+            }
+        }
+
+        /// <summary>
+        /// Prepare common headers for the request.
+        /// Such as content-type and authorization.
+        /// </summary>
+        /// <param name="httpRequest"></param>
+        private void PrepareRequest(HttpRequestMessage httpRequest)
+        {
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
 
             try
             {
-                var downloadRequest = new DownloadRequest
-                {
-                    required = required
-                };
-                certificates.ForEach(cert => downloadRequest.certificates.Add(new JWK(cert)));
-
-                string requestBody = JsonConvert.SerializeObject(
-                    downloadRequest,
-                    Formatting.None,
-                    _serializationSettings);
-
-                HttpClient.DefaultRequestHeaders.TransferEncodingChunked = false;
-
-                var httpRequest = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Post,
-                    RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
-                    {
-                        Path = "/securitydomain/download"
-                    }.Uri,
-                    Content = new StringContent(requestBody)
-                };
-                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-
-                var token = _credentials.GetTokenTemp();
+                var token = _credentials.GetAccessToken();
                 token.AuthorizeRequest((tokenType, tokenValue) =>
                 {
                     httpRequest.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
                 });
-
-                var httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
-
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
-                    string response = await httpResponseMessage.Content.ReadAsStringAsync();
-                    SecurityDomainWrapper securityDomainWrapper = JsonConvert.DeserializeObject<SecurityDomainWrapper>(response);
-                    if (string.IsNullOrEmpty(securityDomainWrapper.value))
-                    {
-                        Console.WriteLine("Response from server invalid");
-                        return null;
-                    }
-
-                    if (!ValidateSecurityDomainData(securityDomainWrapper.value))
-                    {
-                        Console.WriteLine("Unexpected security domain format");
-                        return null;
-                    }
-                    return securityDomainWrapper.value;
-                }
-
-                return null;
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                Console.WriteLine($"RequestSecurityDomain failed = {err.Message}");
-                Console.WriteLine(err);
-                return null;
-            }
-        }
-
-        private void ValidateDownloadRequest(string hsmName, IEnumerable<X509Certificate2> certificates)
-        {
-            if (certificates.Count() < 3)
-            {
-                throw new ArgumentException("Must have at least three certificates");
-            }
-            if (string.IsNullOrWhiteSpace(hsmName))
-            {
-                throw new ArgumentException(nameof(hsmName));
+                throw new AuthenticationException(Resources.InvalidSubscriptionState, ex);
             }
         }
 
@@ -163,22 +160,16 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
             try
             {
-                HttpClient.DefaultRequestHeaders.TransferEncodingChunked = false;
-
                 var httpRequest = new HttpRequestMessage
                 {
                     Method = new HttpMethod("GET"),
                     RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
                     {
-                        Path = "/securitydomain/upload"
+                        Path = $"/{_securityDomainPathFragment}/upload"
                     }.Uri,
                 };
 
-                var token = _credentials.GetTokenTemp();
-                token.AuthorizeRequest((tokenType, tokenValue) =>
-                {
-                    httpRequest.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
-                });
+                PrepareRequest(httpRequest);
 
                 HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
 
@@ -430,25 +421,17 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
             try
             {
-                HttpClient.DefaultRequestHeaders.TransferEncodingChunked = false;
-
                 var httpRequest = new HttpRequestMessage
                 {
                     Method = HttpMethod.Post,
                     RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
                     {
-                        Path = "/securitydomain/upload"
+                        Path = $"/{_securityDomainPathFragment}/upload"
                     }.Uri,
                     Content = new StringContent(securityDomain)
                 };
 
-                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-
-                var token = _credentials.GetTokenTemp();
-                token.AuthorizeRequest((tokenType, tokenValue) =>
-                {
-                    httpRequest.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
-                });
+                PrepareRequest(httpRequest);
 
                 var httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
 

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -25,14 +26,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [Parameter(HelpMessage = "When specified, a boolean will be returned when cmdlet succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void DoExecuteCmdlet()
+        public override async Task DoExecuteCmdletAsync()
         {
             ValidateParameters();
             if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
-                var securityDomainData = LoadSdFromFile(SecurityDomainPath);
-                var exchangeKey = Client.DownloadSecurityDomainExchangeKeyAsync(Name).ConfigureAwait(false).GetAwaiter().GetResult();
-                var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, securityDomainData, exchangeKey);
+                var securityDomainData = LoadSdFromFileAsync(SecurityDomainPath);
+                var exchangeKey = Client.DownloadSecurityDomainExchangeKeyAsync(Name);
+                var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, await securityDomainData, await exchangeKey);
                 if (Client.RestoreSecurityDomainAsync(Name, encryptedSecurityDomain).ConfigureAwait(false).GetAwaiter().GetResult())
                 {
                     if (PassThru)
@@ -55,11 +56,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             }
         }
 
-        private SecurityDomainData LoadSdFromFile(string path)
+        private async Task<SecurityDomainData> LoadSdFromFileAsync(string path)
         {
             try
             {
-                string content = Utils.FileToString(path);
+                string content = await Utils.FileToStringAsync(path);
                 return JsonConvert.DeserializeObject<SecurityDomainData>(content);
             }
             catch (Exception ex)

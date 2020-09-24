@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common
 {
@@ -41,6 +42,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common
             }
 
             return readContents;
+        }
+
+        static public async Task<string> FileToStringAsync(string path)
+        {
+            using (StreamReader streamReader = new StreamReader(path, Encoding.ASCII))
+            {
+                return await streamReader.ReadToEndAsync();
+            }
         }
 
         static public void StringToFile(string path, string data)

@@ -7,10 +7,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
     {
         public DownloadRequest()
         {
-            certificates = new List<JWK>();
+            Certificates = new List<JWK>();
         }
 
-        public int required; // todo: rename to Required
-        public IList<JWK> certificates { get; set; }
+        [JsonProperty("required")]
+        public int Required;
+
+        [JsonProperty("certificates")]
+        public IList<JWK> Certificates { get; set; }
     }
 }
