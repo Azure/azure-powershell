@@ -4389,13 +4389,23 @@ function Test-VirtualMachineImageListTopOrderExpand
         $sku = "2012-R2-Datacenter";
         $numRecords = 3;
         $orderNameDesc = "name desc";
+        $orderNameAsc = "name asc";
 
+        # Test -Top
         $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
         Assert-AreEqual $numRecords $vmImagesTop.Count; 
 
-        $vmImagesOrder = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
+        # Test -OrderBy
+        $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
+        $vmImagesOrderAsc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameAsc;
 
-        #$vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
+        if ($vmImagesOrderDesc.Count -gt 0)
+        {
+            $isLessThan = $vmImagesOrderDesc[0].Version -ge $vmImagesOrderAsc[0].Version;
+            Assert-True { $isLessThan };
+        }
+
+        # Test Expand
         Start-Transcript -Path "transcript.txt"
         $vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
         Stop-Transcript
