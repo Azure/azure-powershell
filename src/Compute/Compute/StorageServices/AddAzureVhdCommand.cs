@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -26,6 +24,11 @@ using System;
 using System.IO;
 using System.Management.Automation;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Automation;
+using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -36,10 +39,18 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     public class AddAzureVhdCommand : ComputeClientBaseCmdlet
     {
         private const int DefaultNumberOfUploaderThreads = 8;
+        private const string DefaultParameterSet = "DefaultParameterSet";
+        private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
 
         [Parameter(
             Position = 0,
             Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -47,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         [Parameter(
             Position = 1,
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Uri to blob")]
@@ -61,6 +73,13 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [Parameter(
             Position = 2,
             Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Local path of the vhd file")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
@@ -70,6 +89,45 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             get;
             set;
         }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Name of the new managed Disk")]
+        [ValidateNotNullOrEmpty]
+        public string DiskName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Location of new Managed Disk")]
+        [LocationCompleter("Microsoft.Compute/disks")]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sku for managed disk. Options: Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
+        public string DiskSku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "OS Type for managed disk. Windows or Linux")]
+        [PSArgumentCompleter("Windows", "Linux")]
+        public OperatingSystemTypes? DiskOsType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true)]
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Position = 3,
@@ -189,9 +247,112 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         public override void ExecuteCmdlet()
         {
-            var parameters = ValidateParameters();
-            var vhdUploadContext = VhdUploaderModel.Upload(parameters);
-            WriteObject(vhdUploadContext);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() => 
+            {
+                if (this.ParameterSetName == DirectUploadToManagedDiskSet)
+                {
+                    // resize vhd 
+                    // convert vhdx to vhd if need
+
+                    // 3. DIRECT UPLOAD TO MANAGED DISK
+                    
+                    // 3-1. create disk config  
+                    // TO-DO: need to set disksizeGB in this method still 
+                    var diskConfig = CreateDiskConfig();
+
+                    // 3-2: create disk 
+                    NewAzureRmDisk newDisk = new NewAzureRmDisk
+                    {
+                        ResourceGroupName = this.ResourceGroupName,
+                        DiskName = this.DiskName,
+                        Disk = diskConfig
+                    };
+                    newDisk.ExecuteCmdlet();
+                    
+                    // 3-3: generate SAS
+                    GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
+                    var grantAccessData = new GrantAccessData();
+                    grantAccessData.Access = "Write";
+                    grantAccessData.DurationInSeconds = 86400;
+                    var accessUri = sas.DisksClient.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                    Uri sasUri = new Uri(accessUri.AccessSAS);
+                    this.Destination = sasUri;
+                    //sas.ResourceGroupName = this.ResourceGroupName;
+                    //sas.DiskName = this.DiskName;
+                    //sas.DurationInSecond = 86400;
+                    //sas.Access = "Write";
+                    //sas.ExecuteCmdlet();
+                    
+                    // 3-4: upload 
+                    var parameters = ValidateParameters();
+                    var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+                    // AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
+                    
+                    // 3-5: revoke SAS
+                    RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
+                    revokeSas.ResourceGroupName = this.ResourceGroupName;
+                    revokeSas.DiskName = this.DiskName;
+                    revokeSas.ExecuteCmdlet();
+
+                    WriteObject(vhdUploadContext);
+                }
+                else
+                {
+                    var parameters = ValidateParameters();
+                    var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+                    WriteObject(vhdUploadContext);
+                }
+            });
+            
+            
+        }
+
+        private PSDisk CreateDiskConfig()
+        {
+
+            // Sku
+            DiskSku vSku = null;
+
+            // CreationData
+            CreationData vCreationData = null;
+
+            if (this.IsParameterBound(c => c.DiskSku))
+            {
+                if (vSku == null)
+                {
+                    vSku = new DiskSku();
+                }
+                vSku.Name = this.DiskSku;
+            }
+
+            vCreationData = new CreationData();
+            vCreationData.CreateOption = "upload";
+            // TO-DO: change back to first line when .length is always N * Mib + 512
+            //vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
+            vCreationData.UploadSizeBytes = 32506368;
+
+            var vDisk = new PSDisk
+            {
+                Zones = null,
+                OsType = this.IsParameterBound(c => c.DiskOsType) ? this.DiskOsType : (OperatingSystemTypes?)null,
+                HyperVGeneration = null,
+                DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
+                DiskIOPSReadWrite = null,
+                DiskMBpsReadWrite = null,
+                DiskIOPSReadOnly = null,
+                DiskMBpsReadOnly = null,
+                MaxShares = null,
+                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                Tags = null,
+                Sku = vSku,
+                CreationData = vCreationData,
+                EncryptionSettingsCollection = null,
+                Encryption = null ,
+                NetworkAccessPolicy = null,
+                DiskAccessId = null
+            };
+            return vDisk;
         }
     }
 }
