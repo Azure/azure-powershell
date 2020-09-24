@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     [OutputType(typeof(bool))]
     public class RestoreSecurityDomain : SecurityDomainCmdlet
     {
-        [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data.", Mandatory = true)]
+        [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true)]
         public KeyPath[] Keys { get; set; }
 
         [Parameter(HelpMessage = "Specify the path to the encrypted security domain data.", Mandatory = true)]
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             ValidateParameters();
             if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
-                var securityDomainData = LoadSdFromFile(SecurityDomainPath);
+                var securityDomain = LoadSdFromFile(SecurityDomainPath);
+                var rawSecurityDomain = Client.DecryptSecurityDomain(securityDomain, Keys);
                 var exchangeKey = Client.DownloadSecurityDomainExchangeKey(Name);
-                var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, securityDomainData, exchangeKey);
-                if (Client.RestoreSecurityDomain(Name, encryptedSecurityDomain))
+                var encryptedSecurityDomain = Client.EncryptForRestore(rawSecurityDomain, exchangeKey);
+                Client.RestoreSecurityDomain(Name, encryptedSecurityDomain);
+
+                if (PassThru)
                 {
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(true);
                 }
             }
         }

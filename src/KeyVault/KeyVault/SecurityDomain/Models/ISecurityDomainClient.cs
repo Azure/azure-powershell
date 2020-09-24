@@ -9,8 +9,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
         X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName);
 
-        string EncryptSecurityDomainByCert(KeyPath[] keys, SecurityDomainData data, X509Certificate2 restore_cert);
+        PlaintextList DecryptSecurityDomain(SecurityDomainData data, KeyPath[] paths);
 
-        bool RestoreSecurityDomain(string hsmName, string securityDomainData);
+        SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert);
+
+        bool RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData);
     }
 }

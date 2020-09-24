@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             else
             {
                 string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                //_writeDebug($"Invalid security domain response: {response}");
+                _writeDebug($"Invalid security domain response: {response}");
                 throw new Exception("Failed to download security domain data.");
             }
         }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         {
             if (string.IsNullOrEmpty(securityDomainWrapper.value) || !ValidateSecurityDomainData(securityDomainWrapper.value))
             {
-                //_writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
+                _writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
                 throw new Exception("Failed to download security domain data.");
             }
         }
@@ -204,35 +204,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             }
         }
 
-        public string EncryptSecurityDomainByCert(KeyPath[] keys, SecurityDomainData data, X509Certificate2 restore_cert)
-        {
-            try
-            {
-                string restore_data = GetSecurityDomainRestore(restore_cert, data, keys);
-
-                if (restore_data == null)
-                {
-                    Console.WriteLine("Unable to create security domain restore");
-                    return null;
-                }
-
-                return restore_data;
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine("Unable to decrypt security domain " + err.Message);
-                return null;
-            }
-        }
-
-        private string GetSecurityDomainRestore(X509Certificate2 restoreCert, SecurityDomainData data, KeyPath[] keys)
-        {
-            PlaintextList plaintextList = Decrypt(data, keys);
-            SecurityDomainRestoreData restoreData = EncryptForRestore(restoreCert, plaintextList);
-            return JsonConvert.SerializeObject(restoreData);
-        }
-
-        private PlaintextList Decrypt(SecurityDomainData data, KeyPath[] paths)
+        public PlaintextList DecryptSecurityDomain(SecurityDomainData data, KeyPath[] paths)
         {
             CertKeys certKeys = new CertKeys();
             certKeys.LoadKeys(paths);
@@ -375,7 +347,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return master_key;
         }
 
-        private SecurityDomainRestoreData EncryptForRestore(X509Certificate2 cert, PlaintextList plaintextList)
+        public SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert)
         {
             SecurityDomainRestoreData securityDomainRestoreData = new SecurityDomainRestoreData();
             securityDomainRestoreData.EncData.kdf = "sp108_kdf";
@@ -403,19 +375,19 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return securityDomainRestoreData;
         }
 
-        public bool RestoreSecurityDomain(string hsmName, string securityDomainData)
+        public bool RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData)
         {
             if (string.IsNullOrWhiteSpace(hsmName))
             {
                 throw new ArgumentException(nameof(hsmName));
             }
 
-            if (string.IsNullOrEmpty(securityDomainData))
+            if (securityDomainData == null)
                 throw new ArgumentNullException(nameof(securityDomainData));
 
             string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper
             {
-                value = securityDomainData
+                value = JsonConvert.SerializeObject(securityDomainData)
             });
 
             try
