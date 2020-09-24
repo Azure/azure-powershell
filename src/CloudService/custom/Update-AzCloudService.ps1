@@ -129,12 +129,6 @@ param(
     # Resource tags
     ${Tag},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [System.String]
-    # .
-    ${Location},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
