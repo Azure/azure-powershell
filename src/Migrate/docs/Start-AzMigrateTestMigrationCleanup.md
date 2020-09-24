@@ -36,7 +36,7 @@ The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the tes
 
 ## EXAMPLES
 
-### Example 1: Test migrate by name
+### Example 1: By name
 ```powershell
 PS C:\> Start-AzMigrateTestMigrationCleanup -ProjectName 'AzMigrateTestProjectPWSH' -ResourceGroupName 'azmigratepwshtestasr13072020'  -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f'
 
