@@ -36,7 +36,7 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 
 ## EXAMPLES
 
-### Example 1: Test migrate by name
+### Example 1: By name
 ```powershell
 PS C:\> Start-AzMigrateTestMigration -ProjectName 'AzMigrateTestProjectPWSH' -ResourceGroupName 'azmigratepwshtestasr13072020'  -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f' -TestNetworkId '/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 

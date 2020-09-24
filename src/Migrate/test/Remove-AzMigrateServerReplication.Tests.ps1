@@ -12,15 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzMigrateServerReplication' {
-    It 'ByNameVMwareCbt' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByNameVMwareCbt' {
+       {Remove-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -MachineName $env.srsMachineNametempa -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
     }
 
-    It 'ByIDVMwareCbt' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByIDVMwareCbt' {
+       {Remove-AzMigrateServerReplication -TargetObjectID $env.srsMachineIdtempc -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
     }
 
-    It 'ByInputObjectVMwareCbt' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByInputObjectVMwareCbt' {
+        $obj = Get-AzMigrateServerReplication -TargetObjectID  $env.srsMachineIdtempd -SubscriptionId $env.srsSubscriptionId
+        $obj.Count | Should -BeGreaterOrEqual 1
+        {Remove-AzMigrateServerReplication -InputObject $obj -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
     }
 }

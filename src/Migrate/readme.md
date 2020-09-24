@@ -308,3 +308,8 @@ directive:
       model-name: Job
     set:
       suppress-format: true
+  - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
+    where:
+      model-name: Fabric
+    set:
+      suppress-format: true
