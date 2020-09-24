@@ -159,6 +159,12 @@ directive:
       subject: Project$
       variant: ^Put$|^PutViaIdentity|^PutViaIdentityExpanded
     remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Register$
+      subject: ProjectTool$
+      variant: ^Register$|^RegisterViaIdentity|^RegisterViaIdentityExpanded
+    remove: true
   # Remove cmdlets not in scope
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
@@ -177,10 +183,6 @@ directive:
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       subject: ^Job|^VCenter|^VMwareOperationsStatus
-    remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
-    where:
-      verb: Register$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
