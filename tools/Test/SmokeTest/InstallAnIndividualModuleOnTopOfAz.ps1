@@ -6,7 +6,7 @@ param(
 )
 
 # Get previous version of Az
-. "./Common.ps1"
+. "$PSScriptRoot/Common.ps1"
 $previousVersion = Get-ModulePreviousVersion $gallery "Az"
 
 # Install previous version of Az

@@ -1,3 +1,3 @@
 # Remove Az.* modules
-. "./Common.ps1"
+. "$PSScriptRoot/Common.ps1"
 Remove-AzModules

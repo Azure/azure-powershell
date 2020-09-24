@@ -5,7 +5,7 @@ param(
     $gallery
 )
 # Get previous version of Az.Compute
-. "./Common.ps1"
+. "$PSScriptRoot/Common.ps1"
 $previousVersion = Get-ModulePreviousVersion $gallery "Az.Compute"
 
 # Install previous version of Az.Compute

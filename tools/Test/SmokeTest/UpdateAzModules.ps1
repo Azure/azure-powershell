@@ -6,7 +6,7 @@ param(
 )
 
 # Get previous version of Az
-. "./Common.ps1"
+. "$PSScriptRoot/Common.ps1"
 $previousVersion = Get-ModulePreviousVersion $gallery "Az"
 
 # Install previous version of Az
@@ -26,6 +26,11 @@ Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force -Scope 'Global'
 $azVersion = (get-module Az).Version
 Write-Host "Current version of Az", $azVersion
 
-if ([System.Version]$azVersion -le [System.Version]$previousVersion) {
+if ([System.Version]$azVersion -lt [System.Version]$previousVersion) {
     throw "Update Az failed"
+}
+elseif([System.Version]$azVersion -eq [System.Version]$previousVersion){
+    Write-Warning "Az did not update"
+}else{
+    Write-Host "Update Az successfully"
 }

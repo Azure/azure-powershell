@@ -40,7 +40,7 @@ function Install-PowerShell {
 # Image "vs2017-win2016" and "ubuntu-18.04" preinstalled AzureRM modules. 
 
 # Remove Az.* modules
-. "./Common.ps1"
+. "$PSScriptRoot/Common.ps1"
 Remove-AzModules
 
 # If all images update AzureRM to Az, below codes should be deleted.
