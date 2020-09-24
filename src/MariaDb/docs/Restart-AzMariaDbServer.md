@@ -29,19 +29,21 @@ Restart-AzMariaDbServer -InputObject <IMariaDbIdentity> [-DefaultProfile <PSObje
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Restart a MariaDB
 ```powershell
-Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0
+PS C:\> Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0
+
 ```
 
+This command restart a MariaDB.
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Restart a MariaDB
 ```powershell
-Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | Restart-AzMariaDbServer
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | Restart-AzMariaDbServer
+
 ```
 
-
+This command restart a MariaDB.
 
 ## PARAMETERS
 
@@ -58,7 +60,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -74,11 +75,9 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -91,7 +90,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -107,7 +105,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -123,7 +120,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PassThru
@@ -139,7 +135,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -155,7 +150,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -171,7 +165,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -187,7 +180,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -204,7 +196,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -218,14 +209,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
-## ALIASES
-
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IMariaDbIdentity>: To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+INPUTOBJECT <IMariaDbIdentity>: 
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

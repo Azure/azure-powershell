@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MariaDb
-Module Guid: 13a4c543-53ae-467e-b88f-e9ae17c04e32
+Module Guid: b40274bf-655e-4bbc-bfb2-90862175b6f2
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mariadb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,10 +32,10 @@ Gets a virtual network rule.
 ### [New-AzMariaDbFirewallRule](New-AzMariaDbFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
+### [New-AzMariaDbReplica](New-AzMariaDbReplica.md)
+
+
 ### [New-AzMariaDbServer](New-AzMariaDbServer.md)
-
-
-### [New-AzMariaDbServerReplica](New-AzMariaDbServerReplica.md)
 
 
 ### [New-AzMariaDbVirtualNetworkRule](New-AzMariaDbVirtualNetworkRule.md)
@@ -58,12 +58,15 @@ Deletes the virtual network rule with the given name.
 
 ### [Update-AzMariaDbConfiguration](Update-AzMariaDbConfiguration.md)
 Updates a configuration of a server.
+Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzMariaDbFirewallRule](Update-AzMariaDbFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [Update-AzMariaDbServer](Update-AzMariaDbServer.md)
-
+Updates an existing server.
+The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMariaDbVirtualNetworkRule](Update-AzMariaDbVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.

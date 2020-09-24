@@ -70,7 +70,10 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
       subject: Configuration$|FirewallRule$|VirtualNetworkRule$
     remove: true
-
+  - where:
+      verb: New$|Update$
+      subject: Configuration$|FirewallRule$
+    hide: true
 # Server
   - where:
       verb: New|Update|Restart
@@ -104,25 +107,6 @@ directive:
       parameter-name: VirtualNetworkSubnetId
     set:
       parameter-name: SubnetId
-
-# FirewallRule
-  - where:
-      subject: FirewallRule
-      parameter-name: Parameter
-    set:
-      parameter-name: FirewallRule
-
-# MariaDBConfiguration
-  - where:
-      verb: New
-      subject: Configuration
-    hide: true
-  - where:
-      verb: Update
-      subject: Configuration
-      parameter-name: Parameter
-    set:
-      parameter-name: Configuration
 
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy

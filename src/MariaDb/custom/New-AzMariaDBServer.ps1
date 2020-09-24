@@ -69,6 +69,8 @@ function New-AzMariaDbServer {
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
@@ -230,8 +232,7 @@ function New-AzMariaDbServer {
             $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
             $null = $PSBoundParameters.Remove('AdministratorUsername')
 
-            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
-            $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
             $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
