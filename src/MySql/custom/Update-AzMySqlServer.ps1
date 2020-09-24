@@ -159,9 +159,9 @@ function Update-AzMySqlServer {
     process {
         try {
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $bStr = [System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
+                $password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+                $PSBoundParameters.Add('AdministratorLoginPassword', $password)
                 $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-                $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
             }
 
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {

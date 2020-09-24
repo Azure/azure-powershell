@@ -67,7 +67,6 @@ directive:
     set:
       verb: Update
   - where:
-      verb: ^New$|^Set$|^Remove$|^Get|^Update$|^Invoke$
       subject: Database$|SecurityAlertPolicy$|Administrator$|LocationBasedPerformanceTier$|LogFile$|ExecuteCheckNameAvailability$
     hide: true
   - where:
@@ -76,19 +75,11 @@ directive:
     hide: true
   - where:
      verb: New$
-     variant: ^Create$
-    hide: true
-  - where:
-     verb: New$
-     variant: ^CreateViaIdentity
+     variant: ^Create$|^CreateViaIdentity
     hide: true
   - where:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New
-      subject: Configuration
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId
