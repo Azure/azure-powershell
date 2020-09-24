@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
+* Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
 
 ## Version 4.4.0
 * Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
