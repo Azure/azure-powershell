@@ -2583,3 +2583,70 @@ function Test-VirtualMachineScaleSetAssignedHost
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+    create a VMSS in orchestration mode then add a vm to it
+#>
+function Test-VirtualMachineScaleSetOrchestrationVM
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssOrchestrationMode' + $rgname;
+        $vmName = 'vm' + $rgname;
+        $domainName = 'domain' + $rgname;
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+
+        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
+        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
+
+        Assert-AreEqual $VmssWithoutVmProfile.id $vm.virtualmachinescaleset.id
+
+        # Test PlatformFaultDomainCount parameter
+        $vmssNameSimple = $vmssname + "Simple";
+        $vmssNameDefault = $vmssname + "Default";
+        $platformFaultDomainCount = 5;
+        $platformFaultDomainCountConfig = 3;
+        $zone = "2";
+        $domainNameLabel = $rgname + "domainlabel";
+        $VmSku = "Standard_D2s_v3";
+
+
+        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig;
+        Assert-NotNull $vmssConfigFaultDomain;
+        Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss DefaultParameterSet 
+        $vmssDefault = New-AzVmss -Name $vmssNameDefault -ResourceGroup $rgname -VirtualMachineScaleSet $vmssConfigFaultDomain;
+        Assert-NotNull $vmssDefault;
+        Assert-AreEqual $vmssDefault.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet 
+        $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
+        Assert-NotNull $vmssSimple; 
+        Assert-AreEqual $vmssSimple.PlatformFaultDomainCount $platformFaultDomainCount;
+
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+} 
