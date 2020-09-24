@@ -73,7 +73,6 @@ By machine id.
 ### Example 3: By input object
 ```powershell
 PS C:\> $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-PS C:\> $obj.Count | Should -BeGreaterOrEqual 1
 PS C:\> Start-AzMigrateTestMigrationCleanup -InputObject $ob
 
 

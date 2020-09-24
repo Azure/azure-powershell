@@ -111,7 +111,6 @@ By machine id.
 ### Example 3: By input object
 ```powershell
 PS C:\> $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-PS C:\> $obj.Count | Should -BeGreaterOrEqual 1
 PS C:\> Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork
 
 
