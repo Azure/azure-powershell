@@ -342,9 +342,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineImageListTopOrderExpand()
+        public void TestVirtualMachineImageListTopOrder()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineImageListTopOrderExpand");
+            TestRunner.RunTestScript("Test-VirtualMachineImageListTopOrder");
         }
     }
 }
