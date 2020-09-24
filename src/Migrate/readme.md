@@ -97,6 +97,7 @@ directive:
     - PolicyProviderSpecificInput
     - ReplicationProviderSpecificContainerMappingInput
     - ProtectionContainerMappingProviderSpecificDetails
+    - MigrateProjectProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
@@ -151,6 +152,12 @@ directive:
       verb: Get$
       subject: ^Site
       variant: ^Get1$|^GetViaIdentity1|^Get2$|^GetViaIdentity2
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Set$
+      subject: Project$
+      variant: ^Put$|^PutViaIdentity|^PutViaIdentityExpanded
     remove: true
   # Remove cmdlets not in scope
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
