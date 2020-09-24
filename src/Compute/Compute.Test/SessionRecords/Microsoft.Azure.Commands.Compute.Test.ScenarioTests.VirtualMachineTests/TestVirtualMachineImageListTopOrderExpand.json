@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5137db03-d108-4153-9e8f-998b84a32e45"
+          "1f30b1e6-11ed-4a29-b3f1-2b49eb9ec880"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "23c258e6-f7e9-4058-8c44-ecbedc60fabb"
+          "5e067b4a-ce32-4ff5-bfca-61045b796775"
         ],
         "x-ms-correlation-request-id": [
-          "23c258e6-f7e9-4058-8c44-ecbedc60fabb"
+          "5e067b4a-ce32-4ff5-bfca-61045b796775"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20200924T120156Z:23c258e6-f7e9-4058-8c44-ecbedc60fabb"
+          "CENTRALUS:20200924T121245Z:5e067b4a-ce32-4ff5-bfca-61045b796775"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Sep 2020 12:01:56 GMT"
+          "Thu, 24 Sep 2020 12:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fe56d44a-0f16-444e-a8aa-67fc4f2a2a3f"
+          "230b0d3e-8e13-401b-a45f-497680751b0d"
         ],
         "Accept-Language": [
           "en-US"
@@ -76,7 +76,7 @@
           "FxVersion/4.6.29017.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/39.0.0.0"
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/38.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -93,7 +93,7 @@
           "e91047d6-10df-436c-bd78-94e832a89049_132410099202183485"
         ],
         "x-ms-request-id": [
-          "24dad1c6-4ad2-47ef-85ed-21cf5983ef17"
+          "54e65ca6-4455-4e15-8b32-d7672f43aacb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -103,16 +103,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d9738c2d-7434-446b-b2f4-f62bfc57750b"
+          "399a9a07-820f-43b8-a3c3-470650711af8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20200924T120157Z:d9738c2d-7434-446b-b2f4-f62bfc57750b"
+          "CENTRALUS:20200924T121246Z:399a9a07-820f-43b8-a3c3-470650711af8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Sep 2020 12:01:57 GMT"
+          "Thu, 24 Sep 2020 12:12:46 GMT"
         ],
         "Content-Length": [
           "915"
@@ -134,7 +134,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3eece747-f5eb-4755-a35e-a403a97517ad"
+          "487ba164-f091-489b-b47e-f7df44bb5ccf"
         ],
         "Accept-Language": [
           "en-US"
@@ -143,7 +143,7 @@
           "FxVersion/4.6.29017.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/39.0.0.0"
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/38.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -160,7 +160,7 @@
           "e91047d6-10df-436c-bd78-94e832a89049_132410099202183485"
         ],
         "x-ms-request-id": [
-          "a92b54b4-65b3-4dc1-bc28-c1293590d346"
+          "57795fc6-eefc-4f0a-9969-1f77bc0224b4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -170,16 +170,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "da9cbdb9-0ddd-44a7-8509-8d873b647f0a"
+          "6f1ed706-0b71-4623-aed3-8e4aa4e3aa5c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20200924T120158Z:da9cbdb9-0ddd-44a7-8509-8d873b647f0a"
+          "CENTRALUS:20200924T121247Z:6f1ed706-0b71-4623-aed3-8e4aa4e3aa5c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Sep 2020 12:01:57 GMT"
+          "Thu, 24 Sep 2020 12:12:46 GMT"
         ],
         "Content-Length": [
           "8117"
@@ -192,6 +192,73 @@
         ]
       },
       "ResponseBody": "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19817.2009040500\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19817.2009040500\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19785.2008172353\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19785.2008172353\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19785.2008100926\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19785.2008100926\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19756.2007111612\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19756.2007111612\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19728.2006050139\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19728.2006050139\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19701.2005081850\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19701.2005081850\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19676.2004101829\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19676.2004101829\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19652.2003081959\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19652.2003081959\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19629.2002070917\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19629.2002070917\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19599.2001292016\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19599.2001292016\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19599.2001101806\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19599.2001101806\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19573.1912060024\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19573.1912060024\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19542.1911120154\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19542.1911120154\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19505.1910081803\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19505.1910081803\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19463.1909091746\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19463.1909091746\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190416\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190416\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190318\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190318\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190218\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190218\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190204\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190204\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190104\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190104\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20181125\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20181125\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20181010\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20181010\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180912\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180912\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180815\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180815\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180510\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180510\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180315\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180315\"\r\n  }\r\n]",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/windowsserver/skus/2012-R2-Datacenter/versions?$expand=properties%2FosDiskImage&api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL3B1Ymxpc2hlcnMvTWljcm9zb2Z0V2luZG93c1NlcnZlci9hcnRpZmFjdHR5cGVzL3ZtaW1hZ2Uvb2ZmZXJzL3dpbmRvd3NzZXJ2ZXIvc2t1cy8yMDEyLVIyLURhdGFjZW50ZXIvdmVyc2lvbnM/JGV4cGFuZD1wcm9wZXJ0aWVzJTJGb3NEaXNrSW1hZ2UmYXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5f8074b2-63c7-4ce8-b0c8-483e6c57ab97"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/38.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "e91047d6-10df-436c-bd78-94e832a89049_132410099202183485"
+        ],
+        "x-ms-request-id": [
+          "4602e813-61e9-464a-a588-82355a295255"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "65466636-17da-47a5-a236-a1ab2ae0cb93"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20200924T121247Z:65466636-17da-47a5-a236-a1ab2ae0cb93"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2020 12:12:47 GMT"
+        ],
+        "Content-Length": [
+          "15683"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180315\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180315\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180510\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180510\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180815\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180815\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20180912\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20180912\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20181010\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20181010\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20181125\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20181125\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190104\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190104\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190204\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190204\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190218\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190218\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190318\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190318\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"4.127.20190416\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/4.127.20190416\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19463.1909091746\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19463.1909091746\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19505.1910081803\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19505.1910081803\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19542.1911120154\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19542.1911120154\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19573.1912060024\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19573.1912060024\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19599.2001101806\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19599.2001101806\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19599.2001292016\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19599.2001292016\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19629.2002070917\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19629.2002070917\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19652.2003081959\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19652.2003081959\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19676.2004101829\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19676.2004101829\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19701.2005081850\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19701.2005081850\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19728.2006050139\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19728.2006050139\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19756.2007111612\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19756.2007111612\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19785.2008100926\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19785.2008100926\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19785.2008172353\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19785.2008172353\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"osDiskImage\": {\r\n        \"operatingSystem\": \"Windows\",\r\n        \"sizeInGb\": 128,\r\n        \"sizeInBytes\": 136367309312,\r\n        \"hostCaching\": null\r\n      },\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null\r\n    },\r\n    \"location\": \"eastus\",\r\n    \"name\": \"9600.19817.2009040500\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter/Versions/9600.19817.2009040500\"\r\n  }\r\n]",
       "StatusCode": 200
     }
   ],

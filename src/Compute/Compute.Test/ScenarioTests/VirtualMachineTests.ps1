@@ -4376,7 +4376,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
 .SYNOPSIS
 Test Virtual Machine Size and Usage
 #>
-function Test-VirtualMachineImageListTopOrder
+function Test-VirtualMachineImageListTopOrderExpand
 {
     # Setup
     $loc = Get-ComputeVMLocation;
@@ -4395,6 +4395,14 @@ function Test-VirtualMachineImageListTopOrder
 
         $vmImagesOrder = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
 
+        #$vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
+        Start-Transcript -Path "transcript.txt"
+        $vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
+        Stop-Transcript
+
+        $wordToFind="operatingSystem";
+        $file = (Get-Content -path "transcript.txt") -join ' ';
+        Assert-True { $file -match $wordToFind } ;
     }
     finally 
     {
