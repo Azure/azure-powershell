@@ -2586,7 +2586,7 @@ function Test-VirtualMachineScaleSetAssignedHost
 
 <#
 .SYNOPSIS
-    create a VMSS in orchestration mode then add a vm to it
+    Create a VMSS in OrchestrationMode then add a VM to it. 
 #>
 function Test-VirtualMachineScaleSetOrchestrationVM
 {
