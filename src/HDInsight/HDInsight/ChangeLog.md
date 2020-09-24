@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning message for planning to deprecate the parameters `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`
 
 ## Version 3.6.0
 * Supported creating cluster with Autoscale configuration
