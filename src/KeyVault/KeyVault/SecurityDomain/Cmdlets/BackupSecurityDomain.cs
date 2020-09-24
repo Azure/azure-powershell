@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [ValidateRange(Common.Constants.MinQuorum, Common.Constants.MaxQuorum)]
         public int Quorum { get; set; }
 
-        public async override Task DoExecuteCmdletAsync()
+        public override void DoExecuteCmdlet()
         {
             ValidateParameters();
 
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
             if (ShouldProcess($"managed HSM {Name}", $"download encrypted security domain data to '{OutputPath}'"))
             {
-                var securityDomain = await Client.DownloadSecurityDomainAsync(Name, certificates, Quorum);
+                var securityDomain = Client.DownloadSecurityDomain(Name, certificates, Quorum);
                 if (!AzureSession.Instance.DataStore.FileExists(OutputPath) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, OutputPath), Resources.FileOverwriteCaption))
                 {
                     AzureSession.Instance.DataStore.WriteFile(OutputPath, securityDomain);

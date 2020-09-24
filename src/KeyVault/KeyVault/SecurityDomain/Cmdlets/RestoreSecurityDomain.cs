@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -26,15 +25,15 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [Parameter(HelpMessage = "When specified, a boolean will be returned when cmdlet succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override async Task DoExecuteCmdletAsync()
+        public override void DoExecuteCmdlet()
         {
             ValidateParameters();
             if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
-                var securityDomainData = LoadSdFromFileAsync(SecurityDomainPath);
-                var exchangeKey = Client.DownloadSecurityDomainExchangeKeyAsync(Name);
-                var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, await securityDomainData, await exchangeKey);
-                if (Client.RestoreSecurityDomainAsync(Name, encryptedSecurityDomain).ConfigureAwait(false).GetAwaiter().GetResult())
+                var securityDomainData = LoadSdFromFile(SecurityDomainPath);
+                var exchangeKey = Client.DownloadSecurityDomainExchangeKey(Name);
+                var encryptedSecurityDomain = Client.EncryptSecurityDomainByCert(Keys, securityDomainData, exchangeKey);
+                if (Client.RestoreSecurityDomain(Name, encryptedSecurityDomain))
                 {
                     if (PassThru)
                     {
@@ -56,11 +55,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             }
         }
 
-        private async Task<SecurityDomainData> LoadSdFromFileAsync(string path)
+        private SecurityDomainData LoadSdFromFile(string path)
         {
             try
             {
-                string content = await Utils.FileToStringAsync(path);
+                string content = Utils.FileToString(path);
                 return JsonConvert.DeserializeObject<SecurityDomainData>(content);
             }
             catch (Exception ex)

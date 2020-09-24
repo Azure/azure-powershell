@@ -13,7 +13,6 @@ using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using static Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             _writeDebug = debugWriter;
         }
 
-        private const string _securityDomainPathFragment = "SecurityDomain";
+        private const string _securityDomainPathFragment = "securitydomain";
         private DataServiceCredential _credentials;
         private VaultUriHelper _uriHelper;
         private readonly JsonSerializerSettings _serializationSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <param name="certificates">Certificates used to encrypt the security domain data</param>
         /// <param name="quorum">Specify how many keys are required to decrypt the data</param>
         /// <returns>Encrypted HSM security domain data in string</returns>
-        public async Task<string> DownloadSecurityDomainAsync(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum)
+        public string DownloadSecurityDomain(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum)
         {
             var downloadRequest = new DownloadRequest
             {
@@ -71,18 +70,18 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
             PrepareRequest(httpRequest);
 
-            var httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+            var httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                string response = await httpResponseMessage.Content.ReadAsStringAsync();
+                string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 var securityDomainWrapper = JsonConvert.DeserializeObject<SecurityDomainWrapper>(response);
                 ValidateDownloadSecurityDomainResponse(securityDomainWrapper);
                 return securityDomainWrapper.value;
             }
             else
             {
-                string response = await httpResponseMessage.Content.ReadAsStringAsync();
+                string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 //_writeDebug($"Invalid security domain response: {response}");
                 throw new Exception("Failed to download security domain data.");
             }
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return valid;
         }
 
-        public async Task<X509Certificate2> DownloadSecurityDomainExchangeKeyAsync(string hsmName)
+        public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName)
         {
             if (string.IsNullOrWhiteSpace(hsmName))
             {
@@ -171,11 +170,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
                 PrepareRequest(httpRequest);
 
-                HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+                HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
 
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    var response = await httpResponseMessage.Content.ReadAsStringAsync();
+                    var response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                     var key = JsonConvert.DeserializeObject<SecurityDomainTransferKey>(response);
 
                     switch (key.KeyFormat)
@@ -404,7 +403,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return securityDomainRestoreData;
         }
 
-        public async Task<bool> RestoreSecurityDomainAsync(string hsmName, string securityDomainData)
+        public bool RestoreSecurityDomain(string hsmName, string securityDomainData)
         {
             if (string.IsNullOrWhiteSpace(hsmName))
             {
@@ -433,11 +432,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
                 PrepareRequest(httpRequest);
 
-                var httpResponseMessage = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+                var httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
 
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    return !string.IsNullOrEmpty(await httpResponseMessage.Content.ReadAsStringAsync());
+                    return !string.IsNullOrEmpty(httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult());
                 }
 
                 return false;
