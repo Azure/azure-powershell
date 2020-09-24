@@ -41,12 +41,9 @@ function setupEnv() {
     $env.srsLicense = "NoLicenseType"
     $env.srsSDSMachineId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f"
     $env.srsSDSSite = "AzMigratePWSHTc8d1site"
-    $env.srsMachineIDa = ""
-    $env.srsMachineIDb = ""
-    $env.srsMachineIDc = ""
-    $env.srsMachineIDd = ""
-    $env.srsMachineIDe = ""
-    $env.srsMachineIDf = ""
+    $env.srsMachineNametempa = "bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c"
+    $env.srsMachineIdtempb = "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4"
+    $env.srsMachineIdtempc = "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092"
 
 
     $env.migSubscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280"

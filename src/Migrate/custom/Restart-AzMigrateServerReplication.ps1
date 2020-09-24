@@ -200,7 +200,7 @@ function Restart-AzMigrateServerReplication{
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
             
             $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'StartResync' )){
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtResyncInput]::new()
                 $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
                 $ProviderSepcificDetail.SkipCbtReset = 'true'
