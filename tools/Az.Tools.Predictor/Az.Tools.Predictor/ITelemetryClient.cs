@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
@@ -22,13 +23,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     public interface ITelemetryClient
     {
         /// <summary>
-        /// Collects the event for the top 5 predeiction for the history.
+        /// Gets the correlation id for the telemetry events.
         /// </summary>
-        /// <param name="historyLine">The history command that triggers the suggestion.</param>
-        /// <param name="suggestionIndex">The index of the suggestion from the suggestion model.</param>
-        /// <param name="fallbackIndex">The index in the command list as a fallback.</param>
-        /// <param name="topSuggestions">The top suggestions.</param>
-        public void OnSuggestionForHistory(string historyLine, int? suggestionIndex, int? fallbackIndex, IEnumerable<string> topSuggestions);
+        public string CorrelationId { get; }
+
+        /// <summary>
+        /// Gets the session id for the telemetry events.
+        /// </summary>
+        public string SessionId { get; }
+
+        /// <summary>
+        /// Collects the event of the history command.
+        /// </summary>
+        /// <param name="historyLine">The history command from PSReadLine.</param>
+        public void OnHistory(string historyLine);
+
+        /// <summary>
+        /// Collects the event when a prediction is requested.
+        /// </summary>
+        /// <param name="command">The command to that we request the prediction for.</param>
+        public void OnRequestPrediction(string command);
+
+        /// <summary>
+        /// Collects the event when we fail to get the prediction for the command
+        /// </summary>
+        /// <param name="command">The command to that we request the prediction for.</param>
+        /// <param name="e">The exception</param>
+        public void OnRequestPredictionError(string command, Exception e);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
@@ -39,7 +60,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
-        /// <param name="predictionSource">The source to get the prediction</param>
-        public void OnGetSuggestion(PredictionSource predictionSource);
+        /// <param name="maskedUserInput">The user input that the suggestions are for</param>
+        /// <param name="suggestions">The list of suggestion and its source</param>
+        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<Tuple<string, PredictionSource>> suggestions, bool isCancelled);
+
+        /// <summary>
+        /// Collects when an exception is thrown when we return a suggestion.
+        /// </summary>
+        /// <param name="e">The exception</param>
+
+        public void OnGetSuggestionError(Exception e);
     }
 }

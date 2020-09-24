@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <param name="commands">The commands collection</param>
         public MockAzPredictorService(string history, IList<string> suggestions, IList<string> commands)
         {
-            SetHistory(history);
+            SetPredictionCommand(history);
             SetCommandsPredictor(commands);
             SetSuggestionPredictor(history, suggestions);
         }

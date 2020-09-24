@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public AzPredictorTests(ModelFixture modelFixture)
         {
             this._fixture = modelFixture;
-            var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
             this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
             this._telemetryClient = new MockAzPredictorTelemetryClient();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._azPredictor.StartEarlyProcessing(history);
 
             Assert.True(this._service.IsPredictionRequested);
-            Assert.Null(this._telemetryClient.RecordedSuggestion);
+            Assert.NotNull(this._telemetryClient.RecordedSuggestion);
         }
 
         /// <summary>

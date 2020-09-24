@@ -37,9 +37,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public sealed class RequestContext
             {
-                public Guid CorrelationId { get; set; } = Guid.Empty;
-                public Guid SessionId { get; set; } = Guid.Empty;
-                public Guid SubscriptionId { get; set; } = Guid.Empty;
+                public string CorrelationId { get; set; } = Guid.Empty.ToString();
+                public string SessionId { get; set; } = Guid.Empty.ToString();
+                public string SubscriptionId { get; set; } = Guid.Empty.ToString();
                 public Version VersionNumber{ get; set; } = new Version(1, 0);
             }
 
@@ -47,28 +47,32 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             public string ClientType { get; set; } = "AzurePowerShell";
             public RequestContext Context { get; set; } = new RequestContext();
 
-            public PredictionRequestBody(string history) => this.History = history;
+            public PredictionRequestBody(string command) => this.History = command;
         };
 
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
-        private volatile Tuple<string, Predictor> _historySuggestions; // The history and the prediction for that.
+        private volatile Tuple<string, Predictor> _commandSuggestions; // The command and the prediction for that.
         private volatile Predictor _commands;
-        private volatile string _history;
+        private volatile string CommandForPrediction;
         private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
         private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
+
+        private readonly ITelemetryClient _telemetryClient;
 
         /// <summary>
         /// The AzPredictor service interacts with the Aladdin service specified in serviceUri.
         /// At initialization, it requests a list of the popular commands.
         /// </summary>
         /// <param name="serviceUri">The URI of the Aladdin service.</param>
-        public AzPredictorService(string serviceUri)
+        /// <param name="telemetryClient">The telemetry client.</param>
+        public AzPredictorService(string serviceUri, ITelemetryClient telemetryClient)
         {
             this._commandsEndpoint = serviceUri + AzPredictorConstants.CommandsEndpoint;
             this._predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
+            this._telemetryClient = telemetryClient;
 
             RequestCommands();
         }
@@ -109,25 +113,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </remarks>
         public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken)
         {
-            var historySuggestions = this._historySuggestions;
-            var history = this._history;
+            var commandSuggestions = this._commandSuggestions;
+            var command = this.CommandForPrediction;
             var predictionSource = PredictionSource.None;
 
-            // We've already used _historySuggestions. There is no need to wait the request to complete at this point.
+            // We've already used _commandSuggestions. There is no need to wait the request to complete at this point.
             // Cancel it.
             this._predictionRequestCancellationSource?.Cancel();
 
-            string result = historySuggestions?.Item2?.Query(input, cancellationToken);
+            string result = commandSuggestions?.Item2?.Query(input, cancellationToken);
 
             if (result != null)
             {
-                if (string.Equals(history, historySuggestions?.Item1, StringComparison.Ordinal))
+                if (string.Equals(command, commandSuggestions?.Item1, StringComparison.Ordinal))
                 {
-                    predictionSource = PredictionSource.CurrentHistory;
+                    predictionSource = PredictionSource.CurrentCommand;
                 }
                 else
                 {
-                    predictionSource = PredictionSource.PreviousHistory;
+                    predictionSource = PredictionSource.PreviousCommand;
                 }
             }
             else
@@ -137,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 if (result != null)
                 {
-                    predictionSource = PredictionSource.Commands;
+                    predictionSource = PredictionSource.StaticCommands;
                 }
             }
 
@@ -145,54 +149,53 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RequestPredictions(IEnumerable<string> history)
+        public virtual void RequestPredictions(IEnumerable<string> commands)
         {
-            // Even if it's called multiple times, we only need to keep the one for the latest history.
+            // Even if it's called multiple times, we only need to keep the one for the latest command.
 
             this._predictionRequestCancellationSource?.Cancel();
             this._predictionRequestCancellationSource = new CancellationTokenSource();
+
             var cancellationToken = this._predictionRequestCancellationSource.Token;
-            var localHistory = string.Join(AzPredictorConstants.CommandConcatenator, history);
-            this._history = localHistory;
+
+            var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
+            this._telemetryClient.OnRequestPrediction(localCommands);
+            this.SetPredictionCommand(localCommands);
 
             // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
             Task.Run(async () => {
-                    var requestBody = JsonConvert.SerializeObject(new PredictionRequestBody(localHistory));
-                    var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBody, Encoding.UTF8, "application/json"), cancellationToken);
+                try
+                {
+                    var requestContext = new PredictionRequestBody.RequestContext()
+                    {
+                        SessionId = this._telemetryClient.SessionId,
+                        CorrelationId = this._telemetryClient.CorrelationId,
+                    };
+                    var requestBody = new PredictionRequestBody(localCommands)
+                    {
+                        Context = requestContext,
+                    };
+
+                    var requestBodyString = JsonConvert.SerializeObject(requestBody);
+                    var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
 
                     var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
                     var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
 
-                    this.SetSuggestionPredictor(localHistory, suggestionsList);
-                },
-                cancellationToken);
+                    this.SetSuggestionPredictor(localCommands, suggestionsList);
+                }
+                catch (Exception e) when (!(e is OperationCanceledException))
+                {
+                    this._telemetryClient.OnRequestPredictionError(localCommands, e);
+                }
+            },
+            cancellationToken);
         }
 
         /// <inheritdoc/>
         public virtual void RecordHistory(IEnumerable<CommandAst> history)
         {
             history.ForEach((h) => this._parameterValuePredictor.ProcessHistoryCommand(h));
-        }
-
-        /// <inhericdoc/>
-        public int? GetRankOfSuggestion(string commandName)
-        {
-            var historySuggestions = this._historySuggestions;
-            return historySuggestions?.Item2?.GetCommandPrediction(commandName, isCommandNameComplete: true, cancellationToken:CancellationToken.None).Item2;
-        }
-
-        /// <inhericdoc/>
-        public int? GetRankOfFallback(string commandName)
-        {
-            var commands = this._commands;
-            return commands?.GetCommandPrediction(commandName, isCommandNameComplete:true, cancellationToken:CancellationToken.None).Item2;
-        }
-
-        /// <inhericdoc/>
-        public IEnumerable<string> GetTopNSuggestions(int n)
-        {
-            var historySuggestions = this._historySuggestions;
-            return historySuggestions?.Item2?.GetTopNPrediction(n);
         }
 
         /// <inheritdoc/>
@@ -214,11 +217,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         this.SetCommandsPredictor(commands_reply);
 
                         // Initialize predictions
-                        var startHistory = $"{AzPredictorConstants.CommandHistoryPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandHistoryPlaceholder}";
                         RequestPredictions(new string[] {
-                                AzPredictorConstants.CommandHistoryPlaceholder,
-                                AzPredictorConstants.CommandHistoryPlaceholder});
-
+                                AzPredictorConstants.CommandPlaceholder,
+                                AzPredictorConstants.CommandPlaceholder});
                     });
         }
 
@@ -230,26 +231,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             this._commands = new Predictor(commands, this._parameterValuePredictor);
             this._commandSet = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
-
         }
 
         /// <summary>
         /// Sets the suggestiosn predictor.
         /// </summary>
-        /// <param name="history">The history that the suggestions are for</param>
+        /// <param name="commands">The commands that the suggestions are for</param>
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
-        protected void SetSuggestionPredictor(string history, IList<string> suggestions)
+        protected void SetSuggestionPredictor(string commands, IList<string> suggestions)
         {
-            this._historySuggestions = Tuple.Create(history, new Predictor(suggestions, this._parameterValuePredictor));
+            this._commandSuggestions = Tuple.Create(commands, new Predictor(suggestions, this._parameterValuePredictor));
         }
 
         /// <summary>
-        /// Updates the history for prediction.
+        /// Updates the command for prediction.
         /// </summary>
-        /// <param name="history">The value to update the history</param>
-        protected void SetHistory(string history)
+        /// <param name="command">The command for the new prediction</param>
+        protected void SetPredictionCommand(string command)
         {
-            this._history = history;
+            this.CommandForPrediction = command;
         }
 
         /// <summary>
