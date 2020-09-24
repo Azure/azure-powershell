@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
 
-
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 6, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
@@ -154,7 +153,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
         [ValidateNotNullOrEmpty]
-        public string TemplateJsonFile { get; set; }
+        public string TemplateFile { get; set; }
 
         //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameParameterSet, ValueFromPipelineByPropertyName = true,
             //HelpMessage = "The description of the version.")]
@@ -189,11 +188,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         case UpdateVersionByIdFromJsonFileParameterSet:
                         case UpdateVersionByNameFromJsonFileParameterSet:
-                            string filePath = this.TryResolvePath(TemplateJsonFile);
+                            string filePath = this.TryResolvePath(TemplateFile);
                             if (!File.Exists(filePath))
                             {
                                 throw new PSInvalidOperationException(
-                                    string.Format(ProjectResources.InvalidFilePath, TemplateJsonFile)
+                                    string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                                 );
                             }
 
@@ -201,9 +200,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             break;
                         case UpdateVersionByIdFromJsonParameterSet:
                         case UpdateVersionByNameFromJsonParameterSet:
-                            // When we're provided with a raw JSON string for the template we don't
-                            // do any special packaging... (ie: we don't pack artifacts because there
-                            // is no well known root path):
+ JObject parsedTemplate;
+                        try
+                        {
+                            parsedTemplate = JObject.Parse(TemplateJson);
+                        }
+                        catch
+                        {
+                            // Check if the user may have inadvertantly passed a file path using "-TemplateJson"
+                            // instead of using "-TemplateFile". If they did, display a warning message. Note we
+                            // do not currently automatically switch to using a file in this case because if the 
+                            // JSON string is coming from an external script/source not authored directly by the
+                            // caller it could result in a sensitive template being PUT unintentionally:
+
+                            try
+                            {
+                                string asFilePath = this.TryResolvePath(TemplateJson);
+                                if (File.Exists(asFilePath))
+                                {
+                                    WriteWarning(
+                                        $"'{TemplateJson}' was found to exist as a file. Did you mean to use '-TemplateFile' instead?"
+                                    );
+                                }
+                            }
+                            catch
+                            {
+                                // Subsequent failure in the file existence check... Ignore it
+                            }
+
+                            throw;
+                        }
+
+                        // When we're provided with a raw JSON string for the template we don't
+                        // do any special packaging... (ie: we don't pack artifacts because there
+                        // is no well known root path):
 
                             packagedTemplate = new PackagedTemplate
                             {

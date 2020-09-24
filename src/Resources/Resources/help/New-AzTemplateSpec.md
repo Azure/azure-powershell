@@ -22,7 +22,7 @@ New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <Stri
 ### FromJsonFileParameterSet
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
+ [-DisplayName <String>] [-Location <String>] -TemplateFile <String> [-VersionDescription <String>]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ it contains no actual resources.
 
 ### Example 2:
 ```powershell
-PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateJsonFile 'myTemplateContent.json'
+PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
 
 Creates a new Template Spec version "v2.0" in a Template Spec named "myTemplateSpec". The specified version 
@@ -186,7 +186,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TemplateJsonFile
+### -TemplateFile
 The file path to the local Azure Resource Manager template JSON file.
 
 ```yaml

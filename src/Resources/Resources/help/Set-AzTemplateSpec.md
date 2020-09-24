@@ -26,7 +26,7 @@ Set-AzTemplateSpec -ResourceId <String> [-Description <String>] [-DisplayName <S
 ### UpdateVersionByIdFromJsonFileParameterSet
 ```
 Set-AzTemplateSpec -ResourceId <String> -Version <String> [-Description <String>] [-DisplayName <String>]
- [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
+ [-Location <String>] -TemplateFile <String> [-VersionDescription <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Set-AzTemplateSpec -ResourceGroupName <String> -Name <String> [-Description <Str
 ### UpdateVersionByNameFromJsonFileParameterSet
 ```
 Set-AzTemplateSpec -ResourceGroupName <String> -Name <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] -TemplateJsonFile <String> [-VersionDescription <String>]
+ [-DisplayName <String>] [-Location <String>] -TemplateFile <String> [-VersionDescription <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ do not already exist they will be created.
 
 ### Example 2:
 ```powershell
-PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateJsonFile 'myTemplateContent.json'
+PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
 
 Modifies version "v2.0" of a Template Spec named "myTemplateSpec". The specified version 
@@ -235,7 +235,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TemplateJsonFile
+### -TemplateFile
 The file path to the local Azure Resource Manager template JSON file.
 
 ```yaml
