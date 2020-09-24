@@ -6,13 +6,8 @@ param(
 )
 
 # Get previous version of Az
-if($gallery -eq "LocalRepo"){
-    $versions = (find-module Az -Repository PSGallery -AllVersions).Version | Sort-Object -Descending
-    $previousVersion = $versions[0]
-}else{
-    $versions = (find-module Az -Repository $gallery -AllVersions).Version | Sort-Object -Descending
-    $previousVersion = $versions[1]
-}
+. "./Common.ps1"
+$previousVersion = Get-ModulePreviousVersion $gallery "Az"
 
 # Install previous version of Az
 Write-Host 'Installing the previous version of Az:', $previousVersion

@@ -6,13 +6,8 @@ param(
 )
 
 # Get previous version of Az.Compute
-if($gallery -eq "LocalRepo"){
-    $versions = (find-module Az.Compute -Repository PSGallery -AllVersions).Version | Sort-Object -Descending
-    $previousVersion = $versions[0]
-}else{
-    $versions = (find-module Az.Compute -Repository $gallery -AllVersions).Version | Sort-Object -Descending
-    $previousVersion = $versions[1]
-}
+. "./Common.ps1"
+$previousVersion = Get-ModulePreviousVersion $gallery "Az.Compute"
 
 # Install previous version of Az.Compute
 Write-Host "Installing previous version of Az.Compute:", $previousVersion

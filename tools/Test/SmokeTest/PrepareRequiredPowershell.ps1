@@ -5,37 +5,6 @@ param(
   $requiredPsVersion
 )
 
-function Remove-AzModules {
-  param (
-    [string]
-    [PSDefaultValue(Help = "Az")]
-    $ModuleName = "Az"
-  )
-  
-  Write-Host "Removing $ModuleName modules..."
-  $ModuleName = $ModuleName + ".*"
-  $modules = Get-Module -Name $ModuleName -ListAvailable
-  if ($modules) {
-    $modules.Path | ForEach-Object { 
-      $dirctory = $_ | Split-Path | Split-Path
-      if (Test-Path $dirctory ) {
-        Remove-Item -Path $dirctory -Recurse -Force
-      }
-    }
-
-    # Check remove result
-    $modules = Get-Module -Name $ModuleName -ListAvailable
-    if ($modules) {
-      throw "Remove $ModuleName modules failed."
-    }
-    else {
-      Write-Host "$ModuleName modules removed."
-    }
-  }else{
-    Write-Host "$ModuleName is not found."
-  }
-}
-
 function Install-PowerShell {
   param (
     [string]
@@ -59,9 +28,9 @@ function Install-PowerShell {
   # Update PowershellGet to the latest one
   Write-Host "Updating PowershellGet to lastest version"
   if ($requiredPsVersion -eq $windowsPowershellVersion) {
-    Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -Force
+    Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -AllowClobber -Force
   }else{
-    $command = "Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -Force `
+    $command = "Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -AllowClobber -Force `
     Exit"
     dotnet tool run pwsh -c $command
   }
@@ -71,6 +40,7 @@ function Install-PowerShell {
 # Image "vs2017-win2016" and "ubuntu-18.04" preinstalled AzureRM modules. 
 
 # Remove Az.* modules
+. "./Common.ps1"
 Remove-AzModules
 
 # If all images update AzureRM to Az, below codes should be deleted.
