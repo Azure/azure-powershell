@@ -588,5 +588,9 @@
   {
     "regex": "VMWare",
     "alias": "VMWare"
+  },
+  {
+    "alias": "DedicatedHsm",
+    "regex": "DedicatedHsm"
   }
 ]
