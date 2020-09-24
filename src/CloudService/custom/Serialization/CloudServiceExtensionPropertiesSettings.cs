@@ -7,11 +7,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 {
     public partial class CloudServiceExtensionPropertiesSettings
     {
-        private IDictionary<string, object> Settings { get; set; }
+        private IDictionary<string, object> Settings { get; set; } = new Dictionary<string, object>();
  
         partial void AfterDeserializeDictionary(System.Collections.IDictionary content)
         {
             Settings = PowershellConverter.ConvertFromHashTableToGenericDictionary(content);
+        }
+
+        partial void BeforeFromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject json, ref bool returnNow)
+        {
+            IDictionary<string, object> tmp = new Dictionary<string, object>();
+            foreach (var item in json.Keys)
+            {
+                tmp.Add(item, json[item]);
+            }
+            Settings = tmp;
         }
  
         partial void AfterToJson(ref JsonObject container)
