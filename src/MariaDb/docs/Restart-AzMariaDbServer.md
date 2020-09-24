@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restart-AzMariaDbServer
 
 ## SYNOPSIS
-
+Restarts a server.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Restart-AzMariaDbServer -InputObject <IMariaDbIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-
+Restarts a server.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ This command restart a MariaDB.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -78,6 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -93,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+The name of the server.
 
 ```yaml
 Type: System.String
@@ -108,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -138,7 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -153,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
@@ -218,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMariaDbIdentity>: 
+INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

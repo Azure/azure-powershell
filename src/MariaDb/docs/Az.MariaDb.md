@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MariaDb
-Module Guid: b40274bf-655e-4bbc-bfb2-90862175b6f2
+Module Guid: 8dbb10e2-0ec3-48c3-9481-1cb1e87e2368
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mariadb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: MariaDb cmdlets
 Gets information about a configuration of server.
 
 ### [Get-AzMariaDbConnectionString](Get-AzMariaDbConnectionString.md)
-
+Get connection string of a MariaDb under a given framework.
 
 ### [Get-AzMariaDbFirewallRule](Get-AzMariaDbFirewallRule.md)
 Gets information about a server firewall rule.
@@ -33,7 +33,7 @@ Gets a virtual network rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [New-AzMariaDbReplica](New-AzMariaDbReplica.md)
-
+Creates a replica of a MariaDb server.
 
 ### [New-AzMariaDbServer](New-AzMariaDbServer.md)
 
@@ -51,10 +51,10 @@ Deletes a server.
 Deletes the virtual network rule with the given name.
 
 ### [Restart-AzMariaDbServer](Restart-AzMariaDbServer.md)
-
+Restarts a server.
 
 ### [Restore-AzMariaDbServer](Restore-AzMariaDbServer.md)
-
+Restore a MariaDb from a existing MariaDb.
 
 ### [Update-AzMariaDbConfiguration](Update-AzMariaDbConfiguration.md)
 Updates a configuration of a server.
