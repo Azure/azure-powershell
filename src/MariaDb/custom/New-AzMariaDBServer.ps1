@@ -13,19 +13,19 @@
 # ----------------------------------------------------------------------------------
 <#
 .Synopsis
-Creates a new MariaDb.
+Creates a new MariaDB.
 .Description
-Creates a new MariaDb.
+Creates a new MariaDB.
 #>
 function New-AzMariaDbServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage='MariaDb server name.')]
+        [Parameter(Mandatory, HelpMessage='MariaDB server name.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb server name.
+        # MariaDB server name.
         ${Name},
     
         [Parameter(Mandatory, HelpMessage='The name of the resource group that contains the resource.')]
@@ -249,4 +249,3 @@ function New-AzMariaDbServer {
           }
     }
 }
-    

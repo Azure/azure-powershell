@@ -39,7 +39,7 @@ Use Update-AzMariaDbConfiguration instead if you want update server parameters s
 
 ## EXAMPLES
 
-### Example 1: Update MariaDb
+### Example 1: Update MariaDB
 ```powershell
 PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageInMb 8192
 
@@ -48,9 +48,9 @@ Name                Location AdministratorLogin Version StorageProfileStorageMb 
 mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1 Basic   Enabled
 ```
 
-This command updates a MariaDb.
+This command updates a MariaDB.
 
-### Example 2: Update MariaDb
+### Example 2: Update MariaDB
 ```powershell
 PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageInMb (8192+1024)
 
@@ -59,7 +59,7 @@ Name                Location AdministratorLogin Version StorageProfileStorageMb 
 mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1 Basic   Enabled
 ```
 
-This command updates a MariaDb.
+This command updates a MariaDB.
 
 ## PARAMETERS
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-MariaDb server name
+MariaDB server name
 
 ```yaml
 Type: System.String

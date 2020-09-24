@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 .Description
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 #>
 function New-AzMariaDbReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -36,11 +36,11 @@ function New-AzMariaDbReplica {
         # The source server object to restore from.
         ${Master},
     
-        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name.')]
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDB server name.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb server name.
+        # MariaDB server name.
         ${MasterName},
     
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]

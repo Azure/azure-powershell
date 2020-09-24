@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-MariaDb server name.
+MariaDB server name.
 
 ```yaml
 Type: System.String

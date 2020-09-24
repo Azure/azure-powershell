@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbReplica
 
 ## SYNOPSIS
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzMariaDbReplica -Master <IServer> -ReplicaName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 
 ## EXAMPLES
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -MasterName
-MariaDb server name.
+MariaDB server name.
 
 ```yaml
 Type: System.String
