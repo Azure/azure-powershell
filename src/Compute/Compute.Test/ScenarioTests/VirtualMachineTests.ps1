@@ -4404,15 +4404,6 @@ function Test-VirtualMachineImageListTopOrderExpand
             $isLessThan = $vmImagesOrderDesc[0].Version -ge $vmImagesOrderAsc[0].Version;
             Assert-True { $isLessThan };
         }
-
-        # Test Expand
-        Start-Transcript -Path "transcript.txt"
-        $vmImagesExpand = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Expand "properties/osDiskImage";
-        Stop-Transcript
-
-        $wordToFind="operatingSystem";
-        $file = (Get-Content -path "transcript.txt") -join ' ';
-        Assert-True { $file -match $wordToFind } ;
     }
     finally 
     {

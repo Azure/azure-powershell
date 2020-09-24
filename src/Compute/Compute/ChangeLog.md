@@ -21,8 +21,7 @@
 -->
 ## Upcoming Release
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
-* Removed `-FilterExpression` from the documentation for the `GetAzVmImage` cmdlet and the `PSVirtualMachineImage` object.
-* Added the `-Top`, `-OrderBy`, and `-Expand` optional parameters to the `Get-AzVmImage` cmdlet. 
+* Added the `-Top` and `-OrderBy` optional parameters to the `Get-AzVmImage` cmdlet. 
 
 ## Version 4.4.0
 * Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`

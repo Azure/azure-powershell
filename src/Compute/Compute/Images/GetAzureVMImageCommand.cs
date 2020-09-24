@@ -89,12 +89,6 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string OrderBy { get; set; }
 
-        [Parameter(ParameterSetName = ListVMImageParamSetName,
-            Mandatory = false,
-            HelpMessage = "Specifies additional details to return. Formatted as an OData query.",
-            ValueFromPipelineByPropertyName = true)]
-        public string Expand { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -108,9 +102,8 @@ namespace Microsoft.Azure.Commands.Compute
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
-                        this.Expand,
-                        this.Top,
-                        this.OrderBy
+                        top: this.Top,
+                        orderby: this.OrderBy
                         ).GetAwaiter().GetResult();
 
                     var images = from r in result.Body

@@ -16,7 +16,7 @@ Gets all the versions of a VMImage.
 ### ListVMImage
 ```
 Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> [-Top <Int32>]
- [-OrderBy <String>] [-Expand <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
@@ -103,21 +103,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Expand
-Specifies additional details to return. Formatted as an OData query.
-
-```yaml
-Type: System.String
-Parameter Sets: ListVMImage
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
