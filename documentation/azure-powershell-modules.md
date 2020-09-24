@@ -113,7 +113,9 @@ Support                               | `Az.Support`                            
 Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery]
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
+VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
+
 
 <!-- References -->
 
@@ -329,4 +331,5 @@ Web App Service                       | `Az.Websites`                           
 [SynapseGallery]:                    https://www.powershellgallery.com/packages/Az.Synapse/
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
+[VMWareGallery]:                     https://www.powershellgallery.com/packages/Az.VMWare/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/

@@ -12,7 +12,7 @@
 RootModule = './Az.ConnectedMachine.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = './bin/Az.ConnectedMachine.private.dll'
+RequiredAssemblies = 'bin\Az.ConnectedMachine.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,7 +63,7 @@ RequiredAssemblies = './bin/Az.ConnectedMachine.private.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = './Az.ConnectedMachine.format.ps1xml'
+FormatsToProcess = 'Az.ConnectedMachine.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()

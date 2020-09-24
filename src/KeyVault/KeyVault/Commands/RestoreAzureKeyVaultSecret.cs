@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup secret into a vault 
     /// </summary>
+    [GenericBreakingChange("Property 'SecretValueText' in PSKeyVaultSecret will be removed around 10/27/2020")]
     [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType( typeof(PSKeyVaultSecret) )]
