@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             try
             {
                 cert = new X509Certificate2(path.PublicKey);
-                RSAParameters parameters = RsaParamsFromPem(path.PrivateKey, path.Password);
+                RSAParameters parameters = RsaParamsFromPem(path.PrivateKey, path.Password.ToPlainText());
                 key = RSA.Create();
                 key.ImportParameters(parameters);
                 thumbprint = Utils.Sha256Thumbprint(cert);

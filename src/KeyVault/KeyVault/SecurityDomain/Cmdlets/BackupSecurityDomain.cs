@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                 if (!AzureSession.Instance.DataStore.FileExists(OutputPath) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, OutputPath), Resources.FileOverwriteCaption))
                 {
                     AzureSession.Instance.DataStore.WriteFile(OutputPath, securityDomain);
-                    WriteVerbose($"Security domain data of managed HSM '{Name}' downloaded to '{OutputPath}'.");
+                    WriteDebug($"Security domain data of managed HSM '{Name}' downloaded to '{OutputPath}'.");
                     if (PassThru)
                     {
                         WriteObject(true);

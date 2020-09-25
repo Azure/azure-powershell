@@ -7,7 +7,7 @@ openssl req -x509 -newkey rsa:2048 -keyout sd2.key -out sd2.cer -days 365
 openssl req -x509 -newkey rsa:2048 -keyout sd3.key -out sd3.cer -days 365
 
 <!-- backup -->
-Backup-AzManagedHsmSecurityDomain -Name yemingmhsm07 -Certificates  C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.cer,C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.cer,C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.cer -OutputPath C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\2test\sd.ps.json -Quorum 2
+Backup-AzManagedHsmSecurityDomain -Name yemingmhsm08 -Certificates  C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.cer,C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.cer,C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.cer -OutputPath C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd.ps.json -Quorum 2
 
 az keyvault security-domain download --sd-quorum 2 --sd-wrapping-keys "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.cer" "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.cer" "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.cer" --security-domain-file "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd.cli.json" --hsm-name yemingmhsm03
 
@@ -31,7 +31,11 @@ new-azkeyvault -Hsm -Name yemingmhsm08 -ResourceGroupName yemingmhsm -Location e
 az keyvault key restore --hsm-name yemingmhsm06 --file "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\backup\rsa.key"
 
 <!-- restore -->
-Restore-AzManagedHsmSecurityDomain -Name yemingmhsm06 -PrivateKeyPathTemp  C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\ -SecurityDomainPath C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd.ps.json
+$keys = @{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.key"},
+@{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.key"},
+@{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.key"}
+
+Restore-AzManagedHsmSecurityDomain -Name yemingmhsm09 -Keys $keys -SecurityDomainPath C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd.ps.json
 
 <!-- restore key: success -->
 az keyvault key restore --hsm-name yemingmhsm06 --file "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\backup\rsa.key"

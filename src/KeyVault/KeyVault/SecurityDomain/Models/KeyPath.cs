@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
@@ -8,6 +6,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
     {
         public string PublicKey;
         public string PrivateKey;
-        public string Password;
+        public SecureString Password;
     }
 }
