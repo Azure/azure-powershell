@@ -21,10 +21,4 @@ Describe 'Get-AzMigrateRunAsAccount' {
         $account = Get-AzMigrateRunAsAccount -AccountName $env.migRunAsAccountName -SiteName  $env.migSiteName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $account.Name | Should -Be $env.migRunAsAccountName
     }
-
-    It 'GetViaIdentity' -skip {
-        $account1 = Get-AzMigrateRunAsAccount -AccountName $env.migRunAsAccountName -SiteName  $env.migSiteName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
-        $account2 = Get-AzMigrateRunAsAccount -InputObject $account1
-        $account2.Name | Should -Be $env.migRunAsAccountName
-    }
 }

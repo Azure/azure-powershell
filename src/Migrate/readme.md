@@ -153,6 +153,12 @@ directive:
       subject: ^Site
       variant: ^Get1$|^GetViaIdentity1|^Get2$|^GetViaIdentity2
     remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get$
+      subject: Site$|Machine$|RunAsAccount$
+      variant: ^GetViaIdentity$
+    remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
@@ -164,6 +170,18 @@ directive:
       verb: Register$
       subject: ProjectTool$
       variant: ^Register$|^RegisterViaIdentity|^RegisterViaIdentityExpanded
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Get$
+      subject: Project$|Solution$
+      variant: ^GetViaIdentity$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove$
+      subject: Project$
+      variant: ^DeleteViaIdentity$
     remove: true
   # Remove cmdlets not in scope
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json

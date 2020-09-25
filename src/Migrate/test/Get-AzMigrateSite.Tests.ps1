@@ -16,10 +16,4 @@ Describe 'Get-AzMigrateSite' {
         $site = Get-AzMigrateSite -ResourceGroupName $env.migResourceGroup -Name $env.migSiteName -SubscriptionId $env.migSubscriptionId
         $site.Name | Should -Be $env.migSiteName
     }
-
-    It 'GetViaIdentity' -skip {
-        $site1 = Get-AzMigrateSite -ResourceGroupName $env.migResourceGroup -Name $env.migSiteName -SubscriptionId $env.migSubscriptionId
-        $site2 = Get-Get-AzMigrateSite -InputObject $site1
-        $site2.Name | Should -Be $env.migSiteName
-    }
 }
