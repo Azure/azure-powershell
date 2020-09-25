@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Commands.Synapse
             Utils.CategorizedFiles(this.ReferenceFile, out IList<string> jars, out IList<string> files);
             var livyRequest = new SparkSessionOptions(this.Name)
             {
-                Jars = jars,
-                Files = files,
-                Configuration = this.Configuration?.ToDictionary(),
                 ExecutorMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 ExecutorCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 DriverMemory = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Memory + "g",
                 DriverCores = SynapseConstants.ComputeNodeSizes[this.ExecutorSize].Cores,
                 ExecutorCount = this.ExecutorCount
             };
+            jars?.ForEach(item => livyRequest.Jars.Add(item));
+            files?.ForEach(item => livyRequest.Files.Add(item));
+            this.Configuration?.ToDictionary()?.ForEach(item => livyRequest.Configuration.Add(item));
 
             if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.StartingSynapseSparkSession, this.SparkPoolName, this.WorkspaceName)))
             {

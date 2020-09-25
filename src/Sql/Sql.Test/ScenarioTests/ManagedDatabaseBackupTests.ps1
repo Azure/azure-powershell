@@ -185,8 +185,8 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 function Test-ManagedInstanceLongTermRetentionPolicy()
 {
 	# Setup
-	$resourceGroupName = "cl_stage_sea_cv"
-	$managedInstanceName = "seageodr-gen5-gp"
+	$resourceGroupName = "v-sntani-test-mi-rg"
+	$managedInstanceName = "managedinstancearm"
 	$weeklyRetention = "P1W"
 	$zeroRetention = "PT0S"
 
@@ -218,12 +218,12 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
-	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaeName $databaseName
-	$resourceGroup = "cl_stage_sea_cv"
-	$locationName = "southeastasia"
-	$managedInstanceName = "seageodr-gen5-gp"
+	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	$resourceGroup = "v-sntani-test-mi-rg"
+	$locationName = "westcentralus"
+	$managedInstanceName = "managedinstancearm"
 	$databaseName = "ps-test-1"
 	$databaseWithRemovableBackup = "ps-test-2";
 
@@ -274,12 +274,12 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
-	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "cl_stage_sea_cv"
-	$locationName = "southeastasia"
-	$managedInstanceName = "seageodr-gen5-gp"
+	$resourceGroup = "v-sntani-test-mi-rg"
+	$locationName = "westcentralus"
+	$managedInstanceName = "managedinstancearm"
 	$databaseName = "ps-test-3"
 
 	# Basic Get Tests

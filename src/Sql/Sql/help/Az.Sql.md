@@ -77,6 +77,12 @@ Disables Azure AD only authentication for a specific SQL Server.
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
 
+### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Server.
+
+### [Get-AzSqlServerActiveDirectoryOnlyAuthentication](Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Server.
+
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 

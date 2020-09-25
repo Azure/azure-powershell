@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
+* Supported Point In Time Restore
+    - Enable-AzStorageBlobRestorePolicy
+    - Disable-AzStorageBlobRestorePolicy
+    - New-AzStorageBlobRangeToRestore
+    - Restore-AzStorageBlobRange
+* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - Get-AzureRMStorageAccount
+    
 ## Version 2.5.0
 * Supported blob query acceleration
     -  `Get-AzStorageBlobQueryResult`
