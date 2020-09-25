@@ -38,6 +38,9 @@ Gets the details of registered recovery services provider.
 ### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
 Method to get run as account.
 
+### [Get-AzMigrateServer](Get-AzMigrateServer.md)
+Get Azure migrate server commandlet fetches all servers in a migrate project.
+
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 
@@ -61,6 +64,9 @@ The operation to create a protection container mapping.
 
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
+
+### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
+Registers a tool with the migrate project.
 
 ### [Remove-AzMigrateProject](Remove-AzMigrateProject.md)
 Delete the migrate project.

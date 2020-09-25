@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='GetById', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

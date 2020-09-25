@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserve
 #>
 function Get-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='GetBySRSID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
