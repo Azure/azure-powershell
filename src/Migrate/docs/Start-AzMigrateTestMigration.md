@@ -12,14 +12,7 @@ Starts the test migration for the replicating server.
 
 ## SYNTAX
 
-### ByNameVMwareCbt (Default)
-```
-Start-AzMigrateTestMigration -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- -TestNetworkID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ByIDVMwareCbt
+### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -41,32 +34,26 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 PS C:\> Start-AzMigrateTestMigration -ProjectName 'AzMigrateTestProjectPWSH' -ResourceGroupName 'azmigratepwshtestasr13072020'  -MachineName 'bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f' -TestNetworkId '/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 
 
-AllowedOperation            : {DisableMigration, TestMigrateCleanup}
-CurrentJobId                : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
-CurrentJobName              : None
-CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
-Health                      : Normal
-HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
-Id                          : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionCont
-                              ainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-
-                              e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-LastTestMigrationStatus     :
-LastTestMigrationTime       :
-Location                    :
-MachineName                 : rb-w2k12r2-1
-MigrationState              : Replicating
-MigrationStateDescription   : Ready to migrate
-Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
-PolicyId                    : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
-TestMigrateState            : None
-TestMigrateStateDescription : None
-Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Test Migrate
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : TestMigrate
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 
 ```
 
@@ -77,32 +64,26 @@ By machine name.
 PS C:\> Start-AzMigrateTestMigration -TargetObjectID '/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f' -TestNetworkId '/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork
 
 
-AllowedOperation            : {DisableMigration, TestMigrateCleanup}
-CurrentJobId                : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
-CurrentJobName              : None
-CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
-Health                      : Normal
-HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
-Id                          : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionCont
-                              ainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-
-                              e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-LastTestMigrationStatus     :
-LastTestMigrationTime       :
-Location                    :
-MachineName                 : rb-w2k12r2-1
-MigrationState              : Replicating
-MigrationStateDescription   : Ready to migrate
-Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
-PolicyId                    : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
-TestMigrateState            : None
-TestMigrateStateDescription : None
-Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Test Migrate
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : TestMigrate
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 
 ```
 
@@ -114,32 +95,26 @@ PS C:\> $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId 
 PS C:\> Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork
 
 
-AllowedOperation            : {DisableMigration, TestMigrateCleanup}
-CurrentJobId                : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
-CurrentJobName              : None
-CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
-Health                      : Normal
-HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
-Id                          : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionCont
-                              ainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-
-                              e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-LastTestMigrationStatus     :
-LastTestMigrationTime       :
-Location                    :
-MachineName                 : rb-w2k12r2-1
-MigrationState              : Replicating
-MigrationStateDescription   : Ready to migrate
-Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629
-PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
-PolicyId                    : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
-TestMigrateState            : None
-TestMigrateStateDescription : None
-Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Test Migrate
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : TestMigrate
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 
 ```
 
@@ -194,21 +169,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineName
-Specifies the machine name of the replicating server for which the test migration needs to be initiated.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -218,36 +178,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Specifies the Azure Migrate Project in which servers are replicating.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the Resource Group of the Azure Migrate Project in which servers are replicating.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

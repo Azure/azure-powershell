@@ -153,8 +153,7 @@ function Set-AzMigrateServerReplication {
     )
     
     process {
-            #Set-PSDebug -Step; foreach ($i in 1..3) {$i}
-            $test = $PSBoundParameters
+            
             $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
             $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
             $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
@@ -202,7 +201,7 @@ function Set-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
             
-            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @GetPSBoundParameters
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtUpdateMigrationItemInput]::new()
                 $ProviderSpecificDetails.InstanceType = 'VMwareCbt'

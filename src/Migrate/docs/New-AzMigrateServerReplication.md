@@ -12,25 +12,14 @@ Starts replication for the specified server.
 
 ## SYNTAX
 
-### ByNameDefaultUser (Default)
-```
-New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -MachineName <String>
- -OSDiskID <String> -ProjectName <String> -ResourceGroupName <String> -TargetNetworkId <String>
- -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
- [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>] [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByIdDefaultUser
+### ByIdDefaultUser (Default)
 ```
 New-AzMigrateServerReplication -DiskType <DiskAccountType> -LicenseType <LicenseType> -OSDiskID <String>
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
  -VMwareMachineId <String> [-DiskEncryptionSetID <String>] [-PerformAutoResync <String>]
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -39,8 +28,8 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseTy
  -PerformAutoResync <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
  -TargetSubnetName <String> -TargetVMName <String> -VMwareMachineId <String> [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -50,7 +39,7 @@ New-AzMigrateServerReplication -DiskType <DiskAccountType> -InputObject <IVMware
  -TargetSubnetName <String> -TargetVMName <String> [-DiskEncryptionSetID <String>]
  [-PerformAutoResync <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
  [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectPowerUser
@@ -59,18 +48,8 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObje
  -LicenseType <LicenseType> -PerformAutoResync <String> -TargetNetworkId <String>
  -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String> [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByNamePowerUser
-```
-New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <LicenseType>
- -MachineName <String> -PerformAutoResync <String> -ProjectName <String> -ResourceGroupName <String>
- -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,32 +61,27 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 ```powershell
 PS C:\> New-AzMigrateServerReplication -VMwareMachineId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskType "Standard_LRS" -OSDiskID "6000C299-343d-7bcd-c05e-a94bd63316dd"
 
-AllowedOperation            : {DisableMigration, TestMigrate, Migrate}
-CurrentJobId                : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
-CurrentJobName              : None
-CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
-Health                      : Normal
-HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
-Id                          : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionCont
-                              ainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-
-                              e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f
-LastTestMigrationStatus     :
-LastTestMigrationTime       :
-Location                    :
-MachineName                 : prsadhu-TestVM
-MigrationState              : Replicating
-MigrationStateDescription   : Ready to migrate
-Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f
-PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
-PolicyId                    : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
-TestMigrateState            : None
-TestMigrateStateDescription : None
-Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
+
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Enable
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : Enable
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
 This is for the scenario, when there is only one single disk that has to be protected.
@@ -120,52 +94,33 @@ PS C:\> $DisksToInclude += $OSDisk
 PS C:\> $DisksToInclude += $DataDisk
 PS C:\> New-AzMigrateServerReplication -VMwareMachineId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskToInclude $DisksToInclude -PerformAutoResync true
 
-AllowedOperation            : {DisableMigration, TestMigrate, Migrate}
-CurrentJobId                : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
-CurrentJobName              : None
-CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
-Health                      : Normal
-HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
-Id                          : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionCont
-                              ainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-
-                              e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f
-LastTestMigrationStatus     :
-LastTestMigrationTime       :
-Location                    :
-MachineName                 : prsadhu-TestVM
-MigrationState              : Replicating
-MigrationStateDescription   : Ready to migrate
-Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f
-PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
-PolicyId                    : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
-                              ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
-TestMigrateState            : None
-TestMigrateStateDescription : None
-Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
+
+
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Enable
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : Enable
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
 This is for the scenario, when there are multiple disks that has to be protected.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -187,7 +142,7 @@ Specifies the disk encyption set to be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser
 Aliases:
 
 Required: False
@@ -203,7 +158,7 @@ To construct, see NOTES section for DISKTOINCLUDE properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]
-Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser, ByNamePowerUser
+Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser
 Aliases:
 
 Required: True
@@ -218,7 +173,7 @@ Specifies the type of disks to be used for the Azure VM.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType
-Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser
 Aliases:
 
 Required: True
@@ -260,42 +215,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineName
-Specifies the discovered machine name of the discovered server to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameDefaultUser, ByNamePowerUser
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OSDiskID
 Specifies the Operating System disk for the source server to be migrated.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser, ByNameDefaultUser
+Parameter Sets: ByIdDefaultUser, ByInputObjectDefaultUser
 Aliases:
 
 Required: True
@@ -311,36 +236,6 @@ Specifies if replication be auto-repaired in case change tracking is lost for th
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Specifies the migrate project name of the discovered server to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameDefaultUser, ByNamePowerUser
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the resource group of the discovered server to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameDefaultUser, ByNamePowerUser
 Aliases:
 
 Required: True
@@ -505,7 +400,7 @@ Account id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameDefaultUser, ByNamePowerUser
+Parameter Sets: (All)
 Aliases:
 
 Required: False
