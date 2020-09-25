@@ -103,7 +103,9 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <param name="httpRequest"></param>
         private void PrepareRequest(HttpRequestMessage httpRequest)
         {
-            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            if (httpRequest.Content != null) {
+                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
 
             try
             {
