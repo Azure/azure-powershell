@@ -21,10 +21,4 @@ Describe 'Get-AzMigrateMachine' {
         $machine = Get-AzMigrateMachine -Name $env.migVMwareMachineName -ResourceGroupName $env.migResourceGroup -SiteName $env.migSiteName -SubscriptionId $env.migSubscriptionId
         $machine.Name | Should -Be $env.migVMwareMachineName
     }
-
-    It 'GetViaIdentity' -skip {
-        $machine1 = Get-AzMigrateMachine -Name $env.migVMwareMachineName -ResourceGroupName $env.migResourceGroup -SiteName $env.migSiteName -SubscriptionId $env.migSubscriptionId
-        $machine2 = Get-AzMigrateMachine -InputObject $machine1
-        $machine2.Name | Should -Be $env.migVMwareMachineName
-    }
 }

@@ -21,10 +21,4 @@ Describe 'Get-AzMigrateSolution' {
         $solution = Get-AzMigrateSolution -Name $env.migSolutionName -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $solution.Name | Should -Be $env.migSolutionName
     }
-
-    It 'GetViaIdentity' -skip {
-        $solution1 = Get-AzMigrateSolution -Name $env.migSolutionName -MigrateProjectName  $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
-        $solution2 = Get-AzMigrateSolution -InputObject $solution1
-        $solution2.Name | Should -Be $env.migSolutionName
-    }
 }
