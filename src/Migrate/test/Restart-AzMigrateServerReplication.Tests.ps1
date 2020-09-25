@@ -12,21 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Restart-AzMigrateServerReplication' {
-    It 'ByNameVMwareCbt' {
-        $output = Restart-AzMigrateServerReplication -MachineName  $env.srsMachineName -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
- 	$output.Count | Should -BeGreaterOrEqual 1
-    }
-
     It 'ByIDVMwareCbt' {
-        $output = Restart-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+        $output = Restart-AzMigrateServerReplication -TargetObjectID $env.srsMachinetempz -SubscriptionId $env.srsSubscriptionId
  	$output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'ByInputObjectVMwareCbt' {
-        $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+       $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachinetempz -SubscriptionId $env.srsSubscriptionId
         $obj.Count | Should -BeGreaterOrEqual 1
         $output = Restart-AzMigrateServerReplication -InputObject $obj -SubscriptionId $env.srsSubscriptionId
  	$output.Count | Should -BeGreaterOrEqual 1
-	
     }
 }

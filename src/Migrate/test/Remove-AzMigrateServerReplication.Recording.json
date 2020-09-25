@@ -1,14 +1,14 @@
 {
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/migrateProjects/AzMigrateTestProjectPWSH/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$DELETE+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f?api-version=2018-01-10+1": {
     "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/migrateProjects/AzMigrateTestProjectPWSH/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview",
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f?api-version=2018-01-10",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "6b996fda-c90c-4afa-a020-0b9275bce8c6" ],
-        "CommandName": [ "Az.Migrate\\Get-AzMigrateSolution" ],
-        "FullCommandName": [ "Get-AzMigrateSolution_Get" ],
+        "x-ms-client-request-id": [ "8b2d7edf-37f0-41c9-beae-48fa71d859d5" ],
+        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
+        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
@@ -17,36 +17,39 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 202,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ea57fb8a-b8d1-4eea-a15f-25aa077d8f2f" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f/operationresults/bc332cee-7ff7-498d-98e3-e21301750e14?api-version=2018-01-10" ],
+        "Retry-After": [ "30" ],
+        "x-ms-request-id": [ "8b2d7edf-37f0-41c9-beae-48fa71d859d5 9/25/2020 9:23:39 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/bc332cee-7ff7-498d-98e3-e21301750e14?api-version=2018-01-10" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8b2d7edf-37f0-41c9-beae-48fa71d859d5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "1c193083-52ad-48e1-a850-8c46cedd4cf7" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115244Z:1c193083-52ad-48e1-a850-8c46cedd4cf7" ],
-        "Date": [ "Thu, 24 Sep 2020 11:52:43 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "08155178-76fb-4489-b1ce-ac4e2e9dfce8" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200925T212339Z:08155178-76fb-4489-b1ce-ac4e2e9dfce8" ],
+        "Date": [ "Fri, 25 Sep 2020 21:23:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1347" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
-      "Content": "{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/MigrateProjects/AzMigrateTestProjectPWSH/Solutions/Servers-Migration-ServerMigration\",\"name\":\"Servers-Migration-ServerMigration\",\"type\":\"Microsoft.Migrate/MigrateProjects/Solutions\",\"etag\":\"\\\"510005ee-0000-0800-0000-5f12716b0000\\\"\",\"properties\":{\"tool\":\"ServerMigration\",\"purpose\":\"Migration\",\"goal\":\"Servers\",\"status\":\"Active\",\"cleanupState\":\"None\",\"summary\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":9,\"testMigratedCount\":0,\"migratedCount\":0},\"details\":{\"groupCount\":0,\"assessmentCount\":0,\"extendedDetails\":{\"applianceNameToSiteIdMapV2\":\"[\\r\\n  {\\r\\n    \\\"ApplianceName\\\": \\\"AzMigratePWSHT\\\",\\r\\n    \\\"SiteId\\\": \\\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site\\\"\\r\\n  }\\r\\n]\",\"projectId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/assessmentprojects/AzMigrateTestProjectPWSH02aaproject\",\"vaultId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault\"}}}}"
+      "Content": null
     }
   },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics?api-version=2018-01-10+2": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/bc332cee-7ff7-498d-98e3-e21301750e14?api-version=2018-01-10+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics?api-version=2018-01-10",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/bc332cee-7ff7-498d-98e3-e21301750e14?api-version=2018-01-10",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "18ce3e98-0b9e-445e-a0fe-5bc2bee7f547" ],
-        "CommandName": [ "Az.Migrate\\Get-AzMigrateReplicationFabric" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationFabric_List" ],
+        "x-ms-client-request-id": [ "084df566-956c-4d72-97be-4ba8eeb4fe18" ],
+        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
@@ -59,390 +62,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "18ce3e98-0b9e-445e-a0fe-5bc2bee7f547 9/24/2020 11:52:45 AM" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/bc332cee-7ff7-498d-98e3-e21301750e14" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "18ce3e98-0b9e-445e-a0fe-5bc2bee7f547" ],
+        "x-ms-client-request-id": [ "084df566-956c-4d72-97be-4ba8eeb4fe18" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "8278b737-2c24-477f-905a-717d25d33a2e" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115246Z:8278b737-2c24-477f-905a-717d25d33a2e" ],
-        "Date": [ "Thu, 24 Sep 2020 11:52:45 GMT" ]
+        "x-ms-correlation-request-id": [ "6e95dfeb-b90f-4fe0-84db-b7cad45af9b6" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200925T212340Z:6e95dfeb-b90f-4fe0-84db-b7cad45af9b6" ],
+        "Date": [ "Fri, 25 Sep 2020 21:23:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1446" ],
+        "Content-Length": [ "2301" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"AzMigratePWSHTc8d1replicationfabric\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics\",\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric\",\"properties\":{\"friendlyName\":\"AzMigratePWSHTc8d1replicationfabric\",\"encryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"rolloverEncryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"internalIdentifier\":\"501ff8f2-c9d7-5bf4-87ff-d0b3fc98aeb5\",\"bcdrState\":\"Valid\",\"customDetails\":{\"instanceType\":\"VMwareV2\",\"vmwareSiteId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site\",\"physicalSiteId\":null,\"migrationSolutionId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Migrate/MigrateProjects/AzMigrateTestProjectPWSH/Solutions/Servers-Migration-ServerMigration\",\"srsServiceEndpoint\":\"https://pod01-srs1.wus2.hypervrecoverymanager.windowsazure.com\",\"serviceEndpoint\":\"https://pod01-srs1.wus2.hypervrecoverymanager.windowsazure.com\",\"serviceResourceId\":\"4924138093101809170\",\"serviceContainerId\":\"1731645538365\",\"processServers\":[]},\"healthErrorDetails\":[],\"health\":\"Normal\"}}],\"nextLink\":null}"
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/bc332cee-7ff7-498d-98e3-e21301750e14\",\"name\":\"bc332cee-7ff7-498d-98e3-e21301750e14\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"8b2d7edf-37f0-41c9-beae-48fa71d859d5 ActivityId: 08155178-76fb-4489-b1ce-ac4e2e9dfce8\",\"scenarioName\":\"DisableMigration\",\"friendlyName\":\"Stop replication\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"DisableProtectionOnPrimaryTask\",\"name\":\"DisableProtectionOnPrimary\",\"startTime\":\"2020-09-25T21:23:40.0984442Z\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Disabling migration\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"UpdateDraStateTask\",\"name\":\"UpdateDraState\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Updating the provider states\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2020-09-25T21:23:39.4946203Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"101883a0-23f7-538a-bbd5-6d8b4fa900e2\",\"targetObjectName\":\"prsadhu-TestVM\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"101883a0-23f7-538a-bbd5-6d8b4fa900e2\",\"primaryVmName\":\"prsadhu-TestVM\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"prsadhu-TestVM\",\"protectionProfileId\":\"42752b89-5fad-52fd-bf93-679fbdb6fed9\",\"primaryCloudId\":\"cloud_501ff8f2-c9d7-5bf4-87ff-d0b3fc98aeb5\",\"primaryCloudName\":\"AzMigratePWSHTc8d1replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"501ff8f2-c9d7-5bf4-87ff-d0b3fc98aeb5\",\"primaryVmmName\":\"AzMigratePWSHTc8d1replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}"
     }
   },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers?api-version=2018-01-10+3": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4?api-version=2018-01-10+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers?api-version=2018-01-10",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4?api-version=2018-01-10",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "0be893ca-dbfb-4c79-b6ce-bbaca1852e5a" ],
-        "CommandName": [ "Az.Migrate\\Get-AzMigrateReplicationProtectionContainer" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationProtectionContainer_List1" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "0be893ca-dbfb-4c79-b6ce-bbaca1852e5a 9/24/2020 11:52:46 AM" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "0be893ca-dbfb-4c79-b6ce-bbaca1852e5a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "ae3f4b9f-c710-4b58-9536-b5e2a7215655" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115246Z:ae3f4b9f-c710-4b58-9536-b5e2a7215655" ],
-        "Date": [ "Thu, 24 Sep 2020 11:52:46 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "728" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer\",\"name\":\"AzMigratePWSHTc8d1replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"AzMigratePWSHTc8d1replicationfabric\",\"friendlyName\":\"AzMigratePWSHTc8d1replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":8,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$DELETE+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c?api-version=2018-01-10+4": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c/operationresults/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4 9/24/2020 11:52:47 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "7dba9ea8-580c-4078-a573-f6bd213707a5" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115247Z:7dba9ea8-580c-4078-a573-f6bd213707a5" ],
-        "Date": [ "Thu, 24 Sep 2020 11:52:46 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "d3459cf5-7aa3-4f2c-a924-709585524443" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115318Z:d3459cf5-7aa3-4f2c-a924-709585524443" ],
-        "Date": [ "Thu, 24 Sep 2020 11:53:17 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "191" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"a9c5823e-77fa-4866-8bfe-ba8e3d5ff696\",\"properties\":null,\"status\":\"InProgress\",\"startTime\":\"2020-09-24T11:52:47.4737015Z\",\"endTime\":null,\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "ea48bf28-1c93-4b3a-9323-c95fbe15248f" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115348Z:ea48bf28-1c93-4b3a-9323-c95fbe15248f" ],
-        "Date": [ "Thu, 24 Sep 2020 11:53:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "216" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"a9c5823e-77fa-4866-8bfe-ba8e3d5ff696\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2020-09-24T11:52:47.4737015Z\",\"endTime\":\"2020-09-24T11:53:21.0000000Z\",\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByNameVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c/operationresults/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_525a684f-3131-8b5c-2eb5-2e690eedc30c/operationresults/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/a9c5823e-77fa-4866-8bfe-ba8e3d5ff696?api-version=2018-01-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "69516151-4d6b-438a-97bb-e711abc13ee4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "fe2c02b9-30af-4b04-9742-a66a1257250f" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115348Z:fe2c02b9-30af-4b04-9742-a66a1257250f" ],
-        "Date": [ "Thu, 24 Sep 2020 11:53:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$DELETE+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092?api-version=2018-01-10+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092/operationresults/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10" ],
-        "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8 9/24/2020 11:53:49 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "4f93c3fc-5d26-43a2-a870-f59f26184351" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115349Z:4f93c3fc-5d26-43a2-a870-f59f26184351" ],
-        "Date": [ "Thu, 24 Sep 2020 11:53:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/84151482-ed90-4c8f-a4a1-2a8e42a67c22" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "008f7fce-f796-48b2-8d5a-17194685938b" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115420Z:008f7fce-f796-48b2-8d5a-17194685938b" ],
-        "Date": [ "Thu, 24 Sep 2020 11:54:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "191" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"84151482-ed90-4c8f-a4a1-2a8e42a67c22\",\"properties\":null,\"status\":\"InProgress\",\"startTime\":\"2020-09-24T11:53:49.7429091Z\",\"endTime\":null,\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/84151482-ed90-4c8f-a4a1-2a8e42a67c22" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "1bc94dc9-0142-4afb-9d8c-1a13a378499b" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115450Z:1bc94dc9-0142-4afb-9d8c-1a13a378499b" ],
-        "Date": [ "Thu, 24 Sep 2020 11:54:50 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "216" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"84151482-ed90-4c8f-a4a1-2a8e42a67c22\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2020-09-24T11:53:49.7429091Z\",\"endTime\":\"2020-09-24T11:54:24.0000000Z\",\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092/operationresults/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50069ee3-0b88-6414-0a82-acd37b6dc092/operationresults/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/84151482-ed90-4c8f-a4a1-2a8e42a67c22", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/84151482-ed90-4c8f-a4a1-2a8e42a67c22" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/84151482-ed90-4c8f-a4a1-2a8e42a67c22?api-version=2018-01-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "e6010659-c169-4566-8e81-b89a913e67a8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "519266da-3e38-46c1-b0b1-15b747414e35" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115451Z:519266da-3e38-46c1-b0b1-15b747414e35" ],
-        "Date": [ "Thu, 24 Sep 2020 11:54:50 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9?api-version=2018-01-10+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "191d2bfc-f45b-4576-9c9a-7498fbc447ea" ],
+        "x-ms-client-request-id": [ "269a6b18-ba0d-4395-bbf0-7fd6f7b2acb6" ],
         "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
         "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -459,30 +104,30 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "191d2bfc-f45b-4576-9c9a-7498fbc447ea 9/24/2020 11:54:51 AM" ],
+        "x-ms-request-id": [ "269a6b18-ba0d-4395-bbf0-7fd6f7b2acb6 9/25/2020 9:23:41 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "191d2bfc-f45b-4576-9c9a-7498fbc447ea" ],
+        "x-ms-client-request-id": [ "269a6b18-ba0d-4395-bbf0-7fd6f7b2acb6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "3a8f5b0a-d13c-490d-a419-dfb068381dd4" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115451Z:3a8f5b0a-d13c-490d-a419-dfb068381dd4" ],
-        "Date": [ "Thu, 24 Sep 2020 11:54:51 GMT" ]
+        "x-ms-correlation-request-id": [ "a0905d5e-a258-45c8-9ac5-5c8acd2f06d7" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200925T212341Z:a0905d5e-a258-45c8-9ac5-5c8acd2f06d7" ],
+        "Date": [ "Fri, 25 Sep 2020 21:23:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "6085" ],
+        "Content-Length": [ "6379" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9\",\"name\":\"bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"winvm02\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy\",\"policyFriendlyName\":\"migrateAzMigratePWSHTc8d1sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/979c90cf-c376-5f2c-af38-15b72ff221f2\",\"migrationState\":\"Replicating\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationStatus\":null,\"testMigrateState\":\"None\",\"testMigrateStateDescription\":\"None\",\"health\":\"Normal\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Error\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"110084\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test migration has been done on the virtual machine \u0027winvm02\u0027.\",\"possibleCauses\":\"No successful test migration has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test migration on the virtual machine.\",\"creationTimeUtc\":\"2020-09-24T07:27:26.8656425Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"c2ba88a4-2f81-55c1-bbab-a4dd4a88435e\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"}],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"Migrate\"],\"currentJob\":{\"jobName\":\"None\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None\",\"startTime\":\"1753-01-01T01:01:01Z\"},\"eventCorrelationId\":\"4624b949-6a3a-484a-8d19-c5de5fe42f4c\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/runasaccounts/cfcc5a24-a40e-56b9-a6af-e206c9ca4f93\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/runasaccounts/cfcc5a24-a40e-56b9-a6af-e206c9ca4f93\",\"storageAccountId\":null,\"targetVmName\":\"winvm02\",\"targetVmSize\":\"Standard_A2_v2\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101\",\"protectedDisks\":[{\"diskId\":\"6000C29e-8934-875c-042a-a19a3e71b18d\",\"diskName\":\"winvm02\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[DS-77] winvm02/winvm02.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":21474836480,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101\",\"logStorageAccountSasSecretName\":\"migratelsa846827101-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Compute/disks/asrseeddisk-winvm02-winvm02-920a6ecd-2add-4100-9afd-d25ebe4c303c\",\"seedBlobUri\":null,\"targetManagedDiskId\":null,\"targetBlobUri\":null}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork\",\"vmNics\":[{\"nicId\":\"1bb7297d-5d02-474e-aa6b-9439ed9ab178\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":\"10.150.1.171\",\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"isSelectedForMigration\":\"true\"}],\"migrationRecoveryPointId\":null,\"lastRecoveryPointReceived\":\"2020-09-24T10:15:43.945Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9/migrationRecoveryPoints/47798d39-c449-4f7a-9d1a-d81950c75fd8\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":null,\"resyncProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\"}}}"
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4\",\"name\":\"bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"MSW12R2-03\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy\",\"policyFriendlyName\":\"migrateAzMigratePWSHTc8d1sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/979c90cf-c376-5f2c-af38-15b72ff221f2\",\"migrationState\":\"Replicating\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationStatus\":null,\"testMigrateState\":\"None\",\"testMigrateStateDescription\":\"None\",\"health\":\"Normal\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Error\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"110084\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test migration has been done on the virtual machine \u0027MSW12R2-03\u0027.\",\"possibleCauses\":\"No successful test migration has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test migration on the virtual machine.\",\"creationTimeUtc\":\"2020-09-25T19:26:42.4732126Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"1735c247-def8-5cb2-8d68-a3a59a7ca6e8\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"}],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"Migrate\"],\"currentJob\":{\"jobName\":\"None\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None\",\"startTime\":\"1753-01-01T01:01:01Z\"},\"eventCorrelationId\":\"ec5bd5f3-3276-4f7d-814e-504b15e191f8\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/runasaccounts/cfcc5a24-a40e-56b9-a6af-e206c9ca4f93\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/runasaccounts/cfcc5a24-a40e-56b9-a6af-e206c9ca4f93\",\"storageAccountId\":null,\"targetVmName\":\"MSW12R2-03\",\"targetVmSize\":\"Standard_B1ms\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101\",\"protectedDisks\":[{\"diskId\":\"6000C293-e2c6-8705-78e2-e6661ef18633\",\"diskName\":\"MSW12R2-03_2\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[datastore78-ext] MSW12R2-03/MSW12R2-03_2.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":42949672960,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Storage/storageAccounts/migratelsa846827101\",\"logStorageAccountSasSecretName\":\"migratelsa846827101-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Compute/disks/asrseeddisk-MSW12R2_-MSW12R2_-138f9463-bb01-4b1f-806e-f5a8aa000c34\",\"seedBlobUri\":null,\"targetManagedDiskId\":null,\"targetBlobUri\":null}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork\",\"vmNics\":[{\"nicId\":\"0574a967-f04a-4ecd-87f6-eba8947b15a4\",\"isPrimaryNic\":\"false\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"isSelectedForMigration\":\"true\"},{\"nicId\":\"2210c794-3698-4d1e-87dd-5635356abc15\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"isSelectedForMigration\":\"true\"}],\"migrationRecoveryPointId\":null,\"lastRecoveryPointReceived\":\"2020-09-25T20:28:19.764Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4/migrationRecoveryPoints/6d7cd090-7f65-40fd-93e0-efe2fb55aaf7\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":null,\"resyncProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\"}}}"
     }
   },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$DELETE+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9?api-version=2018-01-10+2": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$DELETE+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4?api-version=2018-01-10+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9?api-version=2018-01-10",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4?api-version=2018-01-10",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "97a4c19a-8770-44c4-84f0-d04c324c6753" ],
         "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
         "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -497,17 +142,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9/operationresults/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50351613-0fc1-0a93-8e65-6db3410fe9a4/operationresults/11220d68-ecde-452f-8dc9-8b2aad40fa6f?api-version=2018-01-10" ],
         "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd 9/24/2020 11:54:52 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10" ],
+        "x-ms-request-id": [ "97a4c19a-8770-44c4-84f0-d04c324c6753 9/25/2020 9:23:42 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/11220d68-ecde-452f-8dc9-8b2aad40fa6f?api-version=2018-01-10" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
+        "x-ms-client-request-id": [ "97a4c19a-8770-44c4-84f0-d04c324c6753" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-correlation-request-id": [ "91344d4a-46c6-4b35-b471-feaf0c29d6d9" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115452Z:91344d4a-46c6-4b35-b471-feaf0c29d6d9" ],
-        "Date": [ "Thu, 24 Sep 2020 11:54:52 GMT" ]
+        "x-ms-correlation-request-id": [ "2fdfa9c2-00b3-455c-9f4b-0cbc3d91344e" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200925T212342Z:2fdfa9c2-00b3-455c-9f4b-0cbc3d91344e" ],
+        "Date": [ "Fri, 25 Sep 2020 21:23:42 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -516,19 +161,19 @@
       "Content": null
     }
   },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10+3": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/11220d68-ecde-452f-8dc9-8b2aad40fa6f?api-version=2018-01-10+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/11220d68-ecde-452f-8dc9-8b2aad40fa6f?api-version=2018-01-10",
       "Content": null,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "010d1787-0aae-4748-8303-66a829615fd2" ],
+        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
@@ -540,98 +185,20 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/ebe393a4-74a3-489b-b2af-42505719adca" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/11220d68-ecde-452f-8dc9-8b2aad40fa6f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
+        "x-ms-client-request-id": [ "010d1787-0aae-4748-8303-66a829615fd2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "4bc8d347-1262-4dfa-b2de-deaf93c61c43" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115523Z:4bc8d347-1262-4dfa-b2de-deaf93c61c43" ],
-        "Date": [ "Thu, 24 Sep 2020 11:55:22 GMT" ]
+        "x-ms-correlation-request-id": [ "e876e03c-fff7-499f-8441-6819e0839432" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200925T212342Z:e876e03c-fff7-499f-8441-6819e0839432" ],
+        "Date": [ "Fri, 25 Sep 2020 21:23:42 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "191" ],
+        "Content-Length": [ "2289" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"ebe393a4-74a3-489b-b2af-42505719adca\",\"properties\":null,\"status\":\"InProgress\",\"startTime\":\"2020-09-24T11:54:52.6038988Z\",\"endTime\":null,\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/ebe393a4-74a3-489b-b2af-42505719adca" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "d35f9ed9-fe65-4970-95b0-118b2c47f53f" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115553Z:d35f9ed9-fe65-4970-95b0-118b2c47f53f" ],
-        "Date": [ "Thu, 24 Sep 2020 11:55:53 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "216" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"ebe393a4-74a3-489b-b2af-42505719adca\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2020-09-24T11:54:52.6038988Z\",\"endTime\":\"2020-09-24T11:55:26.0000000Z\",\"percentComplete\":null}"
-    }
-  },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9/operationresults/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50061063-1e87-3d89-e09b-c70ed17812f9/operationresults/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
-        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/ebe393a4-74a3-489b-b2af-42505719adca", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/ebe393a4-74a3-489b-b2af-42505719adca" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationOperationStatus/ebe393a4-74a3-489b-b2af-42505719adca?api-version=2018-01-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "aeb0c956-9a3e-48d6-bfde-6af50f6026dd" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "c58dc86c-9233-43c2-97f1-1e51124c2e5f" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20200924T115554Z:c58dc86c-9233-43c2-97f1-1e51124c2e5f" ],
-        "Date": [ "Thu, 24 Sep 2020 11:55:53 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/11220d68-ecde-452f-8dc9-8b2aad40fa6f\",\"name\":\"11220d68-ecde-452f-8dc9-8b2aad40fa6f\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"97a4c19a-8770-44c4-84f0-d04c324c6753 ActivityId: 2fdfa9c2-00b3-455c-9f4b-0cbc3d91344e\",\"scenarioName\":\"DisableMigration\",\"friendlyName\":\"Stop replication\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"DisableProtectionOnPrimaryTask\",\"name\":\"DisableProtectionOnPrimary\",\"startTime\":\"2020-09-25T21:23:42.3169646Z\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Disabling migration\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"UpdateDraStateTask\",\"name\":\"UpdateDraState\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Updating the provider states\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2020-09-25T21:23:41.9427185Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"1735c247-def8-5cb2-8d68-a3a59a7ca6e8\",\"targetObjectName\":\"MSW12R2-03\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"1735c247-def8-5cb2-8d68-a3a59a7ca6e8\",\"primaryVmName\":\"MSW12R2-03\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"MSW12R2-03\",\"protectionProfileId\":\"42752b89-5fad-52fd-bf93-679fbdb6fed9\",\"primaryCloudId\":\"cloud_501ff8f2-c9d7-5bf4-87ff-d0b3fc98aeb5\",\"primaryCloudName\":\"AzMigratePWSHTc8d1replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"501ff8f2-c9d7-5bf4-87ff-d0b3fc98aeb5\",\"primaryVmmName\":\"AzMigratePWSHTc8d1replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}"
     }
   }
 }
