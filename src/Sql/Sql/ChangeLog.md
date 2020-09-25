@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.10.1
 * Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
 * Fixed for bug in `New-AzSqlDatabaseExport`
 * Removed case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
