@@ -8,41 +8,39 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
     {
         public CertKeys()
         {
-            keyValuePairs = new Dictionary<string, CertKey>();
+            _keys = new Dictionary<string, CertKey>();
         }
 
         public void LoadKeys(KeyPath[] paths)
         {
             foreach (var path in paths)
             {
-                if (!LoadKey(path))
-                    Console.WriteLine("Could not load cert and key from " + path);
+                try { LoadKey(path); }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Could not load public and private key from {path.PublicKey} and {path.PrivateKey}", ex);
+                }
             }
         }
 
-        public bool LoadKey(KeyPath path)
+        public void LoadKey(KeyPath path)
         {
             CertKey certKey = new CertKey();
-
-            if (!certKey.Load(path))
-                return false;
-
-            string encoded_string = Base64UrlEncoder.Encode(certKey.get_thumbprint());
-            keyValuePairs.Add(encoded_string, certKey);
-            return true;
+            certKey.Load(path);
+            string encodedThumbprint = Base64UrlEncoder.Encode(certKey.GetThumbprint());
+            _keys.Add(encodedThumbprint, certKey);
         }
 
         public CertKey Find(string encoded_thumbprint)
         {
-            CertKey certKey = null;
-            if (!keyValuePairs.TryGetValue(encoded_thumbprint, out certKey))
+            if (!_keys.TryGetValue(encoded_thumbprint, out CertKey certKey))
                 return null;
 
             return certKey;
         }
 
-        public int Count() { return keyValuePairs.Count; }
+        public int Count() { return _keys.Count; }
 
-        Dictionary<string, CertKey> keyValuePairs;
+        private readonly Dictionary<string, CertKey> _keys;
     }
 }

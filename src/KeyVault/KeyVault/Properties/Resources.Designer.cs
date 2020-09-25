@@ -307,6 +307,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
+        /// </summary>
+        internal static string DecryptSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enough keys to decrypt security domain backup. {0} required, {0} provided..
+        /// </summary>
+        internal static string DecryptSecurityDomainKeyNotEnough {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainKeyNotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
         /// </summary>
         internal static string DeletedVaultNotFound {
@@ -1050,6 +1068,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RestoreSecurityDomainBadKey {
             get {
                 return ResourceManager.GetString("RestoreSecurityDomainBadKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to restore security domain data..
+        /// </summary>
+        internal static string RestoreSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainFailure", resourceCulture);
             }
         }
         

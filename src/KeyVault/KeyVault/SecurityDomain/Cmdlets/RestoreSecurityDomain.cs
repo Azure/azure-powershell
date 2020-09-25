@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             try
             {
                 string content = Utils.FileToString(path);
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    throw new ArgumentException(nameof(SecurityDomainPath));
+                }
                 return JsonConvert.DeserializeObject<SecurityDomainData>(content);
             }
             catch (Exception ex)

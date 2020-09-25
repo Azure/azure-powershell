@@ -10,27 +10,18 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
     internal class CertKey
     {
-        public bool Load(KeyPath path)
+        public void Load(KeyPath path)
         {
-            try
-            {
-                cert = new X509Certificate2(path.PublicKey);
-                RSAParameters parameters = RsaParamsFromPem(path.PrivateKey, path.Password?.ToPlainText());
-                key = RSA.Create();
-                key.ImportParameters(parameters);
-                thumbprint = Utils.Sha256Thumbprint(cert);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            return true;
+            _cert = new X509Certificate2(path.PublicKey);
+            RSAParameters parameters = RsaParamsFromPem(path.PrivateKey, path.Password?.ToPlainText());
+            _key = RSA.Create();
+            _key.ImportParameters(parameters);
+            _thumbprint = Utils.Sha256Thumbprint(_cert);
         }
 
-        public byte[] get_thumbprint() { return thumbprint; }
-        public RSA get_key() { return key; }
-        public X509Certificate2 get_cert() { return cert; }
+        public byte[] GetThumbprint() { return _thumbprint; }
+        public RSA GetKey() { return _key; }
+        public X509Certificate2 GetCert() { return _cert; }
 
         static RSAParameters RsaParamsFromPem(string path, string password)
         {
@@ -45,11 +36,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
         static RSAParameters ToRSAParameters(RsaPrivateCrtKeyParameters privKey)
         {
-            RSAParameters rp = new RSAParameters();
-            rp.Modulus = privKey.Modulus.ToByteArrayUnsigned();
-            rp.Exponent = privKey.PublicExponent.ToByteArrayUnsigned();
-            rp.P = privKey.P.ToByteArrayUnsigned();
-            rp.Q = privKey.Q.ToByteArrayUnsigned();
+            RSAParameters rp = new RSAParameters
+            {
+                Modulus = privKey.Modulus.ToByteArrayUnsigned(),
+                Exponent = privKey.PublicExponent.ToByteArrayUnsigned(),
+                P = privKey.P.ToByteArrayUnsigned(),
+                Q = privKey.Q.ToByteArrayUnsigned()
+            };
             rp.D = ConvertRSAParametersField(privKey.Exponent, rp.Modulus.Length);
             rp.DP = ConvertRSAParametersField(privKey.DP, rp.P.Length);
             rp.DQ = ConvertRSAParametersField(privKey.DQ, rp.Q.Length);
@@ -70,22 +63,22 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return padded;
         }
 
-        X509Certificate2 cert;
-        RSA key;
-        byte[] thumbprint;
+        X509Certificate2 _cert;
+        RSA _key;
+        byte[] _thumbprint;
 
         private class PasswordFinder : IPasswordFinder
         {
-            private string v;
+            private readonly string _password;
 
-            public PasswordFinder(string v)
+            public PasswordFinder(string password)
             {
-                this.v = v;
+                _password = password;
             }
 
             public char[] GetPassword()
             {
-                return v.ToCharArray();
+                return _password.ToCharArray();
             }
         }
     }

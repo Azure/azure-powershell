@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         }
 
         private const string _securityDomainPathFragment = "securitydomain";
-        private DataServiceCredential _credentials;
-        private VaultUriHelper _uriHelper;
+        private readonly DataServiceCredential _credentials;
+        private readonly VaultUriHelper _uriHelper;
         private readonly JsonSerializerSettings _serializationSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         private readonly Action<string> _writeDebug;
 
@@ -209,30 +209,25 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         public PlaintextList DecryptSecurityDomain(SecurityDomainData data, KeyPath[] paths)
         {
             CertKeys certKeys = new CertKeys();
-            certKeys.LoadKeys(paths);
-
-            if (certKeys.Count() < 2)
+            try
             {
-                Console.WriteLine("Cannot load two certificates and keys");
-                return null;
+                certKeys.LoadKeys(paths);
+                return Decrypt(data, certKeys);
+            } catch (Exception ex)
+            {
+                throw new Exception(Resources.DecryptSecurityDomainFailure, ex);
             }
-
-            return Decrypt(data, certKeys);
         }
 
         // Internal worker function
         private PlaintextList Decrypt(SecurityDomainData data, CertKeys certKeys)
         {
-            if (data == null ||
-                certKeys.Count() < 2 ||
-                (data.version == 2 && certKeys.Count() < data.SharedKeys.required))
+            if (data.version == 2 && certKeys.Count() < data.SharedKeys.required)
             {
-                Console.WriteLine("Invalid arguments");
-                return null;
+                throw new ArgumentException(string.Format(Resources.DecryptSecurityDomainKeyNotEnough, data.SharedKeys.required, certKeys.Count()));
             }
 
-            byte[] master_key = null;
-
+            byte[] master_key;
             if (data.version == 1)
             {
                 // ensure that the key splitting algorithm
@@ -288,7 +283,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     if (cert_key != null)
                     {
                         JWE jwe = new JWE(key.enc_key);
-                        byte[] share = jwe.Decrypt(cert_key.get_key());
+                        byte[] share = jwe.Decrypt(cert_key.GetKey());
 
                         shares_found++;
                         share_arrays.Add(Utils.ConvertToUint16(share));
@@ -334,10 +329,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         private byte[] DecryptMasterKey(KeyPair decode_key_pair, CertKey certKey1, CertKey certKey2)
         {
             JWE jwe1 = new JWE(decode_key_pair.key1.enc_key);
-            byte[] xor_key = jwe1.Decrypt(certKey1.get_key());
+            byte[] xor_key = jwe1.Decrypt(certKey1.GetKey());
 
             JWE jwe2 = new JWE(decode_key_pair.key2.enc_key);
-            byte[] derived_key = jwe2.Decrypt(certKey2.get_key());
+            byte[] derived_key = jwe2.Decrypt(certKey2.GetKey());
 
             // Now, XOR to get the master key back
             byte[] master_key = new byte[xor_key.Length];
@@ -377,16 +372,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return securityDomainRestoreData;
         }
 
-        public bool RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData)
+        public void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData)
         {
-            if (string.IsNullOrWhiteSpace(hsmName))
-            {
-                throw new ArgumentException(nameof(hsmName));
-            }
-
-            if (securityDomainData == null)
-                throw new ArgumentNullException(nameof(securityDomainData));
-
             string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper
             {
                 value = JsonConvert.SerializeObject(securityDomainData)
@@ -407,19 +394,21 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 PrepareRequest(httpRequest);
 
                 var httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
-
+                var responseBody = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    return !string.IsNullOrEmpty(httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult());
+                    if (string.IsNullOrEmpty(responseBody))
+                    {
+                        throw new Exception("Got empty response when restoring security domain.");
+                    }
+                } else
+                {
+                    throw new Exception($"Got {httpResponseMessage.StatusCode}, {responseBody}");
                 }
-
-                return false;
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                Console.WriteLine($"RequestSecurityDomain failed = {err.Message}");
-                Console.WriteLine(err);
-                return false;
+                throw new Exception(Resources.RestoreSecurityDomainFailure, ex);
             }
         }
     }

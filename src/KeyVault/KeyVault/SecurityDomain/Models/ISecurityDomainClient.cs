@@ -13,6 +13,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
         SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert);
 
-        bool RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData);
+        void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData);
     }
 }
