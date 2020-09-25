@@ -15,34 +15,31 @@ Retrieves the details of the replicating server.
 ### ListByName (Default)
 ```
 Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GetByID
-```
-Get-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByName
+### GetBySDSID
 ```
-Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Get-AzMigrateServerReplication -MachineID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetBySRSID
+```
+Get-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,21 +205,6 @@ List all.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -269,30 +251,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineName
-Specifies the server for which the details needs to be retrieved.
+### -MachineID
+Specifies the machine ID of the discovered server.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName
+Parameter Sets: GetBySDSID
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -319,7 +286,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName
 Aliases:
 
 Required: True
@@ -349,7 +316,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName
 Aliases:
 
 Required: True
@@ -394,41 +361,10 @@ Specifies the replicating server.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByID
+Parameter Sets: GetBySRSID
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
