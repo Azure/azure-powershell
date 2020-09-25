@@ -12,24 +12,16 @@ Stops replication for the migrated server.
 
 ## SYNTAX
 
-### ByNameVMwareCbt (Default)
-```
-Remove-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByIDVMwareCbt
+### ByIDVMwareCbt (Default)
 ```
 Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>] [-ForceRemove <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +33,26 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 ```powershell
 PS C:\> Remove-AzMigrateServerReplication -TargetObjectID "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f"
 
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Disable
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : Disable
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 
 ```
 
@@ -51,6 +63,27 @@ Resync by id.
 PS C:\> Remove-AzMigrateServerReplication -MachineName "bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -ResourceGroupName azmigratepwshtestasr13072020 -ProjectName AzMigrateTestProjectPWSH
 
 
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Disable
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : Disable
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+
 ```
 
 By name.
@@ -60,26 +93,32 @@ By name.
 PS C:\> $obj = Get-AzMigrateServerReplication -TargetObjectID "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f"
 PS C:\> Remove-AzMigrateServerReplication -InputObject $obj
 
+
+ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
+AllowedAction                    : {Cancel}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Disable
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
+Location                         :
+Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
+ScenarioName                     : Disable
+StartTime                        : 9/25/20 9:20:08 PM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
+TargetObjectName                 : prsadhu-TestVM
+Task                             : {DisableProtectionOnPrimary, UpdateDraState}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
 By name.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -127,36 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineName
-Specifies the machine name of the replicating server.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -166,36 +175,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Specifies the migrate project name of the replicating server.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the resource group of the replicating server.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameVMwareCbt
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -119,7 +119,7 @@ function Start-AzMigrateTestMigrationCleanup {
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
             $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrateCleanup' )){
+            if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 
                 $null = $PSBoundParameters.Add('Comment', "Test migrate cleanup from powershell")
                 $null = $PSBoundParameters.Add('NoWait', $true)
@@ -132,6 +132,7 @@ function Start-AzMigrateTestMigrationCleanup {
                 $null = $PSBoundParameters.Remove("FabricName")
                 $null = $PSBoundParameters.Remove("MigrationItemName")
                 $null = $PSBoundParameters.Remove("ProtectionContainerName")
+                $null = $PSBoundParameters.Remove('Comment')
 
                 $null = $PSBoundParameters.Add('JobName', $JobName)
                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
