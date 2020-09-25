@@ -17,13 +17,13 @@ Describe 'Get-AzMigrateServerReplication' {
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByName' {
-        $output = Get-AzMigrateServerReplication -MachineName $env.srsMachineName -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+    It 'GetBySRSID' {
+        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByID' {
-        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+    It 'GetBySDSID' {
+        $output = Get-AzMigrateServerReplication -MachineID $env.srsGetSDSMachineID -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
