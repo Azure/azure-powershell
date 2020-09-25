@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -32,15 +31,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         VerbsCommon.Set,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
         DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet)]
-    [OutputType(typeof(PSTemplateSpecSingleVersion))]
+    [OutputType(typeof(PSTemplateSpec))]
     public class SetAzTemplateSpec : TemplateSpecCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
         internal const string UpdateByIdParameterSet = nameof(UpdateByIdParameterSet);
         internal const string UpdateByNameParameterSet = nameof(UpdateByNameParameterSet);
-        //internal const string UpdateVersionByIdParameterSet = nameof(UpdateVersionByIdParameterSet);
-        //internal const string UpdateVersionByNameParameterSet = nameof(UpdateVersionByNameParameterSet);
         internal const string UpdateVersionByIdFromJsonFileParameterSet = nameof(UpdateVersionByIdFromJsonFileParameterSet);
         internal const string UpdateVersionByNameFromJsonFileParameterSet = nameof(UpdateVersionByNameFromJsonFileParameterSet);
         internal const string UpdateVersionByIdFromJsonParameterSet = nameof(UpdateVersionByIdFromJsonParameterSet);
@@ -49,8 +46,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Alias("Id")]
         [Parameter(Position = 0, ParameterSetName = UpdateByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
-        //[Parameter(Position = 0, ParameterSetName = UpdateVersionByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
-          //  HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [Parameter(Position = 0, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the template spec. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}")]
         [Parameter(Position = 0, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -61,8 +56,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group.")]
-        //[Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameParameterSet, Position = 0, ValueFromPipelineByPropertyName = true,
-            //HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 0, ValueFromPipelineByPropertyName = true,
@@ -73,8 +66,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the template spec.")]
-        //[Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
-          //          HelpMessage = "The name of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
@@ -82,14 +73,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        //[Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
-          //          HelpMessage = "The version of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
-        //[Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
-          //          HelpMessage = "The version of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
@@ -101,10 +88,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The description of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
-           // HelpMessage = "The description of the template spec.")]
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
-           // HelpMessage = "The description of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
@@ -119,10 +102,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The display name of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
-          //  HelpMessage = "The display name of the template spec.")]
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
-          //  HelpMessage = "The display name of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
@@ -140,7 +119,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
 
-
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 6, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
@@ -154,12 +132,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
         [ValidateNotNullOrEmpty]
-        public string TemplateJsonFile { get; set; }
+        public string TemplateFile { get; set; }
 
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameParameterSet, ValueFromPipelineByPropertyName = true,
-            //HelpMessage = "The description of the version.")]
-        //[Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdParameterSet, ValueFromPipelineByPropertyName = true,
-            //HelpMessage = "The description of the version.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the version.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
@@ -189,11 +163,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         case UpdateVersionByIdFromJsonFileParameterSet:
                         case UpdateVersionByNameFromJsonFileParameterSet:
-                            string filePath = this.TryResolvePath(TemplateJsonFile);
+                            string filePath = this.TryResolvePath(TemplateFile);
                             if (!File.Exists(filePath))
                             {
                                 throw new PSInvalidOperationException(
-                                    string.Format(ProjectResources.InvalidFilePath, TemplateJsonFile)
+                                    string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                                 );
                             }
 
@@ -201,6 +175,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             break;
                         case UpdateVersionByIdFromJsonParameterSet:
                         case UpdateVersionByNameFromJsonParameterSet:
+                            JObject parsedTemplate;
+                            try
+                            {
+                                parsedTemplate = JObject.Parse(TemplateJson);
+                            }
+                            catch
+                            {
+                                // Check if the user may have inadvertantly passed a file path using "-TemplateJson"
+                                // instead of using "-TemplateFile". If they did, display a warning message. Note we
+                                // do not currently automatically switch to using a file in this case because if the 
+                                // JSON string is coming from an external script/source not authored directly by the
+                                // caller it could result in a sensitive template being PUT unintentionally:
+
+                                try
+                                {
+                                    string asFilePath = this.TryResolvePath(TemplateJson);
+                                    if (File.Exists(asFilePath))
+                                    {
+                                        WriteWarning(
+                                            $"'{TemplateJson}' was found to exist as a file. Did you mean to use '-TemplateFile' instead?"
+                                        );
+                                    }
+                                }
+                                catch
+                                {
+                                    // Subsequent failure in the file existence check... Ignore it
+                                }
+
+                                throw;
+                            }
+
                             // When we're provided with a raw JSON string for the template we don't
                             // do any special packaging... (ie: we don't pack artifacts because there
                             // is no well known root path):

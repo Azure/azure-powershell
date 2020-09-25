@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         VerbsCommon.New,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
         DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet)]
-    [OutputType(typeof(PSTemplateSpecSingleVersion))]
+    [OutputType(typeof(PSTemplateSpec))]
     public class NewAzTemplateSpec : TemplateSpecCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
         [ValidateNotNullOrEmpty]
-        public string TemplateJsonFile { get; set; }
+        public string TemplateFile { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -136,24 +136,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 switch (ParameterSetName)
                 {
                     case FromJsonFileParameterSet:
-                        string filePath = this.TryResolvePath(TemplateJsonFile);
+                        string filePath = this.TryResolvePath(TemplateFile);
                         if (!File.Exists(filePath))
                         {
                             throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateJsonFile)
+                                string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                             );
                         }
 
                         packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
                         break;
                     case FromJsonStringParameterSet:
+
+                        JObject parsedTemplate;
+                        try
+                        {
+                            parsedTemplate = JObject.Parse(TemplateJson);
+                        }
+                        catch
+                        {
+                            // Check if the user may have inadvertantly passed a file path using "-TemplateJson"
+                            // instead of using "-TemplateFile". If they did, display a warning message. Note we
+                            // do not currently automatically switch to using a file in this case because if the 
+                            // JSON string is coming from an external script/source not authored directly by the
+                            // caller it could result in a sensitive template being PUT unintentionally:
+
+                            try
+                            {
+                                string asFilePath = this.TryResolvePath(TemplateJson);
+                                if (File.Exists(asFilePath))
+                                {
+                                    WriteWarning(
+                                        $"'{TemplateJson}' was found to exist as a file. Did you mean to use '-TemplateFile' instead?"
+                                    );
+                                }
+                            }
+                            catch
+                            {
+                                // Subsequent failure in the file existence check... Ignore it
+                            }
+
+                            throw;
+                        }
+
                         // When we're provided with a raw JSON string for the template we don't
                         // do any special packaging... (ie: we don't pack artifacts because there
                         // is no well known root path):
 
                         packagedTemplate = new PackagedTemplate
                         {
-                            RootTemplate = JObject.Parse(TemplateJson),
+                            RootTemplate = parsedTemplate,
                             Artifacts = new TemplateSpecArtifact[0]
                         };
                         break;
@@ -186,7 +218,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     // The template spec version already exists and force is not present, so 
                     // let's confirm with the user that he/she wishes to overwrite (update) it:
 
-                    // TODO: Localize
                     string confirmationMessage =
                         $"Template Spec version '{Version}' already exists and this action will overwrite existing " +
                         "data for this version. Are you sure you'd like to overwrite existing " +
@@ -195,7 +226,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ConfirmAction(
                         Force.IsPresent,
                         confirmationMessage,
-                        "Updating Template Spec...", // TODO: Localize
+                        "Updating Template Spec...",
                         Version,
                         createOrUpdateAction
                     );

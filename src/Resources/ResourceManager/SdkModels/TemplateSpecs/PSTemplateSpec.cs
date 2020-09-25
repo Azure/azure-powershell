@@ -58,9 +58,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }
 
+        /// <summary>
+        /// Represents the relevant versions in the template spec per the context of
+        /// how the template spec was requested. If a single version was explicitly 
+        /// requested this will contain one item, if this is a "detailed" view of a 
+        /// template spec or an explicitly requested template spec it will contain all
+        /// versions of the template spec. If this is a "listing view" of the template
+        /// spec than Versions will be null.
+        /// </summary>
+        public PSTemplateSpecVersion[] Versions { get; set; }
+
         public PSTemplateSpec() { }
 
-        internal PSTemplateSpec(TemplateSpec templateSpec)
+        internal PSTemplateSpec(TemplateSpec templateSpec, 
+            TemplateSpecVersion[] versionModels = null)
         {
             this.Id = templateSpec.Id;
             this.Type = templateSpec.Type;
@@ -71,6 +82,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.Description = templateSpec.Description;
             this.DisplayName = templateSpec.DisplayName;
             this.Tags = templateSpec.Tags;
+
+            this.Versions = versionModels?
+                .Select(v => PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(v))
+                .ToArray();
         }
 
         protected PSTemplateSpec(PSTemplateSpec toCopyFrom)
@@ -83,6 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.LastModifiedTime = toCopyFrom.LastModifiedTime;
             this.Description = toCopyFrom.Description;
             this.DisplayName = toCopyFrom.DisplayName;
+            this.Versions = toCopyFrom.Versions?.ToArray(); // Shallow copy
             this.Tags = toCopyFrom.Tags == null 
                 ? null
                 : new Dictionary<string, string>(toCopyFrom.Tags);
@@ -98,44 +114,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string ResourceGroupName => ResourceIdUtility.GetResourceGroupName(this.Id);
 
         public string SubscriptionId => ResourceIdUtility.GetSubscriptionId(this.Id);
-    }
-
-    /// <summary>
-    /// Represents a Template Spec and a single version
-    /// </summary>
-    public class PSTemplateSpecSingleVersion : PSTemplateSpec
-    {
-        public PSTemplateSpecVersion Version { get; set; }
-
-        internal PSTemplateSpecSingleVersion(TemplateSpec templateSpecModel, 
-            TemplateSpecVersion versionModel) : base(templateSpecModel)
-        {
-            // TODO: Validate version belongs to templateSpecModel
-            this.Version = PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(versionModel);
-        }
-    }
-
-    /// <summary>
-    /// Represents a Template Spec and all of its versions
-    /// </summary>
-    public class PSTemplateSpecMultiVersion : PSTemplateSpec
-    {
-        public PSTemplateSpecVersion[] Versions { get; set; }
-
-        internal PSTemplateSpecMultiVersion(TemplateSpec templateSpecModel,
-            TemplateSpecVersion[] versionModels) : base(templateSpecModel)
-        {
-            if (versionModels == null)
-            {
-                this.Versions = new PSTemplateSpecVersion[0];
-                return;
-            }
-
-            // TODO: Validate version belongs to templateSpecModel
-            this.Versions = versionModels
-                .Select(v=>PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(v))
-                .ToArray();
-        }
     }
 
     /// <summary>

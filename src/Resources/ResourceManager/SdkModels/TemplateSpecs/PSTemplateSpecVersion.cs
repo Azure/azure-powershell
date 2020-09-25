@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                             );
                             break;
                         default:
-                            // TODO: Localize
                             throw new PSNotSupportedException(
                                 $"Template spec artifact type '${artifact.GetType().Name}' not supported by cmdlets."
                             );

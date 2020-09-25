@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     allVersions.AddRange(versionPage);
                 }
 
-                return new PSTemplateSpecMultiVersion(templateSpec, allVersions.ToArray());
+                return new PSTemplateSpec(templateSpec, allVersions.ToArray());
             }
 
             // We have a specific version specified:
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 templateSpecVersion
             );
 
-            return new PSTemplateSpecSingleVersion(templateSpec, specificVersion);
+            return new PSTemplateSpec(templateSpec, new[] { specificVersion });
         }
 
         public IEnumerable<PSTemplateSpec> ListTemplateSpecsBySubscription()
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSTemplateSpecSingleVersion CreateOrUpdateTemplateSpecVersion(
+        public PSTemplateSpec CreateOrUpdateTemplateSpecVersion(
             string resourceGroupName,
             string templateSpecName,
             string templateSpecVersion,
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 templateSpecVersionModel
             );
 
-            return new PSTemplateSpecSingleVersion(templateSpecModel, templateSpecVersionModel);
+            return new PSTemplateSpec(templateSpecModel, new[] { templateSpecVersionModel });
         }
 
         public PSTemplateSpec CreateOrUpdateTemplateSpec(
@@ -252,7 +252,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (versionDeleteResponse.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    // TODO: Localize
                     throw new PSArgumentException(
                         $"Template Spec '{templateSpecName}' version '{version}' in resource group '{resourceGroupName}' not found!"
                     );
@@ -269,7 +268,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (templateSpecDeleteResponse.Response.StatusCode == HttpStatusCode.NoContent)
             {
-                // TODO: Localize
                 throw new PSArgumentException(
                     $"Template Spec '{templateSpecName}' in resource group '{resourceGroupName}' not found!"
                 );
@@ -304,7 +302,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 else
                 {
                     // TODO: Use the resource group location
-                    // TODO: Localize
                     throw new PSInvalidOperationException("Location cannot be inferred and must be specified.");
                 }
             }

@@ -59,8 +59,10 @@ function Test-GetTemplateSpec
 
         Assert-NotNull $returnedByGetOnSpecificVersion
         Assert-True { Get-AreObjectsEquivalent $basicCreatedTemplateSpecV1 $returnedByGetOnSpecificVersion }
-        Assert-NotNull $returnedByGetOnSpecificVersion.Version
-        Assert-AreEqual "v1" $returnedByGetOnSpecificVersion.Version.Name
+        Assert-NotNull $returnedByGetOnSpecificVersion.Versions
+        Assert-AreEqual $returnedByGetOnSpecificVersion.Versions.Length 1
+ 
+        Assert-AreEqual "v1" $returnedByGetOnSpecificVersion.Versions[0].Name
 
         # Validate we get expected results when getting a specific version (by id, and version)
 
@@ -68,8 +70,9 @@ function Test-GetTemplateSpec
 
         Assert-NotNull $returnedByGetOnSpecificVersionById
         Assert-True { Get-AreObjectsEquivalent $basicCreatedTemplateSpecV2 $returnedByGetOnSpecificVersionById }
-        Assert-NotNull $returnedByGetOnSpecificVersionById.Version
-        Assert-AreEqual "v2" $returnedByGetOnSpecificVersionById.Version.Name
+        Assert-NotNull $returnedByGetOnSpecificVersionById.Versions
+        Assert-AreEqual $returnedByGetOnSpecificVersionById.Versions.Length 1
+        Assert-AreEqual "v2" $returnedByGetOnSpecificVersionById.Versions[0].Name
 
         # Now let's get the template spec with all versions
         
@@ -77,11 +80,10 @@ function Test-GetTemplateSpec
 
         Assert-NotNull $returnedByGetOnTemplateSpecName
         Assert-AreEqual $returnedByGetOnTemplateSpecName.Name $rname
-        Assert-Null $returnedByGetOnTemplateSpecName.Version # Should not be specific Version
         Assert-True { $returnedByGetOnTemplateSpecName.Versions -is [system.array] }
         Assert-AreEqual $returnedByGetOnTemplateSpecName.Versions.Length 2 # Should have 2 versions
-        Assert-True { Get-AreObjectsEquivalent $returnedByGetOnTemplateSpecName.Versions[0] $basicCreatedTemplateSpecV1.Version }
-        Assert-True { Get-AreObjectsEquivalent $returnedByGetOnTemplateSpecName.Versions[1] $basicCreatedTemplateSpecV2.Version }
+        Assert-True { Get-AreObjectsEquivalent $returnedByGetOnTemplateSpecName.Versions[0] $basicCreatedTemplateSpecV1.Versions[0] }
+        Assert-True { Get-AreObjectsEquivalent $returnedByGetOnTemplateSpecName.Versions[1] $basicCreatedTemplateSpecV2.Versions[0] }
 
         # Do a list on the resource group
 
@@ -126,14 +128,15 @@ function Test-CreateTemplateSpec
         # Check to make sure all of the properties match expectations
 
         Assert-NotNull $basicCreatedTemplateSpecV1
+        Assert-AreEqual $basicCreatedTemplateSpecV1.Versions.Length 1
         Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
         Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
         Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
-        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
+        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Versions[0].Name
         
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
         
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
@@ -171,14 +174,15 @@ function Test-SetTemplateSpec
         # Check to make sure all of the properties match expectations
 
         Assert-NotNull $basicCreatedTemplateSpecV1
+        Assert-AreEqual $basicCreatedTemplateSpecV1.Length 1
         Assert-AreEqual $rname $basicCreatedTemplateSpecV1.Name
         Assert-AreEqual "My Basic Template Spec" $basicCreatedTemplateSpecV1.Description
         Assert-AreEqual "$rglocation".Replace(" ", "").ToLowerInvariant() $basicCreatedTemplateSpecV1.Location.Replace(" ", "").ToLowerInvariant()
-        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Version.Name
+        Assert-AreEqual "v1" $basicCreatedTemplateSpecV1.Versions[0].Name
 
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Version.Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
 
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
@@ -188,7 +192,7 @@ function Test-SetTemplateSpec
 
         # Try updating the version
         $updatedTemplateSpecv1 = Set-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV1.Id -Version "v1" -VersionDescription "Updated Version" -TemplateJson $sampleTemplateJson
-        Assert-AreEqual "Updated Version" $updatedTemplateSpecv1.Version.Description
+        Assert-AreEqual "Updated Version" $updatedTemplateSpecv1.Versions[0].Description
 
         # Make sure we can get the template spec back out:
         $returnedByGet = Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1"
@@ -224,10 +228,9 @@ function Test-RemoveTemplateSpec
 
         # Validate we can remove a single version:
 
-        # Temporarily blocked due to backend issue. Re-enable when fixed.
-        # $singleVersionRemovalResult = Remove-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" -Force
-        # Assert-True { $singleVersionRemovalResult }
-        # Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" }
+        $singleVersionRemovalResult = Remove-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" -Force
+        Assert-True { $singleVersionRemovalResult }
+        Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Version "v1" }
 
         # Validate we can remove the entire template spec:
 

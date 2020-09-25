@@ -33,10 +33,14 @@ Get-AzTemplateSpec [[-Version] <String>] [-ResourceId] <String> [-DefaultProfile
 ## DESCRIPTION
 This cmdlet can be used to list Template Specs in a subscription/resource group or get a specific Template Spec 
 by name or id. When getting a specific Template Spec by name/id a specific version can optionally be retrieved
-by specifying a version name through the **-Version** parameter. When **-Version** is used, the specific version 
-details will be present under the property **.Version* on the returned Template Spec object. If no specific version 
+by specifying a version name through the **-Version** parameter. When **-Version** is used, only the specific version 
+details will be present within **.Versions* on the returned Template Spec object. If no specific version 
 is specified when retrieving a Template Spec by name/id, all versions will be present within the  **.Versions*
 property of the returned object.
+
+**Note**: When listing all Template Specs within a subscription or resource group, each returned Template Spec's
+ *".Versions"* property will be *null*. Version information is only included when -Name or -ResourceId parameters
+are provided (eg: you are requesting a specific template spec/version).
 
 ## EXAMPLES
 
@@ -71,7 +75,7 @@ PS C:\> Get-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'MyTemplateSpec' -Ver
 
 Gets information about version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG'.
 
-**Note**: The specific version details will be present within the *".Version"* property of the return object.
+**Note**: The *".Versions"* property of the returned object will contain only the specific version requested.
 
 ### Example 5: Get Template Spec (with all versions) by resource id
 ```powershell
@@ -90,7 +94,7 @@ PS C:\> Get-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/my
 
 Gets information about version 'v1.0' of the Template Spec named 'MyTemplateSpec' within the resource group 'myRG' of subscription \{subId\}.
 
-**Note**: The specific version details will be present within the *".Version"* property of the return object.
+**Note**: The *".Versions"* property of the returned object will contain only the specific version requested.
 
 ## PARAMETERS
 

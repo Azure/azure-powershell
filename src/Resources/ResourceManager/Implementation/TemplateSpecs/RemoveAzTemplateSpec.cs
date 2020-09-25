@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     }
                 }
 
-                // TODO: Localize
                 string confirmationMessage = (Version != null)
                     ? $"Are you sure you want to remove version '{Version}' of Template Spec '{Name}'"
                     : $"Are you sure you want to remove Template Spec '{Name}'";
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ConfirmAction(
                     Force.IsPresent,
                     confirmationMessage,
-                    "Deleting Template Spec...", // TODO: Localize
+                    "Deleting Template Spec...",
                     Version ?? Name,
                     () => TemplateSpecsSdkClient.DeleteTemplateSpec(ResourceGroupName, Name, Version)
                 );

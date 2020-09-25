@@ -347,76 +347,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecSingleVersion</Name>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecSingleVersion</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>TemplateSpecId</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>DisplayName</Label>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.DisplayName -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <ScriptBlock>$_.DisplayName</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>ResourceGroupName</Label>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>SubscriptionId</Label>
-                <PropertyName>SubscriptionId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Location</Label>
-                <ScriptBlock>$_.Location.ToLowerInvariant().Replace(" ", "")</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Description</Label>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.Description -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <ScriptBlock>$_.Description</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Version</Label>
-                <ScriptBlock>$_.Version.Name</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>VersionDescription</Label>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.Version.Description -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <ScriptBlock>$_.Version.Description</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>VersionCreationTime(UTC)</Label>
-                <ScriptBlock>$_.Version.CreationTime</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>VersionLastModifiedTime(UTC)</Label>
-                <ScriptBlock>$_.Version.LastModifiedTime</ScriptBlock>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecMultiVersion</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpecMultiVersion</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplateSpec</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -458,6 +391,9 @@
               </ListItem>
               <ListItem>
                 <Label>Versions</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Versions -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <ScriptBlock>$versionNames=@(); foreach ($version in $_.Versions){$versionNames+=$version.Name}; $versionNames</ScriptBlock>
               </ListItem>
               <ListItem>

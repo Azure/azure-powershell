@@ -149,7 +149,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                         context.RootTemplateDirectory + Path.DirectorySeparatorChar,
                         StringComparison.OrdinalIgnoreCase))
                     {
-                        // TODO: Localize
                         throw new InvalidOperationException(
                             $"Unable to handle the reference to file '{absoluteLocalPath}' from " +
                             $"'{templateAbsoluteFilePath}' because it exists outside of the root template " +
@@ -224,7 +223,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                         targetDirectory + Path.DirectorySeparatorChar,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO: Localize
                     throw new InvalidOperationException(
                         $"Unable to unpack artifact '{artifact.Path}' because it would create a file " +
                         $"outside of the target directory heirarchy of '{targetDirectory}'");
@@ -242,7 +240,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 if (!(artifact is TemplateSpecTemplateArtifact templateArtifact))
                 {
-                    // TODO: Localize
                     throw new NotSupportedException("Unknown artifact type encountered...");
                 }
 

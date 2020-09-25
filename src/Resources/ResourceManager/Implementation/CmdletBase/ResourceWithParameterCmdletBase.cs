@@ -238,10 +238,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSArgumentException("No version found in Resource ID");
                     }
 
-                    var templateSpecVersion = ((PSTemplateSpecSingleVersion)TemplateSpecsSdkClient.GetTemplateSpec(
+                    var templateSpecVersion = TemplateSpecsSdkClient.GetTemplateSpec(
                         ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
                         ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName)).Version;
+                        resourceIdentifier.ResourceName).Versions.Single();
 
                     var templateObj = JObject.Parse(templateSpecVersion.Template);
 
