@@ -12,12 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzMigrateServerReplication' {
-    It 'ByNameVMwareCbt' {
-       {Remove-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -MachineName $env.srsMachineNametempa -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
-    }
-
     It 'ByIDVMwareCbt' {
-       {Remove-AzMigrateServerReplication -TargetObjectID $env.srsMachineIdtempc -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
+         {Remove-AzMigrateServerReplication -TargetObjectID $env.srsMachineIdtempc -SubscriptionId $env.srsSubscriptionId} | Should -Not -Throw
+
     }
 
     It 'ByInputObjectVMwareCbt' {
