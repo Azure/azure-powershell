@@ -18,12 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support enable/disable/get share soft delete properties on file Service of a Storage account
+* Supported enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
     - `Get-AzStorageFileServiceProperty`
-* Support list file shares include the deleted ones of a Storage account, and Get single file share usage
+* Supported list file shares include the deleted ones of a Storage account, and Get single file share usage
     - `Get-AzRmStorageShare`
-* Support restore a deleted file share
+* Supported restore a deleted file share
     - `Restore-AzRmStorageShare`
 * Fixed help issue for New-AzStorageAccount parameter -Kind default value [#12189]
 * Fixed issue by add example to show how to set correct ContentType in blob upload [#12989]
