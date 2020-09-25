@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
 
     /// <summary>Lists the available consortiums for a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Locations_ListConsortiums=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Blockchain/locations/{location}/listConsortiums"
+    /// [OpenAPI] ListConsortiums=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Blockchain/locations/{location}/listConsortiums"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzBlockchainConsortium_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortium))]

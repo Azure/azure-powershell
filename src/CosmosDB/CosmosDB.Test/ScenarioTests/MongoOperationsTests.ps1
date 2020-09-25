@@ -359,3 +359,54 @@ function Validate-EqualLists($list1, $list2)
       Assert-true($list1 -contains $ele)
     }
 }
+
+<#
+.SYNOPSIS
+Test Mongo migrate throughput cmdlets 
+#>
+function Test-MongoMigrateThroughputCmdlets
+{
+
+  $AccountName = "db001"
+  $rgName = "CosmosDBResourceGroup3668"
+  $DatabaseName = "dbName4"
+  $CollectionName = "collectionName"
+
+  $ShardKey = "shardKeyPath"
+  $ThroughputValue = 1200
+  $CollectionThroughputValue = 800
+
+  $Autoscale = "Autoscale"
+  $Manual = "Manual"
+
+  Try{
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
+      Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
+
+      $AutoscaleThroughput = Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration -InputObject $NewDatabase -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
+      $ManualThroughput = Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
+      Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $NewCollection =  New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $CollectionThroughputValue -Name $CollectionName -Shard $ShardKey
+      $CollectionThroughput = Get-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $CollectionThroughput.Throughput $CollectionThroughputValue
+
+      $AutoscaledCollectionThroughput = Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -ThroughputType $Autoscale
+      Assert-AreNotEqual $AutoscaledCollectionThroughput.AutoscaleSettings.MaxThroughput 0
+
+      $ManualCollectionThroughput = Invoke-AzCosmosDBMongoDBCollectionThroughputMigration  -InputObject $NewCollection -ThroughputType $Manual
+      Assert-AreEqual $ManualCollectionThroughput.AutoscaleSettings.MaxThroughput 0
+
+      Remove-AzCosmosDBMongoDBCollection -InputObject $NewCollection 
+      Remove-AzCosmosDBMongoDBDatabase -InputObject $NewDatabase
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}

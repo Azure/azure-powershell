@@ -54,33 +54,33 @@ Filters active directory users.
 
 ## EXAMPLES
 
-### Example 1 - List all users
+### Example 1: List all users
 
-```
+```powershell
 PS C:\> Get-AzADUser
 ```
 
 Lists all AD users in a tenant.
 
-### Example 2 - List all users using paging
+### Example 2: List all users using paging
 
-```
+```powershell
 PS C:\> Get-AzADUser -First 100
 ```
 
 Lists the first 100 AD users in a tenant.
 
-### Example 3 - Get AD user by user principal name
+### Example 3: Get AD user by user principal name
 
-```
+```powershell
 PS C:\> Get-AzADUser -UserPrincipalName foo@domain.com
 ```
 
 Gets the AD user with user principal name "foo@domain.com".
 
-### Example 4 - List by search string
+### Example 4: List by search string
 
-```
+```powershell
 PS C:\> Get-AzADUser -SearchString Joe
 ```
 
@@ -252,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzADUser](./New-AzADUser.md)
 
-[Set-AzADUser](./Set-AzADUser.md)
+[Update-AzADUser](./Update-AzADUser.md)
 
 [Remove-AzADUser](./Remove-AzADUser.md)
 

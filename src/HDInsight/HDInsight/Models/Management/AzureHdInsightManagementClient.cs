@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -34,12 +35,38 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters, string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string), string cloudDataLakeAudience =default(string))
+        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters,
+            string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string),
+            string cloudDataLakeAudience = default(string), string PublicNetworkAccessType = default(string),
+            string OutboundOnlyNetworkAccessType = default(string), bool? EnableEncryptionInTransit = default(bool?), Autoscale autoscaleParameter=null)
         {
             var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
             createParams.Properties.OsType = osType;
             createParams.Properties.MinSupportedTlsVersion = minSupportedTlsVersion;
             ResetClusterIdentity(createParams, cloudAadAuthority, cloudDataLakeAudience);
+
+            if (EnableEncryptionInTransit.HasValue)
+            {
+                createParams.Properties.EncryptionInTransitProperties = new EncryptionInTransitProperties()
+                {
+                    IsEncryptionInTransitEnabled = EnableEncryptionInTransit
+                };
+            }
+
+            if (!string.IsNullOrEmpty(PublicNetworkAccessType) || !string.IsNullOrEmpty(OutboundOnlyNetworkAccessType)){
+                NetworkSettings networkSettings = new NetworkSettings()
+                {
+                    PublicNetworkAccess = PublicNetworkAccessType,
+                    OutboundOnlyPublicNetworkAccessType = OutboundOnlyNetworkAccessType
+                };
+                createParams.Properties.NetworkSettings = networkSettings;
+            }
+
+            if (autoscaleParameter != null)
+            {
+                createParams.Properties.ComputeProfile.Roles.FirstOrDefault(role => role.Name.Equals("workernode")).AutoscaleConfiguration = autoscaleParameter;
+            }
+
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
@@ -226,7 +253,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
         }
-        
+
+        public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, AutoscaleConfigurationUpdateParameter autoscaleConfigurationUpdateParameter)
+        {
+            HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
+        }
+
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;

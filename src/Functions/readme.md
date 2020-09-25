@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Functions service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -116,7 +116,8 @@ directive:
     transform: delete $."x-ms-examples"
   - from: swagger-document
     where: $..produces
-    transform: $ = $.filter( each => each === 'application/json');
+    #transform: $ = $.filter( each => each === 'application/json');
+    transform: $ = ["application/json"];
     reason: this spec adds produces application/xml and text/json erronously.
   - where:
       subject: Operation

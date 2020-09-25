@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Management.Network;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
@@ -44,6 +45,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
         public KeyVaultClient KeyVaultClient { get; private set; }
         public ManagedServiceIdentityClient ManagedServiceIdentityClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
         public static TestHelper TestHelper { get; private set; }
         public static TestController NewInstance => new TestController();
         
@@ -60,6 +62,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ManagedServiceIdentityClient = GetManagedServiceIdentityClient(context);
+            NetworkManagementClient = GetNetworkManagementClient(context);
             _helper.SetupManagementClients(ResourceManagementClient, HDInsightManagementClient, StorageManagementClient, OperationalInsightsManagementClient, KeyVaultManagementClient, ManagedServiceIdentityClient);
         }
 
@@ -86,6 +89,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+                {"Microsoft.Network", null},
                 {"Microsoft.Authorization", null}
             };
 
@@ -166,9 +170,14 @@ namespace Commands.HDInsight.Test.ScenarioTests
             return context.GetServiceClient<ManagedServiceIdentityClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private TestHelper GetTestHelper()
         {
-            return new TestHelper(KeyVaultManagementClient, KeyVaultClient);
+            return new TestHelper(KeyVaultManagementClient, KeyVaultClient, NetworkManagementClient);
         }
     }
 }

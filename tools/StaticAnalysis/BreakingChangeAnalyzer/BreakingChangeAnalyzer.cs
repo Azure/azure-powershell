@@ -176,7 +176,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         var executingPath =
                             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
-                        var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
+                        var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
 
 #if SERIALIZE
                         SerializeCmdlets(filePath, newModuleMetadata);

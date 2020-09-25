@@ -18,7 +18,54 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed help issue for New-AzStorageAccount parameter -Kind default value [#12189]
+* Fixed issue by add example to show how to set correct ContentType in blob upload [#12989]
 
+## Version 2.6.0
+* Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
+* Supported Point In Time Restore
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `New-AzStorageBlobRangeToRestore`
+    - `Restore-AzStorageBlobRange`
+* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - `Get-AzureRMStorageAccount`
+* Added breaking change warning message for upcoming cmdlet output change
+    - `Get-AzStorageContainerStoredAccessPolicy`
+    - `Set-AzStorageContainerStoredAccessPolicy`
+    - `Set-AzStorageAccountManagementPolicy`
+    - `Get-AzStorageAccountManagementPolicy`
+    - `Add-AzStorageAccountManagementPolicyAction`
+    - `New-AzStorageAccountManagementPolicyRule`
+* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.8
+
+    
+## Version 2.5.0
+* Supported blob query acceleration
+    -  `Get-AzStorageBlobQueryResult`
+    -  `New-AzStorageBlobQueryConfig`
+* Updated help file, added more description, and fixed typo
+    -  `Start-AzStorageBlobCopy`
+    -  `Get-AzDataLakeGen2Item`
+* Fixed download blob fail when related sub directory not exist [#12592]
+    -  `Get-AzStorageBlobContent`
+* Supported Set/Get/Remove Object Replication Policy on Storage accounts
+    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
+    - `Get-AzStorageObjectReplicationPolicy`
+    - `Remove-AzStorageObjectReplicationPolicy`
+* Supported enable/disable ChangeFeed on Blob Service of a Storage account
+    - `Update-AzStorageBlobServiceProperty`
+
+## Version 2.4.0
+* Supported create container/blob Sas token with new permission x,t
+    -  `New-AzStorageBlobSASToken`
+    -  `New-AzStorageContainerSASToken`
+* Supported create account Sas token with new permission x,t,f
+    -  `New-AzStorageAccountSASToken`
+* Supported get single file share usage
+    - `Get-AzRmStorageShare`
+        
 ## Version 2.3.0
 * Fixed the issue that UserAgent is not added for some data plane cmdlets.
 * Supported create/update Storage account with MinimumTlsVersion and AllowBlobPublicAccess

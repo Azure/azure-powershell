@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -26,8 +25,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
@@ -113,8 +112,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Creates new ResourcesClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
-        /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourceManagerSdkClient(
             IResourceManagementClient resourceManagementClient)
         {
@@ -155,32 +152,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return this.ResourceManagementClient;
         }
 
-        private string GetDeploymentParameters(Hashtable templateParameterObject)
-        {
-            if (templateParameterObject != null)
-            {
-                return SerializeHashtable(templateParameterObject, addValueLayer: false);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public string SerializeHashtable(Hashtable templateParameterObject, bool addValueLayer)
-        {
-            if (templateParameterObject == null)
-            {
-                return null;
-            }
-            Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
-            return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.None,
-                Formatting = Formatting.Indented
-            });
-        }
-
         public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
@@ -191,25 +162,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return response.ToPSResourceProvider();
-        }
-
-        private string GetTemplate(string templateFile)
-        {
-            string template = string.Empty;
-
-            if (!string.IsNullOrEmpty(templateFile))
-            {
-                if (Uri.IsWellFormedUriString(templateFile, UriKind.Absolute))
-                {
-                    template = GeneralUtilities.DownloadFile(templateFile);
-                }
-                else
-                {
-                    template = FileUtilities.DataStore.ReadFileAsText(templateFile);
-                }
-            }
-
-            return template;
         }
 
         private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable tags)
@@ -495,7 +447,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
+                    deployment.Properties.Template = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateObject));
                 }
             }
 
@@ -508,8 +460,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                string templateParams = GetDeploymentParameters(parameters.TemplateParameterObject);
-                deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
+                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
+                Dictionary<string, object> parametersDictionary = parameters.TemplateParameterObject?.ToDictionary(false);
+                string parametersContent = parametersDictionary != null
+                    ? PSJsonSerializer.Serialize(parametersDictionary)
+                    : null;
+                deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
+                    ? JObject.Parse(parametersContent)
+                    : null;
             }
 
             deployment.Location = parameters.Location;
@@ -1351,16 +1309,82 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+            ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
+
+            try
+            {
+                WhatIfOperationResult whatIfOperationResult = null;
+
+                switch (parameters.ScopeType)
+                {
+                    case DeploymentScopeType.Subscription:
+                        whatIfOperationResult = deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ResourceGroup:
+                        whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ManagementGroup:
+                        whatIfOperationResult = deployments.WhatIfAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.Tenant:
+                        whatIfOperationResult = deployments.WhatIfAtTenantScope(parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                }
+
+                if (parameters.ExcludeChangeTypes != null)
+                {
+                    whatIfOperationResult.Changes = whatIfOperationResult.Changes
+                        .Where(change => parameters.ExcludeChangeTypes.All(changeType => changeType != change.ChangeType))
+                        .ToList();
+                }
+
+                return new PSWhatIfOperationResult(whatIfOperationResult);
+            }
+            catch (CloudException ce)
+            {
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
             DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+            ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
 
             try
             {
                 WhatIfOperationResult whatIfOperationResult = string.IsNullOrEmpty(parameters.ResourceGroupName)
                     ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
                     : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+
+                switch (parameters.ScopeType)
+                {
+                    case DeploymentScopeType.Subscription:
+                        whatIfOperationResult = deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ResourceGroup:
+                        whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.ManagementGroup:
+                        whatIfOperationResult = deployments.WhatIfAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    case DeploymentScopeType.Tenant:
+                        whatIfOperationResult = deployments.WhatIfAtTenantScope(parameters.DeploymentName, scopedDeploymentWhatIf);
+                        break;
+                    default:
+                        break;
+                }
 
                 if (excludeChangeTypeNames != null && excludeChangeTypeNames.Length > 0)
                 {

@@ -842,9 +842,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     operationId: Guid.NewGuid().ToString(),
                     properties: new DeploymentOperationProperties(
                         provisioningState: "Failed",
-                        statusMessage: new StatusMessage(
-                            status: "{\"Code\":\"Conflict\"}"
-                            ),
+                        statusMessage: new StatusMessage("{\"Code\":\"Conflict\"}"),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
@@ -968,8 +966,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     operationId: Guid.NewGuid().ToString(),
                     properties: new DeploymentOperationProperties(
                         provisioningState: "Failed",
-                        statusMessage: new StatusMessage(
-                            status: "A really bad error occurred"),
+                        statusMessage: new StatusMessage("A really bad error occurred"),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
@@ -1195,52 +1192,52 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Verify(f => f.CancelWithHttpMessagesAsync(resourceGroupName, deploymentName + 3, null, new CancellationToken()), Times.Once());
         }
 
-        [Fact(Skip = "Test produces different outputs since hashtable order is not guaranteed.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SerializeHashtableProperlyHandlesAllDataTypes()
-        {
-            Hashtable hashtable = new Hashtable();
-            var pass = "pass";
-            hashtable.Add("key1", "string");
-            hashtable.Add("key2", 1);
-            hashtable.Add("key3", true);
-            hashtable.Add("key4", new DateTime(2014, 05, 08));
-            hashtable.Add("key5", null);
-            hashtable.Add("key6", pass);
+        //[Fact(Skip = "Test produces different outputs since hashtable order is not guaranteed.")]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void SerializeHashtableProperlyHandlesAllDataTypes()
+        //{
+        //    Hashtable hashtable = new Hashtable();
+        //    var pass = "pass";
+        //    hashtable.Add("key1", "string");
+        //    hashtable.Add("key2", 1);
+        //    hashtable.Add("key3", true);
+        //    hashtable.Add("key4", new DateTime(2014, 05, 08));
+        //    hashtable.Add("key5", null);
+        //    hashtable.Add("key6", pass);
 
-            string resultWithoutAddedLayer = resourcesClient.SerializeHashtable(hashtable, false);
-            Assert.NotEmpty(resultWithoutAddedLayer);
-            EqualsIgnoreWhitespace(@"{
-                ""key5"": null,
-                ""key2"": 1,
-                ""key4"": ""2014-05-08T00:00:00"",
-                ""key6"": ""pass"",
-                ""key1"": ""string"",
-                ""key3"": true
-            }", resultWithoutAddedLayer);
+        //    string resultWithoutAddedLayer = resourcesClient.SerializeHashtable(hashtable, false);
+        //    Assert.NotEmpty(resultWithoutAddedLayer);
+        //    EqualsIgnoreWhitespace(@"{
+        //        ""key5"": null,
+        //        ""key2"": 1,
+        //        ""key4"": ""2014-05-08T00:00:00"",
+        //        ""key6"": ""pass"",
+        //        ""key1"": ""string"",
+        //        ""key3"": true
+        //    }", resultWithoutAddedLayer);
 
-            string resultWithAddedLayer = resourcesClient.SerializeHashtable(hashtable, true);
-            Assert.NotEmpty(resultWithAddedLayer);
-            EqualsIgnoreWhitespace(@"{
-              ""key5"": {
-                ""value"": null
-              },
-              ""key2"": {
-                ""value"": 1
-              },
-              ""key4"": {
-                ""value"": ""2014-05-08T00:00:00""
-              },
-              ""key6"": {
-                ""value"": ""pass""
-              },
-              ""key1"": {
-                ""value"": ""string""
-              },
-              ""key3"": {
-                ""value"": true
-              }
-            }", resultWithAddedLayer);
-        }
+        //    string resultWithAddedLayer = resourcesClient.SerializeHashtable(hashtable, true);
+        //    Assert.NotEmpty(resultWithAddedLayer);
+        //    EqualsIgnoreWhitespace(@"{
+        //      ""key5"": {
+        //        ""value"": null
+        //      },
+        //      ""key2"": {
+        //        ""value"": 1
+        //      },
+        //      ""key4"": {
+        //        ""value"": ""2014-05-08T00:00:00""
+        //      },
+        //      ""key6"": {
+        //        ""value"": ""pass""
+        //      },
+        //      ""key1"": {
+        //        ""value"": ""string""
+        //      },
+        //      ""key3"": {
+        //        ""value"": true
+        //      }
+        //    }", resultWithAddedLayer);
+        //}
     }
 }

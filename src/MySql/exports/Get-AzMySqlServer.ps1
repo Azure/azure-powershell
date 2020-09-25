@@ -21,28 +21,28 @@ Gets information about a server.
 .Example
 PS C:\> Get-AzMySqlServer
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 .Example
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 .Example
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test"
 PS C:\> Get-AzMySqlServer -InputObject $ID
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -50,6 +50,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter

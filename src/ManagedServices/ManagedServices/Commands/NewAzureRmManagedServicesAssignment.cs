@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -40,10 +42,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [ScopeCompleter]
         public string Scope { get; set; }
 
+        [CmdletParameterBreakingChange(
+            nameOfParameterChanging: "RegistrationDefinitionName",
+            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
+            ChangeDescription = ManagedServicesUtility.DeprecatedParameterDescription)]
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration definition identifier.")]
         [ValidateNotNullOrEmpty]
         public string RegistrationDefinitionName { get; set; }
 
+        [CmdletParameterBreakingChange(
+            nameOfParameterChanging: "RegistrationDefinitionResourceId",
+            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
+            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
+            ReplaceMentCmdletParameterName = "RegistrationDefinitionId")]
         [Parameter(ParameterSetName = ByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The fully qualified resource id of the registration definition.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]

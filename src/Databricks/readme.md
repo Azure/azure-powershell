@@ -49,10 +49,11 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
+# lock the commit
 input-file:
-  - C:\Users\yeliu\isra-fel\azure-rest-api-specs-pr\specification\databricks\resource-manager\Microsoft.Databricks\stable\2018-04-01\databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
@@ -104,17 +105,52 @@ directive:
       parameter-name: ValueKeyVaultUri
     set:
       parameter-name: EncryptionKeyVaultUri
-  # Remove the set-* cmdlet
   - where:
-      verb: Set
-    remove: true
-  # Hide the New-* cmdlet for customization
+      parameter-name: RequireInfrastructureEncryptionValue
+    set:
+      parameter-name: RequireInfrastructureEncryption
+  - where:
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name 
+  # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickVirtualNetworkId 
+    set:
+      parameter-name: DatabricksVirtualNetworkId 
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: Workspace
+    remove: true
+  # Hide the New Workspace cmdlet for customization
+  - where:
+      verb: New
+      subject: Workspace
     hide: true
-  # Hide the Update- cmdlet for customization
+  # Hide the Update Workspace cmdlet for customization
   - where:
       verb: Update
+      subject: Workspace
+    hide: true
+  # Hide the Set VNetPeering cmdlet for customization
+  - where:
+      verb: Set
+      subject: VNetPeering
     hide: true
   - where:
       model-name: Workspace
@@ -152,4 +188,10 @@ directive:
       property-name: PrepareEncryptionValue
     set:
       property-name: PrepareEncryption
+  - where:
+      model-name: Workspace
+      property-name: RequireInfrastructureEncryptionValue
+    set:
+      property-name: RequireInfrastructureEncryption
+
 ```

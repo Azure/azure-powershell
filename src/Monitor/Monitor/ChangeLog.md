@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Supported `SkipMetricValiation` parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+
+## Version 2.1.0
+* Extended the parameter set in `Set-AzDiagnosticSetting` for separation of Logs and Metrics enablement [#12482]
+* Fixed bug for `Add-AzMetricAlertRuleV2` when getting metric alert from pipeline
 
 ## Version 2.0.2
 * Fixed bug for `Get-AzDiagnosticSetting` when metrics or logs are null [#12272]

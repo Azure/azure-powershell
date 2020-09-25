@@ -37,7 +37,7 @@ The **New-AzExpressRouteCircuit** cmdlet creates an Azure express route circuit.
 ## EXAMPLES
 
 ### Example 1: Create a new ExpressRoute circuit
-```
+```powershell
 $parameters = @{
     Name='ExpressRouteCircuit'
     ResourceGroupName='ExpressRouteResourceGroup'
@@ -52,7 +52,7 @@ New-AzExpressRouteCircuit @parameters
 ```
 
 ### Example 2: Create a new ExpressRoute circuit on ExpressRoutePort
-```
+```powershell
 $parameters = @{
     Name='ExpressRouteCircuit'
     ResourceGroupName='ExpressRouteResourceGroup'

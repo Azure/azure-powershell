@@ -510,8 +510,8 @@ function Test-NetworkRuleSet
         # Test
         $accountname = 'csa' + $rgname;
         $vnetname = 'vnet' + $rgname;
-        $skuname = 'S0';
-        $accounttype = 'Face';
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -597,6 +597,51 @@ function Test-NetworkRuleSet
 		Assert-AreEqual 2 $ruleSet.IpRules.Count
 		Assert-AreEqual 2 $ruleSet.VirtualNetworkRules.Count
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+TestNetworkRuleSetDefaultActions
+#>
+function Test-NetworkRuleSetDefaultActions
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$vnetid = $vnet.Subnets[0].Id
+		$vnetid2 = $vnet.Subnets[1].Id
+
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-Null $ruleSet
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 1 $ruleSet.VirtualNetworkRules.Count
     }
     finally
     {
@@ -1252,6 +1297,43 @@ function Test-Capabilities
         Assert-NotNull $createdAccount;
         Assert-True {$createdAccount.Capabilities.Length -gt 0}
         Assert-True {$createdAccount.Capabilities[0].Name.Length -gt 0}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test ApiProperties
+#>
+function Test-ApiProperties
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'QnAMaker';
+        $loc = "West US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $apiProperties = New-AzCognitiveServicesAccountApiProperty
+        $apiProperties.QnaRuntimeEndpoint = "https://sdk-test-qna-maker.azurewebsites.net"
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -ApiProperty $apiProperties -Force;
+        Assert-NotNull $createdAccount;
+        Assert-True {$createdAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://sdk-test-qna-maker.azurewebsites.net"}
+        
+        $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
+        
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -ApiProperty $apiProperties -Force;
+        Assert-NotNull $updatedAccount;
+        Assert-True {$updatedAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://qnamaker.azurewebsites.net"}
     }
     finally
     {

@@ -8,14 +8,13 @@ schema: 2.0.0
 # Get-AzAppConfigurationStore
 
 ## SYNOPSIS
-Gets the properties of the specified configuration store.
+Get or list app configuration stores.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzAppConfigurationStore [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAppConfigurationStore [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,12 +31,60 @@ Get-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DefaultPr
 
 ### List1
 ```
-Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the properties of the specified configuration store.
+Get or list app configuration stores.
+
+## EXAMPLES
+
+### Example 1: List all app configuration stores under a subscription
+```powershell
+PS C:\> Get-AzAppConfigurationStore
+
+Location Name               Type
+-------- ----               ----
+eastus   appconfig-test01   Microsoft.AppConfiguration/configurationStores
+eastus   contoso-app-config Microsoft.AppConfiguration/configurationStores
+```
+
+This command lists all app configuration stores under a subscription.
+
+### Example 2: List all app configuration stores under a resource group
+```powershell
+PS C:\> Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test01 Microsoft.AppConfiguration/configurationStores
+eastus   appconfig-test02 Microsoft.AppConfiguration/configurationStores
+```
+
+This command lists all app configuration stores under a resource group.
+
+### Example 3: Get an app configuration store by name
+```powershell
+PS C:\> Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test01
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test01 Microsoft.AppConfiguration/configurationStores
+```
+
+This command gets an app configuration store by name.
+
+### Example 4: Get an app configuration store by pipeline
+```powershell
+PS C:\> Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test01 | Get-AzAppConfigurationStore
+
+Location Name             Type
+-------- ----             ----
+eastus   appconfig-test01 Microsoft.AppConfiguration/configurationStores
+```
+
+This command gets an app configuration store by pipeline.
 
 ## PARAMETERS
 
@@ -102,22 +149,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkipToken
-A skip token is used to continue retrieving items after an operation returns a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
-
-```yaml
-Type: System.String
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The Microsoft Azure subscription ID.
 
@@ -142,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 
 ## NOTES
 
@@ -155,7 +186,9 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   - `[ConfigStoreName <String>]`: The name of the configuration store.
+  - `[GroupName <String>]`: The name of the private link resource group.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: Private endpoint connection name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the container registry belongs.
   - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
 

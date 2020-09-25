@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyvault_name": {
-      "value": "keyvalult-he7qrp"
+      "value": "keyvalult-42fem7"
     },
     "storageaccount_principalid": {
-      "value": "47d455db-0889-43a9-b7bd-c3fb49fcdfa5"
+      "value": "8cc21aea-077f-48a5-a3e0-14fe357919c5"
     }
   }
 }

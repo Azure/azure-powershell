@@ -70,6 +70,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = cluster.Identity;
+            PublicNetworkAccessType = cluster.Properties?.NetworkSettings?.PublicNetworkAccess;
+            OutboundPublicNetworkAccessType = cluster.Properties?.NetworkSettings?.OutboundOnlyPublicNetworkAccessType;
+            EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
+            PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
+            var vnet = Utils.ExtractWorkerNode(cluster)?.VirtualNetworkProfile;
+            VirtualNetworkId = vnet?.Id;
+            SubnetName = vnet?.Subnet;
+            ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -102,7 +110,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {
                         DefaultStorageContainer = string.Empty;
                     }
-
 
                     AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
                 }
@@ -220,5 +227,40 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the assigned identity.
         /// </summary>
         public ClusterIdentity AssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the private endpoint.
+        /// </summary>
+        public string PrivateEndpoint;
+
+        /// <summary>
+        /// Gets or sets the public network access.
+        /// </summary>
+        public string PublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the outbound public network access.
+        /// </summary>
+        public string OutboundPublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the encryption in transit.
+        /// </summary>
+        public bool? EncryptionInTransit;
+
+        /// <summary>
+        /// Gets or sets the virtual network id.
+        /// </summary>
+        public string VirtualNetworkId;
+
+        /// <summary>
+        /// Gets or sets the subnet name.
+        /// </summary>
+        public string SubnetName;
+
+        /// <summary>
+        /// Gets or sets the compute profile
+        /// </summary>
+        public AzureHDInsightComputeProfile ComputeProfile;
     }
 }

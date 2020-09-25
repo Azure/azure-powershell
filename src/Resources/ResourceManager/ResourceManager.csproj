@@ -9,12 +9,11 @@
   <PropertyGroup>
     <AssemblyName>$(AzAssemblyPrefix)ResourceManager</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)ResourceManager.Cmdlets</RootNamespace>
-    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.8.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.10.0-preview" />
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
   </ItemGroup>

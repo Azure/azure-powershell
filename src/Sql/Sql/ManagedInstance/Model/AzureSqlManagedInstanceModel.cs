@@ -134,5 +134,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance minimal tls version
         /// </summary>
         public string MinimalTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance backup storage redundancy
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
     }
 }

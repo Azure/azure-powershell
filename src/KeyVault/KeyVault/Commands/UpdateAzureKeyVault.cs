@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -48,12 +49,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateByResourceIdParameterSet, HelpMessage = "Resource ID of the key vault.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+        
+        public const String EnableSoftDeleteChangeDesc = "EnableSoftDelete will be deprecated without being replaced.";
 
+        [CmdletParameterBreakingChange("EnableSoftDelete", "3.0.0", ChangeDescription = EnableSoftDeleteChangeDesc)]
         [Parameter(Mandatory = false, HelpMessage = "Enable the soft-delete functionality for this key vault. Once enabled it cannot be disabled.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
+        public bool? EnableRbacAuthorization { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
@@ -99,11 +106,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingResource.EnabledForDiskEncryption,
                     EnableSoftDelete.IsPresent ? (true as bool?) : null,
                     EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                    EnableRbacAuthorization,
                     this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
                         ? (SoftDeleteRetentionInDays as int?)
                         : (existingResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays),
                     existingResource.NetworkAcls
                 );
+                
                 WriteObject(result);
             }
         }

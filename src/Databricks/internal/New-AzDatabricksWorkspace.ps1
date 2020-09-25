@@ -60,6 +60,7 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
@@ -71,16 +72,10 @@ PARAMETER <IWorkspace>: Information about workspace.
   CustomPublicSubnetNameValue <String>: The value which should be used for this field.
   CustomVirtualNetworkIdValue <String>: The value which should be used for this field.
   EnableNoPublicIPValue <Boolean>: The value which should be used for this field.
-  LoadBalancerBackendPoolNameValue <String>: The value which should be used for this field.
-  LoadBalancerIdValue <String>: The value which should be used for this field.
   ManagedResourceGroupId <String>: The managed resource group Id.
   PrepareEncryption <Boolean>: The value which should be used for this field.
-  RelayNamespaceNameValue <String>: The value which should be used for this field.
-  ResourceTagValue <IWorkspaceCustomObjectParameterValue>: The value which should be used for this field.
+  RequireInfrastructureEncryption <Boolean>: The value which should be used for this field.
   SkuName <String>: The SKU name.
-  StorageAccountNameValue <String>: The value which should be used for this field.
-  StorageAccountSkuNameValue <String>: The value which should be used for this field.
-  VnetAddressPrefixValue <String>: The value which should be used for this field.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Authorization <IWorkspaceProviderAuthorization[]>]: The workspace provider authorizations.
@@ -186,18 +181,6 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${LoadBalancerBackendPoolNameValue},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${LoadBalancerIdValue},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # The value which should be used for this field.
     ${PrepareEncryption},
@@ -216,15 +199,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
+    [System.Management.Automation.SwitchParameter]
     # The value which should be used for this field.
-    ${RelayNamespaceNameValue},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue]
-    # The value which should be used for this field.
-    ${ResourceTagValue},
+    ${RequireInfrastructureEncryption},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -237,18 +214,6 @@ param(
     [System.String]
     # The SKU tier.
     ${SkuTier},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${StorageAccountNameValue},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${StorageAccountSkuNameValue},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -268,12 +233,6 @@ param(
     [System.String]
     # The value which should be used for this field.
     ${VirtualNetworkId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${VnetAddressPrefixValue},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]

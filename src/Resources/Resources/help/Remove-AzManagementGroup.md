@@ -29,14 +29,14 @@ The **Remove-AzManagementGroup** cmdlet deletes a Management Group.
 
 ## EXAMPLES
 
-### Example 1 - Remove a Management Group
-```
+### Example 1: Remove a Management Group
+```powershell
 PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
 ```
 
-### Example 2 - Remove a Management Group by piping PSManagementGroup Object
-```
-PS C:\> Get-Remove-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
+### Example 2: Remove a Management Group by piping PSManagementGroup Object
+```powershell
+PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
 ```
 
 ## PARAMETERS
@@ -62,7 +62,7 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: GroupOperations
-Aliases:
+Aliases: GroupId
 
 Required: True
 Position: 0

@@ -143,3 +143,64 @@ function Test-UpdateAzMarketplacePrivateStoreOffer
 		Assert-AreEqual $queryResult[$i].SpecificPlanIdsLimitation.Count 1
     }
 }
+
+<#
+.SYNOPSIS
+Updates private store private offer that was defined in subscription level 
+#>
+function Test-UpdateAzMarketplacePrivateStorePrivateOffer
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$OfferIdValue="test_test_pmc2pc1.test-managed-app-private-indirect-gov"
+	$SpecificPlanIdsLimitationValue= @("test-managed-app")
+	$SubscriptionId="bc17bb69-1264-4f90-a9f6-0e51e29d5281"
+
+	$queryResult = Set-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -OfferId $OfferIdValue -SpecificPlanIdsLimitation $SpecificPlanIdsLimitationValue -SubscriptionId $SubscriptionId
+    
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 1
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+		Assert-AreEqual $queryResult[$i].UniqueOfferId $OfferIdValue
+		Assert-AreEqual $queryResult[$i].SpecificPlanIdsLimitation.Count 1
+    }
+}
+
+<#
+.SYNOPSIS
+Gets private store private offers that were defined in subscription level 
+#>
+function Test-GetAzMarketplacePrivateStorePrivateOffers
+{
+	$propertiesCount=11
+	$PrivateStoreIdValue="a70d384d-ec34-47dd-9d38-ec6df452cba1"
+	$SubscriptionId="bc17bb69-1264-4f90-a9f6-0e51e29d5281"
+	$OfferIdValue="test_test_pmc2pc1.test-managed-app-private-indirect-gov"
+
+	$queryResult = Get-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue
+	
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 2
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+    }
+
+	$queryResult = Get-AzMarketplacePrivateStoreOffer -PrivateStoreId $PrivateStoreIdValue -SubscriptionId $SubscriptionId
+	
+	Assert-NotNull  $queryResult
+	Assert-AreEqual $queryResult.Count 1
+
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+    {
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-AreEqual $queryResult[$i].PrivateStoreId $PrivateStoreIdValue
+		Assert-AreEqual $queryResult[$i].UniqueOfferId $OfferIdValue
+    }
+}
