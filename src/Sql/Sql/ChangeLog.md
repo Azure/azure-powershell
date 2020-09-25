@@ -27,6 +27,7 @@
 	- `Get-AzSqlInstanceDatabaseLogReplay`
 	- `Complete-AzSqlInstanceDatabaseLogReplay`
 	- `Stop-AzSqlInstanceDatabaseLogReplay`
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
