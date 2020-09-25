@@ -42,6 +42,7 @@
 * Updated Databases cmdlets to support backup storage type specification
 * Added Force parameter to `New-AzSqlDatabase`
 * Updated ActiveDirectoryOnlyAuthentication cmdlets for server and instance to include ResourceId and InputObject
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
