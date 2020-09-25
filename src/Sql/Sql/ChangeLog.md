@@ -21,7 +21,7 @@
 * Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
 * Fixed for bug in `New-AzSqlDatabaseExport`
 * Removed case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
-* Add Added BackupStorageRedundancy to the following: 
+* Added BackupStorageRedundancy to the following: 
     - `Restore-AzureRmSqlDatabase`
     - `New-AzSqlDatabaseCopy`
     - `New-AzSqlDatabaseSecondary`
