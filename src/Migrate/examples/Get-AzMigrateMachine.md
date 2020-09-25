@@ -29,4 +29,3 @@ Name                                                                            
 ```
 
 Get machine by name.
-

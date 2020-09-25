@@ -179,6 +179,12 @@ directive:
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
+      verb: Get$
+      subject: Solution$
+      variant: ^List$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
       verb: Remove$
       subject: Project$
       variant: ^DeleteViaIdentity$
