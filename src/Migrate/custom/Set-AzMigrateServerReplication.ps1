@@ -23,31 +23,13 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserve
 #>
 function Set-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByNameVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the replcating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
-
-        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the resource group of the replicating server to be updated.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the migrate project name of the replicating server to be updated.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByNameVMwareCbt', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the machine name of the replicating server to be updated.
-        ${MachineName},
 
         [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -81,7 +63,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.Management.Automation.SwitchParameter]
+        [System.String]
         # Updates the NIC for the Azure VM to be created.
         ${UpdateNic},
 
@@ -130,12 +112,6 @@ function Set-AzMigrateServerReplication {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -155,12 +131,6 @@ function Set-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -183,11 +153,13 @@ function Set-AzMigrateServerReplication {
     )
     
     process {
+            #Set-PSDebug -Step; foreach ($i in 1..3) {$i}
+            $test = $PSBoundParameters
             $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
             $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
             $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
             $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
-            $HasUpdateNic = $UpdateNic.IsPresent
+            $HasUpdateNic = $PSBoundParameters.ContainsKey('$UpdateNic')
             $HasTargetNicSelectionType = $PSBoundParameters.ContainsKey('TargetNicSelectionType')
             $HasTargetNicSubnet = $PSBoundParameters.ContainsKey('TargetNicSubnet')
             $HasTargetNicIP = $PSBoundParameters.ContainsKey('TargetNicIP')
@@ -211,68 +183,17 @@ function Set-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('InputObject')
             $parameterSet = $PSCmdlet.ParameterSetName
 
-            if ($parameterSet -eq 'ByNameVMwareCbt') {
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
-                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                
-                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-                if($solution -and ($solution.Count -ge 1)){
-                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                    $applianceName = $applianceObj[0].ApplianceName
-                }else{
-                    throw "Solution not found."
-                }
-                
-                $null = $PSBoundParameters.Remove("Name")
-                $null = $PSBoundParameters.Remove("MigrateProjectName")
-                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate\Get-AzMigrateReplicationFabric @PSBoundParameters
-                $FabricName = ""
-                if($allFabrics -and ($allFabrics.length -gt 0)){
-                    foreach ($fabric in $allFabrics) {
-                        if($fabric.Name -match $applianceName){
-                            $FabricName = $fabric.Name
-                            break
-                        }
-                    }
-                }
-                if($FabricName -eq ""){
-                    throw "Fabric not found for given resource group"
-                }
-
-                $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
-                $ProtectionContainerName = ""
-                if($peContainers -and ($peContainers.length -gt 0)){
-                    foreach ($peContainer in $peContainers) {
-                        if($peContainer.Name -match $applianceName){
-                            $ProtectionContainerName = $peContainer.Name
-                            break
-                        }
-                    }
-                }
-
-                if($ProtectionContainerName -eq ""){
-                    throw "Container not found for giveb resource group"
-                }
-
-                $null = $PSBoundParameters.Remove('ResourceGroupName')
-                $null = $PSBoundParameters.Remove('ResourceName')
-                $null = $PSBoundParameters.Remove('FabricName')
-
-            }else {
-                if($parameterSet -eq 'ByInputObjectVMwareCbt'){
-                    $TargetObjectID = $InputObject.Id
-                }
-                $MachineIdArray = $TargetObjectID.Split("/")
-                $ResourceGroupName = $MachineIdArray[4]
-                $VaultName = $MachineIdArray[8]
-                $FabricName = $MachineIdArray[10]
-                $ProtectionContainerName = $MachineIdArray[12]
-                $MachineName = $MachineIdArray[14]
+            
+            if($parameterSet -eq 'ByInputObjectVMwareCbt'){
+                $TargetObjectID = $InputObject.Id
             }
+            $MachineIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $MachineIdArray[4]
+            $VaultName = $MachineIdArray[8]
+            $FabricName = $MachineIdArray[10]
+            $ProtectionContainerName = $MachineIdArray[12]
+            $MachineName = $MachineIdArray[14]
+            
 
 
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
@@ -280,7 +201,8 @@ function Set-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add("FabricName", $FabricName)
             $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+            
+            $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @GetPSBoundParameters
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtUpdateMigrationItemInput]::new()
                 $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
@@ -307,18 +229,40 @@ function Set-AzMigrateServerReplication {
                     $VmNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
                     $VmNic.TargetSubnetName = $TargetNicSubnet
                     $VmNic.TargetStaticIPAddress = $TargetNicIP
+                    $VmNic.NicId = $UpdateNic
                     if($HasTargetNicSelectionType){
-                        if($TargetNicSelectionType -eq 'Primary'){
+                        if($TargetNicSelectionType -eq 'primary'){
                             $VmNic.IsPrimaryNic = "true"
-                        } 
-                        $VmNic.IsSelectedForMigration = "true"
+                            $VmNic.IsSelectedForMigration = "true"
+                        }elseif($TargetNicSelectionType -eq 'secondary'){
+                            $VmNic.IsPrimaryNic = "false"
+                            $VmNic.IsSelectedForMigration = "true"
+                        }elseif($TargetNicSelectionType -eq 'donotcreate'){
+                            $VmNic.IsPrimaryNic = "false"
+                            $VmNic.IsSelectedForMigration = "false"
+                        }
                     }
                     $Nics += $VmNic
                     $ProviderSpecificDetails.VMNic = $Nics
                 }
                 $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetails)
-                return Az.Migrate.internal\Update-AzMigrateReplicationMigrationItem @PSBoundParameters
-                    
+                $null = $PSBoundParameters.Add('NoWait', $true)
+                $output =  Az.Migrate.internal\Update-AzMigrateReplicationMigrationItem @PSBoundParameters
+                $JobName =  $output.Target.Split("/")[12].Split("?")[0]
+
+                $null = $PSBoundParameters.Remove('NoWait')
+                $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
+                $null = $PSBoundParameters.Remove("ResourceGroupName")
+                $null = $PSBoundParameters.Remove("ResourceName")
+                $null = $PSBoundParameters.Remove("FabricName")
+                $null = $PSBoundParameters.Remove("MigrationItemName")
+                $null = $PSBoundParameters.Remove("ProtectionContainerName")
+
+                $null = $PSBoundParameters.Add('JobName', $JobName)
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            
+                return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters 
             }else{
                 throw "Either machine doesn't exist or provider/action isn't supported for this machine"
             } 

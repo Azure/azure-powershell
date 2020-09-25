@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserve
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByNameDefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
@@ -31,27 +31,6 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies the machine ID of the discovered server to be migrated.
         ${VMwareMachineId},
-
-        [Parameter(ParameterSetName='ByNameDefaultUser', Mandatory)]
-        [Parameter(ParameterSetName='ByNamePowerUser', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the resource group of the discovered server to be migrated.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='ByNameDefaultUser', Mandatory)]
-        [Parameter(ParameterSetName='ByNamePowerUser', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the migrate project name of the discovered server to be migrated.
-        ${ProjectName},
-
-        [Parameter(ParameterSetName='ByNameDefaultUser', Mandatory)]
-        [Parameter(ParameterSetName='ByNamePowerUser', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the discovered machine name of the discovered server to be migrated.
-        ${MachineName},
 
         [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
@@ -61,7 +40,6 @@ function New-AzMigrateServerReplication {
         ${InputObject},
 
         [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
-        [Parameter(ParameterSetName='ByNamePowerUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]
@@ -98,8 +76,7 @@ function New-AzMigrateServerReplication {
         # Mapping.
         ${ReplicationContainerMapping},
 
-        [Parameter(ParameterSetName='ByNamePowerUser')]
-        [Parameter(ParameterSetName='ByNameDefaultUser')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Account id.
@@ -118,10 +95,8 @@ function New-AzMigrateServerReplication {
         ${TargetVMSize},
 
         [Parameter(ParameterSetName='ByIdDefaultUser')]
-        [Parameter(ParameterSetName='ByNameDefaultUser')]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
         [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
-        [Parameter(ParameterSetName='ByNamePowerUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -146,7 +121,6 @@ function New-AzMigrateServerReplication {
         # Specifies the storage account to be used for boot diagnostics.
         ${TargetBootDiagnosticsStorageAccount},
 
-        [Parameter(ParameterSetName='ByNameDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -154,7 +128,6 @@ function New-AzMigrateServerReplication {
         # Specifies the type of disks to be used for the Azure VM.
         ${DiskType},
         
-        [Parameter(ParameterSetName='ByNameDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -162,7 +135,6 @@ function New-AzMigrateServerReplication {
         # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
 
-        [Parameter(ParameterSetName='ByNameDefaultUser')]
         [Parameter(ParameterSetName='ByIdDefaultUser')]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -185,12 +157,6 @@ function New-AzMigrateServerReplication {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -210,12 +176,6 @@ function New-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -239,9 +199,6 @@ function New-AzMigrateServerReplication {
     
     process {
             $parameterSet = $PSCmdlet.ParameterSetName
-            
-            # TODO
-            # validate the vm name
             $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
             $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
             $HasTargetAVZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
@@ -269,9 +226,6 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
             $null = $PSBoundParameters.Remove('VMwareMachineId')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('ProjectName')
-            $null = $PSBoundParameters.Remove('MachineName')
             $null = $PSBoundParameters.Remove('InputObject')
            
             if(($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')){
@@ -301,41 +255,24 @@ function New-AzMigrateServerReplication {
                 $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
                 
                 $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-                if($solution -and ($solution.Count -ge 1)){
-                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                    $applianceName = $applianceObj[0].ApplianceName
-                }else{
-                    throw "Solution not found."
+                $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+                $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
+                $applianceName = ""
+                foreach($appObj in $applianceObj){
+                    $appsitename = $appObj.SiteId.Split("/")[8]
+                    if($appsitename -eq $SiteName){
+                        $applianceName = $app.ApplianceName
+                        break
+                    }
                 }
+                if($applianceName -eq ""){
+                    throw "No appliance found."
+                }
+                
                 
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove("Name")
                 $null = $PSBoundParameters.Remove("MigrateProjectName")
-                
-            }else{
-                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-                $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
-                $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                
-                $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-                if($solution -and ($solution.Count -ge 1)){
-                    $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                    $applianceName = $applianceObj[0].ApplianceName
-                    $SiteName = $applianceObj[0].SiteId.Split("/")[8]
-                    $SiteType = $applianceObj[0].SiteId.Split("/")[7]
-                }else{
-                    throw "Solution not found."
-                }
-                
-                $null = $PSBoundParameters.Remove('ResourceGroupName')
-                $null = $PSBoundParameters.Remove("Name")
-                $null = $PSBoundParameters.Remove("MigrateProjectName")
-                $VMwareMachineId = "/subscriptions/" + $SubscriptionId +
-                    "/resourceGroups/" + $ResourceGroupName +"/providers/Microsoft.OffAzure/" +
-                    $SiteType + "/" + $SiteName + "/machines/" + $MachineName
-                
             }
             if ($SiteType -ne "VMwareSites"){
                 throw "Provider not supported"
@@ -495,7 +432,23 @@ public static int hashForArtifact(String artifact)
                 $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
             }
             $null = $PSBoundParameters.add('ProviderSpecificDetail', $ProviderSpecificDetails)
-            return Az.Migrate.internal\New-AzMigrateReplicationMigrationItem @PSBoundParameters   
+            $null = $PSBoundParameters.Add('NoWait', $true)
+            $output = Az.Migrate.internal\New-AzMigrateReplicationMigrationItem @PSBoundParameters
+            $JobName = $output.Target.Split("/")[12].Split("?")[0]
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+            $null = $PSBoundParameters.Remove("ResourceName")
+            $null = $PSBoundParameters.Remove("FabricName")
+            $null = $PSBoundParameters.Remove("MigrationItemName")
+            $null = $PSBoundParameters.Remove("ProtectionContainerName")
+            $null = $PSBoundParameters.Remove("PolicyId")
+
+            $null = $PSBoundParameters.Add('JobName', $JobName)
+            $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        
+            return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters    
         
     }
 
