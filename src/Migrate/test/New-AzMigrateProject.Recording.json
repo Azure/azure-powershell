@@ -1,0 +1,36 @@
+{
+  "New-AzMigrateProject+[NoContext]+PutExpanded+$PUT+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview",
+      "Content": "{\n  \"eTag\": \"*\",\n  \"location\": \"centralus\",\n  \"properties\": {\n    \"registeredTools\": [ \"\" ]\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "97" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00006e2e-0000-0300-0000-5f6e41270000\"" ],
+        "x-ms-request-id": [ "a1e62c31-af29-45ba-b894-f28cd96df92b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "1ebf2476-4f67-4779-a770-1cc5a8c4420c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191240Z:1ebf2476-4f67-4779-a770-1cc5a8c4420c" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1411" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/AzMigratePwshTestProj\",\"name\":\"AzMigratePwshTestProj\",\"type\":\"Microsoft.Migrate/MigrateProjects\",\"etag\":\"\\\"00006e2e-0000-0300-0000-5f6e41270000\\\"\",\"location\":\"centralus\",\"properties\":{\"registeredTools\":[],\"serviceEndpoint\":\"https://pod01-amh1.cus.hypervrecoverymanager.windowsazure.com/resources/689c266c-5605-4b38-8bd4-4946d64ad3a6\",\"summary\":{\"servers\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":0,\"testMigratedCount\":0,\"migratedCount\":0,\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{\"microsoftDiscoveredCount\":\"0\",\"microsoftMachinesCount\":\"0\"}},\"databases\":{\"instanceType\":\"Databases\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{}},\"webApplications\":{\"instanceType\":\"WebApplications\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.704349Z\",\"extendedSummary\":{}},\"desktopVirtualization\":{\"instanceType\":\"DesktopVirtualization\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{}}},\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"refreshSummaryState\":\"Completed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}
