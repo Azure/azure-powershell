@@ -91,12 +91,6 @@ function Get-AzMigrateJob {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -116,12 +110,6 @@ function Get-AzMigrateJob {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
