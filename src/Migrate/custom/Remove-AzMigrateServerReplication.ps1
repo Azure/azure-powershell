@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigratese
 #>
 function Remove-AzMigrateServerReplication {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

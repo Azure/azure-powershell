@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskm
 #>
 function New-AzMigrateDiskMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
