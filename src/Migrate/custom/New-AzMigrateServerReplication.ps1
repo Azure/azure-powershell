@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserve
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-    [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
