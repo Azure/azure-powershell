@@ -226,8 +226,8 @@ function Set-AzMigrateServerReplication {
                 if($HasUpdateNic){
                     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput[]]$Nics = @()
                     $VmNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
-                    $VmNic.TargetSubnetName = $TargetNicSubnet
-                    $VmNic.TargetStaticIPAddress = $TargetNicIP
+                    if($HasTargetNicSubnet){$VmNic.TargetSubnetName = $TargetNicSubnet}
+                    if($HasTargetNicIP){$VmNic.TargetStaticIPAddress = $TargetNicIP}
                     $VmNic.NicId = $UpdateNic
                     if($HasTargetNicSelectionType){
                         if($TargetNicSelectionType -eq 'primary'){
