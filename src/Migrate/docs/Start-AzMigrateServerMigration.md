@@ -15,13 +15,13 @@ Starts the migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
- [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-SubscriptionId <String>] [-TurnOffSourceServer]
- [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,21 +86,6 @@ Type                             : Microsoft.RecoveryServices/vaults/replication
 By id
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
