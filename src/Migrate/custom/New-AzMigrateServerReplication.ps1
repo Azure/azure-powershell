@@ -22,7 +22,7 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]

@@ -15,13 +15,13 @@ Stops replication for the migrated server.
 ### ByIDVMwareCbt (Default)
 ```
 Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>] [-ForceRemove <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,21 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -219,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
 
 ## NOTES
 

@@ -22,7 +22,7 @@ The Set-AzMigrateServerReplication cmdlet updates the target properties for the 
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]

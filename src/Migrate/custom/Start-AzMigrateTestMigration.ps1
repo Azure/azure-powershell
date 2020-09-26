@@ -22,7 +22,7 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]

@@ -22,7 +22,7 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
-    [OutputType([System.Boolean])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -83,12 +83,6 @@ function Remove-AzMigrateServerReplication {
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]

@@ -22,7 +22,7 @@ Starts the migration for the replicating server.
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
 #>
 function Start-AzMigrateServerMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
     [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
