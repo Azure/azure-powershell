@@ -138,6 +138,30 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
         }
 
+        private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
+
+        public ContainerRegistryDataPlaneClient RegistryDataPlaneClient
+        {
+            get
+            {
+                if (_RegistryDataPlaneClient == null)
+                {
+                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _RegistryDataPlaneClient;
+            }
+
+            set
+            {
+                _RegistryDataPlaneClient = value;
+            }
+        }
+
         protected void WriteInvalidResourceIdError(string msg)
         {
             WriteError(new ErrorRecord(new PSArgumentException(msg, "ResourceId"), string.Empty, ErrorCategory.InvalidArgument, null));

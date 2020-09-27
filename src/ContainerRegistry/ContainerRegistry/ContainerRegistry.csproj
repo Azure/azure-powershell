@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.ContainerRegistry" Version="1.0.0-preview.1" />
   </ItemGroup>
 
 </Project>
