@@ -1,6 +1,6 @@
 ### Example 1: Get By Job Id
 ```powershell
-PS C:\> Get-AzMigrateJob -JobID "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
+PS C:\> Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
 
 ActivityId                       : 68af14b4-46ae-48d1-b3e9-cdcffb9e8a93 ActivityId: 74d1a396-1d37-4264-8a5b-b727aaef0171
 AllowedAction                    : {}
@@ -9,7 +9,7 @@ CustomDetailInstanceType         : AsrJobDetails
 EndTime                          : 9/16/20 11:57:33 AM
 Error                            : {}
 FriendlyName                     : Associate replication policy
-Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+Id                               : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
                                    yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b
 Location                         :
 Name                             : 997e2a92-5afe-49c7-a81a-89660aec9b7b
@@ -37,7 +37,7 @@ CustomDetailInstanceType         :
 EndTime                          : 9/21/20 4:13:40 PM
 Error                            : {}
 FriendlyName                     : Update the virtual machine
-Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+Id                               : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
                                    yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/1c89e38e-34ec-4903-aa7c-115201bf2de1
 Location                         :
 Name                             : 1c89e38e-34ec-4903-aa7c-115201bf2de1
@@ -65,7 +65,7 @@ CustomDetailInstanceType         : AsrJobDetails
 EndTime                          : 8/21/20 6:41:48 AM
 Error                            : {}
 FriendlyName                     : Create replication policy
-Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+Id                               : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
                                    yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/7ae1ee7c-442c-499d-8b0e-81d52a42b71e
 Location                         :
 Name                             : 7ae1ee7c-442c-499d-8b0e-81d52a42b71e
