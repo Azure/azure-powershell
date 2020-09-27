@@ -37,7 +37,7 @@ The Set-AzMigrateServerReplication cmdlet updates the target properties for the 
 
 ### Example 1: Update by id
 ```powershell
-PS C:\> Set-AzMigrateServerReplication -TargetObjectID '/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629' -TargetVMName 'rb-w2k12r2-1'
+PS C:\> Set-AzMigrateServerReplication -TargetObjectID '/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_500f44f8-2aa3-587b-8958-ead358639629' -TargetVMName 'rb-w2k12r2-1'
 
 ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
 AllowedAction                    : {Cancel}
@@ -46,7 +46,7 @@ CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
 FriendlyName                     : Update
-Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
+Id                               : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
                                    yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
 Location                         :
 Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
@@ -62,34 +62,6 @@ Type                             : Microsoft.RecoveryServices/vaults/replication
 ```
 
 By id.
-
-### Example 2: Update by name
-```powershell
-PS C:\> Set-AzMigrateServerReplication -MachineName "bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -ResourceGroupName azmigratepwshtestasr13072020 -ProjectName AzMigrateTestProjectPWSH -TargetVMName 'rb-w2k12r2-1'
-
-ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
-AllowedAction                    : {Cancel}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
-CustomDetailInstanceType         : AsrJobDetails
-EndTime                          :
-Error                            : {}
-FriendlyName                     : Update
-Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.Recover
-                                   yServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/931dde9a-de67-4a30-a045-bb9d6162f8ab
-Location                         :
-Name                             : 931dde9a-de67-4a30-a045-bb9d6162f8ab
-ScenarioName                     : Update
-StartTime                        : 9/25/20 9:20:08 PM
-State                            : InProgress
-StateDescription                 : InProgress
-TargetInstanceType               : ProtectionEntity
-TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
-TargetObjectName                 : prsadhu-TestVM
-Task                             : {DisableProtectionOnPrimary, UpdateDraState}
-Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
-```
-
-By name.
 
 ## PARAMETERS
 
