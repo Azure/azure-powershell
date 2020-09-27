@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.0
 * Added BackupStorageRedundancy to the following: 
     - `Restore-AzureRmSqlDatabase`
     - `New-AzSqlDatabaseCopy`
