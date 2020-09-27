@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzMariaDbServer
 
 ## SYNOPSIS
-
+Restore a MariaDb from a existing MariaDb.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObj
 ```
 
 ## DESCRIPTION
-
+Restore a MariaDb from a existing MariaDb.
 
 ## EXAMPLES
 
@@ -49,7 +49,7 @@ This command restore a PointInTime MariaDB by server object.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -64,7 +64,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -79,6 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+The source server object to restore from.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -109,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+The dest server name to restore from.
 
 ```yaml
 Type: System.String
@@ -124,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -154,7 +157,8 @@ Accept wildcard characters: False
 ```
 
 ### -RestorePointInTime
-
+region PointInTimeRestore
+ The location the resource resides in.
 
 ```yaml
 Type: System.DateTime
@@ -169,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-
+The source server name to restore from.
 
 ```yaml
 Type: System.String
@@ -184,7 +188,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+Gets the subscription Id which uniquely identifies the Microsoft Azure subscription.
+The subscription ID is part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -199,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -264,7 +269,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: 
+INPUTOBJECT <IServer>: The source server object to restore from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

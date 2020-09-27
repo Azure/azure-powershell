@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbReplica
 
 ## SYNOPSIS
-
+Creates a replica of a MariaDb server.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzMariaDbReplica -Master <IServer> -ReplicaName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-
+Creates a replica of a MariaDb server.
 
 ## EXAMPLES
 
@@ -68,7 +68,7 @@ This command with parameter inputobject creates a replica db with parameter inpu
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -83,7 +83,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
