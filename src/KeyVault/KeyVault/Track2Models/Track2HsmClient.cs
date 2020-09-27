@@ -1,8 +1,16 @@
-﻿using Azure.Security.KeyVault.Keys;
+﻿using System;
+using System.Net;
+using System.Collections;
+using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using System;
-using System.Collections;
+using System.Collections.Generic;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
+using Azure;
+using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -36,7 +44,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? null : new KeyCurveName(curveName) };
+                // Have no idea why still run KeyCurveName when curveName is null
+                //options = new CreateEcKeyOptions(keyName, isHsm)
+                //{
+                //    CurveName = string.IsNullOrEmpty(curveName) ? null : new KeyCurveName(curveName)
+                //};
+                options = new CreateEcKeyOptions(keyName, isHsm);
+                if (string.IsNullOrEmpty(curveName))
+                {
+                    (options as CreateEcKeyOptions).CurveName = null;
+                }
+                else
+                {
+                    (options as CreateEcKeyOptions).CurveName = new KeyCurveName(curveName);
+                }
             }
             else
             {
@@ -76,6 +97,154 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
             }
+        }
+
+        internal PSKeyVaultKey GetKey(string managedHsmName, string keyName, string keyVersion)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException(nameof(keyName));
+
+            var client = CreateKeyClient(managedHsmName);
+            return GetKey(client, keyName, keyVersion);
+        }
+
+        private PSKeyVaultKey GetKey(KeyClient client, string keyName, string keyVersion) 
+        {
+            KeyVaultKey keyBundle;
+            try
+            {
+                keyBundle = client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult();
+            }
+            catch (RequestFailedException ex)
+            {
+                if (ex.Status == (int)HttpStatusCode.NotFound)
+                    return null;
+                else
+                    throw;
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new PSKeyVaultKey(client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult(), this._uriHelper);
+        }
+
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            var client = CreateKeyClient(options.VaultName);
+
+            try
+            {
+                IEnumerable<KeyProperties> result = client.GetPropertiesOfKeys();
+
+                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
+
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            if (string.IsNullOrEmpty(options.Name))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyName);
+
+            var client = CreateKeyClient(options.VaultName);
+            return GetKeyVersions(client, options);
+        }
+
+        internal PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException(nameof(keyName));
+
+            var client = CreateKeyClient(managedHsmName);
+
+            return GetDeletedKey(client, keyName);            
+        }
+
+        private PSDeletedKeyVaultKey GetDeletedKey(KeyClient client, string keyName)
+        {
+            DeletedKey deletedKeyBundle;
+            try
+            {
+                deletedKeyBundle = client.GetDeletedKeyAsync(keyName).GetAwaiter().GetResult();
+            }
+            catch (RequestFailedException ex)
+            {
+                if (ex.Status == (int)HttpStatusCode.NotFound)
+                    return null;
+                else
+                    throw;
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new PSDeletedKeyVaultKey(deletedKeyBundle, _uriHelper);
+        }
+
+        internal IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            var client = CreateKeyClient(options.VaultName);
+
+            try
+            {
+                IEnumerable<DeletedKey> result = client.GetDeletedKeys();
+              
+                return (result == null) ? new List<PSDeletedKeyVaultKey>() :
+                    result.Select((deletedKey) => new PSDeletedKeyVaultKey(deletedKey, this._uriHelper));
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyClient client, KeyVaultObjectFilterOptions options)
+        {
+            try
+            {
+                IEnumerable<KeyProperties> result = client.GetPropertiesOfKeyVersions(options.Name);
+                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() : 
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        private Exception GetInnerException(Exception exception)
+        {
+            while (exception.InnerException != null) exception = exception.InnerException;
+            return exception;
         }
     }
 }

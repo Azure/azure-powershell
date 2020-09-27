@@ -4,6 +4,7 @@ using System.Text;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -40,9 +41,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // so I manually take care of the conversion
                 // however K is always null
                 // todo: check with Ma Bin
-                Aes aes = Aes.Create();
-                aes.Key = track2Key.K;
-                track1Key = new Track1Sdk.JsonWebKey(aes);
+                // todo: manually add metadata
+                track1Key = new Track1Sdk.JsonWebKey();
             }
             else
             {

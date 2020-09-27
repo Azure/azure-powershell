@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -36,7 +37,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private Track2VaultClient _vaultClient;
         private Track2HsmClient _hsmClient;
-        
+
+        #region KeyVault-related methods
+
         public string BackupCertificate(string vaultName, string certificateName, string outputBlobPath)
         {
             throw new NotImplementedException();
@@ -65,11 +68,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             return VaultClient.CreateKey(vaultName, keyName, keyAttributes, size, curveName);
-        }
-
-        public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
-        {
-            return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
         }
 
         public PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName)
@@ -391,5 +389,41 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region ManagedHsm-related methods
+
+        public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
+        {
+            return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
+        }
+
+        public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.GetDeletedKey(managedHsmName, keyName);
+        }
+
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options)
+        {
+            return HsmClient.GetDeletedKeys(options);
+        }
+
+        public PSKeyVaultKey GetManagedHsmKey(string vaultName, string keyName, string keyVersion)
+        {
+            return HsmClient.GetKey(vaultName, keyName, keyVersion);
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(KeyVaultObjectFilterOptions options)
+        {
+            return HsmClient.GetKeys(options);
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyVersions(KeyVaultObjectFilterOptions options)
+        {
+            return HsmClient.GetKeyVersions(options);
+        }
+
+        #endregion
+
     }
 }

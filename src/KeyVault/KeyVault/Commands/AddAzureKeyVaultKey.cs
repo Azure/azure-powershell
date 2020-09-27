@@ -232,10 +232,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
                 PSKeyVaultKey keyBundle;
-                if (InputObject != null)
-                {
-                    VaultName = InputObject.VaultName.ToString();
-                }
 
                 if (string.IsNullOrEmpty(KeyFilePath))
                 {

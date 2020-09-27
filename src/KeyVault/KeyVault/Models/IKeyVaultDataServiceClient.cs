@@ -19,6 +19,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
+using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -34,13 +35,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
-        PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name);
+        PSKeyVaultKey GetManagedHsmKey(string vaultName, string keyName, string keyVersion);
+
+        PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
+
+        PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName);
 
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(KeyVaultObjectFilterOptions options);
+
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyVersions(KeyVaultObjectFilterOptions options);
+
         IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options);
 
         PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 
@@ -169,6 +180,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         string BackupManagedStorageAccount(string vaultName, string managedStorageAccountName, string outputBlobPath);
 
         PSKeyVaultManagedStorageAccount RestoreManagedStorageAccount(string vaultName, string inputBlobPath);
+
         #endregion
     }
 }

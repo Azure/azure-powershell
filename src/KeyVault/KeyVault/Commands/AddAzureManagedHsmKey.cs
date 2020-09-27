@@ -8,6 +8,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Text;
+using System.IO;
+using Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {    /// <summary>
@@ -40,14 +42,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveCreateParameterSet,
             Position = 0,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveImportParameterSet,
             Position = 0,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
@@ -124,7 +126,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "Specifies the key type of this key.")]
-        [ValidateSet("RSA", "RsaHsm", "EC", "EcHsm", "OCT")]
+        [ValidateSet("RSA", "EC", "oct")]
         public string KeyType { get; set; }
 
         /// <summary>
@@ -188,12 +190,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                VaultName = resourceIdentifier.ResourceName;
+                HsmName = resourceIdentifier.ResourceName;
             }
 
             ValidateKeyExchangeKey();
@@ -201,26 +203,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
                 PSKeyVaultKey keyBundle;
-                if (InputObject != null)
-                {
-                    VaultName = InputObject.VaultName.ToString();
-                }
                 
                 if (string.IsNullOrEmpty(KeyFilePath))
                 {
                     keyBundle = this.Track2DataClient.CreateManagedHsmKey(
-                            VaultName,
+                            HsmName,
                             Name,
                             CreateKeyAttributes(),
                             Size,
                             CurveName);
+                    this.WriteObject(keyBundle);
                 }
-                else
-                {
-                    throw new NotImplementedException();
-                }
+                /* else
+                 {
+                    *//* keyBundle = this.Track2DataClient.ImportManagedHsmKey(
+                         HsmName, Name,
+                         CreateKeyAttributes(),
+                         CreateWebKeyFromFile());*//*
+                 }*/
 
-                this.WriteObject(keyBundle);
             }
         }
         private void ValidateKeyExchangeKey()
@@ -241,6 +242,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 KeyType,
                 KeyOps,
                 Tag);
+        }
+        
+        internal JsonWebKey CreateWebKeyFromFile()
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
+            if (!keyFile.Exists)
+            {
+                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
+            }
+
+            var converterChain = WebKeyConverterFactory.CreateConverterChain();
+            return converterChain.ConvertKeyFromFile(keyFile, KeyFilePassword);
         }
     }
 }

@@ -442,6 +442,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid key properties.
+        /// </summary>
+        internal static string InvalidKeyProperties {
+            get {
+                return ResourceManager.GetString("InvalidKeyProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid key uri &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidKeyUri {
