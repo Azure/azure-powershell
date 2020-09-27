@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PostgreSql
-Module Guid: 0ff92658-648d-4ca5-b190-a4b45bc2c323
+Module Guid: 6161c203-9460-4d33-a790-d3203d4f8370
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.postgresql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -58,6 +58,7 @@ Restore a server from an existing backup
 
 ### [Update-AzPostgreSqlConfiguration](Update-AzPostgreSqlConfiguration.md)
 Updates a configuration of a server.
+Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzPostgreSqlFirewallRule](Update-AzPostgreSqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
@@ -65,6 +66,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzPostgreSqlServer](Update-AzPostgreSqlServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlVirtualNetworkRule](Update-AzPostgreSqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.
