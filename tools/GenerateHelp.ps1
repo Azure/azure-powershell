@@ -82,27 +82,8 @@ if ($ValidateMarkdownHelp)
 }
 
 # We need to define new version of module instead of hardcode here
-$NewModules = @("Az.AppConfiguration",
-                "Az.Blockchain",
-                "Az.ConnectedKubernetes",
-                "Az.CustomProviders",
-                "Az.Databricks",
-                "Az.DesktopVirtualization",
-                "Az.Functions",
-                "Az.HanaOnAzure",
-                "Az.ImageBuilder",
-                "Az.ImportExport",
-                "Az.KubernetesConfiguration",
-                "Az.Kusto",
-                "Az.MariaDb",
-                "Az.MonitoringSolutions",
-                "Az.MySql",
-                "Az.Portal",
-                "Az.PostgreSql",
-                "Az.ResourceMover",
-                "Az.SpringCloud",
-                "Az.TimeSeriesInsights"
-                )
+$GeneratedModuleListPath = [System.IO.Path]::Combine(@($PSScriptRoot, "GeneratedModuleList.txt"))
+$NewModules = Get-Content $GeneratedModuleListPath
 if ($GenerateMamlHelp)
 {
     $FilteredMamlHelpFolders = @()

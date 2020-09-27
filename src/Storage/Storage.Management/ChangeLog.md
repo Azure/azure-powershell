@@ -25,6 +25,12 @@
     - `Get-AzRmStorageShare`
 * Supported restore a deleted file share
     - `Restore-AzRmStorageShare`
+* Changed the cmdlets for modify blob service properties, won't get the orginal properties from server, but only set the modified properties to server.
+    - `Enable-AzStorageBlobDeleteRetentionPolicy`
+    - `Disable-AzStorageBlobDeleteRetentionPolicy`  
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `Update-AzStorageBlobServiceProperty`
 * Fixed help issue for New-AzStorageAccount parameter -Kind default value [#12189]
 * Fixed issue by add example to show how to set correct ContentType in blob upload [#12989]
 
