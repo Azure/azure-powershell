@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         private readonly Action<string> _writeDebug;
 
         /// <summary>
-        /// Download security domain data.
+        /// Download security domain data for restore.
+        /// Data is encrypted with the certificates (public keys) user passes in.
         /// </summary>
         /// <param name="hsmName">Name of the HSM</param>
         /// <param name="certificates">Certificates used to encrypt the security domain data</param>
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 _writeDebug($"Invalid security domain response: {response}");
+                // todo : resource string
                 throw new Exception("Failed to download security domain data.");
             }
         }
@@ -92,7 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             if (string.IsNullOrEmpty(securityDomainWrapper.value) || !ValidateSecurityDomainData(securityDomainWrapper.value))
             {
                 _writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
-                throw new Exception("Failed to download security domain data.");
+                throw new Exception("Failed to download security domain data."); // todo: resource string
             }
         }
 
@@ -152,13 +154,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return valid;
         }
 
+        /// <summary>
+        /// Download a security domain exchange key.
+        /// This key is used to encrypt SD data before uploading to the HSM where SD is going to be restored.
+        /// </summary>
+        /// <param name="hsmName"></param>
+        /// <returns></returns>
         public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName)
         {
-            if (string.IsNullOrWhiteSpace(hsmName))
-            {
-                throw new ArgumentException(nameof(hsmName));
-            }
-
             try
             {
                 var httpRequest = new HttpRequestMessage
@@ -206,6 +209,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             }
         }
 
+        /// <summary>
+        /// Decrypt security domain data.
+        /// User must specify public key / private key / password* groups to decrypt SD.
+        /// *password MAY be optional.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="paths"></param>
+        /// <returns></returns>
         public PlaintextList DecryptSecurityDomain(SecurityDomainData data, KeyPath[] paths)
         {
             CertKeys certKeys = new CertKeys();
@@ -344,6 +355,12 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return master_key;
         }
 
+        /// <summary>
+        /// Encrypt SD data with exchange key.
+        /// </summary>
+        /// <param name="plaintextList"></param>
+        /// <param name="cert">Exchange key</param>
+        /// <returns></returns>
         public SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert)
         {
             SecurityDomainRestoreData securityDomainRestoreData = new SecurityDomainRestoreData();
@@ -372,6 +389,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return securityDomainRestoreData;
         }
 
+        /// <summary>
+        /// Upload security domain data and initiate restoring.
+        /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="securityDomainData">Encrypted by exchange key</param>
         public void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData)
         {
             string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper

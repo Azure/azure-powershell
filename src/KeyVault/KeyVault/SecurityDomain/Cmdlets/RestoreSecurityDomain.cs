@@ -13,10 +13,12 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     public class RestoreSecurityDomain : SecurityDomainCmdlet
     {
         [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true)]
+        [ValidateNotNullOrEmpty]
         public KeyPath[] Keys { get; set; }
 
         [Parameter(HelpMessage = "Specify the path to the encrypted security domain data.", Mandatory = true)]
         [Alias("Path")]
+        [ValidateNotNullOrEmpty]
         public string SecurityDomainPath { get; set; }
 
         [Parameter(HelpMessage = "Specify whether to overwrite existing file.")]

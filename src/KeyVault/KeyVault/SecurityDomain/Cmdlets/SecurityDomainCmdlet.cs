@@ -15,9 +15,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
         [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
         [Alias("HsmName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Object representing a managed HSM.", Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true)]
+        [ValidateNotNull]
         public PSKeyVaultIdentityItem InputObject { get; set; }
 
         internal ISecurityDomainClient Client

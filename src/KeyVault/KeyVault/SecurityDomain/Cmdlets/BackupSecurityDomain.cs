@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         public string[] Certificates { get; set; }
 
         [Parameter(HelpMessage = "Specify the path where security domain data will be downloaded to.", Mandatory = true)]
+        [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
         [Parameter(HelpMessage = "Specify whether to overwrite existing file.")]
