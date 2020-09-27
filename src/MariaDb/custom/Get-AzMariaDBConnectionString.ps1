@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 .Description
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 #>
 function Get-AzMariaDbConnectionString {
     [OutputType([System.String])]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzMariaDbConnectionString
 
 ## SYNOPSIS
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzMariaDbConnectionString -Client <String> -InputObject <IServer> [-DefaultP
 ```
 
 ## DESCRIPTION
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 
 ## EXAMPLES
 

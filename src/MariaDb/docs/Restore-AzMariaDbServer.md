@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzMariaDbServer
 
 ## SYNOPSIS
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObj
 ```
 
 ## DESCRIPTION
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 
 ## EXAMPLES
 

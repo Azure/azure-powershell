@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: MariaDb cmdlets
 Gets information about a configuration of server.
 
 ### [Get-AzMariaDbConnectionString](Get-AzMariaDbConnectionString.md)
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 
 ### [Get-AzMariaDbFirewallRule](Get-AzMariaDbFirewallRule.md)
 Gets information about a server firewall rule.
@@ -33,7 +33,7 @@ Gets a virtual network rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [New-AzMariaDbReplica](New-AzMariaDbReplica.md)
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 
 ### [New-AzMariaDbServer](New-AzMariaDbServer.md)
 
@@ -54,7 +54,7 @@ Deletes the virtual network rule with the given name.
 Restarts a server.
 
 ### [Restore-AzMariaDbServer](Restore-AzMariaDbServer.md)
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 
 ### [Update-AzMariaDbConfiguration](Update-AzMariaDbConfiguration.md)
 Updates a configuration of a server.

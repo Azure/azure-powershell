@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 .Description
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 #>
 function Restore-AzMariaDbServer
 {
