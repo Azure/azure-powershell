@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential { get; set; }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountName", ReplaceMentCmdletParameterName = "StorageAccountResourceId")]
         [Parameter(
             Position = 5,
             HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account or the default Data Lake Store Account.")]
@@ -98,6 +99,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageAccountName = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountKey", ReplaceMentCmdletParameterName = "StorageAccountKey")]
         [Parameter(
             Position = 6,
             HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
@@ -107,6 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageAccountKey = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountType", ReplaceMentCmdletParameterName = "StorageAccountType")]
         [Parameter(
             HelpMessage = "Gets or sets the type of the default storage account.")]
         public StorageType? DefaultStorageAccountType { get; set; }
@@ -249,6 +252,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
+        [CmdletParameterBreakingChange("DefaultStorageContainer", ReplaceMentCmdletParameterName = "StorageContainer")]
         [Parameter(HelpMessage = "Gets or sets the StorageContainer name for the default Azure Storage Account")]
         public string DefaultStorageContainer
         {
@@ -256,6 +260,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageContainer = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageRootPath", ReplaceMentCmdletParameterName = "StorageRootPath")]
         [Parameter(HelpMessage = "Gets or sets the path to the root of the cluster in the default Data Lake Store Account.")]
         public string DefaultStorageRootPath { get; set; }
 
