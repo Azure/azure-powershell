@@ -139,5 +139,25 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string AssessmentsName = "Name of the assessment resource.";
 
         #endregion
+
+        #region Adaptive Network Hardenings
+
+        public const string ResourceNamespace = "Resource namespace";
+        public const string ResourceType = "Resource type";
+        public const string RulesToEnforce = "Rule to enforce";
+        public const string AdaptiveNetworkHardeningResourceName = "Adaptive Network Hardening resource name";
+        public const string AdaptiveNetworkHardeningEnforceAction = "Adaptive Network Hardening enforce action";
+        public const string EffectiveNetworkSecurityGroups = "The Azure resource IDs of the effective network security groups";
+
+        #endregion
+ 
+        #region Adaptive Application Controls
+
+        public const string AdaptiveApplicationControlsGroupName = "Name of an application control VM/server group";
+        public const string AscLocation = "The location where ASC stores the data of the subscription. can be retrieved from Get locations";
+        public const string IncludePathRecommendation = "Include the policy rules";
+        public const string Summary = "Return output in a summarized form";
+
+        #endregion
     }
 }

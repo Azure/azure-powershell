@@ -14,10 +14,14 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange("Property 'SecretValueText' in PSKeyVaultSecret will be removed around 10/27/2020")]
+    [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecretRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase

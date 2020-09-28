@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR", "SignalR\SignalR.csproj", "{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{90CF259C-905B-4B30-AD38-78510A32EC26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Test", "SignalR.Test\SignalR.Test.csproj", "{3BFE35EB-75A6-4370-8E49-4D8C9A359884}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D} = {7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
@@ -18,6 +21,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{E942B772-3BF8-4800-B456-E9DEC951A0BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns", "..\PrivateDns\PrivateDns\PrivateDns.csproj", "{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +60,14 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

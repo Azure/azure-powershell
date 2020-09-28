@@ -8,6 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfoPatchInternal
     {
 
+        /// <summary>Backing field for <see cref="ExpirationTime" /> property.</summary>
+        private global::System.DateTime? _expirationTime;
+
+        /// <summary>Expiration time of registration token.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public global::System.DateTime? ExpirationTime { get => this._expirationTime; set => this._expirationTime = value; }
+
         /// <summary>Backing field for <see cref="RegistrationTokenOperation" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation? _registrationTokenOperation;
 
@@ -25,6 +32,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
     public partial interface IRegistrationInfoPatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>Expiration time of registration token.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Expiration time of registration token.",
+        SerializedName = @"expirationTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ExpirationTime { get; set; }
         /// <summary>The type of resetting the token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -39,6 +54,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api201
     internal partial interface IRegistrationInfoPatchInternal
 
     {
+        /// <summary>Expiration time of registration token.</summary>
+        global::System.DateTime? ExpirationTime { get; set; }
         /// <summary>The type of resetting the token.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation? RegistrationTokenOperation { get; set; }
 

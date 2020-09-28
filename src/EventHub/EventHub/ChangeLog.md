@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Optional switch parameter 'TrustedServiceAccessEnabled' to 'Set-AzEventHubNetworkRuleSet' cmdlet
+
+## Version 1.6.0
+* Added new Cluster cmdlets - `New-AzEventHubCluster`, `Set-AzEventHubCluster`, `Get-AzEventHubCluster`, `Remove-AzEventHubCluster`, `Get-AzEventHubClustersAvailableRegions`.
+* Fixed for issue #10722 : Fix for assigning only 'Listen' to AuthorizationRule rights.
 
 ## Version 1.5.0
 * Added Managed Identity parameters to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` cmdlets

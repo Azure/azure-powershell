@@ -101,6 +101,31 @@ function Test-WorkspaceCreateUpdateDelete
     $workspaces = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgname
     Assert-AreEqual 0 $workspaces.Count
     Assert-ThrowsContains { Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name wsname } "NotFound"
+
+    # Get workspace from deleted workspace
+    $workspaces = Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgname
+    $deleted = 0
+    Foreach ($workspace in $workspaces){
+        if($workspace.Name.Equals($wsname)){
+            $deleted += 1
+		}
+	}
+    Assert-AreEqual 1 $deleted
+
+    # Restore deleted workspace
+    $workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+    Assert-AreEqual 123 $workspace.RetentionInDays
+
+    # Force delete workspace
+    $workspace | Remove-AzOperationalInsightsWorkspace -Force -ForceDelete
+    $workspaces = Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgname
+    $deleted = 0
+    Foreach ($workspace in $workspaces){
+        if($workspace.Name.Equals($wsname)){
+            $deleted += 1
+		}
+	}
+    Assert-AreEqual 0 $deleted
 }
 
 <#

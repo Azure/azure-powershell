@@ -29,7 +29,7 @@ The **Get-AzPrivateDnsZoneGroup** cmdlet gets one or more private DNS zone group
 
 ## EXAMPLES
 
-### Retrieve private DNS zone group
+### Example 1: Retrieve private DNS zone group
 ```powershell
 PS C:\> Get-AzPrivateDnsZoneGroup -ResourceGroupName "rg" -PrivateEndpointName "test-pr-endpoint" -name "dnsgroup1"
 Name                  : dnsgroup1

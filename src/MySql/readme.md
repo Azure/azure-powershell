@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MySql service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -51,6 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
+  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
@@ -70,7 +71,7 @@ directive:
     hide: true
   - where:
       verb: New$|Update$
-      subject: Server$
+      subject: Server$|Configuration$|FirewallRule$
     hide: true
   - where:
      verb: New$
@@ -104,7 +105,6 @@ directive:
           - Version
           - StorageProfileStorageMb
           - SkuName
-          - SkuSize
           - SkuTier
           - SslEnforcement
   - where:
@@ -136,3 +136,4 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
+```

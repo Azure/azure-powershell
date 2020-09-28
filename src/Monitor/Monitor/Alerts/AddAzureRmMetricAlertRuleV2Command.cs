@@ -31,10 +31,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     {
         const string CreateAlertByResourceId = "CreateAlertByResourceId";
         const string CreateAlertByScopes = "CreateAlertByScopes";
-        const string CreateAlertByResourceIdAndActionGroup = "CreateAlertByResourceIdAndActionGroup";
-        const string CreateAlertByScopesAndActionGroup = "CreateAlertByScopesAndActionGroup";
-        const string CreateAlertByResourceIdAndActionGroupId = "CreateAlertByResourceIdAndActionGroupId";
-        const string CreateAlertByScopesAndActionGroupId = "CreateAlertByScopesAndActionGroupId";
 
         /// <summary>
         /// Gets or sets Name  parameter of the cmdlet
@@ -69,8 +65,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceId parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
 
@@ -78,8 +72,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceScope parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
         [ValidateNotNullOrEmpty]
         [Alias("Scopes")]
         public string[] TargetResourceScope { get; set; }
@@ -88,8 +80,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceType { get; set; }
 
@@ -97,8 +87,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceRegion  parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceRegion { get; set; }
 
@@ -113,16 +101,16 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ActionGroup parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
         [Alias("Actions")]
+        [AllowEmptyCollection]
         public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the ActionGroupId parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [AllowEmptyCollection]
         public string[] ActionGroupId { get; set; }
 
         /// <summary>
@@ -147,14 +135,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         protected override void ProcessRecordInternal()
         {
             var actions = new List<MetricAlertAction>();
-            if (this.ActionGroup != null)
+            if (this.ActionGroup != null && this.ActionGroup.Length > 0)
             {
                 actions.AddRange(this.ActionGroup.Select(actionGroup => new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webHookProperties: actionGroup.WebhookProperties)));
             }
 
-            if (this.ActionGroupId != null)
+            if (this.ActionGroupId != null && this.ActionGroupId.Length > 0)
             {
-                actions.AddRange(this.ActionGroupId.Select(actionGroupId => new MetricAlertAction(actionGroupId: actionGroupId)));
+                var newActionGroupIds = this.ActionGroupId.Where(id => ! actions.Exists(action => action.ActionGroupId == id));
+                actions.AddRange(newActionGroupIds.Select(actionGroupId => new MetricAlertAction(actionGroupId: actionGroupId)));
             }
 
             if (this.Condition.Any(c => c.CriterionType == CriterionType.DynamicThresholdCriterion))
@@ -193,7 +182,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     foreach (var metricCondition in this.Condition)
                     {
                         var condition = metricCondition as PSMetricCriteria;
-                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions));
+                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
                     }
                     criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
                         allOf: metricCriteria
@@ -228,12 +217,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     if (condition is PSMetricCriteria)
                     {
                         var psStaticMetricCriteria = condition as PSMetricCriteria;
-                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions));
+                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions, skipMetricValidation: psStaticMetricCriteria.SkipMetricValidation));
                     }
                     else
                     {
                         var psDynamicMetricCriteria = condition as PSDynamicMetricCriteria;
-                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore));
+                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore, skipMetricValidation: psDynamicMetricCriteria.SkipMetricValidation));
                     }
                 }
 

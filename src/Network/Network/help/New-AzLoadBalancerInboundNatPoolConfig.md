@@ -34,8 +34,8 @@ The **New-AzLoadBalancerInboundNatPoolConfig** cmdlet creates an inbound NAT poo
 
 ## EXAMPLES
 
-### 1: New
-```
+### Example 1: New
+```powershell
 PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $feIpConfig = Get-AzLoadBalancerFrontendIpConfig -Name "FrontendName" -Loadbalancer $slb
 PS C:\> New-AzLoadBalancerInboundNatPoolConfig -Name "myInboundNatPool" -FrontendIpConfigurationId $feIpConfig.Id -Protocol TCP -FrontendPortRangeStart 1001 -FrontendPortRangeEnd 2000 -BackendPort 1001

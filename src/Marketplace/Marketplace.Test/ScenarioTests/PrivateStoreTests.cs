@@ -69,5 +69,19 @@ namespace Microsoft.Azure.Commands.Marketplace.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateAzMarketplacePrivateStoreOffer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdatePrivateStorePrivateOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateAzMarketplacePrivateStorePrivateOffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateStorePrivateOffer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStorePrivateOffers");
+        }
     }
 }

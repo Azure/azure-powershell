@@ -42,25 +42,25 @@ Deletes the azure active directory application.
 
 ## EXAMPLES
 
-### Example 1 - Remove application by object id
+### Example 1: Remove application by object id
 
-```
+```powershell
 PS C:\> Remove-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738
 ```
 
 Removes the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' from the tenant.
 
-### Example 2 - Remove application by application id
+### Example 2: Remove application by application id
 
-```
+```powershell
 PS C:\> Remove-AzADApplication -ApplicationId f9c5ea4f-28f0-401a-a491-491a037fa346
 ```
 
 Removes the application with application id 'f9c5ea4f-28f0-401a-a491-491a037fa346' from the tenant.
 
-### Example 3 - Remove application by piping
+### Example 3: Remove application by piping
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 | Remove-AzADApplication
 ```
 
@@ -228,7 +228,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 [Get-AzADApplication](./Get-AzADApplication.md)
 
-[Set-AzADApplication](./Set-AzADApplication.md)
+[Update-AzADApplication](./Update-AzADApplication.md)
 
 [Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 

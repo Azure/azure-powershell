@@ -17,15 +17,19 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [CmdletDeprecation(ReplacementCmdletName = "Set-AzAksCluster")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class SetAzureRmAks : CreateOrUpdateKubeBase
     {
@@ -38,6 +42,10 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
+        [PSArgumentCompleter("System", "User")]
+        public string NodePoolMode { get; set; }
 
         /// <summary>
         /// Cluster name
@@ -108,10 +116,10 @@ namespace Microsoft.Azure.Commands.Aks
                                 new ContainerServiceSshPublicKey(GetSshKey(SshKeyValue))
                             };
                         }
-                        if (this.IsParameterBound(c => c.ClientIdAndSecret))
+                        if (this.IsParameterBound(c => c.ServicePrincipalIdAndSecret))
                         {
                             WriteVerbose(Resources.UpdatingServicePrincipal);
-                            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
+                            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret.UserName, ServicePrincipalIdAndSecret.Password.ToString());
 
                             var spProfile = new ManagedClusterServicePrincipalProfile(
                                 acsServicePrincipal.SpId,
@@ -173,6 +181,12 @@ namespace Microsoft.Azure.Commands.Aks
                                 WriteVerbose(Resources.UpdatingNodeOsDiskSize);
                                 defaultAgentPoolProfile.OsDiskSizeGB = NodeOsDiskSize;
                             }
+
+                            if (this.IsParameterBound(c => c.NodePoolMode))
+                            {
+                                WriteVerbose(Resources.UpdatingNodePoolMode);
+                                defaultAgentPoolProfile.Mode = NodePoolMode;
+                            }
                         }
 
                         if (this.IsParameterBound(c => c.KubernetesVersion))
@@ -215,7 +229,8 @@ namespace Microsoft.Azure.Commands.Aks
         {
             return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
-                this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount);
+                this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
+                this.IsParameterBound(c => c.NodePoolMode);
         }
     }
 }

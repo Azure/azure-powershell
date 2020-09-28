@@ -12,15 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -38,8 +31,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public List<ErrorResponse> ErrorMessages { get; private set; }
 
-        #region Public Methods
-
         public void ProcessError(DeploymentOperation operation)
         {
             ErrorResponse error = operation.Properties?.StatusMessage?.Error;
@@ -49,6 +40,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 ErrorMessages.Add(error);
             }
         }
-        #endregion
     }
 }

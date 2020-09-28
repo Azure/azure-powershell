@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Collections;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -73,13 +74,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("None",
-            Management.Sql.Models.DatabaseEdition.Basic,
-            Management.Sql.Models.DatabaseEdition.Standard,
-            Management.Sql.Models.DatabaseEdition.Premium,
-            Management.Sql.Models.DatabaseEdition.DataWarehouse,
-            Management.Sql.Models.DatabaseEdition.Free,
-            Management.Sql.Models.DatabaseEdition.Stretch,
-            "GeneralPurpose", "BusinessCritical")]
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose",
+            "BusinessCritical")]
         public string Edition { get; set; }
 
         /// <summary>
@@ -117,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the sample schema to apply when creating this database.")]
-        [ValidateSet(Management.Sql.Models.SampleName.AdventureWorksLT)]
+        [ValidateSet("AdventureWorksLT")]
         public string SampleName { get; set; }
 
         /// <summary>
@@ -132,6 +134,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Gets or sets the Vcore number for the Azure Sql database
@@ -156,8 +164,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(
-            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
-            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+            "LicenseIncluded",
+            "BasePrice")]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -193,10 +201,43 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int ReadReplicaCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        public string BackupStorageRedundancy { get; set; }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.DatabaseName)))
+                    {
+                        return;
+                    }
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.DatabaseName)))
+                    {
+                        return;
+                    }
+                }
+            }
             base.ExecuteCmdlet();
         }
 
@@ -255,6 +296,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
+                BackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

@@ -363,7 +363,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case BlobParameterSet:
-                    if (CloudBlob is InvalidCloudBlob || UseTrack2SDK())
+                    if (CloudBlob is InvalidCloudBlob || UseTrack2Sdk())
                     {
                         copyAction = () => StartCopyBlob(destChannel, BlobBaseClient, DestContainer, DestBlob);
                         target = BlobBaseClient.Name;
@@ -381,7 +381,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case BlobToBlobParameterSet:
-                    if (CloudBlob is InvalidCloudBlob || UseTrack2SDK())
+                    if (CloudBlob is InvalidCloudBlob || UseTrack2Sdk())
                     {
                         BlobBaseClient destBlobClient = AzureStorageBlob.GetTrack2BlobClient(DestCloudBlob, destChannel.StorageContext, ClientOptions);
                         copyAction = () => StartCopyBlob(destChannel, BlobBaseClient, destBlobClient);
@@ -668,7 +668,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private async Task StartCopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, CloudBlob destBlob)
         {
-            if (UseTrack2SDK())
+            if (UseTrack2Sdk())
             {
                 BlobClient destBlobClient = AzureStorageBlob.GetTrack2BlobClient(destBlob, destChannel.StorageContext, this.ClientOptions);
                 await StartCopyFromUri(taskId, destChannel, srcUri, destBlobClient).ConfigureAwait(false);

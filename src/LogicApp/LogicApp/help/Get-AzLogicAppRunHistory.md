@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get the run history of a logic app
 ```powershell
-PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
+PS C:\>Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
@@ -59,7 +59,7 @@ This command gets the run history of a logic app named LogicApp03.
 
 ### Example 2: Get a logic app run
 ```powershell
-PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
+PS C:\>Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
