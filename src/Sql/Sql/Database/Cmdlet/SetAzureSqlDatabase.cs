@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -239,6 +240,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                }
+            }
             base.ExecuteCmdlet();
         }
 

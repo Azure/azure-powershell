@@ -1,57 +1,69 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
 schema: 2.0.0
 ---
 
-# New-AzMariaDbServerReplica
+# New-AzMariaDbReplica
 
 ## SYNOPSIS
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 
 ## SYNTAX
 
 ### ServerName (Default)
 ```
-New-AzMariaDbServerReplica -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzMariaDbReplica -MasterName <String> -ReplicaName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Location <String>] [-Sku <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ServerObject
 ```
-New-AzMariaDbServerReplica -InputObject <IServer> -Name <String> [-SubscriptionId <String>]
- [-Location <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMariaDbReplica -Master <IServer> -ReplicaName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 
 ## EXAMPLES
 
 ### Example 1: Create a replica db for a MariaDB
 ```powershell
-PS C:\> New-AzMariaDbServerReplica -ServerName mariadb-test-9pebvn -Name mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
+PS C:\> New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
 
-Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
+mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
 This command creates a replica db for a MariaDB.
 
 ### Example 2: Create a replica db for a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbServerReplica -Name mariadb-test-9pebvn-rep02
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
 
-Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
+mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
 This command creates a replica db for a MariaDB.
+
+### Example 3: Create a replica db for a MariaDB
+```powershell
+PS C:\> $mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
+PS C:\> New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
+
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
+mariadb-test-9pebvn-rep03 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
+```
+
+This command with parameter inputobject creates a replica db with parameter inputobject for a MariaDB.
 
 ## PARAMETERS
 
@@ -86,22 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The source server object to restore from.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-Parameter Sets: ServerObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The location the resource resides in.
 
@@ -117,13 +113,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Replica name.
+### -Master
+The source server object to restore from.
+To construct, see NOTES section for MASTER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+Parameter Sets: ServerObject
+Aliases: InputObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MasterName
+MariaDB server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ReplicaServerName
+Parameter Sets: ServerName
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -147,13 +159,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -ReplicaName
+Replica name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerName
-Aliases:
+Parameter Sets: (All)
+Aliases: ReplicaServerName, Name
 
 Required: True
 Position: Named
@@ -162,8 +174,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
-MariaDb server name.
+### -ResourceGroupName
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -270,10 +282,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The source server object to restore from.
+MASTER <IServer>: The source server object to restore from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
