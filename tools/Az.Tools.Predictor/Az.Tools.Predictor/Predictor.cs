@@ -27,7 +27,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class Predictor
     {
-        private readonly IList<string> _raw;
         private readonly IList<Prediction> _predictions;
         private readonly ParameterValuePredictor _parameterValuePredictor;
 
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="parameterValuePredictor">Provide the prediction to the parameter values.</param>
         public Predictor(IList<string> modelPredictions, ParameterValuePredictor parameterValuePredictor)
         {
-            this._raw = modelPredictions;
             this._parameterValuePredictor = parameterValuePredictor;
             this._predictions = new List<Prediction>();
 
@@ -151,16 +149,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     })
                     .Where((r) => r != null)
                     .ToHashSet(StringComparer.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
-        /// Gets the top N predictions from the list.
-        /// </summary>
-        /// <param name="topN">The number of prediction from the top.</param>
-        /// <returns>Collection predictions</returns>
-        internal IEnumerable<string> GetTopNPrediction(int topN)
-        {
-            return this._raw.Take(topN);
         }
 
         /// <summary>

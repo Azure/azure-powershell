@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// An enum for the source where we get the prediction.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PredictionSource
     {
         /// <summary>
@@ -25,18 +29,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         None,
 
         /// <summary>
-        /// The prediction is from the command list.
+        /// The prediction is from the static command list.
         /// </summary>
-        Commands,
+        StaticCommands,
 
         /// <summary>
-        /// The prediction is from the list for the old history.
+        /// The prediction is from the list for the older command.
         /// </summary>
-        PreviousHistory,
+        PreviousCommand,
 
         /// <summary>
-        /// The prediction is from the list for the current history.
+        /// The prediction is from the list for the currentc command.
         /// </summary>
-        CurrentHistory
+        CurrentCommand
     }
 }

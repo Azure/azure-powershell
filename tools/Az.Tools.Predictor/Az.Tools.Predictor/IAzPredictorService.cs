@@ -34,10 +34,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public IEnumerable<ValueTuple<string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Requests predictions, given a history string.
+        /// Requests predictions, given a command string.
         /// </summary>
-        /// <param name="history">A list of history commands</param>
-        public void RequestPredictions(IEnumerable<string> history);
+        /// <param name="commands">A list of commands</param>
+        public void RequestPredictions(IEnumerable<string> commands);
 
         /// <summary>
         /// Record the history from PSReadLine.
@@ -49,20 +49,5 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Return true if command is part of known set of Az cmdlets, false otherwise.
         /// </summary>
         public bool IsSupportedCommand(string cmd);
-
-        /// <summary>
-        /// For logging purposes, get the rank of the user input in the model suggestions list.
-        /// </summary>
-        public int? GetRankOfSuggestion(string commandName);
-
-        /// <summary>
-        /// For logging purposes, get the rank of the user input in the fallback commands cache.
-        /// </summary>
-        public int? GetRankOfFallback(string commandName);
-
-        /// <summary>
-        /// For logging purposes, get the top N suggestions from the model suggestions list.
-        /// </summary>
-        public IEnumerable<string> GetTopNSuggestions(int n);
     }
 }

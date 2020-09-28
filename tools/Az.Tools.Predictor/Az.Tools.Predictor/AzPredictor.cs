@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool SupportEarlyProcessing => true;
 
         /// <inhericdoc />
-        public bool AcceptFeedback => false;
+        public bool AcceptFeedback => true;
 
         internal static readonly Guid Identifier = new Guid("599d1760-4ee1-4ed2-806e-f2a1b1a0ba4d");
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 while (historyLines.Count() < AzPredictorConstants.CommandHistoryCountToProcess)
                 {
-                    historyLines = historyLines.Prepend(AzPredictorConstants.CommandHistoryPlaceholder);
+                    historyLines = historyLines.Prepend(AzPredictorConstants.CommandPlaceholder);
                 }
 
                 var commandAsts = historyLines.Select((h) =>
@@ -96,23 +96,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                             if (!_service.IsSupportedCommand(commandName))
                             {
-                                return AzPredictorConstants.CommandHistoryPlaceholder;
+                                return AzPredictorConstants.CommandPlaceholder;
                             }
 
                             return AzPredictor.MaskCommandLine(c);
                         });
 
-                var lastMaskedHistoryLines = maskedHistoryLines.Last();
-
-                if (lastMaskedHistoryLines != AzPredictorConstants.CommandHistoryPlaceholder)
-                {
-                    var commandName = (commandAsts.LastOrDefault()?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-                    var suggestionIndex = _service.GetRankOfSuggestion(commandName);
-                    var fallbackIndex = _service.GetRankOfFallback(commandName);
-                    var topFiveSuggestion = _service.GetTopNSuggestions(AzPredictor.SuggestionCountForTelemetry);
-                    _telemetryClient.OnSuggestionForHistory(maskedHistoryLines.LastOrDefault(), suggestionIndex, fallbackIndex, topFiveSuggestion);
-                }
-
+                _telemetryClient.OnHistory(maskedHistoryLines.Last());
                 _service.RecordHistory(commandAsts);
                 _service.RequestPredictions(maskedHistoryLines);
             }
@@ -134,19 +124,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // is prefixed with `userInput`, it should be ordered before result that is not prefixed
             // with `userInput`.
 
-            var userInput = context.InputAst.Extent.Text;
-            var result = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, cancellationToken);
+            IEnumerable<ValueTuple<string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, PredictionSource>>();
 
-            cancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, cancellationToken);
 
-            // This call is changed in another PR.
-            // _telemetryClient.OnGetSuggestion(result?.Item2 ?? PredictionSource.None);
-
-            return result.Select((r, index) =>
+                cancellationToken.ThrowIfCancellationRequested();
+                var userInput = context.InputAst.Extent.Text;
+                return suggestions.Select((r, index) =>
                     {
                         return new PredictiveSuggestion(MergeStrings(userInput, r.Item1));
                     })
                     .ToList();
+            }
+            catch (Exception e) when (!(e is OperationCanceledException))
+            {
+                this._telemetryClient.OnGetSuggestionError(e);
+            }
+            finally
+            {
+                var maskedCommandLine = MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+                _telemetryClient.OnGetSuggestion(maskedCommandLine, suggestions, cancellationToken.IsCancellationRequested);
+            }
+
+            return new List<PredictiveSuggestion>();
         }
 
         // Merge strings a and b such that the prefix of b is deleted if it is the suffix of a
@@ -231,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             var settings = Settings.GetSettings();
             var telemetryClient = new AzPredictorTelemetryClient();
-            var azPredictorService = new AzPredictorService(settings.ServiceUri);
+            var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient);
             var predictor = new AzPredictor(azPredictorService, telemetryClient, settings);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
