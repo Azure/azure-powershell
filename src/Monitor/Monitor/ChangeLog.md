@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 2.1.1
 * Fixed the bug that warning message cannot be suppressed. [#12889]
 
 ## Version 2.1.0
