@@ -590,7 +590,7 @@
     "alias": "VMWare"
   },
   {
-    "alias": "DedicatedHsm",
+    "alias": "Dedicated HSM",
     "regex": "DedicatedHsm"
   }
 ]
