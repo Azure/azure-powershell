@@ -38,6 +38,9 @@ Backs up a KeyVault-managed storage account.
 ### [Backup-AzKeyVaultSecret](Backup-AzKeyVaultSecret.md)
 Backs up a secret in a key vault.
 
+### [Backup-AzManagedHsmSecurityDomain](Backup-AzManagedHsmSecurityDomain.md)
+Backs up the security domain data of a managed HSM for restoring.
+
 ### [Get-AzKeyVault](Get-AzKeyVault.md)
 Gets key vaults.
 
@@ -130,6 +133,9 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### [Restore-AzKeyVaultSecret](Restore-AzKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
+
+### [Restore-AzManagedHsmSecurityDomain](Restore-AzManagedHsmSecurityDomain.md)
+Restores previous backed up security domain data to a managed HSM.
 
 ### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
