@@ -14,41 +14,34 @@
 
 <#
 .Synopsis
-Creates a replica of a MariaDb server.
+Creates a replica of a MariaDB server.
 .Description
-Creates a replica of a MariaDb server.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
+Creates a replica of a MariaDB server.
 #>
-function New-AzMariaDbServerReplica {
+function New-AzMariaDbReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Replica name.')]
-        [Alias('ReplicaServerName')]
+        [Alias('ReplicaServerName', 'Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # Replica name
-        ${Name},
+        ${ReplicaName},
 
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
+        [Alias('InputObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
-        ${InputObject},
+        ${Master},
     
-        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name.')]
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDB server name.')]
+        [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb server name.
-        ${ServerName},
+        # MariaDB server name.
+        ${MasterName},
     
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
@@ -152,17 +145,35 @@ function New-AzMariaDbServerReplica {
         try {
             $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
             $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForReplica]::new()
+
+            if($PSBoundParameters.ContainsKey('ReplicaName')) {
+                $PSBoundParameters['Name'] = $PSBoundParameters['ReplicaName']
+                $Null = $PSBoundParameters.Remove('ReplicaName')
+            }
     
             #region ServerForCreate
-            $ServerObject = $InputObject
-            if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
-                $Null = $PSBoundParameters.Remove('ServerName')
+            $ServerObject = $Master
+            if (-not $PSBoundParameters.ContainsKey('Master')) {
+                $GetMariadbDbPSBoundParameters = @{}
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $MasterName -SubscriptionId $SubscriptionId @GetMariadbDbPSBoundParameters
+                
+                # if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $MasterName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
+                # } else {
+                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $MasterName -SubscriptionId $SubscriptionId
+                # }
+                $Null = $PSBoundParameters.Remove('MasterName')
             } else {
-                $Fields = $InputObject.Id.Split('/')
+                $Fields = $Master.Id.Split('/')
                 $PSBoundParameters['SubscriptionId'] = $Fields[2]
                 $PSBoundParameters['ResourceGroupName'] = $Fields[4]
-                $Null = $PSBoundParameters.Remove('InputObject')
+                $Null = $PSBoundParameters.Remove('Master')
             }
             $Parameter.Property.SourceServerId = $ServerObject.Id
             
@@ -188,11 +199,10 @@ function New-AzMariaDbServerReplica {
 
 
             $PSBoundParameters.Add('Parameter', $Parameter)
-    
+
             Az.MariaDb.internal\New-AzMariaDbServer @PSBoundParameters
           } catch {
               throw
           }
     }
 }
-    
