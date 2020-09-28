@@ -1,60 +1,53 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azrmstorageshare
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstoragefileserviceproperty
 schema: 2.0.0
 ---
 
-# New-AzRmStorageShare
+# Update-AzStorageFileServiceProperty
 
 ## SYNOPSIS
-Creates a Storage file share.
+Modifies the service properties for the Azure Storage File service.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-New-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-QuotaGiB <Int32>]
- [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
+ [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FileServicePropertiesResourceId
+```
+Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
+ [-ShareRetentionDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzRmStorageShare** cmdlet creates a Storage file share.
+The **Update-AzStorageFileServiceProperty** cmdlet modifies the service properties for the Azure Storage File service.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage file share with Storage account name and share name, with metadata and share quota as 100 GiB.
-```
-PS C:\>New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
+### Example 1: Enable File share softdelete
+```powershell
+PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
-myshare
+StorageAccountName ResourceGroupName ShareDeleteRetentionPolicy.Enabled ShareDeleteRetentionPolicy.Days
+------------------ ----------------- ---------------------------------- -------------------------------
+mystorageaccount   myresourcegroup   True                               5
 ```
 
-This command creates a Storage file share with metadata and share quota as 100 GiB.
-
-### Example 2: Create a Storage file share with Storage account object
-```
-Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | New-AzRmStorageShare -Name "myshare"
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
-myshare
-```
-
-This command creates a Storage file share with Storage account object and share name.
+This command enables File share softdelete delete with retention days as 5
 
 ## PARAMETERS
 
@@ -73,43 +66,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Metadata
-Share Metadata
+### -EnableShareDeleteRetentionPolicy
+Enable share Delete Retention Policy for the storage account by set to $true, disable share Delete Retention Policy  by set to $false.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Azure File share name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: N, ShareName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QuotaGiB
-Share Quota in Gibibyte.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases: Quota
 
 Required: False
 Position: Named
@@ -128,6 +91,37 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Input a Storage account Resource Id, or a File service properties Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: FileServicePropertiesResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShareRetentionDays
+Sets the number of retention days for the share DeleteRetentionPolicy.
+The value should only be set when enable share Delete Retention Policy.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: Days, RetentionDays
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,7 +148,7 @@ Storage Account Name.
 ```yaml
 Type: System.String
 Parameter Sets: AccountName
-Aliases: AccountName
+Aliases: AccountName, Name
 
 Required: True
 Position: 1
@@ -199,13 +193,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.Storage.Models.PSShare
+### Microsoft.Azure.Commands.Management.Storage.Models.PSFileServiceProperties
 
 ## NOTES
 
