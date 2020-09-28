@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
     /// <summary>
     /// Disables the Azure Active Directory only authentication of a specific SQL Managed Instance.
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryOnlyAuthentication", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryOnlyAuthentication", DefaultParameterSetName = UseResourceGroupAndInstanceNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel))]
     public class DisableAzureSqlInstanceActiveDirectoryOnlyAuthentication : AzureSqlInstanceActiveDirectoryOnlyAuthenticationCmdletBase
     {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
 
             try
             {
-                AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel model = ModelAdapter.GetInstanceActiveDirectoryOnlyAuthentication(this.ResourceGroupName, this.InstanceName);
+                AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel model = ModelAdapter.GetInstanceActiveDirectoryOnlyAuthentication(GetResourceGroupName(), GetInstanceName());
 
                 if (model != null)
                 {
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
             List<Model.AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel> newEntity = new List<AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel>();
             newEntity.Add(new AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel()
             {
-                ResourceGroupName = ResourceGroupName,
-                InstanceName = InstanceName,
+                ResourceGroupName = GetResourceGroupName(),
+                InstanceName = GetInstanceName(),
                 AzureADOnlyAuthentication = false
             });
             return newEntity;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         protected override IEnumerable<AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel> PersistChanges(IEnumerable<AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel> entity)
         {
             return new List<AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel>() {
-                ModelAdapter.UpsertAzureADOnlyAuthenticaion(this.ResourceGroupName, this.InstanceName, entity.FirstOrDefault())
+                ModelAdapter.UpsertAzureADOnlyAuthenticaion(GetResourceGroupName(), GetInstanceName(), entity.FirstOrDefault())
             };
         }
     }

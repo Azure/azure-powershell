@@ -79,26 +79,37 @@ function Test-RestoreGeoBackup
 function Test-RestoreDeletedDatabaseBackup
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "westcentralus"
 	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
-	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$droppedDbName = "powershell_db_georestored"
+	$rg = Create-ResourceGroupForTest
 	$restoredDbName = "powershell_db_deleted"
 	$restoredVcoreDbName = "powershell_db_deleted_vcore"
 
-	# this Get command has regression in MS when specifying Deletiondate. Fix should be in Prod by 5/7/2018. so currently use another way to do testing
-	$deletedDb = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName `
-		-DatabaseName $droppedDbName #-DeletionDate "2018-04-20 20:21:37.397Z" 
-
-	# restore to a db same as the deleted db
-	Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
-		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
+	try
+	{
+		$server = Create-ServerForTest $rg $location
 	
-	# restore to a vcore db
-	Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
-		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
-		-VCore 2 -ComputeGeneration "Gen4"
+		# Create a new sql database
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
+	
+		# Note: Uncomment below sleep if you are recording so that DB lives long enough to take full backup
+		# Start-Sleep -s 600
+
+		Remove-AzSqlDatabase -DatabaseName $databaseName -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+	
+		$deletedDb = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	
+		# restore to a db same as the deleted db
+		Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate $deletedDb[0].DeletionDate -ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
+	
+		# restore to a vcore db
+		Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate $deletedDb[0].DeletionDate -ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" -VCore 2 -ComputeGeneration "Gen5"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 function Test-RestorePointInTimeBackup
@@ -125,10 +136,10 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "North Europe"
+	$location = "West Central US"
 	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName hchung
-	$server = Get-AzSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
+	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored_ltr"
 	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
 
@@ -233,10 +244,10 @@ function Test-LongTermRetentionV2
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
-	$resourceGroup = "Default-SQL-WestCentralUS"
-	$locationName = "westcentralus"
-	$serverName = "trgrie-ltr-server"
-	$databaseName = "testdb2"
+	$resourceGroup = "brandong-test"
+	$locationName = "eastus"
+	$serverName = "brandong-ltr-test"
+	$databaseName = "testltr"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
 	$restoredDatabase = "testdb5"
@@ -289,12 +300,12 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "brrg"
-	$locationName = "brazilsouth"
-	$serverName = "ltrtest3"
-	$databaseName = "mydb"
+	$resourceGroup = "brandong-test"
+	$locationName = "eastus"
+	$serverName = "brandong-ltr-test"
+	$databaseName = "testltr"
 	$restoredDatabase = "mydb_restore"
-	$databaseWithRemovableBackup = "mydb";
+	$databaseWithRemovableBackup = "testdb";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -364,7 +375,7 @@ function Test-NewDatabaseRestorePoint
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c
 			
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 

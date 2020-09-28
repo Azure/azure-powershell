@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.0
+* Added BackupStorageRedundancy to the following: 
+    - `Restore-AzureRmSqlDatabase`
+    - `New-AzSqlDatabaseCopy`
+    - `New-AzSqlDatabaseSecondary`
+* Removed case sensitivity for BackupStorageRedundancy parameter for all SQL DB references 
+* Updated BackupStorageRedundancy warning message names
+
+## Version 2.10.1
+* Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
+* Fixed for bug in `New-AzSqlDatabaseExport`
+* Removed case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance` 
+
+## Version 2.10.0
 * Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
 * Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
@@ -33,6 +48,9 @@
 * Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
 * Added cmdlet `New-AzSqlDatabaseImportExisting`
 * Updated Databases cmdlets to support backup storage type specification
+* Added Force parameter to `New-AzSqlDatabase`
+* Updated ActiveDirectoryOnlyAuthentication cmdlets for server and instance to include ResourceId and InputObject
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`

@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported enable/disable/get share soft delete properties on file Service of a Storage account
+    - `Update-AzStorageFileServiceProperty`
+    - `Get-AzStorageFileServiceProperty`
+* Supported list file shares include the deleted ones of a Storage account, and Get single file share usage
+    - `Get-AzRmStorageShare`
+* Supported restore a deleted file share
+    - `Restore-AzRmStorageShare`
+* Changed the cmdlets for modify blob service properties, won't get the orginal properties from server, but only set the modified properties to server.
+    - `Enable-AzStorageBlobDeleteRetentionPolicy`
+    - `Disable-AzStorageBlobDeleteRetentionPolicy`  
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `Update-AzStorageBlobServiceProperty`
+* Fixed help issue for New-AzStorageAccount parameter -Kind default value [#12189]
+* Fixed issue by add example to show how to set correct ContentType in blob upload [#12989]
+
+## Version 2.6.0
 * Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
 * Supported Point In Time Restore
     - `Enable-AzStorageBlobRestorePolicy`
