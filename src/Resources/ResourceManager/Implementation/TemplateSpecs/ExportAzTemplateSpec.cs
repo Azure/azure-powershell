@@ -107,18 +107,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Version
                     );
 
+                // Get the parent template spec from the SDK. We do this because we want to retrieve the
+                // template spec name with its proper casing for naming our main template output file (the 
+                // Name parameter may have mismatched casing):
+                TemplateSpec parentTemplateSpec =
+                    TemplateSpecsSdkClient.TemplateSpecsClient.TemplateSpecs.Get(ResourceGroupName, Name);
+
                 PackagedTemplate packagedTemplate = new PackagedTemplate(specificVersion);
 
                 // TODO: Handle overwriting prompts...
 
                 // Ensure our output path is resolved based on the current powershell working
                 // directory instead of the current process directory:
-                OutputFolder = ResolveUserPath(OutputFolder); 
+                OutputFolder = ResolveUserPath(OutputFolder);
 
-                TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, $"{specificVersion.Name}.json");
+                string mainTemplateFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.json";
+
+                TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, mainTemplateFileName);
 
                 string fullRootTemplateFilePath = Path.GetFullPath(
-                    Path.Combine(OutputFolder, $"{specificVersion.Name}.json")
+                    Path.Combine(OutputFolder, mainTemplateFileName)
                 );
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", fullRootTemplateFilePath));
