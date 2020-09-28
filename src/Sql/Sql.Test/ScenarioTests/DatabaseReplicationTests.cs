@@ -83,5 +83,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-FailoverSecondaryDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDatabaseCopyWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryDatabaseWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
+        }
     }
 }

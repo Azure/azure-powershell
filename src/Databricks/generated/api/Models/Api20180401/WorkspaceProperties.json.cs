@@ -77,10 +77,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return container;
             }
-            AddIf( null != this._createdBy ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._createdBy.ToJson(null,serializationMode) : null, "createdBy" ,container.Add );
             AddIf( null != this._parameter ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._parameter.ToJson(null,serializationMode) : null, "parameters" ,container.Add );
-            AddIf( null != this._storageAccountIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._storageAccountIdentity.ToJson(null,serializationMode) : null, "storageAccountIdentity" ,container.Add );
+            AddIf( null != this._createdBy ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._createdBy.ToJson(null,serializationMode) : null, "createdBy" ,container.Add );
             AddIf( null != this._updatedBy ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._updatedBy.ToJson(null,serializationMode) : null, "updatedBy" ,container.Add );
+            AddIf( null != this._storageAccountIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._storageAccountIdentity.ToJson(null,serializationMode) : null, "storageAccountIdentity" ,container.Add );
+            AddIf( null != (((object)this._managedResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._managedResourceGroupId.ToString()) : null, "managedResourceGroupId" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            AddIf( null != (((object)this._uiDefinitionUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._uiDefinitionUri.ToString()) : null, "uiDefinitionUri" ,container.Add );
             if (null != this._authorization)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.XNodeArray();
@@ -94,12 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 AddIf( null != this._createdDateTime ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._createdDateTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "createdDateTime" ,container.Add );
             }
-            AddIf( null != (((object)this._managedResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._managedResourceGroupId.ToString()) : null, "managedResourceGroupId" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
-            AddIf( null != (((object)this._uiDefinitionUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._uiDefinitionUri.ToString()) : null, "uiDefinitionUri" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._workspaceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._workspaceId.ToString()) : null, "workspaceId" ,container.Add );
@@ -124,15 +124,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return;
             }
-            {_createdBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("createdBy"), out var __jsonCreatedBy) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.CreatedBy.FromJson(__jsonCreatedBy) : CreatedBy;}
             {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomParameters.FromJson(__jsonParameters) : Parameter;}
-            {_storageAccountIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("storageAccountIdentity"), out var __jsonStorageAccountIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.ManagedIdentityConfiguration.FromJson(__jsonStorageAccountIdentity) : StorageAccountIdentity;}
+            {_createdBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("createdBy"), out var __jsonCreatedBy) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.CreatedBy.FromJson(__jsonCreatedBy) : CreatedBy;}
             {_updatedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("updatedBy"), out var __jsonUpdatedBy) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.CreatedBy.FromJson(__jsonUpdatedBy) : UpdatedBy;}
-            {_authorization = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray>("authorizations"), out var __jsonAuthorizations) ? If( __jsonAuthorizations as Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization) (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceProviderAuthorization.FromJson(__u) )) ))() : null : Authorization;}
-            {_createdDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("createdDateTime"), out var __jsonCreatedDateTime) ? global::System.DateTime.TryParse((string)__jsonCreatedDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedDateTimeValue) ? __jsonCreatedDateTimeValue : CreatedDateTime : CreatedDateTime;}
+            {_storageAccountIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("storageAccountIdentity"), out var __jsonStorageAccountIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.ManagedIdentityConfiguration.FromJson(__jsonStorageAccountIdentity) : StorageAccountIdentity;}
             {_managedResourceGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("managedResourceGroupId"), out var __jsonManagedResourceGroupId) ? (string)__jsonManagedResourceGroupId : (string)ManagedResourceGroupId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             {_uiDefinitionUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("uiDefinitionUri"), out var __jsonUiDefinitionUri) ? (string)__jsonUiDefinitionUri : (string)UiDefinitionUri;}
+            {_authorization = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray>("authorizations"), out var __jsonAuthorizations) ? If( __jsonAuthorizations as Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization) (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceProviderAuthorization.FromJson(__u) )) ))() : null : Authorization;}
+            {_createdDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("createdDateTime"), out var __jsonCreatedDateTime) ? global::System.DateTime.TryParse((string)__jsonCreatedDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedDateTimeValue) ? __jsonCreatedDateTimeValue : CreatedDateTime : CreatedDateTime;}
             {_workspaceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("workspaceId"), out var __jsonWorkspaceId) ? (string)__jsonWorkspaceId : (string)WorkspaceId;}
             {_workspaceUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("workspaceUrl"), out var __jsonWorkspaceUrl) ? (string)__jsonWorkspaceUrl : (string)WorkspaceUrl;}
             AfterFromJson(json);

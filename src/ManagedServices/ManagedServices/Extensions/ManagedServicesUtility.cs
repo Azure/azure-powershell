@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions
     public static class ManagedServicesUtility
     {
         // TODO: Remove these three string as well as breaking changes attributes for Oct. 27th change
-        public const string UpcomingVersion = "1.0.3";
+        public const string UpcomingVersion = "1.3.0";
         public const string UpcomingVersionReleaseDate = "10/27/2020";
         public const string DeprecatedParameterDescription = "Parameter is being deprecated without being replaced";
 

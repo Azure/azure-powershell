@@ -36,8 +36,8 @@ PS C:\>New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
-----     -------- ---------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
+----     -------- --------------- ---------- ------- ------- ---------------
 myshare
 ```
 
@@ -49,8 +49,8 @@ Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
-----     -------- ---------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
+----     -------- --------------- ---------- ------- ------- ---------------
 myshare
 ```
 

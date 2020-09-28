@@ -205,10 +205,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
-
-        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
         /// Overriding to add warning message
@@ -223,19 +221,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.DatabaseName)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeGeoWarning)))
                     {
                         return;
                     }
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    if (!Force.IsPresent && !ShouldContinue(
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.DatabaseName)))
-                    {
-                        return;
-                    }
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
                 }
             }
             base.ExecuteCmdlet();

@@ -637,7 +637,7 @@
   <data name="GeoBackupRedundancyChosenWarning" xml:space="preserve">
     <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions.</value>
   </data>
-  <data name="GeoBackupRedundancyNotChosenWarning" xml:space="preserve">
+  <data name="BackupRedundancyNotChosenTakeGeoWarning" xml:space="preserve">
     <value>You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions.</value>
   </data>
   <data name="StopAzureSqlInstanceDatabaseLogReplayDescription" xml:space="preserve">
@@ -648,5 +648,8 @@
   </data>
   <data name="StartManagedDatabaseLogReplay_LastBackupName_Warning" xml:space="preserve">
     <value>LastBackupName is required parameter when AutoCompleteRestore is set to true. Please explicitly provide it.</value>
+  </data>
+  <data name="BackupRedundancyNotChosenTakeSourceWarning" xml:space="preserve">
+    <value>You have not specified the value for backup storage redundancy which will default to the source's backup storage redundancy. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions.</value>
   </data>
 </root>
