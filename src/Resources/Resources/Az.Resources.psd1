@@ -148,7 +148,7 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzDeploymentWhatIfResult', 
                'Get-AzResourceGroupDeploymentWhatIfResult',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
-               'Get-AzTenantDeploymentWhatIfResult'
+               'Get-AzTenantDeploymentWhatIfResult',
                'Get-AzTemplateSpec', 'New-AzTemplateSpec', 'Set-AzTemplateSpec', 
                'Export-AzTemplateSpec', 'Remove-AzTemplateSpec'
 
