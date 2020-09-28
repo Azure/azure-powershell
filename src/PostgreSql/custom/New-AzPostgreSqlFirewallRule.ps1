@@ -15,71 +15,67 @@
 
 <#
 .Synopsis
-Deletes a server.
+Creates a new firewall rule or updates an existing firewall rule.
 .Description
-Deletes a server.
-.Example
-PS C:\> Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
-
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
-PS C:\> Remove-AzPostgreSqlServer -InputObject $ID
- 
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.postgresql/remove-azpostgresqlserver
+Creates a new firewall rule or updates an existing firewall rule.
 #>
-function Remove-AzPostgreSqlServer {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzPostgreSqlFirewallRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('ServerName')]
+    [Parameter()]
+    [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
-    # The name of the server.
+    # The name of the server firewall rule.
     ${Name},
 
-    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Delete')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
+
+    [Parameter(ParameterSetName='AllowAll', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
+    ${AllowAll},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -121,12 +117,6 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [System.Uri]
@@ -147,40 +137,40 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Delete = 'Az.PostgreSql.private\Remove-AzPostgreSqlServer_Delete';
-            DeleteViaIdentity = 'Az.PostgreSql.private\Remove-AzPostgreSqlServer_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
     try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
+        if($PSBoundParameters.ContainsKey('AllowAll'))
+        {
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = Get-Date -Format "AllowAll_yyyy-MM-dd_HH-mm-ss"
+            }
+            $PSBoundParameters['StartIPAddress'] = "0.0.0.0"
+            $PSBoundParameters['EndIPAddress'] = "255.255.255.255"
 
-end {
-    try {
-        $steppablePipeline.End()
+            $null = $PSBoundParameters.Remove('AllowAll')
+        }
+        elseif($PSBoundParameters.ContainsKey('ClientIPAddress'))
+        {
+            $PSBoundParameters['StartIPAddress'] = $PSBoundParameters['ClientIPAddress']
+            $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['ClientIPAddress']
+
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "ClientIPAddress_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss")
+            }
+
+            $null = $PSBoundParameters.Remove('ClientIPAddress')
+        }
+        else
+        {
+            if(!$PSBoundParameters.ContainsKey('Name'))
+            {
+                $PSBoundParameters['Name'] = "undefined"
+            }
+        }
+
+        Az.PostgreSql.internal\New-AzPostgreSqlFirewallRule @PSBoundParameters
     } catch {
         throw
     }
