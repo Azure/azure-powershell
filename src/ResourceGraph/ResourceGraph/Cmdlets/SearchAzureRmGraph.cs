@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Maximum number of subscriptions for request
         /// </summary>
         private const int SubscriptionLimit = 1000;
+
+        private static readonly char[] PipeOperator = new[] { '|' };
+
+        private const string LogicalTableSuffix = "resources";
 
         /// <summary>
         /// Gets or sets the query.
@@ -157,11 +161,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skipToken: requestSkipToken,
                         resultFormat: ResultFormat.ObjectArray);
 
-                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized()) ?
-                        (queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
-                        string.Empty;
-
-                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
+                    var includeDisplayNames = this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized();
+                    var query = PrepareQuery(this.Query, includeDisplayNames, queryExtensionToIncludeNames);
+                    var request = new QueryRequest(subscriptions, query, options: requestOptions);
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
@@ -211,6 +213,35 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             this.WriteObject(results, true);
+        }
+
+        // NOTE: Below is a workaround to handle the case where logic table is incldued in the query, e.g., "resources | count".
+        // However this workaround may not work when a query involves JOIN bewteen two or more logic tables. To achieve the latter
+        // there will be a non-trival amount of work to be done, which may come later.
+        private string PrepareQuery(string userQuery, bool includeDisplayNames, string queryExtensionToIncludeNames = null)
+        {
+            if (!includeDisplayNames)
+            {
+                return userQuery;
+            }
+
+            if (string.IsNullOrEmpty(userQuery))
+            {
+                return queryExtensionToIncludeNames;
+            }
+
+            var userQuerySegments = userQuery.Split(PipeOperator, count: 2);
+            if (userQuerySegments[0].Trim().EndsWith(LogicalTableSuffix, StringComparison.OrdinalIgnoreCase))
+            {
+                // "resources | count" => "resources | <extend display names> | count"
+                userQuerySegments[0] += $" | {queryExtensionToIncludeNames}";
+            }
+            else
+            {
+                // "count" => "<extend display names> | count"
+                userQuerySegments[0] = $"{queryExtensionToIncludeNames} | {userQuerySegments[0]}";
+            }
+            return userQuerySegments[0] + (userQuerySegments.Length > 1 ? " | " + userQuerySegments[1] : string.Empty);
         }
 
         /// <summary>
