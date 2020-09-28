@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
+* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
