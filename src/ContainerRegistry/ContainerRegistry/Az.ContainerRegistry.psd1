@@ -90,7 +90,7 @@ CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry',
                'Import-AzContainerRegistryImage', 
                'Get-AzContainerRegistryUsage', 
                'Set-AzContainerRegistryNetworkRuleSet', 
-               'New-AzCOntainerRegistryNetworkRule' ,
+               'New-AzContainerRegistryNetworkRule', 
                'Connect-AzContainerRegistry'
 
 # Variables to export from this module
