@@ -14,16 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.ContainerRegistry;
 using Microsoft.Azure.Management.ContainerRegistry;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Rest;
-using Microsoft.Rest.Azure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
