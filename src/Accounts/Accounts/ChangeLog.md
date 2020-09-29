@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed DateTime parse issue in common libraries [#13045]
+
+## Version 1.9.4
+* Formatted the upcoming breaking change messages
+* Updated Azure.Core to 1.4.1
+
+## Version 1.9.3
+* Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
 * Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
 
 ## Version 1.9.2

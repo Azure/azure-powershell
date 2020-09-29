@@ -273,9 +273,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
-  ! p4/foo{Color.Reset}{Color.Gray}
-  * p1/foo{Color.Reset}{Color.Reset}
-  = p3/foo
+  ! p4/foo{Color.Reset}{Color.Reset}
+  = p3/foo{Color.Reset}{Color.Gray}
+  * p1/foo
 {Color.Reset}
 "
                 .Replace("\r\n", Environment.NewLine);

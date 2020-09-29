@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -88,6 +89,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential { get; set; }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountName", ReplaceMentCmdletParameterName = "StorageAccountResourceId")]
         [Parameter(
             Position = 5,
             HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account or the default Data Lake Store Account.")]
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageAccountName = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountKey", ReplaceMentCmdletParameterName = "StorageAccountKey")]
         [Parameter(
             Position = 6,
             HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
@@ -106,6 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageAccountKey = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageAccountType", ReplaceMentCmdletParameterName = "StorageAccountType")]
         [Parameter(
             HelpMessage = "Gets or sets the type of the default storage account.")]
         public StorageType? DefaultStorageAccountType { get; set; }
@@ -145,7 +149,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     EncryptionVaultUri = EncryptionVaultUri,
                     PublicNetworkAccessType = PublicNetworkAccessType,
                     OutboundPublicNetworkAccessType = OutboundPublicNetworkAccessType,
-                    EncryptionInTransit = EncryptionInTransit
+                    EncryptionInTransit = EncryptionInTransit,
+                    EncryptionAtHost = EncryptionAtHost
                 };
                 foreach (
                     var storageAccount in
@@ -208,6 +213,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 PublicNetworkAccessType = value.PublicNetworkAccessType;
                 OutboundPublicNetworkAccessType = value.OutboundPublicNetworkAccessType;
                 EncryptionInTransit = value.EncryptionInTransit;
+                EncryptionAtHost = value.EncryptionAtHost;
 
                 foreach (
                     var storageAccount in
@@ -246,6 +252,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
+        [CmdletParameterBreakingChange("DefaultStorageContainer", ReplaceMentCmdletParameterName = "StorageContainer")]
         [Parameter(HelpMessage = "Gets or sets the StorageContainer name for the default Azure Storage Account")]
         public string DefaultStorageContainer
         {
@@ -253,6 +260,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _defaultStorageContainer = value; }
         }
 
+        [CmdletParameterBreakingChange("DefaultStorageRootPath", ReplaceMentCmdletParameterName = "StorageRootPath")]
         [Parameter(HelpMessage = "Gets or sets the path to the root of the cluster in the default Data Lake Store Account.")]
         public string DefaultStorageRootPath { get; set; }
 
@@ -390,16 +398,24 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the encryption vault uri.")]
         public string EncryptionVaultUri { get; set; }
 
+        [CmdletParameterBreakingChange("PublicNetworkAccessType", ChangeDescription = "This parameter is being deprecated.")]
         [Parameter(HelpMessage = "Gets or sets the public network access type.")]
         [ValidateSet(PublicNetworkAccess.InboundAndOutbound, PublicNetworkAccess.OutboundOnly, IgnoreCase = true)]
-        public string PublicNetworkAccessType;
+        public string PublicNetworkAccessType { get; set; }
 
+        [CmdletParameterBreakingChange("OutboundPublicNetworkAccessType", ChangeDescription = "This parameter is being deprecated.")]
         [Parameter(HelpMessage = "Gets or sets the outbound access type to the public network.")]
         [ValidateSet(OutboundOnlyPublicNetworkAccessType.PublicLoadBalancer, OutboundOnlyPublicNetworkAccessType.UDR, IgnoreCase = true)]
-        public string OutboundPublicNetworkAccessType;
+        public string OutboundPublicNetworkAccessType { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption in transit or not.")]
-        public bool? EncryptionInTransit;
+        public bool? EncryptionInTransit { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption at host or not.")]
+        public bool? EncryptionAtHost { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the autoscale configuration")]
+        public AzureHDInsightAutoscale AutoscaleConfiguration { get; set; }
 
         #endregion
 
@@ -540,7 +556,28 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId, PublicNetworkAccessType, OutboundPublicNetworkAccessType, EncryptionInTransit);
+            if (EncryptionAtHost != null)
+            {
+                if (parameters.DiskEncryptionProperties != null)
+                {
+                    parameters.DiskEncryptionProperties.EncryptionAtHost = EncryptionAtHost;
+                }
+                else
+                {
+                    parameters.DiskEncryptionProperties = new DiskEncryptionProperties()
+                    {
+                        EncryptionAtHost = EncryptionAtHost
+                    };
+                }
+            }
+
+            Autoscale autoscaleParameter = null;
+            if (AutoscaleConfiguration != null)
+            {
+                autoscaleParameter = AutoscaleConfiguration.ToAutoscale();
+            }
+
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion, this.DefaultContext.Environment.ActiveDirectoryAuthority, this.DefaultContext.Environment.DataLakeEndpointResourceId, PublicNetworkAccessType, OutboundPublicNetworkAccessType, EncryptionInTransit, autoscaleParameter);
 
             if (cluster != null)
             {

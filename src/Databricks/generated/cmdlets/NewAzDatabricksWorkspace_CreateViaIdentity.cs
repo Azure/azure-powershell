@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
     /// <summary>Creates a new workspace.</summary>
     /// <remarks>
-    /// [OpenAPI] Workspaces_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksWorkspace_CreateViaIdentity", SupportsShouldProcess = true)]

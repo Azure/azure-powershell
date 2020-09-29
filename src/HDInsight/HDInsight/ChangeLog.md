@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning message for planning to deprecate the parameters `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountType` with `StorageAccountType`
+* Added warning message for planning to replace the parameter `DefaultStorageContainer` with `StorageContainer`
+* Added warning message for planning to replace the parameter `DefaultStorageRootPath` with `StorageRootPath`
+
+## Version 3.6.0
+* Supported creating cluster with Autoscale configuration
+    - Add new parameter `AutoscaleConfiguration` to the cmdlet `New-AzHDInsightCluster`
+* Supported operating cluster's Autoscale configuration
+    - Add new cmdlet `Get-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `New-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `Set-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `Remove-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `New-AzHDInsihgtClusterAutoscaleScheduleCondition`
+
+## Version 3.5.0
+* Supported creating cluster with encryption at host feature.
 
 ## Version 3.4.0
 * Supported creating cluster with encryption in transit feature.

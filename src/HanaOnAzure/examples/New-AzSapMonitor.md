@@ -10,3 +10,4 @@ westus2  ps-sapmonitor-t01 Microsoft.HanaOnAzure/sapMonitors
 ```
 
 This command creates a SAP monitor.
+
