@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Modified output `HostedSubnet` in `New-AzVirtualRouter` and `Get-AzVirtualRouter`
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
     
