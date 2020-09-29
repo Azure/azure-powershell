@@ -81,6 +81,7 @@ PS C:\>  Remove-AzKeyVault -Name "testManagedHsm" -Hsm -PassThru
 
 True
 ```
+
 This command removes the managed hsm named testManagedHsm from your current subscription.
 
 ## PARAMETERS

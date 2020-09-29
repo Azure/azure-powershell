@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <param name="httpRequest"></param>
         private void PrepareRequest(HttpRequestMessage httpRequest)
         {
-            if (httpRequest.Content != null) {
+            if (httpRequest.Content != null)
+            {
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
 
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 var httpRequest = new HttpRequestMessage
                 {
-                    Method = new HttpMethod("GET"),
+                    Method = HttpMethod.Get,
                     RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
                     {
                         Path = $"/{_securityDomainPathFragment}/upload"
@@ -189,23 +190,27 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                             return Utils.CertficateFromPem(key.TransferKey);
                         case "jwk":
                             // handle below
-                            break; 
+                            break;
                         default:
-                            return null;
+                            throw new Exception($"Unexpected key type {key.KeyFormat}");
                     }
 
                     // The transfer key is a JWK, need to parse it, and return the cert
                     JWK jwk = JsonConvert.DeserializeObject<JWK>(key.TransferKey);
                     return Utils.CertficateFromPem(jwk.GetX5cAsPem());
                 }
+                else
+                {
+                    string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                    _writeDebug($"Invalid security domain response: {response}");
+                    // todo : resource string
+                    throw new Exception("Failed to download security domain exchange key.");
+                }
 
-                return null;
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                Console.WriteLine($"DownloadSecurityDomainTransferKey failed = {err.Message}");
-                Console.WriteLine(err);
-                return null;
+                throw new Exception("Failed to download security domain exchange key.", ex);
             }
         }
 
@@ -224,7 +229,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 certKeys.LoadKeys(paths);
                 return Decrypt(data, certKeys);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(Resources.DecryptSecurityDomainFailure, ex);
             }
@@ -238,50 +244,47 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 throw new ArgumentException(string.Format(Resources.DecryptSecurityDomainKeyNotEnough, data.SharedKeys.required, certKeys.Count()));
             }
 
-            byte[] master_key;
+            byte[] masterKey;
             if (data.version == 1)
             {
                 // ensure that the key splitting algorithm
                 // is known, currently only one we know about
                 if (data.SplitKeys.key_algorithm != "xor_split")
                 {
-                    Console.WriteLine("Unknown SplitKey algorithm");
-                    return null;
+                    throw new Exception($"Unknown SplitKey algorithm {data.SplitKeys.key_algorithm}.");
                 }
 
-                KeyPair decode_key_pair = null;
+                KeyPair decodeKeyPair = null;
                 CertKey certKey1 = null;
                 CertKey certKey2 = null;
-                foreach (KeyPair key_pair in data.SplitKeys.keys)
+                foreach (KeyPair keyPair in data.SplitKeys.keys)
                 {
-                    certKey1 = certKeys.Find(key_pair.key1.x5t_256);
+                    certKey1 = certKeys.Find(keyPair.key1.x5t_256);
 
                     if (certKey1 == null)
                         continue;
 
-                    certKey2 = certKeys.Find(key_pair.key2.x5t_256);
+                    certKey2 = certKeys.Find(keyPair.key2.x5t_256);
 
                     if (certKey2 != null)
                     {
-                        decode_key_pair = key_pair;
+                        decodeKeyPair = keyPair;
                         break;
                     }
                 }
 
-                if (decode_key_pair == null)
+                if (decodeKeyPair == null)
                 {
-                    Console.WriteLine("Cannot find matching certs and keys for security domain");
-                    return null;
+                    throw new Exception("Cannot find matching certs and keys for security domain");
                 }
 
-                master_key = DecryptMasterKey(decode_key_pair, certKey1, certKey2);
+                masterKey = DecryptMasterKey(decodeKeyPair, certKey1, certKey2);
             }
             else if (data.version == 2)
             {
                 if (data.SharedKeys.key_algorithm != "shamir_share")
                 {
-                    Console.WriteLine("Unknown SharedKeys algorithm");
-                    return null;
+                    throw new Exception($"Unknown SharedKeys algorithm {data.SharedKeys.key_algorithm}");
                 }
 
                 UInt32 shares_found = 0;
@@ -306,17 +309,15 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
                 if (share_arrays.Count < data.SharedKeys.required)
                 {
-                    Console.WriteLine("Insufficient shares available");
-                    return null;
+                    throw new Exception($"Insufficient shares available. {data.SharedKeys.required} required, got {share_arrays.Count}.");
                 }
 
                 shamir_share_net.shared_secret secret = new shamir_share_net.shared_secret((UInt16)data.SharedKeys.required);
-                master_key = secret.get_secret(share_arrays);
+                masterKey = secret.get_secret(share_arrays);
             }
             else
             {
-                Console.WriteLine("Unknown domain version");
-                return null;
+                throw new Exception($"Unknown domain version {data.version}.");
             }
 
             PlaintextList plaintextList = new PlaintextList();
@@ -326,7 +327,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 Plaintext p = new Plaintext();
                 HMACSHA512 hmac = new HMACSHA512();
-                byte[] enc_key = KDF.sp800_108(master_key, enc_data.tag, "", hmac, 512);
+                byte[] enc_key = KDF.sp800_108(masterKey, enc_data.tag, "", hmac, 512);
                 JWE jwe_data = new JWE(enc_data.compact_jwe);
                 p.plaintext = jwe_data.Decrypt(enc_key);
                 p.tag = enc_data.tag;
@@ -363,30 +364,38 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <returns></returns>
         public SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert)
         {
-            SecurityDomainRestoreData securityDomainRestoreData = new SecurityDomainRestoreData();
-            securityDomainRestoreData.EncData.kdf = "sp108_kdf";
-
-            byte[] master_key = Utils.GetRandom(32);
-
-            foreach (Plaintext p in plaintextList.list)
+            try
             {
-                Datum datum = new Datum();
-                HMACSHA512 hmac = new HMACSHA512();
-                byte[] enc_key = KDF.sp800_108(master_key, p.tag, "", hmac, 512);
+                SecurityDomainRestoreData securityDomainRestoreData = new SecurityDomainRestoreData();
+                securityDomainRestoreData.EncData.kdf = "sp108_kdf";
 
-                datum.tag = p.tag;
-                JWE jwe = new JWE();
-                jwe.Encrypt(enc_key, p.plaintext, "A256CBC-HS512", p.tag);
-                datum.compact_jwe = jwe.EncodeCompact();
-                securityDomainRestoreData.EncData.data.Add(datum);
+                byte[] master_key = Utils.GetRandom(32);
+
+                foreach (Plaintext p in plaintextList.list)
+                {
+                    Datum datum = new Datum();
+                    HMACSHA512 hmac = new HMACSHA512();
+                    byte[] enc_key = KDF.sp800_108(master_key, p.tag, "", hmac, 512);
+
+                    datum.tag = p.tag;
+                    JWE jwe = new JWE();
+                    jwe.Encrypt(enc_key, p.plaintext, "A256CBC-HS512", p.tag);
+                    datum.compact_jwe = jwe.EncodeCompact();
+                    securityDomainRestoreData.EncData.data.Add(datum);
+                }
+
+                // Now go make the wrapped key
+                JWE jwe_wrapped = new JWE();
+                jwe_wrapped.Encrypt(cert, master_key);
+                securityDomainRestoreData.WrappedKey.enc_key = jwe_wrapped.EncodeCompact();
+                securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlEncoder.Encode(Utils.Sha256Thumbprint(cert));
+                return securityDomainRestoreData;
             }
-
-            // Now go make the wrapped key
-            JWE jwe_wrapped = new JWE();
-            jwe_wrapped.Encrypt(cert, master_key);
-            securityDomainRestoreData.WrappedKey.enc_key = jwe_wrapped.EncodeCompact();
-            securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlEncoder.Encode(Utils.Sha256Thumbprint(cert));
-            return securityDomainRestoreData;
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to encrypt security domain data for restoring.", ex);
+            }
+            
         }
 
         /// <summary>
@@ -423,7 +432,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     {
                         throw new Exception("Got empty response when restoring security domain.");
                     }
-                } else
+                }
+                else
                 {
                     throw new Exception($"Got {httpResponseMessage.StatusCode}, {responseBody}");
                 }
