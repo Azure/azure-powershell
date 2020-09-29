@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
+using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Crypto;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -312,7 +313,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     throw new Exception($"Insufficient shares available. {data.SharedKeys.required} required, got {share_arrays.Count}.");
                 }
 
-                shamir_share_net.shared_secret secret = new shamir_share_net.shared_secret((UInt16)data.SharedKeys.required);
+                shared_secret secret = new shared_secret((UInt16)data.SharedKeys.required);
                 masterKey = secret.get_secret(share_arrays);
             }
             else
