@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Removed legacy SkuSize from input and output [#12734]
 * New/Update-AzMyMariaDbFirewallRule create a default name with time stamp when no name is passed [#12737]
 * Added validateset for parameter StorageAutogrow [#12735]
