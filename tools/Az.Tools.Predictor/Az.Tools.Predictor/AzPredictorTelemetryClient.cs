@@ -14,8 +14,7 @@
 
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,40 +29,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     sealed class AzPredictorTelemetryClient : ITelemetryClient
     {
-        /// <summary>
-        /// A simple session class that provides neccessary information to get the profile.
-        /// </summary>
-        private sealed class TelemetrySession : AzureSession
-        {
-            /// <summary>
-            /// Constructs a new instance of <see cref="TelemetrySession" />
-            /// </summary>
-            public TelemetrySession()
-            {
-                DataStore = new DiskDataStore();
-                ProfileDirectory = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                    AzPredictorConstants.AzureProfileDirectoryName);
-            }
-
-            /// <inheritdoc/>
-            public override TraceLevel AuthenticationLegacyTraceLevel
-            {
-                get => TraceLevel.Off;
-                set { }
-            }
-
-            /// <inheritdoc/>
-            public override TraceListenerCollection AuthenticationTraceListeners => Trace.Listeners;
-
-            /// <inheritdoc/>
-            public override SourceLevels AuthenticationTraceSourceLevel
-            {
-                get => SourceLevels.Off;
-                set { }
-            }
-        }
-
         private const string TelemetryEventPrefix = "Az.Tools.Predictor";
 
         /// <inheritdoc/>
@@ -73,31 +38,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
 
         private readonly TelemetryClient _telemetryClient;
-
-        private object lockObject = new object();
-        private AzurePSDataCollectionProfile _cachedProfile;
-
-        private AzurePSDataCollectionProfile DataCollectionProfile
-        {
-            get
-            {
-                if (_cachedProfile != null)
-                {
-                    return _cachedProfile;
-                }
-
-                lock (lockObject)
-                {
-                    if (_cachedProfile == null)
-                    {
-                        var controller = DataCollectionController.Create(new TelemetrySession());
-                        _cachedProfile = controller.GetProfile(() => { });
-                    }
-
-                    return _cachedProfile;
-                }
-            }
-        }
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>
@@ -255,9 +195,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <returns>true if allowed</returns>
         private bool IsDataCollectionAllowed()
         {
-            if (DataCollectionProfile != null &&
-                DataCollectionProfile.EnableAzureDataCollection.HasValue &&
-                DataCollectionProfile.EnableAzureDataCollection.Value)
+            if (AzurePSDataCollectionProfile.Instance.EnableAzureDataCollection == true)
             {
                 return true;
             }

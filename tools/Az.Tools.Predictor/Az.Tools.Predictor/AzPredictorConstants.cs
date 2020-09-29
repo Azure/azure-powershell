@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// The azure profile directory name.
         /// </summary>
+        // See AzureDirectoryName in https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Authentication/Properties/Resources.resx
         public const string AzureProfileDirectoryName = ".Azure";
     }
 }
