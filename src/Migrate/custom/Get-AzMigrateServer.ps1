@@ -24,18 +24,40 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserve
 
 function Get-AzMigrateServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param (
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the migrate project name.
-        ${MigrateProjectName},
+        ${ProjectName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the resource group name.
         ${ResourceGroupName},
+
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='GetInSite', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the VMware machine name. This is an internal Name. For users, use display name.
+        ${Name},
+
+        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListInSite')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the VMware machine display name.
+        ${DisplayName},
+
+        [Parameter(ParameterSetName='GetInSite', Mandatory)]
+        [Parameter(ParameterSetName='ListInSite', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the appliance name. This internally maps to a site.
+        ${ApplianceName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -46,28 +68,98 @@ function Get-AzMigrateServer {
     )
     
     process {
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = Get-AzMigrateSolution -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $MigrateProjectName -Name $discoverySolutionName
+        $discoverySolution = Get-AzMigrateSolution -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $ProjectName -Name $discoverySolutionName
         if ($discoverySolution.Name -ne $discoverySolutionName) {
             throw "Server Discovery Solution not found."
         }
 
         $extendedDetails = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
 
-        $projectSdsMachines = [System.Collections.ArrayList]::new()
-        foreach ($det in $extendedDetails) {
-            $siteArmId = $det.SiteId
-            $r = '(?<=/Microsoft.OffAzure/VMwareSites/).*$'
+        # Regex to match site name.
+        $r = '(?<=/Microsoft.OffAzure/VMwareSites/).*$'
 
-            if ($siteArmId -match $r) {
-                $siteName = $Matches[0]
-                $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteName -SubscriptionId $SubscriptionId
-                if ($null -ne $siteMachines) {
-                    $projectSdsMachines.AddRange($siteMachines)
+        $siteNameTmp = ""
+        if ($parameterSet.Contains("Site")) {
+            #Fetch by site scenario. This is when site name filter is provided.
+            $siteFound = 0
+            foreach ($det in $extendedDetails) {
+                if ($det.ApplianceName -eq $ApplianceName) {
+                    $siteArmId = $det.SiteId
+                    if ($siteArmId -match $r) {
+                        $siteNameTmp = $Matches[0]
+                        $siteFound = 1
+                        if ($parameterSet -eq 'GetInSite') {
+                            return Get-AzMigrateMachine -Name $Name -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
+                        }
+                        elseif ($parameterSet -eq 'ListInSite') {
+                            $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
+                            
+                            if ($DisplayName) {
+                                $filteredMachines = $siteMachines | Where-Object {$_.DisplayName.Contains($DisplayName)}
+                                return $filteredMachines
+                            }
+                            else {
+                                return $siteMachines
+                            }
+                        }        
+                    }                    
                 }
-            }            
-        }
+            }
 
-        return $projectSdsMachines
+            if ($siteFound -eq 0) {
+                throw "Appiance: $ApplianceName not found in project $ProjectName."
+            }
+        }
+        else {
+            # Fetch across project. All machines or by name.
+            $projectSdsMachines = [System.Collections.ArrayList]::new()
+
+            if ($parameterSet -eq 'List') {
+                foreach ($det in $extendedDetails) {
+                    $siteArmId = $det.SiteId
+        
+                    if ($siteArmId -match $r) {
+                        $siteNameTmp = $Matches[0]
+                        $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
+                        if ($null -ne $siteMachines) {
+                            $projectSdsMachines.AddRange($siteMachines)
+                        }    
+                    }
+                }
+
+                if ($DisplayName) {
+                    $filteredMachines = $projectSdsMachines | Where-Object {$_.DisplayName.Contains($DisplayName)}
+                    return $filteredMachines
+                }
+                else {
+                    return $projectSdsMachines                
+                }
+            }
+            elseif ($parameterSet -eq 'Get') {
+                foreach ($det in $extendedDetails) {
+                    $siteArmId = $det.SiteId
+        
+                    if ($siteArmId -match $r) {
+                        $siteNameTmp = $Matches[0]
+
+                        try {
+                            $siteMachine = Get-AzMigrateMachine -Name $Name -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
+                            if ($null -ne $siteMachine) {
+                                return $siteMachine
+                            }
+                        }
+                        catch {
+                            $theError = $_
+                            Write-Host $theError
+                        }
+                    }      
+                }
+
+                throw "Machine with Id $Name not found in project $ProjectName."
+            }
+        }
     }
 }

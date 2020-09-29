@@ -1,33 +1,31 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateproject
+online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
 schema: 2.0.0
 ---
 
 # New-AzMigrateProject
 
 ## SYNOPSIS
-Method to create or update a migrate project.
+Get All servers in a migrate project.
+New proj.
 
 ## SYNTAX
 
 ```
-New-AzMigrateProject -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AcceptLanguage <String>] [-ETag <String>] [-Location <String>] [-Property <IMigrateProjectProperties>]
- [-TagAdditionalProperty <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMigrateProject -Location <String> -Name <String> -ResourceGroupName <String> [-ETag <String>]
+ [-Property <IMigrateProjectProperties>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Method to create or update a migrate project.
+Get Azure migrate server commandlet fetches all servers in a migrate project.
 
 ## EXAMPLES
 
 ### Example 1: Create (Default)
 ```powershell
-PS C:\> $props = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
-PS C:\> $props.RegisteredTool = {}
-PS C:\> New-AzMigrateProject -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus" -ETag "*" -Property $props
+PS C:\> New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus"
 
 ETag Location  Name                     Type
 ---- --------  ----                     ----
@@ -39,39 +37,8 @@ Method to create or update a migrate project.
 
 ## PARAMETERS
 
-### -AcceptLanguage
-Standard request header.
-Used by service to respond to client in appropriate language.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ETag
-Gets or sets the eTag for concurrency control.
+Specifies the VMware machine name.
 
 ```yaml
 Type: System.String
@@ -86,14 +53,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Gets or sets the Azure location in which migrate project is created.
+Specifies the VMware machine name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,12 +68,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Migrate project.
+Specifies the migrate project name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: MigrateProjectName
+Aliases:
 
 Required: True
 Position: Named
@@ -116,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Gets or sets the nested properties.
+Specifies the project properties.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
@@ -132,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Azure Resource Group that migrate project is part of.
+Specifies the resource group name.
 
 ```yaml
 Type: System.String
@@ -147,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription Id in which migrate project was created.
+Specifies the subscription id.
 
 ```yaml
 Type: System.String
@@ -157,21 +124,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagAdditionalProperty
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -214,8 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
-
 ## NOTES
 
 ALIASES
@@ -225,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY <IMigrateProjectProperties>: Gets or sets the nested properties.
+PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
   - `[ProvisioningState <ProvisioningState?>]`: Provisioning state of the migrate project.
   - `[RegisteredTool <String[]>]`: Gets or sets the list of tools registered with the migrate project.
 
