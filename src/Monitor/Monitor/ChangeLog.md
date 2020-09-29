@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the bug that warning message cannot be suppressed. [#12889]
 * Supported `SkipMetricValiation` parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
 
 ## Version 2.1.0
