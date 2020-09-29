@@ -42,8 +42,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Record the history from PSReadLine.
         /// </summary>
-        /// <param name="history">A list of history commands</param>
-        public void RecordHistory(IEnumerable<CommandAst> history);
+        /// <param name="history">The last command in history</param>
+        public void RecordHistory(CommandAst history);
 
         /// <summary>
         /// Return true if command is part of known set of Az cmdlets, false otherwise.

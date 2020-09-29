@@ -58,6 +58,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly ITelemetryClient _telemetryClient;
         private readonly Settings _settings;
 
+        private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
+
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>
         /// </summary>
@@ -76,35 +78,63 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (history.Count > 0)
             {
-                var historyLines = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess);
-
-                while (historyLines.Count() < AzPredictorConstants.CommandHistoryCountToProcess)
+                if (_lastTwoMaskedCommands.Any())
                 {
-                    historyLines = historyLines.Prepend(AzPredictorConstants.CommandPlaceholder);
+                    _lastTwoMaskedCommands.Dequeue();
+                }
+                else
+                {
+                    // This is the first time we populate our record. Push the second to last command in history to the
+                    // queue. If there is only one command in history, push the command placeholder.
+
+                    if (history.Count() > 1)
+                    {
+                        string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
+                        var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
+                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.Item2);
+                        _service.RecordHistory(secondToLastCommand.Item1);
+                    }
+                    else
+                    {
+                        _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
+                        // We only extract parameter values from the command line in _service.RecordHistory.
+                        // So we don't need to do that for a placeholder.
+                    }
                 }
 
-                var commandAsts = historyLines.Select((h) =>
-                        {
-                            var ast = Parser.ParseInput(h, out Token[] tokens, out _);
-                            var allAsts = ast?.FindAll((ast) => ast is CommandAst, true);
-                            return allAsts?.LastOrDefault() as CommandAst;
-                        }).ToArray();
+                string lastLine = history.Last();
+                var lastCommand = GetAstAndMaskedCommandLine(lastLine);
 
-                var maskedHistoryLines = commandAsts.Select((c) =>
-                        {
-                            var commandName = c?.CommandElements?.FirstOrDefault().ToString();
+                _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
 
-                            if (!_service.IsSupportedCommand(commandName))
-                            {
-                                return AzPredictorConstants.CommandPlaceholder;
-                            }
+                if ((lastCommand.Item2 != null) && !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal))
+                {
+                    _service.RecordHistory(lastCommand.Item1);
+                }
 
-                            return AzPredictor.MaskCommandLine(c);
-                        });
+                _telemetryClient.OnHistory(lastCommand.Item2);
+                _service.RequestPredictions(_lastTwoMaskedCommands);
+            }
 
-                _telemetryClient.OnHistory(maskedHistoryLines.Last());
-                _service.RecordHistory(commandAsts);
-                _service.RequestPredictions(maskedHistoryLines);
+            ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)
+            {
+                var asts = Parser.ParseInput(commandLine, out _, out _);
+                var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
+                var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+                string maskedCommandLine = null;
+
+                var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
+
+                if (_service.IsSupportedCommand(commandName))
+                {
+                    maskedCommandLine = AzPredictor.MaskCommandLine(commandAst);
+                }
+                else
+                {
+                    maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
+                }
+
+                return ValueTuple.Create(commandAst, maskedCommandLine);
             }
         }
 

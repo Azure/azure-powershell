@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
@@ -206,9 +205,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RecordHistory(IEnumerable<CommandAst> history)
+        public virtual void RecordHistory(CommandAst history)
         {
-            history.ForEach((h) => this._parameterValuePredictor.ProcessHistoryCommand(h));
+            this._parameterValuePredictor.ProcessHistoryCommand(history);
         }
 
         /// <inheritdoc/>
