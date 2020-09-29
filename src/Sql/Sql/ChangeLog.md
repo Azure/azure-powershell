@@ -26,6 +26,7 @@
     - `New-AzSqlDatabaseSecondary`
 * Removed case sensitivity for BackupStorageRedundancy parameter for all SQL DB references 
 * Updated BackupStorageRedundancy warning message names
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.10.1
 * Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
