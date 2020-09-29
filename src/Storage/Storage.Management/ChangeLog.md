@@ -25,7 +25,7 @@
     - `Get-AzRmStorageShare`
 * Supported restore a deleted file share
     - `Restore-AzRmStorageShare`
-* Changed the cmdlets for modify blob service properties, won't get the orginal properties from server, but only set the modified properties to server.
+* Changed the cmdlets for modify blob service properties, won't get the original properties from server, but only set the modified properties to server.
     - `Enable-AzStorageBlobDeleteRetentionPolicy`
     - `Disable-AzStorageBlobDeleteRetentionPolicy`  
     - `Enable-AzStorageBlobRestorePolicy`
