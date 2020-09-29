@@ -14,9 +14,10 @@ Creates a new workspace.
 
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrivateSubnetName <String>]
- [-PublicSubnetName <String>] [-Sku <String>] [-Tag <Hashtable>] [-VirtualNetworkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ManagedResourceGroupName <String>] [-PrepareEncryption]
+ [-PrivateSubnetName <String>] [-PublicSubnetName <String>] [-RequireInfrastructureEncryption] [-Sku <String>]
+ [-Tag <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +53,18 @@ eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
 
 This command creates a Databricks workspace with customized virtual network in a resource group.
 
+### Example 3: Create a Databricks workspace with enable encryption
+```powershell
+PS C:\> New-AzDatabricksWorkspace -Name databricks-test02 -ResourceGroupName testgroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+
+Location Name            Type
+-------- ----            ----
+eastus   databricks-test02 Microsoft.Databricks/workspaces
+```
+
+This command creates a Databricks workspace and sets it to prepare for encryption.
+Please refer to the examples of Update-AzDatabricksWorkspace for more settings to encryption.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -67,7 +80,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -83,7 +95,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -99,7 +110,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ManagedResourceGroupName
@@ -115,7 +125,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
@@ -131,7 +140,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
@@ -147,11 +155,26 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -PrepareEncryption
+Prepare the workspace for encryption.
+Enables the Managed Identity for managed storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PrivateSubnetName
-The value which should be used for this field.
+The name of the Private Subnet within the Virtual Network.
 
 ```yaml
 Type: System.String
@@ -163,11 +186,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -PublicSubnetName
-The value which should be used for this field.
+The name of a Public Subnet within the Virtual Network.
 
 ```yaml
 Type: System.String
@@ -179,7 +201,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -RequireInfrastructureEncryption
+A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -196,7 +232,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Sku
@@ -212,7 +247,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -228,7 +262,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
@@ -244,11 +277,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -VirtualNetworkId
-The value which should be used for this field.
+The ID of a Virtual Network where this Databricks Cluster should be created.
 
 ```yaml
 Type: System.String
@@ -260,7 +292,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -276,7 +307,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -293,7 +323,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -305,9 +334,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

@@ -94,26 +94,19 @@ function setupEnv() {
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
     New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
 
-    # Note: for DataConnection tests, 3 data connections must be created,
-    # For data connections to work you need to create a tabel <$env.tableName>, MappingRuleName <$env.tableMappingName> and MappingRuleName for update cmdlet <$env.tableMappingName1>,
-    # Example of setting:
-    # .create table Events (TimeStamp: datetime, Name: string, Metric: int, Source: string)
-    # .create table Events ingestion json mapping "EventsMapping" '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"","transform":null},{"column":"Name","path":"$.name","datatype":"","transform":null},{"column":"Metric","path":"$.metric","datatype":"","transform":null},{"column":"Source","path":"$.source","datatype":"","transform":null}]'
-    # .create table Events ingestion json mapping "EventsMapping1" '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"","transform":null},{"column":"Name","path":"$.name","datatype":"","transform":null},{"column":"Metric","path":"$.metric","datatype":"","transform":null},{"column":"Source","path":"$.source","datatype":"","transform":null}]'
-    #
-    # Example for data connections:
-    # $dataConnectionName = $env.dataConnectionName
-    # $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
-    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -DataFormat $env.dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $env.tableName -MappingRuleName $env.tableMappingName
-    #
-    # $dataConnectionName = $env.dataConnectionName + "g"
-    # $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
-    # $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
-    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -DataFormat $env.dataFormat -ConsumerGroup '$Default' -TableName $env.tableName -MappingRuleName $env.tableMappingName
-    #
-    # $dataConnectionName = $env.dataConnectionName + "h"
-    # $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
-    # New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -DataFormat $env.dataFormat -ConsumerGroup '$Default' -TableName $env.tableName -MappingRuleName $env.tableMappingName
+    # Create data connections:
+    $dataConnectionName = $env.dataConnectionName
+    $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $env.location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
+    
+    $dataConnectionName = $env.dataConnectionName + "g"
+    $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
+    $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
+    
+    $dataConnectionName = $env.dataConnectionName + "h"
+    $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
+    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -ConsumerGroup '$Default'
 
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2
@@ -141,5 +134,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    Remove-AzResourceGroup -Name $env.resourceGroupName -Force
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }

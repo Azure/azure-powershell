@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,24 +49,25 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
+# lock the commit
 input-file:
-  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
 
-module-version: 0.0.1
+module-version: 0.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
-inlining-threshold: 40
+inlining-threshold: 50
 
 directive:
-  # Fix the error in swagger, RP actually returns 200 when deletion succeeds
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/204/g, "200")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  # Hide CreateViaIdentity for customization
+  - where:
+      variant: ^CreateViaIdentity$
+    hide: true
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
       parameter-name: SkuName
@@ -84,13 +85,72 @@ directive:
       parameter-name: CustomPrivateSubnetNameValue
     set:
       parameter-name: PrivateSubnetName
-  # Remove the set-* cmdlet
   - where:
-      verb: Set
-    remove: true
-  # Hide the New-* cmdlet for customization
+      parameter-name: PrepareEncryptionValue
+    set:
+      parameter-name: PrepareEncryption
+  - where:
+      parameter-name: ValueKeySource
+    set:
+      parameter-name: EncryptionKeySource
+  - where:
+      parameter-name: ValueKeyName
+    set:
+      parameter-name: EncryptionKeyName
+  - where:
+      parameter-name: ValueKeyVersion
+    set:
+      parameter-name: EncryptionKeyVersion
+  - where:
+      parameter-name: ValueKeyVaultUri
+    set:
+      parameter-name: EncryptionKeyVaultUri
+  - where:
+      parameter-name: RequireInfrastructureEncryptionValue
+    set:
+      parameter-name: RequireInfrastructureEncryption
+  - where:
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name 
+  # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickVirtualNetworkId 
+    set:
+      parameter-name: DatabricksVirtualNetworkId 
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: Workspace
+    remove: true
+  # Hide the New Workspace cmdlet for customization
+  - where:
+      verb: New
+      subject: Workspace
+    hide: true
+  # Hide the Update Workspace cmdlet for customization
+  - where:
+      verb: Update
+      subject: Workspace
+    hide: true
+  # Hide the Set VNetPeering cmdlet for customization
+  - where:
+      verb: Set
+      subject: VNetPeering
     hide: true
   - where:
       model-name: Workspace
@@ -102,4 +162,36 @@ directive:
           - ManagedResourceGroupId
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
+  # Update property names related to CMK
+  - where:
+      model-name: Workspace
+      property-name: ValueKeyName
+    set:
+      property-name: EncryptionKeyName
+  - where:
+      model-name: Workspace
+      property-name: ValueKeySource
+    set:
+      property-name: EncryptionKeySource
+  - where:
+      model-name: Workspace
+      property-name: ValueKeyVaultUri
+    set:
+      property-name: EncryptionKeyVaultUri
+  - where:
+      model-name: Workspace
+      property-name: ValueKeyVersion
+    set:
+      property-name: EncryptionKeyVersion
+  - where:
+      model-name: Workspace
+      property-name: PrepareEncryptionValue
+    set:
+      property-name: PrepareEncryption
+  - where:
+      model-name: Workspace
+      property-name: RequireInfrastructureEncryptionValue
+    set:
+      property-name: RequireInfrastructureEncryption
+
 ```

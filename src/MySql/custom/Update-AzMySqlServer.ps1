@@ -16,7 +16,7 @@
 function Update-AzMySqlServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the server.')]
         [Alias('ServerName')]
@@ -65,11 +65,6 @@ function Update-AzMySqlServer {
         [System.String]
         ${Sku},
 
-        [Parameter(HelpMessage='The size code, to be interpreted by resource as appropriate.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [System.String]
-        ${SkuSize},
-
         [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier])]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -89,6 +84,7 @@ function Update-AzMySqlServer {
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
         ${StorageAutogrow},
@@ -163,9 +159,9 @@ function Update-AzMySqlServer {
     process {
         try {
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $bStr = [System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
+                $password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+                $PSBoundParameters.Add('AdministratorLoginPassword', $password)
                 $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-                $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
             }
 
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {

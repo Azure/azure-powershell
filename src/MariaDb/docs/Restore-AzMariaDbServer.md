@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzMariaDbServer
 
 ## SYNOPSIS
-
+Restore a MariaDB from a existing MariaDB.
 
 ## SYNTAX
 
@@ -19,34 +19,37 @@ Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObj
 ```
 
 ## DESCRIPTION
-
+Restore a MariaDB from a existing MariaDB.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Restore a PointInTime MariaDB by server name.
 ```powershell
-Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+PS C:\> Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   -------        --------------
+restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+This command restore a PointInTime MariaDB by server name.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Restore a PointInTime MariaDB by server object
 ```powershell
-$db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
+PS C:\> $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
+PS C:\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   -------        --------------
+restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
-PS C:\\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
-
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+This command restore a PointInTime MariaDB by server object.
 
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -58,11 +61,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -74,11 +77,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+The source server object to restore from.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -91,7 +93,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Location
@@ -107,11 +108,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-
+The dest server name to restore from.
 
 ```yaml
 Type: System.String
@@ -123,11 +123,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,11 +138,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -155,11 +154,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -RestorePointInTime
-
+region PointInTimeRestore
+ The location the resource resides in.
 
 ```yaml
 Type: System.DateTime
@@ -171,11 +170,10 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ServerName
-
+The source server name to restore from.
 
 ```yaml
 Type: System.String
@@ -187,11 +185,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Gets the subscription Id which uniquely identifies the Microsoft Azure subscription.
+The subscription ID is part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -203,11 +201,10 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
-
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -219,7 +216,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -235,7 +231,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -252,7 +247,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -266,14 +260,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 
-## ALIASES
-
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IServer>: To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+INPUTOBJECT <IServer>: The source server object to restore from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-
+Create Windows virtual desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzWvdRegistrationInfo -ExpirationTime <String> -HostPoolName <String> -Resou
 ```
 
 ## DESCRIPTION
-
+Create Windows virtual desktop registration info.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ This command creates a Windows Virtual Desktop Registration Token in a Host Pool
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -48,7 +48,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ExpirationTime
@@ -64,7 +63,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -HostPoolName
@@ -80,7 +78,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -96,7 +93,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -107,12 +103,11 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
@@ -128,7 +123,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -145,7 +139,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -157,9 +150,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfo
 
-## ALIASES
-
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

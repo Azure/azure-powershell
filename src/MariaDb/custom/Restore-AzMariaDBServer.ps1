@@ -11,6 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Restore a MariaDB from a existing MariaDB.
+.Description
+Restore a MariaDB from a existing MariaDB.
+#>
 function Restore-AzMariaDbServer
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

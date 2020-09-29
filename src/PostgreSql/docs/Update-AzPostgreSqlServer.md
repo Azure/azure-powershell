@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## SYNTAX
 
@@ -34,6 +35,7 @@ Update-AzPostgreSqlServer -InputObject <IPostgreSqlIdentity> [-AdministratorLogi
 ## DESCRIPTION
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## EXAMPLES
 

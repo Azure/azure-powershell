@@ -36,9 +36,9 @@ Restore a server from an existing backup
 ```powershell
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test-replica | Restore-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -UseGeoRestore 
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-11 eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-11 eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
 This cmdlet restores MySql server using GeoReplica Restore.
@@ -48,9 +48,9 @@ This cmdlet restores MySql server using GeoReplica Restore.
 PS C:\> $restorePointInTime = (Get-Date).AddMinutes(-10)
 PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Restore-AzMySqlServer -Name mysql-test-restore -ResourceGroupName PowershellMySqlTest -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 
-Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test-restore eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test-restore eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
 These cmdlets restore MySql server using PointInTime Restore.
@@ -301,12 +301,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
 INPUTOBJECT <IServer>: The source server object to restore from.
-  - `Location <String>`: The location the resource resides in.
-  - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
+  - `Location <String>`: The geo-location where the resource lives
+  - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)

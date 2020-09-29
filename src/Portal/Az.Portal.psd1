@@ -1,7 +1,7 @@
 @{
   GUID = 'abd8c13e-6209-4e5a-a276-61e7a80845f9'
   RootModule = './Az.Portal.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -18,7 +18,7 @@
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Portal', 'Dashboard'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
-      ReleaseNotes = 'Initial release of Az.Portal cmdlets'
+      ReleaseNotes = ''
     }
   }
 }

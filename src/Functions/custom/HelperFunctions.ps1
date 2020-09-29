@@ -31,7 +31,7 @@ $constants["RuntimeToDefaultVersion"] = @{
         '3' =  @{
             'Node' = '10'
             'DotNet' = '3'
-            'PowerShell' = '6.2'
+            'PowerShell' = '7.0'
             'Java' = '8'
         }
     }
@@ -56,7 +56,7 @@ $constants["RuntimeVersions"] = @{
     'DotNet'= @('2', '3')
     'Node' = @('8', '10', '12')
     'Java' = @('8', '11')
-    'PowerShell' = @('6.2', '7.0')
+    'PowerShell' = @('7.0')
     'Python' = @('3.6', '3.7', '3.8')
 }
 
@@ -82,6 +82,15 @@ $constants["DotNetRuntimeVersionToDotNetLinuxFxVersion"] = @{
     '2' = '2.2'
     '3' = '3.1'
 }
+
+$constants["SupportedFunctionsVersion"] = @('2', '3')
+
+$constants["FunctionsNoV2Version"] = @(
+    "USNat West"
+    "USNat East"
+    "USSec West"
+    "USSec East"
+)
 
 foreach ($variableName in $constants.Keys)
 {
@@ -985,6 +994,58 @@ function GetSupportedRuntimes
     }
 
     throw "Unknown OS type '$OSType'"
+}
+
+function ValidateFunctionsVersion
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $FunctionsVersion
+    )
+
+    if ($SupportedFunctionsVersion -notcontains $FunctionsVersion)
+    {
+        $currentlySupportedFunctionsVersions = $SupportedFunctionsVersion -join ' and '
+        $errorMessage = "Functions version not supported. Currently supported version are: $($currentlySupportedFunctionsVersions)."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionsVersionIsInvalid" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function ValidateFunctionsV2NotAvailableLocation
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location
+    )
+
+    $Location = $Location.Trim()
+
+    $locationsWithNoV2Version = $FunctionsNoV2Version
+
+    if (-not $Location.Contains(" "))
+    {
+        $locationsWithNoV2Version = @($FunctionsNoV2Version | ForEach-Object { $_.Replace(" ", "") })
+    }
+
+    if ($locationsWithNoV2Version -contains $Location)
+    {
+        $errorMessage = "Functions version 2 is not supported in this region. To create a version 3 function, specify -FunctionsVersion 3"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionsV2IsNotSuportedInThisRegion" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
 }
 
 function ValidateRuntimeAndRuntimeVersion

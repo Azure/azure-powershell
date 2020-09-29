@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Restarts a server.
+.Description
+Restarts a server.
+#>
 function Restart-AzMariaDbServer {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

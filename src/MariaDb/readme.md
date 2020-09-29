@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MariaDb service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -69,7 +70,10 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
       subject: Configuration$|FirewallRule$|VirtualNetworkRule$
     remove: true
-
+  - where:
+      verb: New$|Update$
+      subject: Configuration$|FirewallRule$
+    hide: true
 # Server
   - where:
       verb: New|Update|Restart
@@ -103,25 +107,6 @@ directive:
       parameter-name: VirtualNetworkSubnetId
     set:
       parameter-name: SubnetId
-
-# FirewallRule
-  - where:
-      subject: FirewallRule
-      parameter-name: Parameter
-    set:
-      parameter-name: FirewallRule
-
-# MariaDBConfiguration
-  - where:
-      verb: New
-      subject: Configuration
-    hide: true
-  - where:
-      verb: Update
-      subject: Configuration
-      parameter-name: Parameter
-    set:
-      parameter-name: Configuration
 
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy

@@ -156,12 +156,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
 INPUTOBJECT <IServer>: The source server object to create replica from.
-  - `Location <String>`: The location the resource resides in.
-  - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
+  - `Location <String>`: The geo-location where the resource lives
+  - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
