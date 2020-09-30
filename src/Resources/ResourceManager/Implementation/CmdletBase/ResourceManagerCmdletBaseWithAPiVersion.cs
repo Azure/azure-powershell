@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    public abstract class ResourceManagerCmdletBaseWithAPiVersion : ResourceManagerCmdletBase
+    public abstract class ResourceManagerCmdletBaseWithApiVersion : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the API version.
