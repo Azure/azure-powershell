@@ -6,8 +6,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
-using Microsoft.Azure.Commands;
-using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Common;
@@ -86,14 +84,15 @@ namespace Microsoft.Azure.Commands.Network
                 VirtualRouterName = resourceInfo.ParentResource;
             }
 
-
             var locationHeader = this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnections.ListAdvertisedRoutesWithHttpMessagesAsync(this.ResourceGroupName, this.VirtualRouterName, this.PeerName).Result.Response.Headers.Location;
 
             string resourceId = locationHeader.LocalPath;
             string apiVersion = locationHeader.Query.Substring(13);
             var reponse = ServiceClient.Operations.GetResourceWithFullResponse(resourceId, apiVersion).Body;
             dynamic routeServiceRole = JObject.Parse(reponse);
+            
             List<PeerRoute> peerRouteList = routeServiceRole.RouteServiceRole_IN_0.ToObject<List<PeerRoute>>();
+            peerRouteList.AddRange(routeServiceRole.RouteServiceRole_IN_1.ToObject<List<PeerRoute>>());
 
             List<PSPeerRoute> advertisedRoutes = new List<PSPeerRoute>();
             foreach (var route in peerRouteList)
