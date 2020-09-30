@@ -18,9 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support create/update file share with access tier
+* Supported create/update file share with access tier
     - `New-AzRmStorageShare`
     - `Update-AzRmStorageShare`
+* Supported Container access policy with new permission x,t
+    -  `New-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+* Changed the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
+    -  `Get-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
 
 ## Version 2.7.0
 * Supported enable/disable/get share soft delete properties on file Service of a Storage account
