@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed typo in output messages
+* Added `Stop-AzDataFactoryV2TriggerRun` and `Invoke-AzDataFactoryV2TriggerRun` commands
 
 ## Version 1.10.1
 * Updated ADF .Net SDK version to 4.11.0
