@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
+        /// Adding a hard-coded API version to be used when there is no value provided for 'ApiVersion' parameter.
+        /// This is a temporary change until we update the cmdlet to use .NET SDK based client.
+        /// </summary>
+        private const string LatestApiVersion = "2020-06-01";
+
+        /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Alias("ResourceGroup")]
@@ -98,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var resourceGroupId = this.GetResourceGroupId();
 
-                var apiVersion = this.DetermineApiVersion(resourceId: resourceGroupId).Result;
+                var apiVersion = this.ApiVersion ?? LatestApiVersion;
 
                 var parameters = new ExportTemplateParameters
                 {

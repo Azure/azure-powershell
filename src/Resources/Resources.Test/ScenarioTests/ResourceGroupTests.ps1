@@ -396,6 +396,49 @@ function Test-ExportResourceGroup
 
 <#
 .SYNOPSIS
+Tests async export to export resource group template file.
+#>
+function Test-ExportResourceGroup-AsyncRoute
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rnameConstant = Get-ResourceName
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		$i = 0;
+		while($i -lt 25)
+		{
+		  $rname = $rnameConstant + $i.ToString()		
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		  $r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		  $i++
+		}
+
+		$resourcesCount = (Get-AzResource -ResourceGroupName $rgname).Length
+		Assert-True { $resourcesCount -gt 20 }
+
+		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
+		Assert-NotNull $exportOutput
+		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests export resource group with resource filtering.
 #>
 function Test-ExportResourceGroupWithFiltering
