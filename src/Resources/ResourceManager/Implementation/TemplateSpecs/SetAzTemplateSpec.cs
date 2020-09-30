@@ -74,42 +74,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The version of the template spec.")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByIdParameterSet,  Position = 2, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByIdParameterSet,  Position = 1, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The description of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description of the template spec.")]
         public string Description { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByIdParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByIdParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 2, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 4, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 3, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The display name of the template spec.")]
         public string DisplayName { get; set; }
 
@@ -120,17 +120,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, Position = 6, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
         [ValidateNotNullOrEmpty]
         public string TemplateJson { get; set; }
 
         [Alias("InputFile")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, Position = 6, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, Position = 5, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
