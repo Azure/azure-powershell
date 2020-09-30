@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(
         VerbsCommon.Set,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
-        DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet)]
+        DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSTemplateSpec))]
     public class SetAzTemplateSpec : TemplateSpecCmdletBase
     {
@@ -153,6 +154,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
+                // TODO: Update the following to use ??= when we upgrade to C# 8.0
+                if (ResourceGroupName == null)
+                {
+                    ResourceGroupName = ResourceIdUtility.GetResourceGroupName(this.ResourceId);
+                }
+
+                if (Name == null)
+                {
+                    Name = ResourceIdUtility.GetResourceName(this.ResourceId);
+                }
+
                 if (Version != null)
                 {
                     // This is a version specific update...
@@ -220,9 +232,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             throw new PSNotSupportedException();
                     }
 
+                    if (!ShouldProcess($"{Name}/versions/{Version}", "Create or Update"))
+                    {
+                        return;
+                    }
+
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
-                        ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.ResourceId),
-                        Name ?? ResourceIdUtility.GetResourceName(this.ResourceId),
+                        ResourceGroupName,
+                        Name,
                         Version,
                         Location,
                         packagedTemplate,
@@ -237,9 +254,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     // This is an update to the root template spec only:
 
+                    if (!ShouldProcess(Name, "Create or Update"))
+                    {
+                        return;
+                    }
+
                     var templateSpec = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpec(
-                            ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(this.ResourceId),
-                            Name ?? ResourceIdUtility.GetResourceName(this.ResourceId),
+                            ResourceGroupName,
+                            Name,
                             Location,
                             templateSpecDescription: Description,
                             templateSpecDisplayName: DisplayName

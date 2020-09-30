@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(
         VerbsCommon.New,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
-        DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet)]
+        DefaultParameterSetName = NewAzTemplateSpec.FromJsonStringParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSTemplateSpec))]
     public class NewAzTemplateSpec : TemplateSpecCmdletBase
     {
@@ -226,13 +227,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ConfirmAction(
                         Force.IsPresent,
                         confirmationMessage,
-                        "Updating Template Spec...",
-                        Version,
+                        "Update",
+                        $"{Name}/versions/{Version}",
                         createOrUpdateAction
                     );
                 }
                 else
                 {
+                    if (!ShouldProcess($"{Name}/versions/{Version}", "Create"))
+                    {
+                        return; // Don't perform the actual creation/update action
+                    }
+
                     createOrUpdateAction();
                 }
 

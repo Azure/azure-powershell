@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(
         VerbsCommon.Remove, 
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
-        DefaultParameterSetName = RemoveAzTemplateSpec.RemoveByNameParameterSet)]
+        DefaultParameterSetName = RemoveAzTemplateSpec.RemoveByNameParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
 
     public class RemoveAzTemplateSpec : TemplateSpecCmdletBase

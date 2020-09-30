@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(
         "Export",
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
-        DefaultParameterSetName = ExportAzTemplateSpec.ExportByNameParameterSet)]
+        DefaultParameterSetName = ExportAzTemplateSpec.ExportByNameParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSObject))]
 
     public class ExportAzTemplateSpec : TemplateSpecCmdletBase
@@ -122,12 +123,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 OutputFolder = ResolveUserPath(OutputFolder);
 
                 string mainTemplateFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.json";
-
-                TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, mainTemplateFileName);
-
                 string fullRootTemplateFilePath = Path.GetFullPath(
                     Path.Combine(OutputFolder, mainTemplateFileName)
                 );
+
+                if (ShouldProcess(specificVersion.Id, $"Export to '{fullRootTemplateFilePath}'"))
+                {
+                    TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, mainTemplateFileName);
+                }
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", fullRootTemplateFilePath));
             }
