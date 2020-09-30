@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed typo in output messages
+* Updated ADF .Net SDK version to 4.12.0
 
 ## Version 1.10.1
 * Updated ADF .Net SDK version to 4.11.0
