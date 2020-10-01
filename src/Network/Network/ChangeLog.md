@@ -57,6 +57,11 @@
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 * Updated `Set-AzVirtualNetworkSubnetConfig`
     - Set NSG and Route Table properties of subnet to null if explicitly set in parameters [#1548][#9718]
+* [Breaking Change] Depricated a switch parameter in below cmdlets
+    - `New-AzFirewall`:
+        - Depricated `-DnsProxyNotRequiredForNetworkRule` switch paramemter
+    - `New-AzFirewallPolicyDnsSetting`:
+        - Depricated `-ProxyNotRequiredForNetworkRule` switch parameter
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

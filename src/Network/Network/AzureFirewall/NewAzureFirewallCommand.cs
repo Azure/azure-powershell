@@ -160,6 +160,9 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter EnableDnsProxy { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "DnsProxyNotRequiredForNetworkRule",
+            ChangeDescription = "DnsProxyNotRequiredForNetworkRule is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
@@ -291,7 +294,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
-                if(this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                if (this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
                 {
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
                 }
@@ -321,8 +324,7 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
-                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku

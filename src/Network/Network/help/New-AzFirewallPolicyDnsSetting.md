@@ -34,6 +34,7 @@ This example creates a dns Setting object with setting enabling dns proxy.
 PS C:\> $dnsServers = @("10.10.10.1", "20.20.20.2")
 PS C:\> New-AzFirewallPolicyDnsSetting -EnableProxy -Server $dnsServers
 ```
+
 This example creates a dns Setting object with setting enabling dns proxy and setting custom dns servers.
 
 ## PARAMETERS
@@ -70,8 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProxyNotRequiredForNetworkRule
-Requires DNS Proxy functionality for FQDNs within Network Rules.
-By default it is true.
+Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
