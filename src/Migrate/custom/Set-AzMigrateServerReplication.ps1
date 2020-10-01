@@ -63,27 +63,9 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
-        ${UpdateNic},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
-        ${TargetNicSelectionType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be migrated.
-        ${TargetNicSubnet},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the IP within the destination subnet to be used for the NIC.
-        ${TargetNicIP},
+        ${NicToUpdate},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -152,16 +134,13 @@ function Set-AzMigrateServerReplication {
         ${ProxyUseDefaultCredentials}
     )
     
-    process {
+    process { 
             
             $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
             $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
             $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
             $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
-            $HasUpdateNic = $PSBoundParameters.ContainsKey('$UpdateNic')
-            $HasTargetNicSelectionType = $PSBoundParameters.ContainsKey('TargetNicSelectionType')
-            $HasTargetNicSubnet = $PSBoundParameters.ContainsKey('TargetNicSubnet')
-            $HasTargetNicIP = $PSBoundParameters.ContainsKey('TargetNicIP')
+            $HasNicToUpdate = $PSBoundParameters.ContainsKey('NicToUpdate')
             $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
             $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
 
@@ -170,19 +149,12 @@ function Set-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('TargetVMSize')
             $null = $PSBoundParameters.Remove('TargetNetworkId')
             $null = $PSBoundParameters.Remove('TargetResourceGroupID')
-            $null = $PSBoundParameters.Remove('UpdateNic')
-            $null = $PSBoundParameters.Remove('TargetNicSelectionType')
-            $null = $PSBoundParameters.Remove('TargetNicSubnet')
-            $null = $PSBoundParameters.Remove('TargetNicIP')
+            $null = $PSBoundParameters.Remove('NicToUpdate')
             $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
             $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('ProjectName')
-            $null = $PSBoundParameters.Remove('MachineName')
             $null = $PSBoundParameters.Remove('InputObject')
             $parameterSet = $PSCmdlet.ParameterSetName
 
-            
             if($parameterSet -eq 'ByInputObjectVMwareCbt'){
                 $TargetObjectID = $InputObject.Id
             }
@@ -193,8 +165,6 @@ function Set-AzMigrateServerReplication {
             $ProtectionContainerName = $MachineIdArray[12]
             $MachineName = $MachineIdArray[14]
             
-
-
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("ResourceName", $VaultName)
             $null = $PSBoundParameters.Add("FabricName", $FabricName)
@@ -205,45 +175,69 @@ function Set-AzMigrateServerReplication {
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtUpdateMigrationItemInput]::new()
                 $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
-                if($HasTargetAvailabilitySet){
-                    $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
-                }
-                if($HasTargetAvailabilityZone){
-                    $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
-                }
-                if($HasTargetNetworkId){
-                    $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
-                }
-                if($HasTargetVMName){
-                    $ProviderSpecificDetails.TargetVMName = $TargetVMName
-                }
-                if($HasTargetResourceGroupID){
-                    $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
-                }
-                if($HasTargetVmSize){
-                    $ProviderSpecificDetails.TargetVMSize = $TargetVmSize
-                }
-                if($HasUpdateNic){
-                    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput[]]$Nics = @()
-                    $VmNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
-                    if($HasTargetNicSubnet){$VmNic.TargetSubnetName = $TargetNicSubnet}
-                    if($HasTargetNicIP){$VmNic.TargetStaticIPAddress = $TargetNicIP}
-                    $VmNic.NicId = $UpdateNic
-                    if($HasTargetNicSelectionType){
-                        if($TargetNicSelectionType -eq 'primary'){
-                            $VmNic.IsPrimaryNic = "true"
-                            $VmNic.IsSelectedForMigration = "true"
-                        }elseif($TargetNicSelectionType -eq 'secondary'){
-                            $VmNic.IsPrimaryNic = "false"
-                            $VmNic.IsSelectedForMigration = "true"
-                        }elseif($TargetNicSelectionType -eq 'donotcreate'){
-                            $VmNic.IsPrimaryNic = "false"
-                            $VmNic.IsSelectedForMigration = "false"
+                if($HasTargetAvailabilitySet){ $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet }
+                if($HasTargetAvailabilityZone){ $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone }
+                if($HasTargetNetworkId){ $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId }
+                if($HasTargetVMName){ $ProviderSpecificDetails.TargetVMName = $TargetVMName }
+                if($HasTargetResourceGroupID){ $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID }
+                if($HasTargetVmSize){ $ProviderSpecificDetails.TargetVMSize = $TargetVmSize }
+                if($HasNicToUpdate){ 
+
+                    $originalNics = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic
+                    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput[]]$updateNicsArray = @()
+
+                    foreach ($storedNic in $originalNics) {
+                        $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
+                        $updateNic.IsPrimaryNic = $storedNic.IsPrimaryNic
+                        $updateNic.IsSelectedForMigration = $storedNic.IsSelectedForMigration
+                        $updateNic.NicId = $storedNic.NicId
+                        $updateNic.TargetStaticIPAddress = $storedNic.TargetIPAddress
+                        $updateNic.TargetSubnetName = $storedNic.TargetSubnetName
+                        
+                        $matchingUserInputNic = $null
+                        foreach ($userInputNic in $NicToUpdate) {
+                            if($userInputNic.NicId -eq $storedNic.NicId){
+                                $matchingUserInputNic = $userInputNic
+                                break
+                            }
+                        }
+                        if($matchingUserInputNic -ne $null){
+                            if($matchingUserInputNic.IsPrimaryNic -ne $null){
+                                $updateNic.IsPrimaryNic = $matchingUserInputNic.IsPrimaryNic
+                                $updateNic.IsSelectedForMigration = $matchingUserInputNic.IsSelectedForMigration
+                                if($updateNic.IsSelectedForMigration -eq "false"){
+                                    $updateNic.TargetSubnetName = ""
+                                    $updateNic.TargetStaticIPAddress = ""
+                                }
+                            }
+                            if($matchingUserInputNic.TargetSubnetName -ne $null){
+                                $updateNic.TargetSubnetName = $matchingUserInputNic.TargetSubnetName
+                            }
+                            if($matchingUserInputNic.TargetStaticIPAddress -ne $null){
+                                if($matchingUserInputNic.TargetStaticIPAddress -eq "auto"){
+                                    $updateNic.TargetStaticIPAddress = $null
+                                }else{
+                                    $updateNic.TargetStaticIPAddress = $matchingUserInputNic.TargetStaticIPAddress
+                                }
+                            }
+                        }
+                        $updateNicsArray += $updateNic
+                    }
+
+                    # validate there is exactly one primary nic
+                    $primaryNicCountInUpdate = 0
+                    foreach($nic in $updateNicsArray){
+                        if($nic.IsPrimaryNic -eq "true"){
+                            $primaryNicCountInUpdate += 1
                         }
                     }
-                    $Nics += $VmNic
-                    $ProviderSpecificDetails.VMNic = $Nics
-                }
+                    if($primaryNicCountInUpdate -ne 1){
+                        throw "One NIC has to be Primary."
+                    }
+                    
+                    $ProviderSpecificDetails.VMNic = $updateNicsArray
+                } 
+
                 $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetails)
                 $null = $PSBoundParameters.Add('NoWait', $true)
                 $output =  Az.Migrate.internal\Update-AzMigrateReplicationMigrationItem @PSBoundParameters
