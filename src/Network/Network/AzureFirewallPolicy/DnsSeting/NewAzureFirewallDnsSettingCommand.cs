@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
