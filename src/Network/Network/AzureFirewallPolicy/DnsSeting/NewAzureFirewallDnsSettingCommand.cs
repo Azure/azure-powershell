@@ -28,11 +28,14 @@ namespace Microsoft.Azure.Commands.Network
     {
 
         [Parameter(
-             Mandatory = false,
-             HelpMessage = "Enable DNS Proxy. By default it is disabled."
-         )]
+            Mandatory = false,
+            HelpMessage = "Enable DNS Proxy. By default it is disabled."
+        )]
         public SwitchParameter EnableProxy { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "ProxyNotRequiredForNetworkRule",
+            ChangeDescription = "ProxyNotRequiredForNetworkRule is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true."
@@ -51,7 +54,6 @@ namespace Microsoft.Azure.Commands.Network
             var dnsSetting = new PSAzureFirewallPolicyDnsSettings
             {
                 EnableProxy = this.EnableProxy.IsPresent ? true : (bool?)null,
-                RequireProxyForNetworkRules = this.ProxyNotRequiredForNetworkRule.IsPresent ? false : (bool?)null,
                 Servers = this.Server?.ToList()
             };
 

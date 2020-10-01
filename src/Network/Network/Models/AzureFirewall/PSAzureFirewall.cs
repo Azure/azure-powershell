@@ -70,8 +70,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string DNSEnableProxy { get; set; }
 
-        public string DNSRequireProxyForNetworkRules { get; set; }
-
         public string[] DNSServer { get; set; }
 
         public string ProvisioningState { get; set; }
@@ -420,12 +418,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             if (string.Equals(this.DNSEnableProxy, "true", StringComparison.OrdinalIgnoreCase))
             {
                 // Nothing to validate since they have enabled DNS Proxy
-                return;
-            }
-
-            if (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase))
-            {
-                // Nothing to validate since both DNS Proxy and Requiring Proxy for Network Rules is disabled
                 return;
             }
 
