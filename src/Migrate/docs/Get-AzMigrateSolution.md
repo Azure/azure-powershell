@@ -24,7 +24,7 @@ Gets a solution in the migrate project.
 
 ### Example 1: Get
 ```powershell
-PS C:\>Get-AzMigrateSolution -SubscriptionId 31be0ff4-c932-4cb3-8efc-efa411d79280 -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Name Servers-Migration-ServerMigration
+PS C:\>Get-AzMigrateSolution -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Name Servers-Migration-ServerMigration
 
 Etag                                   Name                              Type
 ----                                   ----                              ----

@@ -47,7 +47,7 @@ function Get-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the machine ID of the discovered server.
-        ${MachineID},
+        ${DiscoveredMachineId},
 
         [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -141,7 +141,7 @@ function Get-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('TargetObjectID')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ProjectName')
-            $null = $PSBoundParameters.Remove('MachineID')
+            $null = $PSBoundParameters.Remove('DiscoveredMachineId')
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupID')
             $null = $PSBoundParameters.Remove('ProjectID')
@@ -151,7 +151,7 @@ function Get-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('SkipToken')
            
             if ($parameterSet -eq "GetBySDSID"){
-                $MachineIdArray = $MachineID.Split("/")
+                $MachineIdArray = $DiscoveredMachineId.Split("/")
                 $SiteType = $MachineIdArray[7]
                 $SiteName = $MachineIdArray[8]
                 $ResourceGroupName = $MachineIdArray[4]

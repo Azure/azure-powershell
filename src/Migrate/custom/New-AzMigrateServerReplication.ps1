@@ -30,7 +30,7 @@ function New-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the machine ID of the discovered server to be migrated.
-        ${VMwareMachineId},
+        ${MachineId},
 
         [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
@@ -96,8 +96,8 @@ function New-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName='ByIdDefaultUser')]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
-        [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
-        [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
+        [Parameter(ParameterSetName='ByIdPowerUser')]
+        [Parameter(ParameterSetName='ByInputObjectPowerUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.
@@ -212,7 +212,7 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
             $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
             $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
-            $null = $PSBoundParameters.Remove('VMwareMachineId')
+            $null = $PSBoundParameters.Remove('MachineId')
             $null = $PSBoundParameters.Remove('DiskToInclude')
             $null = $PSBoundParameters.Remove('TargetResourceGroupId')
             $null = $PSBoundParameters.Remove('TargetNetworkId')
@@ -225,14 +225,14 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('LicenseType')
             $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
-            $null = $PSBoundParameters.Remove('VMwareMachineId')
+            $null = $PSBoundParameters.Remove('MachineId')
             $null = $PSBoundParameters.Remove('InputObject')
            
             if(($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')){
                 if(($parameterSet -match 'InputObject')){
                     $VMwareMachineId = $InputObject.Id
                 }
-                $MachineIdArray = $VMwareMachineId.Split("/")
+                $MachineIdArray = $MachineId.Split("/")
                 $SiteType = $MachineIdArray[7]
                 $SiteName = $MachineIdArray[8]
                 $ResourceGroupName = $MachineIdArray[4]
@@ -284,7 +284,8 @@ function New-AzMigrateServerReplication {
                 $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount @PSBoundParameters
                 $VMWarerunasaccountID = ""
                 foreach($account in $runAsAccounts){
-                    if($account.type -match 'VMwareSites'){
+                    $runasAccountSiteName = $account.Id.Split("/")[8]
+                    if( $runasAccountSiteName -eq $SiteName){
                         $VMWarerunasaccountID = $account.Id
                         break
                     }
@@ -407,7 +408,7 @@ public static int hashForArtifact(String artifact)
             $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
             $ProviderSpecificDetails.TargetVMName = $TargetVMName
             if($HasTargetVMSize){$ProviderSpecificDetails.TargetVMSize = $TargetVMSize}
-            $ProviderSpecificDetails.VmwareMachineId = $VMwareMachineId
+            $ProviderSpecificDetails.VmwareMachineId = $MachineId
 
 
             if ($parameterSet -match 'DefaultUser'){

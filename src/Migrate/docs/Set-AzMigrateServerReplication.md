@@ -14,20 +14,18 @@ Updates the target properties for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Set-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
- [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-NicToUpdate <IVMwareCbtNicInput[]>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetNetworkId <String>] [-TargetResourceGroupID <String>] [-TargetVMName <String>]
+ [-TargetVMSize <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-TargetNetworkId <String>]
- [-TargetNicIP <String>] [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-UpdateNic <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-NicToUpdate <IVMwareCbtNicInput[]>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetNetworkId <String>] [-TargetResourceGroupID <String>] [-TargetVMName <String>]
+ [-TargetVMSize <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +95,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NicToUpdate
+Updates the NIC for the Azure VM to be created.
+To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription Id.
 
@@ -144,51 +158,6 @@ Accept wildcard characters: False
 
 ### -TargetNetworkId
 Updates the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetNicIP
-Specifies the IP within the destination subnet to be used for the NIC.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetNicSelectionType
-Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetNicSubnet
-Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be migrated.
 
 ```yaml
 Type: System.String
@@ -264,21 +233,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateNic
-Updates the NIC for the Azure VM to be created.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -303,6 +257,13 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the pro
   - `[CurrentJobName <String>]`: The job name.
   - `[CurrentJobStartTime <DateTime?>]`: The start time of the job.
   - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
+
+NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
+  - `IsPrimaryNic <String>`: A value indicating whether this is the primary NIC.
+  - `NicId <String>`: The NIC Id.
+  - `[IsSelectedForMigration <String>]`: A value indicating whether this NIC is selected for migration.
+  - `[TargetStaticIPAddress <String>]`: The static IP address.
+  - `[TargetSubnetName <String>]`: Target subnet name.
 
 ## RELATED LINKS
 
