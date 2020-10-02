@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Cdn.Models.OriginGroup
         public string ProbeProtocol { get; set; }
         public string ProbeRequestType { get; set; }
 
-        public IList<Management.Cdn.Models.ResourceReference> Origins { get; set; }
+        public IList<ResourceReference> Origins { get; set; }
 
         public PSOriginGroupResourceState ResourceState { get; set; }
 

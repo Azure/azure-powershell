@@ -103,11 +103,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
         public Hashtable Tag { get; set; }
 
-        //[Parameter(Mandatory = false, HelpMessage = "Azure CDN origin groups.", ParameterSetName = FieldsParameterSet)]
-        //[ValidateNotNullOrEmpty]
-        //public Object OriginGroups { get; set; } //PSOriginGroup[]
-
-        [Parameter(Mandatory = false, HelpMessage = "The default origin group.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "The default origin group.")]
         [ValidateNotNullOrEmpty]
         public string DefaultOriginGroup { get; set; } 
 
@@ -133,7 +129,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin group ids.")]
         [ValidateNotNullOrEmpty]
-        public List<string> OriginIds { get; set; }
+        public List<string> OriginId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the origin group.")]
         public string OriginGroupName { get; set; }
@@ -148,10 +144,12 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol to use for health probe.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Http", "Https")]
         public string OriginGroupProbeProtocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The type of health probe request that is made.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("GET", "HEAD")]
         public string OriginGroupProbeRequestType { get; set; }
 
         public override void ExecuteCmdlet()
@@ -182,29 +180,6 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             try
             {
-                //var endpoint = CdnManagementClient.Endpoints.Create(
-                //    ResourceGroupName,
-                //    ProfileName,
-                //    EndpointName, new Management.Cdn.Models.Endpoint
-                //{
-                //    ContentTypesToCompress = ContentTypesToCompress,
-                //    IsCompressionEnabled = IsCompressionEnabled,
-                //    IsHttpAllowed = IsHttpAllowed,
-                //    IsHttpsAllowed = IsHttpsAllowed,
-                //    Location = Location,
-                //    OriginHostHeader = OriginHostHeader,
-                //    OriginPath = OriginPath,
-                //    Origins = new List<DeepCreatedOrigin> { origin },
-                //    QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
-                //                QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
-                //                (QueryStringCachingBehavior?)null,
-                //    OptimizationType = OptimizationType,
-                //    ProbePath = ProbePath,
-                //    GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
-                //    DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
-                //    Tags = Tag.ToDictionaryTags()
-                //});
-
                 Management.Cdn.Models.Endpoint endpoint = new Management.Cdn.Models.Endpoint();
                 endpoint.ContentTypesToCompress = ContentTypesToCompress;
                 endpoint.IsCompressionEnabled = IsCompressionEnabled;
@@ -262,7 +237,6 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             origin.HostName = OriginHostName;
             origin.HttpPort = HttpPort;
             origin.HttpsPort = HttpsPort;
-            origin.OriginHostHeader = OriginHostHeader;
             origin.Priority = Priority;
             origin.Weight = Weight;
             origin.PrivateLinkApprovalMessage = PrivateLinkApprovalMessage;
@@ -280,9 +254,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             originGroup.Origins = new List<ResourceReference>();
 
-            if (OriginIds != null)
+            if (OriginId != null)
             {
-                foreach (string originId in OriginIds)
+                // OriginId refers to the list of origin ids, needed to be singular name per PS guidelines
+                foreach (string originId in OriginId)
                 {
                     ResourceReference originIdResourceReference = new ResourceReference(originId);
                     originGroup.Origins.Add(originIdResourceReference);

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.Cdn.Properties;
+using Microsoft.Azure.Commands.Cdn.Models.Origin;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
@@ -49,8 +50,20 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN origin object.", ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNull]
+        public PSOrigin CdnOrigin { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnOrigin.ResourceGroupName;
+                ProfileName = CdnOrigin.ProfileName;
+                EndpointName = CdnOrigin.EndpointName;
+                OriginName = CdnOrigin.Name;
+            }
+
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);

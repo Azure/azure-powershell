@@ -149,7 +149,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 OptimizationType = sdkEndpoint.OptimizationType,
                 ProbePath = sdkEndpoint.ProbePath,
                 GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
-                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy()
+                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy(),
+                DefaultOriginGroup = sdkEndpoint.DefaultOriginGroup
             };
         }
 
@@ -722,7 +723,6 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 HttpsPort = origin.HttpsPort,
                 OriginHostHeader = origin.OriginHostHeader,
                 Priority = origin.Priority,
-                PrivateLinkAlias = origin.PrivateLinkAlias,
                 PrivateLinkApprovalMessage = origin.PrivateLinkApprovalMessage,
                 PrivateLinkLocation = origin.PrivateLinkLocation,
                 PrivateLinkResourceId = origin.PrivateLinkResourceId,

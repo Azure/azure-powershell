@@ -37,8 +37,6 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Origin
 
         public int? Priority { get; set; }
 
-        public string PrivateLinkAlias { get; set; }
-
         public string PrivateLinkApprovalMessage { get; set; }
 
         public string PrivateLinkLocation { get; set; }

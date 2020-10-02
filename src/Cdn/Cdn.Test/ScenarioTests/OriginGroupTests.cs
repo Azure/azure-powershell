@@ -16,13 +16,13 @@ using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTests
 {
-    public class OriginTests
+    public class OriginGroupTests
     {
         private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
-        public OriginTests(Xunit.Abstractions.ITestOutputHelper output)
+        public OriginGroupTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
@@ -30,30 +30,24 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestOriginGetSetWithRunningEndpoint()
+        public void TestCreateOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithRunningEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestOriginGetSetWithStoppedEndpoint()
+        public void TestGetSetOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithStoppedEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSetOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestOriginGetSetWhenEndpointDoesnotExist()
+        public void TestRemoveOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWhenEndpointDoesnotExist");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveOriginGroup");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetOriginProperties()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetOriginProperties");
-        }
     }
 }

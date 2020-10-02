@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin group ids.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public List<string> OriginIds { get; set; } 
+        public List<string> OriginId { get; set; } 
 
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -48,10 +48,12 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol to use for health probe.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Http", "Https")]
         public string ProbeProtocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The type of health probe request that is made.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("GET", "HEAD")]
         public string ProbeRequestType { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.", ParameterSetName = FieldsParameterSet)]
@@ -98,7 +100,8 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
             {
                 originGroup.Origins = new List<ResourceReference>();
 
-                foreach (string originId in OriginIds)
+                // OriginId refers to the list of origin ids, needed to be singular name per PS guidelines
+                foreach (string originId in OriginId)
                 {
                    ResourceReference originIdResourceReference = new ResourceReference(originId);
                     originGroup.Origins.Add(originIdResourceReference);
@@ -107,7 +110,6 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
             if (ProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(ProbePath) || !String.IsNullOrWhiteSpace(ProbeProtocol) || !String.IsNullOrWhiteSpace(ProbeRequestType))
             {
-                // Console.WriteLine("health probe settings populate");
                 originGroup.HealthProbeSettings = new HealthProbeParameters
                 {
                     ProbeIntervalInSeconds = ProbeIntervalInSeconds,
@@ -118,14 +120,11 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
             }
             else
             {
-                // Console.WriteLine("health probe settings null");
-                // why does assigning null to hps not update the resource?
                 originGroup.HealthProbeSettings = null;
             }
 
             try
             {
-                Console.WriteLine($"health probe settings status : {originGroup.HealthProbeSettings}");
                 var updatedOriginGroup = CdnManagementClient.OriginGroups.Update(
                     ResourceGroupName,
                     ProfileName,
