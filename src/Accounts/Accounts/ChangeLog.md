@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed DateTime parse issue in common libraries [#13045]
 
 ## Version 1.9.4
 * Formatted the upcoming breaking change messages

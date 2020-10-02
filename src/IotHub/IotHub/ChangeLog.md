@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated devices sdk.
 
 ## Version 2.5.0
 * Added cmdlet to invoke a query in an IoT hub to retrieve information using a SQL-like language.

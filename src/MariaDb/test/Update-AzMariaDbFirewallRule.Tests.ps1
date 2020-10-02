@@ -13,6 +13,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMariaDbFirewallRule' {
+    It 'ClientIPAddress' {
+        $rule = Update-AzMariaDbFirewallRule -Name $env.firewallName01 -ResourceGroupName $env.resourceGroup -ServerName $env.rstrbc02 -ClientIPAddress 0.0.0.2
+        $rule.StartIPAddress | Should -Be 0.0.0.2
+        $rule.EndIPAddress | Should -Be 0.0.0.2
+    }
+
     It 'UpdateExpanded' {
         $newEndIPAddress = '0.0.255.125'
         $newStartIPAddress = '0.0.255.1'
