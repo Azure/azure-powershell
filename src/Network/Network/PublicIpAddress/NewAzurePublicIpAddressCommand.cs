@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
     Mandatory = false,
     ValueFromPipelineByPropertyName = true,
-    HelpMessage = "The public IP Tier name.")]
+    HelpMessage = "The public IP Sku tier.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
     MNM.PublicIPAddressSkuTier.Regional,

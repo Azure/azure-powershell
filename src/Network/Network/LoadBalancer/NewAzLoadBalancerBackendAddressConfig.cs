@@ -51,13 +51,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The loadbalancer frontend ip configuration associated with the Backend Address config",
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string LoadBalancerFrontendIPConfigurationId { get; set; }
-
         public override void Execute()
         {
             base.Execute();
@@ -71,10 +64,6 @@ namespace Microsoft.Azure.Commands.Network
 
             loadBalancerBackendAddress.VirtualNetwork = new PSResourceId { 
                 Id = VirtualNetworkId
-            };
-
-            loadBalancerBackendAddress.LoadBalancerFrontendIPConfiguration = new PSResourceId{
-                Id = LoadBalancerFrontendIPConfigurationId
             };
 
             loadBalancerBackendAddress.IpAddress = this.IpAddress;

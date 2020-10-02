@@ -84,7 +84,6 @@ function Test-LoadBalancerBackendPoolCRUD
     }
 }
 
-
 <#
 .SYNOPSIS
 Tests 
@@ -97,7 +96,6 @@ function Test-LoadBalancerBackendPoolCreate
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
     $lbName = Get-ResourceName
     $frontendName = Get-ResourceName
     $backendAddressPoolName = Get-ResourceName
@@ -120,7 +118,7 @@ function Test-LoadBalancerBackendPoolCreate
 
     try
     {
-         # Create the resource group
+        # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
 
         # Create the Virtual Network
@@ -129,41 +127,117 @@ function Test-LoadBalancerBackendPoolCreate
 
         # Create Standard Azure load balancer
         $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
-
+        
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
         $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetworkId $vnet.Id 
-        $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id
-
+        
         $ips = @($ip1, $ip2)
         
         ## create by passing loadbalancer without Ips
         $create1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
-
+        
         Assert-NotNull $create1
-
+        
         ## create by passing loadbalancer with ips
         $create2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2 -LoadBalancerBackendAddress $ips
-
+        
         Assert-NotNull $create2
         Assert-True { @($create2.LoadBalancerBackendAddresses).Count -eq 2}
-
+        
         ## create by Name without ip's
         $create3 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool3
-
+        
         Assert-NotNull $create3
-
+        
         ## create by Name with ip's
         $create4 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool4 -LoadBalancerBackendAddress $ips
-
+        
         Assert-NotNull $create4
         Assert-True { @($create4.LoadBalancerBackendAddresses).Count -eq 2}
-    }
+    }   
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
 }
 
+<#
+.SYNOPSIS
+Tests 
+#>
+function Test-GlobalLoadBalancerBackendPoolCreate
+{
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+
+    $subnetName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/loadBalancers"
+
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $lbName = Get-ResourceName
+    
+    $globalrgname = Get-ResourceName
+    $globalvnet = Get-ResourceName
+    $globallbname = Get-ResourceName
+    $globalsubnetname = Get-ResourceName
+
+    $globalbackendPool = Get-ResourceName
+    $globalbackendAddressConfigName = Get-ResourceName
+
+    try
+    {
+        # Create the regional resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+        
+        # Create the virtual network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -SKU Standard
+
+        # Create regional loadbalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        $job = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -AsJob -SKU Standard
+        $job | Wait-Job
+		$actualLb = $job | Receive-Job
+
+        # Create the global resource group
+        $resourceGroup = New-AzResourceGroup -Name $globalrgname -Location $rglocation -Tags @{ testtag = "testval"} 
+ 
+        # Create the virtual network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $globalsubnetname -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $globalvnet -ResourceGroupName $globalrgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+ 
+        # Create global loadbalancer 
+        $glb = New-AzLoadBalancer -Name $globallbname -ResourceGroupName $globalrgname -Location $location -SKU Standard -Tier Global
+        
+        $regionalbackendaddress = New-AzCrossRegionLoadBalancerBackendAddressConfig -LoadBalancerFrontendIPConfigurationId $frontend.Id -Name $globalbackendAddressConfigName 
+        $create = $glb | New-AzLoadBalancerBackendAddressPool -Name $globalbackendPool -LoadBalancerBackendAddress $regionalbackendaddress 
+        
+        Assert-NotNull $create
+        Assert-True { @($create.LoadBalancerBackendAddresses).Count -eq 1}
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+ 
 <#
 .SYNOPSIS
 Tests Remove-AzLoadBalancerBackendAddressPool

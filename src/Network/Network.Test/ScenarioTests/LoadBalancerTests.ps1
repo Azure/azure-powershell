@@ -34,7 +34,7 @@ function Test-LoadBalancerCRUD-Public
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
-    try 
+    try
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
@@ -57,7 +57,7 @@ function Test-LoadBalancerCRUD-Public
 		$actualLb = $job | Receive-Job
 
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
-
+        
         # Verification
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
@@ -69,19 +69,19 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $publicip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
         Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
-
+        
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
-
+        
         Assert-AreEqual $probeName $expectedLb.Probes[0].Name
         Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
-
+        
         Assert-AreEqual $inboundNatRuleName $expectedLb.InboundNatRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatRules[0].FrontendIPConfiguration.Id
-
+        
         Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
-
+        
         # List
         $list = Get-AzLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
@@ -91,16 +91,16 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
         Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
-
+        
         $list = Get-AzLoadBalancer -ResourceGroupName "*"
         Assert-True { @($list).Count -ge 0 }
-
+        
         $list = Get-AzLoadBalancer -Name "*"
         Assert-True { @($list).Count -ge 0 }
-
+        
         $list = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*"
         Assert-True { @($list).Count -ge 0 }
-
+        
         # Delete
         $job = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force -AsJob
 		$job | Wait-Job
@@ -500,7 +500,7 @@ function Test-LoadBalancerCRUD-InternalHighlyAvailableStandardSku
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
-    try 
+    try
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
@@ -2159,7 +2159,7 @@ function Test-LoadBalancerCRUD-InternalBasicSku
 
 <#
 .SYNOPSIS
-Tests creating a public Load balancer with basic sku.
+Tests creating a public Load balancer with standard sku.
 #>
 function Test-LoadBalancerCRUD-PublicStandardSku
 {
@@ -2237,6 +2237,176 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
 
+        # Delete
+        $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a public Load balancer with standard sku with ip prefix.
+#>
+function Test-LoadBalancerCRUD-PublicStandardSkuIpPrefix
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+        
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip prefix 
+        $publicipprefix = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $publicIpName -location $location -Sku Standard -PrefixLength 28
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddressPrefix $publicipprefix
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Sku Standard
+        
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-NotNull $expectedLb.ResourceGuid
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicipprefix.Id $expectedLb.FrontendIPConfigurations[0].PublicIPPrefix.Id
+        Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+
+        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
+
+        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
+        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
+
+        # List
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $expectedLb.Etag $list[0].Etag
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
+        Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
+
+        # Delete
+        $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a public Load balancer with standard sku and global tier.
+#>
+function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $gviplocation = "eastus2euap"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+        
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $gviplocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Location $gviplocation  -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard -Tier Global
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Standard -Tier Global
+        
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-NotNull $expectedLb.ResourceGuid
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+        
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
+        Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        
+        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
+        
+        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
+        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
+        
+        Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
+        
+        # List
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $expectedLb.Etag $list[0].Etag
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
+        Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
+        Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
+        
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
         Assert-AreEqual true $deleteLb

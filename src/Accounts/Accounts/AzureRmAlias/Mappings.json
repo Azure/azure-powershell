@@ -1493,6 +1493,7 @@
     "New-AzLoadBalancerBackendAddressPool": "New-AzureRmLoadBalancerBackendAddressPool",
     "Remove-AzLoadBalancerBackendAddressPool": "Remove-AzureRmLoadBalancerBackendAddressPool",
     "New-AzLoadBalancerBackendAddressConfig": "New-AzureRmLoadBalancerBackendAddressConfig",
+    "New-AzCrossRegionLoadBalancerBackendAddressConfig": "New-AzureRmCrossRegionLoadBalancerBackendAddressConfig",
     "Get-AzLoadBalancerBackendAddressPoolConfig": "Get-AzureRmLoadBalancerBackendAddressPoolConfig",
     "Add-AzLoadBalancerBackendAddressPoolConfig": "Add-AzureRmLoadBalancerBackendAddressPoolConfig",
     "New-AzLoadBalancerBackendAddressPoolConfig": "New-AzureRmLoadBalancerBackendAddressPoolConfig",
