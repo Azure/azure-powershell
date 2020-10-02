@@ -37,8 +37,8 @@ New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]> [-Netw
 
 ## EXAMPLES
 
-### 1:  Create a virtual network with two subnets and a network security group
-```
+### Example 1: Create a virtual network with two subnets and a network security group
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 $rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `

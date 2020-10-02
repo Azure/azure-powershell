@@ -22,10 +22,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSBlobServiceProperties), ChangeDescription = "The deprecated property RestorePolicy.LastEnabledTime will be removed in a future release.")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobServiceProperty, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSBlobServiceProperties))]
     public class UpdateAzStorageBlobServicePropertyCommand : StorageBlobBaseCmdlet
     {
@@ -85,6 +87,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
         Mandatory = false,
+        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableChangeFeed
+        {
+            get
+            {
+                return enableChangeFeed is null ? false : enableChangeFeed.Value;
+            }
+            set
+            {
+                enableChangeFeed = value;
+            }
+        }
+        private bool? enableChangeFeed = null;
+
+        [Parameter(
+        Mandatory = false,
         HelpMessage = "Gets or sets versioning is enabled if set to true.")]
         [ValidateNotNullOrEmpty]
         public bool IsVersioningEnabled
@@ -120,13 +139,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = null;
-
-                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+                BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
                 if (DefaultServiceVersion != null)
                 {
                     serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                }
+                if (enableChangeFeed != null)
+                {
+                    serviceProperties.ChangeFeed = new ChangeFeed();
+                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
                 }
                 if (isVersioningEnabled != null)
                 {
@@ -134,6 +156,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
+
+                //Get the full service properties for output
+                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
 
                 WriteObject(new PSBlobServiceProperties(serviceProperties));
             }

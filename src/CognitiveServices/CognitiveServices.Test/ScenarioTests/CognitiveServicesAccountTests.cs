@@ -120,6 +120,14 @@ namespace CognitiveServices.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSet");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkRuleSetDefaultActions()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSetDefaultActions");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
@@ -217,6 +225,13 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestCapabilities()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApiProperties()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ApiProperties");
         }
     }
 }

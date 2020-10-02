@@ -47,11 +47,12 @@ The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configu
 ## EXAMPLES
 
 ### Example 1: Modify the front-end IP configuration of a load balancer
-```
+```powershell
 PS C:\>$Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
 PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
 PS C:\> $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
+PS C:\> $slb | Set-AzLoadBalancer
 ```
 
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.

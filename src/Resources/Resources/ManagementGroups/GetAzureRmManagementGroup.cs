@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         /// <summary>
         /// Get-AzManagementGroup Cmdlet
         /// </summary>
+        [Alias("GroupId")]
+        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will repleace GroupName with GroupId to make it more clear.")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GetParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         public string GroupName { get; set; }
 

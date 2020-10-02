@@ -39,6 +39,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Etag = share.Etag;
             this.LastModifiedTime = share.LastModifiedTime;
             this.QuotaGiB = share.ShareQuota;
+            this.Version = share.Version;
+            this.Deleted = share.Deleted;
+            this.DeletedTime = share.DeletedTime;
+            this.RemainingRetentionDays = share.RemainingRetentionDays;
+            this.EnabledProtocols = share.EnabledProtocols;
+            this.RootSquash = share.RootSquash;
+            this.ShareUsageBytes = share.ShareUsageBytes;
+            this.AccessTier = share.AccessTier;
+            this.AccessTierChangeTime = share.AccessTierChangeTime;
+            this.AccessTierStatus = share.AccessTierStatus;
         }
 
         public PSShare(FileShareItem share)
@@ -52,6 +62,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Etag = share.Etag;
             this.LastModifiedTime = share.LastModifiedTime;
             this.QuotaGiB = share.ShareQuota;
+            this.Version = share.Version;
+            this.Deleted = share.Deleted;
+            this.DeletedTime = share.DeletedTime;
+            this.RemainingRetentionDays = share.RemainingRetentionDays;
+            this.EnabledProtocols = share.EnabledProtocols;
+            this.RootSquash = share.RootSquash;
+            this.ShareUsageBytes = share.ShareUsageBytes;
+            this.AccessTier = share.AccessTier;
+            this.AccessTierChangeTime = share.AccessTierChangeTime;
+            this.AccessTierStatus = share.AccessTierStatus;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -78,7 +98,25 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "LastModifiedTime", Target = ViewControl.List, ScriptBlock = "$_.LastModifiedTime.ToString(\"u\")", Position = 5)]
         public DateTime? LastModifiedTime { get; set; }
 
-      
+        [Ps1Xml(Label = "Version", Target = ViewControl.List, Position = 7)]
+        public string Version { get; set; }
+
+        public bool? Deleted { get; private set; }
+
+        [Ps1Xml(Label = "DeletedTime", Target = ViewControl.List, ScriptBlock = "$_.DeletedTime.ToString(\"u\")", Position = 6)]
+        public DateTime? DeletedTime { get; private set; }
+
+        public int? RemainingRetentionDays { get; private set; }
+
+        public string EnabledProtocols { get; set; }
+        public string RootSquash { get; set; }
+
+        public string AccessTier { get; set; }
+        public DateTime? AccessTierChangeTime { get; }
+        public string AccessTierStatus { get; }
+
+        public long? ShareUsageBytes { get; }
+
         public static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))

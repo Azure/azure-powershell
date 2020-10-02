@@ -10,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets a VirtualRouter peer in an Azure VirtualRouter
 
-
 ## SYNTAX
 
 ### VirtualRouterPeerNameParameterSet (Default)
@@ -31,7 +30,7 @@ The **Get-AzVirtualRouterPeer** cmdlet gets a Peer in an Azure VirtualRouter
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -RouterName virtualRouter -PeerName csr
+Get-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -VirtualRouterName virtualRouter -PeerName csr
 ```
 
 ### Example 2
@@ -46,7 +45,7 @@ Get-AzVirtualRouterPeer -ResourceId $virtualRouterPeerId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -61,11 +60,11 @@ Accept wildcard characters: False
 The name of the virtual router peer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -76,11 +75,11 @@ Accept wildcard characters: False
 The resource group name of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 ResourceId of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerResourceIdParameterSet
 Aliases:
 
@@ -106,11 +105,11 @@ Accept wildcard characters: False
 The name of the virtual router.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -118,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

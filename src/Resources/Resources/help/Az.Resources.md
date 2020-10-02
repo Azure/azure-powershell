@@ -76,6 +76,9 @@ Get deployment at a management group
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
 
+### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at management group scope. 
+
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
 given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
@@ -133,6 +136,9 @@ Get deployment at tenant scope
 
 ### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
 Get deployment operation for deployment at tenant scope
+
+### [Get-AzTenantDeploymentWhatIfResult](Get-AzTenantDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at tenant scope. 
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -335,6 +341,9 @@ Modifies a resource group.
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
+### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
+Update a role assignment.
+
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
@@ -366,6 +375,9 @@ Validates a resource group deployment.
 ### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
 Validates a deployment at tenant scope.
 
+### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
+Unregisters an Azure provider feature in your account.
+
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
@@ -383,4 +395,3 @@ Updates a Management Group
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.
-

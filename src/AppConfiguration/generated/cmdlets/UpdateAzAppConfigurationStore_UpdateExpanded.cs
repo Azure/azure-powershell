@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAppConfigurationStore_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Description(@"Updates a configuration store with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Generated]
     public partial class UpdateAzAppConfigurationStore_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
         /// <summary>The reference to the client API class.</summary>
-        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfigurationManagementClient Client => Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module.Instance.ClientAPI;
+        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.AppConfiguration Client => Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module.Instance.ClientAPI;
 
         /// <summary>Backing field for <see cref="ConfigStoreUpdateParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters _configStoreUpdateParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.ConfigurationStoreUpdateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParameters _configStoreUpdateParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.ConfigurationStoreUpdateParameters();
 
         /// <summary>The parameters for updating a configuration store.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters ConfigStoreUpdateParametersBody { get => this._configStoreUpdateParametersBody; set => this._configStoreUpdateParametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParameters ConfigStoreUpdateParametersBody { get => this._configStoreUpdateParametersBody; set => this._configStoreUpdateParametersBody = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -60,6 +60,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The URI of the key vault key used to encrypt data.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URI of the key vault key used to encrypt data.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The URI of the key vault key used to encrypt data.",
+        SerializedName = @"keyIdentifier",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyIdentifier { get => ConfigStoreUpdateParametersBody.KeyVaultPropertyKeyIdentifier ?? null; set => ConfigStoreUpdateParametersBody.KeyVaultPropertyKeyIdentifier = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -73,8 +84,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>
+        /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+        /// and a set of user-assigned identities. The type 'None' will remove any identities.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.CompleterInfo(
+        Name = @"Managed Identity Type Completer",
+        Description =@"Gets the list of type of managed identities available for creating/updating app configuration store.",
+        Script = @"'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'")]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType IdentityType { get => ConfigStoreUpdateParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType)""); set => ConfigStoreUpdateParametersBody.IdentityType = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>The client id of the identity which will be used to access key vault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The client id of the identity which will be used to access key vault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The client id of the identity which will be used to access key vault.",
+        SerializedName = @"identityClientId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KeyVaultIdentityClientId { get => ConfigStoreUpdateParametersBody.KeyVaultPropertyIdentityClientId ?? null; set => ConfigStoreUpdateParametersBody.KeyVaultPropertyIdentityClientId = value; }
 
         /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -111,17 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.HttpPipeline Pipeline { get; set; }
 
-        /// <summary>The properties for updating a configuration store.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The properties for updating a configuration store.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The properties for updating a configuration store.",
-        SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStorePropertiesUpdateParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStorePropertiesUpdateParameters Property { get => ConfigStoreUpdateParametersBody.Property ?? null /* object */; set => ConfigStoreUpdateParametersBody.Property = value; }
-
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Runtime)]
@@ -152,6 +182,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>The SKU name of the configuration store.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU name of the configuration store.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The SKU name of the configuration store.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Sku { get => ConfigStoreUpdateParametersBody.SkuName ?? null; set => ConfigStoreUpdateParametersBody.SkuName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -179,32 +220,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"The ARM resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags Tag { get => ConfigStoreUpdateParametersBody.Tag ?? null /* object */; set => ConfigStoreUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags Tag { get => ConfigStoreUpdateParametersBody.Tag ?? null /* object */; set => ConfigStoreUpdateParametersBody.Tag = value; }
+
+        /// <summary>
+        /// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be
+        /// ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceIdentityUserAssignedIdentities UserAssignedIdentity { get => ConfigStoreUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => ConfigStoreUpdateParametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -430,12 +486,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -452,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ConfigStoreUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -470,12 +526,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore> response)
         {
             using( NoSynchronizationContext )
             {
@@ -487,7 +543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
                 WriteObject((await response));
             }
         }

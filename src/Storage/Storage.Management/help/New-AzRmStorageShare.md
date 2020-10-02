@@ -32,22 +32,26 @@ The **New-AzRmStorageShare** cmdlet creates a Storage file share.
 
 ### Example 1: Create a Storage file share with Storage account name and share name, with metadata and share quota as 100 GiB.
 ```
-PS C:\>New-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
+PS C:\>New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
 
-Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
-----     ------------------ ----------------- ----                -------- ----------------    
-myshare  myStorageAccount   myResourceGroup
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
+----     -------- --------------- ---------- ------- ------- ---------------
+myshare
 ```
 
 This command creates a Storage file share with metadata and share quota as 100 GiB.
 
 ### Example 2: Create a Storage file share with Storage account object
 ```
-Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | New-AzRmStorageShare -Name "myshare"
+Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | New-AzRmStorageShare -Name "myshare"
 
-Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
-----     ------------------ ----------------- ----                -------- ----------------    
-myshare  myStorageAccount   myResourceGroup
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
+----     -------- --------------- ---------- ------- ------- ---------------
+myshare
 ```
 
 This command creates a Storage file share with Storage account object and share name.

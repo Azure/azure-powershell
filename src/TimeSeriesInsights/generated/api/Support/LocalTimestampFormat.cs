@@ -11,10 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat Embedded = @"Embedded";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat Iana = @"Iana";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat TimeSpan = @"TimeSpan";
-
         /// <summary>the value for an instance of the <see cref="LocalTimestampFormat" /> Enum.</summary>
         private string _value { get; set; }
 

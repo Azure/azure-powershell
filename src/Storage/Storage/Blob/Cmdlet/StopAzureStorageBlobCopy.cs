@@ -179,7 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             ValidateBlobType(blob);
 
-            if (UseTrack2SDK()) // Use Track2
+            if (UseTrack2Sdk()) // Use Track2
             {
                 if (null == blob)
                 {

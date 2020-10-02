@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssConfig", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+    [GenericBreakingChange("This command will no longer always create the UpgradePolicy property in the PSVirtualMachineScaleSet object" +
+        " after the next major release. Please ensure you pass in the UpgradePolicyMode, RollingUpgradePolicy, or EnableAutomaticOSUpgrade parameter" +
+        " if you require this to be populated.")]
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -241,6 +244,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EncryptionAtHost { get; set; } 
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -376,6 +384,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
                 vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+            }
+
+            if (this.EncryptionAtHost.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                vVirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))

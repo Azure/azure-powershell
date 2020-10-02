@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added container name validation for workload backup.
+
+## Version 2.12.1
+* Fixed the Delete State for workload Backup Items.
+
+## Version 2.12.0
+* Azure Backup added a new cmdlet Copy-AzRecoveryServicesVault for DS move feature.
+* Get-AzRecoveryServicesBackupJob cmdlet now supports operation type 'BackupDataMove'.
+* Modifying the configure backup per policy limit for VMs from 100 to 1000.
+
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
 
 ## Version 2.11.0
 * Removed project reference to Authentication
