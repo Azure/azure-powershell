@@ -39,6 +39,18 @@ New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAd
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SetByResourceIdPublicIpAddressPrefix
+```
+New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddressPrefixId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourcePublicIpAddressPrefix
+```
+New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddressPrefix <PSPublicIpPrefix>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzLoadBalancerFrontendIpConfig** cmdlet creates a front-end IP configuration for an Azure load balancer.
 
@@ -146,6 +158,35 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -PublicIpAddressPrefix
+Specifies the **PublicIpAddressPrefix** object to associate with a front-end IP configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddressPrefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressPrefixId
+Specifies the ID of the **PublicIpAddressPrefix** object to associate with a front-end IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdPublicIpAddressPrefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 
 ### -Subnet
 Specifies the **Subnet** object in which to create a front-end IP configuration.

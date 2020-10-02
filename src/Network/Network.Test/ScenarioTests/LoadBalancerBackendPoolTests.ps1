@@ -226,7 +226,7 @@ function Test-GlobalLoadBalancerBackendPoolCreate
         # Create global loadbalancer 
         $glb = New-AzLoadBalancer -Name $globallbname -ResourceGroupName $globalrgname -Location $location -SKU Standard -Tier Global
         
-        $regionalbackendaddress = New-AzCrossRegionLoadBalancerBackendAddressConfig -LoadBalancerFrontendIPConfigurationId $frontend.Id -Name $globalbackendAddressConfigName 
+        $regionalbackendaddress = New-AzLoadBalancerBackendAddressConfig -LoadBalancerFrontendIPConfigurationId $frontend.Id -Name $globalbackendAddressConfigName
         $create = $glb | New-AzLoadBalancerBackendAddressPool -Name $globalbackendPool -LoadBalancerBackendAddress $regionalbackendaddress 
         
         Assert-NotNull $create

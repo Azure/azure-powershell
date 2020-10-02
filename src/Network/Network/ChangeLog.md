@@ -30,8 +30,8 @@
         - Added Sku Tier property
     - `New-AzPublicIpPrefix`:
         - Added Sku Tier property
-* Added new cmdlet for global load balancing
-    - `New-AzCrossRegionLoadBalancerBackendAddressConfig`
+    - `New-AzLoadBalancerBackendAddressConfig
+        - Added LoadBalancerFrontendIPConfigurationId property
 * Added new cmdlet for Azure Express Route Port
     - `New-AzExpressRoutePortLOA`
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
