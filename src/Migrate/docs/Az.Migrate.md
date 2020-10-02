@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: 1c7eb4d0-d52d-45d9-827d-52aa6e3a4416
+Module Guid: 0c6767dd-6ea1-4d31-871e-628463dcbee8
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -13,9 +13,6 @@ Microsoft Azure PowerShell: Migrate cmdlets
 ## Az.Migrate Cmdlets
 ### [Get-AzMigrateJob](Get-AzMigrateJob.md)
 The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
-
-### [Get-AzMigrateMachine](Get-AzMigrateMachine.md)
-Method to get machine.
 
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
@@ -53,8 +50,12 @@ Gets a solution in the migrate project.
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 
+### [New-AzMigrateNicMapping](New-AzMigrateNicMapping.md)
+The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated.
+This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
+
 ### [New-AzMigrateProject](New-AzMigrateProject.md)
-Method to create or update a migrate project.
+Get Azure migrate server commandlet fetches all servers in a migrate project.
 
 ### [New-AzMigrateReplicationPolicy](New-AzMigrateReplicationPolicy.md)
 The operation to create a replication policy
