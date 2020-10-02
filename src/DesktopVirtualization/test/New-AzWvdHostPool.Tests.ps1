@@ -48,7 +48,7 @@ Describe 'New-AzWvdHostPool' {
                             -Description 'des' `
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
-                            -VMTemplate $null `
+                            -VMTemplate '{option1}' `
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
@@ -63,7 +63,7 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des'
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
-            $hostPool.VMTemplate | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option1}'
             $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
@@ -83,7 +83,7 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des'
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
-            $hostPool.VMTemplate | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option1}'
             $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
