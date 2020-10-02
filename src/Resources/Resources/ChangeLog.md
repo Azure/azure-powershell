@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parsing bug
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment

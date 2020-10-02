@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Resources
                     this.ResourceType = RoleAssignment.ObjectType;
                     this.Scope = RoleAssignment.Scope;
                     Guid guid = Guid.Empty;
-                    Guid.TryParse(RoleAssignment.RoleDefinitionId,out guid);
+                    Guid.TryParse(RoleAssignment.RoleDefinitionId, out guid);
                     this.RoleDefinitionId = guid;
                     this.Description = RoleAssignment.Description;
                     this.Condition = RoleAssignment.Condition;
@@ -271,7 +271,9 @@ namespace Microsoft.Azure.Commands.Resources
                 }
 
             }
-            double _conditionVersion = double.Parse((ConditionVersion ?? "2.0"));
+            // ensure that if ConditionVersion is empty in any way, it becomes null
+            ConditionVersion = string.IsNullOrEmpty(ConditionVersion) ? null : string.IsNullOrWhiteSpace(ConditionVersion) ? null : ConditionVersion; 
+            double _conditionVersion = double.Parse(ConditionVersion ?? "2.0");
             if (_conditionVersion < 2.0)
             {
                 WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
