@@ -230,7 +230,7 @@ function New-AzMigrateServerReplication {
            
             if(($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')){
                 if(($parameterSet -match 'InputObject')){
-                    $VMwareMachineId = $InputObject.Id
+                    $MachineId = $InputObject.Id
                 }
                 $MachineIdArray = $MachineId.Split("/")
                 $SiteType = $MachineIdArray[7]
