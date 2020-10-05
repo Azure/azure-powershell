@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly string _predictionsEndpoint;
         private volatile Tuple<string, Predictor> _commandSuggestions; // The command and the prediction for that.
         private volatile Predictor _commands;
-        private volatile string CommandForPrediction;
+        private volatile string _commandForPrediction;
         private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
         private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
@@ -111,20 +109,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken)
+        public IEnumerable<ValueTuple<string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
         {
             var commandSuggestions = this._commandSuggestions;
-            var command = this.CommandForPrediction;
-            var predictionSource = PredictionSource.None;
+            var command = this._commandForPrediction;
 
             // We've already used _commandSuggestions. There is no need to wait the request to complete at this point.
             // Cancel it.
             this._predictionRequestCancellationSource?.Cancel();
 
-            string result = commandSuggestions?.Item2?.Query(input, cancellationToken);
+            IList<ValueTuple<string, PredictionSource>> results = new List<ValueTuple<string, PredictionSource>>();
 
-            if (result != null)
+            var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
+
+            if (resultsFromSuggestion != null)
             {
+                var predictionSource = PredictionSource.None;
+
                 if (string.Equals(command, commandSuggestions?.Item1, StringComparison.Ordinal))
                 {
                     predictionSource = PredictionSource.CurrentCommand;
@@ -133,19 +134,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     predictionSource = PredictionSource.PreviousCommand;
                 }
-            }
-            else
-            {
-                var commands = this._commands;
-                result = commands?.Query(input, cancellationToken);
 
-                if (result != null)
+                foreach (var r in resultsFromSuggestion)
                 {
-                    predictionSource = PredictionSource.StaticCommands;
+                    results.Add(ValueTuple.Create(r, predictionSource));
                 }
             }
 
-            return Tuple.Create(result, predictionSource);
+            if ((resultsFromSuggestion == null) || (resultsFromSuggestion.Count() < suggestionCount))
+            {
+                var commands = this._commands;
+                var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
+
+                resultsFromCommands?.ExceptWith(resultsFromSuggestion);
+
+                if (resultsFromCommands != null)
+                {
+                    foreach (var r in resultsFromCommands)
+                    {
+                        results.Add(ValueTuple.Create(r, PredictionSource.StaticCommands));
+                    }
+                }
+            }
+
+            return results;
         }
 
         /// <inheritdoc/>
@@ -193,9 +205,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RecordHistory(IEnumerable<CommandAst> history)
+        public virtual void RecordHistory(CommandAst history)
         {
-            history.ForEach((h) => this._parameterValuePredictor.ProcessHistoryCommand(h));
+            this._parameterValuePredictor.ProcessHistoryCommand(history);
         }
 
         /// <inheritdoc/>
@@ -249,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="command">The command for the new prediction</param>
         protected void SetPredictionCommand(string command)
         {
-            this.CommandForPrediction = command;
+            this._commandForPrediction = command;
         }
 
         /// <summary>

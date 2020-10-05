@@ -25,11 +25,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     public interface IAzPredictorService
     {
         /// <summary>
-        /// Gest the suggestion for the user input.
+        /// Gest the suggestions for the user input.
         /// </summary>
         /// <param name="input">User input from PSReadLine</param>
+        /// <param name="suggestionCount">The number of suggestion to return.</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        public Tuple<string, PredictionSource> GetSuggestion(Ast input, CancellationToken cancellationToken);
+        /// <returns>The list of suggestions for <paramref name="input"/>. The maximum number of suggestion is <paramref name="suggestionCount"/></returns>
+        public IEnumerable<ValueTuple<string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests predictions, given a command string.
@@ -40,8 +42,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Record the history from PSReadLine.
         /// </summary>
-        /// <param name="history">A list of history commands</param>
-        public void RecordHistory(IEnumerable<CommandAst> history);
+        /// <param name="history">The last command in history</param>
+        public void RecordHistory(CommandAst history);
 
         /// <summary>
         /// Return true if command is part of known set of Az cmdlets, false otherwise.

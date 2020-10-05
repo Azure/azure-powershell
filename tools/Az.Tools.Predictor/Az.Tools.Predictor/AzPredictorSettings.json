@@ -1,3 +1,4 @@
 {
-  "service_uri":  "https://app.aladdinppe.microsoft.com/api/v1"
+  "serviceUri":  "https://app.aladdin.microsoft.com/api/v1",
+  "suggestionCount": 5
 }
