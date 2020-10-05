@@ -26,11 +26,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     sealed class ParameterSet
     {
-        public IList<Tuple<Ast, Ast>> Parameters { get; set; }
+        public IList<Tuple<string, string>> Parameters { get; }
 
         public ParameterSet(CommandAst commandAst)
         {
-            Parameters = new List<Tuple<Ast, Ast>>();
+            Parameters = new List<Tuple<string, string>>();
             var elements = commandAst.CommandElements.Skip(1);
             Ast param = null;
             Ast arg = null;
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     if (param != null)
                     {
-                        Parameters.Add(new Tuple<Ast, Ast>(param, arg));
+                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
                     }
                     param = elem;
                     arg = null;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             if (param != null)
             {
-                Parameters.Add(new Tuple<Ast, Ast>(param, arg));
+                Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
             }
         }
     }

@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A prediction candidate consists of the command AST node and list of parameter sets,
+    /// A prediction candidate consists of the command name and list of parameter sets,
     /// where each parameter set is a set of parameters (order independent) that go along with the command.
     /// </summary>
     sealed class Prediction
     {
         /// <summary>
-        /// Gets the command ast node
+        /// Gets the command name
         /// </summary>
-        public StringConstantExpressionAst Command { get; }
+        public string Command { get; }
 
         /// <summary>
         /// Gets the list of <see cref="ParameterSet "/>
@@ -36,9 +35,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Create a new instance of <see cref="Prediction "/> with the command and parameter set.
         /// </summary>
-        /// <param name="command">The command AST node</param>
+        /// <param name="command">The command name</param>
         /// <param name="parameters">The parameter set</param>
-        public Prediction(StringConstantExpressionAst command, ParameterSet parameters)
+        public Prediction(string command, ParameterSet parameters)
         {
             this.Command = command;
             ParameterSets = new List<ParameterSet>

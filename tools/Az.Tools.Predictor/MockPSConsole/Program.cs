@@ -66,7 +66,6 @@ namespace MockPSConsole
 
             PSConsoleReadLine.SetOptions(new SetPSReadLineOption
             {
-                EditMode = EditMode.Emacs,
                 HistoryNoDuplicates = false,
                 PredictionViewStyle = PredictionViewStyle.ListView,
                 PredictionSource = PredictionSource.HistoryAndPlugin,
@@ -78,18 +77,6 @@ namespace MockPSConsole
                 options.CommandColor = "#8181f7";
                 options.StringColor = "\x1b[38;5;100m";
             }
-            PSConsoleReadLine.SetKeyHandler(new[] { "Ctrl+LeftArrow" }, PSConsoleReadLine.ShellBackwardWord, "ShellBackwardWord", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "Ctrl+RightArrow" }, PSConsoleReadLine.ShellNextWord, "ShellNextWord", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "F4" }, PSConsoleReadLine.HistorySearchBackward, "HistorySearchBackward", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "F5" }, PSConsoleReadLine.HistorySearchForward, "HistorySearchForward", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "Ctrl+d,Ctrl+c" }, PSConsoleReadLine.CaptureScreen, "CaptureScreen", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "Ctrl+d,Ctrl+p" }, PSConsoleReadLine.InvokePrompt, "InvokePrompt", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "Ctrl+d,Ctrl+x" }, CauseCrash, "CauseCrash", "Throw exception to test error handling");
-            PSConsoleReadLine.SetKeyHandler(new[] { "F6" }, PSConsoleReadLine.PreviousLine, "PreviousLine", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "F7" }, PSConsoleReadLine.NextLine, "NextLine", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "F2" }, PSConsoleReadLine.ValidateAndAcceptLine, "ValidateAndAcceptLine", "");
-            PSConsoleReadLine.SetKeyHandler(new[] { "Enter" }, PSConsoleReadLine.AcceptLine, "AcceptLine", "");
-
 
             using (var ps = PowerShell.Create(rs))
             {

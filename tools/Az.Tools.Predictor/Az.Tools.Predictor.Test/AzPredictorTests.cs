@@ -42,7 +42,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
             this._telemetryClient = new MockAzPredictorTelemetryClient();
-            this._azPredictor = new AzPredictor(this._service, this._telemetryClient);
+            this._azPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
+            {
+                SuggestionCount = 1,
+            });
         }
 
         /// <summary>
@@ -138,18 +141,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._service.GetSuggestion(predictionContext.InputAst, CancellationToken.None);
+            var expected = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
             var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
-            if (actual == null)
-            {
-                Assert.Null(expected?.Item1);
-            }
-            else
-            {
-                Assert.Single(actual);
-                Assert.Equal(expected.Item1, actual.First().SuggestionText);
-            }
 
+            Assert.Equal(expected.Select(e => e.Item1), actual.Select(a => a.SuggestionText));
         }
     }
 }

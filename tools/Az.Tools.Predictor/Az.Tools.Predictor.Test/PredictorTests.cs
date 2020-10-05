@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
@@ -50,8 +51,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetNullPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
-            Assert.Null(result);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.Empty(result);
         }
 
         /// <summary>
@@ -66,8 +67,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
-            Assert.NotNull(result);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.NotEmpty(result);
         }
 
         /// <summary>
@@ -81,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
-            Assert.NotNull(result);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.NotEmpty(result);
         }
 
         /// <summary>
@@ -97,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetNullPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
-            Assert.Null(result);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            Assert.Empty(result);
         }
 
         /// <summary>
@@ -108,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommand()
         {
             var predictionContext = PredictionContext.Create("Connect-AzAccount");
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
 
-            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result);
+            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.First());
         }
 
         /// <summary>
@@ -120,9 +121,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommandAndParameters()
         {
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
-            var result = this._predictor.Query(predictionContext.InputAst, CancellationToken.None);
+            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
 
-            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result);
+            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.First());
         }
     }
 }

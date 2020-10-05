@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestion in PSReadLine.
     /// </summary>
-    public sealed class AzPredictor : ICommandPredictor
+    internal sealed class AzPredictor : ICommandPredictor
     {
         /// <inhericdoc />
         public string Name => "Az Predictor";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool SupportEarlyProcessing => true;
 
         /// <inhericdoc />
-        public bool AcceptFeedback => false;
+        public bool AcceptFeedback => true;
 
         internal static readonly Guid Identifier = new Guid("599d1760-4ee1-4ed2-806e-f2a1b1a0ba4d");
 
@@ -56,16 +56,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private readonly IAzPredictorService _service;
         private readonly ITelemetryClient _telemetryClient;
+        private readonly Settings _settings;
+
+        private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>
         /// </summary>
         /// <param name="service">The service that provides the suggestion</param>
         /// <param name="telemetryClient">The client to collect telemetry</param>
-        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient)
+        /// <param name="settings">The settings of the service</param>
+        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings)
         {
             this._service = service;
             this._telemetryClient = telemetryClient;
+            this._settings = settings;
         }
 
         /// <inhericdoc />
@@ -73,35 +78,63 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (history.Count > 0)
             {
-                var historyLines = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess);
-
-                while (historyLines.Count() < AzPredictorConstants.CommandHistoryCountToProcess)
+                if (_lastTwoMaskedCommands.Any())
                 {
-                    historyLines = historyLines.Prepend(AzPredictorConstants.CommandPlaceholder);
+                    _lastTwoMaskedCommands.Dequeue();
+                }
+                else
+                {
+                    // This is the first time we populate our record. Push the second to last command in history to the
+                    // queue. If there is only one command in history, push the command placeholder.
+
+                    if (history.Count() > 1)
+                    {
+                        string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
+                        var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
+                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.Item2);
+                        _service.RecordHistory(secondToLastCommand.Item1);
+                    }
+                    else
+                    {
+                        _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
+                        // We only extract parameter values from the command line in _service.RecordHistory.
+                        // So we don't need to do that for a placeholder.
+                    }
                 }
 
-                var commandAsts = historyLines.Select((h) =>
-                        {
-                            var ast = Parser.ParseInput(h, out Token[] tokens, out _);
-                            var allAsts = ast?.FindAll((ast) => ast is CommandAst, true);
-                            return allAsts?.LastOrDefault() as CommandAst;
-                        }).ToArray();
+                string lastLine = history.Last();
+                var lastCommand = GetAstAndMaskedCommandLine(lastLine);
 
-                var maskedHistoryLines = commandAsts.Select((c) =>
-                        {
-                            var commandName = c?.CommandElements?.FirstOrDefault().ToString();
+                _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
 
-                            if (!_service.IsSupportedCommand(commandName))
-                            {
-                                return AzPredictorConstants.CommandPlaceholder;
-                            }
+                if ((lastCommand.Item2 != null) && !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal))
+                {
+                    _service.RecordHistory(lastCommand.Item1);
+                }
 
-                            return AzPredictor.MaskCommandLine(c);
-                        });
+                _telemetryClient.OnHistory(lastCommand.Item2);
+                _service.RequestPredictions(_lastTwoMaskedCommands);
+            }
 
-                _telemetryClient.OnHistory(maskedHistoryLines.Last());
-                _service.RecordHistory(commandAsts);
-                _service.RequestPredictions(maskedHistoryLines);
+            ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)
+            {
+                var asts = Parser.ParseInput(commandLine, out _, out _);
+                var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
+                var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+                string maskedCommandLine = null;
+
+                var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
+
+                if (_service.IsSupportedCommand(commandName))
+                {
+                    maskedCommandLine = AzPredictor.MaskCommandLine(commandAst);
+                }
+                else
+                {
+                    maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
+                }
+
+                return ValueTuple.Create(commandAst, maskedCommandLine);
             }
         }
 
@@ -121,19 +154,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // is prefixed with `userInput`, it should be ordered before result that is not prefixed
             // with `userInput`.
 
-            Tuple<string, PredictionSource> result = Tuple.Create<string, PredictionSource>(null, PredictionSource.None);
+            IEnumerable<ValueTuple<string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, PredictionSource>>();
 
             try
             {
-                result = _service.GetSuggestion(context.InputAst, cancellationToken);
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, cancellationToken);
 
-                if (result?.Item1 != null)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    var userInput = context.InputAst.Extent.Text;
-                    var fullSuggestion = MergeStrings(userInput, result.Item1);
-                    return new List<PredictiveSuggestion>() { new PredictiveSuggestion(fullSuggestion) };
-                }
+                cancellationToken.ThrowIfCancellationRequested();
+                var userInput = context.InputAst.Extent.Text;
+                return suggestions.Select((r, index) =>
+                    {
+                        return new PredictiveSuggestion(MergeStrings(userInput, r.Item1));
+                    })
+                    .ToList();
             }
             catch (Exception e) when (!(e is OperationCanceledException))
             {
@@ -142,11 +175,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             finally
             {
                 var maskedCommandLine = MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
-                _telemetryClient.OnGetSuggestion(maskedCommandLine, new Tuple<string, PredictionSource>[] { result },
-                        cancellationToken.IsCancellationRequested);
+                _telemetryClient.OnGetSuggestion(maskedCommandLine, suggestions, cancellationToken.IsCancellationRequested);
             }
 
-            return null;
+            return new List<PredictiveSuggestion>();
         }
 
         // Merge strings a and b such that the prefix of b is deleted if it is the suffix of a
@@ -232,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var settings = Settings.GetSettings();
             var telemetryClient = new AzPredictorTelemetryClient();
             var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient);
-            var predictor = new AzPredictor(azPredictorService, telemetryClient);
+            var predictor = new AzPredictor(azPredictorService, telemetryClient, settings);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
     }
