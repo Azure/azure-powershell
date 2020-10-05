@@ -888,10 +888,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return WrappedWebsitesClient.Certificates().Get(resourceGroupName, certificateName);
         }
 
-        public void RemoveCertificate(string resourceGroupName, string certificateName)
+        public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
         {
             WrappedWebsitesClient.Certificates().Delete(resourceGroupName, certificateName);
-            //return HttpStatusCode.OK;
+            return HttpStatusCode.OK;
         }
 
         public Site UpdateHostNameSslState(string resourceGroupName, string webAppName, string slotName, string location, string hostName, SslState sslState, string thumbPrint)

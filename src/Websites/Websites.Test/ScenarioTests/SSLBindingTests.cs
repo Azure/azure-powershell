@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetNewWebAppSSLBinding");
         }
 
-        [Fact(Skip = "Test is being skipped until 'conflict' issue with Delete API is resolved.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNewWebAppSSLBinding()
         {

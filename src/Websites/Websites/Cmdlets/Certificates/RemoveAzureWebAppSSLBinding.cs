@@ -58,18 +58,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             var certificates = CmdletHelpers.GetCertificates(this.ResourcesClient, this.WebsitesClient, certificateResourceGroup, thumbprint);
                             if (certificates.Length > 0)
                             {
-                                //try
-                                //{
+                                try
+                                {
                                     WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
-                                //}
-                                //catch (CloudException e)
-                                //{
-                                //    // This exception is thrown when there are other Ssl bindings using this certificate. Let's swallow it and continue.
-                                //    if (e.Response.StatusCode != HttpStatusCode.Conflict)
-                                //    {
-                                //        throw;
-                                //    }
-                                //}
+                                }
+                                catch (System.Exception e)
+                                {
+                                    // This exception is thrown when there are other Ssl bindings using this certificate. Let's swallow it and continue.
+                                    if (!e.Message.Contains("Conflict"))
+                                    {
+                                        throw e;
+                                    }
+                                }
                             }
                         }
                     }

@@ -44,8 +44,8 @@ function Test-CreateNewWebAppSSLBinding
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -80,8 +80,8 @@ function Test-GetNewWebAppSSLBinding
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -113,8 +113,8 @@ function Test-RemoveNewWebAppSSLBinding
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -145,21 +145,21 @@ function Test-WebAppSSLBindingPipeSupport
 		Assert-AreEqual 1 $getResult.Count
 
 		# Test - Delete Ssl bindings using web app and web app slot objects
-		#$webapp | Remove-AzWebAppSSLBinding -Name $prodHostName -Force 
-		#$res = $webapp | Get-AzWebAppSSLBinding
-		#$currentHostNames = $res | Select -expand Name
-		#Assert-False { $currentHostNames -contains $prodHostName }
+		$webapp | Remove-AzWebAppSSLBinding -Name $prodHostName -Force 
+		$res = $webapp | Get-AzWebAppSSLBinding
+		$currentHostNames = $res | Select -expand Name
+		Assert-False { $currentHostNames -contains $prodHostName }
 
-		#$webappslot | Remove-AzWebAppSSLBinding -Name $slotHostName -Force 
-		#$res = $webappslot | Get-AzWebAppSSLBinding
-		#$currentHostNames = $res | Select -expand Name
-		#Assert-False { $currentHostNames -contains $slotHostName }
+		$webappslot | Remove-AzWebAppSSLBinding -Name $slotHostName -Force 
+		$res = $webappslot | Get-AzWebAppSSLBinding
+		$currentHostNames = $res | Select -expand Name
+		Assert-False { $currentHostNames -contains $slotHostName }
 	}
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostName -Force 
     }
 }
 
@@ -185,7 +185,7 @@ function Test-GetWebAppCertificate
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
     }
 }
 
@@ -235,8 +235,7 @@ function Test-TagsNotRemovedByCreateNewWebAppSSLBinding
     finally
     {
 		# Cleanup
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		#Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
