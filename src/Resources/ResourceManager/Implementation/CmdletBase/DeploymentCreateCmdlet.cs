@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Strategies;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -87,7 +88,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 return false;
             }
 
-            return (bool)this.SessionState.PSVariable.GetValue("WhatIfPreference");
+            object whatIfPreference = this.SessionState.PSVariable.GetValue("WhatIfPreference");
+
+            return whatIfPreference is SwitchParameter whatIfPreferenceFlag
+                ? whatIfPreferenceFlag.IsPresent
+                : (bool)whatIfPreference;
         }
 
         private bool ShouldProcessGivenCurrentConfirmFlagAndPreference()
