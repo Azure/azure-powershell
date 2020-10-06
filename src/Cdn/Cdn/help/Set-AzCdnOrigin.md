@@ -13,11 +13,19 @@ Updates a CDN origin server.
 
 ## SYNTAX
 
-### ByFieldsParameterSet
+### ByFieldsParameterSet (Default)
 ```
 Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
  [-OriginHostHeader <String>] -OriginName <String> -ProfileName <String> [-Priority <Int32>]
- [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
+ -ResourceGroupName <String> [-Weight <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByFieldsPrivateLinkParameterSet
+```
+Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] -OriginName <String> -ProfileName <String> [-Priority <Int32>]
+ [-PrivateLinkApprovalMessage <String>] -PrivateLinkLocation <String> -PrivateLinkResourceId <String>
  -ResourceGroupName <String> [-Weight <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -70,7 +78,7 @@ Azure CDN endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: True
@@ -85,7 +93,7 @@ Azure CDN origin host name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: True
@@ -100,7 +108,7 @@ Azure CDN origin http port.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False
@@ -115,7 +123,7 @@ Azure CDN origin https port.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False
@@ -130,7 +138,7 @@ Azure CDN origin host header.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False
@@ -145,7 +153,7 @@ Azure CDN origin name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: True
@@ -160,7 +168,7 @@ Azure CDN origin priority.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False
@@ -175,7 +183,7 @@ A custom message to be included in the approval request to connect to the Privat
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False
@@ -190,10 +198,10 @@ Azure CDN origin private link location.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsPrivateLinkParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -205,10 +213,10 @@ Azure CDN origin private link resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsPrivateLinkParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +228,7 @@ Azure CDN profile name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: True
@@ -235,7 +243,7 @@ The resource group of the Azure CDN profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: True
@@ -250,7 +258,7 @@ Azure CDN origin weight.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
 Aliases:
 
 Required: False

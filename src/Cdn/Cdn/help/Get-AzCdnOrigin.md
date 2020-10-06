@@ -15,18 +15,19 @@ Gets a CDN origin server.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzCdnOrigin -OriginName <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+Get-AzCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Get-AzCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzCdnOrigin -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Get-AzCdnOrigin -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,10 +87,10 @@ Specifies the name of the origin server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

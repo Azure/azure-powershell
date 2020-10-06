@@ -15,7 +15,7 @@ schema: 2.0.0
 ### ByFieldsParameterSet (Default)
 ```
 Set-AzCdnOriginGroup -EndpointName <String> -OriginGroupName <String>
- -OriginGroupIds <System.Collections.Generic.List`1[System.Object]> [-ProbeIntervalInSeconds <Int32>]
+ -OriginId <System.Collections.Generic.List`1[System.String]> [-ProbeIntervalInSeconds <Int32>]
  [-ProbePath <String>] [-ProbeProtocol <String>] [-ProbeRequestType <String>] -ProfileName <String>
  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,8 +23,8 @@ Set-AzCdnOriginGroup -EndpointName <String> -OriginGroupName <String>
 
 ### ByObjectParameterSet
 ```
-Set-AzCdnOriginGroup -CdnOriginGroup <Object> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzCdnOriginGroup -CdnOriginGroup <PSOriginGroup> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ PS C:\> {{ Add example code here }}
 The CDN origin group object.
 
 ```yaml
-Type: Object
+Type: Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,22 +75,7 @@ Accept wildcard characters: False
 Azure CDN endpoint name.
 
 ```yaml
-Type: String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginGroupIds
-Azure CDN origin group ids.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.Object]
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -105,7 +90,22 @@ Accept wildcard characters: False
 Azure CDN origin group name.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginId
+Azure CDN origin group ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The number of seconds between health probes.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The path relative to the origin that is used to determine the health of the origin.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Protocol to use for health probe.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The type of health probe request that is made.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Azure CDN profile name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 The resource group of the Azure CDN profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +226,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

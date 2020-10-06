@@ -20,9 +20,13 @@ New-AzCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupNam
  [-IsCompressionEnabled <Boolean>] [-IsHttpAllowed <Boolean>] [-IsHttpsAllowed <Boolean>]
  [-QueryStringCachingBehavior <PSQueryStringCachingBehavior>] -OriginName <String> -OriginHostName <String>
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OptimizationType <String>] [-ProbePath <String>]
- [-GeoFilters <PSGeoFilter[]>] [-DeliveryPolicy <PSDeliveryPolicy>] [-Tag <Hashtable>] [-OriginGroups <Object>]
- [-DefaultOriginGroup <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GeoFilters <PSGeoFilter[]>] [-DeliveryPolicy <PSDeliveryPolicy>] [-Tag <Hashtable>]
+ [-DefaultOriginGroup <String>] [-Priority <Int32>] [-Weight <Int32>] [-PrivateLinkApprovalMessage <String>]
+ [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
+ [-OriginId <System.Collections.Generic.List`1[System.String]>] [-OriginGroupName <String>]
+ [-OriginGroupProbeIntervalInSeconds <Int32>] [-OriginGroupProbePath <String>]
+ [-OriginGroupProbeProtocol <String>] [-OriginGroupProbeRequestType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -33,6 +37,11 @@ New-AzCdnEndpoint -EndpointName <String> -CdnProfile <PSProfile> [-OriginHostHea
  [-QueryStringCachingBehavior <PSQueryStringCachingBehavior>] -OriginName <String> -OriginHostName <String>
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OptimizationType <String>] [-ProbePath <String>]
  [-GeoFilters <PSGeoFilter[]>] [-DeliveryPolicy <PSDeliveryPolicy>] [-Tag <Hashtable>]
+ [-DefaultOriginGroup <String>] [-Priority <Int32>] [-Weight <Int32>] [-PrivateLinkApprovalMessage <String>]
+ [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
+ [-OriginId <System.Collections.Generic.List`1[System.String]>] [-OriginGroupName <String>]
+ [-OriginGroupProbeIntervalInSeconds <Int32>] [-OriginGroupProbePath <String>]
+ [-OriginGroupProbeProtocol <String>] [-OriginGroupProbeRequestType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,8 +86,8 @@ Accept wildcard characters: False
 The default origin group.
 
 ```yaml
-Type: System.Object
-Parameter Sets: ByFieldsParameterSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -253,12 +262,72 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginGroups
-Azure CDN origin groups.
+### -OriginGroupName
+The name of the origin group.
 
 ```yaml
-Type: System.Object
-Parameter Sets: ByFieldsParameterSet
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroupProbeIntervalInSeconds
+The number of seconds between health probes.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroupProbePath
+The path relative to the origin that is used to determine the health of the origin.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroupProbeProtocol
+Protocol to use for health probe.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroupProbeRequestType
+The type of health probe request that is made.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -298,6 +367,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OriginId
+Azure CDN origin group ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OriginName
 Specifies the resource name of the origin server.
 
@@ -315,6 +399,66 @@ Accept wildcard characters: False
 
 ### -OriginPath
 Specifies the path of the origin server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+Azure CDN origin priority.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkApprovalMessage
+A custom message to be included in the approval request to connect to the Private Link.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkLocation
+Azure CDN origin private link location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkResourceId
+Azure CDN origin private link resource id.
 
 ```yaml
 Type: System.String
@@ -394,6 +538,21 @@ The tags to associate with the Azure CDN endpoint.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Weight
+Azure CDN origin weight.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

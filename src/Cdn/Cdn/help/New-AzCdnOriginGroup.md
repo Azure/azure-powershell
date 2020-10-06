@@ -15,7 +15,7 @@ schema: 2.0.0
 ### ByFieldsParameterSet (Default)
 ```
 New-AzCdnOriginGroup -EndpointName <String> -OriginGroupName <String>
- -OriginGroupIds <System.Collections.Generic.List`1[System.Object]> [-ProbeIntervalInSeconds <Int32>]
+ -OriginId <System.Collections.Generic.List`1[System.String]> [-ProbeIntervalInSeconds <Int32>]
  [-ProbePath <String>] [-ProbeProtocol <String>] [-ProbeRequestType <String>] -ProfileName <String>
  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,8 +23,8 @@ New-AzCdnOriginGroup -EndpointName <String> -OriginGroupName <String>
 
 ### ByObjectParameterSet
 ```
-New-AzCdnOriginGroup -CdnOriginGroup <Object> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzCdnOriginGroup -CdnOriginGroup <PSOriginGroup> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ PS C:\> {{ Add example code here }}
 The CDN origin group object.
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -86,11 +86,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginGroupIds
-Azure CDN origin group ids.
+### -OriginGroupName
+Azure CDN origin group name.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.Object]
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -101,11 +101,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginGroupName
-Azure CDN origin group name.
+### -OriginId
+Azure CDN origin group ids.
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
