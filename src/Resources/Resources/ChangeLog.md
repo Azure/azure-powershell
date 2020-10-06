@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated ARM template What-If cmdlets to remove preview message from results
+* Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
