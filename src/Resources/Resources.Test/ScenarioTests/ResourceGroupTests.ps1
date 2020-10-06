@@ -378,8 +378,8 @@ function Test-ExportResourceGroup
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        
+		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
 		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
@@ -455,12 +455,10 @@ function Test-ExportResourceGroupWithFiltering
         # Test
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r1.ResourceId
 
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r2.ResourceId
 
         $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
