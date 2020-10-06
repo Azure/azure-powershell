@@ -416,8 +416,7 @@ function Test-ExportResourceGroup-AsyncRoute
 		while($i -lt 25)
 		{
 		  $rname = $rnameConstant + $i.ToString()
-		  #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		  New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1" } -SkuObject @{ Name = "A0" } -Force
+		  New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -Force
 		  $i++
 		}
 
