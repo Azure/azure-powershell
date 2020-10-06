@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Strategies;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
