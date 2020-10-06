@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId NetworkInterfaceIpConfiguration { get; set; }
 
         [JsonProperty(Order = 2)]
-        public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
-
-        [JsonProperty(Order = 3)]
         public PSResourceId VirtualNetwork { get; set; }
 
-        [JsonProperty(Order = 4)]
+        [JsonProperty(Order = 3)]
         public string IpAddress { get; set; }
+
+        [JsonProperty(Order = 4)]
+        public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
 
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText

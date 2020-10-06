@@ -127,34 +127,35 @@ function Test-LoadBalancerBackendPoolCreate
 
         # Create Standard Azure load balancer
         $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
-        
+
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
         $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetworkId $vnet.Id 
-        
+        $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id
+
         $ips = @($ip1, $ip2)
-        
+
         ## create by passing loadbalancer without Ips
         $create1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1
-        
+
         Assert-NotNull $create1
-        
+
         ## create by passing loadbalancer with ips
         $create2 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool2 -LoadBalancerBackendAddress $ips
-        
+
         Assert-NotNull $create2
         Assert-True { @($create2.LoadBalancerBackendAddresses).Count -eq 2}
-        
+
         ## create by Name without ip's
         $create3 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool3
-        
+
         Assert-NotNull $create3
-        
+
         ## create by Name with ip's
         $create4 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool4 -LoadBalancerBackendAddress $ips
-        
+
         Assert-NotNull $create4
         Assert-True { @($create4.LoadBalancerBackendAddresses).Count -eq 2}
-    }   
+    }
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
@@ -172,7 +173,6 @@ function Test-GlobalLoadBalancerBackendPoolCreate
     $rgname = Get-ResourceGroupName
     $rglocation = Get-ProviderLocation ResourceManagement
 
-    $subnetName = Get-ResourceName
     $vnetName = Get-ResourceName
     $location = Get-ProviderLocation "Microsoft.Network/loadBalancers"
 
@@ -197,12 +197,8 @@ function Test-GlobalLoadBalancerBackendPoolCreate
     try
     {
         # Create the regional resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
-        
-        # Create the virtual network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}        
+
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -SKU Standard
 
@@ -219,16 +215,12 @@ function Test-GlobalLoadBalancerBackendPoolCreate
         # Create the global resource group
         $resourceGroup = New-AzResourceGroup -Name $globalrgname -Location $rglocation -Tags @{ testtag = "testval"} 
  
-        # Create the virtual network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $globalsubnetname -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $globalvnet -ResourceGroupName $globalrgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
- 
         # Create global loadbalancer 
         $glb = New-AzLoadBalancer -Name $globallbname -ResourceGroupName $globalrgname -Location $location -SKU Standard -Tier Global
-        
+
         $regionalbackendaddress = New-AzLoadBalancerBackendAddressConfig -LoadBalancerFrontendIPConfigurationId $frontend.Id -Name $globalbackendAddressConfigName
         $create = $glb | New-AzLoadBalancerBackendAddressPool -Name $globalbackendPool -LoadBalancerBackendAddress $regionalbackendaddress 
-        
+
         Assert-NotNull $create
         Assert-True { @($create.LoadBalancerBackendAddresses).Count -eq 1}
     }
