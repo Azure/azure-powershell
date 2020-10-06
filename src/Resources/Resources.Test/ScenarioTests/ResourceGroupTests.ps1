@@ -407,12 +407,6 @@ function Test-ExportResourceGroup-AsyncRoute
 	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$resourceType = "Providers.Test/statefulResources"
 
-	$adminPass = "P@ssword1"
-    $adminUserName = "adminuser"
-
-    $pass = ConvertTo-SecureString $adminPass -AsPlainText -Force
-    $userName = ConvertTo-SecureString $adminUserName -AsPlainText -Force
-
 	try
 	{
 		# Test
@@ -422,7 +416,8 @@ function Test-ExportResourceGroup-AsyncRoute
 		while($i -lt 25)
 		{
 		  $rname = $rnameConstant + $i.ToString()
-		  New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = $userName; "administratorLoginPassword" = $adminPass } -SkuObject @{ Name = "A0" } -Force
+		  #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		  New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1" } -SkuObject @{ Name = "A0" } -Force
 		  $i++
 		}
 
