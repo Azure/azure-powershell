@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Updated below cmdlet 
-    - `New-AzLoadBalancerFrontendIpConfigCommand`:
+    - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
         - Added PublicIpAddressPrefix property
         - Added PublicIpAddressPrefixId property
 * Added new properties to the following cmdlets to allow for global load balancing

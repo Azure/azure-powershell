@@ -109,18 +109,18 @@ namespace Microsoft.Azure.Commands.Network
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddressPrefix",
-            HelpMessage = "The reference of the Public IP Prefix resource.",
-            ValueFromPipelineByPropertyName = true)]
-        public PSPublicIpPrefix PublicIpAddressPrefix { get; set; }
-
-        [Parameter(
     Mandatory = true,
     ParameterSetName = "SetByResourceIdPublicIpAddressPrefix",
     HelpMessage = "The reference of the Public IP Prefix resource.",
     ValueFromPipelineByPropertyName = true)]
         public string PublicIpAddressPrefixId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourcePublicIpAddressPrefix",
+            HelpMessage = "The reference of the Public IP Prefix resource.",
+            ValueFromPipelineByPropertyName = true)]
+        public PSPublicIpPrefix PublicIpAddressPrefix { get; set; }
 
         public override void Execute()
         {
@@ -140,6 +140,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
                 }
             }
+
             if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressPrefix"))
             {
                 if (this.PublicIpAddressPrefix != null)
@@ -147,7 +148,9 @@ namespace Microsoft.Azure.Commands.Network
                     this.PublicIpAddressPrefixId = this.PublicIpAddressPrefix.Id;
                 }
             }
+
             var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
+
             vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
             vFrontendIpConfigurations.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
             if(!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))

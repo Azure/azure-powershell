@@ -1589,11 +1589,17 @@ function Test-LoadBalancerMultiVip-Public
 	$publicIp2Name = Get-ResourceName
 	$publicIp3Name = Get-ResourceName
 	$publicIp4Name = Get-ResourceName
+	$pip1Name = Get-ResourceName
+	$pip2Name = Get-ResourceName
+	$pip3Name = Get-ResourceName
     $lbName = Get-ResourceName
+    $lb2Name = Get-ResourceName
     $frontend1Name = Get-ResourceName
 	$frontend2Name = Get-ResourceName
 	$frontend3Name = Get-ResourceName
 	$frontend4Name = Get-ResourceName
+	$pipFrontend1Name = Get-ResourceName
+	$pipFrontend2Name = Get-ResourceName
     $backendAddressPoolName = Get-ResourceName
     $probeName = Get-ResourceName
     $inboundNatRuleName = Get-ResourceName
@@ -1613,6 +1619,11 @@ function Test-LoadBalancerMultiVip-Public
 		$publicip3 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp3Name -location $location -AllocationMethod Dynamic
 		$publicip4 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp4Name -location $location -AllocationMethod Dynamic
 
+        # Create the public ip prefixes 
+        $pip1 = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $pip1Name -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag 
+        $pip2 = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $pip2Name -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag 
+        $pip3 = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $pip3Name -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag 
+
         # Create LoadBalancer
         $frontend1 = New-AzLoadBalancerFrontendIpConfig -Name $frontend1Name -PublicIpAddress $publicip1
 		$frontend2 = New-AzLoadBalancerFrontendIpConfig -Name $frontend2Name -PublicIpAddressId $publicip2.Id
@@ -1621,7 +1632,12 @@ function Test-LoadBalancerMultiVip-Public
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend1 -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend2 -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
-        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend1,$frontend2  -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend1,$frontend2 -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
+        
+        # Create standard load balancer
+        $pipfrontend1 = New-AzLoadBalancerFrontendIpConfig -Name $pipFrontend1Name -PublicIpAddressPrefix $pip1
+
+        $lb2 = New-AzLoadBalancer -Name $lb2Name -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $pipfrontend1 -Sku Standard
         
         # Verification
         Assert-AreEqual $rgname $lb.ResourceGroupName
@@ -1669,9 +1685,8 @@ function Test-LoadBalancerMultiVip-Public
 		$publicip3 = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp3Name
         Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $publicip3.IpConfiguration.Id
 
-		# set a new frontendip config
+		# Set a new frontendip config
 		$lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerFrontendIpConfig -Name $frontend3Name -PublicIpAddress $publicip4 | Set-AzLoadBalancer
-
 		Assert-AreEqual 3 @($lb.FrontendIPConfigurations).Count
 
 		Assert-AreEqual $frontend3Name $lb.FrontendIPConfigurations[2].Name
@@ -1713,7 +1728,7 @@ function Test-LoadBalancerMultiVip-Public
         Assert-AreEqual true $deleteLb
         
 		$list = Get-AzLoadBalancer -ResourceGroupName $rgname
-        Assert-AreEqual 0 @($list).Count
+        Assert-AreEqual 1 @($list).Count
 
 		# Verify public ip reference
 		$publicip1 = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name
@@ -1721,6 +1736,24 @@ function Test-LoadBalancerMultiVip-Public
 
 		$publicip2 = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name
         Assert-Null $publicip2.IpConfiguration
+        
+        # Add a new frontendip config
+		$lb2 = Get-AzLoadBalancer -Name $lb2Name -ResourceGroupName $rgname | Add-AzLoadBalancerFrontendIpConfig -Name $pipFrontend2Name -PublicIpAddressPrefix $pip2 | Set-AzLoadBalancer
+		Assert-AreEqual 2 @($lb2.FrontendIPConfigurations).Count
+
+		Assert-AreEqual $pipFrontend2Name $lb2.FrontendIPConfigurations[1].Name
+        Assert-AreEqual $pip2.Id $lb2.FrontendIPConfigurations[1].PublicIPPrefix.Id
+		Assert-Null $lb2.FrontendIPConfigurations[1].Subnet	
+
+		# Set a new frontendip config
+		$lb3 = Get-AzLoadBalancer -Name $lb2Name -ResourceGroupName $rgname
+        $lb3 = Set-AzLoadBalancerFrontendIpConfig -LoadBalancer $lb3 -Name $pipFrontend2Name -PublicIpAddressPrefix $pip3 
+        Set-AzLoadBalancer -LoadBalancer $lb3
+        Assert-AreEqual 2 @($lb3.FrontendIPConfigurations).Count
+        
+		Assert-AreEqual $pipFrontend2Name $lb3.FrontendIPConfigurations[1].Name
+        Assert-AreEqual $pip3.Id $lb3.FrontendIPConfigurations[1].PublicIPPrefix.Id
+		Assert-Null $lb3.FrontendIPConfigurations[1].Subnet
     }
     finally
     {
@@ -2010,7 +2043,7 @@ function Test-LoadBalancerCRUD-PublicBasicSku
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Basic
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule 
         
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
@@ -2019,6 +2052,8 @@ function Test-LoadBalancerCRUD-PublicBasicSku
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
         Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqualObjectProperties "Basic" $actualLb.Sku.Name
+        Assert-AreEqualObjectProperties "Regional" $actualLb.Sku.Tier
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count

@@ -41,6 +41,20 @@ Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [<CommonParameters>]
 ```
 
+### SetByResourceIdPublicIpAddressPrefix
+```
+Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>] 
+-PublicIpAddressPrefixId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+[<CommonParameters>]
+```
+
+### SetByResourcePublicIpAddressPrefix
+```
+Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>] 
+-PublicIpAddressPrefix <PSPublicIpPrefix> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+[<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Add-AzLoadBalancerFrontendIpConfig** cmdlet adds a front-end IP configuration to an Azure load balancer.
 
@@ -175,6 +189,36 @@ Specifies the ID of the public IP address in which to add a front-end IP configu
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddress
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressPrefix
+Specifies the public ip address prefix object to associate with a front-end IP configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddressPrefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressPrefixId
+Specifies the ID of the public ip address prefix object to associate with a front-end IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdPublicIpAddressPrefix
 Aliases:
 
 Required: True

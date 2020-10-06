@@ -187,6 +187,7 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
+```
 
 ### -Subnet
 Specifies the **Subnet** object in which to create a front-end IP configuration.
