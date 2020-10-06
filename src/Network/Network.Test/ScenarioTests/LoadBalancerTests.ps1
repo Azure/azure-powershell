@@ -57,7 +57,7 @@ function Test-LoadBalancerCRUD-Public
 		$actualLb = $job | Receive-Job
 
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
-        
+
         # Verification
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
@@ -65,23 +65,23 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
-        
+
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $publicip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
         Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
-        
+
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
-        
+
         Assert-AreEqual $probeName $expectedLb.Probes[0].Name
         Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
-        
+
         Assert-AreEqual $inboundNatRuleName $expectedLb.InboundNatRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatRules[0].FrontendIPConfiguration.Id
-        
+
         Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
-        
+
         # List
         $list = Get-AzLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
@@ -91,22 +91,22 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
         Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
-        
+
         $list = Get-AzLoadBalancer -ResourceGroupName "*"
         Assert-True { @($list).Count -ge 0 }
-        
+
         $list = Get-AzLoadBalancer -Name "*"
         Assert-True { @($list).Count -ge 0 }
-        
+
         $list = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*"
         Assert-True { @($list).Count -ge 0 }
-        
+
         # Delete
         $job = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force -AsJob
 		$job | Wait-Job
 		$deleteLb = $job | Receive-Job
         Assert-AreEqual true $deleteLb
-        
+
         $list = Get-AzLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
