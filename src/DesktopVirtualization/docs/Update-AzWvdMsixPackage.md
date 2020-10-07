@@ -1,40 +1,50 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
 schema: 2.0.0
 ---
 
-# Remove-AzWvdApplication
+# Update-AzWvdMsixPackage
 
 ## SYNOPSIS
-Remove an application.
+Update an  MSIX Package.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DisplayName <String>] [-IsActive] [-IsRegularRegistration]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DisplayName <String>] [-IsActive]
+ [-IsRegularRegistration] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove an application.
+Update an  MSIX Package.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop Application by name
+### Example 1: Update a MSIX Package 
 ```powershell
-PS C:\> Remove-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name ApplicationName
+PS C:\> Update-AzWvdMsixPackage -HostPoolName HostPoolName `
+				-ResourceGroupName ResourceGroupName `
+				-SubscriptionId SubscriptionId `
+				-displayName 'Updated-display-Name' `
+        			-IsRegularRegistration:$False `
+				-IsActive:$True
+
+Name                                                  Type
+----                                                  ----
+HostPoolName/MSIXPackage_FullName1                    Microsoft.DesktopVirtualization/hostpools/msixpackages
 ```
 
-This command deletes a Windows Virtual Desktop Application in an applicaton Group.
+This command updates a MSIX Package in a HostPool.
 
 ## PARAMETERS
 
@@ -53,13 +63,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupName
-The name of the application group
+### -DisplayName
+Display name for MSIX Package.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationGroupName
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FullName
+The version specific package full name of the MSIX package within specified hostpool
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: MsixPackageFullName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostPoolName
+The name of the host pool within the specified resource group
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -74,7 +114,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -84,23 +124,24 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the application within the specified application group
+### -IsActive
+Set a version of the package to be active across hostpool.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -IsRegularRegistration
+Set Registration mode.
+Regular or Delayed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,7 +161,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -135,7 +176,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackage
 
 ## NOTES
 

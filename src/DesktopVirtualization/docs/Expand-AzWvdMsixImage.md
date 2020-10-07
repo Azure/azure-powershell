@@ -1,40 +1,59 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 schema: 2.0.0
 ---
 
-# Remove-AzWvdApplication
+# Expand-AzWvdMsixImage
 
 ## SYNOPSIS
-Remove an application.
+Expands and Lists MSIX packages in an Image, given the Image Path.
 
 ## SYNTAX
 
-### Delete (Default)
+### ExpandExpanded (Default)
 ```
-Remove-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Uri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Expand
 ```
-Remove-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> -MsixImageUri <IMsixImageUri>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExpandViaIdentity
+```
+Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> -MsixImageUri <IMsixImageUri>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExpandViaIdentityExpanded
+```
+Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> [-Uri <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove an application.
+Expands and Lists MSIX packages in an Image, given the Image Path.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop Application by name
+### Example 1: Expands specified Image Path and retrieves Package metadata found in AppxManifest.xml
 ```powershell
-PS C:\> Remove-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name ApplicationName
+PS C:\> Expand-AzWvdMsixImage -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -SubscriptionId SubscriptionId `
+          -Uri ImagePathURI
+
+Name                          Type
+----                          ----
+HostPoolName/extractmsiximage Microsoft.DesktopVirtualization/hostpools/extractmsiximage
 ```
 
-This command deletes a Windows Virtual Desktop Application in an applicaton Group.
+This command returns Metadata of MSIX Package found in the given Image Path.
 
 ## PARAMETERS
 
@@ -53,13 +72,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupName
-The name of the application group
+### -HostPoolName
+The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationGroupName
+Parameter Sets: Expand, ExpandExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -74,7 +93,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ExpandViaIdentity, ExpandViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -84,33 +103,19 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the application within the specified application group
+### -MsixImageUri
+Represents URI referring to MSIX Image
+To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationName
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixImageUri
+Parameter Sets: Expand, ExpandViaIdentity
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -120,7 +125,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Expand, ExpandExpanded
 Aliases:
 
 Required: True
@@ -135,12 +140,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Expand, ExpandExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Uri
+URI to Image
+
+```yaml
+Type: System.String
+Parameter Sets: ExpandExpanded, ExpandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -181,11 +201,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixImageUri
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IExpandMsixImage
 
 ## NOTES
 
@@ -208,6 +230,9 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[UserSessionId <String>]`: The name of the user session within the specified session host
   - `[WorkspaceName <String>]`: The name of the workspace
+
+MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
+  - `[Uri <String>]`: URI to Image
 
 ## RELATED LINKS
 

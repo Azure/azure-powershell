@@ -1,40 +1,40 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage
 schema: 2.0.0
 ---
 
-# Remove-AzWvdApplication
+# Remove-AzWvdMsixPackage
 
 ## SYNOPSIS
-Remove an application.
+Remove an MSIX Package.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+Remove-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove an application.
+Remove an MSIX Package.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop Application by name
+### Example 1: Delete MSIX Package by Package Full Name
 ```powershell
-PS C:\> Remove-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name ApplicationName
+PS C:\> Remove-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroupName -SubscriptionId SubscriptionId -FullName PackageFullName
 ```
 
-This command deletes a Windows Virtual Desktop Application in an applicaton Group.
+This command deletes a MSIX Package in a HostPool
 
 ## PARAMETERS
 
@@ -53,13 +53,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupName
-The name of the application group
+### -FullName
+The version specific package full name of the MSIX package within specified hostpool
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: ApplicationGroupName
+Aliases: MsixPackageFullName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostPoolName
+The name of the host pool within the specified resource group
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
 
 Required: True
 Position: Named
@@ -81,21 +96,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the application within the specified application group
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

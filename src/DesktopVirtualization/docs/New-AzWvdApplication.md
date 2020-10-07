@@ -16,8 +16,9 @@ Create or update an application.
 ```
 New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
  -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>]
- [-IconPath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-CommandLineArgument <String>]
+ [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
+ [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AppAlias
@@ -63,6 +64,21 @@ Parameter Sets: AppAlias
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationType
+Resource Type of Application.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,6 +207,36 @@ Accept wildcard characters: False
 
 ### -IconPath
 Path to icon.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MsixPackageApplicationId
+Specifies the package application Id for MSIX applications
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MsixPackageFamilyName
+Specifies the package family name for MSIX applications
 
 ```yaml
 Type: System.String
