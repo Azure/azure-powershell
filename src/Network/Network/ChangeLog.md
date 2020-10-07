@@ -22,6 +22,10 @@
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
+* Updated New-AzFirewall cmdlet:
+    - Added parameter -SkuTier
+    - Added parameter -SkuName and made Sku as Alias for this
+    - Removed parameter -Sku
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
