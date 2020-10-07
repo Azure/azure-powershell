@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CDN origin group
 
 ## SYNTAX
 
@@ -28,16 +28,15 @@ New-AzCdnOriginGroup -CdnOriginGroup <PSOriginGroup> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzCdnOriginGroup will create a new origin group within the specified endpoint. If this is the first origin group for endpoint, then the DefaultOriginGroup property must also be set.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName -OriginId $originId
 ```
-
-{{ Add example description here }}
+This cmdlet will create a new origin group within the specified endpoint. It will utilize the given origin ids as the set of origins.
 
 ## PARAMETERS
 

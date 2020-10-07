@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCdnOrigin
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a CDN origin
 
 ## SYNTAX
 
@@ -32,16 +32,15 @@ Remove-AzCdnOrigin [-PassThru] -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzCdnOrigin will delete a CDN origin from the given endpoint. If the origin is the only origin within the specified endpoint, then the deletion will fail since at least 1 origin is needed. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName 
 ```
-
-{{ Add example description here }}
+This cmdlet will remove the specified origin from the given endpoint. 
 
 ## PARAMETERS
 

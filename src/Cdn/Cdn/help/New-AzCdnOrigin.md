@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnOrigin
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CDN origin
 
 ## SYNTAX
 
@@ -36,16 +36,16 @@ New-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzCdnOrigin will create a new CDN origin within the specified endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName -HostName $hostName
 ```
 
-{{ Add example description here }}
+This cmdlet will create a new CDN origin for the specified endpoint. It will use the provided hostname as the origin. 
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCdnOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a CDN origin group
 
 ## SYNTAX
 
@@ -32,16 +32,16 @@ Remove-AzCdnOriginGroup [-PassThru] -CdnOriginGroup <PSOriginGroup> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzCdnOriginGroup will remove a CDN origin group from the specified endpoint. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
 ```
 
-{{ Add example description here }}
+This cmdlet will remove the specified origin group from the given endpoint. 
 
 ## PARAMETERS
 

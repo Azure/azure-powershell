@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzCdnOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CDN origin group
 
 ## SYNTAX
 
@@ -28,16 +28,15 @@ Set-AzCdnOriginGroup -CdnOriginGroup <PSOriginGroup> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzCdnOriginGroup will update the specified origin group within the given endpoint. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName -OriginId $originIds -ProbeIntervalInSeconds $probeInterval 
 ```
-
-{{ Add example description here }}
+This cmdlet will update the ProbeIntervalInSeconds property in the origin group. 
 
 ## PARAMETERS
 

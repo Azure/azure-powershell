@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a CDN origin group
 
 ## SYNTAX
 
@@ -24,16 +24,16 @@ Get-AzCdnOriginGroup -ResourceId <String> [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzCdnOriginGroup cmdlet retrieves a CDN origin group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
 ```
 
-{{ Add example description here }}
+This command will get the origin group within the specified endpoint.
 
 ## PARAMETERS
 
