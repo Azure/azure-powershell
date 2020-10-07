@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Specifies the **PublicIpAddressPrefix** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
 Parameter Sets: SetByResourcePublicIpAddressPrefix
 Aliases:
 

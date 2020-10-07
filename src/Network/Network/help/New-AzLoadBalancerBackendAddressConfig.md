@@ -22,7 +22,7 @@ New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String> -Virtu
 ```
 New-AzLoadBalancerBackendAddressConfig -Name <String> -LoadBalancerFrontendIPConfigurationId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- ```
+```
 
 ## DESCRIPTION
 Returns a load balancer backend address config. 
@@ -34,6 +34,7 @@ Returns a load balancer backend address config.
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
 ```
+
 ### Example 2: New loadbalancer address config with loadbalancer frontend ip configuration reference
 ```powershell
 PS C:\> $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
@@ -72,6 +73,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -LoadBalancerFrontendIPConfigurationId
+The load balancer frontend ip configuration associated with Backend Address config
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceFrontendIPConfiguration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Backend Address config
 
@@ -93,21 +109,6 @@ The virtual network associated with Backend Address config
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourcePublicIpAddress
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LoadBalancerFrontendIPConfigurationId
-The load balancer frontend ip configuration associated with Backend Address config
-
-```yaml
-Type: System.String
-Parameter Sets: SetByResourceFrontendIPConfiguration
 Aliases:
 
 Required: True
