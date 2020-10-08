@@ -343,6 +343,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        /// </summary>
+        internal static string DownloadSecurityDomainFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain exchange key..
+        /// </summary>
+        internal static string DownloadSecurityDomainKeyFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite File ?.
         /// </summary>
         internal static string FileOverwriteCaption {
@@ -1072,7 +1090,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to restore security domain data..
+        ///   Looks up a localized string similar to Failed to restore security domain from backup..
         /// </summary>
         internal static string RestoreSecurityDomainFailure {
             get {
@@ -1081,7 +1099,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain data..
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
         /// </summary>
         internal static string RestoreSecurityDomainNotEnoughKey {
             get {

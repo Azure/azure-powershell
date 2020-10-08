@@ -85,8 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 _writeDebug($"Invalid security domain response: {response}");
-                // todo : resource string
-                throw new Exception("Failed to download security domain data.");
+                throw new Exception(Resources.DownloadSecurityDomainFail);
             }
         }
 
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             if (string.IsNullOrEmpty(securityDomainWrapper.value) || !ValidateSecurityDomainData(securityDomainWrapper.value))
             {
                 _writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
-                throw new Exception("Failed to download security domain data."); // todo: resource string
+                throw new Exception(Resources.DownloadSecurityDomainFail);
             }
         }
 
@@ -204,14 +203,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 {
                     string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                     _writeDebug($"Invalid security domain response: {response}");
-                    // todo : resource string
-                    throw new Exception("Failed to download security domain exchange key.");
+                    throw new Exception(Resources.DownloadSecurityDomainKeyFail);
                 }
 
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to download security domain exchange key.", ex);
+                throw new Exception(Resources.DownloadSecurityDomainKeyFail, ex);
             }
         }
 
