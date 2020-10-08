@@ -22,10 +22,10 @@ Describe 'Get-AzWvdMsixPackage'  {
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
          
         $package_created_1 = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\MsixUnitTest.vhd' `
+            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\msix\SingleMsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -37,10 +37,10 @@ Describe 'Get-AzWvdMsixPackage'  {
             -Version '0.0.18838.722' 
 
         $package_created_2 = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest2 `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage2' -ImagePath 'C:\\MsixUnitTest2.vhd' `
+            -DisplayName 'UnitTest-MSIXPackage2' -ImagePath 'C:\\msix\SingleMsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -51,19 +51,19 @@ Describe 'Get-AzWvdMsixPackage'  {
             -PackageRelativePath 'MsixUnitTest_RelativePackageRoot2' `
             -Version '0.0.18838.722' 
  
-        $packages = Get-AzWvdMsixPackage -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+        $packages = Get-AzWvdMsixPackage -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
  
         $packages[0].PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
-        $packages[0].ImagePath | Should -Be 'C:\\MsixUnitTest.vhd'
+        $packages[0].ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
         ($packages[0].PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
         ($packages[0].PackageDependency| ConvertTo-Json) | Should -Be ($deps| ConvertTo-Json)
         $packages[0].PackageName | Should -Be 'MsixUnitTest_Name'
         $packages[0].PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
 
         $packages[1].PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName2'
-        $packages[1].ImagePath | Should -Be 'C:\\MsixUnitTest2.vhd'
+        $packages[1].ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
         ($packages[1].PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
         ($packages[1].PackageDependency| ConvertTo-Json) | Should -Be ($deps| ConvertTo-Json)
         $packages[1].PackageName | Should -Be 'MsixUnitTest_Name2'
@@ -71,13 +71,13 @@ Describe 'Get-AzWvdMsixPackage'  {
         
  
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest2' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
     }
 
@@ -91,10 +91,10 @@ Describe 'Get-AzWvdMsixPackage'  {
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
         
         $package_created = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\MsixUnitTest.vhd' `
+            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\msix\SingleMsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -106,21 +106,21 @@ Describe 'Get-AzWvdMsixPackage'  {
             -Version '0.0.18838.722' 
 
         $package = Get-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
         $package.PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
         $package.DisplayName | Should -Be 'UnitTest-MSIXPackage'
-        $package.ImagePath | Should -Be 'C:\\MsixUnitTest.vhd'
+        $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
         ($package.PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
         ($package.PackageDependency| ConvertTo-Json) | Should -Be ($deps| ConvertTo-Json)
         $package.PackageName | Should -Be 'MsixUnitTest_Name'
         $package.PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
 
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest  `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
     }
 }

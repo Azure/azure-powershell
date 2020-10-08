@@ -14,8 +14,8 @@ while(-not $mockingPath) {
 Describe 'Expand-AzWvdMsixImage' {
     
     It 'Expand'  {
-        $package = Expand-AzWvdMsixImage -HostPoolName ryannis-hp `
-         -ResourceGroupName ryannis-ukwest `
+        $package = Expand-AzWvdMsixImage -HostPoolName shhirji-hp-ps-unittest `
+         -ResourceGroupName shhirji-ps-unittest `
          -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
          -Uri 'C:\msix\singlemsix.vhd'
          

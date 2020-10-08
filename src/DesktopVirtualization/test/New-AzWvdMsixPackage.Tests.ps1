@@ -22,10 +22,10 @@ Describe 'New-AzWvdMsixPackage' {
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
         
         $package_created = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\MsixUnitTest.vhd' `
+            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\singlemsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -38,37 +38,37 @@ Describe 'New-AzWvdMsixPackage' {
 
             $package_created.PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package_created.DisplayName | Should -Be 'UnitTest-MSIXPackage'
-            $package_created.ImagePath | Should -Be 'C:\\MsixUnitTest.vhd'
+            $package_created.ImagePath | Should -Be 'C:\msix\SingleMsix.vhd'
             ($package_created.PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
             ($package_created.PackageDependency| ConvertTo-Json) | Should -Be ($deps| ConvertTo-Json)
             $package_created.PackageName | Should -Be 'MsixUnitTest_Name'
             $package_created.PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
 
         $package_created = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
     }
 
     It 'PackageAlias' {
 
         $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-        -HostPoolName shhirji-ps-test `
-        -ResourceGroupName ryannis-ukwest `
+        -HostPoolName shhirji-hp-ps-unittest `
+        -ResourceGroupName shhirji-ps-unittest `
         -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
         #image exists on specified hostpool
         $package_created = New-AzWvdMsixPackage -PackageAlias 'msixpackage' `
             -ImagePath 'C:\msix\singlemsix.vhd' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
             -DisplayName 'package-Alias-test' `
             -IsActive 
 
         $package_created = Get-AzWvdMsixPackage -FullName MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy `
-        -HostPoolName shhirji-ps-test `
-        -ResourceGroupName ryannis-ukwest `
+        -HostPoolName shhirji-hp-ps-unittest `
+        -ResourceGroupName shhirji-ps-unittest `
         -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
         $package_created.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'
@@ -79,8 +79,8 @@ Describe 'New-AzWvdMsixPackage' {
         $package_created.IsActive | Should -Be $True
         
         $package_created = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
     }

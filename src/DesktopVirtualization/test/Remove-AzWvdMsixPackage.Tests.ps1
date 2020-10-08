@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzWvdApplication.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzWvdMsixPackage.Recording.json'
 $currentPath = $PSScriptRoot
 while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,77 +11,21 @@ while (-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Remove-AzWvdApplication' {
-    It 'Delete' -Skip {
-        $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -Name 'ApplicationGroupPowershell1' `
-            -Location $env.Location `
-            -FriendlyName 'fri' `
-            -Description 'des' `
-            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1' `
-            -ApplicationGroupType 'RemoteApp'
+Describe 'Remove-AzWvdMsixPackage' {
+    It 'Delete' {
+        # Create new Package 
+        $enc = [system.Text.Encoding]::UTF8
+        $string1 = "some image"
+        $data1 = $enc.GetBytes($string1) 
+
+        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
         
-        $application = New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -GroupName 'ApplicationGroupPowershell1' `
-            -Name 'Paint' `
-            -FilePath 'C:\windows\system32\mspaint.exe' `
-            -FriendlyName 'fri' `
-            -Description 'des' `
-            -IconIndex 0 `
-            -IconPath 'C:\windows\system32\mspaint.exe' `
-            -CommandLineSetting 'Allow' `
-            -ShowInPortal:$true
-
-        $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -GroupName 'ApplicationGroupPowershell1' `
-            -Name 'Paint'
-        $application.Name | Should -Be 'ApplicationGroupPowershell1/Paint'
-        $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
-        $application.FriendlyName | Should -Be 'fri'
-        $application.Description | Should -Be 'des'
-        $application.IconIndex | Should -Be 0
-        $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
-        $application.CommandLineSetting | Should -Be 'Allow'
-        $application.ShowInPortal | Should -Be $true
-
-        $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -GroupName 'ApplicationGroupPowershell1' `
-            -Name 'Paint'
-
-        $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -Name 'ApplicationGroupPowershell1'
-
-        try {
-            $workspace = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $env.ResourceGroup `
-                -GroupName 'ApplicationGroupPowershell1' `
-                -Name 'Paint'
-            throw "Get should have failed."
-        }
-        catch {
-
-        }
-    }
-
-    It 'Delete_MsixApplication_RAG' {
-
-        $enc = [system.Text.Encoding]::UTF8
-        $string1 = "some image"
-        $data1 = $enc.GetBytes($string1) 
-
-        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
-
-        $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+        $package_created = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\MsixUnitTest.vhd' `
+            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\singlemsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -92,120 +36,29 @@ Describe 'Remove-AzWvdApplication' {
             -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
             -Version '0.0.18838.722' 
 
-        # create MSIX App 
-
-        $application = New-AzWvdApplication -GroupName 'ps-test-RAG' `
-            -Name 'UnitTest-MSIX-Application' `
-            -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -ApplicationType 1 `
-            -MsixPackageApplicationId 'MsixTest_Application_Id' `
-            -MsixPackageFamilyName 'MsixUnitTest_FamilyName'`
-            -Description 'Unit Test MSIX Application' `
-            -FriendlyName 'friendlyname'`
-            -IconIndex 0  `
-            -IconPath 'c:\unittest_img.png' `
-            -CommandLineSetting 0
-
-        $application = Get-AzWvdApplication -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -GroupName 'ps-test-RAG' `
-            -Name 'UnitTest-MSIX-Application'
-
-        $application.Name | Should -Be 'ps-test-RAG/UnitTest-MSIX-Application'
-        $application.FriendlyName | Should -Be 'friendlyname'
-        $application.Description | Should -Be 'Unit Test MSIX Application'
-        $application.IconIndex | Should -Be 0
-        $application.IconPath | Should -Be 'c:\unittest_img.png'
-        $application.ShowInPortal | Should -Be $true
-
-        $application = Remove-AzWvdApplication -GroupName 'ps-test-RAG' `
-            -Name 'UnitTest-MSIX-Application' `
-            -ResourceGroupName ryannis-ukwest `
+        $package = Get-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
+        $package.PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
+        $package.DisplayName | Should -Be 'UnitTest-MSIXPackage'
+        $package.ImagePath | Should -Be 'C:\msix\singlemsix.vhd'
+        ($package.PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
+        ($package.PackageDependency | ConvertTo-Json) | Should -Be ($deps | ConvertTo-Json)
+        $package.PackageName | Should -Be 'MsixUnitTest_Name'
+        $package.PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
+
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
+            -HostPoolName shhirji-hp-ps-unittest `
+            -ResourceGroupName shhirji-ps-unittest `
             -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
 
         try {
-            $app = Get-AzWvdApplication -GroupName 'ps-test-RAG' `
-                -Name 'UnitTest-MSIX-Application' `
-                -ResourceGroupName ryannis-ukwest `
+            $package_get = Get-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
+                -HostPoolName shhirji-hp-ps-unittest `
+                -ResourceGroupName shhirji-ps-unittest `
                 -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
-
-            throw "Get should have failed."
-        }
-        catch {
-    
-        }
-    }
-
-    It 'Delete_MsixApplication_DAG' {
-        $enc = [system.Text.Encoding]::UTF8
-        $string1 = "some image"
-        $data1 = $enc.GetBytes($string1) 
-
-        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
-
-        $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\\MsixUnitTest.vhd' `
-            -IsActive `
-            -IsRegularRegistration `
-            -LastUpdated '0001-01-01T00:00:00' `
-            -PackageApplication $apps `
-            -PackageDependency $deps `
-            -PackageFamilyName 'MsixUnitTest_FamilyName' `
-            -PackageName 'MsixUnitTest_Name' `
-            -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
-            -Version '0.0.18838.722' 
-
-        # create MSIX App 
-
-        $application = New-AzWvdApplication -GroupName 'shhirji-ps-test-DAG' `
-            -Name 'UnitTest-MSIX-Application-DAG' `
-            -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -ApplicationType 1 `
-            -MsixPackageFamilyName 'MsixUnitTest_FamilyName'`
-            -Description 'Unit Test MSIX Application' `
-            -FriendlyName 'friendlyname'`
-            -IconIndex 0  `
-            -CommandLineSetting 0
-
-        $application = Get-AzWvdApplication -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -GroupName 'shhirji-ps-test-DAG' `
-            -Name 'UnitTest-MSIX-Application-DAG'
-
-        $application.Name | Should -Be 'shhirji-ps-test-DAG/UnitTest-MSIX-Application-DAG'
-        $application.FriendlyName | Should -Be 'friendlyname'
-        $application.Description | Should -Be 'Unit Test MSIX Application'
-        $application.IconIndex | Should -Be 0
-        $application.MsixPackageFamilyName | Should -Be 'MsixUnitTest_FamilyName'
-        $application.ShowInPortal | Should -Be $false
-
-        $application = Remove-AzWvdApplication -GroupName 'shhirji-ps-test-DAG' `
-            -Name 'UnitTest-MSIX-Application-DAG' `
-            -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
-
-        $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-ps-test `
-            -ResourceGroupName ryannis-ukwest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
-
-        try {
-            $app = Get-AzWvdApplication -GroupName 'shhirji-ps-test-DAG' `
-                -Name 'UnitTest-MSIX-Application-DAG' `
-                -ResourceGroupName ryannis-ukwest `
-                -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
-
             throw "Get should have failed."
         }
         catch {
