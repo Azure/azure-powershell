@@ -24,7 +24,7 @@ Describe 'New-AzMigrateServerReplication' {
     }
 
     It 'ByInputObjectDefaultUser' {
-        $obj = Get-AzMigrateServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
+        $obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 
         $temp = ""
         foreach($ob in $obj){if($ob.Id -eq $env.srsSDSMachineId){$temp = $ob}}
@@ -34,7 +34,7 @@ Describe 'New-AzMigrateServerReplication' {
 
     It 'ByInputObjectPowerUser' {
         $OSDisk = New-AzMigrateDiskMapping -DiskID $env.srsDiskId -DiskType $env.srsDiskType -IsOSDisk 'true'
- 	$obj = Get-AzMigrateServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
+ 	$obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 
         $temp = ""
         foreach($ob in $obj){if($ob.Id -eq $env.srsSDSMachineId){$temp = $ob}}
