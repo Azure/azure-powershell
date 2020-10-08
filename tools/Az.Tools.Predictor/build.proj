@@ -22,21 +22,13 @@
 
   <Target Name="Build">
     <PropertyGroup>
-      <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
-      <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
+      <BuildAction>build</BuildAction>
     </PropertyGroup>
     <Message Text="Build $(ModuleName)" />
     <MakeDir Directories="$(ArtifactFolder)/$(ModuleName)" />
     <Exec Command="dotnet --version" />
 
     <Exec Command="dotnet $(BuildAction) $(ModuleSolutionFile) -c $(Configuration)" />
-
-    <ItemGroup>
-      <PublishedFiles Include="$(ArtifactFolder)/$(ModuleName)/publish/**/*" />
-    </ItemGroup>
-
-    <Move SourceFiles="@(PublishedFiles)" DestinationFiles="@(PublishedFiles->'$(ArtifactFolder)/$(ModuleName)/%(RecursiveDir)%(FileName)%(Extension)')" />
-    <RemoveDir Directories="$(ArtifactFolder)/$(ModuleName)/publish" Condition="'$(Configuration)' == 'Release'" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

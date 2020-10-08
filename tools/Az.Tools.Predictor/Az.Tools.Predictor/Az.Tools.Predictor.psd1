@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell Predictor: Provide prediction while us
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az'; ModuleVersion = '3.0.0'; })
+# RequiredModules = @()
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 

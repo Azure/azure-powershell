@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             this._parameterValuePredictor = parameterValuePredictor;
             this._predictions = new List<Prediction>();
 
-            foreach (var predictionTextRaw in modelPredictions)
+            foreach (var predictionTextRaw in modelPredictions ?? Enumerable.Empty<string>())
             {
                 var predictionText = EscapePredictionText(predictionTextRaw);
                 Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
