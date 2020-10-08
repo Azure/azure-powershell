@@ -62,7 +62,8 @@ function setupEnv() {
     $env.migSiteName = "BBVMwareAVScbbcsite"
     $env.migVMwareMachineName = "10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098b08-5701-4c58-f6ad-1daf127a8ed9"
     $env.migRunAsAccountName = "b090bef3-b733-5e34-bc8f-eb6f2701432a"
-
+    $env.migApplianceName = "BBVMwareAVS"
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

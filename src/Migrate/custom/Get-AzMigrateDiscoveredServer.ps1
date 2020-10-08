@@ -15,14 +15,14 @@
 
 <#
 .Synopsis
-Get All servers in a migrate project.
+Get All discovered servers in a migrate project.
 .Description
 Get Azure migrate server commandlet fetches all servers in a migrate project.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
 #>
 
-function Get-AzMigrateServer {
+function Get-AzMigrateDiscoveredServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param (

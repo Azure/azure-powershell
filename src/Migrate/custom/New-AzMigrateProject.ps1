@@ -65,7 +65,6 @@ function New-AzMigrateProject {
     
     process{
         if ($null -eq $Property) {
-            Write-Host "Null body"
             $Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
             $Property.RegisteredTool = {}
         }

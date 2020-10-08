@@ -1,49 +1,6 @@
----
-external help file:
-Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
-schema: 2.0.0
----
-
-# Get-AzMigrateServer
-
-## SYNOPSIS
-Get All servers in a migrate project.
-
-## SYNTAX
-
-### List (Default)
-```
-Get-AzMigrateServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
- [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMigrateServer -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetInSite
-```
-Get-AzMigrateServer -ApplianceName <String> -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListInSite
-```
-Get-AzMigrateServer -ApplianceName <String> -ProjectName <String> -ResourceGroupName <String>
- [-DisplayName <String>] [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-## DESCRIPTION
-Get Azure migrate server commandlet fetches all servers in a migrate project.
-
-## EXAMPLES
-
 ### Example 1: List
 ```powershell
-PS C:\> Get-AzMigrateServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
+PS C:\> Get-AzMigrateDiscoveredServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
@@ -59,25 +16,22 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_50299579-fc
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-efdc-7315-3b09-9d12a0f337e2 Microsoft.OffAzure/VMwareSites/machines
 
 ```
-
 Get All servers in a migrate project.
 
 ### Example 2: Get
 ```powershell
-PS C:\> Get-AzMigrateServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
+PS C:\> Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc Microsoft.OffAzure/VMwareSites/machines
 
 ```
-
-Get a server in a migrate project by name.
-Name is a unique paramenter for a server.
+Get a server in a migrate project by name. Name is a unique paramenter for a server.
 
 ### Example 3: List in an appliance
 ```powershell
-PS C:\> Get-AzMigrateServer  -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
+PS C:\> Get-AzMigrateDiscoveredServer  -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
@@ -93,25 +47,22 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_50299579-fc
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-efdc-7315-3b09-9d12a0f337e2 Microsoft.OffAzure/VMwareSites/machines
 
 ```
-
 List all servers for an appliance in a project.
 
 ### Example 4: Get in an appliance
 ```powershell
-PS C:\> Get-AzMigrateServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
+PS C:\> Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc Microsoft.OffAzure/VMwareSites/machines
 
 ```
-
-Get a server for an appliance in a project.
-Name is a unique paramenter for a server.
+Get a server for an appliance in a project. Name is a unique paramenter for a server.
 
 ### Example 5: List and filter by display name
 ```powershell
-PS C:\> Get-AzMigrateServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -DisplayName Contoso | Format-Table DisplayName,Name,Type
+PS C:\> Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -DisplayName Contoso | Format-Table DisplayName,Name,Type
 
 DisplayName                   Name                                                                                  Type
 -----------                   ----                                                                                  ----
@@ -124,12 +75,11 @@ ContosoVMwareMigration2       10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 ContosoAppSrv1                10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50097d3f-c1f6-9217-825c-936db54043df Microsoft.OffAzure/VMwareSites/machines
 
 ```
-
 List servers in a migrate project and filter responses with display name.
 
 ### Example 6: List in an appliance and filter by display name
 ```powershell
-PS C:\> PS /src/Migrate [Az.Migrate]> Get-AzMigrateServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -ApplianceName BBVMwareAVS -DisplayName Contoso | Format-Table DisplayName,Name,Type
+PS C:\> PS /src/Migrate [Az.Migrate]> Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -ApplianceName BBVMwareAVS -DisplayName Contoso | Format-Table DisplayName,Name,Type
 
 DisplayName                   Name                                                                                  Type
 -----------                   ----                                                                                  ----
@@ -142,147 +92,5 @@ ContosoVMwareMigration2       10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 ContosoAppSrv1                10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50097d3f-c1f6-9217-825c-936db54043df Microsoft.OffAzure/VMwareSites/machines
 Contoso-DataTier3             10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_500986e5-7720-471e-11d7-d4e8ae9edc45 Microsoft.OffAzure/VMwareSites/machines
 ```
-
 List servers for an appliance in a migrate project and filter responses with display name.
-
-## PARAMETERS
-
-### -ApplianceName
-Specifies the appliance name.
-This internally maps to a site.
-
-```yaml
-Type: System.String
-Parameter Sets: GetInSite, ListInSite
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Specifies the VMware machine display name.
-
-```yaml
-Type: System.String
-Parameter Sets: List, ListInSite
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the VMware machine name.
-This is an internal Name.
-For users, use display name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetInSite
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProjectName
-Specifies the migrate project name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Specifies the subscription id.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
-
-## NOTES
-
-ALIASES
-
-## RELATED LINKS
 
