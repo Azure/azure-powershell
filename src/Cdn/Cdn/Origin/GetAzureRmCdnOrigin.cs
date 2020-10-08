@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnOrigin", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOrigin))]
     public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin name.", ParameterSetName = FieldsParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin name.")]
         [ValidateNotNullOrEmpty]
         public string OriginName { get; set; }
 

@@ -19,15 +19,16 @@ Get-AzCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <Stri
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Get-AzCdnOrigin [-OriginName <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
 Get-AzCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Get-AzCdnOrigin -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +88,7 @@ Specifies the name of the origin server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
