@@ -191,7 +191,8 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Undo-AzRecoveryServicesBackupItemDeletion', 
                'Set-AzRecoveryServicesVaultProperty', 
                'Get-AzRecoveryServicesVaultProperty', 
-               'Copy-AzRecoveryServicesVault'
+               'Copy-AzRecoveryServicesVault',
+               'Update-AzRecoveryServicesVault'
 
 # Variables to export from this module
 # VariablesToExport = @()

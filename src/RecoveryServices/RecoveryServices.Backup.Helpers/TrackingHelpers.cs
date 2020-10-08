@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using RestAzureNS = Microsoft.Rest.Azure;
@@ -46,8 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -74,8 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -101,8 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -128,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             
             while (opStatusResponse.Body.Status == "InProgress")
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -153,7 +151,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -193,8 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                Thread.Sleep(5000);
                 opStatusResponse = getOpStatus(operationId);
             }
 
