@@ -98,6 +98,7 @@ directive:
     - ReplicationProviderSpecificContainerMappingInput
     - ProtectionContainerMappingProviderSpecificDetails
     - MigrateProjectProperties
+    - FabricProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2018-01-10/service.json
     where:
