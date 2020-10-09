@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/new-azsubscriptionalias
 schema: 2.0.0
 ---
 
