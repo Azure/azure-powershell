@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.2
 * Fixed typo in output messages
 
 ## Version 1.10.1
