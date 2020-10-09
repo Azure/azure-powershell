@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
+        PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
+
         PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
         PSKeyVaultKey GetManagedHsmKey(string vaultName, string keyName, string keyVersion);

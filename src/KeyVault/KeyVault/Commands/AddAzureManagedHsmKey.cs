@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string HsmName { get; set; }
+        public string VaultName { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
@@ -190,12 +190,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (InputObject != null)
             {
-                HsmName = InputObject.VaultName;
+                VaultName = InputObject.VaultName;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                HsmName = resourceIdentifier.ResourceName;
+                VaultName = resourceIdentifier.ResourceName;
             }
 
             ValidateKeyExchangeKey();
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 if (string.IsNullOrEmpty(KeyFilePath))
                 {
                     keyBundle = this.Track2DataClient.CreateManagedHsmKey(
-                            HsmName,
+                            VaultName,
                             Name,
                             CreateKeyAttributes(),
                             Size,

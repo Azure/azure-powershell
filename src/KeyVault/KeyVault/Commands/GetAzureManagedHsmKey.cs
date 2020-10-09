@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         public override void ExecuteCmdlet()
-        {
+                                                                                                                                                    {
             PSKeyVaultKey keyBundle = null;
 
             if (InputObject != null)
@@ -216,13 +216,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (!string.IsNullOrEmpty(Version))
             {
-                // passed
                 keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, Version);
                 WriteObject(keyBundle);
             }
             else if (IncludeVersions)
             {
-                // passed
                 keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, string.Empty);
                 if (keyBundle != null)
                 {
@@ -232,7 +230,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (InRemovedState)
             {
-                // to do: finish Remove-AzManagedHsmKey
                 if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
                     GetAndWriteDeletedKeys(VaultName, Name);
@@ -252,13 +249,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    // passed
                     keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, string.Empty);
                     WriteObject(keyBundle);
                 }
             }
 
-            // passed
             if (!string.IsNullOrEmpty(OutFile) && keyBundle != null)
             {
                 DownloadKey(keyBundle.Key, OutFile);

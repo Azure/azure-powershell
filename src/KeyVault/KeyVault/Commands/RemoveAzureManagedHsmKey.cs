@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         Resources.RemoveDeletedKeyWhatIfMessage,
                         Name),
                     Name,
-                    () => { this.Track2DataClient.DeleteManagedHsmKey(VaultName, Name); });
+                    () => { this.Track2DataClient.PurgeManagedHsmKey(VaultName, Name); });
                 return;
             }
 

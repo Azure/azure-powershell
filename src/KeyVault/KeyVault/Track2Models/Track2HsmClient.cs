@@ -125,6 +125,40 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             return new PSDeletedKeyVaultKey(deletedKey, this._uriHelper);
         }
+        internal PSKeyVaultKey UpdateKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException(nameof(keyName));
+            if (keyAttributes == null)
+                throw new ArgumentNullException(nameof(keyAttributes));
+
+            var client = CreateKeyClient(managedHsmName);
+
+            return UpdateKey(client, keyName, keyVersion, keyAttributes);
+        }
+
+        private PSKeyVaultKey UpdateKey(KeyClient client, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            KeyProperties keyProperties = client.GetKey(keyName).Value.Properties;
+            keyProperties.Enabled = keyAttributes.Enabled;
+            keyProperties.ExpiresOn = keyAttributes.Expires;
+            keyProperties.NotBefore = keyAttributes.NotBefore;
+
+            KeyVaultKey keyBundle;
+            try
+            {
+                keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps.Cast<KeyOperation>().ToList())
+                    .GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new PSKeyVaultKey(keyBundle, this._uriHelper);
+        }
 
         internal PSKeyVaultKey GetKey(string managedHsmName, string keyName, string keyVersion)
         {
@@ -156,7 +190,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultKey(client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult(), this._uriHelper);
+            return new PSKeyVaultKey(keyBundle, this._uriHelper);
         }
 
         internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -69,15 +69,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Key object")]
         [ValidateNotNullOrEmpty]
         public PSKeyVaultKeyIdentityItem InputObject { get; set; }
-
-        /// <summary>
-        /// Key version.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
-        [Alias("KeyVersion")]
-        public string Version { get; set; }
 
         /// <summary>
         /// If present, enable a key if value is true. 
@@ -110,11 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
-           HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
-        [Alias(Constants.TagsAlias)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -130,11 +116,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
-                var keyBundle = DataServiceClient.UpdateKey(
+                var keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
                 VaultName,
                 Name,
-                Version ?? string.Empty,
-                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                string.Empty,
+                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, null));
 
                 if (PassThru)
                 {

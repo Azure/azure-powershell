@@ -400,7 +400,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
         {
-            return HsmClient.DeleteKey(managedHsmName,keyName);
+            return HsmClient.DeleteKey(managedHsmName, keyName);
+        }
+
+        public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            return HsmClient.UpdateKey(managedHsmName, keyName, keyVersion, keyAttributes);
         }
 
         public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)

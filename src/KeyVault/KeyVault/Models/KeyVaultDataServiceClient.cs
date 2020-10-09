@@ -2012,6 +2012,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
         }
+        public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes) 
+        {
+            throw new NotImplementedException("Updating keys on managed HSM is only possible in track 2 SDK.");
+        }
 
         public PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion)
         {
