@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.1
 * Added warning message for planning to deprecate the parameters `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`
 * Added warning message for planning to replace the parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
 * Added warning message for planning to replace the parameter `DefaultStorageAccountKey` with `StorageAccountKey`
