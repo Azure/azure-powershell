@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * New/Update-AzPostgreSqlFirewallRule create a default name with time stamp when no name is passed (#12738)
 * Added validateset for parameter StorageAutogrow (#12736)
 * Used 'master' and 'replica' to avoid confusion when created postgresql replica server (#12743)
