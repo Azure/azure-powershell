@@ -174,19 +174,7 @@ function Get-AzMigrateServerReplication {
                 $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
                 if($solution -and ($solution.Count -ge 1)){
                     $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                    $applianceName = ""
-                    foreach($appObj in $applianceObj){
-                        $appsitename = $appObj.SiteId.Split("/")[8]
-                        if($appsitename -eq $SiteName){
-                            $applianceName = $app.ApplianceName
-                            break
-                        }
-                    }
-                    if($applianceName -eq ""){
-                        throw "No appliance found."
-                    }
-                    
+                   
                     $null = $PSBoundParameters.Remove("Name")
                     $null = $PSBoundParameters.Remove("MigrateProjectName")
                     $null = $PSBoundParameters.Add('ResourceName', $VaultName)
@@ -194,7 +182,7 @@ function Get-AzMigrateServerReplication {
                     $FabricName = ""
                     if($allFabrics -and ($allFabrics.length -gt 0)){
                         foreach ($fabric in $allFabrics) {
-                            if($fabric.Name -match $applianceName){
+                            if(($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)){
                                 $FabricName = $fabric.Name
                                 break
                             }
@@ -208,12 +196,7 @@ function Get-AzMigrateServerReplication {
                     $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
                     $ProtectionContainerName = ""
                     if($peContainers -and ($peContainers.length -gt 0)){
-                        foreach ($peContainer in $peContainers) {
-                            if($peContainer.Name -match $applianceName){
-                                $ProtectionContainerName = $peContainer.Name
-                                break
-                            }
-                        }
+                        $ProtectionContainerName = $peContainers[0].Name   
                     }
     
                     if($ProtectionContainerName -eq ""){

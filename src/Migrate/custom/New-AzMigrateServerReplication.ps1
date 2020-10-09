@@ -256,19 +256,6 @@ function New-AzMigrateServerReplication {
                 
                 $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
                 $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                $applianceName = ""
-                foreach($appObj in $applianceObj){
-                    $appsitename = $appObj.SiteId.Split("/")[8]
-                    if($appsitename -eq $SiteName){
-                        $applianceName = $app.ApplianceName
-                        break
-                    }
-                }
-                if($applianceName -eq ""){
-                    throw "No appliance found."
-                }
-                
                 
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove("Name")
@@ -285,7 +272,7 @@ function New-AzMigrateServerReplication {
                 $VMWarerunasaccountID = ""
                 foreach($account in $runAsAccounts){
                     $runasAccountSiteName = $account.Id.Split("/")[8]
-                    if( $runasAccountSiteName -eq $SiteName){
+                    if( $runasAccountSiteName -ceq $SiteName){
                         $VMWarerunasaccountID = $account.Id
                         break
                     }
@@ -302,11 +289,11 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
             $null = $PSBoundParameters.Add('PolicyName', $policyName)
-            $policyObj = Az.Migrate\Get-AzMigrateReplicationPolicy @PSBoundParameters
+            $policyObj = Az.Migrate\Get-AzMigrateReplicationPolicy @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if($policyObj -and ($policyObj.Count -ge 1)){
                 $PolicyId = $policyObj.Id
             }else{
-                throw "Please initialise the infrastructure."
+                throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
             }
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ResourceName')
@@ -318,7 +305,7 @@ function New-AzMigrateServerReplication {
             $FabricName = ""
             if($allFabrics -and ($allFabrics.length -gt 0)){
                 foreach ($fabric in $allFabrics) {
-                    if($fabric.Name -match $applianceName){
+                    if(($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)){
                         $FabricName = $fabric.Name
                         break
                     }
@@ -332,12 +319,7 @@ function New-AzMigrateServerReplication {
             $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
             $ProtectionContainerName = ""
             if($peContainers -and ($peContainers.length -gt 0)){
-                foreach ($peContainer in $peContainers) {
-                    if($peContainer.Name -match $applianceName){
-                        $ProtectionContainerName = $peContainer.Name
-                        break
-                    }
-                }
+                $ProtectionContainerName = $peContainers[0].Name
             }
 
             if($ProtectionContainerName -eq ""){
@@ -348,11 +330,11 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add('MappingName', $mappingName)
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
-            $mappingObject = Az.Migrate\Get-AzMigrateReplicationProtectionContainerMapping @PSBoundParameters
+            $mappingObject = Az.Migrate\Get-AzMigrateReplicationProtectionContainerMapping @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if($mappingObject -and ($mappingObject.Count -ge 1)){
                 $TargetRegion = $mappingObject.ProviderSpecificDetail.TargetLocation
             }else{
-                throw "Please initialise the infrastructure. "
+                throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
             }
             $null = $PSBoundParameters.Remove('MappingName')
 
