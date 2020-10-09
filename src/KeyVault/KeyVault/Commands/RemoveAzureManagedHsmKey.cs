@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -77,13 +77,37 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the cmdlet returns the key object that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// If present, operate on the deleted key entity.
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Remove the previously deleted key permanently.")]
+        public SwitchParameter InRemovedState { get; set; }
+
         #endregion
         public override void ExecuteCmdlet()
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName.ToString();
+                VaultName = InputObject.VaultName;
                 Name = InputObject.Name.ToString();
+            }
+
+            if (InRemovedState.IsPresent)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedKeyWarning,
+                        Name),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedKeyWhatIfMessage,
+                        Name),
+                    Name,
+                    () => { this.Track2DataClient.DeleteManagedHsmKey(VaultName, Name); });
+                return;
             }
 
             PSDeletedKeyVaultKey deletedKeyBundle = null;
@@ -98,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Resources.RemoveKeyWhatIfMessage,
                     Name),
                 Name,
-                () => { deletedKeyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
+                () => { deletedKeyBundle = this.Track2DataClient.DeleteManagedHsmKey(VaultName, Name); });
 
             if (PassThru)
             {

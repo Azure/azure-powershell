@@ -2007,7 +2007,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             throw new NotImplementedException("Creating keys on managed HSM is only possible in track 2 SDK.");
         }
-        
+
+        public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
+        }
+
         public PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion)
         {
             throw new NotImplementedException("Getting keys on managed HSM is only possible in track 2 SDK.");
@@ -2031,6 +2036,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options)
         {
             throw new NotImplementedException("Getting deleted keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public void PurgeManagedHsmKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Purging deleted keys on managed HSM is only possible in track 2 SDK.");
         }
 
         private VaultUriHelper vaultUriHelper;

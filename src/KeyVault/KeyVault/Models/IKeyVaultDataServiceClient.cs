@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 
+        PSDeletedKeyVaultKey DeleteManagedHsmKey(string ManagedHsm, string keyName);
+
         void PurgeKey(string vaultName, string name);
+
+        void PurgeManagedHsmKey(string managedHsmName, string keyName);
 
         PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 

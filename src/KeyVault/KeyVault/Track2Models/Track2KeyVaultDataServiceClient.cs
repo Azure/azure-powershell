@@ -398,6 +398,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
         }
 
+        public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.DeleteKey(managedHsmName,keyName);
+        }
+
         public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)
         {
             return HsmClient.GetDeletedKey(managedHsmName, keyName);
@@ -422,7 +427,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             return HsmClient.GetKeyVersions(options);
         }
-
+        public void PurgeManagedHsmKey(string managedHsmName, string keyName)
+        {
+            HsmClient.PurgeKey(managedHsmName, keyName);
+        }
         #endregion
 
     }
