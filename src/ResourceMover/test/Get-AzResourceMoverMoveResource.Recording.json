@@ -1,0 +1,78 @@
+{
+  "Get-AzResourceMoverMoveResource+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/moveResources?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/moveResources?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "8985c067-2e54-4f36-bd32-b15a3151aae0" ],
+        "CommandName": [ "Get-AzResourceMoverMoveResource" ],
+        "FullCommandName": [ "Get-AzResourceMoverMoveResource_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ef88f9aa-bab0-4400-8044-e624a795573b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "5106cf0e-0852-4c11-ac97-114d297eeefc" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102438Z:5106cf0e-0852-4c11-ac97-114d297eeefc" ],
+        "Date": [ "Tue, 25 Aug 2020 10:24:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"my-sRgVm1\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/MoveResources/my-sRgVm1\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":\"False\",\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"my-tRgVm1\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[{\"code\":\"TargetResourceGroupNameAlreadyExists\",\"message\":\"A resource group with the same name /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1 already exists.\\n      Possible Causes: A resource group with the same name exists.\\n      Recommended Action: Retry the operation by providing a different target resource group name.\\n    \",\"details\":null}]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"my-sRgVm1\"}}}],\"nextLink\":null,\"totalCount\":1}"
+    }
+  },
+  "Get-AzResourceMoverMoveResource+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/moveResources/my-sRgVm1?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/moveResources/my-sRgVm1?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "4ffddb8c-ec07-4633-befc-27313c3b3b8a" ],
+        "CommandName": [ "Get-AzResourceMoverMoveResource" ],
+        "FullCommandName": [ "Get-AzResourceMoverMoveResource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "37d5c30b-559c-4090-9ef9-43613f7e8091" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "9e69f3b0-1b86-468d-b7b4-73373ddaec4b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102438Z:9e69f3b0-1b86-468d-b7b4-73373ddaec4b" ],
+        "Date": [ "Tue, 25 Aug 2020 10:24:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1466" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"my-sRgVm1\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/MoveCollections/my-movecollection/MoveResources/my-sRgVm1\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":\"False\",\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"my-tRgVm1\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[{\"code\":\"TargetResourceGroupNameAlreadyExists\",\"message\":\"A resource group with the same name /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1 already exists.\\n      Possible Causes: A resource group with the same name exists.\\n      Recommended Action: Retry the operation by providing a different target resource group name.\\n    \",\"details\":null}]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"my-sRgVm1\"}}}"
+    }
+  }
+}

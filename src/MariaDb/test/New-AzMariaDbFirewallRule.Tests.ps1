@@ -21,4 +21,22 @@ Describe 'New-AzMariaDbFirewallRule' {
        $mariaDbFirewall = Get-AzMariaDbFirewallRule -Name $firewallName -ResourceGroupName $env.ResourceGroup -ServerName $env.rstrbc02
        $mariaDbFirewall.Name | Should -Be $firewallName 
     }
+
+    It 'ClientIPAddress' {
+        $firewallName = 'frname-002'
+        $rule = New-AzMariaDbFirewallRule -Name $firewallName -ResourceGroupName $env.resourceGroup -ServerName $env.rstrbc02 -ClientIPAddress 0.0.0.1
+        $rule.Name | Should -Be $firewallName
+        $rule.StartIPAddress | Should -Be 0.0.0.1
+        $rule.EndIPAddress | Should -Be 0.0.0.1
+        Remove-AzMariaDbFirewallRule -Name $firewallName -ResourceGroupName $env.resourceGroup -ServerName $env.rstrbc02
+    }
+
+    It 'AllowAll' {
+        $allowAllName = 'AllowAll_2020-08-11_21-28-19'
+        $rule = New-AzMariaDbFirewallRule -Name $allowAllName -ResourceGroupName $env.resourceGroup -ServerName $env.rstrbc02 -AllowAll
+        $rule.Name | Should -Be $allowAllName
+        $rule.StartIPAddress | Should -Be 0.0.0.0
+        $rule.EndIPAddress | Should -Be 255.255.255.255
+        Remove-AzMariaDbFirewallRule -Name $rule.Name -ResourceGroupName $env.resourceGroup -ServerName $env.rstrbc02
+    }
 }

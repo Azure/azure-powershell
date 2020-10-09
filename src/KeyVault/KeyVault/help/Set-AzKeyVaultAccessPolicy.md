@@ -131,12 +131,12 @@ Set-AzKeyVaultAccessPolicy [-ResourceId] <String> [-EnabledForDeployment] [-Enab
 ## DESCRIPTION
 The **Set-AzKeyVaultAccessPolicy** cmdlet grants or modifies existing permissions for a user, application, or security group to perform the specified operations with a key vault. It does not modify the permissions that other users, applications, or security groups have on the key vault.
 If you are setting permissions for a security group, this operation affects only users in that security group.
-The following directories must all be the same Azure directory: 
+The following directories must all be the same Azure directory:
 - The default directory of the Azure subscription in which the key vault resides.
 - The Azure directory that contains the user or application group that you are granting permissions to.
-Examples of scenarios when these conditions are not met and this cmdlet will not work are: 
+Examples of scenarios when these conditions are not met and this cmdlet will not work are:
 - Authorizing a user from a different organization to manage your key vault.
-Each organization has its own directory. 
+Each organization has its own directory.
 - Your Azure account has multiple directories.
 If you register an application in a directory other than the default directory, you cannot authorize that application to use your key vault.
 The application must be in the default directory.
@@ -230,16 +230,16 @@ Tags                             :
 
 The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault. The *PassThru* parameter results in the updated object being returned by the cmdlet.
 The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command.
-The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. 
+The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command.
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
 ```powershell
 PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
-This command grants permissions for an application for a key vault named Contoso03Vault. 
+This command grants permissions for an application for a key vault named Contoso03Vault.
 The *ServicePrincipalName* parameter specifies the application. The application must be registered in your Azure Active Directory. The value of the *ServicePrincipalName* parameter must be either the service principal name of the application or the application ID GUID.
-This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
+This example specifies the service principal name `http://payroll.contoso.com`, and the command grants the application permissions to read and write secrets.
 
 ### Example 3: Grant permissions for an application using its object ID
 ```powershell

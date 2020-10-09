@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
+    [CmdletOutputBreakingChange(typeof(PSManagementPolicyActionGroup), ChangeDescription = "The type of sub child property DaysAfterModificationGreaterThan will change from int to int? in a future release.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyRule"), OutputType(typeof(PSManagementPolicyRule))]
     public class NewAzureStorageAccountManagementPolicyRuleCommand : StorageAccountBaseCmdlet
     {

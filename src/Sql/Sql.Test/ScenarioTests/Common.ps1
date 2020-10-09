@@ -803,17 +803,19 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
     # TODO: Remove "CallSite.Target" when re-recording ImportExportTests
-    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd", "CallSite.Target");
+    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd");
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
     $storageKey = "StorageKey"
+    $storageResourceId = "/subscriptions/xys/resourcegroups/default/providers/Microsoft.Storage/test"
 
     $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
     if($testMode -eq "Record"){
         $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
         $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
         $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+        $storageResourceId = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_RESOURCE_ID")
 
        if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
           throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
@@ -823,6 +825,9 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
        }
        if ([System.string]::IsNullOrEmpty($storageKey)){
           throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
+       }
+       if ([System.string]::IsNullOrEmpty($storageResourceId)){
+          throw "The  TEST_STORAGE_RESOURCE_ID environment variable should point to the resource id for the storage account"
        }
     }
 
@@ -837,12 +842,13 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
               storageKey = $storageKey;
               exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
               importBacpacUri = $importBacpacUri;
-              location = "Australia East";
+              location = "West Central US";
               version = "12.0";
-              databaseEdition = "Standard";
-              serviceObjectiveName = "S0";
-              databaseMaxSizeBytes = "5000000";
+              databaseEdition = "GeneralPurpose";
+              serviceObjectiveName = "GP_Gen5_2";
+              databaseMaxSizeBytes = "1073741824";
               authType = "Sql";
+              storageResourceId = $storageResourceId;
              }
 }
 

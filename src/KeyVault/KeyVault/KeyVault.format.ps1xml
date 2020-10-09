@@ -367,6 +367,10 @@
                 <PropertyName>EnabledForDiskEncryption</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Enabled For RBAC Authorization?</Label>
+                <PropertyName>EnableRbacAuthorization</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Soft Delete Enabled?</Label>
                 <PropertyName>EnableSoftDelete</PropertyName>
               </ListItem>

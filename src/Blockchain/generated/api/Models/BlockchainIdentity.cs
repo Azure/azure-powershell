@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>Location Name.</summary>
+        /// <summary>Location name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Location Name.</summary>
+        /// <summary>Location name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Location Name.",
+        Description = @"Location name.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models
         string BlockchainMemberName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Location Name.</summary>
+        /// <summary>Location name.</summary>
         string Location { get; set; }
         /// <summary>Operation Id.</summary>
         string OperationId { get; set; }

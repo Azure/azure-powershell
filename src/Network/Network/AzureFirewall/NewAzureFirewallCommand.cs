@@ -220,6 +220,12 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "The firewall policy attached to the firewall")]
         public string FirewallPolicyId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow Active FTP. By default it is false."
+        )]
+        public SwitchParameter AllowActiveFTP { get; set; }
+
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -310,6 +316,7 @@ namespace Microsoft.Azure.Commands.Network
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
                     DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
                     DNSServer = this.DnsServer,
+                    AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku
                 };
 
