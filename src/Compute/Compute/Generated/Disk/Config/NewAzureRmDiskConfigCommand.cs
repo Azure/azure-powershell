@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        //[PSArgumentCompleter()]
+        [PSArgumentCompleter("P1", "P2", "P3", "P4", "P5", "P6", "P10", "P15", "P20", "P30",
+            "P40", "P50", "P60", "P70", "P80")]
         public string Tier { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        //[PSArgumentCompleter()]
         public int LogicalSectorSize { get; set; }
 
         [Parameter(
@@ -221,24 +221,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-            if (this.IsParameterBound(c => c.Tier))
-            {
-                if (vSku == null)
-                {
-                    vSku = new DiskSku();
-                }
-                vSku.Tier = this.Tier;
-            }
-
-            if (this.IsParameterBound(c => c.LogicalSectorSize))
-            {
-                if (vSku == null)
-                {
-                    vSku = new DiskSku();
-                }
-                vSku.LogicalSectorSize = this.LogicalSectorSize;
-            }
-
             if (this.IsParameterBound(c => c.CreateOption))
             {
                 if (vCreationData == null)
@@ -300,6 +282,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.UploadSizeBytes = this.UploadSizeInBytes;
+            }
+
+            if (this.IsParameterBound(c => c.LogicalSectorSize))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.LogicalSectorSize = this.LogicalSectorSize;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
@@ -387,7 +378,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
-                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null
+                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
+                Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null
             };
 
             WriteObject(vDisk);
