@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Update devices provisioning service sdk
 
 ## Version 0.7.4
