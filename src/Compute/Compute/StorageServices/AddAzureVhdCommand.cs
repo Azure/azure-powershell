@@ -252,11 +252,22 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (this.ParameterSetName == DirectUploadToManagedDiskSet)
                 {
-                    // resize vhd 
-                    // convert vhdx to vhd if need
+                    // 1. resize vhd 
+                    // 1-1. check OS
+                    OperatingSystem os = Environment.OSVersion;
+                    int p = (int) Environment.OSVersion.Platform;
+                    if ((int) os.Platform == 2 && os.Version.Major >= 10)
+                    {
+                        WriteObject("hereitis")
+                    }
+
+                    // 1-2. resize if supported 
+
+                    // 2. convert vhdx to vhd if need
 
                     // 3. DIRECT UPLOAD TO MANAGED DISK
                     
+                    /*
                     // 3-1. create disk config  
                     // TO-DO: need to set disksizeGB in this method still 
                     var diskConfig = CreateDiskConfig();
@@ -268,6 +279,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         DiskName = this.DiskName,
                         Disk = diskConfig
                     };
+                    
                     newDisk.ExecuteCmdlet();
                     
                     // 3-3: generate SAS
@@ -296,6 +308,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     revokeSas.ExecuteCmdlet();
 
                     WriteObject(vhdUploadContext);
+                    */
                 }
                 else
                 {
@@ -354,5 +367,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             };
             return vDisk;
         }
+
     }
 }
