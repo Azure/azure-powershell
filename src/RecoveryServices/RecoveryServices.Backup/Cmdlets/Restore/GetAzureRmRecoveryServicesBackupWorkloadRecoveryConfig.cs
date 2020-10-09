@@ -300,7 +300,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 resourceIdentifier.ResourceGroupName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[1];
                 resourceIdentifier.ResourceType = "/VMAppContainer";
                 resourceIdentifier.ResourceName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[2];
-                return resourceIdentifier.ToString();
+                return "/subscriptions/" + resourceIdentifier.Subscription + "/resourceGroups/" + resourceIdentifier.ResourceGroupName
+                       + "/providers/Microsoft.Compute/virtualMachines/" + resourceIdentifier.ResourceName;
             }
             catch
             {
