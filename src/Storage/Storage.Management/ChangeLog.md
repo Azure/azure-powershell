@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Removed obsolete property RestorePolicy.LastEnabledTime
+* Removed obsolete property RestorePolicy.LastEnabledTime
     - `Enable-AzStorageBlobRestorePolicy`
     - `Disable-AzStorageBlobRestorePolicy`
     - `Get-AzStorageBlobServiceProperty`
