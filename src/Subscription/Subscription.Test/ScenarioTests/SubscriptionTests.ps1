@@ -18,7 +18,7 @@ Create subscription
 #>
 function Test-UpdateRenameSubscription
 {
-    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
 
     $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Rename" -Name "RenameFromPowershell"
 
@@ -27,7 +27,7 @@ function Test-UpdateRenameSubscription
 
 function Test-UpdateCancelSubscription
 {
-    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
 
     $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Cancel"
 
