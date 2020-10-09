@@ -5409,8 +5409,8 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VirtualNetworkConnections</Label>
-                <PropertyName>VirtualNetworkConnectionsText</PropertyName>
+                <Label>HostedSubnet</Label>
+                <PropertyName>HostedSubnet</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>VirtualRouterAsn</Label>
