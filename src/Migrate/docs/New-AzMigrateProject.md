@@ -8,8 +8,7 @@ schema: 2.0.0
 # New-AzMigrateProject
 
 ## SYNOPSIS
-Get All servers in a migrate project.
-New proj.
+Creates a new Migrate project.
 
 ## SYNTAX
 
@@ -19,7 +18,7 @@ New-AzMigrateProject -Location <String> -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-Get Azure migrate server commandlet fetches all servers in a migrate project.
+Creates a new Migrate project.
 
 ## EXAMPLES
 
@@ -33,7 +32,7 @@ ETag Location  Name                     Type
 
 ```
 
-Method to create or update a migrate project.
+Method to create a new migrate project.
 
 ## PARAMETERS
 

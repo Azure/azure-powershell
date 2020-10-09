@@ -8,4 +8,4 @@ ETag Location  Name                     Type
 
 ```
 
-Method to create or update a migrate project.
+Method to create a new migrate project.
