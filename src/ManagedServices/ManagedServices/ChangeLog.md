@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated parameters naming conventions and associated examples
+* Updated parametersnaming conventions and associated examples
+
+## Version 1.1.1
+* Updated breaking change warnings on cmdlets of managed services assignment and definition
 
 ## Version 1.1.0
 * Added breaking change warnings on cmdlets of managed services assignment and definition

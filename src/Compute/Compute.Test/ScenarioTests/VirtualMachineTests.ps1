@@ -4372,3 +4372,43 @@ function Test-HostGroupPropertySetOnVirtualMachine
     }
 }
 
+<#
+.SYNOPSIS
+Test Virtual Machine Size and Usage
+#>
+function Test-VirtualMachineImageListTopOrderExpand
+{
+    # Setup
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $pubNames = "MicrosoftWindowsServer";
+        $pubNameFilter = '*Windows*';
+        $offer = "windowsserver";
+        $sku = "2012-R2-Datacenter";
+        $numRecords = 3;
+        $orderNameDesc = "name desc";
+        $orderNameAsc = "name asc";
+
+        # Test -Top
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
+        Assert-AreEqual $numRecords $vmImagesTop.Count; 
+
+        # Test -OrderBy
+        $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
+        $vmImagesOrderAsc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameAsc;
+
+        if ($vmImagesOrderDesc.Count -gt 0)
+        {
+            $isLessThan = $vmImagesOrderDesc[0].Version -ge $vmImagesOrderAsc[0].Version;
+            Assert-True { $isLessThan };
+        }
+    }
+    finally 
+    {
+    
+	}
+
+}
+
