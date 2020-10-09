@@ -16,10 +16,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.Subscription;
-using Microsoft.Azure.Management.Subscription.Models;
 
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {

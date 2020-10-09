@@ -47,15 +47,18 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "Alias for the subscription")]
         public string AliasName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Billing Scope")]
+        [Parameter(Mandatory = false, HelpMessage = "Billing Scope")]
         public string BillingScope { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Type of Workload")]
+        [Parameter(Mandatory = false, HelpMessage = "Type of Workload")]
         [PSArgumentCompleter("Production", "DevTest")]
         public string Workload { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of the subscription")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the subscription")]
         public string SubscriptionName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Reseller Id")]
+        public string ResellerId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Existing Subscription Id")]
         public string SubscriptionId { get; set; }
@@ -75,17 +78,12 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
                             BillingScope = BillingScope,
                             Workload = Workload,
                             DisplayName = SubscriptionName,
-                            SubscriptionId = SubscriptionId
+                            SubscriptionId = SubscriptionId,
+                            ResellerId = ResellerId       
                         }
                     });
-
-                // Write output.
-                var createdSubscription = new AzureSubscription()
-                {
-                    Id = result.Properties.SubscriptionId
-                };
               
-                WriteObject(new PSAzureSubscription(createdSubscription));
+                WriteObject(result);
             }
         }
     }
