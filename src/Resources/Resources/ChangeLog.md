@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed parsing bug
+* Add a default API version to be used in `Export-AzResourceGroup` cmdlet
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment

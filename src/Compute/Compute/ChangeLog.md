@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+
+## Version 4.5.0
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
 * Added the `-Top` and `-OrderBy` optional parameters to the `Get-AzVmImage` cmdlet. 
 
