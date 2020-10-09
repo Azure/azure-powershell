@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get All servers in a migrate project. New proj.
+Creates a new Migrate project.
 .Description
-Get Azure migrate server commandlet fetches all servers in a migrate project.
+Creates a new Migrate project. 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
 #>
