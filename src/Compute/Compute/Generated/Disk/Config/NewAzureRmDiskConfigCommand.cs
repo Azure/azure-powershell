@@ -46,6 +46,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true)]
+        //[PSArgumentCompleter()]
+        public string Tier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true)]
+        //[PSArgumentCompleter()]
+        public int LogicalSectorSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public OperatingSystemTypes? OsType { get; set; }
@@ -205,6 +219,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSku = new DiskSku();
                 }
                 vSku.Name = this.SkuName;
+            }
+
+            if (this.IsParameterBound(c => c.Tier))
+            {
+                if (vSku == null)
+                {
+                    vSku = new DiskSku();
+                }
+                vSku.Tier = this.Tier;
+            }
+
+            if (this.IsParameterBound(c => c.LogicalSectorSize))
+            {
+                if (vSku == null)
+                {
+                    vSku = new DiskSku();
+                }
+                vSku.LogicalSectorSize = this.LogicalSectorSize;
             }
 
             if (this.IsParameterBound(c => c.CreateOption))
