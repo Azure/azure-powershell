@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.7.4
 * Added new cmdlets `New-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`
 
 ## Version 0.7.3
