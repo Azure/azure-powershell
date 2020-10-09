@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Updated `Get-AzResourceGroupDeploymentOperation`to use the SDK.
-* Remove ApiVersion parameter from AzDeployment cmdlets.
+* Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
