@@ -89,7 +89,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
+        string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath);
+
         PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+
+        PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 

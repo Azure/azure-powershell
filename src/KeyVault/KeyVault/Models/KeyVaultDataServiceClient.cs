@@ -903,7 +903,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
-
+        
         public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
         {
             if ( string.IsNullOrEmpty( vaultName ) )
@@ -2001,6 +2001,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new PSKeyVaultManagedStorageAccount(storageAccountBundle, this.vaultUriHelper);
+        }
+
+        public string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath)
+        {
+            throw new NotImplementedException("Backing up a key on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
+        {
+            throw new NotImplementedException("Restoring a key on managed HSM is only possible in track 2 SDK.");
         }
 
         public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)

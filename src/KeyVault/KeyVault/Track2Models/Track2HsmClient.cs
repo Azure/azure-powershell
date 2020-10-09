@@ -11,6 +11,7 @@ using Azure;
 using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
 using System.Threading.Tasks;
 using System.Linq;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -24,6 +25,66 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             _credential = new Track2TokenCredential(new DataServiceCredential(authFactory, context, AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId));
             _uriHelper = new VaultUriHelper(context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointSuffix));
+        }
+
+        internal string BackupKey(string managedHsmName, string keyName, string outputBlobPath)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException(nameof(keyName));
+            if (string.IsNullOrEmpty(outputBlobPath))
+                throw new ArgumentNullException(nameof(outputBlobPath));
+
+            var client = CreateKeyClient(managedHsmName);
+
+            return BackupKey(client, keyName, outputBlobPath);
+        }
+
+        private string BackupKey(KeyClient client, string keyName, string outputBlobPath) 
+        {
+            BackupKeyResult backupKeyResult;
+            try
+            {
+                backupKeyResult = new BackupKeyResult(client.BackupKeyAsync(keyName).GetAwaiter().GetResult());
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            File.WriteAllBytes(outputBlobPath, backupKeyResult.Value);
+
+            return outputBlobPath;
+        }
+
+        internal PSKeyVaultKey RestoreKey(string managedHsmName, string inputBlobPath)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(inputBlobPath))
+                throw new ArgumentNullException(nameof(inputBlobPath));
+
+            var client = CreateKeyClient(managedHsmName);
+
+            return RestoreKey(client, inputBlobPath);
+        }
+
+        private PSKeyVaultKey RestoreKey(KeyClient client, string inputBlobPath)
+        {
+            var backupBlob = File.ReadAllBytes(inputBlobPath);
+
+            KeyVaultKey keyBundle;
+            try
+            {
+                keyBundle = client.RestoreKeyBackupAsync(backupBlob).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new PSKeyVaultKey(keyBundle, this._uriHelper);
         }
 
         internal PSKeyVaultKey CreateKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
@@ -188,7 +249,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             KeyVaultKey keyBundle;
             try
             {
-                keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps.Cast<KeyOperation>().ToList())
+                keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps?.Cast<KeyOperation>().ToList())
                     .GetAwaiter().GetResult();
             }
             catch (Exception ex)

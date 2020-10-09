@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Position = 0,
                     ParameterSetName = ByKeyNameParameterSet,
                     HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     || Force.IsPresent
                     || ShouldContinue(string.Format(Resources.FileOverwriteMessage, filePath), Resources.FileOverwriteCaption))
                 {
-                    var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
+                    var backupBlobPath = this.Track2DataClient.BackupManagedHsmKey(VaultName, Name, filePath);
                     this.WriteObject(backupBlobPath);
                 }
             }

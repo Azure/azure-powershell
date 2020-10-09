@@ -393,6 +393,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         #region ManagedHsm-related methods
 
+        public string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath)
+        {
+            return HsmClient.BackupKey(managedHsmName, keyName, outputBlobPath);
+        }
+        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
+        {
+            return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
+        }
+
         public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);

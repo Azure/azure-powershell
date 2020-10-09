@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var filePath = ResolveKeyVaultPath(InputFile);
 
-                var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
+                var restoredKeyBundle = this.Track2DataClient.RestoreManagedHsmKey(VaultName, filePath);
 
                 this.WriteObject(restoredKeyBundle);
             }
