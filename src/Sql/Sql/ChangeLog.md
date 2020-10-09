@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Azure Paired Regions URL in Backup Storage Redundancy Warnings 
 
 ## Version 2.11.0
 * Added BackupStorageRedundancy to the following: 

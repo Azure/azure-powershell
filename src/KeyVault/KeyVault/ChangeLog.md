@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.1
 * Provided the detailed date of removing property SecretValueText
 
 ## Version 2.2.0

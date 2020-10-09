@@ -21,6 +21,8 @@
 * Support create/update file share with access tier
     - `New-AzRmStorageShare`
     - `Update-AzRmStorageShare`
+
+## Version 2.7.0
 * Supported enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
     - `Get-AzStorageFileServiceProperty`
@@ -28,7 +30,7 @@
     - `Get-AzRmStorageShare`
 * Supported restore a deleted file share
     - `Restore-AzRmStorageShare`
-* Changed the cmdlets for modify blob service properties, won't get the orginal properties from server, but only set the modified properties to server.
+* Changed the cmdlets for modify blob service properties, won't get the original properties from server, but only set the modified properties to server.
     - `Enable-AzStorageBlobDeleteRetentionPolicy`
     - `Disable-AzStorageBlobDeleteRetentionPolicy`  
     - `Enable-AzStorageBlobRestorePolicy`
