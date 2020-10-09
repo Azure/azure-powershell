@@ -200,8 +200,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
-                                                                                                                                                    {
+        public override void ExecuteCmdlet()                                                                                                                                                    
+        {
             PSKeyVaultKey keyBundle = null;
 
             if (InputObject != null)
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, Version);
                 WriteObject(keyBundle);
             }
-            else if (IncludeVersions)
+            else if (IncludeVersions.IsPresent)
             {
                 keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, string.Empty);
                 if (keyBundle != null)
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
                 }
             }
-            else if (InRemovedState)
+            else if (InRemovedState.IsPresent)
             {
                 if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {

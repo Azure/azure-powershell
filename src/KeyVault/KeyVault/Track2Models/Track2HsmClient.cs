@@ -110,13 +110,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             return DeleteKey(client, keyName);
         }
+
         private PSDeletedKeyVaultKey DeleteKey(KeyClient client, string keyName)
         {
             DeletedKey deletedKey;
             try
             {
-                deletedKey = client.StartDeleteKeyAsync(keyName).GetAwaiter().GetResult()
-                    .WaitForCompletionAsync().GetAwaiter().GetResult();
+                deletedKey = client.StartDeleteKeyAsync(keyName).ConfigureAwait(false).GetAwaiter().GetResult()
+                    .WaitForCompletionAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
@@ -125,6 +126,35 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             return new PSDeletedKeyVaultKey(deletedKey, this._uriHelper);
         }
+
+        internal PSKeyVaultKey RecoverKey(string managedHsmName, string keyName) 
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException("managedHsmName");
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException("keyName");
+
+            var client = CreateKeyClient(managedHsmName);
+
+            return RecoverKey(client, keyName);
+        }
+        
+        private PSKeyVaultKey RecoverKey(KeyClient client, string keyName)
+        {
+            KeyVaultKey recoveredKey;
+            try
+            {
+                recoveredKey = client.StartRecoverDeletedKeyAsync(keyName).GetAwaiter().GetResult()
+                    .WaitForCompletionAsync().GetAwaiter().GetResult().Value;
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new PSKeyVaultKey(recoveredKey, this._uriHelper);
+        }
+
         internal PSKeyVaultKey UpdateKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(managedHsmName))
@@ -141,10 +171,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey UpdateKey(KeyClient client, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
-            KeyProperties keyProperties = client.GetKey(keyName).Value.Properties;
+            KeyProperties keyProperties = client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult().Value.Properties;
             keyProperties.Enabled = keyAttributes.Enabled;
             keyProperties.ExpiresOn = keyAttributes.Expires;
             keyProperties.NotBefore = keyAttributes.NotBefore;
+
+            if (keyAttributes.Tags != null)
+            {
+                keyProperties.Tags.Clear();
+                foreach (KeyValuePair<string, string> entry in keyAttributes.TagsDirectionary)
+                {
+                    keyProperties.Tags.Add(entry.Key, entry.Value);
+                }
+            }
 
             KeyVaultKey keyBundle;
             try
@@ -204,13 +243,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             try
             {
-                var keys = client.GetPropertiesOfKeys();
+                IEnumerable<KeyProperties> result = client.GetPropertiesOfKeys();
 
-
-                //return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
-                //    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
-                return null;
-
+                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
             }
             catch (Exception ex)
             {
@@ -267,7 +303,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSDeletedKeyVaultKey(deletedKeyBundle, _uriHelper);
         }
 
-        internal IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        internal IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException("options");
@@ -281,8 +317,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 IEnumerable<DeletedKey> result = client.GetDeletedKeys();
               
-                return (result == null) ? new List<PSDeletedKeyVaultKey>() :
-                    result.Select((deletedKey) => new PSDeletedKeyVaultKey(deletedKey, this._uriHelper));
+                return (result == null) ? new List<PSDeletedKeyVaultKeyIdentityItem>() :
+                    result.Select((deletedKey) => new PSDeletedKeyVaultKeyIdentityItem(deletedKey, this._uriHelper));
             }
             catch (Exception ex)
             {

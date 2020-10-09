@@ -408,6 +408,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.UpdateKey(managedHsmName, keyName, keyVersion, keyAttributes);
         }
 
+        public PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.RecoverKey(managedHsmName, keyName);
+        }
+
         public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)
         {
             return HsmClient.GetDeletedKey(managedHsmName, keyName);

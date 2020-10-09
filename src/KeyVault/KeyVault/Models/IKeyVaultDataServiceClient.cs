@@ -65,6 +65,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 
+        PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
+
         PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes);
 
         PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes);

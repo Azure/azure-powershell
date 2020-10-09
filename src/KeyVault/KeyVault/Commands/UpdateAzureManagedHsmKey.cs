@@ -71,6 +71,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
+        /// Key version.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 2,
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+        [Alias("KeyVersion")]
+        public string Version { get; set; }
+
+        /// <summary>
         /// If present, enable a key if value is true. 
         /// Disable a key if value is false.
         /// If not present, no change on current key enabled/disabled state.
@@ -101,6 +110,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
+           HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -119,8 +133,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
                 VaultName,
                 Name,
-                string.Empty,
-                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, null));
+                Version ?? string.Empty,
+                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
 
                 if (PassThru)
                 {
