@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
-* Added example to New-AzVirtualHuVNetConnection
+* Added example to New-AzVirtualHubVnetConnection
     - `Example details how to create a new routing config and static routes and apply it to a connection`
 * Added example to New-AzVHubRoute
     - `Example details how to set static route on HubVnet connection`
