@@ -11,27 +11,27 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsLifecycle.Suspend, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
-        DefaultParameterSetName = PauseByNameParameterSet, SupportsShouldProcess = true)]
+        DefaultParameterSetName = SuspendByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
     public class SuspendAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
-        private const string PauseByNameParameterSet = "PauseByNameParameterSet";
-        private const string PauseByParentObjectParameterSet = "PauseByParentObjectParameterSet";
-        private const string PauseByInputObjectParameterSet = "PauseByInputObjectParameterSet";
-        private const string PauseByResourceIdParameterSet = "PauseByResourceIdParameterSet";
+        private const string SuspendByNameParameterSet = "SuspendByNameParameterSet";
+        private const string SuspendByParentObjectParameterSet = "SuspendByParentObjectParameterSet";
+        private const string SuspendByInputObjectParameterSet = "SuspendByInputObjectParameterSet";
+        private const string SuspendByResourceIdParameterSet = "SuspendByResourceIdParameterSet";
 
-        [Parameter(Mandatory = false, ParameterSetName = PauseByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(Mandatory = false, ParameterSetName = SuspendByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = PauseByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(Mandatory = true, ParameterSetName = SuspendByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = PauseByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [Parameter(Mandatory = true, ParameterSetName = PauseByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(Mandatory = true, ParameterSetName = SuspendByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(Mandatory = true, ParameterSetName = SuspendByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
         [ResourceNameCompleter(
             ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
@@ -39,17 +39,17 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = PauseByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = SuspendByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = PauseByInputObjectParameterSet, Mandatory = true,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = SuspendByInputObjectParameterSet, Mandatory = true,
             HelpMessage = HelpMessages.SqlPoolObject)]
         [ValidateNotNull]
         public PSSynapseSqlPool InputObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = PauseByResourceIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SuspendByResourceIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SqlPoolResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

@@ -17,83 +17,83 @@ namespace Microsoft.Azure.Commands.Synapse
     [OutputType(typeof(PSSynapseSqlPool))]
     public class RestoreAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
-        // Create from backup
-        private const string CreateFromBackupIdByNameParameterSet = "CreateFromBackupIdByNameParameterSet";
-        private const string CreateFromBackupIdByParentObjectParameterSet = "CreateFromBackupIdByParentObjectParameterSet";
-        private const string CreateFromBackupNameByNameParameterSet = "CreateFromBackupNameByNameParameterSet";
-        private const string CreateFromBackupNameByParentObjectParameterSet = "CreateFromBackupNameByParentObjectParameterSet";
-        private const string CreateFromBackupInputObjectByNameParameterSet = "CreateFromBackupInputObjectByNameParameterSet";
+        // Restore from backup
+        private const string RestoreFromBackupIdByNameParameterSet = "RestoreFromBackupIdByNameParameterSet";
+        private const string RestoreFromBackupIdByParentObjectParameterSet = "RestoreFromBackupIdByParentObjectParameterSet";
+        private const string RestoreFromBackupNameByNameParameterSet = "RestoreFromBackupNameByNameParameterSet";
+        private const string RestoreFromBackupNameByParentObjectParameterSet = "RestoreFromBackupNameByParentObjectParameterSet";
+        private const string RestoreFromBackupInputObjectByNameParameterSet = "RestoreFromBackupInputObjectByNameParameterSet";
 
-        // Create from restore point
-        private const string CreateFromRestorePointIdByNameParameterSet = "CreateFromRestorePointIdByNameParameterSet";
-        private const string CreateFromRestorePointIdByParentObjectParameterSet = "CreateFromRestorePointIdByParentObjectParameterSet";
-        private const string CreateFromRestorePointNameByNameParameterSet = "CreateFromRestorePointNameByNameParameterSet";
-        private const string CreateFromRestorePointNameByParentObjectParameterSet = "CreateFromRestorePointNameByParentObjectParameterSet";
-        private const string CreateFromRestorePointInputObjectByNameParameterSet = "CreateFromRestorePointInputObjectByNameParameterSet";
+        // Restore from restore point
+        private const string RestoreFromRestorePointIdByNameParameterSet = "RestoreFromRestorePointIdByNameParameterSet";
+        private const string RestoreFromRestorePointIdByParentObjectParameterSet = "RestoreFromRestorePointIdByParentObjectParameterSet";
+        private const string RestoreFromRestorePointNameByNameParameterSet = "RestoreFromRestorePointNameByNameParameterSet";
+        private const string RestoreFromRestorePointNameByParentObjectParameterSet = "RestoreFromRestorePointNameByParentObjectParameterSet";
+        private const string RestoreFromRestorePointInputObjectByNameParameterSet = "RestoreFromRestorePointInputObjectByNameParameterSet";
 
-        [Parameter(ParameterSetName = CreateFromBackupIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
-        [Parameter(ParameterSetName = CreateFromBackupIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
-        [Parameter(ParameterSetName = CreateFromBackupInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
         public SwitchParameter FromBackup { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
-        [Parameter(ParameterSetName = CreateFromRestorePointInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
         public SwitchParameter FromRestorePoint { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromBackupInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupInputObjectByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromBackupInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateFromBackupNameByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromBackupNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateFromBackupIdByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateFromRestorePointNameByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateFromRestorePointIdByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -106,37 +106,37 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PerformanceLevel)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PerformanceLevel)]
-        [Parameter(ParameterSetName = CreateFromRestorePointInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.PerformanceLevel)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PerformanceLevel)]
         [ValidateNotNullOrEmpty]
         public string PerformanceLevel { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.BackupResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByParentObjectParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.BackupResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string BackupResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupWorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupWorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(BackupResourceGroupName))]
         [Alias("BackupServerName")]
         [ValidateNotNullOrEmpty]
         public string BackupWorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupSqlPoolName)]
-        [Parameter(ParameterSetName = CreateFromBackupNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupSqlPoolName)]
         [ResourceNameCompleter(
             ResourceTypes.SqlPool,
@@ -146,38 +146,38 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string BackupSqlPoolName { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SqlPoolObject)]
         [ValidateNotNullOrEmpty]
         public PSSynapseSqlPool BackupSqlPoolObject { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromBackupIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupSqlPoolResourceId)]
-        [Parameter(ParameterSetName = CreateFromBackupIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.BackupSqlPoolResourceId)]
         [ValidateNotNullOrEmpty]
         public string BackupResourceId { get; set; }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.SourceResourceGroupName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.SourceResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string SourceResourceGroupName { get { return BackupResourceGroupName; } set { this.BackupResourceGroupName = value; } }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceWorkspaceName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceWorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(SourceResourceGroupName))]
         [Alias("SourceServerName")]
         [ValidateNotNullOrEmpty]
         public string SourceWorkspaceName { get { return BackupWorkspaceName; } set { this.BackupWorkspaceName = value; } }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceSqlPoolName)]
-        [Parameter(ParameterSetName = CreateFromRestorePointNameByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceSqlPoolName)]
         [ResourceNameCompleter(
             ResourceTypes.SqlPool,
@@ -187,21 +187,21 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string SourceSqlPoolName { get { return BackupSqlPoolName; } set { this.BackupSqlPoolName = value; } }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointInputObjectByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SqlPoolObject)]
         [ValidateNotNullOrEmpty]
         public PSSynapseSqlPool SourceSqlPoolObject { get { return BackupSqlPoolObject; } set { this.BackupSqlPoolObject = value; } }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceSqlPoolId)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceSqlPoolId)]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get { return BackupResourceId; } set { this.BackupResourceId = value; } }
 
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByNameParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.RestorePoint)]
-        [Parameter(ParameterSetName = CreateFromRestorePointIdByParentObjectParameterSet,
+        [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.RestorePoint)]
         public DateTime? RestorePoint { get; set; }
 
@@ -278,20 +278,20 @@ namespace Microsoft.Azure.Commands.Synapse
 
             switch (this.ParameterSetName)
             {
-                case CreateFromBackupNameByNameParameterSet:
-                case CreateFromBackupNameByParentObjectParameterSet:
-                case CreateFromBackupIdByNameParameterSet:
-                case CreateFromBackupIdByParentObjectParameterSet:
-                case CreateFromBackupInputObjectByNameParameterSet:
+                case RestoreFromBackupNameByNameParameterSet:
+                case RestoreFromBackupNameByParentObjectParameterSet:
+                case RestoreFromBackupIdByNameParameterSet:
+                case RestoreFromBackupIdByParentObjectParameterSet:
+                case RestoreFromBackupInputObjectByNameParameterSet:
                     createParams.CreateMode = SynapseSqlPoolCreateMode.Recovery;
                     createParams.RecoverableDatabaseId = this.BackupResourceId;
                     break;
 
-                case CreateFromRestorePointNameByNameParameterSet:
-                case CreateFromRestorePointNameByParentObjectParameterSet:
-                case CreateFromRestorePointIdByNameParameterSet:
-                case CreateFromRestorePointIdByParentObjectParameterSet:
-                case CreateFromRestorePointInputObjectByNameParameterSet:
+                case RestoreFromRestorePointNameByNameParameterSet:
+                case RestoreFromRestorePointNameByParentObjectParameterSet:
+                case RestoreFromRestorePointIdByNameParameterSet:
+                case RestoreFromRestorePointIdByParentObjectParameterSet:
+                case RestoreFromRestorePointInputObjectByNameParameterSet:
                     if (!this.IsParameterBound(c => c.RestorePoint))
                     {
                         this.RestorePoint = GetNewestRestorePoint();
