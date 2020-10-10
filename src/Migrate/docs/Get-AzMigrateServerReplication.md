@@ -26,8 +26,8 @@ Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <S
 
 ### GetBySDSID
 ```
-Get-AzMigrateServerReplication -MachineID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMigrateServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetBySRSID
@@ -220,6 +220,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiscoveredMachineId
+Specifies the machine ID of the discovered server.
+
+```yaml
+Type: System.String
+Parameter Sets: GetBySDSID
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Filter
 OData filter options.
 
@@ -242,21 +257,6 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 Parameter Sets: GetByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineID
-Specifies the machine ID of the discovered server.
-
-```yaml
-Type: System.String
-Parameter Sets: GetBySDSID
 Aliases:
 
 Required: True

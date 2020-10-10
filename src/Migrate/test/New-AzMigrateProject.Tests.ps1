@@ -12,11 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMigrateProject' {
-    It 'PutExpanded' {
-        $props = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
-        $props.RegisteredTool = {}
-        $projName = "AzMigratePwshTestProj"
-        $project = New-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus" -ETag "*" -Property $props
+    It 'PutExpandedCustom' {
+        $projName = "AzMigratePwshTestProj123"
+        $project = New-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus"
         $project.Name | Should -Be $projName
     }
 }

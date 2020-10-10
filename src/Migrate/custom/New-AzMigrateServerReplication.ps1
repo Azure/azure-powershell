@@ -30,7 +30,7 @@ function New-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the machine ID of the discovered server to be migrated.
-        ${VMwareMachineId},
+        ${MachineId},
 
         [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
         [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
@@ -96,8 +96,8 @@ function New-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName='ByIdDefaultUser')]
         [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
-        [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
-        [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
+        [Parameter(ParameterSetName='ByIdPowerUser')]
+        [Parameter(ParameterSetName='ByInputObjectPowerUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.
@@ -212,7 +212,7 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
             $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
             $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
-            $null = $PSBoundParameters.Remove('VMwareMachineId')
+            $null = $PSBoundParameters.Remove('MachineId')
             $null = $PSBoundParameters.Remove('DiskToInclude')
             $null = $PSBoundParameters.Remove('TargetResourceGroupId')
             $null = $PSBoundParameters.Remove('TargetNetworkId')
@@ -225,14 +225,14 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('LicenseType')
             $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
-            $null = $PSBoundParameters.Remove('VMwareMachineId')
+            $null = $PSBoundParameters.Remove('MachineId')
             $null = $PSBoundParameters.Remove('InputObject')
            
             if(($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')){
                 if(($parameterSet -match 'InputObject')){
-                    $VMwareMachineId = $InputObject.Id
+                    $MachineId = $InputObject.Id
                 }
-                $MachineIdArray = $VMwareMachineId.Split("/")
+                $MachineIdArray = $MachineId.Split("/")
                 $SiteType = $MachineIdArray[7]
                 $SiteName = $MachineIdArray[8]
                 $ResourceGroupName = $MachineIdArray[4]
@@ -256,19 +256,6 @@ function New-AzMigrateServerReplication {
                 
                 $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
                 $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                $applianceName = ""
-                foreach($appObj in $applianceObj){
-                    $appsitename = $appObj.SiteId.Split("/")[8]
-                    if($appsitename -eq $SiteName){
-                        $applianceName = $app.ApplianceName
-                        break
-                    }
-                }
-                if($applianceName -eq ""){
-                    throw "No appliance found."
-                }
-                
                 
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove("Name")
@@ -284,7 +271,8 @@ function New-AzMigrateServerReplication {
                 $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount @PSBoundParameters
                 $VMWarerunasaccountID = ""
                 foreach($account in $runAsAccounts){
-                    if($account.type -match 'VMwareSites'){
+                    $runasAccountSiteName = $account.Id.Split("/")[8]
+                    if( $runasAccountSiteName -ceq $SiteName){
                         $VMWarerunasaccountID = $account.Id
                         break
                     }
@@ -301,11 +289,11 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
             $null = $PSBoundParameters.Add('PolicyName', $policyName)
-            $policyObj = Az.Migrate\Get-AzMigrateReplicationPolicy @PSBoundParameters
+            $policyObj = Az.Migrate\Get-AzMigrateReplicationPolicy @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if($policyObj -and ($policyObj.Count -ge 1)){
                 $PolicyId = $policyObj.Id
             }else{
-                throw "Please initialise the infrastructure."
+                throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
             }
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ResourceName')
@@ -317,7 +305,7 @@ function New-AzMigrateServerReplication {
             $FabricName = ""
             if($allFabrics -and ($allFabrics.length -gt 0)){
                 foreach ($fabric in $allFabrics) {
-                    if($fabric.Name -match $applianceName){
+                    if(($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)){
                         $FabricName = $fabric.Name
                         break
                     }
@@ -331,12 +319,7 @@ function New-AzMigrateServerReplication {
             $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
             $ProtectionContainerName = ""
             if($peContainers -and ($peContainers.length -gt 0)){
-                foreach ($peContainer in $peContainers) {
-                    if($peContainer.Name -match $applianceName){
-                        $ProtectionContainerName = $peContainer.Name
-                        break
-                    }
-                }
+                $ProtectionContainerName = $peContainers[0].Name
             }
 
             if($ProtectionContainerName -eq ""){
@@ -347,11 +330,11 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add('MappingName', $mappingName)
             $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
-            $mappingObject = Az.Migrate\Get-AzMigrateReplicationProtectionContainerMapping @PSBoundParameters
+            $mappingObject = Az.Migrate\Get-AzMigrateReplicationProtectionContainerMapping @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if($mappingObject -and ($mappingObject.Count -ge 1)){
                 $TargetRegion = $mappingObject.ProviderSpecificDetail.TargetLocation
             }else{
-                throw "Please initialise the infrastructure. "
+                throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
             }
             $null = $PSBoundParameters.Remove('MappingName')
 
@@ -407,7 +390,7 @@ public static int hashForArtifact(String artifact)
             $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
             $ProviderSpecificDetails.TargetVMName = $TargetVMName
             if($HasTargetVMSize){$ProviderSpecificDetails.TargetVMSize = $TargetVMSize}
-            $ProviderSpecificDetails.VmwareMachineId = $VMwareMachineId
+            $ProviderSpecificDetails.VmwareMachineId = $MachineId
 
 
             if ($parameterSet -match 'DefaultUser'){

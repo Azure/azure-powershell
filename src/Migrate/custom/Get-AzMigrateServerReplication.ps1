@@ -47,7 +47,7 @@ function Get-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the machine ID of the discovered server.
-        ${MachineID},
+        ${DiscoveredMachineId},
 
         [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -141,7 +141,7 @@ function Get-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('TargetObjectID')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ProjectName')
-            $null = $PSBoundParameters.Remove('MachineID')
+            $null = $PSBoundParameters.Remove('DiscoveredMachineId')
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupID')
             $null = $PSBoundParameters.Remove('ProjectID')
@@ -151,7 +151,7 @@ function Get-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('SkipToken')
            
             if ($parameterSet -eq "GetBySDSID"){
-                $MachineIdArray = $MachineID.Split("/")
+                $MachineIdArray = $DiscoveredMachineId.Split("/")
                 $SiteType = $MachineIdArray[7]
                 $SiteName = $MachineIdArray[8]
                 $ResourceGroupName = $MachineIdArray[4]
@@ -174,19 +174,7 @@ function Get-AzMigrateServerReplication {
                 $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
                 if($solution -and ($solution.Count -ge 1)){
                     $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-                    $applianceObj =  ConvertFrom-Json $solution.DetailExtendedDetail.AdditionalProperties.applianceNameToSiteIdMapV2
-                    $applianceName = ""
-                    foreach($appObj in $applianceObj){
-                        $appsitename = $appObj.SiteId.Split("/")[8]
-                        if($appsitename -eq $SiteName){
-                            $applianceName = $app.ApplianceName
-                            break
-                        }
-                    }
-                    if($applianceName -eq ""){
-                        throw "No appliance found."
-                    }
-                    
+                   
                     $null = $PSBoundParameters.Remove("Name")
                     $null = $PSBoundParameters.Remove("MigrateProjectName")
                     $null = $PSBoundParameters.Add('ResourceName', $VaultName)
@@ -194,7 +182,7 @@ function Get-AzMigrateServerReplication {
                     $FabricName = ""
                     if($allFabrics -and ($allFabrics.length -gt 0)){
                         foreach ($fabric in $allFabrics) {
-                            if($fabric.Name -match $applianceName){
+                            if(($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)){
                                 $FabricName = $fabric.Name
                                 break
                             }
@@ -208,12 +196,7 @@ function Get-AzMigrateServerReplication {
                     $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
                     $ProtectionContainerName = ""
                     if($peContainers -and ($peContainers.length -gt 0)){
-                        foreach ($peContainer in $peContainers) {
-                            if($peContainer.Name -match $applianceName){
-                                $ProtectionContainerName = $peContainer.Name
-                                break
-                            }
-                        }
+                        $ProtectionContainerName = $peContainers[0].Name   
                     }
     
                     if($ProtectionContainerName -eq ""){

@@ -13,18 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMigrateServerReplication' {
     It 'ByIdDefaultUser' {
-         $output = New-AzMigrateServerReplication -VMwareMachineId $env.srsSDSMachineId  -LicenseType $env.srsLicense -TargetResourceGroupId $env.srsTargetRGId -TargetNetworkId $env.srsTgtNId -TargetSubnetName default -TargetVMName $env.srsTgtVMName -DiskType $env.srsDiskType -OSDiskID $env.srsDiskId -SubscriptionId $env.srsSubscriptionId
+         $output = New-AzMigrateServerReplication -MachineId $env.srsSDSMachineId  -LicenseType $env.srsLicense -TargetResourceGroupId $env.srsTargetRGId -TargetNetworkId $env.srsTgtNId -TargetSubnetName default -TargetVMName $env.srsTgtVMName -DiskType $env.srsDiskType -OSDiskID $env.srsDiskId -SubscriptionId $env.srsSubscriptionId
          $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'ByIdPowerUser' {
         $OSDisk = New-AzMigrateDiskMapping -DiskID $env.srsDiskId -DiskType $env.srsDiskType -IsOSDisk 'true'
-        $output = New-AzMigrateServerReplication -VMwareMachineId $env.srsSDSMachineId -LicenseType $env.srsLicense -TargetResourceGroupId $env.srsTargetRGId -TargetNetworkId $env.srsTgtNId -TargetSubnetName default -TargetVMName $env.srsTgtVMName -DiskToInclude $OSDisk -PerformAutoResync true -SubscriptionId $env.srsSubscriptionId
+        $output = New-AzMigrateServerReplication -MachineId $env.srsSDSMachineId -LicenseType $env.srsLicense -TargetResourceGroupId $env.srsTargetRGId -TargetNetworkId $env.srsTgtNId -TargetSubnetName default -TargetVMName $env.srsTgtVMName -DiskToInclude $OSDisk -PerformAutoResync true -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'ByInputObjectDefaultUser' {
-        $obj = Get-AzMigrateServer  -ResourceGroupName $env.srsResourceGroup -MigrateProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
+        $obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 
         $temp = ""
         foreach($ob in $obj){if($ob.Id -eq $env.srsSDSMachineId){$temp = $ob}}
@@ -34,7 +34,7 @@ Describe 'New-AzMigrateServerReplication' {
 
     It 'ByInputObjectPowerUser' {
         $OSDisk = New-AzMigrateDiskMapping -DiskID $env.srsDiskId -DiskType $env.srsDiskType -IsOSDisk 'true'
- 	$obj = Get-AzMigrateServer  -ResourceGroupName $env.srsResourceGroup -MigrateProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
+ 	$obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 
         $temp = ""
         foreach($ob in $obj){if($ob.Id -eq $env.srsSDSMachineId){$temp = $ob}}

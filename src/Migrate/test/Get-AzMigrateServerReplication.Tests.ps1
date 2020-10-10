@@ -23,7 +23,7 @@ Describe 'Get-AzMigrateServerReplication' {
     }
 
     It 'GetBySDSID' {
-        $output = Get-AzMigrateServerReplication -MachineID $env.srsGetSDSMachineID -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -DiscoveredMachineId $env.srsGetSDSMachineID -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 

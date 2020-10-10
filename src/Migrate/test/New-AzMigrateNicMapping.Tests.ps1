@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMigrateServer.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMigrateNicMapping.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,9 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzMigrateServer' {
-    It '__AllParameterSets' {
-        $machines = Get-AzMigrateServer -ResourceGroupName $env.migResourceGroup -MigrateProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
-        $machines.Count | Should -BeGreaterOrEqual 1 
+Describe 'New-AzMigrateNicMapping' {
+    It 'VMwareCbt' {
+        $output = New-AzMigrateNicMapping -NicID abcd -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
+        $output.Count | Should -BeGreaterOrEqual 1 
+        $output.NicID | Should -Be abcd
     }
 }
