@@ -1,0 +1,41 @@
+{
+  "Get-AzMigrateSite+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "ff2347fd-d51e-48bd-a53a-8684445c9950" ],
+        "CommandName": [ "Get-AzMigrateSite" ],
+        "FullCommandName": [ "Get-AzMigrateSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000063-0000-1800-0000-5ee9aee50000\"" ],
+        "x-ms-request-id": [ "6b38ce5d-6532-4fa6-af6d-db3265063e88" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "b5b20086-43db-4ef3-8cbf-0159d0365ce8" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191233Z:b5b20086-43db-4ef3-8cbf-0159d0365ce8" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2485" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite\",\"name\":\"BBVMwareAVScbbcsite\",\"type\":\"Microsoft.OffAzure/VMwareSites\",\"etag\":\"\\\"00000063-0000-1800-0000-5ee9aee50000\\\"\",\"location\":\"southeastasia\",\"properties\":{\"servicePrincipalIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"48344751-792f-4e15-8307-6d53e2f7f455\",\"objectId\":\"1a3231b4-c322-4353-b820-c3734437c4c5\",\"audience\":\"https://72f988bf-86f1-41af-91ab-2d7cd011db47/BBVMwareAVScbbcagentauthaadapp\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"rawCertData\":\"MIIDNDCCAhygAwIBAgIQAM8kxTawTzyp6E8X6qrlBjANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDEwxBZ2VudFNwbkNlcnQwHhcNMjAwNjE3MDUzMzE3WhcNMjMwNjE3MDU0MzE3WjAXMRUwEwYDVQQDEwxBZ2VudFNwbkNlcnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDCnoLI0PC6LwB/Vc7XIYS87CWYN27tykASa8HnTQ0z60yrPd+xfulB1Hp4SHHqLcXr7+FPymSVFMRmM7LnEAcIeaFx/S0CqOxVRqJYkXmwGRk5ocExS1Kbj9gW5PmWi8QuGaLcLU6hp4ryxqC5hcos48jA1SMMscVcEUKskJeorLfkMrMJ34z3r0asMQCKmrdHatWRYV8EYSYHTzALAzX+ulYp+QdR2nDAK/CbiT+UqMCIMNYFR8uuSOL0Bh8GCfnm3AuZNWrKjqw22FsT1J5Q25EtkJLNsL2lf/hIIEnDVb0kxKCo4jp0LQZv2egmQJAi+gVYDmZmaaRgiYOt6iIzAgMBAAGjfDB6MA4GA1UdDwEB/wQEAwIFoDAJBgNVHRMEAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBRrtmv+2tYORc5sh6TQZsnBUfwN/jAdBgNVHQ4EFgQUa7Zr/trWDkXObIek0GbJwVH8Df4wDQYJKoZIhvcNAQELBQADggEBADoFLBkDghhY96G+Nl6E4LtIei2swFQGbD3182NU8oqPt2Edec2LUzeITlWwtZ36FyoWOafjYtmi5Az3M2pw8DmSlcIcCpBneK1Eb0N6tVPnYzrF4t+QMNxpZzT0MUHeI3rpvXxfiM6dneiK4SLgCHiTBR7vAQ0l5q0zE6PxHBgqiZ4gz96Ll3xD8velffpafjRB7FqtDUVUDTuwjegL/M+pWyxINMs9E0AINNCE+JtmTBbeMZj1j2Wgywb7/5j3E1DN9evjWvZw0KHeF6eyh9XHigZ++6Mympb4bS3yJMhpmbKrS7a2i6JWzZbP8PSO/CxuSa12xz7awDLAGJ4m618=\"},\"agentDetails\":{\"id\":\"b4d4a914-c48e-4fe8-bcf9-99626b65baec-agent\",\"version\":\"1.0.8.324\",\"lastHeartBeatUtc\":\"2020-06-26T02:14:10.8900467Z\",\"keyVaultUri\":\"https://BBVMwareAVScbbckv.vault.azure.net\",\"keyVaultId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.KeyVault/vaults/BBVMwareAVScbbckv\"},\"serviceEndpoint\":\"https://canary.sea.discoverysrv.windowsazure.com\",\"discoverySolutionId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/BugBashAVSVMware/Solutions/Servers-Discovery-ServerDiscovery\",\"applianceName\":\"BBVMwareAVS\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}
