@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.Aks.Properties;
@@ -61,6 +63,23 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Delete", "Deallocate")]
         public string NodeScaleSetEvictionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Add-on names to be enabled when cluster is created.")]
+        [ValidateNotNullOrEmpty()]
+        [PSArgumentCompleter("HttpApplicationRouting", "Monitoring", "VirtualNode", "AzurePolicy", "KubeDashboard")]
+        public string[] AddOnNameToBeEnabled { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Id of the workspace of Monitoring addon.")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceResourceId { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subnet name of VirtualNode addon.")]
+        [ValidateNotNullOrEmpty]
+        public string SubnetName { get; set; }
+
         ///// <summary>The client AAD application ID.</summary>
         //[Parameter(Mandatory = false, HelpMessage = "The client AAD application ID.")]
         //public string AadProfileClientAppId { get; set; }
@@ -72,7 +91,7 @@ namespace Microsoft.Azure.Commands.Aks
         ///// <summary>The server AAD application secret.</summary>
         //[Parameter(Mandatory = false, HelpMessage = "The server AAD application secret.")]
         //public string AadProfileServerAppSecret { get; set; }
- 
+
         //// <summary> The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription. </summary>
         //[Parameter(Mandatory = false,
         //    HelpMessage =
@@ -135,6 +154,8 @@ namespace Microsoft.Azure.Commands.Aks
 
             var networkProfile = GetNetworkProfile();
 
+            var addonProfiles = CreateAddonsProfiles();
+
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
 
             var managedCluster = new ManagedCluster(
@@ -148,6 +169,7 @@ namespace Microsoft.Azure.Commands.Aks
                 windowsProfile: windowsProfile,
                 servicePrincipalProfile: spProfile,
                 aadProfile: aadProfile,
+                addonProfiles: addonProfiles,
                 networkProfile: networkProfile);
 
             if(EnableRbac.IsPresent)
@@ -244,6 +266,18 @@ namespace Microsoft.Azure.Commands.Aks
             //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
             //}
             return aadProfile;
+        }
+
+        private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()
+        {
+            if (this.IsParameterBound(c => c.AddOnNameToBeEnabled))
+            {
+                Dictionary<string, ManagedClusterAddonProfile> addonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();
+                return AddonUtils.EnableAddonsProfile(addonProfiles, AddOnNameToBeEnabled, WorkspaceResourceId, SubnetName);
+            } else
+            {
+                return null;
+            }
         }
     }
 }

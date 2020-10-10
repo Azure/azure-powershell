@@ -23,6 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange("Property 'SecretValueText' in PSKeyVaultSecret and PSDeletedKeyVaultSecret will be removed around 10/27/2020")]
     [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [CmdletOutputBreakingChange(typeof(PSDeletedKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret", DefaultParameterSetName = ByVaultNameParameterSet)]

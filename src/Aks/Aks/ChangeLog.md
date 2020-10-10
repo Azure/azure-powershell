@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added client side parameter validation logic for `New-AzAksCluster`, `Set-AzAksCluster` and `New-AzAksNodePool`.
-* Added parameter `GenerateSshKey` for `New-AzAksCluster`.
+
+## Version 1.3.0
+* Added client side parameter validation logic for `New-AzAksCluster`, `Set-AzAksCluster` and `New-AzAksNodePool`. [#12372]
+* Added support for add-ons in `New-AzAksCluster`. [#11239]
+* Added cmdlets `Enable-AzAksAddOn` and `Disable-AzAksAddOn` for add-ons. [#11239]
+* Added parameter `GenerateSshKey` for `New-AzAksCluster`. [#12371]
 * Updated api version to 2020-06-01.
 
 ## Version 1.2.0

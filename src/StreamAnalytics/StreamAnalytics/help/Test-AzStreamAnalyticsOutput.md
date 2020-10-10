@@ -23,8 +23,8 @@ The **Test-AzStreamAnalyticsOutput** cmdlet tests the ability of Stream Analytic
 
 ## EXAMPLES
 
-### EXAMPLE 1: Test the connection status of an output
-```
+### Example 1: Test the connection status of an output
+```powershell
 PS C:\>Test-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "Output"
 ```
 
