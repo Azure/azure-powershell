@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add a default API version to be used in `Export-AzResourceGroup` cmdlet
+* Updated ARM template What-If cmdlets to remove preview message from results
+* Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
+* Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
