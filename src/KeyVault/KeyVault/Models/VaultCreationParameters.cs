@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class VaultCreationParameters
     {
-        public string VaultName { get; set; }
+        public string Name { get; set; }
         public string ResourceGroupName { get; set; }
         public string Location { get; set; }
         public Hashtable Tags { get; set; }

@@ -30,6 +30,7 @@ using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
 using System.ComponentModel;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -72,8 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
-            if (string.IsNullOrWhiteSpace(parameters.VaultName))
-                throw new ArgumentNullException("parameters.VaultName");
+            if (string.IsNullOrWhiteSpace(parameters.Name))
+                throw new ArgumentNullException("parameters.Name");
             if (string.IsNullOrWhiteSpace(parameters.ResourceGroupName))
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
-                vaultName: parameters.VaultName,
+                vaultName: parameters.Name,
                 parameters: new VaultCreateOrUpdateParameters
                 {
                     Location = parameters.Location,
@@ -356,12 +357,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns></returns>
-        public PSManagedHsm CreateNewManagedHsm(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
+        public PSManagedHsm CreateNewManagedHsm(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
-            if (string.IsNullOrWhiteSpace(parameters.VaultName))
-                throw new ArgumentNullException("parameters.VaultName");
+            if (string.IsNullOrWhiteSpace(parameters.Name))
+                throw new ArgumentNullException("parameters.Name");
             if (string.IsNullOrWhiteSpace(parameters.ResourceGroupName))
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
@@ -395,17 +396,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnableSoftDelete = parameters.EnableSoftDelete;
                 properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
-                
-                // No sdk available to update this parapmeter
-                // properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
-
-                // properties.NetworkAcls = parameters.NetworkAcls;
-                /*
-                if (networkRuleSet != null)
-                {
-                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
-                }
-                */
             }
             else
             {
@@ -414,7 +404,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
-                name: parameters.VaultName,
+                name: parameters.Name,
                 parameters: new ManagedHsm
                 {
                     Location = parameters.Location,
@@ -457,6 +447,58 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
+        /// List all existing Managed HSMs. Returns null if vault is not found.
+        /// </summary>
+        /// <param name="resourceGroupName">resource group name</param>
+        /// <param name="adClient">the active directory client</param>
+        /// <returns>the retrieved Managed HSM</returns>
+        public List<PSManagedHsm> ListManagedHsms(string resourceGroupName, ActiveDirectoryClient adClient = null)
+        {
+            List<PSManagedHsm> managedHsms = new List<PSManagedHsm>(); ;
+            IPage<ManagedHsm> response;
+
+            if (resourceGroupName != null) 
+            {
+                response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+                foreach (var managedHsm in response)
+                {
+                    managedHsms.Add(new PSManagedHsm(managedHsm));
+                }
+
+                while (response?.NextPageLink != null)
+                {
+                    response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupNextAsync(response.NextPageLink).GetAwaiter().GetResult();
+
+                    foreach (var managedHsm in response)
+                    {
+                        managedHsms.Add(new PSManagedHsm(managedHsm));
+                    }
+                }
+            }
+            else
+            {
+                response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionAsync().GetAwaiter().GetResult();
+
+                foreach (var managedHsm in response)
+                {
+                    managedHsms.Add(new PSManagedHsm(managedHsm));
+                }
+
+                while (response?.NextPageLink != null)
+                {
+                    response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionNextAsync(response.NextPageLink).GetAwaiter().GetResult();
+
+                    foreach (var managedHsm in response)
+                    {
+                        managedHsms.Add(new PSManagedHsm(managedHsm));
+                    }
+                }
+            }
+
+            return managedHsms;
+        }
+
+        /// <summary>
         /// Update an existing Managed HSM. Only EnablePurgeProtection can be updated currently.
         /// </summary>
         /// <param name="existingManagedHsm">the existing Managed HSM</param>
@@ -494,28 +536,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 && updatedPurgeProtectionSwitch.Value)
                 properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
 
-            /*  properties.AccessPolicies = (updatedPolicies == null) ?
-                  new List<AccessPolicyEntry>() :
-                  updatedPolicies.Select(a => new AccessPolicyEntry
-                  {
-                      TenantId = a.TenantId,
-                      ObjectId = a.ObjectId,
-                      ApplicationId = a.ApplicationId,
-                      Permissions = new Permissions
-                      {
-                          Keys = a.PermissionsToKeys.ToArray(),
-                          Secrets = a.PermissionsToSecrets.ToArray(),
-                          Certificates = a.PermissionsToCertificates.ToArray(),
-                          Storage = a.PermissionsToStorage.ToArray(),
-                      }
-                  }).ToList();
-
-              UpdateVaultNetworkRuleSetProperties(properties, updatedNetworkAcls);*/
-
-
             var response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
                 resourceGroupName: existingManagedHsm.ResourceGroupName,
-                name: existingManagedHsm.VaultName,
+                name: existingManagedHsm.Name,
                 parameters: new ManagedHsm
                 {
                     Location = existingManagedHsm.Location,

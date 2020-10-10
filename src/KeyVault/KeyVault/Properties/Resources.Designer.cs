@@ -343,6 +343,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified hsm already exists..
+        /// </summary>
+        internal static string HsmAlreadyExists {
+            get {
+                return ResourceManager.GetString("HsmAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {

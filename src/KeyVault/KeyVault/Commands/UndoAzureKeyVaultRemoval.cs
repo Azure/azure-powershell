@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                 {
-                    VaultName = this.VaultName,
+                    Name = this.VaultName,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     Tags = this.Tag,

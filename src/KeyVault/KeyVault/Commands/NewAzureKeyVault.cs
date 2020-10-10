@@ -16,12 +16,9 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -189,7 +186,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // Set common parameters
                 var vaultCreationParameter = new VaultCreationParameters()
                 {
-                    VaultName = this.Name,
+                    Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     SkuName = this.Sku,
@@ -225,7 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     case ManagedHsmParameterSet:
                         vaultCreationParameter.Administrator = this.Administrator;
                         vaultCreationParameter.SkuFamilyName = DefaultManagedHsmSkuFamily;
-                        this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, ActiveDirectoryClient, NetworkRuleSet));
+                        this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, ActiveDirectoryClient));
                         break;
                     default:
                         throw new ArgumentException(Resources.BadParameterSetName);
