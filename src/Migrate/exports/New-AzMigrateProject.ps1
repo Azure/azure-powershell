@@ -35,7 +35,7 @@ PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateproject
 #>
 function New-AzMigrateProject {
 [CmdletBinding(DefaultParameterSetName='PutExpandedCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

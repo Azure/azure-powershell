@@ -2195,7 +2195,7 @@ Contoso-DataTier3             10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 function Get-AzMigrateDiscoveredServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
@@ -3148,7 +3148,7 @@ PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateproject
 #>
 function New-AzMigrateProject {
 [CmdletBinding(DefaultParameterSetName='PutExpandedCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -4219,7 +4219,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
