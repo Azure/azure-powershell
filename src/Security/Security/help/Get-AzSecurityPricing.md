@@ -28,7 +28,9 @@ Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContai
 ```
 
 ## DESCRIPTION
-Azure Security Center pricing tier is decided per scope, with this cmdlet you can get the configured pricing tiers.
+You can enable each Azure Defender plan, per subscription, using this cmdlet.
+
+For details about Azure Defender and the available plans, see [Introduction to Azure Defender](https://docs.microsoft.com/azure/security-center/azure-defender)
 
 ## EXAMPLES
 
@@ -47,7 +49,7 @@ Id                                                                              
 /subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/KeyVaults                  KeyVaults                 Free           00:00:00
 ```
 
-Gets all the configured pricing tiers for the subscription.
+Gets the status of each Azure Defender plan for the subscription.
 
 
 
