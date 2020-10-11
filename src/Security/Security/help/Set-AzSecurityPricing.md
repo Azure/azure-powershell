@@ -8,28 +8,35 @@ schema: 2.0.0
 # Set-AzSecurityPricing
 
 ## SYNOPSIS
-Sets the pricing of Azure Security Center tier for a scope.
+
+Sets the pricing data for the Azure Defender plans enabled in Azure Security Center for a scope.
 
 ## SYNTAX
 
 ### SubscriptionLevelResource (Default)
-```
+
+```powershell
 Set-AzSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
-```
+
+```powershell
 Set-AzSecurityPricing -InputObject <PSSecurityPricing> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sets the pricing of Azure Security Center tier for a scope.
+
+Enable or disable any of the Azure Defender plans for a subscription.
+
+For details about Azure Defender and the available plans, see [Introduction to Azure Defender](https://docs.microsoft.com/azure/security-center/azure-defender).
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> Set-AzSecurityPricing -Name "virtualmachines" -PricingTier "Standard"
 ```
@@ -40,6 +47,7 @@ Sets the subscription Azure Security Center pricing tier to "Standard"
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -55,6 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Input Object.
 
 ```yaml
@@ -70,6 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Resource name.
 
 ```yaml
@@ -85,6 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -PricingTier
+
 Pricing Tier.
 
 ```yaml
@@ -100,6 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -115,6 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
@@ -130,6 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -8,33 +8,39 @@ schema: 2.0.0
 # Get-AzSecurityPricing
 
 ## SYNOPSIS
-Gets the pricing tier data for Azure Security Center for a scope.
+
+Gets the pricing data for the Azure Defender plans enabled in Azure Security Center for a scope.
 
 ## SYNTAX
 
 ### SubscriptionScope (Default)
-```
+
+```powershell
 Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
-```
+
+```powershell
 Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
-```
+
+```powershell
 Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-You can enable each Azure Defender plan, per subscription, using this cmdlet.
 
-For details about Azure Defender and the available plans, see [Introduction to Azure Defender](https://docs.microsoft.com/azure/security-center/azure-defender)
+Gets the status and pricing details of the Azure Defender plan for a subscription.
+
+For details about Azure Defender and the available plans, see [Introduction to Azure Defender](https://docs.microsoft.com/azure/security-center/azure-defender).
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> Get-AzSecurityPricing
 Id                                                                                                                   Name                      PricingTier    FreeTrialRemainingTime
@@ -54,6 +60,7 @@ Gets the status of each Azure Defender plan for the subscription.
 
 
 ### Example 2
+
 ```powershell
 PS C:\> Get-AzSecurityPricing -ResourceId
 ```
@@ -61,19 +68,18 @@ PS C:\> Get-AzSecurityPricing -ResourceId
 Gets pricing details of the specific ID. Where ResourceId is one of IDs from example 1.
 
 ### Example 3
+
 ```powershell
 PS C:\> Get-AzSecurityPricing -Name
 ```
 
-Gets pricing details of the named Azure Defender plan. Where name is one of the names from example 1.
-
-
-, and Name is one of 8 above as well.
+Gets pricing details of the named Azure Defender plan. Where `name` is one of the names from example 1.
 
 
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -89,6 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Resource name.
 
 ```yaml
@@ -104,6 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+
 Resource ID.
 
 ```yaml
@@ -119,6 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
