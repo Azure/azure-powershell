@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.12.2
+* Added container name validation for workload backup.
+
+## Version 2.12.1
+* Fixed the Delete State for workload Backup Items.
+
 ## Version 2.12.0
 * Azure Backup added a new cmdlet Copy-AzRecoveryServicesVault for DS move feature.
 * Get-AzRecoveryServicesBackupJob cmdlet now supports operation type 'BackupDataMove'.
