@@ -50,7 +50,6 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  #- $(this-folder)/resources/appplatform.json
   - https://github.com/Azure/azure-rest-api-specs/blob/f595fe8142bff77ddba974fe8ec53522528eed61/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2020-07-01/appplatform.json
     
 title: SpringCloud

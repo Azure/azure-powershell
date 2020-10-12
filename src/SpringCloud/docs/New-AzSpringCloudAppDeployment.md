@@ -134,12 +134,6 @@ Accept wildcard characters: False
 ```
 
 ### -JvmOption
-[Parameter()]
-[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-[System.Int32]
-# Instance count
-${InstanceCount},
-
 JVM parameter
 
 ```yaml
