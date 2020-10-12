@@ -92,8 +92,12 @@ function Reset-AzCloudService {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
-        [Parameter(ParameterSetName='ReimageExpanded')]
         [Parameter(ParameterSetName='ReimageViaIdentityExpanded')]
+        [Parameter(ParameterSetName='RebuildViaIdentityExpanded')]
+        [Parameter(ParameterSetName='RestartViaIdentityExpanded')]
+        [Parameter(ParameterSetName='ReimageExpanded')]
+        [Parameter(ParameterSetName='RebuildExpanded')]
+        [Parameter(ParameterSetName='RestartExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
         [System.String[]]
         # .

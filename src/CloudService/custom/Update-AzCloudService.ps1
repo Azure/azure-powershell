@@ -284,21 +284,21 @@ param(
     } catch {
         throw
     }
-}
+  }
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
+  process {
+      try {
+          $steppablePipeline.Process($_)
+      } catch {
+          throw
+      }
+  }
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
+  end {
+      try {
+          $steppablePipeline.End()
+      } catch {
+          throw
+      }
+  }
 }
