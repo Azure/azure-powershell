@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.12.2
 * Added container name validation for workload backup.
 
 ## Version 2.12.1

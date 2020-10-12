@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
+    /// <summary>Enable Geo-redundant or not for server backup.</summary>
     public partial struct GeoRedundantBackup :
         System.IEquatable<GeoRedundantBackup>
     {

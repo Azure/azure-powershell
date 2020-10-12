@@ -1,3 +1,81 @@
+## 4.8.0 - October 2020
+#### Az.Accounts
+* Fixed DateTime parse issue in common libraries [#13045]
+
+#### Az.CognitiveServices
+* Added 'New-AzCognitiveServicesAccountApiProperty' cmdlet.
+* Supported 'ApiProperty' parameter for 'New-AzCognitiveServicesAccount' and 'Set-AzCognitiveServicesAccount'
+
+#### Az.Compute
+* Fixed issue in 'Update-ASRRecoveryPlan' by populating FailoverTypes
+* Added the '-Top' and '-OrderBy' optional parameters to the 'Get-AzVmImage' cmdlet. 
+
+#### Az.Databricks
+* General availability of 'Az.Databricks' module
+* Added support for virtual network peering
+
+#### Az.DataFactory
+* Fixed typo in output messages
+
+#### Az.EventHub
+* Added optional switch parameter 'TrustedServiceAccessEnabled' to 'Set-AzEventHubNetworkRuleSet' cmdlet
+
+#### Az.HDInsight
+* Added warning message for planning to deprecate the parameters 'PublicNetworkAccessType' and 'OutboundPublicNetworkAccessType'
+* Added warning message for planning to replace the parameter 'DefaultStorageAccountName' with 'StorageAccountResourceId'
+* Added warning message for planning to replace the parameter 'DefaultStorageAccountKey' with 'StorageAccountKey'
+* Added warning message for planning to replace the parameter 'DefaultStorageAccountType' with 'StorageAccountType'
+* Added warning message for planning to replace the parameter 'DefaultStorageContainer' with 'StorageContainer'
+* Added warning message for planning to replace the parameter 'DefaultStorageRootPath' with 'StorageRootPath'
+
+#### Az.IotHub
+* Updated devices sdk.
+
+#### Az.KeyVault
+* Provided the detailed date of removing property SecretValueText
+
+#### Az.ManagedServices
+* Updated breaking change warnings on cmdlets of managed services assignment and definition
+
+#### Az.Monitor
+* Fixed the bug that warning message cannot be suppressed. [#12889]
+* Supported 'SkipMetricValidation' parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+
+#### Az.Network
+* Added Office365 Policy to VPNSite Resource
+    - 'New-AzO365PolicyProperty'
+
+#### Az.RecoveryServices
+* Added container name validation for workload backup.
+
+#### Az.RedisCache
+* Made 'New-AzRedisCache' and 'Set-AzRedisCache' cmdlets not fail because of permission issue related to registering Microsoft.Cache RP
+
+#### Az.Sql
+* Added BackupStorageRedundancy to the following: 
+    - 'Restore-AzureRmSqlDatabase'
+    - 'New-AzSqlDatabaseCopy'
+    - 'New-AzSqlDatabaseSecondary'
+* Removed case sensitivity for BackupStorageRedundancy parameter for all SQL DB references 
+* Updated BackupStorageRedundancy warning message names
+
+#### Az.Storage
+* Supported enable/disable/get share soft delete properties on file Service of a Storage account
+    - 'Update-AzStorageFileServiceProperty'
+    - 'Get-AzStorageFileServiceProperty'
+* Supported list file shares include the deleted ones of a Storage account, and Get single file share usage
+    - 'Get-AzRmStorageShare'
+* Supported restore a deleted file share
+    - 'Restore-AzRmStorageShare'
+* Changed the cmdlets for modify blob service properties, won't get the original properties from server, but only set the modified properties to server.
+    - 'Enable-AzStorageBlobDeleteRetentionPolicy'
+    - 'Disable-AzStorageBlobDeleteRetentionPolicy'  
+    - 'Enable-AzStorageBlobRestorePolicy'
+    - 'Disable-AzStorageBlobRestorePolicy'
+    - 'Update-AzStorageBlobServiceProperty'
+* Fixed help issue for New-AzStorageAccount parameter -Kind default value [#12189]
+* Fixed issue by add example to show how to set correct ContentType in blob upload [#12989]
+
 ## 4.7.0 - September 2020
 #### Az.Accounts
 * Formatted the upcoming breaking change messages

@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
     
