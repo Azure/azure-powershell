@@ -449,22 +449,22 @@
         <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm</TypeName>
       </ViewSelectedBy>
       <ListControl>
-	       <ListEntries>
-	         <ListEntry>
-	           <ListItems>
-	             <ListItem>
-		              <Label>Managed Hsm Name</Label>
-		                <PropertyName>Name</PropertyName>
-	             </ListItem>
-	             <ListItem>
-		              <Label>Resource Group Name</Label>
-		                <PropertyName>ResourceGroupName</PropertyName>
-	             </ListItem>
-	             <ListItem>
-		              <Label>Location</Label>
-		              <PropertyName>Location</PropertyName>
-	             </ListItem>
-	             <ListItem>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Managed Hsm Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Resource Group Name</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Resource ID</Label>
                 <PropertyName>ResourceId</PropertyName>
               </ListItem>
