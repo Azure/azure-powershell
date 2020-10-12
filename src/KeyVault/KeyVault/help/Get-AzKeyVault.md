@@ -15,8 +15,8 @@ Gets key vaults.
 
 ### GetVaultByName (Default)
 ```
-Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-ResourceType <ResourceTypeName>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
@@ -181,28 +181,6 @@ Tags                :
 
 This command gets all the key vaults in the subscription that start with "myvault".
 
-### Example 7: Get a specific managed hsm
-```powershell
-PS C:\> Get-AzKeyVault -Name 'TestManagedHsm' -ResourceType Hsm
-
-ManagedHsm Name                     : TestManagedHsm
-Resource Group Name                 : testGroup9
-Location                            : eastus2
-Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testGroup9/pro
-                                      viders/Microsoft.KeyVault/managedHSMs/TestManagedHsm
-Hsm Pool URI                        :
-Tenant ID                           : xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx
-Security Domain ID                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Initial Admin Object Ids            : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
-SKU                                 : StandardB1
-Soft Delete Enabled?                : True
-Enabled Purge Protection?           :
-Soft Delete Retention Period (days) : 90
-Tags                                :
-```
-
-This command gets the managed hsm named TestManagedHsm in your current subscription.
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -262,22 +240,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-Specifies the type of Vault / HSM to be shown. If omitted, both will be listed.
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.ResourceTypeName
-Parameter Sets: GetVaultByName
-Aliases: Type
-Accepted values: Vault, Hsm
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -352,6 +352,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find hsm &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string HsmNotFound {
+            get {
+                return ResourceManager.GetString("HsmNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {
@@ -888,6 +897,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RemoveDeletedSecretWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveDeletedSecretWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove hsm &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveHsmWarning {
+            get {
+                return ResourceManager.GetString("RemoveHsmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove hsm.
+        /// </summary>
+        internal static string RemoveHsmWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveHsmWhatIfMessage", resourceCulture);
             }
         }
         

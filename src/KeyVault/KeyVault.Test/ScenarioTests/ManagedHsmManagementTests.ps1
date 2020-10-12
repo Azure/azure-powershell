@@ -18,16 +18,16 @@ Tests CRUD for Managed Hsm.
 #>
 function Test-ManagedHsmCRUD {
     $rgName = getAssetName
-    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "eastus2euap"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "eastus2euap"
     $administrator = "c1be1392-39b8-4521-aafc-819a47008545"
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
-        # Test create a default Managed HSM
-        $hsm = New-AzKeyVault -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Hsm
-        Assert-AreEqual $hsmName $hsm.VaultName
+        # Test create a default managed hsm
+        $hsm = New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+        Assert-AreEqual $hsmName $hsm.Name
         Assert-AreEqual $rgName $hsm.ResourceGroupName
         Assert-AreEqual $hsmLocation $hsm.Location
         Assert-AreEqual 1  $hsm.InitialAdminObjectIds.Count
@@ -37,23 +37,23 @@ function Test-ManagedHsmCRUD {
         # Default retention days
         Assert-AreEqual 90 $hsm.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
-        # Test get Managed HSM
-        $got = Get-AzKeyVault -Name $hsmName -ResourceType Hsm           
+        # Test get managed hsm
+        $got = Get-AzManagedHsm -Name $hsmName    
         Assert-NotNull $got
-        Assert-AreEqual $hsmName $got.VaultName
+        Assert-AreEqual $hsmName $got.Name
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
         
-        # Test throws for existing vault
-        Assert-Throws { New-AzKeyVault -VaultName $hsmName -ResourceGroupName $rgname -Location $vaultLocation -Administrator $administrator -Hsm}
+        # Test throws for existing managed hsm
+        Assert-Throws { New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator }
 
-        # Test remove Managed HSM
-        Remove-AzKeyVault -InputObject $got -Hsm -Force
-        $deletedMhsm = Get-AzKeyVault -VaultName $hsmName -ResourceGroupName $rgName
+        # Test remove managed hsm
+        Remove-AzManagedHsm -InputObject $got -Force
+        $deletedMhsm = Get-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm
 
         # Test throws for resourcegroup nonexistent
-        Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName (getAssetName) -Location $vaultLocation -Administrator $administrator -Hsm}
+        Assert-Throws {  New-AzManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator }
     }
 
     finally {

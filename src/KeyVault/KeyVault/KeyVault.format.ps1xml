@@ -416,7 +416,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Administrator</Label>
+            <Label>SKU</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -436,7 +436,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>InitialAdminObjectIds</PropertyName>
+                <PropertyName>Sku</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

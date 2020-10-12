@@ -501,4 +501,13 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="HsmNotFound" xml:space="preserve">
+    <value>Cannot find hsm '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="RemoveHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove hsm '{0}'.</value>
+  </data>
+  <data name="RemoveHsmWhatIfMessage" xml:space="preserve">
+    <value>Remove hsm</value>
+  </data>
 </root>
