@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Condition to be applied to the RoleAssignment.")]
         [ValidateNotNullOrEmpty]
-        public string Condition { get; set; }
+        public string Condition { get; set; } = null;
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "Version of the condition.")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Version of the condition.")]
         [ValidateNotNullOrEmpty]
-        public string ConditionVersion { get; set; }
+        public string ConditionVersion { get; set; } = null;
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
