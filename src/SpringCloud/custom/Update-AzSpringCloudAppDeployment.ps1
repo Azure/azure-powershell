@@ -110,12 +110,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Instance count
-    ${InstanceCount},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # JVM parameter
     ${JvmOption},
@@ -226,10 +220,6 @@ param(
         if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
             $PSBoundParameters.Add('DeploymentSettingEnvironmentVariable', $EnvironmentVariable)
             $Null = $PSBoundParameters.Remove('EnvironmentVariable')
-        }
-        if ($PSBoundParameters.ContainsKey('InstanceCount')) {
-            $PSBoundParameters.Add('DeploymentSettingInstanceCount', $InstanceCount)
-            $Null = $PSBoundParameters.Remove('InstanceCount')
         }
         if ($PSBoundParameters.ContainsKey('JvmOption')) {
             $PSBoundParameters.Add('DeploymentSettingJvmOption', $JvmOption)
