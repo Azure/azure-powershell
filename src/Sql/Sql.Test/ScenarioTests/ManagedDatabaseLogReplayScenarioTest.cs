@@ -52,28 +52,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ManagedDatabaseLogReplay");
         }
 
-        [Fact(Skip = "Depends on hardcoded resource to rerecord")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCompleteManagedDatabaseLogReplayService()
+        public void TestCompleteCancelManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-CompleteManagedDatabaseLogReplay");
+            RunPowerShellTest("Test-CompleteCancelManagedDatabaseLogReplay");
         }
 
-        [Fact(Skip = "Depends on hardcoded resource to rerecord")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCancelManagedDatabaseLogReplayService()
-        {
-            RunPowerShellTest("Test-CancelManagedDatabaseLogReplay");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource to rerecord")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingManagedDatabaseLogReplayService()
-        {
-            RunPowerShellTest("Test-ManagedDatabaseLogReplayPiping");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource to rerecord")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingCompleteCancelManagedDatabaseLogReplayService()
         {

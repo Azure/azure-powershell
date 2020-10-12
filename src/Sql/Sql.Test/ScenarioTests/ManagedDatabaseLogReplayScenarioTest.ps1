@@ -14,9 +14,9 @@
 
 $vnetName = "logReplayPS"
 $subnetName = "Cool"
-$location = "westcentralus"
+$location = "westeurope"
 $lastBackupName = "full.bak";
-$resourceGroupName = "pslogreplay"
+$resourceGroupName = "mibrkiclogreplay"
 
 function Create-Resources
 {
@@ -53,17 +53,19 @@ function Create-Resources
 	$testStorageContainerSasToken = New-AzStorageContainerSASToken `
 		-Name $containerName -Permission "rl" `
 		-StartTime ([System.DateTime]::Now).AddMinutes(-20) `
-		-ExpiryTime ([System.DateTime]::Now).AddHours(5) `
+		-ExpiryTime ([System.DateTime]::Now).AddHours(6) `
 		-Context $ctx -FullUri
 
-	$cName, $sasKeyForContainer = $testStorageContainerSasToken.Split('?')
+	$uriAndSas = $testStorageContainerSasToken.Split('?')
+	$cName.Value = $uriAndSas[0]
+	$sasKeyForContainer.Value = $uriAndSas[1]
 
 	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $resourceGroupName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-	$miName = $managedInstance.ManagedInstanceName
+	$miName.Value = $managedInstance.ManagedInstanceName
 }
 
 <#
@@ -76,9 +78,7 @@ function Test-ManagedDatabaseLogReplay
 	{
 		# Create new resource group
 		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $location
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 200
-		}
+
 		$managedInstanceName = ""
 		$testStorageContainerSasToken = ""
 		$testStorageContainerUri = ""
@@ -132,28 +132,26 @@ function Test-ManagedDatabaseLogReplay
 
 <#
 .SYNOPSIS
-Tests Managed Database Log Replay calling complete API.
+Tests Managed Database Log Replay calling complete and cancel API.
 #>
-function Test-CompleteManagedDatabaseLogReplay
+function Test-CompleteCancelManagedDatabaseLogReplay
 {
-	# Setup
-	$rg = Create-ResourceGroupForTest
+	# Create new resource group
+	$rg = New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	$rgName = $rg.ResourceGroupName
-	$managedInstance = $managedInstance.ManagedInstanceName
 	try
 	{
+		$managedInstanceName = ""
+		$testStorageContainerSasToken = ""
+		$testStorageContainerUri = ""
+		Create-Resources $rg ([ref] $managedInstanceName) ([ref] $testStorageContainerSasToken) ([ref] $testStorageContainerUri)
+
+		# Complete scenarion test region
 		# Start log replay
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
 		
-		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance `
+		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
@@ -169,8 +167,8 @@ function Test-CompleteManagedDatabaseLogReplay
 
 		while($true){
             $statusResponse = Get-AzSqlInstanceDatabaseLogReplay `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
+			-ResourceGroupName $resourceGroupName `
+			-InstanceName $managedInstanceName `
 			-Name $managedDatabaseName
 
 			# Wait until restore state is Restoring - this means restore has began
@@ -186,18 +184,18 @@ function Test-CompleteManagedDatabaseLogReplay
         }
 
 		Complete-AzSqlInstanceDatabaseLogReplay `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
+			-ResourceGroupName $resourceGroupName `
+			-InstanceName $managedInstanceName `
 			-Name $managedDatabaseName `
 			-LastBackupName $lastBackupName
 
 		while($true){
             $statusResponse = Get-AzSqlInstanceDatabaseLogReplay `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
+			-ResourceGroupName $resourceGroupName `
+			-InstanceName $managedInstanceName `
 			-Name $managedDatabaseName
 
-			# Wait until restore state is Complted - this means restore has completed
+			# Wait until restore state is Completed - this means restore has completed
             #
             $status = $statusResponse.Status
             if($status -eq $statusCompleted){
@@ -211,37 +209,13 @@ function Test-CompleteManagedDatabaseLogReplay
 
 		Assert-NotNull $statusResponse
 		Assert-AreEqual $status $statusCompleted
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
 
-<#
-.SYNOPSIS
-Tests Managed Database Log Replay cancel.
-#>
-function Test-CancelManagedDatabaseLogReplay
-{
-	# Setup
-	$rg = Create-ResourceGroupForTest
+		# Cancel scenario test region
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	$rgName = $rg.ResourceGroupName
-	$managedInstance = $managedInstance.ManagedInstanceName
-	try
-	{
 		# Start log replay
 		$managedDatabaseName = Get-ManagedDatabaseName
-		$collation = "SQL_Latin1_General_CP1_CI_AS"
 		
-		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance `
+		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
@@ -255,8 +229,8 @@ function Test-CancelManagedDatabaseLogReplay
 
 		while($true){
             $statusResponse = Get-AzSqlInstanceDatabaseLogReplay `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
+			-ResourceGroupName $resourceGroupName `
+			-InstanceName $managedInstanceName `
 			-Name $managedDatabaseName
 
 			# Wait until restore state is Restoring - this means restore has began
@@ -271,12 +245,12 @@ function Test-CancelManagedDatabaseLogReplay
             }
         }
 
-		Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName -Force
+		Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -Name $managedDatabaseName -Force
 		
 		try {
-			$db = Get-AzSqlInstanceDatabase `
-				-ResourceGroupName $rgName `
-				-InstanceName $managedInstance `
+			$dbRemoved = Get-AzSqlInstanceDatabase `
+				-ResourceGroupName $resourceGroupName `
+				-InstanceName $managedInstanceName `
 				-Name $managedDatabaseName
         }
 		catch {
@@ -285,72 +259,7 @@ function Test-CancelManagedDatabaseLogReplay
 			Assert-AreEqual True $ErrorMessage.Contains("not found")
 		}
 
-		Assert-Null $db
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
-
-<#
-.SYNOPSIS
-Tests Managed Database Log Replay piping.
-#>
-function Test-ManagedDatabaseLogReplayPiping
-{
-	# Setup
-	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	$rgName = $rg.ResourceGroupName
-	$managedInstance = $managedInstance.ManagedInstanceName
-	try
-	{
-		# Start log replay
-		$managedDatabaseName = Get-ManagedDatabaseName
-		$collation = "SQL_Latin1_General_CP1_CI_AS"
-		
-		$restoringDb = Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance `
-			-Name $managedDatabaseName -Collation $collation `
-			-StorageContainerUri $testStorageContainerUri `
-			-StorageContainerSasToken $testStorageContainerSasToken `
-			-AutoComplete -LastBackupName $lastBackupName
-
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
-
-		# Fetch status of the operation
-		$status = "InProgress"
-        $statusCompleted = "Completed"
-		$statusResponse = ""
-
-		while($true){
-			$db = Get-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
-
-			$statusResponse = $db | Get-AzSqlInstanceDatabaseLogReplay
-
-			# Wait until restore state is Completed - this means that all files have been restored from storage container.
-            #
-            $status = $statusResponse.Status
-            if($status -eq $statusCompleted){
-				break;
-            }
-			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
-        }
-
-		Assert-NotNull $statusResponse
-		Assert-AreEqual $status $statusCompleted
+		Assert-Null $dbRemoved
 	}
 	finally
 	{
@@ -364,24 +273,21 @@ Tests Managed Database Log Replay cancel.
 #>
 function Test-PipingCompleteCancelManagedDatabaseLogReplay
 {
-	# Setup
-	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	$rgName = $rg.ResourceGroupName
-	$managedInstance = $managedInstance.ManagedInstanceName
 	try
 	{
+		# Create new resource group
+		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+		$managedInstanceName = ""
+		$testStorageContainerSasToken = ""
+		$testStorageContainerUri = ""
+		Create-Resources $rg ([ref] $managedInstanceName) ([ref] $testStorageContainerSasToken) ([ref] $testStorageContainerUri)
+
 		# Start log replay
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
 		
-		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance `
+		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
@@ -396,8 +302,8 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 		$statusResponse = ""
 
 		$db = Get-AzSqlInstanceDatabase `
-			-ResourceGroupName $rgName `
-			-InstanceName $managedInstance `
+			-ResourceGroupName $resourceGroupName `
+			-InstanceName $managedInstanceName `
 			-Name $managedDatabaseName
 		
 		while($true){
@@ -415,7 +321,6 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
             }
         }
 
-
 		$db | Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName $lastBackupName
 
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
@@ -426,8 +331,8 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 		
 		try {
 			$dbRemoved = Get-AzSqlInstanceDatabase `
-				-ResourceGroupName $rgName `
-				-InstanceName $managedInstance `
+				-ResourceGroupName $resourceGroupName `
+				-InstanceName $managedInstanceName `
 				-Name $managedDatabaseName
         }
 		catch {

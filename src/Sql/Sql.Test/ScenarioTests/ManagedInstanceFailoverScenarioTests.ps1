@@ -13,7 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 # Location to use for provisioning test managed instances
-$instanceLocation = "westcentralus"
+$instanceLocation = "westeurope"
+$resourceGroupName = "mibrkicFailover"
 
 <#
 .SYNOPSIS
@@ -24,12 +25,12 @@ function Test-FailoverManagedInstance
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
+		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $instanceLocation
 		$vnetName = "vnet-pcresizeandcreate"
 		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -63,12 +64,12 @@ function Test-FailoverManagedInstancePassThru
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
+		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $instanceLocation
 		$vnetName = "vnet-pcresizeandcreate"
 		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -92,12 +93,12 @@ function Test-FailoverManagedInstancePiping
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
+		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $instanceLocation
 		$vnetName = "vnet-pcresizeandcreate"
 		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 		# Initiate sync create of managed instance.
@@ -123,25 +124,24 @@ function Test-FailoverManagedInstanceReadableSecondary
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
+		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $instanceLocation
 		$vnetName = "vnet-pcresizeandcreate"
 		$subnetName = "ManagedInstance"
 
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
-		# Initiate sync create of managed instance.
-		$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-		# Change instance edition to BusinessCritical to get secondary replicas to failover
+		$managedInstanceName = Get-ManagedInstanceName
 		$credentials = Get-ServerCredential
-		$edition = "BusinessCritical"
+ 		$vCore = 8
+ 		$skuName = "BC_Gen5"
 
-		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-Edition $edition -Force
+		$managedInstance = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 				-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+  				-Vcore $vCore -SkuName $skuName -AssignIdentity
 
-		$output = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -ReadableSecondary -PassThru
+		$output = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName -ReadableSecondary -PassThru
 		Assert-True { $output }
 	}
 	finally
