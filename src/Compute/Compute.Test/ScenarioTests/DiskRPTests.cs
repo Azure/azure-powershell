@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzDiskConfigTierSectorSize()
+        public void TestDiskConfigTierSectorSizeReadOnly()
         {
-            TestRunner.RunTestScript("Test-AzDiskConfigTierSectorSize");
+            TestRunner.RunTestScript("Test-DiskConfigTierSectorSizeReadOnly");
         }
 
     }

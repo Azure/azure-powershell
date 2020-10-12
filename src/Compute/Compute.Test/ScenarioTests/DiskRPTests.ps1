@@ -1172,15 +1172,12 @@ function Test-SnapshotConfigDiskAccessNetworkPolicy
 <#
 .SYNOPSIS
 Testing the new parameters 
-
-to the Disk cmdlets. 
+Tier
+LogicalSectorSize 
+in the New-AzDiskConfig cmdlet.  
 #>
-function Test-AzDiskConfigTierSectorSize
+function Test-DiskConfigTierSectorSizeReadOnly
 {
-        <#    $diskname0 = 'datadisk0';
-        New-AzDiskConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
-        | New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
-        $disk0 = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;#>
 
         # Setup 
         $rgname = Get-ComputeTestResourceName;
@@ -1189,26 +1186,24 @@ function Test-AzDiskConfigTierSectorSize
         try
         {
             New-AzResourceGroup -Name $rgname -Location $loc -Force;
-            $diskname = 'datadisk';
+            $diskNameTier = "datadisktier";
+            $diskNameSector = "datadisksector";
             $tier3 = "P3";
             $tier5 = "P5";
             $sectorSize = 512;
 
             $diskTier = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
                 -SkuName Premium_LRS -OsType Windows -CreateOption Empty -Tier $tier3 `
-                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
 
-            #$diskTier.Tier
+            Assert-AreEqual $diskTier.Tier $tier3; 
             
             $diskSector = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
                 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -LogicalSectorSize $sectorSize `
-                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameSector;
 
-            #diskSector.CreationData.LogicalSectorSize
+            Assert-AreEqual $diskSector.CreationData.LogicalSectorSize $sectorSize; 
 
-            $diskSectorTier = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
-                -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -Tier $tier5 -LogicalSectorSize $sectorSize `
-                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
 		}
         finally 
         {
