@@ -20,9 +20,9 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
   $RDPPublisher = "Microsoft.Windows.Azure.Extensions"
   $RDPExtensionType = "RDP"
   
-  $rdpSetting=@{"PublicConfig" = @{"Expiration" = $Expiration; "UserName" = $Credential.UserName}}
-  $rdpProtectedSetting=@{"PrivateConfig" = @{"Password" = $Credential.Password}}
-  
+  $rdpSetting = "<PublicConfig><UserName>$Credential.UserName</UserName><Expiration>$Expiration</Expiration></PublicConfig>";
+  $rdpProtectedSetting = "<PrivateConfig><Password>$Credential.Password</Password></PrivateConfig>";
+
   return New-AzCloudServiceExtensionObject -Name $Name -Publisher $RDPPublisher -Type $RDPExtensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $rdpSetting -ProtectedSetting $rdpProtectedSetting -RolesAppliedTo $RolesAppliedTo
 }
 
@@ -78,7 +78,6 @@ Describe 'New-AzCloudService' {
     # Read Configuration File
     Write-Host "Reading Configuration"  
     $cscfgText = [IO.File]::ReadAllText((Resolve-Path $env.CscfgFile).Path)
-    $cscfgBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($cscfgText))
     
     # Create ResourceGroup
     Write-Host "Creating ResourceGroup"
@@ -135,7 +134,7 @@ Describe 'New-AzCloudService' {
                       -ResourceGroupName $env.ResourceGroupName                   `
                       -Location $env.Location                                     `
                       -PackageUrl $cspkgUrl                                       `
-                      -Configuration $cscfgBase64                                 `
+                      -Configuration $cscfgText                                 `
                       -UpgradeMode $upgradeMode                                   `
                       -RoleProfileRole $roles                                     `
                       -NetworkProfileLoadBalancerConfiguration $networkProfile    `
