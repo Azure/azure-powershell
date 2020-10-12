@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of 'Az.Databricks' module
+* Added support for virtual network peering
+
 ## Version 0.2.0
 * Added support for DBFS Double Encryption Support
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Argument completer implementation for NameAvailabilityReason.</summary>
+    /// <summary>Gets or sets the name availability reason.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReasonTypeConverter))]
     public partial struct NameAvailabilityReason :
         System.Management.Automation.IArgumentCompleter
