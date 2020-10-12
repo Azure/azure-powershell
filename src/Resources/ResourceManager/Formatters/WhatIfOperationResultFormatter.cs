@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var builder = new ColoredStringBuilder();
             var formatter = new WhatIfOperationResultFormatter(builder);
 
-            formatter.FormatPreviewNotice();
+            formatter.FormatNoiseNotice();
             formatter.FormatLegend(result.Changes);
             formatter.FormatResourceChanges(result.Changes);
             formatter.FormatStats(result.Changes);
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return builder.ToString();
         }
 
-        private void FormatPreviewNotice()
+        private void FormatNoiseNotice()
         {
             this.Builder
-                .AppendLine(Resources.WhatIfPreviewNotice)
+                .AppendLine(Resources.WhatIfNoiseNotice)
                 .AppendLine();
         }
 
