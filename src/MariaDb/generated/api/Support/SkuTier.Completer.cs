@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Argument completer implementation for SkuTier.</summary>
+    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTierTypeConverter))]
     public partial struct SkuTier :
         System.Management.Automation.IArgumentCompleter

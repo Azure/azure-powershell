@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
+    /// <summary>The version of a server.</summary>
     public partial struct ServerVersion :
         System.IEquatable<ServerVersion>
     {

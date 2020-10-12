@@ -27,10 +27,49 @@ Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
 
-Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
-----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
-mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreate
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IServerForCreate>: Represents a server to be created.
+  CreateMode <CreateMode>: The mode to create a new server.
+  Location <String>: The location the resource resides in.
+  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
+  [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
+  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
+  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
+  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
+  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [Tag <IServerForCreateTags>]: Application-specific metadata in the form of key-value pairs.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Version <ServerVersion?>]: Server version.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>

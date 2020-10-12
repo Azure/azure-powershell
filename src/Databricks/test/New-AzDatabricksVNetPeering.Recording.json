@@ -1,0 +1,37 @@
+{
+  "New-AzDatabricksVNetPeering+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2dfue6/providers/Microsoft.Databricks/workspaces/workspaceoitxq9/virtualNetworkPeerings/vnetpeering-qf6zgw?api-version=2018-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2dfue6/providers/Microsoft.Databricks/workspaces/workspaceoitxq9/virtualNetworkPeerings/vnetpeering-qf6zgw?api-version=2018-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"remoteVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2dfue6/providers/Microsoft.Network/virtualNetworks/databricks-vnet-hkgl9r\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "236" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e4a8793cdbb44cff8e2e444e1209dd1c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "7f9fefcb-de77-4db4-8907-2976fa468650" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200917T032328Z:7f9fefcb-de77-4db4-8907-2976fa468650" ],
+        "Date": [ "Thu, 17 Sep 2020 03:23:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "926" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2dfue6/providers/Microsoft.Databricks/workspaces/workspaceoitxq9/virtualNetworkPeerings/vnetpeering-qf6zgw\",\"name\":\"vnetpeering-qf6zgw\",\"properties\":{\"allowVirtualNetworkAccess\":true,\"allowForwardedTraffic\":false,\"allowGatewayTransit\":false,\"useRemoteGateways\":false,\"remoteVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2dfue6/providers/Microsoft.Network/virtualNetworks/databricks-vnet-hkgl9r\"},\"remoteAddressSpace\":{\"addressPrefixes\":[\"10.0.0.0/16\"]},\"databricksVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-workspaceoitxq9-ej05na4c7risu/providers/Microsoft.Network/virtualNetworks/workers-vnet\"},\"databricksAddressSpace\":{\"addressPrefixes\":[\"10.139.0.0/16\"]},\"peeringState\":\"Initiated\",\"provisioningState\":\"Updating\"}}\n"
+    }
+  }
+}

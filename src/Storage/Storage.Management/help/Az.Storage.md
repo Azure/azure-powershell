@@ -116,6 +116,9 @@ Gets the state of a copy operation.
 ### [Get-AzStorageFileHandle](Get-AzStorageFileHandle.md)
 Lists file handles of a file share, a file directory or a file.
 
+### [Get-AzStorageFileServiceProperty](Get-AzStorageFileServiceProperty.md)
+Gets service properties for Azure Storage File services.
+
 ### [Get-AzStorageObjectReplicationPolicy](Get-AzStorageObjectReplicationPolicy.md)
 Gets or lists object replication policy of a Storage account.
 
@@ -302,6 +305,9 @@ Removes a storage table.
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
 
+### [Restore-AzRmStorageShare](Restore-AzRmStorageShare.md)
+Restores a deleted file share.
+
 ### [Restore-AzStorageBlobRange](Restore-AzStorageBlobRange.md)
 Restores a Storage account for specific blob ranges.
 
@@ -388,6 +394,9 @@ Update the NetworkRule property of a Storage account
 
 ### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
 Modifies the service properties for the Azure Storage Blob service.
+
+### [Update-AzStorageFileServiceProperty](Update-AzStorageFileServiceProperty.md)
+Modifies the service properties for the Azure Storage File service.
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
 Modifies the properties for the Azure Storage service.

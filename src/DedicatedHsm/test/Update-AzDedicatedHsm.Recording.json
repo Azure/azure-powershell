@@ -1,0 +1,118 @@
+{
+  "Update-AzDedicatedHsm+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key3\": \"3\",\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "75" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-keyvault-service-version": [ "1.1.55.0" ],
+        "x-ms-request-id": [ "7baaddfa-3dcc-47c2-a815-c35ac3b8615a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "8c922b74-612a-4acf-a7aa-3b8029f8d8cf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200922T080754Z:8c922b74-612a-4acf-a7aa-3b8029f8d8cf" ],
+        "Date": [ "Tue, 22 Sep 2020 08:07:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "925" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi\",\"name\":\"hsm-n7wfxi\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/networkInterfaces/hsm-n7wfxi_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
+    }
+  },
+  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "6858df80-ebca-4770-a0f0-3e9666a5f255" ],
+        "CommandName": [ "Get-AzDedicatedHsm" ],
+        "FullCommandName": [ "Get-AzDedicatedHsm_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-keyvault-service-version": [ "1.1.55.0" ],
+        "x-ms-request-id": [ "7ef4ce27-b3d0-48cf-8d7d-48a4f5c5357b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "b6048748-5116-48e7-9b25-077e9113303f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200922T080755Z:b6048748-5116-48e7-9b25-077e9113303f" ],
+        "Date": [ "Tue, 22 Sep 2020 08:07:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "925" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi\",\"name\":\"hsm-n7wfxi\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/networkInterfaces/hsm-n7wfxi_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
+    }
+  },
+  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi?api-version=2018-10-31",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key4\": \"4\",\r\n    \"key3\": \"3\",\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "93" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-keyvault-service-version": [ "1.1.55.0" ],
+        "x-ms-request-id": [ "9396e57d-ffe9-41dc-9653-e2e1649ce01e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "850f27a7-e00c-48e3-a8b7-ee6f71bc6b7c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200922T080758Z:850f27a7-e00c-48e3-a8b7-ee6f71bc6b7c" ],
+        "Date": [ "Tue, 22 Sep 2020 08:07:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "936" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-n7wfxi\",\"name\":\"hsm-n7wfxi\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key4\":\"4\",\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/networkInterfaces/hsm-n7wfxi_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
+    }
+  }
+}

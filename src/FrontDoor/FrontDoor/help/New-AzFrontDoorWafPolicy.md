@@ -236,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[Update-AzFrontDoorWafPolicy](./Update-AzFrontDoorWafPolicy.md)
 [Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)
 [Remove-AzFrontDoorWafPolicy](./Remove-AzFrontDoorWafPolicy.md)
 [New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
