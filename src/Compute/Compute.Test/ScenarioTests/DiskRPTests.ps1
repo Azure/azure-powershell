@@ -1168,3 +1168,47 @@ function Test-SnapshotConfigDiskAccessNetworkPolicy
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Testing the new parameters 
+Tier
+LogicalSectorSize 
+in the New-AzDiskConfig cmdlet.  
+#>
+function Test-DiskConfigTierSectorSizeReadOnly
+{
+
+        # Setup 
+        $rgname = Get-ComputeTestResourceName;
+        $loc = "eastus2euap";
+
+        try
+        {
+            New-AzResourceGroup -Name $rgname -Location $loc -Force;
+            $diskNameTier = "datadisktier";
+            $diskNameSector = "datadisksector";
+            $tier3 = "P3";
+            $tier5 = "P5";
+            $sectorSize = 512;
+
+            $diskTier = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
+                -SkuName Premium_LRS -OsType Windows -CreateOption Empty -Tier $tier3 `
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
+
+            Assert-AreEqual $diskTier.Tier $tier3; 
+            
+            $diskSector = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
+                -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -LogicalSectorSize $sectorSize `
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameSector;
+
+            Assert-AreEqual $diskSector.CreationData.LogicalSectorSize $sectorSize; 
+
+		}
+        finally 
+        {
+            # Cleanup
+            Clean-ResourceGroup $rgname
+		}
+
+}
