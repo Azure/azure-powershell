@@ -19,17 +19,22 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.ServiceManagement.Common.Models
 {
     public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
-        public RecordingTracingInterceptor(ConcurrentQueue<string> queue)
+
+        public RecordingTracingInterceptor(ConcurrentQueue<string> queue, IList<Regex> matchers = null)
         {
             MessageQueue = queue;
+            Matchers = matchers;
         }
 
         public ConcurrentQueue<string> MessageQueue { get; private set; }
+
+        private IList<Regex> Matchers { get; set; }
 
         private void Write(string message, params object[] arguments)
         {
@@ -60,12 +65,12 @@ namespace Microsoft.Azure.ServiceManagement.Common.Models
 
         public void SendRequest(string invocationId, HttpRequestMessage request)
         {
-            Write(GeneralUtilities.GetLog(request));
+            Write(GeneralUtilities.GetLog(request, Matchers));
         }
 
         public void ReceiveResponse(string invocationId, HttpResponseMessage response)
         {
-            Write(GeneralUtilities.GetLog(response));
+            Write(GeneralUtilities.GetLog(response, Matchers));
         }
 
         public void Error(string invocationId, Exception ex)

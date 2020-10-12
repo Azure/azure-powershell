@@ -252,49 +252,53 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return address.Uri.AbsoluteUri;
         }
 
-        public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body)
+        public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body, IList<Regex> matchers = null)
         {
             StringBuilder httpResponseLog = new StringBuilder();
             httpResponseLog.AppendLine($"============================ HTTP RESPONSE ============================{Environment.NewLine}");
             httpResponseLog.AppendLine($"Status Code:{Environment.NewLine}{statusCode}{Environment.NewLine}");
             httpResponseLog.AppendLine($"Headers:{ Environment.NewLine}{ MessageHeadersToString(headers)}");
-            httpResponseLog.AppendLine($"Body:{Environment.NewLine}{TransformBody(body)}{Environment.NewLine}");
+            httpResponseLog.AppendLine($"Body:{Environment.NewLine}{TransformBody(body, matchers)}{Environment.NewLine}");
             return httpResponseLog.ToString();
         }
 
-        public static string GetHttpResponseLog(string statusCode, HttpHeaders headers, string body)
+        public static string GetHttpResponseLog(string statusCode, HttpHeaders headers, string body, IList<Regex> matchers = null)
         {
-            return GetHttpResponseLog(statusCode, ConvertHttpHeadersToWebHeaderCollection(headers), body);
+            return GetHttpResponseLog(statusCode, ConvertHttpHeadersToWebHeaderCollection(headers), body, matchers);
         }
 
-        public static string TransformBody(string inBody)
+        public static string TransformBody(string inBody, IList<Regex> matchers = null)
         {
-            Regex matcher = new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\"");
-            return matcher.Replace(inBody, "$1\"<redacted>\"");
+            foreach (Regex match in matchers)
+            {
+                inBody = match.Replace(inBody, "$1\"<redacted>\"");
+            }
+            return inBody;
         }
 
         public static string GetHttpRequestLog(
             string method,
             string requestUri,
             IDictionary<string, IEnumerable<string>> headers,
-            string body)
+            string body,
+            IList<Regex> matchers = null)
         {
             StringBuilder httpRequestLog = new StringBuilder();
             httpRequestLog.AppendLine(string.Format("============================ HTTP REQUEST ============================{0}", Environment.NewLine));
             httpRequestLog.AppendLine(string.Format("HTTP Method:{0}{1}{0}", Environment.NewLine, method));
             httpRequestLog.AppendLine(string.Format("Absolute Uri:{0}{1}{0}", Environment.NewLine, requestUri));
             httpRequestLog.AppendLine(string.Format("Headers:{0}{1}", Environment.NewLine, MessageHeadersToString(headers)));
-            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, TransformBody(body)));
+            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, TransformBody(body, matchers)));
 
             return httpRequestLog.ToString();
         }
 
-        public static string GetHttpRequestLog(string method, string requestUri, HttpHeaders headers, string body)
+        public static string GetHttpRequestLog(string method, string requestUri, HttpHeaders headers, string body, IList<Regex> matchers = null)
         {
-            return GetHttpRequestLog(method, requestUri, ConvertHttpHeadersToWebHeaderCollection(headers), body);
+            return GetHttpRequestLog(method, requestUri, ConvertHttpHeadersToWebHeaderCollection(headers), body, matchers);
         }
 
-        public static string GetLog(HttpResponseMessage response)
+        public static string GetLog(HttpResponseMessage response, IList<Regex> matchers = null)
         {
             string body = response.Content == null ? string.Empty
                 : FormatString(response.Content.ReadAsStringAsync().Result);
@@ -302,10 +306,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return GetHttpResponseLog(
                 response.StatusCode.ToString(),
                 response.Headers,
-                body);
+                body,
+                matchers);
         }
 
-        public static string GetLog(HttpRequestMessage request)
+        public static string GetLog(HttpRequestMessage request, IList<Regex> matchers = null)
         {
             string body = request.Content == null ? string.Empty
                 : FormatString(request.Content.ReadAsStringAsync().Result);
@@ -314,7 +319,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 request.Method.ToString(),
                 request.RequestUri.ToString(),
                 (HttpHeaders)request.Headers,
-                body);
+                body,
+                matchers);
         }
 
         public static string FormatString(string content)

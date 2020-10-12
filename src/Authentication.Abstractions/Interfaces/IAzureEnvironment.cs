@@ -131,5 +131,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The set of version profile s(service capabilities) supported
         /// </summary>
         IList<string> VersionProfiles { get; }
+
+        /// <summary>
+        /// The domain name suffix for Azure Container Registry
+        /// </summary>
+        string ContainerRegistryEndpointSuffix { get; set; }
     }
 }
