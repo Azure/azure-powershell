@@ -2,7 +2,6 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
@@ -11,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.RestorePoint,
         DefaultParameterSetName = GetByNameParameterSet)]
-    [OutputType(typeof(RestorePoint))]
+    [OutputType(typeof(PSRestorePoint))]
     public class GetAzureSynapseSqlPoolRestorePoint : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";

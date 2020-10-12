@@ -12,25 +12,25 @@ Suspends a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### PauseByNameParameterSet (Default)
+### SuspendByNameParameterSet (Default)
 ```
 Suspend-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PauseByParentObjectParameterSet
+### SuspendByParentObjectParameterSet
 ```
 Suspend-AzSynapseSqlPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PauseByInputObjectParameterSet
+### SuspendByInputObjectParameterSet
 ```
 Suspend-AzSynapseSqlPool -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PauseByResourceIdParameterSet
+### SuspendByResourceIdParameterSet
 ```
 Suspend-AzSynapseSqlPool -ResourceId <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -85,7 +85,7 @@ SQL pool input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: PauseByInputObjectParameterSet
+Parameter Sets: SuspendByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -100,7 +100,7 @@ Name of Synapse SQL pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: PauseByNameParameterSet, PauseByParentObjectParameterSet
+Parameter Sets: SuspendByNameParameterSet, SuspendByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -131,7 +131,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PauseByNameParameterSet
+Parameter Sets: SuspendByNameParameterSet
 Aliases:
 
 Required: False
@@ -146,7 +146,7 @@ Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: PauseByResourceIdParameterSet
+Parameter Sets: SuspendByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -161,7 +161,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: PauseByNameParameterSet
+Parameter Sets: SuspendByNameParameterSet
 Aliases:
 
 Required: True
@@ -176,7 +176,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: PauseByParentObjectParameterSet
+Parameter Sets: SuspendByParentObjectParameterSet
 Aliases:
 
 Required: True

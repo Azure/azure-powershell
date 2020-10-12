@@ -12,21 +12,21 @@ Restores a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### CreateFromBackupIdByNameParameterSet
+### RestoreFromBackupIdByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] -BackupResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### CreateFromBackupIdByParentObjectParameterSet
+### RestoreFromBackupIdByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -BackupResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateFromBackupNameByNameParameterSet
+### RestoreFromBackupNameByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] [-BackupResourceGroupName <String>] -BackupWorkspaceName <String>
@@ -34,21 +34,21 @@ Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceN
  [<CommonParameters>]
 ```
 
-### CreateFromBackupNameByParentObjectParameterSet
+### RestoreFromBackupNameByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  [-BackupResourceGroupName <String>] -BackupWorkspaceName <String> -BackupSqlPoolName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateFromBackupInputObjectByNameParameterSet
+### RestoreFromBackupInputObjectByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] -BackupSqlPoolObject <PSSynapseSqlPool> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateFromRestorePointIdByNameParameterSet
+### RestoreFromRestorePointIdByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -WorkspaceName <String>
  -Name <String> [-Tag <Hashtable>] -PerformanceLevel <String> -SourceResourceId <String>
@@ -56,14 +56,14 @@ Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -Work
  [<CommonParameters>]
 ```
 
-### CreateFromRestorePointIdByParentObjectParameterSet
+### RestoreFromRestorePointIdByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] -WorkspaceObject <PSSynapseWorkspace> -Name <String>
  [-Tag <Hashtable>] -PerformanceLevel <String> -SourceResourceId <String> [-RestorePoint <DateTime>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateFromRestorePointNameByNameParameterSet
+### RestoreFromRestorePointNameByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -WorkspaceName <String>
  -Name <String> [-Tag <Hashtable>] -PerformanceLevel <String> [-SourceResourceGroupName <String>]
@@ -71,7 +71,7 @@ Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -Work
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateFromRestorePointNameByParentObjectParameterSet
+### RestoreFromRestorePointNameByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] -WorkspaceObject <PSSynapseWorkspace> -Name <String>
  [-Tag <Hashtable>] [-SourceResourceGroupName <String>] -SourceWorkspaceName <String>
@@ -79,7 +79,7 @@ Restore-AzSynapseSqlPool [-FromRestorePoint] -WorkspaceObject <PSSynapseWorkspac
  [<CommonParameters>]
 ```
 
-### CreateFromRestorePointInputObjectByNameParameterSet
+### RestoreFromRestorePointInputObjectByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -WorkspaceName <String>
  -Name <String> [-Tag <Hashtable>] [-PerformanceLevel <String>] -SourceSqlPoolObject <PSSynapseSqlPool>
@@ -143,7 +143,7 @@ The resource group name of bakcup SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupNameByNameParameterSet, CreateFromBackupNameByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupNameByNameParameterSet, RestoreFromBackupNameByParentObjectParameterSet
 Aliases:
 
 Required: False
@@ -158,7 +158,7 @@ The resource identifier of backup SQL pool object to restore from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupIdByNameParameterSet, CreateFromBackupIdByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromBackupIdByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -173,7 +173,7 @@ The name of bakcup SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupNameByNameParameterSet, CreateFromBackupNameByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupNameByNameParameterSet, RestoreFromBackupNameByParentObjectParameterSet
 Aliases: BackupDatabaseName
 
 Required: True
@@ -188,7 +188,7 @@ SQL pool input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: CreateFromBackupInputObjectByNameParameterSet
+Parameter Sets: RestoreFromBackupInputObjectByNameParameterSet
 Aliases:
 
 Required: True
@@ -203,7 +203,7 @@ The Synapse workspace name of bakcup SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupNameByNameParameterSet, CreateFromBackupNameByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupNameByNameParameterSet, RestoreFromBackupNameByParentObjectParameterSet
 Aliases: BackupServerName
 
 Required: True
@@ -233,7 +233,7 @@ Indicates to restore from the most recent backup of any SQL pool in this subscri
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateFromBackupIdByNameParameterSet, CreateFromBackupIdByParentObjectParameterSet, CreateFromBackupNameByNameParameterSet, CreateFromBackupNameByParentObjectParameterSet, CreateFromBackupInputObjectByNameParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromBackupIdByParentObjectParameterSet, RestoreFromBackupNameByNameParameterSet, RestoreFromBackupNameByParentObjectParameterSet, RestoreFromBackupInputObjectByNameParameterSet
 Aliases:
 
 Required: True
@@ -248,7 +248,7 @@ Indicates to leverage a restore point from any SQL pool in this subscription to 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointIdByParentObjectParameterSet, CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointNameByParentObjectParameterSet, CreateFromRestorePointInputObjectByNameParameterSet
+Parameter Sets: RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet, RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointNameByParentObjectParameterSet, RestoreFromRestorePointInputObjectByNameParameterSet
 Aliases:
 
 Required: True
@@ -279,7 +279,7 @@ For example, DW2000c.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointIdByParentObjectParameterSet, CreateFromRestorePointNameByNameParameterSet
+Parameter Sets: RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet, RestoreFromRestorePointNameByNameParameterSet
 Aliases:
 
 Required: True
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointInputObjectByNameParameterSet
+Parameter Sets: RestoreFromRestorePointInputObjectByNameParameterSet
 Aliases:
 
 Required: False
@@ -306,7 +306,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupIdByNameParameterSet, CreateFromBackupNameByNameParameterSet, CreateFromBackupInputObjectByNameParameterSet, CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointInputObjectByNameParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromBackupNameByNameParameterSet, RestoreFromBackupInputObjectByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointInputObjectByNameParameterSet
 Aliases:
 
 Required: False
@@ -321,7 +321,7 @@ Snapshot time to restore.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
-Parameter Sets: CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointIdByParentObjectParameterSet
+Parameter Sets: RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet
 Aliases:
 
 Required: False
@@ -336,7 +336,7 @@ The resource group name of source SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointNameByParentObjectParameterSet
+Parameter Sets: RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointNameByParentObjectParameterSet
 Aliases:
 
 Required: False
@@ -351,7 +351,7 @@ The resource identifier of source SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointIdByParentObjectParameterSet
+Parameter Sets: RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -366,7 +366,7 @@ The name of source SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointNameByParentObjectParameterSet
+Parameter Sets: RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointNameByParentObjectParameterSet
 Aliases: SourceDatabaseName
 
 Required: True
@@ -381,7 +381,7 @@ SQL pool input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: CreateFromRestorePointInputObjectByNameParameterSet
+Parameter Sets: RestoreFromRestorePointInputObjectByNameParameterSet
 Aliases:
 
 Required: True
@@ -396,7 +396,7 @@ The Synapse workspace name of source SQL pool object to create from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointNameByParentObjectParameterSet
+Parameter Sets: RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointNameByParentObjectParameterSet
 Aliases: SourceServerName
 
 Required: True
@@ -426,7 +426,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateFromBackupIdByNameParameterSet, CreateFromBackupNameByNameParameterSet, CreateFromBackupInputObjectByNameParameterSet, CreateFromRestorePointIdByNameParameterSet, CreateFromRestorePointNameByNameParameterSet, CreateFromRestorePointInputObjectByNameParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromBackupNameByNameParameterSet, RestoreFromBackupInputObjectByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet, RestoreFromRestorePointNameByNameParameterSet, RestoreFromRestorePointInputObjectByNameParameterSet
 Aliases:
 
 Required: True
@@ -441,7 +441,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: CreateFromBackupIdByParentObjectParameterSet, CreateFromBackupNameByParentObjectParameterSet, CreateFromRestorePointIdByParentObjectParameterSet, CreateFromRestorePointNameByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupIdByParentObjectParameterSet, RestoreFromBackupNameByParentObjectParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet, RestoreFromRestorePointNameByParentObjectParameterSet
 Aliases:
 
 Required: True
