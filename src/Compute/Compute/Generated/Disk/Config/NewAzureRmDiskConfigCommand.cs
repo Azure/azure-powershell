@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("P1", "P2", "P3", "P4", "P5", "P6", "P10", "P15", "P20", "P30",
             "P40", "P50", "P60", "P70", "P80")]
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         public int LogicalSectorSize { get; set; }
 
