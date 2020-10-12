@@ -13,8 +13,12 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
-    $null = $env.Add("ResourceGroup", "datr-canadaeast")
-    $null = $env.Add("Location", "canadaeast")
+    $null = $env.Add("ResourceGroup", "shhirji-ps-unittest")
+    $null = $env.Add("Location", "ukwest")
+    $null = $env.Add("HostPool", "shhirji-hp-ps-unittest")
+    $null = $env.Add("HostPoolArmPath", "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/shhirji-ps-unittest/providers/Microsoft.DesktopVirtualization/hostPools/shhirji-hp-ps-unittest")
+    $null = $env.Add("RemoteApplicationGroup", "shhirji-ps-unittest-RAG")
+    $null = $env.Add("DesktopApplicationGroup", "shhirji-hp-ps-unittest-DAG")
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }

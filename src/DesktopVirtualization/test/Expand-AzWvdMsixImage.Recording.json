@@ -19,17 +19,17 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-opsarmpath": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/shhirji-ps-unittest/providers/Microsoft.DesktopVirtualization/hostpools/shhirji-hp-ps-unittest" ],
-        "x-ms-lamport-ts": [ "73526" ],
-        "x-ms-correlation-id": [ "0e772de9-5d19-4b96-8140-5167f2ed8eba" ],
+        "x-ms-lamport-ts": [ "89222" ],
+        "x-ms-correlation-id": [ "d1bde57a-0767-453a-829a-94243261db17" ],
         "Set-Cookie": [ "ARRAffinity=8cf83099352b60be413860905d7d95eb4db2cb908d2a46b6a89ece556e9c4ed7;Path=/;HttpOnly;Secure;Domain=rdarmprovider.dev21.avdtest.net", "ARRAffinitySameSite=8cf83099352b60be413860905d7d95eb4db2cb908d2a46b6a89ece556e9c4ed7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider.dev21.avdtest.net" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "0e772de9-5d19-4b96-8140-5167f2ed8eba" ],
-        "x-ms-correlation-request-id": [ "0e772de9-5d19-4b96-8140-5167f2ed8eba" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201008T182042Z:0e772de9-5d19-4b96-8140-5167f2ed8eba" ],
+        "x-ms-request-id": [ "d1bde57a-0767-453a-829a-94243261db17" ],
+        "x-ms-correlation-request-id": [ "d1bde57a-0767-453a-829a-94243261db17" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201012T000629Z:d1bde57a-0767-453a-829a-94243261db17" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 08 Oct 2020 18:20:41 GMT" ]
+        "Date": [ "Mon, 12 Oct 2020 00:06:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2394" ],

@@ -19,7 +19,7 @@ Describe 'New-AzWvdApplication' {
                             -Location $env.Location `
                             -FriendlyName 'fri' `
                             -Description 'des' `
-                            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1' `
+                            -HostPoolArmPath $env.HostPoolArmPath `
                             -ApplicationGroupType 'RemoteApp'
         
         $application = New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
@@ -72,7 +72,7 @@ Describe 'New-AzWvdApplication' {
                             -Location $env.Location `
                             -FriendlyName 'fri' `
                             -Description 'des' `
-                            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1' `
+                            -HostPoolArmPath $env.HostPoolArmPath `
                             -ApplicationGroupType 'RemoteApp'
         
         New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
@@ -111,9 +111,9 @@ Describe 'New-AzWvdApplication' {
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
         $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
             -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\SingleMsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
@@ -127,10 +127,10 @@ Describe 'New-AzWvdApplication' {
 
         # create MSIX App 
 
-        $application = New-AzWvdApplication -GroupName 'shhirji-ps-unitest-RAG' `
+        $application = New-AzWvdApplication -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application' `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
             -ApplicationType 1 `
             -MsixPackageApplicationId 'MsixTest_Application_Id' `
             -MsixPackageFamilyName 'MsixUnitTest_FamilyName'`
@@ -140,27 +140,27 @@ Describe 'New-AzWvdApplication' {
             -IconPath 'c:\unittest_img.png' `
             -CommandLineSetting 0
 
-        $application = Get-AzWvdApplication -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -GroupName 'shhirji-ps-unitest-RAG' `
+        $application = Get-AzWvdApplication -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'shhirji-ps-unitest-RAG/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'shhirji-ps-unittest-RAG/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
         $application.IconPath | Should -Be 'c:\unittest_img.png'
         $application.ShowInPortal | Should -Be $true
 
-        $application = Remove-AzWvdApplication -GroupName 'shhirji-ps-unitest-RAG' `
+        $application = Remove-AzWvdApplication -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application' `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
 
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
 
     }
 
@@ -173,9 +173,9 @@ Describe 'New-AzWvdApplication' {
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
         $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
             -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\SingleMsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
@@ -189,10 +189,10 @@ Describe 'New-AzWvdApplication' {
 
         # create MSIX App 
 
-        $application = New-AzWvdApplication -GroupName 'shhirji-hp-ps-unittest-DAG' `
-            -Name 'shhirji-hp-ps-unittest-DAG' `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
+        $application = New-AzWvdApplication -GroupName $env.DesktopApplicationGroup `
+            -Name UnitTest-MSIX-Application `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
             -ApplicationType 1 `
             -MsixPackageFamilyName 'MsixUnitTest_FamilyName'`
             -Description 'Unit Test MSIX Application' `
@@ -200,27 +200,27 @@ Describe 'New-AzWvdApplication' {
             -IconIndex 0  `
             -CommandLineSetting 0
 
-        $application = Get-AzWvdApplication -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -GroupName 'shhirji-hp-ps-unittest-DAG' `
-            -Name 'shhirji-hp-ps-unittest-DAG'
+        $application = Get-AzWvdApplication -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -GroupName $env.DesktopApplicationGroup `
+            -Name UnitTest-MSIX-Application
 
-        $application.Name | Should -Be 'shhirji-hp-ps-unittest-DAG/shhirji-hp-ps-unittest-DAG'
+        $application.Name | Should -Be 'shhirji-hp-ps-unittest-DAG/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
         $application.MsixPackageFamilyName | Should -Be 'MsixUnitTest_FamilyName'
         $application.ShowInPortal | Should -Be $false
 
-        $application = Remove-AzWvdApplication -GroupName 'shhirji-hp-ps-unittest-DAG' `
-            -Name 'shhirji-hp-ps-unittest-DAG' `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+        $application = Remove-AzWvdApplication -GroupName $env.DesktopApplicationGroup `
+            -Name UnitTest-MSIX-Application `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
 
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
     }
 }
 

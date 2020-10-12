@@ -21,11 +21,12 @@ Describe 'Remove-AzWvdMsixPackage' {
         $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
         
-        $package_created = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\singlemsix.vhd' `
+        $package_created = New-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId  `
+            -DisplayName 'UnitTest-MSIXPackage' `
+            -ImagePath 'C:\msix\singlemsix.vhd' `
             -IsActive `
             -IsRegularRegistration `
             -LastUpdated '0001-01-01T00:00:00' `
@@ -36,10 +37,10 @@ Describe 'Remove-AzWvdMsixPackage' {
             -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
             -Version '0.0.18838.722' 
 
-        $package = Get-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+        $package = Get-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId  
 
         $package.PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
         $package.DisplayName | Should -Be 'UnitTest-MSIXPackage'
@@ -50,15 +51,15 @@ Describe 'Remove-AzWvdMsixPackage' {
         $package.PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
 
         $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
-            -HostPoolName shhirji-hp-ps-unittest `
-            -ResourceGroupName shhirji-ps-unittest `
-            -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId  
 
         try {
-            $package_get = Get-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
-                -HostPoolName shhirji-hp-ps-unittest `
-                -ResourceGroupName shhirji-ps-unittest `
-                -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 
+            $package_get = Get-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
+                -HostPoolName $env.HostPool `
+                -ResourceGroupName $env.ResourceGroup `
+                -SubscriptionId $env.SubscriptionId  
             throw "Get should have failed."
         }
         catch {

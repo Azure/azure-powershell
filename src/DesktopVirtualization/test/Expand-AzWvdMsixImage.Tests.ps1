@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Expand-AzWvdMsixImage.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -13,11 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Expand-AzWvdMsixImage' {
     
-    It 'Expand'  {
-        $package = Expand-AzWvdMsixImage -HostPoolName shhirji-hp-ps-unittest `
-         -ResourceGroupName shhirji-ps-unittest `
-         -SubscriptionId 292d7caa-a878-4de8-b774-689097666272 `
-         -Uri 'C:\msix\singlemsix.vhd'
+    It 'Expand' {
+        $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -Uri 'C:\msix\singlemsix.vhd'
          
         $package.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'
         $package.ImagePath | Should -Be 'C:\msix\singlemsix.vhd'
