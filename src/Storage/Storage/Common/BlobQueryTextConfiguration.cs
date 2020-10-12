@@ -27,19 +27,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     }
 
     /// <summary>
-    ///  Wrapper Class for PSBlobQueryTextConfiguration, BlobQueryCsvTextConfiguration, BlobQueryJsonTextConfiguration
+    ///  Wrapper Class for BlobQueryTextOptions, PSBlobQueryCsvTextConfiguration, BlobQueryJsonTextOptions
     /// </summary>
     public abstract class PSBlobQueryTextConfiguration
     {
         public BlobQueryConfigType Type { get; set; }
-        public string RecordSeparator { get; set; }       
+        public string RecordSeparator { get; set; }
 
-        public BlobQueryTextConfiguration ParseBlobQueryTextConfiguration()
+        public BlobQueryTextOptions ParseBlobQueryTextConfiguration()
         {
             if (this.Type == BlobQueryConfigType.Csv) //csv
             {
                 PSBlobQueryCsvTextConfiguration csvconfig = (PSBlobQueryCsvTextConfiguration)this;
-                return new BlobQueryCsvTextConfiguration()
+                return new BlobQueryCsvTextOptions()
                 {
                     RecordSeparator = csvconfig.RecordSeparator,
                     ColumnSeparator = csvconfig.ColumnSeparator,
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             else //json
             {
                 PSBlobQueryJsonTextConfiguration jsonconfig = (PSBlobQueryJsonTextConfiguration)this;
-                return new BlobQueryJsonTextConfiguration()
+                return new BlobQueryJsonTextOptions()
                 {
                     RecordSeparator = jsonconfig.RecordSeparator
                 };
@@ -66,15 +66,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     {
         public PSBlobQueryJsonTextConfiguration() { }
 
-        public PSBlobQueryJsonTextConfiguration(BlobQueryJsonTextConfiguration config)
+        public PSBlobQueryJsonTextConfiguration(BlobQueryJsonTextOptions config)
         {
             this.RecordSeparator = config.RecordSeparator;
             this.Type = BlobQueryConfigType.Json;
         }
 
-        public BlobQueryJsonTextConfiguration ParseBlobQueryJsonTextConfiguration()
+        public BlobQueryJsonTextOptions ParseBlobQueryJsonTextConfiguration()
         {
-            return new BlobQueryJsonTextConfiguration()
+            return new BlobQueryJsonTextOptions()
             {
                 RecordSeparator = this.RecordSeparator
             };
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     }
 
     /// <summary>
-    ///  Wrapper Class for BlobQueryCsvTextConfiguration
+    ///  Wrapper Class for BlobQueryCsvTextOptions
     /// </summary>
     public class PSBlobQueryCsvTextConfiguration : PSBlobQueryTextConfiguration
     {
@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 
         public PSBlobQueryCsvTextConfiguration() { }
 
-        public PSBlobQueryCsvTextConfiguration(BlobQueryCsvTextConfiguration config)
+        public PSBlobQueryCsvTextConfiguration(BlobQueryCsvTextOptions config)
         {
             this.RecordSeparator = config.RecordSeparator;
             this.ColumnSeparator = config.ColumnSeparator;
@@ -104,9 +104,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             this.Type = BlobQueryConfigType.Csv;
         }
 
-        public BlobQueryCsvTextConfiguration ParseBlobQueryCsvTextConfiguration()
+        public BlobQueryCsvTextOptions ParseBlobQueryCsvTextConfiguration()
         {
-            return new BlobQueryCsvTextConfiguration()
+            return new BlobQueryCsvTextOptions()
             {
                 RecordSeparator = this.RecordSeparator,
                 ColumnSeparator = this.ColumnSeparator,
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public bool IsFatal { get; }
         public long Position { get; }
 
-        public PSBlobQueryError (BlobQueryError error)
+        public PSBlobQueryError(BlobQueryError error)
         {
             this.Name = error.Name;
             this.Description = error.Description;

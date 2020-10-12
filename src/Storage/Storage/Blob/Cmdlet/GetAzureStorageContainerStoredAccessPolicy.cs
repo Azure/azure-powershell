@@ -15,10 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
     using Microsoft.Azure.Storage.Blob;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -27,8 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(SharedAccessBlobPolicy), ChangeDescription = "The output type will change from 'SharedAccessBlobPolicy' to 'PSObject', with the child property 'Permissions' type change from enum to string in a future release.")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy"), OutputType(typeof(SharedAccessBlobPolicy))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy"), OutputType(typeof(PSObject))]
     public class GetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
@@ -63,35 +65,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         internal async Task GetAzureContainerStoredAccessPolicyAsync(long taskId, IStorageBlobManagement localChannel, string containerName, string policyName)
         {
-            SharedAccessBlobPolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, containerName, policyName).ConfigureAwait(false);
+            //Get container instance, Get existing permissions
+            CloudBlobContainer container_Track1 = Channel.GetContainerReference(containerName);
+            BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
+            BlobContainerAccessPolicy accessPolicy = (await container.GetAccessPolicyAsync(BlobRequestConditions, cancellationToken: CmdletCancellationToken).ConfigureAwait(false)).Value;
+            IEnumerable<BlobSignedIdentifier> signedIdentifiers = accessPolicy.SignedIdentifiers;
 
             if (!String.IsNullOrEmpty(policyName))
             {
-                if (shareAccessPolicies.Keys.Contains(policyName))
+                BlobSignedIdentifier signedIdentifier = null;
+                foreach (BlobSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessBlobPolicy>(shareAccessPolicies, policyName));
+                    if (identifier.Id == policyName)
+                    {
+                        signedIdentifier = identifier;
+                    }
+                }
+                if (signedIdentifier == null)
+                {
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<BlobSignedIdentifier>(signedIdentifier));
                 }
             }
             else
             {
-                foreach (string key in shareAccessPolicies.Keys)
+                foreach (BlobSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessBlobPolicy>(shareAccessPolicies, key));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<BlobSignedIdentifier>(identifier));
                 }
             }
         }
-
-        internal async Task<SharedAccessBlobPolicies> GetPoliciesAsync(IStorageBlobManagement localChannel, string containerName, string policyName)
-        {
-            CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            BlobContainerPermissions blobContainerPermissions = await localChannel.GetContainerPermissionsAsync(container, null, null, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            return blobContainerPermissions.SharedAccessPolicies;
-        }
-
 
         /// <summary>
         /// execute command
