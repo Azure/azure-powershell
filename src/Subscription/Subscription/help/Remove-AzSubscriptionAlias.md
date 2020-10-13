@@ -1,43 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/update-azsubscription
+online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/remove-azsubscriptionalias
 schema: 2.0.0
 ---
 
-# Update-AzSubscription
+# Remove-AzSubscriptionAlias
 
 ## SYNOPSIS
-Updates an Azure Subscription
+Deletes the subscription alias
 
 ## SYNTAX
 
 ```
-Update-AzSubscription -SubscriptionId <String> -Action <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSubscriptionAlias -AliasName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSubscription** cmdlet updates an Azure subscription
+The **Remove-AzSubscriptionAlias** cmdlet removes the subscription alias
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Cancel"
-
-Name        : My Subscription
-Id          : 86869d42-1782-4337-98b0-c905fb937d46
-TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
-State       : Enabled
+PS C:\> Remove-AzSubscriptionAlias -AliasName "ExistingAliasName"
 ```
 
-Updates the subscription
+Deletes the subscription alias
 
 ## PARAMETERS
 
-### -Action
-Action to perform on subscription
+### -AliasName
+Alias for the subscription
 
 ```yaml
 Type: System.String
@@ -75,36 +70,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the subscription
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription Id to update
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
