@@ -13,7 +13,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskEncryptionSetAssociatedResource")]
-    [OutputType(typeof(Uri[]))]
+    [OutputType(typeof(String[]))]
     public partial class GetAzureDiskEncryptionSetAssociatedResource : ComputeAutomationBaseCmdlet
     {
 

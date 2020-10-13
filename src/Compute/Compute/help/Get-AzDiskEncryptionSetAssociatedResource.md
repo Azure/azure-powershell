@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskEncryptionSetName
-{{ Fill DiskEncryptionSetName Description }}
+Name of disk encryption set.
 
 ```yaml
 Type: String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Specifies the name of a resource group.
 
 ```yaml
 Type: String

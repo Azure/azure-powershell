@@ -1182,8 +1182,8 @@ function Test-GetDiskEncryptionSetAssociatedResource
 {
     # Setup
     $loc = 'eastus';
-    $rgname = 'EncSetAccosiTest';
-    $iteration = '3'
+    $rgname = 'EncSetAssociTest';
+    $iteration = '4'
     $vaultName = 'kv'+ $iteration + $rgname ;
 
     
@@ -1202,38 +1202,39 @@ function Test-GetDiskEncryptionSetAssociatedResource
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku Standard -EnablePurgeProtection;
         $mocksourcevault = $vault.ResourceId;
-        $userPrincipalName = (Get-AzContext).Account.Id;
         Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
         $kek = Add-AzKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software";
-        $secret = Set-AzKeyVaultSecret -VaultName $vaultName -Name $secretname -SecretValue $securestring1;
+        $secret = Set-AzKeyVaultSecret -VaultName $vaultName -Name $secretname -SecretValue $securestring;
         $mockkey = $kek.Id
-        #>
-        
 
-        $mockkey = "https://kv3encsetaccositest.vault.azure.net:443/keys/key3EncSetAccosiTest/86a948de5dbc4081add38471af88cba9";
-        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $sub = Get-AzContext;
+        $subId = $sub.Subscription.id;
         $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName;
 
         # Create DiskEncyptionSet
         $diskEncryptionSetConfig = New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey -SourceVaultId $mocksourcevault -IdentityType "SystemAssigned" 
-        $diskEncryptionSetName = "encyptionSet0" + $iteration;
+        $diskEncryptionSetName = "encryptionSet0" + $iteration;
         $diskEncryptionSet = New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $diskEncryptionSetName -inputobject $diskEncryptionSetConfig
 
         # set access policy for diskencryptionset in keyvault
         $access = @("get", "wrapkey", "unwrapkey")
-        set-azkeyvaultaccesspolicy -vaultname $vaultName -objectId $diskEncryptionSet.Identity.PrincipalId -PermissionsToKeys $access
+        Set-AzKeyVaultAccessPolicy -vaultname $vaultName -objectId $diskEncryptionSet.Identity.PrincipalId -PermissionsToKeys $access
 
+        #>
+
+        $diskEncryptionSetName = "encryptionSet0" + $iteration;
+        $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $diskEncryptionSetName;
         
         # Create a disk and associate it with EncryptionSet
         $diskconfig00 = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 1 -AccountType "Standard_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -diskencryptionsetid $diskEncryptionSet.id -EncryptionType 'EncryptionAtRestWithCustomerKey';
-        $disk00Name = "disk00" + $interation
+        $disk00Name = "disk00" + $iteration
         $disk00 = New-AzDisk -ResourceGroupName $rgname -DiskName $disk00Name -Disk $diskconfig00
 
         # check association
-        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionName $diskEncryptionSetName;
-        #Assert-NotNull $res
-        #Assert-True { $res.count -eq 1}
-        #Assert-AreEqual $res[0] $disk00.id
+        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionSetName $diskEncryptionSetName;
+        Assert-NotNull $res
+        Assert-True { $res.count -eq 1}
+        Assert-AreEqual $res[0] $disk00.id
 
         # create another disk without disk encryption set association
         $diskconfig01 = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 1 -AccountType "Standard_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
@@ -1241,24 +1242,22 @@ function Test-GetDiskEncryptionSetAssociatedResource
         $disk01 = New-AzDisk -ResourceGroupName $rgname -DiskName $disk01Name -Disk $diskconfig01
 
         # check association (count still 1)
-        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionName $diskEncryptionSetName;
-        #Assert-True {$res.count -eq 1}
+        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionSetName $diskEncryptionSetName;
+        Assert-True {$res.count -eq 1}
 
         # Update disk to associate with encryptionset
         $diskUpdatedConfig = New-AzDiskUpdateConfig -EncryptionType 'EncryptionAtRestWithCustomerKey' -DiskEncryptionSetId $diskEncryptionSet.Id
         Update-AzDisk -ResourceGroupName $rgname -DiskName $disk01Name -DiskUpdate $diskUpdatedConfig
 
         # check association (count = 2)
-        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionName $diskEncryptionSetName;
-        #Assert-True {$res.count -eq 2}
-        
-        
-        
+        $res = get-AzDiskEncryptionSetAssociatedResource -resourceGroupName $rgname -diskEncryptionSetName $diskEncryptionSetName;
+        Assert-True {$res.count -eq 2}
     }
     finally
     {
         # Cleanup
         # Clean-ResourceGroup $rgname
-        # $diskEncryptionSet | Remove-AzDiskEncryptionSet -Force;
+        Remove-AzDisk -ResourceGroupName $rgName -DiskName $disk00Name -Force
+        Remove-AzDisk -ResourceGroupName $rgName -DiskName $disk01Name -Force
     }
 }
