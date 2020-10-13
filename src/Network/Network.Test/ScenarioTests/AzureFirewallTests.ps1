@@ -1224,8 +1224,8 @@ function Test-AzureFirewallVirtualHubCRUD {
     $policyLocation = "westcentralus"
     $location = Get-ProviderLocation $resourceTypeParent
     $azureFirewallPolicyName = Get-ResourceName
-    $sku = "AZFW_Hub"
-    $tier = "Standard"
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
 
     try {
         # Create the resource group
@@ -1243,7 +1243,7 @@ function Test-AzureFirewallVirtualHubCRUD {
 
         $azureFirewallPolicyId = $getazureFirewallPolicy.Id
 
-        New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku $sku -FirewallPolicyId $azureFirewallPolicyId
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -FirewallPolicyId $azureFirewallPolicyId
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1253,9 +1253,9 @@ function Test-AzureFirewallVirtualHubCRUD {
         Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
-        Assert-NotNull $sku $getAzureFirewall.Sku
-        Assert-AreEqual $sku $getAzureFirewall.Sku.Name
-        Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
         Assert-NotNull $getAzureFirewall.FirewallPolicy
         Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
     }
@@ -1404,6 +1404,9 @@ function Test-AzureFirewallWithDNSProxy {
     $networkRule2Protocol3 = "ICMP"
     $networkRule2DestinationPort1 = "80"
 
+    $skuName = "AZFW_VNet"
+    $skuTier = "Standard"
+
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
@@ -1437,7 +1440,7 @@ function Test-AzureFirewallWithDNSProxy {
         $netRc.AddRule($networkRule2)
 
         # Create AzureFirewall with DNSProxy enabled and DNS Servers provided
-        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -EnableDnsProxy -DnsServer $dnsServers
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -EnableDnsProxy -DnsServer $dnsServers -SkuName $skuName -SkuTier $skuTier
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1445,6 +1448,8 @@ function Test-AzureFirewallWithDNSProxy {
         # Verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
         Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
 
         # Check rule collections
         Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections).Count
@@ -1485,8 +1490,8 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
     $virtualHubName = Get-ResourceName
     $virtualHubAddressPrefix = "10.0.0.0/16"
     $firewallPIPCount = "2"
-    $sku = "AZFW_Hub"
-    $tier = "Standard"
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
 
     try {
         # Create the resource group
@@ -1494,7 +1499,7 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
 
         $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
         $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
-        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku AZFW_Hub -HubIPAddress $hubIpAddresses
+        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1504,9 +1509,9 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
         Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
-        Assert-NotNull $sku $getAzureFirewall.Sku
-        Assert-AreEqual $sku $getAzureFirewall.Sku.Name
-        Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
         Assert-NotNull $getAzureFirewall.HubIPAddresses
         Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
         Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
