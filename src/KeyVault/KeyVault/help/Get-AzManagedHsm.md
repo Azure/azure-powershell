@@ -8,25 +8,25 @@ schema: 2.0.0
 # Get-AzManagedHsm
 
 ## SYNOPSIS
-Get managed hsms.
+Get managed HSMs.
+
 ## SYNTAX
 
 ```
-Get-AzManagedHsm [[-HsmName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
+Get-AzManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzManagedHsm** cmdlet gets information about the managed HSMs in a subscription. You can
+view all managed HSMs instances in a subscription, or filter your results by a resource group or a
+particular managed HSM.
+Note that although specifying the resource group is optional for this cmdlet when you get a single
+managed HSM, you should do so for better performance.
 
 ## EXAMPLES
-The **Get-AzManagedHsm** cmdlet gets information about the managed hsms in a subscription. You can
-view all managed hsms instances in a subscription, or filter your results by a resource group or a
-particular managed hsm.
-Note that although specifying the resource group is optional for this cmdlet when you get a single
-managed hsm, you should do so for better performance.
 
-### Example 1: Get all managed hsms in your current subscription
+### Example 1: Get all managed HSMs in your current subscription
 ```powershell
 PS C:\> Get-AzManagedHsm
 
@@ -35,9 +35,9 @@ Name  Resource Group Name Location    SKU
 myhsm myrg1               eastus2euap StandardB1
 ```
 
-This command gets all managed hsms in your current subscription.
+This command gets all managed HSMs in your current subscription.
 
-### Example 2: Get a specific managed hsm
+### Example 2: Get a specific managed HSM
 ```powershell
 PS C:\> Get-AzManagedHsm -Name 'myhsm'
 
@@ -46,9 +46,9 @@ Name  Resource Group Name Location    SKU
 myhsm myrg1               eastus2euap StandardB1
 ```
 
-This command gets the managed hsm named myhsm in your current subscription.
+This command gets the managed HSM named myhsm in your current subscription.
 
-### Example 3: Get managed hsms in a resource group
+### Example 3: Get managed HSMs in a resource group
 ```powershell
 PS C:\> Get-AzManagedHsm -ResourceGroupName 'myrg1'
 
@@ -57,9 +57,9 @@ Name  Resource Group Name Location    SKU
 myhsm myrg1               eastus2euap StandardB1
 ```
 
-This command gets all managed hsms in the resource group named myrg1.
+This command gets all managed HSMs in the resource group named myrg1.
 
-### Example 4: Get managed hsms using filtering
+### Example 4: Get managed HSMs using filtering
 ```powershell
 PS C:\> Get-AzManagedHsm -Name 'myhsm*'
 
@@ -68,7 +68,7 @@ Name  Resource Group Name Location    SKU
 myhsm myrg1               eastus2euap StandardB1
 ```
 
-This command gets all managed hsms in the subscription that start with "myhsm".
+This command gets all managed HSMs in the subscription that start with "myhsm".
 
 ## PARAMETERS
 
@@ -87,14 +87,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HsmName
-Hsm name.
-Cmdlet constructs the FQDN of a hsm based on the name and currently selected environment.
+### -Name
+HSM name. Cmdlet constructs the FQDN of a HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases: HsmName
 
 Required: False
 Position: 0
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group associated with the managed hsm being queried.
+Specifies the name of the resource group associated with the managed HSM being queried.
 
 ```yaml
 Type: System.String
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the key and optional value of the specified tag to filter the list of managed hsms by.
+Specifies the key and optional value of the specified tag to filter the list of managed HSMs by.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -155,3 +154,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzManagedHsm](./New-AzManagedHsm.md)
 
 [Remove-AzManagedHsm](./Remove-AzManagedHsm.md)
+
+[Update-AzManagedHsm](./Update-AzManagedHsm.md)

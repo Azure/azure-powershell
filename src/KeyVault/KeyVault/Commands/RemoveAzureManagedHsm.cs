@@ -24,67 +24,55 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveManagedHsmByNameParameterSet,
-            HelpMessage = "Specifies the name of the managed hsm to remove.")]
+            HelpMessage = "Specifies the name of the managed HSM to remove.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string HsmName { get; set; }
+        [Alias("HsmName")]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Hsm object
+        /// HSM object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveManagedHsmByInputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "Managed hsm object to be deleted.")]
+            HelpMessage = "Managed HSM object to be deleted.")]
         [ValidateNotNullOrEmpty]
         public PSManagedHsm InputObject { get; set; }
 
         /// <summary>
-        /// Vault object
+        /// HSM Resource Id
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveManagedHsmByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ManagedHsm Resource Id.")]
+            HelpMessage = "Managed HSM Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Resource group to which the vault belongs.
+        /// Resource group to which the managed HSM belongs.
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = RemoveManagedHsmByNameParameterSet,
-            HelpMessage = "Specifies the name of resource group for Azure managed hsm to remove.")]
+            HelpMessage = "Specifies the name of resource group for Azure managed HSM to remove.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = false,
-            Position = 2,
-            ParameterSetName = RemoveManagedHsmByNameParameterSet,
-            HelpMessage = "The location of the managed hsm to be deleted.")]
-        [Parameter(Mandatory = false,
-            Position = 1,
-            ParameterSetName = RemoveManagedHsmByResourceIdParameterSet,
-            HelpMessage = "The location of the managed hsm to be deleted.")]
-        [LocationCompleter("Microsoft.KeyVault/managedHSMs")]
-        [ValidateNotNullOrEmpty()]
-        public string Location { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the managed hsm.")]
+           HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the managed HSM.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -100,37 +88,36 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (InputObject != null)
             {
-                HsmName = InputObject.Name;
+                Name = InputObject.Name;
                 ResourceGroupName = InputObject.ResourceGroupName;
-                Location = InputObject.Location;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                HsmName = resourceIdentifier.ResourceName;
+                Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            // Get resource group name for ManagedHsm
-            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(HsmName, true) : ResourceGroupName;
+            // Get resource group name for Managed HSM
+            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(Name, true) : ResourceGroupName;
             if (string.IsNullOrWhiteSpace(ResourceGroupName))
-                throw new ArgumentException(string.Format(Resources.HsmNotFound, HsmName, ResourceGroupName));
+                throw new ArgumentException(string.Format(Resources.HsmNotFound, Name, ResourceGroupName));
 
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.RemoveHsmWarning,
-                    HsmName),
+                    Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.RemoveHsmWhatIfMessage,
-                    HsmName),
-                HsmName,
+                    Name),
+                Name,
                 () =>
                 {
                     KeyVaultManagementClient.DeleteManagedHsm(
-                        managedHsm: HsmName,
+                        managedHsm: Name,
                         resourceGroupName: ResourceGroupName);
 
                     if (PassThru)

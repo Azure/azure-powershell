@@ -1,8 +1,6 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -10,7 +8,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// Create a new managed hsm.
+    /// Create a new managed HSM.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
@@ -19,13 +17,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "Specifies a name of the managed hsm to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
+                "Specifies a name of the managed HSM to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
             )]
         [ValidateNotNullOrEmpty]
         [Alias("HsmName")]
@@ -56,13 +54,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Array of initial administrators object ids for this managed hsm pool.")]
+            HelpMessage = "Initial administrator object id for this managed HSM pool.")]
         public string[] Administrator { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the SKU of the managed hsm instance.")]
-        [ValidateSet("StandardB1", "CustomB32")]
+            HelpMessage = "Specifies the SKU of the managed HSM instance.")]
+        [PSArgumentCompleter("StandardB1", "CustomB32")]
         public string Sku { get; set; }
 
         [Parameter(Mandatory = false,
@@ -70,6 +68,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "A hash table which represents resource tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         #endregion
 
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     throw new ArgumentException(Resources.HsmAlreadyExists);
                 }
 
-                var vaultCreationParameter = new VaultCreationParameters()
+                var vaultCreationParameter = new VaultCreationOrUpdateParameters()
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,

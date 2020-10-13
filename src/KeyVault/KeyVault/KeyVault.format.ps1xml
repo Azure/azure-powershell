@@ -453,7 +453,7 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Managed Hsm Name</Label>
+                <Label>Managed HSM Name</Label>
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
@@ -469,7 +469,7 @@
                 <PropertyName>ResourceId</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Hsm Pool URI</Label>
+                <Label>HSM Pool URI</Label>
                 <PropertyName>HsmPoolUri</PropertyName>
               </ListItem>
               <ListItem>

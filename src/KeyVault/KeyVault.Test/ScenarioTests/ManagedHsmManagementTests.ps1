@@ -25,7 +25,7 @@ function Test-ManagedHsmCRUD {
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
-        # Test create a default managed hsm
+        # Test create a default managed HSM
         $hsm = New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
         Assert-AreEqual $hsmName $hsm.Name
         Assert-AreEqual $rgName $hsm.ResourceGroupName
@@ -37,17 +37,17 @@ function Test-ManagedHsmCRUD {
         # Default retention days
         Assert-AreEqual 90 $hsm.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
-        # Test get managed hsm
+        # Test get managed HSM
         $got = Get-AzManagedHsm -Name $hsmName    
         Assert-NotNull $got
         Assert-AreEqual $hsmName $got.Name
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
         
-        # Test throws for existing managed hsm
+        # Test throws for existing managed HSM
         Assert-Throws { New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator }
 
-        # Test remove managed hsm
+        # Test remove managed HSM
         Remove-AzManagedHsm -InputObject $got -Force
         $deletedMhsm = Get-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm

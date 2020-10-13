@@ -46,7 +46,7 @@ PS C:\> Update-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceG
 
 Enables soft delete on the key vault named `$keyVaultName` in resource group `$resourceGroupName`.
 
-### Example 1
+### Example 2
 ```powershell
 PS C:\> Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnablePurgeProtection
 ```

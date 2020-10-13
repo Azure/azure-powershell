@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
@@ -13,17 +12,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "ResourceGroupName")]
-        [Alias(Constants.Name)]
+        [Alias("HsmName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public string HsmName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Resource group name
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the name of the resource group associated with the managed hsm being queried.")]
+            HelpMessage = "Specifies the name of the resource group associated with the managed HSM being queried.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -43,19 +42,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of managed hsms by.")]
+            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of managed HSMs by.")]
         public Hashtable Tag { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(HsmName, true) : ResourceGroupName;
+            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(Name, true) : ResourceGroupName;
 
-            if (ShouldGetByName(ResourceGroupName, HsmName))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSManagedHsm mhsm = KeyVaultManagementClient.GetManagedHsm(
-                                                HsmName,
+                                                Name,
                                                 ResourceGroupName,
                                                 ActiveDirectoryClient);
                 WriteObject(FilterByTag(mhsm, Tag));
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {              
                 WriteObject(
                     TopLevelWildcardFilter(
-                        ResourceGroupName, HsmName,
+                        ResourceGroupName, Name,
                         FilterByTag(
                             KeyVaultManagementClient.ListManagedHsms(ResourceGroupName, ActiveDirectoryClient), Tag)),
                     true);

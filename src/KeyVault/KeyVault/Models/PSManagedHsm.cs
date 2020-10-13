@@ -4,13 +4,10 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
-using System.Management.Automation;
-using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

@@ -18,7 +18,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class VaultCreationParameters
+    public class VaultCreationOrUpdateParameters
     {
         public string Name { get; set; }
         public string ResourceGroupName { get; set; }

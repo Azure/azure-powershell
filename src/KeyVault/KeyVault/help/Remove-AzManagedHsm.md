@@ -8,14 +8,14 @@ schema: 2.0.0
 # Remove-AzManagedHsm
 
 ## SYNOPSIS
-Deletes a managed hsm.
+Deletes a managed HSM.
 
 ## SYNTAX
 
 ### RemoveManagedHsmByName (Default)
 ```
-Remove-AzManagedHsm [-HsmName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzManagedHsm [-Name] <String> [[-ResourceGroupName] <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveManagedHsmByInputObject
@@ -26,19 +26,18 @@ Remove-AzManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-PassThru]
 
 ### RemoveManagedHsmByResourceId
 ```
-Remove-AzManagedHsm [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzManagedHsm [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzManagedHsm** cmdlet deletes the specified managed hsm.
+The **Remove-AzManagedHsm** cmdlet deletes the specified managed HSM.
 It also deletes all keys contained in that instance.
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
 
-
 ## EXAMPLES
 
-### Example 1: Remove a managed hsm
+### Example 1: Remove a managed HSM
 ```powershell
 PS C:\> Remove-AzManagedHsm -HsmName 'myhsm' -Force
 
@@ -55,7 +54,7 @@ True
 ```
 
 This command removes the managed hsm named myhsm from the resource group named myrg1.
-If you do not specify the resource group name, the cmdlet searches for the named managed hsm to delete in your current subscription.
+If you do not specify the resource group name, the cmdlet searches for the named managed HSM to delete in your current subscription.
 
 ## PARAMETERS
 
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 
 ### -Force
 Indicates that the cmdlet does not prompt you for confirmation.
-By default, this cmdlet prompts you to confirm that you want to delete the managed hsm.
+By default, this cmdlet prompts you to confirm that you want to delete the managed HSM.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -105,23 +104,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HsmName
-Specifies the name of the managed hsm to remove.
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveManagedHsmByName
-Aliases: Name
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
-Managed hsm object to be deleted.
+Managed HSM object to be deleted.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
@@ -135,16 +119,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the managed hsm to be deleted.
+### -Name
+Specifies the name of the managed HSM to remove.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveManagedHsmByName, RemoveManagedHsmByResourceId
-Aliases:
+Parameter Sets: RemoveManagedHsmByName
+Aliases: HsmName
 
-Required: False
-Position: 2
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -167,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of resource group for Azure managed hsm to remove.
+Specifies the name of resource group for Azure managed HSM to remove.
 
 ```yaml
 Type: System.String
@@ -247,3 +231,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzManagedHsm](./Get-AzManagedHsm.md)
 
 [New-AzManagedHsm](./New-AzManagedHsm.md)
+
+[Update-AzManagedHsm](./Update-AzManagedHsm.md)
