@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedHsmCRUD()
         {
             TestRunner.RunTestScript("Test-ManagedHsmCRUD");

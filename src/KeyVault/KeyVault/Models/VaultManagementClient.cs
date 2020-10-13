@@ -453,44 +453,49 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <returns>the retrieved Managed HSM</returns>
         public List<PSManagedHsm> ListManagedHsms(string resourceGroupName, ActiveDirectoryClient adClient = null)
         {
-            List<PSManagedHsm> managedHsms = new List<PSManagedHsm>(); ;
-            IPage<ManagedHsm> response;
+            return resourceGroupName == null ? ListManagedHsmsBySubscription(adClient) :
+                ListManagedHsmsByResourceGroup(resourceGroupName, adClient);
+        }
 
-            if (resourceGroupName != null) 
+        private List<PSManagedHsm> ListManagedHsmsByResourceGroup(string resourceGroupName, ActiveDirectoryClient adClient = null) 
+        {
+            List<PSManagedHsm> managedHsms = new List<PSManagedHsm>(); ;
+            IPage<ManagedHsm> response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            foreach (var managedHsm in response)
             {
-                response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+                managedHsms.Add(new PSManagedHsm(managedHsm, adClient));
+            }
+
+            while (response?.NextPageLink != null)
+            {
+                response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupNextAsync(response.NextPageLink).GetAwaiter().GetResult();
+
                 foreach (var managedHsm in response)
                 {
-                    managedHsms.Add(new PSManagedHsm(managedHsm));
-                }
-
-                while (response?.NextPageLink != null)
-                {
-                    response = KeyVaultManagementClient.ManagedHsms.ListByResourceGroupNextAsync(response.NextPageLink).GetAwaiter().GetResult();
-
-                    foreach (var managedHsm in response)
-                    {
-                        managedHsms.Add(new PSManagedHsm(managedHsm));
-                    }
+                    managedHsms.Add(new PSManagedHsm(managedHsm, adClient));
                 }
             }
-            else
+
+            return managedHsms;
+        }
+
+        private List<PSManagedHsm> ListManagedHsmsBySubscription(ActiveDirectoryClient adClient = null)
+        {
+            List<PSManagedHsm> managedHsms = new List<PSManagedHsm>(); ;
+            IPage<ManagedHsm> response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionAsync().GetAwaiter().GetResult();
+
+            foreach (var managedHsm in response)
             {
-                response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionAsync().GetAwaiter().GetResult();
+                managedHsms.Add(new PSManagedHsm(managedHsm, adClient));
+            }
+
+            while (response?.NextPageLink != null)
+            {
+                response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionNextAsync(response.NextPageLink).GetAwaiter().GetResult();
 
                 foreach (var managedHsm in response)
                 {
-                    managedHsms.Add(new PSManagedHsm(managedHsm));
-                }
-
-                while (response?.NextPageLink != null)
-                {
-                    response = KeyVaultManagementClient.ManagedHsms.ListBySubscriptionNextAsync(response.NextPageLink).GetAwaiter().GetResult();
-
-                    foreach (var managedHsm in response)
-                    {
-                        managedHsms.Add(new PSManagedHsm(managedHsm));
-                    }
+                    managedHsms.Add(new PSManagedHsm(managedHsm, adClient));
                 }
             }
 

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSManagedHsm(ManagedHsm managedHsm, ActiveDirectoryClient adClient = null)
+        public PSManagedHsm(ManagedHsm managedHsm, ActiveDirectoryClient adClient)
         {
             // PSKeyVaultIdentityItem's properties
             ResourceId = managedHsm.Id;

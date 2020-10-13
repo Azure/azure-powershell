@@ -18,9 +18,9 @@ Tests CRUD for Managed Hsm.
 #>
 function Test-ManagedHsmCRUD {
     $rgName = getAssetName
-    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "eastus2euap"
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "eastus2euap"
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
     $administrator = "c1be1392-39b8-4521-aafc-819a47008545"
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
