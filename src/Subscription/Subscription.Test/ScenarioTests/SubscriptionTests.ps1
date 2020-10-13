@@ -16,25 +16,9 @@
 .SYNOPSIS
 Create subscription
 #>
-function Test-NewSubscription
-{
-    # $accounts = Get-AzEnrollmentAccount
-    $accounts = @(@{ ObjectId = "455fd0a7-b04e-4a92-9e1b-d0650c8ba276" })
-    
-    # Verify the caller has at least one enrollment account.
-    Assert-True { $accounts.Count -gt 0 }
-
-    $myNewSubName = GetAssetName
-
-    $newSub = New-AzSubscription -EnrollmentAccountObjectId $accounts[0].ObjectId -Name $myNewSubName -OfferType MS-AZR-0017P
-
-    Assert-AreEqual $myNewSubName $newSub.Name
-	Assert-NotNull $newSub.SubscriptionId
-}
-
 function Test-UpdateRenameSubscription
 {
-    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
 
     $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Rename" -Name "RenameFromPowershell"
 
@@ -43,9 +27,39 @@ function Test-UpdateRenameSubscription
 
 function Test-UpdateCancelSubscription
 {
-    $subId = "21cba39d-cbbc-487f-9749-43c5c960f269"
+    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
 
     $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Cancel"
 
 	Assert-NotNull updateSub.SubscriptionId
+}
+
+function Test-NewSubscriptionAlias
+{
+    $aliasName = "navyprod1"
+	$displayName = "testSub1"
+	$billingScope ="billingScope"
+	$workload = "Production"
+
+    $newsub = New-AzSubscriptionAlias -AliasName $aliasName -SubscriptionName $displayName -BillingScope $billingScope -Workload $workload
+
+	Assert-NotNull newsub
+}
+
+function Test-GetSubscriptionAlias
+{
+    $aliasName = "navyprod1"
+
+    $newsub = Get-AzSubscriptionAlias -AliasName $aliasName
+
+	Assert-NotNull newsub
+}
+
+function Test-RemoveSubscriptionAlias
+{
+    $aliasName = "navyprod1"
+
+    $newsub = Remove-AzSubscriptionAlias -AliasName $aliasName
+
+	Assert-NotNull newsub
 }
