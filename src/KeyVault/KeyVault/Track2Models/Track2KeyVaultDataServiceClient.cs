@@ -1,14 +1,12 @@
 using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -454,7 +452,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
         {
-            HsmClient.ImportKey(managedHsmName, keyName, webKey);
+            return HsmClient.ImportKey(managedHsmName, keyName, webKey);
         }
 
         #endregion

@@ -393,9 +393,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
-        internal PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        internal PSKeyVaultKey ImportKey(string managedHsmName, string keyName, JsonWebKey webKey) 
         {
-            return 
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException(nameof(keyName));
+            if (webKey == null)
+                throw new ArgumentNullException(nameof(webKey));
+            var client = CreateKeyClient(managedHsmName);
+
+            try
+            {
+                var key = client.ImportKeyAsync(keyName, webKey).GetAwaiter().GetResult();
+                return new PSKeyVaultKey(key, this._uriHelper);
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
         }
 
         internal void PurgeKey(string managedHsmName, string keyName)

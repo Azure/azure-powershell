@@ -504,4 +504,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="InvalidHsmName" xml:space="preserve">
     <value>Invalid hsm name.</value>
   </data>
+  <data name="ImportNotSupported" xml:space="preserve">
+    <value>Key type '{0}' is not supported for importing. (Supported types: RSA-HSM)</value>
+  </data>
 </root>

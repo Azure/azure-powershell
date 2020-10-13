@@ -1,15 +1,15 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using System.Text;
-using System.IO;
-using Microsoft.Azure.KeyVault.WebKey;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {    /// <summary>
@@ -218,7 +218,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 {
                     keyBundle = this.Track2DataClient.ImportManagedHsmKey(
                         HsmName, Name,
-                        CreateKeyAttributes(),
                         CreateWebKeyFromFile());
                 }
 
@@ -244,7 +243,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 Tag);
         }
         
-        internal JsonWebKey CreateWebKeyFromFile()
+        internal Track2Sdk.JsonWebKey CreateWebKeyFromFile()
         {
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
@@ -253,7 +252,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();
-            return converterChain.ConvertKeyFromFile(keyFile, KeyFilePassword);
+            return converterChain.ConvertToTrack2SdkKeyFromFile(keyFile, KeyFilePassword);
         }
     }
 }

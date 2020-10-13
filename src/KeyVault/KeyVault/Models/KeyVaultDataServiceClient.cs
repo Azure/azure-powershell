@@ -27,7 +27,7 @@ using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Rest.Azure;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -2023,7 +2023,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey) 
         {
             throw new NotImplementedException("Importing keys on managed HSM is only possible in track 2 SDK.");
         }
