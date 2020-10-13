@@ -30,10 +30,8 @@
         - Added Sku Tier property
     - `New-AzPublicIpPrefix`:
         - Added Sku Tier property
-    - `New-AzLoadBalancerBackendAddressConfig
+    - `New-AzLoadBalancerBackendAddressConfig`:
         - Added LoadBalancerFrontendIPConfigurationId property
-* Added new cmdlet for Azure Express Route Port
-    - `New-AzExpressRoutePortLOA`
 
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
