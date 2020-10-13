@@ -1747,7 +1747,7 @@ function Test-LoadBalancerMultiVip-Public
 
 		# Set a new frontendip config
 		$lb3 = Get-AzLoadBalancer -Name $lb2Name -ResourceGroupName $rgname
-        $lb3 = Set-AzLoadBalancerFrontendIpConfig -LoadBalancer $lb3 -Name $pipFrontend2Name -PublicIpAddressPrefix $pip3 
+        $lb3 = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $pip3Name | Set-AzLoadBalancerFrontendIpConfig -LoadBalancer $lb3 -Name $pipFrontend2Name
         Set-AzLoadBalancer -LoadBalancer $lb3
         Assert-AreEqual 2 @($lb3.FrontendIPConfigurations).Count
         

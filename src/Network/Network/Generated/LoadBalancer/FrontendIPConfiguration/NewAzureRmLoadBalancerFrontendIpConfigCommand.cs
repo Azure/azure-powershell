@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = "SetByResourcePublicIpAddressPrefix",
             HelpMessage = "The reference of the Public IP Prefix resource.",
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSPublicIpPrefix PublicIpAddressPrefix { get; set; }
 
