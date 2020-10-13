@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.")]
         [ValidateNotNullOrEmpty]
-        public int? OriginGroupProbeIntervalInSeconds { get; set; }
+        public int OriginGroupProbeIntervalInSeconds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The path relative to the origin that is used to determine the health of the origin.")]
         [ValidateNotNullOrEmpty]
@@ -263,13 +263,22 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     originGroup.Origins.Add(originIdResourceReference);
                 }
             }
-           
 
-            if (OriginGroupProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(OriginGroupProbePath) || !String.IsNullOrWhiteSpace(OriginGroupProbeProtocol) || !String.IsNullOrWhiteSpace(OriginGroupProbeRequestType))
+            bool isProbeIntervalInSecondsNotZero = OriginGroupProbeIntervalInSeconds != 0 ? true : false;
+
+            if (isProbeIntervalInSecondsNotZero || !String.IsNullOrWhiteSpace(OriginGroupProbePath) || !String.IsNullOrWhiteSpace(OriginGroupProbeProtocol) || !String.IsNullOrWhiteSpace(OriginGroupProbeRequestType))
             {
+                int probeIntervalCopy = OriginGroupProbeIntervalInSeconds;
+
+                // when probe interval is 0 or not specified, set the probe interval to the default value
+                if (!isProbeIntervalInSecondsNotZero)
+                {
+                    probeIntervalCopy = 240;
+                }
+
                 originGroup.HealthProbeSettings = new HealthProbeParameters
                 {
-                    ProbeIntervalInSeconds = OriginGroupProbeIntervalInSeconds,
+                    ProbeIntervalInSeconds = probeIntervalCopy,
                     ProbePath = OriginGroupProbePath,
                     ProbeProtocol = OriginGroupUtilities.NormalizeProbeProtocol(OriginGroupProbeProtocol),
                     ProbeRequestType = OriginGroupUtilities.NormalizeProbeRequestType(OriginGroupProbeRequestType)

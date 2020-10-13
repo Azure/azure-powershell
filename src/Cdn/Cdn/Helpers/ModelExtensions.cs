@@ -748,6 +748,17 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 probeRequestType = originGroup.HealthProbeSettings.ProbeRequestType.Value.ToString();
             }
 
+            int probeIntervalInSecondsInteger;
+
+            if (probeIntervalInSeconds == null)
+            {
+                probeIntervalInSecondsInteger = 0;
+            }
+            else
+            {
+                probeIntervalInSecondsInteger = probeIntervalInSeconds.Value;
+            }
+
             return new PSOriginGroup
             {
                 Id = originGroup.Id,
@@ -758,7 +769,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 
                 // origin group specific properties
                 Origins = originGroup.Origins,
-                ProbeIntervalInSeconds = probeIntervalInSeconds,
+                ProbeIntervalInSeconds = probeIntervalInSecondsInteger,
                 ProbePath = probePath,
                 ProbeProtocol = probeProtocol,
                 ProbeRequestType = probeRequestType

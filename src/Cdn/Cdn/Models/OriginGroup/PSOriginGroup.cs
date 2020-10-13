@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Cdn.Models.OriginGroup
         private const string EndpointNameGroupKey = "endpointName";
         private const string OriginGroupNameGroupKey = "originGroupName";
 
-        public int? ProbeIntervalInSeconds { get; set; }
+        public int ProbeIntervalInSeconds { get; set; }
         public string ProbePath { get; set; }
         public string ProbeProtocol { get; set; }
         public string ProbeRequestType { get; set; }

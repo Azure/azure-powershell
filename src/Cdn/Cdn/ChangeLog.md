@@ -20,9 +20,6 @@
 
 ## Upcoming Release
 
-## Version 1.4.4
-* Add cmdlets to support multi-origin and private link functionality 
-
 ## Version 1.4.3
 * Fixed ChinaCDN related pricing SKU display
 

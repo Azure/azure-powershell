@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
 
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int? ProbeIntervalInSeconds { get; set; }
+        public int ProbeIntervalInSeconds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The path relative to the origin that is used to determine the health of the origin.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -108,19 +108,25 @@ namespace Microsoft.Azure.Commands.Cdn.OriginGroups
                 }
             }
 
-            if (ProbeIntervalInSeconds != null || !String.IsNullOrWhiteSpace(ProbePath) || !String.IsNullOrWhiteSpace(ProbeProtocol) || !String.IsNullOrWhiteSpace(ProbeRequestType))
+            bool isProbeIntervalInSecondsNotZero = ProbeIntervalInSeconds != 0 ? true : false;
+
+            if (isProbeIntervalInSecondsNotZero || !String.IsNullOrWhiteSpace(ProbePath) || !String.IsNullOrWhiteSpace(ProbeProtocol) || !String.IsNullOrWhiteSpace(ProbeRequestType))
             {
+                int probeIntervalCopy = ProbeIntervalInSeconds;
+
+                // when probe interval is 0 or not specified, set the probe interval to the default value
+                if (!isProbeIntervalInSecondsNotZero)
+                {
+                    probeIntervalCopy = 240;
+                }
+
                 originGroup.HealthProbeSettings = new HealthProbeParameters
                 {
-                    ProbeIntervalInSeconds = ProbeIntervalInSeconds,
+                    ProbeIntervalInSeconds = probeIntervalCopy,
                     ProbePath = ProbePath,
                     ProbeProtocol = OriginGroupUtilities.NormalizeProbeProtocol(ProbeProtocol),
                     ProbeRequestType = OriginGroupUtilities.NormalizeProbeRequestType(ProbeRequestType)
                 };
-            }
-            else
-            {
-                originGroup.HealthProbeSettings = null;
             }
 
             try

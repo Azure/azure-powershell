@@ -111,9 +111,9 @@ function Test-GetSetOriginGroup
 
     # Test the unmodified origin group
     Assert-AreEqual $originGroupResourceId $originGroup.Id
+    Assert-AreEqual 0 $originGroup.ProbeIntervalInSeconds
     Assert-Null $originGroup.ProbePath
     Assert-Null $originGroup.ProbeProtocol
-    Assert-Null $originGroup.ProbeIntervalInSeconds
     Assert-Null $originGroup.ProbeRequestType
 
     # Set new values on the origin group
