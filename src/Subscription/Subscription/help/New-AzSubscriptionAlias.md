@@ -1,43 +1,39 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/update-azsubscription
+online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/new-azsubscriptionalias
 schema: 2.0.0
 ---
 
-# Update-AzSubscription
+# New-AzSubscriptionAlias
 
 ## SYNOPSIS
-Updates an Azure Subscription
+Creates new alias and subscription
 
 ## SYNTAX
 
 ```
-Update-AzSubscription -SubscriptionId <String> -Action <String> [-Name <String>] [-AsJob]
+New-AzSubscriptionAlias -AliasName <String> [-BillingScope <String>] [-Workload <String>]
+ [-SubscriptionName <String>] [-ResellerId <String>] [-SubscriptionId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSubscription** cmdlet updates an Azure subscription
+The **New-AzSubscriptionAlias** cmdlet creates new alias and subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Cancel"
-
-Name        : My Subscription
-Id          : 86869d42-1782-4337-98b0-c905fb937d46
-TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
-State       : Enabled
+PS C:\> New-AzSubscriptionAlias -AliasName "NewAliasName" -SubscriptionName "SubscriptionName" -BillingScope "BillingScope" -Workload "WorkloadType"
 ```
 
-Updates the subscription
+Creates new alias and subscription
 
 ## PARAMETERS
 
-### -Action
-Action to perform on subscription
+### -AliasName
+Alias for the subscription
 
 ```yaml
 Type: System.String
@@ -66,6 +62,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BillingScope
+Billing Scope
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -81,8 +92,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the subscription
+### -ResellerId
+Reseller Id
 
 ```yaml
 Type: System.String
@@ -97,14 +108,44 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id to update
+Existing Subscription Id
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionName
+Name of the subscription
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Workload
+Type of Workload
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
