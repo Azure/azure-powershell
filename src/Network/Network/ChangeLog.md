@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Make "LinkConnectionName" mandatory in StopAzVpnConnectionPacketCapture and StartAzVpnConnectionPacketCapture
 
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
