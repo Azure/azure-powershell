@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -39,6 +42,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Password For Azure Container Registry.", ParameterSetName = WithNameAndPasswordParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Password { get; set; }
+
+        private RecordingTracingInterceptor _httpTracingInterceptor { get; set; }
+
+        //protected override void InitDebuggingFilter()
+        //{
+        //    AddDebuggingFilter(new Regex("(\\s*access_token\\s*=\\s*)\"[^\"]+\""));
+        //    AddDebuggingFilter(new Regex("(\\s*\"refresh_token\"\\s*:\\s*)\"[^\"]+\""));
+        //    base.InitDebuggingFilter();
+        //}
 
         public override void ExecuteCmdlet() {
 

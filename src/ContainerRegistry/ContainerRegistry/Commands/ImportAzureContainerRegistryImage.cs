@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -71,14 +72,20 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 
         public override void ExecuteCmdlet()
         {
-            PSImportImageParameters parameter = new PSImportImageParameters(source: new PSImportSource(sourceImage: SourceImage, 
-                                                                                                       resourceId: SourceRegistryResourceId, 
-                                                                                                       registryUri: SourceRegistryUri, 
-                                                                                                       credentials: new PSImportSourceCredentials(CredentialUsername, CredentialPassword)), 
-                                                                            targetTags: new List<string>(TargetTag), 
-                                                                            untaggedTargetRepositories: new List<string>(UntaggedTargetRepository), 
-                                                                            mode: Mode);
+            if (!this.IsParameterBound(c => c.TargetTag))
+            {
+                int index = SourceImage.IndexOf('@');
+                this.TargetTag = new string[] { index > 0 ? SourceImage.Substring(0, index) : SourceImage};
 
+            }
+
+            PSImportImageParameters parameter = new PSImportImageParameters(source: new PSImportSource(sourceImage: SourceImage,
+                                                                                                       resourceId: SourceRegistryResourceId,
+                                                                                                       registryUri: SourceRegistryUri,
+                                                                                                       credentials: ParameterSetName.Equals(ImportImageByRegistryUriWithCredential) ? new PSImportSourceCredentials(CredentialUsername, CredentialPassword) : null), 
+                                                                            targetTags: new List<string>(TargetTag), 
+                                                                            untaggedTargetRepositories: this.IsParameterBound(c => c.UntaggedTargetRepository) ?  new List<string>(UntaggedTargetRepository) : null, 
+                                                                            mode: Mode);
 
             if (ShouldProcess(RegistryName, "Import image"))
             {

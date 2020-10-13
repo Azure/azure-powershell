@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
             AddNetworkRules(networkRules);
         }
 
+        public PSNetworkRuleSet(NetworkRuleSet set)
+        {
+            DefaultAction = set?.DefaultAction;
+            VirtualNetworkRules = set?.VirtualNetworkRules?.Select(x => new PSVirtualNetworkRule(x)).ToList();
+            IpRules = set?.IpRules?.Select(x => new PSIPRule(x)).ToList();
+        }
+
         public string DefaultAction { get; set; }
 
         public IList<PSVirtualNetworkRule> VirtualNetworkRules { get; set; }

@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                         AdminUserEnabled = EnableAdminUser,
                         Tags = tags,
                         Location = Location,
-                        NetworkRuleSet = NetworkRuleSet.GetNetworkRuleSet()
+                        NetworkRuleSet = NetworkRuleSet?.GetNetworkRuleSet()
                     };
 
                     if (StorageAccountName != null)

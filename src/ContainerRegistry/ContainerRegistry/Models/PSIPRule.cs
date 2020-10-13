@@ -25,9 +25,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
     {
         public PSIPRule(string iPAddressOrRange, string action = default(string))
         {
-            this.Action = action;
-            this.IPAddressOrRange = iPAddressOrRange;
-            this.Validate();
+            Action = action;
+            IPAddressOrRange = iPAddressOrRange;
+            Validate();
+        }
+
+        public PSIPRule(IPRule rule)
+        {
+            Action = rule.Action;
+            IPAddressOrRange = rule.IPAddressOrRange;
+            Validate();
         }
 
         public string Action { get; set; }

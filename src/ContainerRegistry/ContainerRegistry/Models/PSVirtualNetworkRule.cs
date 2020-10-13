@@ -29,6 +29,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
             Validate();
         }
 
+        public PSVirtualNetworkRule(VirtualNetworkRule rule)
+        {
+            Action = rule.Action;
+            VirtualNetworkResourceId = rule.VirtualNetworkResourceId;
+            Validate();
+        }
+
         public string Action { get; set; }
 
         public string NetworkRuleType

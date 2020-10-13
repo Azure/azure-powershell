@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
             switch (this.ParameterSetName)
             {
                 case ByVirtualNetworkRule:
-                    rule = new PSVirtualNetworkRule(Action, VirtualNetworkResourceId);
+                    rule = new PSVirtualNetworkRule(VirtualNetworkResourceId, Action);
                     break;
                 case ByIPRule:
-                    rule = new PSIPRule(Action,IPAddressOrRange);
+                    rule = new PSIPRule(IPAddressOrRange, Action);
                     break;
                 default:
                     throw new PSArgumentException("Incorrect argument provided");
