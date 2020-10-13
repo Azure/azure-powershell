@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
