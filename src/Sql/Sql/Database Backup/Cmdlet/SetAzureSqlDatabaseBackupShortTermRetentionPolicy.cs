@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -28,16 +29,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets backup retention days.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The backup retention setting, in days.")]
-        public int? RetentionDays { get; set; }
+        public int RetentionDays { get; set; }
 
         /// <summary>
         /// Gets or sets differential backup interval hours.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The differential backup interval, in hours.")]
-        public int? DiffBackupIntervalInHours { get; set; }	
+        public int DiffBackupIntervalInHours { get; set; }	
 			
         /// <summary>
         /// Get the entities from the service
@@ -69,7 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ResourceGroupName,
                     ServerName,
                     DatabaseName,
-                    new Management.Sql.Models.BackupShortTermRetentionPolicy(retentionDays: RetentionDays, diffBackupIntervalInHours: DiffBackupIntervalInHours))
+                    new Management.Sql.Models.BackupShortTermRetentionPolicy(
+                        retentionDays: this.IsParameterBound(c => c.RetentionDays) ? RetentionDays : null as int?, 
+                        diffBackupIntervalInHours: this.IsParameterBound(c => c.DiffBackupIntervalInHours) ? DiffBackupIntervalInHours : null as int?)
+                )
             };
         }
 

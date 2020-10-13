@@ -14,22 +14,20 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
- [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+[-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
- -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-DatabaseName] <String> [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId <String> [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,23 +38,23 @@ The policy is the retention period in days and differential backup interval in h
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 35 -DiffBackupIntervalInHours 24
+PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 6 -DiffBackupIntervalInHours 24
 ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
 ----------------- ---------- ------------ ------------- -------------------------
-resourcegroup01   server01   database01   7             24
+resourcegroup01   server01   database01   6             24
 ```
 
-This command sets the short term retention policy for database01 to 7 retention days and 24 differential backup interval hours.
+This command sets the short term retention policy for database01 to 6 retention days and 24 differential backup interval hours.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 35 -DiffBackupIntervalInHours 24
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 5 -DiffBackupIntervalInHours 12
 ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
 ----------------- ---------- ------------ ------------- ------------------------
-resourcegroup01   server01   database01   7             24
+resourcegroup01   server01   database01   5             12
 ```
 
-This command sets the short term retention policy for database01 to 7 retention days and 24 differential backup interval hours via piping in a database object.
+This command sets the short term retention policy for database01 to 5 retention days and 12 differential backup interval hours via piping in a database object.
 
 ## PARAMETERS
 
@@ -84,7 +82,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,7 +112,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -172,7 +170,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
