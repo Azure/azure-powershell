@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         /// <summary>
-        /// Secret name
+        /// Key name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
 
             if (ShouldProcess(Name, Properties.Resources.RecoverKey))
             {
-                PSKeyVaultKey recoveredKey = this.Track2DataClient.RecoverManagedHsmKey(VaultName, Name);
+                PSKeyVaultKey recoveredKey = this.Track2DataClient.RecoverManagedHsmKey(HsmName, Name);
 
                 WriteObject(recoveredKey);
             }

@@ -31,13 +31,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
+        PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey);
+
         PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
         PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
         PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
-        PSKeyVaultKey GetManagedHsmKey(string vaultName, string keyName, string keyVersion);
+        PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion);
 
         PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
 
@@ -45,15 +47,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName);
 
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName);
 
         IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName);
 
         PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 

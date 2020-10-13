@@ -2022,6 +2022,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
         }
+
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        {
+            throw new NotImplementedException("Importing keys on managed HSM is only possible in track 2 SDK.");
+        }
+
         public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes) 
         {
             throw new NotImplementedException("Updating keys on managed HSM is only possible in track 2 SDK.");
@@ -2036,12 +2042,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Getting keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyVersions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName)
         {
             throw new NotImplementedException("Getting key versions on managed HSM is only possible in track 2 SDK.");
         }
 
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName)
         {
             throw new NotImplementedException("Getting keys on managed HSM is only possible in track 2 SDK.");
         }
@@ -2051,7 +2057,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Getting deleted keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmNam)
         {
             throw new NotImplementedException("Getting deleted keys on managed HSM is only possible in track 2 SDK.");
         }

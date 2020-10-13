@@ -37,30 +37,30 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveCreateParameterSet,
             Position = 0,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveImportParameterSet,
             Position = 0,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "Vault object.")]
+            HelpMessage = "Hsm object.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectImportParameterSet,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "Vault object.")]
+            HelpMessage = "Hsm object.")]
         [ValidateNotNullOrEmpty]
         public PSManagedHsm InputObject { get; set; }
 
@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             ParameterSetName = ResourceIdCreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault Resource Id.")]
+            HelpMessage = "Hsm Resource Id.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault Resource Id.")]
+            HelpMessage = "Hsm Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed hsm name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -190,12 +190,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                VaultName = resourceIdentifier.ResourceName;
+                HsmName = resourceIdentifier.ResourceName;
             }
 
             ValidateKeyExchangeKey();
@@ -207,20 +207,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 if (string.IsNullOrEmpty(KeyFilePath))
                 {
                     keyBundle = this.Track2DataClient.CreateManagedHsmKey(
-                            VaultName,
+                            HsmName,
                             Name,
                             CreateKeyAttributes(),
                             Size,
                             CurveName);
                     this.WriteObject(keyBundle);
                 }
-                /* else
-                 {
-                    *//* keyBundle = this.Track2DataClient.ImportManagedHsmKey(
-                         HsmName, Name,
-                         CreateKeyAttributes(),
-                         CreateWebKeyFromFile());*//*
-                 }*/
+                else
+                {
+                    keyBundle = this.Track2DataClient.ImportManagedHsmKey(
+                        HsmName, Name,
+                        CreateKeyAttributes(),
+                        CreateWebKeyFromFile());
+                }
 
             }
         }

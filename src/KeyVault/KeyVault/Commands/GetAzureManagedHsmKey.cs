@@ -24,24 +24,20 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", DefaultParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint)]
     [OutputType(typeof(PSKeyVaultKeyIdentityItem), typeof(PSKeyVaultKey), typeof(PSDeletedKeyVaultKeyIdentityItem), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureManagedHsmKey : KeyVaultCmdletBase
     {
 
         #region Parameter Set Names
 
-        private const string ByVaultNameParameterSet = "ByVaultName";
-        private const string ByKeyNameParameterSet = "ByKeyName";
-        private const string ByKeyVersionsParameterSet = "ByKeyVersions";
+        private const string SpecifyHsmByHsmName = "SpecifyHsmByHsmName";
+        private const string SpecifyHsmByInputObject = "SpecifyHsmByInputObject";
+        private const string SpecifyHsmByResourceId = "SpecifyHsmByResourceId";
 
-        private const string InputObjectByVaultNameParameterSet = "ByInputObjectVaultName";
-        private const string InputObjectByKeyNameParameterSet = "ByInputObjectKeyName";
-        private const string InputObjectByKeyVersionsParameterSet = "ByInputObjectKeyVersions";
-
-        private const string ResourceIdByVaultNameParameterSet = "ByResourceIdVaultName";
-        private const string ResourceIdByKeyNameParameterSet = "ByResourceIdKeyName";
-        private const string ResourceIdByKeyVersionsParameterSet = "ByResourceIdKeyVersions";
+        private const string GetKeyWithoutConstraint = "GetKeyWithoutConstraint";
+        private const string GetKeyWithSpecifiedVersion = "GetKeyWithSpecifiedVersion";
+        private const string GetKeyIncludeAllVersions = "GetKeyIncludeAllVersions";
 
         private readonly string[] _supportedTypesForDownload = new string[] { Constants.RSA, Constants.RSAHSM };
 
@@ -50,63 +46,63 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = ByKeyNameParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint,
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = ByVaultNameParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = ByKeyVersionsParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyIncludeAllVersions,
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         /// <summary>
-        /// KeyVault object
+        /// Hsm object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
-            HelpMessage = "KeyVault object.")]
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyWithoutConstraint,
+            HelpMessage = "Hsm object.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
-            HelpMessage = "KeyVault object.")]
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
+            HelpMessage = "Hsm object.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
-            HelpMessage = "KeyVault object.")]
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyIncludeAllVersions,
+            HelpMessage = "Hsm object.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
+        public PSManagedHsm InputObject { get; set; }
 
         /// <summary>
-        /// KeyVault resource id
+        /// Hsm resource id
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
-            HelpMessage = "KeyVault Resource Id.")]
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyWithoutConstraint,
+            HelpMessage = "Hsm Resource Id.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
-            HelpMessage = "KeyVault Resource Id.")]
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
+            HelpMessage = "Hsm Resource Id.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
-            HelpMessage = "KeyVault ResourceId.")]
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyIncludeAllVersions,
+            HelpMessage = "Hsm ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -114,41 +110,41 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key name.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ByVaultNameParameterSet,
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         [SupportsWildcards]
@@ -158,41 +154,41 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key version.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
 
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByVaultNameParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        public SwitchParameter InRemovedState { get; set; }
-
         [Parameter(Mandatory = true,
-            ParameterSetName = ByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByHsmName + GetKeyIncludeAllVersions,
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByInputObject + GetKeyIncludeAllVersions,
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
+            ParameterSetName = SpecifyHsmByResourceId + GetKeyIncludeAllVersions,
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
+
+        [Parameter(Mandatory = false,
+           ParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint,
+           HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
+        [Parameter(Mandatory = false,
+           ParameterSetName = SpecifyHsmByInputObject + GetKeyWithoutConstraint,
+           HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
+        [Parameter(Mandatory = false,
+           ParameterSetName = SpecifyHsmByResourceId + GetKeyWithoutConstraint,
+           HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
+        public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies the output file for which this cmdlet saves the key. The public key is saved in PEM format by default.")]
         [ValidateNotNullOrEmpty]
@@ -206,50 +202,48 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
             }
             else if (!string.IsNullOrEmpty(ResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
-                VaultName = parsedResourceId.ResourceName;
+                HsmName = parsedResourceId.ResourceName;
             }
 
             if (!string.IsNullOrEmpty(Version))
             {
-                keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, Version);
+                keyBundle = this.Track2DataClient.GetManagedHsmKey(HsmName, Name, Version);
                 WriteObject(keyBundle);
             }
             else if (IncludeVersions.IsPresent)
             {
-                keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, string.Empty);
-                if (keyBundle != null)
-                {
-                    WriteObject(new PSKeyVaultKeyIdentityItem(keyBundle));
-                    GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
-                }
+                WriteObject(this.Track2DataClient.GetManagedHsmKeyAllVersions(HsmName, Name), true);
             }
             else if (InRemovedState.IsPresent)
             {
                 if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteDeletedKeys(VaultName, Name);
+                    WriteObject(KVSubResourceWildcardFilter(
+                        Name, this.Track2DataClient.GetManagedHsmDeletedKeys(HsmName)),
+                        true);
                 }
                 else
                 {
-                    PSDeletedKeyVaultKey deletedKeyBundle = this.Track2DataClient.GetManagedHsmDeletedKey(VaultName, Name);
+                    PSDeletedKeyVaultKey deletedKeyBundle = this.Track2DataClient.GetManagedHsmDeletedKey(HsmName, Name);
                     WriteObject(deletedKeyBundle);
                 }
             }
             else
             {
-                // to do: figure out how to use class pageable
                 if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteKeys(VaultName, Name);
+                    WriteObject(KVSubResourceWildcardFilter(
+                        Name, this.Track2DataClient.GetManagedHsmKeys(HsmName)),
+                        true);
                 }
                 else
                 {
-                    keyBundle = this.Track2DataClient.GetManagedHsmKey(VaultName, Name, string.Empty);
+                    keyBundle = this.Track2DataClient.GetManagedHsmKey(HsmName, Name, string.Empty);
                     WriteObject(keyBundle);
                 }
             }
@@ -259,31 +253,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 DownloadKey(keyBundle.Key, OutFile);
             }
         }
-
-        private void GetAndWriteKeys(string vaultName, string name) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-            {
-                VaultName = vaultName,
-                NextLink = null
-            },
-                (options) => KVSubResourceWildcardFilter(name, this.Track2DataClient.GetManagedHsmKeys(options)));
-
-        private void GetAndWriteDeletedKeys(string vaultName, string name) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-            {
-                VaultName = vaultName,
-                NextLink = null
-            },
-                (options) => KVSubResourceWildcardFilter(name, this.Track2DataClient.GetManagedHsmDeletedKeys(options)));
-
-        private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-            {
-                VaultName = vaultName,
-                NextLink = null,
-                Name = name
-            },
-        (options) => this.Track2DataClient.GetManagedHsmKeyVersions(options).Where(k => k.Version != currentKeyVersion));
 
         private void DownloadKey(JsonWebKey jwk, string path)
         {

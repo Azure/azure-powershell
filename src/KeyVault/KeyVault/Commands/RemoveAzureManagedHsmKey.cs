@@ -20,48 +20,48 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = RemoveByKeyNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultKey))]
     public class RemoveAzureManagedHsmKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string ByVaultNameParameterSet = "ByVaultName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string RemoveByKeyNameParameterSet = "RemoveByKeyNameParameterSet";
+        private const string RemoveByInputObjectParameterSet = "RemoveByInputObjectParameterSet";
 
         #endregion
 
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = ByVaultNameParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            ParameterSetName = RemoveByKeyNameParameterSet,
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         /// <summary>
         /// key name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = ByVaultNameParameterSet,
+            ParameterSetName = RemoveByKeyNameParameterSet,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// KeyBundle object
+        /// Key object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = ByInputObjectParameterSet,
+            ParameterSetName = RemoveByInputObjectParameterSet,
             HelpMessage = "Key Object")]
         [ValidateNotNullOrEmpty]
         public PSKeyVaultKeyIdentityItem InputObject { get; set; }
@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
-                Name = InputObject.Name.ToString();
+                HsmName = InputObject.VaultName;
+                Name = InputObject.Name;
             }
 
             if (InRemovedState.IsPresent)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         Resources.RemoveDeletedKeyWhatIfMessage,
                         Name),
                     Name,
-                    () => { this.Track2DataClient.PurgeManagedHsmKey(VaultName, Name); });
+                    () => { this.Track2DataClient.PurgeManagedHsmKey(HsmName, Name); });
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Resources.RemoveKeyWhatIfMessage,
                     Name),
                 Name,
-                () => { deletedKeyBundle = this.Track2DataClient.DeleteManagedHsmKey(VaultName, Name); });
+                () => { deletedKeyBundle = this.Track2DataClient.DeleteManagedHsmKey(HsmName, Name); });
 
             if (PassThru)
             {

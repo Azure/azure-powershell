@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Update attribute of a key vault key.
+    /// Update attribute of a managed hsm key.
     /// </summary>
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKeyAttribute")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         /// <summary>
         /// key name
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed hsm name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
 
             if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
                 var keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
-                VaultName,
+                HsmName,
                 Name,
                 Version ?? string.Empty,
                 new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));

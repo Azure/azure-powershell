@@ -427,29 +427,36 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.GetDeletedKey(managedHsmName, keyName);
         }
 
-        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName)
         {
-            return HsmClient.GetDeletedKeys(options);
+            return HsmClient.GetDeletedKeys(managedHsmName);
         }
 
-        public PSKeyVaultKey GetManagedHsmKey(string vaultName, string keyName, string keyVersion)
+        public PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion)
         {
-            return HsmClient.GetKey(vaultName, keyName, keyVersion);
+            return HsmClient.GetKey(managedHsmName, keyName, keyVersion);
         }
 
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName)
         {
-            return HsmClient.GetKeys(options);
+            return HsmClient.GetKeys(managedHsmName);
         }
 
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyVersions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName)
         {
-            return HsmClient.GetKeyVersions(options);
+            return HsmClient.GetKeyAllVersions(managedHsmName, keyName);
         }
+
         public void PurgeManagedHsmKey(string managedHsmName, string keyName)
         {
             HsmClient.PurgeKey(managedHsmName, keyName);
         }
+
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        {
+            HsmClient.ImportKey(managedHsmName, keyName, webKey);
+        }
+
         #endregion
 
     }

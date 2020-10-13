@@ -388,6 +388,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid hsm name..
+        /// </summary>
+        internal static string InvalidHsmName {
+            get {
+                return ResourceManager.GetString("InvalidHsmName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid key attributes.
         /// </summary>
         internal static string InvalidKeyAttributes {

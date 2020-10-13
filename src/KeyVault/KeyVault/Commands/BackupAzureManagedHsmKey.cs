@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Vault name
+        /// Hsm name
         /// </summary>
         [Parameter(Mandatory = true,
                     Position = 0,
                     ParameterSetName = ByKeyNameParameterSet,
-                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+                    HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        public string HsmName { get; set; }
 
         /// <summary>
         /// Key name
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                     Position = 1,
                     ParameterSetName = ByKeyNameParameterSet,
-                    HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+                    HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed hsm name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 Name = InputObject.Name;
-                VaultName = InputObject.VaultName;
+                HsmName = InputObject.VaultName;
             }
 
             if (ShouldProcess(Name, Properties.Resources.BackupKey))
             {
                 if (string.IsNullOrEmpty(OutputFile))
                 {
-                    OutputFile = GetDefaultFileForOperation("backup", VaultName, Name);
+                    OutputFile = GetDefaultFileForOperation("backup", HsmName, Name);
                 }
 
                 var filePath = this.GetUnresolvedProviderPathFromPSPath(OutputFile);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     || Force.IsPresent
                     || ShouldContinue(string.Format(Resources.FileOverwriteMessage, filePath), Resources.FileOverwriteCaption))
                 {
-                    var backupBlobPath = this.Track2DataClient.BackupManagedHsmKey(VaultName, Name, filePath);
+                    var backupBlobPath = this.Track2DataClient.BackupManagedHsmKey(HsmName, Name, filePath);
                     this.WriteObject(backupBlobPath);
                 }
             }

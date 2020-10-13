@@ -293,14 +293,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultKey(keyBundle, this._uriHelper);
         }
 
-        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(string managedHsmName)
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
-            if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidHsmName);
 
-            var client = CreateKeyClient(options.VaultName);
+            var client = CreateKeyClient(managedHsmName);
 
             try
             {
@@ -315,19 +313,30 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
-        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
-        {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyAllVersions(string managedHsmName, string keyName)
+        { 
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidHsmName);
 
-            if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
-
-            if (string.IsNullOrEmpty(options.Name))
+            if (string.IsNullOrEmpty(keyName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyName);
 
-            var client = CreateKeyClient(options.VaultName);
-            return GetKeyVersions(client, options);
+            var client = CreateKeyClient(managedHsmName);
+            return GetAllVersionKeys(client, keyName);
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetAllVersionKeys(KeyClient client, string keyName)
+        {
+            try
+            {
+                IEnumerable<KeyProperties> result = client.GetPropertiesOfKeyVersions(keyName);
+                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
         }
 
         internal PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName)
@@ -364,15 +373,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSDeletedKeyVaultKey(deletedKeyBundle, _uriHelper);
         }
 
-        internal IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        internal IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(string managedHsmName)
         {
-            if (options == null)
-                throw new ArgumentNullException("options");
-
-            if (string.IsNullOrEmpty(options.VaultName))
+            if (string.IsNullOrEmpty(managedHsmName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
-            var client = CreateKeyClient(options.VaultName);
+            var client = CreateKeyClient(managedHsmName);
 
             try
             {
@@ -387,6 +393,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
+        internal PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        {
+            return 
+        }
+
         internal void PurgeKey(string managedHsmName, string keyName)
         {
             if (string.IsNullOrEmpty(managedHsmName))
@@ -399,20 +410,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             try
             {
                 client.PurgeDeletedKeyAsync(keyName).GetAwaiter().GetResult();
-            }
-            catch (Exception ex)
-            {
-                throw GetInnerException(ex);
-            }
-        }
-
-        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyClient client, KeyVaultObjectFilterOptions options)
-        {
-            try
-            {
-                IEnumerable<KeyProperties> result = client.GetPropertiesOfKeyVersions(options.Name);
-                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() : 
-                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
             }
             catch (Exception ex)
             {
