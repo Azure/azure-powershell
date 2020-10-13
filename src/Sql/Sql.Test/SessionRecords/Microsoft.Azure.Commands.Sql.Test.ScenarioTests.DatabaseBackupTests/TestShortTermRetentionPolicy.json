@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7b152e1b-4ce0-443d-98f9-b5a702b97fd4"
+          "067c2c95-e73b-4ed9-a36f-76ce283d84e9"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "55417be7-ced5-4294-9e07-bec665d09505"
+          "7466824c-6f23-4903-a1b0-01682d2e63a2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -36,10 +36,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "124dac65-4090-4b74-8b31-7c754bd4ad7b"
+          "82204484-cec2-4f6e-9c01-6962cbc9333d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014650Z:124dac65-4090-4b74-8b31-7c754bd4ad7b"
+          "NORTHEUROPE:20201013T192917Z:82204484-cec2-4f6e-9c01-6962cbc9333d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:46:49 GMT"
+          "Tue, 13 Oct 2020 19:29:17 GMT"
         ],
         "Content-Length": [
           "492"
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "665b1ee0-335d-4565-ade9-9992852b9578"
+          "0df94c9e-d372-4ca8-872a-ce212aa737e9"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f242778a-6822-4dac-b689-b10c34050743"
+          "d0f8109f-dd2a-48b2-ba25-b7e530ac4826"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -99,10 +99,10 @@
           "14997"
         ],
         "x-ms-correlation-request-id": [
-          "6a6a3615-7d22-4d9b-bd24-45c1302aa715"
+          "65a08af8-d415-4b3b-9cc8-90b4ac4985b1"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014650Z:6a6a3615-7d22-4d9b-bd24-45c1302aa715"
+          "NORTHEUROPE:20201013T192918Z:65a08af8-d415-4b3b-9cc8-90b4ac4985b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:46:49 GMT"
+          "Tue, 13 Oct 2020 19:29:17 GMT"
         ],
         "Content-Length": [
           "492"
@@ -127,13 +127,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45a58a31-1feb-4a3d-b8d4-79870a40ebce"
+          "ddeb5ddf-1406-48fe-b3d6-454ca240a5e1"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,13 +156,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1f6d426c-9276-41a3-a31d-fd1383e5c68f"
+          "9ab6e8ee-163d-4d82-8835-deb3d6f285f5"
         ],
         "x-ms-correlation-request-id": [
-          "1f6d426c-9276-41a3-a31d-fd1383e5c68f"
+          "9ab6e8ee-163d-4d82-8835-deb3d6f285f5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014650Z:1f6d426c-9276-41a3-a31d-fd1383e5c68f"
+          "NORTHEUROPE:20201013T192918Z:9ab6e8ee-163d-4d82-8835-deb3d6f285f5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,7 +171,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:46:49 GMT"
+          "Tue, 13 Oct 2020 19:29:17 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -183,12 +183,12 @@
           "257"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047' under resource group 'PowershellStageResourceGroup' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167' under resource group 'PowershellStageResourceGroup' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -207,19 +207,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1f1483c9-e491-48de-acca-b58e3033991e"
+          "3ee55165-400d-4b1e-a5de-b4818dd122ae"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "9c365f09-a786-4841-a0ff-d552fd35bec3"
+          "7cf1b508-bd52-48b3-b807-38ce66d5d743"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014941Z:9c365f09-a786-4841-a0ff-d552fd35bec3"
+          "NORTHEUROPE:20201013T193007Z:7cf1b508-bd52-48b3-b807-38ce66d5d743"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -228,10 +228,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:49:41 GMT"
+          "Tue, 13 Oct 2020 19:30:07 GMT"
         ],
         "Content-Length": [
-          "1021"
+          "1023"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -240,17 +240,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 2\r\n  },\r\n  \"kind\": \"v12.0,user,vcore\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 34359738368,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"1fc4bcfe-79d1-4080-b68a-152d10d7a1af\",\r\n    \"creationDate\": \"2020-10-13T01:49:27.43Z\",\r\n    \"currentServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"requestedServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"defaultSecondaryLocation\": \"northeurope\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"maxLogSizeBytes\": 10307921510,\r\n    \"earliestRestoreDate\": \"2020-10-13T02:19:27.43Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"readReplicaCount\": 0,\r\n    \"currentSku\": {\r\n      \"name\": \"GP_Gen5\",\r\n      \"tier\": \"GeneralPurpose\",\r\n      \"family\": \"Gen5\",\r\n      \"capacity\": 2\r\n    },\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047\",\r\n  \"name\": \"ps5047\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 2\r\n  },\r\n  \"kind\": \"v12.0,user,vcore\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 34359738368,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"b5cc36b9-f17c-477d-9e8d-0003860db2bb\",\r\n    \"creationDate\": \"2020-10-13T19:30:01.583Z\",\r\n    \"currentServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"requestedServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"defaultSecondaryLocation\": \"northeurope\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"maxLogSizeBytes\": 10307921510,\r\n    \"earliestRestoreDate\": \"2020-10-13T20:00:01.583Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"readReplicaCount\": 0,\r\n    \"currentSku\": {\r\n      \"name\": \"GP_Gen5\",\r\n      \"tier\": \"GeneralPurpose\",\r\n      \"family\": \"Gen5\",\r\n      \"capacity\": 2\r\n    },\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167\",\r\n  \"name\": \"ps3167\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c2b17cf3-46b6-4270-b2b7-3ea0415cfad8"
+          "05297d83-38d4-41ef-b428-395336b9ba14"
         ],
         "Accept-Language": [
           "en-US"
@@ -270,19 +270,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "46925022-f69b-4b77-af57-72515b6ca2b2"
+          "41b4e68d-f6d0-4d00-8698-37b906f1b24b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14968"
+          "14970"
         ],
         "x-ms-correlation-request-id": [
-          "646755f8-86e9-4548-a59b-01f8c7126534"
+          "cec47472-fdb8-4464-97bb-46c51222877a"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015049Z:646755f8-86e9-4548-a59b-01f8c7126534"
+          "NORTHEUROPE:20201013T193148Z:cec47472-fdb8-4464-97bb-46c51222877a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -291,10 +291,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:50:49 GMT"
+          "Tue, 13 Oct 2020 19:31:48 GMT"
         ],
         "Content-Length": [
-          "1021"
+          "1023"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -303,17 +303,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 2\r\n  },\r\n  \"kind\": \"v12.0,user,vcore\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 34359738368,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"1fc4bcfe-79d1-4080-b68a-152d10d7a1af\",\r\n    \"creationDate\": \"2020-10-13T01:49:27.43Z\",\r\n    \"currentServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"requestedServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"defaultSecondaryLocation\": \"northeurope\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"maxLogSizeBytes\": 10307921510,\r\n    \"earliestRestoreDate\": \"2020-10-13T02:19:27.43Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"readReplicaCount\": 0,\r\n    \"currentSku\": {\r\n      \"name\": \"GP_Gen5\",\r\n      \"tier\": \"GeneralPurpose\",\r\n      \"family\": \"Gen5\",\r\n      \"capacity\": 2\r\n    },\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047\",\r\n  \"name\": \"ps5047\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 2\r\n  },\r\n  \"kind\": \"v12.0,user,vcore\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 34359738368,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"b5cc36b9-f17c-477d-9e8d-0003860db2bb\",\r\n    \"creationDate\": \"2020-10-13T19:30:01.583Z\",\r\n    \"currentServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"requestedServiceObjectiveName\": \"GP_Gen5_2\",\r\n    \"defaultSecondaryLocation\": \"northeurope\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"maxLogSizeBytes\": 10307921510,\r\n    \"earliestRestoreDate\": \"2020-10-13T20:00:01.583Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"readReplicaCount\": 0,\r\n    \"currentSku\": {\r\n      \"name\": \"GP_Gen5\",\r\n      \"tier\": \"GeneralPurpose\",\r\n      \"family\": \"Gen5\",\r\n      \"capacity\": 2\r\n    },\r\n    \"storageAccountType\": \"GRS\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167\",\r\n  \"name\": \"ps3167\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"maxSizeBytes\": 0,\r\n    \"readScale\": \"\"\r\n  },\r\n  \"location\": \"southeastasia\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "377e8ed1-d317-4ebc-9b09-7564d0f08c64"
+          "63fc2c3d-b571-4c33-a9c7-38b7d9cd47f9"
         ],
         "Accept-Language": [
           "en-US"
@@ -339,16 +339,16 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/b42324ef-de24-4096-a0dc-8a66cc5f8f68?api-version=2019-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/b42324ef-de24-4096-a0dc-8a66cc5f8f68?api-version=2019-06-01-preview"
         ],
         "x-ms-request-id": [
-          "3c286185-dbb8-4e4a-8ad0-cd7b0dd39532"
+          "b42324ef-de24-4096-a0dc-8a66cc5f8f68"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -357,10 +357,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "99e83d0f-aaa6-4adf-9f74-5f868bf264b1"
+          "d10ee8ec-6ec2-496a-b9cc-4cb06278c229"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014652Z:99e83d0f-aaa6-4adf-9f74-5f868bf264b1"
+          "NORTHEUROPE:20201013T192921Z:d10ee8ec-6ec2-496a-b9cc-4cb06278c229"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -369,7 +369,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:46:52 GMT"
+          "Tue, 13 Oct 2020 19:29:20 GMT"
         ],
         "Content-Length": [
           "76"
@@ -381,12 +381,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"CreateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"CreateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:29:20.863Z\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/b42324ef-de24-4096-a0dc-8a66cc5f8f68?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2I0MjMyNGVmLWRlMjQtNDA5Ni1hMGRjLThhNjZjYzVmOGY2OD9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -408,7 +408,7 @@
           "15"
         ],
         "x-ms-request-id": [
-          "36e0574a-6789-413d-947f-352441500292"
+          "b17eb0c9-de90-4c4b-a1f0-00045e4a0170"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -417,10 +417,10 @@
           "14996"
         ],
         "x-ms-correlation-request-id": [
-          "bae9b9e0-055f-4d2f-a147-94300dbf3b70"
+          "49df530f-757f-42a2-ba65-875bde869cef"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014707Z:bae9b9e0-055f-4d2f-a147-94300dbf3b70"
+          "NORTHEUROPE:20201013T192936Z:49df530f-757f-42a2-ba65-875bde869cef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -429,7 +429,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:47:07 GMT"
+          "Tue, 13 Oct 2020 19:29:36 GMT"
         ],
         "Content-Length": [
           "108"
@@ -441,12 +441,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"b42324ef-de24-4096-a0dc-8a66cc5f8f68\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T19:29:20.863Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/b42324ef-de24-4096-a0dc-8a66cc5f8f68?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2I0MjMyNGVmLWRlMjQtNDA5Ni1hMGRjLThhNjZjYzVmOGY2OD9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -468,7 +468,7 @@
           "15"
         ],
         "x-ms-request-id": [
-          "d91151d5-d836-4677-bd03-630b553e18b8"
+          "6c62fe3d-562f-46b3-bec8-b15d86d9dff9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -477,10 +477,10 @@
           "14995"
         ],
         "x-ms-correlation-request-id": [
-          "55745186-032e-43ea-9aa6-57ea8d52bc49"
+          "5338fe97-a43b-41e6-b0fa-37cada408520"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014723Z:55745186-032e-43ea-9aa6-57ea8d52bc49"
+          "NORTHEUROPE:20201013T192951Z:5338fe97-a43b-41e6-b0fa-37cada408520"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -489,7 +489,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:47:23 GMT"
+          "Tue, 13 Oct 2020 19:29:51 GMT"
         ],
         "Content-Length": [
           "108"
@@ -501,12 +501,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"b42324ef-de24-4096-a0dc-8a66cc5f8f68\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T19:29:20.863Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/b42324ef-de24-4096-a0dc-8a66cc5f8f68?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2I0MjMyNGVmLWRlMjQtNDA5Ni1hMGRjLThhNjZjYzVmOGY2OD9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -528,7 +528,7 @@
           "15"
         ],
         "x-ms-request-id": [
-          "5ff974ae-8794-4bcf-9f90-79c47cb209a8"
+          "ace5f094-8fa7-4b64-9dcf-2fdaebaca520"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -537,10 +537,10 @@
           "14994"
         ],
         "x-ms-correlation-request-id": [
-          "35dc9809-3f33-4250-8aea-b6efe8a21a09"
+          "2c6e70c0-1053-4d34-9d84-ca85dda9dcfb"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014738Z:35dc9809-3f33-4250-8aea-b6efe8a21a09"
+          "NORTHEUROPE:20201013T193007Z:2c6e70c0-1053-4d34-9d84-ca85dda9dcfb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -549,10 +549,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:47:38 GMT"
+          "Tue, 13 Oct 2020 19:30:06 GMT"
         ],
         "Content-Length": [
-          "108"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -561,15 +561,21 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"b42324ef-de24-4096-a0dc-8a66cc5f8f68\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:29:20.863Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "da381e02-3990-4eda-8698-e313b484e877"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
         "User-Agent": [
           "FxVersion/4.6.29220.03",
           "OSName/Windows",
@@ -584,71 +590,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "d40a9f21-2923-44d1-bffa-77413ade887a"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
-        ],
-        "x-ms-correlation-request-id": [
-          "e15e77c7-3e57-4108-96eb-9957a2ca43ee"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014753Z:e15e77c7-3e57-4108-96eb-9957a2ca43ee"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:47:53 GMT"
-        ],
-        "Content-Length": [
-          "108"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "4074284f-07d1-4041-ad78-dc14432f6714"
+          "c6f196c4-c483-4991-83ef-bae0ae8ce05a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -657,10 +600,10 @@
           "14992"
         ],
         "x-ms-correlation-request-id": [
-          "31090405-0206-4921-8f80-43aabb840f2d"
+          "7dd0a74c-7e6d-4e91-8453-944957515d98"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014809Z:31090405-0206-4921-8f80-43aabb840f2d"
+          "NORTHEUROPE:20201013T193007Z:7dd0a74c-7e6d-4e91-8453-944957515d98"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -669,10 +612,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:48:08 GMT"
+          "Tue, 13 Oct 2020 19:30:07 GMT"
         ],
         "Content-Length": [
-          "108"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -681,15 +624,21 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68bf1f92-8abb-48bc-8f67-52ada49d5d02"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
         "User-Agent": [
           "FxVersion/4.6.29220.03",
           "OSName/Windows",
@@ -704,11 +653,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "b891daf1-380b-4d71-b639-4ef0114ba4d9"
+          "09965234-65fc-405f-b23e-d1ce247ff70f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -717,10 +663,10 @@
           "14991"
         ],
         "x-ms-correlation-request-id": [
-          "2c50b5fc-0877-45c9-adde-0920a2614bde"
+          "7a876dfc-f248-4f23-9655-e85fc20b3b95"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014824Z:2c50b5fc-0877-45c9-adde-0920a2614bde"
+          "NORTHEUROPE:20201013T193008Z:7a876dfc-f248-4f23-9655-e85fc20b3b95"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -729,10 +675,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:48:23 GMT"
+          "Tue, 13 Oct 2020 19:30:07 GMT"
         ],
         "Content-Length": [
-          "108"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -741,12 +687,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -764,71 +710,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "d9b694aa-0632-4c5e-ae98-f8e63137fb87"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
-        ],
-        "x-ms-correlation-request-id": [
-          "67a63662-8914-49fa-90da-4e042f21f709"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014839Z:67a63662-8914-49fa-90da-4e042f21f709"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:48:38 GMT"
-        ],
-        "Content-Length": [
-          "108"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "3a02f917-ec97-4844-a6bf-0a2fb6027177"
+          "6a15302d-65f7-441e-ab3f-8fa9cfd17b75"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -837,10 +720,10 @@
           "14989"
         ],
         "x-ms-correlation-request-id": [
-          "6b935e8d-a276-4191-82a1-c1e5a454baec"
+          "aadd9ddc-6e4e-4246-83d6-bf72a4cf911c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014855Z:6b935e8d-a276-4191-82a1-c1e5a454baec"
+          "NORTHEUROPE:20201013T193024Z:aadd9ddc-6e4e-4246-83d6-bf72a4cf911c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -849,10 +732,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:48:55 GMT"
+          "Tue, 13 Oct 2020 19:30:24 GMT"
         ],
         "Content-Length": [
-          "108"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -861,15 +744,21 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0a41cc19-15b0-4072-b2ac-68e4d19e21c1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
         "User-Agent": [
           "FxVersion/4.6.29220.03",
           "OSName/Windows",
@@ -884,11 +773,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "673ef536-1926-45a2-b1b3-8b175a162f81"
+          "f58c61cd-740a-46a3-a6ec-a9cc754bebd5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -897,10 +783,10 @@
           "14988"
         ],
         "x-ms-correlation-request-id": [
-          "e8e9c817-fad8-4fc9-8f26-5587fb9c9fca"
+          "44c18ff5-ad67-4aaf-abde-9ff3988e82bc"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014910Z:e8e9c817-fad8-4fc9-8f26-5587fb9c9fca"
+          "NORTHEUROPE:20201013T193024Z:44c18ff5-ad67-4aaf-abde-9ff3988e82bc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -909,10 +795,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:49:09 GMT"
+          "Tue, 13 Oct 2020 19:30:24 GMT"
         ],
         "Content-Length": [
-          "108"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -921,12 +807,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -944,71 +830,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "8b38e23b-f1da-4798-93da-ff48ff4367e3"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
-        ],
-        "x-ms-correlation-request-id": [
-          "a6b10ed6-3308-4f20-a1b2-843f2b41127d"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014925Z:a6b10ed6-3308-4f20-a1b2-843f2b41127d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:25 GMT"
-        ],
-        "Content-Length": [
-          "108"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/3c286185-dbb8-4e4a-8ad0-cd7b0dd39532?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzNjMjg2MTg1LWRiYjgtNGU0YS04YWQwLWNkN2IwZGQzOTUzMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "a2a9520c-95d5-4912-a3c6-6c347c6fdcd3"
+          "af760f94-fc48-4c3d-b7e2-c66a8e0b88c9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1017,10 +840,10 @@
           "14986"
         ],
         "x-ms-correlation-request-id": [
-          "e330f4a6-eeaa-41a2-879a-2e7ba5e7eb8f"
+          "87d3b5c3-01c4-4636-a193-b26aa595830b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014941Z:e330f4a6-eeaa-41a2-879a-2e7ba5e7eb8f"
+          "NORTHEUROPE:20201013T193041Z:87d3b5c3-01c4-4636-a193-b26aa595830b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1029,70 +852,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:49:40 GMT"
-        ],
-        "Content-Length": [
-          "107"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"3c286185-dbb8-4e4a-8ad0-cd7b0dd39532\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:46:52.333Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "75efa0b6-1af4-4e92-89df-a3f73921ed28"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ff5f7c29-edf5-4406-8ddc-e4c2b227d7d9"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
-        ],
-        "x-ms-correlation-request-id": [
-          "d8e30633-761a-4a80-9179-38e87fd1d1b3"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014941Z:d8e30633-761a-4a80-9179-38e87fd1d1b3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:41 GMT"
+          "Tue, 13 Oct 2020 19:30:41 GMT"
         ],
         "Content-Length": [
           "368"
@@ -1104,17 +864,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 5,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "971598fa-d409-46c6-9ad3-46ff36e76dd9"
+          "fb2db7fb-a651-46c1-8cb9-8615d6c2ff37"
         ],
         "Accept-Language": [
           "en-US"
@@ -1134,7 +894,64 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "00917945-1218-40c3-9601-e03df0a6d818"
+          "caa3b102-4abd-4e73-b71d-785f6ffe1142"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7cca74a1-04fc-464b-84ce-1749f09ce571"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193041Z:7cca74a1-04fc-464b-84ce-1749f09ce571"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:41 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 5,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "163697e7-2c8d-454f-a179-424b409e7baa"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1143,10 +960,10 @@
           "14983"
         ],
         "x-ms-correlation-request-id": [
-          "26a7f4e0-5c0d-47e4-a94f-8c4ab9e1e97a"
+          "4dee86ba-46f4-41eb-b6cd-51b19bd28771"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014942Z:26a7f4e0-5c0d-47e4-a94f-8c4ab9e1e97a"
+          "NORTHEUROPE:20201013T193057Z:4dee86ba-46f4-41eb-b6cd-51b19bd28771"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1155,7 +972,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:49:41 GMT"
+          "Tue, 13 Oct 2020 19:30:57 GMT"
         ],
         "Content-Length": [
           "368"
@@ -1167,74 +984,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 5,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "bda90c79-b308-486f-95e7-3fcd38c33564"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14981"
-        ],
-        "x-ms-correlation-request-id": [
-          "33b0eece-20ae-4943-84d2-29916083fef4"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014958Z:33b0eece-20ae-4943-84d2-29916083fef4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:58 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "51009822-bc7c-4618-bf41-c2a25da93255"
+          "86ef6232-3245-482f-aab4-abc0bb7f96e6"
         ],
         "Accept-Language": [
           "en-US"
@@ -1254,865 +1014,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c8efa544-22be-4514-8265-22172a2d833b"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14980"
-        ],
-        "x-ms-correlation-request-id": [
-          "d962bdf9-2504-49f1-b3bb-7608b69ca962"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014959Z:d962bdf9-2504-49f1-b3bb-7608b69ca962"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:58 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "93ae1c12-ba38-4efa-a478-5c9da0b98768"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
-        ],
-        "x-ms-correlation-request-id": [
-          "ceb6ba8d-d4cd-4d6c-91f9-a6626b892a86"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015015Z:ceb6ba8d-d4cd-4d6c-91f9-a6626b892a86"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:14 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "afb6d492-2d57-404c-8e05-949eb3120fe9"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5553d50c-ec2a-431d-9f07-9f504e2b3ce0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
-        ],
-        "x-ms-correlation-request-id": [
-          "bb466a81-10b2-4af7-b636-c70c19ff85bc"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015015Z:bb466a81-10b2-4af7-b636-c70c19ff85bc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:14 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "8be91a86-15b9-456d-b97b-3de8043d0626"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c9196535-fc84-41f8-a29b-1569c71cab6f"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14976"
-        ],
-        "x-ms-correlation-request-id": [
-          "db9d2c3f-78b5-406a-a310-36484e626ba4"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015015Z:db9d2c3f-78b5-406a-a310-36484e626ba4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:14 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d4f328e1-c0f2-4d44-bded-a5d718a896f5"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
-        ],
-        "x-ms-correlation-request-id": [
-          "2694176e-25b0-4d1f-84b8-834967e43075"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015032Z:2694176e-25b0-4d1f-84b8-834967e43075"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:32 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3688d53b-6604-4954-af67-a94feafeb0d5"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1e4caa03-7231-46b1-81db-b2af5e6257b3"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
-        ],
-        "x-ms-correlation-request-id": [
-          "e7eca536-4607-42cd-90d4-75a760c4fffa"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015032Z:e7eca536-4607-42cd-90d4-75a760c4fffa"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:32 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "183e5c74-7671-4791-926c-48c60dca744c"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ee10844a-31bb-498f-ae70-f16a2a3bcad2"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
-        ],
-        "x-ms-correlation-request-id": [
-          "734658b7-2d09-480d-9262-244560d3edae"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015032Z:734658b7-2d09-480d-9262-244560d3edae"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:32 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b3748521-edd2-424b-aad2-8f961d4b1080"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14970"
-        ],
-        "x-ms-correlation-request-id": [
-          "18a9566e-2cc1-45cf-add9-ed8d0b7ca6d4"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015049Z:18a9566e-2cc1-45cf-add9-ed8d0b7ca6d4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:49 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "044d4ee4-9766-430f-aa3d-fd937acf595c"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "0e6317a7-4ab3-4515-919d-386f61301545"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14969"
-        ],
-        "x-ms-correlation-request-id": [
-          "9da4758e-8b14-4aec-aebb-2c24a02933d6"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015049Z:9da4758e-8b14-4aec-aebb-2c24a02933d6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:49 GMT"
-        ],
-        "Content-Length": [
-          "368"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "65b9c293-f12f-417f-8d14-1af325683b27"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "90"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/9fd1c2dd-7937-4992-80df-1f06628b33f0?api-version=2020-02-02-preview"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/9fd1c2dd-7937-4992-80df-1f06628b33f0?api-version=2020-02-02-preview"
-        ],
-        "x-ms-request-id": [
-          "9fd1c2dd-7937-4992-80df-1f06628b33f0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "91b224d8-a06d-466d-bd78-9d74d8cbbced"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014942Z:91b224d8-a06d-466d-bd78-9d74d8cbbced"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:42 GMT"
-        ],
-        "Content-Length": [
-          "75"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:49:42.77Z\"\r\n}",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "41f6038b-027b-43f1-970a-63f7e9fd236a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "90"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/d7c75e1c-3b30-4ab4-840a-51e4cebddfd0?api-version=2020-02-02-preview"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/d7c75e1c-3b30-4ab4-840a-51e4cebddfd0?api-version=2020-02-02-preview"
-        ],
-        "x-ms-request-id": [
-          "d7c75e1c-3b30-4ab4-840a-51e4cebddfd0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "d51ccc3a-91e1-4218-a0cd-e042b1129cd9"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014959Z:d51ccc3a-91e1-4218-a0cd-e042b1129cd9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:49:59 GMT"
-        ],
-        "Content-Length": [
-          "75"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:49:59.43Z\"\r\n}",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9bea2b44-f82d-45e8-98da-c30d598e8d1e"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "90"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/b6bb2d70-31f8-4a7c-a14f-e91da5cfafd9?api-version=2020-02-02-preview"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/b6bb2d70-31f8-4a7c-a14f-e91da5cfafd9?api-version=2020-02-02-preview"
-        ],
-        "x-ms-request-id": [
-          "b6bb2d70-31f8-4a7c-a14f-e91da5cfafd9"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-correlation-request-id": [
-          "12d33abe-73b2-4917-af82-c60db1bc6941"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015016Z:12d33abe-73b2-4917-af82-c60db1bc6941"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:16 GMT"
-        ],
-        "Content-Length": [
-          "75"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:50:16.37Z\"\r\n}",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 12\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ed1ebe80-322b-436c-97d9-7e1d631e7f1e"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "90"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/88be2c69-afb5-44ec-b14d-03f20aad5665?api-version=2020-02-02-preview"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/88be2c69-afb5-44ec-b14d-03f20aad5665?api-version=2020-02-02-preview"
-        ],
-        "x-ms-request-id": [
-          "88be2c69-afb5-44ec-b14d-03f20aad5665"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "73603b29-8225-4303-9d89-86b163bdbf78"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015033Z:73603b29-8225-4303-9d89-86b163bdbf78"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:33 GMT"
-        ],
-        "Content-Length": [
-          "75"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:50:33.46Z\"\r\n}",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/9fd1c2dd-7937-4992-80df-1f06628b33f0?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi85ZmQxYzJkZC03OTM3LTQ5OTItODBkZi0xZjA2NjI4YjMzZjA/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "229f773a-16c1-456d-bb0b-770d3a64a084"
+          "e7e67294-fc83-4df8-a8cb-231d7556c1fd"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2121,10 +1023,10 @@
           "14982"
         ],
         "x-ms-correlation-request-id": [
-          "338ccfd6-abcd-4b90-972f-f049b72cc034"
+          "d026af39-cbf2-4edb-b69d-b502edc9db28"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T014958Z:338ccfd6-abcd-4b90-972f-f049b72cc034"
+          "NORTHEUROPE:20201013T193057Z:d026af39-cbf2-4edb-b69d-b502edc9db28"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2133,10 +1035,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:49:58 GMT"
+          "Tue, 13 Oct 2020 19:30:57 GMT"
         ],
         "Content-Length": [
-          "106"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2145,12 +1047,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"9fd1c2dd-7937-4992-80df-1f06628b33f0\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:49:42.77Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 5,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/d7c75e1c-3b30-4ab4-840a-51e4cebddfd0?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi9kN2M3NWUxYy0zYjMwLTRhYjQtODQwYS01MWU0Y2ViZGRmZDA/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2168,23 +1070,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
-        ],
         "x-ms-request-id": [
-          "184ee287-e22b-4c7a-a6c9-2582232f93cc"
+          "912eb521-22e5-4dff-8c89-807f122020e9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14979"
+          "14980"
         ],
         "x-ms-correlation-request-id": [
-          "2281d67b-1d69-48aa-bb93-592556cf1156"
+          "eb9c9138-411c-4ae9-b1d8-5cd13d4db2b8"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015014Z:2281d67b-1d69-48aa-bb93-592556cf1156"
+          "NORTHEUROPE:20201013T193114Z:eb9c9138-411c-4ae9-b1d8-5cd13d4db2b8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2193,10 +1092,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:50:14 GMT"
+          "Tue, 13 Oct 2020 19:31:13 GMT"
         ],
         "Content-Length": [
-          "106"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2205,137 +1104,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"d7c75e1c-3b30-4ab4-840a-51e4cebddfd0\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:49:59.43Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/b6bb2d70-31f8-4a7c-a14f-e91da5cfafd9?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi9iNmJiMmQ3MC0zMWY4LTRhN2MtYTE0Zi1lOTFkYTVjZmFmZDk/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
       "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "6031371c-f24e-4eb2-a284-015b6a0523e8"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
-        ],
-        "x-ms-correlation-request-id": [
-          "af5c4d6b-cab0-45a1-9580-59f7a85f0f77"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015031Z:af5c4d6b-cab0-45a1-9580-59f7a85f0f77"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:30 GMT"
-        ],
-        "Content-Length": [
-          "106"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"b6bb2d70-31f8-4a7c-a14f-e91da5cfafd9\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:50:16.37Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/88be2c69-afb5-44ec-b14d-03f20aad5665?api-version=2020-02-02-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi84OGJlMmM2OS1hZmI1LTQ0ZWMtYjE0ZC0wM2YyMGFhZDU2NjU/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "ad1c1460-fcc8-442c-99d2-06874ea12459"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14971"
-        ],
-        "x-ms-correlation-request-id": [
-          "406b8ae7-9694-4346-bd8b-25a979c172d9"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015048Z:406b8ae7-9694-4346-bd8b-25a979c172d9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2020 01:50:48 GMT"
-        ],
-        "Content-Length": [
-          "106"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"88be2c69-afb5-44ec-b14d-03f20aad5665\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:50:33.46Z\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps5047?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzNTA0Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5d4fed3d-7be6-423f-8d52-77bfb1943ee4"
+          "b324becc-772a-4e09-85bc-bf04c28c01ac"
         ],
         "Accept-Language": [
           "en-US"
@@ -2354,29 +1133,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/6e4919ff-5bc4-4092-8386-fcb105d21b03?api-version=2019-06-01-preview"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/6e4919ff-5bc4-4092-8386-fcb105d21b03?api-version=2019-06-01-preview"
-        ],
         "x-ms-request-id": [
-          "6e4919ff-5bc4-4092-8386-fcb105d21b03"
+          "bc8fa906-df7f-4751-b8a6-be4f07989dad"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
         ],
         "x-ms-correlation-request-id": [
-          "1f47d704-7a90-4471-8b25-88cc2107eb00"
+          "5d9dbf43-cda1-45f3-833d-704f514b729a"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015050Z:1f47d704-7a90-4471-8b25-88cc2107eb00"
+          "NORTHEUROPE:20201013T193114Z:5d9dbf43-cda1-45f3-833d-704f514b729a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2385,10 +1155,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:50:50 GMT"
+          "Tue, 13 Oct 2020 19:31:13 GMT"
         ],
         "Content-Length": [
-          "74"
+          "368"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2397,12 +1167,846 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"DropLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T01:50:50.357Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2440946c-a879-4ce1-980e-5083d27d02b6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "97cf3d5b-a912-4458-85bb-f70b5ebe0154"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "df1553d1-3062-4aa4-90f0-d97ed97d56e5"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193114Z:df1553d1-3062-4aa4-90f0-d97ed97d56e5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:13 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "47278608-59c8-4803-a75a-10f379d1e05c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-correlation-request-id": [
+          "e8a34f9c-4588-43e8-85cc-a39b8f52cf28"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193131Z:e8a34f9c-4588-43e8-85cc-a39b8f52cf28"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:30 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bf7423f8-f42e-4bc2-a8a7-993e9ab05ced"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cb50cd51-4de1-467c-ac5a-5c6662e41e56"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-correlation-request-id": [
+          "38cefbe3-2c07-4488-8f1e-77fede595413"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193131Z:38cefbe3-2c07-4488-8f1e-77fede595413"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:30 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b2c1b507-ed65-40d6-ad3b-c3466ed33c5b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "af9c1867-ee57-4175-8280-aca5e9140ba2"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-correlation-request-id": [
+          "a939c536-9fd9-4d47-ac65-f1ae044bca08"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193131Z:a939c536-9fd9-4d47-ac65-f1ae044bca08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:31 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 12\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bc8adb3d-5c7f-4aa1-8872-456253ec9e40"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-correlation-request-id": [
+          "af59ece3-1382-42c7-b10b-18d78a6a1b22"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193148Z:af59ece3-1382-42c7-b10b-18d78a6a1b22"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:47 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e0abdf03-48d2-4c17-bf55-543ed4e767c1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c3141127-b629-4bdf-8bd0-6fb5353e2b6b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14971"
+        ],
+        "x-ms-correlation-request-id": [
+          "71c44ebc-02b8-44e1-b2dc-616d8684a68c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193148Z:71c44ebc-02b8-44e1-b2dc-616d8684a68c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:48 GMT"
+        ],
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  },\r\n  \"id\": \"/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 24\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d49f7f5e-3b6d-4d41-b081-f1e704fa7792"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "90"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/f93c1703-f07a-4b10-a9f4-040b05d40d7a?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/f93c1703-f07a-4b10-a9f4-040b05d40d7a?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "f93c1703-f07a-4b10-a9f4-040b05d40d7a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "a848975f-e1a0-43a0-91c7-5696e43e21e9"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193008Z:a848975f-e1a0-43a0-91c7-5696e43e21e9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:08 GMT"
+        ],
+        "Content-Length": [
+          "76"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:30:08.637Z\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/6e4919ff-5bc4-4092-8386-fcb105d21b03?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzZlNDkxOWZmLTViYzQtNDA5Mi04Mzg2LWZjYjEwNWQyMWIwMz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 5\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24e41b8f-d8da-47bd-be43-b77871680778"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "52"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/5f5ae838-287f-451a-b2e5-37d6cce1ed1d?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/5f5ae838-287f-451a-b2e5-37d6cce1ed1d?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "5f5ae838-287f-451a-b2e5-37d6cce1ed1d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "9dd788cb-5906-4ea5-9e96-bc212e3559e0"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193025Z:9dd788cb-5906-4ea5-9e96-bc212e3559e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:24 GMT"
+        ],
+        "Content-Length": [
+          "76"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:30:25.263Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"diffBackupIntervalInHours\": 12\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c4138458-193c-4ef1-8dbf-09beca57d683"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "65"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/373df742-722b-407a-b3ea-56adda2796f8?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/373df742-722b-407a-b3ea-56adda2796f8?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "373df742-722b-407a-b3ea-56adda2796f8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "baa25e02-2ff0-4bde-82e0-aa10a5f5dc29"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193041Z:baa25e02-2ff0-4bde-82e0-aa10a5f5dc29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:41 GMT"
+        ],
+        "Content-Length": [
+          "76"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:30:41.807Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "faec41c4-878a-4134-96a6-ef3f41fba523"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "90"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/ba5e194e-abfe-463b-8d69-f01314f92cd9?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/ba5e194e-abfe-463b-8d69-f01314f92cd9?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "ba5e194e-abfe-463b-8d69-f01314f92cd9"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "61ba6e6e-bfec-4099-a7c1-b9dde4e62bc5"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193058Z:61ba6e6e-bfec-4099-a7c1-b9dde4e62bc5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:58 GMT"
+        ],
+        "Content-Length": [
+          "75"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:30:58.35Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 6,\r\n    \"diffBackupIntervalInHours\": 12\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f31245d7-387b-4cb0-8b8b-a1fccdb1da4c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "90"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/872b46ac-d28c-4ba0-9085-4ada0196ad28?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/872b46ac-d28c-4ba0-9085-4ada0196ad28?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "872b46ac-d28c-4ba0-9085-4ada0196ad28"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "40e5e929-9907-4c08-8cfd-009913dc92bd"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193115Z:40e5e929-9907-4c08-8cfd-009913dc92bd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:14 GMT"
+        ],
+        "Content-Length": [
+          "76"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:31:15.487Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167/backupShortTermRetentionPolicies/default?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Ny9iYWNrdXBTaG9ydFRlcm1SZXRlbnRpb25Qb2xpY2llcy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjAtMDItMDItcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 7,\r\n    \"diffBackupIntervalInHours\": 24\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "551bc127-6082-42e9-b335-679545e1c9a0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "90"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyOperationResults/ea0e2d03-7223-4fde-852e-9d3b9e0b160e?api-version=2020-02-02-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/ea0e2d03-7223-4fde-852e-9d3b9e0b160e?api-version=2020-02-02-preview"
+        ],
+        "x-ms-request-id": [
+          "ea0e2d03-7223-4fde-852e-9d3b9e0b160e"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "ddefa0ea-376f-46db-8f3d-a2ec2cfbbbba"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193132Z:ddefa0ea-376f-46db-8f3d-a2ec2cfbbbba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:31 GMT"
+        ],
+        "Content-Length": [
+          "75"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpdateLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:31:32.36Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/f93c1703-f07a-4b10-a9f4-040b05d40d7a?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi9mOTNjMTcwMy1mMDdhLTRiMTAtYTlmNC0wNDBiMDVkNDBkN2E/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2424,19 +2028,19 @@
           "15"
         ],
         "x-ms-request-id": [
-          "f803581e-2091-46db-8e1b-71945823cb94"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
+          "54bb48c1-6776-4d58-9fe3-c391435fafe6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
         "x-ms-correlation-request-id": [
-          "061c5f47-5d0b-43fb-b6f3-2c618760f027"
+          "548dc0ba-17e5-45c3-b55a-381596c5af2b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015105Z:061c5f47-5d0b-43fb-b6f3-2c618760f027"
+          "NORTHEUROPE:20201013T193024Z:548dc0ba-17e5-45c3-b55a-381596c5af2b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2445,7 +2049,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:51:04 GMT"
+          "Tue, 13 Oct 2020 19:30:23 GMT"
         ],
         "Content-Length": [
           "107"
@@ -2457,12 +2061,444 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"6e4919ff-5bc4-4092-8386-fcb105d21b03\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T01:50:50.357Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"f93c1703-f07a-4b10-a9f4-040b05d40d7a\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:30:08.637Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/6e4919ff-5bc4-4092-8386-fcb105d21b03?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VPcGVyYXRpb25SZXN1bHRzLzZlNDkxOWZmLTViYzQtNDA5Mi04Mzg2LWZjYjEwNWQyMWIwMz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/5f5ae838-287f-451a-b2e5-37d6cce1ed1d?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi81ZjVhZTgzOC0yODdmLTQ1MWEtYjJlNS0zN2Q2Y2NlMWVkMWQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "669078bd-ba5f-402a-8794-cdb583935a3c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b7f1d6b-1e1e-40ef-973c-7c3999f0e76e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193040Z:8b7f1d6b-1e1e-40ef-973c-7c3999f0e76e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:40 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"5f5ae838-287f-451a-b2e5-37d6cce1ed1d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:30:25.263Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/373df742-722b-407a-b3ea-56adda2796f8?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi8zNzNkZjc0Mi03MjJiLTQwN2EtYjNlYS01NmFkZGEyNzk2Zjg/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "f1767e06-c75c-4b85-b8bc-e3605b65ea58"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "ec41f1ee-5c56-4a2b-90cb-2649ef64e99a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193057Z:ec41f1ee-5c56-4a2b-90cb-2649ef64e99a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:30:57 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"373df742-722b-407a-b3ea-56adda2796f8\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:30:41.807Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/ba5e194e-abfe-463b-8d69-f01314f92cd9?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi9iYTVlMTk0ZS1hYmZlLTQ2M2ItOGQ2OS1mMDEzMTRmOTJjZDk/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ce6b9484-4731-4eea-9725-97b424a0ba1c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "758e4120-d22e-4251-8282-50858fa8acb3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193113Z:758e4120-d22e-4251-8282-50858fa8acb3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:13 GMT"
+        ],
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ba5e194e-abfe-463b-8d69-f01314f92cd9\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:30:58.35Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/872b46ac-d28c-4ba0-9085-4ada0196ad28?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi84NzJiNDZhYy1kMjhjLTRiYTAtOTA4NS00YWRhMDE5NmFkMjg/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "55c93963-7e67-40c4-ae3e-51cd350c8a3b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a7a0ea5-6578-49df-8fdc-43e5678b4c53"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193130Z:8a7a0ea5-6578-49df-8fdc-43e5678b4c53"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:30 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"872b46ac-d28c-4ba0-9085-4ada0196ad28\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:31:15.487Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/shortTermRetentionPolicyAzureAsyncOperation/ea0e2d03-7223-4fde-852e-9d3b9e0b160e?api-version=2020-02-02-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvc2hvcnRUZXJtUmV0ZW50aW9uUG9saWN5QXp1cmVBc3luY09wZXJhdGlvbi9lYTBlMmQwMy03MjIzLTRmZGUtODUyZS05ZDNiOWUwYjE2MGU/YXBpLXZlcnNpb249MjAyMC0wMi0wMi1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "2703f31d-25f3-4635-b44c-fef8b3bcce16"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a56536d-d803-4e7d-909a-d64d1df2172c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193147Z:3a56536d-d803-4e7d-909a-d64d1df2172c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:47 GMT"
+        ],
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ea0e2d03-7223-4fde-852e-9d3b9e0b160e\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:31:32.36Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/servers/pssqlserverfortest/databases/ps3167?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9wc3NxbHNlcnZlcmZvcnRlc3QvZGF0YWJhc2VzL3BzMzE2Nz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a772bdc-d986-4df1-90d2-da868f39f48d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/54cbe417-39f3-4b98-9991-5c417d14816b?api-version=2019-06-01-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/54cbe417-39f3-4b98-9991-5c417d14816b?api-version=2019-06-01-preview"
+        ],
+        "x-ms-request-id": [
+          "54cbe417-39f3-4b98-9991-5c417d14816b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "5aa35254-cd29-4c69-8418-0ba69e67668c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193149Z:5aa35254-cd29-4c69-8418-0ba69e67668c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:31:48 GMT"
+        ],
+        "Content-Length": [
+          "73"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"DropLogicalDatabase\",\r\n  \"startTime\": \"2020-10-13T19:31:49.29Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseAzureAsyncOperation/54cbe417-39f3-4b98-9991-5c417d14816b?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzU0Y2JlNDE3LTM5ZjMtNGI5OC05OTkxLTVjNDE3ZDE0ODE2Yj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.45.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ca286747-35b1-48aa-bad6-54e9276c8f82"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14969"
+        ],
+        "x-ms-correlation-request-id": [
+          "b1048716-cb42-467e-a157-48053c4bf6bc"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20201013T193204Z:b1048716-cb42-467e-a157-48053c4bf6bc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2020 19:32:04 GMT"
+        ],
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"54cbe417-39f3-4b98-9991-5c417d14816b\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-10-13T19:31:49.29Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4b6aaaf2-6fd8-418b-a06d-6ede39a32270/resourceGroups/PowershellStageResourceGroup/providers/Microsoft.Sql/locations/southeastasia/databaseOperationResults/54cbe417-39f3-4b98-9991-5c417d14816b?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGI2YWFhZjItNmZkOC00MThiLWEwNmQtNmVkZTM5YTMyMjcwL3Jlc291cmNlR3JvdXBzL1Bvd2Vyc2hlbGxTdGFnZVJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoZWFzdGFzaWEvZGF0YWJhc2VPcGVyYXRpb25SZXN1bHRzLzU0Y2JlNDE3LTM5ZjMtNGI5OC05OTkxLTVjNDE3ZDE0ODE2Yj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2481,19 +2517,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a60741f0-e217-4415-ade0-7f02f1d36d0f"
+          "e6d06724-58d1-4f9c-a8a9-de1c565d9f26"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14968"
         ],
         "x-ms-correlation-request-id": [
-          "da41db13-fb54-4aeb-8726-cae2b0069dd4"
+          "ea0c53ed-7ae3-4e55-b283-5c35679587fb"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20201013T015106Z:da41db13-fb54-4aeb-8726-cae2b0069dd4"
+          "NORTHEUROPE:20201013T193205Z:ea0c53ed-7ae3-4e55-b283-5c35679587fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2502,7 +2538,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Oct 2020 01:51:06 GMT"
+          "Tue, 13 Oct 2020 19:32:04 GMT"
         ],
         "Expires": [
           "-1"
@@ -2517,7 +2553,7 @@
   ],
   "Names": {
     "Test-ShortTermRetentionPolicy": [
-      "ps5047"
+      "ps3167"
     ]
   },
   "Variables": {

@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             DatabaseName = databaseName;
-            RetentionDays = policy.RetentionDays.Value;
-            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours.Value;
+            RetentionDays = policy.RetentionDays;
+            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours;
         }
     }
 }
