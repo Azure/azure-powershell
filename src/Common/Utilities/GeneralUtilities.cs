@@ -269,9 +269,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string TransformBody(string inBody, IList<Regex> matchers = null)
         {
-            foreach (Regex match in matchers)
+            if (matchers != null) 
             {
-                inBody = match.Replace(inBody, "$1\"<redacted>\"");
+                foreach (Regex match in matchers)
+                {
+                    inBody = match.Replace(inBody, "$1\"<redacted>\"");
+                }
             }
             return inBody;
         }
