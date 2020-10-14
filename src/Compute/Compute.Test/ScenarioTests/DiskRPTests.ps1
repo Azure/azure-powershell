@@ -1261,3 +1261,76 @@ function Test-GetDiskEncryptionSetAssociatedResource
         Remove-AzDisk -ResourceGroupName $rgName -DiskName $disk01Name -Force
     }
 }
+
+<#
+.SYNOPSIS
+Testing the new parameters 
+Tier
+LogicalSectorSize 
+in the New-AzDiskConfig cmdlet.
+
+Testing the new parameters 
+Tier 
+DiskIOPSReadOnly
+DiskMBpsReadOnly
+in the New-AzDiskUpdateCOnfig cmdlet. 
+#>
+function Test-DiskConfigTierSectorSizeReadOnly
+{
+
+        # Setup 
+        $rgname = Get-ComputeTestResourceName;
+        $loc = "eastus2euap";
+
+        try
+        {
+            New-AzResourceGroup -Name $rgname -Location $loc -Force;
+            $diskNameTier = "datadisktier";
+            $diskNameSector = "datadisksector";
+            $tier3 = "P3";
+            $tier40 = "P40";
+            $tier30 = "P30";
+            $sectorSize = 512;
+            $IoPS1 = 100;
+            $IoPS2 = 120;
+            $MbPS1 = 3;
+            $MbPS2 = 20;
+            $maxShares = 2;
+            
+
+            $diskTier = New-AzDiskConfig -Location $loc -DiskSizeGB 1024 `
+                -SkuName Premium_LRS -OsType Windows -CreateOption Empty -Tier $tier30 -MaxSharesCount $maxShares `
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
+
+            Assert-AreEqual $tier30 $diskTier.Tier; 
+            Assert-AreEqual $maxShares $diskTier.MaxShares;
+
+            $diskSector = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
+                -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -LogicalSectorSize $sectorSize -DiskIOPSReadOnly $IoPS1 -DiskMBpsReadOnly $MbPS1 `
+                | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameSector;
+
+            Assert-AreEqual $diskSector.CreationData.LogicalSectorSize $sectorSize; 
+
+            # New-AzDiskUpdateConfig
+            # Tier 
+            $diskUpdateTierConfig = New-AzDiskUpdateConfig -Tier $tier40;
+            $diskUp = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier -DiskUpdate $diskUpdateTierConfig;
+
+            $diskUpdated = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
+
+            Assert-AreEqual $tier40 $diskUpdated.Tier; 
+
+            # DiskIOPSReadOnly and DiskMBpsReadOnly
+            $diskUpdateReadOnlyConfig = New-AzDiskUpdateConfig -DiskIOPSReadOnly $IoPS2 -DiskMBpsReadOnly $MbPS2;
+            $diskUp = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskNameSector -DiskUpdate $diskUpdateReadOnlyConfig;
+
+            $diskUpdated = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskNameSector;
+            Assert-AreEqual $IoPS2 $diskUpdated.DiskIOPSReadOnly; 
+            Assert-AreEqual $MbPS2 $diskUpdated.DiskMBpsReadOnly; 
+		}
+        finally 
+        {
+            # Cleanup
+            Clean-ResourceGroup $rgname
+		}
+}

@@ -93,6 +93,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SnapshotConfigDiskAccessNetworkPolicy");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskConfigTierSectorSizeReadOnly()
+        {
+            TestRunner.RunTestScript("Test-DiskConfigTierSectorSizeReadOnly");
+        }
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDiskEncryptionSetAssociatedResource()
