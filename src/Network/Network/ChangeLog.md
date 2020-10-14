@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
