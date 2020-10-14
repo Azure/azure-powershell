@@ -13,20 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterSubscriptionId), OutputType(typeof(PSVirtualRouter))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
     public partial class UpdateAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {
         [Parameter(
@@ -42,12 +40,23 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the virtual router.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string RouterName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
+            HelpMessage = "Flag to allow branch to branch traffic for virtual router.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterResourceId,
+            HelpMessage = "Flag to allow branch to branch traffic for virtual router.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
             ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterResourceId,
@@ -65,54 +74,25 @@ namespace Microsoft.Azure.Commands.Network
             if (string.Equals(this.ParameterSetName, VirtualRouterParameterSetNames.ByVirtualRouterResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceInfo.ResourceGroupName;
-                RouterName = resourceInfo.ResourceName;
+                this.ResourceGroupName = resourceInfo.ResourceGroupName;
+                this.RouterName = resourceInfo.ResourceName;
             }
 
             string ipConfigName = "ipconfig1";
-            if (ShouldGetByName(ResourceGroupName, RouterName))
-            {
-                var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouterName);
-                var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);
-                virtualHubModel.ResourceGroupName = this.ResourceGroupName;
-                virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-                AddBgpConnectionsToPSVirtualHub(virtualHub, virtualHubModel, ResourceGroupName, RouterName);
-                AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouterName, ipConfigName);
 
-                var virtualRouterModel = new PSVirtualRouter(virtualHubModel);
-                virtualRouterModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-                WriteObject(virtualRouterModel, true);
-            }
-            else
-            {
-                IPage<VirtualHub> virtualHubPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, RouterName))
-                {
-                    virtualHubPage = this.NetworkClient.NetworkManagementClient.VirtualHubs.ListByResourceGroup(this.ResourceGroupName);
-                }
-                else
-                {
-                    virtualHubPage = this.NetworkClient.NetworkManagementClient.VirtualHubs.List();
-                }
+            var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouterName);
+            virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
+            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouterName, virtualHub);
 
-                var virtualHubList = ListNextLink<VirtualHub>.GetAllResourcesByPollingNextLink(virtualHubPage,
-                    this.NetworkClient.NetworkManagementClient.VirtualHubs.ListNext);
-                List<PSVirtualRouter> virtualRouterList = new List<PSVirtualRouter>();
-                foreach (var virtualHub in virtualHubList)
-                {
-                    RouterName = virtualHub.Name;
-                    var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);
-                    virtualHubModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualHub.Id);
-                    virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-                    AddBgpConnectionsToPSVirtualHub(virtualHub, virtualHubModel, ResourceGroupName, RouterName);
-                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouterName, ipConfigName);
+            var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);
+            psVirtualHub.ResourceGroupName = this.ResourceGroupName;
+            psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+            AddBgpConnectionsToPSVirtualHub(virtualHub, psVirtualHub, ResourceGroupName, RouterName);
+            AddIpConfigurtaionToPSVirtualHub(psVirtualHub, this.ResourceGroupName, RouterName, ipConfigName);
 
-                    var virtualRouterModel = new PSVirtualRouter(virtualHubModel);
-                    virtualRouterModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-                    virtualRouterList.Add(virtualRouterModel);
-                }
-                WriteObject(virtualRouterList, true);
-            }
+            var psVirtualRouter = new PSVirtualRouter(psVirtualHub);
+            psVirtualRouter.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+            WriteObject(psVirtualRouter, true);
         }
     }
 }

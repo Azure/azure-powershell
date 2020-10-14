@@ -19,17 +19,9 @@
 --->
 
 ## Upcoming Release
-* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
-* Added new cmdlets for Virtual Router Peer Routes
-    - `Get-AzVirtualRouterPeerLearnedRoute`
-    - `Get-AzVirtualRouterPeerAdvertisedRoute`
-* Updated New-AzFirewall cmdlet:
-    - Added parameter -SkuTier
-    - Added parameter -SkuName and made Sku as Alias for this
-    - Removed parameter -Sku
-* Updated New-AzFirewallPolicyNatRule cmdlet:
-    - Added parameter Translated FQDN
-    
+* Added new cmdlet for virtual router
+    - `Update-AzVirtualRouter`: to allow branch to branch traffic
+
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
