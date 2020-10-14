@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for virtual router
+    - `Update-AzVirtualRouter`: to allow branch to branch traffic
 
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
