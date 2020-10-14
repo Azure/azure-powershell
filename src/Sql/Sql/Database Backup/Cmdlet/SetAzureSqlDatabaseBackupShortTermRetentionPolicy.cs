@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets differential backup interval hours.
         /// </summary>
         [Parameter(Mandatory = false,
-            Position = 4,
             HelpMessage = "The differential backup interval, in hours.")]
         public int DiffBackupIntervalInHours { get; set; }	
 			
