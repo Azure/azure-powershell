@@ -358,6 +358,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryption.Type = this.EncryptionType;
             }
 
+            if (this.IsParameterBound(c => c.LogicalSectorSize))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.LogicalSectorSize = this.LogicalSectorSize;
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
