@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="1007.932.58744" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="1014.751.54664" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
