@@ -27,18 +27,16 @@ https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudSe
 function New-AzCloudServiceRemoteDesktopExtensionObject {
   [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
   param(
-	[Parameter(HelpMessage="Name of Remote Desktop Extension.")]
-    [Parameter(Mandatory=$true)]
+    [Parameter(HelpMessage="Name of Remote Desktop Extension.", Mandatory)]
     [string] $Name,
 	
-	[Parameter(HelpMessage="Credential for Remote Desktop Extension.")]
-    [Parameter(Mandatory=$true)]
+    [Parameter(HelpMessage="Credential for Remote Desktop Extension.", Mandatory)]
     [PSCredential] $Credential,
 	
-	[Parameter(HelpMessage="Expiration for Remote Desktop Extension.")]
+    [Parameter(HelpMessage="Expiration for Remote Desktop Extension.", Mandatory)]
     [DateTime] $Expiration = (Get-Date),
 	
-	[Parameter(HelpMessage="Remote Desktop Extension version.")]
+    [Parameter(HelpMessage="Remote Desktop Extension version.", Mandatory)]
     [string] $TypeHandlerVersion,
 	
     [string[]] $RolesAppliedTo

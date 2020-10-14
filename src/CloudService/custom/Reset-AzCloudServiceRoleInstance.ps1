@@ -186,6 +186,23 @@ function Reset-AzCloudServiceRoleInstance {
         }
         if ($PSBoundParameters.ContainsKey('Reimage')) {
             $Null = $PSBoundParameters.Remove('Reimage')
+            if ($PSBoundParameters.ContainsKey('CloudServiceName')) {
+                $Null = $PSBoundParameters.Remove('CloudServiceName')
+                $Null = $PSBoundParameters.Remove('ResourceGroupName')
+                $Null = $PSBoundParameters.Remove('RoleInstanceName')
+                
+                $GetPSBoundParameters = @{}
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $GetPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $GetPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                $GetPSBoundParameters['SubscriptionId'] = $SubscriptionId
+                $RoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $ResourceGroupName -CloudServiceName $CloudServiceName -RoleInstanceName $RoleInstanceName @GetPSBoundParameters
+                
+                $PSBoundParameters.Add('InputObject', $RoleInstance)
+            }
             Az.CloudService.internal\Update-AzCloudServiceRoleInstance @PSBoundParameters
         }
         if ($PSBoundParameters.ContainsKey('Rebuild')) {

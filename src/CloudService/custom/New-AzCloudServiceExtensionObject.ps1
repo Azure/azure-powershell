@@ -32,25 +32,25 @@ function New-AzCloudServiceExtensionObject {
         [Parameter(HelpMessage="Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available.")]
         [bool]
         $AutoUpgradeMinorVersion,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Name.")]
         [string]
         $Name,
         [Parameter(HelpMessage="Protected settings for the extension which are encrypted before sent to the VM.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesProtectedSettings]
+        [string]
         $ProtectedSetting,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Publisher.")]
         [string]
         $Publisher,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="RolesAppliedTo.")]
         [string[]]
         $RolesAppliedTo,
         [Parameter(HelpMessage="Public settings for the extension.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionPropertiesSettings]
+        [string]
         $Setting,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Type.")]
         [string]
         $Type,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="TypeHandlerVersion.")]
         [string]
         $TypeHandlerVersion
     )

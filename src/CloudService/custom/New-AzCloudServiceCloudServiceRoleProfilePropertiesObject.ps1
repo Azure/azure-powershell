@@ -29,7 +29,7 @@ function New-AzCloudServiceCloudServiceRoleProfilePropertiesObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Name.")]
         [string]
         $Name,
         [Parameter(HelpMessage="Specifies the number of role instances in the cloud service..")]
@@ -38,7 +38,7 @@ function New-AzCloudServiceCloudServiceRoleProfilePropertiesObject {
         [Parameter(HelpMessage="The sku name..")]
         [string]
         $SkuName,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="SkuTier.")]
         [string]
         $SkuTier
     )

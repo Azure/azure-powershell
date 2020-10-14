@@ -29,13 +29,13 @@ function New-AzCloudServiceLoadBalancerConfigurationObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="FrontendIPConfiguration.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]]
         $FrontendIPConfiguration,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Id.")]
         [string]
         $Id,
-        [Parameter(HelpMessage=".")]
+        [Parameter(HelpMessage="Name.")]
         [string]
         $Name
     )

@@ -51,7 +51,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(this-folder)/resources/CloudService.json
-  - $(this-folder)/resources/LoadBalancer.json
+  # - $(this-folder)/resources/loadBalancer.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/loadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
@@ -60,7 +61,7 @@ identity-correction-for-post: true
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Reimage$|^Reimage1$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Reimage$|^Reimage1$
     remove: true
   - where:
       subject: ^CloudService$
@@ -89,8 +90,16 @@ directive:
       verb: Restart
     hide: true
   - where:
-      subject: ^CloudServiceRoleInstance$|^CloudService$
+      subject: ^CloudServiceRoleInstance$
       verb: Update
+    hide: true
+  - where:
+      subject: ^CloudService$
+      verb: Update
+    remove: true
+  - where:
+      subject: ^CloudService$
+      verb: New
     hide: true
   - where:
       subject: ^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
@@ -113,4 +122,28 @@ directive:
       subject: ^LoadBalancerPublicIPAddress$
       verb: Switch
     hide: true
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
+
+  - where:
+      model-name: CloudService
+    set:
+      format-table:
+        properties:
+          - ResourceGroupName
+          - Name
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: RoleInstance
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - InstanceViewStatuses
+          - InstanceViewPlatformFaultDomain
+          - InstanceViewPlatformUpdateDomain
 ```

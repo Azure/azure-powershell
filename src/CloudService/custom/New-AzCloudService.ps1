@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Reimages one or more role instances in a cloud service.
+Create a cloud service.
 .Description
-Reimages one or more role instances in a cloud service.
+Create a cloud service.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -28,13 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstances
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
-.Outputs
-System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,11 +40,14 @@ To create the parameters described below, construct a hash table containing the 
 
 EXTENSIONPROFILEEXTENSION <IExtension[]>: .
   [AutoUpgradeMinorVersion <Boolean?>]: Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available
+  [ForceUpdateTag <String>]: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the VM with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
   [Name <String>]: 
-  [ProtectedSetting <ICloudServiceExtensionPropertiesProtectedSettings>]: Protected settings for the extension which are encrypted before sent to the VM
+  [ProtectedSetting <String>]: Protected settings for the extension which are encrypted before sent to the VM
+  [ProtectedSettingFromKeyVaultSecretUrl <String>]: 
   [Publisher <String>]: 
   [RolesAppliedTo <String[]>]: 
-  [Setting <ICloudServiceExtensionPropertiesSettings>]: Public settings for the extension
+  [Setting <String>]: Public settings for the extension
+  [SourceVaultId <String>]: Resource Id
   [Type <String>]: 
   [TypeHandlerVersion <String>]: 
 
@@ -70,7 +71,9 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 NETWORKPROFILELOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: .
   [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: 
     [Name <String>]: 
+    [PrivateIPAddress <String>]: 
     [PublicIPAddressId <String>]: Resource Id
+    [SubnetId <String>]: Resource Id
   [Id <String>]: 
   [Name <String>]: 
 
@@ -79,8 +82,45 @@ OSPROFILESECRET <ICloudServiceVaultSecretGroup[]>: .
   [VaultCertificate <ICloudServiceVaultCertificate[]>]: The list of key vault references in SourceVault which contain certificates.
     [CertificateUrl <String>]: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
 
-PARAMETER <IRoleInstances>: .
-  [RoleInstance <String[]>]: 
+PARAMETER <ICloudService>: Cloud service model
+  Location <String>: 
+  [Configuration <String>]: 
+  [ConfigurationUrl <String>]: 
+  [ExtensionProfileExtension <IExtension[]>]: 
+    [AutoUpgradeMinorVersion <Boolean?>]: Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available
+    [ForceUpdateTag <String>]: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the VM with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
+    [Name <String>]: 
+    [ProtectedSetting <String>]: Protected settings for the extension which are encrypted before sent to the VM
+    [ProtectedSettingFromKeyVaultSecretUrl <String>]: 
+    [Publisher <String>]: 
+    [RolesAppliedTo <String[]>]: 
+    [Setting <String>]: Public settings for the extension
+    [SourceVaultId <String>]: Resource Id
+    [Type <String>]: 
+    [TypeHandlerVersion <String>]: 
+  [NetworkProfileLoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: 
+    [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: 
+      [Name <String>]: 
+      [PrivateIPAddress <String>]: 
+      [PublicIPAddressId <String>]: Resource Id
+      [SubnetId <String>]: Resource Id
+    [Id <String>]: 
+    [Name <String>]: 
+  [OSProfileSecret <ICloudServiceVaultSecretGroup[]>]: 
+    [SourceVaultId <String>]: Resource Id
+    [VaultCertificate <ICloudServiceVaultCertificate[]>]: The list of key vault references in SourceVault which contain certificates.
+      [CertificateUrl <String>]: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
+  [PackageUrl <String>]: 
+  [RoleProfileRole <ICloudServiceRoleProfileProperties[]>]: 
+    [Name <String>]: 
+    [SkuCapacity <Int64?>]: Specifies the number of role instances in the cloud service.
+    [SkuName <String>]: The sku name.
+    [SkuTier <String>]: 
+  [StartCloudService <Boolean?>]: 
+  [SwappableCloudServiceId <String>]: Resource Id
+  [Tag <ICloudServiceTags>]: 
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [UpgradeMode <CloudServiceUpgradeMode?>]: 
 
 ROLEPROFILEROLE <ICloudServiceRoleProfileProperties[]>: .
   [Name <String>]: 
@@ -88,26 +128,26 @@ ROLEPROFILEROLE <ICloudServiceRoleProfileProperties[]>: .
   [SkuName <String>]: The sku name.
   [SkuTier <String>]: 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/update-azcloudservice
+https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/new-azcloudservice
 #>
-function Update-AzCloudService {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
-[CmdletBinding(DefaultParameterSetName='Update', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzCloudService {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('CloudServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [System.String]
     # Name of the cloud service
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [System.String]
     # Name of the Resource Group
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -115,79 +155,85 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags
-    ${Tag},
+    [System.String]
+    # .
+    ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # .
     ${Configuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # .
     ${ConfigurationUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IExtension[]]
     # .
     # To construct, see NOTES section for EXTENSIONPROFILEEXTENSION properties and create a hash table.
     ${ExtensionProfileExtension},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerConfiguration[]]
     # .
     # To construct, see NOTES section for NETWORKPROFILELOADBALANCERCONFIGURATION properties and create a hash table.
     ${NetworkProfileLoadBalancerConfiguration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultSecretGroup[]]
     # .
     # To construct, see NOTES section for OSPROFILESECRET properties and create a hash table.
     ${OSProfileSecret},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # .
     ${PackageUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleProfileProperties[]]
     # .
     # To construct, see NOTES section for ROLEPROFILEROLE properties and create a hash table.
     ${RoleProfileRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${StartCloudService},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Resource Id
     ${SwappableCloudServiceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceTags]))]
+    [System.Collections.Hashtable]
+    # .
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode]
@@ -253,59 +299,8 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
   process {
-    if (!$PSBoundParameters.ContainsKey('InputObject')) {
-      $GetPSBoundParameters = @{}
-      if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-          $GetPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
-      }
-      if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-          $GetPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
-      }
-      $GetPSBoundParameters['SubscriptionId'] = $SubscriptionId
-      $InputObject = Az.CloudService.internal\Get-AzCloudService -ResourceGroupName $ResourceGroupName -Name $Name @GetPSBoundParameters
-      
-    } else {
-      $PSBoundParameters.Add('Name', $InputObject.Name)
-      $PSBoundParameters.Add('ResourceGroupName', $InputObject.ResourceGroupName)
-      $Null = $PSBoundParameters.Remove('InputObject')
-    }
-    if (!$PSBoundParameters.ContainsKey('Tag')) {
-      $PSBoundParameters.Add('Tag', $InputObject.Tag)
-    }
-    if (!$PSBoundParameters.ContainsKey('Configuration')) {
-      $PSBoundParameters.Add('Configuration', $InputObject.Configuration)
-    }
-    if (!$PSBoundParameters.ContainsKey('ConfigurationUrl')) {
-      $PSBoundParameters.Add('ConfigurationUrl', $InputObject.ConfigurationUrl)
-    }
-    if (!$PSBoundParameters.ContainsKey('ExtensionProfileExtension')) {
-      $PSBoundParameters.Add('ExtensionProfileExtension', $InputObject.ExtensionProfileExtension)
-    }
-    if (!$PSBoundParameters.ContainsKey('NetworkProfileLoadBalancerConfiguration')) {
-      $PSBoundParameters.Add('NetworkProfileLoadBalancerConfiguration', $InputObject.NetworkProfileLoadBalancerConfiguration)
-    }
-    if (!$PSBoundParameters.ContainsKey('OSProfileSecret')) {
-      $PSBoundParameters.Add('OSProfileSecret', $InputObject.OSProfileSecret)
-    }
-    if (!$PSBoundParameters.ContainsKey('PackageUrl')) {
-      $PSBoundParameters.Add('PackageUrl', $InputObject.PackageUrl)
-    }
-    if (!$PSBoundParameters.ContainsKey('RoleProfileRole')) {
-      $PSBoundParameters.Add('RoleProfileRole', $InputObject.RoleProfileRole)
-    }
-    if (!$PSBoundParameters.ContainsKey('StartCloudService')) {
-      $PSBoundParameters.Add('StartCloudService', $InputObject.StartCloudService)
-    }
-    if (!$PSBoundParameters.ContainsKey('SwappableCloudServiceId')) {
-      $PSBoundParameters.Add('SwappableCloudServiceId', $InputObject.SwappableCloudServiceId)
-    }
-    if (!$PSBoundParameters.ContainsKey('UpgradeMode')) {
-      $PSBoundParameters.Add('UpgradeMode', $InputObject.UpgradeMode)
-    }
-    $PSBoundParameters.Add('Location', $InputObject.Location)
-    # if (!$PSBoundParameters.ContainsKey('Location')) {
-    # }
     Az.CloudService.internal\New-AzCloudService @PSBoundParameters
   }
 }

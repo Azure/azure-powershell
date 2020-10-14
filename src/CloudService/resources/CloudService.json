@@ -17,9 +17,6 @@
         ],
         "description": "Deletes a role instance from a cloud service.",
         "operationId": "CloudServiceRoleInstances_Delete",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -72,9 +69,6 @@
         ],
         "description": "Gets a role instance from a cloud service.",
         "operationId": "CloudServiceRoleInstances_Get",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -138,9 +132,6 @@
         ],
         "description": "Gets the status of a role instance from a cloud service.",
         "operationId": "CloudServiceRoleInstances_GetInstanceView",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -191,9 +182,6 @@
         ],
         "description": "Gets a list of all role instances in a cloud service.",
         "operationId": "CloudServiceRoleInstances_List",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -253,9 +241,6 @@
         ],
         "description": "Restarts a role instance in a cloud service.",
         "operationId": "CloudServiceRoleInstances_Restart",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -307,9 +292,6 @@
         ],
         "description": "Reimages a specific role instance in a cloud service.",
         "operationId": "CloudServiceRoleInstances_Reimage",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -361,9 +343,6 @@
         ],
         "description": "Allows you to rebuild all the disks in a cloud service.",
         "operationId": "CloudServiceRoleInstances_Rebuild",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -469,9 +448,6 @@
         ],
         "description": "Gets a role from a cloud service.",
         "operationId": "CloudServiceRoles_Get",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -522,9 +498,6 @@
         ],
         "description": "Gets a list of all roles in a cloud service.",
         "operationId": "CloudServiceRoles_List",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -571,12 +544,6 @@
         ],
         "description": "Create or update a cloud service.",
         "operationId": "CloudServices_CreateOrUpdate",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -635,12 +602,6 @@
         ],
         "description": "Update a cloud service.",
         "operationId": "CloudServices_Update",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -693,9 +654,6 @@
         ],
         "description": "Deletes a cloud service.",
         "operationId": "CloudServices_Delete",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -743,9 +701,6 @@
         ],
         "description": "Display information about a cloud service.",
         "operationId": "CloudServices_Get",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -791,9 +746,6 @@
         ],
         "description": "Gets the status of a cloud service.",
         "operationId": "CloudServices_GetInstanceView",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -839,9 +791,6 @@
         ],
         "description": "Gets a list of all cloud services in the subscription, regardless of the associated resource group. Use nextLink property in the response to get the next page of Cloud Services. Do this till nextLink is null to fetch all the Cloud Services.",
         "operationId": "CloudServices_ListAll",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -876,9 +825,6 @@
         ],
         "description": "Gets a list of all cloud services under a resource group.",
         "operationId": "CloudServices_List",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -919,9 +865,6 @@
         ],
         "description": "Starts the cloud service.",
         "operationId": "CloudServices_Start",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -968,9 +911,6 @@
         ],
         "description": "Power off the cloud service. Note that resources are still attached and you are getting charged for the resources.",
         "operationId": "CloudServices_PowerOff",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1017,12 +957,6 @@
         ],
         "description": "Restarts one or more role instances in a cloud service.",
         "operationId": "CloudServices_Restart",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1077,12 +1011,6 @@
         ],
         "description": "Reimages one or more role instances in a cloud service.",
         "operationId": "CloudServices_Reimage",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1137,12 +1065,6 @@
         ],
         "description": "Rebuilds all the disks in the role instances in a cloud service.",
         "operationId": "CloudServices_Rebuild",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1197,12 +1119,6 @@
         ],
         "description": "Deletes role instances in a cloud service.",
         "operationId": "CloudServices_DeleteInstances",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1257,12 +1173,6 @@
         ],
         "description": "Updates the role instances in the specified update domain.",
         "operationId": "CloudServices_UpdateDomain",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1323,9 +1233,6 @@
         ],
         "description": "Gets the update domain of a cloud service.",
         "operationId": "CloudServices_GetUpdateDomain",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1379,9 +1286,6 @@
         ],
         "description": "Gets a list of all update domains in a cloud service.",
         "operationId": "CloudServices_ListUpdateDomains",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1531,7 +1435,7 @@
         }
       }
     },
-    "InstanceViewStatus": {
+    "ResourceInstanceViewStatus": {
       "description": "Instance view status.",
       "type": "object",
       "properties": {
@@ -1587,7 +1491,7 @@
         "statuses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/InstanceViewStatus"
+            "$ref": "#/definitions/ResourceInstanceViewStatus"
           },
           "readOnly": true
         }
@@ -1864,6 +1768,18 @@
         }
       }
     },
+    "CloudServiceVaultAndSecretReference": {
+      "type": "object",
+      "properties": {
+        "sourceVault": {
+          "$ref": "#/definitions/SubResource"
+        },
+        "secretUrl": {
+          "format": "uri",
+          "type": "string"
+        }
+      }
+    },
     "CloudServiceExtensionProperties": {
       "type": "object",
       "properties": {
@@ -1873,11 +1789,18 @@
         },
         "settings": {
           "description": "Public settings for the extension",
-          "type": "object"
+          "type": "string"
         },
         "protectedSettings": {
           "description": "Protected settings for the extension which are encrypted before sent to the VM",
-          "type": "object"
+          "type": "string"
+        },
+        "protectedSettingsFromKeyVault": {
+          "$ref": "#/definitions/CloudServiceVaultAndSecretReference"
+        },
+        "forceUpdateTag": {
+          "description": "Tag to force apply the provided public and protected settings.\r\nChanging the tag value allows for re-running the extension without changing any of the public or protected settings.\r\nIf forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.\r\nIf neither forceUpdateTag nor any of public or protected settings change, extension would flow to the VM with the same sequence-number, and\r\nit is up to handler implementation whether to re-run it or not",
+          "type": "string"
         },
         "provisioningState": {
           "description": "The provisioning state, which only appears in the response.",
@@ -2039,7 +1962,7 @@
       }
     },
     "CloudServiceInstanceView": {
-      "description": "InstanceView of VMScaleSet as a whole",
+      "description": "InstanceView of CloudService as a whole",
       "type": "object",
       "properties": {
         "roleInstance": {
@@ -2048,7 +1971,7 @@
         "statuses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/InstanceViewStatus"
+            "$ref": "#/definitions/ResourceInstanceViewStatus"
           },
           "readOnly": true
         }
@@ -2130,6 +2053,12 @@
         "user_impersonation"
       ]
     }
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
   ],
   "parameters": {
     "SubscriptionIdParameter": {
