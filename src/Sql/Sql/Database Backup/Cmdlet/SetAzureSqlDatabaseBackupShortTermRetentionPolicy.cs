@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets backup retention days.
         /// </summary>
         [Parameter(Mandatory = false,
+            Position = 3,
             HelpMessage = "The backup retention setting, in days.")]
         public int RetentionDays { get; set; }
 
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets differential backup interval hours.
         /// </summary>
         [Parameter(Mandatory = false,
+            Position = 4,
             HelpMessage = "The differential backup interval, in hours.")]
         public int DiffBackupIntervalInHours { get; set; }	
 			

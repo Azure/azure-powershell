@@ -77,7 +77,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +92,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,7 +107,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -122,6 +122,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 3
 Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,6 +137,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 4
 Default value: 24
 Accept pipeline input: False
 Accept wildcard characters: False
