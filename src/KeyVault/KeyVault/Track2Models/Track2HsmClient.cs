@@ -1,17 +1,16 @@
-﻿using System;
-using System.Net;
-using System.Collections;
+﻿using Azure;
 using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using System.Collections.Generic;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
-using Azure;
-using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
-using System.Threading.Tasks;
-using System.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
+using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -232,7 +231,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey UpdateKey(KeyClient client, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
-            KeyProperties keyProperties = client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult().Value.Properties;
+            KeyVaultKey keyBundle = client.GetKeyAsync(keyName, keyVersion).GetAwaiter().GetResult();
+            KeyProperties keyProperties = keyBundle.Properties;
             keyProperties.Enabled = keyAttributes.Enabled;
             keyProperties.ExpiresOn = keyAttributes.Expires;
             keyProperties.NotBefore = keyAttributes.NotBefore;
@@ -246,7 +246,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 }
             }
 
-            KeyVaultKey keyBundle;
             try
             {
                 keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps?.Cast<KeyOperation>().ToList())

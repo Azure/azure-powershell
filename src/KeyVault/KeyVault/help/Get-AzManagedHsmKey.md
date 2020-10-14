@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azmanagedhsmkey
 schema: 2.0.0
 ---
 
 # Get-AzManagedHsmKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets Managed Hsm keys.
 
 ## SYNTAX
 
@@ -67,16 +67,201 @@ Get-AzManagedHsmKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzManagedHsmKey** cmdlet gets Azure Managed Hsm keys.
+This cmdlet gets a specific **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle** or a list of all **KeyBundle** objects in a managed Hsm or by version.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all the keys in a managed HSM
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm
 ```
 
-{{ Add example description here }}
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        :
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 3:39:16 AM
+Updated        : 10/14/2020 3:39:16 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+
+Vault/HSM Name : testmhsm
+Name           : testkey002
+Version        :
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey002
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
+
+This command gets all the keys in the managed HSM named testmhsm.
+
+### Example 2: Get the current version of a key
+```powershell
+PS C:\>$hsm = Get-AzManagedHsmKey -HsmName testmhsm -KeyName testkey001
+PS C:\>$hsm
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 9a9de2bcec540c3b160cd54cbae71339
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey/9a9de2bcec540c3b160cd54cbae71339
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
+```
+
+This command gets the current version of the key named testkey001 in the managed HSM named testmhsm.
+Note: Hsm Name can be obtained by $hsm.VaultName
+
+### Example 3: Get all versions of a key
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm -KeyName testkey001 -IncludeVersions
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 80fd43e31e8649873520053c91148418
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001/80fd43e31e8649873520053c91148418
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 8:06:26 AM
+Updated        : 10/14/2020 8:06:26 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 9a9de2bcec540c3b160cd54cbae71339
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001/9a9de2bcec540c3b160cd54cbae71339
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
+```
+
+This command gets all versions the key named testkey001 in the managed HSM named testmhsm.
+
+### Example 4: Get a specific version of a key
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm -KeyName testkey -Version 80fd43e31e8649873520053c91148418
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        : 80fd43e31e8649873520053c91148418
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey/80fd43e31e8649873520053c91148418
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 8:06:26 AM
+Updated        : 10/14/2020 8:06:26 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+This command gets a specific version of the key named testkey in the managed HSM named testmhsm.
+After running this command, you can inspect various properties of the key by navigating the $Key object.
+
+### Example 5: Get all the keys that have been deleted but not purged for this managed HSM
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm -InRemovedState
+
+Vault/HSM Name       : testmhsm
+Name                 : testkey
+Id                   : https://testmhsm.managedhsm.azure.net:443/keys/testkey
+Deleted Date         : 10/14/2020 9:10:42 AM
+Scheduled Purge Date : 1/12/2021 9:10:42 AM
+Enabled              : False
+Expires              : 10/14/2022 8:13:29 AM
+Not Before           : 10/14/2020 8:13:33 AM
+Created              : 10/14/2020 8:14:01 AM
+Updated              : 10/14/2020 8:14:01 AM
+Recovery Level       : Recoverable+Purgeable
+Tags                 : Name        Value
+                       Severity    high
+                       Accounting  true                :
+```
+
+This command gets all the keys that have been previously deleted, but not purged, in the managed HSM named testmhsm.
+
+### Example 6: Gets the key testkey that has been deleted but not purged for this managed HSM
+```powershell
+PS C:\>  Get-AzManagedHsmKey -HsmName testmhsm -Name testkey -InRemovedState 
+
+Vault/HSM Name       : testmhsm
+Name                 : testkey
+Id                   : https://testmhsm.managedhsm.azure.net:443/keys/testkey/9a9de2bcec540c3b160cd54cbae71339
+Deleted Date         : 10/14/2020 9:10:42 AM
+Scheduled Purge Date : 1/12/2021 9:10:42 AM
+Enabled              : False
+Expires              : 10/14/2022 8:13:29 AM
+Not Before           : 10/14/2020 8:13:33 AM
+Created              : 10/14/2020 8:14:01 AM
+Updated              : 10/14/2020 8:14:01 AM
+Recovery Level       : Recoverable+Purgeable
+Tags                 : 
+```
+
+This command gets the key testkey that has been previously deleted, but not purged, in the managed HSM named testmhsm.
+This command will return metadata such as the deletion date, and the scheduled purging date of this deleted key.
+
+### Example 7: Get all the keys in a managed HSM using filtering
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm -KeyName "test*"
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        :
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : 
+```
+
+This command gets all the keys in the managed HSM named testmhsm that start with "test".
+
+### Example 8: Download a public key as a .pem file
+
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName bezmhsm -Name testkey -OutFile  "C:\public.pem"
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        :
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : 
+```
+
+You can download the public key of a RSA key by specifying the `-OutFile` parameter.
 
 ## PARAMETERS
 
@@ -96,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -126,7 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-KeyVault object.
+HSM object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
@@ -157,7 +342,7 @@ Accept wildcard characters: False
 
 ### -Name
 Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.
 
 ```yaml
 Type: System.String
@@ -200,7 +385,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-KeyVault Resource Id.
+HSM Resource Id.
 
 ```yaml
 Type: System.String
@@ -216,7 +401,7 @@ Accept wildcard characters: False
 
 ### -Version
 Key version.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment, key name and key version.
 
 ```yaml
 Type: System.String
@@ -252,3 +437,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzManagedHsmKey](./Add-AzManagedHsmKey.md)
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Remove-AzManagedHsmKey](./Remove-AzManagedHsmKey.md)
+
+[Undo-AzManagedHsmKeyRemoval](./Undo-AzManagedHsmKeyRemoval.md)
+
+[Update-AzManagedHsmKey](./Update-AzManagedHsmKey.md)
+
+[Restore-AzManagedHsmKey](./Restore-AzManagedHsmKey.md)

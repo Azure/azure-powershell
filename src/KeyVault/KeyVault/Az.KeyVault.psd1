@@ -77,7 +77,10 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
+CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 'Remove-AzManagedHsmKey',
+               'Undo-AzManagedHsmKeyRemoval', 'Update-AzManagedHsmKey', 
+               'Backup-AzManagedHsmKey', 'Restore-AzManagedHsmKey',
+               'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
                'Stop-AzKeyVaultCertificateOperation', 
                'Get-AzKeyVaultCertificateOperation', 
                'Import-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact', 
@@ -94,9 +97,6 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
                'Backup-AzKeyVaultKey', 'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
                'Undo-AzKeyVaultKeyRemoval', 'Undo-AzKeyVaultSecretRemoval', 
                'Add-AzKeyVaultKey', 'Remove-AzKeyVaultKey', 'Update-AzKeyVault', 
-			   'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 'Remove-AzManagedHsmKey',
-			   'Undo-AzManagedHsmKeyRemoval', 'Update-AzManagedHsmKey', 
-               'Backup-AzManagedHsmKey', 'Restore-AzManagedHsmKey',
                'New-AzKeyVaultNetworkRuleSetObject', 'Remove-AzKeyVaultSecret', 
                'Restore-AzKeyVaultKey', 'Update-AzKeyVaultKey', 
                'Set-AzKeyVaultSecret', 'Update-AzKeyVaultSecret', 
@@ -127,7 +127,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
                'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute',
-			   'Set-AzManagedHsmKey', 'Set-AzManagedHsmKeyAttribute'
+               'Set-AzManagedHsmKey', 'Set-AzManagedHsmKeyAttribute'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

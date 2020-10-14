@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azmanagedhsmkey
 schema: 2.0.0
 ---
 
 # Update-AzManagedHsmKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the attributes of a key in a managed HSM.
 
 ## SYNTAX
 
@@ -27,16 +27,37 @@ Update-AzManagedHsmKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzManagedHsmKey** cmdlet updates the editable attributes of a key in a managed HSM.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
+PS C:\> Update-AzManagedHsmKey -HsmName testmhsm -Name testkey001 -Expires $Expires -Enable $True -Tag $Tags -PassThru
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 49b74a39dab605bd336628dc094dc31b
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001/49b74a39dab605bd336628dc094dc31b
+Enabled        : True
+Expires        : 10/14/2022 9:46:55 AM
+Not Before     :
+Created        : 10/14/2020 3:39:16 AM
+Updated        : 10/14/2020 9:47:06 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
 ```
 
-{{ Add example description here }}
+The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
+specifies a time two years in the future. The command stores that date in the $Expires variable.
+For more information, type `Get-Help Get-Date`.
+The second command creates a variable to store tag values of high severity and Accounting.
+The final command modifies a key named testkey001. The command enables the key, sets its expiration
+time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ## PARAMETERS
 
@@ -88,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -135,7 +156,7 @@ Accept wildcard characters: False
 
 ### -Name
 Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.
 
 ```yaml
 Type: System.String
@@ -199,7 +220,7 @@ Accept wildcard characters: False
 
 ### -Version
 Key version.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment, key name and key version.
 
 ```yaml
 Type: System.String
@@ -258,3 +279,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzManagedHsmKey](./Add-AzManagedHsmKey.md)
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Remove-AzManagedHsmKey](./Remove-AzManagedHsmKey.md)
+
+[Undo-AzManagedHsmKeyRemoval](./Undo-AzManagedHsmKeyRemoval.md)
+
+[Get-AzManagedHsmKey](./Get-AzManagedHsmKey.md)
+
+[Restore-AzManagedHsmKey](./Restore-AzManagedHsmKey.md)

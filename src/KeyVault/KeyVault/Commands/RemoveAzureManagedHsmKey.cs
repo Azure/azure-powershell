@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveByKeyNameParameterSet,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = RemoveByKeyNameParameterSet,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }

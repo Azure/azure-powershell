@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Update attribute of a managed hsm key.
+    /// Update attribute of a managed HSM key.
     /// </summary>
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKeyAttribute")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
 

@@ -91,6 +91,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = deletedKey.Properties.UpdatedOn?.UtcDateTime;
             RecoveryLevel = deletedKey.Properties.RecoveryLevel;
             Tags = deletedKey.Properties.Tags.ConvertToHashtable();
+            ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
+            DeletedDate = deletedKey.DeletedOn?.UtcDateTime;
         }
 
         public PSKeyVaultKeyAttributes Attributes { get; set; }

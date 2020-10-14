@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azmanagedhsmkey
 schema: 2.0.0
 ---
 
 # Add-AzManagedHsmKey
 
 ## SYNOPSIS
-Creates a key in a managed hsm or imports a key into a managed hsm.
+Creates a key in a managed HSM or imports a key into a managed HSM.
 
 ## SYNTAX
 
@@ -58,35 +58,91 @@ Add-AzManagedHsmKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String
 ```
 
 ## DESCRIPTION
-The **Add-AzManagedHsmKey** cmdlet creates a key in a managed hsm in Azure Managed Hsm or imports a key into a managed hsm.
+The **Add-AzManagedHsmKey** cmdlet creates a key in a managed HSM in Azure Managed Hsm or imports a key into a managed HSM.
 Use this cmdlet to add keys by using any of the following methods:
 - Create a key with default key attributes
 - Create a key with given key attributes
-- Import a key by importing key material with default key attributes
-- Import a key by importing key material with given key attributes
+- Import a key from a .pfx file on your computer.
 For any of these operations, you can provide key attributes or accept default settings.
-If you create or import a key that has the same name as an existing key in your key vault, the
+If you create or import a key that has the same name as an existing key in your managed HSM, the
 original key is updated with the values that you specify for the new key. You can access the
 previous values by using the version-specific URI for that version of the key. To learn about key
 versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
-in the Key Vault REST API documentation.
-Note: To import a key from your own hardware security module, you must first generate a BYOK
-package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset. For
-more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
-As a best practice, back up your key after it is created or updated, by using the
-Backup-AzKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
-your key or delete it and then change your mind, the key is not recoverable unless you have a
-backup of it that you can restore.
+in the Managed HSM REST API documentation.
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a RSA-HSM key
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Add-AzManagedHsmKey -HsmName testmhsm -Name testkey -KeyType RSA
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Id             : https://bezmhsm.managedhsm.azure.net:443/keys/testkey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 7:55:43 AM
+Updated        : 10/14/2020 7:55:43 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
 ```
 
-{{ Add example description here }}
+This command creates a RSA-HSM key named testkey in the managed HSM testkey named testmhsm.
 
+### Example 2: Create a EC-HSM key
+```powershell
+PS C:\> Add-AzManagedHsmKey -HsmName testmhsm -Name testkey -KeyType EC -CurveName P-256
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Id             : https://bezmhsm.managedhsm.azure.net:443/keys/testkey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 8:06:26 AM
+Updated        : 10/14/2020 8:06:26 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+This command creates a EC-HSM key named testkey using P-256 curve in the managed HSM testkey named testmhsm.
+
+### Example 3: Create a key with non-default values
+```powershell
+PS C:\> $KeyOperations = 'decrypt', 'verify'
+PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
+PS C:\> Add-AzManagedHsmKey -HsmName testmhsm -Name testkey -KeyType oct -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+
+Vault/HSM Name : testmhsm
+Name           : testkey
+Version        : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Id             : https://bezmhsm.managedhsm.azure.net:443/keys/testkey/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Enabled        : False
+Expires        : 10/14/2022 8:13:29 AM
+Not Before     : 10/14/2020 8:13:33 AM
+Created        : 10/14/2020 8:14:01 AM
+Updated        : 10/14/2020 8:14:01 AM
+Recovery Level : Recoverable+Purgeable
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
+```
+
+The first command stores the values decrypt and verify in the $KeyOperations variable.
+The second command creates a **DateTime** object, defined in UTC, by using the **Get-Date** cmdlet.
+That object specifies a time two years in the future. The command stores that date in the $Expires
+variable. For more information, type `Get-Help Get-Date`.
+The third command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
+specifies current UTC time. The command stores that date in the $NotBefore variable.
+The final command creates a key named testkey that is an oct-HSM key. The command specifies 
+values for allowed key operations stored $KeyOperations. The command specifies times for
+the *Expires* and *NotBefore* parameters created in the previous commands, and tags for high
+severity and IT. The new key is disabled. You can enable it by using the **Update-AzManagedHsmKey**
+cmdlet.
 ## PARAMETERS
 
 ### -CurveName
@@ -154,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -169,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Vault object.
+HSM object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
@@ -247,7 +303,7 @@ Accept wildcard characters: False
 
 ### -Name
 Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.
 
 ```yaml
 Type: System.String
@@ -278,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Vault Resource Id.
+HSM Resource Id.
 
 ```yaml
 Type: System.String
@@ -370,3 +426,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Get-AzManagedHsmKey](./Get-AzManagedHsmKey.md)
+
+[Remove-AzManagedHsmKey](./Remove-AzManagedHsmKey.md)
+
+[Undo-AzManagedHsmKeyRemoval](./Undo-AzManagedHsmKeyRemoval.md)
+
+[Update-AzManagedHsmKey](./Update-AzManagedHsmKey.md)
+
+[Restore-AzManagedHsmKey](./Restore-AzManagedHsmKey.md)

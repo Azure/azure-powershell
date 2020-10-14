@@ -11,7 +11,7 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Vault Name</Label>
+                <Label>Vault/HSM Name</Label>
                 <PropertyName>VaultName</PropertyName>
               </ListItem>
               <ListItem>
@@ -69,7 +69,7 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Vault Name</Label>
+                <Label>Vault/HSM Name</Label>
                 <PropertyName>VaultName</PropertyName>
               </ListItem>
               <ListItem>

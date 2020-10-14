@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azmanagedhsmkey
 schema: 2.0.0
 ---
 
 # Restore-AzManagedHsmKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a key in a managed HSM from a backed-up key.
 
 ## SYNTAX
 
@@ -31,16 +31,34 @@ Restore-AzManagedHsmKey [-ResourceId] <String> [-InputFile] <String> [-DefaultPr
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Restore-AzManagedHsmKey** cmdlet creates a key in the specified managed HSM.
+This key is a replica of the backed-up key in the input file and has the same name as the original key.
+If the managed HSM already has a key by the same name, this cmdlet fails instead of overwriting the original key.
+If the backup contains multiple versions of a key, all versions are restored.
+The managed HSM that you restore the key into can be different from the managed HSM that you backed up the key from.
+However, the managed HSM must use the same subscription and be in an Azure region in the same geography (for example, North America).
+See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-center/) for the mapping of Azure regions to geographies.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restore-AzManagedHsmKey -HsmName testmhsm -InputFile "C:\Backup.blob"
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 7cff8510da04433b98144a3e33ad2bae
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001/7cff8510da04433b98144a3e33ad2bae
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 10:13:03 AM
+Updated        : 10/14/2020 10:13:03 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
 ```
 
-{{ Add example description here }}
+This command restores a key, including all of its versions, from the backup file named Backup.blob into the managed HSM named testmhsm.
 
 ## PARAMETERS
 
@@ -60,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -91,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-KeyVault object
+HSM object
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
@@ -106,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-KeyVault Resource Id
+HSM Resource Id
 
 ```yaml
 Type: System.String
@@ -167,3 +185,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzManagedHsmKey](./Add-AzManagedHsmKey.md)
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Remove-AzManagedHsmKey](./Remove-AzManagedHsmKey.md)
+
+[Undo-AzManagedHsmKeyRemoval](./Undo-AzManagedHsmKeyRemoval.md)
+
+[Get-AzManagedHsmKey](./Get-AzManagedHsmKey.md)
+
+[Update-AzManagedHsmKey](./Update-AzManagedHsmKey.md)

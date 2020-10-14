@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid hsm name..
+        ///   Looks up a localized string similar to Invalid HSM name..
         /// </summary>
         internal static string InvalidHsmName {
             get {

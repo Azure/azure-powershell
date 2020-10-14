@@ -1,18 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// ----------------------------------------------------------------------------------
-
-using Microsoft.Azure.Commands.Common.Authentication;
+﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
@@ -46,63 +32,63 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyIncludeAllVersions,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
 
         /// <summary>
-        /// Hsm object
+        /// HSM object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyWithoutConstraint,
-            HelpMessage = "Hsm object.")]
+            HelpMessage = "HSM object.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
-            HelpMessage = "Hsm object.")]
+            HelpMessage = "HSM object.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyIncludeAllVersions,
-            HelpMessage = "Hsm object.")]
+            HelpMessage = "HSM object.")]
         [ValidateNotNullOrEmpty]
         public PSManagedHsm InputObject { get; set; }
 
         /// <summary>
-        /// Hsm resource id
+        /// HSM resource id
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyWithoutConstraint,
-            HelpMessage = "Hsm Resource Id.")]
+            HelpMessage = "HSM Resource Id.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
-            HelpMessage = "Hsm Resource Id.")]
+            HelpMessage = "HSM Resource Id.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyIncludeAllVersions,
-            HelpMessage = "Hsm ResourceId.")]
+            HelpMessage = "HSM ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -112,39 +98,39 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyWithoutConstraint,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyIncludeAllVersions,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         [SupportsWildcards]
@@ -156,15 +142,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByHsmName + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment, key name and key version.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByInputObject + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment, key name and key version.")]
         [Parameter(Mandatory = true,
             ParameterSetName = SpecifyHsmByResourceId + GetKeyWithSpecifiedVersion,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from hsm name, currently selected environment, key name and key version.")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from HSM name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
 

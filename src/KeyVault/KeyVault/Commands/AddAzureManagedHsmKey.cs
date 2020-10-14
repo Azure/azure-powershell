@@ -1,7 +1,6 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
@@ -13,11 +12,10 @@ using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {    /// <summary>
-     /// Create a new key in managed hsm. This cmdlet supports the following types of key creation.
+     /// Create a new key in managed HSM. This cmdlet supports the following types of key creation.
      /// 1. Create a key with default key attributes
      /// 2. Create a key with given key attributes
-     /// 3. Create a key by importing key material with default key attributes
-     /// 4 .Create a key by importing key material with given key attributes
+     /// 3. Create a key from a .pfx file by importing key material
      /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSManagedHsm))]
@@ -37,16 +35,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         #region Input Parameter Definitions
 
         /// <summary>
-        /// Hsm name
+        /// HSM name
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveCreateParameterSet,
             Position = 0,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveImportParameterSet,
             Position = 0,
-            HelpMessage = "Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.")]
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
@@ -55,12 +53,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             ParameterSetName = InputObjectCreateParameterSet,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "Hsm object.")]
+            HelpMessage = "HSM object.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectImportParameterSet,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "Hsm object.")]
+            HelpMessage = "HSM object.")]
         [ValidateNotNullOrEmpty]
         public PSManagedHsm InputObject { get; set; }
 
@@ -68,12 +66,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             ParameterSetName = ResourceIdCreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hsm Resource Id.")]
+            HelpMessage = "HSM Resource Id.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hsm Resource Id.")]
+            HelpMessage = "HSM Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -82,7 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed hsm name, currently selected environment and key name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -126,7 +124,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "Specifies the key type of this key.")]
-        [ValidateSet("RSA", "EC", "oct")]
+        [PSArgumentCompleter("RSA", "EC", "oct")]
         public string KeyType { get; set; }
 
         /// <summary>
@@ -134,7 +132,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies the curve name of elliptic curve cryptography, this value is valid when KeyType is EC.")]
-        [ValidateSet("P-256", "P-256K", "P-384", "P-521")]
+        [PSArgumentCompleter("P-256", "P-256K", "P-384", "P-521")]
         public string CurveName { get; set; }
 
         /// <summary>

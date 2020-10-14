@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azmanagedhsmkey
 schema: 2.0.0
 ---
 
 # Remove-AzManagedHsmKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a key in a managed HSM.
 
 ## SYNTAX
 
@@ -25,16 +25,56 @@ Remove-AzManagedHsmKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-Pas
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Remove-AzManagedHsmKey cmdlet deletes a key in a managed HSM.
+If the key was accidentally deleted the key can be recovered using Undo-AzManagedHsmKeyRemoval by a user with special 'recover' permissions.
+This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a key from a managed HSM
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzManagedHsmKey -HsmName testmhsm -Name testkey -PassThru
+
+Vault/HSM Name       : testmhsm
+Name                 : testkey
+Id                   : https://testmhsm.managedhsm.azure.net:443/keys/testkey/9a9de2bcec540c3b160cd54cbae71339
+Deleted Date         : 10/14/2020 9:35:06 AM
+Scheduled Purge Date : 1/12/2021 9:35:06 AM
+Enabled              : False
+Expires              : 10/14/2022 8:13:29 AM
+Not Before           : 10/14/2020 8:13:33 AM
+Created              : 10/14/2020 8:14:01 AM
+Updated              : 10/14/2020 8:14:01 AM
+Recovery Level       : Recoverable+Purgeable
+Tags                 :
 ```
 
-{{ Add example description here }}
+This command removes the key named testkey from the managed HSM named testmhsm.
+
+### Example 2: Remove a key without user confirmation
+```powershell
+PS C:\> Remove-AzManagedHsmKey -HsmName testmhsm -Name testkey -Force
+```
+
+This command removes the key named testkey from the managed HSM named testmhsm.
+The command specifies the *Force* parameter, and, therefore, the cmdlet does not prompt you for confirmation.
+
+### Example 3: Purge a deleted key from the managed HSM permanently
+```powershell
+PS C:\> Remove-AzManagedHsmKey -HsmName testmhsm -Name testkey -InRemovedState
+```
+
+This command removes the key named testkey from the managed HSM named testmhsm permanently.
+Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user for this managed HSM.
+
+### Example 4: Remove keys by using the pipeline operator
+```powershell
+PS C:\> Get-AzManagedHsmKey -HsmName testmhsm | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzManagedHsmKey
+```
+
+This command gets all the keys in the managed HSM named testmhsm and passes them to the **Where-Object** cmdlet by using the pipeline operator.
+That cmdlet passes the keys that have a value of $False for the **Enabled** attribute to the current cmdlet.
+That cmdlet removes those keys.
 
 ## PARAMETERS
 
@@ -69,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Hsm name. Cmdlet constructs the FQDN of a managed hsm based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -115,7 +155,7 @@ Accept wildcard characters: False
 
 ### -Name
 Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.
 
 ```yaml
 Type: System.String
@@ -190,3 +230,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzManagedHsmKey](./Add-AzManagedHsmKey.md)
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Get-AzManagedHsmKey](./Get-AzManagedHsmKey.md)
+
+[Undo-AzManagedHsmKeyRemoval](./Undo-AzManagedHsmKeyRemoval.md)
+
+[Update-AzManagedHsmKey](./Update-AzManagedHsmKey.md)
+
+[Restore-AzManagedHsmKey](./Restore-AzManagedHsmKey.md)

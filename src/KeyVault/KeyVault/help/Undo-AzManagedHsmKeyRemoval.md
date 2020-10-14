@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azmanagedhsmkeyremoval
 schema: 2.0.0
 ---
 
 # Undo-AzManagedHsmKeyRemoval
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Recovers a deleted key in a managed HSM into an active state.
 
 ## SYNTAX
 
@@ -25,16 +25,30 @@ Undo-AzManagedHsmKeyRemoval [-InputObject] <PSDeletedKeyVaultKeyIdentityItem>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Undo-AzManagedHsmKeyRemoval** cmdlet will recover a previously deleted key.
+The recovered key will be active and can be used for all normal key operations.
+Caller needs to have 'recover' permission in order to perform this operation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Undo-AzManagedHsmKeyRemoval -HsmName testmhsm -Name testkey001
+
+Vault/HSM Name : testmhsm
+Name           : testkey001
+Version        : 7cff8510da04433b98144a3e33ad2bae
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/testkey001/7cff8510da04433b98144a3e33ad2bae
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 10/14/2020 10:13:03 AM
+Updated        : 10/14/2020 10:13:03 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
 ```
 
-{{ Add example description here }}
+This command will recover the key 'testkey001' that was previously deleted, into an active and usable state.
 
 ## PARAMETERS
 
@@ -54,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -HsmName
-Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
@@ -85,7 +99,7 @@ Accept wildcard characters: False
 
 ### -Name
 Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Cmdlet constructs the FQDN of a key from managed HSM name, currently selected environment and key name.
 
 ```yaml
 Type: System.String
@@ -144,3 +158,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzManagedHsmKey](./Add-AzManagedHsmKey.md)
+
+[Backup-AzManagedHsmKey](./Backup-AzManagedHsmKey.md)
+
+[Remove-AzManagedHsmKey](./Remove-AzManagedHsmKey.md)
+
+[Restore-AzManagedHsmKey](./Restore-AzManagedHsmKey.md)
+
+[Get-AzManagedHsmKey](./Get-AzManagedHsmKey.md)
+
+[Update-AzManagedHsmKey](./Update-AzManagedHsmKey.md)
