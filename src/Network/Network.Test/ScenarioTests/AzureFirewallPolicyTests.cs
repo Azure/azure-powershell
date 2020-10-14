@@ -73,5 +73,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyCRUDWithNatRuleTranslatedFQDN");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyPremiumFeatures()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyPremiumFeatures");
+        }
     }
 }
