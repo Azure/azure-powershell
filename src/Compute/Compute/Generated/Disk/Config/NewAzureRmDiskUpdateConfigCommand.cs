@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("P1", "P2", "P3", "P4", "P5", "P6", "P10", "P15", "P20", "P30", 
             "P40", "P50", "P60", "P70", "P80")]
@@ -53,21 +52,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         public long? DiskIOPSReadOnly { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         public long? DiskMBpsReadOnly { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true)]
-        public int? MaxShareCount { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -241,7 +232,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
                 DiskIOPSReadOnly = this.IsParameterBound(c => c.DiskIOPSReadOnly) ? this.DiskIOPSReadOnly : null,
                 DiskMBpsReadOnly = this.IsParameterBound(c => c.DiskMBpsReadOnly) ? this.DiskMBpsReadOnly : null,
-                MaxShares = this.IsParameterBound(c => c.MaxShareCount) ? this.MaxShareCount : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy: null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId: null,
