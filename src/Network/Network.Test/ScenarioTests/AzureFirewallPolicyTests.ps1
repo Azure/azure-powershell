@@ -760,3 +760,43 @@ function Test-AzureFirewallPolicyWithIpGroups {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests function Test-AzureFirewallPolicyPremiumFeatures.
+#>
+function Test-AzureFirewallPolicyPremiumFeatures {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "eastus2euap"
+    $transportSecurityName = "ts-test"
+    $transportSecurityKeyVaultId = "https://valid.azure.internal/secrets/secret0/version0"
+    $tier = "Premium"
+    $bypassTestName = "bypass-test"
+    $identityName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
+
+        # Intrusion Detection Settings
+        $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
+        $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverrides $sigover -BypassTraffic $bypass
+
+        # Create AzureFirewallPolicy (with Intrusion Detection, TransportSecurity and Identity parameters)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection -TransportSecurityName $transportSecurityName -TransportSecurityKeyVaultSecretId $transportSecurityKeyVaultId -UserAssignedIdentityId $identity.Id
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
