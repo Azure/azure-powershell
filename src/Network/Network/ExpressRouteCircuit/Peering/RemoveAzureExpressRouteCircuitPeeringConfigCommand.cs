@@ -100,21 +100,24 @@ namespace Microsoft.Azure.Commands.Network
 
                 else if (peering.PeeringType == MNM.ExpressRoutePeeringType.AzurePrivatePeering)
                 {
-                    if (AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                    if ((AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType)) &&
+                            peering.Ipv6PeeringConfig != null)
                     {
+                        // remove ipv4 call and ipv6 exists
                         peering.PrimaryPeerAddressPrefix = null;
                         peering.SecondaryPeerAddressPrefix = null;
                     }
-                    else if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
+                    else if (AddressTypeUtils.IsIpv6(this.PeerAddressType) && !PeeringUtils.IsIpv4PrivatePeeringNull(peering))
                     {
+                        // remove ipv6 call and ipv4 exists
                         peering.Ipv6PeeringConfig = null;
                     }
-                    else if (AddressTypeUtils.IsAll(this.PeerAddressType))
+                    else
                     {
+                        // remove ipv4 and ipv6 is null OR remove ipv6 and ipv4 is null OR remove all
                         this.ExpressRouteCircuit.Peerings.Remove(peering);
                     }
                 }
-
                 else
                 {
                     // In case of Azure Public Peering

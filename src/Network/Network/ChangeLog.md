@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated Remove-AzExpressRouteCircuitPeeringConfig:
+    - fix bug to remove entire private peering object when cx intends delete
+* Updated Remove-AzExpressRouteCircuitConnectionConfig:
+    - fix bug to remove entire circuit connection object when cx intends delete
 * [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Network
@@ -39,6 +40,19 @@ namespace Microsoft.Azure.Commands.Network
         public static bool IsAll(string addressType)
         {
             if (string.Equals(addressType, "All", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public class PeeringUtils
+    {
+        public static bool IsIpv4PrivatePeeringNull(PSPeering privatePeering)
+        {
+            if (privatePeering.PrimaryPeerAddressPrefix == null &&
+                privatePeering.SecondaryPeerAddressPrefix == null)
             {
                 return true;
             }
