@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/update file share with access tier
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported Container access policy with new permission x,t
+    -  `New-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+* Changed the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
+    -  `Get-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+
+## Version 2.7.0
 * Supported enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
     - `Get-AzStorageFileServiceProperty`
@@ -25,7 +36,7 @@
     - `Get-AzRmStorageShare`
 * Supported restore a deleted file share
     - `Restore-AzRmStorageShare`
-* Changed the cmdlets for modify blob service properties, won't get the orginal properties from server, but only set the modified properties to server.
+* Changed the cmdlets for modify blob service properties, won't get the original properties from server, but only set the modified properties to server.
     - `Enable-AzStorageBlobDeleteRetentionPolicy`
     - `Disable-AzStorageBlobDeleteRetentionPolicy`  
     - `Enable-AzStorageBlobRestorePolicy`

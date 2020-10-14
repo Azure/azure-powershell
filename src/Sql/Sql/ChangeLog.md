@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Azure Paired Regions URL in Backup Storage Redundancy Warnings 
 
 ## Version 2.11.0
 * Added BackupStorageRedundancy to the following: 
@@ -26,6 +27,7 @@
     - `New-AzSqlDatabaseSecondary`
 * Removed case sensitivity for BackupStorageRedundancy parameter for all SQL DB references 
 * Updated BackupStorageRedundancy warning message names
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.10.1
 * Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
