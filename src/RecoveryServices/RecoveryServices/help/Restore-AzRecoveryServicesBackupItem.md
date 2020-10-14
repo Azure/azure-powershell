@@ -79,25 +79,23 @@ Note: To successfully execute this cmdlet in addition to -VaultId parameter -Vau
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
 PS C:\> $StartDate = (Get-Date).AddDays(-7)
 PS C:\> $EndDate = Get-Date
-PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem[0] -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
 PS C:\> $restoreDiskLUNs = ("0", "1")
-PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetRG $ManagedDiskRG -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
     WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-The first command gets the Backup container of type AzureVM, and then stores it in the $Container variable.
-The second command gets the Backup item named V2VM from $Container, and then stores it in the $BackupItem variable.
+The first command gets the RecoveryServices vault and stores it in $vault variable.
+The second command gets the Backup items and then stores it in the $BackupItem variable.
 The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
 The fourth command gets the current date, and then stores it in the $EndDate variable.
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
-The date range specified is the last 7 days.
-The seventh command specifies which disks to restore from the recovery point and stores it in $restoreDiskLUNs variable.
+The sixth command specifies which disks to restore from the recovery point and stores it in $restoreDiskLUNs variable.
 The last command restores the disks to the target storage account DestAccount in the DestRG resource group.
 
 ### Example 2: Restore Multiple files of an AzureFileShare item
