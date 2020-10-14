@@ -22,7 +22,7 @@ function Test-AzureFirewallPolicyCRUD {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
 
     $ruleGroupName = Get-ResourceName
 
@@ -880,16 +880,25 @@ function Test-AzureFirewallPolicyCRUDWithNatRuleTranslatedFQDN {
 Tests function Test-AzureFirewallPolicyPremiumFeatures.
 #>
 function Test-AzureFirewallPolicyPremiumFeatures {
+
+    param
+	(
+		[string]$basedir = "./",
+		[string]$spn
+	)
+
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "eastus2euap"
     $transportSecurityName = "ts-test"
-    $transportSecurityKeyVaultId = "https://valid.azure.internal/secrets/secret0/version0"
     $tier = "Premium"
     $bypassTestName = "bypass-test"
     $identityName = Get-ResourceName
+    $keyVaultName = Get-ResourceName
+	$sslCertName = Get-ResourceName
+    $sslCertPath = $basedir + "/ScenarioTests/Data/FirewallPolicySslCert.pfx"
 
     try {
         # Create the resource group
@@ -901,13 +910,36 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         # Intrusion Detection Settings
         $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
         $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverrides $sigover -BypassTraffic $bypass
+        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverrides $sigOverride -BypassTraffic $bypass
 
         # Create AzureFirewallPolicy (with Intrusion Detection, TransportSecurity and Identity parameters)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection -TransportSecurityName $transportSecurityName -TransportSecurityKeyVaultSecretId $transportSecurityKeyVaultId -UserAssignedIdentityId $identity.Id
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection  -UserAssignedIdentityId $identity.Id
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-AreEqual $tier $getAzureFirewallPolicy.Sku.Tier
+
+        # IntrusionDetection verification
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection
+        Assert-AreEqual "Alert" $getAzureFirewallPolicy.IntrusionDetection.Mode
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings
+        Assert-AreEqual "123456798" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Id
+        Assert-AreEqual "Deny" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Mode
+        Assert-AreEqual $bypassTestName $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Name
+        Assert-AreEqual "TCP" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Protocol
+        Assert-AreEqual "80" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].DestinationPorts[0]
+        Assert-AreEqual "10.0.0.0" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].SourceAddresses[0]
+        Assert-AreEqual "10.0.0.0" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].DestinationAddresses[0]
+
+        
+
+        
     }
     finally {
         # Cleanup
