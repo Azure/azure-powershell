@@ -614,6 +614,6 @@ Please contact Microsoft for further assistance.</value>
     <value>container name is invalid.</value>
   </data>
   <data name="TargetResourcegroupNotSupported" xml:space="preserve">
-    <value>Target ResourceGroup parameter is not supported for Unmanaged Virtual machine restore</value>
+    <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
 </root>
