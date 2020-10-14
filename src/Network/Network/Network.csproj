@@ -14,7 +14,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="1014.751.54664" />
+>>>>>>> 74f1eecad4... SDK
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="VirtualNetwork\Subnet\NewAzureVirtualNetworkSubnetConfigCommand.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
