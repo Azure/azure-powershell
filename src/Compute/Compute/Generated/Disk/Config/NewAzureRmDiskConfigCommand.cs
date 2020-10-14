@@ -46,6 +46,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("P1", "P2", "P3", "P4", "P5", "P6", "P10", "P15", "P20", "P30",
+            "P40", "P50", "P60", "P70", "P80")]
+        public string Tier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int LogicalSectorSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public OperatingSystemTypes? OsType { get; set; }
@@ -280,6 +292,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.UploadSizeBytes = this.UploadSizeInBytes;
+            }
+
+            if (this.IsParameterBound(c => c.LogicalSectorSize))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.LogicalSectorSize = this.LogicalSectorSize;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))

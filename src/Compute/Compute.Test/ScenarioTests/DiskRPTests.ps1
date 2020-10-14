@@ -1169,7 +1169,6 @@ function Test-SnapshotConfigDiskAccessNetworkPolicy
     }
 }
 
-
 <#
 .SYNOPSIS
 Testing the new parameters 
