@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private const string _grantType = "access_token";
         private const string _scope = "registry:catalog:*";
         private const string _https = "https://";
+        private readonly string _suffix;
 
         public Action<string> VerboseLogger { get; set; }
         public Action<string> ErrorLogger { get; set; }
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             _clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager);
             _accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
+            _suffix = AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix;
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(_clientCredential);
         }
 
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public void SetEndPoint(string RegistryName)
         {
-            _endPoint = RegistryName.ToLower() + ".azurecr.io";
+            _endPoint = RegistryName.ToLower() + '.' + _suffix;
             _client.LoginUri = _https + _endPoint;
         }
 
