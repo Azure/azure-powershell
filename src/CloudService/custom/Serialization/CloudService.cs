@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 {
     public partial class CloudService
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.FormatTable(Index = 0)]
         public string ResourceGroupName
         { 
             get {
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
     {
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
-        ReadOnly = false,
-        Description = @"",
+        ReadOnly = true,
+        Description = @"ResourceGroupName",
         SerializedName = @"ResourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; }
