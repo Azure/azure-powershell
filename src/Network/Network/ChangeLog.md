@@ -33,6 +33,17 @@
 * Modified the warning message for `New-AzLoadBalancerFrontendIpConfig`, `New-AzPublicIpAddress` and `New-AzPublicIpPrefix`.
 * Added VpnGatewayIpConfigurations to `Get-AzVpnGateway` output
 * Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
+* Added new cmdlets for Azure Firewall Premium Features
+    - `New-AzFirewallPolicyIntrusionDetection`
+    - `New-AzFirewallPolicyIntrusionDetectionBypassTraffic`
+    - `New-AzFirewallPolicyIntrusionDetectionSignatureOverride`
+* Updated New-AzFirewallPolicy cmdlet:
+    - Added parameter -SkuTier
+    - Added parameter -Identity
+    - Added parameter -UserAssignedIdentityId
+    - Added parameter -IntrusionDetection
+    - Added parameter -TransportSecurityName
+    - Added parameter -TransportSecurityKeyVaultSecretId
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
