@@ -210,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IUserSession
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20200921Preview.IUserSession
 
 ## NOTES
 

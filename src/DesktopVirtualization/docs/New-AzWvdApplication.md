@@ -16,7 +16,7 @@ Create or update an application.
 ```
 New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
  -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-CommandLineArgument <String>]
+ [-SubscriptionId <String>] [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
  [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
  [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Resource Type of Application.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -349,7 +349,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20200921Preview.IApplication
 
 ## NOTES
 

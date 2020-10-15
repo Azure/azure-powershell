@@ -151,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20200921Preview.IHostPool
 
 ## NOTES
 
