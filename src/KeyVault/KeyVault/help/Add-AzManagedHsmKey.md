@@ -69,6 +69,7 @@ original key is updated with the values that you specify for the new key. You ca
 previous values by using the version-specific URI for that version of the key. To learn about key
 versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
 in the Managed HSM REST API documentation.
+
 ## EXAMPLES
 
 ### Example 1: Create a RSA-HSM key
@@ -143,6 +144,7 @@ values for allowed key operations stored $KeyOperations. The command specifies t
 the *Expires* and *NotBefore* parameters created in the previous commands, and tags for high
 severity and IT. The new key is disabled. You can enable it by using the **Update-AzManagedHsmKey**
 cmdlet.
+
 ## PARAMETERS
 
 ### -CurveName
@@ -152,7 +154,6 @@ Specifies the curve name of elliptic curve cryptography, this value is valid whe
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: P-256, P-256K, P-384, P-521
 
 Required: False
 Position: Named
@@ -292,7 +293,6 @@ Specifies the key type of this key.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RSA, EC, oct
 
 Required: True
 Position: Named

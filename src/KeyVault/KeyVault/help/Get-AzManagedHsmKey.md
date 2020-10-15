@@ -218,7 +218,7 @@ Not Before           : 10/14/2020 8:13:33 AM
 Created              : 10/14/2020 8:14:01 AM
 Updated              : 10/14/2020 8:14:01 AM
 Recovery Level       : Recoverable+Purgeable
-Tags                 : 
+Tags                 :
 ```
 
 This command gets the key testkey that has been previously deleted, but not purged, in the managed HSM named testmhsm.
@@ -238,7 +238,7 @@ Not Before     : 10/14/2020 8:13:33 AM
 Created        : 10/14/2020 8:14:01 AM
 Updated        : 10/14/2020 8:14:01 AM
 Recovery Level : Recoverable+Purgeable
-Tags           : 
+Tags           :
 ```
 
 This command gets all the keys in the managed HSM named testmhsm that start with "test".
@@ -258,7 +258,7 @@ Not Before     : 10/14/2020 8:13:33 AM
 Created        : 10/14/2020 8:14:01 AM
 Updated        : 10/14/2020 8:14:01 AM
 Recovery Level : Recoverable+Purgeable
-Tags           : 
+Tags           :
 ```
 
 You can download the public key of a RSA key by specifying the `-OutFile` parameter.

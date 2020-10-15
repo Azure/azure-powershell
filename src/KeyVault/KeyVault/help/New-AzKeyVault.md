@@ -278,7 +278,6 @@ Specifies the SKU of the key vault instance. For information about which feature
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
 
 Required: False
 Position: Named

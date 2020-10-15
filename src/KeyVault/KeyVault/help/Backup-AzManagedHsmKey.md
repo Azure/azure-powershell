@@ -37,8 +37,8 @@ Use the **Backup-AzManagedHsmKey** cmdlet to retrieve the key in encrypted forma
 
 ## EXAMPLES
 
-### Example 1
-```powershell: Back up a key with an automatically generated file name
+### Example 1: Back up a key with an automatically generated file name
+```powershell
 PS C:\Users\username\> Backup-AzManagedHsmKey -HsmName testmhsm -Name testkey
 
 C:\Users\username\testmhsm-testkey-1602664728.7106073
