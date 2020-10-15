@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Added `-VmssId` parameter to `New-AzVm`
 * Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* New cmdlet `Get-AzDiskEncryptionSetAssociatedResource`
 * Added `Tier` and `LogicalSectorSize` optional parameters to the New-AzDiskConfig cmdlet. 
 * Added `Tier`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
 
