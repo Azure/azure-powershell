@@ -86,7 +86,8 @@ CmdletsToExport = 'Get-AzBillingInvoice', 'Get-AzBillingPeriod',
                'Get-AzConsumptionReservationSummary', 
                'Get-AzConsumptionUsageDetail', 'New-AzConsumptionBudget', 
                'Remove-AzConsumptionBudget', 'Set-AzConsumptionBudget', 
-               'Get-UsageAggregates'
+               'Get-UsageAggregates', 'Get-AzBillingAccount',
+			   'Get-AzBillingProfile', 'Get-AzInvoiceSection'
 
 # Variables to export from this module
 # VariablesToExport = @()
