@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public abstract class AuthenticationParameters
     {
-        public PowerShellTokenCacheProvider AuthenticationClientFactory { get; set; }
+        public PowerShellTokenCacheProvider TokenCacheProvider { get; set; }
 
         public IAzureEnvironment Environment { get; set; }
 
@@ -30,13 +29,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string ResourceId { get; set; }
 
         public AuthenticationParameters(
-            PowerShellTokenCacheProvider authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId)
         {
-            AuthenticationClientFactory = authenticationClientFactory;
+            TokenCacheProvider = tokenCacheProvider;
             Environment = environment;
             TokenCache = tokenCache;
             TenantId = tenantId;

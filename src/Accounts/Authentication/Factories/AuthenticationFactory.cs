@@ -58,8 +58,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 return builder;
             };
-
-            TokenProvider = new MsalTokenProvider(_getKeyStore);
         }
 
         private Func<IServicePrincipalKeyStore> _getKeyStore;
@@ -110,8 +108,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             IAccessToken token = null;
 
-            PowerShellTokenCacheProvider authenticationClientFactory;
-            if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out authenticationClientFactory))
+            PowerShellTokenCacheProvider tokenCacheProvider;
+            if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
             {
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
@@ -123,33 +121,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 try
                 {
-                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(authenticationClientFactory, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
+                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
                     {
                         token = authToken?.ConfigureAwait(true).GetAwaiter().GetResult();
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment
                             account.Id = token.UserId ?? account.Id;
-                            if(!string.IsNullOrEmpty(token.HomeAccountId))
-            {
+                            if (!string.IsNullOrEmpty(token.HomeAccountId))
+                            {
                                 account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
                             }
                             break;
-            }
+                        }
 
                         processAuthenticator = processAuthenticator.Next;
-                }
+                    }
                 }
                 catch (Exception e)
                 {
                     if (retries == 0)
-                {
+                    {
                         throw e;
-                }
+                    }
 
                     TracingAdapter.Information(string.Format("[AuthenticationFactory] Exception caught when calling TryAuthenticate, retrying authentication - Exception message: '{0}'", e.Message));
                     continue;
-            }
+                }
 
                 break;
             }
@@ -479,7 +477,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         private AuthenticationParameters GetAuthenticationParameters(
-            PowerShellTokenCacheProvider authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -498,30 +496,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                         if (!string.IsNullOrEmpty(account.Id))
                         {
-                            return new SilentParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
                         }
 
                         if (account.IsPropertySet("UseDeviceAuth"))
                         {
-                            return new DeviceCodeParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
                         }
                         else if(account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
                         {
-                            return new UsernamePasswordParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
+                            return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
 
-                        return new InteractiveParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, promptAction);
+                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, promptAction);
                     }
 
-                    return new UsernamePasswordParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, password, null);
+                    return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
                 case AzureAccount.AccountType.Certificate:
                 case AzureAccount.AccountType.ServicePrincipal:
                     password = password ?? ConvertToSecureString(account.GetProperty(AzureAccount.Property.ServicePrincipalSecret));
-                    return new ServicePrincipalParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
+                    return new ServicePrincipalParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
                 case AzureAccount.AccountType.ManagedService:
-                    return new ManagedServiceIdentityParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account);
+                    return new ManagedServiceIdentityParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case AzureAccount.AccountType.AccessToken:
-                    return new AccessTokenParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account);
+                    return new AccessTokenParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 default:
                     return null;
             }

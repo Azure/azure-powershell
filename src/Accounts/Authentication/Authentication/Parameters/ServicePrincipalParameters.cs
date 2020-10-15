@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Security;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public SecureString Secret { get; set; }
 
         public ServicePrincipalParameters(
-            PowerShellTokenCacheProvider authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
             string applicationId,
             string thumbprint,
-            SecureString secret) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
+            SecureString secret) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             ApplicationId = applicationId;
             Thumbprint = thumbprint;

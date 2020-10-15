@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var interactiveParameters = parameters as InteractiveParameters;
             var onPremise = interactiveParameters.Environment.OnPremise;
             var tenantId = onPremise ? AdfsTenant : interactiveParameters.TenantId;
-            var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
+            var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
@@ -56,9 +56,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
 
-            AzureSession.Instance.TryGetComponent(
-                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                out PowerShellTokenCacheProvider provider);
             var options = new InteractiveBrowserCredentialOptions()
             {
                 ClientId = clientId,
@@ -68,8 +65,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
             };
             var browserCredential = new InteractiveBrowserCredential(options);
-            var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
-            return MsalAccessToken.GetAccessTokenAsync(authTask);
+            var source = new CancellationTokenSource();
+            source.CancelAfter(TimeSpan.FromMinutes(5));
+            var authTask = browserCredential.AuthenticateAsync(requestContext, source.Token);
+
+            return MsalAccessToken.GetAccessTokenAsync(
+                authTask,
+                () => browserCredential.GetTokenAsync(requestContext, source.Token),
+                source.Token);
         }
 
         private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)

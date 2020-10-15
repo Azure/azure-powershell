@@ -694,14 +694,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
                 PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                out PowerShellTokenCacheProvider authenticationClientFactory);
+                out PowerShellTokenCacheProvider tokenCacheProvider);
 
             string authority = null;
             if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
             {
                 authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
             }
-            var accounts = authenticationClientFactory.ListAccounts(authority);
+            var accounts = tokenCacheProvider.ListAccounts(authority);
             if (!accounts.Any())
             {
                 if (!Contexts.Any(c => c.Key != "Default" && c.Value.Account.Type == AzureAccount.AccountType.User))
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     List<IAccessToken> tokens = null;
                     try
                     {
-                        tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
+                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
                     catch (Exception e)
                     {
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         var azureTenant = new AzureTenant() { Id = token.TenantId };
                         azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
-                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
+                        var subscriptions = tokenCacheProvider.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
                         if (!subscriptions.Any())
                         {
                             subscriptions.Add(null);

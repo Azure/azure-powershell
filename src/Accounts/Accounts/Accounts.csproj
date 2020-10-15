@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.3.0-beta.2" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
@@ -25,8 +26,7 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
-    <Copy SourceFiles="$(RepoSrc)lib\PreloadAssemblyInfo.json" DestinationFolder="$(TargetDir)" />
-    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />
+    <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
   </Target>
 
   <ItemGroup>

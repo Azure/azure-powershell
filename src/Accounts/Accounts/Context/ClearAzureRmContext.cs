@@ -72,14 +72,14 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     client.TryRemoveContext(context);
                 }
 
-                PowerShellTokenCacheProvider authenticationClientFactory;
-                if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out authenticationClientFactory))
+                PowerShellTokenCacheProvider tokenCacheProvider;
+                if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
                 {
                     WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
                 else
                 {
-                    authenticationClientFactory.ClearCache();
+                    tokenCacheProvider.ClearCache();
                     var defaultContext = new AzureContext();
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;

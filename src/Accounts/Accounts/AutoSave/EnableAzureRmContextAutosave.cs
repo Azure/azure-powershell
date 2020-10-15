@@ -20,7 +20,6 @@ using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -92,9 +91,13 @@ namespace Microsoft.Azure.Commands.Profile.Context
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
 
-            var factory = new SharedTokenCacheProvider();
+            //TODO: deserialize token data
+
+            //must use explicit interface type PowerShellTokenCacheProvider below instead of var, otherwise could not retrieve registered component
+            PowerShellTokenCacheProvider factory = new SharedTokenCacheProvider();
+            TokenCache tokenCache = new PersistentTokenCache();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory, true);
-            AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => new PersistentTokenCache(), true);
+            AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
 
             if (writeAutoSaveFile)
             {

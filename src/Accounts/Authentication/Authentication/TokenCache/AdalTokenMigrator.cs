@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -28,6 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
         protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private byte[] AdalToken { get; set; }
 
+        private bool HasRegistered { get; set; }
+
         public AdalTokenMigrator(byte[] adalToken)
         {
             AdalToken = adalToken;
@@ -35,11 +35,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
 
         public void MigrateFromAdalToMsal()
         {
+            MsalCacheHelper cacheHelper = null;
             var builder = PublicClientApplicationBuilder.Create(PowerShellClientId);
-
             var clientApplication = builder.Build();
-            var cacheHelper = CreateCacheHelper(PowerShellClientId);
-            cacheHelper.RegisterCache(clientApplication.UserTokenCache);
             clientApplication.UserTokenCache.SetBeforeAccess((TokenCacheNotificationArgs args) =>
             {
                 if (AdalToken != null)
@@ -55,7 +53,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                     finally
                     {
                         AdalToken = null;
+                        if (!HasRegistered)
+                        {
+                            HasRegistered = true;
+                            cacheHelper = MsalCacheHelperProvider.GetCacheHelper();
+                            cacheHelper.RegisterCache(clientApplication.UserTokenCache);
+                        }
                     }
+                }
+            });
+            clientApplication.UserTokenCache.SetAfterAccess((TokenCacheNotificationArgs args) =>
+            {
+                if(args.HasStateChanged)
+                {
+                    var bytes = args.TokenCache.SerializeAdalV3();
                 }
             });
 
@@ -83,12 +94,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                     continue;
                 }
             }
-            cacheHelper.UnregisterCache(clientApplication.UserTokenCache);
-        }
-
-        private static MsalCacheHelper CreateCacheHelper(string clientId)
-        {
-            return MsalCacheHelperProvider.GetCacheHelper();
+            cacheHelper?.UnregisterCache(clientApplication.UserTokenCache);
         }
     }
 }

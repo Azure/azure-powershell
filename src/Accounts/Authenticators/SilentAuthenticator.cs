@@ -37,10 +37,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                                 silentParameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
 
-            //TODO: Modify SharedTokenCacheCredentialOptions to accept clientId?
             AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
             var options = new SharedTokenCacheCredentialOptions(tokenCache)
             {
+                EnableGuestTenantAuthentication = true,
+                ClientId = AuthenticationHelpers.PowerShellClientId,
                 Username = silentParameters.UserId,
                 AuthorityHost = new Uri(authority),
                 TenantId = tenantId,

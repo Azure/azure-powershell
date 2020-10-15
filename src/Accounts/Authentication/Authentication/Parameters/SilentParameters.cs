@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -24,13 +23,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string HomeAccountId { get; set; }
 
         public SilentParameters(
-            PowerShellTokenCacheProvider authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
             string userId,
-            string homeAccountId) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
+            string homeAccountId) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
             HomeAccountId = homeAccountId;

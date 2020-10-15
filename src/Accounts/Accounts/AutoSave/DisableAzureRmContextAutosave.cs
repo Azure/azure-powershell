@@ -19,8 +19,6 @@ using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-//using Microsoft.Identity.Client;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
@@ -79,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
             session.ARMContextSaveMode = ContextSaveMode.Process;
 
             MemoryStream memoryStream = null;
-            var cacheProvider = new InMemoryTokenCacheProvider();
+            PowerShellTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
             if (AzureSession.Instance.TryGetComponent(
                     PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
                     out PowerShellTokenCacheProvider originalAuthenticationClientFactory))
@@ -103,7 +101,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 }
                 else
                 {
-                    //TODO: read token data from cache file directly
                     newTokenCache = memoryStream == null ? null : TokenCache.Deserialize(memoryStream);
                 }
             }

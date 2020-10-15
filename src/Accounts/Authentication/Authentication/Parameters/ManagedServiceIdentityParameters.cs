@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -22,12 +21,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public IAzureAccount Account { get; set; }
 
         public ManagedServiceIdentityParameters(
-            PowerShellTokenCacheProvider authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
-            IAzureAccount account) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
+            IAzureAccount account) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             Account = account;
         }

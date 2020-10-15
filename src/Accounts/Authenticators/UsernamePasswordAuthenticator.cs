@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var upParameters = parameters as UsernamePasswordParameters;
             var onPremise = upParameters.Environment.OnPremise;
             var tenantId = onPremise ? AdfsTenant : upParameters.TenantId; //Is user name + password valid in Adfs env?
-            var authenticationClientFactory = upParameters.AuthenticationClientFactory;
+            var tokenCacheProvider = upParameters.TokenCacheProvider;
             var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
@@ -65,8 +65,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
-                cancellationToken.ThrowIfCancellationRequested();
-                return MsalAccessToken.GetAccessTokenAsync(authTask);
+                return MsalAccessToken.GetAccessTokenAsync(
+                    authTask,
+                    () => passwordCredential.GetTokenAsync(requestContext, cancellationToken),
+                    cancellationToken);
             }
             else
             {

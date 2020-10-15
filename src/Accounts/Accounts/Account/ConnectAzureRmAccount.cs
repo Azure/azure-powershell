@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     break;
                 default:
-                    //Support username + password for powershell 6+
+                    //Support username + password for both Windows PowerShell and PowerShell 6+
                     azureAccount.Type = AzureAccount.AccountType.User;
                     break;
             }
@@ -497,10 +497,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                     // We cannot just throw an exception here because this is called when importing the module
-                    //autoSaveEnabled = false;
+                    autoSaveEnabled = false;
                     WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     WriteInitializationWarnings(message);
-                    //shouldModifyContext = true;
+                    shouldModifyContext = true;
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
@@ -545,7 +545,6 @@ namespace Microsoft.Azure.Commands.Profile
                     provider = new InMemoryTokenCacheProvider();
                     tokenCache = new TokenCache();
                 }
-
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);

@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                     if (removedContext.Account.Type == AzureAccount.AccountType.User &&
                                         !profile.Contexts.Any(c => c.Value.Account.Id == removedContext.Account.Id))
                                     {
-                                        PowerShellTokenCacheProvider authenticationClientFactory;
-                                        if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out authenticationClientFactory))
+                                        PowerShellTokenCacheProvider tokenCacheProvider;
+                                        if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
                                         {
                                             WriteWarning(string.Format(Resources.ClientFactoryNotRegisteredRemoval, removedContext.Account.Id));
                                         }
                                         else
                                         {
-                                            if (!authenticationClientFactory.TryRemoveAccount(removedContext.Account.Id))
+                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id))
                                             {
                                                 WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
                                             }

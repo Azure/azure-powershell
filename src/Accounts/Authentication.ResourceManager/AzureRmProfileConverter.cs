@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 || objectType == typeof(IAzureSubscription)
                 || objectType == typeof(IAzureEnvironment)
                 || objectType == typeof(IAzureTenant)
-                || objectType == typeof(IAzureTokenCache) || objectType == typeof(AzureTokenCache)
+                || objectType == typeof(IAzureTokenCache)
+                || objectType == typeof(AzureTokenCache)
                 || objectType == typeof(IAzureContextContainer);
-
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             if (AzureSession.Instance.TryGetComponent(
                                 PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                                out PowerShellTokenCacheProvider authenticationClientFactory))
+                                out PowerShellTokenCacheProvider tokenCacheProvider))
                             {
-                                authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                                tokenCacheProvider.UpdateTokenDataWithoutFlush(tempResult.CacheData);
                             }
                         }
                     }
@@ -145,9 +145,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             if (AzureSession.Instance.TryGetComponent(
                                 PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                                out PowerShellTokenCacheProvider authenticationClientFactory))
+                                out PowerShellTokenCacheProvider tokenCacheProvider))
                             {
-                                cacheData = authenticationClientFactory.ReadTokenData();
+                                cacheData = tokenCacheProvider.ReadTokenData();
                             }
                         }
                         else
