@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly NotebookClient _notebookClient;
         private readonly TriggerClient _triggerClient;
         private readonly TriggerRunClient _triggerRunClient;
+        private readonly DatasetClient _datasetClient;
+        private readonly DataFlowClient _dataFlowClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -49,6 +51,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSActivity>("type"));
             Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSLinkedService>("type"));
             Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSTrigger>("type"));
+            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSDataset>("type"));
+            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSDataFlow>("type"));
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
@@ -58,6 +62,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _notebookClient = new NotebookClient(uri, new AzureSessionCredential(context));
             _triggerClient = new TriggerClient(uri, new AzureSessionCredential(context));
             _triggerRunClient = new TriggerRunClient(uri, new AzureSessionCredential(context));
+            _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
+            _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -89,11 +95,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _pipelineClient.StartDeletePipeline(pipelineName);
         }
 
-        public string CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
+        public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
         {
-            var operation = _pipelineClient.StartCreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
-            var document = JsonDocument.Parse(operation.GetRawResponse().ContentStream);
-            return document.RootElement.GetProperty("runId").ToString();
+            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
         }
 
         #endregion
@@ -244,6 +248,68 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IReadOnlyList<TriggerRun> QueryTriggerRunsByWorkspace(RunFilterParameters filterParameters)
         {
             return _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value.Value;
+        }
+
+        #endregion
+
+        #region Dataset
+
+        public DatasetResource CreateOrUpdateDataset(string datasetName, string rawJsonContent)
+        {
+            PSDatasetResource pSDatasetResource = JsonConvert.DeserializeObject<PSDatasetResource>(rawJsonContent, Settings);
+            DatasetResource dataset = pSDatasetResource.ToSdkObject();
+            var operation = _datasetClient.StartCreateOrUpdateDataset(datasetName, dataset);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
+        }
+
+        public DatasetResource GetDataset(string datasetName)
+        {
+            return _datasetClient.GetDataset(datasetName);
+        }
+
+        public Pageable<DatasetResource> GetDatasetsByWorkspace()
+        {
+            return _datasetClient.GetDatasetsByWorkspace();
+        }
+
+        public void DeleteDataset(string datasetName)
+        {
+            _datasetClient.StartDeleteDataset(datasetName);
+        }
+
+        #endregion
+
+        #region DataFlow
+
+        public DataFlowResource CreateOrUpdateDataFlow(string dataFlowName, string rawJsonContent)
+        {
+            PSDataFlowResource pSDatasetResource = JsonConvert.DeserializeObject<PSDataFlowResource>(rawJsonContent, Settings);
+            DataFlowResource dataFlow = pSDatasetResource.ToSdkObject();
+            var operation = _dataFlowClient.StartCreateOrUpdateDataFlow(dataFlowName, dataFlow);
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+            }
+            return operation.Value;
+        }
+
+        public DataFlowResource GetDataFlow(string dataFlowName)
+        {
+            return _dataFlowClient.GetDataFlow(dataFlowName);
+        }
+
+        public Pageable<DataFlowResource> GetDataFlowsByWorkspace()
+        {
+            return _dataFlowClient.GetDataFlowsByWorkspace();
+        }
+
+        public void DeleteDataFlow(string dataFlowName)
+        {
+            _dataFlowClient.StartDeleteDataFlow(dataFlowName);
         }
 
         #endregion

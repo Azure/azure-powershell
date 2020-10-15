@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Gets a Synapse Analytics SQL database.
+Creates a Synapse Analytics SQL database.
 
 ## SYNTAX
 

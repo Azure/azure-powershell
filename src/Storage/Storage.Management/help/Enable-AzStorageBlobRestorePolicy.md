@@ -42,23 +42,37 @@ PS C:\> Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresource
 
 PS C:\> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -EnableChangeFeed $true
 
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days RestorePolicy.Enabled RestorePolicy.Days ChangeFeed
------------------- ----------------- --------------------- ----------------------------- -------------------------- --------------------- ------------------ ----------
-mystorageaccount   myresourcegoup                          True                          5                          False                                    True     
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegoup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : True
+DeleteRetentionPolicy.Days    : 5
+RestorePolicy.Enabled         : False
+RestorePolicy.Days            : 
+RestorePolicy.MinRestoreTime  : 
+ChangeFeed                    : True
+IsVersioningEnabled           : True
 
 PS C:\> Enable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -RestoreDays 4
 
 PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
 
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days RestorePolicy.Enabled RestorePolicy.Days ChangeFeed
------------------- ----------------- --------------------- ----------------------------- -------------------------- --------------------- ------------------ ----------
-mystorageaccount   myresourcegoup                          True                          5                          True                  4                  True
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegoup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : True
+DeleteRetentionPolicy.Days    : 5
+RestorePolicy.Enabled         : True
+RestorePolicy.Days            : 4
+RestorePolicy.MinRestoreTime  : 8/28/2020 6:00:59 AM
+ChangeFeed                    : True
+IsVersioningEnabled           : True
 ```
 
-This command first enable Blob softdelet and changefeed, then enables Blob Restore Policy, finally check the setting in Blob service properties.
-The Blob RestoreDays much be smaller than Blob delete RetentionDays.
-ChangeFeed must be enabled before enable lob Restore Policy.
-If softdelete and Changefeed are just enabled, need wait for some time for server to handle the setting, before enable Blob restore policy.
+This command first enable Blob softdelete and changefeed, then enables Blob Restore Policy, finally check the setting in Blob service properties.
+The Blob service RestorePolicy.Days must be smaller than DeleteRetentionPolicy.Days.
+Blob softdelete and ChangeFeed must be enabled before enable blob Restore Policy.
+If softdelete and Changefeed are just enabled, might need wait for some time for server to handle the setting, before enable Blob restore policy.
 
 ## PARAMETERS
 

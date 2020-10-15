@@ -267,6 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzResourceGroup](./Find-AzResourceGroup.md)
+[Get-AzResourceGroup](./Get-AzResourceGroup.md)
 
 

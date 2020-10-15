@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/update-azsubscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/update-azsubscription
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ Name        : My Subscription
 Id          : 86869d42-1782-4337-98b0-c905fb937d46
 TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
 State       : Enabled
-
 ```
+
 Updates the subscription
 
 ## PARAMETERS

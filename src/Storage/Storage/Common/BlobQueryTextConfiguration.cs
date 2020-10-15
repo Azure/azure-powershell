@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     public abstract class PSBlobQueryTextConfiguration
     {
         public BlobQueryConfigType Type { get; set; }
-        public string RecordSeparator { get; set; }       
+        public string RecordSeparator { get; set; }
 
         public BlobQueryTextOptions ParseBlobQueryTextConfiguration()
         {
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public bool IsFatal { get; }
         public long Position { get; }
 
-        public PSBlobQueryError (BlobQueryError error)
+        public PSBlobQueryError(BlobQueryError error)
         {
             this.Name = error.Name;
             this.Description = error.Description;

@@ -2959,6 +2959,7 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
@@ -2986,6 +2987,120 @@ function Test-VirtualMachineGetStatus
 
         # Remove
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines's Status With Health Extension
+Description:
+This test creates a virtual machine and adds a vm health extension
+and gets the virtual machine with -Status flag which returns the instance
+view of the virtual machine. Since the vm has a health extension,
+the vm's instance view should have the "vmHealth" field present in its return
+object.
+#>
+function Test-VirtualMachineGetStatusWithHealhtExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+
+        # OS & Image
+        $username = "admin01";
+        $password = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "vcrptestps7691-6f2166";
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -DomainNameLabel $domainNameLabel -Name $vmname -Credential $cred -Size $vmsize;
+
+        # Adding health extension on VM
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension"
+        $extensionType = "ApplicationHealthWindows"
+        $publisher = "Microsoft.ManagedServices"
+        Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0"
+
+        # Get VM
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+        # Check for VmHealth Property
+        Assert-NotNull $vm.VMHealth
+        Assert-NotNull $vm.VMHealth.Status
+        Assert-NotNull $vm.VMHealth.Status.Code
+        Assert-NotNull $vm.VMHealth.Status.Level
+        Assert-NotNull $vm.VMHealth.Status.DisplayStatus
+        Assert-NotNull $vm.VMHealth.Status.Time
+
+        # Remove
+        Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines
+#>
+function Test-VirtualMachineGetStatusWithAssignedHost
+{
+    param ($loc)
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        
+        # Creating the resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Hostgroupname
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2" -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+
+
+        $Sku = "Esv3-Type1"
+        $hostName = $rgname + "Host"
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname = $rgname + 'Vm';
+
+        # Creating a VM using simple parameter set
+        $user = "Foo2";
+        $password = Get-PasswordForVM
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel "crptestps2532vm-1d1de" -HostGroupId $hostGroup.Id;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status
+        $a = $vm | Out-String
+
+        Assert-True {$a.Contains("AssignedHost")};
     }
     finally
     {
@@ -3858,6 +3973,47 @@ function Test-LowPriorityVirtualMachine
 .SYNOPSIS
 Test EncryptionAtHost Virtual Machine
 #>
+function Test-EncryptionAtHostVMNull
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        Assert-AreEqual $null $vm.SecurityProfile.encryptionathost
+
+        # Get VM
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $null $vm.SecurityProfile.encryptionAtHost
+        Assert-AreEqual $null $vm.encryptionAtHost
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test EncryptionAtHost Virtual Machine
+#>
 function Test-EncryptionAtHostVM
 {
 # Setup
@@ -4169,5 +4325,90 @@ function Test-SetAzVMOperatingSystemError
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Test HostGroup property is set on a VM correctly when HostGroup.Id is passed as a parameter.
+#>
+function Test-HostGroupPropertySetOnVirtualMachine
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $hostGroupName = $rgname + 'hostgroup'
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2";
+        
+        $hostName = $rgname + 'host'
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -PlatformFaultDomain 1;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname0 = 'v' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "vcrptestps7691-6f2166";
+
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id -DomainNameLabel $domainNameLabel;
+        
+        Assert-AreEqual $hostGroup.Id $vm0.HostGroup.Id;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Size and Usage
+#>
+function Test-VirtualMachineImageListTopOrderExpand
+{
+    # Setup
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $pubNames = "MicrosoftWindowsServer";
+        $pubNameFilter = '*Windows*';
+        $offer = "windowsserver";
+        $sku = "2012-R2-Datacenter";
+        $numRecords = 3;
+        $orderNameDesc = "name desc";
+        $orderNameAsc = "name asc";
+
+        # Test -Top
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
+        Assert-AreEqual $numRecords $vmImagesTop.Count; 
+
+        # Test -OrderBy
+        $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
+        $vmImagesOrderAsc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameAsc;
+
+        if ($vmImagesOrderDesc.Count -gt 0)
+        {
+            $isLessThan = $vmImagesOrderDesc[0].Version -ge $vmImagesOrderAsc[0].Version;
+            Assert-True { $isLessThan };
+        }
+    }
+    finally 
+    {
+    
+	}
+
 }
 

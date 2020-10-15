@@ -59,17 +59,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(HelpMessage = "Set ExpiryTime as null for the policy")]
         public SwitchParameter NoExpiryTime { get; set; }
-
+        
         // Overwrite the useless parameter
         public override string TagCondition { get; set; }
-
+        
         protected override bool UseTrack2Sdk()
         {
-            //if (SasTokenHelper.IsTrack2Permission(this.Permission))
-            //{
-                return true;
-            //}
-            //return base.UseTrack2SDK();
+            return true;
         }
 
         /// <summary>
@@ -92,80 +88,54 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         internal string SetAzureContainerStoredAccessPolicy(IStorageBlobManagement localChannel, string containerName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
         {
+            //Get container instance, Get existing permissions
+            CloudBlobContainer container_Track1 = Channel.GetContainerReference(containerName);
+            BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
+            BlobContainerAccessPolicy accessPolicy = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
+            IEnumerable<BlobSignedIdentifier> signedIdentifiers = accessPolicy.SignedIdentifiers;
 
-            //if (!UseTrack2Sdk()) // Track1
-            //{
-            //    //Get existing permissions
-            //    CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            //    BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container, null, null, OperationContext);
-
-            //    //Set the policy with new value
-            //    if (!blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
-            //    {
-            //        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
-            //    }
-
-            //    SharedAccessBlobPolicy policy = blobContainerPermissions.SharedAccessPolicies[policyName];
-            //    AccessPolicyHelper.SetupAccessPolicy<SharedAccessBlobPolicy>(policy, startTime, expiryTime, permission, noStartTime, noExpiryTime);
-            //    blobContainerPermissions.SharedAccessPolicies[policyName] = policy;
-
-            //    //Set permission back to container
-            //    localChannel.SetContainerPermissions(container, blobContainerPermissions, null, null, OperationContext);
-            //    WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessBlobPolicy>(blobContainerPermissions.SharedAccessPolicies, policyName));
-            //    return policyName;
-            //}
-            //else
-            //{
-
-                //Get container instance, Get existing permissions
-                CloudBlobContainer container_Track1 = Channel.GetContainerReference(containerName);
-                BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
-                BlobContainerAccessPolicy accessPolicy = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
-                IEnumerable<BlobSignedIdentifier> signedIdentifiers = accessPolicy.SignedIdentifiers;
-
-                //Set the policy with new value
-                BlobSignedIdentifier signedIdentifier = null;
-                foreach (BlobSignedIdentifier identifier in signedIdentifiers)
+            //Set the policy with new value
+            BlobSignedIdentifier signedIdentifier = null;
+            foreach (BlobSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == policyName)
                 {
-                    if (identifier.Id == policyName)
-                    {
-                        signedIdentifier = identifier;
-                    }
+                    signedIdentifier = identifier;
                 }
+            }
 
-                if (signedIdentifier == null)
-                {
-                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
-                }
-                if (noStartTime)
-                {
-                    signedIdentifier.AccessPolicy.PolicyStartsOn = DateTimeOffset.MinValue;
-                }
+            if (signedIdentifier == null)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+            }
+            if (noStartTime)
+            {
+                signedIdentifier.AccessPolicy.PolicyStartsOn = DateTimeOffset.MinValue;
+            }
 
-                else if (startTime != null)
-                {
-                    signedIdentifier.AccessPolicy.PolicyStartsOn = StartTime.Value.ToUniversalTime();
-                }
-                if (noExpiryTime)
-                {
-                    signedIdentifier.AccessPolicy.PolicyExpiresOn = DateTimeOffset.MinValue;
-                }
-                else if (ExpiryTime != null)
-                {
-                    signedIdentifier.AccessPolicy.PolicyExpiresOn = ExpiryTime.Value.ToUniversalTime();
-                }
+            else if (startTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyStartsOn = StartTime.Value.ToUniversalTime();
+            }
+            if (noExpiryTime)
+            {
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = DateTimeOffset.MinValue;
+            }
+            else if (ExpiryTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = ExpiryTime.Value.ToUniversalTime();
+            }
 
-                if (this.Permission != null)
-                {
-                    signedIdentifier.AccessPolicy.Permissions = this.Permission;
-                    signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderBlobPermission(this.Permission);
-                }
+            if (this.Permission != null)
+            {
+                signedIdentifier.AccessPolicy.Permissions = this.Permission;
+                signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderBlobPermission(this.Permission);
+            }
 
-                //Set permissions back to container
-                container.SetAccessPolicy(accessPolicy.BlobPublicAccess, signedIdentifiers, BlobRequestConditions, CmdletCancellationToken);
-                WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<BlobSignedIdentifier>(signedIdentifier));
-                return policyName;
-            //}
+            //Set permissions back to container
+            container.SetAccessPolicy(accessPolicy.BlobPublicAccess, signedIdentifiers, BlobRequestConditions, CmdletCancellationToken);
+            WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<BlobSignedIdentifier>(signedIdentifier));
+            return policyName;
         }
 
 

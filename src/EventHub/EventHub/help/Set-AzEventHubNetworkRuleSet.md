@@ -15,8 +15,9 @@ Update the NetworkruleSet of the given Namespace in the current Azure subscripti
 ### NetworkRuleSetPropertiesSet (Default)
 ```
 Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
- [-IPRule] <PSNWRuleSetIpRulesAttributes[]> [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TrustedServiceAccessEnabled] [-IPRule] <PSNWRuleSetIpRulesAttributes[]>
+ [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NetwrokruleSetInputObjectSet
@@ -187,6 +188,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TrustedServiceAccessEnabled
+Indicates whether TrustedServiceAccessEnabled is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NetworkRuleSetPropertiesSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

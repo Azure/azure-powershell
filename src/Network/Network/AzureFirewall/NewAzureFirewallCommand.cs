@@ -193,15 +193,26 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
         public string[] Zone { get; set; }
 
+        [Alias("Sku")]
         [Parameter(
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                HelpMessage = "The sku type for firewall")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The sku name for firewall")]
         [ValidateSet(
                 MNM.AzureFirewallSkuName.AZFWHub,
                 MNM.AzureFirewallSkuName.AZFWVNet,
                 IgnoreCase = false)]
-        public string Sku { get; set; }
+        public string SkuName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The sku tier for firewall")]
+        [ValidateSet(
+                MNM.AzureFirewallSkuTier.Standard,
+                MNM.AzureFirewallSkuTier.Premium,
+                IgnoreCase = false)]
+        public string SkuTier { get; set; }
 
         [Parameter(
                 Mandatory = false,
@@ -219,6 +230,12 @@ namespace Microsoft.Azure.Commands.Network
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The firewall policy attached to the firewall")]
         public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow Active FTP. By default it is false."
+        )]
+        public SwitchParameter AllowActiveFTP { get; set; }
 
         public override void Execute()
         {
@@ -256,7 +273,11 @@ namespace Microsoft.Azure.Commands.Network
         private PSAzureFirewall CreateAzureFirewall()
         {
             var firewall = new PSAzureFirewall();
-            if (Sku == MNM.AzureFirewallSkuName.AZFWHub)
+            var sku = new PSAzureFirewallSku();
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName: MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
+
+            if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
             {
 
                 if (VirtualHubId != null && this.Location != null)
@@ -275,10 +296,6 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
                 }
 
-                var sku = new PSAzureFirewallSku();
-                sku.Name = MNM.AzureFirewallSkuName.AZFWHub;
-                sku.Tier = MNM.AzureFirewallSkuTier.Standard;
-
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
@@ -292,9 +309,6 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var sku = new PSAzureFirewallSku();
-                sku.Name = MNM.AzureFirewallSkuName.AZFWVNet;
-                sku.Tier = MNM.AzureFirewallSkuTier.Standard;
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
@@ -310,6 +324,7 @@ namespace Microsoft.Azure.Commands.Network
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
                     DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
                     DNSServer = this.DnsServer,
+                    AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku
                 };
 
