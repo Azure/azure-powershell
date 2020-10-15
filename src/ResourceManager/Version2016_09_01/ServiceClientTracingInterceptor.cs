@@ -18,17 +18,21 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
     {
-        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue)
+        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue, IList<Regex> matchers = null)
         {
             MessageQueue = queue;
+            Matchers = matchers;
         }
 
         public ConcurrentQueue<string> MessageQueue { get; private set; }
+
+        private IList<Regex> Matchers { get; set; }
 
         public void Configuration(string source, string name, string value)
         {
@@ -52,13 +56,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public void ReceiveResponse(string invocationId, System.Net.Http.HttpResponseMessage response)
         {
-            string responseAsString = response == null ? string.Empty : GeneralUtilities.GetLog(response);
+            string responseAsString = response == null ? string.Empty : GeneralUtilities.GetLog(response, Matchers);
             MessageQueue.CheckAndEnqueue(responseAsString);
         }
 
         public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
         {
-            string requestAsString = request == null ? string.Empty : GeneralUtilities.GetLog(request);
+            string requestAsString = request == null ? string.Empty : GeneralUtilities.GetLog(request, Matchers);
             MessageQueue.CheckAndEnqueue(requestAsString);
         }
 

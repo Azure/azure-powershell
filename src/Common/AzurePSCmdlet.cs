@@ -48,8 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile = null;
 
-        private IList<Regex> _matchers = new List<Regex>();
-        private static readonly Regex _defaultMatcher = new Regex("(\\s*\"refresh_token\"\\s*:\\s*)\"[^\"]+\"");
+        protected IList<Regex> _matchers { get;  private set; }  = new List<Regex>();
+        private static readonly Regex _defaultMatcher = new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\"");
 
         protected AzurePSDataCollectionProfile _dataCollectionProfile
         {
