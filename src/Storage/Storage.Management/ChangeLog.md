@@ -27,6 +27,8 @@
 * Changed the output of get/set Container/Share/Queue/Table access policy cmdlet, by change the child property Permission type from enum to String
     -  `Get-AzStorageContainerStoredAccessPolicy`
     -  `Set-AzStorageContainerStoredAccessPolicy`
+* Fixed a sample script issue of set management policy with json
+    -  `Set-AzStorageAccountManagementPolicy`
 
 ## Version 2.7.0
 * Supported enable/disable/get share soft delete properties on file Service of a Storage account

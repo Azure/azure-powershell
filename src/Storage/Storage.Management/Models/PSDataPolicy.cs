@@ -263,6 +263,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public int DaysAfterModificationGreaterThan { get; set; }
 
+        public PSDateAfterModification()
+        { }
+
         public PSDateAfterModification(int daysAfterModificationGreaterThan)
         {
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
@@ -284,6 +287,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSDateAfterCreation
     {
         public int DaysAfterCreationGreaterThan { get; set; }
+
+        public PSDateAfterCreation()
+        { }
 
         public PSDateAfterCreation(int daysAfterCreationGreaterThan)
         {
