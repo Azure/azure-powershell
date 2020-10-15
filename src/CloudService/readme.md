@@ -51,8 +51,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(this-folder)/resources/CloudService.json
-  # - $(this-folder)/resources/loadBalancer.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/loadBalancer.json
+  - $(this-folder)/resources/loadBalancer.json
+  # - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/loadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
