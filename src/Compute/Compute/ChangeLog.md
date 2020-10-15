@@ -24,7 +24,7 @@
 * Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
 * New cmdlet `Get-AzDiskEncryptionSetAssociatedResource`
 * Added `Tier` and `LogicalSectorSize` optional parameters to the New-AzDiskConfig cmdlet. 
-* Added `Tier`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
+* Added `Tier`, `MaxSharesCount`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
 
 ## Version 4.5.0
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes

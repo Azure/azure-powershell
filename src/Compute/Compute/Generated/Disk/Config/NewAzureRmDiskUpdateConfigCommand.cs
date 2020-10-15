@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public int? MaxSharesCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
@@ -232,6 +237,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
                 DiskIOPSReadOnly = this.IsParameterBound(c => c.DiskIOPSReadOnly) ? this.DiskIOPSReadOnly : null,
                 DiskMBpsReadOnly = this.IsParameterBound(c => c.DiskMBpsReadOnly) ? this.DiskMBpsReadOnly : null,
+                MaxShares = this.IsParameterBound(c => c.MaxSharesCount) ? this.MaxSharesCount : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy: null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId: null,

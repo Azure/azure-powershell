@@ -14,7 +14,7 @@ Creates a configurable disk update object.
 
 ```
 New-AzDiskUpdateConfig [[-SkuName] <String>] [-Tier <String>] [-DiskIOPSReadOnly <Int64>]
- [-DiskMBpsReadOnly <Int64>] [-NetworkAccessPolicy <String>] [-DiskAccessId <String>]
+ [-DiskMBpsReadOnly <Int64>] [-MaxSharesCount <Int32>] [-NetworkAccessPolicy <String>] [-DiskAccessId <String>]
  [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-DiskIOPSReadWrite <Int32>]
  [-DiskMBpsReadWrite <Int32>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
@@ -224,6 +224,21 @@ Specifies the Key encryption key on a disk.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxSharesCount
+The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
