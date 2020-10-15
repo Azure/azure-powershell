@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parsing bug
 * Updated ARM template What-If cmdlets to remove preview message from results
 * Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
 * Fixed an issue where template deployment cmdlets does not preserve case for template parameters
