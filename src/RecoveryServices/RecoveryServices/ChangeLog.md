@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixing Workload Restore for contributor permissions.
 
 ## Version 2.12.2
 * Added container name validation for workload backup.

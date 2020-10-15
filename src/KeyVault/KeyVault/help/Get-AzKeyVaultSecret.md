@@ -176,7 +176,14 @@ This command gets a specific version of the secret named secret1 in the key vaul
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
 PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
-PS C:\> Write-Host "Secret Value is:" $secret.SecretValueText
+PS C:\> $secretValueText = '';
+PS C:\> $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+PS C:\> try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+PS C:\> Write-Host "Secret Value is:" $secretValueText
 
 Secret Value is: P@ssw0rd
 ```

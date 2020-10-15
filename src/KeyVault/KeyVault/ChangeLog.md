@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Deprecated parameter DisableSoftDelete in `New-AzKeyVault` and EnableSoftDelete in `Update-AzKeyVault`
+* Removed attribute SecretValueText to avoid displaying SecretValue directly [#12266]
 
 ## Version 2.2.1
 * Provided the detailed date of removing property SecretValueText
