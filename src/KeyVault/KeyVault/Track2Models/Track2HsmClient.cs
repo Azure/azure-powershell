@@ -104,11 +104,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                // Have no idea why still run KeyCurveName when curveName is null
-                //options = new CreateEcKeyOptions(keyName, isHsm)
-                //{
-                //    CurveName = string.IsNullOrEmpty(curveName) ? null : new KeyCurveName(curveName)
-                //};
                 options = new CreateEcKeyOptions(keyName, isHsm);
                 if (string.IsNullOrEmpty(curveName))
                 {
