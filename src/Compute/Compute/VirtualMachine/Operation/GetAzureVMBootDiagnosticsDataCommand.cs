@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute
                     || result.Body.DiagnosticsProfile.BootDiagnostics == null
                     || result.Body.DiagnosticsProfile.BootDiagnostics.Enabled == null
                     || !result.Body.DiagnosticsProfile.BootDiagnostics.Enabled.Value
-                    || result.Body.DiagnosticsProfile.BootDiagnostics.StorageUri == null)
+                    )
                 {
                     ThrowTerminatingError
                         (new ErrorRecord(
@@ -133,7 +134,10 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
-                    var screenshotUri = new Uri(result.Body.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri);
+                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                    string[] uriAndSharedAccessToken = bootDiagnostics.ConsoleScreenshotBlobUri.Split('?'); 
+                    var screenshotUri = new Uri(uriAndSharedAccessToken[0]);
+                    //var screenshotUri = new Uri(result.Body.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri);
                     var localFile = this.LocalPath + screenshotUri.Segments[2];
                     DownloadFromBlobUri(screenshotUri, localFile);
                 }
@@ -141,7 +145,10 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.Linux.IsPresent)
                 {
-                    var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
+                    //var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
+                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                    string[] uriAndSharedAccessToken = bootDiagnostics.SerialConsoleLogBlobUri.Split('?');
+                    var logUri = new Uri(uriAndSharedAccessToken[0]);
 
                     var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
 
