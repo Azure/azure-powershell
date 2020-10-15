@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected override void InitDebuggingFilter()
         {
             AddDebuggingFilter(new Regex("(\\s*access_token\\s*=\\s*)[^\"]+"));
+            AddDebuggingFilter(new Regex("(\\s*refresh_token\\s*=\\s*)[^\"]+"));
             AddDebuggingFilter(new Regex("(\\s*\"refresh_token\"\\s*:\\s*)\"[^\"]+\""));
             base.InitDebuggingFilter();
         }
@@ -84,7 +85,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 {
                     this.UserName = new Guid().ToString();
                     this.Password = this.RegistryDataPlaneClient.GetRefreshToken();
-                    string tmp = this.RegistryDataPlaneClient.GetAccessToken();
                 }
             }
 
