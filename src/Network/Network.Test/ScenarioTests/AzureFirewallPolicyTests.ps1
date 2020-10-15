@@ -594,7 +594,7 @@ function Test-AzureFirewallPolicyWithIpGroups {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -891,14 +891,11 @@ function Test-AzureFirewallPolicyPremiumFeatures {
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
     $transportSecurityName = "ts-test"
     $tier = "Premium"
     $bypassTestName = "bypass-test"
     $identityName = Get-ResourceName
-    $keyVaultName = Get-ResourceName
-	$sslCertName = Get-ResourceName
-    $sslCertPath = $basedir + "/ScenarioTests/Data/FirewallPolicySslCert.pfx"
 
     try {
         # Create the resource group
@@ -937,9 +934,17 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         Assert-AreEqual "10.0.0.0" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].SourceAddresses[0]
         Assert-AreEqual "10.0.0.0" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].DestinationAddresses[0]
 
+        # Identity verification
+        Assert-AreEqual $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Count 1
+		Assert-NotNull $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Values[0].PrincipalId
+		Assert-NotNull $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Values[0].ClientId
         
-
+        # Set AzureFirewallPolicy
+        $azureFirewallPolicy.IntrusionDetection.Mode = "Off"
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+        Assert-AreEqual "Off" $getAzureFirewallPolicy.IntrusionDetection.Mode
     }
     finally {
         # Cleanup
