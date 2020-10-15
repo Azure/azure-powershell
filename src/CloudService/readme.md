@@ -52,7 +52,7 @@ require:
 input-file:
   - $(this-folder)/resources/CloudService.json
   # - $(this-folder)/resources/loadBalancer.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/loadBalancer.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/loadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
@@ -118,6 +118,7 @@ directive:
     - IPConfiguration
     - IPConfigurationPropertiesFormat
     - PublicIPAddress
+    # - CloudService
   - where:
       subject: ^LoadBalancerPublicIPAddress$
       verb: Switch
