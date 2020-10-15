@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _resourceClient = value; }
         }
 
-        protected List<PSKeyVaultIdentityItem> FilterByTag(List<PSKeyVaultIdentityItem> listResult, Hashtable tag)
+        protected List<T> FilterByTag<T>(List<T> listResult, Hashtable tag) where T : PSKeyVaultIdentityItem
         {
             var tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
@@ -126,30 +126,26 @@ namespace Microsoft.Azure.Commands.KeyVault
             return listResult;
         }
 
-        protected PSKeyVault FilterByTag(PSKeyVault keyVault, Hashtable tag)
+        protected T FilterByTag<T>(T vault, Hashtable tag) where T : PSKeyVaultIdentityItem
         {
-            return (PSKeyVault) FilterByTag(new List<PSKeyVaultIdentityItem> { keyVault }, tag).FirstOrDefault();
+            return FilterByTag(new List<T> { vault }, tag).FirstOrDefault();
         }
 
-        protected PSManagedHsm FilterByTag(PSManagedHsm managedHsm, Hashtable tag)
-        {
-            return (PSManagedHsm)FilterByTag(new List<PSKeyVaultIdentityItem> { managedHsm }, tag).FirstOrDefault();
-        }
-
-        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName= ResourceTypeName.Vault)
+        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName = ResourceTypeName.Vault)
         {
             var vaults = new List<PSKeyVaultIdentityItem>();
 
             // List all kinds of vault resources
-            if (resourceTypeName == null) {
+            if (resourceTypeName == null)
+            {
                 vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Vault));
                 vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Hsm));
                 return vaults;
             }
 
             IEnumerable<PSKeyVaultIdentityItem> listResult;
-            var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm)?
-                KeyVaultManagementClient.ManagedHsmResourceType: KeyVaultManagementClient.VaultsResourceType;
+            var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
+                KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
             if (ShouldListByResourceGroup(resourceGroupName, null))
             {
                 listResult = ListByResourceGroup(resourceGroupName,

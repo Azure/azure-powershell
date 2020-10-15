@@ -343,6 +343,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified HSM already exists..
+        /// </summary>
+        internal static string HsmAlreadyExists {
+            get {
+                return ResourceManager.GetString("HsmAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find HSM &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string HsmNotFound {
+            get {
+                return ResourceManager.GetString("HsmNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {
@@ -820,7 +838,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveCertWarning {
             get {
@@ -910,7 +928,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove HSM &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveHsmWarning {
+            get {
+                return ResourceManager.GetString("RemoveHsmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove HSM.
+        /// </summary>
+        internal static string RemoveHsmWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveHsmWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveKeyWarning {
             get {
@@ -928,7 +964,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveManagedStorageAccountWarning {
             get {
@@ -973,7 +1009,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSecretWarning {
             get {

@@ -13,20 +13,12 @@ Creates a key vault.
 
 ## SYNTAX
 
-### KeyVaultParameterSet
 ```
-New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-DisableSoftDelete]
- [-EnablePurgeProtection] [-SoftDeleteRetentionInDays <Int32>] [-Sku <String>] [-Tag <Hashtable>]
- [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-EnabledForDeployment] [-EnabledForTemplateDeployment]
- [-EnabledForDiskEncryption] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-EnabledForDeployment]
+ [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-DisableSoftDelete] [-EnablePurgeProtection]
+ [-SoftDeleteRetentionInDays <Int32>] [-Sku <String>] [-Tag <Hashtable>]
+ [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### ManagedHsmParameterSet
-```
-New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-Sku <String>]
- [-Tag <Hashtable>] -Administrator <String[]> [-Hsm] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,46 +118,7 @@ PS C:\> New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRu
 
 Creating a key vault and specifies network rules to allow access to the specified IP address from the virtual network identified by $myNetworkResId. See `New-AzKeyVaultNetworkRuleSetObject` for more information.
 
-### Example 4: Create a StandardB1 managed hsm
-```powershell
-PS C:\> New-AzKeyVault -Name 'TestManagedHsm' -ResourceGroupName 'testGroup9' -Location 'eastus2' -Administrator "xxxxxxxxxxxxxxxxxx-xxxx-xxxxxxxxxxxx" -Hsm
-
-ManagedHsm Name                     : TestManagedHsm
-Resource Group Name                 : testGroup9
-Location                            : eastus2
-Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testGroup9/pro
-                                      viders/Microsoft.KeyVault/managedHSMs/TestManagedHsm
-Hsm Pool URI                        :
-Tenant ID                           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Security Domain ID                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Initial Admin Object Ids            : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
-SKU                                 : StandardB1
-Soft Delete Enabled?                : True
-Enabled Purge Protection?           :
-Soft Delete Retention Period (days) : 90
-Tags
-```
-
-This command creates a managed hsm named TestManagedHsm, in the Azure region East US 2. The command
-adds the managed hsm to the resource group named testGroup9. Because the command does not specify a
-value for the *SKU* parameter, it creates a StandardB1 key vault.
-
 ## PARAMETERS
-
-### -Administrator
-Array of initial administrators object ids for this managed hsm pool.
-
-```yaml
-Type: System.String[]
-Parameter Sets: ManagedHsmParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -187,7 +140,7 @@ If specified, 'soft delete' functionality is disabled for this key vault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -203,7 +156,7 @@ key vault is referenced in resource creation, for example when creating a virtua
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -218,7 +171,7 @@ Enables the Azure disk encryption service to get secrets and unwrap keys from th
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -233,7 +186,7 @@ Enables Azure Resource Manager to get secrets from this key vault when this key 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -248,25 +201,10 @@ If specified, protection against immediate deletion is enabled for this vault; r
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Hsm
-Specifies the type of this vault as managed hsm.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManagedHsmParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -308,7 +246,7 @@ Specifies the network rule set of the vault. It governs the accessibility of the
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleSet
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -340,6 +278,7 @@ Specifies the SKU of the key vault instance. For information about which feature
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Standard, Premium
 
 Required: False
 Position: Named
@@ -353,7 +292,7 @@ Specifies how long deleted resources are retained, and how long until a vault or
 
 ```yaml
 Type: System.Int32
-Parameter Sets: KeyVaultParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
