@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -111,6 +113,91 @@ namespace Microsoft.Azure.Commands.Network
                     HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Intrusion Detection Setting")]
+        [ValidateNotNull]
+        public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Transport security name")]
+        public string TransportSecurityName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault")]
+        public string TransportSecurityKeyVaultSecretId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall policy sku tier")]
+        [ValidateSet(
+            MNM.FirewallPolicySkuTier.Standard,
+            MNM.FirewallPolicySkuTier.Premium,
+            IgnoreCase = true)]
+        public string SkuTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
+
+        private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
+        {
+            firewallPolicy.Sku = new PSAzureFirewallPolicySku
+            {
+                Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
+            };
+            firewallPolicy.IntrusionDetection = this.IntrusionDetection;
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                firewallPolicy.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                firewallPolicy.Identity = this.Identity;
+            }
+
+            if (this.TransportSecurityKeyVaultSecretId != null)
+            {
+                if (this.TransportSecurityName == null)
+                {
+                    throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                if (this.Identity == null && this.UserAssignedIdentityId == null)
+                {
+                    throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                firewallPolicy.TransportSecurity = new PSAzureFirewallPolicyTransportSecurity
+                {
+                    CertificateAuthority = new PSAzureFirewallPolicyTransportSecurityCertificateAuthority
+                    {
+                        Name = this.TransportSecurityName,
+                        KeyVaultSecretId = this.TransportSecurityKeyVaultSecretId
+                    }
+                };
+            }
+        }
+
         public override void Execute()
         {
             base.Execute();
@@ -139,6 +226,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.ThreatIntelWhitelist = this.IsParameterBound(c => c.ThreatIntelWhitelist) ? ThreatIntelWhitelist : InputObject.ThreatIntelWhitelist;
                 this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
                 this.DnsSetting = this.IsParameterBound(c => c.DnsSetting) ? DnsSetting : (InputObject.DnsSettings != null ? InputObject.DnsSettings : null);
+                this.IntrusionDetection = this.IsParameterBound(c => c.IntrusionDetection) ? IntrusionDetection : (InputObject.IntrusionDetection != null ? InputObject.IntrusionDetection : null);
+                this.TransportSecurityName = this.IsParameterBound(c => c.TransportSecurityName) ? TransportSecurityName : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.Name : null);
+                this.TransportSecurityKeyVaultSecretId = this.IsParameterBound(c => c.TransportSecurityKeyVaultSecretId) ? TransportSecurityKeyVaultSecretId : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.KeyVaultSecretId : null);
+                this.Identity = this.IsParameterBound(c => c.Identity) ? Identity : (InputObject.Identity != null ? InputObject.Identity : null);
+                this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
+                this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -150,6 +243,8 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
                     DnsSettings = this.DnsSetting
                 };
+
+                AddPremiumProperties(firewallPolicy);
 
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
 
@@ -170,6 +265,8 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                     DnsSettings = this.DnsSetting
                 };
+
+                AddPremiumProperties(firewallPolicy);
 
                 // Map to the sdk object
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
