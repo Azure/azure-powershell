@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDiskEncryptionSetAssociatedResource
 
 ## SYNOPSIS
-Gets the list of resources associated with the specified disk encryption set.
+Gets the list of resources associated with the specified disk encryption set.test
 
 ## SYNTAX
 
