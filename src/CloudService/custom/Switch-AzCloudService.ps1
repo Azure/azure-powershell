@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200401.ILoadBalancerVipSwapRequest
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.ILoadBalancerVipSwapRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
@@ -222,15 +222,15 @@ function Switch-AzCloudService {
         # Invoke the VIP swap API
         if ($PSCmdlet.ShouldProcess($SourceCloudService.Name,'Switch Cloud Service')) 
         {
-            $SourcePublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200401.PublicIPAddress]::New()
+            $SourcePublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.PublicIPAddress]::New()
             $SourcePublicIPAddress.Id = $SourceCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
-            $TargetPublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200401.PublicIPAddress]::New()
+            $TargetPublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.PublicIPAddress]::New()
             $TargetPublicIPAddress.Id = $TargetCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
         
-            $SourceFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200401.FrontendIPConfiguration]::New()
+            $SourceFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.FrontendIPConfiguration]::New()
             $SourceFrontendIPConfiguration.Id = $sourceLB.FrontendIpConfigurations[0].Id
             $SourceFrontendIPConfiguration.PublicIPAddress = $TargetPublicIPAddress
-            $TargetFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200401.FrontendIPConfiguration]::New()
+            $TargetFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.FrontendIPConfiguration]::New()
             $TargetFrontendIPConfiguration.Id = $targetLB.FrontendIpConfigurations[0].Id
             $TargetFrontendIPConfiguration.PublicIPAddress = $SourcePublicIPAddress
 

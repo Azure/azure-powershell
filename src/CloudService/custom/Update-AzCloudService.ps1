@@ -271,7 +271,11 @@ param(
       $Null = $PSBoundParameters.Remove('InputObject')
     }
     if (!$PSBoundParameters.ContainsKey('Tag')) {
-      $PSBoundParameters.Add('Tag', $InputObject.Tag)
+      $Tag = @{}
+      foreach ($key in $InputObject.Tag.Keys) {
+        $Tag.Add($key, $InputObject.Tag[$key])
+      }
+      $PSBoundParameters.Add('Tag', $Tag)
     }
     if (!$PSBoundParameters.ContainsKey('Configuration')) {
       $PSBoundParameters.Add('Configuration', $InputObject.Configuration)
