@@ -1271,9 +1271,10 @@ in the New-AzDiskConfig cmdlet.
 
 Testing the new parameters 
 Tier 
+MaxSharesCount
 DiskIOPSReadOnly
 DiskMBpsReadOnly
-in the New-AzDiskUpdateCOnfig cmdlet. 
+in the New-AzDiskUpdateConfig cmdlet. 
 #>
 function Test-DiskConfigTierSectorSizeReadOnly
 {
@@ -1295,15 +1296,16 @@ function Test-DiskConfigTierSectorSizeReadOnly
             $IoPS2 = 120;
             $MbPS1 = 3;
             $MbPS2 = 20;
-            $maxShares = 2;
+            $maxShares1 = 2;
+            $maxShares2 = 3;
             
 
             $diskTier = New-AzDiskConfig -Location $loc -DiskSizeGB 1024 `
-                -SkuName Premium_LRS -OsType Windows -CreateOption Empty -Tier $tier30 -MaxSharesCount $maxShares `
+                -SkuName Premium_LRS -OsType Windows -CreateOption Empty -Tier $tier30 -MaxSharesCount $maxShares1 `
                 | New-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
 
             Assert-AreEqual $tier30 $diskTier.Tier; 
-            Assert-AreEqual $maxShares $diskTier.MaxShares;
+            Assert-AreEqual $maxShares1 $diskTier.MaxShares;
 
             $diskSector = New-AzDiskConfig -Location $loc -DiskSizeGB 5 `
                 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -LogicalSectorSize $sectorSize -DiskIOPSReadOnly $IoPS1 -DiskMBpsReadOnly $MbPS1 `
@@ -1312,13 +1314,14 @@ function Test-DiskConfigTierSectorSizeReadOnly
             Assert-AreEqual $diskSector.CreationData.LogicalSectorSize $sectorSize; 
 
             # New-AzDiskUpdateConfig
-            # Tier 
-            $diskUpdateTierConfig = New-AzDiskUpdateConfig -Tier $tier40;
+            # Tier and MaxShares
+            $diskUpdateTierConfig = New-AzDiskUpdateConfig -Tier $tier40 -MaxSharesCount $maxShares2;
             $diskUp = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier -DiskUpdate $diskUpdateTierConfig;
 
             $diskUpdated = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskNameTier;
 
             Assert-AreEqual $tier40 $diskUpdated.Tier; 
+            Assert-AreEqual $maxShares2 $diskUpdated.MaxShares; 
 
             # DiskIOPSReadOnly and DiskMBpsReadOnly
             $diskUpdateReadOnlyConfig = New-AzDiskUpdateConfig -DiskIOPSReadOnly $IoPS2 -DiskMBpsReadOnly $MbPS2;
