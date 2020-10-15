@@ -72,11 +72,6 @@ directive:
       subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
-  # - where:
-  #     subject: ^CloudServiceUpdateDomain$
-  #     verb: Set
-  #   set:
-  #     subject: ^CloudServiceDomain
   - where:
       subject: ^CloudService$|^CloudServiceInstanceView$|^CloudServiceRoleInstance$|^CloudServiceRoleInstanceView$
       verb: Get
