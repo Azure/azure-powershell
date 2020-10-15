@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzDiskEncryptionSetAssociatedResources
+# Get-AzDiskEncryptionSetAssociatedResource
 
 ## SYNOPSIS
 Gets the list of resources associated with the specified disk encryption set.
@@ -13,7 +13,7 @@ Gets the list of resources associated with the specified disk encryption set.
 ## SYNTAX
 
 ```
-Get-AzDiskEncryptionSetAssociatedResources [-ResourceGroupName] <String> [-DiskEncryptionSetName] <String>
+Get-AzDiskEncryptionSetAssociatedResource [-ResourceGroupName] <String> [-DiskEncryptionSetName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
