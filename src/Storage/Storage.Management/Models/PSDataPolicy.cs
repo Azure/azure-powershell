@@ -261,10 +261,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// </summary>
     public class PSDateAfterModification
     {
-        public int DaysAfterModificationGreaterThan { get; set; }
+        public int? DaysAfterModificationGreaterThan { get; set; }
 
         public PSDateAfterModification()
-        { }
+        {
+            this.DaysAfterModificationGreaterThan = null;
+        }
 
         public PSDateAfterModification(int daysAfterModificationGreaterThan)
         {
@@ -277,7 +279,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
         public DateAfterModification ParseDateAfterModification()
         {
-            return new DateAfterModification(this.DaysAfterModificationGreaterThan);
+            return this.DaysAfterModificationGreaterThan is null? new DateAfterModification() : new DateAfterModification(this.DaysAfterModificationGreaterThan.Value);
         }
     }
 
@@ -289,7 +291,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public int DaysAfterCreationGreaterThan { get; set; }
 
         public PSDateAfterCreation()
-        { }
+        {
+            this.DaysAfterCreationGreaterThan = 0;
+        }
 
         public PSDateAfterCreation(int daysAfterCreationGreaterThan)
         {
