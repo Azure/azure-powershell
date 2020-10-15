@@ -509,6 +509,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="ImportNotSupported" xml:space="preserve">
     <value>Key type '{0}' is not supported for importing. (Supported types: RSA-HSM)</value>
+  </data>
   <data name="HsmNotFound" xml:space="preserve">
     <value>Cannot find HSM '{0}' in resource group '{1}'.</value>
   </data>
