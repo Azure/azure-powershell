@@ -210,8 +210,10 @@ function Reset-AzCloudService {
         }
         if ($PSBoundParameters.ContainsKey('Rebuild')) {
             $Null = $PSBoundParameters.Remove('Rebuild')
-            $Null = $PSBoundParameters.Remove('Name')
-            $PSBoundParameters.Add("CloudServiceName", $Name)
+            if ($PSBoundParameters.ContainsKey('Name')) {
+                $Null = $PSBoundParameters.Remove('Name')
+                $PSBoundParameters.Add("CloudServiceName", $Name)
+            }
             Az.CloudService.internal\Invoke-AzCloudServiceRebuildCloudService @PSBoundParameters
         }
     }

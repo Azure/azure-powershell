@@ -91,7 +91,7 @@ directive:
   - where:
       subject: ^CloudService$
       verb: Update
-    remove: true
+    hide: true
   - where:
       subject: ^CloudService$
       verb: New
