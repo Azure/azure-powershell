@@ -4,7 +4,6 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -27,7 +26,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Location = managedHsm.Location;
             Tags = TagsConversionHelper.CreateTagHashtable(managedHsm.Tags);
 
-            // PSManagedHsm's properties
+            // PSManagedHsm's properties, hides type
+            Name = managedHsm.Name;
             Sku = managedHsm.Sku.Name.ToString();
             TenantId = managedHsm.Properties.TenantId.Value;
             TenantName = ModelExtensions.GetDisplayNameForTenant(TenantId, adClient);
@@ -36,11 +36,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnablePurgeProtection = managedHsm.Properties.EnablePurgeProtection;
             EnableSoftDelete = managedHsm.Properties.EnableSoftDelete;
             SoftDeleteRetentionInDays = managedHsm.Properties.SoftDeleteRetentionInDays;
-            // AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
-            // NetworkAcls = InitNetworkRuleSet(managedHsm.Properties);
+            StatusMessage = managedHsm.Properties.StatusMessage;
+            ProvisioningState = managedHsm.Properties.ProvisioningState;
             OriginalManagedHsm = managedHsm;
         }
 
+        public string Name { get; private set; }
         public string Sku { get; private set; }
         public Guid TenantId { get; private set; }
         public string TenantName { get; private set; }
@@ -49,6 +50,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnableSoftDelete { get; private set; }
         public int? SoftDeleteRetentionInDays { get; private set; }
         public bool? EnablePurgeProtection { get; private set; }
+        public string StatusMessage { get; private set; }
+        public string ProvisioningState { get; private set; }
         public ManagedHsm OriginalManagedHsm { get; private set; }
 
     }

@@ -12,21 +12,21 @@ Update the state of an Azure key vault.
 
 ## SYNTAX
 
-### UpdateKeyVaultByNameParameterSet (Default)
+### UpdateByNameParameterSet (Default)
 ```
 Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateKeyVaultByInputObjectParameterSet
+### UpdateByInputObjectParameterSet
 ```
-Update-AzKeyVault -InputObject <PSKeyVaultIdentityItem> [-EnableSoftDelete] [-EnablePurgeProtection]
+Update-AzKeyVault -InputObject <PSKeyVault> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateKeyVaultByResourceIdParameterSet
+### UpdateByResourceIdParameterSet
 ```
 Update-AzKeyVault -ResourceId <String> [-EnableSoftDelete] [-EnablePurgeProtection]
  [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -46,7 +46,7 @@ PS C:\> Update-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceG
 
 Enables soft delete on the key vault named `$keyVaultName` in resource group `$resourceGroupName`.
 
-### Example 1
+### Example 2
 ```powershell
 PS C:\> Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnablePurgeProtection
 ```
@@ -107,8 +107,8 @@ Accept wildcard characters: False
 Key vault object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
-Parameter Sets: UpdateKeyVaultByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -123,7 +123,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateKeyVaultByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -138,7 +138,7 @@ Resource ID of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateKeyVaultByResourceIdParameterSet
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -168,7 +168,7 @@ Name of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateKeyVaultByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases: Name
 
 Required: True
