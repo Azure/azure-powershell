@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
+    /// <summary>A state of a server that is visible to user.</summary>
     public partial struct ServerState :
         System.IEquatable<ServerState>
     {

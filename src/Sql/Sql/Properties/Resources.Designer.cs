@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -295,6 +295,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyNotChosenTakeGeoWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyNotChosenTakeGeoWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to the source&apos;s backup storage redundancy. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyNotChosenTakeSourceWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyNotChosenTakeSourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About to process resource.
         /// </summary>
         internal static string BaseConfirmActionProcessMessage {
@@ -556,20 +574,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
         /// </summary>
         internal static string GeoBackupRedundancyChosenWarning {
             get {
                 return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions..
-        /// </summary>
-        internal static string GeoBackupRedundancyNotChosenWarning {
-            get {
-                return ResourceManager.GetString("GeoBackupRedundancyNotChosenWarning", resourceCulture);
             }
         }
         
@@ -1312,6 +1321,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
+            get {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting Azure Sql Database Managed Instance &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceDescription {
@@ -1551,6 +1569,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string UseServerWithoutStorageAccount {
             get {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on managed instance system database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase", resourceCulture);
             }
         }
         

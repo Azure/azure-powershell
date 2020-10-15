@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>TypeConverter implementation for PeeringState.</summary>
+    /// <summary>The status of the virtual network peering.</summary>
     public partial class PeeringStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -27,6 +27,7 @@
             string managementGroupId = null,
             string resourceGroupName = null,
             string templateUri = null,
+            string templateSpecId = null,
             string templateParametersUri = null,
             Hashtable templateObject = null,
             Hashtable templateParametersObject = null,
@@ -42,6 +43,7 @@
             this.TemplateUri = templateUri;
             this.TemplateParametersUri = templateParametersUri;
             this.TemplateObject = templateObject;
+            this.TemplateSpecId = templateSpecId;
             this.TemplateParametersObject = templateParametersObject;
             this.ResultFormat = resultFormat;
             this.ExcludeChangeTypes = excludeChangeTypes?
@@ -66,6 +68,8 @@
 
         public string  ResourceGroupName { get; set; }
 
+        public string TemplateSpecId { get; set; }
+
         public string TemplateUri { get; set; }
 
         public string TemplateParametersUri { get; set; }
@@ -87,7 +91,11 @@
             };
 
             // Populate template properties.
-            if (Uri.IsWellFormedUriString(this.TemplateUri, UriKind.Absolute))
+            if (!string.IsNullOrEmpty(this.TemplateSpecId))
+            {
+                properties.TemplateLink = new TemplateLink(id: this.TemplateSpecId);
+            }
+            else if (Uri.IsWellFormedUriString(this.TemplateUri, UriKind.Absolute))
             {
                 properties.TemplateLink = new TemplateLink(this.TemplateUri);
             }

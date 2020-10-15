@@ -15,16 +15,17 @@ Creates a local criteria object that can be used to create a new metric alert
 ### StaticThresholdParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
- [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
+ -Operator <String> -Threshold <Double> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
 ```
 New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-MetricNamespace <String>]
- [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
- [-ThresholdSensitivity <String>] [-ViolationCount <Int32>] [-ExaminedAggregatedPointCount <Int32>]
- [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
+ -Operator <String> [-ThresholdSensitivity <String>] [-ViolationCount <Int32>]
+ [-ExaminedAggregatedPointCount <Int32>] [-IgnoreDataBefore <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WebtestParameterSet
@@ -251,6 +252,21 @@ Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipMetricValidation
+Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped
+
+```yaml
+Type: System.Boolean
+Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

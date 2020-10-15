@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSBlobServiceProperties), ChangeDescription = "The deprecated property RestorePolicy.LastEnabledTime will be removed in a future release.")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageBlobServiceProperty, SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSBlobServiceProperties))]
     public class UpdateAzStorageBlobServicePropertyCommand : StorageBlobBaseCmdlet
     {
@@ -139,9 +138,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = null;
-
-                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+                BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
                 if (DefaultServiceVersion != null)
                 {
@@ -158,6 +155,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
+
+                //Get the full service properties for output
+                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
 
                 WriteObject(new PSBlobServiceProperties(serviceProperties));
             }

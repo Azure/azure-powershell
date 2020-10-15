@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll', 
@@ -144,11 +144,13 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Remove-AzTenantDeployment', 'Get-AzPolicyAlias', 'Remove-AzTag', 
                'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment', 'Update-AzTag', 
                'Get-AzDeploymentScript', 'Get-AzDeploymentScriptLog', 
-               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript', 
+               'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript',
                'Get-AzDeploymentWhatIfResult', 
-               'Get-AzResourceGroupDeploymentWhatIfResult', 
+               'Get-AzResourceGroupDeploymentWhatIfResult',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
-               'Get-AzTenantDeploymentWhatIfResult'
+               'Get-AzTenantDeploymentWhatIfResult',
+               'Get-AzTemplateSpec', 'New-AzTemplateSpec', 'Set-AzTemplateSpec', 
+               'Export-AzTemplateSpec', 'Remove-AzTemplateSpec'
 
 # Variables to export from this module
 # VariablesToExport = @()
