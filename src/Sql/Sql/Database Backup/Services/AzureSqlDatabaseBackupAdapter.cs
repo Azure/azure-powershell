@@ -585,7 +585,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     databaseName,
                     new Management.Sql.Models.BackupShortTermRetentionPolicy()
                     {
-                        RetentionDays = model.RetentionDays
+                        RetentionDays = model.RetentionDays,
+                        DiffBackupIntervalInHours = model.DiffBackupIntervalInHours
                     });
 
             return new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(resourceGroup, serverName, databaseName, baPolicy);
