@@ -22,26 +22,31 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary> 
         /// The head nodes of the cluster.
         /// </summary> 
-        HeadNode,
+        HeadNode=0,
 
         /// <summary> 
         /// The worker nodes of the cluster.
         /// </summary> 
-        WorkerNode,
+        WorkerNode=1,
 
         /// <summary>
         /// The zookeper nodes of the cluster.
         /// </summary>
-        ZookeeperNode,
+        ZookeeperNode=2,
 
         /// <summary>
         /// The edge nodes of the cluster.
         /// </summary>
-        EdgeNode,
+        EdgeNode=3,
 
         /// <summary>
-        /// The idbroker nodes of the cluster
+        /// The idbroker nodes of the cluster.
         /// </summary>
-        IdBrokerNode
+        IdBrokerNode=4,
+
+        /// <summary>
+        /// The kafkamanagement nodes of the cluster.
+        /// </summary>
+        KafkaManagementNode=5
     }
 }

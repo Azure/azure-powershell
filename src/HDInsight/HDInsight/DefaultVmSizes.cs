@@ -68,12 +68,11 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public static class ZookeeperNode
         {
-            private const string DefaultSizeIfNotSpecified = "Medium";
+            private const string DefaultSizeIfNotSpecified = "Standard_A2_v2";
 
             private static readonly Dictionary<string, string> DefaultSizes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                {"hadoop", "Small"},
-                {"spark", "Small"}
+                {"kafka", "Standard_A4_v2"}
             };
 
             public static string GetSize(string clusterType)

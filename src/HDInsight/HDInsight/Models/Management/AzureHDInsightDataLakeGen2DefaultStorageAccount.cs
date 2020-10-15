@@ -1,4 +1,5 @@
-﻿//
+// ----------------------------------------------------------------------------------
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    internal class Utils
+    public class AzureHDInsightDataLakeGen2DefaultStorageAccount : AzureHDInsightDefaultStorageAccount
     {
-        public static Role ExtractRole(string nodeType, ComputeProfile computeProfile)
+        public AzureHDInsightDataLakeGen2DefaultStorageAccount(string storageAccountName, string storageFileSystem)
+            : base(storageAccountName)
         {
-            return computeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
+            StorageFileSystem = storageFileSystem;
         }
 
-        public static string GetResourceNameFromResourceId(string resourceId)
-        {
-            return resourceId?.Split('/').LastOrDefault();
-        }
+        public string StorageFileSystem { get; private set; }
     }
 }

@@ -70,5 +70,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithScheduleBasedAutoscale");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithKafkaRestProxy()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithKafkaRestProxy");
+        }
     }
 }
