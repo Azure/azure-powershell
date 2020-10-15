@@ -15,14 +15,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using System.Collections.Generic;
 
     public class PSRegistrationDefinitionProperties
     {
         public string Description { get; set; }
 
-        public string Name { get; set; }
+        public string DisplayName { get; set; }
 
         public string ManagedByTenantId { get; set; }
 
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         public PSRegistrationDefinitionProperties(RegistrationDefinitionProperties registrationDefinitionProperties)
         {
             this.Description = registrationDefinitionProperties.Description;
-            this.Name = registrationDefinitionProperties.RegistrationDefinitionName;
+            this.DisplayName = registrationDefinitionProperties.RegistrationDefinitionName;
             this.ManagedByTenantId = registrationDefinitionProperties.ManagedByTenantId;
             this.ManagedByTenantName = registrationDefinitionProperties.ManagedByTenantName;
             this.ProvisioningState = registrationDefinitionProperties.ProvisioningState;
