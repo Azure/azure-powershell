@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1317,6 +1317,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
+            get {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
             }
         }
         
