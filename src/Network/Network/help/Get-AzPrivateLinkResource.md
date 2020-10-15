@@ -17,6 +17,11 @@ Gets a private link resource.
 Get-AzPrivateLinkResource -PrivateLinkResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+### ByResource
+```
+Get-AzPrivateLinkResource -ResourceGroupName <String> -ServiceName <String> 
+[-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Get-AzPrivateLinkResource** cmdlet retrieves all link resources belongs PrivateLinkResource.

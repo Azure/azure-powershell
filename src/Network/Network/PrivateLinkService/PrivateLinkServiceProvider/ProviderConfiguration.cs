@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     new Collection<Attribute>()
                     {
                     new ParameterAttribute { Mandatory = false,
-                                            ValueFromPipelineByPropertyName = true,
+                                            ValueFromPipeline = true,
                                             HelpMessage = "The private link resource type.",
-                                            ParameterSetName = "ByResource" },
+                                            ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }
                 );
