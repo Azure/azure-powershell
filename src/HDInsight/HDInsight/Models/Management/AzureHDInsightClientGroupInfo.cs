@@ -1,4 +1,5 @@
-﻿//
+﻿// ----------------------------------------------------------------------------------
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,20 +15,34 @@
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    internal class Utils
+    public class AzureHDInsightClientGroupInfo
     {
-        public static Role ExtractRole(string nodeType, ComputeProfile computeProfile)
+        public AzureHDInsightClientGroupInfo() { }
+
+        public AzureHDInsightClientGroupInfo(string groupName=null, string groupId=null)
         {
-            return computeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
+            GroupName = groupName;
+            GroupId = groupId;
         }
 
-        public static string GetResourceNameFromResourceId(string resourceId)
+        public AzureHDInsightClientGroupInfo(ClientGroupInfo clientGroupInfo = null)
         {
-            return resourceId?.Split('/').LastOrDefault();
+            GroupName = clientGroupInfo?.GroupName;
+            GroupId = clientGroupInfo?.GroupId;
         }
+
+        /// <summary>
+        /// The group name.
+        /// </summary>
+        public string GroupName { get; set; }
+
+        /// <summary>
+        /// The group id.
+        /// </summary>
+        public string GroupId { get; set; }
     }
 }
