@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
+using Azure.Storage.Blobs;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -108,6 +109,8 @@ namespace Microsoft.Azure.Commands.Compute
                     || result.Body.DiagnosticsProfile.BootDiagnostics == null
                     || result.Body.DiagnosticsProfile.BootDiagnostics.Enabled == null
                     || !result.Body.DiagnosticsProfile.BootDiagnostics.Enabled.Value
+                    //
+                    //|| result.Body.DiagnosticsProfile.BootDiagnostics.StorageUri == null
                     )
                 {
                     ThrowTerminatingError
@@ -138,6 +141,10 @@ namespace Microsoft.Azure.Commands.Compute
                     string[] uriAndSharedAccessToken = bootDiagnostics.ConsoleScreenshotBlobUri.Split('?'); 
                     var screenshotUri = new Uri(uriAndSharedAccessToken[0]);
                     //var screenshotUri = new Uri(result.Body.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri);
+
+                    var blobClient = new BlobClient(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri));
+                    blobClient.Download(); 
+
                     var localFile = this.LocalPath + screenshotUri.Segments[2];
                     DownloadFromBlobUri(screenshotUri, localFile);
                 }
