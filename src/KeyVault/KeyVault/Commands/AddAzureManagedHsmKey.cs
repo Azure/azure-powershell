@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
      /// 3. Create a key from a .pfx file by importing key material
      /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmKey", SupportsShouldProcess = true, DefaultParameterSetName = InteractiveCreateParameterSet)]
-    [OutputType(typeof(PSManagedHsm))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureManagedHsmKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -123,6 +123,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// key type
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = InteractiveCreateParameterSet,
+            HelpMessage = "Specifies the key type of this key.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectCreateParameterSet,
+            HelpMessage = "Specifies the key type of this key.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdCreateParameterSet,
             HelpMessage = "Specifies the key type of this key.")]
         [PSArgumentCompleter("RSA", "EC", "oct")]
         public string KeyType { get; set; }
@@ -210,7 +217,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                             CreateKeyAttributes(),
                             Size,
                             CurveName);
-                    this.WriteObject(keyBundle);
                 }
                 else
                 {
@@ -218,7 +224,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                         HsmName, Name,
                         CreateWebKeyFromFile());
                 }
-
+                this.WriteObject(keyBundle);
             }
         }
         private void ValidateKeyExchangeKey()
