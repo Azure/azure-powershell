@@ -115,7 +115,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Updated API version to 2020-07-01.'
 
         # Prerelease string of this module
         # Prerelease = ''
