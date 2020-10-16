@@ -160,15 +160,6 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter EnableDnsProxy { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "DnsProxyNotRequiredForNetworkRule",
-            ChangeDescription = "DnsProxyNotRequiredForNetworkRule is being deprecated without being replaced")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
-        )]
-        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of DNS Servers"
@@ -277,7 +268,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var firewall = new PSAzureFirewall();
             var sku = new PSAzureFirewallSku();
-            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName: MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
             if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)

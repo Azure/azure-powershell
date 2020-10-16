@@ -71,8 +71,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string DNSEnableProxy { get; set; }
 
-        public string DNSRequireProxyForNetworkRules { get; set; }
-
         public string[] DNSServer { get; set; }
 
         public string ProvisioningState { get; set; }

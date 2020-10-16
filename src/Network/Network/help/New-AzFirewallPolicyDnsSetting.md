@@ -13,8 +13,8 @@ Creates a new DNS Setting for Azure Firewall Policy
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyDnsSetting [-EnableProxy] [-ProxyNotRequiredForNetworkRule] [-Server <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyDnsSetting [-EnableProxy] [-Server <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,21 +57,6 @@ Accept wildcard characters: False
 ### -EnableProxy
 Enable DNS Proxy.
 By default it is disabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyNotRequiredForNetworkRule
-Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

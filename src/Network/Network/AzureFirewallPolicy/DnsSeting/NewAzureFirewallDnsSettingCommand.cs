@@ -29,15 +29,6 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter EnableProxy { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "ProxyNotRequiredForNetworkRule",
-            ChangeDescription = "ProxyNotRequiredForNetworkRule is being deprecated without being replaced")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true."
-        )]
-        public SwitchParameter ProxyNotRequiredForNetworkRule { get; set; }
-
         [Parameter(
              Mandatory = false,
              HelpMessage = "The list of DNS Servers")]
