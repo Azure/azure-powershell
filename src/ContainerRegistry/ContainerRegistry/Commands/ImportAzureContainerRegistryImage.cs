@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 {
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryImage", SupportsShouldProcess = true)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryImage", DefaultParameterSetName = ImportImageByResourceId, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class ImportAzureContainerRegistryImage : ContainerRegistryCmdletBase
     {

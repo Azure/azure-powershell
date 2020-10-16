@@ -23,13 +23,10 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry")]
+    [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = WithoutNameAndPasswordParameterSet)]
     [OutputType(typeof(bool))]
     public class ConnectAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        private const string WithoutNameAndPasswordParameterSet = "WithoutNameAndPasswordParameterSet";
-        private const string WithNameAndPasswordParameterSet = "WithNameAndPasswordParameterSet";
-
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithoutNameAndPasswordParameterSet)]
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithNameAndPasswordParameterSet)]
         [ValidateNotNullOrEmpty]

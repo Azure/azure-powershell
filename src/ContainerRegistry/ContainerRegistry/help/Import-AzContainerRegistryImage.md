@@ -12,7 +12,7 @@ Import image from a public/azure registry to an azure container registry.
 
 ## SYNTAX
 
-### ImportImageByResourceId
+### ImportImageByResourceId (Default)
 ```
 Import-AzContainerRegistryImage -ResourceGroupName <String> -RegistryName <String> -SourceImage <String>
  -SourceRegistryResourceId <String> [-Mode <String>] [-TargetTag <String[]>]

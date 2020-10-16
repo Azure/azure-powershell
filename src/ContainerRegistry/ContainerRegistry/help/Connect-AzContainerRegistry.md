@@ -12,7 +12,7 @@ Login to an azure container registry.
 
 ## SYNTAX
 
-### WithoutNameAndPasswordParameterSet
+### WithoutNameAndPasswordParameterSet (Default)
 ```
 Connect-AzContainerRegistry -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
