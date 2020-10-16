@@ -14,12 +14,14 @@
 
 using System;
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
     /// Canonical representation of a renewable access token
     /// </summary>
-    public interface IAccessToken
+    public interface IAccessToken : IExtensibleModel
     {
         /// <summary>
         /// Authorize the given request, using the given function for setting the token
@@ -36,6 +38,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// The displayable user id
         /// </summary>
         string UserId { get; }
+
+        /// <summary>
+        /// The object id + home tenant id
+        /// </summary>
+        string HomeAccountId { get; }
 
         /// <summary>
         /// The Active Directory tenant for this token

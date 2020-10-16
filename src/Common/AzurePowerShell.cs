@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
 
-        public const string TokenCacheFile = "TokenCache.dat";
+        public const string TokenCacheFile = "msal.cache";
 
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
             "AzurePowershell",

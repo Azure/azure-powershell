@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text;
 
@@ -45,6 +46,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public const string AUX_HEADER_NAME = "x-ms-authorization-auxiliary";
         public const string AUX_TOKEN_PREFIX = "Bearer";
         public const string AUX_TOKEN_APPEND_CHAR = ";";
+        public const string WriteDebugKey = "WriteDebug";
+        public const string WriteVerboseKey = "WriteVerbose";
+        public const string WriteWarningKey = "WriteWarning";
+        public const string EnqueueDebugKey = "EnqueueDebug";
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
@@ -56,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        [Parameter(Mandatory =false, HelpMessage= "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         public IAzureContextContainer DefaultProfile
         {
@@ -122,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             List<IAzureSubscription> subscriptionObjects = DefaultProfile.Subscriptions.Where(s => subscriptions.Contains(s.GetId().ToString())).ToList();
             if (subscriptionsNotInDefaultProfile.Any())
             {
-                //So we didnt find some subscriptions in the default profile.. 
+                //So we didnt find some subscriptions in the default profile..
                 //this does not mean that the user does not have access to the subs, it just menas that the local context did not have them
                 //We gotta now call into the subscription RP and see if the user really does not have access to these subscriptions
 
@@ -162,6 +167,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return Resources.ARMDataCollectionMessage;
             }
         }
+
+        /// <summary>
+        /// Whether this cmdlet requires default context.
+        /// If false, the logic of referencing default context would be omitted.
+        /// </summary>
+        protected virtual bool RequireDefaultContext() { return true; }
+
         /// <summary>
         /// Return a default context safely if it is available, without throwing if it is not setup
         /// </summary>
@@ -171,6 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             bool result = false;
             context = null;
+
             if (DefaultProfile != null && DefaultProfile.DefaultContext != null && DefaultProfile.DefaultContext.Account != null)
             {
                 context = DefaultProfile.DefaultContext;
@@ -197,10 +210,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         /// <summary>
-        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
-        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
-        /// particular action (e.g. a resource is being overwritten). By default, both 
-        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this
+        /// particular action (e.g. a resource is being overwritten). By default, both
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload
         /// must have a force parameter.
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
@@ -213,7 +226,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
         }
-        
+
         /// <summary>
         /// Prompt for confirmation for the specified change to the specified ARM resource
         /// </summary>
@@ -241,7 +254,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <param name="action">The code action to perform if confirmation is successful</param>
         /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
         protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
-            bool force, string continueMessage, string processMessage, Action action, Func<bool> promptForContinuation = null )
+            bool force, string continueMessage, string processMessage, Action action, Func<bool> promptForContinuation = null)
         {
             ConfirmAction(force, continueMessage, processMessage, string.Format(Resources.ResourceConfirmTarget,
                 resourceType, resourceName, resourceGroupName), action, promptForContinuation);
@@ -268,7 +281,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <param name="actionName">A description of the change to the resource</param>
         /// <param name="action">The code action to perform if confirmation is successful</param>
         /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
-        protected void ConfirmResourceAction(string resourceId, bool force, string continueMessage, string actionName, 
+        protected void ConfirmResourceAction(string resourceId, bool force, string continueMessage, string actionName,
             Action action, Func<bool> promptForContinuation = null)
         {
             ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
@@ -281,7 +294,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             IAzureContext context;
             _qosEvent.Uid = "defaultid";
-            if (TryGetDefaultContext(out context))
+            if (RequireDefaultContext() && TryGetDefaultContext(out context))
             {
                 _qosEvent.SubscriptionId = context.Subscription?.Id;
                 _qosEvent.TenantId = context.Tenant?.Id;
@@ -296,12 +309,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             base.LogCmdletStartInvocationInfo();
             IAzureContext context;
-            if (TryGetDefaultContext(out context)
+            if (RequireDefaultContext()
+                && TryGetDefaultContext(out context)
                 && context.Account != null
                 && context.Account.Id != null)
             {
-                    WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
-                    context.Account.Id));
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
+                context.Account.Id));
             }
         }
 
@@ -334,9 +348,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void BeginProcessing()
         {
+            InitializeEventHandlers();
             AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             IAzureContext context;
-            if (TryGetDefaultContext(out context)
+            if (RequireDefaultContext()
+                && TryGetDefaultContext(out context)
                 && context.Account != null
                 && context.Subscription != null)
             {
@@ -364,7 +380,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (!string.IsNullOrEmpty(resourceGroupName))
                 {
                     WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
-                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string)GetPropertyValue(t, idProperty)), Resource = t })
                                    .Where(p => IsMatch(p.Id, "ResourceGroupName", pattern))
                                    .Select(r => r.Resource);
                 }
@@ -488,6 +504,47 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             return false;
+        }
+
+        private event EventHandler<StreamEventArgs> _writeDebugEvent;
+        private event EventHandler<StreamEventArgs> _writeVerboseEvent;
+        private event EventHandler<StreamEventArgs> _writeWarningEvent;
+        private event EventHandler<StreamEventArgs> _enqueueDebugEvent;
+
+        private void InitializeEventHandlers()
+        {
+            _writeDebugEvent -= WriteDebugSender;
+            _writeDebugEvent += WriteDebugSender;
+            _writeVerboseEvent -= WriteVerboseSender;
+            _writeVerboseEvent += WriteVerboseSender;
+            _writeWarningEvent -= WriteWarningSender;
+            _writeWarningEvent += WriteWarningSender;
+            _enqueueDebugEvent -= EnqueueDebugSender;
+            _enqueueDebugEvent += EnqueueDebugSender;
+            AzureSession.Instance.RegisterComponent(WriteDebugKey, () => _writeDebugEvent, true);
+            AzureSession.Instance.RegisterComponent(WriteVerboseKey, () => _writeVerboseEvent, true);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent, true);
+            AzureSession.Instance.RegisterComponent(EnqueueDebugKey, () => _enqueueDebugEvent, true);
+        }
+
+        private void WriteDebugSender(object sender, StreamEventArgs args)
+        {
+            WriteDebug(args.Message);
+        }
+
+        private void WriteVerboseSender(object sender, StreamEventArgs args)
+        {
+            WriteVerbose(args.Message);
+        }
+
+        private void WriteWarningSender(object sender, StreamEventArgs args)
+        {
+            WriteWarning(args.Message);
+        }
+
+        private void EnqueueDebugSender(object sender, StreamEventArgs args)
+        {
+            DebugMessages.Enqueue(args.Message);
         }
     }
 }

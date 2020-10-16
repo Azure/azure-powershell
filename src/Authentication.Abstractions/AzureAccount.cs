@@ -106,6 +106,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         AccessToken = "AccessToken",
 
         /// <summary>
+        /// Account object id + home tenant id.
+        /// </summary>
+        HomeAccountId = "HomeAccountId",
+
+        /// <summary>
+        /// Indicate whether to use user name and password for authentication.
+        /// </summary>
+        UsePasswordAuth = "UsePasswordAuth",
+
+        /// <summary>
         /// Access token for AD Graph service.
         /// </summary>
         GraphAccessToken = "GraphAccessToken",

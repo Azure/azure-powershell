@@ -7,7 +7,7 @@
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://aka.ms/azps-common-license</licenseUrl>
+    <license type="file">LICENSE.txt</license>
     <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
     <description>Microsoft Azure PowerShell Clients Graph Rbac library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
     <copyright>Copyright © Microsoft Corporation</copyright>

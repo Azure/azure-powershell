@@ -16,31 +16,8 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    /// <summary>
-    /// State storage for token cache
-    /// </summary>
-    [Serializable]
-    public class AzureTokenCache : IAzureTokenCache, IAzureMsalTokenCache
+    public interface IAzureEventListenerFactory
     {
-        /// <summary>
-        /// Token Cache serialization
-        /// </summary>
-        public virtual byte[] CacheData {get; set;}
-
-        /// <summary>
-        /// Get the user token cache.
-        /// </summary>
-        public object GetUserCache()
-        {
-            return null;
-        }
-
-        /// <summary>
-        /// Remove all token cache state
-        /// </summary>
-        public virtual void Clear()
-        {
-            CacheData = null;
-        }
+        IAzureEventListener GetAzureEventListener(Action<string> action);
     }
 }

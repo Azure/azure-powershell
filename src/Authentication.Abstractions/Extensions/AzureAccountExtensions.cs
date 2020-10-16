@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="account">The account to get tenant from</param>
         public static string GetCommonTenant(this IAzureAccount account)
         {
-            string result = AzureEnvironmentConstants.CommonAdTenant;
+            string result = "organizations";
             if (account.IsPropertySet(AzureAccount.Property.Tenants))
             {
                 var candidate = account.GetTenants().FirstOrDefault();

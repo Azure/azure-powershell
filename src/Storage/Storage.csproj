@@ -20,7 +20,7 @@
     <PackageTags>azure;powershell;storage</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
-    <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
     <NoPackageAnalysis>true</NoPackageAnalysis>
@@ -66,6 +66,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt" Link="LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
