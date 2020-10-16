@@ -45,7 +45,7 @@ Create a new network rule set.
 Default action, could be 'Allow' or 'Deny'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddAddNetworkRuleWithoutInputObject
 Aliases:
 Accepted values: Allow, Deny
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddNetworkRuleWithInputObject
 Aliases:
 Accepted values: Allow, Deny
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Input PSNetworkRuleSet
 
 ```yaml
-Type: PSNetworkRuleSet
+Type: Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet
 Parameter Sets: AddNetworkRuleWithInputObject
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 List of Network rules
 
 ```yaml
-Type: IPSNetworkRule[]
+Type: Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[]
 Parameter Sets: (All)
 Aliases:
 

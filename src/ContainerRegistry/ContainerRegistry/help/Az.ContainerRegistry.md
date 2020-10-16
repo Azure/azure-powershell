@@ -24,7 +24,7 @@ Gets the login credentials for a container registry.
 Gets a replication of a container registry.
 
 ### [Get-AzContainerRegistryUsage](Get-AzContainerRegistryUsage.md)
-Get usage of an azure container registry.
+Get Usage of an azure container registry.
 
 ### [Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
 Gets a container registry webhook.

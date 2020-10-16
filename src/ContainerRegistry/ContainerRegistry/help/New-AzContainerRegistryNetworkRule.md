@@ -44,7 +44,7 @@ Create virtualnetwork rule set.
 The action of network rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ Specifies the IP or IP range in CIDR format.
 Only IPV4 address is allowed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIPRule
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Indicate to create IPRule.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByIPRule
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkRule
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Indicate to create VirtualNetworkRule.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByVirtualNetworkRule
 Aliases:
 

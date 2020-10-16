@@ -55,7 +55,7 @@ Login to ACR with service principal application ID and password.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Azure Container Registry Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Password For Azure Container Registry.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithNameAndPasswordParameterSet
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 User Name For Azure Container Registry.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithNameAndPasswordParameterSet
 Aliases:
 
