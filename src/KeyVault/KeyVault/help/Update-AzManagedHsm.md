@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azmanagedhsm
@@ -57,7 +57,6 @@ Tags                                :
                                       Name        Value
                                       ====        =====
                                       testKey     testValued
-
 ```
 
 Updates tags for the managed Hsm named `$hsmName` in resource group `$resourceGroupName`.

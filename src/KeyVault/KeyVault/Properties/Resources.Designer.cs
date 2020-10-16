@@ -379,6 +379,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for importing. (Supported types: RSA-HSM).
+        /// </summary>
+        internal static string ImportNotSupported {
+            get {
+                return ResourceManager.GetString("ImportNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid application Id..
         /// </summary>
         internal static string InvalidApplicationId {
@@ -402,6 +411,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidCurrentSubscription {
             get {
                 return ResourceManager.GetString("InvalidCurrentSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid HSM name..
+        /// </summary>
+        internal static string InvalidHsmName {
+            get {
+                return ResourceManager.GetString("InvalidHsmName", resourceCulture);
             }
         }
         
@@ -456,6 +474,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyName {
             get {
                 return ResourceManager.GetString("InvalidKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid key properties.
+        /// </summary>
+        internal static string InvalidKeyProperties {
+            get {
+                return ResourceManager.GetString("InvalidKeyProperties", resourceCulture);
             }
         }
         

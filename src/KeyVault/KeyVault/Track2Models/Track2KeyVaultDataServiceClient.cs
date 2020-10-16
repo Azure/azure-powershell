@@ -1,7 +1,6 @@
 using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections;
@@ -36,7 +35,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private Track2VaultClient _vaultClient;
         private Track2HsmClient _hsmClient;
-        
+
+        #region KeyVault-related methods
+
         public string BackupCertificate(string vaultName, string certificateName, string outputBlobPath)
         {
             throw new NotImplementedException();
@@ -65,11 +66,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             return VaultClient.CreateKey(vaultName, keyName, keyAttributes, size, curveName);
-        }
-
-        public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
-        {
-            return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
         }
 
         public PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName)
@@ -391,5 +387,75 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region ManagedHsm-related methods
+
+        public string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath)
+        {
+            return HsmClient.BackupKey(managedHsmName, keyName, outputBlobPath);
+        }
+        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
+        {
+            return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
+        }
+
+        public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
+        {
+            return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
+        }
+
+        public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.DeleteKey(managedHsmName, keyName);
+        }
+
+        public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            return HsmClient.UpdateKey(managedHsmName, keyName, keyVersion, keyAttributes);
+        }
+
+        public PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.RecoverKey(managedHsmName, keyName);
+        }
+
+        public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.GetDeletedKey(managedHsmName, keyName);
+        }
+
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName)
+        {
+            return HsmClient.GetDeletedKeys(managedHsmName);
+        }
+
+        public PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion)
+        {
+            return HsmClient.GetKey(managedHsmName, keyName, keyVersion);
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName)
+        {
+            return HsmClient.GetKeys(managedHsmName);
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName)
+        {
+            return HsmClient.GetKeyAllVersions(managedHsmName, keyName);
+        }
+
+        public void PurgeManagedHsmKey(string managedHsmName, string keyName)
+        {
+            HsmClient.PurgeKey(managedHsmName, keyName);
+        }
+
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        {
+            return HsmClient.ImportKey(managedHsmName, keyName, webKey);
+        }
+
+        #endregion
+
     }
 }
