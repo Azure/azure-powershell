@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
                 if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
-                    if(AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache oldTokenCache))
+                    if(AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache oldTokenCache))
                     {
-                        if(oldTokenCache.GetType() == typeof(TokenCache))
+                        if(!oldTokenCache.IsPersistentCache)
                         {
                             var stream = new MemoryStream(tempResult.CacheData);
-                            var tokenCache = TokenCache.Deserialize(stream);
-                            AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
+                            var tokenCache = new PowerShellTokenCache(stream);
+                            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
                         }
                         else
                         {
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     byte[] cacheData = null;
 
 
-                    if (AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache))
+                    if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
                     {
-                        if (tokenCache is PersistentTokenCache)
+                        if (tokenCache.IsPersistentCache)
                         {
                             if (AzureSession.Instance.TryGetComponent(
                                 PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,

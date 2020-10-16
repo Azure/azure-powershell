@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.3.0-beta.2" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
@@ -26,6 +25,9 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+    <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
+      Executable: pwsh
+      Application arguments: -NoExit -Command "Import-Module C:\AME\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1"-->
     <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
   </Target>
 

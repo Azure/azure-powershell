@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using Hyak.Common;
 
@@ -174,8 +173,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return client;
         }
 
-        public abstract Task<byte[]> ReadAsync();
-        public abstract Task WriteAsync(byte[] bytes);
+        public abstract PowerShellTokenCache GetTokenCache();
 
     }
 }

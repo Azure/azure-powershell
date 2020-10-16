@@ -19,8 +19,6 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
@@ -534,21 +532,19 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 PowerShellTokenCacheProvider provider = null;
-                TokenCache tokenCache;
                 if (autoSaveEnabled)
                 {
                     provider = new SharedTokenCacheProvider();
-                    tokenCache = new PersistentTokenCache(true);
                 }
                 else // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
                 {
                     provider = new InMemoryTokenCacheProvider();
-                    tokenCache = new TokenCache();
                 }
+                var tokenCache = provider.GetTokenCache();
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
-                AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache);
+                AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
 
 #if DEBUG
             }

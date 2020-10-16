@@ -1,9 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+using System;
+
+using Azure.Identity;
 
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
@@ -21,25 +32,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalTokenCache = adalTokenCache;
         }
 
-        public override Task<byte[]> ReadAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task WriteAsync(byte[] bytes)
-        {
-            throw new NotImplementedException();
-        }
-
         public override byte[] ReadTokenData()
         {
-            return GetCacheHelper(PowerShellClientId).LoadUnencryptedTokenCache();
+            return GetCacheHelper().LoadUnencryptedTokenCache();
         }
 
         public override void FlushTokenData()
         {
-            GetCacheHelper(PowerShellClientId).SaveUnencryptedTokenCache(_tokenCacheDataToFlush);
-            base.FlushTokenData();
+            if (_tokenCacheDataToFlush != null)
+            {
+                GetCacheHelper().SaveUnencryptedTokenCache(_tokenCacheDataToFlush);
+                base.FlushTokenData();
+            }
         }
 
         /// <summary>
@@ -50,7 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             try
             {
-                var cacheHelper = GetCacheHelper(PowerShellClientId);
+                var cacheHelper = GetCacheHelper();
                 cacheHelper.VerifyPersistence();
             }
             catch (MsalCachePersistenceException e)
@@ -80,19 +84,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     finally
                     {
                         AdalTokenCache = null;
-                        var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
+                        var cacheHelper = GetCacheHelper();
                         cacheHelper.RegisterCache(client.UserTokenCache);
                     }
                 });
             }
             else
             {
-                var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
+                var cacheHelper = GetCacheHelper();
                 cacheHelper.RegisterCache(client.UserTokenCache);
             }
         }
 
-        private static MsalCacheHelper GetCacheHelper(String clientId)
+        public override void ClearCache()
+        {
+            GetCacheHelper().Clear();
+        }
+
+        private static MsalCacheHelper GetCacheHelper()
         {
             if (_helper != null)
             {
@@ -103,15 +112,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 // Double check helper existence
                 if (_helper == null)
                 {
-                    _helper = CreateCacheHelper(clientId);
+                    _helper = CreateCacheHelper();
                 }
                 return _helper;
             }
         }
 
-        private static MsalCacheHelper CreateCacheHelper(string clientId)
+        private static MsalCacheHelper CreateCacheHelper()
         {
             return MsalCacheHelperProvider.GetCacheHelper();
+        }
+
+        public override PowerShellTokenCache GetTokenCache()
+        {
+            return new PowerShellTokenCache(new PersistentTokenCache());
         }
     }
 }

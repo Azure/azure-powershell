@@ -30,15 +30,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var silentParameters = parameters as SilentParameters;
             var onPremise = silentParameters.Environment.OnPremise;
-            var tenantId = onPremise ? AdfsTenant : silentParameters.TenantId;
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = silentParameters.Environment.GetEndpoint(silentParameters.ResourceId) ?? silentParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var authority = onPremise ?
-                                silentParameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
+            var authority = silentParameters.Environment.ActiveDirectoryAuthority;
 
-            AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
-            var options = new SharedTokenCacheCredentialOptions(tokenCache)
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
+            var options = new SharedTokenCacheCredentialOptions(tokenCache.TokenCache)
             {
                 EnableGuestTenantAuthentication = true,
                 ClientId = AuthenticationHelpers.PowerShellClientId,

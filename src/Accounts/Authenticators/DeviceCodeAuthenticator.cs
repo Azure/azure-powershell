@@ -31,24 +31,24 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var deviceCodeParameters = parameters as DeviceCodeParameters;
             var tokenCacheProvider = parameters.TokenCacheProvider;
             var onPremise = parameters.Environment.OnPremise;
-            var tenantId = onPremise ? AdfsTenant : parameters.TenantId;
+            //null instead of "organizations" should be passed to Azure.Identity to support MSA account 
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = parameters.Environment.GetEndpoint(parameters.ResourceId) ?? parameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = onPremise ?
-                                parameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var authority = parameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
-            AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
 
             DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
             {
                 DeviceCodeCallback = DeviceCodeFunc,
                 AuthorityHost = new Uri(authority),
                 ClientId = clientId,
-                TenantId = tenantId,
-                TokenCache = tokenCache,
+                TenantId = onPremise ? tenantId : null,
+                TokenCache = tokenCache.TokenCache,
             };
             var codeCredential = new DeviceCodeCredential(options);
             var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);

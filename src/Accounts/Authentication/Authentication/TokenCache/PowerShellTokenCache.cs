@@ -12,39 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
 
-using Microsoft.Identity.Client;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class InMemoryTokenCacheProvider : PowerShellTokenCacheProvider
+    public class PowerShellTokenCache
     {
-        public InMemoryTokenCacheProvider()
+        public TokenCache TokenCache { get; private set; }
+
+        public PowerShellTokenCache(TokenCache tokenCache)
         {
+            TokenCache = tokenCache;
         }
 
-        public override byte[] ReadTokenData()
+        public PowerShellTokenCache(Stream stream)
         {
-            return null;
+            TokenCache = TokenCache.Deserialize(stream);
         }
 
-        public override void FlushTokenData()
+        public static PowerShellTokenCache Deserialize(Stream stream, CancellationToken cancellationToken = default)
         {
+            var cache = TokenCache.Deserialize(stream);
+            return new PowerShellTokenCache(cache);
         }
 
-        public override void ClearCache()
+        public void Serialize(Stream stream)
         {
+            TokenCache.Serialize(stream);
         }
 
-        protected override void RegisterCache(IPublicClientApplication client)
+        public bool IsPersistentCache
         {
-
-        }
-
-        public override PowerShellTokenCache GetTokenCache()
-        {
-            return new PowerShellTokenCache(new global::Azure.Identity.TokenCache());
+            get
+            {
+                return TokenCache is PersistentTokenCache;
+            }
         }
     }
 }

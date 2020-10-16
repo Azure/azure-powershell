@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
         protected const string AdfsTenant = "adfs";
+        protected const string OrganizationsTenant = "organizations";
 
         public IAuthenticator Next { get; set; }
         public abstract bool CanAuthenticate(AuthenticationParameters parameters);

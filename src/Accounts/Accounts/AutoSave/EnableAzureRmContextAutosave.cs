@@ -16,8 +16,6 @@ using System;
 using System.IO;
 using System.Management.Automation;
 
-using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
@@ -95,9 +93,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             //must use explicit interface type PowerShellTokenCacheProvider below instead of var, otherwise could not retrieve registered component
             PowerShellTokenCacheProvider factory = new SharedTokenCacheProvider();
-            TokenCache tokenCache = new PersistentTokenCache();
+            var tokenCache = factory.GetTokenCache();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory, true);
-            AzureSession.Instance.RegisterComponent(nameof(TokenCache), () => tokenCache, true);
+            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
 
             if (writeAutoSaveFile)
             {

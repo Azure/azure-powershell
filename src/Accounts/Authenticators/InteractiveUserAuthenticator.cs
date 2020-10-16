@@ -43,24 +43,24 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var interactiveParameters = parameters as InteractiveParameters;
             var onPremise = interactiveParameters.Environment.OnPremise;
-            var tenantId = onPremise ? AdfsTenant : interactiveParameters.TenantId;
+            //null instead of "organizations" should be passed to Azure.Identity to support MSA account 
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
 
             var requestContext = new TokenRequestContext(scopes);
-            var authority = onPremise ?
-                    interactiveParameters.Environment.ActiveDirectoryAuthority :
-                    AuthenticationHelpers.GetAuthority(parameters.Environment, tenantId);
+            var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
-            AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
 
             var options = new InteractiveBrowserCredentialOptions()
             {
                 ClientId = clientId,
                 TenantId = tenantId,
-                TokenCache = tokenCache,
+                TokenCache = tokenCache.TokenCache,
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
             };

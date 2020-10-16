@@ -47,19 +47,17 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = onPremise ?
-                                upParameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var authority = upParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
             UsernamePasswordCredential passwordCredential;
 
-            AzureSession.Instance.TryGetComponent(nameof(TokenCache), out TokenCache tokenCache);
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
 
             var credentialOptions = new UsernamePasswordCredentialOptions()
             {
                 AuthorityHost = new Uri(authority),
-                TokenCache = tokenCache
+                TokenCache = tokenCache.TokenCache
             };
             if (upParameters.Password != null)
             {
