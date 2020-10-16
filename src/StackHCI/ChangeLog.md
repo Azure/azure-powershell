@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Get the App Roles assigned correctly in case of Stack HCI registration using WAC token.
 
 ## Version 0.2.0
 * Added hash table for region.
