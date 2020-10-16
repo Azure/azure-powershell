@@ -634,11 +634,11 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
-  <data name="GeoBackupRedundancyChoosenWarning" xml:space="preserve">
-    <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions.</value>
+  <data name="GeoBackupRedundancyChosenWarning" xml:space="preserve">
+    <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
-  <data name="GeoBackupRedundancyNotChoosenWarning" xml:space="preserve">
-    <value>You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit https://aka.ms/micreate-ragrs-regions.</value>
+  <data name="BackupRedundancyNotChosenTakeGeoWarning" xml:space="preserve">
+    <value>You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
   <data name="StopAzureSqlInstanceDatabaseLogReplayDescription" xml:space="preserve">
     <value>Stopping Azure Sql Managed Database Log Replay by removing '{0}' database.</value>
@@ -648,5 +648,11 @@
   </data>
   <data name="StartManagedDatabaseLogReplay_LastBackupName_Warning" xml:space="preserve">
     <value>LastBackupName is required parameter when AutoCompleteRestore is set to true. Please explicitly provide it.</value>
+  </data>
+  <data name="BackupRedundancyNotChosenTakeSourceWarning" xml:space="preserve">
+    <value>You have not specified the value for backup storage redundancy which will default to the source's backup storage redundancy. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
+  </data>
+  <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
+    <value>Parameter '{0}' and '{1}' both being null is not allowed.</value>
   </data>
 </root>

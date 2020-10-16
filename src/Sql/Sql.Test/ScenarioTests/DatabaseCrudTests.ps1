@@ -263,7 +263,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "southeastasia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -272,7 +272,7 @@ function Test-CreateDatabaseWithZoneRedundancy
 		# Create database with no zone redundancy set
 		$databaseName = Get-DatabaseName
 		$job = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -Edition Premium -AsJob
+			-DatabaseName $databaseName -Edition Premium -AsJob -Force
 		$job | Wait-Job
 		$db = $job.Output
 
@@ -284,7 +284,7 @@ function Test-CreateDatabaseWithZoneRedundancy
 		# Create database with zone redundancy true
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -Edition Premium -ZoneRedundant
+			-DatabaseName $databaseName -Edition Premium -ZoneRedundant -Force
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.ZoneRedundant
@@ -293,7 +293,7 @@ function Test-CreateDatabaseWithZoneRedundancy
 		# Create database with zone redundancy false
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -Edition Premium -ZoneRedundant:$false
+			-DatabaseName $databaseName -Edition Premium -ZoneRedundant:$false -Force
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.ZoneRedundant
@@ -312,7 +312,7 @@ function Test-CreateDatabaseWithZoneRedundancy
 function Test-CreateDatabaseWithBackupStorageRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -338,14 +338,14 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "westcentralus"
+	Test-UpdateDatabaseInternal "southeastasia"
 }
 
 <#
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($location = "westcentralus")
+function Test-UpdateDatabaseInternal ($location = "southeastasia")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -353,7 +353,7 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0 -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
@@ -391,7 +391,7 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
 
 		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
 				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse -AsJob
@@ -538,20 +538,21 @@ function Test-UpdateVcoreDatabaseLicenseType()
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "westcentralus"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	Write-Debug $location
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	$databaseName = Get-DatabaseName
 	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Edition Premium
+		-Edition Premium -Force
 	Assert-AreEqual $db1.DatabaseName $databaseName
 	Assert-NotNull $db1.ZoneRedundant
 	Assert-AreEqual "false" $db1.ZoneRedundant
 
 	$databaseName = Get-DatabaseName
 	$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Edition Premium -ZoneRedundant
+		-Edition Premium -ZoneRedundant -Force
 	Assert-AreEqual $db2.DatabaseName $databaseName
 	Assert-NotNull $db2.ZoneRedundant
 	Assert-AreEqual "true" $db2.ZoneRedundant
@@ -658,7 +659,7 @@ function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 	$server = Create-ServerForTest $rg $location
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Edition Premium -ZoneRedundant
+		-Edition Premium -ZoneRedundant -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 	Assert-NotNull $db.ZoneRedundant
 	Assert-AreEqual "true" $db.ZoneRedundant
@@ -696,7 +697,7 @@ function Test-RenameDatabase
 
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB -Force
 		Assert-AreEqual $db1.DatabaseName $databaseName
 
 		# Rename with params
@@ -759,7 +760,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
-		$dwdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$dwdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName 
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $dwdb.MaxSizeBytes
 		Assert-AreEqual $dwdb2.Edition $dwdb.Edition
@@ -803,7 +804,7 @@ function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia
 
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -BackupStorageRedundancy Geo	
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -BackupStorageRedundancy Geo -Force
 	Assert-AreEqual $db1.DatabaseName $databaseName
 	Assert-NotNull $db1.BackupStorageRedundancy
 	Assert-AreEqual	$db1.BackupStorageRedundancy "Geo"
@@ -855,14 +856,14 @@ function Test-GetDatabaseWithZoneRedundancy
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "southeastasia"
+	Test-RemoveDatabaseInternal "westcentralus"
 }
 
 <#
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($location = "southeastasia")
+function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -870,13 +871,13 @@ function Test-RemoveDatabaseInternal  ($location = "southeastasia")
 
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
-	Assert-AreEqual $db1.DatabaseName $databaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB -Force
+	Assert-AreEqual $db1.DatabaseName $databaseName 
 
 	# Create database with non-defaults
 	$databaseName = Get-DatabaseName
 	$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Force
 	Assert-AreEqual $db2.DatabaseName $databaseName
 
 	try
@@ -884,7 +885,7 @@ function Test-RemoveDatabaseInternal  ($location = "southeastasia")
 		# Create data warehouse database
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 
 		Remove-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force

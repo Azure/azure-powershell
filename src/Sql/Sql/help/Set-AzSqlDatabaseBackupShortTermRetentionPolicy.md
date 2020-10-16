@@ -14,49 +14,59 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-ResourceGroupName] <String>
- [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
+ [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
  -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
-The policy is the retention period, in days, for point-in-time restore backups.
+The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet sets the short term retention policy registered to this database.
+The policy is the retention period in days and differential backup interval in hours, for point-in-time restore backups.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 35
- ResourceGroupName ServerName  DatabaseName RetentionDays
------------------ ----------  ------------ -------------
-resourcegroup01   server01    database01   35
+PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 6 -DiffBackupIntervalInHours 24
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- -------------------------
+resourcegroup01   server01   database01   6             24
 ```
 
-This command sets the short term retention policy for database01 to 35 days.
+This command sets the short term retention policy for database01 to 6 retention days and 24 differential backup interval hours.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 35
- ResourceGroupName ServerName  DatabaseName RetentionDays
------------------ ----------  ------------ -------------
-resourcegroup01   server01    database01   35
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 5 -DiffBackupIntervalInHours 12
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- ------------------------
+resourcegroup01   server01   database01   5             12
 ```
 
-This command sets the short term retention policy for database01 to 35 days via piping in a database object.
+This command sets the short term retention policy for database01 to 5 retention days and 12 differential backup interval hours via piping in a database object.
+
+### Example 3
+```powershell
+PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 7
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- -------------------------
+resourcegroup01   server01   database01   7             12
+```
+
+This command sets the short term retention policy for database01 to 7 retention days only. DiffBackupIntervalInHours is unchanged.  
 
 ## PARAMETERS
 
@@ -105,6 +115,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiffBackupIntervalInHours
+The differential backup interval, in hours.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 24
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -143,9 +168,9 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
-Default value: None
+Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
