@@ -36,6 +36,7 @@ The **Add-AzHDInsightClusterIdentity** cmdlet adds a cluster identity to the Azu
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value 
 PS C:\> $storageContainer = "container001"
@@ -72,9 +73,9 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageAccountContainer
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageAccountContainer
 ```
 
 This command adds Cluster Identity info to the cluster named your-hadoop-001, allowing the cluster to access Azure Data Lake Store.

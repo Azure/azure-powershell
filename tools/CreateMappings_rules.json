@@ -584,5 +584,13 @@
   {
     "alias": "ConnectedMachine",
     "regex": "ConnectedMachine"
+  },
+  {
+    "regex": "VMWare",
+    "alias": "VMWare"
+  },
+  {
+    "alias": "Dedicated HSM",
+    "regex": "DedicatedHsm"
   }
 ]

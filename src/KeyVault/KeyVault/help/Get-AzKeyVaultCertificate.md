@@ -109,8 +109,14 @@ This command gets the certificate named TestCert01 from the key vault named Cont
 ```powershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 $secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
-
-$secretByte = [Convert]::FromBase64String($secret.SecretValueText)
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
 $x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
 $x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
 $type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx

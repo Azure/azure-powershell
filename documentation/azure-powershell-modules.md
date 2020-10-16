@@ -41,6 +41,7 @@ Data Lake Analytics                   | `Az.DataLakeAnalytics`                  
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
 Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
 Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
+Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery]
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
 Windows Virtual Desktop               | `Az.DesktopVirtualization`              | [![DesktopVirtualization]][DesktopVirtualizationGallery]
 Device Provisioning Services          | `Az.DeviceProvisioningServices`         | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery]
@@ -113,7 +114,9 @@ Support                               | `Az.Support`                            
 Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery]
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
+VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
+
 
 <!-- References -->
 
@@ -141,7 +144,7 @@ Web App Service                       | `Az.Websites`                           
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
-[CustomProviders]:          https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders
+[CustomProviders]:            https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
 [Databricks]:                 https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks
@@ -150,6 +153,7 @@ Web App Service                       | `Az.Websites`                           
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
 [DataMigration]:              https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
+[DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
 [DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
@@ -222,6 +226,7 @@ Web App Service                       | `Az.Websites`                           
 [Synapse]:                    https://img.shields.io/powershellgallery/v/Az.Synapse.svg?style=flat-square&label=Az.Synapse
 [TimeSeriesInsights]:         https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
+[VMWare]:                     https://img.shields.io/powershellgallery/v/Az.VMWare.svg?style=flat-square&label=Az.VMWare
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 
 <!-- PS Gallery -->
@@ -244,7 +249,7 @@ Web App Service                       | `Az.Websites`                           
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
-[ConnectedMachine]:                  https://www.powershellgallery.com/packages/Az.ConnectedMachine/
+[ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -257,6 +262,7 @@ Web App Service                       | `Az.Websites`                           
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/
 [DataMigrationGallery]:              https://www.powershellgallery.com/packages/Az.DataMigration/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
+[DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
 [DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
@@ -329,4 +335,5 @@ Web App Service                       | `Az.Websites`                           
 [SynapseGallery]:                    https://www.powershellgallery.com/packages/Az.Synapse/
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
+[VMWareGallery]:                     https://www.powershellgallery.com/packages/Az.VMWare/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/

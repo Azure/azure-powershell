@@ -409,7 +409,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubjectName
-Specifies the subject name of the certificate.
+Specifies the subject name of the certificate. 
+
+> [!NOTE]
+> If you must use a comma (,) or a period (.) within a property in the `SubjectName` parameter, 
+> you must enclose the property field in quotation marks. For example, you may use O="Contoso, Ltd." in the Organization Name field.
 
 ```yaml
 Type: System.String
