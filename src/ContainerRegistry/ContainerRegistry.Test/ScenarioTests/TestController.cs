@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 
                 if (scripts != null)
                 {
-                    
                     _helper.RunPowerShellTest(scripts);
                 }
             }
