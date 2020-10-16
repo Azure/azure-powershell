@@ -33,10 +33,10 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
     [Parameter(HelpMessage="Credential for Remote Desktop Extension.", Mandatory)]
     [PSCredential] $Credential,
 	
-    [Parameter(HelpMessage="Expiration for Remote Desktop Extension.", Mandatory)]
-    [DateTime] $Expiration = (Get-Date),
+    [Parameter(HelpMessage="Expiration for Remote Desktop Extension.")]
+    [DateTime] $Expiration,
 	
-    [Parameter(HelpMessage="Remote Desktop Extension version.", Mandatory)]
+    [Parameter(HelpMessage="Remote Desktop Extension version.")]
     [string] $TypeHandlerVersion,
 	
     [string[]] $RolesAppliedTo
@@ -45,10 +45,10 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
   process {
     $RDPPublisher = "Microsoft.Windows.Azure.Extensions"
     $RDPExtensionType = "RDP"
-    
-    $rdpSetting = "<PublicConfig><UserName>$Credential.UserName</UserName><Expiration>$Expiration</Expiration></PublicConfig>";
-    $rdpProtectedSetting = "<PrivateConfig><Password>$Credential.Password</Password></PrivateConfig>";
-    
+
+    $rdpSetting = "<PublicConfig><UserName>" + $Credential.UserName + "</UserName><Expiration>" + $Expiration +"</Expiration></PublicConfig>";
+    $rdpProtectedSetting = "<PrivateConfig><Password>"+ $Credential.Password + "</Password></PrivateConfig>";
+
     return New-AzCloudServiceExtensionObject -Name $Name -Publisher $RDPPublisher -Type $RDPExtensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $rdpSetting -ProtectedSetting $rdpProtectedSetting -RolesAppliedTo $RolesAppliedTo
   }
 }
