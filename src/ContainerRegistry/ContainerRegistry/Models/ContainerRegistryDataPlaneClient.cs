@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             _clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager);
             _accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
-            _suffix = AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix;
+            _suffix = context.Environment.ContainerRegistryEndpointSuffix;
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(_clientCredential);
         }
 

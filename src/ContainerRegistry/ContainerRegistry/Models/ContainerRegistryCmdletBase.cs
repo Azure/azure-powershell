@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string ListReplicationByNameResourceGroupParameterSet = "ListReplicationByNameResourceGroupParameterSet";
         protected const string ListReplicationByRegistryObjectParameterSet = "ListReplicationByRegistryObjectParameterSet";
         protected const string ImportImageByResourceId = "ImportImageByResourceId";
+        protected const string ImportImageByResourceIdWithCredential = "ImportImageByResourceIdWithCredential";
         protected const string ImportImageByRegistryUri = "ImportImageByRegistryUri";
         protected const string ImportImageByRegistryUriWithCredential = "ImportImageByRegistryUriWithCredential";
         protected const string AddNetworkRuleWithInputObject = "AddNetworkRuleWithInputObject";

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
         public string SourceImage { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ImportImageByResourceId, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier of the source Azure Container Registry.")]
+        [Parameter(Mandatory = true, ParameterSetName = ImportImageByResourceIdWithCredential, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier of the source Azure Container Registry.")]
         [ValidateNotNullOrEmpty]
         public string SourceRegistryResourceId { get; set; }
         
@@ -63,12 +64,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
         public string[] UntaggedTargetRepository { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ImportImageByRegistryUriWithCredential, HelpMessage = "The username to authenticate with the source registry.")]
+        [Parameter(Mandatory = false, ParameterSetName = ImportImageByResourceIdWithCredential, HelpMessage = "The username to authenticate with the source registry.")]
         [ValidateNotNullOrEmpty]
-        public string CredentialUsername { get; set; }
+        public string Username { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ImportImageByRegistryUriWithCredential, HelpMessage = "The password used to authenticate with the source registry.")]
+        [Parameter(Mandatory = true, ParameterSetName = ImportImageByResourceIdWithCredential, HelpMessage = "The password used to authenticate with the source registry.")]
         [ValidateNotNullOrEmpty]
-        public string CredentialPassword { get; set; }
+        public string Password { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -82,7 +85,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
             PSImportImageParameters parameter = new PSImportImageParameters(source: new PSImportSource(sourceImage: SourceImage,
                                                                                                        resourceId: SourceRegistryResourceId,
                                                                                                        registryUri: SourceRegistryUri,
-                                                                                                       credentials: ParameterSetName.Equals(ImportImageByRegistryUriWithCredential) ? new PSImportSourceCredentials(CredentialUsername, CredentialPassword) : null), 
+                                                                                                       credentials: this.IsParameterBound(c => c.Password) ? new PSImportSourceCredentials(Username, Password) : null), 
                                                                             targetTags: new List<string>(TargetTag), 
                                                                             untaggedTargetRepositories: this.IsParameterBound(c => c.UntaggedTargetRepository) ?  new List<string>(UntaggedTargetRepository) : null, 
                                                                             mode: Mode);
