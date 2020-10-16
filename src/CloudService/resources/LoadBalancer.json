@@ -3,7 +3,7 @@
   "info": {
     "title": "NetworkManagementClient",
     "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
-    "version": "2020-04-01"
+    "version": "2020-06-01"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -57,10 +57,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -76,13 +76,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Delete load balancer": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerDelete.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerDelete.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -112,10 +112,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           },
           {
             "name": "$expand",
@@ -135,13 +135,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Get load balancer": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerGet.json"
           }
         }
       },
@@ -176,10 +176,10 @@
             "description": "Parameters supplied to the create or update load balancer operation."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -198,25 +198,25 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Create load balancer": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerCreate.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerCreate.json"
           },
           "Create load balancer with Standard SKU": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerCreateStandardSku.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerCreateStandardSku.json"
           },
           "Create load balancer with Frontend IP in Zone 1": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerCreateWithZones.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerCreateWithZones.json"
           },
           "Create load balancer with inbound nat pool": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerCreateWithInboundNatPool.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerCreateWithInboundNatPool.json"
           },
           "Create load balancer with outbound rules": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerCreateWithOutboundRules.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerCreateWithOutboundRules.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -250,15 +250,15 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/TagsObject"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/TagsObject"
             },
             "description": "Parameters supplied to update load balancer tags."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -271,13 +271,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Update load balancer tags": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerUpdateTags.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerUpdateTags.json"
           }
         }
       }
@@ -291,10 +291,10 @@
         "description": "Gets all the load balancers in a subscription.",
         "parameters": [
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -307,13 +307,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "List all load balancers": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerListAll.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerListAll.json"
           }
         },
         "x-ms-pageable": {
@@ -337,10 +337,10 @@
             "description": "The name of the resource group."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -353,13 +353,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "List load balancers in resource group": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerList.json"
           }
         },
         "x-ms-pageable": {
@@ -390,10 +390,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -406,16 +406,16 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerBackendAddressPoolList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerBackendAddressPoolList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerBackendAddressPoolList.json"
           },
           "Load balancer with BackendAddressPool containing BackendAddresses": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LBBackendAddressPoolListWithBackendAddressesPoolType.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LBBackendAddressPoolListWithBackendAddressesPoolType.json"
           }
         },
         "x-ms-pageable": {
@@ -453,10 +453,10 @@
             "description": "The name of the backend address pool."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -469,16 +469,16 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerBackendAddressPoolGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerBackendAddressPoolGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerBackendAddressPoolGet.json"
           },
           "LoadBalancer with BackendAddressPool with BackendAddresses": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LBBackendAddressPoolWithBackendAddressesGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LBBackendAddressPoolWithBackendAddressesGet.json"
           }
         }
       },
@@ -520,10 +520,10 @@
             "description": "Parameters supplied to the create or update load balancer backend address pool operation."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -542,16 +542,16 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Update load balancer backend pool with backend addresses containing virtual network and  IP address.": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LBBackendAddressPoolWithBackendAddressesPut.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LBBackendAddressPoolWithBackendAddressesPut.json"
           },
           "Update load balancer backend pool with backend addresses containing virtual network and IP address defined in network interfaces.": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LBBackendAddressPoolWithBackendAddressesPutWithNICIPConfiguration.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LBBackendAddressPoolWithBackendAddressesPutWithNICIPConfiguration.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -588,10 +588,10 @@
             "description": "The name of the backend address pool."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -607,13 +607,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "BackendAddressPoolDelete": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerBackendAddressPoolDelete.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerBackendAddressPoolDelete.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -645,10 +645,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -661,13 +661,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerFrontendIPConfigurationList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerFrontendIPConfigurationList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerFrontendIPConfigurationList.json"
           }
         },
         "x-ms-pageable": {
@@ -705,10 +705,10 @@
             "description": "The name of the frontend IP configuration."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -721,13 +721,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerFrontendIPConfigurationGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerFrontendIPConfigurationGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerFrontendIPConfigurationGet.json"
           }
         }
       }
@@ -755,10 +755,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -771,7 +771,7 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
@@ -780,7 +780,7 @@
         },
         "x-ms-examples": {
           "InboundNatRuleList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/InboundNatRuleList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/InboundNatRuleList.json"
           }
         }
       }
@@ -815,10 +815,10 @@
             "description": "The name of the inbound nat rule."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -834,13 +834,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "InboundNatRuleDelete": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/InboundNatRuleDelete.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/InboundNatRuleDelete.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -877,10 +877,10 @@
             "description": "The name of the inbound nat rule."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           },
           {
             "name": "$expand",
@@ -900,13 +900,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "InboundNatRuleGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/InboundNatRuleGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/InboundNatRuleGet.json"
           }
         }
       },
@@ -948,10 +948,10 @@
             "description": "Parameters supplied to the create or update inbound nat rule operation."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -970,7 +970,7 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
@@ -980,7 +980,7 @@
         },
         "x-ms-examples": {
           "InboundNatRuleCreate": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/InboundNatRuleCreate.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/InboundNatRuleCreate.json"
           }
         }
       }
@@ -1008,10 +1008,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1024,7 +1024,7 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
@@ -1033,7 +1033,7 @@
         },
         "x-ms-examples": {
           "LoadBalancerLoadBalancingRuleList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerLoadBalancingRuleList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerLoadBalancingRuleList.json"
           }
         }
       }
@@ -1068,10 +1068,10 @@
             "description": "The name of the load balancing rule."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1084,13 +1084,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerLoadBalancingRuleGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerLoadBalancingRuleGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerLoadBalancingRuleGet.json"
           }
         }
       }
@@ -1118,10 +1118,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1134,7 +1134,7 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
@@ -1143,7 +1143,7 @@
         },
         "x-ms-examples": {
           "LoadBalancerOutboundRuleList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerOutboundRuleList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerOutboundRuleList.json"
           }
         }
       }
@@ -1178,10 +1178,10 @@
             "description": "The name of the outbound rule."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1194,13 +1194,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerOutboundRuleGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerOutboundRuleGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerOutboundRuleGet.json"
           }
         }
       }
@@ -1228,32 +1228,32 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
           "200": {
             "description": "Request successful. The operation returns a list of NetworkInterface resources.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/networkInterface.json#/definitions/NetworkInterfaceListResult"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/networkInterface.json#/definitions/NetworkInterfaceListResult"
             }
           },
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerNetworkInterfaceListVmss": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerNetworkInterfaceListVmss.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerNetworkInterfaceListVmss.json"
           },
           "LoadBalancerNetworkInterfaceListSimple": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerNetworkInterfaceListSimple.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerNetworkInterfaceListSimple.json"
           }
         },
         "x-ms-pageable": {
@@ -1284,10 +1284,10 @@
             "description": "The name of the load balancer."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1300,13 +1300,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerProbeList": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerProbeList.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerProbeList.json"
           }
         },
         "x-ms-pageable": {
@@ -1344,10 +1344,10 @@
             "description": "The name of the probe."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1360,13 +1360,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "LoadBalancerProbeGet": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancerProbeGet.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancerProbeGet.json"
           }
         }
       }
@@ -1396,10 +1396,10 @@
             "description": "Parameters that define which VIPs should be swapped."
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/ApiVersionParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -1412,13 +1412,13 @@
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/CloudError"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/CloudError"
             }
           }
         },
         "x-ms-examples": {
           "Swap VIPs berween two load balancers.": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/examples/LoadBalancersSwapPublicIpAddresses.json"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/examples/LoadBalancersSwapPublicIpAddresses.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1452,7 +1452,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to inbound rules that use this frontend IP."
         },
@@ -1460,7 +1460,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to inbound pools that use this frontend IP."
         },
@@ -1468,7 +1468,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to outbound rules that use this frontend IP."
         },
@@ -1476,7 +1476,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to load balancing rules that use this frontend IP."
         },
@@ -1485,28 +1485,28 @@
           "description": "The private IP address of the IP configuration."
         },
         "privateIPAllocationMethod": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/IPAllocationMethod",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/IPAllocationMethod",
           "description": "The Private IP allocation method."
         },
         "privateIPAddressVersion": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/IPVersion",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/IPVersion",
           "description": "Whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4."
         },
         "subnet": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/virtualNetwork.json#/definitions/Subnet",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/virtualNetwork.json#/definitions/Subnet",
           "description": "The reference to the subnet resource."
         },
         "publicIPAddress": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/publicIpAddress.json#/definitions/PublicIPAddress",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/publicIpAddress.json#/definitions/PublicIPAddress",
           "description": "The reference to the Public IP resource."
         },
         "publicIPPrefix": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "The reference to the Public IP Prefix resource."
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the frontend IP configuration resource."
         }
       },
@@ -1543,7 +1543,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "Frontend IP address of the load balancer."
@@ -1551,7 +1551,7 @@
     "LoadBalancerBackendAddressPropertiesFormat": {
       "properties": {
         "virtualNetwork": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/virtualNetwork.json#/definitions/VirtualNetwork",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/virtualNetwork.json#/definitions/VirtualNetwork",
           "description": "Reference to an existing virtual network."
         },
         "ipAddress": {
@@ -1560,7 +1560,7 @@
           "x-ms-azure-resource": false
         },
         "networkInterfaceIPConfiguration": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration",
           "description": "Reference to IP address defined in network interfaces."
         }
       },
@@ -1586,7 +1586,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration"
           },
           "description": "An array of references to IP addresses defined in network interfaces."
         },
@@ -1601,26 +1601,26 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to load balancing rules that use this backend address pool."
         },
         "outboundRule": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to an outbound rule that uses this backend address pool."
         },
         "outboundRules": {
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "An array of references to outbound rules that use this backend address pool."
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the backend address pool resource."
         }
       },
@@ -1650,7 +1650,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "Pool of backend IP addresses."
@@ -1658,15 +1658,15 @@
     "LoadBalancingRulePropertiesFormat": {
       "properties": {
         "frontendIPConfiguration": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to frontend IP addresses."
         },
         "backendAddressPool": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs."
         },
         "probe": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "The reference to the load balancer probe used by the load balancing rule."
         },
         "protocol": {
@@ -1715,7 +1715,7 @@
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the load balancing rule resource."
         }
       },
@@ -1749,7 +1749,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "A load balancing rule for a load balancer."
@@ -1760,7 +1760,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "The load balancer rules that use this probe."
         },
@@ -1798,7 +1798,7 @@
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the probe resource."
         }
       },
@@ -1832,7 +1832,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "A load balancer probe."
@@ -1840,12 +1840,12 @@
     "InboundNatRulePropertiesFormat": {
       "properties": {
         "frontendIPConfiguration": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to frontend IP addresses."
         },
         "backendIPConfiguration": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/networkInterface.json#/definitions/NetworkInterfaceIPConfiguration",
           "description": "A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP."
         },
         "protocol": {
@@ -1877,7 +1877,7 @@
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the inbound NAT rule resource."
         }
       },
@@ -1907,7 +1907,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "Inbound NAT rule of the load balancer."
@@ -1915,7 +1915,7 @@
     "InboundNatPoolPropertiesFormat": {
       "properties": {
         "frontendIPConfiguration": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to frontend IP addresses."
         },
         "protocol": {
@@ -1952,7 +1952,7 @@
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the inbound NAT pool resource."
         }
       },
@@ -1988,7 +1988,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "Inbound NAT pool of the load balancer."
@@ -2003,17 +2003,17 @@
         "frontendIPConfigurations": {
           "type": "array",
           "items": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
           },
           "description": "The Frontend IP addresses of the load balancer."
         },
         "backendAddressPool": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs."
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the outbound rule resource."
         },
         "protocol": {
@@ -2069,7 +2069,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource"
         }
       ],
       "description": "Outbound rule of the load balancer."
@@ -2132,7 +2132,7 @@
         },
         "provisioningState": {
           "readOnly": true,
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/ProvisioningState",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/ProvisioningState",
           "description": "The provisioning state of the load balancer resource."
         }
       },
@@ -2157,7 +2157,7 @@
       },
       "allOf": [
         {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/Resource"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/Resource"
         }
       ],
       "description": "LoadBalancer resource."
@@ -2322,7 +2322,7 @@
     "LoadBalancerVipSwapRequestFrontendIPConfigurationProperties": {
       "properties": {
         "publicIPAddress": {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/network.json#/definitions/SubResource",
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/network.json#/definitions/SubResource",
           "description": "A reference to public IP address resource."
         }
       },

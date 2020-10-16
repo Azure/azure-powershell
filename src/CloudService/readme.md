@@ -51,8 +51,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(this-folder)/resources/CloudService.json
-  # - $(this-folder)/resources/loadBalancer.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/loadBalancer.json
+  - $(this-folder)/resources/loadBalancer.json
+  # - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/loadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
@@ -72,11 +72,6 @@ directive:
       subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
-  # - where:
-  #     subject: ^CloudServiceUpdateDomain$
-  #     verb: Set
-  #   set:
-  #     subject: ^CloudServiceDomain
   - where:
       subject: ^CloudService$|^CloudServiceInstanceView$|^CloudServiceRoleInstance$|^CloudServiceRoleInstanceView$
       verb: Get
@@ -96,7 +91,7 @@ directive:
   - where:
       subject: ^CloudService$
       verb: Update
-    remove: true
+    hide: true
   - where:
       subject: ^CloudService$
       verb: New
@@ -118,6 +113,7 @@ directive:
     - IPConfiguration
     - IPConfigurationPropertiesFormat
     - PublicIPAddress
+    # - CloudService
   - where:
       subject: ^LoadBalancerPublicIPAddress$
       verb: Switch

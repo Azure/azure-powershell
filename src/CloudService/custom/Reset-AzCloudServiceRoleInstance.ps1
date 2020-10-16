@@ -203,6 +203,7 @@ function Reset-AzCloudServiceRoleInstance {
                 
                 $PSBoundParameters.Add('InputObject', $RoleInstance)
             }
+            $Null = $PSBoundParameters.Remove('SubscriptionId')
             Az.CloudService.internal\Update-AzCloudServiceRoleInstance @PSBoundParameters
         }
         if ($PSBoundParameters.ContainsKey('Rebuild')) {
