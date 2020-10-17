@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>TypeConverter implementation for DeploymentResourceStatus.</summary>
+    /// <summary>Status of the Deployment</summary>
     public partial class DeploymentResourceStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
