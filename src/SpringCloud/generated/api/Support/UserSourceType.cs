@@ -6,10 +6,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Type of the source uploaded</summary>
     public partial struct UserSourceType :
         System.IEquatable<UserSourceType>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType Jar = @"Jar";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType NetCoreZip = @"NetCoreZip";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType Source = @"Source";
 
