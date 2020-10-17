@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Added DiffBackupIntervalInHours to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` 
-* Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified
-* Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object
+* Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
+* Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object [#13097]
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
