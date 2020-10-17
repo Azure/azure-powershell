@@ -29,6 +29,8 @@
     - Removed parameter -Sku
 * Updated New-AzFirewallPolicyNatRule cmdlet:
     - Added parameter Translated FQDN
+* Updated New-AzFirewallPolicyApplicationRule cmdlet:
+    - Added parameter WebCategory
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource

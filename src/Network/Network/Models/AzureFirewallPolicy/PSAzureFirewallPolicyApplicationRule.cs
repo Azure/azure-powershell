@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 7, PropertyName = "sourceIpGroups")]
         public List<string> SourceIpGroups { get; set; }
 
+        [JsonProperty(Order = 8, PropertyName = "webCategories")]
+        public List<string> WebCategories { get; set; }
+
         [JsonIgnore]
         public string ProtocolsText
         {
@@ -54,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
         }
 
-            [JsonIgnore]
+        [JsonIgnore]
         public string TargetFqdnsText
         {
             get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }
@@ -64,6 +67,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string FqdnTagsText
         {
             get { return JsonConvert.SerializeObject(FqdnTags, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string WebCategoriesText
+        {
+            get { return JsonConvert.SerializeObject(WebCategories, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType, uint port = 0)
