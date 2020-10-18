@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Sets the pricing data for the Azure Defender plans enabled in Azure Security Center for a scope.
+Sets the pricing data for the Azure Defender plans enabled in Azure Security Center for a subscription.
 
 ## SYNTAX
 
