@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
         {
             if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
             {
-                WriteDebug(Resources.AutosaveNotSupported);
+                WriteDebug(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                 WriteDebug(message);
             }
 

@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 }
                 catch (Exception e)
                 {
-                    if (retries == 0)
+                    if (!IsTransientException(e) || retries == 0)
                     {
                         throw e;
                     }
@@ -153,6 +153,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return token;
+        }
+
+        private static bool IsTransientException(Exception e)
+        {
+            var msalException = e.InnerException as MsalServiceException;
+            if(msalException != null)
+            {
+                return msalException.ErrorCode == MsalError.RequestTimeout ||
+                    msalException.ErrorCode == MsalError.ServiceNotAvailable;
+            }
+            return false;
         }
 
         public IAccessToken Authenticate(

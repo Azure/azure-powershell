@@ -490,38 +490,17 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = localAutosave;
                 }
 
-                bool shouldModifyContext = false;
                 if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
                 {
                     // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                     // We cannot just throw an exception here because this is called when importing the module
-                    autoSaveEnabled = false;
-                    WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
-                    WriteInitializationWarnings(message);
-                    shouldModifyContext = true;
+                    WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
 
-                if (shouldModifyContext)
-                {
-                    ModifyContext((profile, client) =>
-                    {
-                        AzureSession.Modify(session =>
-                        {
-                            FileUtilities.DataStore = session.DataStore;
-                            session.ARMContextSaveMode = ContextSaveMode.Process;
-                        });
-                    });
-                }
-
                 IServicePrincipalKeyStore keyStore =
-// TODO: Remove IfDef
-#if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
-#else
-                    new AzureRmServicePrincipalKeyStore();
-#endif
                 AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 
                 IAuthenticatorBuilder builder = null;

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.1.0'
+ModuleVersion = '1.9.5'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -147,7 +147,7 @@ PrivateData = @{
         ReleaseNotes = '* Fixed DateTime parse issue in common libraries [#13045]'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

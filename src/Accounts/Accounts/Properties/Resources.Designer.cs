@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -111,24 +111,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string AutosaveDisabledForContextParameter {
             get {
                 return ResourceManager.GetString("AutosaveDisabledForContextParameter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported in current environment..
-        /// </summary>
-        internal static string AutosaveNotSupported {
-            get {
-                return ResourceManager.GetString("AutosaveNotSupported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported in current environment and token cache will be fallen back as plain text..
-        /// </summary>
-        internal static string AutosaveNotSupportedWithFallback {
-            get {
-                return ResourceManager.GetString("AutosaveNotSupportedWithFallback", resourceCulture);
             }
         }
         
@@ -1119,6 +1101,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantIdNotFound {
             get {
                 return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token cache encryption is not supported in current environment and token cache will be fallen back as plain text..
+        /// </summary>
+        internal static string TokenCacheEncryptionNotSupportedWithFallback {
+            get {
+                return ResourceManager.GetString("TokenCacheEncryptionNotSupportedWithFallback", resourceCulture);
             }
         }
         

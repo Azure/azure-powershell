@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.IO;
 using System.Management.Automation;
 
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
         {
             if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
             {
-                throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+                WriteWarning(Resources.TokenCacheEncryptionNotSupportedWithFallback);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
@@ -89,13 +88,21 @@ namespace Microsoft.Azure.Commands.Profile.Context
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
 
-            //TODO: deserialize token data
-
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache originalTokenCache);
+            var stream = new MemoryStream();
+            originalTokenCache.Serialize(stream);
+            var tokenData = stream.ToArray();
             //must use explicit interface type PowerShellTokenCacheProvider below instead of var, otherwise could not retrieve registered component
-            PowerShellTokenCacheProvider factory = new SharedTokenCacheProvider();
-            var tokenCache = factory.GetTokenCache();
-            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory, true);
+            PowerShellTokenCacheProvider cacheProvider = new SharedTokenCacheProvider();
+            if (tokenData != null && tokenData.Length > 0)
+            {
+                cacheProvider.UpdateTokenDataWithoutFlush(tokenData);
+                cacheProvider.FlushTokenData();
+            }
+            var tokenCache = cacheProvider.GetTokenCache();
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
             AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
+
 
             if (writeAutoSaveFile)
             {

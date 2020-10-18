@@ -492,14 +492,11 @@
   <data name="InvalidAzureContext" xml:space="preserve">
     <value>The context is invalid. Please login using Connect-AzAccount.</value>
   </data>
-  <data name="AutosaveNotSupported" xml:space="preserve">
-    <value>Context autosave is not supported in current environment.</value>
-  </data>
   <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
     <value>Context autosave is not supported in current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
-  <data name="AutosaveNotSupportedWithFallback" xml:space="preserve">
-    <value>Context autosave is not supported in current environment and token cache will be fallen back as plain text.</value>
+  <data name="TokenCacheEncryptionNotSupportedWithFallback" xml:space="preserve">
+    <value>Token cache encryption is not supported in current environment and token cache will be fallen back as plain text.</value>
   </data>
   <data name="ProfileFileNotAccessible" xml:space="preserve">
     <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>

@@ -51,11 +51,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TokenCache = tokenCache.TokenCache,
             };
             var codeCredential = new DeviceCodeCredential(options);
-            var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);
+            var source = new CancellationTokenSource();
+            source.CancelAfter(TimeSpan.FromMinutes(5));
+
+            var authTask = codeCredential.AuthenticateAsync(requestContext, source.Token);
             return MsalAccessToken.GetAccessTokenAsync(
                 authTask,
-                ()=>codeCredential.GetTokenAsync(requestContext, cancellationToken),
-                cancellationToken);
+                () => codeCredential.GetTokenAsync(requestContext, source.Token),
+                source.Token);
         }
 
         private Task DeviceCodeFunc(DeviceCodeInfo info, CancellationToken cancellation)

@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                //TODO: remove calling RefreshContextsFromCache
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
