@@ -379,6 +379,10 @@
                 <PropertyName>SoftDeleteRetentionInDays</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Enabled Purge Protection?</Label>
+                <PropertyName>EnablePurgeProtection</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Access Policies</Label>
                 <PropertyName>AccessPoliciesText</PropertyName>
               </ListItem>

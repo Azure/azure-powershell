@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = 'southeastasia'
+$location = 'westcentralus'
 
 <#
 	.SYNOPSIS

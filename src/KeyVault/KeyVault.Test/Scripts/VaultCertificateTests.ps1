@@ -8,7 +8,8 @@ function Get-CertificateSubjectName([string]$certificateName)
 function Get-X509FromSecretBySubjectDistinguishedName([string]$keyVault, [string]$secretName, [string]$subjectDistinguishedName)
 {
     $secret = Get-AzKeyVaultSecret $keyVault $secretName
-    $secretValueBytes = [System.Convert]::FromBase64String($secret.SecretValueText)
+    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($secret.SecretValue))
+    $secretValueBytes = [System.Convert]::FromBase64String($secretValueText)
     $x509FromSecretCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $x509FromSecretCollection.Import($secretValueBytes)
     $x509Matches = $x509FromSecretCollection.Find([Security.Cryptography.X509Certificates.X509FindType]::FindBySubjectDistinguishedName, $subjectDistinguishedName, $false)

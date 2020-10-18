@@ -35,15 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.Location = virtualHub.Location;
             this.ResourceGuid = virtualHub.ResourceGuid;
             this.Type = virtualHub.Type;
-            this.VirtualNetworkConnections = new List<PSHubIpConfiguration>();
             var ipconfig = virtualHub.IpConfigurations.FirstOrDefault<PSHubIpConfiguration>();
-            var virtualNetworkConnection = new PSHubIpConfiguration()
-            {
-                Name = ipconfig.Name,
-                HostedSubnet = ipconfig.Id,
-                ProvisioningState = ipconfig.ProvisioningState
-            };
-            this.VirtualNetworkConnections.Add(virtualNetworkConnection);
+            this.HostedSubnet = ipconfig.Subnet.Id;
             this.VirtualRouterAsn = virtualHub.VirtualRouterAsn;
             this.VirtualRouterIps = virtualHub.VirtualRouterIps;
             this.ProvisioningState = virtualHub.ProvisioningState;
@@ -67,19 +60,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> VirtualRouterIps { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        public List<PSHubIpConfiguration> VirtualNetworkConnections { get; set; }
+        public string HostedSubnet { get; set; }
         public List<PSVirtualRouterPeer> Peerings { get; set; }
 
         [JsonIgnore]
         public string PeeringsText
         {
             get { return JsonConvert.SerializeObject(Peerings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string VirtualNetworkConnectionsText
-        {
-            get { return JsonConvert.SerializeObject(VirtualNetworkConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The connection type used for connecting to the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        [PSArgumentCompleter("Proxy", "Redirect", "Default")]
         public string ProxyOverride { get; set; }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
-        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChoosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeGeoWarning, this.Name)))
                     {
                         return;
                     }
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChoosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.Name)))
                     {
                         return;
                     }
