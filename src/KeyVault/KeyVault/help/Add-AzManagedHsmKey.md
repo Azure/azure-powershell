@@ -22,9 +22,9 @@ Add-AzManagedHsmKey [-HsmName] <String> [-Name] <String> -KeyType <String> [-Cur
 ### InteractiveImport
 ```
 Add-AzManagedHsmKey [-HsmName] <String> [-Name] <String> -KeyFilePath <String>
- [-KeyFilePassword <SecureString>] -KeyType <String> [-CurveName <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyFilePassword <SecureString>] [-CurveName <String>] [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
+ [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectCreate
@@ -37,9 +37,9 @@ Add-AzManagedHsmKey [-InputObject] <PSManagedHsm> [-Name] <String> -KeyType <Str
 ### InputObjectImport
 ```
 Add-AzManagedHsmKey [-InputObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <String>
- [-KeyFilePassword <SecureString>] -KeyType <String> [-CurveName <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyFilePassword <SecureString>] [-CurveName <String>] [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
+ [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdCreate
@@ -52,9 +52,9 @@ Add-AzManagedHsmKey [-ResourceId] <String> [-Name] <String> -KeyType <String> [-
 ### ResourceIdImport
 ```
 Add-AzManagedHsmKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
- [-KeyFilePassword <SecureString>] -KeyType <String> [-CurveName <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyFilePassword <SecureString>] [-CurveName <String>] [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
+ [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Tags           :
 
 This command creates a EC-HSM key named testkey using P-256 curve in the managed HSM testkey named testmhsm.
 
-### Example 3: Create a key with non-default values
+### Example 3: Create a oct-HSM key with non-default values
 ```powershell
 PS C:\> $KeyOperations = 'decrypt', 'verify'
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
@@ -291,7 +291,7 @@ Specifies the key type of this key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
 Aliases:
 
 Required: True
