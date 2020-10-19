@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             TokenCache = TokenCache.Deserialize(stream);
         }
 
-        public static PowerShellTokenCache Deserialize(Stream stream, CancellationToken cancellationToken = default)
+        public static PowerShellTokenCache Deserialize(Stream stream, CancellationToken cancellationToken = default(CancellationToken))
         {
             var cache = TokenCache.Deserialize(stream);
             return new PowerShellTokenCache(cache);
