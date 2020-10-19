@@ -61,19 +61,19 @@ Describe "AddAzManagedHsmKey" {
         $key.Enabled | Should -Be $false
     }
 
-    It "Import a RSA key from pfx file into a managed HSM" {
-        $keyName = GetRandomName -Prefix "key"
-        $keyFilePath = Join-Path $PSScriptRoot ../Resources/testImportKey.pfx -Resolve
-        $keyFilePwd = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
-        $key = Add-AzManagedHsmKey -HsmName bezmhsm -Name $keyName -KeyFilePath $keyFilePath -KeyFilePassword $keyFilePwd
-        $key.Name | Should -BeExactly $keyName
-    }
+    # It "Import a RSA key from pfx file into a managed HSM" {
+    #     $keyName = GetRandomName -Prefix "key"
+    #     $keyFilePath = Join-Path $PSScriptRoot ../Resources/testImportKey.pfx -Resolve
+    #     $keyFilePwd = $null
+    #     $key = Add-AzManagedHsmKey -HsmName bezmhsm -Name $keyName -KeyFilePath $keyFilePath -KeyFilePassword $keyFilePwd
+    #     $key.Name | Should -BeExactly $keyName
+    # }
 }
 
 Describe "GetAzManagedHsmKey"{
     It "List all the keys in a managed HSM" {
         $keyName = GetRandomName -Prefix "key"
-        $key = Add-AzManagedHsmKey -HsmName $hsmName -Name $keyName -KeyType "RSA"
+        Add-AzManagedHsmKey -HsmName $hsmName -Name $keyName -KeyType "RSA"
         $keys = Get-AzManagedHsmKey -HsmName $hsmName
         $keys.Count | Should -BeGreaterThan 0
     }
