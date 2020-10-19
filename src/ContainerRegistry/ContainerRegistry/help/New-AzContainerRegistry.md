@@ -151,7 +151,7 @@ Allowed values: Basic.
 Type: System.String
 Parameter Sets: (All)
 Aliases: ContainerRegistrySku, RegistrySku
-Accepted values: Classic, Basic, Premium, Standard
+Accepted values: Basic, Premium, Standard
 
 Required: True
 Position: 2

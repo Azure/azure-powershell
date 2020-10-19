@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll","Microsoft.Azure.Commands.ContainerRegistry.NewAzureContainerRegistry","New-AzContainerRegistry","0","2040","The validation set for parameter 'Sku' for cmdlet 'New-AzContainerRegistry' no longer contains the value 'Classic'.","Add 'Classic' back to the validation set for 'Sku'."

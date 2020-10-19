@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Container Registry SKU.")]
         [Alias(ContainerRegistrySkuAlias, RegistrySkuAlias)]
-        [ValidateSet(SkuTier.Classic, SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
+        [ValidateSet(SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
