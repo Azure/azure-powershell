@@ -14,9 +14,9 @@ Set ACL recursively on the specified path.
 
 ```
 Set-AzDataLakeGen2AclRecursive [-FileSystem] <String> [[-Path] <String>] [-ContinuationToken <String>]
- -Acl <PSPathAccessControlEntry[]> [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
- [-TagCondition <String>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Acl <PSPathAccessControlEntry[]> [-ContinueOnFailure] [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +103,38 @@ echo "FailedEntries:"$($FailedEntries | ft)
 
 This script sets ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
 
+### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
+```
+PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
+
+PS C:\> $result
+
+FailedEntries                   : {dir0/dir1/file1, dir0/dir2/file4}
+TotalDirectoriesSuccessfulCount : 100
+TotalFilesSuccessfulCount       : 500
+TotalFailureCount               : 2
+ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
+
+PS C:\> $result.FailedEntries
+
+Name            IsDirectory ErrorMessage                                                                   
+----            ----------- ------------                                                                   
+dir0/dir1/file1       False This request is not authorized to perform this operation using this permission.
+dir0/dir2/file4       False This request is not authorized to perform this operation using this permission.
+
+# user need fix the failed item , then can resume with ContinuationToken
+
+PS C:\> foreach ($path in $result.FailedEntries.Name)
+        {
+            # user code to fix failed entry in $path
+            
+            #set ACL again
+            Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path $path -Acl $acl -Context $ctx
+        }
+```
+
+This command first sets ACL recursively to a directory with ContinueOnFailure, and some items failed, then resume the failed items one by one.
+
 ## PARAMETERS
 
 ### -Acl
@@ -182,6 +214,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContinueOnFailure
+Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -242,21 +289,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -TagCondition
-Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a configuration of a server.
+Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## SYNTAX
 
@@ -27,10 +28,11 @@ Update-AzMariaDbConfiguration -InputObject <IMariaDbIdentity> [-Source <String>]
 
 ## DESCRIPTION
 Updates a configuration of a server.
+Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 
-### Example 1: Update MariaDb configuration
+### Example 1: Update MariaDB configuration
 ```powershell
 PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
 
@@ -39,7 +41,7 @@ Name                   Type
 delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
 ```
 
-This command updates a MariaDb configuration.
+This command updates a MariaDB configuration.
 
 ## PARAMETERS
 
@@ -242,6 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

@@ -151,6 +151,42 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             LastModified = container.Properties.LastModified;
         }
 
+        public void SetTrack2Permission(BlobContainerAccessPolicy accesspolicy = null)
+        {
+            // Try to get container permission if not input it, and container not deleted
+            if (accesspolicy == null && (this.IsDeleted == null || !this.IsDeleted.Value))
+            {
+                try
+                {
+                    accesspolicy = privateBlobContainerClient.GetAccessPolicy().Value;
+                }
+                catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+                {
+                    // 404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
+                    // Just skip return container permission in this case.
+                }
+            }
+
+            if (accesspolicy != null)
+            {
+                AccessPolicy = accesspolicy;
+
+                switch (accesspolicy.BlobPublicAccess)
+                {
+                    case PublicAccessType.Blob:
+                        PublicAccess = BlobContainerPublicAccessType.Blob;
+                        break;
+                    case PublicAccessType.BlobContainer:
+                        PublicAccess = BlobContainerPublicAccessType.Container;
+                        break;
+                    case PublicAccessType.None:
+                    default:
+                        PublicAccess = BlobContainerPublicAccessType.Off;
+                        break;
+                }
+            }
+        }
+
         public AzureStorageContainer(BlobContainerClient container, AzureStorageContext storageContext, BlobContainerProperties properties = null)
         {
             Name = container.Name;
@@ -192,42 +228,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             VersionId = containerItem.VersionId;
             LastModified = privateBlobContainerProperties.LastModified;
             this.Context = storageContext;
-        }
-
-        public void SetTrack2Permission(BlobContainerAccessPolicy accesspolicy = null)
-        {
-            // Try to get container permission if not input it, and container not deleted
-            if (accesspolicy == null && (this.IsDeleted == null || !this.IsDeleted.Value))
-            {
-                try
-                {
-                    accesspolicy = privateBlobContainerClient.GetAccessPolicy().Value;
-                }
-                catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
-                {
-                    // 404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
-                    // Just skip return container permission in this case.
-                }
-            }
-
-            if (accesspolicy != null)
-            {
-                AccessPolicy = accesspolicy;
-
-                switch (accesspolicy.BlobPublicAccess)
-                {
-                    case PublicAccessType.Blob:
-                        PublicAccess = BlobContainerPublicAccessType.Blob;
-                        break;
-                    case PublicAccessType.BlobContainer:
-                        PublicAccess = BlobContainerPublicAccessType.Container;
-                        break;
-                    case PublicAccessType.None:
-                    default:
-                        PublicAccess = BlobContainerPublicAccessType.Off;
-                        break;
-                }
-            }
         }
 
         //refresh XSCL track2 container properties object from server

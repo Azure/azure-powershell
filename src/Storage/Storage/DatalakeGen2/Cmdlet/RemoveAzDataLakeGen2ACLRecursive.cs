@@ -67,10 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     WriteWarning("To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.");
                     await dirClient.RemoveAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
-                            GetProgressHandler(taskId),
-                            this.accessControlChangeOptions,
                             continuationToken,
+                            GetAccessControlChangeOptions(taskId),
                             CmdletCancellationToken).ConfigureAwait(false);
+
+                    SetProgressComplete();
+                    WriteResult(taskId);
                 }
             }
             else
@@ -79,15 +81,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     WriteWarning("To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.");
                     await fileClient.RemoveAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseRemoveAccessControls(this.Acl),
-                        GetProgressHandler(taskId),
-                        this.accessControlChangeOptions,
                         continuationToken,
+                        GetAccessControlChangeOptions(taskId),
                         CmdletCancellationToken).ConfigureAwait(false);
+
+                    SetProgressComplete();
+                    WriteResult(taskId);
                 }
             }
-
-            SetProgressComplete();
-            WriteResult(taskId);
         }
     }
 }

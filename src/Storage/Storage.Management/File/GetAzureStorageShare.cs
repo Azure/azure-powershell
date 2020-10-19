@@ -109,14 +109,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = ShareResourceIdParameterSet)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
-            ParameterSetName = AccountNameParameterSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
-            ParameterSetName = AccountObjectParameterSet)]
-        public SwitchParameter IncludeDeleted { get; set; }
-
         [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
             Mandatory = false,
             ParameterSetName = AccountObjectSingleParameterSet)]
@@ -127,6 +119,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             ParameterSetName = ShareResourceIdParameterSet)]
         public SwitchParameter GetShareUsage { get; set; }
+        
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
+            ParameterSetName = AccountObjectParameterSet)]
+        public SwitchParameter IncludeDeleted { get; set; }
 
         public override void ExecuteCmdlet()
         {

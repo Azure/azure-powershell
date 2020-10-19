@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Modify Azure Storage service properties

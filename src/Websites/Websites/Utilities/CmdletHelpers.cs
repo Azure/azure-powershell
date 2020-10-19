@@ -287,6 +287,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "V2";
                 return sku;
             }
+            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "V3";
+                return sku;
+            }
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "PC" + (workerSize + 1);
@@ -311,6 +316,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "P" + WorkerSizes[workerSize] + "V2";
+                return sku;
+            }
+            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + WorkerSizes[workerSize] + "V3";
                 return sku;
             }
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
@@ -476,8 +486,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ReservedInstanceCount = config.ReservedInstanceCount
+                FtpsState = config.FtpsState
             };
         }
 
@@ -528,7 +537,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
-                ReservedInstanceCount = config.ReservedInstanceCount,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
                 FtpsState = config.FtpsState,
