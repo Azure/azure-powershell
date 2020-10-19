@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Added hash table for region.'
+        ReleaseNotes = 'Get the App Roles assigned correctly in case of Stack HCI registration using WAC token.'
 
     } # End of PSData hashtable
 
