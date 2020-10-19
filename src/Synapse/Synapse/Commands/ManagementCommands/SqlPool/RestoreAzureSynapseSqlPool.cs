@@ -13,7 +13,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool,
+        DefaultParameterSetName = RestoreFromBackupIdByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseSqlPool))]
     public class RestoreAzureSynapseSqlPool : SynapseManagementCmdletBase
     {
