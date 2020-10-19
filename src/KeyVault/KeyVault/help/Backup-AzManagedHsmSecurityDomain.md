@@ -12,14 +12,14 @@ Backs up the security domain data of a managed HSM for restoring.
 
 ## SYNTAX
 
-### By Name (Default)
+### ByName (Default)
 ```
 Backup-AzManagedHsmSecurityDomain -Certificates <String[]> -OutputPath <String> [-Force] [-PassThru]
  -Quorum <Int32> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### By InputObject
+### ByInputObject
 ```
 Backup-AzManagedHsmSecurityDomain -Certificates <String[]> -OutputPath <String> [-Force] [-PassThru]
  -Quorum <Int32> -InputObject <PSKeyVaultIdentityItem> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -34,7 +34,6 @@ This cmdlet backs up the security domain data of a managed HSM for restoring.
 ### Example 1
 ```powershell
 PS C:\Users\username\> Backup-AzManagedHsmSecurityDomain -Name testmhsm -Certificates {pathOfCertificates}/sd1.cer, {pathOfCertificates}/sd2.cer, {pathOfCertificates}/sd3.cer -OutputPath {pathOfOutput}/sd.ps.json -Quorum 2
-
 ```
 
 This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM security domain to the specified output file.
@@ -91,7 +90,7 @@ Object representing a managed HSM.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
-Parameter Sets: By InputObject
+Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
@@ -106,7 +105,7 @@ Name of the managed HSM.
 
 ```yaml
 Type: System.String
-Parameter Sets: By Name
+Parameter Sets: ByName
 Aliases: HsmName
 
 Required: True

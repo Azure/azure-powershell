@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     public interface IKeyVaultDataServiceClient
     {
         PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
-        
         PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
@@ -195,6 +194,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultManagedStorageAccount RestoreManagedStorageAccount(string vaultName, string inputBlobPath);
 
+        #endregion
+
+        #region Full backup restore
+        Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken);
+        void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder);
+        #endregion
+
+        #region RBAC
+        PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope);
+        PSKeyVaultRoleAssignment[] GetHsmRoleAssignments(string hsmName, string scope);
+        PSKeyVaultRoleAssignment GetHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
+        PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId);
+        void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
         #endregion
     }
 }

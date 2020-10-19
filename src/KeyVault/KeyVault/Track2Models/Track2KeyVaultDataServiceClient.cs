@@ -387,6 +387,41 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             throw new NotImplementedException();
         }
+
+        public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
+        {
+            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken);
+        }
+
+        public void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder)
+        {
+            HsmClient.RestoreHsm(hsmName, backupLocation, sasToken, backupFolder);
+        }
+
+        public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
+        {
+            return HsmClient.GetHsmRoleDefinitions(hsmName, scope);
+        }
+
+        public PSKeyVaultRoleAssignment[] GetHsmRoleAssignments(string hsmName, string scope)
+        {
+            return HsmClient.GetHsmRoleAssignments(hsmName, scope);
+        }
+
+        public PSKeyVaultRoleAssignment GetHsmRoleAssignment(string hsmName, string scope, string name)
+        {
+            return HsmClient.GetHsmRoleAssignment(hsmName, scope, name);
+        }
+
+        public PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId)
+        {
+            return HsmClient.CreateHsmRoleAssignment(hsmName, scope, roleDefinitionId, principalId);
+        }
+
+        public void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName)
+        {
+            HsmClient.RemoveHsmRoleAssignment(hsmName, scope, roleAssignmentName);
+        }
         #endregion
 
         #region ManagedHsm-related methods

@@ -1128,6 +1128,106 @@
                 </ListEntry>
             </ListEntries>
         </ListControl>
-     </View>    
+     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultRoleDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultRoleDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RoleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Permissions</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RoleName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>"$($_.Permissions.Length) permission(s)"</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultPermission</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultPermission</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowedActions</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeniedActions</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AllowedDataActions</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeniedDataActions</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>"$($_.AllowedActions.Length) action(s)"</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>"$($_.DeniedActions.Length) action(s)"</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>"$($_.AllowedDataActions.Length) action(s)"</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>"$($_.DeniedDataActions.Length) action(s)"</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultRoleAssignment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultRoleAssignment</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RoleDefinitionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

@@ -501,6 +501,36 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="ApplicationNotFoundBy" xml:space="preserve">
+    <value>Could not find application by '{0}'.</value>
+  </data>
+  <data name="AssignRole" xml:space="preserve">
+    <value>Assign role '{0}' to principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RemoveRole" xml:space="preserve">
+    <value>Remove role '{0}' of principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RoleAssignmentNotFound" xml:space="preserve">
+    <value>Could not find the role assignment by given parameters.</value>
+  </data>
+  <data name="RoleDefinitionNotFound" xml:space="preserve">
+    <value>Could not to find role definition by '{0}'.</value>
+  </data>
+  <data name="UserNotFoundBy" xml:space="preserve">
+    <value>Could not find user by '{0}'.</value>
+  </data>
+  <data name="DoFullBackup" xml:space="preserve">
+    <value>Perform a full backup and stores it in {0}.</value>
+  </data>
+  <data name="DoFullRestore" xml:space="preserve">
+    <value>Restores the managed HSM from the backup stored in {0}.</value>
+  </data>
+  <data name="FullBackupFailed" xml:space="preserve">
+    <value>Failed to backup managed HSM {0}.</value>
+  </data>
+  <data name="FullRestoreFailed" xml:space="preserve">
+    <value>Failed to restore managed HSM {0}.</value>
+  </data>
   <data name="HsmCertRangeWarning" xml:space="preserve">
     <value>To encrypt the security domain data, please provide at least {0} and at most {1} certificates.</value>
   </data>
