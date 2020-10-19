@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Supported creating, removing, updating, getting, restoring, backup and undoing removal key inside managed HSM
-* Enabled Managed HSM Management via *-AzKeyVault
+* Supported creating, deleting, updating and getting managed HSM
 
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`

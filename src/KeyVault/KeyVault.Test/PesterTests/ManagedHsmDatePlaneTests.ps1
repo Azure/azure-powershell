@@ -32,9 +32,9 @@ function GetRandomName{
 }
 
 function ImportModules{
-    $psd1Path = Join-Path $PSScriptRoot "../../../../../artifacts/Debug/" -Resolve
-    $accountsPsd1 = Join-Path $psd1Path "./Az.Accounts/Az.Accounts.psd1"
-    $keyVaultPsd1 = Join-Path $psd1Path "./Az.KeyVault/Az.KeyVault.psd1"
+    $psd1Path = Join-Path $PSScriptRoot "../../../../artifacts/Debug/" -Resolve
+    $accountsPsd1 = Join-Path $psd1Path "./Az.Accounts/Az.Accounts.psd1" -Resolve
+    $keyVaultPsd1 = Join-Path $psd1Path "./Az.KeyVault/Az.KeyVault.psd1" -Resolve
     Import-Module $accountsPsd1
     Import-Module $keyVaultPsd1
 }
