@@ -113,12 +113,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string GermanKeyVaultDnsSuffix = "vault.microsoftazure.de";
 
         /// <summary>
+        /// The domain name suffix for azure keyvault managed hsms
+        /// </summary>
+        public const string AzureManagedHsmDnsSuffix = "managedhsm.azure.net";
+        public const string ChinaManagedHsmDnsSuffix = "managedhsm.azure.cn";
+        public const string USGovernmentManagedHsmDnsSuffix = "managedhsm.usgovcloudapi.net";
+        public const string GermanManagedHsmDnsSuffix = "managedhsm.microsoftazure.de";
+
+        /// <summary>
         /// The token audience for authorizing KeyVault requests
         /// </summary>
         public const string AzureKeyVaultServiceEndpointResourceId = "https://vault.azure.net";
         public const string ChinaKeyVaultServiceEndpointResourceId = "https://vault.azure.cn";
         public const string USGovernmentKeyVaultServiceEndpointResourceId = "https://vault.usgovcloudapi.net";
         public const string GermanAzureKeyVaultServiceEndpointResourceId = "https://vault.microsoftazure.de";
+
+        /// <summary>
+        /// The token audience for authorizing managed hsm requests
+        /// </summary>
+        public const string AzureManagedHsmServiceEndpointResourceId = "https://managedhsm.azure.net";
+        public const string ChineManagedHsmServiceEndpointResourceId = "https://managedhsm.azure.cn";
+        public const string USGovernmeneManagedHsmServiceEndpointResourceId = "https://managedhsm.usgovcloudapi.net";
+        public const string GermanAzureManagedHsmServiceEndpointResourceId = "https://managedhsm.microsoftazure.de";
 
         /// <summary>
         /// The token audience for Log Analytics Queries

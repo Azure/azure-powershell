@@ -289,6 +289,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, propertyValue);
                         break;
+                    case AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointSuffix:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointSuffix, propertyValue);
+                        break;
+                    case AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId, propertyValue);
+                        break;
                 }
             }
         }
@@ -331,6 +337,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix:
                 case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId;
+                    break;
+                case AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointSuffix:
+                case AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
