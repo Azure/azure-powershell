@@ -115,7 +115,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Implemented Functions Stacks API which describes what runtimes and runtime versions are available for function app creation'
 
         # Prerelease string of this module
         # Prerelease = ''
