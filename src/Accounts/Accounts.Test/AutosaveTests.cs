@@ -45,10 +45,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             TestExecutionHelpers.SetUpSessionAndProfile();
             ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
+            // prevent token acquisition
+            AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().ShouldRefreshContextsFromCache = false;
             AzureSession.Instance.DataStore = dataStore;
             AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            //AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "false");
         }
 
@@ -66,8 +67,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.CurrentUser, AzureSession.Instance.ARMContextSaveMode);
-                //Assert.Equal(typeof(ProtectedFileTokenCache), AzureSession.Instance.TokenCache.GetType());
                 Assert.Equal(typeof(ProtectedProfileProvider), AzureRmProfileProvider.Instance.GetType());
+            }
+            catch (PlatformNotSupportedException)
+            {
+                // swallow exception when test env (Linux server) doesn't support token cache persistence
             }
             finally
             {
@@ -90,8 +94,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.CurrentUser, AzureSession.Instance.ARMContextSaveMode);
-                //Assert.Equal(typeof(ProtectedFileTokenCache), AzureSession.Instance.TokenCache.GetType());
                 Assert.Equal(typeof(ProtectedProfileProvider), AzureRmProfileProvider.Instance.GetType());
+            }
+            catch (PlatformNotSupportedException)
+            {
+                // swallow exception when test env (Linux server) doesn't support token cache persistence
             }
             finally
             {
@@ -115,7 +122,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
-                //Assert.Equal(typeof(AuthenticationStoreTokenCache), AzureSession.Instance.TokenCache.GetType());
+                Assert.True(AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out PowerShellTokenCacheProvider factory));
+                Assert.Equal(typeof(InMemoryTokenCacheProvider), factory.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
             }
             finally
@@ -138,7 +146,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
-                //Assert.Equal(typeof(AuthenticationStoreTokenCache), AzureSession.Instance.TokenCache.GetType());
+                Assert.True(AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out PowerShellTokenCacheProvider factory));
+                Assert.Equal(typeof(InMemoryTokenCacheProvider), factory.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
             }
             finally
