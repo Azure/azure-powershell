@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter("PrivateLinkResourceType", NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
-                parameters.Add("PrivateLinkResourceType", namedParameter);
+                parameters.Add(privateEndpointTypeName, namedParameter);
             }
             DynamicParameters = parameters;
             return parameters;

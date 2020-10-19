@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
         public const string IPv6 = "IPv6";
         public const string All = "All";
         public const string DisabledRuleGroupsAlias = "DisabledRuleGroups";
+        public const string privateEndpointTypeName = "PrivateLinkResourceType"; 
 
         public NetworkClient NetworkClient
         {

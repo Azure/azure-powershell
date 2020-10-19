@@ -75,7 +75,7 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values: Microsoft.AppConfiguration/configurationStores, Microsoft.Sql/servers, Microsoft.DBforMySQL/servers, Microsoft.DBforMariaDB/servers, Microsoft.DBforPostgreSQL/servers, Microsoft.Insights/privateLinkScopes, Microsoft.Storage/storageAccounts, Microsoft.StorageSync/storageSyncServices, Microsoft.KeyVault/vaults, Microsoft.DocumentDB/databaseAccounts, Microsoft.CognitiveServices/accounts, Microsoft.Batch/batchAccounts, Microsoft.ContainerRegistry/registries, Microsoft.Devices/IotHubs, Microsoft.EventGrid/topics, Microsoft.EventGrid/domains, Microsoft.Network/applicationgateways, Microsoft.SignalRService/signalr
+Accepted values:
 
 Required: False
 Position: Named
