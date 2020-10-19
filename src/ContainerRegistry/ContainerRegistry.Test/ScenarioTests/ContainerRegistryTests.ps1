@@ -28,21 +28,6 @@ function Test-AzureContainerRegistry
 	{
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-		# Creating a container registry with a default new storage account
-		#$classicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName -Sku "Classic"
-		#Verify-ContainerRegistry $classicRegistry $resourceGroupName $classicRegistryName "Classic" $null $false
-
-		# Check if the registry name already exists
-		#$nameStatus = Test-AzContainerRegistryNameAvailability -Name $classicRegistryName
-		#Assert-True {!$nameStatus.nameAvailable}
-		#Assert-AreEqual "AlreadyExists" $nameStatus.Reason
-		#Assert-AreEqual "The registry $($classicRegistryName) is already in use." $nameStatus.Message
-
-		# Create different sku registries
-		#$storageAccountName = $classicRegistry.StorageAccountName
-		#$retrievedRegistry = Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName
-		#Verify-ContainerRegistry $retrievedRegistry $resourceGroupName $classicRegistryName "Classic" $storageAccountName $false
-
 		$basicRegistryName = Get-RandomRegistryName
 		$basicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $basicRegistryName -Sku "Basic" -EnableAdminUser
 		Verify-ContainerRegistry $basicRegistry $resourceGroupName $basicRegistryName "Basic" $null $true
@@ -67,7 +52,6 @@ function Test-AzureContainerRegistry
 		{
 			switch($r.SkuName)
 			{
-				#"Classic" { Verify-ContainerRegistry $r $resourceGroupName $classicRegistryName "Classic" $storageAccountName $false }
 				"Basic" { Verify-ContainerRegistry $r $resourceGroupName $basicRegistryName "Basic" $null $true }
 				"Standard" { Verify-ContainerRegistry $r $resourceGroupName $standardRegistryName "Standard" $null $false }
 				"Premium" { Verify-ContainerRegistry $r $resourceGroupName $premiumRegistryName "Premium" $null $false }
@@ -75,29 +59,17 @@ function Test-AzureContainerRegistry
 		}
 
 		# Delete container registry
-		#Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName | Remove-AzContainerRegistry
 		Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $standardRegistryName | Remove-AzContainerRegistry
 		Remove-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName
 		Remove-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $basicRegistryName
 		$registries = Get-AzContainerRegistry -ResourceGroupName $resourceGroupName
 		Assert-AreEqual 0 $registries.Count
 
-		# Creating a container registry with an existing storage account
-		#$classicRegistryName = Get-RandomRegistryName
-		#$classicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName -Sku "Classic" -StorageAccountName $storageAccountName
-		#Verify-ContainerRegistry $classicRegistry $resourceGroupName $classicRegistryName "Classic" $storageAccountName $false
-
 		# Creating a premium sku container registry with an existing storage account
 		$premiumRegistryName = Get-RandomRegistryName
-		#Assert-Error {New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -Sku "Premium" -StorageAccountName $storageAccountName} "User cannot provide storage account in SKU Premium"
-    
-		# update classic sku container registry
-		#$updatedClassicRegistry = Update-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName -EnableAdminUser -StorageAccountName $storageAccountName
-		#Verify-ContainerRegistry $updatedClassicRegistry $resourceGroupName $classicRegistryName "Classic" $storageAccountName $true
 	
 		# update premium sku container registry with storage account
 		$premiumRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -Sku "Premium"
-		#Assert-Error {Update-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -EnableAdminUser -StorageAccountName $storageAccountName} "Storage account cannot be updated in SKU Premium"
 
 		Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName | Update-AzContainerRegistry -DisableAdminUser
 		Verify-ContainerRegistry $premiumRegistry $resourceGroupName $premiumRegistryName "Premium" $null $false
