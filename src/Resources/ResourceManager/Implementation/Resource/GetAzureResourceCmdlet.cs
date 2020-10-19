@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cmdlet to get existing resources.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
-    public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
+    public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         public const string ByResourceIdParameterSet = "ByResourceId";
         public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";
@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
@@ -88,6 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]
@@ -170,23 +173,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var odataQuery = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(expression);
             var result = Enumerable.Empty<PSResource>();
-            if (!string.IsNullOrEmpty(this.ResourceGroupName) && !this.ResourceGroupName.Contains('*'))
+            if (!ShouldListBySubscription(ResourceGroupName, Name))
             {
                 result = this.ResourceManagerSdkClient.ListByResourceGroup(this.ResourceGroupName, odataQuery);
             }
             else
             {
                 result = this.ResourceManagerSdkClient.ListResources(odataQuery);
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
-                {
-                    result = FilterResourceGroupByWildcard(result);
-                }
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                result = FilterResourceByWildcard(result);
-            }
+            result = TopLevelWildcardFilter(ResourceGroupName, Name, result);
 
             if (!string.IsNullOrEmpty(this.TagName) && !string.IsNullOrEmpty(this.TagValue))
             {
@@ -230,6 +226,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceGroupName,
                                             ResourceType,
                                             Name);
+
+                this.DefaultApiVersion = DetermineApiVersion(resourceId).Result;
+
                 return true;
             }
 
@@ -239,58 +238,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool ContainsWildcard(string parameter)
         {
             return !string.IsNullOrEmpty(parameter) && (parameter.StartsWith("*") || parameter.EndsWith("*"));
-        }
-
-        private IEnumerable<PSResource> FilterResourceGroupByWildcard(IEnumerable<PSResource> result)
-        {
-            if (this.ResourceGroupName.StartsWith("*"))
-            {
-                this.ResourceGroupName = this.ResourceGroupName.TrimStart('*');
-                if (this.ResourceGroupName.EndsWith("*"))
-                {
-                    this.ResourceGroupName = this.ResourceGroupName.TrimEnd('*');
-                    result = result.Where(r => r.ResourceGroupName.IndexOf(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-                else
-                {
-                    result = result.Where(r => r.ResourceGroupName.EndsWith(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase));
-                }
-            }
-            else if (this.ResourceGroupName.EndsWith("*"))
-            {
-                this.ResourceGroupName = this.ResourceGroupName.TrimEnd('*');
-                result = result.Where(r => r.ResourceGroupName.StartsWith(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase));
-            }
-
-            return result;
-        }
-
-        private IEnumerable<PSResource> FilterResourceByWildcard(IEnumerable<PSResource> result)
-        {
-            if (this.Name.StartsWith("*"))
-            {
-                this.Name = this.Name.TrimStart('*');
-                if (this.Name.EndsWith("*"))
-                {
-                    this.Name = this.Name.TrimEnd('*');
-                    result = result.Where(r => r.Name.IndexOf(this.Name, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-                else
-                {
-                    result = result.Where(r => r.Name.EndsWith(this.Name, StringComparison.OrdinalIgnoreCase));
-                }
-            }
-            else if (this.Name.EndsWith("*"))
-            {
-                this.Name = this.Name.TrimEnd('*');
-                result = result.Where(r => r.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase));
-            }
-            else
-            {
-                result = result.Where(r => string.Equals(r.Name, this.Name, StringComparison.OrdinalIgnoreCase));
-            }
-
-            return result;
         }
 
         /// <summary>
@@ -322,8 +269,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 items = this.GetPopulatedResource(batch).Result;
                             }
 
-                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
-
+                            var powerShellObjects = items.SelectArray(genericResource => new PSResource(genericResource));
                             this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
                         }
                     }

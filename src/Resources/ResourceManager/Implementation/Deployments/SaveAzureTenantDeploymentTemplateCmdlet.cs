@@ -16,15 +16,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// Saves the deployment template to a file on disk.
     /// </summary>
-    [Cmdlet(VerbsData.Save, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentTemplate", SupportsShouldProcess = true,
-        DefaultParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSTemplatePath))]
-    public class SaveAzureDeploymentTemplateCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsData.Save, AzureRMConstants.AzureRMPrefix + "TenantDeploymentTemplate", SupportsShouldProcess = true,
+        DefaultParameterSetName = SaveAzureTenantDeploymentTemplateCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSTemplatePath))]
+    public class SaveAzureTenantDeploymentTemplateCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The deployment name parameter set.
@@ -40,12 +42,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the deployment name parameter.
         /// </summary>
         [Alias("Name")]
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = SaveAzureTenantDeploymentTemplateCmdlet.DeploymentNameParameterSet,
+            Mandatory = true, HelpMessage = "The deployment name.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentObjectParameterSet, Mandatory = true,
-            ValueFromPipeline = true, HelpMessage = "The deployment object.")]
+        [Parameter(ParameterSetName = SaveAzureTenantDeploymentTemplateCmdlet.DeploymentObjectParameterSet,
+            Mandatory = true, ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment DeploymentObject { get; set; }
 
         /// <summary>
@@ -68,18 +71,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
 
-            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
-
-            if (ShouldProcess(deploymentName, VerbsData.Save))
+            var options = new FilterDeploymentOptions(DeploymentScopeType.Tenant)
             {
-                var template = ResourceManagerSdkClient.GetDeploymentTemplate(deploymentName);
+                DeploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName
+            };
+
+            if (ShouldProcess(options.DeploymentName, VerbsData.Save))
+            {
+                var template = ResourceManagerSdkClient.GetDeploymentTemplateAtTenantScope(options.DeploymentName);
 
                 string path = FileUtility.SaveTemplateFile(
-                    templateName: deploymentName,
+                    templateName: options.DeploymentName,
                     contents: template,
                     outputPath:
                         string.IsNullOrEmpty(this.Path)
-                            ? System.IO.Path.Combine(CurrentPath(), deploymentName)
+                            ? System.IO.Path.Combine(CurrentPath(), options.DeploymentName)
                             : this.TryResolvePath(this.Path),
                     overwrite: this.Force,
                     shouldContinue: ShouldContinue);

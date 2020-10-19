@@ -16,12 +16,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentOperation", DefaultParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeploymentOperation))]
-    public class GetAzureDeploymentOperationCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "TenantDeploymentOperation",
+        DefaultParameterSetName = GetAzureTenantDeploymentOperationCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeploymentOperation))]
+    public class GetAzureTenantDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The deployment name parameter set.
@@ -36,25 +39,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the deployment name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = GetAzureTenantDeploymentOperationCmdlet.DeploymentNameParameterSet,
+            Mandatory = true, HelpMessage = "The deployment name.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
         /// <summary>
         /// Gets or sets the deployment operation Id.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The deployment operation Id.")]
+        [Parameter(ParameterSetName = GetAzureTenantDeploymentOperationCmdlet.DeploymentNameParameterSet,
+            Mandatory = false, HelpMessage = "The deployment operation Id.")]
         public string OperationId { get; set; }
 
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = true,
-            ValueFromPipeline = true, HelpMessage = "The deployment object.")]
+        [Parameter(ParameterSetName = GetAzureTenantDeploymentOperationCmdlet.DeploymentObjectParameterSet,
+            Mandatory = true, ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment DeploymentObject { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
-            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
+            var options = new FilterDeploymentOptions(DeploymentScopeType.Tenant)
+            {
+                DeploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName
+            };
 
-            WriteObject(ResourceManagerSdkClient.GetDeploymentOperations(deploymentName, this.OperationId), true);
+            var deploymentOperations = ResourceManagerSdkClient.ListDeploymentOperationsAtTenantScope(
+                options.DeploymentName, this.OperationId);
+
+            WriteObject(deploymentOperations, true);
         }
     }
 }

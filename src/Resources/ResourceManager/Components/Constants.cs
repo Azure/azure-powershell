@@ -35,6 +35,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftManagementNamespace = "Microsoft.Management";
 
         /// <summary>
+        /// The string literal <c>ManagementGroups</c>
+        /// </summary>
+        public static readonly string ManagementGroups = "managementGroups";
+
+        /// <summary>
+        /// The management group id prefix.
+        /// </summary>
+        public static readonly string ManagementGroupIdPrefix = $"/providers/{Constants.MicrosoftManagementNamespace}/{Constants.ManagementGroups}/";
+
+        /// <summary>
         /// The <c>Microsoft.Solutions</c> namespace.
         /// </summary>
         public static readonly string MicrosoftSolutionNamespace = "Microsoft.Solutions";
@@ -77,27 +87,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyDefinitionApiVersion = "2016-12-01";
+        public static readonly string PolicyDefinitionApiVersion = "2019-09-01";
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
-        public static readonly string PolicySetDefintionApiVersion = "2018-05-01";
+        public static readonly string PolicySetDefintionApiVersion = "2019-09-01";
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
-        public static readonly string PolicyAssignmentApiVersion = "2016-12-01";
+        public static readonly string PolicyAssignmentApiVersion = "2019-09-01";
 
         /// <summary>
         /// The default providers API version.
         /// </summary>
-        public static readonly string ProvidersApiVersion = "2018-05-01";
+        public static readonly string ProvidersApiVersion = "2016-07-01";
 
         /// <summary>
         /// The default Lock API version.
         /// </summary>
-        public static readonly string LockApiVersion = "2016-09-01";
+        public static readonly string LockApiVersion = "2015-01-01";
 
         /// <summary>
         /// The default deployment operation API version.
@@ -143,11 +153,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The policy definition resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
-
-        /// <summary>
-        /// The management group resource type.
-        /// </summary>
-        public static readonly string MicrosoftManagementGroupDefinitionType = Constants.MicrosoftManagementNamespace + "/managementgroups";
 
         /// <summary>
         /// The application definition resource type.

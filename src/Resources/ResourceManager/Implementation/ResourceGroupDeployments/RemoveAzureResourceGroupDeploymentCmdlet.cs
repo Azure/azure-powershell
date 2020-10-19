@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Deletes a deployment.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -54,20 +54,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             ConfirmAction(
                 ProjectResources.DeleteDeploymentMessage,
                 ResourceGroupName,
                 () =>
                 {
-                    if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
-                    {
-                        ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
-                        Name = ResourceIdUtility.GetResourceName(Id);
-                    }
+                    var resourceGroupName = !string.IsNullOrEmpty(this.ResourceGroupName) ? this.ResourceGroupName : ResourceIdUtility.GetResourceGroupName(Id);
+                    var deploymentName = !string.IsNullOrEmpty(this.Name) ? this.Name : ResourceIdUtility.GetResourceName(Id);
 
-                    ResourceManagerSdkClient.DeleteDeployment(ResourceGroupName, Name);
+                    ResourceManagerSdkClient.DeleteDeploymentAtResourceGroup(resourceGroupName, deploymentName);
                     WriteObject(true);
                 });
         }

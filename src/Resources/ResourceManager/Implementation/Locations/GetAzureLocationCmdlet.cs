@@ -28,13 +28,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Get all locations with the supported providers.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Location"), OutputType(typeof(PSResourceProviderLocation))]
-    public class GetAzureLocationCmdlet : ResourceManagerCmdletBase
+    public class GetAzureLocationCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
+            if(DefaultContext.Subscription == null)
+            {
+                throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
+            }
             var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);

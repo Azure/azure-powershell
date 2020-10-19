@@ -15,35 +15,26 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Policy;
     using System.Management.Automation;
 
     /// <summary>
     /// Removes the policy assignment.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", SupportsShouldProcess = true, DefaultParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", SupportsShouldProcess = true, DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
-        /// The policy assignment Id parameter set.
-        /// </summary>
-        internal const string PolicyAssignmentIdParameterSet = "RemoveByPolicyAssignmentId";
-
-        /// <summary>
-        /// The policy assignment name parameter set.
-        /// </summary>
-        internal const string PolicyAssignmentNameParameterSet = "RemoveByPolicyAssignmentName";
-
-        /// <summary>
         /// Gets or sets the policy assignment name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment name.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentNameHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment name.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentScopeHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -51,9 +42,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy assignment Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentIdHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentInputObjectHelp)]
+        public PsPolicyAssignment InputObject { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -71,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private void RunCmdlet()
         {
             base.OnProcessRecord();
-            string resourceId = this.Id ?? this.GetResourceId();
+            string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
             this.ConfirmAction(
@@ -105,12 +102,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        protected string GetResourceId()
+        private string GetResourceId()
         {
-            return ResourceIdUtility.GetResourceId(
-                resourceId: this.Scope,
-                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
-                extensionResourceName: this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
         }
     }
 }

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +13,32 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class FilterResourceGroupDeploymentOptions
+    /// <summary>
+    /// This class processes failed deployment operations.
+    /// </summary>
+    public class DeploymentOperationErrorInfo
     {
-        public string DeploymentName { get; set; }
+        public const int MaxErrorsToShow = 3;
 
-        public string ResourceGroupName { get; set; }
-
-        public List<string> ProvisioningStates { get; set; }
-
-        public List<string> ExcludedProvisioningStates { get; set; }
-
-        public FilterResourceGroupDeploymentOptions()
+        public DeploymentOperationErrorInfo()
         {
-            DeploymentName = null;
-            ResourceGroupName = null;
-            ProvisioningStates = new List<string>();
-            ExcludedProvisioningStates = new List<string>();
+            ErrorMessages = new List<ErrorResponse>();
+        }
+
+        public List<ErrorResponse> ErrorMessages { get; private set; }
+
+        public void ProcessError(DeploymentOperation operation)
+        {
+            ErrorResponse error = operation.Properties?.StatusMessage?.Error;
+
+            if (error != null)
+            {    
+                ErrorMessages.Add(error);
+            }
         }
     }
 }

@@ -142,7 +142,13 @@
     <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
   </data>
   <data name="DeploymentDoesntExistAtSubscriptionScope" xml:space="preserve">
-    <value>Deployment '{0}' doesn't exist in subscription.</value>
+    <value>Deployment '{0}' doesn't exist in the current subscription.</value>
+  </data>
+  <data name="DeploymentDoesntExistAtManagementGroupScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist at management group '{1}'.</value>
+  </data>
+  <data name="DeploymentDoesntExistAtTenantScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist in the current tenant.</value>
   </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
@@ -355,10 +361,13 @@
     <value>Unregistering provider ...</value>
   </data>
   <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
-    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
+    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzResourceGroupDeploymentOperation</value>
   </data>
   <data name="InvalidRollbackParameters" xml:space="preserve">
     <value>The paramater -RollbackToLastDeployment and -RollBackDeploymentName can't be defined at the same time.</value>
+  </data>
+  <data name="InvalidDeploymentMode" xml:space="preserve">
+    <value>The 'Complete' mode is not supported for a deployment at the current scope. Please use 'Incremental' mode instead.</value>
   </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
@@ -396,8 +405,17 @@
   <data name="NoRunningDeployments" xml:space="preserve">
     <value>There are no running deployments under resource group '{0}'</value>
   </data>
+  <data name="NoRunningDeploymentsAtTenantScope" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at the current tenant scope.</value>
+  </data>
+  <data name="NoRunningDeploymentsAtManagementGroup" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at management group '{1}'.</value>
+  </data>
   <data name="NoRunningDeploymentsAtSubscriptionScope" xml:space="preserve">
-    <value>There are no running deployment called '{0}' at the current subscription scope.</value>
+    <value>There is no running deployment called '{0}' at the current subscription scope.</value>
+  </data>
+  <data name="NoRunningDeploymentsAtResourceGroup" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at resource group '{1}'.</value>
   </data>
   <data name="UpdatedResourceGroup" xml:space="preserve">
     <value>Updated resource group '{0}' in location '{1}'</value>
@@ -422,5 +440,58 @@
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The provided file {0} doesn't exist</value>
+  </data>
+  <data name="JsonObjectExpected" xml:space="preserve">
+    <value>The provided value for parameter '{0}' is not a valid JSON object</value>
+  </data>
+  <data name="JsonArrayExpected" xml:space="preserve">
+    <value>The provided value for parameter '{0}' is not a valid JSON array</value>
+  </data>
+  <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
+    <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
+  </data>
+  <data name="DeploymentScriptKindNotSupported" xml:space="preserve">
+    <value>An unsupported Deployment Script kind is requested.</value>
+  </data>
+  <data name="DeploymentScriptDoesntExist" xml:space="preserve">
+    <value>Deployment script '{0}' doesn't exist in resource group '{1}'.</value>
+  </data>
+  <data name="DeploymentScriptLogFileExists" xml:space="preserve">
+    <value>A file with the name '{0}' already exists in directory '{1}'. This operation will replace the existing file. Would you like to continue?</value>
+  </data>
+  <data name="DeploymentScriptShouldProcessString" xml:space="preserve">
+    <value>Save script execution log to disk.</value>
+  </data>
+  <data name="DeploymentOperationErrorMessage" xml:space="preserve">
+    <value>{0} (Code: {1})
+{2}</value>
+  </data>
+  <data name="DeploymentOperationOuterError" xml:space="preserve">
+    <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
+  </data>
+  <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
+    <value>{0} (Code:{1})</value>
+  </data>
+  <data name="DeploymentCorrelationId" xml:space="preserve">
+    <value>CorrelationId: {0}</value>
+  </data>
+  <data name="DeploymentOperationTargetInfo" xml:space="preserve">
+    <value>Target: {0}</value>
+  </data>
+  <data name="GenericDeploymentFailedWithErrors" xml:space="preserve">
+    <value>Deployment failed with errors.</value>
+  </data>
+  <data name="DeploymentOperationResultError" xml:space="preserve">
+    <value>Status Message: {0}</value>
+  </data>
+  <data name="WhatIfPreviewNotice" xml:space="preserve">
+    <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
+  </data>
+  <data name="ConfirmDeploymentMessage" xml:space="preserve">
+    <value>Are you sure you want to execute the deployment?</value>
+  </data>
+  <data name="InvalidChangeType" xml:space="preserve">
+    <value>Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}.</value>
   </data>
 </root>

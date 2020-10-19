@@ -14,17 +14,30 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Class for building and parsing resource Ids.
     /// </summary>
     public static class ResourceIdUtility
     {
+        private static readonly Regex ManagementGroupRegex =
+            new Regex(@"^\/?providers\/Microsoft.Management\/managementGroups\/(?<managementGroupId>[\w\d_\.\(\)-]+)", RegexOptions.IgnoreCase);
+
+        private static readonly Regex SubscriptionRegex =
+            new Regex(@"^\/?subscriptions\/(?<subscriptionId>[\w\d-]+)", RegexOptions.IgnoreCase);
+
+        private static readonly Regex ResourceGroupRegex =
+            new Regex(@"^\/resourceGroups\/(?<resourceGroupName>[-\w\._\(\)]+)", RegexOptions.IgnoreCase);
+
+        private static readonly Regex RelativeResourceIdRegex =
+            new Regex(@"^\/providers/(?<relativeResourceId>.+$)", RegexOptions.IgnoreCase);
+
         /// <summary>
         /// Processes the parameters to return a valid resource Id.
         /// </summary>
@@ -180,6 +193,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
+        /// Gets the management group id from the resource id.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        public static string GetManagementGroupId(string resourceId)
+        {
+            return resourceId.StartsWithInsensitively(Constants.ManagementGroupIdPrefix)
+                ? ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ManagementGroups)
+                : null;
+        }
+
+        /// <summary>
         /// Gets the subscription id from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
@@ -248,6 +272,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
+        /// Gets the deployment name
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        public static string GetDeploymentName(string resourceId)
+        {
+            return ResourceIdUtility.GetResourceTypeOrName(resourceId: resourceId, getResourceName: true, useLastSegment: true);
+        }
+
+        /// <summary>
         /// Gets the extension provider namespace from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
@@ -275,6 +308,52 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static string GetExtensionResourceName(string resourceId)
         {
             return ResourceIdUtility.GetExtensionResourceTypeOrName(resourceId: resourceId, getResourceName: true);
+        }
+
+        /// <summary>
+        /// Split a fully qualified resource identifier into two parts (resource scope, relative resource identifier).
+        /// </summary>
+        /// <param name="fullyQualifiedResourceId">The fully qualified resource identifier to split.</param>
+        /// <returns>The resource scope and the relative resource identifier.</returns>
+        public static (string scope, string relativeResourceId) SplitResourceId(string fullyQualifiedResourceId)
+        {
+            string remaining = fullyQualifiedResourceId;
+
+            Match managementGroupMatch = ManagementGroupRegex.Match(remaining);
+            string managementGroupId = managementGroupMatch.Groups["managementGroupId"].Value;
+            remaining = remaining.Substring(managementGroupMatch.Length);
+
+            Match subscriptionMatch = SubscriptionRegex.Match(remaining);
+            string subscriptionId = subscriptionMatch.Groups["subscriptionId"].Value;
+            remaining = remaining.Substring(subscriptionMatch.Length);
+
+            Match resourceGroupMatch = ResourceGroupRegex.Match(remaining);
+            string resourceGroupName = resourceGroupMatch.Groups["resourceGroupName"].Value;
+            remaining = remaining.Substring(resourceGroupMatch.Length);
+
+            Match relativeResourceIdMatch = RelativeResourceIdRegex.Match(remaining);
+            string relativeResourceId = relativeResourceIdMatch.Groups["relativeResourceId"].Value;
+
+            if (managementGroupMatch.Success)
+            {
+                return relativeResourceIdMatch.Success
+                    ? ($"/providers/Microsoft.Management/ManagementGroups/{managementGroupId}", relativeResourceId)
+                    : ("/", $"Microsoft.Management/ManagementGroups/{managementGroupId}");
+            }
+
+            if (subscriptionMatch.Success)
+            {
+                if (resourceGroupMatch.Success)
+                {
+                    return relativeResourceIdMatch.Success
+                        ? ($"/subscriptions/{subscriptionId.ToLowerInvariant()}/resourceGroups/{resourceGroupName}", relativeResourceId)
+                        : ($"/subscriptions/{subscriptionId.ToLowerInvariant()}", $"resourceGroups/{resourceGroupName}");
+                }
+
+                return ($"/subscriptions/{subscriptionId.ToLowerInvariant()}", relativeResourceId);
+            }
+
+            return ("/", relativeResourceId);
         }
 
         /// <summary>

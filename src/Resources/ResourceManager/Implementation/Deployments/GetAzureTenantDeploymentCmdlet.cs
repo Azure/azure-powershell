@@ -15,14 +15,17 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Get deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeployment))]
-    public class GetAzureDeploymentCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "TenantDeployment",
+        DefaultParameterSetName = GetAzureTenantDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeployment))]
+    public class GetAzureTenantDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The deployment Id parameter set.
@@ -35,25 +38,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string DeploymentNameParameterSet = "GetByDeploymentName";
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false,
+        [Parameter(Position = 0, ParameterSetName = GetAzureTenantDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false,
             HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = GetAzureDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = false,
-            HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}")]
+        [Parameter(ParameterSetName = GetAzureTenantDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
+            HelpMessage = "The fully qualified resource Id of the deployment. example: /providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.Tenant)
             {
-                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id))
+                DeploymentName = this.Name ?? (string.IsNullOrEmpty(this.Id) ? null : ResourceIdUtility.GetDeploymentName(this.Id))
             };
 
-            WriteObject(ResourceManagerSdkClient.FilterDeploymentsAtSubscriptionScope(options), true);
+            WriteObject(ResourceManagerSdkClient.FilterDeployments(options), true);
         }
     }
 }

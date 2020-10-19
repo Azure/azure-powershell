@@ -4,13 +4,19 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeploymentCmdletParameters
     {
+        public string ManagementGroupId { get; set; }
+
         public string ResourceGroupName { get; set; }
+
+        public DeploymentScopeType ScopeType { get; set; }
 
         public string DeploymentName { get; set; }
 
@@ -20,9 +26,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string TemplateFile { get; set; }
 
+        public Hashtable TemplateObject { get; set; }
+
         public Hashtable TemplateParameterObject { get; set; }
 
         public string ParameterUri { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
 
         public string DeploymentDebugLogLevel { get; set; }
 

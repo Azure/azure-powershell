@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Filters resource groups.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSResourceGroup))]
-    public class NewAzureResourceGroupCmdlet : ResourceManagerCmdletBase
+    public class NewAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         [Alias("ResourceGroupName")]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters
             {
