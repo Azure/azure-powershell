@@ -25,7 +25,7 @@
 * Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 * Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
 * Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
-* Updated `Get-AzResourceGroupDeploymentOperation`to use the SDK.
+* Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
 
 ## Version 2.5.1
