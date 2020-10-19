@@ -228,7 +228,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 [Get-AzADApplication](./Get-AzADApplication.md)
 
-[Set-AzADApplication](./Set-AzADApplication.md)
+[Update-AzADApplication](./Update-AzADApplication.md)
 
 [Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 

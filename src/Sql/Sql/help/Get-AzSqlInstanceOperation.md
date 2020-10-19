@@ -14,7 +14,7 @@ Gets a SQL managed instance's operations.
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSqlInstanceOperation [-Name <Guid>] -ManagedInstanceName <String> -ResourceGroupName <String>
+Get-AzSqlInstanceOperation [-Name <String>] -ManagedInstanceName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,6 +55,8 @@ IsUserError             :
 EstimatedCompletionTime :
 Description             :
 IsCancellable           : False
+OperationParameters     : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationParametersPair
+OperationSteps          : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationSteps
 
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/79f2c91b-0080-4c14-b9b4-d9991c6e82dd
 ResourceGroupName       : ps3753
@@ -72,6 +74,8 @@ IsUserError             :
 EstimatedCompletionTime :
 Description             :
 IsCancellable           : False
+OperationParameters     : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationParametersPair
+OperationSteps          : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationSteps
 ```
 
 This command gets all operations a SQL managed instance.
@@ -96,6 +100,8 @@ IsUserError             :
 EstimatedCompletionTime :
 Description             :
 IsCancellable           : False
+OperationParameters     : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationParametersPair
+OperationSteps          : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationSteps
 ```
 
 This command gets operation with name '5870c6d8-6703-4b27-8ae4-687b4ca7caea' on a SQL managed instance.
@@ -121,6 +127,8 @@ IsUserError             :
 EstimatedCompletionTime :
 Description             :
 IsCancellable           : False
+OperationParameters     : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationParametersPair
+OperationSteps          : Microsoft.Azure.Management.Sql.Models.ManagedInstanceOperationSteps
 ```
 
 This command gets operation with id '/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea'.
@@ -161,7 +169,7 @@ Accept wildcard characters: False
 The name of the operation.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases: OperationName
 

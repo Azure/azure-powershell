@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
         /// <summary>
-        /// Gets or sets the StorageType for the default Azure Storage Account.
+        /// Gets or sets the storage type for the Azure Storage Account.
         /// </summary>
-        public StorageType DefaultStorageAccountType { get; set; }
+        public StorageType StorageAccountType { get; set; }
 
         /// <summary>
-        /// Gets or sets the StorageName for the default Azure Storage Account.
+        /// Gets or sets the storage resource id for the Azure Storage Account.
         /// </summary>
-        public string DefaultStorageAccountName { get; set; }
+        public string StorageAccountResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage key for the default Azure Storage Account.
+        /// Gets or sets the storage key for the Azure Storage Account.
         /// </summary>
-        public string DefaultStorageAccountKey { get; set; }
+        public string StorageAccountKey { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the Head Node.
@@ -171,19 +171,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string EncryptionVaultUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the public network access type.
-        /// </summary>
-        public string PublicNetworkAccessType;
-
-        /// <summary>
-        /// Gets or sets the outbound access type to the public network.
-        /// </summary>
-        public string OutboundPublicNetworkAccessType;
-
-        /// <summary>
         /// Gets or sets the flag which indicates whether enable encryption in transit or not.
         /// </summary>
         public bool? EncryptionInTransit;
+
+        /// <summary>
+        /// Gets or sets the flag which indicates whether enable encryption at host or not.
+        /// </summary>
+        public bool? EncryptionAtHost;
 
         public AzureHDInsightConfig()
         {

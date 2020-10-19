@@ -141,17 +141,17 @@ This command first create 2 ManagementPolicy rule objects, then creates or updat
 ```
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
     Rules=(@{
-        Enabled="true";
+        Enabled=$true;
         Name="Test";
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
-                    TierToCool=30;
-                    TierToArchive=50;
-                    Delete=100;
+                    TierToCool=@{DaysAfterModificationGreaterThan=30};
+                    TierToArchive=@{DaysAfterModificationGreaterThan=50};
+                    Delete=@{DaysAfterModificationGreaterThan=100};
                 });
                 Snapshot=(@{
-                    Delete=100
+                    Delete=@{DaysAfterCreationGreaterThan=100};
                 });
             });
             Filters=(@{
@@ -161,12 +161,12 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         })
     },
     @{
-        Enabled="false";
+        Enabled=$false;
         Name="Test2";
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
-                    TierToCool=80;
+                    TierToCool=@{DaysAfterModificationGreaterThan=80};
                 });
             });
             Filters=(@{
@@ -217,7 +217,7 @@ Rules              : [
                                             }
                          },
                          {
-                             "Enabled":  true,
+                             "Enabled":  false,
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {

@@ -14,37 +14,28 @@ Update the state of an Azure key vault.
 
 ### UpdateByNameParameterSet (Default)
 ```
-Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnablePurgeProtection]
+ [-EnableRbacAuthorization <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzKeyVault -InputObject <PSKeyVault> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzKeyVault -InputObject <PSKeyVault> [-EnablePurgeProtection] [-EnableRbacAuthorization <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzKeyVault -ResourceId <String> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzKeyVault -ResourceId <String> [-EnablePurgeProtection] [-EnableRbacAuthorization <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This cmdlet updates the state of an Azure key vault.
-Please note updating some of the properties is an irreversible action, for example once soft delete has been enabled, it cannot be disabled anymore.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Update-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -EnableSoftDelete
-```
-
-Enables soft delete on the key vault named `$keyVaultName` in resource group `$resourceGroupName`.
 
 ### Example 2
 ```powershell
@@ -87,12 +78,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSoftDelete
-Enable the soft-delete functionality for this key vault.
-Once enabled it cannot be disabled.
+### -EnableRbacAuthorization
+Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -145,21 +135,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SoftDeleteRetentionInDays
-Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is 90 days.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

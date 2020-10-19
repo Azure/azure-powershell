@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.OperationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.OperationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

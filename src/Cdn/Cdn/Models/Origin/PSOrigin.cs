@@ -33,6 +33,18 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Origin
         
         public int? HttpsPort { get; set; }
 
+        public string OriginHostHeader { get; set; }
+
+        public int? Priority { get; set; }
+
+        public string PrivateLinkApprovalMessage { get; set; }
+
+        public string PrivateLinkLocation { get; set; }
+
+        public string PrivateLinkResourceId { get; set; }
+
+        public int? Weight { get; set; }
+
         public PSOriginResourceState ResourceState { get; set; }
 
         public string ResourceGroupName

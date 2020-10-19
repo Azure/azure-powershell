@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`..
+        /// </summary>
+        internal static string ADGraphPermissionWarning {
+            get {
+                return ResourceManager.GetString("ADGraphPermissionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active Directory..
         /// </summary>
         internal static string ADObjectAmbiguous {

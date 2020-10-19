@@ -22,6 +22,7 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
@@ -130,9 +131,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
-            string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
-                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
+            string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
+                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId)
+                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id);
             parameters.Description = string.IsNullOrWhiteSpace(parameters.Description) ? null : parameters.Description;
             parameters.Condition = string.IsNullOrWhiteSpace(parameters.Condition) ? null : parameters.Condition;
             parameters.ConditionVersion = string.IsNullOrWhiteSpace(parameters.ConditionVersion) ? null : parameters.ConditionVersion;
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             PSADObject adObject = null;
             Rest.Azure.OData.ODataQuery<RoleAssignmentFilter> odataQuery = null;
-            if (options.ADObjectFilter.HasFilter)
+            if (options.ADObjectFilter?.HasFilter ?? false)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
                 {
@@ -274,8 +275,44 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                 result.AddRange(classicAdministratorsAssignments);
             }
-
+            if (!string.IsNullOrEmpty(options.RoleAssignmentId))
+            {
+                result.RemoveAll(ra => !ra.RoleAssignmentId.EndsWith(options.RoleAssignmentId));
+            }
             return result;
+        }
+
+
+        /// <summary>
+        /// Updates a role assignment.
+        /// </summary>
+        /// <param name="roleAssignment">The role assignment to update.</param>
+        /// <returns>The updated role assignment.</returns>
+        public PSRoleAssignment UpdateRoleAssignment(PSRoleAssignment roleAssignment)
+        {
+            string principalId = roleAssignment.ObjectId;
+            var roleAssignmentGuidIndex = roleAssignment.RoleAssignmentId.LastIndexOf("/");
+            var roleAssignmentId = roleAssignmentGuidIndex != -1 ? roleAssignment.RoleAssignmentId.Substring(roleAssignmentGuidIndex + 1) : roleAssignment.RoleAssignmentId;
+            string scope = roleAssignment.Scope;
+            string roleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, roleAssignment.RoleDefinitionId);
+            var Description = string.IsNullOrWhiteSpace(roleAssignment.Description) ? null : roleAssignment.Description;
+            var Condition = string.IsNullOrWhiteSpace(roleAssignment.Condition) ? null : roleAssignment.Condition;
+            var ConditionVersion = string.IsNullOrWhiteSpace(roleAssignment.ConditionVersion) ? null : roleAssignment.ConditionVersion;
+            var createParameters = new RoleAssignmentCreateParameters
+            {
+                PrincipalId = principalId.ToString(),
+                RoleDefinitionId = roleDefinitionId,
+                PrincipalType = roleAssignment.ObjectType,
+                CanDelegate = roleAssignment.CanDelegate,
+                Description = Description,
+                Condition = Condition,
+                ConditionVersion = ConditionVersion
+            };
+
+            RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(
+                scope, roleAssignmentId, createParameters);
+            var PSRoleAssignment = assignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+            return PSRoleAssignment;
         }
 
         /// <summary>

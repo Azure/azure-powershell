@@ -65,5 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
 
         public bool CanDelegate { get; set; }
+
+        public string RoleAssignmentId { get; set; }
     }
 }

@@ -12,36 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Rest.Azure;
-using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
-using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
+using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -245,7 +236,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions {UPN = DefaultContext.Account.Id}).ToString();
+                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions { UPN = DefaultContext.Account.Id }).ToString();
 #else
                 var userFetcher = ActiveDirectoryClient.Me.ToUser();
                 var user = userFetcher.ExecuteAsync().Result;
@@ -345,13 +336,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         private bool ValidateObjectId(string objId)
         {
             if (string.IsNullOrWhiteSpace(objId)) return false;
-// TODO: Remove IfDef
-#if NETSTANDARD
-            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
-#else
-            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
-#endif
-            return objectCollection.Any();
+            try
+            {
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
+                return objectCollection.Any();
+            }
+            catch (Exception ex)
+            {
+                WriteWarning(Resources.ADGraphPermissionWarning);
+                throw ex;
+            }
         }
 
         protected string GetObjectId(string objectId, string upn, string email, string spn)
@@ -420,7 +414,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             KeyPerms.Recover
         };
 
-        protected readonly string[] DefaultPermissionsToSecrets = 
+        protected readonly string[] DefaultPermissionsToSecrets =
         {
             SecretPerms.Get,
             SecretPerms.List,
@@ -450,7 +444,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Restore
         };
 
-        protected readonly string[] DefaultPermissionsToStorage = 
+        protected readonly string[] DefaultPermissionsToStorage =
         {
             StoragePerms.Delete,
             StoragePerms.Deletesas,

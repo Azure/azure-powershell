@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
