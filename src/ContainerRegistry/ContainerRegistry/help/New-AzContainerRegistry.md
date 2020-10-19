@@ -14,7 +14,7 @@ Creates a container registry.
 
 ```
 New-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String> [-Location <String>]
- [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -123,21 +123,6 @@ Aliases: ContainerRegistryName, RegistryName, ResourceName
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NetworkRuleSet
-The network rule set for a container registry.
-
-```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
