@@ -33,10 +33,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         {
             ValidateParameters();
 
-            var certificates = Certificates.Select(path => new X509Certificate2(path));
+            var certificates = Certificates.Select(path => new X509Certificate2(ResolveUserPath(path)));
 
             if (ShouldProcess($"managed HSM {Name}", $"download encrypted security domain data to '{OutputPath}'"))
             {
+                OutputPath = ResolveUserPath(OutputPath);
                 var securityDomain = Client.DownloadSecurityDomain(Name, certificates, Quorum);
                 if (!AzureSession.Instance.DataStore.FileExists(OutputPath) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, OutputPath), Resources.FileOverwriteCaption))
                 {

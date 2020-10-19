@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             ValidateParameters();
             if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
+                Keys = Keys.Select(key => new KeyPath() {
+                    PublicKey = this.ResolveUserPath(key.PublicKey),
+                    PrivateKey = this.ResolveUserPath(key.PrivateKey)
+                    }).ToArray();
                 var securityDomain = LoadSdFromFile(SecurityDomainPath);
                 var rawSecurityDomain = Client.DecryptSecurityDomain(securityDomain, Keys);
                 var exchangeKey = Client.DownloadSecurityDomainExchangeKey(Name);

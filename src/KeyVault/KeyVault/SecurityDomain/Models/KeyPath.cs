@@ -4,8 +4,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
     public class KeyPath
     {
-        public string PublicKey { get; }
-        public string PrivateKey { get; }
-        public SecureString Password { get; }
+        public string PublicKey { get; set; }
+        public string PrivateKey { get; set; }
+        public SecureString Password { get; set; }
     }
 }
