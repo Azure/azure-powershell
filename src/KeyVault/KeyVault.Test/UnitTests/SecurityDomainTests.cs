@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SecurityDomain.Test
 {
-    public class UnitTest1
+    public class SecurityDomainTests
     {
         [Fact]
         public void X509Tests()

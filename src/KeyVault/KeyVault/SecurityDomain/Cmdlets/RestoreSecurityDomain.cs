@@ -21,9 +21,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [ValidateNotNullOrEmpty]
         public string SecurityDomainPath { get; set; }
 
-        [Parameter(HelpMessage = "Specify whether to overwrite existing file.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(HelpMessage = "When specified, a boolean will be returned when cmdlet succeeds.")]
         public SwitchParameter PassThru { get; set; }
 

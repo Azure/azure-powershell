@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azmanagedhsmsecuritydomain
 schema: 2.0.0
 ---
 
@@ -33,10 +33,11 @@ This cmdlet backs up the security domain data of a managed HSM for restoring.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\Users\username\> Backup-AzManagedHsmSecurityDomain -Name testmhsm -Certificates pathOfCertificates/sd1.cer, pathOfCertificates/sd2.cer, pathOfCertificates/sd3.cer -OutputPath pathOfOutput/sd.ps.json -Quorum 2
+
 ```
 
-{{ Add example description here }}
+This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM to the specified output file.
 
 ## PARAMETERS
 
