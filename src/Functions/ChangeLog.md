@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Implemented Functions Stacks API which describes what runtimes and runtime versions are available for function app creation
 * Bug fixing
 
