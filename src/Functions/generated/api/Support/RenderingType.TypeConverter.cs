@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for RenderingType.</summary>
+    /// <summary>Rendering Type</summary>
     public partial class RenderingTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

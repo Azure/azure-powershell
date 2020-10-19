@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for LeaseDuration.</summary>
+    /// <summary>
+    /// Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LeaseDurationTypeConverter))]
     public partial struct LeaseDuration :
         System.Management.Automation.IArgumentCompleter

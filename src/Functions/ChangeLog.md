@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Implemented Functions Stacks API which describes what runtimes and runtime versions are available for function app creation
+* Bug fixing
 
 ## Version 1.0.2
 * Removed the ability to create v2 Functions in regions that do not support it.
