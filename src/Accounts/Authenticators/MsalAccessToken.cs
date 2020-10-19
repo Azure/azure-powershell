@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public static async Task<IAccessToken> GetAccessTokenAsync(
             Task<AuthenticationRecord> authTask,
             Func<ValueTask<AccessToken>> getTokenAction,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var record = await authTask;
             cancellationToken.ThrowIfCancellationRequested();
