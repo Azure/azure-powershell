@@ -497,7 +497,11 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                 }
 
-                InitializeProfileProvider(autoSaveEnabled);
+                if(!InitializeProfileProvider(autoSaveEnabled))
+                {
+                    AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
+                    autoSaveEnabled = false;
+                }
 
                 IServicePrincipalKeyStore keyStore =
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);

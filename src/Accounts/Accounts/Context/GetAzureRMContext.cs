@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             // If no context is found, return
-            if (DefaultContext == null && !this.IsParameterBound(c => c.ListAvailable))
+            if (DefaultContext == null && !this.ListAvailable.IsPresent)
             {
                 return;
             }
 
-            if (this.IsParameterBound(c => c.ListAvailable))
+            if (this.ListAvailable.IsPresent)
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)

@@ -1015,7 +1015,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
             Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
-            Assert.Equal(expectedArray, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }
 

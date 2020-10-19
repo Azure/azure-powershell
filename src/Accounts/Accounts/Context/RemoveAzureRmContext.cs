@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                         }
                                     }
 
-                                    if (this.IsParameterBound(c => c.PassThru))
+                                    if (this.PassThru.IsPresent)
                                     {
                                         var outContext = new PSAzureContext(removedContext);
                                         outContext.Name = name;
