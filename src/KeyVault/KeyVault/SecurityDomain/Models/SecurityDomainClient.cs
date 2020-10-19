@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 throw new Exception("Failed to encrypt security domain data for restoring.", ex);
             }
-            
+
         }
 
         /// <summary>

@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
                 properties.TenantId = parameters.TenantId;
                 properties.InitialAdminObjectIds = parameters.Administrator;
-                properties.HsmPoolUri = "";
+                properties.HsmUri = "";
                 properties.EnableSoftDelete = parameters.EnableSoftDelete;
                 properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
-        /// Delete an existing Managed HSM. Throws if vault is not found.
+        /// Delete an existing Managed HSM.
         /// </summary>
         /// <param name="managedHsm"></param>
         /// <param name="resourceGroupName"></param>
@@ -562,9 +562,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             catch (CloudException ce)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
-                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, managedHsm, resourceGroupName));
-                throw;
+                // there's a known issue that the long running delete operation will
+                // finally throws an not found exception,
+                // we'll just ignore it
+                if (ce.Response.StatusCode != HttpStatusCode.NotFound)
+                    throw;
             }
         }
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             TenantId = managedHsm.Properties.TenantId.Value;
             TenantName = ModelExtensions.GetDisplayNameForTenant(TenantId, adClient);
             InitialAdminObjectIds = managedHsm.Properties.InitialAdminObjectIds.ToArray<string>();
-            HsmPoolUri = managedHsm.Properties.HsmPoolUri;
+            HsmUri = managedHsm.Properties.HsmUri;
             EnablePurgeProtection = managedHsm.Properties.EnablePurgeProtection;
             EnableSoftDelete = managedHsm.Properties.EnableSoftDelete;
             SoftDeleteRetentionInDays = managedHsm.Properties.SoftDeleteRetentionInDays;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Guid TenantId { get; private set; }
         public string TenantName { get; private set; }
         public string[] InitialAdminObjectIds { get; private set; }
-        public string HsmPoolUri { get; private set; }
+        public string HsmUri { get; private set; }
         public bool? EnableSoftDelete { get; private set; }
         public int? SoftDeleteRetentionInDays { get; private set; }
         public bool? EnablePurgeProtection { get; private set; }
