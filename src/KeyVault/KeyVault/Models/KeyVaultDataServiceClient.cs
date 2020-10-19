@@ -27,6 +27,7 @@ using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Rest.Azure;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -902,7 +903,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
-
+        
         public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
         {
             if ( string.IsNullOrEmpty( vaultName ) )
@@ -2002,9 +2003,68 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultManagedStorageAccount(storageAccountBundle, this.vaultUriHelper);
         }
 
+        public string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath)
+        {
+            throw new NotImplementedException("Backing up a key on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
+        {
+            throw new NotImplementedException("Restoring a key on managed HSM is only possible in track 2 SDK.");
+        }
+
         public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             throw new NotImplementedException("Creating keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey) 
+        {
+            throw new NotImplementedException("Importing keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes) 
+        {
+            throw new NotImplementedException("Updating keys on managed HSM is only possible in track 2 SDK.");
+        }
+        public PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName) 
+        {
+            throw new NotImplementedException("Recovering keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion)
+        {
+            throw new NotImplementedException("Getting keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Getting key versions on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName)
+        {
+            throw new NotImplementedException("Getting keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Getting deleted keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmNam)
+        {
+            throw new NotImplementedException("Getting deleted keys on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public void PurgeManagedHsmKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Purging deleted keys on managed HSM is only possible in track 2 SDK.");
         }
 
         private VaultUriHelper vaultUriHelper;

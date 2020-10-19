@@ -4,6 +4,7 @@ using System.Text;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -36,13 +37,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             // SDK doesn't have a definition of OctHSM, so I need to use string comparison
             else if (track2Key.KeyType == Track2Sdk.KeyType.Oct || track2Key.KeyType.ToString() == @"oct-HSM")
             {
-                // Track2 JsonWebKey.ToAes() requires key type to be oct only, but hsm always return the type as oct-HSM
-                // so I manually take care of the conversion
-                // however K is always null
-                // todo: check with Ma Bin
-                Aes aes = Aes.Create();
-                aes.Key = track2Key.K;
-                track1Key = new Track1Sdk.JsonWebKey(aes);
+                track1Key = new Track1Sdk.JsonWebKey();
+                track1Key.Kty = track2Key.KeyType.ToString();
             }
             else
             {

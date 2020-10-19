@@ -384,6 +384,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string HsmCertRangeWarning {
             get {
                 return ResourceManager.GetString("HsmCertRangeWarning", resourceCulture);
+                }
+        }
+        
+        ///   Looks up a localized string similar to The specified HSM already exists..
+        /// </summary>
+        internal static string HsmAlreadyExists {
+            get {
+                return ResourceManager.GetString("HsmAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find HSM &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string HsmNotFound {
+            get {
+                return ResourceManager.GetString("HsmNotFound", resourceCulture);
             }
         }
         
@@ -402,6 +419,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string ImportCertificate {
             get {
                 return ResourceManager.GetString("ImportCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for importing. (Supported types: RSA-HSM).
+        /// </summary>
+        internal static string ImportNotSupported {
+            get {
+                return ResourceManager.GetString("ImportNotSupported", resourceCulture);
             }
         }
         
@@ -429,6 +455,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidCurrentSubscription {
             get {
                 return ResourceManager.GetString("InvalidCurrentSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid HSM name..
+        /// </summary>
+        internal static string InvalidHsmName {
+            get {
+                return ResourceManager.GetString("InvalidHsmName", resourceCulture);
             }
         }
         
@@ -483,6 +518,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyName {
             get {
                 return ResourceManager.GetString("InvalidKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid key properties.
+        /// </summary>
+        internal static string InvalidKeyProperties {
+            get {
+                return ResourceManager.GetString("InvalidKeyProperties", resourceCulture);
             }
         }
         
@@ -847,7 +891,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveCertWarning {
             get {
@@ -937,7 +981,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove HSM &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveHsmWarning {
+            get {
+                return ResourceManager.GetString("RemoveHsmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove HSM.
+        /// </summary>
+        internal static string RemoveHsmWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveHsmWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveKeyWarning {
             get {
@@ -955,7 +1017,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveManagedStorageAccountWarning {
             get {
@@ -1000,7 +1062,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSecretWarning {
             get {

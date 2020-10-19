@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported creating, removing, updating, getting, restoring, backup and undoing removal key inside managed HSM
 * Enabled Managed HSM Management via *-AzKeyVault
 
 ## Version 2.0.0

@@ -27,5 +27,9 @@
     <None Update="Resources\pshtest.pfx" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ScenarioTests\PesterTests\" />
+  </ItemGroup>
+
 </Project>
 
