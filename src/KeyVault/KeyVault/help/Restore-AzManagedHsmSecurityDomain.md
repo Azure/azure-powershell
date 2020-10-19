@@ -12,13 +12,13 @@ Restores previous backed up security domain data to a managed HSM.
 
 ## SYNTAX
 
-### By Name (Default)
+### ByName (Default)
 ```
 Restore-AzManagedHsmSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### By InputObject
+### ByInputObject
 ```
 Restore-AzManagedHsmSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru]
  -InputObject <PSKeyVaultIdentityItem> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -34,8 +34,8 @@ This cmdlet restores previous backed up security domain data to a managed HSM.
 ```powershell
 PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
 PS C:\> Restore-AzManagedHsmSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
-
 ```
+
 First, the keys need be provided to decrypt the security domain data. 
 Then, The **Restore-AzManagedHsmSecurityDomain** command restores previous backed up security domain data to a managed HSM using these keys.
 
@@ -61,7 +61,7 @@ Object representing a managed HSM.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
-Parameter Sets: By InputObject
+Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
@@ -92,7 +92,7 @@ Name of the managed HSM.
 
 ```yaml
 Type: System.String
-Parameter Sets: By Name
+Parameter Sets: ByName
 Aliases: HsmName
 
 Required: True

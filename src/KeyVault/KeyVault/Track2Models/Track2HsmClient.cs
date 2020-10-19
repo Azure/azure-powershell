@@ -1,3 +1,4 @@
+﻿using Azure.Security.KeyVault.Administration;
 ﻿using Azure;
 using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -5,9 +6,10 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections;
+using System.Linq;
+using AdminSdk = Azure.Security.KeyVault.Administration;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using KeyProperties = Azure.Security.KeyVault.Keys.KeyProperties;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
@@ -19,6 +21,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         private Track2TokenCredential _credential;
         private VaultUriHelper _uriHelper;
         private KeyClient CreateKeyClient(string hsmName) => new KeyClient(_uriHelper.CreateVaultUri(hsmName), _credential);
+        private KeyVaultBackupClient CreateBackupClient(string hsmName) => new KeyVaultBackupClient(_uriHelper.CreateVaultUri(hsmName), _credential);
+        private KeyVaultAccessControlClient CreateRbacClient(string hsmName) => new KeyVaultAccessControlClient(_uriHelper.CreateVaultUri(hsmName), _credential);
 
         public Track2HsmClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
@@ -154,6 +158,68 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
+        public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
+        {
+            var client = CreateBackupClient(hsmName);
+            var backup = client.StartBackup(blobStorageUri, sasToken);
+            Uri backupUri;
+            try
+            {
+                backupUri = backup.WaitForCompletionAsync().ConfigureAwait(false).GetAwaiter().GetResult().Value;
+            }
+            catch
+            {
+                throw;
+            }
+            return backupUri;
+        }
+
+        public void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder)
+        {
+            var client = CreateBackupClient(hsmName);
+            var restore = client.StartRestore(backupLocation, sasToken, backupFolder);
+            try
+            {
+                restore.WaitForCompletionAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
+        {
+            var client = CreateRbacClient(hsmName);
+            return client.GetRoleDefinitions(new KeyVaultRoleScope(scope)).Select(roleDefinition => new PSKeyVaultRoleDefinition(roleDefinition)).ToArray();
+        }
+
+        internal PSKeyVaultRoleAssignment[] GetHsmRoleAssignments(string hsmName, string scope)
+        {
+            var client = CreateRbacClient(hsmName);
+            return client.GetRoleAssignments(new KeyVaultRoleScope(scope)).Select(roleAssignment => new PSKeyVaultRoleAssignment(roleAssignment, hsmName)).ToArray();
+        }
+
+        internal PSKeyVaultRoleAssignment GetHsmRoleAssignment(string hsmName, string scope, string name)
+        {
+            var client = CreateRbacClient(hsmName);
+            var roleAssignment = client.GetRoleAssignment(new KeyVaultRoleScope(scope), name);
+            return new PSKeyVaultRoleAssignment(roleAssignment, hsmName);
+        }
+
+        internal PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId)
+        {
+            var client = CreateRbacClient(hsmName);
+            var roleAssignment = client.CreateRoleAssignment(new KeyVaultRoleScope(scope), new AdminSdk.Models.KeyVaultRoleAssignmentProperties(roleDefinitionId, principalId));
+            return new PSKeyVaultRoleAssignment(roleAssignment, hsmName);
+        }
+
+        internal void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName)
+        {
+            var client = CreateRbacClient(hsmName);
+            client.DeleteRoleAssignment(new KeyVaultRoleScope(scope), roleAssignmentName);
+        }
+        
         internal PSDeletedKeyVaultKey DeleteKey(string managedHsmName, string keyName)
         {
             if (string.IsNullOrEmpty(managedHsmName))
