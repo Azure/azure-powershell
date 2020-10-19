@@ -127,8 +127,6 @@ function Test-AzureContainerRegistryCredential
     $location = Get-ProviderLocation "Microsoft.ContainerRegistry/registries"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-	
-	#Test-AzureContainerRegistryCredentialBySku $resourceGroupName $location "Classic"
 
 	Test-AzureContainerRegistryCredentialBySku $resourceGroupName $location "Basic"	
 

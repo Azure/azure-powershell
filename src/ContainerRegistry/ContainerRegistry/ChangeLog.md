@@ -20,7 +20,8 @@
 ## Upcoming Release
 * [Breaking Change] Updates API version to 2020-05-01
 * Added New cmdlets: `Connect-AzContainerRegistry`, `Import-AzContainerRigstryImage`, `Get-AzContainerRegistryUsage`, `New-AzContainerRegistryNetworkRule`, `Set-AzContainerRegistryNetworkRule`
-* Added new parameter `NetworkRuleSet` to `New-AzContainerRegistry` and `Update-AzContainerRegistry`
+* Added new parameter `NetworkRuleSet` to `Update-AzContainerRegistry`
+
 
 ## Version 1.1.1
 * Update references in .psd1 to use relative path
