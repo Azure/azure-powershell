@@ -130,19 +130,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         }
 
         /// <summary>
-        /// Disable Azure Active Directory only authentication on a Azure SQL Server
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
-        /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
-        internal AzureSqlServerActiveDirectoryAdministratorModel DisableAzureADOnlyAuthenticaion(string resourceGroup, string serverName)
-        {
-            var resp = Communicator.Disable(resourceGroup, serverName);
-
-            return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroup, serverName, resp);
-        }
-
-        /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>

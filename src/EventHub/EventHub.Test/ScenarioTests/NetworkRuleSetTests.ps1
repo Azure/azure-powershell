@@ -74,6 +74,7 @@ function NetworkRuleSetTests
 
 	Write-Debug "Get NetworkRuleSet"
 	$getResult1 = Get-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName
+	$getResult1.TrustedServiceAccessEnabled = $true
 	
 	Assert-AreEqual $getResult1.VirtualNetworkRules.Count 3 "VirtualNetworkRules count did not matched"
 	Assert-AreEqual $getResult1.IpRules.Count 3 "IPRules count did not matched"
@@ -90,6 +91,7 @@ function NetworkRuleSetTests
 	$setResult =  Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -InputObject $getResult1
 	Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
 	Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
+	Assert-AreEqual $true $setResult.TrustedServiceAccessEnabled
 
 	# Set-AzEventHubNetworkRuleSet with Resource ID
 	$setResult1 =  Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -ResourceId $getResult.Id

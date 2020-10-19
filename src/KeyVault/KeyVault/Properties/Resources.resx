@@ -519,4 +519,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RemoveHsmWhatIfMessage" xml:space="preserve">
     <value>Remove HSM</value>
   </data>
+  <data name="ADGraphPermissionWarning" xml:space="preserve">
+    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>
+  </data>
 </root>

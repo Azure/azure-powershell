@@ -333,7 +333,6 @@ function Test-AzureFirewallPolicyWithDNSSettings {
          # Check DNS Proxy
         Assert-Null $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-Null $getAzureFirewallPolicy.DnsSettings.Servers
-        Assert-Null $getAzureFirewallPolicy.DnsSettings.RequireProxyForNetworkRules
 
         # Update AzureFirewallPolicy with Enable Proxy and DNS Servers
 
@@ -353,10 +352,9 @@ function Test-AzureFirewallPolicyWithDNSSettings {
          # Check DNS Proxy
         Assert-AreEqual true $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewallPolicy.DnsSettings.Servers
-        Assert-Null $getAzureFirewallPolicy.DnsSettings.RequireProxyForNetworkRules
 
-        # Update AzureFirewallPolicy with Enable Proxy , DNS Servers and Dns ProxyNotRequiredForNetworkRule
-        $dnsSettings2 = New-AzFirewallPolicyDnsSetting -EnableProxy -Server $dnsServers -ProxyNotRequiredForNetworkRule
+        # Update AzureFirewallPolicy with Enable Proxy and DNS Servers
+        $dnsSettings2 = New-AzFirewallPolicyDnsSetting -EnableProxy -Server $dnsServers
 
         $azureFirewallPolicy = Set-AzFirewallPolicy -InputObject $azureFirewallPolicy -DnsSetting $dnsSettings2
 
@@ -372,7 +370,6 @@ function Test-AzureFirewallPolicyWithDNSSettings {
          # Check DNS Proxy
         Assert-AreEqual true $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewallPolicy.DnsSettings.Servers
-        Assert-AreEqual false $getAzureFirewallPolicy.DnsSettings.RequireProxyForNetworkRules
 
         # Set AzureFirewallPolicy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
@@ -388,7 +385,6 @@ function Test-AzureFirewallPolicyWithDNSSettings {
          # Check DNS Proxy
         Assert-AreEqual true $getAzureFirewallPolicy.DnsSettings.EnableProxy
         Assert-AreEqualArray $dnsServers $getAzureFirewallPolicy.DnsSettings.Servers
-        Assert-AreEqual false $getAzureFirewallPolicy.DnsSettings.RequireProxyForNetworkRules
 
         $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -DnsSetting $dnsSettings -AsJob
         $result = $azureFirewallPolicyAsJob | Wait-Job

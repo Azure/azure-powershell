@@ -128,8 +128,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
             var snapshotBody = new Management.NetApp.Models.Snapshot()
             {
-                Location = Location,
-                FileSystemId = FileSystemId
+                Location = Location                
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

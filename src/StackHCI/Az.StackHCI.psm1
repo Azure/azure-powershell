@@ -297,6 +297,22 @@ param(
     $usageWrite = $assignedPerms | where { ($_.Id -eq $usageWritePermission.Id) }
     $metadataWrite = $assignedPerms | where { ($_.Id -eq $metadataWritePermission.Id) }
 
+    if($usageWrite -eq $Null -or $metadataWrite -eq $Null)
+    {
+        # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
+        $assignedPerms = Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId
+    }
+
+    if($usageWrite -eq $Null)
+    {
+        $usageWrite = $assignedPerms | where { ($_.Id -eq $usageWritePermission.Id) }
+    }
+
+    if($metadataWrite -eq $Null)
+    {
+        $metadataWrite = $assignedPerms | where { ($_.Id -eq $metadataWritePermission.Id) }
+    }
+
     if($usageWrite -ne $Null -and $metadataWrite -ne $Null) # Check both Usage.Write and Metadata.Write are in consented state.
     {
         if($usageWrite.DeletionTimestamp -eq $Null -or ($usageWrite.DeletionTimestamp -lt $usageWrite.CreationTimestamp))
