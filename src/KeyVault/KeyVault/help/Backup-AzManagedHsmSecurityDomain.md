@@ -33,11 +33,11 @@ This cmdlet backs up the security domain data of a managed HSM for restoring.
 
 ### Example 1
 ```powershell
-PS C:\Users\username\> Backup-AzManagedHsmSecurityDomain -Name testmhsm -Certificates pathOfCertificates/sd1.cer, pathOfCertificates/sd2.cer, pathOfCertificates/sd3.cer -OutputPath pathOfOutput/sd.ps.json -Quorum 2
+PS C:\Users\username\> Backup-AzManagedHsmSecurityDomain -Name testmhsm -Certificates {pathOfCertificates}/sd1.cer, {pathOfCertificates}/sd2.cer, {pathOfCertificates}/sd3.cer -OutputPath {pathOfOutput}/sd.ps.json -Quorum 2
 
 ```
 
-This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM to the specified output file.
+This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM security domain to the specified output file.
 
 ## PARAMETERS
 

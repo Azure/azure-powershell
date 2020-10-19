@@ -32,10 +32,8 @@ This cmdlet restores previous backed up security domain data to a managed HSM.
 
 ### Example 1
 ```powershell
-PS C:\> $keys = @{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd1.key"}, 
-@{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd2.key"}, 
-@{PublicKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.cer"; PrivateKey = "C:\Users\yeliu\code\azure-powershell\src\KeyVault\SecurityDomain.Test\test\sd3.key"}
-PS C:\> Restore-AzManagedHsmSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath pathOfBackup\sd.ps.json
+PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
+PS C:\> Restore-AzManagedHsmSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
 
 ```
 First, the keys need be provided to decrypt the security domain data. 
