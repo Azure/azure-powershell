@@ -13,6 +13,7 @@ Creates a key vault.
 
 ## SYNTAX
 
+### KeyVaultParameterSet (Default)
 ```
 New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-EnabledForDeployment]
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]

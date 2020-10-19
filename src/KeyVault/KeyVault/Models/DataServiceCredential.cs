@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string GetToken()
         {
-            return GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName).Item1.AccessToken;
+            return GetAccessToken().AccessToken;
         }
 
-        public IAccessToken GetTokenTemp() // todo rename / refactor
+        public IAccessToken GetAccessToken()
         {
-            return GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName).Item1;
+            return GetTokenInternal(TenantId, _authenticationFactory, _context, _endpointName).Item1;
         }
 
         private static string GetTenantId(IAzureContext context)

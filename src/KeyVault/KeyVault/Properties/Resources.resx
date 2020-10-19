@@ -501,6 +501,33 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="HsmCertRangeWarning" xml:space="preserve">
+    <value>To encrypt the security domain data, please provide at least {0} and at most {1} certificates.</value>
+  </data>
+  <data name="LoadSecurityDomainFileFailed" xml:space="preserve">
+    <value>Failed to load security domain data from {0}. Please make sure the file exists and is not modified.</value>
+  </data>
+  <data name="RestoreSecurityDomainBadKey" xml:space="preserve">
+    <value>"PublicKey" and "PrivateKey" are mandatory properties in each object in "Keys".</value>
+  </data>
+  <data name="RestoreSecurityDomainNotEnoughKey" xml:space="preserve">
+    <value>There need to be at least {0} keys to decrypt security domain backup data.</value>
+  </data>
+  <data name="DecryptSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct.</value>
+  </data>
+  <data name="DecryptSecurityDomainKeyNotEnough" xml:space="preserve">
+    <value>Not enough keys to decrypt security domain backup. {0} required, {0} provided.</value>
+  </data>
+  <data name="DownloadSecurityDomainFail" xml:space="preserve">
+    <value>Failed to download security domain backup data.</value>
+  </data>
+  <data name="DownloadSecurityDomainKeyFail" xml:space="preserve">
+    <value>Failed to download security domain exchange key.</value>
+  </data>
+  <data name="RestoreSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to restore security domain from backup.</value>
+  </data>
   <data name="InvalidKeyProperties" xml:space="preserve">
     <value>Invalid key properties</value>
   </data>

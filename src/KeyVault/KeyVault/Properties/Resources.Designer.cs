@@ -316,6 +316,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
+        /// </summary>
+        internal static string DecryptSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enough keys to decrypt security domain backup. {0} required, {0} provided..
+        /// </summary>
+        internal static string DecryptSecurityDomainKeyNotEnough {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainKeyNotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
         /// </summary>
         internal static string DeletedVaultNotFound {
@@ -330,6 +348,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string DownloadNotSupported {
             get {
                 return ResourceManager.GetString("DownloadNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        /// </summary>
+        internal static string DownloadSecurityDomainFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain exchange key..
+        /// </summary>
+        internal static string DownloadSecurityDomainKeyFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
             }
         }
         
@@ -352,6 +388,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To encrypt the security domain data, please provide at least {0} and at most {1} certificates..
+        /// </summary>
+        internal static string HsmCertRangeWarning {
+            get {
+                return ResourceManager.GetString("HsmCertRangeWarning", resourceCulture);
+                }
+        }
+        
         ///   Looks up a localized string similar to The specified HSM already exists..
         /// </summary>
         internal static string HsmAlreadyExists {
@@ -681,6 +725,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string KeyOpsImportIsExclusive {
             get {
                 return ResourceManager.GetString("KeyOpsImportIsExclusive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load security domain data from {0}. Please make sure the file exists and is not modified..
+        /// </summary>
+        internal static string LoadSecurityDomainFileFailed {
+            get {
+                return ResourceManager.GetString("LoadSecurityDomainFileFailed", resourceCulture);
             }
         }
         
@@ -1095,6 +1148,33 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RestoreSecret {
             get {
                 return ResourceManager.GetString("RestoreSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;PublicKey&quot; and &quot;PrivateKey&quot; are mandatory properties in each object in &quot;Keys&quot;..
+        /// </summary>
+        internal static string RestoreSecurityDomainBadKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainBadKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to restore security domain from backup..
+        /// </summary>
+        internal static string RestoreSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
+        /// </summary>
+        internal static string RestoreSecurityDomainNotEnoughKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainNotEnoughKey", resourceCulture);
             }
         }
         
