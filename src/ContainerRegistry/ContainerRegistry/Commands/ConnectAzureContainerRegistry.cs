@@ -56,33 +56,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
             if (ParameterSetName.Equals(WithoutNameAndPasswordParameterSet))
             {
-                //try to get registry from current subscription
-                IList<PSContainerRegistry> registries = this.RegistryClient.ListAllRegistries(null);
-                PSContainerRegistry registry = null;
-                if (registries != null || registries.Count != 0)
-                {
-                    registry = registries.FirstOrDefault(x => x.Name.Equals(Name));
-                }
-
-                if (registry != null && registry.SkuName.Equals("Classic"))
-                {
-                    //use admin login if allowed for SKU == classic 
-                    if (registry.AdminUserEnabled == true)
-                    {
-                        PSContainerRegistryCredential credential = new PSContainerRegistryCredential(this.RegistryClient.ListRegistryCredentials(registry.ResourceGroupName, registry.Name));
-                        this.UserName = credential.Username;
-                        this.Password = credential.Password;
-                    } 
-                    else
-                    {
-                        throw new PSArgumentException("Registry " + registry.Name + "with SKU Classic has admin user disabled, please provide username and password");
-                    }
-                }
-                else
-                {
-                    this.UserName = new Guid().ToString();
-                    this.Password = this.RegistryDataPlaneClient.GetRefreshToken();
-                }
+                this.UserName = new Guid().ToString();
+                this.Password = this.RegistryDataPlaneClient.GetRefreshToken();
             }
 
             string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
