@@ -33,7 +33,8 @@ function Test-CreateWithNetworkRuleSet
 		$vnet = New-AzVirtualNetwork -Name $VnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
 		$rule = New-AzContainerRegistryNetworkRule -VirtualNetworkRule -VirtualNetworkResourceId $vnet.Subnets[0].Id
 		$set = Set-AzContainerRegistryNetworkRuleSet -DefaultAction "Allow" -NetworkRule $rule
-		$registry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $RegistryName -Sku "Premium" -Location $location -NetworkRuleSet $set
+		$registry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $RegistryName -Sku "Premium" -Location $location
+		$registry = Update-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $RegistryName -NetworkRuleSet $set
 
 		$usage = Get-AzContainerRegistryUsage -ResourceGroupName $resourceGroupName -RegistryName $RegistryName
 
