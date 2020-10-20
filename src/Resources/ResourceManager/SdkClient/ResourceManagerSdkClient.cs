@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return result;
         }
 
-        private ResourceGroupExportResult ExportResourceGroup(string resourceGroupName, ExportTemplateRequest properties)
+        public ResourceGroupExportResult ExportResourceGroup(string resourceGroupName, ExportTemplateRequest properties)
         {
             return ResourceManagementClient.ResourceGroups.ExportTemplate(resourceGroupName, properties);
         }

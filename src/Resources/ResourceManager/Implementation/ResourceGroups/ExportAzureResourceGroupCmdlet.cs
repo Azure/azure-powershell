@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceIds;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using System;
@@ -104,48 +106,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var resourceGroupId = this.GetResourceGroupId();
 
-                var apiVersion = this.ApiVersion ?? DefaultApiVersion;
-
-                var parameters = new ExportTemplateParameters
+                var parameters = new Management.ResourceManager.Models.ExportTemplateRequest
                 {
                     Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
                     Options = this.GetExportOptions(),
                 };
 
-                var operationResult = this.GetResourcesClient()
-                    .InvokeActionOnResource<JObject>(
-                        resourceId: resourceGroupId,
-                        action: Constants.ExportTemplate,
-                        parameters: parameters.ToJToken(),
-                        apiVersion: apiVersion,
-                        cancellationToken: this.CancellationToken.Value)
-                    .Result;
+                var exportedTemplate = ResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
 
-                var managementUri = this.GetResourcesClient()
-                    .GetResourceManagementRequestUri(
-                        resourceId: resourceGroupId,
-                        apiVersion: apiVersion,
-                        action: Constants.ExportTemplate);
+                var template = exportedTemplate.Template;
 
-                var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-                var resultString = this.GetLongRunningOperationTracker(activityName: activity,
-                    isResourceCreateOrUpdate: false)
-                    .WaitOnOperation(operationResult: operationResult);
-
-                var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
-
-                if (JObject.Parse(resultString)["error"] != null)
-                {
-                    ExtendedErrorInfo error;
-                    if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
-                    {
-                        WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                        foreach (var detail in error.Details)
-                        {
-                            WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
-                        }
-                    }
-                }
+                var error = exportedTemplate.Error;
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.ResourceGroupName,
