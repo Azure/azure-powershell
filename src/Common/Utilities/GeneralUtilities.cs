@@ -267,7 +267,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return GetHttpResponseLog(statusCode, ConvertHttpHeadersToWebHeaderCollection(headers), body, matchers);
         }
 
-        public static string TransformBody(string inBody, IList<Regex> matchers = null)
+        public static string TransformBody(string inBody)
+        {
+            IList<Regex> matchers = new List<Regex>();
+            Regex matcher = new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\"");
+            matchers.Add(matcher);
+            return TransformBody(inBody, matchers);
+        }
+
+        public static string TransformBody(string inBody, IList<Regex> matchers)
         {
             if (matchers != null) 
             {
