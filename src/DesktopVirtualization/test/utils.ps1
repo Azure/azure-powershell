@@ -13,12 +13,13 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
-    $null = $env.Add("ResourceGroup", "shhirji-ps-unittest")
-    $null = $env.Add("Location", "ukwest")
-    $null = $env.Add("HostPool", "shhirji-hp-ps-unittest")
-    $null = $env.Add("HostPoolArmPath", "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/shhirji-ps-unittest/providers/Microsoft.DesktopVirtualization/hostPools/shhirji-hp-ps-unittest")
-    $null = $env.Add("RemoteApplicationGroup", "shhirji-ps-unittest-RAG")
-    $null = $env.Add("DesktopApplicationGroup", "shhirji-hp-ps-unittest-DAG")
+    $null = $env.Add("ResourceGroup", "jushiah-appattach")
+    $null = $env.Add("Location", "West Central US")
+    $null = $env.Add("HostPool", "jushiahappattach")
+    $null = $env.Add("HostPoolArmPath", "/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourcegroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostPools/jushiahappattach")
+    $null = $env.Add("RemoteApplicationGroup", "jushiah-appattach-rag")
+    $null = $env.Add("DesktopApplicationGroup", "jushiahappattach-DAG")
+    $null = $env.Add("MSIXImagePath", "\\stgeorgi-0\temp\AdobeReaders\adobereader.vhdx")
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }

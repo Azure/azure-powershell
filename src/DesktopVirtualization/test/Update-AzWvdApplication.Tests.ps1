@@ -115,7 +115,7 @@ Describe 'Update-AzWvdApplication' {
             -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'shhirji-ps-unittest-RAG/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'jushiah-appattach-rag/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
@@ -132,7 +132,7 @@ Describe 'Update-AzWvdApplication' {
             -IconIndex 1 `
             -IconPath 'C:\windows\system32\Updated.exe' 
                           
-        $application.Name | Should -Be 'shhirji-ps-unittest-RAG/UnitTest-MSIX-Application' 
+        $application.Name | Should -Be 'jushiah-appattach-rag/UnitTest-MSIX-Application' 
         $application.FriendlyName | Should -Be 'Updated-FriendlyName'
         $application.Description | Should -Be 'Updated-Description'
         $application.IconIndex | Should -Be 1

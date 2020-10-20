@@ -171,7 +171,7 @@ It 'GetMsixApplication_RAG' {
             -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'shhirji-ps-unittest-RAG/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'jushiah-appattach-rag/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
@@ -232,7 +232,7 @@ It 'GetMsixApplication_RAG' {
             -GroupName $env.DesktopApplicationGroup `
             -Name 'UnitTest-MSIX-Application' 
 
-        $application.Name | Should -Be 'shhirji-hp-ps-unittest-DAG/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'jushiahappattach-DAG/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0

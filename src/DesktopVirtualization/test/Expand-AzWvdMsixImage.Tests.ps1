@@ -17,15 +17,15 @@ Describe 'Expand-AzWvdMsixImage' {
         $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPool `
             -ResourceGroupName $env.ResourceGroup `
             -SubscriptionId $env.SubscriptionId `
-            -Uri 'C:\msix\singlemsix.vhd'
+            -Uri $env.MSIXImagePath
          
-        $package.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'
-        $package.ImagePath | Should -Be 'C:\msix\singlemsix.vhd'
-        $package.PackageName | Should -Be 'MsixPackage'
-        $package.PackageAlias | Should -Be 'msixpackage'
+        $package.PackageFamilyName | Should -Be  'AcrobatReader_81q6ced8g4aa0'
+        $package.ImagePath | Should -Be '\\stgeorgi-0\temp\AdobeReaders\adobereader.vhdx'
+        $package.PackageName | Should -Be 'AcrobatReader'
+        $package.PackageAlias | Should -Be 'acrobatreader'
         $package.IsActive | Should -Be $False
         $package.IsRegularRegistration | Should -Be $False
-        $package.PackageRelativePath | Should -Be '\apps\MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy'
+        $package.PackageRelativePath | Should -Be '\apps\AcrobatReader_1.0.0.0_x64__81q6ced8g4aa0'
 
     }
 }
