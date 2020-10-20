@@ -36,8 +36,7 @@ This cmdlet updates the state of an Azure key vault.
 
 ## EXAMPLES
 
-
-### Example 1
+### Example 2
 ```powershell
 PS C:\> Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnablePurgeProtection
 ```

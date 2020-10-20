@@ -16,6 +16,7 @@ using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Linq;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKey()
         { }
 
-        internal PSKeyVaultKey(Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultKey(Microsoft.Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
@@ -36,9 +37,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Key = keyBundle.Key;
             Attributes = new PSKeyVaultKeyAttributes(
                 keyBundle.Attributes.Enabled,
-                keyBundle.Attributes.Expires, 
-                keyBundle.Attributes.NotBefore, 
-                keyBundle.Key.Kty, 
+                keyBundle.Attributes.Expires,
+                keyBundle.Attributes.NotBefore,
+                keyBundle.Key.Kty,
                 keyBundle.Key.KeyOps.ToArray(),
                 keyBundle.Attributes.Created,
                 keyBundle.Attributes.Updated,
@@ -52,6 +53,38 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = (keyBundle.Tags == null) ? null : keyBundle.Tags.ConvertToHashtable();
+        }
+
+        internal PSKeyVaultKey(Track2Sdk.KeyVaultKey key, VaultUriHelper vaultUriHelper)
+        {
+            if (key == null)
+                throw new ArgumentNullException("key");
+            if (key.Key == null || key.Properties == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyBundle);
+
+            SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(key.Id.ToString()));
+
+            Key = key.Key.ToTrack1JsonWebKey();
+            Attributes = new PSKeyVaultKeyAttributes(
+                key.Properties.Enabled,
+                /// see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
+                key.Properties.ExpiresOn?.UtcDateTime, // time returned by key vault are UTC
+                key.Properties.NotBefore?.UtcDateTime,
+                key.KeyType.ToString(),
+                key.KeyOperations.Select(op => op.ToString()).ToArray(),
+                key.Properties.CreatedOn?.UtcDateTime,
+                key.Properties.UpdatedOn?.UtcDateTime,
+                key.Properties.RecoveryLevel,
+                key.Properties.Tags
+            );
+
+            Enabled = key.Properties.Enabled;
+            Expires = key.Properties.ExpiresOn?.UtcDateTime;
+            NotBefore = key.Properties.NotBefore?.UtcDateTime;
+            Created = key.Properties.CreatedOn?.UtcDateTime;
+            Updated = key.Properties.UpdatedOn?.UtcDateTime;
+            RecoveryLevel = key.Properties.RecoveryLevel;
+            Tags = key.Properties.Tags.ConvertToHashtable();
         }
 
         public PSKeyVaultKeyAttributes Attributes { get; set; }
