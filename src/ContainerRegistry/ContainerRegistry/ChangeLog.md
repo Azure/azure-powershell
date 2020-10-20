@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Updates API version to 2020-05-01
+* [Breaking Change] Removed SKU "Classic" and parameter `StorageAccountName` from `New-AzContainerRegistry`
+* Added New cmdlets: `Connect-AzContainerRegistry`, `Import-AzContainerRigstryImage`, `Get-AzContainerRegistryUsage`, `New-AzContainerRegistryNetworkRule`, `Set-AzContainerRegistryNetworkRule`
+* Added new parameter `NetworkRuleSet` to `Update-AzContainerRegistry`
+
 
 ## Version 1.1.1
 * Update references in .psd1 to use relative path

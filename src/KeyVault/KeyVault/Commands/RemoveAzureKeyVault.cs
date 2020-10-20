@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
-        /// Vault object
+        /// Vault Resource Id
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
