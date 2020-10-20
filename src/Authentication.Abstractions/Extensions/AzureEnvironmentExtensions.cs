@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         public static void Update(this IAzureEnvironment environment, IAzureEnvironment other)
         {
-            if (environment != null && other != null)
+            if (environment != null && other != null && environment != other)
             {
                 environment.OnPremise = other.OnPremise;
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))

@@ -139,11 +139,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other">The context to update from</param>
         public static void Update(this IAzureContext context, IAzureContext other)
         {
-            if (context != null && other != null)
+            if (context != null && other != null && context != other)
             {
                 context.Account.Update(other.Account);
                 context.Subscription.Update(other.Subscription);
                 context.Tenant.Update(other.Tenant);
+                context.Environment.Update(other.Environment);
                 context.UpdateProperties(other);
             }
         }
