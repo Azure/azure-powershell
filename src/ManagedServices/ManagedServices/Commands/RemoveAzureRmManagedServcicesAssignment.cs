@@ -12,82 +12,79 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Management.Automation;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
+
     [Cmdlet(
         VerbsCommon.Remove,
-        Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
         DefaultParameterSetName = DefaultParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmManagedServcicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByInputObjectParameterSet = "ByInputObject";
 
-        [Parameter(Position = 0, ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope where the registration assignment should be created.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The scope of the registration assignment.")]
+        [ValidateNotNullOrEmpty]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [CmdletParameterBreakingChange(
-            nameOfParameterChanging: "Id",
-            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
-            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
-            ReplaceMentCmdletParameterName = "Name")]
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The registration assignment Id.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The unique name of the Registration Assignment.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string Name { get; set; }
 
-        [CmdletParameterBreakingChange(
-            nameOfParameterChanging: "ResourceId",
-            deprecateByVersion: ManagedServicesUtility.UpcomingVersion,
-            changeInEfectByDate: ManagedServicesUtility.UpcomingVersionReleaseDate,
-            ChangeDescription = ManagedServicesUtility.DeprecatedParameterDescription)]
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified rsource id of the registration assignment.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The registration assignment object.", ParameterSetName = ByInputObjectParameterSet)]
+        [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The registration assignment object.")]
         [ValidateNotNull]
         public PSRegistrationAssignment InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            string scope = null;
+            string scope = this.GetDefaultScope();
             string assignmentId = null;
 
-            if (this.IsParameterBound(x => x.Id))
+            if (this.IsParameterBound(x => x.Name))
             {
-                assignmentId = this.Id;
-                scope = this.Scope ?? this.GetDefaultScope();
-            }
-            else if (this.IsParameterBound(x => x.InputObject))
-            {
-                assignmentId = this.InputObject.Id.GetResourceName();
-                if (!ManagedServicesUtility.TryParseAssignmentScopeFromResourceId(this.InputObject.Id, out scope))
+                if (!this.Name.IsGuid())
                 {
-                    throw new ApplicationException($"Unable to parse the scope from [{this.InputObject.Id}]");
+                    throw new ApplicationException("Name must be a valid GUID.");
                 }
+
+                assignmentId = (new Guid(this.Name)).ToString();
             }
-            else if (this.IsParameterBound(x => x.ResourceId))
+
+            if (this.IsParameterBound(x => x.Scope))
             {
-                assignmentId = this.ResourceId.GetResourceName();
-                if (!ManagedServicesUtility.TryParseAssignmentScopeFromResourceId(this.ResourceId, out scope))
+                scope = this.Scope;
+            }
+
+            if (this.IsParameterBound(x => x.InputObject))
+            {
+                if (!ManagedServicesUtility.TryParseAssignmentScopeFromResourceId(this.InputObject.Id, out scope) &&
+                    string.IsNullOrWhiteSpace(scope))
                 {
-                    throw new ApplicationException($"Unable to parse the scope from [{this.ResourceId}]");
+                    throw new ApplicationException($"Unable to parse the scope from [{this.InputObject.Id}].");
                 }
+
+                if (string.IsNullOrWhiteSpace(this.InputObject.Name) || !this.InputObject.Name.IsGuid())
+                {
+                    throw new ApplicationException("Invalid registration assignment name provided in input object.");
+                }
+
+                assignmentId = this.InputObject.Name;
             }
 
             ConfirmAction(MyInvocation.InvocationName,
@@ -97,6 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     this.PSManagedServicesClient.RemoveRegistrationAssignment(
                         scope: scope,
                         registrationAssignmentId: assignmentId);
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 });
         }
     }

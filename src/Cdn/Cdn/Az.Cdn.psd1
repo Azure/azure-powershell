@@ -89,7 +89,9 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'Get-AzCdnProfileSupportedOptimizationType', 
                'Get-AzCdnSubscriptionResourceUsage', 'Get-AzCdnEdgeNode', 
                'New-AzCdnDeliveryRule', 'New-AzCdnDeliveryRuleCondition', 
-               'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy'
+               'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy', 'New-AzCdnOrigin',
+               'Remove-AzCdnOrigin', 'New-AzCdnOriginGroup', 'Get-AzCdnOriginGroup',
+               'Remove-AzCdnOriginGroup', 'Set-AzCdnOriginGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()

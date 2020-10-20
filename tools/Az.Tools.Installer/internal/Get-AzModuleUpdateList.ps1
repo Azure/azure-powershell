@@ -47,7 +47,7 @@ function Get-AzModuleUpdateList {
 
         if ($installModules.Keys -gt 0) {
             foreach ($key in $installModules.Keys.Clone()) {
-                $installedModules = (PowerShellGet\Get-InstalledModule -Name $key -AllVersions).Where( { -not $_.AdditionalMetadata.IsPrerelease })
+                $installedModules = (PowerShellGet\Get-InstalledModule -Name $key -AllVersions) | Where-Object { -not $_.AdditionalMetadata.IsPrerelease }
                 foreach ($installed in $installedModules) {
                     $installModules[$key] += [System.Tuple]::Create($installed.Version, $installed.Repository)
                 }
