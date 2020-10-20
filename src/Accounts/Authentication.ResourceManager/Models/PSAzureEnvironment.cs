@@ -374,6 +374,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the Azure Batch AD resource ID.
         /// </summary>
         public string BatchEndpointResourceId { get; set; }
+        public string ContainerRegistryEndpointSuffix { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.

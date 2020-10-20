@@ -12,10 +12,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 {"Azure.Core", new Version("1.5.1.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
+                {"Microsoft.Identity.Client", new Version("4.21.0.0") },
+                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.16.2.0") },
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
                 {"Newtonsoft.Json", new Version("10.0.0.0")},
-                {"System.Buffers", new Version("4.0.2.0")},
+                {"System.Buffers", new Version("4.0.3.0")},
                 {"System.Diagnostics.DiagnosticSource", new Version("4.0.4.0")},
                 {"System.Memory", new Version("4.0.1.1")},
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},

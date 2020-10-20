@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -58,7 +57,7 @@ namespace Common.Authentication.Test
             AzureSession.Instance.DataStore = dataStore;
             AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
+            AzureSession.Instance.TokenCache = null;
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "");
         }
 
@@ -78,8 +77,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
@@ -103,8 +100,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.DirectoryExists(It.IsAny<string>()), Times.AtLeastOnce);
@@ -127,8 +122,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.FileExists(It.IsAny<string>()), Times.AtLeastOnce);
@@ -152,8 +145,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.ReadFileAsText(It.IsAny<string>()), Times.AtLeastOnce);
@@ -178,8 +169,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.CreateDirectory(It.IsAny<string>()), Times.AtLeastOnce());
@@ -205,8 +194,6 @@ namespace Common.Authentication.Test
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
                 Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
-                Assert.NotNull(session.TokenCache);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
                 store.Verify(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>()), Times.AtLeastOnce);
