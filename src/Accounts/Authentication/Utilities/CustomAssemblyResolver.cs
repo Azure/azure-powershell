@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Text.Encodings.Web", new Version("4.0.4.0")},
                 {"System.Text.Json", new Version("4.0.0.0")},
                 {"System.Threading.Tasks.Extensions", new Version("4.2.0.0")},
-                {"Microsoft.IdentityModel.Logging", new Version("6.8.0.0")},
-                {"Microsoft.IdentityModel.Tokens", new Version("6.8.0.0")},
                 {"System.Xml.ReaderWriter", new Version("4.1.0.0")}
             };
 
