@@ -57,10 +57,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of an existing storage account. This only applies to Classic sku.")]
-        [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, "Create Container Registry"))
@@ -79,36 +75,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     Location = ResourceManagerClient.GetResourceGroupLocation(ResourceGroupName);
                 }
 
-                if (string.Equals(Sku, SkuName.Classic) && StorageAccountName == null)
+                var registry = new Registry
                 {
-                    DeploymentExtended result = ResourceManagerClient.CreateClassicRegistry(
-                        ResourceGroupName, Name, Location, EnableAdminUser, tags);
+                    Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku),
+                    AdminUserEnabled = EnableAdminUser,
+                    Tags = tags,
+                    Location = Location
+                };
 
-                    if (result.Properties.ProvisioningState == "Succeeded")
-                    {
-                        var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
-                        WriteObject(new PSContainerRegistry(registry));
-                    }
-                }
-                else
-                {
-                    var registry = new Registry
-                    {
-                        Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku),
-                        AdminUserEnabled = EnableAdminUser,
-                        Tags = tags,
-                        Location = Location
-                    };
-
-                    if (StorageAccountName != null)
-                    {
-                        var storageAccountId = ResourceManagerClient.GetStorageAccountId(StorageAccountName);
-                        registry.StorageAccount = new StorageAccountProperties(storageAccountId);
-                    }
-
-                    var createdRegistry = RegistryClient.CreateRegistry(ResourceGroupName, Name, registry);
-                    WriteObject(new PSContainerRegistry(createdRegistry));
-                }
+                var createdRegistry = RegistryClient.CreateRegistry(ResourceGroupName, Name, registry);
+                WriteObject(new PSContainerRegistry(createdRegistry));
             }
         }
     }

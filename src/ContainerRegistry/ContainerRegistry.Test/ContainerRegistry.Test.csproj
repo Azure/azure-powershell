@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="4.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.2" />
   </ItemGroup>
 
 </Project>
