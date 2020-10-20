@@ -1,88 +1,56 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverkey
 schema: 2.0.0
 ---
 
-# Get-AzMySqlServer
+# Get-AzMySqlFlexibleServerKey
 
 ## SYNOPSIS
-Gets information about a server.
+Gets a server key.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzMySqlServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServerKey -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServerKey -KeyName <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMySqlServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzMySqlServer -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMySqlFlexibleServerKey -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about a server.
+Gets a server key.
 
 ## EXAMPLES
 
-### Example 1: Get MySql server with default context
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMySqlServer
+PS C:\> {{ Add code here }}
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        --------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
+{{ Add output here }}
 ```
 
-This cmdlet gets MySql server with default context.
+{{ Add description here }}
 
-### Example 2: Get MySql server by resource group and server name
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+PS C:\> {{ Add code here }}
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
+{{ Add output here }}
 ```
 
-This cmdlet gets MySql server by resource group and server name.
-
-### Example 3: Lists all the MySql servers in specified resource group
-```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest
-
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
-```
-
-This cmdlet lists all the MySql servers in specified resource group.
-
-### Example 4: Get MySql server by identity
-```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test"
-PS C:\> Get-AzMySqlServer -InputObject $ID
-
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
-```
-
-This cmdlet lists gets MySql server by identity.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -117,13 +85,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -KeyName
+The name of the server key.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: ServerName
+Aliases:
 
 Required: True
 Position: Named
@@ -148,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerName
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -172,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey
 
 ## NOTES
 

@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlflexibleserverkey
 schema: 2.0.0
 ---
 
-# New-AzMySqlVirtualNetworkRule
+# New-AzMySqlFlexibleServerKey
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Creates or updates a MySQL Server key.
 
 ## SYNTAX
 
 ```
-New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -SubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServerKey -KeyName <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-Uri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Creates or updates a MySQL Server key.
 
 ## EXAMPLES
 
@@ -73,28 +73,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IgnoreMissingVnetServiceEndpoint
-Create firewall rule before the virtual network has vnet service endpoint enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the virtual network rule.
+### -KeyName
+The name of the server key.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: VirtualNetworkRuleName
+Aliases:
 
 Required: True
 Position: Named
@@ -105,21 +90,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,21 +134,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-The ARM resource id of the virtual network subnet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -190,6 +145,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Uri
+The URI of the key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -232,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey
 
 ## NOTES
 
