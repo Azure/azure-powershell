@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove all accounts and subscriptions for all sessiosn started by the current user.
+        ///   Looks up a localized string similar to Remove all accounts and subscriptions for all sessions started by the current user.
         /// </summary>
         internal static string ClearContextUserProcessMessage {
             get {
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A snapshot of the service API versiosn available in Azure Sovereign Clouds and the Azure Global Cloud..
+        ///   Looks up a localized string similar to A snapshot of the service API versions available in Azure Sovereign Clouds and the Azure Global Cloud..
         /// </summary>
         internal static string SovereignProfileDescription {
             get {
