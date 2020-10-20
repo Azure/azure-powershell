@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -59,6 +60,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = keyBundle.Attributes.Tags;
+        }
+        internal PSKeyVaultKeyIdentityItem(Track2Sdk.KeyProperties keyProperties, VaultUriHelper vaultUriHelper)
+        {
+            if (keyProperties == null)
+                throw new ArgumentNullException("keyProperties");
+            if (keyProperties.Id == null || keyProperties.Name == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyProperties);
+
+            SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(keyProperties.Id.ToString()));
+
+            Enabled = keyProperties.Enabled;
+            Expires = keyProperties.ExpiresOn?.UtcDateTime;
+            NotBefore = keyProperties.NotBefore?.UtcDateTime;
+            Created = keyProperties.CreatedOn?.UtcDateTime;
+            Updated = keyProperties.UpdatedOn?.UtcDateTime;
+            RecoveryLevel = keyProperties.RecoveryLevel;
+            Tags = keyProperties.Tags.ConvertToHashtable();
         }
 
         public bool? Enabled { get; set; }

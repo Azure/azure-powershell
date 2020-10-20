@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// Always On, etc.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_GetConfiguration=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web"
+    /// [OpenAPI] GetConfiguration=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppConfiguration_Get")]

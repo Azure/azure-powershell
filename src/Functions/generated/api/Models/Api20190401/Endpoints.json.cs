@@ -61,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("blob"), out var __jsonBlob) ? (string)__jsonBlob : (string)Blob;}
-            {_df = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dfs"), out var __jsonDfs) ? (string)__jsonDfs : (string)Df;}
-            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file"), out var __jsonFile) ? (string)__jsonFile : (string)File;}
             {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("queue"), out var __jsonQueue) ? (string)__jsonQueue : (string)Queue;}
             {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("table"), out var __jsonTable) ? (string)__jsonTable : (string)Table;}
+            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file"), out var __jsonFile) ? (string)__jsonFile : (string)File;}
             {_web = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("web"), out var __jsonWeb) ? (string)__jsonWeb : (string)Web;}
+            {_df = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dfs"), out var __jsonDfs) ? (string)__jsonDfs : (string)Df;}
             AfterFromJson(json);
         }
 
@@ -106,14 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._df)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._df.ToString()) : null, "dfs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._file)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._file.ToString()) : null, "file" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != (((object)this._queue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._queue.ToString()) : null, "queue" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
@@ -122,7 +114,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != (((object)this._file)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._file.ToString()) : null, "file" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 AddIf( null != (((object)this._web)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._web.ToString()) : null, "web" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._df)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._df.ToString()) : null, "dfs" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

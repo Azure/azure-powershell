@@ -1,3 +1,4 @@
 "Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
 "Az.ContainerRegistry","Microsoft.Win32.Registry","4.1.1.0","System.Management.Automation","0","3000","Missing assembly Microsoft.Win32.Registry referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
 "Az.ContainerRegistry","Microsoft.PowerShell.CoreCLR.Eventing","6.1.0.0","System.Management.Automation","0","3000","Missing assembly Microsoft.PowerShell.CoreCLR.Eventing referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
+"Az.ContainerRegistry","System.IdentityModel.Tokens.Jwt","5.1.2.0","Microsoft.Azure.ContainerRegistry","0","3000","Missing assembly System.IdentityModel.Tokens.Jwt referenced from Microsoft.Azure.ContainerRegistry","Ensure that the assembly is included in the Wix file or directory"

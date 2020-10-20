@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for StatusOptions.</summary>
+    /// <summary>App Service plan status.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.StatusOptionsTypeConverter))]
     public partial struct StatusOptions :
         System.Management.Automation.IArgumentCompleter

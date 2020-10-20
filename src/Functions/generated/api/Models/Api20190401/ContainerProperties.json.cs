@@ -60,14 +60,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             {_immutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("immutabilityPolicy"), out var __jsonImmutabilityPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ImmutabilityPolicyProperties.FromJson(__jsonImmutabilityPolicy) : ImmutabilityPolicy;}
             {_legalHold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("legalHold"), out var __jsonLegalHold) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.LegalHoldProperties.FromJson(__jsonLegalHold) : LegalHold;}
-            {_hasImmutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hasImmutabilityPolicy"), out var __jsonHasImmutabilityPolicy) ? (bool?)__jsonHasImmutabilityPolicy : HasImmutabilityPolicy;}
-            {_hasLegalHold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hasLegalHold"), out var __jsonHasLegalHold) ? (bool?)__jsonHasLegalHold : HasLegalHold;}
-            {_lastModifiedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastModifiedTime"), out var __jsonLastModifiedTime) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeValue) ? __jsonLastModifiedTimeValue : LastModifiedTime : LastModifiedTime;}
-            {_leaseDuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseDuration"), out var __jsonLeaseDuration) ? (string)__jsonLeaseDuration : (string)LeaseDuration;}
-            {_leaseState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseState"), out var __jsonLeaseState) ? (string)__jsonLeaseState : (string)LeaseState;}
-            {_leaseStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseStatus"), out var __jsonLeaseStatus) ? (string)__jsonLeaseStatus : (string)LeaseStatus;}
-            {_metadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("metadata"), out var __jsonMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ContainerPropertiesMetadata.FromJson(__jsonMetadata) : Metadata;}
             {_publicAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publicAccess"), out var __jsonPublicAccess) ? (string)__jsonPublicAccess : (string)PublicAccess;}
+            {_lastModifiedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastModifiedTime"), out var __jsonLastModifiedTime) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeValue) ? __jsonLastModifiedTimeValue : LastModifiedTime : LastModifiedTime;}
+            {_leaseStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseStatus"), out var __jsonLeaseStatus) ? (string)__jsonLeaseStatus : (string)LeaseStatus;}
+            {_leaseState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseState"), out var __jsonLeaseState) ? (string)__jsonLeaseState : (string)LeaseState;}
+            {_leaseDuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseDuration"), out var __jsonLeaseDuration) ? (string)__jsonLeaseDuration : (string)LeaseDuration;}
+            {_metadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("metadata"), out var __jsonMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ContainerPropertiesMetadata.FromJson(__jsonMetadata) : Metadata;}
+            {_hasLegalHold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hasLegalHold"), out var __jsonHasLegalHold) ? (bool?)__jsonHasLegalHold : HasLegalHold;}
+            {_hasImmutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hasImmutabilityPolicy"), out var __jsonHasImmutabilityPolicy) ? (bool?)__jsonHasImmutabilityPolicy : HasImmutabilityPolicy;}
             AfterFromJson(json);
         }
 
@@ -110,21 +110,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 AddIf( null != this._legalHold ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._legalHold.ToJson(null,serializationMode) : null, "legalHold" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._hasImmutabilityPolicy ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hasImmutabilityPolicy) : null, "hasImmutabilityPolicy" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._hasLegalHold ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hasLegalHold) : null, "hasLegalHold" ,container.Add );
-            }
+            AddIf( null != (((object)this._publicAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publicAccess.ToString()) : null, "publicAccess" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._lastModifiedTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastModifiedTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastModifiedTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._leaseDuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseDuration.ToString()) : null, "leaseDuration" ,container.Add );
+                AddIf( null != (((object)this._leaseStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseStatus.ToString()) : null, "leaseStatus" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -132,10 +125,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._leaseStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseStatus.ToString()) : null, "leaseStatus" ,container.Add );
+                AddIf( null != (((object)this._leaseDuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseDuration.ToString()) : null, "leaseDuration" ,container.Add );
             }
             AddIf( null != this._metadata ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._metadata.ToJson(null,serializationMode) : null, "metadata" ,container.Add );
-            AddIf( null != (((object)this._publicAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publicAccess.ToString()) : null, "publicAccess" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._hasLegalHold ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hasLegalHold) : null, "hasLegalHold" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._hasImmutabilityPolicy ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hasImmutabilityPolicy) : null, "hasImmutabilityPolicy" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -14,5 +14,11 @@
   <ItemGroup>
 	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.1.2-preview" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
   
 </Project>

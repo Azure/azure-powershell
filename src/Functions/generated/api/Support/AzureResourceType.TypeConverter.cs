@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for AzureResourceType.</summary>
+    /// <summary>Type of the Azure resource the hostname is assigned to.</summary>
     public partial class AzureResourceTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -8,7 +8,7 @@ function RandomString([bool]$allChars, [int32]$len) {
 $env = @{}
 function setupEnv() {
     Write-Host -ForegroundColor Yellow "WARNING: Need to use Az.KeyVault module, Please check if installed Az.KeyVault(2.0.0 or Greater)."
-    # Import-Module -Name Az.KeyVault
+    Import-Module -Name Az.KeyVault
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
