@@ -18,13 +18,13 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class VaultCreationOrUpdateParameters
+    public class VaultCreationParameters
     {
-        public string Name { get; set; }
+        public string VaultName { get; set; }
         public string ResourceGroupName { get; set; }
         public string Location { get; set; }
         public Hashtable Tags { get; set; }
-        public string SkuName { get; set; }
+        public SkuName SkuName { get; set; }
         public string SkuFamilyName { get; set; }
         public bool EnabledForDeployment { get; set; }
         public bool EnabledForTemplateDeployment { get; set; }
@@ -37,6 +37,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public AccessPolicyEntry AccessPolicy { get; set; }
         public NetworkRuleSet NetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
-        public string[] Administrator { get; set; }
     }
 }

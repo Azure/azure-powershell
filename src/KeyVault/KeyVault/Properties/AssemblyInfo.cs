@@ -33,5 +33,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("2.2.1")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Test")]
-[assembly: InternalsVisibleTo("SecurityDomain.Test")]
 #endif

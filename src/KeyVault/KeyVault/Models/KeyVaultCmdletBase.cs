@@ -14,12 +14,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Management.Automation;
-using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -27,7 +24,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     public class KeyVaultCmdletBase : AzureRMCmdlet
     {
         public static readonly DateTime EpochDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        private AzureEventSourceListener _azureEventSourceListener;
 
         internal IKeyVaultDataServiceClient DataServiceClient
         {
@@ -48,28 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        internal IKeyVaultDataServiceClient Track2DataClient
-        {
-
-            get
-            {
-                if (_track2DataServiceClient == null)
-                {
-                    _track2DataServiceClient = new Track2KeyVaultDataServiceClient(
-                        AzureSession.Instance.AuthenticationFactory,
-                        DefaultContext);
-                    _azureEventSourceListener = AzureEventSourceListener.CreateTraceLogger(EventLevel.Verbose);
-                }
-
-                return _track2DataServiceClient;
-            }
-            set
-            {
-                _track2DataServiceClient = value;
-            }
-        }
-
-        protected string GetDefaultFileForOperation(string operationName, string vaultName, string entityName)
+        protected string GetDefaultFileForOperation( string operationName, string vaultName, string entityName )
         {
             // caller is responsible for parameter validation
             var currentPath = CurrentPath();
@@ -79,7 +54,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         private IKeyVaultDataServiceClient dataServiceClient;
-        private IKeyVaultDataServiceClient _track2DataServiceClient;
 
         /// <summary>
         /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options
@@ -96,7 +70,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 WriteObject(pageResults, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
-
+        
         public List<T> KVSubResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
         {
             if (!string.IsNullOrEmpty(name))
@@ -128,16 +102,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return null;
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (disposing && _azureEventSourceListener != null)
-            {
-                _azureEventSourceListener.Dispose();
-                _azureEventSourceListener = null;
-            }
         }
     }
 }

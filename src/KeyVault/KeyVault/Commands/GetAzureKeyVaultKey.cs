@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName;
+                VaultName = InputObject.VaultName.ToString();
             }
             else if (!string.IsNullOrEmpty(ResourceId))
             {

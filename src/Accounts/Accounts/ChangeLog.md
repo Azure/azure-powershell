@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
-* Updated Azure.Core to 1.5.1
+* Replaced Azure Directory Authentication Library with Microsoft Authentication Library(MSAL)
 
 ## Version 1.9.5
 * Fixed DateTime parse issue in common libraries [#13045]

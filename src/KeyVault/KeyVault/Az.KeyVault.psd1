@@ -58,10 +58,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
                'Microsoft.Azure.KeyVault.WebKey.dll', 
-               'Microsoft.Azure.Management.KeyVault.dll',
-               'Azure.Security.KeyVault.Keys.dll',
-               'Azure.Security.KeyVault.Administration.dll',
-               'BouncyCastle.Crypto.dll'
+               'Microsoft.Azure.Management.KeyVault.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -79,10 +76,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 'Remove-AzManagedHsmKey',
-               'Undo-AzManagedHsmKeyRemoval', 'Update-AzManagedHsmKey', 
-               'Backup-AzManagedHsmKey', 'Restore-AzManagedHsmKey',
-               'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
+CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
                'Stop-AzKeyVaultCertificateOperation', 
                'Get-AzKeyVaultCertificateOperation', 
                'Import-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact', 
@@ -93,14 +87,8 @@ CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 'Remove-AzManage
                'Remove-AzKeyVaultCertificateIssuer', 
                'Remove-AzKeyVaultCertificateOperation', 
                'Set-AzKeyVaultCertificateIssuer', 
-               'Set-AzKeyVaultCertificatePolicy', 
-               'Get-AzManagedHsm', 'New-AzManagedHsm', 
-               'Remove-AzManagedHsm', 'Update-AzManagedHsm',
-               'Get-AzKeyVault', 'New-AzKeyVault', 
+               'Set-AzKeyVaultCertificatePolicy', 'Get-AzKeyVault', 'New-AzKeyVault', 
                'Remove-AzKeyVault', 'Undo-AzKeyVaultRemoval', 
-               'Backup-AzManagedHsm', 'Restore-AzManagedHsm',
-               'Get-AzManagedHsmRoleDefinition', 'Get-AzManagedHsmRoleAssignment',
-               'New-AzManagedHsmRoleAssignment', 'Remove-AzManagedHsmRoleAssignment',
                'Remove-AzKeyVaultAccessPolicy', 'Set-AzKeyVaultAccessPolicy', 
                'Backup-AzKeyVaultKey', 'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
                'Undo-AzKeyVaultKeyRemoval', 'Undo-AzKeyVaultSecretRemoval', 
@@ -127,16 +115,14 @@ CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 'Remove-AzManage
                'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 
                'Undo-AzKeyVaultManagedStorageAccountRemoval', 
                'Add-AzKeyVaultNetworkRule', 'Update-AzKeyVaultNetworkRuleSet', 
-               'Remove-AzKeyVaultNetworkRule', 'Backup-AzManagedHsmSecurityDomain',
-               'Restore-AzManagedHsmSecurityDomain'
+               'Remove-AzKeyVaultNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
-               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute',
-               'Set-AzManagedHsmKey', 'Set-AzManagedHsmKeyAttribute'
+               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
