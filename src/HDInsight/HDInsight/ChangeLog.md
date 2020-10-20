@@ -18,6 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+ * For New-AzHDInsightCluster cmdlet:
+     - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+     - Replaced parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+     - Replaced parameter `DefaultStorageAccountType` with `StorageAccountType`
+     - Removed parameter `PublicNetworkAccessType`
+     - Removed parameter `OutboundPublicNetworkAccessType`
+     - Added new parameters: `StorageFileSystem` and `StorageAccountManagedIdentity` to support ADLSGen2
+     - Added new parameter `EnableIDBroker` to Support HDInsight ID Broker
+     - Added new parameters: `KafkaClientGroupId`, `KafkaClientGroupName` and `KafkaManagementNodeSize` to support Kafka Rest Proxy
+ * For New-AzHDInsightClusterConfig cmdlet:
+     - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+     - Replaced parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+     - Replaced parameter `DefaultStorageAccountType` with `StorageAccountType`
+     - Removed parameter `PublicNetworkAccessType`
+     - Removed parameter `OutboundPublicNetworkAccessType`
+* For Set-AzHDInsightDefaultStorage cmdlet:
+    - Replaced parameter `StorageAccountName` with `StorageAccountResourceId`
+* For Add-AzHDInsightSecurityProfile cmdlet:
+    - Replaced parameter `Domain` with `DomainResourceId`
+    - Removed the mandatory requirement for parameter `OrganizationalUnitDN`
+
+## Version 3.6.1
 * Added warning message for planning to deprecate the parameters `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`
 * Added warning message for planning to replace the parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
 * Added warning message for planning to replace the parameter `DefaultStorageAccountKey` with `StorageAccountKey`
