@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Swaps VIPs between two load balancers.
+Swaps VIPs between two cloud service (extended support) load balancers.
 .Description
-Swaps VIPs between two load balancers.
+Swaps VIPs between two cloud service (extended support) load balancers.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -27,35 +27,15 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.ILoadBalancerVipSwapRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
-.Outputs
-System.Boolean
 .Notes
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-FRONTENDIPCONFIGURATION <ILoadBalancerVipSwapRequestFrontendIPConfiguration[]>: A list of frontend IP configuration resources that should swap VIPs.
-  [Id <String>]: The ID of frontend IP configuration resource.
-  [PublicIPAddressId <String>]: Resource ID.
-
-
-PARAMETER <ILoadBalancerVipSwapRequest>: The request for a VIP swap.
-  [FrontendIPConfiguration <ILoadBalancerVipSwapRequestFrontendIPConfiguration[]>]: A list of frontend IP configuration resources that should swap VIPs.
-    [Id <String>]: The ID of frontend IP configuration resource.
-    [PublicIPAddressId <String>]: Resource ID.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/switch-azcloudserviceloadbalancerpublicipaddress
 #>
 function Switch-AzCloudService {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='Swap', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='High')]
+    [CmdletBinding(DefaultParameterSetName='CloudServiceName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='High')]
     param(
     
-        [Parameter(ParameterSetName='Swap')]
+        [Parameter(ParameterSetName='CloudService')]
         [Parameter(ParameterSetName='CloudServiceName')]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -80,6 +60,14 @@ function Switch-AzCloudService {
         ${CloudServiceName},
 
         [Parameter()]
+        [switch] 
+        ${Async},
+
+        [Parameter()]
+        [string] 
+        ${ApiVersion} = "2020-06-01",
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
@@ -97,52 +85,7 @@ function Switch-AzCloudService {
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
-        ${Break},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+        ${Break}
     )
     
     process {
@@ -151,23 +94,21 @@ function Switch-AzCloudService {
         }
 
         # Fetch the services to ensure that we have the latest information
-        if ($PSBoundParameters.ContainsKey("CloudService"))
-        {
-            $CloudServiceName = $CloudService.Name     
+        if ($PSBoundParameters.ContainsKey("CloudService")) {
+            $CloudServiceName = $CloudService.Name
+            $ResourceGroupName = $CloudService.ResourceGroupName
         }
 
         $SourceCloudService = Get-AzCloudService -SubscriptionId $SubscriptionId -Name $CloudServiceName -ResourceGroupName $ResourceGroupName
 
         # Check that both have swappable property set.
-        if ([string]::IsNullOrEmpty($SourceCloudService.SwappableCloudServiceId))
-        {
+        if ([string]::IsNullOrEmpty($SourceCloudService.SwappableCloudServiceId)) {
             throw "SwappableCloudServiceId is not set on the source cloud service " + $SourceCloudService.Name 
         }
 
         # Check that Public IPs counts are correct for source
         $validSourceIP = ValidateCloudServicePublicIPAddress($SourceCloudService)
-        if ($validSourceIP -eq $false)
-        {
+        if ($validSourceIP -eq $false) {
             throw "Specified source cloud service must have a single public IP address specified in its FrontendIpConfigurations." 
         }
   
@@ -182,75 +123,89 @@ function Switch-AzCloudService {
 
         # Check that Public IPs counts are correct for target
         $validTargetIP = ValidateCloudServicePublicIPAddress($TargetCloudService)
-        if ($validTargetIP -eq $false)
-        {
+        if ($validTargetIP -eq $false) {
             throw "Specified target cloud service must have a single public IP address specified in its FrontendIpConfigurations." 
         }
 
-        # Get the LB FrontEndIpConfigs to create the request body
-        $sourceLB = Get-AzLoadBalancer -ResourceGroupName $ResourceGroupName -Name $SourceCloudService.NetworkProfileLoadBalancerConfiguration.Name
+        # Get the LBs and FrontEndIpConfigs to create the request body
+        $sourceLB = GetCloudServiceLoadBalancer($SubscriptionId, $ResourceGroupName, $SourceCloudService.NetworkProfileLoadBalancerConfiguration.Name, $ApiVersion)
         $validSourceLB = ValidateLoadBalancerFrontEndIPConfiguration($sourceLB)
-        if ($validSourceLB -eq $false)
-        {
+        if ($validSourceLB -eq $false) {
             throw "Source loadbBalancer must have a single value in its FrontendIpConfigurations." 
         }
 
-        $targetLB = Get-AzLoadBalancer -ResourceGroupName $TargetResourceGroupName -Name $TargetCloudService.NetworkProfileLoadBalancerConfiguration.Name        
+        $targetLB =  GetCloudServiceLoadBalancer($TargetSubscriptionId, $TargetResourceGroupName, $TargetCloudService.NetworkProfileLoadBalancerConfiguration.Name, $ApiVersion)      
         $validTargetLB = ValidateLoadBalancerFrontEndIPConfiguration($targetLB)
-        if ($validTargetLB -eq $false)
-        {
+        if ($validTargetLB -eq $false) {
             throw "Target loadbBalancer must have a single value in its FrontendIpConfigurations." 
         }
 
         # Construct the request body
         $requestBody = GetVIPSwapRequestBody
-        $requestBody = $requestBody -replace "#LBFE1#", $sourceLB.FrontendIpConfigurations[0].Id
+        $requestBody = $requestBody -replace "#LBFE1#", $sourceLB.properties.frontendIPConfigurations[0].Id
         $requestBody = $requestBody -replace "#PIP2#", $TargetCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
-        $requestBody = $requestBody -replace "#LBFE2#", $targetLB.FrontendIpConfigurations[0].Id
+        $requestBody = $requestBody -replace "#LBFE2#", $targetLB.properties.frontendIPConfigurations[0].Id
         $requestBody = $requestBody -replace "#PIP1#", $SourceCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
 
         # Set up API URI and Headers
         $uriToInvoke = "/subscriptions/" + $SubscriptionId + "/providers/Microsoft.Network/locations/" + $SourceCloudService.Location + "/setLoadBalancerFrontendPublicIpAddresses?api-version=" + $ApiVersion
 
         # Display the information about the VIP swap being made
-        Write-Host "Performing switch cloud service action between" $SourceCloudService.Name "and" $TargetCloudService.Name
+        Write-Host "Performing switch cloud service (VIP swap) action between" $SourceCloudService.Name "and" $TargetCloudService.Name
+        Write-Host
         Write-Host "Request URI :"
         Write-Host "POST " $uriToInvoke
+        Write-Host
         Write-Host "Request Body :"
         Write-Host $requestBody
 
         # Invoke the VIP swap API
-        if ($PSCmdlet.ShouldProcess($SourceCloudService.Name,'Switch Cloud Service')) 
-        {
-            $SourcePublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.PublicIPAddress]::New()
-            $SourcePublicIPAddress.Id = $SourceCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
-            $TargetPublicIPAddress = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.PublicIPAddress]::New()
-            $TargetPublicIPAddress.Id = $TargetCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
-        
-            $SourceFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.FrontendIPConfiguration]::New()
-            $SourceFrontendIPConfiguration.Id = $sourceLB.FrontendIpConfigurations[0].Id
-            $SourceFrontendIPConfiguration.PublicIPAddress = $TargetPublicIPAddress
-            $TargetFrontendIPConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20200601.FrontendIPConfiguration]::New()
-            $TargetFrontendIPConfiguration.Id = $targetLB.FrontendIpConfigurations[0].Id
-            $TargetFrontendIPConfiguration.PublicIPAddress = $SourcePublicIPAddress
+        if ($PSCmdlet.ShouldProcess($SourceCloudService.Name + " <=> " + $TargetCloudService.Name,'VIP swap')) {
+            $result = Invoke-AzRestMethod -Method POST -Path $uriToInvoke -Payload $requestBody 
 
-            $Null = $PSBoundParameters.Remove("CloudService")
-            $Null = $PSBoundParameters.Remove("CloudServiceName")
-            $Null = $PSBoundParameters.Remove("ResourceGroupName")
-
-            $PSBoundParameters.Add("Location", $SourceCloudService.Location)
-            $PSBoundParameters.Add("FrontendIPConfiguration", @($SourceFrontendIPConfiguration, $TargetFrontendIPConfiguration))
-            Az.CloudService.internal\Switch-AzCloudServiceLoadBalancerPublicIPAddress @PSBoundParameters
+            if ($Async.IsPresent) {
+                Write-Host "Query the Azure-AsyncOperation URI from the response for operation progress"
+                return $result
+            }
+            else {
+               if ($result.StatusCode -eq 202) {
+                   QueryVipSwapOperation($result)
+               }
+               else {
+                   return $result
+               }
+            }
         }
     }
 }
 
-function ValidateLoadBalancerFrontEndIPConfiguration($lb)
-{
-    if ($lb.FrontendIpConfigurations.Count -eq 1)
-    {   
-        if (-not [string]::IsNullOrEmpty($lb.FrontendIpConfigurations[0].Id))
-        {
+function QueryVipSwapOperation($result) {
+
+    $uri = [System.Uri]($result.Headers.GetValues('Azure-AsyncOperation')[0]);
+    $uriToInvoke = $uri.PathAndQuery
+    $retryLimit = 100
+    $retry = 0
+
+    while ($retry -lt $retryLimit) {
+        $statusResult = Invoke-AzRestMethod -Method GET -Path $uriToInvoke  
+        if ($statusResult.StatusCode -eq 200) {
+            $status = $statusResult.Content | ConvertFrom-Json
+            if (-not $status.status.Equals("InProgress",[System.StringComparison]::OrdinalIgnoreCase)) {
+                return $statusResult
+            }
+
+            $retry++
+            Write-Progress -Activity "Performing VIP swap" -PercentComplete $retry -CurrentOperation "Status : InProgress"
+
+            Start-Sleep -Seconds 10
+        }
+    }
+}
+
+function ValidateLoadBalancerFrontEndIPConfiguration($lb) {
+
+    if ($lb.properties.frontendIPConfigurations.Count -eq 1) {   
+        if (-not [string]::IsNullOrEmpty($lb.properties.frontendIPConfigurations[0].Id)) {
             return $true;
         }
     }
@@ -258,14 +213,11 @@ function ValidateLoadBalancerFrontEndIPConfiguration($lb)
     return $false;
 }
 
-function ValidateCloudServicePublicIPAddress($cs)
-{
-    if ($cs.NetworkProfileLoadBalancerConfiguration.Count -eq 1)
-    {
-        if ($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration.Count -eq 1)
-        {
-            if (-not [string]::IsNullOrEmpty($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId))
-            {
+function ValidateCloudServicePublicIPAddress($cs) {
+
+    if ($cs.NetworkProfileLoadBalancerConfiguration.Count -eq 1) {
+        if ($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration.Count -eq 1) {
+            if (-not [string]::IsNullOrEmpty($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId)) {
                 return $true;
             }
         }
@@ -274,8 +226,21 @@ function ValidateCloudServicePublicIPAddress($cs)
     return $false;
 }
 
-function GetVIPSwapRequestBody()
-{
+function GetCloudServiceLoadBalancer($parameters) {
+
+    # Set up API URI and Headers
+    $uriToInvoke = "/subscriptions/" + $parameters[0] + "/resourceGroups/" + $parameters[1] + "/providers/Microsoft.Network/loadBalancers/" + $parameters[2] + "?api-version=" + $parameters[3]
+    $lbResponse = Invoke-AzRestMethod -Method GET -Path $uriToInvoke
+    if ($lbResponse.StatusCode -ne 200) {
+       throw $lbResponse.Content
+    }
+
+    $lb = $lbResponse.Content | ConvertFrom-Json
+    return $lb
+}
+
+function GetVIPSwapRequestBody() {
+
     return @"
 {
 	"frontendIPConfigurations": [
@@ -298,5 +263,4 @@ function GetVIPSwapRequestBody()
 	]
 }
 "@
-} 
-
+}
