@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_dynamicTagsJson = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dynamicTagsJson"), out var __jsonDynamicTagsJson) ? (string)__jsonDynamicTagsJson : (string)DynamicTagsJson;}
             {_isPushEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isPushEnabled"), out var __jsonIsPushEnabled) ? (bool)__jsonIsPushEnabled : IsPushEnabled;}
             {_tagWhitelistJson = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("tagWhitelistJson"), out var __jsonTagWhitelistJson) ? (string)__jsonTagWhitelistJson : (string)TagWhitelistJson;}
             {_tagsRequiringAuth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("tagsRequiringAuth"), out var __jsonTagsRequiringAuth) ? (string)__jsonTagsRequiringAuth : (string)TagsRequiringAuth;}
+            {_dynamicTagsJson = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dynamicTagsJson"), out var __jsonDynamicTagsJson) ? (string)__jsonDynamicTagsJson : (string)DynamicTagsJson;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._dynamicTagsJson)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dynamicTagsJson.ToString()) : null, "dynamicTagsJson" ,container.Add );
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean(this._isPushEnabled), "isPushEnabled" ,container.Add );
             AddIf( null != (((object)this._tagWhitelistJson)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tagWhitelistJson.ToString()) : null, "tagWhitelistJson" ,container.Add );
             AddIf( null != (((object)this._tagsRequiringAuth)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tagsRequiringAuth.ToString()) : null, "tagsRequiringAuth" ,container.Add );
+            AddIf( null != (((object)this._dynamicTagsJson)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dynamicTagsJson.ToString()) : null, "dynamicTagsJson" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

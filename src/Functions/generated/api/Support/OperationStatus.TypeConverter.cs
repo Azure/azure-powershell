@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for OperationStatus.</summary>
+    /// <summary>The current status of the operation.</summary>
     public partial class OperationStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

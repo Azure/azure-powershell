@@ -89,9 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt = (global::System.DateTime?) content.GetValueForProperty("AgreedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy = (string) content.GetValueForProperty("AgreedBy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreementKey = (string[]) content.GetValueForProperty("AgreementKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreementKey, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy = (string) content.GetValueForProperty("AgreedBy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt = (global::System.DateTime?) content.GetValueForProperty("AgreedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializeDictionary(content);
         }
 
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt = (global::System.DateTime?) content.GetValueForProperty("AgreedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy = (string) content.GetValueForProperty("AgreedBy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreementKey = (string[]) content.GetValueForProperty("AgreementKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreementKey, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy = (string) content.GetValueForProperty("AgreedBy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedBy, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt = (global::System.DateTime?) content.GetValueForProperty("AgreedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainPurchaseConsentInternal)this).AgreedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializePSObject(content);
         }
 

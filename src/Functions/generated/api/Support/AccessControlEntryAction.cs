@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Action object.</summary>
     public partial struct AccessControlEntryAction :
         System.IEquatable<AccessControlEntryAction>
     {

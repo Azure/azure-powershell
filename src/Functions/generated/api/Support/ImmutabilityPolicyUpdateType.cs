@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.
+    /// </summary>
     public partial struct ImmutabilityPolicyUpdateType :
         System.IEquatable<ImmutabilityPolicyUpdateType>
     {

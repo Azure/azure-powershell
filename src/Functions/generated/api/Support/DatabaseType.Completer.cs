@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for DatabaseType.</summary>
+    /// <summary>Database type (e.g. SqlAzure / MySql).</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DatabaseTypeTypeConverter))]
     public partial struct DatabaseType :
         System.Management.Automation.IArgumentCompleter

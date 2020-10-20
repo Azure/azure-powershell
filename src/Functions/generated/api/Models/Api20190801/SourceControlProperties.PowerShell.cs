@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime = (global::System.DateTime?) content.GetValueForProperty("ExpirationTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken = (string) content.GetValueForProperty("RefreshToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).Token = (string) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).Token, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).TokenSecret = (string) content.GetValueForProperty("TokenSecret",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).TokenSecret, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken = (string) content.GetValueForProperty("RefreshToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime = (global::System.DateTime?) content.GetValueForProperty("ExpirationTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime = (global::System.DateTime?) content.GetValueForProperty("ExpirationTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken = (string) content.GetValueForProperty("RefreshToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).Token = (string) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).Token, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).TokenSecret = (string) content.GetValueForProperty("TokenSecret",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).TokenSecret, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken = (string) content.GetValueForProperty("RefreshToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).RefreshToken, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime = (global::System.DateTime?) content.GetValueForProperty("ExpirationTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)this).ExpirationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializePSObject(content);
         }
 
