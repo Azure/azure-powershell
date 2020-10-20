@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Gets the status of the storage account at the time the operation was called.</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {

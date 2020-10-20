@@ -73,9 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_argument = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("arguments"), out var __jsonArguments) ? (string)__jsonArguments : (string)Argument;}
             {_extension = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("extension"), out var __jsonExtension) ? (string)__jsonExtension : (string)Extension;}
             {_scriptProcessor = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("scriptProcessor"), out var __jsonScriptProcessor) ? (string)__jsonScriptProcessor : (string)ScriptProcessor;}
+            {_argument = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("arguments"), out var __jsonArguments) ? (string)__jsonArguments : (string)Argument;}
             AfterFromJson(json);
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._argument)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._argument.ToString()) : null, "arguments" ,container.Add );
             AddIf( null != (((object)this._extension)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._extension.ToString()) : null, "extension" ,container.Add );
             AddIf( null != (((object)this._scriptProcessor)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scriptProcessor.ToString()) : null, "scriptProcessor" ,container.Add );
+            AddIf( null != (((object)this._argument)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._argument.ToString()) : null, "arguments" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

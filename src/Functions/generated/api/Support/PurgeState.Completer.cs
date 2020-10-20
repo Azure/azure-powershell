@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for PurgeState.</summary>
+    /// <summary>Status of the operation represented by the requested Id.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeStateTypeConverter))]
     public partial struct PurgeState :
         System.Management.Automation.IArgumentCompleter

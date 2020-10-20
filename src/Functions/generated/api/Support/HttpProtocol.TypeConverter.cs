@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for HttpProtocol.</summary>
+    /// <summary>The protocol permitted for a request made with the account SAS.</summary>
     public partial class HttpProtocolTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
