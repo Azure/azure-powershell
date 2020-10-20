@@ -1,68 +1,69 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlvirtualnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/invoke-azmysqlexecutecheckvirtualnetworksubnetusage
 schema: 2.0.0
 ---
 
-# Remove-AzMySqlVirtualNetworkRule
+# Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage
 
 ## SYNOPSIS
-Deletes the virtual network rule with the given name.
+Get virtual network subnet usage for a given vNet resource id.
 
 ## SYNTAX
 
-### Delete (Default)
+### ExecuteExpanded (Default)
 ```
-Remove-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage -LocationName <String> [-SubscriptionId <String>]
+ [-VirtualNetworkArmResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Execute
 ```
-Remove-AzMySqlVirtualNetworkRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage -LocationName <String>
+ -Parameter <IVirtualNetworkSubnetUsageParameter> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExecuteViaIdentity
+```
+Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage -InputObject <IMySqlIdentity>
+ -Parameter <IVirtualNetworkSubnetUsageParameter> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ExecuteViaIdentityExpanded
+```
+Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage -InputObject <IMySqlIdentity>
+ [-VirtualNetworkArmResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the virtual network rule with the given name.
+Get virtual network subnet usage for a given vNet resource id.
 
 ## EXAMPLES
 
-### Example 1: Remove MySql server Virtual Network Rule by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest-ServerName mysql-test
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This cmdlet removes MySql server Virtual Network Rule by name.
+{{ Add description here }}
 
-### Example 2: Remove MySql server Virtual Network Rule by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/virtualNetworkRules/vnet"
-PS C:\> Remove-AzMySqlVirtualNetworkRule -InputObject $ID
- 
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-These cmdlets remove MySql server Virtual Network Rule by identity.
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -85,7 +86,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ExecuteViaIdentity, ExecuteViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -95,58 +96,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the virtual network rule.
+### -LocationName
+The name of the location.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: VirtualNetworkRuleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Execute, ExecuteExpanded
 Aliases:
 
 Required: True
@@ -156,18 +111,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
-The name of the server.
+### -Parameter
+Virtual network subnet usage parameter
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Privatepreview.IVirtualNetworkSubnetUsageParameter
+Parameter Sets: Execute, ExecuteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -176,12 +132,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Execute, ExecuteExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkArmResourceId
+Virtual network resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,11 +193,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Privatepreview.IVirtualNetworkSubnetUsageParameter
+
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Privatepreview.IDelegatedSubnetUsage
 
 ## NOTES
 
@@ -249,6 +222,9 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
+
+PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage parameter
+  - `[VirtualNetworkArmResourceId <String>]`: Virtual network resource id.
 
 ## RELATED LINKS
 
