@@ -27,6 +27,7 @@
 * Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
 * Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
+* Updated `Export-AzResourceGroup` to use the SDK.
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
