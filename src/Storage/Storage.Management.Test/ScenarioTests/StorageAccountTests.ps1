@@ -28,7 +28,7 @@ function Test-StorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'BlobStorage'
         $accessTier = 'Cool'
 
@@ -120,7 +120,7 @@ function Test-NewAzureStorageAccount
         $stotype = 'Standard_LRS';
         $kind = 'StorageV2'
 
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
@@ -204,7 +204,7 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -296,7 +296,7 @@ function Test-SetAzureRmStorageAccountKeySource
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
@@ -532,7 +532,7 @@ function Test-RevokeAzStorageAccountUserDelegationKeys
         # Test
         $stoname = 'sto' + $rgname
         $stotype = 'Standard_LRS'
-        $loc = Get-ProviderLocation ResourceManagement
+        $loc = Get-ProviderLocation_Canary ResourceManagement
 
         New-AzResourceGroup -Name $rgname -Location $loc
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
@@ -565,7 +565,7 @@ function Test-NetworkRule
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $ip1 = "20.11.0.0/16";
         $ip2 = "10.0.0.0/7";
         $ip3 = "11.1.1.0/24";
@@ -668,7 +668,7 @@ function Test-SetAzureStorageAccountStorageV2
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'Storage'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -720,40 +720,6 @@ function Test-GetAzureStorageLocationUsage
 Test New-AzStorageAccountFileStorage
 .DESCRIPTION
 Smoke[Broken]Test
-#>
-function Test-NewAzureStorageAccountFileStorage
-{
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Premium_LRS';
-        $kind = 'FileStorage'
-
-        $loc = Get-ProviderLocation ResourceManagement;
-        New-AzResourceGroup -Name $rgname -Location $loc;
-		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
-        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind; 
-        
-        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
 #>
 function Test-NewAzureStorageAccountFileStorage
 {
@@ -939,7 +905,7 @@ function Test-PipingNewUpdateAccount
         $stoname = 'sto' + $rgname;
         $stoname2 = 'sto' + $rgname + '2';
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
@@ -1042,7 +1008,7 @@ function Test-StorageAccountManagementPolicy
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
