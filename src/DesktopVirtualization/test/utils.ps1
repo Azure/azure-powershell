@@ -19,7 +19,7 @@ function setupEnv() {
     $null = $env.Add("HostPoolArmPath", "/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourcegroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostPools/jushiahappattach")
     $null = $env.Add("RemoteApplicationGroup", "jushiah-appattach-rag")
     $null = $env.Add("DesktopApplicationGroup", "jushiahappattach-DAG")
-    $null = $env.Add("MSIXImagePath", "\\stgeorgi-0\temp\AdobeReaders\adobereader.vhdx")
+    $null = $env.Add("MSIXImagePath", "C:\msix\singlemsix.vhd")
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }

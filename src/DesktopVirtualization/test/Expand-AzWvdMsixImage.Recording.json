@@ -1,14 +1,14 @@
 {
-  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/twahirs-scus/providers/Microsoft.DesktopVirtualization/hostPools/kereuter-twahir-hp/expandMsixImage?api-version=2020-09-21-preview+1": {
+  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourceGroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostPools/jushiahappattach/expandMsixImage?api-version=2020-09-21-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/twahirs-scus/providers/Microsoft.DesktopVirtualization/hostPools/kereuter-twahir-hp/expandMsixImage?api-version=2020-09-21-preview",
-      "Content": "{\r\n  \"uri\": \"\\\\\\\\stgeorgi-0\\\\temp\\\\AdobeReaders\\\\adobereader.vhdx\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourceGroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostPools/jushiahappattach/expandMsixImage?api-version=2020-09-21-preview",
+      "Content": "{\r\n  \"uri\": \"C:\\\\msix\\\\singlemsix.vhd\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "69" ]
+        "Content-Length": [ "41" ]
       }
     },
     "Response": {
@@ -18,25 +18,25 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-opsarmpath": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/twahirs-scus/providers/Microsoft.DesktopVirtualization/hostPools/kereuter-twahir-hp" ],
-        "x-ms-lamport-ts": [ "164611" ],
-        "x-ms-correlation-id": [ "cfdb73a3-3683-44cc-af6a-61983debcc77" ],
-        "Set-Cookie": [ "ARRAffinity=dd4ec869249e3d9566ca786d6cbf7afd7f6d9716031ffd176919145cecc852ea;Path=/;HttpOnly;Secure;Domain=rdarmprovider.dev17.avdtest.net", "ARRAffinitySameSite=dd4ec869249e3d9566ca786d6cbf7afd7f6d9716031ffd176919145cecc852ea;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider.dev17.avdtest.net" ],
+        "x-ms-opsarmpath": [ "/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourceGroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostPools/jushiahappattach" ],
+        "x-ms-lamport-ts": [ "38445164" ],
+        "x-ms-correlation-id": [ "9bbc9b57-225b-426a-a921-58156ea4910b" ],
+        "Set-Cookie": [ "ARRAffinity=5dd88b1b095b0bace916bbff8b6816e0a442269c15efc1ddf244384e7f96a14f;Path=/;HttpOnly;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "cfdb73a3-3683-44cc-af6a-61983debcc77" ],
-        "x-ms-correlation-request-id": [ "cfdb73a3-3683-44cc-af6a-61983debcc77" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201020T205136Z:cfdb73a3-3683-44cc-af6a-61983debcc77" ],
+        "x-ms-request-id": [ "9bbc9b57-225b-426a-a921-58156ea4910b" ],
+        "x-ms-correlation-request-id": [ "9bbc9b57-225b-426a-a921-58156ea4910b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201020T230215Z:9bbc9b57-225b-426a-a921-58156ea4910b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Oct 2020 20:51:35 GMT" ]
+        "Date": [ "Tue, 20 Oct 2020 23:02:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3121" ],
+        "Content-Length": [ "2380" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"kereuter-twahir-hp/expandmsiximage\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/twahirs-scus/providers/Microsoft.DesktopVirtualization/hostpools/kereuter-twahir-hp/expandmsiximage\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/expandmsiximage\",\"properties\":{\"packageAlias\":\"acrobatreader\",\"imagePath\":\"\\\\\\\\stgeorgi-0\\\\temp\\\\AdobeReaders\\\\adobereader.vhdx\",\"packageName\":\"AcrobatReader\",\"packageFamilyName\":\"AcrobatReader_81q6ced8g4aa0\",\"packageFullName\":\"AcrobatReader_1.0.0.0_x64__81q6ced8g4aa0\",\"displayName\":null,\"packageRelativePath\":\"\\\\apps\\\\AcrobatReader_1.0.0.0_x64__81q6ced8g4aa0\",\"isRegularRegistration\":false,\"isActive\":false,\"packageDependencies\":[],\"version\":\"1.0.0.0\",\"lastUpdated\":\"2020-10-08T18:35:13.7140667+00:00\",\"packageApplications\":[{\"appId\":\"ACRORDThreeTwo\",\"description\":\"Acrobat Reader DC\",\"appUserModelID\":\"AcrobatReader_81q6ced8g4aa0!ACRORDThreeTwo\",\"friendlyName\":\"Acrobat Reader DC\",\"iconImageName\":\"Square44x44Logo.scale-100.png\",\"rawIcon\":\"AAABAAEAICAAAAAAIAAAAwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAgAAAAIAgGAAAAc3p69AAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAClUlEQVRYR+2WX0hTURzHj850pSsl2UNKjSjLHgwiSopCWC/9oXqwHsqnIgIpEqIHe+gP9VBrYT4EgZLTQh+U/m1jhmLkFkssyzmzohwOg01oa85MU/z2u/fWmpdrXnfvQw/7wQcG5/y+53POueNelqz/ttYxZmjKUE4VQXG5QqrMOspYRXk6Q0smw4MlidNC1C9m2K1hb3SMXfodP29VmLVs6gktblUJTmJ1KgNlO4Ul5i7DnjSylwhRArcZE0lQvk9YZu4yHF4kNEgFKcFC10H56gjYlqXBe+4MRr0edBStlZwjRlWB51uLMNrnwZfmRoTcLsk5YurUvIJnmwrxracbQ5ZajA/5JOeIUVXAoc9EuPslvvsG8dXVKTlHjKoCHB+vXQFmZuA5fVJyXIz6AtcFAefOLZLjYlQVaF2Rzf8DfoZDiL7zor1wleS8eFQVeFVWiqlIGB+uXoC/4S6GGxvQc+wIek+dwNvy43DvNcK+XDurRzUBhz4L0YF+TI9F6UHsIpEI/R7D5EgAfksNAtZH/Bj3jFizUmJ9igXsORl4YdyOoboaTP8YR9BhQ3/lWbj37ULnjs14f/k8/PW1GLxdjYmRIH8yNl1qrF+RQNuaPHyqMvGLTlJ4pK8XbQX5tIAmNseenY6OjQVwlRTDRaLt61fOylAk8Ln6JmHGwMVKTAQDcNKO48floEzg1g0MN91DqMuN12WH+HdB/LgcFAm05uXwR/rUoIdt6d9jXwiyBbjvgYcSAUrgNmTSyhTITWEwk61UUKLcp1fxNo1MAQL5dAp3SOKxRNhC4HbeTIsfoDwN5VL2vAJcHSSiOjoJIzVyzfsThLvODcLO/yC7ion4RqU4iBIioeKOLVFKiWQl6x/F2C/qP/XNU71DRwAAAABJRU5ErkJggg==\",\"rawPng\":\"iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAApVJREFUWEftll9IU1Ecx4/OdKUrJdlDSo0oyx4MIkqKQlgv/aF6sB7KpyICKRKiB3voD/VQa2E+BIGS00IflP5tY4Zi5BZLLMs5s6IcDoNNaGvOTFP89rv31pqXa15370MP+8EHBuf8vudzzrnjXpas/7bWMWZoylBOFUFxuUKqzDrKWEV5OkNLJsODJYnTQtQvZtitYW90jF36HT9vVZi1bOoJLW5VCU5idSoDZTuFJeYuw540spcIUQK3GRNJUL5PWGbuMhxeJDRIBSnBQtdB+eoI2JalwXvuDEa9HnQUrZWcI0ZVgedbizDa58GX5kaE3C7JOWLq1LyCZ5sK8a2nG0OWWowP+STniFFVwKHPRLj7Jb77BvHV1Sk5R4yqAhwfr10BZmbgOX1SclyM+gLXBQHnzi2S42JUFWhdkc3/A36GQ4i+86K9cJXkvHhUFXhVVoqpSBgfrl6Av+Euhhsb0HPsCHpPncDb8uNw7zXCvlw7q0c1AYc+C9GBfkyPRelB7CKRCP0ew+RIAH5LDQLWR/wY94xYs1JifYoF7DkZeGHcjqG6Gkz/GEfQYUN/5Vm49+1C547NeH/5PPz1tRi8XY2JkSB/MjZdaqxfkUDbmjx8qjLxi05SeKSvF20F+bSAJjbHnp2Ojo0FcJUUw0Wi7etXzspQJPC5+iZhxsDFSkwEA3DSjuPH5aBM4NYNDDfdQ6jLjddlh/h3Qfy4HBQJtObl8Ef61KCHbenfY18IsgW474GHEgFK4DZk0soUyE1hMJOtVFCi3KdX8TaNTAEC+XQKd0jisUTYQuB23kyLH6A8DeVS9rwCXB0kojo6CSM1cs37E4S7zg3Czv8gu4qJ+EalOIgSIqHiji1RSolkJesfxdgv6j/1zVO9Q0cAAAAASUVORK5CYII=\"}]}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"name\":\"jushiahappattach/expandmsiximage\",\"id\":\"/subscriptions/5c14a947-e099-4b3f-932e-6e836da92be6/resourcegroups/jushiah-appattach/providers/Microsoft.DesktopVirtualization/hostpools/jushiahappattach/expandmsiximage\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/expandmsiximage\",\"properties\":{\"packageAlias\":\"msixpackage\",\"imagePath\":\"C:\\\\msix\\\\singlemsix.vhd\",\"packageName\":\"MsixPackage\",\"packageFamilyName\":\"MsixPackage_zf7zaz2wb1ayy\",\"packageFullName\":\"MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy\",\"displayName\":null,\"packageRelativePath\":\"\\\\apps\\\\MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy\",\"isRegularRegistration\":false,\"isActive\":false,\"packageDependencies\":[],\"version\":\"1.0.0.0\",\"lastUpdated\":\"2020-08-05T07:55:44.4292357+00:00\",\"packageApplications\":[{\"appId\":\"App\",\"description\":\"MsixPackage\",\"appUserModelID\":\"MsixPackage_zf7zaz2wb1ayy!App\",\"friendlyName\":\"MsixPackage\",\"iconImageName\":\"Square44x44Logo.scale-200.png\",\"rawIcon\":\"AAABAAEAICAAAAAAIAADAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAgAAAAIAgGAAAAc3p69AAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABmElEQVRYR+2XTU7DMBSEywLBsRA9BByHO1GyS7JHuUEltoh1pWwKpDPRODFp/JuUDXzSU6jtej7l2ZXY/GOo6/oO9fRbpdgRTXRVVb2jni9RZVnukPHFHMWOSOCDk1h4r+FVgcSe+6M+NTQigR3DuQiLHzS1CtjvFdU2TXON51HDI0aAfzN8TQmFH7DnrT77BYiRWNKOruuusM8e1ZpwEiVATDtyJRjO7/O1a6gnWoDkngmsH3quoYEkAcLwFAmFDz2fkixAjISvHa6eT8kSIKEzwXDOz712m2wB4joT+Ozs+ZRFAoThtoTCD0VR3PQLAiwWIJbEG6qNDSerCBCGS2KroShWEcAmfc8ZLono34nFAgofes7wFIlsAfueT3tuSQTbkS3AcIa4rpp1Rb0SWQL4UtQ9NxKoRw2dkSyg8JR73rfDJREt4Ot5CCOB51k7ogUYzk1ifl7ncJ2JKAEsiup5iLkzERRQeHTPQ2CvH2fCJ/CCyayehzASeG59Av0/DUtfuwurHd8aGpEADY+XLIYzR7F/ns3mBC9QcOs9GjprAAAAAElFTkSuQmCC\",\"rawPng\":\"iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAAZhJREFUWEftl01OwzAUhMsCwbEQPQQchztRskuyR7lBJbaIdaVsCqQz0TgxafyblA180lOo7Xo+5dmV2PxjqOv6DvX0W6XYEU10VVW9o54vUWVZ7pDxxRzFjkjgg5NYeK/hVYHEnvujPjU0IoEdw7kIix80tQrY7xXVNk1zjedRwyNGgH8zfE0JhR+w560++wWIkVjSjq7rrrDPHtWacBIlQEw7ciUYzu/ztWuoJ1qA5J4JrB96rqGBJAHC8BQJhQ89n5IsQIyErx2unk/JEiChM8Fwzs+9dptsAeI6E/js7PmURQKE4baEwg9FUdz0CwIsFiCWxBuqjQ0nqwgQhktiq6EoVhHAJn3PGS6J6N+JxQIKH3rO8BSJbAH7nk97bkkE25EtwHCGuK6adUW9ElkC+FLUPTcSqEcNnZEsoPCUe963wyURLeDreQgjgedZO6IFGM5NYn5e53CdiSgBLIrqeYi5MxEUUHh0z0Ngrx9nwifwgsmsnocwEnhufQL9Pw1LX7sLqx3fGhqRAA2PlyyGM0exf57N5gQvUHDrPRo6awAAAABJRU5ErkJggg==\"}]}}],\"nextLink\":null}"
     }
   }
 }
