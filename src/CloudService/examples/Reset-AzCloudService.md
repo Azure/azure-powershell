@@ -1,4 +1,4 @@
-### Example 1: Reimage a cloud service
+### Example 1: Reimage role instances of cloud service
 ```powershell
 PS C:\> $roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
 PS C:\> Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances -Reimage
