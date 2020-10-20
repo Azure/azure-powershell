@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>The status of the virtual network peering.</summary>
     public partial struct PeeringState :
         System.IEquatable<PeeringState>
     {

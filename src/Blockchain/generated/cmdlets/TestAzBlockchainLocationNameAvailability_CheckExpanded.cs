@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
 
     /// <summary>To check whether a resource name is available.</summary>
     /// <remarks>
-    /// [OpenAPI] CheckNameAvailability=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Blockchain/locations/{location}/checkNameAvailability"
+    /// [OpenAPI] Locations_CheckNameAvailability=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Blockchain/locations/{location}/checkNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzBlockchainLocationNameAvailability_CheckExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability))]

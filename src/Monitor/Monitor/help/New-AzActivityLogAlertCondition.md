@@ -34,7 +34,7 @@ Equals property value: OtherField
 ```
 
 This command creates a new activity log alert condition object in memory.
-**NOTE**: when this cmdlet is used with [Set-AzActivityLogAlert](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azactivitylogalert) at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
+**NOTE**: when this cmdlet is used with Set-AzActivityLogAlert at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
 
 ## PARAMETERS
 

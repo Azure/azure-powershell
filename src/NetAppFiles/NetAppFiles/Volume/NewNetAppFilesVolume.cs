@@ -119,13 +119,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string ServiceLevel { get; set; }
 
         [Parameter(
-            ParameterSetName = FieldsParameterSet,
-            Mandatory = false,
-            HelpMessage = "Create volume from a snapshot. UUID v4 or resource identifier used to identify the Snapshot")]
-        [ValidateNotNullOrEmpty]        
-        public string SnapshotId { get; set; }
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the export policy")]
         [ValidateNotNullOrEmpty]
@@ -139,7 +132,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable array which represents the protocol types. You need to create Active Directory connections before creating an SMB/CIFS volume")]
+            HelpMessage = "A hashtable array which represents the protocol types")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("NFSv3", "NFSv4.1", "CIFS")]
         public string[] ProtocolType { get; set; }
@@ -198,8 +191,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 DataProtection = (dataProtection.Replication != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
-                Tags = tagPairs,
-                SnapshotId = SnapshotId
+                Tags = tagPairs
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

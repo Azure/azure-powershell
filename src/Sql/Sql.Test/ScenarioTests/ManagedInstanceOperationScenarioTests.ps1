@@ -24,12 +24,12 @@ $instanceLocation = "eastus"
 function Test-GetManagedInstanceOperation
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	# Initiate sync create of managed instance.
@@ -43,7 +43,7 @@ function Test-GetManagedInstanceOperation
 
 		# Get single operation on managed instance.
 		$firstOperation = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name ($all | Select-Object -index 0).Name
-		Assert-AreEqual $firstOperation.OperationFriendlyName "CREATE MANAGED SERVER"
+		Assert-AreEqual $firstOperation.OperationFriendlyName "UPDATE MANAGED SERVER"
 		Assert-AreEqual $firstOperation.PercentComplete 100
 		Assert-StartsWith $firstOperation.State "Succeeded"
 		Assert-AreEqual $firstOperation.IsCancellable $false
@@ -77,12 +77,12 @@ function Test-GetManagedInstanceOperation
 function Test-StopManagedInstanceOperation
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	# Initiate sync create of managed instance.
@@ -96,7 +96,7 @@ function Test-StopManagedInstanceOperation
 
 		# Verify that create operation has finished.
 		$firstOperation = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name ($all | Select-Object -index 0).Name
-		Assert-AreEqual $firstOperation.OperationFriendlyName "CREATE MANAGED SERVER"
+		Assert-AreEqual $firstOperation.OperationFriendlyName "UPDATE MANAGED SERVER"
 		Assert-AreEqual $firstOperation.PercentComplete 100
 		Assert-StartsWith $firstOperation.State "Succeeded"
 		Assert-AreEqual $firstOperation.IsCancellable $false

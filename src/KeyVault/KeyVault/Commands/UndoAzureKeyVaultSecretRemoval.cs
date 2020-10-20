@@ -20,6 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecretRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase

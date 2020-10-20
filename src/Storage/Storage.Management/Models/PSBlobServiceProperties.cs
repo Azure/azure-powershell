@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
         [Ps1Xml(Label = "RestorePolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Enabled", Position = 5)]
         [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
-        [Ps1Xml(Label = "RestorePolicy.MinRestoreTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.MinRestoreTime", Position = 7)]
+        [Ps1Xml(Label = "RestorePolicy.LastEnabledTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.LastEnabledTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
         [Ps1Xml(Label = "ContainerDeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.ContainerDeleteRetentionPolicy.Days", Position = 8)]
         public PSDeleteRetentionPolicy ContainerDeleteRetentionPolicy { get; set; }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
-        public DateTime? MinRestoreTime { get; set; }
+        public DateTime? LastEnabledTime { get; set; }
 
         public PSRestorePolicy()
         {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
-            this.MinRestoreTime = policy.MinRestoreTime;
+            this.LastEnabledTime = policy.LastEnabledTime;
 
         }
         public RestorePolicyProperties ParseRestorePolicy()

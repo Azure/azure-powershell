@@ -126,11 +126,6 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public int? MinCount { get; set; }
 
         /// <summary>
-        /// Gets or sets mode for agent pool System or User
-        /// </summary>
-        public string Mode { get; set; }
-
-        /// <summary>
         /// Gets or sets whether to enable auto-scaler
         /// </summary>
         public bool? EnableAutoScaling { get; set; }

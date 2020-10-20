@@ -45,17 +45,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
-        public string NetworkAccessPolicy { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string DiskAccessId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public OperatingSystemTypes? OsType { get; set; }
@@ -214,8 +203,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (int?)null,
                 DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
-                NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy: null,
-                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId: null,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 Sku = vSku,

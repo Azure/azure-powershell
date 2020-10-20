@@ -17,15 +17,6 @@ Add common name or thumbprint to the cluster for client authentication purposes.
 ### [Add-AzServiceFabricClusterCertificate](Add-AzServiceFabricClusterCertificate.md)
 Add a secondary cluster certificate to the cluster.
 
-### [Add-AzServiceFabricManagedClusterClientCertificate](Add-AzServiceFabricManagedClusterClientCertificate.md)
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
-
-### [Add-AzServiceFabricManagedNodeTypeVMExtension](Add-AzServiceFabricManagedNodeTypeVMExtension.md)
-Add vm extension to the node type.
-
-### [Add-AzServiceFabricManagedNodeTypeVMSecret](Add-AzServiceFabricManagedNodeTypeVMSecret.md)
-Add certificate secret to the node type.
-
 ### [Add-AzServiceFabricNode](Add-AzServiceFabricNode.md)
 Add nodes to the specific node type in the cluster.
 
@@ -44,12 +35,6 @@ Get Service Fabric application type version details.
 ### [Get-AzServiceFabricCluster](Get-AzServiceFabricCluster.md)
 Get the cluster resource details.
 
-### [Get-AzServiceFabricManagedCluster](Get-AzServiceFabricManagedCluster.md)
-Get the managed cluster resource details.
-
-### [Get-AzServiceFabricManagedNodeType](Get-AzServiceFabricManagedNodeType.md)
-Get the managed node type resource details.
-
 ### [Get-AzServiceFabricService](Get-AzServiceFabricService.md)
 Get Service Fabric service details under the specified application and cluster.
 
@@ -64,12 +49,6 @@ Create new application type version under the specified resource group and clust
 
 ### [New-AzServiceFabricCluster](New-AzServiceFabricCluster.md)
 This command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates to or fetching them later from the key vault.
-
-### [New-AzServiceFabricManagedCluster](New-AzServiceFabricManagedCluster.md)
-Create new managed cluster.
-
-### [New-AzServiceFabricManagedNodeType](New-AzServiceFabricManagedNodeType.md)
-Create new node type resource.
 
 ### [New-AzServiceFabricService](New-AzServiceFabricService.md)
 Create new service fabric service under the specified application and cluster.
@@ -89,18 +68,6 @@ Remove a client certificate(s) or certificate subject(s) name(s) from being used
 ### [Remove-AzServiceFabricClusterCertificate](Remove-AzServiceFabricClusterCertificate.md)
 Remove a cluster certificate from being used for cluster security.
 
-### [Remove-AzServiceFabricManagedCluster](Remove-AzServiceFabricManagedCluster.md)
-Remove cluster resource.
-
-### [Remove-AzServiceFabricManagedClusterClientCertificate](Remove-AzServiceFabricManagedClusterClientCertificate.md)
-Remvoe client certificate by thumbprint or common name.
-
-### [Remove-AzServiceFabricManagedNodeType](Remove-AzServiceFabricManagedNodeType.md)
-Remove the node type or specific nodes within the node type.
-
-### [Remove-AzServiceFabricManagedNodeTypeVMExtension](Remove-AzServiceFabricManagedNodeTypeVMExtension.md)
-Remove vm extension from the node type.
-
 ### [Remove-AzServiceFabricNode](Remove-AzServiceFabricNode.md)
 Remove nodes from the specific node type from a cluster.
 
@@ -112,15 +79,6 @@ Remove a service from the cluster.
 
 ### [Remove-AzServiceFabricSetting](Remove-AzServiceFabricSetting.md)
 Remove one or multiple Service Fabric setting from the cluster.
-
-### [Restart-AzServiceFabricManagedNodeType](Restart-AzServiceFabricManagedNodeType.md)
-Restart specific nodes from the node type.
-
-### [Set-AzServiceFabricManagedCluster](Set-AzServiceFabricManagedCluster.md)
-Set cluster resource properties.
-
-### [Set-AzServiceFabricManagedNodeType](Set-AzServiceFabricManagedNodeType.md)
-Sets node type resource properties or run reimage actions on specific ndes of the node type with -Reimage parameter.
 
 ### [Set-AzServiceFabricSetting](Set-AzServiceFabricSetting.md)
 Add or update one or multiple Service Fabric settings to the cluster.

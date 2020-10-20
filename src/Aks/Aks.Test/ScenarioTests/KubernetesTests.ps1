@@ -8,7 +8,7 @@ function Test-NewAzAksSimple
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $nodeVmSize = "Standard_D2_v2"
+    $nodeVmSize = "Standard_A2"
 
     try
     {
@@ -79,8 +79,8 @@ function Test-NewAzAks
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $kubeVersion = "1.15.11"
-    $nodeVmSize = "Standard_D2_v2"
+    $kubeVersion = "1.15.10"
+    $nodeVmSize = "Standard_A2"
     $maxPodCount = 25
     $nodeName = "defnode"
     $nodeCount = 2
@@ -95,7 +95,7 @@ function Test-NewAzAks
     $loadBalancerSku = "Standard"
     $linuxAdminUser = "linuxuser"
     $dnsNamePrefix = "mypre"
-    $updatedKubeVersion = "1.15.12"
+    $updatedKubeVersion = "1.15.11"
 
     try
     {
@@ -103,7 +103,7 @@ function Test-NewAzAks
 
         if (IsLive) {
             $cred = $(createTestCredential "Unicorns" "Puppies")
-            New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NetworkPlugin $networkPlugin `
+            New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ClientIdAndSecret $cred -NetworkPlugin $networkPlugin `
                 -KubernetesVersion $kubeVersion -EnableRbac -LoadBalancerSku $loadBalancerSku -LinuxProfileAdminUserName $linuxAdminUser -DnsNamePrefix $dnsNamePrefix `
                 -NodeName $nodeName -NodeOsType $nodeOsType -EnableNodeAutoScaling -NodeCount $nodeCount -NodeOsDiskSize $nodeDiskSize -NodeVmSize $nodeVmSize `
                 -NodeMaxCount $nodeMaxCount -NodeMinCount $nodeMinCount -NodeMaxPodCount $maxPodCount -NodeSetPriority Regular -NodeScaleSetEvictionPolicy Deallocate -NodeVmSetType VirtualMachineScaleSets
@@ -138,34 +138,6 @@ function Test-NewAzAks
         Assert-AreEqual 28 $cluster.AgentPoolProfiles[0].MaxCount;
         Assert-AreEqual $updatedKubeVersion $cluster.KubernetesVersion
         $cluster | Import-AzAksCredential -Force
-        $cluster | Remove-AzAks -Force
-    }
-    finally
-    {
-        Remove-AzResourceGroup -Name $resourceGroupName -Force
-    }
-}
-
-function Test-NewAzAksAddons
-{
-    # Setup
-    $resourceGroupName = Get-RandomResourceGroupName
-    $kubeClusterName = Get-RandomClusterName
-    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-
-    try
-    {
-        New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-        New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AddOnNameToBeEnabled KubeDashboard,HttpApplicationRouting
-        $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
-        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
-        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
-
-        $cluster = $cluster | Disable-AzAksAddon -Name HttpApplicationRouting
-        Assert-AreEqual $false $cluster.AddonProfiles['httpapplicationrouting'].Enabled
-        $cluster = $cluster | Enable-AzAksAddon -Name HttpApplicationRouting
-        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
         $cluster | Remove-AzAks -Force
     }
     finally

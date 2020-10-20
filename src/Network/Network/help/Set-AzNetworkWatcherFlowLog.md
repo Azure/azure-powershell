@@ -523,12 +523,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)
 
-[New-AzNetworkWatcherFlowLog](./New-AzNetworkWatcherFlowLog.md)
+[New-AzNetworkWatcherFlowLog](./New-AzNetworkWatcherFlowLog)
 
 [Get-AzNetworkWatcherFlowLog](./Get-AzNetworkWatcherFlowLog)
 
-[Remove-AzNetworkWatcherFlowLog](./Remove-AzNetworkWatcherFlowLog.md)
+[Remove-AzNetworkWatcherFlowLog](./Remove-AzNetworkWatcherFlowLog)

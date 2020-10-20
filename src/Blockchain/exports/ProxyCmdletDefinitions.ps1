@@ -480,7 +480,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -942,7 +942,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -1130,7 +1130,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -1319,7 +1319,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -1504,7 +1504,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -1689,7 +1689,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -2481,7 +2481,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
@@ -2688,7 +2688,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
 INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [BlockchainMemberName <String>]: Blockchain member name.
   [Id <String>]: Resource identity path
-  [Location <String>]: Location name.
+  [Location <String>]: Location Name.
   [OperationId <String>]: Operation Id.
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.

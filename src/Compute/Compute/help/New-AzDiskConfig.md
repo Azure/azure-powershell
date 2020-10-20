@@ -20,8 +20,7 @@ New-AzDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-Dis
  [-ImageReference <ImageDiskReference>] [-GalleryImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-UploadSizeInBytes <Int64>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [DiskAccessId <String>]
- [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +31,7 @@ The **New-AzDiskConfig** cmdlet creates a configurable disk object.
 
 ### Example 1
 ```
-PS C:\> $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\> $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
 PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
@@ -220,38 +219,6 @@ Enable encryption settings.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DiskAccessId
-Gets or sets ARM ID of the DiskAccess resource for using private endpoints on.
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NetworkAccessPolicy
-Network access policy defines the network access policy.
-Possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

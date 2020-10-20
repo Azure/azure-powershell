@@ -96,7 +96,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The plan sku.
-    # Valid inputs are: EP1, EP2, EP3
+    # Valid inputs are: EP1, P2, EP3
     ${Sku},
 
     [Parameter()]

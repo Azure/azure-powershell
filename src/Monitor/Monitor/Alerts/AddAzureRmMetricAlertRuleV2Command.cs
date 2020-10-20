@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     foreach (var metricCondition in this.Condition)
                     {
                         var condition = metricCondition as PSMetricCriteria;
-                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
+                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions));
                     }
                     criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
                         allOf: metricCriteria
@@ -217,12 +217,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     if (condition is PSMetricCriteria)
                     {
                         var psStaticMetricCriteria = condition as PSMetricCriteria;
-                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions, skipMetricValidation: psStaticMetricCriteria.SkipMetricValidation));
+                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions));
                     }
                     else
                     {
                         var psDynamicMetricCriteria = condition as PSDynamicMetricCriteria;
-                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore, skipMetricValidation: psDynamicMetricCriteria.SkipMetricValidation));
+                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore));
                     }
                 }
 

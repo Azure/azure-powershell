@@ -59,9 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             {_code = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("code"), out var __jsonCode) ? (string)__jsonCode : (string)Code;}
+            {_innererror = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("innererror"), out var __jsonInnererror) ? (string)__jsonInnererror : (string)Innererror;}
             {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)Message;}
             {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray>("details"), out var __jsonDetails) ? If( __jsonDetails as Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorDetail[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorDetail) (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.ErrorDetail.FromJson(__u) )) ))() : null : Detail;}
-            {_innererror = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("innererror"), out var __jsonInnererror) ? (string)__jsonInnererror : (string)Innererror;}
             AfterFromJson(json);
         }
 
@@ -97,6 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return container;
             }
             AddIf( null != (((object)this._code)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._code.ToString()) : null, "code" ,container.Add );
+            AddIf( null != (((object)this._innererror)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._innererror.ToString()) : null, "innererror" ,container.Add );
             AddIf( null != (((object)this._message)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._message.ToString()) : null, "message" ,container.Add );
             if (null != this._detail)
             {
@@ -107,7 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 }
                 container.Add("details",__w);
             }
-            AddIf( null != (((object)this._innererror)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._innererror.ToString()) : null, "innererror" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

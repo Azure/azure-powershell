@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters,
             string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string),
             string cloudDataLakeAudience = default(string), string PublicNetworkAccessType = default(string),
-            string OutboundOnlyNetworkAccessType = default(string), bool? EnableEncryptionInTransit = default(bool?), Autoscale autoscaleParameter=null)
+            string OutboundOnlyNetworkAccessType = default(string), bool? EnableEncryptionInTransit = default(bool?))
         {
             var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
             createParams.Properties.OsType = osType;
@@ -60,11 +59,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     OutboundOnlyPublicNetworkAccessType = OutboundOnlyNetworkAccessType
                 };
                 createParams.Properties.NetworkSettings = networkSettings;
-            }
-
-            if (autoscaleParameter != null)
-            {
-                createParams.Properties.ComputeProfile.Roles.FirstOrDefault(role => role.Name.Equals("workernode")).AutoscaleConfiguration = autoscaleParameter;
             }
 
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
@@ -253,12 +247,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
         }
-
-        public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, AutoscaleConfigurationUpdateParameter autoscaleConfigurationUpdateParameter)
-        {
-            HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
-        }
-
+        
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;

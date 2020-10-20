@@ -64,7 +64,7 @@ function Create-VM(
 		$tags += @{"AutoShutDown"="No"}
 		$tags += @{"DeleteBy"="05-2020"}
 
-		$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+		$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 | `
 			Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
 			Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
 			-Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id

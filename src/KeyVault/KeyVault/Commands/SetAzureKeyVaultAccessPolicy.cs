@@ -570,7 +570,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDiskEncryption.IsPresent ? true : vault.EnabledForDiskEncryption,
                     vault.EnableSoftDelete,
                     vault.EnablePurgeProtection,
-                    vault.EnableRbacAuthorization,
                     vault.SoftDeleteRetentionInDays,
                     vault.NetworkAcls,
                     ActiveDirectoryClient);

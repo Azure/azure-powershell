@@ -5,7 +5,7 @@ function Test-NewNodePool
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $kubeVersion = "1.15.11"
+    $kubeVersion = "1.15.10"
     $nodeVmSize = "Standard_A2"
     $nodeVmSetType = "VirtualMachineScaleSets"
     $nodeOsType = "Linux"
@@ -16,7 +16,7 @@ function Test-NewNodePool
     $winNodeName = "windef"
     $winNodeOsType = "Windows"
 
-    $poolKubeVersion = "1.15.11"
+    $poolKubeVersion = "1.15.7"
 
     try
     {

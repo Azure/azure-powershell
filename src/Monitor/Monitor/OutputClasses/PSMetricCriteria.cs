@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                   timeAggregation: metricCriteria.TimeAggregation,
                   threshold: metricCriteria.Threshold,
                   metricNamespace: metricCriteria.MetricNamespace,
-                  dimensions: metricCriteria.Dimensions,
-                  skipMetricValidation: metricCriteria.SkipMetricValidation)
+                  dimensions: metricCriteria.Dimensions)
         {
         }
     }

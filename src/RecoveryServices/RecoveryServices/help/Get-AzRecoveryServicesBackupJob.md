@@ -182,7 +182,6 @@ The acceptable values for this parameter are:
 - DeleteBackupData
 - DisableBackup
 - Restore
-- BackupDataMove
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreGeoBackup()
         {
@@ -50,17 +50,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedDatabaseBackup()
         {
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
@@ -117,14 +119,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "This is not recordable test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
             RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
         {
@@ -136,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseRestorePoint()
         {

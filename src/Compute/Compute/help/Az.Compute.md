@@ -89,9 +89,6 @@ Gets a container service.
 ### [Get-AzDisk](Get-AzDisk.md)
 Gets the properties of a Managed disk.
 
-### [Get-AzDiskAccess](Get-AzDiskAccess.md)
-Gets the properties of Disk Accesses
-
 ### [Get-AzDiskEncryptionSet](Get-AzDiskEncryptionSet.md)
 Get or list disk encryption sets.
 
@@ -236,9 +233,6 @@ Creates a local configuration object for a container service.
 ### [New-AzDisk](New-AzDisk.md)
 Creates a managed disk.
 
-### [New-AzDiskAccess](New-AzDiskAccess.md)
-Creates a Disk Access resource
-
 ### [New-AzDiskConfig](New-AzDiskConfig.md)
 Creates a configurable disk object.
 
@@ -331,9 +325,6 @@ Removes an agent pool profile from a container service.
 
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
-
-### [Remove-AzDiskAccess](Remove-AzDiskAccess.md)
-Removes a disk access resource.
 
 ### [Remove-AzDiskEncryptionSet](Remove-AzDiskEncryptionSet.md)
 Removes a disk encryption set.

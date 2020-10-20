@@ -50,7 +50,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             return new AzureSqlDatabaseAdapter(DefaultProfile.DefaultContext);
         }
-
-        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
     }
 }

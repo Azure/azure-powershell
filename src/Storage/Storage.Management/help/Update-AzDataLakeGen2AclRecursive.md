@@ -14,9 +14,9 @@ Update ACL recursively on the specified path.
 
 ```
 Update-AzDataLakeGen2AclRecursive [-FileSystem] <String> [[-Path] <String>] [-ContinuationToken <String>]
- -Acl <PSPathAccessControlEntry[]> [-ContinueOnFailure] [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Acl <PSPathAccessControlEntry[]> [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
+ [-TagCondition <String>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,6 @@ This command first updateds ACL recursively to a directory and failed, then resu
 
 ### Example 3: Update ACL recursively chunk by chunk
 ```
-$ContinueOnFailure = $true # Set it to $false if want to terminate the operation quickly on encountering failures
 $token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0
@@ -84,15 +83,7 @@ $totalFailure = 0
 $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
 do
 {
-    
-    if ($ContinueOnFailure)
-    {
-        $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -BatchSize 100 -MaxBatchCount 50 -ContinuationToken $token -Context $ctx -ContinueOnFailure
-    }
-    else
-    {
-        $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -BatchSize 100 -MaxBatchCount 50 -ContinuationToken $token -Context $ctx
-    }
+    $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -BatchSize 100 -MaxBatchCount 50 -ContinuationToken $token -Context $ctx
 
     # echo $result
     $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
@@ -100,7 +91,7 @@ do
     $totalFailure += $result.TotalFailureCount
     $FailedEntries += $result.FailedEntries
     $token = $result.ContinuationToken
-}while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+}while (($token -ne $null) -and ($result.TotalFailureCount -eq 0))
 echo ""
 echo "[Result Summary]"
 echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
@@ -111,38 +102,6 @@ echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
 This script will update ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 5000 in this script.
-
-### Example 4: Update ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
-```
-PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
-
-PS C:\> $result
-
-FailedEntries                   : {dir0/dir1/file1, dir0/dir2/file4}
-TotalDirectoriesSuccessfulCount : 100
-TotalFilesSuccessfulCount       : 500
-TotalFailureCount               : 2
-ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
-
-PS C:\> $result.FailedEntries
-
-Name            IsDirectory ErrorMessage                                                                   
-----            ----------- ------------                                                                   
-dir0/dir1/file1       False This request is not authorized to perform this operation using this permission.
-dir0/dir2/file4       False This request is not authorized to perform this operation using this permission.
-
-# user need fix the failed item , then can resume with ContinuationToken
-
-PS C:\> foreach ($path in $result.FailedEntries.Name)
-        {
-            # user code to fix failed entry in $path
-            
-            #set ACL again
-            Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path $path -Acl $acl -Context $ctx
-        }
-```
-
-This command first updateds ACL recursively to a directory with ContinueOnFailure, and some items failed, then resume the failed items one by one.
 
 ## PARAMETERS
 
@@ -177,7 +136,9 @@ Accept wildcard characters: False
 ```
 
 ### -BatchSize
-If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked. Batch size should be between 1 and 2000. Default is 2000.
+If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked.
+Batch size should be between 1 and 2000.
+Default is 2000.
 
 ```yaml
 Type: System.Int32
@@ -211,21 +172,6 @@ Continuation Token.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +228,10 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified FileSystem that to change Acl recursively. Can be a file or directory. In the format 'directory/file.txt' or 'directory1/directory2/'. Skip set this parameter to change Acl recursively from root directory of the Filesystem.
+The path in the specified FileSystem that to change Acl recursively.
+Can be a file or directory.
+In the format 'directory/file.txt' or 'directory1/directory2/'.
+Skip set this parameter to change Acl recursively from root directory of the Filesystem.
 
 ```yaml
 Type: System.String
@@ -293,6 +242,21 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -TagCondition
+Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -312,7 +276,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3]")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated", "PremiumContainer")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Isolated", "PremiumContainer")]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
@@ -73,10 +73,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
         public override void ExecuteCmdlet()
         {
-            if (HyperV.IsPresent && 
-                (Tier != "PremiumContainer" && Tier != "PremiumV3"))
+            if (HyperV.IsPresent && Tier != "PremiumContainer")
             {
-                throw new Exception("HyperV switch is only allowed for PremiumContainer or PremiumV3 tiers");
+                throw new Exception("HyperV switch is only allowed for PremiumContainer tier");
             }
             if (!HyperV.IsPresent && Tier == "PremiumContainer")
             {

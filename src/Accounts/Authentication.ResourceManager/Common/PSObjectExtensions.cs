@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// </summary>
         /// <typeparam name="T">The type of the property to look for</typeparam>
         /// <param name="source">The PSObject to check</param>
-        /// <param name="name">The name of the property to look for</param>
+        /// <param name="name">The name of the proeprty to look for</param>
         /// <returns>true if the PSObject has a property with the given name, otherwise false</returns>
         public static bool HasProperty<T>(this PSObject source, string name)
         {
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// Populate a list from a proprty of the given PSObject
         /// </summary>
         /// <param name="list">The list to populate</param>
-        /// <param name="name">The name of the property contiaing the list</param>
+        /// <param name="name">The name of the proeprty contiaing the list</param>
         /// <param name="other">The PSObject to populate the list from</param>
         public static void Populate(this IList<string> list, string name, PSObject other)
         {

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
     /// <summary>Creates a new database or updates an existing database.</summary>
     /// <remarks>
-    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/databases/{databaseName}"
+    /// [OpenAPI] Databases_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/databases/{databaseName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMariaDbDatabase_CreateViaIdentityExpanded", SupportsShouldProcess = true)]

@@ -333,21 +333,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -O365Policy
-The office 365 traffic breakout policy for this VpnSite.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSO365PolicyProperties
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 

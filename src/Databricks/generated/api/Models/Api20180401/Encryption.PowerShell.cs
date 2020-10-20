@@ -87,10 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IEncryptionInternal)this).KeyVersion, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

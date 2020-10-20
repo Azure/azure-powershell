@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
 
             AddAzureRmServiceFabricNodeType.dontRandom = true;
-            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
+            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC";
+            ServiceFabricCmdletBase.TestThumbprint = "910AC565E683987971F34531A824284E3B936040";
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "3B892D25432FDA538F54B1EADD0B28BA82C488CC";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "EE28AF31B2741B52311A00F78DFF4F46240BB4F8";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 

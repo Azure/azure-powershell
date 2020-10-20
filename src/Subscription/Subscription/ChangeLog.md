@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlets `New-AzSubscriptionAlias`,`Get-AzSubscriptionAlias`,`Remove-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`
 
 ## Version 0.7.3
 * Added new cmdlet `Update-AzSubscription`

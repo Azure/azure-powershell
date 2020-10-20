@@ -19,12 +19,12 @@
 function Test-CreateManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -69,12 +69,12 @@ function Test-CreateManagedDatabase
 function Test-GetManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -124,12 +124,12 @@ function Test-GetManagedDatabase
 function Test-RemoveManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -195,12 +195,12 @@ function Test-RestoreManagedDatabase
 	# Setup
 	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
-	$rg2 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg2 = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -252,13 +252,13 @@ function Test-RestoreDeletedManagedDatabase
 {
 	# Setup
 	$sub = (Get-AzContext).Subscription.Id
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$rg2 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
+	$rg2 = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId

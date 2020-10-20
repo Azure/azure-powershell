@@ -16,19 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Rest.Azure;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -53,15 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// The response header handler
-        /// </summary>
-        private ImportExportResponseHeaderHandler ResponseHeaderHandler { get; set; }
-
-        private Uri LastLocationHeader { get; set; }
-
-        private ManualResetEvent LocationHeaderResetEvent = new ManualResetEvent(false);
-
-        /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
@@ -73,71 +53,31 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             {
                 Subscription = context?.Subscription;
                 SqlClient = null;
-                ResponseHeaderHandler = new ImportExportResponseHeaderHandler();
-
-                ImportExportResponseHeaderHandler.OnHttpResponseEvent += ImportExportResponseHeaderHandler_OnHttpResponseEvent;
-            }
-        }
-
-        private void ImportExportResponseHeaderHandler_OnHttpResponseEvent(HttpResponseHeaders headers)
-        {
-            if (headers.Location != null && headers.Location.ToString().Contains("importExportOperationResults"))
-            {
-                this.LastLocationHeader = headers.Location;
-                LocationHeaderResetEvent.Set();
             }
         }
 
         /// <summary>
         /// Creates new export request
         /// </summary>
-        public ImportExportOperationResult BeginExport(string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, out Uri operationStatusLink)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters)
         {
-            this.LastLocationHeader = null;
-            LocationHeaderResetEvent.Reset();
-            ImportExportOperationResult result = GetCurrentSqlClient().Databases.BeginExport(resourceGroupName, serverName, databaseName, parameters);
-            LocationHeaderResetEvent.WaitOne(3000);
-            operationStatusLink = this.LastLocationHeader;
-            return result;
+            return GetCurrentSqlClient().ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
         /// Creates new import request
         /// </summary>
-        public ImportExportOperationResult BeginImportNewDatabase(string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters, out Uri operationStatusLink)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters)
         {
-            this.LastLocationHeader = null;
-            LocationHeaderResetEvent.Reset();
-            ImportExportOperationResult result = GetCurrentSqlClient().Servers.BeginImportDatabase(resourceGroupName, serverName, parameters);
-            LocationHeaderResetEvent.WaitOne(3000);
-            operationStatusLink = this.LastLocationHeader;
-            return result;
+            return GetCurrentSqlClient().ImportExport.Import(resourceGroupName, serverName, parameters);
         }
 
-        public ImportExportOperationResult GetOperationStatus(string operationStatusLink)
+        /// <summary>
+        /// Gets the status of an import/export operations
+        /// </summary>
+        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink)
         {
-            var client = GetCurrentSqlClient();
-
-            HttpRequestMessage httpRequest = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(operationStatusLink)
-            };
-
-            client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-            var response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-
-            response.EnsureSuccessStatusCode();
-
-            string responseString = response.Content.ReadAsStringAsync().Result;
-
-            ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings
-            {
-                Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
-                NullValueHandling = NullValueHandling.Ignore
-            });
-
-            return operationResult;
+            return GetCurrentSqlClient().ImportExport.GetImportExportOperationStatus(operationStatusLink);
         }
 
         /// <summary>
@@ -150,32 +90,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                AzureSession.Instance.ClientFactory.AddHandler(ResponseHeaderHandler);
-                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-
             return SqlClient;
-        }
-    }
-
-    public class ImportExportResponseHeaderHandler : DelegatingHandler, ICloneable
-    {
-        public delegate void HttpResponseEventHandler(HttpResponseHeaders headers);
-
-        public static event HttpResponseEventHandler OnHttpResponseEvent;
-
-        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var response = await base.SendAsync(request, cancellationToken);
-
-            OnHttpResponseEvent?.Invoke(response.Headers);
-
-            return response;
-        }
-
-        public object Clone()
-        {
-            return new ImportExportResponseHeaderHandler();
         }
     }
 }

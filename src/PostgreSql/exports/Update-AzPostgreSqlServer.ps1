@@ -17,11 +17,9 @@
 .Synopsis
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Description
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
 PS C:\> Update-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SslEnforcement Disabled
 
@@ -187,14 +185,12 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline.
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline.
     ${HttpPipelinePrepend},
 
     [Parameter()]
@@ -206,20 +202,17 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use.
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call.
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy.
     ${ProxyUseDefaultCredentials}
 )
 

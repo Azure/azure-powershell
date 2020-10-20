@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The intended executor of the operation.</summary>
+    /// <summary>TypeConverter implementation for OperationOrigin.</summary>
     public partial class OperationOriginTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The mode to create a new server.</summary>
     public partial struct CreateMode :
         System.IEquatable<CreateMode>
     {

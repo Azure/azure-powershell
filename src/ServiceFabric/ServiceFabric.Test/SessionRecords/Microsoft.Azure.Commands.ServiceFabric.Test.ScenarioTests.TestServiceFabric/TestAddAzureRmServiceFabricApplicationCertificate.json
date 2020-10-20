@@ -1,0 +1,602 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b5c04c59-7812-471e-8d52-b5bcfd113a9f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.2.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "7210dfc9-e297-4340-91d4-8ac61e978a2d"
+        ],
+        "x-ms-correlation-request-id": [
+          "7210dfc9-e297-4340-91d4-8ac61e978a2d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063304Z:7210dfc9-e297-4340-91d4-8ac61e978a2d"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:04 GMT"
+        ],
+        "Content-Length": [
+          "2865"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637012313463019680\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n    \"clusterCodeVersion\": \"6.5.658.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"AE13E2C70571FC913F13F10D53CF88F68A66B655\",\r\n      \"thumbprintSecondary\": \"910AC565E683987971F34531A824284E3B936040\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"910AC565E683987971F34531A824284E3B936040\",\r\n        \"isAdmin\": false\r\n      }\r\n    ],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"NamingService\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"MaxFileOperationTimeout\",\r\n            \"value\": \"5000\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Bronze\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\"\r\n    },\r\n    \"upgradeMode\": \"Manual\",\r\n    \"addonFeatures\": [],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"6.5.658.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRnZhdWx0cycmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12bd30cf-f36f-4084-9d0d-6bffd93d073a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "1f9435b8-71be-41bd-bcbc-4fe8070e8bd3"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f9435b8-71be-41bd-bcbc-4fe8070e8bd3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063304Z:1f9435b8-71be-41bd-bcbc-4fe8070e8bd3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:03 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "4174"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/alsantamclirg2017/providers/Microsoft.KeyVault/vaults/alsantamclirg2017\",\r\n      \"name\": \"alsantamclirg2017\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\",\r\n      \"name\": \"azurermsfkvtest\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {\r\n        \"clusterName\": \"azurermsfclustertest\",\r\n        \"resourceType\": \"Service Fabric\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtestWU\",\r\n      \"name\": \"azurermsfkvtestWU\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/demo-1227160413082019-paasv2/providers/Microsoft.KeyVault/vaults/KeyVault122716041308\",\r\n      \"name\": \"KeyVault122716041308\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/demo-9727220808082019-paasv2/providers/Microsoft.KeyVault/vaults/KeyVault972722080808\",\r\n      \"name\": \"KeyVault972722080808\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/demo-9751390413082019-paasv2/providers/Microsoft.KeyVault/vaults/KeyVault975139041308\",\r\n      \"name\": \"KeyVault975139041308\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/RG-Globalization-ARM-Keyvault/providers/Microsoft.KeyVault/vaults/GlobalARMKeyVaultnew\",\r\n      \"name\": \"GlobalARMKeyVaultnew\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/rmsfe2etest20810054409/providers/Microsoft.KeyVault/vaults/rmsfe2etest20810054409\",\r\n      \"name\": \"rmsfe2etest20810054409\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfrptest08101824984/providers/Microsoft.KeyVault/vaults/sfrptest08101824984kv\",\r\n      \"name\": \"sfrptest08101824984kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfrptest08111855499/providers/Microsoft.KeyVault/vaults/sfrptest08111855499kv\",\r\n      \"name\": \"sfrptest08111855499kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfrptest08120532018/providers/Microsoft.KeyVault/vaults/sfrptest08120532018kv\",\r\n      \"name\": \"sfrptest08120532018kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfrptest08120548136/providers/Microsoft.KeyVault/vaults/sfrptest08120548136kv\",\r\n      \"name\": \"sfrptest08120548136kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfrptest08121840725/providers/Microsoft.KeyVault/vaults/sfrptest08121840725kv\",\r\n      \"name\": \"sfrptest08121840725kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/testadm090556/providers/Microsoft.KeyVault/vaults/testadm090556\",\r\n      \"name\": \"testadm090556\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {\r\n        \"clusterName\": \"testadm090556\",\r\n        \"resourceType\": \"Service Fabric\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/testadm110655/providers/Microsoft.KeyVault/vaults/testadm110655\",\r\n      \"name\": \"testadm110655\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/testadm130624/providers/Microsoft.KeyVault/vaults/testadm130624\",\r\n      \"name\": \"testadm130624\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest?api-version=2016-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvdmF1bHRzL2F6dXJlcm1zZmt2dGVzdD9hcGktdmVyc2lvbj0yMDE2LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7154fdb1-1e57-489b-8dd5-5c92d966ac56"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.KeyVault.Version2016.10.1.KeyVaultManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.1.0.249"
+        ],
+        "x-ms-request-id": [
+          "173acfbd-17ec-4363-b5f6-df1ec60a59ef"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8c11b982-a5c4-4616-a69d-cb9f5d733cbd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063304Z:8c11b982-a5c4-4616-a69d-cb9f5d733cbd"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:04 GMT"
+        ],
+        "Content-Length": [
+          "778"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\",\r\n  \"name\": \"azurermsfkvtest\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"clusterName\": \"azurermsfclustertest\",\r\n    \"resourceType\": \"Service Fabric\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"3307ff37-85af-4550-bc6a-d1e02672cb7c\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"get\",\r\n            \"create\",\r\n            \"delete\",\r\n            \"list\",\r\n            \"update\",\r\n            \"import\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"all\"\r\n          ],\r\n          \"certificates\": [\r\n            \"all\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://azurermsfkvtest.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cz9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5594c4dd-eaaa-46c3-99d1-525640385db9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/HighCostGetVMScaleSet3Min;205,Microsoft.Compute/HighCostGetVMScaleSet30Min;1017"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "62142b48-3673-4186-8a29-6d55abfe3fd1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "053ffd36-412c-4f3d-ac03-1ed347f7e79c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063305Z:053ffd36-412c-4f3d-ac03-1ed347f7e79c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:04 GMT"
+        ],
+        "Content-Length": [
+          "8221"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"azSfNoneSFVMss\",\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/azSfNoneSFVMss\",\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"southcentralus\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1_v2\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": false,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Manual\",\r\n          \"automaticOSUpgrade\": false\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"azSfNoneS\",\r\n            \"adminUsername\": \"admin01\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": []\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"None\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Premium_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2016-Datacenter\",\r\n              \"version\": \"latest\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"azSfNoneSFVMss\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"enableAcceleratedNetworking\": false,\r\n                  \"dnsSettings\": {\r\n                    \"dnsServers\": []\r\n                  },\r\n                  \"enableIPForwarding\": false,\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"azSfNoneSFVMss\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/virtualNetworks/azSfNoneSFVMss/subnets/azSfNoneSFVMss\"\r\n                        },\r\n                        \"privateIPAddressVersion\": \"IPv4\",\r\n                        \"loadBalancerBackendAddressPools\": [\r\n                          {\r\n                            \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/azSfNoneSFVMss/backendAddressPools/azSfNoneSFVMss\"\r\n                          }\r\n                        ],\r\n                        \"loadBalancerInboundNatPools\": [\r\n                          {\r\n                            \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/azSfNoneSFVMss/inboundNatPools/azSfNoneSFVMss3389\"\r\n                          },\r\n                          {\r\n                            \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/azSfNoneSFVMss/inboundNatPools/azSfNoneSFVMss5985\"\r\n                          }\r\n                        ]\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": true,\r\n        \"uniqueId\": \"4625f656-2ebd-414f-a85f-bb4a9e76ded9\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"nt1vm\",\r\n      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/nt1vm\",\r\n      \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n      \"location\": \"southcentralus\",\r\n      \"tags\": {\r\n        \"resourceType\": \"Service Fabric\",\r\n        \"clusterName\": \"azurermsfclustertest\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"Standard_D2_V2\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 5\r\n      },\r\n      \"properties\": {\r\n        \"singlePlacementGroup\": true,\r\n        \"upgradePolicy\": {\r\n          \"mode\": \"Automatic\",\r\n          \"automaticOSUpgrade\": false\r\n        },\r\n        \"virtualMachineProfile\": {\r\n          \"osProfile\": {\r\n            \"computerNamePrefix\": \"nt1vm\",\r\n            \"adminUsername\": \"GEN-UNIQUE\",\r\n            \"windowsConfiguration\": {\r\n              \"provisionVMAgent\": true,\r\n              \"enableAutomaticUpdates\": true\r\n            },\r\n            \"secrets\": [\r\n              {\r\n                \"sourceVault\": {\r\n                  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\"\r\n                },\r\n                \"vaultCertificates\": [\r\n                  {\r\n                    \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfrg20190812112541/957c3efb623a48218df7e9d1d3fcbd2d\",\r\n                    \"certificateStore\": \"My\"\r\n                  },\r\n                  {\r\n                    \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6\",\r\n                    \"certificateStore\": \"my\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          \"storageProfile\": {\r\n            \"osDisk\": {\r\n              \"createOption\": \"FromImage\",\r\n              \"caching\": \"ReadOnly\",\r\n              \"managedDisk\": {\r\n                \"storageAccountType\": \"Standard_LRS\"\r\n              }\r\n            },\r\n            \"imageReference\": {\r\n              \"publisher\": \"MicrosoftWindowsServer\",\r\n              \"offer\": \"WindowsServer\",\r\n              \"sku\": \"2016-Datacenter\",\r\n              \"version\": \"latest\"\r\n            }\r\n          },\r\n          \"networkProfile\": {\r\n            \"networkInterfaceConfigurations\": [\r\n              {\r\n                \"name\": \"NIC-0\",\r\n                \"properties\": {\r\n                  \"primary\": true,\r\n                  \"enableAcceleratedNetworking\": false,\r\n                  \"dnsSettings\": {\r\n                    \"dnsServers\": []\r\n                  },\r\n                  \"ipConfigurations\": [\r\n                    {\r\n                      \"name\": \"NIC-0\",\r\n                      \"properties\": {\r\n                        \"subnet\": {\r\n                          \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/virtualNetworks/VNet/subnets/Subnet-0\"\r\n                        },\r\n                        \"privateIPAddressVersion\": \"IPv4\",\r\n                        \"loadBalancerBackendAddressPools\": [\r\n                          {\r\n                            \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/backendAddressPools/LoadBalancerBEAddressPool\"\r\n                          }\r\n                        ],\r\n                        \"loadBalancerInboundNatPools\": [\r\n                          {\r\n                            \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/inboundNatPools/LoadBalancerBEAddressNatPool\"\r\n                          }\r\n                        ]\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"extensionProfile\": {\r\n            \"extensions\": [\r\n              {\r\n                \"name\": \"ServiceFabricNodeVmExt_vmNodeType0Name\",\r\n                \"properties\": {\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"publisher\": \"Microsoft.Azure.ServiceFabric\",\r\n                  \"type\": \"ServiceFabricNode\",\r\n                  \"typeHandlerVersion\": \"1.0\",\r\n                  \"settings\": {\r\n                    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n                    \"nodeTypeRef\": \"nt1vm\",\r\n                    \"dataPath\": \"D:\\\\SvcFab\",\r\n                    \"durabilityLevel\": \"Bronze\",\r\n                    \"enableParallelJobs\": true,\r\n                    \"nicPrefixOverride\": \"10.0.0.0/24\",\r\n                    \"certificate\": {\r\n                      \"thumbprint\": \"AE13E2C70571FC913F13F10D53CF88F68A66B655\",\r\n                      \"x509StoreName\": \"My\"\r\n                    },\r\n                    \"certificateSecondary\": {\r\n                      \"thumbprint\": \"910AC565E683987971F34531A824284E3B936040\",\r\n                      \"x509StoreName\": \"my\"\r\n                    }\r\n                  }\r\n                }\r\n              },\r\n              {\r\n                \"name\": \"VMDiagnosticsVmExt_vmNodeType0Name\",\r\n                \"properties\": {\r\n                  \"autoUpgradeMinorVersion\": true,\r\n                  \"publisher\": \"Microsoft.Azure.Diagnostics\",\r\n                  \"type\": \"IaaSDiagnostics\",\r\n                  \"typeHandlerVersion\": \"1.5\",\r\n                  \"settings\": {\r\n                    \"WadCfg\": {\r\n                      \"DiagnosticMonitorConfiguration\": {\r\n                        \"overallQuotaInMB\": \"50000\",\r\n                        \"EtwProviders\": {\r\n                          \"EtwEventSourceProviderConfiguration\": [\r\n                            {\r\n                              \"provider\": \"Microsoft-ServiceFabric-Actors\",\r\n                              \"scheduledTransferKeywordFilter\": \"1\",\r\n                              \"scheduledTransferPeriod\": \"PT5M\",\r\n                              \"DefaultEvents\": {\r\n                                \"eventDestination\": \"ServiceFabricReliableActorEventTable\"\r\n                              }\r\n                            },\r\n                            {\r\n                              \"provider\": \"Microsoft-ServiceFabric-Services\",\r\n                              \"scheduledTransferPeriod\": \"PT5M\",\r\n                              \"DefaultEvents\": {\r\n                                \"eventDestination\": \"ServiceFabricReliableServiceEventTable\"\r\n                              }\r\n                            }\r\n                          ],\r\n                          \"EtwManifestProviderConfiguration\": [\r\n                            {\r\n                              \"provider\": \"cbd93bc2-71e5-4566-b3a7-595d8eeca6e8\",\r\n                              \"scheduledTransferLogLevelFilter\": \"Information\",\r\n                              \"scheduledTransferKeywordFilter\": \"4611686018427387904\",\r\n                              \"scheduledTransferPeriod\": \"PT5M\",\r\n                              \"DefaultEvents\": {\r\n                                \"eventDestination\": \"ServiceFabricSystemEventTable\"\r\n                              }\r\n                            }\r\n                          ]\r\n                        }\r\n                      }\r\n                    },\r\n                    \"StorageAccount\": \"wadmovceivkf3yzy3\"\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"overprovision\": false,\r\n        \"uniqueId\": \"8e93570f-77a3-4cc7-b43b-b316657cac2d\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/nt1vm?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cy9udDF2bT9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2_V2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 5\r\n  },\r\n  \"properties\": {\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\",\r\n      \"automaticOSUpgrade\": false\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"nt1vm\",\r\n        \"adminUsername\": \"GEN-UNIQUE\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": [\r\n          {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\"\r\n            },\r\n            \"vaultCertificates\": [\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfrg20190812112541/957c3efb623a48218df7e9d1d3fcbd2d\",\r\n                \"certificateStore\": \"My\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6\",\r\n                \"certificateStore\": \"my\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/ca4c0f7efa254d9ba0b267b8aaebb878\",\r\n                \"certificateStore\": \"my\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"storageProfile\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2016-Datacenter\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"osDisk\": {\r\n          \"caching\": \"ReadOnly\",\r\n          \"createOption\": \"FromImage\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"NIC-0\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"NIC-0\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/virtualNetworks/VNet/subnets/Subnet-0\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\",\r\n                    \"loadBalancerBackendAddressPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/backendAddressPools/LoadBalancerBEAddressPool\"\r\n                      }\r\n                    ],\r\n                    \"loadBalancerInboundNatPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/inboundNatPools/LoadBalancerBEAddressNatPool\"\r\n                      }\r\n                    ]\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"name\": \"ServiceFabricNodeVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.ServiceFabric\",\r\n              \"type\": \"ServiceFabricNode\",\r\n              \"typeHandlerVersion\": \"1.0\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n                \"nodeTypeRef\": \"nt1vm\",\r\n                \"dataPath\": \"D:\\\\SvcFab\",\r\n                \"durabilityLevel\": \"Bronze\",\r\n                \"enableParallelJobs\": true,\r\n                \"nicPrefixOverride\": \"10.0.0.0/24\",\r\n                \"certificate\": {\r\n                  \"thumbprint\": \"AE13E2C70571FC913F13F10D53CF88F68A66B655\",\r\n                  \"x509StoreName\": \"My\"\r\n                },\r\n                \"certificateSecondary\": {\r\n                  \"thumbprint\": \"910AC565E683987971F34531A824284E3B936040\",\r\n                  \"x509StoreName\": \"my\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"VMDiagnosticsVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"publisher\": \"Microsoft.Azure.Diagnostics\",\r\n              \"type\": \"IaaSDiagnostics\",\r\n              \"typeHandlerVersion\": \"1.5\",\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"settings\": {\r\n                \"WadCfg\": {\r\n                  \"DiagnosticMonitorConfiguration\": {\r\n                    \"overallQuotaInMB\": \"50000\",\r\n                    \"EtwProviders\": {\r\n                      \"EtwEventSourceProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Actors\",\r\n                          \"scheduledTransferKeywordFilter\": \"1\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableActorEventTable\"\r\n                          }\r\n                        },\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Services\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableServiceEventTable\"\r\n                          }\r\n                        }\r\n                      ],\r\n                      \"EtwManifestProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"cbd93bc2-71e5-4566-b3a7-595d8eeca6e8\",\r\n                          \"scheduledTransferLogLevelFilter\": \"Information\",\r\n                          \"scheduledTransferKeywordFilter\": \"4611686018427387904\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricSystemEventTable\"\r\n                          }\r\n                        }\r\n                      ]\r\n                    }\r\n                  }\r\n                },\r\n                \"StorageAccount\": \"wadmovceivkf3yzy3\"\r\n              }\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"overprovision\": false,\r\n    \"singlePlacementGroup\": true\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"resourceType\": \"Service Fabric\",\r\n    \"clusterName\": \"azurermsfclustertest\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fa92428b-a0ae-410e-a6db-96dae6c7fa07"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "6957"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.Compute/locations/southcentralus/operations/7bdf86de-c70c-4dbf-833f-f9fde53a39bf?api-version=2017-12-01"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/CreateVMScaleSet3Min;168,Microsoft.Compute/CreateVMScaleSet30Min;846,Microsoft.Compute/VMScaleSetBatchedVMRequests5Min;3392,Microsoft.Compute/VmssQueuedVMOperations;4795"
+        ],
+        "x-ms-request-charge": [
+          "5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7bdf86de-c70c-4dbf-833f-f9fde53a39bf"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "9abcd394-d3fa-480e-a6da-2c4f8fbb70e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063306Z:9abcd394-d3fa-480e-a6da-2c4f8fbb70e0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:06 GMT"
+        ],
+        "Content-Length": [
+          "5382"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"nt1vm\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/nt1vm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"resourceType\": \"Service Fabric\",\r\n    \"clusterName\": \"azurermsfclustertest\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2_V2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 5\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\",\r\n      \"automaticOSUpgrade\": false\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"nt1vm\",\r\n        \"adminUsername\": \"GEN-UNIQUE\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": [\r\n          {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\"\r\n            },\r\n            \"vaultCertificates\": [\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfrg20190812112541/957c3efb623a48218df7e9d1d3fcbd2d\",\r\n                \"certificateStore\": \"My\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6\",\r\n                \"certificateStore\": \"my\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/ca4c0f7efa254d9ba0b267b8aaebb878\",\r\n                \"certificateStore\": \"my\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"ReadOnly\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2016-Datacenter\",\r\n          \"version\": \"latest\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"NIC-0\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"NIC-0\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/virtualNetworks/VNet/subnets/Subnet-0\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\",\r\n                    \"loadBalancerBackendAddressPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/backendAddressPools/LoadBalancerBEAddressPool\"\r\n                      }\r\n                    ],\r\n                    \"loadBalancerInboundNatPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/inboundNatPools/LoadBalancerBEAddressNatPool\"\r\n                      }\r\n                    ]\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"name\": \"ServiceFabricNodeVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"publisher\": \"Microsoft.Azure.ServiceFabric\",\r\n              \"type\": \"ServiceFabricNode\",\r\n              \"typeHandlerVersion\": \"1.0\",\r\n              \"settings\": {\r\n                \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n                \"nodeTypeRef\": \"nt1vm\",\r\n                \"dataPath\": \"D:\\\\SvcFab\",\r\n                \"durabilityLevel\": \"Bronze\",\r\n                \"enableParallelJobs\": true,\r\n                \"nicPrefixOverride\": \"10.0.0.0/24\",\r\n                \"certificate\": {\r\n                  \"thumbprint\": \"AE13E2C70571FC913F13F10D53CF88F68A66B655\",\r\n                  \"x509StoreName\": \"My\"\r\n                },\r\n                \"certificateSecondary\": {\r\n                  \"thumbprint\": \"910AC565E683987971F34531A824284E3B936040\",\r\n                  \"x509StoreName\": \"my\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"VMDiagnosticsVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"publisher\": \"Microsoft.Azure.Diagnostics\",\r\n              \"type\": \"IaaSDiagnostics\",\r\n              \"typeHandlerVersion\": \"1.5\",\r\n              \"settings\": {\r\n                \"WadCfg\": {\r\n                  \"DiagnosticMonitorConfiguration\": {\r\n                    \"overallQuotaInMB\": \"50000\",\r\n                    \"EtwProviders\": {\r\n                      \"EtwEventSourceProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Actors\",\r\n                          \"scheduledTransferKeywordFilter\": \"1\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableActorEventTable\"\r\n                          }\r\n                        },\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Services\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableServiceEventTable\"\r\n                          }\r\n                        }\r\n                      ],\r\n                      \"EtwManifestProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"cbd93bc2-71e5-4566-b3a7-595d8eeca6e8\",\r\n                          \"scheduledTransferLogLevelFilter\": \"Information\",\r\n                          \"scheduledTransferKeywordFilter\": \"4611686018427387904\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricSystemEventTable\"\r\n                          }\r\n                        }\r\n                      ]\r\n                    }\r\n                  }\r\n                },\r\n                \"StorageAccount\": \"wadmovceivkf3yzy3\"\r\n              }\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Updating\",\r\n    \"overprovision\": false,\r\n    \"uniqueId\": \"8e93570f-77a3-4cc7-b43b-b316657cac2d\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.Compute/locations/southcentralus/operations/7bdf86de-c70c-4dbf-833f-f9fde53a39bf?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy83YmRmODZkZS1jNzBjLTRkYmYtODMzZi1mOWZkZTUzYTM5YmY/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "51"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14977,Microsoft.Compute/GetOperation30Min;29709"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "fca0b6d6-a8de-4c9e-813e-7de5b601c3e7"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "e57b0ecd-dbc7-41be-bd2b-3a4b20fd8451"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063317Z:e57b0ecd-dbc7-41be-bd2b-3a4b20fd8451"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:33:16 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-08-12T23:33:06.0646251-07:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"7bdf86de-c70c-4dbf-833f-f9fde53a39bf\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.Compute/locations/southcentralus/operations/7bdf86de-c70c-4dbf-833f-f9fde53a39bf?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy83YmRmODZkZS1jNzBjLTRkYmYtODMzZi1mOWZkZTUzYTM5YmY/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14977,Microsoft.Compute/GetOperation30Min;29701"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e350b556-88b5-40c5-8ff2-c4621f2f5bb3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef23659b-9487-442f-9c2e-bec25c65db11"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063408Z:ef23659b-9487-442f-9c2e-bec25c65db11"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:34:08 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-08-12T23:33:06.0646251-07:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"7bdf86de-c70c-4dbf-833f-f9fde53a39bf\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.Compute/locations/southcentralus/operations/7bdf86de-c70c-4dbf-833f-f9fde53a39bf?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy83YmRmODZkZS1jNzBjLTRkYmYtODMzZi1mOWZkZTUzYTM5YmY/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14973,Microsoft.Compute/GetOperation30Min;29693"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0229af60-5ce4-4ace-abd8-b1cc85090d70"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1dcec53-6ec2-41c0-9a55-b939544dfc69"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063459Z:a1dcec53-6ec2-41c0-9a55-b939544dfc69"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:34:58 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2019-08-12T23:33:06.0646251-07:00\",\r\n  \"endTime\": \"2019-08-12T23:34:51.8336284-07:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"7bdf86de-c70c-4dbf-833f-f9fde53a39bf\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/nt1vm?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cy9udDF2bT9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Commands.Common.Compute.Version.2018.04.ComputeManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetVMScaleSet3Min;226,Microsoft.Compute/GetVMScaleSet30Min;1477"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "659cb928-c20b-4c75-9f1d-6f6331e6b8dc"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "8ac3e4c4-ba2a-4fb0-80f8-45a88b4d4008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190813T063459Z:8ac3e4c4-ba2a-4fb0-80f8-45a88b4d4008"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 13 Aug 2019 06:34:58 GMT"
+        ],
+        "Content-Length": [
+          "5383"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"nt1vm\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Compute/virtualMachineScaleSets/nt1vm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"resourceType\": \"Service Fabric\",\r\n    \"clusterName\": \"azurermsfclustertest\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2_V2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 5\r\n  },\r\n  \"properties\": {\r\n    \"singlePlacementGroup\": true,\r\n    \"upgradePolicy\": {\r\n      \"mode\": \"Automatic\",\r\n      \"automaticOSUpgrade\": false\r\n    },\r\n    \"virtualMachineProfile\": {\r\n      \"osProfile\": {\r\n        \"computerNamePrefix\": \"nt1vm\",\r\n        \"adminUsername\": \"GEN-UNIQUE\",\r\n        \"windowsConfiguration\": {\r\n          \"provisionVMAgent\": true,\r\n          \"enableAutomaticUpdates\": true\r\n        },\r\n        \"secrets\": [\r\n          {\r\n            \"sourceVault\": {\r\n              \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.KeyVault/vaults/azurermsfkvtest\"\r\n            },\r\n            \"vaultCertificates\": [\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfrg20190812112541/957c3efb623a48218df7e9d1d3fcbd2d\",\r\n                \"certificateStore\": \"My\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6\",\r\n                \"certificateStore\": \"my\"\r\n              },\r\n              {\r\n                \"certificateUrl\": \"https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/ca4c0f7efa254d9ba0b267b8aaebb878\",\r\n                \"certificateStore\": \"my\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"storageProfile\": {\r\n        \"osDisk\": {\r\n          \"createOption\": \"FromImage\",\r\n          \"caching\": \"ReadOnly\",\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Standard_LRS\"\r\n          }\r\n        },\r\n        \"imageReference\": {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2016-Datacenter\",\r\n          \"version\": \"latest\"\r\n        }\r\n      },\r\n      \"networkProfile\": {\r\n        \"networkInterfaceConfigurations\": [\r\n          {\r\n            \"name\": \"NIC-0\",\r\n            \"properties\": {\r\n              \"primary\": true,\r\n              \"enableAcceleratedNetworking\": false,\r\n              \"dnsSettings\": {\r\n                \"dnsServers\": []\r\n              },\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"name\": \"NIC-0\",\r\n                  \"properties\": {\r\n                    \"subnet\": {\r\n                      \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/virtualNetworks/VNet/subnets/Subnet-0\"\r\n                    },\r\n                    \"privateIPAddressVersion\": \"IPv4\",\r\n                    \"loadBalancerBackendAddressPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/backendAddressPools/LoadBalancerBEAddressPool\"\r\n                      }\r\n                    ],\r\n                    \"loadBalancerInboundNatPools\": [\r\n                      {\r\n                        \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.Network/loadBalancers/LB-azurermsfclustertest-nt1vm/inboundNatPools/LoadBalancerBEAddressNatPool\"\r\n                      }\r\n                    ]\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      \"extensionProfile\": {\r\n        \"extensions\": [\r\n          {\r\n            \"name\": \"ServiceFabricNodeVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"publisher\": \"Microsoft.Azure.ServiceFabric\",\r\n              \"type\": \"ServiceFabricNode\",\r\n              \"typeHandlerVersion\": \"1.0\",\r\n              \"settings\": {\r\n                \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/79a83e1e-e100-4af4-b695-71d69e12f6a9\",\r\n                \"nodeTypeRef\": \"nt1vm\",\r\n                \"dataPath\": \"D:\\\\SvcFab\",\r\n                \"durabilityLevel\": \"Bronze\",\r\n                \"enableParallelJobs\": true,\r\n                \"nicPrefixOverride\": \"10.0.0.0/24\",\r\n                \"certificate\": {\r\n                  \"thumbprint\": \"AE13E2C70571FC913F13F10D53CF88F68A66B655\",\r\n                  \"x509StoreName\": \"My\"\r\n                },\r\n                \"certificateSecondary\": {\r\n                  \"thumbprint\": \"910AC565E683987971F34531A824284E3B936040\",\r\n                  \"x509StoreName\": \"my\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"VMDiagnosticsVmExt_vmNodeType0Name\",\r\n            \"properties\": {\r\n              \"autoUpgradeMinorVersion\": true,\r\n              \"publisher\": \"Microsoft.Azure.Diagnostics\",\r\n              \"type\": \"IaaSDiagnostics\",\r\n              \"typeHandlerVersion\": \"1.5\",\r\n              \"settings\": {\r\n                \"WadCfg\": {\r\n                  \"DiagnosticMonitorConfiguration\": {\r\n                    \"overallQuotaInMB\": \"50000\",\r\n                    \"EtwProviders\": {\r\n                      \"EtwEventSourceProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Actors\",\r\n                          \"scheduledTransferKeywordFilter\": \"1\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableActorEventTable\"\r\n                          }\r\n                        },\r\n                        {\r\n                          \"provider\": \"Microsoft-ServiceFabric-Services\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricReliableServiceEventTable\"\r\n                          }\r\n                        }\r\n                      ],\r\n                      \"EtwManifestProviderConfiguration\": [\r\n                        {\r\n                          \"provider\": \"cbd93bc2-71e5-4566-b3a7-595d8eeca6e8\",\r\n                          \"scheduledTransferLogLevelFilter\": \"Information\",\r\n                          \"scheduledTransferKeywordFilter\": \"4611686018427387904\",\r\n                          \"scheduledTransferPeriod\": \"PT5M\",\r\n                          \"DefaultEvents\": {\r\n                            \"eventDestination\": \"ServiceFabricSystemEventTable\"\r\n                          }\r\n                        }\r\n                      ]\r\n                    }\r\n                  }\r\n                },\r\n                \"StorageAccount\": \"wadmovceivkf3yzy3\"\r\n              }\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"overprovision\": false,\r\n    \"uniqueId\": \"8e93570f-77a3-4cc7-b43b-b316657cac2d\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b36cdf46-b75d-4dc2-9fe1-1296ee8c623d"
+  }
+}

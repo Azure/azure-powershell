@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
+    /// [OpenAPI] Servers_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMariaDbServer_Create", SupportsShouldProcess = true)]

@@ -18,7 +18,7 @@ Get-AzCosmosDBSqlContainerThroughput -ResourceGroupName <String> -AccountName <S
  [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBSqlContainerThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -95,7 +95,7 @@ Sql Container object.
 
 ```yaml
 Type: PSSqlContainerGetResults
-Parameter Sets: ByObjectParameterSet
+Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
 Required: True

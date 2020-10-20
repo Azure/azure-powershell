@@ -58,10 +58,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return;
             }
-            {_keySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("keySource"), out var __jsonKeySource) ? (string)__jsonKeySource : (string)KeySource;}
             {_keyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("KeyName"), out var __jsonKeyName) ? (string)__jsonKeyName : (string)KeyName;}
-            {_keyVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("keyversion"), out var __jsonKeyversion) ? (string)__jsonKeyversion : (string)KeyVersion;}
+            {_keySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("keySource"), out var __jsonKeySource) ? (string)__jsonKeySource : (string)KeySource;}
             {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("keyvaulturi"), out var __jsonKeyvaulturi) ? (string)__jsonKeyvaulturi : (string)KeyVaultUri;}
+            {_keyVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("keyversion"), out var __jsonKeyversion) ? (string)__jsonKeyversion : (string)KeyVersion;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return container;
             }
-            AddIf( null != (((object)this._keySource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keySource.ToString()) : null, "keySource" ,container.Add );
             AddIf( null != (((object)this._keyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keyName.ToString()) : null, "KeyName" ,container.Add );
-            AddIf( null != (((object)this._keyVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keyVersion.ToString()) : null, "keyversion" ,container.Add );
+            AddIf( null != (((object)this._keySource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keySource.ToString()) : null, "keySource" ,container.Add );
             AddIf( null != (((object)this._keyVaultUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keyVaultUri.ToString()) : null, "keyvaulturi" ,container.Add );
+            AddIf( null != (((object)this._keyVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._keyVersion.ToString()) : null, "keyversion" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

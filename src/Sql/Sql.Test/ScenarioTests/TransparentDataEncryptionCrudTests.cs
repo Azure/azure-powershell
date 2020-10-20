@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-UpdateTransparentDataEncryption");
         }
 
-        [Fact(Skip = "Gets empty status when expecting encrypting")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseTransparentDataEncryptionGet()
         {

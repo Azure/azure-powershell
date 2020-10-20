@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Enable Storage Auto Grow.</summary>
+    /// <summary>TypeConverter implementation for StorageAutogrow.</summary>
     public partial class StorageAutogrowTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

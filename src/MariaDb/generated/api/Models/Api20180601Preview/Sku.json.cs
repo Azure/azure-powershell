@@ -71,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_tier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("tier"), out var __jsonTier) ? (string)__jsonTier : (string)Tier;}
             {_capacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber>("capacity"), out var __jsonCapacity) ? (int?)__jsonCapacity : Capacity;}
-            {_size = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("size"), out var __jsonSize) ? (string)__jsonSize : (string)Size;}
             {_family = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("family"), out var __jsonFamily) ? (string)__jsonFamily : (string)Family;}
+            {_size = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("size"), out var __jsonSize) ? (string)__jsonSize : (string)Size;}
+            {_tier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("tier"), out var __jsonTier) ? (string)__jsonTier : (string)Tier;}
             AfterFromJson(json);
         }
 
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return container;
             }
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != (((object)this._tier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._tier.ToString()) : null, "tier" ,container.Add );
             AddIf( null != this._capacity ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber((int)this._capacity) : null, "capacity" ,container.Add );
-            AddIf( null != (((object)this._size)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._size.ToString()) : null, "size" ,container.Add );
             AddIf( null != (((object)this._family)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._family.ToString()) : null, "family" ,container.Add );
+            AddIf( null != (((object)this._size)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._size.ToString()) : null, "size" ,container.Add );
+            AddIf( null != (((object)this._tier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._tier.ToString()) : null, "tier" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

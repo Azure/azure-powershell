@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed typo in New-AzConfigurationAssignment.md 
 
 ## Version 1.1.0
 * Added optional schedule related fields to `New-AzMaintenanceConfiguration`

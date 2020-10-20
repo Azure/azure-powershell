@@ -31,7 +31,7 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
 
 # install azure-powershell from PSGallery
 RUN pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
-    pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Scope AllUsers -Repository ${REPOSITORY} && \
+    pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Repository ${REPOSITORY} && \
     pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted
 
 # create AzureRmContextSettings.json before it was generated

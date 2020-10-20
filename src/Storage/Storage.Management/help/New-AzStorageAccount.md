@@ -489,7 +489,7 @@ Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage, FileStorage
 
 Required: False
 Position: Named
-Default value: StorageV2
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

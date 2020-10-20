@@ -10,27 +10,19 @@ Locale: en-US
 ## Description
 Microsoft Azure PowerShell: Databricks cmdlets
 
-## Az.Databricks Cmdlets
-### [Get-AzDatabricksVNetPeering](Get-AzDatabricksVNetPeering.md)
-Gets the workspace vNet Peering.
+While the Az.Databricks PowerShell module is in preview, you must install it separately from the Az PowerShell module using the following command: `Install-Module -Name Az.Databricks`. Once the Az.Databricks PowerShell module is generally available, it becomes part of future Az PowerShell module releases and available natively from within Azure Cloud Shell.
 
+This module allows the management of service features in preview which may not be available yet for your region or subscription. 
+
+## Az.Databricks Cmdlets
 ### [Get-AzDatabricksWorkspace](Get-AzDatabricksWorkspace.md)
 Gets the workspace.
-
-### [New-AzDatabricksVNetPeering](New-AzDatabricksVNetPeering.md)
-Creates vNet Peering for workspace.
 
 ### [New-AzDatabricksWorkspace](New-AzDatabricksWorkspace.md)
 Creates a new workspace.
 
-### [Remove-AzDatabricksVNetPeering](Remove-AzDatabricksVNetPeering.md)
-Deletes the workspace vNetPeering.
-
 ### [Remove-AzDatabricksWorkspace](Remove-AzDatabricksWorkspace.md)
 Deletes the workspace.
-
-### [Update-AzDatabricksVNetPeering](Update-AzDatabricksVNetPeering.md)
-Update vNet Peering for workspace.
 
 ### [Update-AzDatabricksWorkspace](Update-AzDatabricksWorkspace.md)
 Updates a workspace.

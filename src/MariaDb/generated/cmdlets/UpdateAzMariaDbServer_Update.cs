@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     /// Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
+    /// [OpenAPI] Servers_Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMariaDbServer_Update", SupportsShouldProcess = true)]

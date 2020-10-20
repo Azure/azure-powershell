@@ -1178,12 +1178,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note: The result may contain false positive predictions (noise).
+        ///   Looks up a localized string similar to Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
         ///You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues..
         /// </summary>
-        internal static string WhatIfNoiseNotice {
+        internal static string WhatIfPreviewNotice {
             get {
-                return ResourceManager.GetString("WhatIfNoiseNotice", resourceCulture);
+                return ResourceManager.GetString("WhatIfPreviewNotice", resourceCulture);
             }
         }
     }

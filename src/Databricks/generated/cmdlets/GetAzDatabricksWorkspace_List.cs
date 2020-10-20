@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
     /// <summary>Gets all the workspaces within a resource group.</summary>
     /// <remarks>
-    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces"
+    /// [OpenAPI] Workspaces_ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksWorkspace_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace))]

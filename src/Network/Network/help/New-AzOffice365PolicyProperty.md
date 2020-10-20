@@ -18,7 +18,7 @@ New-AzOffice365PolicyProperty [-Allow] [-Optimize] [-Default] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-The New-AzOffice365PolicyProperties command defines an Office 365 breakout policy that is to be used with a Virtual Appliance site. 
+The New-AzOffice365PolicyProperties command defines an Office 365 breakout policy that is to be used woith a Virtual Appliance site. 
 
 ## EXAMPLES
 

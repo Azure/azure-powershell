@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Gets or sets the blockchain member provision state.</summary>
+    /// <summary>Argument completer implementation for NodeProvisioningState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningStateTypeConverter))]
     public partial struct NodeProvisioningState :
         System.Management.Automation.IArgumentCompleter

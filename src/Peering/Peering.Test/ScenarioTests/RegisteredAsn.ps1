@@ -17,7 +17,7 @@ GetPeeringServiceProviders
 #>
 function Test-CreateRegisteredAsn {
     $peering = (Get-AzPeering -Kind Direct)[0];
-    $resourceGroup = $peering[0].Id.Split("/")[4]
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-NotNull $peering
     $name = getAssetName "name"
     $Asn = getRandomNumber
@@ -30,7 +30,7 @@ function Test-GetRegisteredAsn {
     $peering = (Get-AzPeering -Kind Direct)[0];
     $name = getAssetName
     $assetName = getAssetName "peering"
-    $resourceGroup = $peering[0].Id.Split("/")[4]
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-ThrowsContains { $peering | Get-AzPeeringRegisteredAsn -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredAsn -ResourceId $peering.Id } "peeringName"
     Assert-ThrowsContains {Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroup -PeeringName $assetName} "peering"

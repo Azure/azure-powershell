@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     public partial struct SkuTier :
         System.IEquatable<SkuTier>
     {

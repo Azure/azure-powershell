@@ -415,7 +415,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzSqlSyncMember](./Get-AzSqlSyncMember.md)
 
-[Update-AzSqlSyncMember](./Update-AzSqlSyncMember.md)
+[Set-AzSqlSyncMember](./Set-AzSqlSyncMember.md)
 
 [Remove-AzSqlSyncMember](./Remove-AzSqlSyncMember.md)
 

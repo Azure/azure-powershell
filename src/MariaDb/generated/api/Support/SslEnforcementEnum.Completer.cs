@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
+    /// <summary>Argument completer implementation for SslEnforcementEnum.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnumTypeConverter))]
     public partial struct SslEnforcementEnum :
         System.Management.Automation.IArgumentCompleter

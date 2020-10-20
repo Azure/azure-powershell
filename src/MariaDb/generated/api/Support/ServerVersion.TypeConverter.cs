@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The version of a server.</summary>
+    /// <summary>TypeConverter implementation for ServerVersion.</summary>
     public partial class ServerVersionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

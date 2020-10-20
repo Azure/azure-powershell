@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzMariaDbServer
 
 ## SYNOPSIS
-Restore a MariaDB from a existing MariaDB.
+Restore a MariaDb from a existing MariaDb.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObj
 ```
 
 ## DESCRIPTION
-Restore a MariaDB from a existing MariaDB.
+Restore a MariaDb from a existing MariaDb.
 
 ## EXAMPLES
 
@@ -27,9 +27,9 @@ Restore a MariaDB from a existing MariaDB.
 ```powershell
 PS C:\> Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   -------        --------------
-restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
 This command restore a PointInTime MariaDB by server name.
@@ -39,9 +39,9 @@ This command restore a PointInTime MariaDB by server name.
 PS C:\> $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
 PS C:\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   -------        --------------
-restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
 This command restore a PointInTime MariaDB by server object.
@@ -265,7 +265,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
-
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

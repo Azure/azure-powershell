@@ -183,12 +183,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The office 365 traffic breakout policy for this VpnSite.")]
-        [ValidateNotNullOrEmpty]
-        public PSO365PolicyProperties O365Policy { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -278,11 +272,6 @@ namespace Microsoft.Azure.Commands.Network
 
                 vpnSiteToCreate.VpnSiteLinks = new List<PSVpnSiteLink>();
                 vpnSiteToCreate.VpnSiteLinks.AddRange(this.VpnSiteLink);
-            }
-
-            if (this.O365Policy != null )
-            {
-                vpnSiteToCreate.O365Policy = this.O365Policy;
             }
 
             ConfirmAction(

@@ -1594,18 +1594,6 @@ PS C:\> New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTes
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
-.Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
-.Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
@@ -1638,10 +1626,9 @@ https://docs.microsoft.com/en-us/powershell/module/az.postgresql/new-azpostgresq
 #>
 function New-AzPostgreSqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -1649,7 +1636,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -1657,14 +1643,12 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1687,7 +1671,6 @@ param(
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
@@ -1695,7 +1678,6 @@ param(
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
@@ -1772,11 +1754,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_Create';
-            CreateExpanded = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateExpanded';
             CreateViaIdentity = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3945,10 +3926,9 @@ https://docs.microsoft.com/en-us/powershell/module/az.postgresql/update-azpostgr
 #>
 function Update-AzPostgreSqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('ConfigurationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -3956,7 +3936,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -3964,14 +3943,12 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Update')]
-    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3979,34 +3956,18 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration]
     # Represents a Configuration.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # Source of the configuration.
-    ${Source},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # Value of the configuration.
-    ${Value},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4077,11 +4038,9 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Update = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_Update';
-            UpdateExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_UpdateExpanded';
             UpdateViaIdentity = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_UpdateViaIdentityExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4142,13 +4101,6 @@ PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.1 -
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
@@ -4181,10 +4133,9 @@ https://docs.microsoft.com/en-us/powershell/module/az.postgresql/update-azpostgr
 #>
 function Update-AzPostgreSqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -4192,7 +4143,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -4200,14 +4150,12 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Update')]
-    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4215,36 +4163,18 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule]
     # Represents a server firewall rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # The end IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${EndIPAddress},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # The start IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${StartIPAddress},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4315,11 +4245,9 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Update = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_Update';
-            UpdateExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_UpdateExpanded';
             UpdateViaIdentity = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_UpdateViaIdentityExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

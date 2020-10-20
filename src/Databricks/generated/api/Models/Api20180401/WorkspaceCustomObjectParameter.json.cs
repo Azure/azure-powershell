@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
                 return;
             }
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("value"), out var __jsonValue) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Any.FromJson(__jsonValue) : Value;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("value"), out var __jsonValue) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomObjectParameterValue.FromJson(__jsonValue) : Value;}
             AfterFromJson(json);
         }
     }

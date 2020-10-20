@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The mode to create a new server.</summary>
+    /// <summary>TypeConverter implementation for CreateMode.</summary>
     public partial class CreateModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

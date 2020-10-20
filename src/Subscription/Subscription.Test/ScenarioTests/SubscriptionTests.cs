@@ -34,6 +34,13 @@ namespace Subscription.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscription");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -47,27 +54,6 @@ namespace Subscription.Test.ScenarioTests
         public void TestUpdateCancelSubscription()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCancelSubscription");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSubscriptionAlias()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscriptionAlias");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionAlias()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSubscriptionAlias");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveSubscriptionAlias()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveSubscriptionAlias");
         }
     }
 }

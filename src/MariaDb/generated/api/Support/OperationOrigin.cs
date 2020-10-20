@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The intended executor of the operation.</summary>
     public partial struct OperationOrigin :
         System.IEquatable<OperationOrigin>
     {

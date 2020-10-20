@@ -48,13 +48,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
         {
-            try
-            {
-                _resourceManagementClient.Providers.Register("Microsoft.Cache");
-            }
-            catch
-            {
-            }
+            _resourceManagementClient.Providers.Register("Microsoft.Cache");
             var parameters = new RedisCreateParameters
             {
                 Location = location,
@@ -130,13 +124,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, Hashtable tags)
         {
-            try
-            {
-                _resourceManagementClient.Providers.Register("Microsoft.Cache");
-            }
-            catch
-            {
-            }
+            _resourceManagementClient.Providers.Register("Microsoft.Cache");
             var parameters = new RedisUpdateParameters
             {
                 Sku = new Microsoft.Azure.Management.Redis.Models.Sku

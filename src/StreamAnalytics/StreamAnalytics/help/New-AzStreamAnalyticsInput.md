@@ -28,24 +28,24 @@ If you specify the *Force* parameter and specify an existing input name, the inp
 
 ## EXAMPLES
 
-### Example 1: Create a job input with a definition from a file
-```powershell
+### EXAMPLE 1: Create a job input with a definition from a file
+```
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json"
 ```
 
 This command creates an input from the file Input.json.
 If an existing input with the name specified in the input definition file is already defined, the cmdlet will ask whether or not to replace it.
 
-### Example 2: Create a job input
-```powershell
+### EXAMPLE 2: Create a job input
+```
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream"
 ```
 
 This command creates a new input on the job called EntryStream.
 If an existing input with this name is already defined, the cmdlet will ask whether or not to replace it.
 
-### Example 3: Replace a job input with a definition from a file
-```powershell
+### EXAMPLE 3: Replace a job input with a definition from a file
+```
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream" -Force
 ```
 

@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests;
     using Microsoft.Azure.Commands.HPCCache.Test.Utilities;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Authorization.Models;
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
     using Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Management.StorageCache;
     using Microsoft.Azure.Management.StorageCache.Models;
-    using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
             this.mockContext = MockContext.Start(suiteObject, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
         }
@@ -76,7 +73,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
             this.mockContext = MockContext.Start(type.Name, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
         }

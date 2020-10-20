@@ -18,8 +18,7 @@ New-AzSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [DiskAccessId <String>]
- [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -146,37 +145,6 @@ Accept wildcard characters: False
 
 ### -EncryptionType
 The type of key used to encrypt the data of the disk.  Available values are: 'EncryptionAtRestWithPlatformKey', 'EncryptionAtRestWithCustomerKey'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DiskAccessId
-Gets or sets ARM id of the DiskAccess resource for using private endpoints on.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NetworkAccessPolicy
-Network access policy defines the network access policy.
-Possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
 
 ```yaml
 Type: System.String

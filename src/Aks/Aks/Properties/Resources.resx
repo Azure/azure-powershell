@@ -369,40 +369,4 @@
   <data name="WindowsNodePoolNameLengthLimitation" xml:space="preserve">
     <value>Windows agent pool name can not be longer than 6 characters.</value>
   </data>
-  <data name="AddonMonitoringShouldWorkWithWorkspaceResourceId" xml:space="preserve">
-    <value>Add-on Monitoring should work with WorkspaceResourceId.</value>
-  </data>
-  <data name="DonotUseGenerateSshKeyWithSshKeyValue" xml:space="preserve">
-    <value>Don't use -GenerateSshKey and -SshKeyVaule at the same time.</value>
-  </data>
-  <data name="DefaultSshKeyAlreadyExist" xml:space="preserve">
-    <value>Default ssh key already exists. Please use -SshKeyVaule.</value>
-  </data>
-  <data name="EnableSsh" xml:space="preserve">
-    <value>Cannot find ssh-keygen. Please enable OpenSSH on your local machine.</value>
-  </data>
-  <data name="UpdatingNodePoolMode" xml:space="preserve">
-    <value>Updating NodePoolMode.</value>
-  </data>
-  <data name="SecureStringNotValid" xml:space="preserve">
-    <value>Plain text of SecureString should match the patten {0}.</value>
-  </data>
-  <data name="WindowsUserNameAndPasswordShouldAppearTogether" xml:space="preserve">
-    <value>WindowsProfileAdminUser and WindowsProfileAdminUserPassword must appear together.</value>
-  </data>
-  <data name="NetworkPluginShouldBeAzure" xml:space="preserve">
-    <value>NetworkPlugin must be azure if you want to use Windows.</value>
-  </data>
-  <data name="AddonMonitoringShouldWorkWithWorkspaceResourceId" xml:space="preserve">
-    <value />
-  </data>
-  <data name="AddonIsNotInstalled" xml:space="preserve">
-    <value>Add-on {0} is not installed.</value>
-  </data>
-  <data name="AddonNotDefined" xml:space="preserve">
-    <value>Add-on {0} is not defined.</value>
-  </data>
-  <data name="AddonVirtualNodeShouldWorkWithSubnetName" xml:space="preserve">
-    <value>Add-on VirtualNode should work with SubnetName.</value>
-  </data>
 </root>

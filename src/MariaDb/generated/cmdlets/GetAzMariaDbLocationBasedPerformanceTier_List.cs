@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
     /// <summary>List all the performance tiers at specified location in a given subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMariaDB/locations/{locationName}/performanceTiers"
+    /// [OpenAPI] LocationBasedPerformanceTier_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMariaDB/locations/{locationName}/performanceTiers"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMariaDbLocationBasedPerformanceTier_List")]

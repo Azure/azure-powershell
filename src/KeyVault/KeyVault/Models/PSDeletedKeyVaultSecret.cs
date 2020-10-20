@@ -65,6 +65,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public SecureString SecretValue { get; set; }
 
+        public string SecretValueText
+        {
+            get
+            {
+                string text = null;
+                if (SecretValue != null)
+                    text = SecretValue.ConvertToString();
+                return text;
+            }
+        }
         public PSKeyVaultSecretAttributes Attributes { get; set; }
     }
 }

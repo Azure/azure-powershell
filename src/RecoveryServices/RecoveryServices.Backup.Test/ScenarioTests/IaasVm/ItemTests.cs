@@ -130,14 +130,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMDiskExclusion");
         }
-
-        [Fact(Skip = "CCY region is down and the testing for DS Move is restricted")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestAzureBackupDataMove()
-        {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureBackupDataMove");
-        }
     }
 }

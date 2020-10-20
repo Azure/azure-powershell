@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworks_dbrvn_name": {
-      "value": "databricks-vnet-olhdj4"
+      "value": "databricks-test-vn"
     },
     "networkSecurityGroups_dolaulinsg_externalid": {
-      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Network/networkSecurityGroups/vnet-security-jyesxh"
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-79cwoj/providers/Microsoft.Network/networkSecurityGroups/databricks-test-nsg"
     }
   }
 }

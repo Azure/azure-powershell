@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Gets or sets the blockchain protocol.</summary>
+    /// <summary>Argument completer implementation for BlockchainProtocol.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocolTypeConverter))]
     public partial struct BlockchainProtocol :
         System.Management.Automation.IArgumentCompleter

@@ -12,22 +12,22 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-
-# Legacy invoicing tests
 <#
 .SYNOPSIS
 List invoices
 #>
 function Test-ListInvoices
 {
-    $billingInvoices = Get-AzBillingInvoice -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+    $billingInvoices = Get-AzBillingInvoice
 
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.BillingProfileId
+    Assert-True {$billingInvoices.Count -ge 1}
+	Assert-NotNull $billingInvoices[0].Name
+	Assert-NotNull $billingInvoices[0].Id
+	Assert-NotNull $billingInvoices[0].Type
+	Assert-NotNull $billingInvoices[0].InvoicePeriodStartDate
+	Assert-NotNull $billingInvoices[0].InvoicePeriodEndDate
+	Assert-Null $billingInvoices[0].DownloadUrl
+	Assert-Null $billingInvoices[0].DownloadUrlExpiry
 }
 
 <#
@@ -36,14 +36,16 @@ List invoices with DownloadUrl
 #>
 function Test-ListInvoicesWithDownloadUrl
 {
-    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl
 
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.DownloadUrl
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
+    Assert-True {$billingInvoices.Count -ge 1}
+	Assert-NotNull $billingInvoices[0].Name
+	Assert-NotNull $billingInvoices[0].Id
+	Assert-NotNull $billingInvoices[0].Type
+	Assert-NotNull $billingInvoices[0].InvoicePeriodStartDate
+	Assert-NotNull $billingInvoices[0].InvoicePeriodEndDate
+	Assert-NotNull $billingInvoices[0].DownloadUrl
+	Assert-NotNull $billingInvoices[0].DownloadUrlExpiry
 }
 
 <#
@@ -52,15 +54,16 @@ List invoices with MaxCount
 #>
 function Test-ListInvoicesWithMaxCount
 {
-    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 1 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 1
 
-    Assert-NotNull $billingInvoices
     Assert-True {$billingInvoices.Count -eq 1}
-    Assert-NotNull $billingInvoices.DownloadUrl
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
+	Assert-NotNull $billingInvoices[0].Name
+	Assert-NotNull $billingInvoices[0].Id
+	Assert-NotNull $billingInvoices[0].Type
+	Assert-NotNull $billingInvoices[0].InvoicePeriodStartDate
+	Assert-NotNull $billingInvoices[0].InvoicePeriodEndDate
+	Assert-NotNull $billingInvoices[0].DownloadUrl
+	Assert-NotNull $billingInvoices[0].DownloadUrlExpiry
 }
 
 <#
@@ -69,234 +72,41 @@ Get latest invoice
 #>
 function Test-GetLatestInvoice
 {
-    $billingInvoice = Get-AzBillingInvoice -Latest -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+    $invoice = Get-AzBillingInvoice -Latest
 
-	Assert-NotNull $billingInvoice	
-    Assert-NotNull $billingInvoice.Name
-    Assert-NotNull $billingInvoice.Status
-    Assert-NotNull $billingInvoice.BillingProfileDisplayName
-    Assert-NotNull $billingInvoice.InvoiceDate
+	Assert-NotNull $invoice.Name
+	Assert-NotNull $invoice.Id
+	Assert-NotNull $invoice.Type
+	Assert-NotNull $invoice.InvoicePeriodStartDate
+	Assert-NotNull $invoice.InvoicePeriodEndDate
+	Assert-NotNull $invoice.DownloadUrl
+	Assert-NotNull $invoice.DownloadUrlExpiry
 }
 
 <#
 .SYNOPSIS
-Get invoice with specified name with GenerateDownloadUrl
+Get invoice with specified name
 #>
-function Test-GetInvoiceByNameWithDownloadUrl
+function Test-GetInvoiceWithName
 {
-	$billingInvoices = Get-AzBillingInvoice -Name T000512627 -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+    $sampleInvoices = Get-AzBillingInvoice
+    Assert-True { $sampleInvoices.Count -ge 1 }
 
-	Assert-NotNull $billingInvoices
-	Assert-NotNull $billingInvoices.Name
-    Assert-AreEqual $billingInvoices.Name T000512627
-}
+	$invoice = Get-AzBillingInvoice -Name $sampleInvoices[0].Name
 
-# Modern Invoicing Tests
-<#
-.SYNOPSIS
-Get modern invoice by InvoiceName
-#>
-function Test-GetModernInvoiceByName
-{
-    $billingInvoices = Get-AzBillingInvoice -Name T000512627
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
+	Assert-AreEqual $invoice.Id $sampleInvoices[0].Id
 }
 
 <#
 .SYNOPSIS
-List invoices by billingAccountName
+Get invoice with specified names
 #>
-function Test-ListModernInvoicesByBillingAccountName
+function Test-GetInvoiceWithNames
 {
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
+	$sampleInvoices = Get-AzBillingInvoice
+    Assert-True { $sampleInvoices.Count -gt 1 }
 
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
+    $billingInvoices = Get-AzBillingInvoice -Name $sampleInvoices.Name
 
-<#
-.SYNOPSIS
-List invoices by billingAccountName with DownloadUrl
-#>
-function Test-ListModernInvoicesByBillingAccountNameWithDownloadUrl
-{
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-NotNull $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-List invoices by billingAccountName
-#>
-function Test-ListModernInvoicesByBillingAccountNameWithMaxCount
-{
-    $billingInvoices = Get-AzBillingInvoice -MaxCount 1 -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get latest invoice by BillingAccountName
-#>
-function Test-GetLatestModernInvoiceByBillingAccountName
-{
-    $billingInvoices = Get-AzBillingInvoice -Latest -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get latest invoice by BillingAccountName with DownloadUrl
-#>
-function Test-GetLatestModernInvoiceByBillingAccountNameWithDownloadUrl
-{
-    $billingInvoices = Get-AzBillingInvoice -Latest -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-NotNull $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get latest invoice by BillingAccountName and InvoiceName with DownloadUrl
-#>
-function Test-GetModernInvoiceByBillingAccountNameAndInvoiceNameWithDownloadUrl
-{
-    $billingInvoices = Get-AzBillingInvoice -Name T000512627 -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-NotNull $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get latest invoice by BillingAccountName and InvoiceName and do not generate DownloadUrl
-#>
-function Test-GetModernInvoiceByBillingAccountNameAndInvoiceName
-{
-    $billingInvoices = Get-AzBillingInvoice -Name T000512627 -BillingAccountName db038d21-b0d2-463c-942f-b09127c6f4e4:7c9c4a38-593e-479e-8958-9a338a0d8d02_2019-05-31 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-List invoices by billingProfileName
-#>
-function Test-ListModernInvoicesByBillingProfileName
-{
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-List invoices by billingProfileName with DownloadUrl
-#>
-function Test-ListModernInvoicesByBillingProfileNameWithDownloadUrl
-{
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -GenerateDownloadUrl -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-NotNull $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-List invoices by billingProfileName with MaxCount
-#>
-function Test-ListModernInvoicesByBillingProfileNameMaxCount
-{
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -MaxCount 1 -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get latest invoice by BillingProfileName
-#>
-function Test-GetLatestInvoicesByBillingProfileName
-{
-    $billingInvoices = Get-AzBillingInvoice -Latest -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-    Assert-Null $billingInvoices.DownloadUrl
-}
-
-<#
-.SYNOPSIS
-Get invoices by BillingProfileName with billing period start and end date.
-#>
-function Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod
-{
-    $billingInvoices = Get-AzBillingInvoice -BillingAccountName c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31 -BillingProfileName PO6F-IWMU-BG7-TGB -PeriodStartDate 2020-01-01 -PeriodEndDate 2020-06-30
-
-    Assert-NotNull $billingInvoices
-    Assert-NotNull $billingInvoices.Name
-    Assert-NotNull $billingInvoices.Status
-    Assert-NotNull $billingInvoices.BillingProfileDisplayName
-    Assert-NotNull $billingInvoices.InvoiceDate
-
-    Assert-Null $billingInvoices.DownloadUrl
+    Assert-AreEqual $sampleInvoices.Count $billingInvoices.Count
 }

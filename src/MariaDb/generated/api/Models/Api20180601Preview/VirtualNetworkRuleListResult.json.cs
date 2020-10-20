@@ -79,6 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 if (null != this._value)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.XNodeArray();
@@ -88,10 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                     }
                     container.Add("value",__w);
                 }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.VirtualNetworkRule.FromJson(__u) )) ))() : null : Value;}
             {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)NextLink;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.VirtualNetworkRule.FromJson(__u) )) ))() : null : Value;}
             AfterFromJson(json);
         }
     }

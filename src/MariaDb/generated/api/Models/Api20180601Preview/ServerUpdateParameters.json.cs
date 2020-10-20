@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             {
                 return;
             }
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.Sku.FromJson(__jsonSku) : Sku;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerUpdateParametersProperties.FromJson(__jsonProperties) : Property;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.Sku.FromJson(__jsonSku) : Sku;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerUpdateParametersTags.FromJson(__jsonTags) : Tag;}
             AfterFromJson(json);
         }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             {
                 return container;
             }
-            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;

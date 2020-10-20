@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>Provisioning status of the workspace.</summary>
+    /// <summary>Argument completer implementation for ProvisioningState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningStateTypeConverter))]
     public partial struct ProvisioningState :
         System.Management.Automation.IArgumentCompleter

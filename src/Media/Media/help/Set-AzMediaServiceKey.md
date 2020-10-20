@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: D28EB28D-DBC6-48D5-AB0A-C56F56CD0104
@@ -147,6 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzMediaServiceKey](./Get-AzMediaServiceKey.md)
+[Get-AzMediaServiceKeys](./Get-AzMediaServiceKeys.md)
 
 

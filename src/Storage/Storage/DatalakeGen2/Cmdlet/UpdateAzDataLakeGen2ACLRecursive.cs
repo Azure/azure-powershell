@@ -66,12 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(dirClient.Uri.ToString(), "Update Acl recursively on Directory: "))
                 {
                     await dirClient.UpdateAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
+                        GetProgressHandler(taskId),
+                        this.accessControlChangeOptions,
                         continuationToken,
-                        GetAccessControlChangeOptions(taskId),
                         CmdletCancellationToken).ConfigureAwait(false);
-
-                    SetProgressComplete();
-                    WriteResult(taskId);
                 }
             }
             else
@@ -79,14 +77,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(fileClient.Uri.ToString(), "Update Acl recursively on File: "))
                 {
                     await fileClient.UpdateAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
+                        GetProgressHandler(taskId),
+                        this.accessControlChangeOptions,
                         continuationToken,
-                        GetAccessControlChangeOptions(taskId),
                         CmdletCancellationToken).ConfigureAwait(false);
-
-                    SetProgressComplete();
-                    WriteResult(taskId);
                 }
             }
+
+            SetProgressComplete();
+            WriteResult(taskId);
         }
     }
 }

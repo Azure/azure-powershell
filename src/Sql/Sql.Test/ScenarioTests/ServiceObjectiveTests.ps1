@@ -44,7 +44,7 @@ function Test-GetServerServiceObjective
 		Assert-AreEqual 1 $o.Length "Could not find exactly 1 service objective for $requestedSlo"
 
 		$o = Get-AzSqlServerServiceObjective -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ServiceObjectiveName $requestedSloFilter
-		Assert-True {$o.Length -ge 1} "Expected 1 or more service objectives for $requestedSloFilter, actual $($o.Length)"
+		Assert-True {$o.Length -ge 2} "Expected 2 or more service objectives for $requestedSloFilter, actual $($o.Length)"
 	}
 	finally
 	{
@@ -74,5 +74,5 @@ function Test-GetServerServiceObjectiveByLocation
 	Assert-AreEqual 1 $o.Length "Could not find exactly 1 service objective for $requestedSlo"
 
 	$o = Get-AzSqlServerServiceObjective -Location $location -ServiceObjectiveName $requestedSloFilter
-	Assert-True {$o.Length -ge 1} "Expected 1 or more service objectives for $requestedSloFilter, actual $($o.Length)"
+	Assert-True {$o.Length -ge 2} "Expected 2 or more service objectives for $requestedSloFilter, actual $($o.Length)"
 }

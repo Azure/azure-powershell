@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.TestFx
@@ -31,6 +30,5 @@ namespace Microsoft.Azure.Commands.TestFx
         ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
         ITestRunnerFactory WithRecordMatcher(RecordMatcherDelegate recordMatcher);
         ITestRunnerFactory WithNewRecordMatcherArguments(Dictionary<string, string> userAgentsToIgnore, Dictionary<string, string> resourceProviders);
-        ITestRunnerFactory WithManagementClients(params Func<MockContext, object> []initializedManagementClients);
     }
 }

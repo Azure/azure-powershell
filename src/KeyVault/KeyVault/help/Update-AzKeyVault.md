@@ -15,22 +15,22 @@ Update the state of an Azure key vault.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzKeyVault -ResourceGroupName <String> -VaultName <String> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-EnableRbacAuthorization <Boolean>] [-SoftDeleteRetentionInDays <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzKeyVault -InputObject <PSKeyVault> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-EnableRbacAuthorization <Boolean>] [-SoftDeleteRetentionInDays <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
 Update-AzKeyVault -ResourceId <String> [-EnableSoftDelete] [-EnablePurgeProtection]
- [-EnableRbacAuthorization <Boolean>] [-SoftDeleteRetentionInDays <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteRetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,21 +77,6 @@ It requires soft-delete to be turned on.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableRbacAuthorization
-Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

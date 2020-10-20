@@ -24,7 +24,7 @@ $instanceLocation = "eastus"
 function Test-CreateManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest 
+	$rg = Create-ResourceGroupForTest
 	$vnetName = "vnet-newprovisioningtest3"
 	$subnetName = "ManagedInstance"
 
@@ -34,11 +34,10 @@ function Test-CreateManagedInstance
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen5"
+ 	$skuName = "GP_Gen4"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
-	$backupStorageRedundancy = "Local"
 
  	try
  	{
@@ -50,7 +49,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -67,12 +66,11 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
-		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
 
 		$edition = "GeneralPurpose"
-		$computeGeneration = "Gen5"
+		$computeGeneration = "Gen4"
 		$managedInstanceName = Get-ManagedInstanceName
 		$dnsZonePartner = $managedInstance1.ResourceId
         $originalDnsZone = $managedInstance1.DnsZone
@@ -111,12 +109,12 @@ function Test-CreateManagedInstance
 function Test-SetManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "vnet-newprovisioningtest3"
 	$subnetName = "ManagedInstance"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -127,14 +125,15 @@ function Test-SetManagedInstance
 		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
+		$vCore = 8
 
 		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
-		Assert-AreEqual $managedInstance1.VCores $managedInstance.VCores
+		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 
@@ -143,14 +142,15 @@ function Test-SetManagedInstance
 
 		$licenseType = "LicenseIncluded"
 		$storageSizeInGB = 96
+		$vCore = 16
 
 		$managedInstance2 = $managedInstance | Set-AzSqlInstance -AdministratorPassword $credentials.Password `
-			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance2.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance2.LicenseType $licenseType
-		Assert-AreEqual $managedInstance2.VCores $managedInstance.VCores
+		Assert-AreEqual $managedInstance2.VCores $vCore
 		Assert-AreEqual $managedInstance2.StorageSizeInGB $storageSizeInGB
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
@@ -158,14 +158,15 @@ function Test-SetManagedInstance
 		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
+		$vCore = 8
 
 		$managedInstance3 = Set-AzSqlInstance -InputObject $managedInstance `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance3.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance3.LicenseType $licenseType
-		Assert-AreEqual $managedInstance3.VCores $managedInstance.VCores
+		Assert-AreEqual $managedInstance3.VCores $vCore
 		Assert-AreEqual $managedInstance3.StorageSizeInGB $storageSizeInGB
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
@@ -173,35 +174,51 @@ function Test-SetManagedInstance
 		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
+		$vCore = 16
 		$publicDataEndpointEnabled = $true
 		$proxyOverride = "Proxy"
 
 		$managedInstance4 = Set-AzSqlInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB `
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore `
 			-PublicDataEndpointEnabled $publicDataEndpointEnabled -ProxyOverride $proxyOverride -Force
 
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance4.LicenseType $licenseType
-		Assert-AreEqual $managedInstance4.VCores $managedInstance.VCores
+		Assert-AreEqual $managedInstance4.VCores $vCore
 		Assert-AreEqual $managedInstance4.StorageSizeInGB $storageSizeInGB
 		Assert-AreEqual $managedInstance4.PublicDataEndpointEnabled $publicDataEndpointEnabled
+		Assert-AreEqual $managedInstance4.ProxyOverride $proxyOverride
 		Assert-StartsWith ($managedInstance4.ManagedInstanceName + ".") $managedInstance4.FullyQualifiedDomainName
+
+		# Test hardware generation change using ComputeGeneration
+		$credentials = Get-ServerCredential
+		$computeGeneration = "Gen5"
+
+		$managedInstance5 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+			-ComputeGeneration $computeGeneration -Force
+
+		Assert-AreEqual $managedInstance5.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance5.AdministratorLogin $managedInstance.AdministratorLogin
+		Assert-AreEqual $managedInstance5.VCores $managedInstance4.VCores
+		Assert-AreEqual $managedInstance5.StorageSizeInGB $managedInstance4.StorageSizeInGB
+		Assert-AreEqual $managedInstance5.Sku.Tier $managedInstance4.Sku.Tier
+		Assert-AreEqual $managedInstance5.Sku.Family $computeGeneration
+		Assert-StartsWith ($managedInstance5.ManagedInstanceName + ".") $managedInstance5.FullyQualifiedDomainName
 
 		# Test edition change using Edition
 		$credentials = Get-ServerCredential
 		$edition = "BusinessCritical"
-		$vCore = 16
 
-		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -Vcore $vCore `
+		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
 			-Edition $edition -Force
 
-		Assert-AreEqual $managedInstance6.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance6.AdministratorLogin $managedInstance4.AdministratorLogin
-		Assert-AreEqual $managedInstance6.VCores $vCore
-		Assert-AreEqual $managedInstance6.StorageSizeInGB $managedInstance4.StorageSizeInGB
+		Assert-AreEqual $managedInstance6.ManagedInstanceName $managedInstance5.ManagedInstanceName
+		Assert-AreEqual $managedInstance6.AdministratorLogin $managedInstance5.AdministratorLogin
+		Assert-AreEqual $managedInstance6.VCores $managedInstance5.VCores
+		Assert-AreEqual $managedInstance6.StorageSizeInGB $managedInstance5.StorageSizeInGB
 		Assert-AreEqual $managedInstance6.Sku.Tier $edition
-		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance4.Sku.Family
+		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance5.Sku.Family
 		Assert-StartsWith ($managedInstance6.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 	}
 	finally
@@ -219,13 +236,13 @@ function Test-SetManagedInstance
 function Test-GetManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$rg1 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "MIVirtualNetwork"
-	$subnetName = "ManagedInsanceSubnet"
+	$rg = Create-ResourceGroupForTest $instanceLocation
+	$rg1 = Create-ResourceGroupForTest $instanceLocation
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "v-urmila"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "powershell_mi"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
@@ -269,12 +286,12 @@ function Test-GetManagedInstance
 function Test-RemoveManagedInstance
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "MIVirtualNetwork"
-	$subnetName = "ManagedInsanceSubnet"
+	$rg = Create-ResourceGroupForTest $instanceLocation
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "v-urmila"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "powershell_mi"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	try
@@ -325,7 +342,7 @@ function Test-CreateManagedInstanceWithIdentity
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen5"
+ 	$skuName = "GP_Gen4"
 
 	try
 	{

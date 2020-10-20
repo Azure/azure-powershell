@@ -20,8 +20,6 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -129,55 +127,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 return null;
             }
         }
-
-        /// <summary>
-        /// Completes log replay restore execution.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <param name="lastBackupName"></param>
-        public void CompleteLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, string lastBackupName)
-        {
-            GetCurrentSqlClient().ManagedDatabases.CompleteRestore(
-                resourceGroupName,
-                managedInstanceName,
-                databaseName,
-                new CompleteDatabaseRestoreDefinition(lastBackupName));
-        }
-
-        /// <summary>
-        /// Starts log replay restore execution.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <param name="model">Model describing the managed database log replay request</param>
-        public Task StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
-        {
-            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdateAsync(
-                resourceGroupName,
-                managedInstanceName,
-                databaseName,
-                model);
-        }
-
-
-        /// <summary>
-        /// Get the status of log replay restore.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <returns>The managed database restore details.</returns>
-        public ManagedDatabaseRestoreDetailsResult GetLogReplayStatus(string resourceGroupName, string managedInstanceName, string databaseName)
-        {
-            return GetCurrentSqlClient().ManagedDatabaseRestoreDetails.Get(
-                resourceGroupName,
-                managedInstanceName,
-                databaseName);
-        }
-
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.

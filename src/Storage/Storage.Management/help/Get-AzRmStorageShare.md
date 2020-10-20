@@ -53,8 +53,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
@@ -66,8 +66,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version ShareUsageBytes
-----     -------- --------------- ----------           ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes
+----     -------- ---------------- ----------           ------- ------- ---------------
 share1   5120                     TransactionOptimized
 share2   5120                     TransactionOptimized
 ```
@@ -80,8 +80,8 @@ Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
@@ -107,26 +107,12 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocol5 AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120                                                2097152
 ```
 
 This command gets a Storage file share with Storage account name and share name, and include the share usage in bytes.
-
-### Example 5: List all Storage file shares of a Storage account, include the deleted shares
-```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted 
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version          ShareUsageBytes
-----     -------- --------------- ----------           ------- -------          ---------------
-test     100                      TransactionOptimized                                         
-share1   100                      TransactionOptimized True    01D61FD1FC5498B6
-```
-
-This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
 
 ## PARAMETERS
 

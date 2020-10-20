@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>Provisioning status of the workspace.</summary>
+    /// <summary>Argument completer implementation for CustomParameterType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterTypeTypeConverter))]
     public partial struct CustomParameterType :
         System.Management.Automation.IArgumentCompleter

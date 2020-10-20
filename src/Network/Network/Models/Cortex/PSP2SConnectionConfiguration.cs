@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
-        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
-        public bool? EnableInternetSecurity { get; set; }
-
         [JsonIgnore]
         public string VpnClientAddressPoolText
         {

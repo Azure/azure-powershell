@@ -47,7 +47,6 @@ Key           Value
 ----          ----- 
 <ShardKey>    <Value>
 ```
-
 This example gets the ShardKey of the retrieved collection
 
 ## PARAMETERS

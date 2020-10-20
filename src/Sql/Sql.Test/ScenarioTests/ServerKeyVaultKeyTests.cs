@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
+        [Fact] 
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyAdd()
         {
             RunPowerShellTest("Test-AddServerKeyVaultKey");
         }
 
-        [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyGet()
         {

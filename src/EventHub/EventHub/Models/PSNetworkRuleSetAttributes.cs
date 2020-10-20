@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)           
         {
             DefaultAction = networkRuleSet.DefaultAction;
-            TrustedServiceAccessEnabled = networkRuleSet.TrustedServiceAccessEnabled;
             VirtualNetworkRules = PSNWRuleSetVirtualNetworkRulesAttributes.PSNWRuleSetVirtualNetworkRulesAttributesCollection(networkRuleSet.VirtualNetworkRules);
             IpRules = PSNWRuleSetIpRulesAttributes.PSNWRuleSetIpRulesAttributesCollection(networkRuleSet.IpRules);
             Id = networkRuleSet.Id;
@@ -83,8 +82,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Gets or sets list of IpRules
         /// </summary>
         public IList<PSNWRuleSetIpRulesAttributes> IpRules { get; set; }
-
-        public bool? TrustedServiceAccessEnabled { get; set; }
 
     }
 }

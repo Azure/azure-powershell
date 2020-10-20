@@ -22,7 +22,7 @@
 function Test-FailoverDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -58,7 +58,7 @@ function Test-FailoverDatabase
 function Test-FailoverDatabasePassThru
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -85,7 +85,7 @@ function Test-FailoverDatabasePassThru
 function Test-FailoverDatabaseWithDatabasePiping
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -111,7 +111,7 @@ function Test-FailoverDatabaseWithDatabasePiping
 function Test-FailoverDatabaseWithServerPiping
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -140,7 +140,7 @@ function Test-FailoverDatabaseWithServerPiping
 function Test-FailoverDatabaseReadableSecondary
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -176,7 +176,7 @@ function Test-FailoverDatabaseReadableSecondary
 function Test-FailoverStandardDatabaseReadableSecondary
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -210,7 +210,7 @@ function Test-FailoverStandardDatabaseReadableSecondary
 function Test-FailoverElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -250,7 +250,7 @@ function Test-FailoverElasticPool
 function Test-FailoverElasticPoolPassThru
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -281,7 +281,7 @@ function Test-FailoverElasticPoolPassThru
 function Test-FailoverElasticPoolWithPoolPiping
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 

@@ -40,7 +40,7 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml', 'MSSharedLibKey.snk', 'generate-info.json')
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml', 'MSSharedLibKey.snk')
         Foreach($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
@@ -98,13 +98,6 @@ Function Move-Generation2Master {
 
         #Region update azure-powershell-modules.md
         
-        #EndRegion
-
-        #Region update GeneratedModuleList
-        $GeneratedModuleListPath = [System.IO.Path]::Combine(@($PSScriptRoot, "..", "GeneratedModuleList.txt"))
-        $Modules = Get-Content $GeneratedModuleListPath + "Az.$ModuleName"
-        $NewModules = $Modules | Sort-Object
-        Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
 
         Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"

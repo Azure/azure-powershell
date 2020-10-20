@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
+    /// <summary>TypeConverter implementation for ServerSecurityAlertPolicyState.</summary>
     public partial class ServerSecurityAlertPolicyStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

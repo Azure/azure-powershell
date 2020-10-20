@@ -78,14 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return container;
             }
-            AddIf( null != this._databricksVirtualNetwork ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._databricksVirtualNetwork.ToJson(null,serializationMode) : null, "databricksVirtualNetwork" ,container.Add );
             AddIf( null != this._databricksAddressSpace ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._databricksAddressSpace.ToJson(null,serializationMode) : null, "databricksAddressSpace" ,container.Add );
-            AddIf( null != this._remoteVirtualNetwork ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._remoteVirtualNetwork.ToJson(null,serializationMode) : null, "remoteVirtualNetwork" ,container.Add );
+            AddIf( null != this._databricksVirtualNetwork ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._databricksVirtualNetwork.ToJson(null,serializationMode) : null, "databricksVirtualNetwork" ,container.Add );
             AddIf( null != this._remoteAddressSpace ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._remoteAddressSpace.ToJson(null,serializationMode) : null, "remoteAddressSpace" ,container.Add );
-            AddIf( null != this._allowVirtualNetworkAccess ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._allowVirtualNetworkAccess) : null, "allowVirtualNetworkAccess" ,container.Add );
+            AddIf( null != this._remoteVirtualNetwork ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) this._remoteVirtualNetwork.ToJson(null,serializationMode) : null, "remoteVirtualNetwork" ,container.Add );
             AddIf( null != this._allowForwardedTraffic ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._allowForwardedTraffic) : null, "allowForwardedTraffic" ,container.Add );
             AddIf( null != this._allowGatewayTransit ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._allowGatewayTransit) : null, "allowGatewayTransit" ,container.Add );
-            AddIf( null != this._useRemoteGateway ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._useRemoteGateway) : null, "useRemoteGateways" ,container.Add );
+            AddIf( null != this._allowVirtualNetworkAccess ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._allowVirtualNetworkAccess) : null, "allowVirtualNetworkAccess" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._peeringState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._peeringState.ToString()) : null, "peeringState" ,container.Add );
@@ -94,6 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            AddIf( null != this._useRemoteGateway ? (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean((bool)this._useRemoteGateway) : null, "useRemoteGateways" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -110,16 +110,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             {
                 return;
             }
-            {_databricksVirtualNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("databricksVirtualNetwork"), out var __jsonDatabricksVirtualNetwork) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.FromJson(__jsonDatabricksVirtualNetwork) : DatabricksVirtualNetwork;}
             {_databricksAddressSpace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("databricksAddressSpace"), out var __jsonDatabricksAddressSpace) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.AddressSpace.FromJson(__jsonDatabricksAddressSpace) : DatabricksAddressSpace;}
-            {_remoteVirtualNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("remoteVirtualNetwork"), out var __jsonRemoteVirtualNetwork) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.FromJson(__jsonRemoteVirtualNetwork) : RemoteVirtualNetwork;}
+            {_databricksVirtualNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("databricksVirtualNetwork"), out var __jsonDatabricksVirtualNetwork) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.FromJson(__jsonDatabricksVirtualNetwork) : DatabricksVirtualNetwork;}
             {_remoteAddressSpace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("remoteAddressSpace"), out var __jsonRemoteAddressSpace) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.AddressSpace.FromJson(__jsonRemoteAddressSpace) : RemoteAddressSpace;}
-            {_allowVirtualNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("allowVirtualNetworkAccess"), out var __jsonAllowVirtualNetworkAccess) ? (bool?)__jsonAllowVirtualNetworkAccess : AllowVirtualNetworkAccess;}
+            {_remoteVirtualNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("remoteVirtualNetwork"), out var __jsonRemoteVirtualNetwork) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.FromJson(__jsonRemoteVirtualNetwork) : RemoteVirtualNetwork;}
             {_allowForwardedTraffic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("allowForwardedTraffic"), out var __jsonAllowForwardedTraffic) ? (bool?)__jsonAllowForwardedTraffic : AllowForwardedTraffic;}
             {_allowGatewayTransit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("allowGatewayTransit"), out var __jsonAllowGatewayTransit) ? (bool?)__jsonAllowGatewayTransit : AllowGatewayTransit;}
-            {_useRemoteGateway = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("useRemoteGateways"), out var __jsonUseRemoteGateways) ? (bool?)__jsonUseRemoteGateways : UseRemoteGateway;}
+            {_allowVirtualNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("allowVirtualNetworkAccess"), out var __jsonAllowVirtualNetworkAccess) ? (bool?)__jsonAllowVirtualNetworkAccess : AllowVirtualNetworkAccess;}
             {_peeringState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("peeringState"), out var __jsonPeeringState) ? (string)__jsonPeeringState : (string)PeeringState;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_useRemoteGateway = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonBoolean>("useRemoteGateways"), out var __jsonUseRemoteGateways) ? (bool?)__jsonUseRemoteGateways : UseRemoteGateway;}
             AfterFromJson(json);
         }
     }

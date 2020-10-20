@@ -24,18 +24,6 @@ PS C:\> New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTes
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
-.Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
-.Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
@@ -68,10 +56,9 @@ https://docs.microsoft.com/en-us/powershell/module/az.postgresql/new-azpostgresq
 #>
 function New-AzPostgreSqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -79,7 +66,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -87,14 +73,12 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -117,7 +101,6 @@ param(
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
@@ -125,7 +108,6 @@ param(
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
@@ -202,11 +184,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Create = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_Create';
-            CreateExpanded = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateExpanded';
             CreateViaIdentity = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.PostgreSql.private\New-AzPostgreSqlFirewallRule_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

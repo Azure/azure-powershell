@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.Kind.BlockBlobStorage,
             StorageModels.Kind.FileStorage,
             IgnoreCase = true)]
-        [PSDefaultValue(Help = "StorageV2", Value = StorageModels.Kind.StorageV2)]
         public string Kind
         {
             get

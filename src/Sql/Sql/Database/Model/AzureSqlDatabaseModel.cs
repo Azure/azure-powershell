@@ -181,11 +181,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public int? ReadReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup storage redundancy for the database
-        /// </summary>
-        public string BackupStorageRedundancy { get; set; }
-
-        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -238,7 +233,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
             ReadReplicaCount = null;
-            BackupStorageRedundancy= null;
         }
 
         /// <summary>
@@ -290,27 +284,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
             ReadReplicaCount = database.ReadReplicaCount;
-            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
-        }
-
-        /// <summary>
-        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        private static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
-        {
-            switch (backupStorageRedundancy)
-            {
-                case "GRS":
-                    return "Geo";
-                case "LRS":
-                    return "Local";
-                case "ZRS":
-                    return "Zone";
-                default:
-                    return null;
-            }
         }
     }
 }

@@ -77,18 +77,6 @@ namespace Microsoft.Azure.Commands.Compute
         [SupportsWildcards]
         public string Version { get; set; }
 
-        [Parameter(ParameterSetName = ListVMImageParamSetName,
-            Mandatory = false,
-            HelpMessage = "Specifies the maximum number of virtual machine images returned.",
-            ValueFromPipelineByPropertyName = true)]
-        public int? Top { get; set; }
-
-        [Parameter(ParameterSetName = ListVMImageParamSetName,
-            Mandatory = false,
-            HelpMessage = "Specifies the order of the results returned. Formatted as an OData query.",
-            ValueFromPipelineByPropertyName = true)]
-        public string OrderBy { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -101,10 +89,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
-                        this.Skus,
-                        top: this.Top,
-                        orderby: this.OrderBy
-                        ).GetAwaiter().GetResult();
+                        this.Skus).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineImage

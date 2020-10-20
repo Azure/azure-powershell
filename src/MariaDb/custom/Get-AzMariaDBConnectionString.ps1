@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -15,9 +14,18 @@
 
 <#
 .Synopsis
-Get connection string of a MariaDB under a given framework.
+Get connection string of a MariaDb under a given framework.
 .Description
-Get connection string of a MariaDB under a given framework.
+Get connection string of a MariaDb under a given framework.
+.Example
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
+.Outputs
+System.String
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
 #>
 function Get-AzMariaDbConnectionString {
     [OutputType([System.String])]

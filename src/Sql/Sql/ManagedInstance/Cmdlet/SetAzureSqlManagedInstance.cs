@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The connection type used for connecting to the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Proxy", "Redirect", "Default")]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
         public string ProxyOverride { get; set; }
 
         /// <summary>

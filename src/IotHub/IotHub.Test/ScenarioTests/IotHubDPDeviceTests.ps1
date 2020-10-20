@@ -91,8 +91,6 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$errorMessage = "The entered device ""fakeDevice"" doesn't exist."
 	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId "fakeDevice" } $errorMessage
 
-	Wait-Seconds 15
-
 	# Count devices
 	$totalDevices = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices"
 	Assert-True { $totalDevices.Count -eq 4}
@@ -178,8 +176,6 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-False { $newDevice5.Capabilities.IotEdge }
 	Assert-True { $newDevice5.Scope -eq $newDevice4.Scope }
 
-	Wait-Seconds 15
-
 	# Get all device children
 	$devices = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 3}
@@ -206,8 +202,6 @@ function Test-AzureRmIotHubDeviceLifecycle
 	# Delete iot device
 	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Passthru
 	Assert-True { $result }
-
-	Wait-Seconds 15
 
 	# Delete all devices
 	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Passthru

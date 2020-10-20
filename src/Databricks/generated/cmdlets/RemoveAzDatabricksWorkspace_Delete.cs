@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
     /// <summary>Deletes the workspace.</summary>
     /// <remarks>
-    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
+    /// [OpenAPI] Workspaces_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzDatabricksWorkspace_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

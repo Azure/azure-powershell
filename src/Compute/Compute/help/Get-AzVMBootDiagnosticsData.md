@@ -160,6 +160,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzVMBootDiagnostic](./Set-AzVMBootDiagnostic.md)
+[Set-AzVMBootDiagnostics](./Set-AzVMBootDiagnostics.md)
 
 

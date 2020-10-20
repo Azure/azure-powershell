@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>A state of a server that is visible to user.</summary>
+    /// <summary>TypeConverter implementation for ServerState.</summary>
     public partial class ServerStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             }
             {_backupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber>("backupRetentionDays"), out var __jsonBackupRetentionDays) ? (int?)__jsonBackupRetentionDays : BackupRetentionDay;}
             {_geoRedundantBackup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("geoRedundantBackup"), out var __jsonGeoRedundantBackup) ? (string)__jsonGeoRedundantBackup : (string)GeoRedundantBackup;}
-            {_storageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber>("storageMB"), out var __jsonStorageMb) ? (int?)__jsonStorageMb : StorageMb;}
             {_storageAutogrow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString>("storageAutogrow"), out var __jsonStorageAutogrow) ? (string)__jsonStorageAutogrow : (string)StorageAutogrow;}
+            {_storageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber>("storageMB"), out var __jsonStorageMb) ? (int?)__jsonStorageMb : StorageMb;}
             AfterFromJson(json);
         }
 
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
             }
             AddIf( null != this._backupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber((int)this._backupRetentionDay) : null, "backupRetentionDays" ,container.Add );
             AddIf( null != (((object)this._geoRedundantBackup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._geoRedundantBackup.ToString()) : null, "geoRedundantBackup" ,container.Add );
-            AddIf( null != this._storageMb ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber((int)this._storageMb) : null, "storageMB" ,container.Add );
             AddIf( null != (((object)this._storageAutogrow)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonString(this._storageAutogrow.ToString()) : null, "storageAutogrow" ,container.Add );
+            AddIf( null != this._storageMb ? (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNumber((int)this._storageMb) : null, "storageMB" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

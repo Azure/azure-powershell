@@ -154,10 +154,5 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets restoring
         /// </summary>
         public bool? IsRestoring { get; set; }
-
-        /// <summary>
-        /// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
-        /// </summary>
-        public bool SnapshotDirectoryVisible { get; set; }
     }
 }

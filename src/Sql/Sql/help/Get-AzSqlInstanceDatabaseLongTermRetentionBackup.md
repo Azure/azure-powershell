@@ -90,7 +90,7 @@ Gets all long term retention backups for a particular database.  Resource Group 
 The name of the backup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: BackupName, GetBackupByInputObject
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The name of the Managed Database the backups are under.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DatabaseName, BackupName
 Aliases:
 
@@ -121,7 +121,7 @@ The state of the database whose backups you want to find, Alive, Deleted, or All
 Defaults to All
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Location, InstanceName, GetBackupsByInputObject
 Aliases:
 Accepted values: All, Deleted, Live
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The database object to get backups for.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Type: AzureSqlManagedDatabaseModel
 Parameter Sets: GetBackupByInputObject, GetBackupsByInputObject
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 The name of the Managed Instance the backups are under.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: InstanceName, DatabaseName, BackupName
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 The location of the backups' source Managed Instance.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Location, InstanceName, DatabaseName, BackupName, GetBackupByResourceId
 Aliases:
 
@@ -198,7 +198,7 @@ Whether or not to only get the latest backup per database.
 Defaults to false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Location, InstanceName, DatabaseName, GetBackupsByInputObject
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Location, InstanceName, DatabaseName, BackupName
 Aliases:
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 The database Resource ID to get backups for.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetBackupByResourceId
 Aliases:
 
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -259,7 +259,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
+    /// <summary>TypeConverter implementation for SslEnforcementEnum.</summary>
     public partial class SslEnforcementEnumTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

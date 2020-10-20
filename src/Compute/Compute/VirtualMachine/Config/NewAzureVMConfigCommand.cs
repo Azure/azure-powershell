@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
-        public SwitchParameter EncryptionAtHost { get; set; }
+        public SwitchParameter EncryptionAtHost { get; set; } = false;
 
         protected override bool IsUsageMetricEnabled
         {

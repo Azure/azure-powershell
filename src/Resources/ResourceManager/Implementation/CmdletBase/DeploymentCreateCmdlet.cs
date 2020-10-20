@@ -87,11 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 return false;
             }
 
-            object whatIfPreference = this.SessionState.PSVariable.GetValue("WhatIfPreference");
-
-            return whatIfPreference is SwitchParameter whatIfPreferenceFlag
-                ? whatIfPreferenceFlag.IsPresent
-                : (bool)whatIfPreference;
+            return (bool)this.SessionState.PSVariable.GetValue("WhatIfPreference");
         }
 
         private bool ShouldProcessGivenCurrentConfirmFlagAndPreference()

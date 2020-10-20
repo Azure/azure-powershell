@@ -18,9 +18,8 @@ Creates a Cognitive Services account.
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
  [-AssignIdentity] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -28,9 +27,8 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
  [-AssignIdentity] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyVaultUri <String> [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,21 +58,6 @@ Tags              :
 ```
 
 ## PARAMETERS
-
-### -ApiProperty
-The ApiProperties of Cognitive Services Account. Required by specific account types.
-
-```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AssignIdentity
 Generate and assign a new Cognitive Services Account Identity for this storage account for use with key management services like Azure KeyVault.

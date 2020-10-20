@@ -23,6 +23,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [CmdletOutputBreakingChange(typeof(PSKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
+    [CmdletOutputBreakingChange(typeof(PSDeletedKeyVaultSecret), "3.0.0", DeprecatedOutputProperties = new String[] { "SecretValueText" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase

@@ -15,8 +15,8 @@ Gets all the versions of a VMImage.
 
 ### ListVMImage
 ```
-Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> [-Top <Int32>]
- [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
@@ -137,21 +137,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -OrderBy
-Specifies the order of the results returned. Formatted as an OData query.
-
-```yaml
-Type: System.String
-Parameter Sets: ListVMImage
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PublisherName
 Specifies the publisher of a VMImage.
 To obtain an image publisher, use the Get-AzVMImagePublisher cmdlet.
@@ -184,21 +169,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Top
-Specifies the maximum number of virtual machine images returned. 
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ListVMImage
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Version
 Specifies the version of the VMImage.
 
@@ -211,7 +181,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

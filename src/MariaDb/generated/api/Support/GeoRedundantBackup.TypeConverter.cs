@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Enable Geo-redundant or not for server backup.</summary>
+    /// <summary>TypeConverter implementation for GeoRedundantBackup.</summary>
     public partial class GeoRedundantBackupTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

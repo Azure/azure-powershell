@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Gets or sets the name availability reason.</summary>
+    /// <summary>TypeConverter implementation for NameAvailabilityReason.</summary>
     public partial class NameAvailabilityReasonTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

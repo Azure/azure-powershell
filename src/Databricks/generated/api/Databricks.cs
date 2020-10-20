@@ -9,7 +9,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
     /// <summary>
     /// Low-level API implementation for the Databricks service.
-    /// ARM Databricks
     /// </summary>
     public partial class Databricks
     {

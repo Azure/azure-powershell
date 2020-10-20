@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 326C87EB-EC3B-4B04-B593-EAC56FFA854A
@@ -133,6 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzNotificationHubAuthorizationRule](./Get-AzNotificationHubAuthorizationRule.md)
+[Get-AzNotificationHubAuthorizationRules](./Get-AzNotificationHubAuthorizationRules.md)
 
 

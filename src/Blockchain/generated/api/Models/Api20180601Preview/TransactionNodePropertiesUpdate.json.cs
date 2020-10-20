@@ -79,7 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return container;
             }
-            AddIf( null != (((object)this._password)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._password.ToString()) : null, "password" ,container.Add );
             if (null != this._firewallRule)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.XNodeArray();
@@ -89,6 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
                 }
                 container.Add("firewallRules",__w);
             }
+            AddIf( null != (((object)this._password)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._password.ToString()) : null, "password" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return;
             }
-            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? (string)__jsonPassword : (string)Password;}
             {_firewallRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonArray>("firewallRules"), out var __jsonFirewallRules) ? If( __jsonFirewallRules as Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule) (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.FirewallRule.FromJson(__u) )) ))() : null : FirewallRule;}
+            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? (string)__jsonPassword : (string)Password;}
             AfterFromJson(json);
         }
     }

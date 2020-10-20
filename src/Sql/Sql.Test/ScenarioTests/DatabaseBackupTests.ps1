@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "Southeast Asia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -79,37 +79,26 @@ function Test-RestoreGeoBackup
 function Test-RestoreDeletedDatabaseBackup
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Create-ResourceGroupForTest
+	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
 	$restoredVcoreDbName = "powershell_db_deleted_vcore"
 
-	try
-	{
-		$server = Create-ServerForTest $rg $location
-	
-		# Create a new sql database
-		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
-	
-		# Note: Uncomment below sleep if you are recording so that DB lives long enough to take full backup
-		# Start-Sleep -s 600
+	# this Get command has regression in MS when specifying Deletiondate. Fix should be in Prod by 5/7/2018. so currently use another way to do testing
+	$deletedDb = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName `
+		-DatabaseName $droppedDbName #-DeletionDate "2018-04-20 20:21:37.397Z" 
 
-		Remove-AzSqlDatabase -DatabaseName $databaseName -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+	# restore to a db same as the deleted db
+	Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
 	
-		$deletedDb = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-	
-		# restore to a db same as the deleted db
-		Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate $deletedDb[0].DeletionDate -ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
-	
-		# restore to a vcore db
-		Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate $deletedDb[0].DeletionDate -ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" -VCore 2 -ComputeGeneration "Gen5"
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	# restore to a vcore db
+	Restore-AzSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
+		-VCore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestorePointInTimeBackup
@@ -136,10 +125,10 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "West Central US"
+	$location = "North Europe"
 	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
-	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzResourceGroup -ResourceGroupName hchung
+	$server = Get-AzSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored_ltr"
 	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
 
@@ -244,10 +233,10 @@ function Test-LongTermRetentionV2
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
-	$resourceGroup = "brandong-test"
-	$locationName = "eastus"
-	$serverName = "brandong-ltr-test"
-	$databaseName = "testltr"
+	$resourceGroup = "Default-SQL-WestCentralUS"
+	$locationName = "westcentralus"
+	$serverName = "trgrie-ltr-server"
+	$databaseName = "testdb2"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
 	$restoredDatabase = "testdb5"
@@ -300,12 +289,12 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "brandong-test"
-	$locationName = "eastus"
-	$serverName = "brandong-ltr-test"
-	$databaseName = "testltr"
+	$resourceGroup = "brrg"
+	$locationName = "brazilsouth"
+	$serverName = "ltrtest3"
+	$databaseName = "mydb"
 	$restoredDatabase = "mydb_restore"
-	$databaseWithRemovableBackup = "testdb";
+	$databaseWithRemovableBackup = "mydb";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -375,7 +364,7 @@ function Test-NewDatabaseRestorePoint
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
 			
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
@@ -443,84 +432,55 @@ function Test-RemoveDatabaseRestorePoint
 function Test-ShortTermRetentionPolicy
 {
 	# Setup
-	$location = "southeast asia"
-	$rg = "PowershellStageResourceGroup"
-	$server = "pssqlserverfortest"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
  	try
 	{
 		# Create db with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -Force:$true
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
-		# Test GET default values. 
-		$defaultRetention = 7
-		# After we configure Backup Service's default DiffBackupIntervalInHours to 24 hours for new created databases, $defaultDiffbackupinterval should be changed to 24.
-		$defaultDiffbackupinterval = 12
-		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
-		Assert-AreEqual $policy.Count 1
-		Assert-AreEqual $defaultRetention $policy[0].RetentionDays
-		Assert-AreEqual $defaultDiffbackupinterval $policy[0].DiffBackupIntervalInHours
-
- 		# Test SET
-		$retention = 6
-		$diffbackupinterval = 24
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
+ 		# Test default parameter set
+		$retention = 28
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $retention
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
-
-		$retentionOnly = 5
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retentionOnly
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 		Assert-AreEqual $policy.Count 1
-		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
-
-		$diffbackupintervalOnly = 12
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -DiffBackupIntervalInHours $diffbackupintervalOnly
-		Assert-AreEqual $policy.Count 1
-		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupintervalOnly $policy[0].DiffBackupIntervalInHours
+		Assert-AreEqual $retention $policy[0].RetentionDays
 
  		# Test InputObject
-		$retention = 7
-		$diffbackupinterval = 24
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
+		$retention = 21
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
-		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
  		# Test ResourceId
-		$retention = 6
-		$diffbackupinterval = 12
+		$retention = 14
 		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
-		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
  		# Test Piping
 		$retention = 7
-		$diffbackupinterval = 24
-		$policy = $db | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
+		$policy = $db | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
-		$policy = $db | Get-AzSqlDatabaseBackupShortTermRetentionPolicy
+		$policy = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
  	}
 	finally
 	{
-		Remove-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
+		Remove-ResourceGroupForTest $rg
 	}
 }

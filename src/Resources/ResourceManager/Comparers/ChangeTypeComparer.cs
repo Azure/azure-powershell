@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Comparers
                 [ChangeType.Create] = 1,
                 [ChangeType.Deploy] = 2,
                 [ChangeType.Modify] = 3,
-                [ChangeType.NoChange] = 4,
-                [ChangeType.Ignore] = 5,
+                [ChangeType.Ignore] = 4,
+                [ChangeType.NoChange] = 5,
             };
 
         public int Compare(ChangeType first, ChangeType second)

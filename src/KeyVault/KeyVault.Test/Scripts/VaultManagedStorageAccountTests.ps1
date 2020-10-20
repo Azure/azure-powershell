@@ -87,7 +87,7 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinition
     $secretName = "$($managedStorageAccount.AccountName)-$($createdManagedStorageSasDefinition.Name)"
     $secret = Get-AzKeyVaultSecret $keyVault $secretName
     Assert-NotNull $secret
-    Assert-NotNull $secret.SecretValue
+    Assert-NotNull $secret.SecretValueText
 }
 
 function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest
@@ -128,8 +128,8 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest
     $secret2 = Get-AzKeyVaultSecret $keyVault $secretName2
     Assert-NotNull $secret1
     Assert-NotNull $secret2
-    Assert-NotNull $secret1.SecretValue
-    Assert-NotNull $secret2.SecretValue
+    Assert-NotNull $secret1.SecretValueText
+    Assert-NotNull $secret2.SecretValueText
 }
 
 function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute

@@ -62,8 +62,7 @@ function Test_CreateSecret
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
 }
 
@@ -81,8 +80,7 @@ function Test_CreateSecretWithCustomAttributes
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags
 }
 
@@ -101,14 +99,12 @@ function Test_UpdateSecret
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
     
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $newsecuredata
     Assert-NotNull $sec
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $newdata
+    Assert-AreEqual $sec.SecretValueText $newdata
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
 }
 
@@ -123,8 +119,7 @@ function Test_SetSecretPositionalParameter
     $sec=Set-AzKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data 
+    Assert-AreEqual $sec.SecretValueText $data    
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags
 }
 
@@ -139,8 +134,7 @@ function Test_SetSecretAliasParameter
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -SecretName $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags            
 }
 
@@ -180,8 +174,7 @@ function Test_UpdateIndividualSecretAttributes
     $sec=Set-AzKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags
     
     
@@ -228,8 +221,7 @@ function Test_UpdateSecretWithNoChange
     $sec=Set-AzKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags
 
     # No change
@@ -250,8 +242,7 @@ function Test_UpdateAllEditableSecretAttributes
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
     # Update all attributes  
@@ -271,8 +262,7 @@ function Test_SetSecretAttributePositionalParameter
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
     $sec=Set-AzKeyVaultSecretAttribute $keyVault $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tag $tags -PassThru
@@ -291,8 +281,7 @@ function Test_SetSecretAttributeAliasParameter
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
     $sec=Set-AzKeyVaultSecretAttribute -VaultName $keyVault -SecretName $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tag $tags -PassThru
@@ -421,14 +410,12 @@ function Test_GetOneSecret
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data 
+    Assert-AreEqual $sec.SecretValueText $data    
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
 
     $sec=Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname
     Assert-NotNull $sec
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))
-    Assert-AreEqual $secretValueText $data  
+    Assert-AreEqual $sec.SecretValueText $data    
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
 }
 
@@ -462,30 +449,26 @@ function Test_GetPreviousVersionOfSecret
     # set secret for the first time
     $sec1=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec1
-    $global:createdSecrets += $secretname 
-    $secretValueText1 = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec1.SecretValue))  
-    Assert-AreEqual $secretValueText1 $data    
+    $global:createdSecrets += $secretname   
+    Assert-AreEqual $sec1.SecretValueText $data    
     Assert-SecretAttributes $sec1.Attributes $true $null $null $null $null
     
     # set the same secret with new values and atrributes
     $sec2=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $newsecuredata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Tag $tags
-    Assert-NotNull $sec2
-    $secretValueText2 = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec2.SecretValue))  
-    Assert-AreEqual $secretValueText2 $newdata    
+    Assert-NotNull $sec2  
+    Assert-AreEqual $sec2.SecretValueText $newdata    
     Assert-SecretAttributes $sec2.Attributes $true $expires $nbf $contenttype $tags
 
     # Get the older version of the secret
     $sec3=Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -Version $sec1.Version
     Assert-NotNull $sec3
-    $secretValueText3 = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec3.SecretValue))  
-    Assert-AreEqual $secretValueText3 $data
+    Assert-AreEqual $sec3.SecretValueText $data
     Assert-SecretAttributes $sec3.Attributes $true $null $null $null $null
 
     # Get the newer version of the secret
     $sec4=Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -Version $sec2.Version
     Assert-NotNull $sec4
-    $secretValueText4 = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec4.SecretValue))  
-    Assert-AreEqual $secretValueText4 $newdata  
+    Assert-AreEqual $sec4.SecretValueText $newdata  
     Assert-SecretAttributes $sec4.Attributes $true $expires $nbf $contenttype $tags
 }
 
@@ -516,14 +499,12 @@ function Test_GetSecretPositionalParameter
     $secretname= Get-SecretName 'positional'  
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
-    $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data    
+    $global:createdSecrets += $secretname   
+    Assert-AreEqual $sec.SecretValueText $data    
 
     $sec=Get-AzKeyVaultSecret $keyVault $secretname
     Assert-NotNull $sec
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data   
+    Assert-AreEqual $sec.SecretValueText $data    
 }
 
 <#
@@ -536,14 +517,12 @@ function Test_GetSecretAliasParameter
     $secretname= Get-SecretName 'alias'  
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
-    $global:createdSecrets += $secretname
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data   
+    $global:createdSecrets += $secretname   
+    Assert-AreEqual $sec.SecretValueText $data    
 
     $sec=Get-AzKeyVaultSecret -VaultName $keyVault -SecretName $secretname 
     Assert-NotNull $sec
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data               
+    Assert-AreEqual $sec.SecretValueText $data                    
 }
 
 <#
@@ -629,8 +608,7 @@ function Test_RemoveSecretPositionalParameter
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data  
+    Assert-AreEqual $sec.SecretValueText $data    
 
     Remove-AzKeyVaultSecret $keyVault $secretname  -Force -Confirm:$false 
     
@@ -649,8 +627,7 @@ function Test_RemoveSecretAliasParameter
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($sec.SecretValue))  
-    Assert-AreEqual $secretValueText $data  
+    Assert-AreEqual $sec.SecretValueText $data    
 
     Remove-AzKeyVaultSecret -VaultName $keyVault  -SecretName $secretname  -Force -Confirm:$false 
     
@@ -711,8 +688,7 @@ function Test_BackupRestoreSecretByName
     $restoredSecret = Restore-AzKeyVaultSecret -VaultName $keyVault -InputFile $backupblob
     
     $retrievedSecret = Get-AzKeyVaultSecret -VaultName $keyVault -SecretName $name
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($retrievedSecret.SecretValue))  
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
 }
 
 <#
@@ -732,8 +708,7 @@ function Test_BackupRestoreSecretByRef
     $restoredSecret = Restore-AzKeyVaultSecret -VaultName $keyVault -InputFile $backupblob
     
     $retrievedSecret = Get-AzKeyVaultSecret -VaultName $keyVault -SecretName $name
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($retrievedSecret.SecretValue))  
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
 }
 
 <#
@@ -767,8 +742,7 @@ function Test_BackupSecretToANamedFile
     $restoredSecret = Restore-AzKeyVaultSecret -VaultName $keyVault -InputFile $backupfile
 
     $retrievedSecret = Get-AzKeyVaultSecret -VaultName $keyVault -SecretName $name
-    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($retrievedSecret.SecretValue))  
-    Assert-AreEqual $secretValueText $data
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
 }
 
 <#
@@ -811,7 +785,7 @@ function Test_PipelineUpdateSecrets
     $total=2
     BulkCreateSecrets $keyVault $secretpartialname $total        
     Get-AzKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Set-AzKeyVaultSecret -SecretValue $newsecuredata	
-    Get-AzKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | ForEach-Object { Assert-AreEqual ([System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($_.SecretValue))) $newdata }
+    Get-AzKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | ForEach-Object { Assert-AreEqual $_.SecretValueText $newdata }
 }
 
 <#

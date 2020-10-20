@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzHDInsightClusterDiskEncryptionKey
 
 ## SYNOPSIS
-Rotates the disk encryption key of the specified HDInsight cluster.
+Rotate the disk encryption key of the specified HDInsight cluster.
 
 ## SYNTAX
 

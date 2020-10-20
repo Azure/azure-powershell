@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Virtual Network Rule State</summary>
+    /// <summary>TypeConverter implementation for VirtualNetworkRuleState.</summary>
     public partial class VirtualNetworkRuleStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

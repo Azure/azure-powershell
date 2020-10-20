@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSPublicIpAddress> PublicIpAddresses { get; set; }
 
-        public PSResourceId CustomIpPrefix { get; set; }
-
         [JsonIgnore]
         public string PublicIpAddressesText
         {

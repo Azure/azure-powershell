@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.AnyTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomObjectParameterValueTypeConverter.ConvertFrom);
             AfterDeserializeDictionary(content);
         }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.AnyTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterInternal)this).Value, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomObjectParameterValueTypeConverter.ConvertFrom);
             AfterDeserializePSObject(content);
         }
     }

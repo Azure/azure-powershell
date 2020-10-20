@@ -38,17 +38,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
                 vaultName, resourceGroupName).Result.Body;
         }
-
-        /// <summary>  
-        /// Method to Get Azure Recovery Services Vault Backup Properties  
-        /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
-        /// <param name="vaultName">Name of the vault</param>  
-        /// <returns>Azure Resource Storage response object.</returns>  
-        public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
-        {
-            return BmsAdapter.Client.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
-                vaultName, resouceGroupName).Result.Body;
-        }
     }
 }

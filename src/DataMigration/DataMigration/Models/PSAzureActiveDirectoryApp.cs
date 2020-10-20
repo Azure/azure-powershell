@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         
         public SecureString AppKey { get; set; }
 
-        public string TenantId { get; set; }
+        public string TenantId { get; private set; }
 
     }
 }

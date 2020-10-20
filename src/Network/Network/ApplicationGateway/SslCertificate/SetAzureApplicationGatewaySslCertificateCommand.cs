@@ -40,9 +40,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Ssl certificate with the specified name does not exist");
             }
             
-            if (this.CertificateFile != null) {
-                new X509Certificate2(this.CertificateFile, this.Password, X509KeyStorageFlags.Exportable);
-            }
+            X509Certificate2 cert = new X509Certificate2(this.CertificateFile, this.Password, X509KeyStorageFlags.Exportable);
 
             var newSslCertificate = base.NewObject();
 

@@ -57,7 +57,6 @@
         <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\help\**\*.*"/>
         <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\generated\**\*.*"/>
         <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\test\**\*.*"/>
-        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\utils\**\*.*"/>
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
@@ -73,7 +72,6 @@
     <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports" />
     <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal" Condition="Exists('internal\ProxyCmdletDefinitions.ps1')" />
     <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal" />
-    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
   </Target>
 
 </Project>

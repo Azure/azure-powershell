@@ -28,16 +28,16 @@ If you specify the *Force* parameter and specify an existing transformation name
 
 ## EXAMPLES
 
-### Example 1: Create or replace a transformation in a job
-```powershell
+### EXAMPLE 1: Create or replace a transformation in a job
+```
 PS C:\>New-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform"
 ```
 
 This command creates a transformation called StreamingJobTransform in the job called StreamingJob.
 If an existing transformation is already defined with that name, the cmdlet will ask whether or not to replace it.
 
-### Example 2: Replace a transformation in a job
-```powershell
+### EXAMPLE 2: Replace a transformation in a job
+```
 PS C:\>New-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform" -Force
 ```
 

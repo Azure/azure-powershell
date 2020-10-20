@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>The current provisioning state.</summary>
+    /// <summary>TypeConverter implementation for PeeringProvisioningState.</summary>
     public partial class PeeringProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateDatabaseCopy");
         }
 
-        [Fact(Skip = "Taking too long - try again before PR merge")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVcoreDatabaseCopy()
         {
@@ -82,20 +82,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestFailoverSecondaryDatabase()
         {
             RunPowerShellTest("Test-FailoverSecondaryDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDatabaseCopyWithBackupStorageRedundancy()
-        {
-            RunPowerShellTest("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateSecondaryDatabaseWithBackupStorageRedundancy()
-        {
-            RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
         }
     }
 }

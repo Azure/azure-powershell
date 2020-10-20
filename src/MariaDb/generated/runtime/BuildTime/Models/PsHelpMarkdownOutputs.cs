@@ -103,6 +103,7 @@ Position: {ParameterInfo.Position}
 Default value: {ParameterInfo.DefaultValue}
 Accept pipeline input: {pipelineInput}
 Accept wildcard characters: {ParameterInfo.AcceptsWildcardCharacters}
+Dynamic: {ParameterInfo.IsDynamic}
 ```
 
 ";

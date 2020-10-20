@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
                 return;
             }
             {_display = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonObject>("display"), out var __jsonDisplay) ? Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ResourceProviderOperationDisplay.FromJson(__jsonDisplay) : Display;}
-            {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)Origin;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_isDataAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean>("isDataAction"), out var __jsonIsDataAction) ? (bool?)__jsonIsDataAction : IsDataAction;}
+            {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)Origin;}
             AfterFromJson(json);
         }
 
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
                 return container;
             }
             AddIf( null != this._display ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) this._display.ToJson(null,serializationMode) : null, "display" ,container.Add );
-            AddIf( null != (((object)this._origin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._origin.ToString()) : null, "origin" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != this._isDataAction ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean((bool)this._isDataAction) : null, "isDataAction" ,container.Add );
+            AddIf( null != (((object)this._origin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._origin.ToString()) : null, "origin" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

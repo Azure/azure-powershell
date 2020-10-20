@@ -16,10 +16,8 @@
 <#
 .Synopsis
 Updates a configuration of a server.
-Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Description
 Updates a configuration of a server.
-Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
 PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
 
@@ -27,26 +25,6 @@ Name                   Type
 ----                   ----
 delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
 #>
@@ -168,8 +146,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
-            UpdateViaIdentityExpanded = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
+            UpdateExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

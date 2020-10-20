@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName = (string) content.GetValueForProperty("PeeringName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName = (string) content.GetValueForProperty("PeeringName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName = (string) content.GetValueForProperty("PeeringName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName = (string) content.GetValueForProperty("PeeringName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).PeeringName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

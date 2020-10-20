@@ -6,10 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>
-    /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory
-    /// principal for the resource.
-    /// </summary>
     public partial struct IdentityType :
         System.IEquatable<IdentityType>
     {

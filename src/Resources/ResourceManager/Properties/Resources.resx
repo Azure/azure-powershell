@@ -484,8 +484,8 @@
   <data name="DeploymentOperationResultError" xml:space="preserve">
     <value>Status Message: {0}</value>
   </data>
-  <data name="WhatIfNoiseNotice" xml:space="preserve">
-    <value>Note: The result may contain false positive predictions (noise).
+  <data name="WhatIfPreviewNotice" xml:space="preserve">
+    <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
 You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
   </data>
   <data name="ConfirmDeploymentMessage" xml:space="preserve">

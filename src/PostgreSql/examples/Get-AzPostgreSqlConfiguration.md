@@ -1,4 +1,4 @@
-### Example 1: List all configurations in PostgreSql server
+### Example 1: List all configurations in PostgreSql MySql server
 ```powershell
 PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 

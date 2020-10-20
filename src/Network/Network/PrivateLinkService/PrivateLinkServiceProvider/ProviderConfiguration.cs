@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
-            RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01");
+            RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2019-11-01-preview");
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview");
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01");
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01");

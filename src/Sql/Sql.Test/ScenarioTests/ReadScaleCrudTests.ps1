@@ -24,7 +24,7 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 	
 	# Create with default values
 	$databaseName1 = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Edition Premium -Force
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Edition Premium
 	Assert-AreEqual $db1.DatabaseName $databaseName1
 	
 	try
@@ -52,7 +52,7 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -Force
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -87,7 +87,7 @@ function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "So
 	# Create with default values
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Hyperscale `
-		-VCore 4 -ComputeGeneration Gen5 -Force
+		-VCore 4 -ComputeGeneration Gen5
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Billing.dll', 
@@ -86,8 +86,7 @@ CmdletsToExport = 'Get-AzBillingInvoice', 'Get-AzBillingPeriod',
                'Get-AzConsumptionReservationSummary', 
                'Get-AzConsumptionUsageDetail', 'New-AzConsumptionBudget', 
                'Remove-AzConsumptionBudget', 'Set-AzConsumptionBudget', 
-               'Get-UsageAggregates', 'Get-AzBillingAccount',
-			   'Get-AzBillingProfile', 'Get-AzInvoiceSection'
+               'Get-UsageAggregates'
 
 # Variables to export from this module
 # VariablesToExport = @()

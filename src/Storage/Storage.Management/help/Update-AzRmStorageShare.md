@@ -53,8 +53,8 @@ PS C:\>$share
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  200
 
 PS C:\>$share.Metadata
@@ -81,8 +81,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 share1   5000
 share2   5000
 ```

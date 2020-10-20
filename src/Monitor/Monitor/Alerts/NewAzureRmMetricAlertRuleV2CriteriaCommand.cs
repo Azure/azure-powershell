@@ -70,13 +70,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public String MetricNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets SkipMetricValidation parameter of the cmdlet
-        /// </summary>
-        [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped")]
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped")]
-        public Boolean SkipMetricValidation { get; set; }
-
-        /// <summary>
         /// Gets or sets Dimensions of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, ValueFromPipeline = true, HelpMessage = "List of dimension conditions")]
@@ -193,14 +186,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     dimensions: metricDimensions,
                     failingPeriods: failingPeriods,
                     alertSensitivity: this.ThresholdSensitivity,
-                    ignoreDataBefore: this.IsParameterBound(c => c.IgnoreDataBefore) ? (DateTime?) this.IgnoreDataBefore : null,
-                    skipMetricValidation: this.SkipMetricValidation
-                    );
+                    ignoreDataBefore: this.IsParameterBound(c => c.IgnoreDataBefore) ? (DateTime?) this.IgnoreDataBefore : null);
                 result = new PSDynamicMetricCriteria(dynamicMetricCriteria);
             }
             else
             {
-                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions, skipMetricValidation: this.SkipMetricValidation);
+                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
                 result = new PSMetricCriteria(metricCriteria);
             }
 

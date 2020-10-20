@@ -26,8 +26,7 @@ The **Get-AzSqlSyncAgentLinkedDatabase** cmdlet returns information about SQL Se
 
 The following example returns the linked SQL Server databases linked by an Azure SQL sync agent.
 
-```powershell
-<!-- Aladdin Generated Example --> 
+```powershell <!-- Aladdin Generated Example --> 
 Get-AzSqlSyncAgentLinkedDatabase -ResourceGroupName MyResourceGroup -ServerName s1 -SyncAgentName 'SyncAgent01'
 ```
 

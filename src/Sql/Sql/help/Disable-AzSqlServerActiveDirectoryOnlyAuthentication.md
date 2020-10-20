@@ -12,21 +12,8 @@ Disables Azure AD only authentication for a specific SQL Server.
 
 ## SYNTAX
 
-### UseResourceGroupAndServerNameParameterSet (Default)
 ```
-Disable-AzSqlServerActiveDirectoryOnlyAuthentication [-ResourceGroupName] <String> [-ServerName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UseInputObjectParameterSet
-```
-Disable-AzSqlServerActiveDirectoryOnlyAuthentication -InputObject <AzureSqlServerModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UserResourceIdParameterSet
-```
-Disable-AzSqlServerActiveDirectoryOnlyAuthentication [-ResourceId] <String>
+Disable-AzSqlServerActiveDirectoryOnlyAuthentication [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,9 +25,9 @@ The **Disable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet disables Azu
 ### Example 1
 ```powershell
 PS C:\>Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
-ResourceGroupName ServerName AzureADOnlyAuthentication
+ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
-ResourceGroup01   Server01   False
+ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
 ```
 
 This command disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
@@ -51,7 +38,7 @@ This command disables Azure Active Directory (Azure AD) only authentication requ
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,42 +49,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The SQL server object to use.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-Parameter Sets: UseInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: UseResourceGroupAndServerNameParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id of instance to use
-
-```yaml
-Type: System.String
-Parameter Sets: UserResourceIdParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -108,11 +65,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Azure Active Directory only authentication is in.
+The name of the Azure SQL Server the Azure Active Directory administrator is in.
 
 ```yaml
-Type: System.String
-Parameter Sets: UseResourceGroupAndServerNameParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -126,7 +83,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -142,7 +99,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -162,15 +119,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model.AzureSqlServerActiveDirectoryOnlyAuthenticationModel
+### Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model.AzureSqlServerActiveDirectoryAdministratorModel
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Enable-AzSqlServerActiveDirectoryOnlyAuthentication](./Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
-
-[Get-AzSqlServerActiveDirectoryOnlyAuthentication](./Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+[Remove-AzSqlServerActiveDirectoryAdministrator](./Remove-AzSqlServerActiveDirectoryAdministrator.md)
 
 [Set-AzSqlServerActiveDirectoryAdministrator](./Set-AzSqlServerActiveDirectoryAdministrator.md)
 

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
 
     /// <summary>Create or update the transaction node.</summary>
     /// <remarks>
-    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes/{transactionNodeName}"
+    /// [OpenAPI] TransactionNodes_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes/{transactionNodeName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzBlockchainTransactionNode_CreateExpanded", SupportsShouldProcess = true)]

@@ -408,40 +408,6 @@ function Test-AddAzureRmMetricAlertRuleV2-ActionGroupId
 
 	<#
 .SYNOPSIS
-Tests adding a GenV2 metric alert rule with skipMetricValidation = true.
-#>
-function Test-AddAzureRmMetricAlertRuleV2-skipMetricValidation
-{
-	# Setup
-	$sub = Get-AzContext
-    $subscription = $sub.subscription.subscriptionId
-	$rgname = Get-ResourceGroupName
-	$location =Get-ProviderLocation ResourceManagement
-	$resourceName = Get-ResourceName
-	$ruleName = Get-ResourceName
-	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
-	New-AzResourceGroup -Name $rgname -Location $location -Force
-	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
-	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacityCustom" -Operator GreaterThan -Threshold 8 -TimeAggregation Average -MetricNamespace "customNamespace" -SkipMetricValidation $true
-	Start-TestSleep 30000
-	try
-    {		
-		# Test - create metric alert with SkipMetricValidation = true
-		$actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -Severity 3
-		Assert-AreEqual $actual.Name $ruleName
-	}
-    finally
-    {
-        # Cleanup
-        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
-		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
-		Remove-AzResourceGroup -Name $rgname -Force
-    }
-}
-
-
-	<#
-.SYNOPSIS
 Tests disabling a GenV2 metric alert rule with action groups.
 #>
 function Test-DisableAzureRmMetricAlertRuleV2WithActionGroups

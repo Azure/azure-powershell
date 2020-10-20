@@ -137,7 +137,7 @@
   </data>
   <data name="DataSourceExists" xml:space="preserve">
     <value>A dataSource with name '{0}' in workspace '{1}' exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="DataSourceKindCannotBeEmpty" xml:space="preserve">
@@ -187,7 +187,7 @@ Timestamp (Utc):{3}</value>
   </data>
   <data name="SavedSearchExists" xml:space="preserve">
     <value>A saved search with the id '{0}' in workspace '{1}' exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="SavedSearchNotFound" xml:space="preserve">
@@ -216,7 +216,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="StorageInsightExists" xml:space="preserve">
     <value>A storage insight with name '{0}' in workspace '{1}' exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="StorageInsightNotFound" xml:space="preserve">
@@ -236,7 +236,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="WorkspaceExists" xml:space="preserve">
     <value>A workspace with name '{0}' in resource group '{1}' exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="WorkspaceNotFound" xml:space="preserve">

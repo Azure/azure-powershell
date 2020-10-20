@@ -27,23 +27,6 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
-  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
-  [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
-  [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
-  [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
-  [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
-  [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
-  [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbserversecurityalertpolicy
 #>

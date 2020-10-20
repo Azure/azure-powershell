@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return;
             }
-            {_nameAvailable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean>("nameAvailable"), out var __jsonNameAvailable) ? (bool?)__jsonNameAvailable : NameAvailable;}
             {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)Message;}
+            {_nameAvailable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean>("nameAvailable"), out var __jsonNameAvailable) ? (bool?)__jsonNameAvailable : NameAvailable;}
             {_reason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("reason"), out var __jsonReason) ? (string)__jsonReason : (string)Reason;}
             AfterFromJson(json);
         }
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return container;
             }
-            AddIf( null != this._nameAvailable ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean((bool)this._nameAvailable) : null, "nameAvailable" ,container.Add );
             AddIf( null != (((object)this._message)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._message.ToString()) : null, "message" ,container.Add );
+            AddIf( null != this._nameAvailable ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonBoolean((bool)this._nameAvailable) : null, "nameAvailable" ,container.Add );
             AddIf( null != (((object)this._reason)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._reason.ToString()) : null, "reason" ,container.Add );
             AfterToJson(ref container);
             return container;

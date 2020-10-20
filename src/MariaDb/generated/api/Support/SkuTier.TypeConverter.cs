@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
+    /// <summary>TypeConverter implementation for SkuTier.</summary>
     public partial class SkuTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

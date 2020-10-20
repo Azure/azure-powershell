@@ -63,28 +63,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
             var hashtable = new Hashtable
             {
                 ["foo"] = new PSObject("fooValue"),
-                ["Bar"] = true,
+                ["bar"] = true,
                 ["nested"] = new Hashtable
                 {
-                    ["foo"] = new PSObject(Guid.Parse("4d44fe86-f04a-4ba5-9900-abdec8cb11c1")),
-                    ["bar"] = new object[]
-                    {
-                        "test",
-                        true,
-                        123,
-                        new Hashtable
-                        {
-                            ["deepNested"] = new PSObject("leaf"),
-                            ["array"] = new object[]
-                            {
-                                new PSObject("abc"),
-                                new PSObject(new
-                                {
-                                    stuff = false
-                                })
-                            }
-                        }
-                    }
+                    ["foo"] = new PSObject(Guid.Parse("4d44fe86-f04a-4ba5-9900-abdec8cb11c1"))
                 }
             };
 
@@ -94,28 +76,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
             JToken expected = JToken.FromObject(new
             {
                 foo = "fooValue",
-                Bar = true,
+                bar = true,
                 nested = new
                 {
-                    foo = "4d44fe86-f04a-4ba5-9900-abdec8cb11c1",
-                    bar = new object[]
-                    {
-                        "test",
-                        true,
-                        123,
-                        new
-                        {
-                            deepNested = "leaf",
-                            array = new object[]
-                            {
-                                "abc",
-                                new
-                                {
-                                    stuff = false
-                                }
-                            }
-                        }
-                    }
+                    foo = "4d44fe86-f04a-4ba5-9900-abdec8cb11c1"
                 }
             });
             Assert.True(JToken.DeepEquals(expected, parsedResult));

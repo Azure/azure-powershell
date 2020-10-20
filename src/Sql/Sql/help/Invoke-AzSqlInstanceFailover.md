@@ -13,9 +13,8 @@ Failovers an Azure SQL Managed Instance.
 ## SYNTAX
 
 ```
-Invoke-AzSqlInstanceFailover [-Name] <String> [-AsJob] [-PassThru] [-Force] [-ReadableSecondary]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzSqlInstanceFailover [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the Azure SQL instance to remove.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ManagedInstanceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Skip confirmation message for performing the action
 
@@ -84,38 +98,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Azure SQL instance to remove.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ManagedInstanceName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 On Successful execution, returns true.  By default, this cmdlet does not generate any output.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReadableSecondary
-Failover the readable secondary replica instead of the default primary replica
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The version of a server.</summary>
+    /// <summary>Argument completer implementation for ServerVersion.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersionTypeConverter))]
     public partial struct ServerVersion :
         System.Management.Automation.IArgumentCompleter

@@ -15,17 +15,16 @@ Creates a local criteria object that can be used to create a new metric alert
 ### StaticThresholdParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
- [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
- -Operator <String> -Threshold <Double> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
 ```
 New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-MetricNamespace <String>]
- [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
- -Operator <String> [-ThresholdSensitivity <String>] [-ViolationCount <Int32>]
- [-ExaminedAggregatedPointCount <Int32>] [-IgnoreDataBefore <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
+ [-ThresholdSensitivity <String>] [-ViolationCount <Int32>] [-ExaminedAggregatedPointCount <Int32>]
+ [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WebtestParameterSet
@@ -35,7 +34,7 @@ New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsig
 ```
 
 ## DESCRIPTION
-The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azmetricalertrulev2) cmdlet which creates a new metric alert rule.
+The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input Add-AzMetricAlertRuleV2 cmdlet which creates a new metric alert rule.
 
 ## EXAMPLES
 
@@ -252,21 +251,6 @@ Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipMetricValidation
-Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped
-
-```yaml
-Type: System.Boolean
-Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -255,8 +255,6 @@ function New-AzFunctionApp {
                 Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
             }
 
-            ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
-
             if (-not $OSType)
             {
                 $OSType = GetDefaultOSType -Runtime $Runtime
@@ -309,8 +307,6 @@ function New-AzFunctionApp {
             $functionAppDef.ServerFarmId = $servicePlan.Id
             $functionAppDef.Location = $Location
         }
-
-        ValidateFunctionsV2NotAvailableLocation -Location $functionAppDef.Location
 
         if ($OSIsLinux)
         {
@@ -370,14 +366,6 @@ function New-AzFunctionApp {
             }
             elseif ($Runtime -eq "PowerShell")
             {
-                if ($RuntimeVersion -eq "6.2")
-                {
-                    # Write warning for PowerShell 6.2 function apps
-                    $message = "PowerShell '6.2' has been deprecated. Please update your PowerShell runtime version to 7.0 by providing '-RuntimeVersion 7.0' when creating PowerShell function apps. "
-                    $message += "For more information, please see 'https://docs.microsoft.com/en-us/powershell/scripting/powershell-support-lifecycle?view=powershell-7#powershell-releases-end-of-life'."
-                    Write-Warning -Message $message
-                }
-
                 $PowerShellWorkerVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
                 $siteCofig.PowerShellVersion = "$PowerShellWorkerVersion"
             }

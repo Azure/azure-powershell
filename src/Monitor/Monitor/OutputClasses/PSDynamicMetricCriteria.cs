@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 dimensions: dynamicMetricCriteria.Dimensions,
                 alertSensitivity: dynamicMetricCriteria.AlertSensitivity,
                 failingPeriods: dynamicMetricCriteria.FailingPeriods,
-                ignoreDataBefore: dynamicMetricCriteria.IgnoreDataBefore,
-                skipMetricValidation: dynamicMetricCriteria.SkipMetricValidation)
+                ignoreDataBefore: dynamicMetricCriteria.IgnoreDataBefore)
 
         {
         }

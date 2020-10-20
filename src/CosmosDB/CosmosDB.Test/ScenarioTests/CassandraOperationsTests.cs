@@ -47,12 +47,5 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraCreateUpdateGetCmdlets");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCassandraMigrateThroughputCmdlets()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraMigrateThroughputCmdlets");
-        }
     }
 }

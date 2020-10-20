@@ -47,14 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/preview/2018-06-01-preview/mariadb.json
 
 title: MariaDB
-module-version: 0.1.0
+module-version: 0.0.1
 
 directive:
   - where:
@@ -70,10 +69,7 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
       subject: Configuration$|FirewallRule$|VirtualNetworkRule$
     remove: true
-  - where:
-      verb: New$|Update$
-      subject: Configuration$|FirewallRule$
-    hide: true
+
 # Server
   - where:
       verb: New|Update|Restart
@@ -108,6 +104,25 @@ directive:
     set:
       parameter-name: SubnetId
 
+# FirewallRule
+  - where:
+      subject: FirewallRule
+      parameter-name: Parameter
+    set:
+      parameter-name: FirewallRule
+
+# MariaDBConfiguration
+  - where:
+      verb: New
+      subject: Configuration
+    hide: true
+  - where:
+      verb: Update
+      subject: Configuration
+      parameter-name: Parameter
+    set:
+      parameter-name: Configuration
+
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy
     hide: true
@@ -116,10 +131,10 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
-  - from: source-file-csharp
+  - from: ServerForCreate.cs
     where: $
     transform: $ = $.replace(/internal partial interface IServerForCreateInternal/, 'public partial interface IServerForCreateInternal');
-  - from: source-file-csharp
+  - from: (.*)AzMariaDbServer_(.*).cs
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
 ```

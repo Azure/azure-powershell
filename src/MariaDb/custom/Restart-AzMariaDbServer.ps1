@@ -18,6 +18,15 @@
 Restarts a server.
 .Description
 Restarts a server.
+.Example
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
 function Restart-AzMariaDbServer {
     [OutputType([System.Boolean])]

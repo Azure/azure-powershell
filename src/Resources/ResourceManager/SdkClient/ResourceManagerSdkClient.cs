@@ -37,9 +37,7 @@ using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
@@ -425,14 +423,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 };
             }
 
-            if (!string.IsNullOrEmpty(parameters.TemplateSpecId))
-            {
-                deployment.Properties.TemplateLink = new TemplateLink
-                {
-                    Id = parameters.TemplateSpecId
-                };
-            }
-            else if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
                 deployment.Properties.TemplateLink = new TemplateLink
                 {
@@ -460,10 +451,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
-                Dictionary<string, object> parametersDictionary = parameters.TemplateParameterObject?.ToDictionary(false);
-                string parametersContent = parametersDictionary != null
-                    ? PSJsonSerializer.Serialize(parametersDictionary)
+                string parametersContent = parameters.TemplateParameterObject != null
+                    ? PSJsonSerializer.Serialize(parameters.TemplateParameterObject)
                     : null;
                 deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
                     ? JObject.Parse(parametersContent)

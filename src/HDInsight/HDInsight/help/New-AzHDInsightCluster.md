@@ -34,8 +34,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>]
  [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>]
  [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
- [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
- [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-DefaultProfile <IAzureContextContainer>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -60,8 +59,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
  [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
- [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
- [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-DefaultProfile <IAzureContextContainer>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -86,8 +84,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
  [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>] [-OutboundPublicNetworkAccessType <String>]
- [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
- [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-DefaultProfile <IAzureContextContainer>]
+ [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -281,44 +278,6 @@ PS C:\&gt; # Primary storage account info
             -EncryptionAtHost $true `
 ```
 
-### Example 6: Create an Azure HDInsight cluster which enables autoscale.
-```
-PS C:\&gt; # Primary storage account info
-        $storageAccountResourceGroupName = "Group"
-        $storageAccountName = "yourstorageacct001"
-        $storageAccountKey = Get-AzStorageAccountKey `
-            -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
-        $storageContainer = "container002"
-
-        # Cluster configuration info
-        $location = "East US 2"
-        $clusterResourceGroupName = "Group"
-        $clusterName = "your-hadoop-002"
-        $clusterCreds = Get-Credential
-
-        # If the cluster's resource group doesn't exist yet, run:
-        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
-
-        # Create autoscale configuration
-        $autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration `
-            -MinWorkerNodeCount 3 -MaxWorkerNodeCount 5
-
-        # Create the cluster
-        New-AzHDInsightCluster `
-            -ClusterType Hadoop `
-            -ClusterSizeInNodes 4 `
-            -ResourceGroupName $clusterResourceGroupName `
-            -ClusterName $clusterName `
-            -HttpCredential $clusterCreds `
-            -Location $location `
-            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -DefaultStorageContainer $storageContainer `
-            -SshCredential $clusterCreds `
-            -AutoscaleConfiguration $autoscaleConfiguration
-```
-
 ## PARAMETERS
 
 ### -AadTenantId
@@ -372,21 +331,6 @@ Gets or sets the assigned identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutoscaleConfiguration
-Gets or sets the autoscale configuration
-
-```yaml
-Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscale
 Parameter Sets: (All)
 Aliases:
 

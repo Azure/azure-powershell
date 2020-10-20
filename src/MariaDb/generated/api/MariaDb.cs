@@ -9,8 +9,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb
 
     /// <summary>
     /// Low-level API implementation for the MariaDB service.
-    /// The Microsoft Azure management API provides create, read, update, and delete functionality for Azure MariaDB resources
-    /// including servers, databases, firewall rules, VNET rules, log files and configurations with new business model.
     /// </summary>
     public partial class MariaDb
     {

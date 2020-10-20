@@ -268,15 +268,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot have both &apos;Commission&apos; and &apos;Decomission&apos; flags set.
-        /// </summary>
-        internal static string CommissioningStateConflict {
-            get {
-                return ResourceManager.GetString("CommissioningStateConflict", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
         /// </summary>
         internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {

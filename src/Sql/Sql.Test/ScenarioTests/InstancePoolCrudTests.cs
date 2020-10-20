@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetInstancePool");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance pool")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveInstancePool()
         {

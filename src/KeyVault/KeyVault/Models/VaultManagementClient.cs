@@ -86,7 +86,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
                 properties.EnableSoftDelete = parameters.EnableSoftDelete;
                 properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
-                properties.EnableRbacAuthorization = parameters.EnableRbacAuthorization;
                 properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
@@ -165,7 +164,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             bool? updatedEnabledForDiskEncryption,
             bool? updatedSoftDeleteSwitch,
             bool? updatedPurgeProtectionSwitch,
-            bool? updatedRbacAuthorization,
             int? softDeleteRetentionInDays,
             PSKeyVaultNetworkRuleSet updatedNetworkAcls,
             ActiveDirectoryClient adClient = null)
@@ -194,9 +192,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 && updatedPurgeProtectionSwitch.HasValue
                 && updatedPurgeProtectionSwitch.Value)
                 properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
-
-            // Update EnableRbacAuthorization when specified, otherwise stay current value 
-            properties.EnableRbacAuthorization = updatedRbacAuthorization;
 
             properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :

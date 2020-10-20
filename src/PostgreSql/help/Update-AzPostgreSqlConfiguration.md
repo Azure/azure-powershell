@@ -9,7 +9,6 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a configuration of a server.
-Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## SYNTAX
 
@@ -28,7 +27,6 @@ Update-AzPostgreSqlConfiguration -InputObject <IPostgreSqlIdentity> [-Source <St
 
 ## DESCRIPTION
 Updates a configuration of a server.
-Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 

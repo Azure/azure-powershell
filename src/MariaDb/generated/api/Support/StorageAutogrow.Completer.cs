@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Enable Storage Auto Grow.</summary>
+    /// <summary>Argument completer implementation for StorageAutogrow.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrowTypeConverter))]
     public partial struct StorageAutogrow :
         System.Management.Automation.IArgumentCompleter

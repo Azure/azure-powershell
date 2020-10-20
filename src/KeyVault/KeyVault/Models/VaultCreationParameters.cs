@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool EnabledForDiskEncryption { get; set; }
         public bool? EnableSoftDelete { get; set; }
         public bool? EnablePurgeProtection { get; set; }
-        public bool? EnableRbacAuthorization { get; set; }
         public int? SoftDeleteRetentionInDays { get; set; }
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }

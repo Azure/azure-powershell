@@ -184,11 +184,6 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasEncryptionKeyVersion) {
                 $workspace.EncryptionKeyVersion = $EncryptionKeyVersion
-            } else {
-                if ($workspace.PrepareEncryption)
-                {
-                    $workspace.EncryptionKeyVersion = ""
-                }
             }
             if ($hasTag) {
                 $workspace.Tag = $Tag

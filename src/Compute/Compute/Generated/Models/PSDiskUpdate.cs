@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Encryption Encryption { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public DiskSku Sku { get; set; }
-        public string NetworkAccessPolicy { get; set; }
-        public string DiskAccessId { get; set; }
 
     }
 }

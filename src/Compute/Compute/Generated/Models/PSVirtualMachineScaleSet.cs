@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public bool? ZoneBalance { get; set; }
         public int? PlatformFaultDomainCount { get; set; }
         public SubResource ProximityPlacementGroup { get; set; }
-        public SubResource HostGroup { get; set; }
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
         public ScaleInPolicy ScaleInPolicy { get; set; }
         public VirtualMachineScaleSetIdentity Identity { get; set; }

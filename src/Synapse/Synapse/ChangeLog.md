@@ -50,16 +50,6 @@
     - Add `Start-AzSynapseTrigger` cmdlet
     - Add `Stop-AzSynapseTrigger` cmdlet
     - Add `Get-AzSynapseTriggerRun` cmdlet
-* Added support for operation of Synapse DataFlow
-    - Add `Get-AzSynapseDataFlow` cmdlet
-    - Add `Remove-AzSynapseDataFlow` cmdlet
-    - Add `Set-AzSynapseDataFlow` cmdlet
-    - Add `New-AzSynapseDataFlow` cmdlet
-* Added support for operation of Synapse Dataset
-    - Add `Get-AzSynapseDataset` cmdlet
-    - Add `Remove-AzSynapseDataset` cmdlet
-    - Add `Set-AzSynapseDataset` cmdlet
-    - Add `New-AzSynapseDataset` cmdlet
 
 ## Version 0.2.0
 

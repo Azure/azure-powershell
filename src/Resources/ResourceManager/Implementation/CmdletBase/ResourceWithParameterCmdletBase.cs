@@ -18,12 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -45,10 +41,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
         protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
 
-        protected const string TemplateSpecResourceIdParameterSetName = "ByTemplateSpecResourceId";
-        protected const string TemplateSpecResourceIdParameterFileParameterSetName = "ByTemplateSpecResourceIdAndParams";
-        protected const string TemplateSpecResourceIdParameterUriParameterSetName = "ByTemplateSpecResourceIdAndParamsUri";
-
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
         private Hashtable templateObject;
@@ -56,8 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string templateFile;
 
         private string templateUri;
-
-        private string templateSpecId;
 
         protected ResourceWithParameterCmdletBase()
         {
@@ -78,8 +68,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
@@ -88,8 +76,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterUri { get; set; }
@@ -127,40 +113,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateSpecId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. " +
                                                     "This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and " +
                                                     "error out immediately if a parameter was found not to be bound in the template. For non-interactive scripts, -SkipTemplateParameterPrompt can be provided " +
                                                     "to provide a better error message in the case where not all required parameters are satisfied.")]
         public SwitchParameter SkipTemplateParameterPrompt { get; set; }
-
-        private TemplateSpecsSdkClient templateSpecsSdkClient;
-
-        /// <summary>
-        /// Gets or sets the Template Specs Azure sdk client wrapper
-        /// </summary>
-        public TemplateSpecsSdkClient TemplateSpecsSdkClient
-        {
-            get
-            {
-                if (this.templateSpecsSdkClient == null)
-                {
-                    this.templateSpecsSdkClient = new TemplateSpecsSdkClient(DefaultContext);
-                }
-
-                return this.templateSpecsSdkClient;
-            }
-
-            set { this.templateSpecsSdkClient = value; }
-        }
 
         public object GetDynamicParameters()
         {
@@ -223,40 +180,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             TemplateUri,
-                            TemplateParameterObject,
-                            TemplateParameterUri,
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                    }
-                }
-                else if (!string.IsNullOrEmpty(TemplateSpecId) &&
-                    !TemplateSpecId.Equals(templateSpecId, StringComparison.OrdinalIgnoreCase))
-                {
-                    templateSpecId = TemplateSpecId;
-                    ResourceIdentifier resourceIdentifier = new ResourceIdentifier(templateSpecId);
-                    if(!resourceIdentifier.ResourceType.Equals("Microsoft.Resources/templateSpecs/versions", StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new PSArgumentException("No version found in Resource ID");
-                    }
-
-                    var templateSpecVersion = TemplateSpecsSdkClient.GetTemplateSpec(
-                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
-                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName).Versions.Single();
-
-                    var templateObj = JObject.Parse(templateSpecVersion.Template);
-
-                    if (string.IsNullOrEmpty(TemplateParameterUri))
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateObj,
-                            TemplateParameterObject,
-                            this.ResolvePath(TemplateParameterFile),
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                    }
-                    else
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateObj,
                             TemplateParameterObject,
                             TemplateParameterUri,
                             MyInvocation.MyCommand.Parameters.Keys.ToArray());

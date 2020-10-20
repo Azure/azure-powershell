@@ -21,12 +21,10 @@ using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -43,8 +41,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (context.Environment == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
 
-            ServiceClientCredentials clientCredentials = authFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
-            this.keyVaultClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<KeyVaultClient>(clientCredentials);
+            var credential = new DataServiceCredential(authFactory, context, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+            this.keyVaultClient = new KeyVaultClient(credential.OnAuthentication);
+
 
             this.vaultUriHelper = new VaultUriHelper(
                 context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix));

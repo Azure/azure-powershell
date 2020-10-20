@@ -36,14 +36,6 @@ PS C:\> Reset-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -
 
 Reset the policy to the default for the Attestation Provider *pshtest* for Tee type *SgxEnclave*.
 
-### Example 2
-```powershell
-PS C:\> $resetJwt = Get-Content -Path .\reset.policy.txt.signed.txt
-PS C:\> Reset-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave -Policy $resetJwt
-```
-
-If the Attestation Provider *pshtest* is configured to use the isolated trust model, reset the policy to the default for Tee type *SgxEnclave* by including a signed policy.
-
 ## PARAMETERS
 
 ### -DefaultProfile

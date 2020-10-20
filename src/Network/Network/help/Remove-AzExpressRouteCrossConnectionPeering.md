@@ -158,7 +158,7 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 [Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
 
-[Get-AzExpressRouteCrossConnectionPeering](./Get-AzExpressRouteCrossConnectionPeering.md)
+[Get-AzExpressRouteCrossConnectionPeering](New-AzExpressRouteCrossConnectionPeering.md)
 
 [Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
 

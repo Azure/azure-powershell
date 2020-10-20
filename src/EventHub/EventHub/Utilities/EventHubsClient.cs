@@ -411,60 +411,6 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSEventHubAttributes(response);
         }
 
-        public PSEventHubClusterAttributes CreateOrUpdateEventHubCluster(string resourceGroupName, string clusterName, PSEventHubClusterAttributes parameter)
-        {
-            var parameterCluster = new Management.EventHub.Models.Cluster();
-
-            parameterCluster.Location = parameter.Location;
-            parameterCluster.Sku = new ClusterSku();
-            parameterCluster.Sku.Capacity = parameter.Sku.Capacity;
-            parameterCluster.Tags = parameter.Tags;
-
-            Management.EventHub.Models.Cluster response = Client.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameterCluster);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-        public PSEventHubClusterAttributes UpdateEventHubCluster(string resourceGroupName, string clusterName, PSEventHubClusterAttributes parameter)
-        {
-            var parameterCluster = new Management.EventHub.Models.Cluster();
-
-            parameterCluster.Location = parameter.Location;
-            parameterCluster.Sku = new ClusterSku();
-            parameterCluster.Sku.Capacity = parameter.Sku.Capacity;
-            parameterCluster.Tags = parameter.Tags;
-
-            Management.EventHub.Models.Cluster response = Client.Clusters.Update(resourceGroupName, clusterName, parameterCluster);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-
-        public PSEventHubClusterAttributes GetEventHubCluster(string resourceGroupName, string clusterName)
-        {
-            Management.EventHub.Models.Cluster response = Client.Clusters.Get(resourceGroupName, clusterName);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-        public IEnumerable<PSEventHubsAvailableCluster> GetEventHubAvailableClusters()
-        {
-            var regionListResponse = Client.Clusters.ListAvailableClusterRegion();
-            IEnumerable<PSEventHubsAvailableCluster> response = regionListResponse.Value.Select(resource => new PSEventHubsAvailableCluster(resource));
-            return response;
-        }
-
-        public IEnumerable<PSEventHubClusterAttributes> ListEventHubCluster(string resourceGroupName)
-        {
-            var listResponse = Client.Clusters.ListByResourceGroup(resourceGroupName);
-            var resourceList = listResponse.Select(resource => new PSEventHubClusterAttributes(resource));
-            return resourceList;
-        }
-
-        public bool DeleteEventHubCluster(string resourceGroupName, string clusterName)
-        {
-            Client.Clusters.Delete(resourceGroupName, clusterName);
-            return true;
-        }
-
-
         public bool DeleteEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
             Client.EventHubs.Delete(resourceGroupName, namespaceName, eventHubName);
@@ -699,7 +645,6 @@ namespace Microsoft.Azure.Commands.Eventhub
             networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
-            networkRuleSet.TrustedServiceAccessEnabled = psNetworkRuleSetAttributes.TrustedServiceAccessEnabled;
 
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {

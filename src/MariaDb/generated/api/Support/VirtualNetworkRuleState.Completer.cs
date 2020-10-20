@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Virtual Network Rule State</summary>
+    /// <summary>Argument completer implementation for VirtualNetworkRuleState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleStateTypeConverter))]
     public partial struct VirtualNetworkRuleState :
         System.Management.Automation.IArgumentCompleter

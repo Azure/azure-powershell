@@ -148,7 +148,7 @@ PS C:\> Restore-AzSqlinstanceDatabase -InputObject $deletedDatabase[0] -PointInT
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'.
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
 
-### Example 6: Restore a database from LTR backup.
+### Example 6: Restore a database from LTR backup. 
 ```
 PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000 -TargetInstanceDatabaseName restoreTarget -TargetInstanceName testInstance -TargetResourceGroupName testResourceGroup
 

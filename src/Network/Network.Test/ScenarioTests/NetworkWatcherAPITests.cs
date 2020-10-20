@@ -66,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
         {
@@ -74,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestFlowLog()
         {
@@ -123,7 +123,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestCRUDFlowLog()
         {

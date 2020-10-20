@@ -150,8 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
-                LicenseType = model.LicenseType,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
+                LicenseType = model.LicenseType
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -215,7 +214,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.CopyLocation = database.Location;
             model.CreationDate = database.CreationDate.Value;
             model.LicenseType = database.LicenseType;
-            model.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
 
             return model;
         }
@@ -275,8 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
-                LicenseType = model.LicenseType,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                LicenseType = model.LicenseType
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
@@ -465,51 +462,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             }
 
             return GetLink(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);
-        }
-
-        /// <summary>
-        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        private static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
-        {
-            switch (backupStorageRedundancy)
-            {
-                case "GRS":
-                    return "Geo";
-                case "LRS":
-                    return "Local";
-                case "ZRS":
-                    return "Zone";
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
-        {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
-            {
-                return null;
-            }
-
-            switch (backupStorageRedundancy.ToLower())
-            {
-                case "geo":
-                    return "GRS";
-                case "local":
-                    return "LRS";
-                case "zone":
-                    return "ZRS";
-                default:
-                    return null;
-            }
         }
     }
 }

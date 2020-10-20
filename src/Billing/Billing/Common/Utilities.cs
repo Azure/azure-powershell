@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Billing.Models;
-using Microsoft.Azure.Management.Billing.Models;
-
 namespace Microsoft.Azure.Commands.Billing.Common
 {
     using System.Linq;
@@ -32,23 +28,5 @@ namespace Microsoft.Azure.Commands.Billing.Common
             var parts = resourceId.Split('/');
             return parts.LastOrDefault();            
         }
-    }
-
-    public static class InvoiceExtensions
-    {
-        public static PSAmount ToPSAmount(this Amount amount) =>
-            new PSAmount
-            {
-                Value = amount.Value,
-                Currency = amount.Currency
-            };
-
-        public static PSInvoiceDocument ToPSInvoiceDocument(this Document invoiceDocument) =>
-        new PSInvoiceDocument
-        {
-            Kind = invoiceDocument.Kind,
-            Source = invoiceDocument.Source,
-            Url = invoiceDocument.Url
-        };
     }
 }

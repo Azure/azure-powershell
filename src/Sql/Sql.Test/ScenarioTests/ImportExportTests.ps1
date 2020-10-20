@@ -20,152 +20,117 @@
 function Test-ExportDatabase
 {
 	# Setup	
-    $testSuffix = 90070
+    $testSuffix = 90063
     $createServer = $true
     $createDatabase = $true
     $createFirewallRule = $true
     $operationName = "Export"
-    $succeeded = $true
-    $useNetworkIsolation = $false
+    $succeeded = $true     
    
-    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded $useNetworkIsolation
+    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded
 }
 
-function Test-ExportDatabaseNetworkIsolation
-{
-    # Setup
-    $testSuffix = 90070
-    $createServer = $true
-    $createDatabase = $true
-    $createFirewallRule = $true
-    $operationName = "Export"
-    $succeeded = $true
-    $useNetworkIsolation = $true
-   
-    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded $useNetworkIsolation
-}
-
-function Test-ImportNewDatabase
+function Test-ImportDatabase
 {
 	# Setup	
-    $testSuffix = 90071
+    $testSuffix = 90062
     $createServer = $true
     $createDatabase = $false
     $createFirewallRule = $true
-    $operationName = "ImportNew"
+    $operationName = "Import"
     $succeeded = $true
-    $useNetworkIsolation = $false
 
-    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded $useNetworkIsolation 
+    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded
 }
 
-function Test-ImportNewDatabaseNetworkIsolation
-{
-    # Setup
-    $testSuffix = 90071
-    $createServer = $true
-    $createDatabase = $false
-    $createFirewallRule = $true
-    $operationName = "ImportNew"
-    $succeeded = $true
-    $useNetworkIsolation = $true
-
-    Verify-ImportExport $testSuffix $createServer $createDatabase $createFirewallRule $operationName $succeeded $useNetworkIsolation 
-}
-
- function Verify-ImportExport($testSuffix, $createServer, $createDatabase, $createFirewallRule, $operationName, $succeeded, $useNetworkIsolation)
+ function Verify-ImportExport($testSuffix, $createServer, $createDatabase, $createFirewallRule, $operationName, $succeeded)
  {
 	# Setup	   
     $params = Get-SqlDatabaseImportExportTestEnvironmentParameters  $testSuffix
     $rg = New-AzResourceGroup -Name $params.rgname -Location $params.location
     $export = "Export"
-    $importNew = "ImportNew"
+    $import = "Import"
 
 	try
-	{
+	{       
         Assert-NotNull $params.storageKey
         Assert-NotNull $params.importBacpacUri
         Assert-NotNull $params.exportBacpacUri
-        Assert-NotNull $params.storageResourceId
 
         $password = $params.password
-        
         $secureString = ($password | ConvertTo-SecureString -asPlainText -Force) 
-        $credentials = new-object System.Management.Automation.PSCredential($params.userName, $secureString)
-        $rgname = $params.rgname
-        $serverName = $params.serverName
-
+        $credentials = new-object System.Management.Automation.PSCredential($params.userName, $secureString) 	
         if($createServer -eq $true){
-            $server = New-AzSqlServer -ResourceGroupName  $rgname -ServerName $serverName -ServerVersion $params.version -Location $params.location -SqlAdministratorCredentials $credentials       
+            $server = New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion $params.version -Location $params.location -SqlAdministratorCredentials $credentials       
         }
 
         if($createDatabase -eq $true){
-            $standarddb = New-AzSqlDatabase -ResourceGroupName $rgname -ServerName $serverName -DatabaseName $params.databaseName
+            $standarddb = New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
         }
         
         if($createFirewallRule -eq $true){
-            New-AzSqlServerFirewallRule -ResourceGroupName $rgname -ServerName $serverName -AllowAllAzureIPs
+            New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -AllowAllAzureIPs
         }
-
-        $subscriptionId = (Get-AzContext).Subscription.Id
-
-        $storageResourceId = $params.storageResourceId
-        $serverResourceId = "/subscriptions/${subscriptionId}/resourceGroups/${rgname}/providers/Microsoft.Sql/servers/${serverName}"
 
         $operationStatusLink = ""
-
+                
         if($operationName -eq $export){
-            # Export database.
-            if ($useNetworkIsolation -eq $true)
-            {
-                $exportResponse = New-AzSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType -UseNetworkIsolation $true -StorageAccountResourceIdForPrivateLink $storageResourceId -SqlServerResourceIdForPrivateLink $serverResourceId
-            }
-            else
-            {
-                $exportResponse = New-AzSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
-            }
-            Write-Output "Assert-NotNull exportResponse"
+            # Export database.       
+            $exportResponse = New-AzSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
             Assert-NotNull $exportResponse
-            Write-Output (ConvertTo-Json $exportResponse)
-            #$operationStatusLink = $exportResponse.OperationStatusLink
-            #Assert-AreEqual $exportResponse.ResourceGroupName $params.rgname
-            #Assert-AreEqual $exportResponse.ServerName $params.serverName
-            #Assert-AreEqual $exportResponse.DatabaseName $params.databaseName
-            #Assert-AreEqual $exportResponse.StorageKeyType $params.storageKeyType
-            #Assert-Null $exportResponse.StorageKey
-            #Assert-AreEqual $exportResponse.StorageUri $params.exportBacpacUri
-            #Assert-AreEqual $exportResponse.AdministratorLogin $params.userName
-            #Assert-Null $exportResponse.AdministratorLoginPassword
-            #Assert-AreEqual $exportResponse.AuthenticationType $params.authType
+            $operationStatusLink = $exportResponse.OperationStatusLink        
+            Assert-AreEqual $exportResponse.ResourceGroupName $params.rgname
+            Assert-AreEqual $exportResponse.ServerName $params.serverName
+            Assert-AreEqual $exportResponse.DatabaseName $params.databaseName
+            Assert-AreEqual $exportResponse.StorageKeyType $params.storageKeyType
+            Assert-Null $exportResponse.StorageKey
+            Assert-AreEqual $exportResponse.StorageUri $params.exportBacpacUri
+            Assert-AreEqual $exportResponse.AdministratorLogin $params.userName
+            Assert-Null $exportResponse.AdministratorLoginPassword
+            Assert-AreEqual $exportResponse.AuthenticationType $params.authType
         }
 
-        if($operationName -eq $importNew){
-            if($useNetworkIsolation -eq $true)
-            {
-                $importResponse = New-AzSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType  -UseNetworkIsolation $true -StorageAccountResourceIdForPrivateLink $storageResourceId -SqlServerResourceIdForPrivateLink $serverResourceId
-            }
-            else
-            {
-                $importResponse = New-AzSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType 
-            }
-
-            Write-Output "Assert-NotNull importResponse"
+        if($operationName -eq $import){
+            $importResponse = New-AzSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType
             Assert-NotNull $importResponse
-            Write-Output (ConvertTo-Json $importResponse)
-            #$operationStatusLink = $importResponse.OperationStatusLink
-            #Assert-AreEqual $importResponse.ResourceGroupName $params.rgname
-            #Assert-AreEqual $importResponse.ServerName $params.serverName
-            #Assert-AreEqual $importResponse.DatabaseName $params.databaseName
-            #Assert-AreEqual $importResponse.StorageKeyType $params.storageKeyType
-            #Assert-Null $importResponse.StorageKey
-            #Assert-AreEqual $importResponse.StorageUri $params.importBacpacUri
-            #Assert-AreEqual $importResponse.AdministratorLogin $params.userName
-            #Assert-Null $importResponse.AdministratorLoginPassword
-            #Assert-AreEqual $importResponse.AuthenticationType $params.authType
-            #Assert-AreEqual $importResponse.Edition $params.databaseEdition
-            #Assert-AreEqual $importResponse.ServiceObjectiveName $params.serviceObjectiveName
-            #Assert-AreEqual $importResponse.DatabaseMaxSizeBytes $params.databaseMaxSizeBytes
+            $operationStatusLink = $importResponse.OperationStatusLink
+            Assert-AreEqual $importResponse.ResourceGroupName $params.rgname
+            Assert-AreEqual $importResponse.ServerName $params.serverName
+            Assert-AreEqual $importResponse.DatabaseName $params.databaseName
+            Assert-AreEqual $importResponse.StorageKeyType $params.storageKeyType
+            Assert-Null $importResponse.StorageKey
+            Assert-AreEqual $importResponse.StorageUri $params.importBacpacUri
+            Assert-AreEqual $importResponse.AdministratorLogin $params.userName
+            Assert-Null $importResponse.AdministratorLoginPassword
+            Assert-AreEqual $importResponse.AuthenticationType $params.authType
+            Assert-AreEqual $importResponse.Edition $params.databaseEdition
+            Assert-AreEqual $importResponse.ServiceObjectiveName $params.serviceObjectiveName
+            Assert-AreEqual $importResponse.DatabaseMaxSizeBytes $params.databaseMaxSizeBytes
         }
+		
+        Assert-NotNull $operationStatusLink		
+
+        #Get status
+        $statusInProgress = "InProgress"
+        $statusSucceeded = "Succeeded"
+        $status = "InProgress"
+
+        if($succeeded -eq $true){
+            Write-Output "Getting Status" 
+            while($status -eq $statusInProgress){
+                $statusResponse = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $operationStatusLink
+                Write-Output "Import Export Status Message:" + $statusResponse.StatusMessage  
+                Assert-AreEqual $statusResponse.OperationStatusLink $operationStatusLink
+                $status = $statusResponse.Status
+                 if($status -eq $statusInProgress){
+                    Assert-NotNull $statusResponse.LastModifiedTime
+                    Assert-NotNull $statusResponse.QueuedTime
+                    Assert-NotNull $statusResponse.StatusMessage
+                 }
+            }
+            Assert-AreEqual $status $statusSucceeded
+            Write-Output "ImportExportStatus:" + $status 
+        }      
     }
     finally
     {

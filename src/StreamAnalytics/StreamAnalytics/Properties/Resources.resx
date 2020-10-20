@@ -147,22 +147,22 @@ Timestamp (Utc):{4}</value>
   </data>
   <data name="JobExists" xml:space="preserve">
     <value>A stream analytics job with the name '{0}' in the resource group '{1}' already exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="InputExists" xml:space="preserve">
     <value>An input with the name '{0}' in the stream analytics job '{1}' in the resource group '{2}' already exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="OutputExists" xml:space="preserve">
     <value>An output with the name '{0}' in the stream analytics job '{1}' in the resource group '{2}' already exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="TransformationExists" xml:space="preserve">
     <value>An transformation with the name '{0}' in the stream analytics job '{1}' in the resource group '{2}' already exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="JobCreating" xml:space="preserve">
@@ -212,7 +212,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="FunctionExists" xml:space="preserve">
     <value>A function with the name '{0}' in the stream analytics job '{1}' in the resource group '{2}' already exists. 
-Continuing execution may overwrite the existing one. 
+Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="FunctionNameCannotBeEmpty" xml:space="preserve">

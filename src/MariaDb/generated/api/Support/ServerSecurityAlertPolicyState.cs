@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
     public partial struct ServerSecurityAlertPolicyState :
         System.IEquatable<ServerSecurityAlertPolicyState>
     {

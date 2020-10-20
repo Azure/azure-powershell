@@ -28,8 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, "Needs to be re-recorded")]
+        // TODO: Remove "CallSite.Target" from Get-SqlDatabaseImportExportTestEnvironmentParameters in GetName when re-recording
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
@@ -37,25 +40,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportDatabase_NetworkIsolation()
-        {
-            RunPowerShellTest("Test-ExportDatabaseNetworkIsolation");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
-        public void TestImportNewDatabase()
+        // TODO: Remove "CallSite.Target" from Get-SqlDatabaseImportExportTestEnvironmentParameters in GetName when re-recording
+        public void TestImportDatabase()
         {
-            RunPowerShellTest("Test-ImportNewDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Sql, "Needs to be re-recorded")]
-        public void TestImportNewDatabase_NetworkIsolation()
-        {
-            RunPowerShellTest("Test-ImportNewDatabaseNetworkIsolation");
+            RunPowerShellTest("Test-ImportDatabase");
         }
     }
 }

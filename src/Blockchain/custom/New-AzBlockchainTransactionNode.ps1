@@ -135,7 +135,7 @@ param(
 process {
     try {
         if ($PSBoundParameters.ContainsKey('Password')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
+            $psTxt = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['Password']))
             $PSBoundParameters.Remove('Password')
             $PSBoundParameters.Add('Password', $psTxt)
         }

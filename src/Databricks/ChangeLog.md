@@ -18,11 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update databricks workspace withouth -EncryptionKeyVersion that the key version will be empty.
-
-## Version 1.0.0
-* General availability of 'Az.Databricks' module
-* Added support for virtual network peering
 
 ## Version 0.2.0
 * Added support for DBFS Double Encryption Support

@@ -381,67 +381,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
         }
 
-        /// <summary>
-        /// list blobs by blob Tag
-        /// </summary>
-        /// <param name="containerName">container name</param>
-        /// <param name="prefix">blob preifx</param>
-        /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByTag(long taskId, IStorageBlobManagement localChannel, string tagFilterSqlExpression)
-        {
-
-            BlobServiceClient blobServiceClient = Util.GetTrack2BlobServiceClient(localChannel.StorageContext, ClientOptions);
-
-            int listCount = InternalMaxCount;
-            int MaxListCount = 5000;
-            int requestCount = MaxListCount;
-            int realListCount = 0;
-            BlobContinuationToken continuationToken = ContinuationToken;
-            string track2ContinuationToken = this.ContinuationToken is null ? null : this.ContinuationToken.NextMarker;
-
-            do
-            {
-                requestCount = Math.Min(listCount, MaxListCount);
-                realListCount = 0;
-                IAsyncEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
-                    .AsPages(track2ContinuationToken, requestCount)
-                    .GetAsyncEnumerator();
-
-                Page<TaggedBlobItem> page;
-                await enumerator.MoveNextAsync().ConfigureAwait(false);
-                page = enumerator.Current;
-                foreach (TaggedBlobItem item in page.Values)
-                {
-                    BlobContainerClient track2container = blobServiceClient.GetBlobContainerClient(item.BlobContainerName);
-                    OutputStream.WriteObject(taskId, GetAzureStorageBlob(item, track2container, localChannel.StorageContext, page.ContinuationToken, ClientOptions));
-                    realListCount++;
-                }
-                track2ContinuationToken = page.ContinuationToken;
-
-                if (InternalMaxCount != int.MaxValue)
-                {
-                    listCount -= realListCount;
-                }
-            } while (listCount > 0 && !string.IsNullOrEmpty(track2ContinuationToken));          
-        }
-
         public static AzureStorageBlob GetAzureStorageBlob(BlobItem blobItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
         {
             BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options, blobItem);
-            if (continuationToken != null)
-            {
-                BlobContinuationToken token = new BlobContinuationToken();
-                token.NextMarker = continuationToken;
-                outputblob.ContinuationToken = token;
-            }
-            return outputblob;
-        }
-
-        public static AzureStorageBlob GetAzureStorageBlob(TaggedBlobItem blobTagItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
-        {
-            BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobTagItem.BlobName, context, options: options);
-            AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options);
             if (continuationToken != null)
             {
                 BlobContinuationToken token = new BlobContinuationToken();

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>The status of the virtual network peering.</summary>
+    /// <summary>Argument completer implementation for PeeringState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringStateTypeConverter))]
     public partial struct PeeringState :
         System.Management.Automation.IArgumentCompleter

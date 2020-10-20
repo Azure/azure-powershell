@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -87,16 +86,11 @@ namespace Microsoft.Azure.Commands.Insights
             string reasonPhrase = null;
             string message = null;
             string exName = null;
-            string supressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
+
             try
             {
-                bool supressWarningOrError;
-                Boolean.TryParse(supressWarningOrErrorValue, out supressWarningOrError);
-                if (!supressWarningOrError)
-                {
-                    WriteWarningWithTimestamp("The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
-                    WriteWarningWithTimestamp("The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
-                }
+                WriteWarningWithTimestamp("*** The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
+                WriteWarningWithTimestamp("*** The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
                 this.ProcessRecordInternal();
             }
             catch (AggregateException ex)

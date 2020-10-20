@@ -17,9 +17,6 @@ Add the disk for protection for already protected azure virtual machine.
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
 
-### [Copy-AzRecoveryServicesVault](Copy-AzRecoveryServicesVault.md)
-Copies data from a vault in one region to a vault in another region.
-
 ### [Disable-AzRecoveryServicesBackupAutoProtection](Disable-AzRecoveryServicesBackupAutoProtection.md)
 Disables auto backup for a protectable item.
 
@@ -33,7 +30,7 @@ Dismounts all the files of the recovery point.
 Edits a Site Recovery plan.
 
 ### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
-The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
+This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
@@ -140,9 +137,6 @@ This command constructs the recovery configuration of a backed up item such as S
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
-### [Get-AzRecoveryServicesVaultProperty](Get-AzRecoveryServicesVaultProperty.md)
-Returns the properties of a Recovery Services Vault.
-
 ### [Get-AzRecoveryServicesVaultSettingsFile](Get-AzRecoveryServicesVaultSettingsFile.md)
 Gets the Azure Site Recovery vault settings file.
 
@@ -195,7 +189,7 @@ Creates a Backup protection policy.
 Creates a new Recovery Services vault.
 
 ### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
-The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+This command allows Azure Backup to convert the �Resource� to a �Backup Container� which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ### [Remove-AzRecoveryServicesAsrFabric](Remove-AzRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
@@ -260,9 +254,6 @@ Modifies a Backup protection policy.
 ### [Set-AzRecoveryServicesVaultContext](Set-AzRecoveryServicesVaultContext.md)
 Sets vault context.
 
-### [Set-AzRecoveryServicesVaultProperty](Set-AzRecoveryServicesVaultProperty.md)
-Updates properties of a Vault.
-
 ### [Start-AzRecoveryServicesAsrApplyRecoveryPoint](Start-AzRecoveryServicesAsrApplyRecoveryPoint.md)
 Changes a recovery point for a failed over protected item before committing the failover operation.
 
@@ -292,9 +283,6 @@ Stops an Azure Site Recovery job.
 
 ### [Stop-AzRecoveryServicesBackupJob](Stop-AzRecoveryServicesBackupJob.md)
 Cancels a running job.
-
-### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
-If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.

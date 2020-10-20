@@ -25,7 +25,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage.Blobs.Models;
     using global::Azure;
-    using Track2blobModel = global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// create a new azure container
@@ -129,10 +128,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 containerPublicAccess = PublicAccessType.BlobContainer;
             }
 
-            Track2blobModel.BlobContainerEncryptionScopeOptions encryptionScopeOption = null;
+            BlobContainerEncryptionScopeOptions encryptionScopeOption = null;
             if (this.DefaultEncryptionScope != null)
             {
-                encryptionScopeOption = new Track2blobModel.BlobContainerEncryptionScopeOptions()
+                encryptionScopeOption = new BlobContainerEncryptionScopeOptions()
                 {
                     // parameterset can ensure the 2 parameters must be set together.
                     DefaultEncryptionScope = this.DefaultEncryptionScope,

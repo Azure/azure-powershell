@@ -12,8 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -29,8 +33,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
-
-            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
+            
+            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
         }
 

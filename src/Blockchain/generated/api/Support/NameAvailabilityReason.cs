@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Gets or sets the name availability reason.</summary>
     public partial struct NameAvailabilityReason :
         System.IEquatable<NameAvailabilityReason>
     {

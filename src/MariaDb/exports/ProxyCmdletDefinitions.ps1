@@ -185,26 +185,6 @@ Name            Type
 ----            ----
 max_connections Microsoft.DBforMariaDB/servers/configurations
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconfiguration
 #>
@@ -372,26 +352,6 @@ Name       Type
 ----       ----
 frname-001 Microsoft.DBforMariaDB/servers/firewallRules
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
 #>
@@ -547,13 +507,11 @@ List all the replicas for a given server.
 .Example
 PS C:\> Get-AzMariaDbReplica -ServerName mariadb-test-szp6dt -ResourceGroupName mariadb-test-qu5ov0
 
-Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                       -------- ------------------ ------- ----------------------- -------   -------        --------------
-mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
-mariadb-test-szp6dt-rep154 eastus   zcsxhpasdc         10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
+Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                       -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-szp6dt-rep154 eastus   zcsxhpasdc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
 #>
@@ -690,64 +648,44 @@ Gets information about a server.
 .Example
 PS C:\> Get-AzMariaDbServer
 
-Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName    SkuTier        SslEnforcement
-----                       -------- ------------------ ------- ----------------------- -------    -------        --------------
-mrdb01                     eastus   dolauli            10.2    5120                    B_Gen5_1   Basic          Enabled
-wyunchi-10                 eastus   wyunchi            10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-wyunchi                    eastus   wyunchi            10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-wyunchi-eastus             eastus   wyunchi            10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-test-h3pame        eastus   qiszomtkpf         10.2    5120                    B_Gen5_1   Basic          Enabled
-mariadb-test-4rmtig        eastus   xofavpndqj         10.2    5120                    B_Gen5_1   Basic          Enabled
-mariadb-test-szp6dt        eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-test-9pebvn        eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-asd-01             eastus   adminuser          10.2    5120                    B_Gen5_1   Basic          Enabled
-rst-001                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rst-002                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rstrgp02-rep-003           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rstrgp02-rep-004           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
+Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                       -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mrdb01                     eastus   dolauli            10.2    5120                    B_Gen5_1          Basic          Enabled
+wyunchi-10                 eastus   wyunchi            10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+wyunchi                    eastus   wyunchi            10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+wyunchi-eastus             eastus   wyunchi            10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-h3pame        eastus   qiszomtkpf         10.2    5120                    B_Gen5_1          Basic          Enabled
+mariadb-test-4rmtig        eastus   xofavpndqj         10.2    5120                    B_Gen5_1          Basic          Enabled
+mariadb-test-szp6dt        eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-9pebvn        eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-asd-01             eastus   adminuser          10.2    5120                    B_Gen5_1          Basic          Enabled
+rst-001                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rst-002                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rstrgp02-rep-003           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rstrgp02-rep-004           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 .Example
 PS C:\> Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0
 
-Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName    SkuTier        SslEnforcement
-----                       -------- ------------------ ------- ----------------------- -------    -------        --------------
-mariadb-test-h3pame        eastus   qiszomtkpf         10.2    5120                    B_Gen5_1   Basic          Enabled
-mariadb-test-4rmtig        eastus   xofavpndqj         10.2    5120                    B_Gen5_1   Basic          Enabled
-mariadb-test-szp6dt        eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-test-9pebvn        eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4  GeneralPurpose Enabled
-mariadb-asd-01             eastus   adminuser          10.2    5120                    B_Gen5_1   Basic          Enabled
-rst-001                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rst-002                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rstrgp02-rep-003           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
-rstrgp02-rep-004           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4  GeneralPurpose Enabled
+Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                       -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-h3pame        eastus   qiszomtkpf         10.2    5120                    B_Gen5_1          Basic          Enabled
+mariadb-test-4rmtig        eastus   xofavpndqj         10.2    5120                    B_Gen5_1          Basic          Enabled
+mariadb-test-szp6dt        eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-9pebvn        eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-asd-01             eastus   adminuser          10.2    5120                    B_Gen5_1          Basic          Enabled
+rst-001                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rst-002                    eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rstrgp02-rep-003           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+rstrgp02-rep-004           eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 .Example
 PS C:\> Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0 -Name mariadb-test-h3pame
 
-Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----                -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-test-h3pame eastus   qiszomtkpf         10.2    5120                    B_Gen5_1 Basic   Enabled
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-h3pame eastus   qiszomtkpf         10.2    5120                    B_Gen5_1         Basic   Enabled
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserver
 #>
@@ -909,26 +847,6 @@ Name            Type
 ----            ----
 vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
 #>
@@ -1084,6 +1002,179 @@ end {
 
 <#
 .Synopsis
+Creates a new firewall rule or updates an existing firewall rule.
+.Description
+Creates a new firewall rule or updates an existing firewall rule.
+.Example
+PS C:\> New-AzMariaDbFirewallRule -Name firewall-101 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -EndIPAddress 0.0.2.255 -StartIPAddress 0.0.2.1
+
+Name         Type
+----         ----
+firewall-101 Microsoft.DBforMariaDB/servers/firewallRules
+
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
+#>
+function New-AzMariaDbFirewallRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('FirewallRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server firewall rule.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription ID that identifies an Azure subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            CreateExpanded = 'Az.MariaDb.private\New-AzMariaDbFirewallRule_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
 Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
@@ -1095,8 +1186,6 @@ Name     Type
 ----     ----
 vnet-001 Microsoft.DBforMariaDB/servers/virtualNetworkRules
 
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
 #>
@@ -1271,26 +1360,6 @@ Deletes a server firewall rule.
 PS C:\> Remove-AzMariaDbFirewallRule -Name frname-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule
 #>
@@ -1464,26 +1533,6 @@ PS C:\> Remove-AzMariaDbServer -Name mariadb-asd-01 -ResourceGroupName mariadb-t
 PS C:\> Get-AzMariaDbServer -Name mariadb-bc-t01 -ResourceGroupName mariadb-test-qu5ov0 | Remove-AzMariaDbServer
 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver
 #>
@@ -1648,26 +1697,6 @@ Deletes the virtual network rule with the given name.
 PS C:\> Remove-AzMariaDbVirtualNetworkRule -Name vnet-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn
 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule
 #>
@@ -1831,6 +1860,366 @@ end {
 
 <#
 .Synopsis
+Updates a configuration of a server.
+.Description
+Updates a configuration of a server.
+.Example
+PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
+
+Name                   Type
+----                   ----
+delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
+
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
+#>
+function Update-AzMariaDbConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('ConfigurationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server configuration.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription ID that identifies an Azure subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # Source of the configuration.
+    ${Source},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # Value of the configuration.
+    ${Value},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            UpdateExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Creates a new firewall rule or updates an existing firewall rule.
+.Description
+Creates a new firewall rule or updates an existing firewall rule.
+.Example
+PS C:\> Update-AzMariaDbFirewallRule -Name fr-cfgl3y -ServerName mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StartIPAddress 0.0.3.1 -EndIPAddress 0.0.3.255
+
+Name      Type
+----      ----
+fr-cfgl3y Microsoft.DBforMariaDB/servers/firewallRules
+
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
+#>
+function Update-AzMariaDbFirewallRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('FirewallRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server firewall rule.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription ID that identifies an Azure subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            UpdateExpanded = 'Az.MariaDb.private\Update-AzMariaDbFirewallRule_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MariaDb.private\Update-AzMariaDbFirewallRule_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
 Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
@@ -1842,26 +2231,6 @@ Name            Type
 ----            ----
 vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbvirtualnetworkrule
 #>
@@ -2037,9 +2406,9 @@ end {
 
 <#
 .Synopsis
-Get connection string of a MariaDB under a given framework.
+
 .Description
-Get connection string of a MariaDB under a given framework.
+
 .Example
 PS C:\> Get-AzMariaDbConnectionString -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Client ADO.NET
 
@@ -2049,38 +2418,6 @@ PS C:\> Get-AzMariaDbServer -Name mariadb-gp-t03 -ResourceGroupName lucas-manual
 
 $con=mysqli_init();mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); mysqli_real_connect($con, "mariadb-gp-t03.mariadb.database.azure.com", "adminuser@mariadb-gp-t03", {your_password}, {your_database}, 3306);
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-System.String
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IServer>: Identity Parameter
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
 #>
@@ -2126,48 +2463,39 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 
@@ -2227,448 +2555,9 @@ end {
 
 <#
 .Synopsis
-Creates a new firewall rule or updates an existing firewall rule.
+
 .Description
-Creates a new firewall rule or updates an existing firewall rule.
-.Example
-PS C:\> New-AzMariaDbFirewallRule -Name firewall-101 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -EndIPAddress 0.0.2.255 -StartIPAddress 0.0.2.1
 
-Name         StartIPAddress EndIPAddress
-----         -------------- ------------
-firewall-101 0.0.2.1        0.0.2.255
-.Example
-PS C:\> New-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
-.Example
-PS C:\> New-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
-#>
-function New-AzMariaDbFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server.
-    ${ServerName},
-
-    [Parameter()]
-    [Alias('FirewallRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server firewall rule.
-    # If not specified, the default is undefined.
-    # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
-    ${Name},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription ID that identifies an Azure subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The end IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${EndIPAddress},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The start IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${StartIPAddress},
-
-    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # Client specified single IP of the server firewall rule.
-    # Must be IPv4 format.
-    ${ClientIPAddress},
-
-    [Parameter(ParameterSetName='AllowAll', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
-    ${AllowAll},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            CreateExpanded = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
-            ClientIPAddress = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
-            AllowAll = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
-        }
-        if (('CreateExpanded', 'ClientIPAddress', 'AllowAll') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
-Creates a replica of a MariaDB server.
-.Description
-Creates a replica of a MariaDB server.
-.Example
-PS C:\> New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
-
-Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
-mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
-.Example
-PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
-
-Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
-mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
-.Example
-PS C:\> $mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
-PS C:\> New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
-
-Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
-mariadb-test-9pebvn-rep03 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-MASTER <IServer>: The source server object to restore from.
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
-#>
-function New-AzMariaDbReplica {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
-[CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('ReplicaServerName', 'Name')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # Replica name.
-    ${ReplicaName},
-
-    [Parameter(ParameterSetName='ServerName', Mandatory)]
-    [Alias('ServerName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # MariaDB server name.
-    ${MasterName},
-
-    [Parameter(ParameterSetName='ServerName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription ID is part of the URI for every service call.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
-    [Alias('InputObject')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
-    # The source server object to restore from.
-    # To construct, see NOTES section for MASTER properties and create a hash table.
-    ${Master},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The location the resource resides in.
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The name of the sku, typically, tier + family + cores, e.g.
-    # B_Gen4_1, GP_Gen5_8.
-    ${Sku},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
-    [System.Collections.Hashtable]
-    # Application-specific metadata in the form of key-value pairs.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            ServerName = 'Az.MariaDb.custom\New-AzMariaDbReplica';
-            ServerObject = 'Az.MariaDb.custom\New-AzMariaDbReplica';
-        }
-        if (('ServerName', 'ServerObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
-Creates a new MariaDB.
-.Description
-Creates a new MariaDB.
 .Example
 PS C:\> New-AzMariaDbServer -Name mariadb-aassd-01 -ResourceGroupName lucas-manual-test -Sku 'B_Gen5_1' -Location eastus
 cmdlet New-AzMariaDbServer at command pipeline position 1
@@ -2676,12 +2565,10 @@ Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
 
-Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----             -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
 
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
@@ -2693,7 +2580,7 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # MariaDB server name.
+    # MariaDb server name.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -2753,7 +2640,6 @@ param(
     ${GeoRedundantBackup},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
@@ -2783,60 +2669,49 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 
@@ -2895,9 +2770,192 @@ end {
 
 <#
 .Synopsis
-Restarts a server.
+
 .Description
-Restarts a server.
+
+.Example
+PS C:\> New-AzMariaDbServerReplica -ServerName mariadb-test-9pebvn -Name mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
+
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+.Example
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbServerReplica -Name mariadb-test-9pebvn-rep02
+
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
+
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
+#>
+function New-AzMariaDbServerReplica {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+[CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ReplicaServerName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # Replica name.
+    ${Name},
+
+    [Parameter(ParameterSetName='ServerName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # MariaDb server name.
+    ${ServerName},
+
+    [Parameter(ParameterSetName='ServerName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription ID is part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+    # The source server object to restore from.
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The location the resource resides in.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # The name of the sku, typically, tier + family + cores, e.g.
+    # B_Gen4_1, GP_Gen5_8.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+    [System.Collections.Hashtable]
+    # Application-specific metadata in the form of key-value pairs.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Uri]
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            ServerName = 'Az.MariaDb.custom\New-AzMariaDbServerReplica';
+            ServerObject = 'Az.MariaDb.custom\New-AzMariaDbServerReplica';
+        }
+        if (('ServerName', 'ServerObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+
+.Description
+
 .Example
 PS C:\> Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0
 
@@ -2905,26 +2963,6 @@ PS C:\> Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mar
 PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | Restart-AzMariaDbServer
 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
@@ -2936,27 +2974,22 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # The name of the server.
     ${Name},
 
     [Parameter(ParameterSetName='ServerName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
-    # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
@@ -2965,64 +2998,54 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
     ${NoWait},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -3082,55 +3105,23 @@ end {
 
 <#
 .Synopsis
-Restore a MariaDB from a existing MariaDB.
+
 .Description
-Restore a MariaDB from a existing MariaDB.
+
 .Example
 PS C:\> Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   -------        --------------
-restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 .Example
 PS C:\> $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
 PS C:\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----         -------- ------------------ ------- ----------------------- -------   -------        --------------
-restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IServer>: The source server object to restore from.
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
 #>
@@ -3141,42 +3132,33 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # The dest server name to restore from.
     ${Name},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # The source server name to restore from.
     ${ServerName},
 
     [Parameter(ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
-    # The source server object to restore from.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets the subscription Id which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID is part of the URI for every service call.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.DateTime]
-    # region PointInTimeRestore
-    #  The location the resource resides in.
     ${RestorePointInTime},
 
     [Parameter()]
@@ -3189,7 +3171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
     [System.Collections.Hashtable]
-    # Application-specific metadata in the form of key-value pairs.
     ${Tag},
 
     [Parameter()]
@@ -3197,60 +3178,49 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 
@@ -3309,479 +3279,22 @@ end {
 
 <#
 .Synopsis
-Updates a configuration of a server.
-Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
+
 .Description
-Updates a configuration of a server.
-Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
-.Example
-PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
 
-Name                   Type
-----                   ----
-delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
-#>
-function Update-AzMariaDbConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('ConfigurationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server configuration.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server.
-    ${ServerName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription ID that identifies an Azure subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # Source of the configuration.
-    ${Source},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # Value of the configuration.
-    ${Value},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
-            UpdateViaIdentityExpanded = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
-Creates a new firewall rule or updates an existing firewall rule.
-.Description
-Creates a new firewall rule or updates an existing firewall rule.
-.Example
-PS C:\> Update-AzMariaDbFirewallRule -Name fr-cfgl3y -ServerName mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StartIPAddress 0.0.3.1 -EndIPAddress 0.0.3.255
-
-Name      StartIPAddress EndIPAddress
-----      -------------- ------------
-fr-cfgl3y 0.0.3.1        0.0.3.255
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/mariadb-test-qu5ov0/providers/Microsoft.DBforMariaDB/servers/mariadb-test-4rmtig/firewallRules/fr-cfgl3y"
-PS C:\> Update-AzMariaDbFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name      StartIPAddress EndIPAddress
-----      -------------- ------------
-fr-cfgl3y 0.0.0.2        0.0.0.3
-.Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/mariadb-test-qu5ov0/providers/Microsoft.DBforMariaDB/servers/mariadb-test-4rmtig/firewallRules/fr-cfgl3y"
-PS C:\> Update-AzMariaDbFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
-
-Name      StartIPAddress EndIPAddress
-----      -------------- ------------
-fr-cfgl3y 0.0.0.2        0.0.0.2
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
-#>
-function Update-AzMariaDbFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-    [Alias('FirewallRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server firewall rule.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server.
-    ${ServerName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='ClientIPAddress')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription ID that identifies an Azure subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The end IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${EndIPAddress},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # The start IP address of the server firewall rule.
-    # Must be IPv4 format.
-    ${StartIPAddress},
-
-    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.String]
-    # Client specified single IP of the server firewall rule.
-    # Must be IPv4 format.
-    ${ClientIPAddress},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.MariaDb.custom\Update-AzMariaDbFirewallRule';
-            ClientIPAddress = 'Az.MariaDb.custom\Update-AzMariaDbFirewallRule';
-            ClientIPAddressViaIdentity = 'Az.MariaDb.custom\Update-AzMariaDbFirewallRule';
-            UpdateViaIdentityExpanded = 'Az.MariaDb.custom\Update-AzMariaDbFirewallRule';
-        }
-        if (('UpdateExpanded', 'ClientIPAddress') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
-.Description
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
 PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageInMb 8192
 
-Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----                -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1 Basic   Enabled
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1         Basic   Enabled
 .Example
 PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageInMb (8192+1024)
 
-Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----                -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1 Basic   Enabled
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1         Basic   Enabled
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
@@ -3793,7 +3306,7 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # MariaDB server name
+    # MariaDb server name
     ${Name},
 
     [Parameter(ParameterSetName='ServerName', Mandatory)]
@@ -3847,7 +3360,6 @@ param(
     ${GeoRedundantBackup},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
@@ -3878,60 +3390,49 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 

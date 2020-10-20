@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

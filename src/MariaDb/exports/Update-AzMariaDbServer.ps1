@@ -15,46 +15,22 @@
 
 <#
 .Synopsis
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+
 .Description
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+
 .Example
 PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageInMb 8192
 
-Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----                -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1 Basic   Enabled
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1         Basic   Enabled
 .Example
 PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageInMb (8192+1024)
 
-Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----                -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1 Basic   Enabled
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1         Basic   Enabled
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
@@ -66,7 +42,7 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # MariaDB server name
+    # MariaDb server name
     ${Name},
 
     [Parameter(ParameterSetName='ServerName', Mandatory)]
@@ -120,7 +96,6 @@ param(
     ${GeoRedundantBackup},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
@@ -151,60 +126,49 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # region DefaultParameters
-    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 

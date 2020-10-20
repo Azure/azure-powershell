@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.Aks.Properties;
-using Microsoft.Azure.Commands.Aks.Utils;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
@@ -55,30 +52,9 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Low", "Regular")]
         public string NodeSetPriority { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
-        [PSArgumentCompleter("System", "User")]
-        public string NodePoolMode { get; set; } = "System";
-
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
         [PSArgumentCompleter("Delete", "Deallocate")]
         public string NodeScaleSetEvictionPolicy { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Add-on names to be enabled when cluster is created.")]
-        [ValidateNotNullOrEmpty()]
-        [PSArgumentCompleter("HttpApplicationRouting", "Monitoring", "VirtualNode", "AzurePolicy", "KubeDashboard")]
-        public string[] AddOnNameToBeEnabled { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Id of the workspace of Monitoring addon.")]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceResourceId { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subnet name of VirtualNode addon.")]
-        [ValidateNotNullOrEmpty]
-        public string SubnetName { get; set; }
 
         ///// <summary>The client AAD application ID.</summary>
         //[Parameter(Mandatory = false, HelpMessage = "The client AAD application ID.")]
@@ -91,7 +67,7 @@ namespace Microsoft.Azure.Commands.Aks
         ///// <summary>The server AAD application secret.</summary>
         //[Parameter(Mandatory = false, HelpMessage = "The server AAD application secret.")]
         //public string AadProfileServerAppSecret { get; set; }
-
+ 
         //// <summary> The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription. </summary>
         //[Parameter(Mandatory = false,
         //    HelpMessage =
@@ -117,7 +93,6 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
           + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
-        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$")]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 
         [CmdletParameterBreakingChange("NetworkPlugin", ChangeDescription = "Default value will be changed from None to azure.")]
@@ -154,8 +129,6 @@ namespace Microsoft.Azure.Commands.Aks
 
             var networkProfile = GetNetworkProfile();
 
-            var addonProfiles = CreateAddonsProfiles();
-
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
 
             var managedCluster = new ManagedCluster(
@@ -169,7 +142,6 @@ namespace Microsoft.Azure.Commands.Aks
                 windowsProfile: windowsProfile,
                 servicePrincipalProfile: spProfile,
                 aadProfile: aadProfile,
-                addonProfiles: addonProfiles,
                 networkProfile: networkProfile);
 
             if(EnableRbac.IsPresent)
@@ -251,7 +223,6 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
             }
-            defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
         }
@@ -266,18 +237,6 @@ namespace Microsoft.Azure.Commands.Aks
             //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
             //}
             return aadProfile;
-        }
-
-        private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()
-        {
-            if (this.IsParameterBound(c => c.AddOnNameToBeEnabled))
-            {
-                Dictionary<string, ManagedClusterAddonProfile> addonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();
-                return AddonUtils.EnableAddonsProfile(addonProfiles, AddOnNameToBeEnabled, WorkspaceResourceId, SubnetName);
-            } else
-            {
-                return null;
-            }
         }
     }
 }

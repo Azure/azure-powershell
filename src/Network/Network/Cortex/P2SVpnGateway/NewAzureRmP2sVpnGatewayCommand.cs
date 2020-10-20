@@ -144,11 +144,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable internet security feature on this P2SVpnGateway P2SConnectionConfiguration.")]
-        public SwitchParameter EnableInternetSecurityFlag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -208,8 +203,7 @@ namespace Microsoft.Azure.Commands.Network
                 VpnClientAddressPool = new PSAddressSpace()
                 {
                     AddressPrefixes = new List<string>(this.VpnClientAddressPool)
-                },
-                EnableInternetSecurity = this.EnableInternetSecurityFlag.IsPresent
+                }
             };
 
             if (this.RoutingConfiguration != null)

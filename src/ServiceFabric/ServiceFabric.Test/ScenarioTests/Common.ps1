@@ -68,30 +68,25 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/4e680cd578ba4e57b650d9f89cd20835"
-}
-
-function Get-InitialThumbprint
-{
-    return "3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC"
+    return "910AC565E683987971F34531A824284E3B936040"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/599d307311bf4508b7511ed482fa746f"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/ca4c0f7efa254d9ba0b267b8aaebb878"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "3B892D25432FDA538F54B1EADD0B28BA82C488CC"
+    return "EE28AF31B2741B52311A00F78DFF4F46240BB4F8"
 }
 
 function Get-CACertCommonName
@@ -106,12 +101,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/219a6d1803c34447b686db16ecd6285a"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/0cd47f8218aa40e3a47e0597b8017247"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/5236086354ac470e8efa4e0426b6144d"
+	return "https://azurermsfkvtestwu.vault.azure.net/secrets/AzureRMSFTestCertWU/5250a7acbaa143fa9d493840d4de1c01"
 }
 
 function Get-DurabilityLevel
@@ -184,33 +179,6 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
     }
 
     Write-Error "WaitForClusterReadyState timed out"
-    return $false
-}
-
-function WaitForAllJob($timeoutInSeconds = 1200)
-{
-    $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
-    $allJobs = Get-Job
-    do
-    {
-        $completed = Get-Job | Where-Object {  $_.State -eq "Completed" }
-        if ($completed.Count -eq $allJobs.Count)
-        {
-            return $true
-            break
-		}
-
-        $failed = Get-Job | Where-Object {  $_.State -eq "Failed" }
-        if ($failed.Count -gt 0)
-        {
-            Write-Error "At least one Job failed" $failed
-            return $false
-		}
-
-        Start-Sleep -Seconds 15
-    } while ((Get-Date) -lt $timeoutTime)
-
-    Write-Error "WaitForJob timed out"
     return $false
 }
 

@@ -18,15 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-* Updated SDK to 7.4.0-preview.
-
-## Version 1.7.0
-* Added `New-AzCognitiveServicesAccountApiProperty` cmdlet.
-* Supported `ApiProperty` parameter for `New-AzCognitiveServicesAccount` and `Set-AzCognitiveServicesAccount`
-
-## Version 1.6.0
-* Showed additional legal terms for certain APIs.
+* Show additional legal terms for certain APIs.
 
 ## Version 1.5.1
 * Used `Deny` specifically as NetworkRules default action.

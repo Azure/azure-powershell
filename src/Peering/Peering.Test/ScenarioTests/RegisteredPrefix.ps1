@@ -18,7 +18,7 @@ GetPeeringServiceProviders
 function Test-CreateRegisteredPrefix {
     $randNum = getRandomNumber
     $peering = (Get-AzPeering -Kind Direct)[0];
-    $resourceGroup = $peering[0].Id.Split("/")[4]
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-NotNull $peering
     $name = getAssetName "name"
     $prefix = newIpV4Address $true $false 0 $randNum
@@ -32,7 +32,7 @@ function Test-GetRegisteredPrefix {
     $peering = (Get-AzPeering -Kind Direct)[0];
     $name = getAssetName
     $assetName = getAssetName "peering"
-    $resourceGroup = $peering[0].Id.Split("/")[4]
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-ThrowsContains { $peering | Get-AzPeeringRegisteredPrefix -Name $name } "NotFound"
     $resourceId = $peering.Id+"/registerdPrefix/"+$name
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceId $resourceId } "NotFound"

@@ -66,7 +66,7 @@ Update-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -InputObject $virt
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The virtual router peer input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer
+Type: PSVirtualRouterPeer
 Parameter Sets: VirtualRouterPeerObjectParameterSet
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Peer ASN.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Peer Ip.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The name of the virtual router Peer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: VirtualRouterPeerNameParameterSet
 Aliases: ResourceName
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The resource group name of the virtual router/peer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 The virtual router peer resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: VirtualRouterPeerResourceIdParameterSet
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 The virtual router where peer exists.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -232,7 +232,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

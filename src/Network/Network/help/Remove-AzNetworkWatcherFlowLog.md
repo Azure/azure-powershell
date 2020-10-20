@@ -304,12 +304,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)
 
-[New-AzNetworkWatcherFlowLog](./New-AzNetworkWatcherFlowLog.md)
+[New-AzNetworkWatcherFlowLog](./New-AzNetworkWatcherFlowLog)
 
-[Set-AzNetworkWatcherFlowLog](./Set-AzNetworkWatcherFlowLog.md)
+[Set-AzNetworkWatcherFlowLog](./Set-AzNetworkWatcherFlowLog)
 
 [Get-AzNetworkWatcherFlowLog](./Get-AzNetworkWatcherFlowLog)

@@ -68,4 +68,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 
-[Get-AzExpressRouteCircuitStat](./Get-AzExpressRouteCircuitStat.md)
+[Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)

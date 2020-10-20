@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 2.6.0
-* Updated devices sdk.
-
 ## Version 2.5.0
 * Added cmdlet to invoke a query in an IoT hub to retrieve information using a SQL-like language.
 * Fix issue that `Add-AzIotHubDevice` fails to create Edge Enabled Device without child devices [#11597]

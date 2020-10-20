@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>
-    /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
-    /// </summary>
+    /// <summary>Argument completer implementation for KeySource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySourceTypeConverter))]
     public partial struct KeySource :
         System.Management.Automation.IArgumentCompleter

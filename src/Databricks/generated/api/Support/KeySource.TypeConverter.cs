@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>
-    /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
-    /// </summary>
+    /// <summary>TypeConverter implementation for KeySource.</summary>
     public partial class KeySourceTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -16,10 +16,8 @@
 <#
 .Synopsis
 Updates a configuration of a server.
-Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Description
 Updates a configuration of a server.
-Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
 PS C:\> Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
 
@@ -175,8 +173,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.PostgreSql.custom\Update-AzPostgreSqlConfiguration';
-            UpdateViaIdentityExpanded = 'Az.PostgreSql.custom\Update-AzPostgreSqlConfiguration';
+            UpdateExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlConfiguration_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

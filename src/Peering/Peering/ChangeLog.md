@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adding support for Received routes
 
 ## Version 0.1.9
 * Adding support for Received routes

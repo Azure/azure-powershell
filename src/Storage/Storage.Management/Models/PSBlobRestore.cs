@@ -111,14 +111,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSBlobRestoreStatus(BlobRestoreStatus status)
         {
-            if (status != null)
-            {
-                this.Status = status.Status;
-                this.FailureReason = status.FailureReason;
-                this.RestoreId = status.RestoreId;
-                this.Parameters = status.Parameters is null ? null : new PSBlobRestoreParameters(status.Parameters);
-            }
+            this.Status = status.Status;
+            this.FailureReason = status.FailureReason;
+            this.RestoreId = status.RestoreId;
+            this.Parameters = status.Parameters is null? null : new PSBlobRestoreParameters(status.Parameters);
         }
+
     }
 
     /// <summary>
@@ -137,6 +135,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.TimeToRestore = parameters.TimeToRestore;
             this.BlobRanges = PSBlobRestoreRange.ParsePSBlobRestoreRanges(parameters.BlobRanges);
         }
+
     }
 }
 

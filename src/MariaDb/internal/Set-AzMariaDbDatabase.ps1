@@ -27,18 +27,6 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PARAMETER <IDatabase>: Represents a Database.
-  [Charset <String>]: The charset of the database.
-  [Collation <String>]: The collation of the database.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbdatabase
 #>

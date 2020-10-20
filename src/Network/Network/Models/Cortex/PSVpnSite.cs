@@ -36,8 +36,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
 
         public List<PSVpnSiteLink> VpnSiteLinks { get; set; }
-
-        public PSO365PolicyProperties O365Policy { get; set; }
-
     }
 }

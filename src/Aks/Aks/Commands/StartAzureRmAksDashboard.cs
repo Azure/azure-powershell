@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.Aks
                     throw new CmdletInvocationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
 
                 var tmpFileName = Path.GetTempFileName();
-                var credentials = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name).Kubeconfigs;
-                var encoded = credentials.First(credential => credential.Name.Equals("clusterUser")).Value;
+                var encoded = Client.ManagedClusters.GetAccessProfile(ResourceGroupName, Name, "clusterUser")
+                    .KubeConfig;
                 AzureSession.Instance.DataStore.WriteFile(
                     tmpFileName,
                     Encoding.UTF8.GetString(encoded));

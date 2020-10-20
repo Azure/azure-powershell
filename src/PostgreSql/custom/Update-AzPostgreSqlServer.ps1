@@ -13,15 +13,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.Synopsis
-Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
-.Description
-Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
-#>
 function Update-AzPostgreSqlServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the server.')]
         [Alias('ServerName')]
@@ -89,7 +84,6 @@ function Update-AzPostgreSqlServer {
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow])]
-        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow]
         ${StorageAutogrow},
@@ -164,7 +158,7 @@ function Update-AzPostgreSqlServer {
     process {
         try {
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $bStr = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+                $bStr = [System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
                 $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
                 $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
             }

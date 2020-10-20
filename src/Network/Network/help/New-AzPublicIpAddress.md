@@ -51,7 +51,7 @@ $dnsPrefix.$location.cloudapp.azure.com.
 ### Example 3: Create a new public IP address with IpTag
 ```powershell
 $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
-$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags $ipTag
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags ipTag
 ```
 
 This command creates a new public IP address resource.A DNS record is created for

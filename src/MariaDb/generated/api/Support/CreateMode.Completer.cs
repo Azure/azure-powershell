@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>The mode to create a new server.</summary>
+    /// <summary>Argument completer implementation for CreateMode.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateModeTypeConverter))]
     public partial struct CreateMode :
         System.Management.Automation.IArgumentCompleter

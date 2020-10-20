@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>Gets or sets the blockchain protocol.</summary>
+    /// <summary>TypeConverter implementation for BlockchainProtocol.</summary>
     public partial class BlockchainProtocolTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

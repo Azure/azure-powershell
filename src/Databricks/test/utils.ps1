@@ -8,7 +8,6 @@ function RandomString([bool]$allChars, [int32]$len) {
 $env = @{}
 function setupEnv() {
     Write-Host -ForegroundColor Yellow "WARNING: Need to use Az.KeyVault module, Please check if installed Az.KeyVault(2.0.0 or Greater)."
-    Import-Module -Name Az.KeyVault
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -22,20 +21,8 @@ function setupEnv() {
     # Follow random strings will be used in the test directly, so add it to $env
     $rstr4 = RandomString -allChars $false -len 6
     $rstr5 = RandomString -allChars $false -len 6
-    $rstr7 = RandomString -allChars $false -len 6
     $null = $env.Add("rstr4", $rstr4)
     $null = $env.Add("rstr5", $rstr5)
-    $null = $env.Add("rstr7", $rstr7)
-    
-    # Generate some vent peering name for use in the test.
-    $vnetpeeringname01 = "vnetpeering-" + (RandomString -allChars $false -len 6)
-    $vnetpeeringname02 = "vnetpeering-" + (RandomString -allChars $false -len 6)
-    $vnetpeeringname03 = "vnetpeering-" + (RandomString -allChars $false -len 6)
-    $vnetpeeringname04 = "vnetpeering-" + (RandomString -allChars $false -len 6)
-    $null = $env.Add("vnetpeeringname01", $vnetpeeringname01)
-    $null = $env.Add("vnetpeeringname02", $vnetpeeringname02)
-    $null = $env.Add("vnetpeeringname03", $vnetpeeringname03)
-    $null = $env.Add("vnetpeeringname04", $vnetpeeringname04)
 
     # Create the test group
     write-host "start to create test group"
@@ -56,30 +43,17 @@ function setupEnv() {
     $null = $env.Add("testWorkspace3", $testWorkspace3)
     Write-Host -ForegroundColor Green "Create completed" 
 
-    # Deploy two virtual network and network security group for test
+    # Deploy virtual network and network security group for test
     Write-Host -ForegroundColor Green "Deloying network..." 
+    $virtualNetwork = "databricks-test-vn"
     $subscriptionId = $env.SubscriptionId
-
-    $virtualNetwork = "databricks-vnet-" + (RandomString -allChars $false -len 6)
-    $securityNetworkGroup = "vnet-security-" + (RandomString -allChars $false -len 6)
-
-    $securityVnPara = Get-Content .\test\deployment-templates\security-network-group\parameters.json | ConvertFrom-Json
-    $securityVnPara.parameters.networkSecurityGroupName.value = $securityNetworkGroup
-    Set-Content -Path .\test\deployment-templates\security-network-group\parameters.json -Value (ConvertTo-Json $securityVnPara)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\security-network-group\template.json -TemplateParameterFile .\test\deployment-templates\security-network-group\parameters.json -Name nsg -ResourceGroupName $resourceGroup
     $null = $env.Add("virtualNetwork", "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$virtualNetwork")
     $vnPara = Get-Content .\test\deployment-templates\virtual-network\parameters.json | ConvertFrom-Json
-    $vnPara.parameters.virtualNetworks_dbrvn_name.value = $virtualNetwork
-    $vnPara.parameters.networkSecurityGroups_dolaulinsg_externalid.value = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/networkSecurityGroups/$securityNetworkGroup"
-    Set-Content -Path .\test\deployment-templates\virtual-network\parameters.json -Value (ConvertTo-Json $vnPara)
+    $vnPara.parameters.networkSecurityGroups_dolaulinsg_externalid.value = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/networkSecurityGroups/databricks-test-nsg"
+    set-content -Path .\test\deployment-templates\virtual-network\parameters.json -Value (ConvertTo-Json $vnPara)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
-    Start-Sleep -Seconds 60
     Write-Host -ForegroundColor Green "Network deploy completed." 
-
-    # Create two vnet peering for test
-    Write-Host -ForegroundColor Green "Create vnet peering for test..."
-    New-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $testWorkspace1 -ResourceGroupName $resourceGroup -RemoteVirtualNetworkId $env.virtualNetwork
-    Write-Host -ForegroundColor Green "Vnet peering create completed."
     
     # Deploy keyvault for test
     Write-Host -ForegroundColor Green "Deloying Key Vault..." 
@@ -97,7 +71,7 @@ function setupEnv() {
     $null = $env.Add('keyVaultKeyName', $key.Name)
     $null = $env.Add('keyVaultKeyVersion', $key.Version)
     Write-Host -ForegroundColor Green "key Vault deploy completed." 
-
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

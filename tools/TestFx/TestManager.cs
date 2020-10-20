@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.TestFx
         private Dictionary<string, string> _matcherNewUserAgentsToIgnore;
         private Dictionary<string, string> _matcherResourceProviders;
         private Action _mockContextAction;
-        private Func<MockContext, object>[] _initializedManagementClients;
         protected EnvironmentSetupHelper Helper;
         protected readonly List<string> RmModules;
         protected readonly List<string> CommonPsScripts = new List<string>();
@@ -196,12 +195,6 @@ namespace Microsoft.Azure.Commands.TestFx
             return this;
         }
 
-        public ITestRunnerFactory WithManagementClients(params Func<MockContext, object>[] initializedManagementClients)
-        {
-            _initializedManagementClients = initializedManagementClients;
-            return this;
-        }
-
         public ITestRunner Build()
         {
             SetupSessionAndProfile();
@@ -221,7 +214,6 @@ namespace Microsoft.Azure.Commands.TestFx
             {
                 _mockContextAction?.Invoke();
                 AzureSession.Instance.ClientFactory = new TestClientFactory(mockContext);
-                SetupManagementClients(mockContext);
                 Helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 SetupAzureContext();
                 Helper.RunPowerShellTest(scripts);
@@ -339,17 +331,6 @@ namespace Microsoft.Azure.Commands.TestFx
             HttpMockServer.Matcher = RecordMatcher(true, resourceProviders, userAgentsToIgnore);
         }
 
-        protected void SetupManagementClients(MockContext context)
-        {
-            if (this._initializedManagementClients != null) {
-                var clients = new List<object>();
-                foreach (var client in this._initializedManagementClients)
-                {
-                    clients.Add(client(context));
-                }
-                Helper.SetupManagementClients(clients.ToArray());
-            }
-        }
         #endregion
     }
 }

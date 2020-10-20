@@ -28,7 +28,7 @@ using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByHostedGateway), OutputType(typeof(PSVirtualRouter))]
     public partial class NewAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {
         [Parameter(
@@ -49,9 +49,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The subnet where the virtual router is hosted.")]
-        [ValidateNotNullOrEmpty]
-        public string HostedSubnet { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualRouterParameterSetNames.ByHostedGateway,
+            HelpMessage = "The gateway where Virtual Router needs to be hosted.")]
+        public PSVirtualNetworkGateway HostedGateway { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualRouterParameterSetNames.ByHostedGatewayId,
+            HelpMessage = "The id of gateway where Virtual Router needs to be hosted.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualNetworkGateways")]
+        public string HostedGatewayId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -78,11 +87,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            
             var present = true;
             try
             {
-                this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.Name);
+                this.NetworkClient.NetworkManagementClient.VirtualRouters.Get(this.ResourceGroupName, this.Name);
             }
             catch (Exception ex)
             {
@@ -101,7 +109,24 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
-            
+
+            string hostedGatewayId = null;
+
+            //// Resolve the virtual wan
+            if (ParameterSetName.Equals(VirtualRouterParameterSetNames.ByHostedGateway, StringComparison.OrdinalIgnoreCase))
+            {
+                hostedGatewayId = this.HostedGateway.Id;
+            }
+            else if (ParameterSetName.Equals(VirtualRouterParameterSetNames.ByHostedGatewayId, StringComparison.OrdinalIgnoreCase))
+            {
+                hostedGatewayId = this.HostedGatewayId;
+            }
+
+            if (string.IsNullOrWhiteSpace(hostedGatewayId))
+            {
+                throw new PSArgumentException(Properties.Resources.VirtualGatewayRequiredForVirtualRouter);
+            }
+
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
@@ -109,35 +134,24 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    PSVirtualHub virtualHub = new PSVirtualHub
+                    PSVirtualRouter virtualRouter = new PSVirtualRouter
                     {
                         ResourceGroupName = this.ResourceGroupName,
                         Name = this.Name,
-                        Location = this.Location
+                        HostedGateway = new PSResourceId() { Id = hostedGatewayId },
+                        Location = this.Location,
+                        VirtualRouterAsn = GatewayAsn
                     };
 
-                    virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
-                    string ipConfigName = "ipconfig1";
-                    HubIpConfiguration ipconfig = new HubIpConfiguration
-                    {
-                        Subnet = new Subnet() { Id = this.HostedSubnet }
-                    };
+                    var vVirtualRouterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualRouter>(virtualRouter);
+                    vVirtualRouterModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-                    var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);
-                    virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-                    virtualHubModel.Sku = "Standard";
-
-                    this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualHubModel);
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.CreateOrUpdate(this.ResourceGroupName, this.Name, ipConfigName, ipconfig);
-                    virtualHubModel = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.Name);
-
-                    virtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHubModel);
-                    virtualHub.ResourceGroupName = this.ResourceGroupName;
-                    AddIpConfigurtaionToPSVirtualHub(virtualHub, this.ResourceGroupName, this.Name, ipConfigName);
-                   
-                    var virtualRouter = new PSVirtualRouter(virtualHub);
-                    virtualRouter.Tag = TagsConversionHelper.CreateTagHashtable(virtualHubModel.Tags);
-                    WriteObject(virtualRouter, true);
+                    this.NetworkClient.NetworkManagementClient.VirtualRouters.CreateOrUpdate(this.ResourceGroupName, this.Name, vVirtualRouterModel);
+                    var getVirtualRouter = this.NetworkClient.NetworkManagementClient.VirtualRouters.Get(this.ResourceGroupName, this.Name);
+                    var psVirtualRouter = NetworkResourceManagerProfile.Mapper.Map<PSVirtualRouter>(getVirtualRouter);
+                    psVirtualRouter.ResourceGroupName = this.ResourceGroupName;
+                    psVirtualRouter.Tag = TagsConversionHelper.CreateTagHashtable(getVirtualRouter.Tags);
+                    WriteObject(psVirtualRouter, true);
                 });
 
         }

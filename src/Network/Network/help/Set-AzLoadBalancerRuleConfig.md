@@ -41,7 +41,6 @@ The **Set-AzLoadBalancerRuleConfig** cmdlet updates a rule configuration for a l
 PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
 PS C:\> $slb | Set-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350
-PS C:\> $slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $slb variable.

@@ -147,7 +147,7 @@ This command first create 2 ManagementPolicy rule objects, then creates or updat
 ```
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
     Rules=(@{
-        Enabled=$true;
+        Enabled="true";
         Name="Test";
         Definition=(@{
             Actions=(@{
@@ -168,7 +168,7 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         })
     },
     @{
-        Enabled=$false;
+        Enabled="false";
         Name="Test2";
         Definition=(@{
             Actions=(@{
@@ -228,7 +228,7 @@ Rules              : [
                                             }
                          },
                          {
-                             "Enabled":  false,
+                             "Enabled":  true,
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {

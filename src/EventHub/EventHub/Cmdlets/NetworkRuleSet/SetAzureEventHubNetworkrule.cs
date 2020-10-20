@@ -44,9 +44,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }
-        
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Indicates whether TrustedServiceAccessEnabled is enabled")]
-        public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
@@ -79,7 +76,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                         PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
                         {
                             DefaultAction = DefaultAction,
-                            TrustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent,
                             IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
                             VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };

@@ -155,7 +155,7 @@ Name            Resource Manager Url ActiveDirectory Authority
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
-In this example, we are discovering a new Azure environment from the `https://configuredmetadata.net` Uri.
+In this example, we are discovering a new Azure environment from the https://configuredmetadata.net Uri.
 
 ## PARAMETERS
 

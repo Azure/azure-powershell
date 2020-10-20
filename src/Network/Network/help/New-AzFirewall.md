@@ -20,8 +20,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-Zone <String[]>] [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -33,8 +33,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-Zone <String[]>] [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -47,8 +47,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
- [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-AllowActiveFTP] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-Zone <String[]>] [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
+ [-DnsProxyNotRequiredForNetworkRule] [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-HubIPAddresses <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -133,8 +133,8 @@ This example creates a Firewall with all available availability zones.
 ```powershell
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -Name "vnet" -ResourceGroupName $rgName
-$pip1 = New-AzPublicIpAddress -Name "AzFwPublicIp1" -ResourceGroupName "rg" -SkuName "AZFW_VNet" -SkuTier "Standard" -Location "centralus" -AllocationMethod Static
-$pip2 = New-AzPublicIpAddress -Name "AzFwPublicIp2" -ResourceGroupName "rg" -SkuName "AZFW_VNet" -SkuTier "Standard" -Location "centralus" -AllocationMethod Static
+$pip1 = New-AzPublicIpAddress -Name "AzFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+$pip2 = New-AzPublicIpAddress -Name "AzFwPublicIp2" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress @($pip1, $pip2)
 ```
 
@@ -161,7 +161,7 @@ $fpId = $fp.Id
 $vHub = Get-AzVirtualHub -Name "hub"
 $vHubId = $vHub.Id
 
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -SkuName AZFW_Hub -VirtualHubId $vHubId -FirewallPolicyId -$fpId
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Sku AZFW_Hub -VirtualHubId $vHubId -FirewallPolicyId -$fpId
 ```
 
 This example creates a Firewall attached to virtual hub "vHub". A firewall policy $fp will be attached to the firewall. This firewall allows/denies the traffic based on the rules mentioned in the firewall policy $fp. The virtual hub and the firewall should be in the same regions.
@@ -236,21 +236,11 @@ $vHub = Get-AzVirtualHub -Name "hub"
 $vHubId = $vHub.Id
 $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
 $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIPs $fwpips
-$fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -SkuName AZFW_Hub -HubIPAddresses $hubIpAddresses -VirtualHubId $vHubId
+$fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -Sku AZFW_Hub -HubIPAddresses $hubIpAddresses -VirtualHubId $vHubId
 ```
 
 This example creates a Firewall attached to virtual hub "hub" in the same resource group as the firewall.
 The Firewall will be assigned 2 public IPs that are created implicitly.
-
-### 16:  Create a Firewall with Allow Active FTP.
-```
-$rgName = "resourceGroupName"
-$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
-$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -AllowActiveFTP
-```
-
-This example creates a Firewall with allow active FTP flag.
 
 ## PARAMETERS
 
@@ -331,22 +321,6 @@ Accept wildcard characters: False
 
 ### -EnableDnsProxy
 Enable DNS Proxy. By default it is disabled.
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowActiveFTP
-Allows Active FTP on the Firewall. By default it is disabled.
 
 
 ```yaml
@@ -541,30 +515,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkuName
-The sku name for firewall
+### -Sku
+The sku type for firewall
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AZFW_Hub, AZFW_VNet
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SkuTier
-The sku tier for firewall
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Standard, Premium
 
 Required: False
 Position: Named

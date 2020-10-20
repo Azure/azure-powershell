@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbServer
 
 ## SYNOPSIS
-Creates a new MariaDB.
+Creates a new MariaDb.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzMariaDbServer -Name <String> -ResourceGroupName <String> -AdministratorLog
 ```
 
 ## DESCRIPTION
-Creates a new MariaDB.
+Creates a new MariaDb.
 
 ## EXAMPLES
 
@@ -34,9 +34,9 @@ Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
 
-Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
-----             -------- ------------------ ------- ----------------------- -------  ------- --------------
-mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
 ```
 
 This command creates a new MariaDB.
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-MariaDB server name.
+MariaDb server name.
 
 ```yaml
 Type: System.String

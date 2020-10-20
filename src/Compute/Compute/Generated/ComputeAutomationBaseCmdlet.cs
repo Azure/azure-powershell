@@ -122,14 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        public IDiskAccessesOperations DiskAccessesClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.DiskAccesses;
-            }
-        }
-
         public IGalleriesOperations GalleriesClient
         {
             get
