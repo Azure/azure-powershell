@@ -87,6 +87,21 @@ PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Nam
 
 This command add several IpRule with IpRule objects, input with JSON.
 
+### Example 5: Add a resource access rule
+```
+PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -TenantId $tenantId -ResourceId $ResourceId
+```
+
+This command adds a resource access rule with TenantId and ResourceId.
+
+
+### Example 6: Add all resource access rules of one storage account to another storage account
+```
+PS C:\> (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount1").ResourceAccessRules | Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount2"
+```
+
+This command gets all resource access rules from one storage account, and adds them to another storage account.
+
 ## PARAMETERS
 
 ### -AsJob
