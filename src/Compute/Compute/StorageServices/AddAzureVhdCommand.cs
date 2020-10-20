@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+using System.Management;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -252,21 +253,51 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (this.ParameterSetName == DirectUploadToManagedDiskSet)
                 {
-                    // 1. resize vhd 
-                    // 1-1. check OS
-                    OperatingSystem os = Environment.OSVersion;
-                    int p = (int) Environment.OSVersion.Platform;
-                    if ((int) os.Platform == 2 && os.Version.Major >= 10)
-                    {
-                        WriteObject("hereitis")
+                    
+                    // 1. convert vhdx to vhd if need
+
+
+                    // 2. resize vhd 
+                    // 2-1. check if resize is needed 
+                    if (this.LocalFilePath.Length % 1048576 != 512) { // needs resizing
+                        /*
+                        // 2-2. resize
+                        ManagementScope scope = new ManagementScope(@"root\virtualization\V2", null);
+                        ManagementObject imageService = Utility.GetServiceObject(scope, "Msvm_ImageManagementService");
+
+                        ManagementBaseObject inParams = imageService.GetMethodParameters("ResizeVirtualHardDisk");
+                        inParams["Path"] = this.LocalFilePath;
+                        inParams["MaxInternalSize"] = maxInternalSize * size1G;
+                        ManagementBaseObject outParams = imageService.InvokeMethod("ResizeVirtualHardDisk", inParams, null);
+                        if ((UInt32)outParams["ReturnValue"] == ReturnCode.Started)
+                        {
+                            if (Utility.JobCompleted(outParams, scope))
+                            {
+                                Console.WriteLine("{0} was resized successfully.", inParams["Path"]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Unable to resize {0}", inParams["Path"]);
+                            }
+                        }
+
+                        outParams.Dispose();
+                        inParams.Dispose();
+                        imageService.Dispose();
+                    
+                        WriteVerbose("here");
+                        */
+                    }
+                    else // does not need resizing
+                    { 
+                        WriteVerbose("Vhd file already resized. Proceeding to uploading.");
                     }
 
-                    // 1-2. resize if supported 
 
-                    // 2. convert vhdx to vhd if need
+
 
                     // 3. DIRECT UPLOAD TO MANAGED DISK
-                    
+
                     /*
                     // 3-1. create disk config  
                     // TO-DO: need to set disksizeGB in this method still 
