@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using Xunit;
 using Xunit.Abstractions;
+using System.Text.RegularExpressions;
 
 namespace Common.Authentication.Test
 {
@@ -365,7 +366,9 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         void ResponseRedactionWorks()
         {
-            Assert.Equal("   \"access_token\": \"<redacted>\"", GeneralUtilities.TransformBody("   \"access_token\": \"eyJo1234567\""));
+            IList<Regex> matchers = new List<Regex>();
+            matchers.Add(new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\""));
+            Assert.Equal("   \"access_token\": \"<redacted>\"", GeneralUtilities.TransformBody("   \"access_token\": \"eyJo1234567\"", matchers));
             Assert.Equal("   \"foo\": \"bar\"", GeneralUtilities.TransformBody("   \"foo\": \"bar\""));
         }
 

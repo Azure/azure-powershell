@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
             StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
             TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+            ContainerRegistryEndpointSuffix = other.GetProperty<string>(nameof(ContainerRegistryEndpointSuffix));
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
@@ -247,6 +248,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         /// <summary>
+        /// The domain name suffix for Azure Container Registry
+        /// </summary>
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        /// <summary>
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment
         /// </summary>
         public string AzureOperationalInsightsEndpointResourceId
@@ -374,7 +380,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the Azure Batch AD resource ID.
         /// </summary>
         public string BatchEndpointResourceId { get; set; }
-        public string ContainerRegistryEndpointSuffix { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
@@ -408,7 +413,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
                        && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
-                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix;
+                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix
+                       && ContainerRegistryEndpointSuffix == other.ContainerRegistryEndpointSuffix;
             }
 
             return false;
