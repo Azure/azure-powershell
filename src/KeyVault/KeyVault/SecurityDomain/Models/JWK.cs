@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
