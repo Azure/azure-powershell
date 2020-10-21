@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_marketplaceOffer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("marketplaceOffer"), out var __jsonMarketplaceOffer) ? (string)__jsonMarketplaceOffer : (string)MarketplaceOffer;}
-            {_marketplacePublisher = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("marketplacePublisher"), out var __jsonMarketplacePublisher) ? (string)__jsonMarketplacePublisher : (string)MarketplacePublisher;}
-            {_product = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("product"), out var __jsonProduct) ? (string)__jsonProduct : (string)Product;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)Sku;}
+            {_product = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("product"), out var __jsonProduct) ? (string)__jsonProduct : (string)Product;}
             {_vendor = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vendor"), out var __jsonVendor) ? (string)__jsonVendor : (string)Vendor;}
+            {_marketplacePublisher = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("marketplacePublisher"), out var __jsonMarketplacePublisher) ? (string)__jsonMarketplacePublisher : (string)MarketplacePublisher;}
+            {_marketplaceOffer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("marketplaceOffer"), out var __jsonMarketplaceOffer) ? (string)__jsonMarketplaceOffer : (string)MarketplaceOffer;}
             AfterFromJson(json);
         }
 
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._marketplaceOffer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._marketplaceOffer.ToString()) : null, "marketplaceOffer" ,container.Add );
-            AddIf( null != (((object)this._marketplacePublisher)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._marketplacePublisher.ToString()) : null, "marketplacePublisher" ,container.Add );
-            AddIf( null != (((object)this._product)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._product.ToString()) : null, "product" ,container.Add );
             AddIf( null != (((object)this._sku)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._sku.ToString()) : null, "sku" ,container.Add );
+            AddIf( null != (((object)this._product)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._product.ToString()) : null, "product" ,container.Add );
             AddIf( null != (((object)this._vendor)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vendor.ToString()) : null, "vendor" ,container.Add );
+            AddIf( null != (((object)this._marketplacePublisher)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._marketplacePublisher.ToString()) : null, "marketplacePublisher" ,container.Add );
+            AddIf( null != (((object)this._marketplaceOffer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._marketplaceOffer.ToString()) : null, "marketplaceOffer" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

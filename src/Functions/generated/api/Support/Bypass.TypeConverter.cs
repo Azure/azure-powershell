@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for Bypass.</summary>
+    /// <summary>
+    /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
+    /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+    /// </summary>
     public partial class BypassTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_appOffline = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("appOffline"), out var __jsonAppOffline) ? (bool?)__jsonAppOffline : AppOffline;}
+            {_packageUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("packageUri"), out var __jsonPackageUri) ? (string)__jsonPackageUri : (string)PackageUri;}
             {_connectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("connectionString"), out var __jsonConnectionString) ? (string)__jsonConnectionString : (string)ConnectionString;}
             {_dbType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dbType"), out var __jsonDbType) ? (string)__jsonDbType : (string)DbType;}
-            {_packageUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("packageUri"), out var __jsonPackageUri) ? (string)__jsonPackageUri : (string)PackageUri;}
-            {_setParameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("setParameters"), out var __jsonSetParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParameters.FromJson(__jsonSetParameters) : SetParameter;}
             {_setParametersXmlFileUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("setParametersXmlFileUri"), out var __jsonSetParametersXmlFileUri) ? (string)__jsonSetParametersXmlFileUri : (string)SetParametersXmlFileUri;}
+            {_setParameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("setParameters"), out var __jsonSetParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParameters.FromJson(__jsonSetParameters) : SetParameter;}
             {_skipAppData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("skipAppData"), out var __jsonSkipAppData) ? (bool?)__jsonSkipAppData : SkipAppData;}
+            {_appOffline = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("appOffline"), out var __jsonAppOffline) ? (bool?)__jsonAppOffline : AppOffline;}
             AfterFromJson(json);
         }
 
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._appOffline ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._appOffline) : null, "appOffline" ,container.Add );
+            AddIf( null != (((object)this._packageUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._packageUri.ToString()) : null, "packageUri" ,container.Add );
             AddIf( null != (((object)this._connectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._connectionString.ToString()) : null, "connectionString" ,container.Add );
             AddIf( null != (((object)this._dbType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dbType.ToString()) : null, "dbType" ,container.Add );
-            AddIf( null != (((object)this._packageUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._packageUri.ToString()) : null, "packageUri" ,container.Add );
-            AddIf( null != this._setParameter ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._setParameter.ToJson(null,serializationMode) : null, "setParameters" ,container.Add );
             AddIf( null != (((object)this._setParametersXmlFileUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._setParametersXmlFileUri.ToString()) : null, "setParametersXmlFileUri" ,container.Add );
+            AddIf( null != this._setParameter ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._setParameter.ToJson(null,serializationMode) : null, "setParameters" ,container.Add );
             AddIf( null != this._skipAppData ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._skipAppData) : null, "skipAppData" ,container.Add );
+            AddIf( null != this._appOffline ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._appOffline) : null, "appOffline" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

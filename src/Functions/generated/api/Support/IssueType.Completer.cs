@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for IssueType.</summary>
+    /// <summary>Represents the type of the Detector</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IssueTypeTypeConverter))]
     public partial struct IssueType :
         System.Management.Automation.IArgumentCompleter

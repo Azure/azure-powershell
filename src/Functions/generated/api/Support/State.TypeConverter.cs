@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for State.</summary>
+    /// <summary>Gets the state of virtual network rule.</summary>
     public partial class StateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

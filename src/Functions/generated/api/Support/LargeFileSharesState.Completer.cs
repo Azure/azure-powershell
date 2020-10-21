@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for LargeFileSharesState.</summary>
+    /// <summary>
+    /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesStateTypeConverter))]
     public partial struct LargeFileSharesState :
         System.Management.Automation.IArgumentCompleter
