@@ -131,7 +131,7 @@ function New-AzWvdMsixPackage_PackageAlias {
         $null = $PSBoundParameters.Remove("IsActive")
         $null = $PSBoundParameters.Remove("IsRegularRegistration")
        
-        $extractPackage = Az.DesktopVirtualization\Expand-AzWvdMsixImage -HostPoolName $saveHostPoolName `
+        $extractPackage = Az.DesktopVirtualization\Expand-AzWvdMsixImage @PSBoundParameters -HostPoolName $saveHostPoolName `
             -ResourceGroupName  $saveResourceGroupName `
             -SubscriptionId  $saveSubscriptionId `
             -Uri $saveImagePath `

@@ -145,7 +145,7 @@ Describe 'New-AzWvdApplication' {
             -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'jushiah-appattach-rag/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'datr-hp2-RAG/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
@@ -205,7 +205,7 @@ Describe 'New-AzWvdApplication' {
             -GroupName $env.DesktopApplicationGroup `
             -Name UnitTest-MSIX-Application
 
-        $application.Name | Should -Be 'jushiahappattach-DAG/UnitTest-MSIX-Application'
+        $application.Name | Should -Be 'datr-hp2-DAG/UnitTest-MSIX-Application'
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
