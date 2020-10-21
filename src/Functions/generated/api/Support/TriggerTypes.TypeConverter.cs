@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for TriggerTypes.</summary>
+    /// <summary>The trigger type of the function</summary>
     public partial class TriggerTypesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

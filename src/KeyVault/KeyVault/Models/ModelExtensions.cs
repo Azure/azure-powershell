@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             const string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
             var sb = new StringBuilder();
             sb.AppendLine();
-            sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
+            sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage");
             sb.AppendFormat(rowFormat,
                 GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
                 GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
                     TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
-                    TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
+                    TrimWithEllipsis(policy.PermissionsToCertificatesStr, 40), TrimWithEllipsis(policy.PermissionsToStorageStr, 40));
             }
 
             return sb.ToString();
@@ -62,16 +62,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             var sb = new StringBuilder();
             sb.AppendLine();
-            foreach(var policy in policies)
+            foreach (var policy in policies)
             {
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Object ID", policy.ObjectId);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Display Name", policy.DisplayName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr);
                 sb.AppendLine();
             }
             return sb.ToString();
@@ -103,18 +103,20 @@ namespace Microsoft.Azure.Commands.KeyVault
             return str;
         }
 
-        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient) =>
+            GetDetailsFromADObjectId(objectId, adClient).Item1;
+
+        public static (string, string) GetDetailsFromADObjectId(string objectId, ActiveDirectoryClient adClient)
         {
             var displayName = "";
             var upnOrSpn = "";
+            var objectType = "Unknown";
 
             if (adClient == null || string.IsNullOrWhiteSpace(objectId))
-                return displayName;
+                return (displayName, objectType);
 
             try
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
                 var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
                 if (obj != null)
                 {
@@ -123,6 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
+                        objectType = "User";
                     }
                     else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
@@ -130,48 +133,32 @@ namespace Microsoft.Azure.Commands.KeyVault
                         var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                        objectType = "Service Principal";
                     }
                     else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
                     {
                         var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
                         displayName = group.DisplayName;
+                        objectType = "Group";
                     }
                 }
-#else
-                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
-                if (obj != null)
-                {
-                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = user.DisplayName;
-                        upnOrSpn = user.UserPrincipalName;
-                    }
-                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = servicePrincipal.AppDisplayName;
-                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
-                    }
-                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = group.DisplayName;
-                        upnOrSpn = group.MailNickname;
-                    }
-                }
-#endif
             }
             catch
             {
                 // Error occurred. Don't get the friendly name
             }
 
-            return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
+            return (
+                displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : ""),
+                objectType
+            );
+
         }
 
         public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)
         {
+            if (id == null)
+                return string.Empty;
             return id.ToString();
         }
     }

@@ -152,7 +152,7 @@ Purge Disabled : False
 Tags           :
 ```
 
-This command gets all versions the key named ITPfx in the key vaultnamed Contoso.
+This command gets all versions the key named ITPfx in the key vault named Contoso.
 
 ### Example 4: Get a specific version of a key
 ```powershell
@@ -174,7 +174,7 @@ Tags           :
 This command gets a specific version of the key named test1 in the key vault named Contoso.
 After running this command, you can inspect various properties of the key by navigating the $Key object.
 
-### Example 5: Get all the keys that have been deleted but not purged for this key vault.
+### Example 5: Get all the keys that have been deleted but not purged for this key vault
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -InRemovedState
 

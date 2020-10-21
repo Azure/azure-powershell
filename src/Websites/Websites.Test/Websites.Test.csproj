@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +24,6 @@
     <None Update="ScenarioTests\RoutingRuleTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\" />
   </ItemGroup>
 
 </Project>
