@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.10.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.10" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="18.0.0-preview" />
   </ItemGroup>
 
 </Project>
