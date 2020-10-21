@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string RestorePoint = nameof(RestorePoint);
 
+        public const string Sql = nameof(Sql);
+
+        public const string ActiveDirectoryAdministrator = nameof(ActiveDirectoryAdministrator);
+
         public const string SqlDatabase = nameof(SqlDatabase);
 
         public const string SparkPoolName = nameof(SparkPoolName);

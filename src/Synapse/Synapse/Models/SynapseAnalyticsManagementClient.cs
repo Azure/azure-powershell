@@ -2,11 +2,14 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,17 +18,18 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsManagementClient
     {
+        public IAzureContext Context;
         private readonly Guid _subscriptionId;
+        private readonly Guid _tenantId;
         private readonly SynapseManagementClient _synapseManagementClient;
         private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
+        private ActiveDirectoryClient _activeDirectoryClient;
 
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
@@ -34,13 +38,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new SynapseException(Resources.InvalidDefaultSubscription);
             }
 
+            Context = context;
+
             _subscriptionId = context.Subscription.GetId();
+
+            _tenantId = context.Tenant.GetId();
 
             _synapseManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
 
             _synapseSqlV3ManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseSqlV3ManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
+        }
+
+        public ActiveDirectoryClient ActiveDirectoryClient
+        {
+            get
+            {
+                if (_activeDirectoryClient == null)
+                {
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
+                }
+                return this._activeDirectoryClient;
+            }
+
+            set { this._activeDirectoryClient = value; }
         }
 
         #region Workspace operations
@@ -263,6 +285,199 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public WorkspaceAadAdminInfo GetSqlActiveDirectoryAdministrators(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceAadAdmins.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public WorkspaceAadAdminInfo CreateOrUpdateSqlActiveDirectoryAdministrators(string resourceGroupName, string workspaceName, string displayName, Guid objectId)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        private WorkspaceAadAdminInfo GetActiveDirectoryInformation(string displayName, Guid objectId)
+        {
+            // Gets the default Tenant id for the subscriptions
+            Guid tenantId = _tenantId;
+
+            // Check for a Azure Active Directory group. Recommended to always use group.
+            IEnumerable<PSADGroup> groupList = null;
+            PSADGroup group = null;
+
+            var filter = new ADObjectFilterOptions()
+            {
+                Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                SearchString = displayName,
+                Paging = true,
+            };
+
+            // Get a list of groups from Azure Active Directory
+            groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+
+            if (groupList != null && groupList.Count() > 1)
+            {
+                // More than one group was found with that display name.
+                throw new ArgumentException(string.Format(Resources.ADGroupMoreThanOneFound, displayName));
+            }
+            else if (groupList != null && groupList.Count() == 1)
+            {
+                // Only one group was found. Get the group display name and object id
+                group = groupList.First();
+
+                // Only support Security Groups
+                if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidADGroupNotSecurity, displayName));
+                }
+            }
+
+            // Lookup for serviceprincipals
+            ODataQuery<ServicePrincipal> odataQueryFilter;
+
+            if ((objectId != null && objectId != Guid.Empty))
+            {
+                var applicationIdString = objectId.ToString();
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+            }
+            else
+            {
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+            }
+
+            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+
+            if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
+            {
+                // More than one service principal was found.
+                throw new ArgumentException(string.Format(Resources.ADApplicationMoreThanOneFound, displayName));
+            }
+            else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
+            {
+                // Only one user was found. Get the user display name and object id
+                PSADServicePrincipal app = servicePrincipalList.First();
+
+                if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
+                {
+                    throw new ArgumentException(string.Format(Resources.ADApplicationDisplayNameMismatch, displayName, app.DisplayName));
+                }
+
+                if (group != null)
+                {
+                    throw new ArgumentException(string.Format(Resources.ADDuplicateGroupAndApplicationFound, displayName));
+                }
+
+                return new WorkspaceAadAdminInfo()
+                {
+                    Login = displayName,
+                    Sid = app.ApplicationId.ToString(),
+                    TenantId = tenantId.ToString()
+                };
+            }
+
+            if (group != null)
+            {
+                return new WorkspaceAadAdminInfo()
+                {
+                    Login = group.DisplayName,
+                    Sid = group.Id.ToString(),
+                    TenantId = tenantId.ToString()
+                };
+            }
+
+            // No group or service principal was found. Check for a user
+            filter = new ADObjectFilterOptions()
+            {
+                Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                SearchString = displayName,
+                Paging = true,
+            };
+
+            // Get a list of user from Azure Active Directory
+            var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+
+            // No user was found. Check if the display name is a UPN
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    UPN = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+            }
+
+            // No user was found. Check if the display name is a guest user. 
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    Mail = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter);
+            }
+
+            // No user was found
+            if (userList == null || userList.Count() == 0)
+            {
+                throw new ArgumentException(string.Format(Resources.ADObjectNotFound, displayName));
+            }
+            else if (userList.Count() > 1)
+            {
+                // More than one user was found.
+                throw new ArgumentException(string.Format(Resources.ADUserMoreThanOneFound, displayName));
+            }
+            else
+            {
+                // Only one user was found. Get the user display name and object id
+                var obj = userList.First();
+
+                return new WorkspaceAadAdminInfo()
+                {
+                    Login = displayName,
+                    Sid = obj.Id.ToString(),
+                    TenantId = tenantId.ToString()
+                };
+            }
+        }
+
+        public void DeleteSqlActiveDirectoryAdministrators(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.WorkspaceAadAdmins.Delete(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         #endregion
 
         #region SQL pool operations
@@ -455,6 +670,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     workspaceName,
                     sqlPoolName)
                     .ToList();
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public RestorePoint CreateSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, CreateSqlPoolRestorePointDefinition parameters)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
             }
             catch (CloudException ex)
             {

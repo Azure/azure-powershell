@@ -166,7 +166,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string RestorePoint = "Snapshot time to restore.";
 
+        public const string RestorePointLabel = "The label we associate a restore point with, may not be unique.";
+
         public const string SqlAdministratorLoginPassword = "The new SQL administrator password for the workspace.";
+
+        public const string DisplayName = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.";
+
+        public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
 
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 

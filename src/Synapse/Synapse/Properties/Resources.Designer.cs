@@ -61,11 +61,65 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with any service principal display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADServicePrincipal -SearchString &quot;{1}&quot;..
+        /// </summary>
+        internal static string ADApplicationDisplayNameMismatch {
+            get {
+                return ResourceManager.GetString("ADApplicationDisplayNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or use use Get-AzADServicePrincipal -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADApplicationMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADApplicationMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscribe the event trigger &apos;{0}&apos; to external service events..
         /// </summary>
         internal static string AddingSynapseTriggerSubscribe {
             get {
                 return ResourceManager.GetString("AddingSynapseTriggerSubscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
+        /// </summary>
+        internal static string ADDuplicateGroupAndApplicationFound {
+            get {
+                return ResourceManager.GetString("ADDuplicateGroupAndApplicationFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADGroupMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group or application you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication..
+        /// </summary>
+        internal static string ADObjectNotFound {
+            get {
+                return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADUserMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
             }
         }
         
@@ -121,6 +175,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string CreatingFirewallRule {
             get {
                 return ResourceManager.GetString("CreatingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a restore point in SQL pool &apos;{0}&apos; under Workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("CreatingSqlPoolRestorePoint", resourceCulture);
             }
         }
         
@@ -451,6 +514,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
+        /// </summary>
+        internal static string InvalidADGroupNotSecurity {
+            get {
+                return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
         /// </summary>
         internal static string InvalidCastParameterKeyExceptionMessage {
@@ -712,6 +784,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing the active directory admin in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("RemovingSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseDataFlow {
@@ -870,6 +951,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ServicePrincipalNameDoesNotExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting an active directory admin in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("SettingSqlActiveDirectoryAdministrator", resourceCulture);
             }
         }
         
