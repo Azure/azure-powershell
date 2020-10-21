@@ -157,7 +157,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            return results;
+            // ------------------- This added to filter in only results that introduce new command ----------------------------
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            IList<ValueTuple<string, PredictionSource>> varietyResults = new List<ValueTuple<string, PredictionSource>>();
+
+            foreach (var res in results)
+            {
+                string currentCommand = res.Item1.Split(' ')[0];
+                if (!presentCommands.ContainsKey(currentCommand))
+                {
+                    presentCommands.Add(currentCommand, 1);
+                    varietyResults.Add(res);
+                }
+            }
+            return varietyResults;
+            // ---------------------------------------------------------------------------------------------------------------
+
+            //return results;
         }
 
         /// <inheritdoc/>

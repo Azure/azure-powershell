@@ -69,9 +69,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", currentLog);
 
-#if DEBUG
-            Console.WriteLine("Recording CommandHistory");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording CommandHistory");
+//#endif
         }
 
         /// <inheritdoc/>
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", currentLog);
 
-#if DEBUG
-            Console.WriteLine("Recording RequestPrediction");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording RequestPrediction");
+//#endif
         }
 
         /// <inheritdoc/>
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", currentLog);
 
-#if DEBUG
-            Console.WriteLine("Recording RequestPredictionError");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording RequestPredictionError");
+//#endif
         }
 
         /// <inheritdoc/>
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
 
-#if DEBUG
-            Console.WriteLine("Recording AcceptSuggestion");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording AcceptSuggestion");
+//#endif
         }
 
         /// <inheritdoc/>
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
-#if DEBUG
-            Console.WriteLine("Recording GetSuggestioin");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording GetSuggestioin");
+//#endif
         }
 
         /// <inheritdoc/>
@@ -184,9 +184,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
 
-#if DEBUG
-            Console.WriteLine("Recording GetSuggestioinError");
-#endif
+//#if DEBUG
+//            Console.WriteLine("Recording GetSuggestioinError");
+//#endif
         }
 
         /// <summary>
