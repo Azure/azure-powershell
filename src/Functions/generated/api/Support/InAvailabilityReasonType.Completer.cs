@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for InAvailabilityReasonType.</summary>
+    /// <summary>
+    /// <code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code>
+    /// indicates that the name is already in use and is therefore unavailable.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.InAvailabilityReasonTypeTypeConverter))]
     public partial struct InAvailabilityReasonType :
         System.Management.Automation.IArgumentCompleter
