@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Sets the pricing data for the Azure Defender plans enabled in Azure Security Center for a subscription.
+Enables or disables Azure Defender plans for a subscription in Azure Security Center.
 
 ## SYNTAX
 
@@ -41,7 +41,9 @@ For details about Azure Defender and the available plans, see [Introduction to A
 PS C:\> Set-AzSecurityPricing -Name "virtualmachines" -PricingTier "Standard"
 ```
 
-Sets the subscription Azure Security Center pricing tier to "Standard"
+Enables **Azure Defender for servers** for the subscription.
+
+"Standard" refers to the "On" state for an Azure Defender plan as shown in Azure Security Center's pricing and settings area of the Azure portal.
 
 
 ## PARAMETERS

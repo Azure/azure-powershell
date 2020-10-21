@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Gets the pricing data for the Azure Defender plans enabled in Azure Security Center for a subscription.
+Gets the Azure Defender plans for a subscription in Azure Security Center.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContai
 
 ## DESCRIPTION
 
-You can enable each Azure Defender plan, per subscription, using this cmdlet.
+You can view each Azure Defender plan, per subscription, using this cmdlet.
 
 For details about Azure Defender and the available plans, see [Introduction to Azure Defender](https://docs.microsoft.com/azure/security-center/azure-defender).
 
@@ -65,7 +65,7 @@ Gets the status of each Azure Defender plan for the subscription.
 PS C:\> Get-AzSecurityPricing -ResourceId
 ```
 
-Gets pricing details of the specific ID. Where ResourceId is one of IDs from example 1.
+Gets pricing details of the specific resource ID. Where ResourceId is one of the IDs returned by `Get-AzSecurityPricing`.
 
 ### Example 3
 
@@ -73,7 +73,7 @@ Gets pricing details of the specific ID. Where ResourceId is one of IDs from exa
 PS C:\> Get-AzSecurityPricing -Name
 ```
 
-Gets pricing details of the named Azure Defender plan. Where `name` is one of the names from example 1.
+Gets pricing details of the named Azure Defender plan. Where `name` is one of the names returned by `Get-AzSecurityPricing`.
 
 
 ## PARAMETERS
