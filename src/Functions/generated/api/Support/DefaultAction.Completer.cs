@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for DefaultAction.</summary>
+    /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultActionTypeConverter))]
     public partial struct DefaultAction :
         System.Management.Automation.IArgumentCompleter

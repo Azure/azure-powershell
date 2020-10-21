@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_serviceIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceIpAddress"), out var __jsonServiceIPAddress) ? (string)__jsonServiceIPAddress : (string)ServiceIPAddress;}
             {_internalIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("internalIpAddress"), out var __jsonInternalIPAddress) ? (string)__jsonInternalIPAddress : (string)InternalIPAddress;}
             {_outboundIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("outboundIpAddresses"), out var __jsonOutboundIPAddresses) ? If( __jsonOutboundIPAddresses as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : OutboundIPAddress;}
-            {_serviceIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceIpAddress"), out var __jsonServiceIPAddress) ? (string)__jsonServiceIPAddress : (string)ServiceIPAddress;}
             {_vipMapping = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("vipMappings"), out var __jsonVipMappings) ? If( __jsonVipMappings as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualIPMapping.FromJson(__p) )) ))() : null : VipMapping;}
             AfterFromJson(json);
         }
@@ -96,6 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._serviceIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceIPAddress.ToString()) : null, "serviceIpAddress" ,container.Add );
             AddIf( null != (((object)this._internalIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._internalIPAddress.ToString()) : null, "internalIpAddress" ,container.Add );
             if (null != this._outboundIPAddress)
             {
@@ -106,7 +107,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("outboundIpAddresses",__w);
             }
-            AddIf( null != (((object)this._serviceIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceIPAddress.ToString()) : null, "serviceIpAddress" ,container.Add );
             if (null != this._vipMapping)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();

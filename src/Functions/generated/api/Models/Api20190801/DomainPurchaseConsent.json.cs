@@ -60,9 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_agreedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("agreedAt"), out var __jsonAgreedAt) ? global::System.DateTime.TryParse((string)__jsonAgreedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonAgreedAtValue) ? __jsonAgreedAtValue : AgreedAt : AgreedAt;}
-            {_agreedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("agreedBy"), out var __jsonAgreedBy) ? (string)__jsonAgreedBy : (string)AgreedBy;}
             {_agreementKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("agreementKeys"), out var __jsonAgreementKeys) ? If( __jsonAgreementKeys as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : AgreementKey;}
+            {_agreedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("agreedBy"), out var __jsonAgreedBy) ? (string)__jsonAgreedBy : (string)AgreedBy;}
+            {_agreedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("agreedAt"), out var __jsonAgreedAt) ? global::System.DateTime.TryParse((string)__jsonAgreedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonAgreedAtValue) ? __jsonAgreedAtValue : AgreedAt : AgreedAt;}
             AfterFromJson(json);
         }
 
@@ -97,8 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._agreedAt ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._agreedAt?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "agreedAt" ,container.Add );
-            AddIf( null != (((object)this._agreedBy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._agreedBy.ToString()) : null, "agreedBy" ,container.Add );
             if (null != this._agreementKey)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
@@ -108,6 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("agreementKeys",__w);
             }
+            AddIf( null != (((object)this._agreedBy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._agreedBy.ToString()) : null, "agreedBy" ,container.Add );
+            AddIf( null != this._agreedAt ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._agreedAt?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "agreedAt" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

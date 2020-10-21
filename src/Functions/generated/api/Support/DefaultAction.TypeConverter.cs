@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for DefaultAction.</summary>
+    /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
     public partial class DefaultActionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

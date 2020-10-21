@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Name of a resource type this recommendation applies, e.g. Subscription, ServerFarm, Site.
+    /// </summary>
     public partial struct ResourceScopeType :
         System.IEquatable<ResourceScopeType>
     {

@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_logSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("logSpecifications"), out var __jsonLogSpecifications) ? If( __jsonLogSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecification.FromJson(__u) )) ))() : null : LogSpecification;}
-            {_metricSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("metricSpecifications"), out var __jsonMetricSpecifications) ? If( __jsonMetricSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecification.FromJson(__p) )) ))() : null : MetricSpecification;}
+            {_metricSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("metricSpecifications"), out var __jsonMetricSpecifications) ? If( __jsonMetricSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecification.FromJson(__u) )) ))() : null : MetricSpecification;}
+            {_logSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("logSpecifications"), out var __jsonLogSpecifications) ? If( __jsonLogSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecification.FromJson(__p) )) ))() : null : LogSpecification;}
             AfterFromJson(json);
         }
 
@@ -94,23 +94,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            if (null != this._logSpecification)
+            if (null != this._metricSpecification)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._logSpecification )
+                foreach( var __x in this._metricSpecification )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("logSpecifications",__w);
+                container.Add("metricSpecifications",__w);
             }
-            if (null != this._metricSpecification)
+            if (null != this._logSpecification)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __s in this._metricSpecification )
+                foreach( var __s in this._logSpecification )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("metricSpecifications",__r);
+                container.Add("logSpecifications",__r);
             }
             AfterToJson(ref container);
             return container;
