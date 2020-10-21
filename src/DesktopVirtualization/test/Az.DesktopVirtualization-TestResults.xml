@@ -1,351 +1,351 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="58" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-10-21" time="11:13:45">
-  <environment cwd="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization" clr-version="Unknown" os-version="10.0.19042" user="shhirji" machine-name="SHHIRJI" nunit-version="2.5.8.0" user-domain="REDMOND" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition4" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="58" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-10-21" time="11:50:28">
+  <environment nunit-version="2.5.8.0" clr-version="Unknown" os-version="10.0.19042" user-domain="REDMOND" cwd="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization" machine-name="SHHIRJI" user="shhirji" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition4" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="28.6307" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="24.4957" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Disconnect-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="1.483" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Disconnect-AzWvdUserSession.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Disconnect-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="1.2251" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Disconnect-AzWvdUserSession.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Disconnect-AzWvdUserSession" executed="True" result="Success" success="True" time="0.8877" asserts="0" description="Disconnect-AzWvdUserSession">
+          <test-suite type="TestFixture" name="Disconnect-AzWvdUserSession" executed="True" result="Success" success="True" time="0.6743" asserts="0" description="Disconnect-AzWvdUserSession">
             <results>
-              <test-case description="Disconnect" name="Disconnect-AzWvdUserSession.Disconnect" time="0.4002" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Disconnect" name="Disconnect-AzWvdUserSession.Disconnect" time="0.2993" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Expand-AzWvdMsixImage.Tests.ps1" executed="True" result="Success" success="True" time="0.6977" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Expand-AzWvdMsixImage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Expand-AzWvdMsixImage.Tests.ps1" executed="True" result="Success" success="True" time="0.6173" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Expand-AzWvdMsixImage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Expand-AzWvdMsixImage" executed="True" result="Success" success="True" time="0.2156" asserts="0" description="Expand-AzWvdMsixImage">
+          <test-suite type="TestFixture" name="Expand-AzWvdMsixImage" executed="True" result="Success" success="True" time="0.1464" asserts="0" description="Expand-AzWvdMsixImage">
             <results>
-              <test-case description="Expand" name="Expand-AzWvdMsixImage.Expand" time="0.1153" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Expand" name="Expand-AzWvdMsixImage.Expand" time="0.0639" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="3.0309" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplication.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="2.9641" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplication.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdApplication" executed="True" result="Success" success="True" time="2.6443" asserts="0" description="Get-AzWvdApplication">
+          <test-suite type="TestFixture" name="Get-AzWvdApplication" executed="True" result="Success" success="True" time="2.5774" asserts="0" description="Get-AzWvdApplication">
             <results>
-              <test-case description="Get" name="Get-AzWvdApplication.Get" time="0.5982" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdApplication.List" time="0.8088" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetMsixApplication_RAG" name="Get-AzWvdApplication.GetMsixApplication_RAG" time="0.6084" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetMsixApplication_DAG" name="Get-AzWvdApplication.GetMsixApplication_DAG" time="0.5187" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdApplication.Get" time="0.6415" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdApplication.List" time="0.7808" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetMsixApplication_RAG" name="Get-AzWvdApplication.GetMsixApplication_RAG" time="0.5333" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetMsixApplication_DAG" name="Get-AzWvdApplication.GetMsixApplication_DAG" time="0.5241" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.9912" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.9016" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.6375" asserts="0" description="Get-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="Get-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.5429" asserts="0" description="Get-AzWvdApplicationGroup">
             <results>
-              <test-case description="Get" name="Get-AzWvdApplicationGroup.Get" time="0.2241" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdApplicationGroup.List" time="0.1468" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List Subscription Level" name="Get-AzWvdApplicationGroup.List Subscription Level" time="0.1622" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdApplicationGroup.Get" time="0.1623" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdApplicationGroup.List" time="0.1595" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List Subscription Level" name="Get-AzWvdApplicationGroup.List Subscription Level" time="0.117" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdDesktop.Tests.ps1" executed="True" result="Success" success="True" time="0.6264" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdDesktop.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdDesktop.Tests.ps1" executed="True" result="Success" success="True" time="0.596" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdDesktop.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdDesktop" executed="True" result="Success" success="True" time="0.275" asserts="0" description="Get-AzWvdDesktop">
+          <test-suite type="TestFixture" name="Get-AzWvdDesktop" executed="True" result="Success" success="True" time="0.2235" asserts="0" description="Get-AzWvdDesktop">
             <results>
-              <test-case description="Get" name="Get-AzWvdDesktop.Get" time="0.1226" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdDesktop.List" time="0.0628" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdDesktop.Get" time="0.0866" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdDesktop.List" time="0.0596" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="1.0624" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdHostPool.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.797" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdHostPool.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdHostPool" executed="True" result="Success" success="True" time="0.6513" asserts="0" description="Get-AzWvdHostPool">
+          <test-suite type="TestFixture" name="Get-AzWvdHostPool" executed="True" result="Success" success="True" time="0.4259" asserts="0" description="Get-AzWvdHostPool">
             <results>
-              <test-case description="Get" name="Get-AzWvdHostPool.Get" time="0.13" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdHostPool.List" time="0.1661" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List Subscription Level" name="Get-AzWvdHostPool.List Subscription Level" time="0.2103" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdHostPool.Get" time="0.1041" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdHostPool.List" time="0.1069" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List Subscription Level" name="Get-AzWvdHostPool.List Subscription Level" time="0.117" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.7361" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdMsixPackage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.5698" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdMsixPackage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.2654" asserts="0" description="Get-AzWvdMsixPackage">
+          <test-suite type="TestFixture" name="Get-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.2165" asserts="0" description="Get-AzWvdMsixPackage">
             <results>
-              <test-case description="List" name="Get-AzWvdMsixPackage.List" time="0.1265" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzWvdMsixPackage.Get" time="0.0465" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdMsixPackage.List" time="0.086" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdMsixPackage.Get" time="0.0446" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.6078" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdRegistrationInfo.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.4423" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdRegistrationInfo.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.1429" asserts="0" description="Get-AzWvdRegistrationInfo">
+          <test-suite type="TestFixture" name="Get-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.1212" asserts="0" description="Get-AzWvdRegistrationInfo">
             <results>
-              <test-case description="Get RegInfo" name="Get-AzWvdRegistrationInfo.Get RegInfo" time="0.0596" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get RegInfo" name="Get-AzWvdRegistrationInfo.Get RegInfo" time="0.0342" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.5872" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdSessionHost.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.5095" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdSessionHost.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1682" asserts="0" description="Get-AzWvdSessionHost">
+          <test-suite type="TestFixture" name="Get-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1425" asserts="0" description="Get-AzWvdSessionHost">
             <results>
-              <test-case description="Get" name="Get-AzWvdSessionHost.Get" time="0.0536" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdSessionHost.List" time="0.0271" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdSessionHost.Get" time="0.0384" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdSessionHost.List" time="0.0254" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdStartMenuItem.Tests.ps1" executed="True" result="Success" success="True" time="0.5719" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdStartMenuItem.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdStartMenuItem.Tests.ps1" executed="True" result="Success" success="True" time="0.4538" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdStartMenuItem.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdStartMenuItem" executed="True" result="Success" success="True" time="0.1685" asserts="0" description="Get-AzWvdStartMenuItem">
+          <test-suite type="TestFixture" name="Get-AzWvdStartMenuItem" executed="True" result="Success" success="True" time="0.119" asserts="0" description="Get-AzWvdStartMenuItem">
             <results>
-              <test-case description="List" name="Get-AzWvdStartMenuItem.List" time="0.0833" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdStartMenuItem.List" time="0.0522" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="0.659" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdUserSession.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="0.5177" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdUserSession.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdUserSession" executed="True" result="Success" success="True" time="0.2222" asserts="0" description="Get-AzWvdUserSession">
+          <test-suite type="TestFixture" name="Get-AzWvdUserSession" executed="True" result="Success" success="True" time="0.1816" asserts="0" description="Get-AzWvdUserSession">
             <results>
-              <test-case description="Get" name="Get-AzWvdUserSession.Get" time="0.0311" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdUserSession.List" time="0.0341" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List host pool Level" name="Get-AzWvdUserSession.List host pool Level" time="0.0413" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdUserSession.Get" time="0.0216" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdUserSession.List" time="0.0285" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List host pool Level" name="Get-AzWvdUserSession.List host pool Level" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.7714" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdWorkspace.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.6429" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdWorkspace.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.3699" asserts="0" description="Get-AzWvdWorkspace">
+          <test-suite type="TestFixture" name="Get-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.2992" asserts="0" description="Get-AzWvdWorkspace">
             <results>
-              <test-case description="Get" name="Get-AzWvdWorkspace.Get" time="0.1168" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdWorkspace.List" time="0.0725" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List Subscription Level" name="Get-AzWvdWorkspace.List Subscription Level" time="0.0853" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzWvdWorkspace.Get" time="0.0852" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzWvdWorkspace.List" time="0.0645" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List Subscription Level" name="Get-AzWvdWorkspace.List Subscription Level" time="0.0615" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="2.5672" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplication.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="1.9076" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplication.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdApplication" executed="True" result="Success" success="True" time="2.1252" asserts="0" description="New-AzWvdApplication">
+          <test-suite type="TestFixture" name="New-AzWvdApplication" executed="True" result="Success" success="True" time="1.5723" asserts="0" description="New-AzWvdApplication">
             <results>
-              <test-case description="Create" name="New-AzWvdApplication.Create" time="0.5575" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="AppAlias" name="New-AzWvdApplication.AppAlias" time="0.6154" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Create_MsixApplication_RAG" name="New-AzWvdApplication.Create_MsixApplication_RAG" time="0.4781" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Create_MsixApplication_DAG" name="New-AzWvdApplication.Create_MsixApplication_DAG" time="0.3713" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzWvdApplication.Create" time="0.3816" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="AppAlias" name="New-AzWvdApplication.AppAlias" time="0.4507" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create_MsixApplication_RAG" name="New-AzWvdApplication.Create_MsixApplication_RAG" time="0.3239" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create_MsixApplication_DAG" name="New-AzWvdApplication.Create_MsixApplication_DAG" time="0.3217" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.5476" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.4182" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1587" asserts="0" description="New-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="New-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1098" asserts="0" description="New-AzWvdApplicationGroup">
             <results>
-              <test-case description="Create" name="New-AzWvdApplicationGroup.Create" time="0.0808" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzWvdApplicationGroup.Create" time="0.043" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.6393" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdHostPool.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.5153" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdHostPool.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdHostPool" executed="True" result="Success" success="True" time="0.2642" asserts="0" description="New-AzWvdHostPool">
+          <test-suite type="TestFixture" name="New-AzWvdHostPool" executed="True" result="Success" success="True" time="0.1798" asserts="0" description="New-AzWvdHostPool">
             <results>
-              <test-case description="FullSenerioCreate" name="New-AzWvdHostPool.FullSenerioCreate" time="0.0961" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Create" name="New-AzWvdHostPool.Create" time="0.0648" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="FullSenerioCreate" name="New-AzWvdHostPool.FullSenerioCreate" time="0.0402" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzWvdHostPool.Create" time="0.0487" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.6813" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdMsixPackage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.4733" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdMsixPackage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.2439" asserts="0" description="New-AzWvdMsixPackage">
+          <test-suite type="TestFixture" name="New-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.163" asserts="0" description="New-AzWvdMsixPackage">
             <results>
-              <test-case description="Create" name="New-AzWvdMsixPackage.Create" time="0.074" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="PackageAlias" name="New-AzWvdMsixPackage.PackageAlias" time="0.0755" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzWvdMsixPackage.Create" time="0.0326" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="PackageAlias" name="New-AzWvdMsixPackage.PackageAlias" time="0.0545" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.5672" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdRegistrationInfo.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.4205" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdRegistrationInfo.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.1866" asserts="0" description="New-AzWvdRegistrationInfo">
+          <test-suite type="TestFixture" name="New-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.0898" asserts="0" description="New-AzWvdRegistrationInfo">
             <results>
-              <test-case description="Create new RegistrationInfo" name="New-AzWvdRegistrationInfo.Create new RegistrationInfo" time="0.0657" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create new RegistrationInfo" name="New-AzWvdRegistrationInfo.Create new RegistrationInfo" time="0.0244" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.5515" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdWorkspace.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.4259" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\New-AzWvdWorkspace.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="New-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.1485" asserts="0" description="New-AzWvdWorkspace">
+          <test-suite type="TestFixture" name="New-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.1209" asserts="0" description="New-AzWvdWorkspace">
             <results>
-              <test-case description="Create" name="New-AzWvdWorkspace.Create" time="0.0536" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzWvdWorkspace.Create" time="0.0305" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Register-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.6922" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Register-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Register-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.4493" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Register-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Register-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.2437" asserts="0" description="Register-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="Register-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1331" asserts="0" description="Register-AzWvdApplicationGroup">
             <results>
-              <test-case description="Register ApplicationGroup" name="Register-AzWvdApplicationGroup.Register ApplicationGroup" time="0.1431" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Register ApplicationGroup" name="Register-AzWvdApplicationGroup.Register ApplicationGroup" time="0.0627" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="1.6197" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplication.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="1.2898" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplication.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdApplication" executed="True" result="Success" success="True" time="1.2329" asserts="0" description="Remove-AzWvdApplication">
+          <test-suite type="TestFixture" name="Remove-AzWvdApplication" executed="True" result="Success" success="True" time="0.9692" asserts="0" description="Remove-AzWvdApplication">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdApplication.Delete" time="0.3931" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Delete_MsixApplication_RAG" name="Remove-AzWvdApplication.Delete_MsixApplication_RAG" time="0.3833" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Delete_MsixApplication_DAG" name="Remove-AzWvdApplication.Delete_MsixApplication_DAG" time="0.3659" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdApplication.Delete" time="0.2884" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete_MsixApplication_RAG" name="Remove-AzWvdApplication.Delete_MsixApplication_RAG" time="0.2734" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete_MsixApplication_DAG" name="Remove-AzWvdApplication.Delete_MsixApplication_DAG" time="0.3284" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.5386" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.5213" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1743" asserts="0" description="Remove-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="Remove-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1503" asserts="0" description="Remove-AzWvdApplicationGroup">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdApplicationGroup.Delete" time="0.0897" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdApplicationGroup.Delete" time="0.0634" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.6093" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdHostPool.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.5295" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdHostPool.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdHostPool" executed="True" result="Success" success="True" time="0.1739" asserts="0" description="Remove-AzWvdHostPool">
+          <test-suite type="TestFixture" name="Remove-AzWvdHostPool" executed="True" result="Success" success="True" time="0.1518" asserts="0" description="Remove-AzWvdHostPool">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdHostPool.Delete" time="0.0883" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdHostPool.Delete" time="0.062" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.5767" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdMsixPackage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.5131" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdMsixPackage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.1457" asserts="0" description="Remove-AzWvdMsixPackage">
+          <test-suite type="TestFixture" name="Remove-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.1051" asserts="0" description="Remove-AzWvdMsixPackage">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdMsixPackage.Delete" time="0.0584" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdMsixPackage.Delete" time="0.0377" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.5123" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdRegistrationInfo.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdRegistrationInfo.Tests.ps1" executed="True" result="Success" success="True" time="0.4785" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdRegistrationInfo.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.1677" asserts="0" description="Remove-AzWvdRegistrationInfo">
+          <test-suite type="TestFixture" name="Remove-AzWvdRegistrationInfo" executed="True" result="Success" success="True" time="0.1158" asserts="0" description="Remove-AzWvdRegistrationInfo">
             <results>
-              <test-case description="Remove RegInfo" name="Remove-AzWvdRegistrationInfo.Remove RegInfo" time="0.047" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Remove RegInfo" name="Remove-AzWvdRegistrationInfo.Remove RegInfo" time="0.0332" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.5135" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdSessionHost.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.4729" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdSessionHost.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1258" asserts="0" description="Remove-AzWvdSessionHost">
+          <test-suite type="TestFixture" name="Remove-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1192" asserts="0" description="Remove-AzWvdSessionHost">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdSessionHost.Delete" time="0.0537" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdSessionHost.Delete" time="0.0439" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="0.4815" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdUserSession.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdUserSession.Tests.ps1" executed="True" result="Success" success="True" time="0.5289" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdUserSession.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdUserSession" executed="True" result="Success" success="True" time="0.1104" asserts="0" description="Remove-AzWvdUserSession">
+          <test-suite type="TestFixture" name="Remove-AzWvdUserSession" executed="True" result="Success" success="True" time="0.158" asserts="0" description="Remove-AzWvdUserSession">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdUserSession.Delete" time="0.0408" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdUserSession.Delete" time="0.064" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.4613" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdWorkspace.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.5135" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdWorkspace.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.1118" asserts="0" description="Remove-AzWvdWorkspace">
+          <test-suite type="TestFixture" name="Remove-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.1037" asserts="0" description="Remove-AzWvdWorkspace">
             <results>
-              <test-case description="Delete" name="Remove-AzWvdWorkspace.Delete" time="0.0381" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="Remove-AzWvdWorkspace.Delete" time="0.0272" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Send-AzWvdUserSessionMessage.Tests.ps1" executed="True" result="Success" success="True" time="0.5044" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Send-AzWvdUserSessionMessage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Send-AzWvdUserSessionMessage.Tests.ps1" executed="True" result="Success" success="True" time="0.456" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Send-AzWvdUserSessionMessage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Send-AzWvdUserSessionMessage" executed="True" result="Success" success="True" time="0.1082" asserts="0" description="Send-AzWvdUserSessionMessage">
+          <test-suite type="TestFixture" name="Send-AzWvdUserSessionMessage" executed="True" result="Success" success="True" time="0.1337" asserts="0" description="Send-AzWvdUserSessionMessage">
             <results>
-              <test-case description="Send" name="Send-AzWvdUserSessionMessage.Send" time="0.0377" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Send" name="Send-AzWvdUserSessionMessage.Send" time="0.047" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Unregister-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.4951" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Unregister-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Unregister-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.5735" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Unregister-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Unregister-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.151" asserts="0" description="Unregister-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="Unregister-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1935" asserts="0" description="Unregister-AzWvdApplicationGroup">
             <results>
-              <test-case description="Unregister ApplicationGroup" name="Unregister-AzWvdApplicationGroup.Unregister ApplicationGroup" time="0.0856" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Unregister ApplicationGroup" name="Unregister-AzWvdApplicationGroup.Unregister ApplicationGroup" time="0.096" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.8515" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplication.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.83" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplication.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdApplication" executed="True" result="Success" success="True" time="0.4971" asserts="0" description="Update-AzWvdApplication">
+          <test-suite type="TestFixture" name="Update-AzWvdApplication" executed="True" result="Success" success="True" time="0.472" asserts="0" description="Update-AzWvdApplication">
             <results>
-              <test-case description="Update" name="Update-AzWvdApplication.Update" time="0.1845" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Update-MsixApplication" name="Update-AzWvdApplication.Update-MsixApplication" time="0.231" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdApplication.Update" time="0.1842" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update-MsixApplication" name="Update-AzWvdApplication.Update-MsixApplication" time="0.1676" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.5661" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplicationGroup.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplicationGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.4758" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdApplicationGroup.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1628" asserts="0" description="Update-AzWvdApplicationGroup">
+          <test-suite type="TestFixture" name="Update-AzWvdApplicationGroup" executed="True" result="Success" success="True" time="0.1352" asserts="0" description="Update-AzWvdApplicationGroup">
             <results>
-              <test-case description="Update" name="Update-AzWvdApplicationGroup.Update" time="0.085" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdApplicationGroup.Update" time="0.0716" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdDesktop.Tests.ps1" executed="True" result="Success" success="True" time="0.6395" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdDesktop.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdDesktop.Tests.ps1" executed="True" result="Success" success="True" time="0.4687" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdDesktop.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdDesktop" executed="True" result="Success" success="True" time="0.217" asserts="0" description="Update-AzWvdDesktop">
+          <test-suite type="TestFixture" name="Update-AzWvdDesktop" executed="True" result="Success" success="True" time="0.1581" asserts="0" description="Update-AzWvdDesktop">
             <results>
-              <test-case description="Update" name="Update-AzWvdDesktop.Update" time="0.1332" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdDesktop.Update" time="0.0923" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.5657" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdHostPool.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdHostPool.Tests.ps1" executed="True" result="Success" success="True" time="0.4836" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdHostPool.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdHostPool" executed="True" result="Success" success="True" time="0.1918" asserts="0" description="Update-AzWvdHostPool">
+          <test-suite type="TestFixture" name="Update-AzWvdHostPool" executed="True" result="Success" success="True" time="0.1704" asserts="0" description="Update-AzWvdHostPool">
             <results>
-              <test-case description="Update" name="Update-AzWvdHostPool.Update" time="0.097" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdHostPool.Update" time="0.0936" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.5359" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdMsixPackage.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdMsixPackage.Tests.ps1" executed="True" result="Success" success="True" time="0.4566" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdMsixPackage.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.151" asserts="0" description="Update-AzWvdMsixPackage">
+          <test-suite type="TestFixture" name="Update-AzWvdMsixPackage" executed="True" result="Success" success="True" time="0.1335" asserts="0" description="Update-AzWvdMsixPackage">
             <results>
-              <test-case description="Update" name="Update-AzWvdMsixPackage.Update" time="0.0687" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdMsixPackage.Update" time="0.0719" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.552" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdSessionHost.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdSessionHost.Tests.ps1" executed="True" result="Success" success="True" time="0.5341" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdSessionHost.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1706" asserts="0" description="Update-AzWvdSessionHost">
+          <test-suite type="TestFixture" name="Update-AzWvdSessionHost" executed="True" result="Success" success="True" time="0.1698" asserts="0" description="Update-AzWvdSessionHost">
             <results>
-              <test-case description="Update" name="Update-AzWvdSessionHost.Update" time="0.0702" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdSessionHost.Update" time="0.085" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.5362" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdWorkspace.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="0.5226" asserts="0" description="C:\Users\shhirji\Desktop\Development\WVD\azure-powershell-gen\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdWorkspace.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Update-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.1442" asserts="0" description="Update-AzWvdWorkspace">
+          <test-suite type="TestFixture" name="Update-AzWvdWorkspace" executed="True" result="Success" success="True" time="0.14" asserts="0" description="Update-AzWvdWorkspace">
             <results>
-              <test-case description="Update" name="Update-AzWvdWorkspace.Update" time="0.0614" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzWvdWorkspace.Update" time="0.0457" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
