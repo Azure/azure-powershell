@@ -27,6 +27,7 @@
     - Added parameter `-SkuTier`
     - Added parameter `-SkuName` and made Sku as Alias for this
     - Removed parameter `-Sku`
+* [Breaking Change] Make "Connectionlink" argument mandatory in start-azVpnConnectionPacketCapture and Stop-AzVpnConnectionPacketCapture
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
