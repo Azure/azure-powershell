@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Argument completer implementation for ManagedIdentityType.</summary>
+    /// <summary>Type of the managed identity</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityTypeTypeConverter))]
     public partial struct ManagedIdentityType :
         System.Management.Automation.IArgumentCompleter

@@ -57,6 +57,69 @@ NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microso
 
 The above command will create a VHubRoute object with nextHop as the specified hubVnetConnection which can then be added to a VHubRouteTable resource.
 
+
+### Example 3
+```powershell
+PS C:\> $hub = Get-AzVirtualHub -ResourceGroupName {rgname} -Name {virtual-hub-name}
+PS C:\> $hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name {connection-name}
+PS C:\> $hubVnetConn
+Name                   : conn_2
+Id                     : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/{virtual-hub-name}/hubVirtualNetworkConnections/conn_2
+RemoteVirtualNetwork   : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/rVnet_2
+EnableInternetSecurity : True
+ProvisioningState      : Succeeded
+RoutingConfiguration   : {
+                           "AssociatedRouteTable": {
+                             "Id": "/subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/{virtual-hub-name}/hubRouteTables/defaultRouteTable"
+                           },
+                           "PropagatedRouteTables": {
+                             "Labels": [
+                               "default"
+                             ],
+                             "Ids": [
+                               {
+                                 "Id":
+                         "/subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/{virtual-hub-name}/hubRouteTables/defaultRouteTable"
+                               }
+                             ]
+                           },
+                           "VnetRoutes": {
+                             "StaticRoutes": []
+                           }
+                         }
+                         
+PS C:\> $staticRoute1 = New-AzStaticRoute -Name "static_route1" -AddressPrefix @("10.2.1.0/24", "10.2.3.0/24") -NextHopIpAddress "10.2.0.5"
+PS C:\> $routingConfig = $hubVnetConn.RoutingConfiguration
+PS C:\> $routingConfig.VnetRoutes.StaticRoutes = @($staticRoute1)
+PS C:\> $routingConfig
+AssociatedRouteTable  : Microsoft.Azure.Commands.Network.Models.PSResourceId
+PropagatedRouteTables : {
+                          "Labels": [
+                            "default"
+                          ],
+                          "Ids": [
+                            {
+                              "Id":
+                        "/subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/rTestHub1/hubRouteTables/defaultRouteTable"
+                            }
+                          ]
+                        }
+VnetRoutes            : {
+                          "StaticRoutes": [
+                            {
+                              "Name": "static_route1",
+                              "AddressPrefixes": [
+                                "10.2.1.0/24",
+                                "10.2.3.0/24"
+                              ],
+                              "NextHopIpAddress": "10.2.0.5"
+                            }
+                          ]
+                        }
+
+PS C:\> Update-AzVirtualHubVnetConnection -InputObject $hubVnetConn -RoutingConfiguration $routingConfig
+```
+The above commands will get the RoutingConfiguration of an already existing AzVHubRoute and then add a static route on the connection. Alternatively, if you hope to create a new connection with the static route within it, please see Example 1 [here.](New-AzRoutingConfiguration.md)
 ## PARAMETERS
 
 ### -DefaultProfile
