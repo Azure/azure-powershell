@@ -35,43 +35,41 @@ For more information about Azure resources and Azure resource groups, see the Ne
 
 ### Example 1: Get a resource group by name
 ```
-PS C:\>Get-AzResourceGroup -Name "EngineerBlog"
+PS C:\> Get-AzResourceGroup -Name "EngineerBlog"
 ```
 
 This command gets the Azure resource group in your subscription named EngineerBlog.
 
 ### Example 2: Get all tags of a resource group
 ```
-PS C:\>(Get-AzResourceGroup -Name "ContosoRG").Tags
+PS C:\> (Get-AzResourceGroup -Name "ContosoRG").Tags
 ```
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
-### Example 3: Show the Resource groups by location
+### Example 3: Get resource groups based on tag
+```
+PS C:\> Get-AzResourceGroup -Tag @{'environment'='prod'}
+```
+
+### Example 4: Show the Resource groups by location
 ```
 PS C:\> Get-AzResourceGroup |
   Sort Location,ResourceGroupName |
   Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
 ```
 
-### Example 4: Show the names of all the Resource groups in a particular location
+### Example 5: Show the names of all the Resource groups in a particular location
 ```
 PS C:\> Get-AzResourceGroup -Location westus2 |
    Sort ResourceGroupName | 
    Format-Wide ResourceGroupName -Column 4
 ```
 
-### Example 5: Show the Resource groups whose names begin with WebServer
+### Example 6: Show the Resource groups whose names begin with WebServer
 ```
-PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
+PS C:\> Get-AzResourceGroup -Name WebServer*
 ```
-
-### Example 6: Get a resource group by name
-```
-PS C:\> Get-AzResourceGroup -Name "EngineerBlog*"
-```
-
-This command gets the Azure resource group in your subscription that start with "EngineerBlog".
 
 ## PARAMETERS
 
@@ -204,5 +202,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzResourceGroup](./Remove-AzResourceGroup.md)
 
 [Set-AzResourceGroup](./Set-AzResourceGroup.md)
-
 

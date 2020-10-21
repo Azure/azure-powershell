@@ -14,19 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using AutoMapper;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Security;
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 

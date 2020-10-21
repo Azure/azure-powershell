@@ -52,16 +52,30 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateClusterWithPrivateLink()
+        public void TestCreateClusterWithEncryptionAtHost()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithPrivateLink");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionAtHost");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateClusterWithEncryptionAtHost()
+        public void TestCreateClusterWithLoadBasedAutoscale()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TestCreateClusterWithEncryptionAtHost");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithLoadBasedAutoscale");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithScheduleBasedAutoscale()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithScheduleBasedAutoscale");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithKafkaRestProxy()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithKafkaRestProxy");
         }
     }
 }

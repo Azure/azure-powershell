@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             {
                 object processed = ProcessValue(value, 0, context);
 
-                return JsonConvert.SerializeObject(processed, JsonExtensions.ObjectSerializationSettings);
+                return JsonConvert.SerializeObject(processed);
             }
             catch (OperationCanceledException)
             {
@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             if (IsPrimitive(value))
             {
                 return value;
+            }
+
+            if (value is JValue jValue)
+            {
+                return jValue.Value<object>();
             }
 
             if (value is JObject jObject)

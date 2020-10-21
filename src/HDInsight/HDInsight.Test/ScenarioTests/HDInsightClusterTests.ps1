@@ -23,12 +23,12 @@ function Test-ClusterRelatedCommands{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameterForWASB
+		$params= Prepare-ClusterCreateParameter
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
@@ -104,13 +104,13 @@ function Test-CreateClusterWithEncryptionInTransit{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameterForWASB -Location "South Central US"
+		$params= Prepare-ClusterCreateParameter -Location "South Central US"
 		$encryptionInTransit=$true
 
 		# create cluster
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionInTransit $encryptionInTransit
 
@@ -127,33 +127,30 @@ function Test-CreateClusterWithEncryptionInTransit{
 
 <#
 .SYNOPSIS
-Test Create Azure HDInsight Cluster which Private Link
+Test Create Azure HDInsight Cluster which enalbes Encryption At Host
 #>
 
-function Test-CreateClusterWithPrivateLink{
+function Test-CreateClusterWithEncryptionAtHost{
 
 	# Create some resources that will be used throughout test
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameterForWASB -location "South Central US"
-
-		# Prepare virtual network
-		$vnetName=Generate-Name("hdi-ps-vnet")
-		$vnet=Create-VnetkWithSubnet -location $params.location -resourceGroupName $params.resourceGroupName `
-		-vnetName $vnetName -subnetPrivateLinkServiceNetworkPoliciesFlag $false 
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$encryptionAtHost=$true
+		$workerNodeSize="Standard_DS14_v2"
+		$headNodeSize="Standard_DS14_v2"
+		$zookeeperNodeSize="Standard_DS14_v2"
 
 		# create cluster
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnet.Id -SubnetName $vnet.Subnets[0].Id `
-		-PublicNetworkAccessType OutboundOnly -OutboundPublicNetworkAccessType PublicLoadBalancer
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
 
-		Assert-AreEqual $cluster.PublicNetworkAccessType OutboundOnly
-		Assert-AreEqual $cluster.OutboundPublicNetworkAccessType PublicLoadBalancer
+		Assert-AreEqual $cluster.DiskEncryption.EncryptionAtHost $encryptionAtHost
 		
 	}
 	finally
@@ -166,31 +163,110 @@ function Test-CreateClusterWithPrivateLink{
 
 <#
 .SYNOPSIS
-Test Create Azure HDInsight Cluster which Enalbes Encryption At Host
+Test Create Azure HDInsight Cluster with Load-based autoscale
 #>
 
-function Test-TestCreateClusterWithEncryptionAtHost{
+function Test-CreateClusterWithLoadBasedAutoscale{
 
 	# Create some resources that will be used throughout test
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameterForWASB -Location "South Central US"
-		$encryptionAtHost=$true
-		$workerNodeSize="Standard_DS14_v2"
-		$headNodeSize="Standard_DS14_v2"
-		$zookeeperNodeSize="Standard_DS14_v2"
+		$params= Prepare-ClusterCreateParameter -location "East US"
 
-		# create cluster
+		# create autoscale cofiguration
+		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 4 -MaxWorkerNodeCount 5
+
+		# create cluster with load-based autoscale
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
-		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
+		-AutoscaleConfiguration $autoscaleConfiguration
 
-		Assert-AreEqual $cluster.DiskEncryption.EncryptionAtHost $encryptionAtHost
-		
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Capacity.MinInstanceCount 4
+		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Capacity.MaxInstanceCount 5
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with Schedule-based autoscale
+#>
+
+function Test-CreateClusterWithScheduleBasedAutoscale{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "East US"
+
+		# create autoscale schedule condition
+		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "09:00" -WorkerNodeCount 4 -Day Monday,Tuesday
+		$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "08:00" -WorkerNodeCount 5 -Day Friday
+
+		# create autoscale configuration
+		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `
+		-Condition $condition1,$condition2
+
+		# create cluster with schedule-based autoscale
+		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
+		-AutoscaleConfiguration $autoscaleConfiguration
+
+		Assert-NotNull $cluster
+		Assert-NotNull $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence
+		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.Condition[0].WorkerNodeCount $condition1.WorkerNodeCount
+		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.Condition[1].WorkerNodeCount $condition2.WorkerNodeCount
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with kafka rest proxy.
+#>
+
+function Test-CreateClusterWithKafkaRestProxy{
+# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "South Central US" -clusterType Kafka
+		$kafkaClientGroupName="FakeClientGroup"
+		$kafkaClientGroupId="00000000-0000-0000-0000-000000000000"
+		$disksPerWorkerNode=2
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -KafkaClientGroupId  $kafkaClientGroupId `
+		-KafkaClientGroupName $kafkaClientGroupName -DisksPerWorkerNode $disksPerWorkerNode `
+		-KafkaManagementNodeSize Standard_D4_v2
+
+		Assert-NotNull $cluster
+		#test Get-AzHDInsightCluster
+		$resultCluster = Get-AzHDInsightCluster -ClusterName $cluster.Name
+		Assert-AreEqual $resultCluster.Name  $cluster.Name
 	}
 	finally
 	{

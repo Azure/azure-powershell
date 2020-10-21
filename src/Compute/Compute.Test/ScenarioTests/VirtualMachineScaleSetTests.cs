@@ -178,5 +178,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetEncryptionAtHost");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetOrchestrationVM()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAssignedHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAssignedHost");
+        }
     }
 }

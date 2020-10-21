@@ -189,4 +189,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
-[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[Update-AzFrontDoorWafPolicy](./Update-AzFrontDoorWafPolicy.md)

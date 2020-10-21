@@ -50,7 +50,7 @@ Deletes the backup with name 15be823c-7e2c-49d8-819f-a3fdcad92215;13226825055000
 The name of the backup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The name of the Managed Database the backup is from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The Database Long Term Retention Backup object to remove.
 
 ```yaml
-Type: AzureSqlManagedDatabaseLongTermRetentionBackupModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlManagedDatabaseLongTermRetentionBackupModel
 Parameter Sets: RemoveBackupByInputObject
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 The name of the Managed Instance the backup is under.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The location of the backups' source Managed Instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 The Resource ID of the Database Long Term Retention Backup to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupByResourceId
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -201,7 +201,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

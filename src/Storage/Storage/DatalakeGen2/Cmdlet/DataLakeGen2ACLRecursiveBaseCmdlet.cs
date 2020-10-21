@@ -53,6 +53,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public PSPathAccessControlEntry[] Acl { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.")]
+        public SwitchParameter ContinueOnFailure { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked. Batch size should be between 1 and 2000. Default is 2000.")]
         public int BatchSize
         {
@@ -90,16 +94,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
 
-        protected AccessControlChangeOptions accessControlChangeOptions
+        protected AccessControlChangeOptions GetAccessControlChangeOptions(long taskId)
         {
-            get
+            return new AccessControlChangeOptions()
             {
-                return new AccessControlChangeOptions()
-                {
-                    BatchSize = this.batchSize,
-                    MaxBatches = this.maxBatchCount
-                };
-            }
+                BatchSize = this.batchSize,
+                ContinueOnFailure = this.ContinueOnFailure.IsPresent,
+                MaxBatches = this.maxBatchCount,
+                ProgressHandler = GetProgressHandler(taskId)
+            };
         }
 
         protected IProgress<Response<AccessControlChanges>> GetProgressHandler(long taskId)
@@ -119,9 +122,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     totalFailureCount += setProgress.Value.BatchCounters.FailedChangesCount;
                     this.FailedEntries.AddRange(setProgress.Value.BatchFailures);
 
-                    if ((continuationToken == setProgress.Value.ContinuationToken) && (setProgress.Value.BatchCounters.FailedChangesCount == 0))
+                    if (setProgress.Value.ContinuationToken == continuationToken  && (setProgress.Value.BatchCounters.FailedChangesCount == 0 ||this.ContinueOnFailure.IsPresent))
                     {
+                        // When SDK return continuationToken same as the chunk before last, it means this is the last chunk of this run, and the token is for the chunk before last
+                        // this continuationToken should only output when last chunk has failure and ContinueOnFailure disable, else return null
                         continuationToken = null;
+                    }
+                    else if (setProgress.Value.ContinuationToken == null && setProgress.Value.BatchCounters.FailedChangesCount != 0 && !this.ContinueOnFailure.IsPresent)
+                    {
+                        // when SDK return continuationToken as null, it means this is the last chunk of this run
+                        // should output the continue token of the chunk before last , when last chunk has failure and ContinueOnFailure disable
+                        // So don't need to update continue token
                     }
                     else
                     {

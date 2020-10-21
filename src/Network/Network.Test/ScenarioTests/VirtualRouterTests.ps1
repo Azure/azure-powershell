@@ -32,64 +32,42 @@ function Test-VirtualRouterCRUD
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
     $vnetName = Get-ResourceName
-    $publicIpName = Get-ResourceName
-    $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "southcentralus"
-    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent "southcentralus"
-	$virtualRouterName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualRouterName = Get-ResourceName
+    $subnetName = Get-ResourceName
 
     try
     {
       # Create the resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-      
-	 
+     
       # Create the Virtual Network
-      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
-
-      # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
-
-      # Create & Get virtualnetworkgateway
-      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku HighPerformance -VpnType RouteBased -VpnGatewayGeneration None -Force 
-      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $expected.Name $actual.Name	
-      Assert-AreEqual "ExpressRoute" $expected.GatewayType
-	  Assert-AreEqual "None" $expected.VpnGatewayGeneration
-
-	  # Create Virtual Router
-	  $actualvr = New-AzVirtualRouter -ResourceGroupName $rgname -location $location -Name $virtualRouterName -HostedGateway $expected 
-	  $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-	  Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
+      $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+        
+      # Create Virtual Router
+      $actualvr = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
+      $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+      Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
-
-	  # List Virtual Routers
-	  $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual $expectedvr.Location $actualvr.Location
+        
+      # List Virtual Routers
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actualvr.Name	
       Assert-AreEqual $list[0].Location $actualvr.Location
-
-	  # Delete VR
-	  $deletevR = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
-      Assert-AreEqual true $deletevR
-
-      # Delete virtualNetworkGateway
-      $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
-      Assert-AreEqual true $delete
-
-	  $list = Get-AzVirtualRouter -ResourceGroupName $rgname
-	  Assert-AreEqual 0 @($list).Count
+        
+      # Delete VR
+      $deletevr = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      Assert-AreEqual true $deletevr
+        
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
     }
     finally
     {
@@ -98,3 +76,112 @@ function Test-VirtualRouterCRUD
     }
 }
 
+<#
+.SYNOPSIS
+Test creating new virtualRouterPeer
+#>
+function Test-VirtualRouterPeerCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualRouterName = Get-ResourceName
+    $virtualWanName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $peerName = Get-ResourceName
+
+    try
+    {
+      # Create resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+     
+      # Create virtual network and subnet
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      
+      # Create virtual router
+      $virtualRouter = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $hostedsubnet.Id
+      $virtualRouter = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+
+      # Create hub bgp connection
+      $actualBgpConnection = Add-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
+      $expectedBgpConnection = Get-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
+      Assert-AreEqual $expectedBgpConnection.Peerings.PeerName $actualBgpConnection.PeerName
+      Assert-AreEqual $expectedBgpConnection.PeerIp "192.168.1.5"
+      Assert-AreEqual $expectedBgpConnection.PeerAsn "20000"
+
+      #delete hub bgp connection
+      $deleteBgpConnection = Remove-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -Force
+      Assert-AreEqual 0 @($deleteBgpConnection.Peerings).Count
+
+      # Delete virtual router
+      $deleteVirtualRouter = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      Assert-AreEqual true $deleteVirtualRouter
+
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test virtual router peer learned and advertiesd routes (bgp routes)
+#>
+function Test-VirtualRouterPeerRoutes
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualRouterName = Get-ResourceName
+    $virtualWanName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $peerName = Get-ResourceName
+
+    try
+    {
+      # Create resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+     
+      # Create virtual network and subnet
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      
+      # Create virtual router
+      $virtualRouter = New-AzVirtualRouter -ResourceGroupName $rgname -location $rglocation -Name $virtualRouterName -HostedSubnet $subnet.Id
+      $virtualRouter = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+
+      # Create virtual router peering
+      $peering = Add-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
+      $peering = Get-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
+
+      $learnedRoutes = Get-AzVirtualRouterPeerLearnedRoute -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
+      $advertisedRoutes = Get-AzVirtualRouterPeerAdvertisedRoute -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName
+
+      #delete virtual router peering
+      $deletePeering = Remove-AzVirtualRouterPeer -ResourceGroupName $rgname -VirtualRouterName $virtualRouterName -PeerName $peerName -Force
+      Assert-AreEqual 0 @($deletePeering.Peerings).Count
+
+      # Delete virtual router
+      $deleteVirtualRouter = Remove-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -PassThru -Force
+      Assert-AreEqual true $deleteVirtualRouter
+
+      $list = Get-AzVirtualRouter -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

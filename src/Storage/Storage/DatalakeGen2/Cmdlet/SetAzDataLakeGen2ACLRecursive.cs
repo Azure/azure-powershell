@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using System.Management.Automation;
@@ -66,10 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(dirClient.Uri.ToString(), "Set Acl recursively on Directory: "))
                 {
                     await dirClient.SetAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
-                        GetProgressHandler(taskId),
-                        this.accessControlChangeOptions,
                         continuationToken,
+                        GetAccessControlChangeOptions(taskId),
                         CmdletCancellationToken).ConfigureAwait(false);
+
+                    SetProgressComplete();
+                    WriteResult(taskId);
                 }
             }
             else
@@ -77,15 +80,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(fileClient.Uri.ToString(), "Set Acl recursively on File: "))
                 {
                     await fileClient.SetAccessControlRecursiveAsync(PSPathAccessControlEntry.ParseAccessControls(this.Acl),
-                        GetProgressHandler(taskId),
-                        this.accessControlChangeOptions,
                         continuationToken,
+                        GetAccessControlChangeOptions(taskId),
                         CmdletCancellationToken).ConfigureAwait(false);
+
+                    SetProgressComplete();
+                    WriteResult(taskId);
                 }
             }
-            
-            SetProgressComplete();
-            WriteResult(taskId);
         }
     }
 }
