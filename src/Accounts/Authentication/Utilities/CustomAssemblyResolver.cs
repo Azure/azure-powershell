@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 AssemblyName name = new AssemblyName(args.Name);
                 if (NetFxPreloadAssemblies.TryGetValue(name.Name, out Version version))
                 {
-                    if (version >= name.Version && version.Major == name.Version.Major)
+                    //For Newtonsoft.Json, allow to use bigger version to replace smaller version
+                    if (version >= name.Version && (version.Major == name.Version.Major || string.Equals(name.Name, "Newtonsoft.Json", StringComparison.OrdinalIgnoreCase)))
                     {
                         string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{name.Name}.dll");
                         return Assembly.LoadFrom(requiredAssembly);
