@@ -451,15 +451,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InteractiveSparkSessionTips.
-        /// </summary>
-        internal static string InteractiveSparkSessionTips {
-            get {
-                return ResourceManager.GetString("InteractiveSparkSessionTips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
         /// </summary>
         internal static string InvalidCastParameterKeyExceptionMessage {
@@ -523,21 +514,21 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
-        /// </summary>
-        internal static string LongRunningStatusError {
-            get {
-                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
-                }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Invoking Spark statement in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string InvokingSparkStatement {
             get {
                 return ResourceManager.GetString("InvokingSparkStatement", resourceCulture);
-                }
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        /// </summary>
+        internal static string LongRunningStatusError {
+            get {
+                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
+            }
         }
         
         /// <summary>
@@ -611,7 +602,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RemovingIntegrationRuntimeNode", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
@@ -654,7 +645,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapsePipeline {
             get {
                 return ResourceManager.GetString("RemovingSynapsePipeline", resourceCulture);
-
             }
         }
         
@@ -736,6 +726,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ResettingSynapseSparkSessionTimeout {
             get {
                 return ResourceManager.GetString("ResettingSynapseSparkSessionTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new SQL pool restored from &apos;{0}&apos; in resource group &apos;{1}&apos; under parent Workspace &apos;{2}&apos; with name &apos;{3}&apos;..
+        /// </summary>
+        internal static string RestoringSynapseSqlPool {
+            get {
+                return ResourceManager.GetString("RestoringSynapseSqlPool", resourceCulture);
             }
         }
         
@@ -848,20 +847,20 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
-        /// </summary>
-        internal static string StartingSynapseTrigger {
-            get {
-                return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
             get {
                 return ResourceManager.GetString("StartingSynapseSparkSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StartingSynapseTrigger {
+            get {
+                return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
             }
         }
         
@@ -902,20 +901,20 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
-        /// </summary>
-        internal static string SubmittingSynapseSparkJob {
-            get {
-                return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
-                }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Stopping trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string StoppingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StoppingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SubmittingSynapseSparkJob {
+            get {
+                return ResourceManager.GetString("SubmittingSynapseSparkJob", resourceCulture);
             }
         }
         
