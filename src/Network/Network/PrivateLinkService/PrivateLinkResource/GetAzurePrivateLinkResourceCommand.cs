@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Network
         public string PrivateLinkResourceType { get; set; }
         string NamedContextParameterSet = "ByResource";
         private RuntimeDefinedParameterDictionary DynamicParameters;
+        public const string privateEndpointTypeName = "PrivateLinkResourceType";
         public string Subscription { get; set; }
 
         public object GetDynamicParameters()
