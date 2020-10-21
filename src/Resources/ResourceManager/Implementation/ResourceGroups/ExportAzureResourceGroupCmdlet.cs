@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
     using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using System;
@@ -96,31 +97,89 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets the API version.
+        /// </summary>
+        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
+        [ValidateNotNullOrEmpty]
+        public override string ApiVersion { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            String contents;
+
             if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
 
                 var resourceGroupId = this.GetResourceGroupId();
 
-                var parameters = new Management.ResourceManager.Models.ExportTemplateRequest
+                if (this.ApiVersion is null)
                 {
-                    Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                    Options = this.GetExportOptions(),
-                };
+                    var parameters = new Management.ResourceManager.Models.ExportTemplateRequest
+                    {
+                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
+                        Options = this.GetExportOptions(),
+                    };
 
-                var exportedTemplate = ResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
+                    var exportedTemplate = ResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
 
-                var template = exportedTemplate.Template;
+                    var template = exportedTemplate.Template;
+                    contents = template.ToString();
 
-                var error = exportedTemplate.Error;
+                    var error = exportedTemplate.Error;
+                }
+                else
+                {
+                    var parameters = new ExportTemplateParameters
+                    {
+                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
+                        Options = this.GetExportOptions(),
+                    };
+                    var apiVersion = this.ApiVersion ?? DefaultApiVersion;
+                    var operationResult = this.GetResourcesClient()
+                       .InvokeActionOnResource<JObject>(
+                           resourceId: resourceGroupId,
+                           action: Constants.ExportTemplate,
+                           parameters: parameters.ToJToken(),
+                           apiVersion: apiVersion,
+                           cancellationToken: this.CancellationToken.Value)
+                       .Result;
+
+                    var managementUri = this.GetResourcesClient()
+                        .GetResourceManagementRequestUri(
+                            resourceId: resourceGroupId,
+                            apiVersion: apiVersion,
+                            action: Constants.ExportTemplate);
+
+                    var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                    var resultString = this.GetLongRunningOperationTracker(activityName: activity,
+                        isResourceCreateOrUpdate: false)
+                        .WaitOnOperation(operationResult: operationResult);
+
+                    var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+                    contents = template.ToString();
+
+                    if (JObject.Parse(resultString)["error"] != null)
+                    {
+                        ExtendedErrorInfo error;
+                        if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
+                        {
+                            WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                            foreach (var detail in error.Details)
+                            {
+                                WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                            }
+                        }
+                    }
+                }
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.ResourceGroupName,
-                    contents: template.ToString(),
+                    contents: contents,
                     outputPath:
                         string.IsNullOrEmpty(this.Path)
                             ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
