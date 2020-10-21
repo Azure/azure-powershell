@@ -53,10 +53,10 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.ContainerRegistry.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.ContainerRegistry.dll', 'Microsoft.Azure.ContainerRegistry.dll', 'System.IdentityModel.Tokens.Jwt'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -86,7 +86,12 @@ CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry',
                'Update-AzContainerRegistryWebhook', 
                'Test-AzContainerRegistryWebhook', 
                'Remove-AzContainerRegistryWebhook', 
-               'Get-AzContainerRegistryWebhookEvent'
+               'Get-AzContainerRegistryWebhookEvent', 
+               'Import-AzContainerRegistryImage', 
+               'Get-AzContainerRegistryUsage', 
+               'Set-AzContainerRegistryNetworkRuleSet', 
+               'New-AzContainerRegistryNetworkRule', 
+               'Connect-AzContainerRegistry'
 
 # Variables to export from this module
 # VariablesToExport = @()

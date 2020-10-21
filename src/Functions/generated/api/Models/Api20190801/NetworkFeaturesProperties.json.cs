@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_virtualNetworkConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("virtualNetworkConnection"), out var __jsonVirtualNetworkConnection) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetInfo.FromJson(__jsonVirtualNetworkConnection) : VirtualNetworkConnection;}
+            {_virtualNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualNetworkName"), out var __jsonVirtualNetworkName) ? (string)__jsonVirtualNetworkName : (string)VirtualNetworkName;}
             {_hybridConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hybridConnections"), out var __jsonHybridConnections) ? If( __jsonHybridConnections as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRelayServiceConnectionEntity[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRelayServiceConnectionEntity) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RelayServiceConnectionEntity.FromJson(__u) )) ))() : null : HybridConnection;}
             {_hybridConnectionsV2 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hybridConnectionsV2"), out var __jsonHybridConnectionsV2) ? If( __jsonHybridConnectionsV2 as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHybridConnection[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHybridConnection) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HybridConnection.FromJson(__p) )) ))() : null : HybridConnectionsV2;}
-            {_virtualNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualNetworkName"), out var __jsonVirtualNetworkName) ? (string)__jsonVirtualNetworkName : (string)VirtualNetworkName;}
             AfterFromJson(json);
         }
 
@@ -102,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != (((object)this._virtualNetworkName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualNetworkName.ToString()) : null, "virtualNetworkName" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 if (null != this._hybridConnection)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
@@ -123,10 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                     }
                     container.Add("hybridConnectionsV2",__r);
                 }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._virtualNetworkName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualNetworkName.ToString()) : null, "virtualNetworkName" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

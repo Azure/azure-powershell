@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* General availability of 'Az.Functions' module
+
+## Version 1.0.1
+* Fixed a bug that may cause updating databricks workspace without `-EncryptionKeyVersion` to fail.
+
+## Version 1.0.0
+* General availability of 'Az.Databricks' module
 * Added support for virtual network peering
 
 ## Version 0.2.0

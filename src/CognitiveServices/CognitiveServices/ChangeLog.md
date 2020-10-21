@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+* Updated SDK to 7.4.0-preview.
+
+## Version 1.7.0
 * Added `New-AzCognitiveServicesAccountApiProperty` cmdlet.
 * Supported `ApiProperty` parameter for `New-AzCognitiveServicesAccount` and `Set-AzCognitiveServicesAccount`
 

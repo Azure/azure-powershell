@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._inUse ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._inUse) : null, "inUse" ,container.Add );
+            AddIf( null != (((object)this._virtualIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualIP.ToString()) : null, "virtualIP" ,container.Add );
             AddIf( null != this._internalHttpPort ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._internalHttpPort) : null, "internalHttpPort" ,container.Add );
             AddIf( null != this._internalHttpsPort ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._internalHttpsPort) : null, "internalHttpsPort" ,container.Add );
+            AddIf( null != this._inUse ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._inUse) : null, "inUse" ,container.Add );
             AddIf( null != (((object)this._serviceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceName.ToString()) : null, "serviceName" ,container.Add );
-            AddIf( null != (((object)this._virtualIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualIP.ToString()) : null, "virtualIP" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_inUse = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("inUse"), out var __jsonInUse) ? (bool?)__jsonInUse : InUse;}
+            {_virtualIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualIP"), out var __jsonVirtualIP) ? (string)__jsonVirtualIP : (string)VirtualIP;}
             {_internalHttpPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("internalHttpPort"), out var __jsonInternalHttpPort) ? (int?)__jsonInternalHttpPort : InternalHttpPort;}
             {_internalHttpsPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("internalHttpsPort"), out var __jsonInternalHttpsPort) ? (int?)__jsonInternalHttpsPort : InternalHttpsPort;}
+            {_inUse = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("inUse"), out var __jsonInUse) ? (bool?)__jsonInUse : InUse;}
             {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)ServiceName;}
-            {_virtualIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualIP"), out var __jsonVirtualIP) ? (string)__jsonVirtualIP : (string)VirtualIP;}
             AfterFromJson(json);
         }
     }

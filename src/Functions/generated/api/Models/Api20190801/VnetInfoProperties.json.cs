@@ -77,17 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._certBlob)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._certBlob.ToString()) : null, "certBlob" ,container.Add );
+            AddIf( null != (((object)this._vnetResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetResourceId.ToString()) : null, "vnetResourceId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._certThumbprint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._certThumbprint.ToString()) : null, "certThumbprint" ,container.Add );
             }
-            AddIf( null != (((object)this._dnsServer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsServer.ToString()) : null, "dnsServers" ,container.Add );
-            AddIf( null != this._isSwift ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isSwift) : null, "isSwift" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._resyncRequired ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._resyncRequired) : null, "resyncRequired" ,container.Add );
-            }
+            AddIf( null != (((object)this._certBlob)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._certBlob.ToString()) : null, "certBlob" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._route)
@@ -100,7 +95,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                     container.Add("routes",__w);
                 }
             }
-            AddIf( null != (((object)this._vnetResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetResourceId.ToString()) : null, "vnetResourceId" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._resyncRequired ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._resyncRequired) : null, "resyncRequired" ,container.Add );
+            }
+            AddIf( null != (((object)this._dnsServer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsServer.ToString()) : null, "dnsServers" ,container.Add );
+            AddIf( null != this._isSwift ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isSwift) : null, "isSwift" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -117,13 +117,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_certBlob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("certBlob"), out var __jsonCertBlob) ? (string)__jsonCertBlob : (string)CertBlob;}
+            {_vnetResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetResourceId"), out var __jsonVnetResourceId) ? (string)__jsonVnetResourceId : (string)VnetResourceId;}
             {_certThumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("certThumbprint"), out var __jsonCertThumbprint) ? (string)__jsonCertThumbprint : (string)CertThumbprint;}
+            {_certBlob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("certBlob"), out var __jsonCertBlob) ? (string)__jsonCertBlob : (string)CertBlob;}
+            {_route = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("routes"), out var __jsonRoutes) ? If( __jsonRoutes as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRoute.FromJson(__u) )) ))() : null : Route;}
+            {_resyncRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("resyncRequired"), out var __jsonResyncRequired) ? (bool?)__jsonResyncRequired : ResyncRequired;}
             {_dnsServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dnsServers"), out var __jsonDnsServers) ? (string)__jsonDnsServers : (string)DnsServer;}
             {_isSwift = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isSwift"), out var __jsonIsSwift) ? (bool?)__jsonIsSwift : IsSwift;}
-            {_resyncRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("resyncRequired"), out var __jsonResyncRequired) ? (bool?)__jsonResyncRequired : ResyncRequired;}
-            {_route = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("routes"), out var __jsonRoutes) ? If( __jsonRoutes as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRoute.FromJson(__u) )) ))() : null : Route;}
-            {_vnetResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetResourceId"), out var __jsonVnetResourceId) ? (string)__jsonVnetResourceId : (string)VnetResourceId;}
             AfterFromJson(json);
         }
     }

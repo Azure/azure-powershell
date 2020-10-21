@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Resource type used for verification.</summary>
     public partial struct CheckNameResourceTypes :
         System.IEquatable<CheckNameResourceTypes>
     {

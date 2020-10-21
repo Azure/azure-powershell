@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "networkSecurityGroupName": {
-      "value": "vnet-security-5ricpz"
+      "value": "vnet-security-jyesxh"
     },
     "location": {
       "value": "eastus"

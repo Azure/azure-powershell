@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Job type.</summary>
     public partial struct WebJobType :
         System.IEquatable<WebJobType>
     {
