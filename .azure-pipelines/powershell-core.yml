@@ -4,8 +4,8 @@ variables:
   LinuxName: linux
   LinuxImage: ubuntu-18.04
   MacOSName: macOS
-  MacOSImage: macOS-10.13
-  TestFramework: netcoreapp2.2
+  MacOSImage: macOS-10.14
+  TestFramework: netcoreapp2.1
   TestTarget: Test
   Configuration: Debug
 
