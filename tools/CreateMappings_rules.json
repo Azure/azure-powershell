@@ -206,6 +206,10 @@
     "alias": "Key Vault"
   },
   {
+    "regex": "ManagedHsm",
+    "alias": "Key Vault"
+  },
+  {
     "regex": "IotCentral",
     "alias": "IotCentral"
   },
@@ -592,5 +596,9 @@
   {
     "alias": "Dedicated HSM",
     "regex": "DedicatedHsm"
+  },
+  {
+    "alias": "Migrate",
+    "regex": "Migrate"
   }
 ]

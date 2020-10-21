@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_maxDiskSizeInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxDiskSizeInMb"), out var __jsonMaxDiskSizeInMb) ? (long?)__jsonMaxDiskSizeInMb : MaxDiskSizeInMb;}
-            {_maxMemoryInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxMemoryInMb"), out var __jsonMaxMemoryInMb) ? (long?)__jsonMaxMemoryInMb : MaxMemoryInMb;}
             {_maxPercentageCpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxPercentageCpu"), out var __jsonMaxPercentageCpu) ? (double?)__jsonMaxPercentageCpu : MaxPercentageCpu;}
+            {_maxMemoryInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxMemoryInMb"), out var __jsonMaxMemoryInMb) ? (long?)__jsonMaxMemoryInMb : MaxMemoryInMb;}
+            {_maxDiskSizeInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxDiskSizeInMb"), out var __jsonMaxDiskSizeInMb) ? (long?)__jsonMaxDiskSizeInMb : MaxDiskSizeInMb;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._maxDiskSizeInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxDiskSizeInMb) : null, "maxDiskSizeInMb" ,container.Add );
-            AddIf( null != this._maxMemoryInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxMemoryInMb) : null, "maxMemoryInMb" ,container.Add );
             AddIf( null != this._maxPercentageCpu ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._maxPercentageCpu) : null, "maxPercentageCpu" ,container.Add );
+            AddIf( null != this._maxMemoryInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxMemoryInMb) : null, "maxMemoryInMb" ,container.Add );
+            AddIf( null != this._maxDiskSizeInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxDiskSizeInMb) : null, "maxDiskSizeInMb" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_delete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("delete"), out var __jsonDelete) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterModification.FromJson(__jsonDelete) : Delete;}
-            {_tierToArchive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("tierToArchive"), out var __jsonTierToArchive) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterModification.FromJson(__jsonTierToArchive) : TierToArchive;}
             {_tierToCool = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("tierToCool"), out var __jsonTierToCool) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterModification.FromJson(__jsonTierToCool) : TierToCool;}
+            {_tierToArchive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("tierToArchive"), out var __jsonTierToArchive) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterModification.FromJson(__jsonTierToArchive) : TierToArchive;}
+            {_delete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("delete"), out var __jsonDelete) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterModification.FromJson(__jsonDelete) : Delete;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return container;
             }
-            AddIf( null != this._delete ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._delete.ToJson(null,serializationMode) : null, "delete" ,container.Add );
-            AddIf( null != this._tierToArchive ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._tierToArchive.ToJson(null,serializationMode) : null, "tierToArchive" ,container.Add );
             AddIf( null != this._tierToCool ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._tierToCool.ToJson(null,serializationMode) : null, "tierToCool" ,container.Add );
+            AddIf( null != this._tierToArchive ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._tierToArchive.ToJson(null,serializationMode) : null, "tierToArchive" ,container.Add );
+            AddIf( null != this._delete ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._delete.ToJson(null,serializationMode) : null, "delete" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

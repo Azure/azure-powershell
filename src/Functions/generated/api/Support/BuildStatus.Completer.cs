@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for BuildStatus.</summary>
+    /// <summary>The status of the static site build.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatusTypeConverter))]
     public partial struct BuildStatus :
         System.Management.Automation.IArgumentCompleter
