@@ -71,15 +71,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_baseAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("base_address"), out var __jsonBaseAddress) ? (string)__jsonBaseAddress : (string)BaseAddress;}
-            {_fileDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_description"), out var __jsonFileDescription) ? (string)__jsonFileDescription : (string)FileDescription;}
             {_fileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_name"), out var __jsonFileName) ? (string)__jsonFileName : (string)FileName;}
-            {_filePath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_path"), out var __jsonFilePath) ? (string)__jsonFilePath : (string)FilePath;}
-            {_fileVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_version"), out var __jsonFileVersion) ? (string)__jsonFileVersion : (string)FileVersion;}
             {_href = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("href"), out var __jsonHref) ? (string)__jsonHref : (string)Href;}
-            {_isDebug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("is_debug"), out var __jsonIsDebug) ? (bool?)__jsonIsDebug : IsDebug;}
+            {_filePath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_path"), out var __jsonFilePath) ? (string)__jsonFilePath : (string)FilePath;}
             {_moduleMemorySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("module_memory_size"), out var __jsonModuleMemorySize) ? (int?)__jsonModuleMemorySize : ModuleMemorySize;}
+            {_fileVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_version"), out var __jsonFileVersion) ? (string)__jsonFileVersion : (string)FileVersion;}
+            {_fileDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("file_description"), out var __jsonFileDescription) ? (string)__jsonFileDescription : (string)FileDescription;}
             {_product = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("product"), out var __jsonProduct) ? (string)__jsonProduct : (string)Product;}
             {_productVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("product_version"), out var __jsonProductVersion) ? (string)__jsonProductVersion : (string)ProductVersion;}
+            {_isDebug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("is_debug"), out var __jsonIsDebug) ? (bool?)__jsonIsDebug : IsDebug;}
             {_language = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("language"), out var __jsonLanguage) ? (string)__jsonLanguage : (string)Language;}
             AfterFromJson(json);
         }
@@ -104,15 +104,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != (((object)this._baseAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._baseAddress.ToString()) : null, "base_address" ,container.Add );
-            AddIf( null != (((object)this._fileDescription)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._fileDescription.ToString()) : null, "file_description" ,container.Add );
             AddIf( null != (((object)this._fileName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._fileName.ToString()) : null, "file_name" ,container.Add );
-            AddIf( null != (((object)this._filePath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._filePath.ToString()) : null, "file_path" ,container.Add );
-            AddIf( null != (((object)this._fileVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._fileVersion.ToString()) : null, "file_version" ,container.Add );
             AddIf( null != (((object)this._href)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._href.ToString()) : null, "href" ,container.Add );
-            AddIf( null != this._isDebug ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDebug) : null, "is_debug" ,container.Add );
+            AddIf( null != (((object)this._filePath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._filePath.ToString()) : null, "file_path" ,container.Add );
             AddIf( null != this._moduleMemorySize ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._moduleMemorySize) : null, "module_memory_size" ,container.Add );
+            AddIf( null != (((object)this._fileVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._fileVersion.ToString()) : null, "file_version" ,container.Add );
+            AddIf( null != (((object)this._fileDescription)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._fileDescription.ToString()) : null, "file_description" ,container.Add );
             AddIf( null != (((object)this._product)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._product.ToString()) : null, "product" ,container.Add );
             AddIf( null != (((object)this._productVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._productVersion.ToString()) : null, "product_version" ,container.Add );
+            AddIf( null != this._isDebug ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDebug) : null, "is_debug" ,container.Add );
             AddIf( null != (((object)this._language)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._language.ToString()) : null, "language" ,container.Add );
             AfterToJson(ref container);
             return container;

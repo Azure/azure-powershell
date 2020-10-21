@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._physicalPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._physicalPath.ToString()) : null, "physicalPath" ,container.Add );
             AddIf( null != (((object)this._virtualPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualPath.ToString()) : null, "virtualPath" ,container.Add );
+            AddIf( null != (((object)this._physicalPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._physicalPath.ToString()) : null, "physicalPath" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_physicalPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("physicalPath"), out var __jsonPhysicalPath) ? (string)__jsonPhysicalPath : (string)PhysicalPath;}
             {_virtualPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualPath"), out var __jsonVirtualPath) ? (string)__jsonVirtualPath : (string)VirtualPath;}
+            {_physicalPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("physicalPath"), out var __jsonPhysicalPath) ? (string)__jsonPhysicalPath : (string)PhysicalPath;}
             AfterFromJson(json);
         }
     }

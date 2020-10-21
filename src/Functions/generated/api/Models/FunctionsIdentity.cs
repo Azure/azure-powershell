@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Backing field for <see cref="CertificateOrderName" /> property.</summary>
         private string _certificateOrderName;
 
-        /// <summary>Name of the certificate order.</summary>
+        /// <summary>Name of the certificate order..</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string CertificateOrderName { get => this._certificateOrderName; set => this._certificateOrderName = value; }
 
@@ -164,9 +164,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>Resource identity path</summary>
+        /// <summary>Deployment ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="Id1" /> property.</summary>
+        private string _id1;
+
+        /// <summary>Resource identity path</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string Id1 { get => this._id1; set => this._id1 = value; }
 
         /// <summary>Backing field for <see cref="ImmutabilityPolicyName" /> property.</summary>
         private string _immutabilityPolicyName;
@@ -308,7 +315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
 
-        /// <summary>The name of the identity resource.</summary>
+        /// <summary>The name of the Application Insights component resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
 
@@ -345,7 +352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Backing field for <see cref="Slot" /> property.</summary>
         private string _slot;
 
-        /// <summary>Name of the deployment slot. By default, this API returns the production slot.</summary>
+        /// <summary>Slot Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string Slot { get => this._slot; set => this._slot = value; }
 
@@ -484,11 +491,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"BlobServicesName",
         PossibleTypes = new [] { typeof(string) })]
         string BlobServicesName { get; set; }
-        /// <summary>Name of the certificate order.</summary>
+        /// <summary>Name of the certificate order..</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the certificate order.",
+        Description = @"Name of the certificate order..",
         SerializedName = @"certificateOrderName",
         PossibleTypes = new [] { typeof(string) })]
         string CertificateOrderName { get; set; }
@@ -592,6 +599,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"hostingEnvironmentName",
         PossibleTypes = new [] { typeof(string) })]
         string HostingEnvironmentName { get; set; }
+        /// <summary>Deployment ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Deployment ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Id { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -599,7 +614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        string Id { get; set; }
+        string Id1 { get; set; }
         /// <summary>
         /// The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be
         /// 'default'
@@ -759,11 +774,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the identity resource.</summary>
+        /// <summary>The name of the Application Insights component resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the identity resource.",
+        Description = @"The name of the Application Insights component resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
@@ -801,11 +816,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"siteName",
         PossibleTypes = new [] { typeof(string) })]
         string SiteName { get; set; }
-        /// <summary>Name of the deployment slot. By default, this API returns the production slot.</summary>
+        /// <summary>Slot Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the deployment slot. By default, this API returns the production slot.",
+        Description = @"Slot Name",
         SerializedName = @"slot",
         PossibleTypes = new [] { typeof(string) })]
         string Slot { get; set; }
@@ -907,7 +922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
         string BlobServicesName { get; set; }
-        /// <summary>Name of the certificate order.</summary>
+        /// <summary>Name of the certificate order..</summary>
         string CertificateOrderName { get; set; }
         /// <summary>
         /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
@@ -937,8 +952,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string HostName { get; set; }
         /// <summary>Name of the hosting environment.</summary>
         string HostingEnvironmentName { get; set; }
-        /// <summary>Resource identity path</summary>
+        /// <summary>Deployment ID.</summary>
         string Id { get; set; }
+        /// <summary>Resource identity path</summary>
+        string Id1 { get; set; }
         /// <summary>
         /// The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be
         /// 'default'
@@ -984,7 +1001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string RelayName { get; set; }
         /// <summary>Name of the resource group to which the resource belongs.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the identity resource.</summary>
+        /// <summary>The name of the Application Insights component resource.</summary>
         string ResourceName { get; set; }
         /// <summary>Name of the Virtual Network route.</summary>
         string RouteName { get; set; }
@@ -996,7 +1013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string SiteExtensionId { get; set; }
         /// <summary>Site Name</summary>
         string SiteName { get; set; }
-        /// <summary>Name of the deployment slot. By default, this API returns the production slot.</summary>
+        /// <summary>Slot Name</summary>
         string Slot { get; set; }
         /// <summary>The ID of the snapshot to read.</summary>
         string SnapshotId { get; set; }
