@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>State of FTP / FTPS service</summary>
     public partial struct FtpsState :
         System.IEquatable<FtpsState>
     {

@@ -19,14 +19,14 @@
 --->
 
 ## Upcoming Release
-* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
+* [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * Updated New-AzFirewall cmdlet:
-    - Added parameter -SkuTier
-    - Added parameter -SkuName and made Sku as Alias for this
-    - Removed parameter -Sku
+    - Added parameter `-SkuTier`
+    - Added parameter `-SkuName` and made Sku as Alias for this
+    - Removed parameter `-Sku`
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
@@ -61,6 +61,11 @@
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 * Updated `Set-AzVirtualNetworkSubnetConfig`
     - Set NSG and Route Table properties of subnet to null if explicitly set in parameters [#1548][#9718]
+* [Breaking Change] Deprecated a switch parameter in below cmdlets
+    - `New-AzFirewall`:
+        - Deprecated `-DnsProxyNotRequiredForNetworkRule` switch paramemter
+    - `New-AzFirewallPolicyDnsSetting`:
+        - Deprecated `-ProxyNotRequiredForNetworkRule` switch parameter
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

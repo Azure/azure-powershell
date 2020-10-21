@@ -12,7 +12,7 @@
 RootModule = './Az.Databricks.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Fixed a bug that may cause updating databricks workspace without `-EncryptionKeyVersion` to fail.'
 
         # Prerelease string of this module
         # Prerelease = ''

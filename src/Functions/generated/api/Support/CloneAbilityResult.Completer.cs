@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for CloneAbilityResult.</summary>
+    /// <summary>Name of app.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResultTypeConverter))]
     public partial struct CloneAbilityResult :
         System.Management.Automation.IArgumentCompleter

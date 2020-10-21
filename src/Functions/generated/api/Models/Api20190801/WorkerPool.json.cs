@@ -77,7 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != this._workerSizeId ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._workerSizeId) : null, "workerSizeId" ,container.Add );
             AddIf( null != (((object)this._computeMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._computeMode.ToString()) : null, "computeMode" ,container.Add );
+            AddIf( null != (((object)this._workerSize)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._workerSize.ToString()) : null, "workerSize" ,container.Add );
+            AddIf( null != this._workerCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._workerCount) : null, "workerCount" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._instanceName)
@@ -90,9 +93,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                     container.Add("instanceNames",__w);
                 }
             }
-            AddIf( null != this._workerCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._workerCount) : null, "workerCount" ,container.Add );
-            AddIf( null != (((object)this._workerSize)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._workerSize.ToString()) : null, "workerSize" ,container.Add );
-            AddIf( null != this._workerSizeId ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._workerSizeId) : null, "workerSizeId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -109,11 +109,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_computeMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("computeMode"), out var __jsonComputeMode) ? (string)__jsonComputeMode : (string)ComputeMode;}
-            {_instanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("instanceNames"), out var __jsonInstanceNames) ? If( __jsonInstanceNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : InstanceName;}
-            {_workerCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("workerCount"), out var __jsonWorkerCount) ? (int?)__jsonWorkerCount : WorkerCount;}
-            {_workerSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("workerSize"), out var __jsonWorkerSize) ? (string)__jsonWorkerSize : (string)WorkerSize;}
             {_workerSizeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("workerSizeId"), out var __jsonWorkerSizeId) ? (int?)__jsonWorkerSizeId : WorkerSizeId;}
+            {_computeMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("computeMode"), out var __jsonComputeMode) ? (string)__jsonComputeMode : (string)ComputeMode;}
+            {_workerSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("workerSize"), out var __jsonWorkerSize) ? (string)__jsonWorkerSize : (string)WorkerSize;}
+            {_workerCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("workerCount"), out var __jsonWorkerCount) ? (int?)__jsonWorkerCount : WorkerCount;}
+            {_instanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("instanceNames"), out var __jsonInstanceNames) ? If( __jsonInstanceNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : InstanceName;}
             AfterFromJson(json);
         }
     }

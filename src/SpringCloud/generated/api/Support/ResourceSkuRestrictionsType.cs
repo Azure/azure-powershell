@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Gets the type of restrictions. Possible values include: 'Location', 'Zone'</summary>
     public partial struct ResourceSkuRestrictionsType :
         System.IEquatable<ResourceSkuRestrictionsType>
     {

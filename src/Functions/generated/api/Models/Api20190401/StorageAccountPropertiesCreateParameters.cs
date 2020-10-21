@@ -135,15 +135,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
 
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyvaultpropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyName = value; }
+        public string KeyVaultPropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyName = value; }
 
         /// <summary>The Uri of KeyVault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyvaultpropertyKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyVaultUri = value; }
+        public string KeyVaultPropertyKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyVaultUri = value; }
 
         /// <summary>The version of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyvaultpropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyvaultpropertyKeyVersion = value; }
+        public string KeyVaultPropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultPropertyKeyVersion = value; }
 
         /// <summary>Backing field for <see cref="LargeFileSharesState" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState? _largeFileSharesState;
@@ -171,8 +171,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>Internal Acessors for Encryption</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryption Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Encryption()); set { {_encryption = value;} } }
 
-        /// <summary>Internal Acessors for EncryptionKeyvaultproperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.EncryptionKeyvaultproperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).Keyvaultproperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).Keyvaultproperty = value; }
+        /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).KeyVaultProperty = value; }
 
         /// <summary>Internal Acessors for EncryptionService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServices Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.EncryptionService { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).Service; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).Service = value; }
@@ -180,8 +180,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>Internal Acessors for FileLastEnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.FileLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).FileLastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).FileLastEnabledTime = value; }
 
-        /// <summary>Internal Acessors for NetworkAcls</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.NetworkAcls { get => (this._networkAcls = this._networkAcls ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet()); set { {_networkAcls = value;} } }
+        /// <summary>Internal Acessors for NetworkRuleSet</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.NetworkRuleSet { get => (this._networkRuleSet = this._networkRuleSet ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet()); set { {_networkRuleSet = value;} } }
 
         /// <summary>Internal Acessors for QueueLastEnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.QueueLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).QueueLastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).QueueLastEnabledTime = value; }
@@ -201,31 +201,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>Internal Acessors for TableLastEnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.TableLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).TableLastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).TableLastEnabledTime = value; }
 
-        /// <summary>Backing field for <see cref="NetworkAcls" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet _networkAcls;
+        /// <summary>Backing field for <see cref="NetworkRuleSet" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet _networkRuleSet;
 
         /// <summary>Network rule set</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet NetworkAcls { get => (this._networkAcls = this._networkAcls ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet()); set => this._networkAcls = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet NetworkRuleSet { get => (this._networkRuleSet = this._networkRuleSet ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.NetworkRuleSet()); set => this._networkRuleSet = value; }
 
         /// <summary>
         /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
         /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkAclsBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).Bypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).Bypass = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkRuleSetBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).Bypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).Bypass = value; }
 
         /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkAclsDefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).DefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).DefaultAction = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkRuleSetDefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).DefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).DefaultAction = value; }
 
         /// <summary>Sets the IP ACL rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkAclsIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).IPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).IPRule = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkRuleSetIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).IPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).IPRule = value; }
 
         /// <summary>Sets the virtual network rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkAclsVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).VirtualNetworkRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkAcls).VirtualNetworkRule = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkRuleSetVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).VirtualNetworkRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)NetworkRuleSet).VirtualNetworkRule = value; }
 
         /// <summary>
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"The name of KeyVault key.",
         SerializedName = @"keyname",
         PossibleTypes = new [] { typeof(string) })]
-        string KeyvaultpropertyKeyName { get; set; }
+        string KeyVaultPropertyKeyName { get; set; }
         /// <summary>The Uri of KeyVault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"The Uri of KeyVault.",
         SerializedName = @"keyvaulturi",
         PossibleTypes = new [] { typeof(string) })]
-        string KeyvaultpropertyKeyVaultUri { get; set; }
+        string KeyVaultPropertyKeyVaultUri { get; set; }
         /// <summary>The version of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"The version of KeyVault key.",
         SerializedName = @"keyversion",
         PossibleTypes = new [] { typeof(string) })]
-        string KeyvaultpropertyKeyVersion { get; set; }
+        string KeyVaultPropertyKeyVersion { get; set; }
         /// <summary>
         /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
         /// </summary>
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, ""Logging, Metrics""), or None to bypass none of those traffics.",
         SerializedName = @"bypass",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkAclsBypass { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkRuleSetBypass { get; set; }
         /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = true,
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"Specifies the default action of allow or deny when no other rules match.",
         SerializedName = @"defaultAction",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkAclsDefaultAction { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkRuleSetDefaultAction { get; set; }
         /// <summary>Sets the IP ACL rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"Sets the IP ACL rules",
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkAclsIPRule { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkRuleSetIPRule { get; set; }
         /// <summary>Sets the virtual network rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Description = @"Sets the virtual network rules",
         SerializedName = @"virtualNetworkRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkAclsVirtualNetworkRule { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkRuleSetVirtualNetworkRule { get; set; }
         /// <summary>
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.KeySource EncryptionKeySource { get; set; }
         /// <summary>Properties provided by key vault.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultProperties EncryptionKeyvaultproperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultProperties EncryptionKeyVaultProperty { get; set; }
         /// <summary>List of services which support encryption.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServices EncryptionService { get; set; }
         /// <summary>
@@ -610,28 +610,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>Account HierarchicalNamespace enabled if sets to true.</summary>
         bool? IsHnsEnabled { get; set; }
         /// <summary>The name of KeyVault key.</summary>
-        string KeyvaultpropertyKeyName { get; set; }
+        string KeyVaultPropertyKeyName { get; set; }
         /// <summary>The Uri of KeyVault.</summary>
-        string KeyvaultpropertyKeyVaultUri { get; set; }
+        string KeyVaultPropertyKeyVaultUri { get; set; }
         /// <summary>The version of KeyVault key.</summary>
-        string KeyvaultpropertyKeyVersion { get; set; }
+        string KeyVaultPropertyKeyVersion { get; set; }
         /// <summary>
         /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState? LargeFileSharesState { get; set; }
         /// <summary>Network rule set</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet NetworkAcls { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet NetworkRuleSet { get; set; }
         /// <summary>
         /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
         /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkAclsBypass { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass? NetworkRuleSetBypass { get; set; }
         /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkAclsDefaultAction { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction NetworkRuleSetDefaultAction { get; set; }
         /// <summary>Sets the IP ACL rules</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkAclsIPRule { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[] NetworkRuleSetIPRule { get; set; }
         /// <summary>Sets the virtual network rules</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkAclsVirtualNetworkRule { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[] NetworkRuleSetVirtualNetworkRule { get; set; }
         /// <summary>
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>

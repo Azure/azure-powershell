@@ -59,10 +59,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_dependency = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dependency"), out var __jsonDependency) ? (string)__jsonDependency : (string)Dependency;}
             {_display = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("display"), out var __jsonDisplay) ? (string)__jsonDisplay : (string)Display;}
-            {_framework = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("frameworks"), out var __jsonFrameworks) ? If( __jsonFrameworks as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApplicationStack[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApplicationStack) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ApplicationStack.FromJson(__u) )) ))() : null : Framework;}
-            {_majorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("majorVersions"), out var __jsonMajorVersions) ? If( __jsonMajorVersions as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMajorVersion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMajorVersion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StackMajorVersion.FromJson(__p) )) ))() : null : MajorVersion;}
+            {_dependency = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dependency"), out var __jsonDependency) ? (string)__jsonDependency : (string)Dependency;}
+            {_majorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("majorVersions"), out var __jsonMajorVersions) ? If( __jsonMajorVersions as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMajorVersion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMajorVersion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StackMajorVersion.FromJson(__u) )) ))() : null : MajorVersion;}
+            {_framework = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("frameworks"), out var __jsonFrameworks) ? If( __jsonFrameworks as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApplicationStack[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApplicationStack) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ApplicationStack.FromJson(__p) )) ))() : null : Framework;}
             AfterFromJson(json);
         }
 
@@ -98,25 +98,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != (((object)this._dependency)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dependency.ToString()) : null, "dependency" ,container.Add );
             AddIf( null != (((object)this._display)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._display.ToString()) : null, "display" ,container.Add );
-            if (null != this._framework)
+            AddIf( null != (((object)this._dependency)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dependency.ToString()) : null, "dependency" ,container.Add );
+            if (null != this._majorVersion)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._framework )
+                foreach( var __x in this._majorVersion )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("frameworks",__w);
+                container.Add("majorVersions",__w);
             }
-            if (null != this._majorVersion)
+            if (null != this._framework)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __s in this._majorVersion )
+                foreach( var __s in this._framework )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("majorVersions",__r);
+                container.Add("frameworks",__r);
             }
             AfterToJson(ref container);
             return container;
