@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).SasUrl = (string) content.GetValueForProperty("SasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).SasUrl, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializeDictionary(content);
         }
 
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).SasUrl = (string) content.GetValueForProperty("SasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).SasUrl, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageApplicationLogsConfigInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
         }
 

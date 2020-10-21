@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._consoleUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._consoleUrl.ToString()) : null, "consoleUrl" ,container.Add );
-            AddIf( null != this._container ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._container.ToJson(null,serializationMode) : null, "containers" ,container.Add );
-            AddIf( null != (((object)this._detectorUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._detectorUrl.ToString()) : null, "detectorUrl" ,container.Add );
             AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
             AddIf( null != (((object)this._statusUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._statusUrl.ToString()) : null, "statusUrl" ,container.Add );
+            AddIf( null != (((object)this._detectorUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._detectorUrl.ToString()) : null, "detectorUrl" ,container.Add );
+            AddIf( null != (((object)this._consoleUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._consoleUrl.ToString()) : null, "consoleUrl" ,container.Add );
+            AddIf( null != this._container ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._container.ToJson(null,serializationMode) : null, "containers" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_consoleUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("consoleUrl"), out var __jsonConsoleUrl) ? (string)__jsonConsoleUrl : (string)ConsoleUrl;}
-            {_container = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("containers"), out var __jsonContainers) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.WebSiteInstanceStatusPropertiesContainers.FromJson(__jsonContainers) : Container;}
-            {_detectorUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("detectorUrl"), out var __jsonDetectorUrl) ? (string)__jsonDetectorUrl : (string)DetectorUrl;}
             {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
             {_statusUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("statusUrl"), out var __jsonStatusUrl) ? (string)__jsonStatusUrl : (string)StatusUrl;}
+            {_detectorUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("detectorUrl"), out var __jsonDetectorUrl) ? (string)__jsonDetectorUrl : (string)DetectorUrl;}
+            {_consoleUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("consoleUrl"), out var __jsonConsoleUrl) ? (string)__jsonConsoleUrl : (string)ConsoleUrl;}
+            {_container = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("containers"), out var __jsonContainers) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.WebSiteInstanceStatusPropertiesContainers.FromJson(__jsonContainers) : Container;}
             AfterFromJson(json);
         }
     }

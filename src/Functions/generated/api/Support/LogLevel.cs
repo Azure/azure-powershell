@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Log level.</summary>
     public partial struct LogLevel :
         System.IEquatable<LogLevel>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for CloneAbilityResult.</summary>
+    /// <summary>Name of app.</summary>
     public partial class CloneAbilityResultTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
