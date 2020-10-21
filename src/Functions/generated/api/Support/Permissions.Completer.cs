@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for Permissions.</summary>
+    /// <summary>
+    /// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a),
+    /// Create (c), Update (u) and Process (p).
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PermissionsTypeConverter))]
     public partial struct Permissions :
         System.Management.Automation.IArgumentCompleter

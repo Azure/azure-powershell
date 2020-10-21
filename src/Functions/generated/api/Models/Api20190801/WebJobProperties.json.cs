@@ -77,13 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._error)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._error.ToString()) : null, "error" ,container.Add );
-            AddIf( null != (((object)this._extraInfoUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._extraInfoUrl.ToString()) : null, "extra_info_url" ,container.Add );
             AddIf( null != (((object)this._runCommand)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._runCommand.ToString()) : null, "run_command" ,container.Add );
-            AddIf( null != this._setting ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._setting.ToJson(null,serializationMode) : null, "settings" ,container.Add );
             AddIf( null != (((object)this._url)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._url.ToString()) : null, "url" ,container.Add );
-            AddIf( null != this._usingSdk ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._usingSdk) : null, "using_sdk" ,container.Add );
+            AddIf( null != (((object)this._extraInfoUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._extraInfoUrl.ToString()) : null, "extra_info_url" ,container.Add );
             AddIf( null != (((object)this._webJobType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._webJobType.ToString()) : null, "web_job_type" ,container.Add );
+            AddIf( null != (((object)this._error)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._error.ToString()) : null, "error" ,container.Add );
+            AddIf( null != this._usingSdk ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._usingSdk) : null, "using_sdk" ,container.Add );
+            AddIf( null != this._setting ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._setting.ToJson(null,serializationMode) : null, "settings" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("error"), out var __jsonError) ? (string)__jsonError : (string)Error;}
-            {_extraInfoUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("extra_info_url"), out var __jsonExtraInfoUrl) ? (string)__jsonExtraInfoUrl : (string)ExtraInfoUrl;}
             {_runCommand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("run_command"), out var __jsonRunCommand) ? (string)__jsonRunCommand : (string)RunCommand;}
-            {_setting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("settings"), out var __jsonSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.WebJobPropertiesSettings.FromJson(__jsonSettings) : Setting;}
             {_url = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("url"), out var __jsonUrl) ? (string)__jsonUrl : (string)Url;}
-            {_usingSdk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("using_sdk"), out var __jsonUsingSdk) ? (bool?)__jsonUsingSdk : UsingSdk;}
+            {_extraInfoUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("extra_info_url"), out var __jsonExtraInfoUrl) ? (string)__jsonExtraInfoUrl : (string)ExtraInfoUrl;}
             {_webJobType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("web_job_type"), out var __jsonWebJobType) ? (string)__jsonWebJobType : (string)WebJobType;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("error"), out var __jsonError) ? (string)__jsonError : (string)Error;}
+            {_usingSdk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("using_sdk"), out var __jsonUsingSdk) ? (bool?)__jsonUsingSdk : UsingSdk;}
+            {_setting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("settings"), out var __jsonSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.WebJobPropertiesSettings.FromJson(__jsonSettings) : Setting;}
             AfterFromJson(json);
         }
     }

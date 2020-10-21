@@ -61,9 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_hostingEnvironmentDeploymentInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostingEnvironmentDeploymentInfos"), out var __jsonHostingEnvironmentDeploymentInfos) ? If( __jsonHostingEnvironmentDeploymentInfos as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfo.FromJson(__u) )) ))() : null : HostingEnvironmentDeploymentInfo;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("locations"), out var __jsonLocations) ? If( __jsonLocations as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegion.FromJson(__u) )) ))() : null : Location;}
             {_hostingEnvironment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostingEnvironments"), out var __jsonHostingEnvironments) ? If( __jsonHostingEnvironments as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServiceEnvironment.FromJson(__p) )) ))() : null : HostingEnvironment;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("locations"), out var __jsonLocations) ? If( __jsonLocations as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegion.FromJson(__k) )) ))() : null : Location;}
+            {_hostingEnvironmentDeploymentInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostingEnvironmentDeploymentInfos"), out var __jsonHostingEnvironmentDeploymentInfos) ? If( __jsonHostingEnvironmentDeploymentInfos as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfo.FromJson(__k) )) ))() : null : HostingEnvironmentDeploymentInfo;}
             AfterFromJson(json);
         }
 
@@ -98,14 +98,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            if (null != this._hostingEnvironmentDeploymentInfo)
+            if (null != this._location)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._hostingEnvironmentDeploymentInfo )
+                foreach( var __x in this._location )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("hostingEnvironmentDeploymentInfos",__w);
+                container.Add("locations",__w);
             }
             if (null != this._hostingEnvironment)
             {
@@ -116,14 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("hostingEnvironments",__r);
             }
-            if (null != this._location)
+            if (null != this._hostingEnvironmentDeploymentInfo)
             {
                 var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __n in this._location )
+                foreach( var __n in this._hostingEnvironmentDeploymentInfo )
                 {
                     AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                 }
-                container.Add("locations",__m);
+                container.Add("hostingEnvironmentDeploymentInfos",__m);
             }
             AfterToJson(ref container);
             return container;

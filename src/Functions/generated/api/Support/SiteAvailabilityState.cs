@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Management information availability state for the app.</summary>
     public partial struct SiteAvailabilityState :
         System.IEquatable<SiteAvailabilityState>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for AppServicePlanRestrictions.</summary>
+    /// <summary>App Service plans this offer is restricted to.</summary>
     public partial class AppServicePlanRestrictionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_preserveVnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("preserveVnet"), out var __jsonPreserveVnet) ? (bool)__jsonPreserveVnet : PreserveVnet;}
             {_targetSlot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("targetSlot"), out var __jsonTargetSlot) ? (string)__jsonTargetSlot : (string)TargetSlot;}
+            {_preserveVnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("preserveVnet"), out var __jsonPreserveVnet) ? (bool)__jsonPreserveVnet : PreserveVnet;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean(this._preserveVnet), "preserveVnet" ,container.Add );
             AddIf( null != (((object)this._targetSlot)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._targetSlot.ToString()) : null, "targetSlot" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean(this._preserveVnet), "preserveVnet" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
