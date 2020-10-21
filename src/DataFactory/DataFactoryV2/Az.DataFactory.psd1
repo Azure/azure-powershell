@@ -114,7 +114,8 @@ CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2',
                'Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade', 
                'Sync-AzDataFactoryV2IntegrationRuntimeCredential', 
                'Update-AzDataFactoryV2IntegrationRuntime', 
-               'Get-AzDataFactoryV2TriggerRun', 'Remove-AzDataFactory', 
+               'Get-AzDataFactoryV2TriggerRun',
+               'Remove-AzDataFactory', 
                'Get-AzDataFactoryRun', 'Get-AzDataFactorySlice', 
                'Save-AzDataFactoryLog', 'Set-AzDataFactorySliceStatus', 
                'New-AzDataFactoryEncryptValue', 'Get-AzDataFactoryGateway', 
@@ -133,7 +134,9 @@ CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2',
                'New-AzDataFactoryDataset', 'Remove-AzDataFactoryDataset', 
                'Add-AzDataFactoryV2TriggerSubscription', 
                'Remove-AzDataFactoryV2TriggerSubscription', 
-               'Get-AzDataFactoryV2TriggerSubscriptionStatus'
+               'Get-AzDataFactoryV2TriggerSubscriptionStatus',
+               'Stop-AzDataFactoryV2TriggerRun',
+			   'Invoke-AzDataFactoryV2TriggerRun'
 
 # Variables to export from this module
 # VariablesToExport = @()
