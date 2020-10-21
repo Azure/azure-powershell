@@ -32,7 +32,7 @@ This cmdlet restores previous backed up security domain data to a managed HSM.
 
 ### Example 1
 ```powershell
-PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
+PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
 PS C:\> Restore-AzManagedHsmSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
 ```
 
