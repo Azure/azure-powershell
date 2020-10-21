@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -186,7 +186,7 @@ PrivateData = @{
         ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
