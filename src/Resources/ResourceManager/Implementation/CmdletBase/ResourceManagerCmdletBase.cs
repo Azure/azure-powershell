@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Rest.Azure;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -33,7 +32,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using System.Runtime.ExceptionServices;
     using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// The base class for resource manager cmdlets.
@@ -65,14 +63,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Field that holds the subscriptions client instance
         /// </summary>
         private SubscriptionSdkClient subscriptionSdkClient;
-
-        /// <summary>
-        /// Gets or sets the API version.
-        /// </summary>
-        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
-        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the switch that indicates if pre-release API version should be considered.
@@ -221,42 +211,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected virtual void OnStopProcessing()
         {
             // no-op
-        }
-
-        /// <summary>
-        /// Determines the API version.
-        /// </summary>
-        /// <param name="resourceId">The resource Id.</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        protected Task<string> DetermineApiVersion(string resourceId, bool? pre = null)
-        {
-            return string.IsNullOrWhiteSpace(this.ApiVersion)
-                ? ApiVersionHelper.DetermineApiVersion(
-                    context: DefaultContext,
-                    resourceId: resourceId,
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre,
-                    cmdletHeaderValues: this.GetCmdletHeaders())
-                : Task.FromResult(this.ApiVersion);
-        }
-
-        /// <summary>
-        /// Determines the API version.
-        /// </summary>
-        /// <param name="providerNamespace">The provider namespace.</param>
-        /// <param name="resourceType">The resource type.</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        protected Task<string> DetermineApiVersion(string providerNamespace, string resourceType, bool? pre = null)
-        {
-            return string.IsNullOrWhiteSpace(this.ApiVersion)
-                ? ApiVersionHelper.DetermineApiVersion(
-                    DefaultContext,
-                    providerNamespace: providerNamespace,
-                    resourceType: resourceType,
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre,
-                    cmdletHeaderValues: this.GetCmdletHeaders())
-                : Task.FromResult(this.ApiVersion);
         }
 
         /// <summary>

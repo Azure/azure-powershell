@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Job status.</summary>
     public partial struct ContinuousWebJobStatus :
         System.IEquatable<ContinuousWebJobStatus>
     {

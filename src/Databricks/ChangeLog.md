@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update databricks workspace withouth -EncryptionKeyVersion that the key version will be empty.
+
+## Version 1.0.1
+* Fixed a bug that may cause updating databricks workspace without `-EncryptionKeyVersion` to fail.
 
 ## Version 1.0.0
 * General availability of 'Az.Databricks' module

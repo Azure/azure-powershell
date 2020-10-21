@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithAPiVersion
+    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
         /// <summary>
         /// Adding a hard-coded API version to be used when there is no value provided for 'ApiVersion' parameter.

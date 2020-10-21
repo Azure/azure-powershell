@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Describes what tool created this Application Insights component. Customers using this API should set this to the default
+    /// 'rest'.
+    /// </summary>
     public partial struct RequestSource :
         System.IEquatable<RequestSource>
     {

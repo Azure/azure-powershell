@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             ProvisioningState = registry?.ProvisioningState;
             AdminUserEnabled = registry?.AdminUserEnabled;
             StorageAccountName = ConversionUtilities.ParseStorageAccountFromId(registry?.StorageAccount?.Id);
+            NetworkRuleSet = new PSNetworkRuleSet(registry?.NetworkRuleSet);
         }
 
         public string Id { get; set; }
@@ -51,5 +53,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public bool? AdminUserEnabled { get; set; }
         public string StorageAccountName { get; set; }
         public IList<RegistryUsage> Usages { get; set; }
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
     }
 }

@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for DomainType.</summary>
+    /// <summary>
+    /// Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this
+    /// domain will simply restore it and this operation will not cost anything.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainTypeTypeConverter))]
     public partial struct DomainType :
         System.Management.Automation.IArgumentCompleter

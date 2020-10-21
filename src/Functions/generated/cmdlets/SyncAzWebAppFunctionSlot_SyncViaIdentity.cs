@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Syncs function trigger metadata to the management database</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_SyncFunctionsSlot=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync"
+    /// [OpenAPI] SyncFunctionsSlot=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Sync, @"AzWebAppFunctionSlot_SyncViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
