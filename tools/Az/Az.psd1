@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,18 +53,22 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.0.0'; },
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.0.1'; },
                @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }, 
+               # TODO: need to check for compute.
+               @{ModuleName = 'Az.Compute'; RequiredVersion = '2.7.0'; }, 
+               #Need to check DataboxEdge or StackEdge
+               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
                @{ModuleName = 'Az.Dns'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
                @{ModuleName = 'Az.IotHub'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '0.10.0'; }, 
+               # need to check on Az.Network
+               @{ModuleName = 'Az.Network'; RequiredVersion = '1.6.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.11.0'; }, 
+            #    Need to check on storage
+               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.0'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -126,7 +130,7 @@ PrivateData = @{
         '
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
