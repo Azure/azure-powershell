@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix null reference and method case insensitive in `Invoke-AzRestMethod`
 * [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
 * Updated Azure.Core to 1.5.1
 
