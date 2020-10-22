@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Implemented Functions Stacks API which describes what runtimes and runtime versions are available for function app creation
-* Bug fixing
+* [Breaking Change] Removed `IncludeSlot` switch parameter from all but one parameter sets in `Get-AzFunctionApp`. The cmdlet now supports retrieving deployment slots in the results when `-IncludeSlot` is specified. 
+* [Breaking Change] Removed support to create PowerShell 6.2 function apps.
+* [Breaking Change] Changed default runtime version for PowerShell function apps from 6.2 to 7.0 in `New-AzFuntionApp` when the RuntimeVersion parameter is not specified.
+* Fixed `New-AzFunctionApp -DisableApplicationInsights` so that no application insights project is created when this option is specified. [#12728]
 
 ## Version 1.0.2
 * Removed the ability to create v2 Functions in regions that do not support it.
