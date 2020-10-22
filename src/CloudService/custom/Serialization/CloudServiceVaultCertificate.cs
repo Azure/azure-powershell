@@ -5,11 +5,11 @@ using Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview
 {
-    public partial class ResourceInstanceViewStatus
+    public partial class CloudServiceVaultCertificate
     {
         public override string ToString()
         {
-            return this.DisplayStatus;
+            return this.CertificateUrl;
         }
     }
 }

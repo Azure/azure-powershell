@@ -301,7 +301,7 @@ param(
     if (!$PSBoundParameters.ContainsKey('StartCloudService')) {
       $PSBoundParameters.Add('StartCloudService', $InputObject.StartCloudService)
     }
-    if (!$PSBoundParameters.ContainsKey('SwappableCloudServiceId')) {
+    if (!$PSBoundParameters.ContainsKey('SwappableCloudServiceId') -and $SwappableCloudServiceId -ne '') {
       $PSBoundParameters.Add('SwappableCloudServiceId', $InputObject.SwappableCloudServiceId)
     }
     if (!$PSBoundParameters.ContainsKey('UpgradeMode')) {
@@ -311,5 +311,6 @@ param(
     # if (!$PSBoundParameters.ContainsKey('Location')) {
     # }
     Az.CloudService.internal\New-AzCloudService @PSBoundParameters
+
   }
 }

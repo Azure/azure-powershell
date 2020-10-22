@@ -69,6 +69,12 @@ directive:
     set:
       verb: Update
   - where:
+      subject: ^CloudService$
+      parameter-name: Name
+    set:
+      parameter-name: Name
+      alias-name: CloudServiceName
+  - where:
       subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
@@ -132,6 +138,22 @@ directive:
           - Name
           - Location
           - ProvisioningState
+
+  - where:
+      model-name: RoleInstance
+      property-name: InstanceViewStatuses
+    set:
+      property-name: DisplayStatus
+  - where:
+      model-name: RoleInstance
+      property-name: InstanceViewPlatformFaultDomain
+    set:
+      property-name: PlatformFaultDomain
+  - where:
+      model-name: RoleInstance
+      property-name: InstanceViewPlatformUpdateDomain
+    set:
+      property-name: PlatformUpdateDomain
   - where:
       model-name: RoleInstance
     set:
@@ -139,7 +161,51 @@ directive:
         properties:
           - Name
           - Location
-          - InstanceViewStatuses
-          - InstanceViewPlatformFaultDomain
-          - InstanceViewPlatformUpdateDomain
+          - SkuName
+          - DisplayStatus
+          - PlatformFaultDomain
+          - PlatformUpdateDomain
+
+  - where:
+      model-name: RoleInstanceView
+      property-name: Statuses
+    set:
+      property-name: DisplayStatus
+  - where:
+      model-name: RoleInstanceView
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+          - DisplayStatus
+          - PlatformFaultDomain
+          - PlatformUpdateDomain
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Publisher
+          - Type
+          - TypeHandlerVersion
+          - ProvisioningState
+  - where:
+      model-name: CloudServiceRoleProfileProperties
+    set:
+      format-table:
+        properties:
+          - Name
+          - SkuName
+          - SkuTier
+          - SkuCapacity
+  - where:
+      model-name: LoadBalancerConfiguration
+    set:
+      format-table:
+        properties:
+          - Name
+          - FrontendIPConfiguration
 ```

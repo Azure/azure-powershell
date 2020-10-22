@@ -103,14 +103,6 @@ function Reset-AzCloudService {
         # .
         ${RoleInstance},
     
-        [Parameter(ParameterSetName='RebuildExpanded')]
-        [Parameter(ParameterSetName='RebuildViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceUpdateTags]))]
-        [System.Collections.Hashtable]
-        # Resource tags
-        ${Tag},
-    
         [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
         [Parameter(ParameterSetName='RestartViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
