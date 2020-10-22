@@ -22,8 +22,7 @@
 * Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
 * Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object [#13097]
 * Update Azure Paired Regions URL in Backup Storage Redundancy Warnings
-* Fixed issue where Set-AzSqlDatabaseAudit were not support Hyperscale database
-* Fix issue in Set-AzSqlDatabaseAudit were not database edition cannot be determined
+* Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
 
 ## Version 2.11.0
 * Added BackupStorageRedundancy to the following: 
