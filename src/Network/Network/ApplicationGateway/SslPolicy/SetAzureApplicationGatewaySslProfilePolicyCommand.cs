@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslProfilePolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewaySslProfile))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslProfilePolicy"), OutputType(typeof(PSApplicationGatewaySslProfile))]
     public class SetAzureApplicationGatewaySslProfilePolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         [Parameter(

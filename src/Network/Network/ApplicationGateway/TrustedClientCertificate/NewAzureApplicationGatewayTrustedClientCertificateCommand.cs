@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayTrustedClientCertificate", SupportsShouldProcess = true), 
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayTrustedClientCertificate"),
         OutputType(typeof(PSApplicationGatewayTrustedClientCertificate))]
     public class NewAzureApplicationGatewayTrustedClientCertificateCommand : AzureApplicationGatewayTrustedClientCertificateBase
     {

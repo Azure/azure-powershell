@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayTrustedClientCertificate", SupportsShouldProcess = true), 
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayTrustedClientCertificate"),
         OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayTrustedClientCertificateCommand : AzureApplicationGatewayTrustedClientCertificateBase
     {
