@@ -28,7 +28,13 @@
     - Added parameter `-SkuName` and made Sku as Alias for this
     - Removed parameter `-Sku`
 * [Breaking Change] Made `Connectionlink` argument mandatory in `Start-AzVpnConnectionPacketCapture` and `Stop-AzVpnConnectionPacketCapture`
-* [Breaking Change] Updated `AzNetworkWatcherConnectionMonitorEndpointObject` to remove parameters `Filter` and `FilterText`
+* [Breaking Change] Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` to remove parameter `-Filter`
+* [Breaking Change] Replaced `New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject` cmdlet with `New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject`
+* Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` cmdlet:
+	- Added parameter `-Type`
+	- Added parameter `-CoverageLevel`
+	- Added parameter `-Scope`
+* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
