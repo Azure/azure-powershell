@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
@@ -463,6 +464,12 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        private static IAzureContextContainer GetAzureContextContainer()
+        {
+            var provider = new ProtectedProfileProvider();
+            return provider.Profile;
+        }
+
         /// <summary>
         /// Load global aliases for ARM
         /// </summary>
@@ -472,7 +479,8 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
 #endif
-                 AzureSessionInitializer.InitializeAzureSession();
+                AzureSessionInitializer.InitializeAzureSession();
+                AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
