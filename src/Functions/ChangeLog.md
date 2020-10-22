@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* [Breaking Change] Removed `IncludeSlot` switch parameter from all but one parameter sets in `Get-AzFunctionApp`. The cmdlet now supports retrieving deployment slots in the results when `-IncludeSlot` is specified. 
-* [Breaking Change] Removed support to create PowerShell 6.2 function apps.
-* [Breaking Change] Changed default runtime version for PowerShell function apps from 6.2 to 7.0 in `New-AzFuntionApp` when the RuntimeVersion parameter is not specified.
-* Fixed `New-AzFunctionApp -DisableApplicationInsights` so that no application insights project is created when this option is specified. [#12728]
+* [Breaking Change] Removed `IncludeSlot` switch parameter from all but one parameter set of `Get-AzFunctionApp`. The cmdlet now supports retrieving deployment slots in the results when `-IncludeSlot` is specified. 
+* Updated `New-AzFunctionApp`:
+  - Fixed -DisableApplicationInsights so that no application insights project is created when this option is specified. [#12728]
+  - [Breaking Change] Removed support to create PowerShell 6.2 function apps.
+  - [Breaking Change] Changed the default runtime version in Functions version 3 on Windows for PowerShell function apps from 6.2 to 7.0 when the RuntimeVersion parameter is not specified.
+  - [Breaking Change] Changed the default runtime version in Functions version 3 on Windows and Linux for Node function apps from 10 to 12 when the RuntimeVersion parameter is not specified.
+  - [Breaking Change] Changed the default runtime version in Functions version 3 on Linux for Python function apps from 3.7 to 3.8 when the RuntimeVersion parameter is not specified.
 
 ## Version 1.0.2
 * Removed the ability to create v2 Functions in regions that do not support it.
