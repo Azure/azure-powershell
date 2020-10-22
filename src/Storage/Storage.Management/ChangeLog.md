@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported resource access rule in NetworkRuleSet
+    - `Update-AzStorageAccountNetworkRuleSet`
+    - `Add-AzStorageAccountNetworkRule`
+    - `Remove-AzStorageAccountNetworkRule`
+
 * Removed obsolete property RestorePolicy.LastEnabledTime
     - `Enable-AzStorageBlobRestorePolicy`
     - `Disable-AzStorageBlobRestorePolicy`

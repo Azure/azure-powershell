@@ -28,7 +28,7 @@ function Test-StorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'BlobStorage'
         $accessTier = 'Cool'
 
@@ -120,7 +120,7 @@ function Test-NewAzureStorageAccount
         $stotype = 'Standard_LRS';
         $kind = 'StorageV2'
 
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
@@ -204,7 +204,7 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -296,7 +296,7 @@ function Test-SetAzureRmStorageAccountKeySource
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
@@ -532,7 +532,7 @@ function Test-RevokeAzStorageAccountUserDelegationKeys
         # Test
         $stoname = 'sto' + $rgname
         $stotype = 'Standard_LRS'
-        $loc = Get-ProviderLocation ResourceManagement
+        $loc = Get-ProviderLocation_Canary ResourceManagement
 
         New-AzResourceGroup -Name $rgname -Location $loc
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
@@ -565,18 +565,19 @@ function Test-NetworkRule
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $ip1 = "20.11.0.0/16";
         $ip2 = "10.0.0.0/7";
         $ip3 = "11.1.1.0/24";
         $ip4 = "28.0.2.0/19";
+		$tenanetId = "57F86AF8-9BA8-41AA-B54F-9F73EF8A7C03";
+		$resourceId1 = "/subscriptions/2720A159-AF04-4BED-B6FD-EC62CB5A1988/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName1"
+		$resourceId2 = "/subscriptions/2720A159-AF04-4BED-B6FD-EC62CB5A1988/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName2"
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         
         $global:sto = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
-            ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
-            @{IPAddressOrRange="$ip2";Action="allow"});
-            defaultAction="Deny"}) 
+			ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},@{IPAddressOrRange="$ip2";Action="allow"});defaultAction="Deny"})
 
         $stoacl = (Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname).NetworkRuleSet
         Assert-AreEqual 7 $stoacl.Bypass;
@@ -584,17 +585,20 @@ function Test-NetworkRule
         Assert-AreEqual 2 $stoacl.IpRules.Count
         Assert-AreEqual $ip1 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
-        Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count	
+        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count			
 
-        $sto | Update-AzStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
+        $sto | Update-AzStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"}) -ResourceAccessRule (@{ResourceId=$resourceId1;TenantId=$tenanetId},@{ResourceId=$resourceId2;TenantId=$tenanetId})
         $stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
         $stoacliprule = $stoacl.IpRules
+        $stoaclrcrule = $stoacl.ResourceAccessRules
         Assert-AreEqual 6 $stoacl.Bypass;
         Assert-AreEqual Allow $stoacl.DefaultAction;
         Assert-AreEqual 2 $stoacl.IpRules.Count
         Assert-AreEqual $ip3 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip4 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 2 $stoacl.ResourceAccessRules.Count
 
         $job = Remove-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPAddressOrRange "$ip3" -AsJob
         $job | Wait-Job
@@ -604,20 +608,40 @@ function Test-NetworkRule
         Assert-AreEqual 1 $stoacl.IpRules.Count
         Assert-AreEqual $ip4 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 2 $stoacl.ResourceAccessRules.Count
+		
+		Remove-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -TenantId $tenanetId -ResourceId $resourceId2
+		$stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
+        Assert-AreEqual 6 $stoacl.Bypass;
+        Assert-AreEqual Allow $stoacl.DefaultAction;
+        Assert-AreEqual 1 $stoacl.IpRules.Count
+        Assert-AreEqual $ip4 $stoacl.IpRules[0].IPAddressOrRange;
+        Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 1 $stoacl.ResourceAccessRules.Count
+        Assert-AreEqual $resourceId1 $stoacl.ResourceAccessRules[0].ResourceId
+		
         
-        $job = Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -DefaultAction Deny -Bypass None -AsJob
+        $job = Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -ResourceAccessRule @() -DefaultAction Deny -Bypass None -AsJob
         $job | Wait-Job
         $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual 0 $stoacl.Bypass;
         Assert-AreEqual Deny $stoacl.DefaultAction;
         Assert-AreEqual 0 $stoacl.IpRules.Count
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count	
         
         foreach($iprule in $stoacliprule) {
             $job = Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule -AsJob
             $job | Wait-Job
             # add again should not fail
             Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule
+        }
+        
+        foreach($rule in $stoaclrcrule) {
+            $job = Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -ResourceAccessRule $rule -AsJob
+            $job | Wait-Job
+            # add again should not fail
+            Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -ResourceAccessRule $rule
         }
 
         $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
@@ -627,11 +651,12 @@ function Test-NetworkRule
         Assert-AreEqual $ip3 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip4 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 2 $stoacl.ResourceAccessRules.Count	
         
         $job = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AsJob -NetworkRuleSet (@{bypass="AzureServices";
-            ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
-            @{IPAddressOrRange="$ip2";Action="allow"});
-            defaultAction="Allow"}) 
+            ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},@{IPAddressOrRange="$ip2";Action="allow"});
+            defaultAction="Allow";
+            resourceAccessRules=(@{ResourceId=$resourceId2;TenantId=$tenanetId})}) 
         $job | Wait-Job
 
         $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
@@ -641,6 +666,8 @@ function Test-NetworkRule
         Assert-AreEqual $ip1 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
+        Assert-AreEqual 1 $stoacl.ResourceAccessRules.Count
+        Assert-AreEqual $resourceId2 $stoacl.ResourceAccessRules[0].ResourceId
 
         $job = Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname -AsJob
         $job | Wait-Job
@@ -668,7 +695,7 @@ function Test-SetAzureStorageAccountStorageV2
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'Storage'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -720,40 +747,6 @@ function Test-GetAzureStorageLocationUsage
 Test New-AzStorageAccountFileStorage
 .DESCRIPTION
 Smoke[Broken]Test
-#>
-function Test-NewAzureStorageAccountFileStorage
-{
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Premium_LRS';
-        $kind = 'FileStorage'
-
-        $loc = Get-ProviderLocation ResourceManagement;
-        New-AzResourceGroup -Name $rgname -Location $loc;
-		
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
-        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        Assert-AreEqual $stoname $sto.StorageAccountName;
-        Assert-AreEqual $stotype $sto.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreEqual $kind $sto.Kind; 
-        
-        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
 #>
 function Test-NewAzureStorageAccountFileStorage
 {
@@ -939,7 +932,7 @@ function Test-PipingNewUpdateAccount
         $stoname = 'sto' + $rgname;
         $stoname2 = 'sto' + $rgname + '2';
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
@@ -1042,7 +1035,7 @@ function Test-StorageAccountManagementPolicy
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
