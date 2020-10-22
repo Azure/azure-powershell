@@ -784,13 +784,6 @@ function Test-UpdateKeyVault {
         $vault = $originVault | Update-AzKeyVault -EnablePurgeProtection
         Assert-True { $vault.EnableSoftDelete } "3. EnableSoftDelete should be true"
         Assert-True { $vault.EnablePurgeProtection } "3. EnablePurgeProtection should be true"
-        Assert-True { $vault.SoftDeleteRetentionInDays -eq $originVault.SoftDeleteRetentionInDays }
-
-        # # Only enable purge protection (TODO: uncomment this assert after keyvault team deploys their fix)
-        # $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
-        # Assert-Throws { $vault = $vault | Update-AzKeyVault -EnablePurgeProtection }
-        # # Retention cannot be updated once set
-        # Assert-Throws { $vault = $vault | Update-AzKeyVault -SoftDeleteRetentionInDays 80}
 
         #Set EnableRbacAuthorization true
         $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $true

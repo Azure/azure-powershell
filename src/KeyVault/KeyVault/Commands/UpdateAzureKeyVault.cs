@@ -56,6 +56,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
         public bool? EnableRbacAuthorization { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
+        [ValidateNotNullOrEmpty]
+        public int SoftDeleteRetentionInDays { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.InputObject))
@@ -96,7 +101,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     null,
                     EnablePurgeProtection.IsPresent ? (true as bool?) : null,
                     EnableRbacAuthorization,
-                    null,
+                    this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                        ? (SoftDeleteRetentionInDays as int?)
+                        : (existingResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays),
                     existingResource.NetworkAcls
                 );
                 
