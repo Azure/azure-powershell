@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.5.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
+                {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
                 {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
