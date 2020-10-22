@@ -652,4 +652,7 @@
   <data name="BackupRedundancyNotChosenTakeSourceWarning" xml:space="preserve">
     <value>You have not specified the value for backup storage redundancy which will default to the source's backup storage redundancy. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
+  <data name="UnsupportedDatabaseEditionForAuditingPolicy" xml:space="preserve">
+    <value>Auditing policy cannot be defined for database edition {0}</value>
+  </data>
 </root>
