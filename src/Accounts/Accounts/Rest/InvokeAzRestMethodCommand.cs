@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 for (int i = 0; i < types.Length; i++)
                 {
                     sb.Append(slash + types[i]);
-                    if (i != names.Length)
+                    if (names != null && i != names.Length)
                     {
                         sb.Append(slash + names[i]);
                     }       
