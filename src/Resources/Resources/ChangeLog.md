@@ -22,6 +22,7 @@
 * Updated ARM template What-If cmdlets to remove preview message from results
 * Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
 * Fixed an issue where template deployment cmdlets does not preserve case for template parameters
+* Fixed an issue where What-If shows two resource group scopes with different casing
 * Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 * Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
 * Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
