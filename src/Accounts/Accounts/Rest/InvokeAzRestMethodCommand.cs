@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 this.Path = ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
 
-            switch (this.Method)
+            switch (this.Method.ToUpper())
             {
                 case "GET":
                     response = ServiceClient
