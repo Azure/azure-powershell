@@ -12,27 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointFilterItemObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointFilterItem))]
-    public class NewAzureNetworkWatcherConnectionMonitorEndpointFilterItemObjectCommand : ConnectionMonitorBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointScopeItemObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointScopeItem))]
+    public class NewAzureNetworkWatcherConnectionMonitorEndpointScopeItemObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The type of item included in the filter. Currently only 'AgentAddress' is supported.")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("AgentAddress")]
-        public string Type { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "The address of the filter item.")]
+            HelpMessage = "The address of the scope item.")]
         [ValidateNotNullOrEmpty]
         public string Address;
 
@@ -40,15 +31,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            PSNetworkWatcherConnectionMonitorEndpointFilterItem endpointFilterItem = new PSNetworkWatcherConnectionMonitorEndpointFilterItem()
+            PSNetworkWatcherConnectionMonitorEndpointScopeItem endpointScopeItem = new PSNetworkWatcherConnectionMonitorEndpointScopeItem()
             {
-                Type = Type == null ? "AgentAddress" : this.Type,
                 Address = this.Address
             };
 
-            this.ValidateEndpointFilterItem(endpointFilterItem);
-
-            WriteObject(endpointFilterItem);
+            WriteObject(endpointScopeItem);
         }
     }
 }

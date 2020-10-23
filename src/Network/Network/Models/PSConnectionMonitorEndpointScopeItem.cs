@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +14,11 @@
 //
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSNetworkWatcherConnectionMonitorEndpointFilterItem
+    public class PSNetworkWatcherConnectionMonitorEndpointScopeItem
     {
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Type { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public string Address { get; set; }
     }
