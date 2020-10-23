@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.0'; })
   FormatsToProcess = './Az.KubernetesConfiguration.format.ps1xml'
   FunctionsToExport = 'Get-AzKubernetesConfiguration', 'New-AzKubernetesConfiguration', 'Remove-AzKubernetesConfiguration'
   AliasesToExport = '*'

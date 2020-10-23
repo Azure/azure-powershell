@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * [Breaking Change] Deprecated parameter DisableSoftDelete in `New-AzKeyVault` and EnableSoftDelete in `Update-AzKeyVault`
 * [Breaking Change] Removed attribute SecretValueText to avoid displaying SecretValue directly [#12266]
 * Supported new resource type: managed HSM
