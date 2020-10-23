@@ -14,11 +14,11 @@
   <ItemGroup>
     <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.0.0-beta.2" />
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.2.0-beta.2" />
-    <PackageReference Include="BouncyCastle.NetCore" Version="1.8.6" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>

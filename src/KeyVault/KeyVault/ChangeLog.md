@@ -18,11 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported new resource type: managed HSM
-    - Control-plane features and cmdlets to operate keys
-    - Full HSM backup/restore, AES key creation, security domain backup/restore, RBAC
+
+## Version 3.0.0
 * [Breaking Change] Deprecated parameter DisableSoftDelete in `New-AzKeyVault` and EnableSoftDelete in `Update-AzKeyVault`
 * [Breaking Change] Removed attribute SecretValueText to avoid displaying SecretValue directly [#12266]
+* Supported new resource type: managed HSM
+    - CRUD of managed HSM and cmdlets to operate keys on managed HSM
+    - Full HSM backup/restore, AES key creation, security domain backup/restore, RBAC
 
 ## Version 2.2.1
 * Provided the detailed date of removing property SecretValueText

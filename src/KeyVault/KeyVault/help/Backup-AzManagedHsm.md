@@ -46,7 +46,7 @@ Use `Restore-AzManagedHsm` to restore the backup.
 ```powershell
 PS C:\> $sasToken = ConvertTo-SecureString -AsPlainText -Force "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-12T14:42:19Z&st=2020-10-12T06:42:19Z&spr=https&sig=******"
 
-PS C:\> Backup-AzManagedHsm -Name myHsm -BlobStorageUri "https://{accountName}.blob.core.windows.net/{containerName}" -SasToken $sasToken
+PS C:\> Backup-AzManagedHsm -Name myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -SasToken $sasToken
 
 https://{accountName}.blob.core.windows.net/{containerName}/{backupFolder}
 ```
