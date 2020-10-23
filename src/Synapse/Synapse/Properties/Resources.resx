@@ -456,4 +456,7 @@ Are you sure you want to continue?</value>
   <data name="RemovingSynapseDataFlow" xml:space="preserve">
     <value>Deleting data flow '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RestoringSynapseSqlPool" xml:space="preserve">
+    <value>Creating a new SQL pool restored from '{0}' in resource group '{1}' under parent Workspace '{2}' with name '{3}'.</value>
+  </data>
 </root>

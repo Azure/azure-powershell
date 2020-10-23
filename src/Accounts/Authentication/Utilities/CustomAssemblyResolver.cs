@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.5.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
+                {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
                 {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
@@ -55,7 +56,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 AssemblyName name = new AssemblyName(args.Name);
                 if (NetFxPreloadAssemblies.TryGetValue(name.Name, out Version version))
                 {
-                    if (version >= name.Version && version.Major == name.Version.Major)
+                    //For Newtonsoft.Json, allow to use bigger version to replace smaller version
+                    if (version >= name.Version && (version.Major == name.Version.Major || string.Equals(name.Name, "Newtonsoft.Json", StringComparison.OrdinalIgnoreCase)))
                     {
                         string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{name.Name}.dll");
                         return Assembly.LoadFrom(requiredAssembly);
