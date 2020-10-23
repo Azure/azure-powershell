@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
 * Replaced Azure Directory Authentication Library with Microsoft Authentication Library(MSAL)
 

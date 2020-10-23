@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Added support for operation of Synapse LinkedService
     - Add `Get-AzSynapseLinkedService` cmdlet
     - Add `Remove-AzSynapseLinkedService` cmdlet
