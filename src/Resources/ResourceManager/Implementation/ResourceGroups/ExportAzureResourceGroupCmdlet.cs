@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceIds;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-    using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
-        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced. Using the lastest possible API version will become the default behavior.")]
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
         public override string ApiVersion { get; set; }
@@ -110,14 +109,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            String contents;
+            string contents;
 
             if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
 
                 var resourceGroupId = this.GetResourceGroupId();
 
-                if (this.ApiVersion is null)
+                if (this.IsParameterBound(c => c.ApiVersion))
                 {
                     var parameters = new Management.ResourceManager.Models.ExportTemplateRequest
                     {
@@ -131,6 +130,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     contents = template.ToString();
 
                     var error = exportedTemplate.Error;
+
+                    if(error != null)
+                    {
+                        WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                        foreach (var detail in error.Details)
+                        {
+                            WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                        }
+                    }
                 }
                 else
                 {
@@ -165,8 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     if (JObject.Parse(resultString)["error"] != null)
                     {
-                        ExtendedErrorInfo error;
-                        if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
+                        if (JObject.Parse(resultString)["error"].TryConvertTo(out ExtendedErrorInfo error))
                         {
                             WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
                             foreach (var detail in error.Details)
