@@ -1,20 +1,30 @@
-$envFile = 'env.json'
-$env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
+$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+if (-Not (Test-Path -Path $loadEnvPath)) {
+    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+}
+. ($loadEnvPath)
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzCloudService.Recording.json'
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+    $currentPath = Split-Path -Path $currentPath -Parent
+}
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzCloudService' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-  # TODO: Enable once cmdlet is fixed
+    It 'DeleteRoleInstance' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-  # It 'Remove Cloud Service multiple role instances' {
-  #   $roles = @($env.RoleInstanceName1, $env.RoleInstanceName2)
-  #   Remove-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $roles
-  #   $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName1 -ErrorAction SilentlyContinue
-  #   $cloudService | Should be $NULL
-  # }
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-  It 'Remove Cloud Service' {
-    Remove-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-    $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -ErrorAction SilentlyContinue
-    $cloudService | Should be $NULL
-  }
+    It 'DeleteRoleInstanceViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }
