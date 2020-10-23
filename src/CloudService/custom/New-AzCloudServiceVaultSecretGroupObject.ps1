@@ -22,7 +22,7 @@ function New-AzCloudServiceVaultSecretGroupObject {
 
               $cloudServiceVaultSecretGroup = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup]::New()
               $cloudServiceVaultSecretGroup.SourceVaultId = $Id
-              $cloudServiceVaultSecretGroup.VaultCertificate = $CertificateUrl
+              $cloudServiceVaultSecretGroup.VaultCertificate = $certificateUrls
 
         return $cloudServiceVaultSecretGroup
     }
