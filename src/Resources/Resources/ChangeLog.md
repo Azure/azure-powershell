@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Export-AzResourceGroup` to use the SDK.
 * Fixed parsing bug
 * Updated ARM template What-If cmdlets to remove preview message from results
 * Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
@@ -27,7 +28,6 @@
 * Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
 * Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
-* Updated `Export-AzResourceGroup` to use the SDK.
 
 ## Version 2.5.1
 * Added missing check for Set-AzRoleAssignment
