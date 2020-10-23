@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway SSL profile")]
         public PSApplicationGatewaySslProfile SslProfile { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (SslProfile.SslPolicy == null)
@@ -39,12 +34,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("The SSL profile doesn't have a SSL policy.");
             }
 
-            ConfirmAction(
-               Force.IsPresent,
-               "Are you sure you want to remove SSL policy",
-               "Removing SSL Policy..",
-               SslProfile.SslPolicy.ToString(),
-               () => RemoveSslPolicy());
+            RemoveSslPolicy();
         }
 
         private void RemoveSslPolicy()

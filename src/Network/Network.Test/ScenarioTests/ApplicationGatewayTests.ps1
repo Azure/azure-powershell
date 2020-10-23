@@ -3396,7 +3396,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		Assert-AreEqual $False $clientAuthConfig.VerifyClientCertIssuerDN
 		
 		# Remove operations.
-		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02 -Force
+		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
 		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
 		Assert-Null $getpolicy
 		$sslProfile02 = Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile02
