@@ -41,6 +41,36 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public int? SuggestionCount { get; set; }
 
+        private static bool? _isContinueOnTimeout;
+        /// <summary>
+        /// Gets the value to indicate whether to ignore cancellation request and keep running.
+        /// This should be only set during debugging.
+        /// </summary>
+        [JsonIgnore]
+        internal static bool ContinueOnTimeout
+        {
+            get
+            {
+                if (_isContinueOnTimeout.HasValue)
+                {
+                    return _isContinueOnTimeout.Value;
+                }
+
+                var envValue = Environment.GetEnvironmentVariable("AzPredictorContinueOnTimeout");
+
+                if (bool.TryParse(envValue, out bool envBoolValue))
+                {
+                    _isContinueOnTimeout = envBoolValue;
+                }
+                else
+                {
+                    _isContinueOnTimeout = false;
+                }
+
+                return _isContinueOnTimeout.Value;
+            }
+        }
+
         /// <summary>
         /// Gets an instance of the settings.
         /// </summary>
