@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* [Breaking Change] Removed cmdlet alias `Get-AzAks`, `New-AzAks`, `Remove-AzAks` and `Set-AzAks`.
 * [Breaking Change] Removed parameter alias `ClientIdAndSecret` in `New-AzAksCluster` and `Set-AzAksCluster`.
 * [Breaking Change] Changed the default value of `NodeVmSetType` in `New-AzAksCluster` from `AvailabilitySet` to `VirtualMachineScaleSets`.
 * [Breaking Change] Changed the default value of `NetworkPlugin` in `New-AzAksCluster` from `None` to `azure`.
