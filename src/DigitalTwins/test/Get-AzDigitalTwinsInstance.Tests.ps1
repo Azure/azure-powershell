@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDigitalTwinsInstance' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $DigitalTwinsInstanceList = Get-AzDigitalTwinsInstance
+        $DigitalTwinsInstanceList.Count | Should -Be 2
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $DigitalTwinsInstanceList = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup
+        $DigitalTwinsInstanceList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $DigitalTwinsInstance = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $DigitalTwinsInstance.Name | Should -Be $env.digitalTwins
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $DigitalTwinsInstance01 = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $DigitalTwinsInstance = Get-AzDigitalTwinsInstance -inputObject $DigitalTwinsInstance01
+        $DigitalTwinsInstance.Name | Should -Be $env.digitalTwins
     }
 }

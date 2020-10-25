@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDigitalTwinsInstance' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $digitalTwinsList = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup
+        $tisEnvList.Name | Should -Not -Contain $env.digitalTwins
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $getDigitalTwinsInstance1 = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins1
+        Remove-AzDigitalTwinsInstance -InputObject $getDigitalTwinsInstance1
+        $digitalTwinsList = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup
+        $tisEnvList.Name | Should -Not -Contain $env.digitalTwins1
     }
 }

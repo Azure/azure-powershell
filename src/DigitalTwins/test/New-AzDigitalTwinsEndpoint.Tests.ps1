@@ -12,19 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDigitalTwinsEndpoint' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateEventHub' {
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventHubEndpointName -EndpointType $env.eventHubEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -ConnectionStringPrimaryKey $env.eventHubConnectionStringPrimaryKey
+        $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.eventHubEndpointName
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateEventGrid' {
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventGridEndpointName -EndpointType $env.eventGridEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -TopicEndpoint $env.eventGridTopEndPoint -AccessKey1 $env.eventGridAccessKey1
+        $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.eventGridEndpointName
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateServiceBus' {
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.serviceBusEndpointName -EndpointType $env.serviceBusEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -PrimaryConnectionString $env.serviceBusPrimaryConnectionString
+        $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.serviceBusEndpointName
     }
 }

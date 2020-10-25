@@ -59,7 +59,6 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub', Mandatory)]
         [Parameter(ParameterSetName='EventGrid', Mandatory)]
         [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # Name of Endpoint Resource.
@@ -68,7 +67,6 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub', Mandatory)]
         [Parameter(ParameterSetName='EventGrid', Mandatory)]
         [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # The name of the resource group that contains the DigitalTwinsInstance.
@@ -77,7 +75,6 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub', Mandatory)]
         [Parameter(ParameterSetName='EventGrid', Mandatory)]
         [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # The name of the DigitalTwinsInstance.
@@ -86,7 +83,6 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub')]
         [Parameter(ParameterSetName='EventGrid')]
         [Parameter(ParameterSetName='ServiceBus')]
-        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -105,38 +101,42 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub', Mandatory)]
         [Parameter(ParameterSetName='EventGrid', Mandatory)]
         [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType])]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType]
         # The type of Digital Twins endpoint
         ${EndpointType},
 
+        [Parameter(ParameterSetName='EventHub',Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+        [System.String]
+        # The subscription identifier.
+        ${ConnectionStringPrimaryKey},
+
         [Parameter(ParameterSetName='EventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The subscription identifier.
-        ${connectionStringPrimaryKey},
+        ${ConnectionStringSecondaryKey},
 
-        [Parameter(ParameterSetName='EventGrid')]
+        [Parameter(ParameterSetName='EventGrid',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The subscription identifier.
         ${TopicEndpoint},
 
-        [Parameter(ParameterSetName='EventGrid')]
+        [Parameter(ParameterSetName='EventGrid',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The subscription identifier.
-        ${accessKey1},
+        ${AccessKey1},
 
-        [Parameter(ParameterSetName='ServiceBus')]
+        [Parameter(ParameterSetName='ServiceBus',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The subscription identifier.
-        ${primaryConnectionString},
+        ${PrimaryConnectionString},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # Dead letter storage secret.
@@ -204,23 +204,35 @@ function New-AzDigitalTwinsEndpoint {
     )
     process {
         try {
-            if($PSBoundParameters['Kind'] -eq 'EventHub')
+            if($PSBoundParameters['EndpointType'] -eq 'EventHub')
             {
-                $connectionStringPrimaryKey = $PSBoundParameters['primaryConnectionString']
-                $PSBoundParameters.Add('primaryConnectionString',$connectionStringPrimaryKey)
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.EventHub]::new()
+                $Parameter.Property.connectionStringPrimaryKey = $PSBoundParameters['connectionStringPrimaryKey']
+                $Parameter.Property.connectionStringSecondaryKey = $PSBoundParameters['connectionStringSecondaryKey']
+                $null = $PSBoundParameters.Remove('connectionStringPrimaryKey')
+                $null = $PSBoundParameters.Remove('connectionStringSecondaryKey')
             }
-            if($PSBoundParameters['Kind'] -eq 'EventGrid')
+            if($PSBoundParameters['EndpointType'] -eq 'EventGrid')
             {
-                $TopicEndpoint = $PSBoundParameters['TopicEndpoint']
-                $accessKey1 = $PSBoundParameters['accessKey1']
-                $PSBoundParameters.Add('TopicEndpoint',$TopicEndpoint)
-                $PSBoundParameters.Add('accessKey1',$accessKey1)
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.EventGrid]::new()
+                $Parameter.Property.TopicEndpoint = $PSBoundParameters['TopicEndpoint']
+                $Parameter.Property.accessKey1 = $PSBoundParameters['accessKey1']
+                $null = $PSBoundParameters.Remove('TopicEndpoint')
+                $null = $PSBoundParameters.Remove('accessKey1')
             }
-            if($PSBoundParameters['Kind'] -eq 'ServiceBus')
+            if($PSBoundParameters['EndpointType'] -eq 'ServiceBus')
             {
-                $primaryConnectionString = $PSBoundParameters['primaryConnectionString']
-                $PSBoundParameters.Add('primaryConnectionString',$primaryConnectionString)
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ServiceBus]::new()
+                $Parameter.Property.primaryConnectionString = $PSBoundParameters['primaryConnectionString']
+                $null = $PSBoundParameters.Remove('primaryConnectionString')
             }
+            $Parameter.EndpointType = $PSBoundParameters['EndpointType']
+            $null = $PSBoundParameters.Remove('EndpointType')
+            $null = $PSBoundParameters.Add("EndpointDescription",$Parameter)
+
            Az.DigitalTwins.internal\New-AzDigitalTwinsEndpoint @PSBoundParameters
         } catch {
             throw

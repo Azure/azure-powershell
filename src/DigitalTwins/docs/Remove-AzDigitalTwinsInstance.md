@@ -29,23 +29,24 @@ Delete a DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an AzDigitalTwinsInstance by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+This command removes an AzDigitalTwinsInstance by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove an AzDigitalTwinsInstance by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $GetAzDigitalTwins =  Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+Remove-AzDigitalTwinsInstance -InputObject $GetAzDigitalTwins
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+This command removes an AzDigitalTwinsInstance by name
 
 ## PARAMETERS
 

@@ -12,19 +12,26 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzDigitalTwinsInstanceNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        $testAzDigitalTwinsnameResult = Test-AzDigitalTwinsInstanceNameAvailability -Location $env.location -name $env.testDigitalTwinsName
+        $testAzDigitalTwinsnameResult.NameAvailable | Should -Be $True
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Check' {
+        $testAzDigitalTwinsname = New-AzDigitalTwinsCheckNameRequestObject -name $env.testDigitalTwinsName
+        $testAzDigitalTwinsnameResult = Test-AzDigitalTwinsInstanceNameAvailability -Location $env.location -DigitalTwinsInstanceCheckName $testAzDigitalTwinsname
+        $testAzDigitalTwinsnameResult.NameAvailable | Should -Be $True
     }
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckViaIdentityExpanded' {
+        $getDigitalTwins = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $testAzDigitalTwinsnameResult = Test-AzDigitalTwinsInstanceNameAvailability -InputObject $getDigitalTwins -DigitalTwinsInstanceCheckName $getDigitalTwins
+        $testAzDigitalTwinsnameResult.NameAvailable | Should -Be $False
     }
 
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckViaIdentity' {
+        $getDigitalTwins = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $testAzDigitalTwinsnameResult = Test-AzDigitalTwinsInstanceNameAvailability -InputObject $getDigitalTwins -name $env.testDigitalTwinsName
+        $testAzDigitalTwinsnameResult.NameAvailable | Should -Be $True
     }
 }

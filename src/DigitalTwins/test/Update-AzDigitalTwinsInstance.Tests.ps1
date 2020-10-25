@@ -12,19 +12,43 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDigitalTwinsInstance' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $key = 'dtt'
+        $value = '000'
+        $tag = @{$key=$value}
+        $updateDigitalTwinInstance = Update-AzDigitalTwinsInstance -ResourcegroupName $env.resourceGroup -ResourceName $env.digitalTwins -Tag $tag
+        $updateDigitalTwinInstance.Tag.keys.Contains($key) | Should -BeTrue
+        $updateDigitalTwinInstance.Tag.Values.Contains($value) | Should -BeTrue
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $key = 'dtt'
+        $value = '001'
+        $tag = @{$key=$value}
+        $updateDigitalTwinInstance1 = Update-AzDigitalTwinsInstance -ResourcegroupName $env.resourceGroup -ResourceName $env.digitalTwins1 -Tag $tag
+        $updateDigitalTwinInstance = Update-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -DigitalTwinsPatchDescription $updateDigitalTwinInstance1
+        $updateDigitalTwinInstance.Tag.keys.Contains($key) | Should -BeTrue
+        $updateDigitalTwinInstance.Tag.Values.Contains($value) | Should -BeTrue
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $key = 'dtt'
+        $value = '002'
+        $tag = @{$key=$value}
+        $updateDigitalTwinInstance1 = Update-AzDigitalTwinsInstance -ResourcegroupName $env.resourceGroup -ResourceName $env.digitalTwins1 -Tag $tag
+        $getDigitalTwinInstance = Get-AzDigitalTwinsInstance -ResourcegroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $updateDigitalTwinInstance = Update-AzDigitalTwinsInstance -InputObject $getDigitalTwinInstance -DigitalTwinsPatchDescription $updateDigitalTwinInstance1
+        $updateDigitalTwinInstance.Tag.keys.Contains($key) | Should -BeTrue
+        $updateDigitalTwinInstance.Tag.Values.Contains($value) | Should -BeTrue
     }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentity' {
+        $key = 'dtt'
+        $value = '003'
+        $tag = @{$key=$value}
+        $getDigitalTwinInstance = Get-AzDigitalTwinsInstance -ResourcegroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $updateDigitalTwinInstance = Update-AzDigitalTwinsInstance -InputObject $getDigitalTwinInstance -Tag $tag
+        $updateDigitalTwinInstance.Tag.keys.Contains($key) | Should -BeTrue
+        $updateDigitalTwinInstance.Tag.Values.Contains($value) | Should -BeTrue
     }
 }

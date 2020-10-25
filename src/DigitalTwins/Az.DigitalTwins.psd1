@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DigitalTwins.private.dll'
   FormatsToProcess = './Az.DigitalTwins.format.ps1xml'
-  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsInstance', '*'
+  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'New-AzDigitalTwinsCheckNameRequestObject', 'New-AzDigitalTwinsDigitalTwinsIdentityObject', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsInstance', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

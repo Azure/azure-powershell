@@ -4,14 +4,16 @@ PS C:\> Remove-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName
 
 
 ```
+
 This command removes an AzDigitalTwinsInstance by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove an AzDigitalTwinsInstance by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $GetAzDigitalTwins =  Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+Remove-AzDigitalTwinsInstance -InputObject $GetAzDigitalTwins
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+This command removes an AzDigitalTwinsInstance by name
 

@@ -44,10 +44,10 @@ Get DigitalTwinsInstances resource.
 ```powershell
 PS C:\> Get-AzDigitalTwinsInstance
 
-Location      Name                  SkuName Type
---------      ----                  ------- ----
-westcentralus YouriTestDigitalTwins S1      Microsoft.DigitalTwins/digitalTwinsInstances
-eastus        youriDigitalTwin      S1      Microsoft.DigitalTwins/digitalTwinsInstances
+Location Name                    Type
+-------- ----                    ----
+eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
+eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Get all the DigitalTwinsInstance by default
@@ -56,21 +56,21 @@ Get all the DigitalTwinsInstance by default
 ```powershell
 PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
 
-Location Name             SkuName Type
--------- ----             ------- ----
-eastus   youriDigitalTwin S1      Microsoft.DigitalTwins/digitalTwinsInstances
+Location Name             Type
+-------- ----             ----
+eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Get the specified AzDigitalTwinsInstance by ResourceName
 
 ### Example 3: GetViaIdentity
 ```powershell
-PS C:\> $NewAzDigital = New-AzDigitalTwinsInstance -ResourceGroupName youritest -ResourceName youriDigitalTwin -Location eastus
+PS C:\> $NewAzDigital = New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin -Location eastus
 Get-AzDigitalTwinsInstance -inputObject $NewAzDigital
 
-Location Name             SkuName Type
--------- ----             ------- ----
-eastus   youriDigitalTwin S1      Microsoft.DigitalTwins/digitalTwinsInstances
+Location Name             Type
+-------- ----             ----
+eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Get the specified AzDigitalTwinsInstance by Object
@@ -79,10 +79,10 @@ Get the specified AzDigitalTwinsInstance by Object
 ```powershell
 PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp
 
-Location      Name                  SkuName Type
---------      ----                  ------- ----
-westcentralus YouriTestDigitalTwins S1      Microsoft.DigitalTwins/digitalTwinsInstances
-eastus        youriDigitalTwin      S1      Microsoft.DigitalTwins/digitalTwinsInstances
+Location Name                    Type
+-------- ----                    ----
+eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
+eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Get all the DigitalTwinsInstance by ResourceGroupName

@@ -15,31 +15,31 @@ Create or update DigitalTwinsInstance endpoint.
 ### EventHub (Default)
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> [-SubscriptionId <String>] [-connectionStringPrimaryKey <String>]
+ -ConnectionStringPrimaryKey <String> -EndpointType <EndpointType> [-SubscriptionId <String>]
+ [-ConnectionStringSecondaryKey <String>] [-DeadLetterSecret <String>]
  [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> [-SubscriptionId <String>] [-DeadLetterSecret <String>]
+New-AzDigitalTwinsEndpoint -EndpointType <EndpointType> [-DeadLetterSecret <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EventGrid
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> [-SubscriptionId <String>] [-accessKey1 <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-TopicEndpoint <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -AccessKey1 <String> -EndpointType <EndpointType> -TopicEndpoint <String> [-SubscriptionId <String>]
+ [-DeadLetterSecret <String>] [-EndpointDescription <IDigitalTwinsEndpointResource>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ServiceBus
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> [-SubscriptionId <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-primaryConnectionString <String>]
+ -EndpointType <EndpointType> -PrimaryConnectionString <String> [-SubscriptionId <String>]
+ [-DeadLetterSecret <String>] [-EndpointDescription <IDigitalTwinsEndpointResource>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,27 +48,42 @@ Create or update DigitalTwinsInstance endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzDigitalTwinsEndpoint for Eventhub
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDigitalTwinsEndpoint -EndpointName youriEventHubEndPoint  -EndpointType EventHub -ResourceGroupName youritemp -ResourceName youriDigitalTwins -connectionStringPrimaryKey 'Endpoint=sb://yourieventhubnp.servicebus.windows.net/;SharedAccessKeyName=youriEventhubPolicy;SharedAccessKey=********;EntityPath=yourieventhub'
 
-{{ Add output here }}
+Name                  Type
+----                  ----
+youriEventHubEndPoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-{{ Add description here }}
+Create an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an AzDigitalTwinsEndpoint for EventGrid
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDigitalTwinsEndpoint -EndpointName youriEventGridPoint  -EndpointType EventGrid -ResourceGroupName youritemp -ResourceName youriDigitalTwins -TopicEndpoint 'https://yourieventgrid.eastus-1.eventgrid.azure.net/api/events' -accessKey1 'xxxxxxxxx='
 
-{{ Add output here }}
+Name                  Type
+----                  ----
+youriEventGridPoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-{{ Add description here }}
+Create an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
+
+### Example 3: Create an AzDigitalTwinsEndpoint for ServiceBus
+```powershell
+PS C:\> New-AzDigitalTwinsEndpoint -EndpointName youriServiceBusPoint  -EndpointType EventGrid -ResourceGroupName youritemp -ResourceName youriDigitalTwins -PrimaryConnectionString "Endpoint=sb://yourieventhubnp.servicebus.windows.net/;SharedAccessKeyName=******;SharedAccessKey=********;EntityPath=yourieventhub"
+
+Name                  Type
+----                  ----
+youriServiceBusPoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
+```
+
+Create an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
 
 ## PARAMETERS
 
-### -accessKey1
+### -AccessKey1
 The subscription identifier.
 
 ```yaml
@@ -76,7 +91,7 @@ Type: System.String
 Parameter Sets: EventGrid
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,7 +113,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -connectionStringPrimaryKey
+### -ConnectionStringPrimaryKey
+The subscription identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: EventHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionStringSecondaryKey
 The subscription identifier.
 
 ```yaml
@@ -119,7 +149,7 @@ Will be obfuscated during read.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +195,7 @@ Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventGrid, EventHub, ServiceBus
 Aliases:
 
 Required: True
@@ -205,7 +235,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -primaryConnectionString
+### -PrimaryConnectionString
 The subscription identifier.
 
 ```yaml
@@ -213,7 +243,7 @@ Type: System.String
 Parameter Sets: ServiceBus
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,7 +255,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventGrid, EventHub, ServiceBus
 Aliases:
 
 Required: True
@@ -240,7 +270,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventGrid, EventHub, ServiceBus
 Aliases:
 
 Required: True
@@ -255,7 +285,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventGrid, EventHub, ServiceBus
 Aliases:
 
 Required: False
@@ -273,7 +303,7 @@ Type: System.String
 Parameter Sets: EventGrid
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

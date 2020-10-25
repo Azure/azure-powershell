@@ -38,7 +38,7 @@ input-file:
 module-version: 0.2.0
 title: DigitalTwins
 subject-prefix: $(service-name)
-
+identity-correction-for-post: true
 directive:
   - select: command
     where:
@@ -100,4 +100,22 @@ directive:
       subject: Endpoint
       variant: ^CreateExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     hide: true
+  - where:
+      verb: Test
+      subject: InstanceNameAvailability
+    hide: true
+  - where:
+      verb: New
+      subject: CheckNameRequestObject
+    hide: true
+  - where:
+      verb: New
+      subject: DigitalTwinsIdentityObject
+    hide: true
+  
+  # Correct some generated code
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceProperties Property');
+
 ```

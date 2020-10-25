@@ -12,19 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDigitalTwinsInstance' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded'{
+        $NewAzDigitalTwinsInstance = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -Location $env.location
+        $NewAzDigitalTwinsInstance.Name | Should -Be $env.digitalTwins
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $key = 'dtt1'
+        $value = '001'
+        $tag = @($key=$value)
+        $getAzdigitalTwins = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins
+        $NewAzDigitalTwinsInstance = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins1 -DigitalTwinsCreate $getAzdigitalTwins
+        $NewAzDigitalTwinsInstance.Name | Should -Be $env.digitalTwins1
     }
 }

@@ -1,7 +1,8 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzDigitalTwinsEndpoint -ResourceGroupName youritemp -EndpointName youriEHEndpoint -ResourceName youriDigitalTwinsTest
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
 {{ Add description here }}

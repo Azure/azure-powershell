@@ -17,6 +17,12 @@ Get DigitalTwinsInstances Endpoint.
 ### [Get-AzDigitalTwinsInstance](Get-AzDigitalTwinsInstance.md)
 Get DigitalTwinsInstances resource.
 
+### [New-AzDigitalTwinsCheckNameRequestObject](New-AzDigitalTwinsCheckNameRequestObject.md)
+Create a in-memory object for CheckNameRequest
+
+### [New-AzDigitalTwinsDigitalTwinsIdentityObject](New-AzDigitalTwinsDigitalTwinsIdentityObject.md)
+Create a in-memory object for DigitalTwinsIdentity
+
 ### [New-AzDigitalTwinsEndpoint](New-AzDigitalTwinsEndpoint.md)
 Create or update DigitalTwinsInstance endpoint.
 
