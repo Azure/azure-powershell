@@ -23,9 +23,6 @@ function setupEnv() {
     $null = $env.Add("eventHubEndpointType", "EventHub")
     $null = $env.Add("eventGridEndpointType", "EventGrid")
     $null = $env.Add("serviceBusEndpointType", "ServiceBus")
-    $env.$eventHubEndpointType
-    eventGridEndpointType
-    serviceBusEndpointType
     $resourceGroup = 'youridigitaltwins-rg' + $rstr1
     $null = $env.Add("resourceGroup", $resourceGroup)
     $digitalTwins = 'youriDigitalTwins' + $rstr2
@@ -78,12 +75,6 @@ function setupEnv() {
     New-AzServiceBusNamespace -ResourceGroupName $resourceGroup -Location $env.location -Name $serviceBusNameSpace
     New-AzServiceBusTopic -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Name $serviceBusTopicName -EnablePartitioning $False
     New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy -Rights @("Send")
-    # $servicebus = Get-Content .\test\deployment-templates\servicebus\parameters.json | ConvertFrom-Json
-    # $servicebus.parameters.serviceBusNameSpace.value = $serviceBusNameSpace
-    # $servicebus.parameters.serviceBusTopicName.value = $serviceBusNameSpace
-    # $servicebus.parameters.serviceBusPolicy.value = $serviceBusNameSpace
-    # Set-Content -Path .\test\deployment-templates\servicebus\parameters.json -Value (ConvertTo-Json $servicebus)
-    # New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\servicebus\template.json -TemplateParameterFile .\test\deployment-templates\servicebus\parameters.json -Name nsg -ResourceGroupName $resourceGroup
     $getAzServiceBusKey = Get-AzServiceBusKey -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy
     $serviceBusPrimaryConnectionString = $getAzServiceBusKey.PrimaryConnectionString
     $null = $env.Add("serviceBusPrimaryConnectionString", $serviceBusPrimaryConnectionString)
@@ -99,5 +90,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
