@@ -21,12 +21,6 @@ New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -R
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
-```
-New-AzDigitalTwinsEndpoint -EndpointType <EndpointType> [-DeadLetterSecret <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### EventGrid
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
@@ -61,7 +55,7 @@ Create an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
 
 ### Example 2: Create an AzDigitalTwinsEndpoint for EventGrid
 ```powershell
-PS C:\> New-AzDigitalTwinsEndpoint -EndpointName youriEventGridPoint  -EndpointType EventGrid -ResourceGroupName youritemp -ResourceName youriDigitalTwins -TopicEndpoint 'https://yourieventgrid.eastus-1.eventgrid.azure.net/api/events' -accessKey1 'xxxxxxxxx='
+PS C:\> New-AzDigitalTwinsEndpoint -EndpointName youriEventGridPoint  -EndpointType EventGrid -ResourceGroupName youritemp -ResourceName youriDigitalTwins -TopicEndpoint 'https://yourieventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 'xxxxxxxxx='
 
 Name                  Type
 ----                  ----
@@ -180,7 +174,7 @@ To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource
-Parameter Sets: EventGrid, EventHub, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +189,7 @@ Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventGrid, EventHub, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -255,7 +249,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventGrid, EventHub, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -270,7 +264,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventGrid, EventHub, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -285,7 +279,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventGrid, EventHub, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
