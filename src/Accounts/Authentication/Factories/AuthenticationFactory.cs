@@ -442,7 +442,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 tokenKey = AzureAccount.Property.GraphAccessToken;
             }
-
+            if (targetEndpoint == AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId)
+            {
+                tokenKey = AzureAccount.Property.KeyVaultAccessToken;
+            }
             return account.GetProperty(tokenKey);
         }
 
