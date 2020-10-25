@@ -7,6 +7,8 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 $env = @{}
 function setupEnv() {
+    # For test DigitalTwinsEndpoint,you need to install model 'EventGrid', 'EventHub' and 'ServiceBus' first
+    Write-host "For test DigitalTwinsEndpoint,you need to install model 'EventGrid', 'EventHub' and 'ServiceBus' first"
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
