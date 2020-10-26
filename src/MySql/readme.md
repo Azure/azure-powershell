@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MySql service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,31 +47,44 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
+branch: ea6d1725ca9669714cd5f5f969d026b90ecffbd1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
+  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
 
 directive:
-  - from: mysql.json
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
+  - from: Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
     where: $.definitions.VirtualNetworkRule
     transform: $['required'] = ['properties']
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(Servers|ServerKeys)_/g, "flexible$1_")
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(Replicas|FirewallRules|Databases|Configurations|NameAvailability)_/g, "flexibleServers$1_")
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where: $.paths..operationId
+    transform: return $.replace(/^CheckVirtualNetworkSubnetUsage_Execute$/g, "VirtualNetworkSubnetUsage_Get")
   - where:
       verb: Set
-      subject: Configuration$|FirewallRule$|VirtualNetworkRule$
+      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$
     set:
       verb: Update
   - where:
-      subject: Database$|SecurityAlertPolicy$|Administrator$|LocationBasedPerformanceTier$|LogFile$|ExecuteCheckNameAvailability$
+      subject: ^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$
     hide: true
   - where:
       verb: New$|Update$
-      subject: Server$|Configuration$|FirewallRule$
+      subject: ^Server$|^Configuration$|^FirewallRule$
     hide: true
   - where:
      verb: New$

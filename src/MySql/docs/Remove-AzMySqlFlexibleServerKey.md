@@ -1,51 +1,52 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlvirtualnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlflexibleserverkey
 schema: 2.0.0
 ---
 
-# Remove-AzMySqlVirtualNetworkRule
+# Remove-AzMySqlFlexibleServerKey
 
 ## SYNOPSIS
-Deletes the virtual network rule with the given name.
+Deletes the MySQL Server key with the given name.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+Remove-AzMySqlFlexibleServerKey -KeyName <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMySqlVirtualNetworkRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzMySqlFlexibleServerKey -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the virtual network rule with the given name.
+Deletes the MySQL Server key with the given name.
 
 ## EXAMPLES
 
-### Example 1: Remove MySql server Virtual Network Rule by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest-ServerName mysql-test
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This cmdlet removes MySql server Virtual Network Rule by name.
+{{ Add description here }}
 
-### Example 2: Remove MySql server Virtual Network Rule by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/virtualNetworkRules/vnet"
-PS C:\> Remove-AzMySqlVirtualNetworkRule -InputObject $ID
- 
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-These cmdlets remove MySql server Virtual Network Rule by identity.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -95,13 +96,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the virtual network rule.
+### -KeyName
+The name of the server key.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: VirtualNetworkRuleName
+Aliases:
 
 Required: True
 Position: Named
