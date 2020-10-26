@@ -45,6 +45,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     param = elem;
                     arg = null;
                 }
+                else if (AzPredictorConstants.ParameterIndicator == elem?.ToString().Trim().FirstOrDefault())
+                {
+                    // We have an incomplete command line such as
+                    // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
+                    // We'll ignore the incomplete parameter.
+                    if (param != null)
+                    {
+                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
+                    }
+
+                    param = null;
+                    arg = null;
+                }
                 else
                 {
                     arg = elem;
