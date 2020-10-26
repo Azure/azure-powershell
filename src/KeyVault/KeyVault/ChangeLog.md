@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported updating key vault tag
 
 ## Version 3.0.0
 * [Breaking Change] Deprecated parameter DisableSoftDelete in `New-AzKeyVault` and EnableSoftDelete in `Update-AzKeyVault`
