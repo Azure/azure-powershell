@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal class AzPredictorService : IAzPredictorService, IDisposable
     {
+        private const string ClientType = "AzurePowerShell";
+
         [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class PredictionRequestBody
         {
@@ -38,15 +40,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public string CorrelationId { get; set; } = Guid.Empty.ToString();
                 public string SessionId { get; set; } = Guid.Empty.ToString();
                 public string SubscriptionId { get; set; } = Guid.Empty.ToString();
-                public Version VersionNumber{ get; set; } = new Version(1, 0);
+                public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
 
             public string History { get; set; }
-            public string ClientType { get; set; } = "AzurePowerShell";
+            public string ClientType { get; set; } = AzPredictorService.ClientType;
             public RequestContext Context { get; set; } = new RequestContext();
 
             public PredictionRequestBody(string command) => this.History = command;
         };
+
+        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+        private sealed class CommandRequestContext
+        {
+            public Version VersionNumber{ get; set; } = new Version(0, 0);
+        }
 
         private static readonly HttpClient _client = new HttpClient();
         private readonly string _commandsEndpoint;
@@ -56,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private volatile string _commandForPrediction;
         private HashSet<string> _commandSet;
         private CancellationTokenSource _predictionRequestCancellationSource;
-        private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
+        private readonly ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
 
         private readonly ITelemetryClient _telemetryClient;
 
@@ -68,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="telemetryClient">The telemetry client.</param>
         public AzPredictorService(string serviceUri, ITelemetryClient telemetryClient)
         {
-            this._commandsEndpoint = serviceUri + AzPredictorConstants.CommandsEndpoint;
+            this._commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context={JsonConvert.SerializeObject(new CommandRequestContext())}";
             this._predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
             this._telemetryClient = telemetryClient;
 
