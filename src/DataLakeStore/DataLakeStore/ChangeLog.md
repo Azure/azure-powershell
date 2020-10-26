@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update ADLS dataplane SDK to 1.2.4-alpha. Changes:https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-124-alpha
 
 ## Version 1.2.8
 * Added breaking change description for `Export-AzDataLakeStoreItem` and `Import-AzDataLakeStoreItem`

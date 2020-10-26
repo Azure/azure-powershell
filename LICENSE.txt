@@ -225,12 +225,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ***************
 
-The software includes BouncyCastle.NetCore. The MIT License set out below is provided for informational purposes only. It is not the license that governs any part of the software.
+The software includes Portable.BouncyCastle. The MIT License set out below is provided for informational purposes only. It is not the license that governs any part of the software.
 
-BouncyCastle.NetCore
+Portable.BouncyCastle
 
 LICENSE
-Copyright (c) 2000 - 2020 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
+Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

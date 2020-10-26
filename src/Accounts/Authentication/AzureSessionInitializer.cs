@@ -20,6 +20,7 @@ using System.Linq;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
-        static void MigrateAdalCache(AzureSession session, IDataStore store, string adalCachePath, string msalCachePath)
+        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer)
         {
             if (session.ARMContextSaveMode == ContextSaveMode.Process)
             {
@@ -106,6 +107,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 return;
             }
 
+            var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
+            var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+            var store = session.DataStore;
             if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
             {
                 // Return if
@@ -127,7 +131,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if(adalData != null && adalData.Length > 0)
             {
-                new AdalTokenMigrator(adalData).MigrateFromAdalToMsal();
+                new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
             }
         }
 
@@ -232,7 +236,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-            MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
+
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();

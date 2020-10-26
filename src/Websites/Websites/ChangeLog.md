@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Added support for Premium V3 pricing tier
 * Updated the WebSites SDK to 3.1.0
 
