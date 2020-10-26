@@ -117,12 +117,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public IEnumerable<ValueTuple<string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
+        public IEnumerable<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
         {
             var commandSuggestions = this._commandSuggestions;
             var command = this._commandForPrediction;
 
-            IList<ValueTuple<string, PredictionSource>> results = new List<ValueTuple<string, PredictionSource>>();
+            IList<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> results = new List<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>>();
 
             var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
 
@@ -139,9 +139,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     predictionSource = PredictionSource.PreviousCommand;
                 }
 
-                foreach (var r in resultsFromSuggestion)
+                if (resultsFromSuggestion != null)
                 {
-                    results.Add(ValueTuple.Create(r, predictionSource));
+                    foreach (var r in resultsFromSuggestion)
+                    {
+                        results.Add(ValueTuple.Create(r.Key, r.Value, predictionSource));
+                    }
                 }
             }
 
@@ -150,13 +153,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var commands = this._commands;
                 var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
 
-                resultsFromCommands?.ExceptWith(resultsFromSuggestion);
-
                 if (resultsFromCommands != null)
                 {
                     foreach (var r in resultsFromCommands)
                     {
-                        results.Add(ValueTuple.Create(r, PredictionSource.StaticCommands));
+                        if (resultsFromCommands?.ContainsKey(r.Key) == true)
+                        {
+                            continue;
+                        }
+
+                        results.Add(ValueTuple.Create(r.Key, r.Value, PredictionSource.StaticCommands));
                     }
                 }
             }
