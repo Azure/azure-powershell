@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden..
+        /// </summary>
+        internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
+            get {
+                return ResourceManager.GetString("AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscribe the event trigger &apos;{0}&apos; to external service events..
         /// </summary>
         internal static string AddingSynapseTriggerSubscribe {
@@ -166,6 +175,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ContinueRegenerateAuthKey {
             get {
                 return ResourceManager.GetString("ContinueRegenerateAuthKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to Create Diagnostic Settings..
+        /// </summary>
+        internal static string CreateDiagnosticSettingsException {
+            get {
+                return ResourceManager.GetString("CreateDiagnosticSettingsException", resourceCulture);
             }
         }
         
@@ -274,6 +292,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EnablingSynapseSparkPoolAutoScale {
             get {
                 return ResourceManager.GetString("EnablingSynapseSparkPoolAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event hub authorization rule resource id is not provided..
+        /// </summary>
+        internal static string EventHubAuthorizationRuleResourceIdParameterException {
+            get {
+                return ResourceManager.GetString("EventHubAuthorizationRuleResourceIdParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
+        /// </summary>
+        internal static string FailedToAddRoleAssignmentForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToAddRoleAssignmentForStorageAccount", resourceCulture);
             }
         }
         
@@ -391,6 +427,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDiscoverWorkspace {
             get {
                 return ResourceManager.GetString("FailedToDiscoverWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get Role Assignments for Storage Account &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailedToGetRoleAssignmentsForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToGetRoleAssignmentsForStorageAccount", resourceCulture);
             }
         }
         
@@ -613,6 +658,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation is not supported when multiple Diagnostic Settings enable &apos;{0}&apos;..
+        /// </summary>
+        internal static string MultipleDiagnosticsException {
+            get {
+                return ResourceManager.GetString("MultipleDiagnosticsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
         /// </summary>
         internal static string NeedIntegrationRuntimeType {
@@ -753,6 +807,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemoveSynapseWorkspace", resourceCulture);
+                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to remove Diagnostic Settings..
+        /// </summary>
+        internal static string RemoveDiagnosticSettingsException {
+            get {
+                return ResourceManager.GetString("RemoveDiagnosticSettingsException", resourceCulture);
             }
         }
         
@@ -789,6 +852,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSqlActiveDirectoryAdministrator {
             get {
                 return ResourceManager.GetString("RemovingSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing audit settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolAudit {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolAudit", resourceCulture);
             }
         }
         
@@ -910,6 +982,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing audit settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingWorkspaceAudit {
+            get {
+                return ResourceManager.GetString("RemovingWorkspaceAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resetting timeout for Spark session with Id: &apos;{0}&apos; ....
         /// </summary>
         internal static string ResettingSynapseSparkSessionTimeout {
@@ -937,6 +1018,33 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve properties of storage account &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountPropertiesFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountPropertiesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role Definition Name &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string RoleDefinitionNameDoesNotExist {
@@ -955,11 +1063,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Auditing Settings failed..
+        /// </summary>
+        internal static string SetAuditingSettingsException {
+            get {
+                return ResourceManager.GetString("SetAuditingSettingsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting an active directory admin in workspace &apos;{0}&apos;..
         /// </summary>
         internal static string SettingSqlActiveDirectoryAdministrator {
             get {
                 return ResourceManager.GetString("SettingSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting audit in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSqlAudit {
+            get {
+                return ResourceManager.GetString("SettingSqlAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting audit for SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSqlPoolAudit {
+            get {
+                return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
             }
         }
         
@@ -1108,6 +1243,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage acount name is not provided..
+        /// </summary>
+        internal static string StorageAccountNameParameterException {
+            get {
+                return ResourceManager.GetString("StorageAccountNameParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
+        /// </summary>
+        internal static string StorageAccountNotFound {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submitting Spark job in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string SubmittingSynapseSparkJob {
@@ -1176,6 +1329,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdateAuthKeyNotAllowed {
             get {
                 return ResourceManager.GetString("UpdateAuthKeyNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update Diagnostic Settings..
+        /// </summary>
+        internal static string UpdateDiagnosticSettingsException {
+            get {
+                return ResourceManager.GetString("UpdateDiagnosticSettingsException", resourceCulture);
             }
         }
         
@@ -1275,6 +1437,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string WorkspaceDoesNotExist {
             get {
                 return ResourceManager.GetString("WorkspaceDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workspace resource id is not provided..
+        /// </summary>
+        internal static string WorkspaceResourceIdParameterException {
+            get {
+                return ResourceManager.GetString("WorkspaceResourceIdParameterException", resourceCulture);
             }
         }
     }

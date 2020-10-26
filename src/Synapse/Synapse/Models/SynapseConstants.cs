@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string Sql = nameof(Sql);
 
+        public const string Audit = nameof(Audit);
+
         public const string ActiveDirectoryAdministrator = nameof(ActiveDirectoryAdministrator);
 
         public const string SqlDatabase = nameof(SqlDatabase);
@@ -167,5 +169,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string AllowAllEndIpAddress = "255.255.255.255";
 
         public const string StorageBlobDataContributorRoleName = "Azure Blob Data Contributor";
+
+        
+
+        public class Security
+        {
+            public const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
+            public const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
+
+            // Parameters Names:
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
+
+            public const string Primary = "Primary";
+            public const string Secondary = "Secondary";
+        }
     }
 }

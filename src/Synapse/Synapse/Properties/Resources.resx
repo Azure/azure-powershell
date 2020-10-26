@@ -525,4 +525,61 @@ Are you sure you want to continue?</value>
   <data name="SettingSqlActiveDirectoryAdministrator" xml:space="preserve">
     <value>Setting an active directory admin in workspace '{0}'.</value>
   </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="StorageAccountNotFound" xml:space="preserve">
+    <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
+  </data>
+  <data name="SettingSqlPoolAudit" xml:space="preserve">
+    <value>Setting audit for SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
+    <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden.</value>
+  </data>
+  <data name="CreateDiagnosticSettingsException" xml:space="preserve">
+    <value>Failed to Create Diagnostic Settings.</value>
+  </data>
+  <data name="EventHubAuthorizationRuleResourceIdParameterException" xml:space="preserve">
+    <value>Event hub authorization rule resource id is not provided.</value>
+  </data>
+  <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
+    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
+  </data>
+  <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
+    <value>Failed to get Role Assignments for Storage Account '{0}'.</value>
+  </data>
+  <data name="MultipleDiagnosticsException" xml:space="preserve">
+    <value>Operation is not supported when multiple Diagnostic Settings enable '{0}'.</value>
+  </data>
+  <data name="RemoveDiagnosticSettingsException" xml:space="preserve">
+    <value>Failed to remove Diagnostic Settings.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
+    <value>Failed to retrieve properties of storage account '{0}'.</value>
+  </data>
+  <data name="SetAuditingSettingsException" xml:space="preserve">
+    <value>Setting Auditing Settings failed.</value>
+  </data>
+  <data name="SettingSqlAudit" xml:space="preserve">
+    <value>Setting audit in workspace '{0}'.</value>
+  </data>
+  <data name="StorageAccountNameParameterException" xml:space="preserve">
+    <value>Storage acount name is not provided.</value>
+  </data>
+  <data name="UpdateDiagnosticSettingsException" xml:space="preserve">
+    <value>Failed to update Diagnostic Settings.</value>
+  </data>
+  <data name="WorkspaceResourceIdParameterException" xml:space="preserve">
+    <value>Workspace resource id is not provided.</value>
+  </data>
+  <data name="RemovingSqlPoolAudit" xml:space="preserve">
+    <value>Removing audit settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="RemovingWorkspaceAudit" xml:space="preserve">
+    <value>Removing audit settings in workspace '{0}'.</value>
+  </data>
 </root>
