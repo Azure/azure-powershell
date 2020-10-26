@@ -18,31 +18,6 @@
 Display information about a cloud service.
 .Description
 Display information about a cloud service.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  [CloudServiceName <String>]: 
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: 
-  [RoleInstanceName <String>]: Name of the role instance
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  [UpdateDomain <Int32?>]: Specifies the update domain
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudservice
 #>

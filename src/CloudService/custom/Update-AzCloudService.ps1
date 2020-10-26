@@ -18,75 +18,7 @@
 Reimages one or more role instances in a cloud service.
 .Description
 Reimages one or more role instances in a cloud service.
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstances
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-EXTENSIONPROFILEEXTENSION <IExtension[]>: .
-  [AutoUpgradeMinorVersion <Boolean?>]: Explicitly specify whether CRP can automatically upgrade typeHandlerVersion to higher minor versions when they become available
-  [Name <String>]: 
-  [ProtectedSetting <ICloudServiceExtensionPropertiesProtectedSettings>]: Protected settings for the extension which are encrypted before sent to the VM
-  [Publisher <String>]: 
-  [RolesAppliedTo <String[]>]: 
-  [Setting <ICloudServiceExtensionPropertiesSettings>]: Public settings for the extension
-  [Type <String>]: 
-  [TypeHandlerVersion <String>]: 
-
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  [BackendAddressPoolName <String>]: The name of the backend address pool.
-  [CloudServiceName <String>]: 
-  [FrontendIPConfigurationName <String>]: The name of the frontend IP configuration.
-  [Id <String>]: Resource identity path
-  [InboundNatRuleName <String>]: The name of the inbound nat rule.
-  [LoadBalancerName <String>]: The name of the load balancer.
-  [LoadBalancingRuleName <String>]: The name of the load balancing rule.
-  [Location <String>]: The region where load balancers are located at.
-  [OutboundRuleName <String>]: The name of the outbound rule.
-  [ProbeName <String>]: The name of the probe.
-  [ResourceGroupName <String>]: 
-  [RoleInstanceName <String>]: Name of the role instance
-  [RoleName <String>]: Name of the role
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  [UpdateDomain <Int32?>]: Specifies the update domain
-
-NETWORKPROFILELOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: .
-  [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: 
-    [Name <String>]: 
-    [PublicIPAddressId <String>]: Resource Id
-  [Id <String>]: 
-  [Name <String>]: 
-
-OSPROFILESECRET <ICloudServiceVaultSecretGroup[]>: .
-  [SourceVaultId <String>]: Resource Id
-  [VaultCertificate <ICloudServiceVaultCertificate[]>]: The list of key vault references in SourceVault which contain certificates.
-    [CertificateUrl <String>]: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-
-PARAMETER <IRoleInstances>: .
-  [RoleInstance <String[]>]: 
-
-ROLEPROFILEROLE <ICloudServiceRoleProfileProperties[]>: .
-  [Name <String>]: 
-  [SkuCapacity <Int64?>]: Specifies the number of role instances in the cloud service.
-  [SkuName <String>]: The sku name.
-  [SkuTier <String>]: 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/update-azcloudservice
 #>

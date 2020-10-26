@@ -22,9 +22,9 @@ Create a in-memory object for CloudServiceRoleProfileProperties
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfileProperties
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceCloudServiceRoleProfilePropertiesObject
+https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceRoleProfilePropertiesObject
 #>
-function New-AzCloudServiceCloudServiceRoleProfilePropertiesObject {
+function New-AzCloudServiceRoleProfilePropertiesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfileProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

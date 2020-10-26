@@ -13,6 +13,7 @@ function RemoveFile([string]$fileName) {
 }
 
 function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
+    import-module az.storage
     # Create Public IP
 	Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"

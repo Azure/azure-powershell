@@ -64,10 +64,18 @@ directive:
       variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Reimage$|^Reimage1$
     remove: true
   - where:
+      variant: ^GetViaIdentity$
+      subject: ^CloudServiceRoleInstanceRemoteDesktopFile$
+    remove: true
+  - where:
       subject: ^CloudService$
       verb: Set
     set:
       verb: Update
+  - where:
+      subject: ^CloudServiceDomain$
+    set:
+      subject: CloudServiceUpdateDomain
   - where:
       subject: ^CloudService$
       parameter-name: Name

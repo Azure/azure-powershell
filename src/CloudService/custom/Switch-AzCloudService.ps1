@@ -18,16 +18,9 @@
 Swaps VIPs between two cloud service (extended support) load balancers.
 .Description
 Swaps VIPs between two cloud service (extended support) load balancers.
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Notes
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/Switch-AzCloudService
 
 #>
 function Switch-AzCloudService {
