@@ -1,4 +1,5 @@
 ### Example 1: Create new cloud service with single role
+
 ```powershell
 # Create role profile object
 PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
@@ -10,7 +11,7 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -23,15 +24,17 @@ $cloudService = New-AzCloudService                                              
                   -RoleProfileRole $role                                       `
                   -NetworkProfileLoadBalancerConfiguration $loadBalancerConfig
 ```
+
 Above set of commands creates a cloud service with single role
 
 ### Example 2: Create new cloud service with single role and RDP extension
+
 ```powershell
 # Create role profile object
 PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 
 # Create network profile object
-PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
+PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosoOrg -Name ContosIp
 PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
 PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
 
@@ -42,7 +45,7 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -56,9 +59,11 @@ $cloudService = New-AzCloudService                                              
                   -NetworkProfileLoadBalancerConfiguration $loadBalancerConfig  `
                   -ExtensionProfileExtension $extension
 ```
+
 Above set of commands creates a cloud service with single role and RDP extension
 
 ### Example 3: Create new cloud service with single role and certificate from key vault
+
 ```powershell
 # Create role profile object
 PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
@@ -75,7 +80,7 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -87,11 +92,13 @@ $cloudService = New-AzCloudService                                              
                   -UpgradeMode 'Auto'                                           `
                   -RoleProfileRole $role                                        `
                   -NetworkProfileLoadBalancerConfiguration $loadBalancerConfig  `
-                  -OSProfileSecret $secretGroup 
+                  -OSProfileSecret $secretGroup
 ```
+
 Above set of commands creates a cloud service with single role and certificate from key vault.
 
 ### Example 4: Create new cloud service with multiple roles and extensions
+
 ```powershell
 # Create role profile object
 PS C:\> $role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
@@ -117,7 +124,7 @@ $tag=@{"Owner" = "Contoso"}
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -132,4 +139,5 @@ $cloudService = New-AzCloudService                                              
                   -ExtensionProfileExtension $extensions                        `
                   -Tag $tag
 ```
+
 Above set of commands creates a cloud service with single role and certificate from key vault.
