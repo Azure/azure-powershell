@@ -13,17 +13,26 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDigitalTwinsEndpoint' {
     It 'CreateEventHub' {
-        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventHubEndpointName -EndpointType $env.eventHubEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -ConnectionStringPrimaryKey $env.eventHubConnectionStringPrimaryKey
+        $SecureString = ConvertTo-SecureString -String ($env.eventHubConnectionStringPrimaryKey)
+        $Pointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
+        $SecretContent = [Runtime.InteropServices.Marshal]::PtrToStringAuto($Pointer)
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventHubEndpointName -EndpointType $env.eventHubEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -ConnectionStringPrimaryKey $SecretContent
         $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.eventHubEndpointName
     }
 
     It 'CreateEventGrid' {
-        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventGridEndpointName -EndpointType $env.eventGridEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -TopicEndpoint $env.eventGridTopEndPoint -AccessKey1 $env.eventGridAccessKey1
+        $SecureString = ConvertTo-SecureString -String ($env.eventGridAccessKey1)
+        $Pointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
+        $SecretContent = [Runtime.InteropServices.Marshal]::PtrToStringAuto($Pointer)
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.eventGridEndpointName -EndpointType $env.eventGridEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -TopicEndpoint $env.eventGridTopEndPoint -AccessKey1 $SecretContent
         $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.eventGridEndpointName
     }
 
     It 'CreateServiceBus' {
-        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.serviceBusEndpointName -EndpointType $env.serviceBusEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -PrimaryConnectionString $env.serviceBusPrimaryConnectionString
+        $SecureString = ConvertTo-SecureString -String ($env.serviceBusPrimaryConnectionString)
+        $Pointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
+        $SecretContent = [Runtime.InteropServices.Marshal]::PtrToStringAuto($Pointer)
+        $NewAzDigitalTwinsEndpoint = New-AzDigitalTwinsEndpoint -EndpointName $env.serviceBusEndpointName -EndpointType $env.serviceBusEndpointType -ResourceGroupName $env.resourceGroup -ResourceName $env.digitalTwins -PrimaryConnectionString $SecretContent
         $NewAzDigitalTwinsEndpoint.Name | Should -Be $env.serviceBusEndpointName
     }
 }

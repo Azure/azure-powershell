@@ -56,7 +56,8 @@ function setupEnv() {
     New-AzEventHub -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -Name $eventHubName
     New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -EventHub $eventHubName -Name $eventHubPolicy -Rights @("Send")
     $getAzEventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -EventHub $eventHubName -Name $eventHubPolicy
-    $eventHubConnectionStringPrimaryKey = $getAzEventHubKey.PrimaryConnectionString
+    $eventHubConnectionStringPrimaryKeyOri = $getAzEventHubKey.PrimaryConnectionString
+    $eventHubConnectionStringPrimaryKey = ConvertTo-SecureString -string $eventHubConnectionStringPrimaryKeyOri -AsPlainText -Force | ConvertFrom-SecureString
     $null = $env.Add("eventHubConnectionStringPrimaryKey", $eventHubConnectionStringPrimaryKey)
 
     $eventGridName = "eventGridName" + (RandomString -allChars $false -len 6)
@@ -67,8 +68,9 @@ function setupEnv() {
     $getAzEventGridTopic = Get-AzEventGridTopic -ResourceGroupName $resourceGroup -Name $eventGridName
     $eventGridTopEndPoint = $GetAzEventGridTopic.EndPoint
     $getAzEventGridTopicKey = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroup -Name $eventGridName
-    $eventGridAccessKey1 = $getAzEventGridTopicKey.Key1
+    $eventGridAccessKey1Ori = $getAzEventGridTopicKey.Key1
     $null = $env.Add("eventGridTopEndPoint", $eventGridTopEndPoint)
+    $eventGridAccessKey1 =ConvertTo-SecureString -string $eventGridAccessKey1Ori -AsPlainText -Force | ConvertFrom-SecureString
     $null = $env.Add("eventGridAccessKey1", $eventGridAccessKey1)
 
     $serviceBusNameSpace = "serviceBusNameSpace" + (RandomString -allChars $false -len 6)
@@ -78,7 +80,8 @@ function setupEnv() {
     New-AzServiceBusTopic -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Name $serviceBusTopicName -EnablePartitioning $False
     New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy -Rights @("Send")
     $getAzServiceBusKey = Get-AzServiceBusKey -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy
-    $serviceBusPrimaryConnectionString = $getAzServiceBusKey.PrimaryConnectionString
+    $serviceBusPrimaryConnectionStringOri = $getAzServiceBusKey.PrimaryConnectionString
+    $serviceBusPrimaryConnectionString = ConvertTo-SecureString -string $serviceBusPrimaryConnectionStringOri  -AsPlainText -Force | ConvertFrom-SecureString
     $null = $env.Add("serviceBusPrimaryConnectionString", $serviceBusPrimaryConnectionString)
 
     Start-Sleep -Seconds 60
