@@ -29,13 +29,14 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell Predictor: Provide prediction while user types Azure PowerShell commands'
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for Az cmdlets to PSRreadline 2.2 or above - This module is compatible with PowerShell 7.1.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @()
+RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
@@ -62,7 +63,7 @@ PrivateData = @{
         ReleaseNotes = '* the first preview release'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'beta1'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
