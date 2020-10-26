@@ -122,10 +122,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var commandSuggestions = this._commandSuggestions;
             var command = this._commandForPrediction;
 
-            // We've already used _commandSuggestions. There is no need to wait the request to complete at this point.
-            // Cancel it.
-            this._predictionRequestCancellationSource?.Cancel();
-
             IList<ValueTuple<string, PredictionSource>> results = new List<ValueTuple<string, PredictionSource>>();
 
             var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
@@ -171,45 +167,54 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public virtual void RequestPredictions(IEnumerable<string> commands)
         {
-            // Even if it's called multiple times, we only need to keep the one for the latest command.
-
-            this._predictionRequestCancellationSource?.Cancel();
-            this._predictionRequestCancellationSource = new CancellationTokenSource();
-
-            var cancellationToken = this._predictionRequestCancellationSource.Token;
-
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
             this._telemetryClient.OnRequestPrediction(localCommands);
-            this.SetPredictionCommand(localCommands);
 
-            // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
-            Task.Run(async () => {
-                try
-                {
-                    var requestContext = new PredictionRequestBody.RequestContext()
+            if (string.Equals(localCommands, this._commandForPrediction, StringComparison.Ordinal))
+            {
+                // It's the same history we've already requested the prediction for last time, skip it.
+                return;
+            }
+            else
+            {
+                this.SetPredictionCommand(localCommands);
+
+                // When it's called multiple times, we only need to keep the one for the latest command.
+
+                this._predictionRequestCancellationSource?.Cancel();
+                this._predictionRequestCancellationSource = new CancellationTokenSource();
+
+                var cancellationToken = this._predictionRequestCancellationSource.Token;
+
+                // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+                Task.Run(async () => {
+                    try
                     {
-                        SessionId = this._telemetryClient.SessionId,
-                        CorrelationId = this._telemetryClient.CorrelationId,
-                    };
-                    var requestBody = new PredictionRequestBody(localCommands)
+                        var requestContext = new PredictionRequestBody.RequestContext()
+                        {
+                            SessionId = this._telemetryClient.SessionId,
+                            CorrelationId = this._telemetryClient.CorrelationId,
+                        };
+                        var requestBody = new PredictionRequestBody(localCommands)
+                        {
+                            Context = requestContext,
+                        };
+
+                        var requestBodyString = JsonConvert.SerializeObject(requestBody);
+                        var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
+
+                        var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
+                        var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
+
+                        this.SetSuggestionPredictor(localCommands, suggestionsList);
+                    }
+                    catch (Exception e) when (!(e is OperationCanceledException))
                     {
-                        Context = requestContext,
-                    };
-
-                    var requestBodyString = JsonConvert.SerializeObject(requestBody);
-                    var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
-
-                    var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
-                    var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
-
-                    this.SetSuggestionPredictor(localCommands, suggestionsList);
-                }
-                catch (Exception e) when (!(e is OperationCanceledException))
-                {
-                    this._telemetryClient.OnRequestPredictionError(localCommands, e);
-                }
-            },
-            cancellationToken);
+                        this._telemetryClient.OnRequestPredictionError(localCommands, e);
+                    }
+                },
+                cancellationToken);
+            }
         }
 
         /// <inheritdoc/>
