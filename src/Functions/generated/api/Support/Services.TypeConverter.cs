@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for Services.</summary>
+    /// <summary>
+    /// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
+    /// </summary>
     public partial class ServicesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

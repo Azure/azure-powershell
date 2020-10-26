@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializePSObject(content);
         }
     }

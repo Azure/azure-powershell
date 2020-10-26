@@ -1,0 +1,41 @@
+{
+  "Get-AzMigrateProject+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "643400a1-a5f6-4f5b-b9d9-8d29e5f7471a" ],
+        "CommandName": [ "Get-AzMigrateProject" ],
+        "FullCommandName": [ "Get-AzMigrateProject_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6c01f085-0000-1800-0000-5f6c994b0000\"" ],
+        "x-ms-request-id": [ "0c280001-e8f4-40f2-8164-4fe1e7950eb4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "16d6dff8-6bb8-42bc-bedd-c3ce4a29f6bc" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191223Z:16d6dff8-6bb8-42bc-bedd-c3ce4a29f6bc" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/BugBashAVSVMware\",\"name\":\"BugBashAVSVMware\",\"type\":\"Microsoft.Migrate/MigrateProjects\",\"etag\":\"\\\"6c01f085-0000-1800-0000-5f6c994b0000\\\"\",\"location\":\"southeastasia\",\"tags\":{\"Migrate Project\":\"BugBashAVSVMware\"},\"properties\":{\"registeredTools\":[\"ServerAssessment\",\"ServerDiscovery\",\"ServerMigration\",\"Zerto\",\"Cloudamize\"],\"identity\":null,\"serviceEndpoint\":\"https://can01-amh1.sea.hypervrecoverymanager.windowsazure.com/resources/090e6ef1-552d-4ec8-8f69-9fcdae639f4c\",\"summary\":{\"servers\":{\"instanceType\":\"Servers\",\"discoveredCount\":423,\"assessedCount\":409,\"replicatingCount\":0,\"testMigratedCount\":0,\"migratedCount\":0,\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-15T07:32:34.8868704Z\",\"extendedSummary\":{\"microsoftDiscoveredCount\":\"423\",\"microsoftMachinesCount\":\"423\"}},\"databases\":{\"instanceType\":\"Databases\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-06-17T01:33:25.3302595Z\",\"extendedSummary\":{}},\"webApplications\":{\"instanceType\":\"WebApplications\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:23.8347616Z\",\"extendedSummary\":{}},\"desktopVirtualization\":{\"instanceType\":\"DesktopVirtualization\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-06-17T01:33:25.3302595Z\",\"extendedSummary\":{}}},\"lastSummaryRefreshedTime\":\"2020-09-15T07:32:34.8868704Z\",\"refreshSummaryState\":\"Completed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

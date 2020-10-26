@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Get all App Service plans for a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] AppServicePlans_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Web/serverfarms"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Web/serverfarms"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFunctionAppPlan_List")]

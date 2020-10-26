@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_blockingCharacteristic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("blockingCharacteristics"), out var __jsonBlockingCharacteristics) ? If( __jsonBlockingCharacteristics as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__u) )) ))() : null : BlockingCharacteristic;}
-            {_blockingFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("blockingFeatures"), out var __jsonBlockingFeatures) ? If( __jsonBlockingFeatures as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__p) )) ))() : null : BlockingFeature;}
             {_result = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("result"), out var __jsonResult) ? (string)__jsonResult : (string)Result;}
-            {_unsupportedFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("unsupportedFeatures"), out var __jsonUnsupportedFeatures) ? If( __jsonUnsupportedFeatures as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__k) )) ))() : null : UnsupportedFeature;}
+            {_blockingFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("blockingFeatures"), out var __jsonBlockingFeatures) ? If( __jsonBlockingFeatures as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__u) )) ))() : null : BlockingFeature;}
+            {_unsupportedFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("unsupportedFeatures"), out var __jsonUnsupportedFeatures) ? If( __jsonUnsupportedFeatures as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__p) )) ))() : null : UnsupportedFeature;}
+            {_blockingCharacteristic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("blockingCharacteristics"), out var __jsonBlockingCharacteristics) ? If( __jsonBlockingCharacteristics as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterion.FromJson(__k) )) ))() : null : BlockingCharacteristic;}
             AfterFromJson(json);
         }
 
@@ -96,33 +96,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            if (null != this._blockingCharacteristic)
+            AddIf( null != (((object)this._result)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._result.ToString()) : null, "result" ,container.Add );
+            if (null != this._blockingFeature)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._blockingCharacteristic )
+                foreach( var __x in this._blockingFeature )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("blockingCharacteristics",__w);
+                container.Add("blockingFeatures",__w);
             }
-            if (null != this._blockingFeature)
+            if (null != this._unsupportedFeature)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __s in this._blockingFeature )
+                foreach( var __s in this._unsupportedFeature )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("blockingFeatures",__r);
+                container.Add("unsupportedFeatures",__r);
             }
-            AddIf( null != (((object)this._result)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._result.ToString()) : null, "result" ,container.Add );
-            if (null != this._unsupportedFeature)
+            if (null != this._blockingCharacteristic)
             {
                 var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __n in this._unsupportedFeature )
+                foreach( var __n in this._blockingCharacteristic )
                 {
                     AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                 }
-                container.Add("unsupportedFeatures",__m);
+                container.Add("blockingCharacteristics",__m);
             }
             AfterToJson(ref container);
             return container;

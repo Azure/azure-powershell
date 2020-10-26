@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        internal List<RestorePoint> ListSqlPoolRestorePoints(string resourceGroupName, string workspaceName, string sqlPoolName)
+        public List<RestorePoint> ListSqlPoolRestorePoints(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
             try
             {
