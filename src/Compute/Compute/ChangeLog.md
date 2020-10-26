@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Added `-VmssId` parameter to `New-AzVm`
 * Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* Modified `Get-AzVmBootDiagnostics` cmdlet to use the new RetrieveBootDiagnosticsData API instead of directly accessing the BootDiagnostics properties on the virtual machine.  
 
 ## Version 4.5.0
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes

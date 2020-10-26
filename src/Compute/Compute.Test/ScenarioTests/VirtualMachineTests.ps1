@@ -4412,3 +4412,90 @@ function Test-VirtualMachineImageListTopOrderExpand
 
 }
 
+<#
+.SYNOPSIS
+
+#>
+function Test-VirtualMachineBootDiagnostics
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1_v2';
+        $vmname = 'vm' + $rgname;
+        #$vmname2 = 'vm2' + $rgname;
+        #$vmname3 = 'vm3' + $rgname;
+        
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        #$p2 = New-AzVMConfig -VMName $vmname2 -VMSize $vmsize;
+        #$p3 = New-AzVMConfig -VMName $vmname3 -VMSize $vmsize;
+        
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        #1
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        <#
+        #2
+        $pubip2 = New-AzPublicIpAddress -Force -Name ('pubip2' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip2' + $rgname);
+        $pubip2 = Get-AzPublicIpAddress -Name ('pubip2' + $rgname) -ResourceGroupName $rgname;
+        $pubipId2 = $pubip2.Id;
+        $nic2 = New-AzNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip2.Id;
+        $nic2 = Get-AzNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
+        $nicId2 = $nic2.Id;
+        #3
+        $pubip3 = New-AzPublicIpAddress -Force -Name ('pubip3' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip3' + $rgname);
+        $pubip3 = Get-AzPublicIpAddress -Name ('pubip3' + $rgname) -ResourceGroupName $rgname;
+        $pubipId3 = $pubip3.Id;
+        $nic3 = New-AzNetworkInterface -Force -Name ('nic3' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip3.Id;
+        $nic3 = Get-AzNetworkInterface -Name ('nic3' + $rgname) -ResourceGroupName $rgname;
+        $nicId3 = $nic3.Id;#>
+        
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        #$p2 = Add-AzVMNetworkInterface -VM $p2 -Id $nicId2;
+        #$p3 = Add-AzVMNetworkInterface -VM $p3 -Id $nicId3;
+        
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        
+        # Windows OS test case. 
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        #$p2 = Set-AzVMOperatingSystem -VM $p2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate;
+        #$p3 = Set-AzVMOperatingSystem -VM $p3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByPlatform";
+        
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+        #$p2 = ($imgRef | Set-AzVMSourceImage -VM $p2);
+        #$p3 = ($imgRef | Set-AzVMSourceImage -VM $p3);
+        
+        # Virtual Machine
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        Assert-NotNull $vm;
+
+        # Get Managed Boot Diagnostics 
+        Get-AzVmBootDiagnosticsData -ResourceGroupName $rgname -Name $vmname -Windows -LocalPath "C:\Users\adsandor\Documents\bootDiags";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}
+

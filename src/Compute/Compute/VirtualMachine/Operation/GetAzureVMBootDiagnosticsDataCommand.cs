@@ -17,7 +17,9 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
+using Azure.Storage;
 using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -109,8 +111,6 @@ namespace Microsoft.Azure.Commands.Compute
                     || result.Body.DiagnosticsProfile.BootDiagnostics == null
                     || result.Body.DiagnosticsProfile.BootDiagnostics.Enabled == null
                     || !result.Body.DiagnosticsProfile.BootDiagnostics.Enabled.Value
-                    //
-                    //|| result.Body.DiagnosticsProfile.BootDiagnostics.StorageUri == null
                     )
                 {
                     ThrowTerminatingError
@@ -138,28 +138,26 @@ namespace Microsoft.Azure.Commands.Compute
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
-                    string[] uriAndSharedAccessToken = bootDiagnostics.ConsoleScreenshotBlobUri.Split('?'); 
-                    var screenshotUri = new Uri(uriAndSharedAccessToken[0]);
-                    //var screenshotUri = new Uri(result.Body.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri);
 
-                    var blobClient = new BlobClient(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri));
-                    blobClient.Download(); 
+                    BlobClient blobClient = new BlobClient(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri));
+                    BlobDownloadInfo blobDownloadInfo = blobClient.Download();
 
-                    var localFile = this.LocalPath + screenshotUri.Segments[2];
-                    DownloadFromBlobUri(screenshotUri, localFile);
+                    var localPathTest = this.LocalPath;
+                    var bootSegment = new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
+                    var localFile = this.LocalPath + bootSegment;
+                    blobClient.DownloadTo(localFile);
                 }
 
 
                 if (this.Linux.IsPresent)
                 {
-                    //var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
-                    string[] uriAndSharedAccessToken = bootDiagnostics.SerialConsoleLogBlobUri.Split('?');
-                    var logUri = new Uri(uriAndSharedAccessToken[0]);
+                    var logSegment = new Uri(bootDiagnostics.SerialConsoleLogBlobUri).Segments[2];
 
-                    var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
+                    var localFile = (this.LocalPath ?? Path.GetTempPath()) + logSegment;
 
-                    DownloadFromBlobUri(logUri, localFile);
+                    BlobClient blobClient = new BlobClient(new Uri(bootDiagnostics.SerialConsoleLogBlobUri));
+                    blobClient.DownloadTo(localFile);
 
                     var sb = new StringBuilder();
                     using (var reader = new StreamReader(localFile))
@@ -174,32 +172,6 @@ namespace Microsoft.Azure.Commands.Compute
                     WriteObject(sb.ToString());
                 }
             });
-        }
-
-        private void DownloadFromBlobUri(Uri sourceUri, string localFileInfo)
-        {
-            BlobUri blobUri;
-            string storagekey = "";
-            if (!BlobUri.TryParseUri(sourceUri, out blobUri))
-            {
-                throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
-            }
-
-            var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-
-
-            var storageService = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, blobUri.StorageAccountName);
-            if (storageService != null)
-            {
-                var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.Name);
-                storagekey = storageKeys.GetKey1();
-            }
-
-            StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);
-            var blob = new CloudBlob(sourceUri, storagecred);
-
-            blob.DownloadToFileAsync(localFileInfo, FileMode.Create).ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }
