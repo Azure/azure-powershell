@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_renderingProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("renderingProperties"), out var __jsonRenderingProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Rendering.FromJson(__jsonRenderingProperties) : RenderingProperty;}
             {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("table"), out var __jsonTable) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseObject.FromJson(__jsonTable) : Table;}
+            {_renderingProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("renderingProperties"), out var __jsonRenderingProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Rendering.FromJson(__jsonRenderingProperties) : RenderingProperty;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._renderingProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._renderingProperty.ToJson(null,serializationMode) : null, "renderingProperties" ,container.Add );
             AddIf( null != this._table ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._table.ToJson(null,serializationMode) : null, "table" ,container.Add );
+            AddIf( null != this._renderingProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._renderingProperty.ToJson(null,serializationMode) : null, "renderingProperties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

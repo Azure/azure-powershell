@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for PublicCertificateLocation.</summary>
+    /// <summary>Public Certificate Location</summary>
     public partial class PublicCertificateLocationTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

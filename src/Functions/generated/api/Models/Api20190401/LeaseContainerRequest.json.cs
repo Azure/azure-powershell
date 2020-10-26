@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)Action;}
+            {_leaseId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseId"), out var __jsonLeaseId) ? (string)__jsonLeaseId : (string)LeaseId;}
             {_breakPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("breakPeriod"), out var __jsonBreakPeriod) ? (int?)__jsonBreakPeriod : BreakPeriod;}
             {_leaseDuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("leaseDuration"), out var __jsonLeaseDuration) ? (int?)__jsonLeaseDuration : LeaseDuration;}
-            {_leaseId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("leaseId"), out var __jsonLeaseId) ? (string)__jsonLeaseId : (string)LeaseId;}
             {_proposedLeaseId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("proposedLeaseId"), out var __jsonProposedLeaseId) ? (string)__jsonProposedLeaseId : (string)ProposedLeaseId;}
             AfterFromJson(json);
         }
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return container;
             }
             AddIf( null != (((object)this._action)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._action.ToString()) : null, "action" ,container.Add );
+            AddIf( null != (((object)this._leaseId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseId.ToString()) : null, "leaseId" ,container.Add );
             AddIf( null != this._breakPeriod ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._breakPeriod) : null, "breakPeriod" ,container.Add );
             AddIf( null != this._leaseDuration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._leaseDuration) : null, "leaseDuration" ,container.Add );
-            AddIf( null != (((object)this._leaseId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._leaseId.ToString()) : null, "leaseId" ,container.Add );
             AddIf( null != (((object)this._proposedLeaseId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._proposedLeaseId.ToString()) : null, "proposedLeaseId" ,container.Add );
             AfterToJson(ref container);
             return container;

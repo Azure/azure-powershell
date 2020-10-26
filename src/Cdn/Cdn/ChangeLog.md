@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.6.0
 * Added cmdlets to support multi-origin and private link functionality 
 
 ## Version 1.4.3

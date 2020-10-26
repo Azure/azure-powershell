@@ -23,6 +23,7 @@
     - `Add-AzStorageAccountNetworkRule`
     - `Remove-AzStorageAccountNetworkRule`
 
+## Version 3.0.0
 * Removed obsolete property RestorePolicy.LastEnabledTime
     - `Enable-AzStorageBlobRestorePolicy`
     - `Disable-AzStorageBlobRestorePolicy`

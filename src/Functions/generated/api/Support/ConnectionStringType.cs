@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of database.</summary>
     public partial struct ConnectionStringType :
         System.IEquatable<ConnectionStringType>
     {

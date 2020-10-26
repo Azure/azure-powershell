@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_csr = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("csr"), out var __jsonCsr) ? (string)__jsonCsr : (string)Csr;}
-            {_delayExistingRevokeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("delayExistingRevokeInHours"), out var __jsonDelayExistingRevokeInHours) ? (int?)__jsonDelayExistingRevokeInHours : DelayExistingRevokeInHour;}
-            {_isPrivateKeyExternal = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isPrivateKeyExternal"), out var __jsonIsPrivateKeyExternal) ? (bool?)__jsonIsPrivateKeyExternal : IsPrivateKeyExternal;}
             {_keySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("keySize"), out var __jsonKeySize) ? (int?)__jsonKeySize : KeySize;}
+            {_delayExistingRevokeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("delayExistingRevokeInHours"), out var __jsonDelayExistingRevokeInHours) ? (int?)__jsonDelayExistingRevokeInHours : DelayExistingRevokeInHour;}
+            {_csr = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("csr"), out var __jsonCsr) ? (string)__jsonCsr : (string)Csr;}
+            {_isPrivateKeyExternal = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isPrivateKeyExternal"), out var __jsonIsPrivateKeyExternal) ? (bool?)__jsonIsPrivateKeyExternal : IsPrivateKeyExternal;}
             AfterFromJson(json);
         }
 
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._csr)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._csr.ToString()) : null, "csr" ,container.Add );
-            AddIf( null != this._delayExistingRevokeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._delayExistingRevokeInHour) : null, "delayExistingRevokeInHours" ,container.Add );
-            AddIf( null != this._isPrivateKeyExternal ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isPrivateKeyExternal) : null, "isPrivateKeyExternal" ,container.Add );
             AddIf( null != this._keySize ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._keySize) : null, "keySize" ,container.Add );
+            AddIf( null != this._delayExistingRevokeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._delayExistingRevokeInHour) : null, "delayExistingRevokeInHours" ,container.Add );
+            AddIf( null != (((object)this._csr)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._csr.ToString()) : null, "csr" ,container.Add );
+            AddIf( null != this._isPrivateKeyExternal ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isPrivateKeyExternal) : null, "isPrivateKeyExternal" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

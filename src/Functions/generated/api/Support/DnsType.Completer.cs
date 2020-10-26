@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for DnsType.</summary>
+    /// <summary>Current DNS type</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DnsTypeTypeConverter))]
     public partial struct DnsType :
         System.Management.Automation.IArgumentCompleter

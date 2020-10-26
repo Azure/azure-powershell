@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for AzureStorageType.</summary>
+    /// <summary>Type of storage.</summary>
     public partial class AzureStorageTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -9,6 +9,7 @@ function Test-SynapseSqlPool
         $resourceGroupName = (Get-ResourceGroupName),
         $workspaceName = (Get-SynapseWorkspaceName),
         $sqlPoolName = (Get-SynapseSqlPoolName),
+        $restoreFromSqlPoolName = 'dwtestbackup',
         $sqlPoolPerformanceLevel = 'DW200c'
     )
 
@@ -90,6 +91,31 @@ function Test-SynapseSqlPool
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
+
+        # Get restore point
+        [array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $restoreFromSqlPoolName
+
+        Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
+
+        # Restore SqlPool
+        $sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -SourceWorkspaceName $workspaceName -SourceSqlPoolName $restoreFromSqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
+
+        Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
+        Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
+        Assert-True {$sqlPoolRestored.Id -like "*$resourceGroupName*"}
+
+        # Suspend SqlPool
+        $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Paused" $sqlPoolSuspended.Status
+
+        # Resume SqlPool
+        $sqlPoolResumed = Resume-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Online" $sqlPoolResumed.Status
+
+        # Delete SqlPool
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru} "Remove SqlPool failed."
     }
     finally
     {

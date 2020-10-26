@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_localLogError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("localLogErrors"), out var __jsonLocalLogErrors) ? (string)__jsonLocalLogErrors : (string)LocalLogError;}
-            {_localLogErrorsMaxLength = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("localLogErrorsMaxLength"), out var __jsonLocalLogErrorsMaxLength) ? (string)__jsonLocalLogErrorsMaxLength : (string)LocalLogErrorsMaxLength;}
             {_masterLogError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("masterLogErrors"), out var __jsonMasterLogErrors) ? (string)__jsonMasterLogErrors : (string)MasterLogError;}
+            {_localLogErrorsMaxLength = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("localLogErrorsMaxLength"), out var __jsonLocalLogErrorsMaxLength) ? (string)__jsonLocalLogErrorsMaxLength : (string)LocalLogErrorsMaxLength;}
             {_masterLogErrorsMaxLength = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("masterLogErrorsMaxLength"), out var __jsonMasterLogErrorsMaxLength) ? (string)__jsonMasterLogErrorsMaxLength : (string)MasterLogErrorsMaxLength;}
             AfterFromJson(json);
         }
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != (((object)this._localLogError)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._localLogError.ToString()) : null, "localLogErrors" ,container.Add );
-            AddIf( null != (((object)this._localLogErrorsMaxLength)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._localLogErrorsMaxLength.ToString()) : null, "localLogErrorsMaxLength" ,container.Add );
             AddIf( null != (((object)this._masterLogError)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._masterLogError.ToString()) : null, "masterLogErrors" ,container.Add );
+            AddIf( null != (((object)this._localLogErrorsMaxLength)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._localLogErrorsMaxLength.ToString()) : null, "localLogErrorsMaxLength" ,container.Add );
             AddIf( null != (((object)this._masterLogErrorsMaxLength)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._masterLogErrorsMaxLength.ToString()) : null, "masterLogErrorsMaxLength" ,container.Add );
             AfterToJson(ref container);
             return container;

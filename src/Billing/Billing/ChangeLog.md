@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet
 * Added `Get-AzInvoiceSection` cmdlet

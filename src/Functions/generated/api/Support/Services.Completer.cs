@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for Services.</summary>
+    /// <summary>
+    /// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ServicesTypeConverter))]
     public partial struct Services :
         System.Management.Automation.IArgumentCompleter

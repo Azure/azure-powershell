@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_default = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("default"), out var __jsonDefault) ? (int?)__jsonDefault : Default;}
-            {_maximum = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maximum"), out var __jsonMaximum) ? (int?)__jsonMaximum : Maximum;}
             {_minimum = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("minimum"), out var __jsonMinimum) ? (int?)__jsonMinimum : Minimum;}
+            {_maximum = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maximum"), out var __jsonMaximum) ? (int?)__jsonMaximum : Maximum;}
+            {_default = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("default"), out var __jsonDefault) ? (int?)__jsonDefault : Default;}
             {_scaleType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("scaleType"), out var __jsonScaleType) ? (string)__jsonScaleType : (string)ScaleType;}
             AfterFromJson(json);
         }
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._default ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._default) : null, "default" ,container.Add );
-            AddIf( null != this._maximum ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._maximum) : null, "maximum" ,container.Add );
             AddIf( null != this._minimum ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._minimum) : null, "minimum" ,container.Add );
+            AddIf( null != this._maximum ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._maximum) : null, "maximum" ,container.Add );
+            AddIf( null != this._default ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._default) : null, "default" ,container.Add );
             AddIf( null != (((object)this._scaleType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scaleType.ToString()) : null, "scaleType" ,container.Add );
             AfterToJson(ref container);
             return container;
