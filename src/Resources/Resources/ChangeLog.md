@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Export-AzResourceGroup` to use the SDK.
 
 ## Version 3.0.0
 * Fixed parsing bug
