@@ -86,38 +86,6 @@ directive:
       subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
-  - where:
-      subject: ^CloudService$|^CloudServiceInstanceView$|^CloudServiceRoleInstance$|^CloudServiceRoleInstanceView$
-      verb: Get
-    hide: true
-  - where:
-      subject: ^CloudServiceRoleInstance$|^CloudService$|^CloudServiceInstance$
-      verb: Remove
-    hide: true
-  - where:
-      subject: ^CloudService$|^CloudServiceRoleInstance$
-      verb: Restart
-    hide: true
-  - where:
-      subject: ^CloudServiceRoleInstance$
-      verb: Update
-    hide: true
-  - where:
-      subject: ^CloudService$
-      verb: Update
-    hide: true
-  - where:
-      subject: ^CloudService$
-      verb: New
-    hide: true
-  - where:
-      subject: ^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
-      verb: Invoke
-    hide: true
-  - where:
-      subject: ^CloudServiceRole$
-      verb: Get
-    hide: true
 
   - where:
       subject: ^LoadBalancerProbe$|^LoadBalancerNetworkInterface$|^LoadBalancerOutboundRule$|^LoadBalancerLoadBalancingRule$|^LoadBalancerInboundNatRule$|^LoadBalancerFrontendIPConfiguration$|^LoadBalancerBackendAddressPool$|^InboundNatRule$|^LoadBalancer$|^LoadBalancerTag$
@@ -127,7 +95,7 @@ directive:
     - IPConfiguration
     - IPConfigurationPropertiesFormat
     - PublicIPAddress
-    # - CloudService
+    - CloudService
   - where:
       subject: ^LoadBalancerPublicIPAddress$
       verb: Switch
@@ -137,83 +105,4 @@ directive:
     where: $
     transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
 
-  - where:
-      model-name: CloudService
-    set:
-      format-table:
-        properties:
-          - ResourceGroupName
-          - Name
-          - Location
-          - ProvisioningState
-
-  - where:
-      model-name: RoleInstance
-      property-name: InstanceViewStatuses
-    set:
-      property-name: DisplayStatus
-  - where:
-      model-name: RoleInstance
-      property-name: InstanceViewPlatformFaultDomain
-    set:
-      property-name: PlatformFaultDomain
-  - where:
-      model-name: RoleInstance
-      property-name: InstanceViewPlatformUpdateDomain
-    set:
-      property-name: PlatformUpdateDomain
-  - where:
-      model-name: RoleInstance
-    set:
-      format-table:
-        properties:
-          - Name
-          - Location
-          - SkuName
-          - DisplayStatus
-          - PlatformFaultDomain
-          - PlatformUpdateDomain
-
-  - where:
-      model-name: RoleInstanceView
-      property-name: Statuses
-    set:
-      property-name: DisplayStatus
-  - where:
-      model-name: RoleInstanceView
-    set:
-      format-table:
-        properties:
-          - Name
-          - Location
-          - SkuName
-          - DisplayStatus
-          - PlatformFaultDomain
-          - PlatformUpdateDomain
-  - where:
-      model-name: Extension
-    set:
-      format-table:
-        properties:
-          - Name
-          - Publisher
-          - Type
-          - TypeHandlerVersion
-          - ProvisioningState
-  - where:
-      model-name: CloudServiceRoleProfileProperties
-    set:
-      format-table:
-        properties:
-          - Name
-          - SkuName
-          - SkuTier
-          - SkuCapacity
-  - where:
-      model-name: LoadBalancerConfiguration
-    set:
-      format-table:
-        properties:
-          - Name
-          - FrontendIPConfiguration
 ```

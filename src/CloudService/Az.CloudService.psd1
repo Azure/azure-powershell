@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CloudService.private.dll'
   FormatsToProcess = './Az.CloudService.format.ps1xml'
-  FunctionsToExport = 'New-AzCloudServiceVaultSecretGroupObject', 'Get-AzCloudService', 'Get-AzCloudServiceNetworkInterfaces', 'Get-AzCloudServicePublicIPAddress', 'Get-AzCloudServiceRoleInstance', 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile', 'Invoke-AzCloudServiceWalkCloudServiceUpdateDomain', 'New-AzCloudService', 'New-AzCloudServiceExtensionObject', 'New-AzCloudServiceLoadBalancerConfigurationObject', 'New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject', 'New-AzCloudServiceRemoteDesktopExtensionObject', 'New-AzCloudServiceRoleProfilePropertiesObject', 'Remove-AzCloudService', 'Reset-AzCloudService', 'Reset-AzCloudServiceRoleInstance', 'Start-AzCloudService', 'Stop-AzCloudService', 'Switch-AzCloudService', 'Update-AzCloudService', '*'
+  FunctionsToExport = 'Get-AzCloudService', 'Get-AzCloudServiceInstanceView', 'Get-AzCloudServiceRole', 'Get-AzCloudServiceRoleInstance', 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile', 'Get-AzCloudServiceRoleInstanceView', 'Invoke-AzCloudServiceRebuildCloudService', 'Invoke-AzCloudServiceRebuildCloudServiceRoleInstance', 'Invoke-AzCloudServiceWalkCloudServiceUpdateDomain', 'New-AzCloudService', 'Remove-AzCloudService', 'Remove-AzCloudServiceInstance', 'Remove-AzCloudServiceRoleInstance', 'Restart-AzCloudService', 'Restart-AzCloudServiceRoleInstance', 'Start-AzCloudService', 'Stop-AzCloudService', 'Update-AzCloudService', 'Update-AzCloudServiceRoleInstance', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
