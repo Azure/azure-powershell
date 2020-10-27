@@ -13,7 +13,7 @@ while (-not $mockingPath) {
 
 Describe 'Test-AzKustoDataConnectionNameAvailability' {
     It 'CheckExpanded' {
-        $resourceGroupName = $env.resourceGroupName
+        $resourceGroupName = $env.resourceGroupNamefordc
         $clusterName = $env.clusterNamefordc
         $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName
