@@ -21,8 +21,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public static VhdUploadContext Upload(UploadParameters uploadParameters)
         {
+
             Program.SyncOutput = new PSSyncOutputEvents(uploadParameters.Cmdlet);
 
+            // set up blob creator object depending on BaseImageUri
             BlobCreatorBase blobCreator;
             if (uploadParameters.BaseImageUri != null)
             {

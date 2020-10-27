@@ -30,6 +30,9 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Automation;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Samples.HyperV.Storage;
+using Microsoft.Samples.HyperV.Common;
+using System.Data.OleDb;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -176,12 +179,14 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         public UploadParameters ValidateParameters()
         {
+            // validate destination
             BlobUri destinationUri;
             if (!BlobUri.TryParseUri(Destination, out destinationUri))
             {
                 throw new ArgumentOutOfRangeException("Destination", this.Destination.ToString());
             }
 
+            // validate baseImageUriToPatch
             BlobUri baseImageUri = null;
             if (this.BaseImageUriToPatch != null)
             {
@@ -199,6 +204,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
+
+            // checking for corrupted vhd
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
@@ -216,6 +223,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
             }
 
+            // sets objects, no create yet
             var parameters = new UploadParameters(
                 destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
                 (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
@@ -251,54 +259,87 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             base.ExecuteCmdlet();
             ExecuteClientAction(() => 
             {
-                if (this.ParameterSetName == DirectUploadToManagedDiskSet)
+                bool backupCreated = false;
+                // 1. convert vhdx to vhd if need
+                // 1-1 check if vhdx file
+                if (Path.GetExtension(this.LocalFilePath.Name) == ".vhdx")
                 {
-                    
-                    // 1. convert vhdx to vhd if need
+                    // create back up 
+                    // createBackUp(this.LocalFilePath.FullName);
+                    backupCreated = true;
 
+                    // 1-2. convert file
+                    FileInfo vhdFileInfo = new FileInfo(Path.ChangeExtension(this.LocalFilePath.FullName, ".vhd"));
+                    ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
+                    VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
 
-                    // 2. resize vhd 
-                    // 2-1. check if resize is needed 
-                    if (this.LocalFilePath.Length % 1048576 != 512) { // needs resizing
-                        /*
-                        // 2-2. resize
-                        ManagementScope scope = new ManagementScope(@"root\virtualization\V2", null);
-                        ManagementObject imageService = Utility.GetServiceObject(scope, "Msvm_ImageManagementService");
-
-                        ManagementBaseObject inParams = imageService.GetMethodParameters("ResizeVirtualHardDisk");
-                        inParams["Path"] = this.LocalFilePath;
-                        inParams["MaxInternalSize"] = maxInternalSize * size1G;
-                        ManagementBaseObject outParams = imageService.InvokeMethod("ResizeVirtualHardDisk", inParams, null);
-                        if ((UInt32)outParams["ReturnValue"] == ReturnCode.Started)
+                    WriteVerbose("Converting .vhdx file .vhd file.");
+                    using (ManagementObject imageManagementService =
+                        StorageUtilities.GetImageManagementService(scope))
+                    {
+                        using (ManagementBaseObject inParams =
+                            imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                         {
-                            if (Utility.JobCompleted(outParams, scope))
+                            inParams["SourcePath"] = this.LocalFilePath.FullName;
+                            inParams["VirtualDiskSettingData"] =
+                                settingData.GetVirtualHardDiskSettingDataEmbeddedInstance(null, imageManagementService.Path.Path);
+
+                            using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
+                                "ConvertVirtualHardDisk", inParams, null))
                             {
-                                Console.WriteLine("{0} was resized successfully.", inParams["Path"]);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Unable to resize {0}", inParams["Path"]);
+                                WmiUtilities.ValidateOutput(outParams, scope);
                             }
                         }
-
-                        outParams.Dispose();
-                        inParams.Dispose();
-                        imageService.Dispose();
+                    }
                     
-                        WriteVerbose("here");
-                        */
+                    // 1-3. update this.LocalFilePath property for resizing, if all good
+                    this.LocalFilePath = vhdFileInfo;
+                }
+                
+                // 2. resize vhd 
+                // 2-2. check if resize is needed 
+                if ((this.LocalFilePath.Length - 512) % 1048576 != 0) { // needs resizing
+                    
+                    // 2-2. make backupFile
+                    if (!backupCreated)
+                    {
+                        createBackUp(this.LocalFilePath.FullName);
                     }
-                    else // does not need resizing
-                    { 
-                        WriteVerbose("Vhd file already resized. Proceeding to uploading.");
-                    }
-
-
-
-
-                    // 3. DIRECT UPLOAD TO MANAGED DISK
 
                     /*
+                    // 2-3. resize
+                    UInt64 FileSize = 1048576 * Convert.ToUInt64(Math.Ceiling((this.LocalFilePath.Length - 512) / 1048576.0));
+                    WriteVerbose("Resizing Vhd file from " + this.LocalFilePath.Length + " to " + FileSize);
+                    ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
+                    using (ManagementObject imageManagementService =
+                        StorageUtilities.GetImageManagementService(scope))
+                    {
+                        using (ManagementBaseObject inParams =
+                            imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
+                        {
+                            inParams["Path"] = this.LocalFilePath.FullName;
+                            inParams["MaxInternalSize"] = FileSize;
+                                             using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
+                                "ResizeVirtualHardDisk", inParams, null))
+                            {
+                                WmiUtilities.ValidateOutput(outParams, scope);
+                            }
+                        }
+                    }
+                    */
+                }
+                else // does not need resizing
+                { 
+                    WriteVerbose("Vhd file already resized. Proceeding to uploading.");
+                } 
+                
+
+                if (this.ParameterSetName == DirectUploadToManagedDiskSet)
+                {
+                    /*
+                    // 3. DIRECT UPLOAD TO MANAGED DISK
+
+                    
                     // 3-1. create disk config  
                     // TO-DO: need to set disksizeGB in this method still 
                     var diskConfig = CreateDiskConfig();
@@ -397,6 +438,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 DiskAccessId = null
             };
             return vDisk;
+        }
+
+        private void createBackUp(string filePath)
+        {
+            string ext = Path.GetExtension(filePath);
+            string backupPath = Path.GetDirectoryName(filePath) + @"\" + Path.GetFileNameWithoutExtension(filePath) + "_temp" + ext;
+            int extNum = 0;
+            while (File.Exists(backupPath))
+            {
+                backupPath = Path.GetDirectoryName(filePath) + @"\" + Path.GetFileNameWithoutExtension(filePath) + "_temp(" + extNum + ")" + ext;
+                extNum += 1;
+            }
+            this.LocalFilePath.CopyTo(backupPath);
+            Console.WriteLine("Back up copy made to: " + backupPath);
         }
 
     }
