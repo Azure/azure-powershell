@@ -237,8 +237,7 @@ The ability to update soft-delete setting is deprecated in Az.KeyVault 3.0.0. Re
 ### Get-AzKeyVaultSecret
 
 The property `SecretValueText` of type `Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret`
-has been removed. The property `SecretValueText` of type
-`Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecret` has been removed.
+has been removed. The `SecretValueText` property has been replaced with `SecretValue`.
 
 #### Before
 
