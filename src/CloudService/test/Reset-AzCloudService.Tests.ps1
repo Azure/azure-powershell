@@ -24,21 +24,21 @@ Describe 'Reset-AzCloudService' {
     }
 
     It 'Restart cloud service' {
-	    Reset-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -Restart
+        Reset-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -Restart
     }
 
-    It 'Reimage cloud service via identity' {
-        $cloudServices = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName
-		$cloudServices[0] | Reset-AzCloudService -RoleInstance $env.RoleInstanceName -Reimage
-    }
+    # It 'Reimage cloud service via identity' {
+    #     $cloudServicesRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -RoleInstance $env.RoleInstanceName
+	# 	$cloudServicesRoleInstance | Reset-AzCloudService -Reimage
+    # }
 
-    It 'Rebuild cloud service via identity' {
-        $cloudServices = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName
-		$cloudServices[0] | Reset-AzCloudService -RoleInstance $env.RoleInstanceName -Rebuild
-    }
+    # It 'Rebuild cloud service via identity' {
+    #     $cloudServicesRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -RoleInstance $env.RoleInstanceName
+	# 	$cloudServicesRoleInstance | Reset-AzCloudService -Rebuild
+    # }
 
-    It 'Restart cloud service via identity' {
-        $cloudServices = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName
-		$cloudServices[0] | Reset-AzCloudService -RoleInstance $env.RoleInstanceName -Restart
-    }
+    # It 'Restart cloud service via identity' {
+    #     $cloudServicesRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -RoleInstance $env.RoleInstanceName
+	# 	$cloudServicesRoleInstance | Reset-AzCloudService -Restart
+    # }
 }

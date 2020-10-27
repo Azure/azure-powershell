@@ -16,8 +16,7 @@ Describe 'Stop-AzCloudService' {
         Stop-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
     }
 
-    It 'PowerOff/Stop cloud service via identity' {
-	    $cloudServices = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName
-		$cloudServices[0] | Stop-AzCloudService
-    }
+    # It 'PowerOff/Stop cloud service via identity' {
+	#     Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName | Stop-AzCloudService
+    # }
 }

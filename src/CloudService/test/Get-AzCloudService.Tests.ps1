@@ -32,15 +32,15 @@ Describe 'Get-AzCloudService' {
         $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
     }
 
-    It 'Get cloud service via identity' {
-        $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudService = $cs | Get-AzCloudService
-        $cloudService.RoleProfileRole.Count | Should Be 2
-    }
+    # It 'Get cloud service via identity' {
+    #     $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+    #     $cloudService = $cs | Get-AzCloudService
+    #     $cloudService.RoleProfileRole.Count | Should Be 2
+    # }
 
-    It 'Get cloud service InstanceView via identity' {
-        $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudServiceInstanceView = $cs | Get-AzCloudService -InstanceView
-        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
-    }
+    # It 'Get cloud service InstanceView via identity' {
+    #     $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+    #     $cloudServiceInstanceView = $cs | Get-AzCloudService -InstanceView
+    #     $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
+    # }
 }

@@ -1,0 +1,161 @@
+{
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$POST+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/poweroff?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/poweroff?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "423" ],
+        "x-ms-client-request-id": [ "53a2ff3f-099f-4957-a4ea-05365d03c119" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?monitor=true\u0026api-version=2020-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?api-version=2020-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c67e55da-e4af-4f54-8ab6-a821582ebe7e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "ee51bd4d-4c30-47f3-b4e8-8371e45f6f86" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T082815Z:ee51bd4d-4c30-47f3-b4e8-8371e45f6f86" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:28:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "424" ],
+        "x-ms-client-request-id": [ "53a2ff3f-099f-4957-a4ea-05365d03c119" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "098921c7-dcff-4e3e-92ca-e5ee8428f28f_132477351199522606" ],
+        "x-ms-request-id": [ "17ffd9e6-bbf7-437f-9651-f64c5b25ebbd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "x-ms-correlation-request-id": [ "579cb059-3b72-4b2d-a115-83a37217e587" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T082845Z:579cb059-3b72-4b2d-a115-83a37217e587" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:28:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2020-10-27T08:28:14.9976254+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c67e55da-e4af-4f54-8ab6-a821582ebe7e\"\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "425" ],
+        "x-ms-client-request-id": [ "53a2ff3f-099f-4957-a4ea-05365d03c119" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "098921c7-dcff-4e3e-92ca-e5ee8428f28f_132477351199522606" ],
+        "x-ms-request-id": [ "0c9a1efe-fe95-4ca4-9080-12136ec146b1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11925" ],
+        "x-ms-correlation-request-id": [ "07ad146e-d300-4752-8c4b-e8deee5f4d97" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T082915Z:07ad146e-d300-4752-8c4b-e8deee5f4d97" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:29:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2020-10-27T08:28:14.9976254+00:00\",\r\n  \"endTime\": \"2020-10-27T08:28:45.4774005+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"c67e55da-e4af-4f54-8ab6-a821582ebe7e\"\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?monitor=true\u0026api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c67e55da-e4af-4f54-8ab6-a821582ebe7e?monitor=true\u0026api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "426" ],
+        "x-ms-client-request-id": [ "53a2ff3f-099f-4957-a4ea-05365d03c119" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "098921c7-dcff-4e3e-92ca-e5ee8428f28f_132477351199522606" ],
+        "x-ms-request-id": [ "a045ec3d-02a4-45ae-9ab8-e31693abe715" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
+        "x-ms-correlation-request-id": [ "a7a1d44c-4cea-4ac1-8a28-ae0775e96456" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T082916Z:a7a1d44c-4cea-4ac1-8a28-ae0775e96456" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:29:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

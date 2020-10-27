@@ -13,7 +13,6 @@ function RemoveFile([string]$fileName) {
 }
 
 function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
-    import-module az.storage
     # Create Public IP
 	Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"
@@ -23,8 +22,8 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     $networkProfile = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
 
     # Create Role Profile
-    $role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name "WebRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
-    $role2 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name "WorkerRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
+    $role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WebRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
+    $role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WorkerRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
     $roles = @($role1, $role2)
 
     # Create RDP Extension Profile
@@ -82,7 +81,7 @@ function setupEnv() {
     # Create Storage Account and upload package
 	$storageName = "cscmdlettest" + (RandomString $false 8)
 	$containerName = "cscmdlettestcontainer"
-	Write-Host -ForegroundColor Yellow "Creating Storage Account" $storageName
+    Write-Host -ForegroundColor Yellow "Creating Storage Account" $storageName
     $storageAccount = New-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $storageName -Location $env.Location -SkuName "Standard_RAGRS" -Kind "StorageV2"
     $container = New-AzStorageContainer -Name $containerName -Context $storageAccount.Context -Permission blob
     $blob = Set-AzStorageBlobContent -File $cspkgFilePath -Container $containerName -Blob "CSCmdletTest.cspkg" -Context $storageAccount.Context

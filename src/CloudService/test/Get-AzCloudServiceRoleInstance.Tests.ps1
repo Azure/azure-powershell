@@ -37,21 +37,21 @@ Describe 'Get-AzCloudServiceRoleInstance' {
         $cloudServiceRoleInstanceInstanceView.PlatformFaultDomain | Should Be 0
     }
 
-    It 'Get cloud service role instance via identity' {
-        $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudServiceRoleInstance = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance
-		$cloudServiceRoleInstance.Name | Should Be $cloudServiceRoleInstances[0].RoleInstanceName
-    }
+    # It 'Get cloud service role instance via identity' {
+    #     $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	# 	$cloudServiceRoleInstance = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance
+	# 	$cloudServiceRoleInstance.Name | Should Be $cloudServiceRoleInstances[0].RoleInstanceName
+    # }
 
-    It 'Get cloud service role instance InstanceView via identity'  {
-        $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudServiceRoleInstanceInstanceView = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance -InstanceView
-		$cloudServiceRoleInstanceInstanceView.PlatformFaultDomain | Should Be 0
-    }
+    # It 'Get cloud service role instance InstanceView via identity'  {
+    #     $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	# 	$cloudServiceRoleInstanceInstanceView = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance -InstanceView
+	# 	$cloudServiceRoleInstanceInstanceView.PlatformFaultDomain | Should Be 0
+    # }
 
-    It 'Get cloud service role instance InstanceView via identity and Expand' {
-        $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudServiceRoleInstanceInstanceView = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance -Expand instanceView
-		$cloudServiceRoleInstanceInstanceView.PlatformFaultDomain | Should Be 0
-    }
+    # It 'Get cloud service role instance InstanceView via identity and Expand' {
+    #     $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	# 	$cloudServiceRoleInstanceInstanceView = $cloudServiceRoleInstances[0] | Get-AzCloudServiceRoleInstance -Expand instanceView
+	# 	$cloudServiceRoleInstanceInstanceView.PlatformFaultDomain | Should Be 0
+    # }
 }

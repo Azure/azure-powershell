@@ -1,0 +1,197 @@
+{
+  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "368" ],
+        "x-ms-client-request-id": [ "96e8021d-4fb4-49b8-bc51-2b7fd717640b" ],
+        "CommandName": [ "Az.CloudService.internal\\Get-AzCloudServiceRoleInstance" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c16b75ab-b364-41d8-ad21-56e2c891f447" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "1682844d-05b5-4219-8cae-6b19c343005c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T081042Z:1682844d-05b5-4219-8cae-6b19c343005c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:10:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2920" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"WebRole_IN_0\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WebRole_IN_1\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_1/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_0\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_0/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_1\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_1/networkInterfaces/nic1\"}]}\r\n      }\r\n    }\r\n  ]\r\n}"
+    }
+  },
+  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances?api-version=2020-10-01-preview\u0026$expand=instanceView+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances?api-version=2020-10-01-preview\u0026$expand=instanceView",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "369" ],
+        "x-ms-client-request-id": [ "378f1453-aa5f-488c-84bc-3a4c826e8162" ],
+        "CommandName": [ "Az.CloudService.internal\\Get-AzCloudServiceRoleInstance" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f6473ffb-90a8-440b-86a5-380d80b07006" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "73386064-0e0a-48a5-9e89-a3640183bc83" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T081042Z:73386064-0e0a-48a5-9e89-a3640183bc83" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:10:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"WebRole_IN_0\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/networkInterfaces/nic1\"}]},\r\n        \"instanceView\": {\r\n          \"platformUpdateDomain\": 0,\r\n          \"platformFaultDomain\": 0,\r\n          \"statuses\": [\r\n            {\r\n              \"code\": \"RoleState/RoleStateStarted\",\r\n              \"level\": \"Info\",\r\n              \"displayStatus\": \"RoleStateStarted\",\r\n              \"message\": \"\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WebRole_IN_1\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_1/networkInterfaces/nic1\"}]},\r\n        \"instanceView\": {\r\n          \"platformUpdateDomain\": 1,\r\n          \"platformFaultDomain\": 1,\r\n          \"statuses\": [\r\n            {\r\n              \"code\": \"RoleState/RoleStateStarted\",\r\n              \"level\": \"Info\",\r\n              \"displayStatus\": \"RoleStateStarted\",\r\n              \"message\": \"\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_0\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_0/networkInterfaces/nic1\"}]},\r\n        \"instanceView\": {\r\n          \"platformUpdateDomain\": 0,\r\n          \"platformFaultDomain\": 0,\r\n          \"statuses\": [\r\n            {\r\n              \"code\": \"RoleState/RoleStateStarted\",\r\n              \"level\": \"Info\",\r\n              \"displayStatus\": \"RoleStateStarted\",\r\n              \"message\": \"\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_1\",\r\n      \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WorkerRole_IN_1/networkInterfaces/nic1\"}]},\r\n        \"instanceView\": {\r\n          \"platformUpdateDomain\": 1,\r\n          \"platformFaultDomain\": 1,\r\n          \"statuses\": [\r\n            {\r\n              \"code\": \"RoleState/RoleStateStarted\",\r\n              \"level\": \"Info\",\r\n              \"displayStatus\": \"RoleStateStarted\",\r\n              \"message\": \"\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+    }
+  },
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "370" ],
+        "x-ms-client-request-id": [ "eeb2d404-b059-4383-850e-3a0c47b6a4d7" ],
+        "CommandName": [ "Az.CloudService.internal\\Get-AzCloudServiceRoleInstance" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0af26311-317c-4667-a69d-890a3a26923f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "d11c98e7-de3d-4b46-80fe-eb92915bf390" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T081043Z:d11c98e7-de3d-4b46-80fe-eb92915bf390" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:10:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "665" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"WebRole_IN_0\",\r\n  \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0\",\r\n  \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n  \"location\": \"eastus2euap\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_D1_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/networkInterfaces/nic1\"}]}\r\n  }\r\n}"
+    }
+  },
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "371" ],
+        "x-ms-client-request-id": [ "89dbf27c-db44-4f25-ac05-a0c2039231e2" ],
+        "CommandName": [ "Az.CloudService.internal\\Get-AzCloudServiceRoleInstanceView" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstanceView_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c0b7fac3-91f4-41fc-a210-922c502d69dc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "95e5eb8b-3ce9-4479-b993-c904d5f969a6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T081043Z:95e5eb8b-3ce9-4479-b993-c904d5f969a6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:10:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"platformUpdateDomain\": 0,\r\n  \"platformFaultDomain\": 0,\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"RoleState/RoleStateStarted\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"RoleStateStarted\",\r\n      \"message\": \"\"\r\n    }\r\n  ]\r\n}"
+    }
+  },
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via Expand+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0?api-version=2020-10-01-preview\u0026$expand=instanceView+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestutwbz690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0?api-version=2020-10-01-preview\u0026$expand=instanceView",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "372" ],
+        "x-ms-client-request-id": [ "036c8346-0507-4f89-afaa-eb7d2754edb6" ],
+        "CommandName": [ "Az.CloudService.internal\\Get-AzCloudServiceRoleInstance" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e08c2bf1-8dc1-443f-8632-9891f44696c6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-correlation-request-id": [ "c9ca4fef-b77e-48a8-8603-79dcd5b623a2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T081043Z:c9ca4fef-b77e-48a8-8603-79dcd5b623a2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 08:10:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "965" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"WebRole_IN_0\",\r\n  \"id\": \"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0\",\r\n  \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n  \"location\": \"eastus2euap\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_D1_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/CSCMDLETTESTUTWBZ690/providers/Microsoft.Compute/cloudServices/cscmdlettesta5inls8t/roleInstances/WebRole_IN_0/networkInterfaces/nic1\"}]},\r\n    \"instanceView\": {\r\n      \"platformUpdateDomain\": 0,\r\n      \"platformFaultDomain\": 0,\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"RoleState/RoleStateStarted\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"RoleStateStarted\",\r\n          \"message\": \"\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
+    }
+  }
+}

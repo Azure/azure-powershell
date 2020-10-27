@@ -61,7 +61,6 @@ function Get-AzCloudService {
         ${InputObject},
     
         [Parameter(ParameterSetName='GetInstanceView', Mandatory)]
-        [Parameter(ParameterSetName='GetInstanceViewViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
         [System.Management.Automation.SwitchParameter]
         # Name of the role instance

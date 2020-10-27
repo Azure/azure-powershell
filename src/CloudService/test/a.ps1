@@ -96,8 +96,8 @@ Write-Host "Creating Public IP"
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod $allocationMethod -IpAddressVersion $IpAddressVersion -DomainNameLabel $dnsPrefix -Sku $publicIpSku
 
 # Create Role Profile
-$role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name $role1Name -SkuName $roleSkuName -SkuTier $roleSkuTier -SkuCapacity $roleSkuCapacity
-$role2 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name $role2Name -SkuName $roleSkuName -SkuTier $roleSkuTier -SkuCapacity $roleSkuCapacity
+$role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name $role1Name -SkuName $roleSkuName -SkuTier $roleSkuTier -SkuCapacity $roleSkuCapacity
+$role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name $role2Name -SkuName $roleSkuName -SkuTier $roleSkuTier -SkuCapacity $roleSkuCapacity
 $roles = @($role1, $role2)
 
 # TODO: Create OS Profile

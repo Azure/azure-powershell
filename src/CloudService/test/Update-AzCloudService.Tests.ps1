@@ -12,15 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzCloudService' {
-    It 'Update' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    # It 'Update' {
+    #     { throw [System.NotImplementedException] } | Should -Not -Throw
+    # }
 
-    It 'Update cloud service via identity' {
-        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudService.ExtensionProfileExtension = @()
-        $cloudService | Update-AzCloudService
-		$cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudService.ExtensionProfileExtension.Count | Should be 0
-    }
+    # It 'Update cloud service via identity' {
+    #     $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	# 	$cloudService.ExtensionProfileExtension = @()
+    #     $cloudService | Update-AzCloudService
+	# 	$cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	# 	$cloudService.ExtensionProfileExtension.Count | Should be 0
+    # }
 }
