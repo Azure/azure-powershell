@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             const string AdlPrefix = "adl://";
             const string WasbPrefix = "wasb://";
             const string SecureWasbPrefix = "wasbs://";
+            const string AdlsGen2Prefix = "abfs://";
 
             if (coreSiteConfiguration.TryGetValue(key, out defaultFSUrl))
             {
@@ -101,9 +102,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                         storageAccountKey: storageAccountKey
                     );
                 }
-                else
+                else if (defaultFSUrl.StartsWith(AdlsGen2Prefix))
                 {
-                    return null;
+                    string[] accountAndFileSystem;
+                    accountAndFileSystem = defaultFSUrl.Substring(AdlsGen2Prefix.Length).Split('@');
+                    return new AzureHDInsightDataLakeGen2DefaultStorageAccount(storageAccountName: accountAndFileSystem[1], storageFileSystem: accountAndFileSystem[0]);
                 }
             }
 

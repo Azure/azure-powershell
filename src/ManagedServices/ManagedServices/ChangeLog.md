@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* [Breaking Change] Updated parameters naming conventions and associated examples
+
 ## Version 1.1.1
 * Updated breaking change warnings on cmdlets of managed services assignment and definition
 

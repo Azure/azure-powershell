@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Indicates the type of storage account.</summary>
     public partial struct Kind :
         System.IEquatable<Kind>
     {

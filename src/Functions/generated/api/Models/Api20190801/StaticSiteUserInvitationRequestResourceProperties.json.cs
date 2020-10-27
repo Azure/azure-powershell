@@ -72,10 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_domain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domain"), out var __jsonDomain) ? (string)__jsonDomain : (string)Domain;}
-            {_numHoursToExpiration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("numHoursToExpiration"), out var __jsonNumHoursToExpiration) ? (int?)__jsonNumHoursToExpiration : NumHoursToExpiration;}
             {_provider = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provider"), out var __jsonProvider) ? (string)__jsonProvider : (string)Provider;}
-            {_role = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("roles"), out var __jsonRoles) ? (string)__jsonRoles : (string)Role;}
             {_userDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("userDetails"), out var __jsonUserDetails) ? (string)__jsonUserDetails : (string)UserDetail;}
+            {_role = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("roles"), out var __jsonRoles) ? (string)__jsonRoles : (string)Role;}
+            {_numHoursToExpiration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("numHoursToExpiration"), out var __jsonNumHoursToExpiration) ? (int?)__jsonNumHoursToExpiration : NumHoursToExpiration;}
             AfterFromJson(json);
         }
 
@@ -101,10 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != (((object)this._domain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domain.ToString()) : null, "domain" ,container.Add );
-            AddIf( null != this._numHoursToExpiration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._numHoursToExpiration) : null, "numHoursToExpiration" ,container.Add );
             AddIf( null != (((object)this._provider)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._provider.ToString()) : null, "provider" ,container.Add );
-            AddIf( null != (((object)this._role)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._role.ToString()) : null, "roles" ,container.Add );
             AddIf( null != (((object)this._userDetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._userDetail.ToString()) : null, "userDetails" ,container.Add );
+            AddIf( null != (((object)this._role)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._role.ToString()) : null, "roles" ,container.Add );
+            AddIf( null != this._numHoursToExpiration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._numHoursToExpiration) : null, "numHoursToExpiration" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
