@@ -438,11 +438,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private string GetEndpointToken(IAzureAccount account, string targetEndpoint)
         {
             string tokenKey = AzureAccount.Property.AccessToken;
-            if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
+            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase))
             {
                 tokenKey = AzureAccount.Property.GraphAccessToken;
             }
-            if (targetEndpoint == AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId)
+            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 tokenKey = AzureAccount.Property.KeyVaultAccessToken;
             }
