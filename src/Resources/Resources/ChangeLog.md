@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue where What-If shows two resource group scopes with different casing
 * Updated `Export-AzResourceGroup` to use the SDK.
 
 ## Version 3.0.0
