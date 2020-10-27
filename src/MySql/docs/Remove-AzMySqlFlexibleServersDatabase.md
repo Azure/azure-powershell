@@ -14,7 +14,7 @@ Deletes a database.
 
 ### Delete (Default)
 ```
-Remove-AzMySqlFlexibleServersDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
+Remove-AzMySqlFlexibleServersDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,23 +30,21 @@ Deletes a database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql database by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzMySqlFlexibleServersDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
-{{ Add description here }}
+This cmdlet removes MySql database by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql database by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/databases/databasetest"
+PS C:\> Remove-AzMySqlFlexibleServersDatabase -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove MySql database by identity.
 
 ## PARAMETERS
 
@@ -65,13 +63,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
+### -Name
 The name of the database.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: DatabaseName
 
 Required: True
 Position: Named

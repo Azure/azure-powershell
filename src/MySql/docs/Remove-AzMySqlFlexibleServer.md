@@ -14,7 +14,7 @@ Deletes a server.
 
 ### Delete (Default)
 ```
-Remove-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
+Remove-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,23 +29,22 @@ Deletes a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql server by resourceGroup and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes MySql server by resourceGroup and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> Remove-AzMySqlFlexibleServer -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove MySql server by identity.
 
 ## PARAMETERS
 
@@ -141,13 +140,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
+### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named

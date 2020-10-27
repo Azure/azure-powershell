@@ -8,38 +8,64 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule.
 
 ## SYNTAX
 
 ```
-New-AzMySqlFlexibleServerFirewallRule -FirewallRuleName <String> -ResourceGroupName <String>
- -ServerName <String> -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>]
+New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String> -StartIPAddress <String> 
+ [-SubscriptionId <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server Firewall Rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFirewallRule -Name firewallrule-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 
-{{ Add output here }}
+Name              StartIPAddress EndIPAddress
+----------------- -------------- ------------
+firewallrule-test 0.0.0.0        0.0.0.1
 ```
 
-{{ Add description here }}
+This cmdlets create a MySql server Firewall Rule.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a new MySql Firewall Rule without giving a name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 
-{{ Add output here }}
+Name                                StartIPAddress EndIPAddress
+----                                -------------- ------------
+FirewallIPAddress__2020-08-11_18-19-27 0.0.0.1        0.0.0.1
 ```
 
-{{ Add description here }}
+This cmdlets create a MySql Firewall Rule using -ClientIPAddress.
+
+### Example 3: Create a new MySql Firewall Rule to allow all IPs
+```powershell
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 255.255.255.255 -StartIPAddress 0.0.0.0
+
+Name                         StartIPAddress EndIPAddress
+----                         -------------- ------------
+AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+```
+
+This cmdlets create a new MySql Firewall Rule to allow all IPs.
+
+### Example 3: Create a new MySql Firewall Rule to allow all Azure resources
+```powershell
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -StartIPAddress 0.0.0.0
+
+Name                                                                StartIPAddress EndIPAddress
+----                                                                -------------- ------------
+AllowAllAzureServicesAndResourcesWithinAzureIps_2020-08-11_18-19-27  0.0.0.0        0.0.0.0
+```
+
+This cmdlets create a new MySql Firewall Rule to allow all azure resources.
 
 ## PARAMETERS
 
@@ -75,7 +101,7 @@ Accept wildcard characters: False
 
 ### -EndIPAddress
 The end IP address of the server firewall rule.
-Must be IPv4 format.
+Must be IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP addresses.
 
 ```yaml
 Type: System.String
@@ -89,13 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallRuleName
+### -Name
 The name of the server firewall rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FirewallRuleName
 
 Required: True
 Position: Named
@@ -152,7 +178,7 @@ Accept wildcard characters: False
 
 ### -StartIPAddress
 The start IP address of the server firewall rule.
-Must be IPv4 format.
+Must be IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP addresses.
 
 ```yaml
 Type: System.String

@@ -8,46 +8,51 @@ schema: 2.0.0
 # Set-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
-Creates a new firewall rule or updates an existing firewall rule.
+Updates an existing firewall rule.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Set-AzMySqlFlexibleServerFirewallRule -FirewallRuleName <String> -ResourceGroupName <String>
+Set-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String>
  -ServerName <String> -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzMySqlFlexibleServerFirewallRule -FirewallRuleName <String> -ResourceGroupName <String>
- -ServerName <String> -Parameter <IFirewallRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Set-AzMySqlFlexibleServerFirewallRule -Parameter <IFirewallRule> 
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new firewall rule or updates an existing firewall rule.
+Updates an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql Firewall Rule by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlFlexibleServerFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-{{ Add output here }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql Firewall Rule by identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/firewallRules/rule"
+PS C:\> Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
-{{ Add output here }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
+These cmdlets update MySql Firewall Rule by identity.
 
 ## PARAMETERS
 
@@ -97,13 +102,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallRuleName
+### -Name
 The name of the server firewall rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FirewallRuleName
 
 Required: True
 Position: Named

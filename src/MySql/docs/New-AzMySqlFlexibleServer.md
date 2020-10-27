@@ -7,7 +7,7 @@ schema: 2.0.0
 
 # New-AzMySqlFlexibleServer
 
-## Creates aCreates a new server. A server can be generated with all arguments optional.
+## Creates a new server. A server can be generated with all arguments optional.
 
 ## SYNTAX
 

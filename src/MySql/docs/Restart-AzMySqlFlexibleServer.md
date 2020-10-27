@@ -14,7 +14,7 @@ Restarts a server.
 
 ### Restart (Default)
 ```
-Restart-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
+Restart-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -141,13 +141,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
+### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: Restart
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named

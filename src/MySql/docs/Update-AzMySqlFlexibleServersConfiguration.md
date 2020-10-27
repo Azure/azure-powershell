@@ -9,12 +9,13 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a configuration of a server.
+Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServersConfiguration -ConfigurationName <String> -ResourceGroupName <String>
+Update-AzMySqlFlexibleServersConfiguration -Name <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] [-Source <String>] [-Value <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -27,26 +28,33 @@ Update-AzMySqlFlexibleServersConfiguration -InputObject <IMySqlIdentity> [-Sourc
 
 ## DESCRIPTION
 Updates a configuration of a server.
+Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql configuration by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlFlexibleServer -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
-{{ Add output here }}
+Name            Value
+----            -----
+net_retry_count 15
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql configuration by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql configuration by identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/configurations/wait_timeout"
+PS C:\> Update-AzMySqlFlexibleServer -InputObject $ID -Value 150
 
-{{ Add output here }}
+Name         Value
+----         -----
+wait_timeout 150
 ```
 
-{{ Add description here }}
+These cmdlets update MySql configuration by identity.
+
 
 ## PARAMETERS
 
@@ -65,13 +73,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationName
+### -Name
 The name of the server configuration.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ConfigurationName
 
 Required: True
 Position: Named

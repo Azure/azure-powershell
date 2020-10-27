@@ -8,38 +8,30 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
-Creates a new database or updates an existing database.
+Creates a new database
 
 ## SYNTAX
 
 ```
-New-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
+New-AzMySqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new database or updates an existing database.
+Creates a new database
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server database
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-{{ Add output here }}
+Name            Charset     Collation              
+----            -------- ------------------
+databasetest   latin1   latin1_swedish_ci  
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a database with default settings.
 
 ## PARAMETERS
 
@@ -88,13 +80,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
+### -Name
 The name of the database.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DatabaseName
 
 Required: True
 Position: Named

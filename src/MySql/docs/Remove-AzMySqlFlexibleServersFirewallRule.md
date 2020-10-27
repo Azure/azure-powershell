@@ -14,7 +14,7 @@ Deletes a firewall rule.
 
 ### Delete (Default)
 ```
-Remove-AzMySqlFlexibleServersFirewallRule -FirewallRuleName <String> -ResourceGroupName <String>
+Remove-AzMySqlFlexibleServersFirewallRule -Name <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,27 +26,26 @@ Remove-AzMySqlFlexibleServersFirewallRule -InputObject <IMySqlIdentity> [-Defaul
 ```
 
 ## DESCRIPTION
-Deletes a firewall rule.
+Deletes a server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql Firewall Rule by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMySqlFlexibleServersFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes MySql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql Firewall Rule by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/firewallRules/firewall-rule-test"
+PS C:\> Remove-AzMySqlFlexibleServersFirewallRule -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove MySql Firewall Rule by identity.
 
 ## PARAMETERS
 
@@ -80,13 +79,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallRuleName
+### -Name
 The name of the server firewall rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: FirewallRuleName
 
 Required: True
 Position: Named

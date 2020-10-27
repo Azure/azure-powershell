@@ -14,7 +14,7 @@ Stops a server.
 
 ### Stop (Default)
 ```
-Stop-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
+Stop-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -141,13 +141,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
+### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: Stop
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named

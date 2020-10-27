@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
-Creates a new database or updates an existing database.
+Updates an existing database.
 
 ## SYNTAX
 
@@ -27,27 +27,30 @@ Set-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Creates a new database or updates an existing database.
+Updates an existing database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server database
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
 
-{{ Add output here }}
+Name            Charset     Collation              
+----            -------- ------------------
+databasetest   utf8      latin1_swedish_ci  
 ```
+Update a database by resource name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql database by parameter.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/databases/databasetest"
+PS C:\> New-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
 
-{{ Add output here }}
+Name            Charset     Collation              
+----            -------- ------------------
+databasetest   utf8      latin1_swedish_ci  
 ```
-
-{{ Add description here }}
+Update a database by parameter
 
 ## PARAMETERS
 
