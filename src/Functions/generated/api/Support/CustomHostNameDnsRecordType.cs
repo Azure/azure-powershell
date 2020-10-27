@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of the DNS record.</summary>
     public partial struct CustomHostNameDnsRecordType :
         System.IEquatable<CustomHostNameDnsRecordType>
     {

@@ -331,7 +331,7 @@ The client id and client secret associated with the AAD application / service pr
 ```yaml
 Type: System.Management.Automation.PSCredential
 Parameter Sets: defaultParameterSet
-Aliases: ClientIdAndSecret
+Aliases:
 
 Required: False
 Position: 2

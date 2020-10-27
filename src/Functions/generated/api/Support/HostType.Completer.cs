@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for HostType.</summary>
+    /// <summary>Indicates whether the hostname is a standard or repository hostname.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostTypeTypeConverter))]
     public partial struct HostType :
         System.Management.Automation.IArgumentCompleter

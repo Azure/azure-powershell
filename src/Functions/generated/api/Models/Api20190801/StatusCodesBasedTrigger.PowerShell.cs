@@ -94,11 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Status = (int?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Status, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).SubStatus = (int?) content.GetValueForProperty("SubStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).SubStatus, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval = (string) content.GetValueForProperty("TimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Win32Status = (int?) content.GetValueForProperty("Win32Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Win32Status, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval = (string) content.GetValueForProperty("TimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -116,11 +116,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Status = (int?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Status, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).SubStatus = (int?) content.GetValueForProperty("SubStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).SubStatus, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval = (string) content.GetValueForProperty("TimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Win32Status = (int?) content.GetValueForProperty("Win32Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Win32Status, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval = (string) content.GetValueForProperty("TimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStatusCodesBasedTriggerInternal)this).TimeInterval, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

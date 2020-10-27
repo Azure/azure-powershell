@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return result;
         }
 
+        public ResourceGroupExportResult ExportResourceGroup(string resourceGroupName, ExportTemplateRequest properties)
+        {
+            return ResourceManagementClient.ResourceGroups.ExportTemplate(resourceGroupName, properties);
+        }
+
         private void WriteVerbose(string progress)
         {
             if (VerboseLogger != null)
@@ -425,7 +430,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 };
             }
 
-            if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
+            if (!string.IsNullOrEmpty(parameters.TemplateSpecId))
+            {
+                deployment.Properties.TemplateLink = new TemplateLink
+                {
+                    Id = parameters.TemplateSpecId
+                };
+            }
+            else if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
                 deployment.Properties.TemplateLink = new TemplateLink
                 {

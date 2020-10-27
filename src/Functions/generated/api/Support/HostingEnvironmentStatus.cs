@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Current status of the App Service Environment.</summary>
     public partial struct HostingEnvironmentStatus :
         System.IEquatable<HostingEnvironmentStatus>
     {

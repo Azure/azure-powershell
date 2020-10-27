@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_decryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("decryption"), out var __jsonDecryption) ? (string)__jsonDecryption : (string)Decryption;}
-            {_decryptionKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("decryptionKey"), out var __jsonDecryptionKey) ? (string)__jsonDecryptionKey : (string)DecryptionKey;}
             {_validation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("validation"), out var __jsonValidation) ? (string)__jsonValidation : (string)Validation;}
             {_validationKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("validationKey"), out var __jsonValidationKey) ? (string)__jsonValidationKey : (string)ValidationKey;}
+            {_decryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("decryption"), out var __jsonDecryption) ? (string)__jsonDecryption : (string)Decryption;}
+            {_decryptionKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("decryptionKey"), out var __jsonDecryptionKey) ? (string)__jsonDecryptionKey : (string)DecryptionKey;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._decryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._decryption.ToString()) : null, "decryption" ,container.Add );
-            AddIf( null != (((object)this._decryptionKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._decryptionKey.ToString()) : null, "decryptionKey" ,container.Add );
             AddIf( null != (((object)this._validation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._validation.ToString()) : null, "validation" ,container.Add );
             AddIf( null != (((object)this._validationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._validationKey.ToString()) : null, "validationKey" ,container.Add );
+            AddIf( null != (((object)this._decryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._decryption.ToString()) : null, "decryption" ,container.Add );
+            AddIf( null != (((object)this._decryptionKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._decryptionKey.ToString()) : null, "decryptionKey" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

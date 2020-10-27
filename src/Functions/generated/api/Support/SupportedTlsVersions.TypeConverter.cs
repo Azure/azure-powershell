@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for SupportedTlsVersions.</summary>
+    /// <summary>MinTlsVersion: configures the minimum version of TLS required for SSL requests</summary>
     public partial class SupportedTlsVersionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Added `Get-AzBillingAccount` cmdlet
+* Added `Get-AzBillingProfile` cmdlet
+* Added `Get-AzInvoiceSection` cmdlet
+* Added new parameters in `Get-AzBillingInvoice` cmdlet
+* Removed properties DownloadUrlExpiry, Type, BillingPeriodNames from the response of Get-AzBillingInvoice cmdlet
+
 ## Version 1.0.3
 * Updated assembly version of consumption cmdlets
 

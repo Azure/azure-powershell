@@ -12,7 +12,7 @@
 RootModule = 'Az.StackHCI.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Added hash table for region.'
+        ReleaseNotes = 'Get the App Roles assigned correctly in case of Stack HCI registration using WAC token.'
 
     } # End of PSData hashtable
 

@@ -1,0 +1,152 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHM/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6304d008-211c-424c-9e78-33e4982ef3a9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1271.445"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "f2f636a6-c965-45b6-9179-bd3ec9a068f3"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2f636a6-c965-45b6-9179-bd3ec9a068f3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200625T230020Z:f2f636a6-c965-45b6-9179-bd3ec9a068f3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2020 23:00:19 GMT"
+        ],
+        "Content-Length": [
+          "504"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31\",\r\n      \"name\": \"c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31\",\r\n      \"properties\": {\r\n        \"accountStatus\": \"Active\",\r\n        \"accountType\": \"Enterprise\",\r\n        \"agreementType\": \"MicrosoftCustomerAgreement\",\r\n        \"billingProfiles\": {\r\n          \"hasMoreResults\": false\r\n        },\r\n        \"displayName\": \"My billing account -5-27\",\r\n        \"hasReadAccess\": true\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/listInvoiceSectionsWithCreateSubscriptionPermission?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvYzAxNzA2M2ItMThhZC01ZTI2LWY0YWYtYTRkN2VmZjIwNGNiJTNBMTcxZGYyNGUtYzkyNC00YzU4LTlkYWEtYTBiZGIxNjg2ZmVmXzIwMTktMDUtMzEvbGlzdEludm9pY2VTZWN0aW9uc1dpdGhDcmVhdGVTdWJzY3JpcHRpb25QZXJtaXNzaW9uP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cbe97295-1afc-4958-80bb-5b91f9de95e6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1271.445"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "20d139a9-28bc-4537-9264-3b816cc30b9b"
+        ],
+        "x-ms-correlation-request-id": [
+          "20d139a9-28bc-4537-9264-3b816cc30b9b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200625T230020Z:20d139a9-28bc-4537-9264-3b816cc30b9b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2020 23:00:19 GMT"
+        ],
+        "Content-Length": [
+          "8243"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"billingProfileDisplayName\": \"Test BG-5-2-2\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/JKAQ-NHUD-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"JKAQ-NHUD-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        },\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Test BG-5-2-2\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/JKAQ-NHUD-BG7-TGB/invoiceSections/5CCT-H3XP-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"5CCT-H3XP-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        },\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Billing profile - 4281\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB/invoiceSections/YWKA-55HG-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"YWKA-55HG-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Warned\",\r\n      \"billingProfileStatusReasonCode\": \"PastDue\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Test section\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/L6E4-BU47-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"L6E4-BU47-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"My ice cream shop 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/S2ZP-F6CT-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"S2ZP-F6CT-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Test BG - 5-2\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/S2ZP-F6CT-BG7-TGB/invoiceSections/42OD-G7F3-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"42OD-G7F3-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Warned\",\r\n      \"billingProfileStatusReasonCode\": \"PastDue\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Prod section\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/VLRR-PFIL-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"VLRR-PFIL-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        },\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"IS-5-3\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB/invoiceSections/WSDP-PEI3-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"WSDP-PEI3-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile - 4282\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"PO6F-IWMU-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        },\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Invoice sectio n2\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB/invoiceSections/FEGN-QS6V-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"FEGN-QS6V-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"My ice cream shop 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/S2ZP-F6CT-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"S2ZP-F6CT-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Active\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Test BG -5-3\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/S2ZP-F6CT-BG7-TGB/invoiceSections/FVXZ-SYFU-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"FVXZ-SYFU-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Warned\",\r\n      \"billingProfileStatusReasonCode\": \"PastDue\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"Dev section\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/I4BJ-DPWC-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"I4BJ-DPWC-PJA-TGB\"\r\n    },\r\n    {\r\n      \"billingProfileDisplayName\": \"Billing profile 01\",\r\n      \"billingProfileId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileSystemId\": \"RZKZ-H3N4-BG7-TGB\",\r\n      \"billingProfileStatus\": \"Warned\",\r\n      \"billingProfileStatusReasonCode\": \"PastDue\",\r\n      \"billingProfileSpendingLimit\": \"Off\",\r\n      \"enabledAzurePlans\": [\r\n        {\r\n          \"skuId\": \"0002\",\r\n          \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n        },\r\n        {\r\n          \"skuId\": \"0001\",\r\n          \"skuDescription\": \"Microsoft Azure Plan\"\r\n        }\r\n      ],\r\n      \"invoiceSectionDisplayName\": \"PPE section\",\r\n      \"invoiceSectionId\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/GNAH-DU3U-PJA-TGB\",\r\n      \"invoiceSectionSystemId\": \"GNAH-DU3U-PJA-TGB\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0e660d57-d14d-44e2-9586-a1e29288996e"
+  }
+}

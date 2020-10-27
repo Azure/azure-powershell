@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>The protocol permitted for a request made with the account SAS.</summary>
     public partial struct HttpProtocol :
         System.IEquatable<HttpProtocol>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for CheckNameResourceTypes.</summary>
+    /// <summary>Resource type used for verification.</summary>
     public partial class CheckNameResourceTypesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

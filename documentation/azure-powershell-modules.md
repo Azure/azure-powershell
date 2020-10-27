@@ -75,6 +75,7 @@ Database for MariaDB                  | `Az.MariaDb`                            
 Marketplace                           | `Az.Marketplace`                        | [![Marketplace]][MarketplaceGallery]
 Marketplace Ordering                  | `Az.MarketplaceOrdering`                | [![MarketplaceOrdering]][MarketplaceOrderingGallery]
 Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
+Migrate                               | `Az.Migrate`                            | [![Migrate]][MigrateGallery]
 Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
 Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery]
 Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery]
@@ -187,6 +188,7 @@ Web App Service                       | `Az.Websites`                           
 [Marketplace]:                https://img.shields.io/powershellgallery/v/Az.Marketplace.svg?style=flat-square&label=Az.Marketplace
 [MarketplaceOrdering]:        https://img.shields.io/powershellgallery/v/Az.MarketplaceOrdering.svg?style=flat-square&label=Az.MarketplaceOrdering
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
+[Migrate]:                    https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
 [MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
@@ -296,6 +298,7 @@ Web App Service                       | `Az.Websites`                           
 [MarketplaceGallery]:                https://www.powershellgallery.com/packages/Az.Marketplace/
 [MarketplaceOrderingGallery]:        https://www.powershellgallery.com/packages/Az.MarketplaceOrdering/
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
+[MigrateGallery]:                    https://www.powershellgallery.com/packages/Az.Migrate/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
 [MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
