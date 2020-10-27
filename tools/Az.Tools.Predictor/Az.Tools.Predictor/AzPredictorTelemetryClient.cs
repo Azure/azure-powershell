@@ -18,9 +18,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -69,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", currentLog);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording CommandHistory");
 #endif
         }
@@ -93,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", currentLog);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording RequestPrediction");
 #endif
         }
@@ -116,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", currentLog);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording RequestPredictionError");
 #endif
         }
@@ -138,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording AcceptSuggestion");
 #endif
         }
@@ -162,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording GetSuggestioin");
 #endif
         }
@@ -184,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
 
-#if DEBUG
+#if TELEMETRY_TRACE && DEBUG
             Console.WriteLine("Recording GetSuggestioinError");
 #endif
         }
