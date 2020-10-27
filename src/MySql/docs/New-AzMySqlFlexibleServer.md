@@ -7,56 +7,98 @@ schema: 2.0.0
 
 # New-AzMySqlFlexibleServer
 
-## SYNOPSIS
-Creates a new server or updates an existing server.
-The update action will overwrite the existing server.
+## Creates aCreates a new server. A server can be generated with all arguments optional.
 
 ## SYNTAX
 
 ```
-New-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> -Location <String>
- [-SubscriptionId <String>] [-AdministratorLogin <String>] [-AdministratorLoginPassword <String>]
- [-AvailabilityZone <String>] [-CreateMode <CreateMode>]
- [-DelegatedSubnetArgumentSubnetArmResourceId <String>] [-HaEnabled <HaEnabledEnum>]
- [-IdentityType <ResourceIdentityType>] [-InfrastructureEncryption <InfrastructureEncryptionEnum>]
- [-MaintenanceWindowCustomWindow <String>] [-MaintenanceWindowDayOfWeek <Int32>]
- [-MaintenanceWindowStartHour <Int32>] [-MaintenanceWindowStartMinute <Int32>] [-PropertiesTag <Hashtable>]
- [-ReplicationRole <String>] [-RestorePointInTime <DateTime>] [-SkuName <String>] [-SkuTier <SkuTier>]
- [-SourceServerId <String>] [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageIop <Int32>]
- [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServer 
+ [-ResourceGroupName <String>] [-Name <String> -Location <String>]
+ [-SubscriptionId <String>] [-AdministratorUserName <String>] [-AdministratorLoginPassword <String>]
+ [-SubnetId <String>] [-HaEnabled <HaEnabledEnum>][-SkuName <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
+ [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
+ [-AddressPrefixes [String]] [-PublicAccess [String]] [-SubnetPrefixes [String]] [-VnetId [String]]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new server or updates an existing server.
-The update action will overwrite the existing server.
+Creates a new server. A server can be generated with all arguments optional. If no arguments were provided from a user, the powershell generates resource group, virtual network, and database. It also uses default values for server properties. 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql flexible server with parameters
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -SkuName Standard_B1ms -SkuTier Burstable
 
-{{ Add output here }}
+Creating new vnet {vnetName} in resource group {resourceGroupName}...
+Creating new subnet {subnetName} in resource group {resourceGroupName} and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
+Creating MySQL server {serverName} in group {resourceGroupName}...
+Your server is using sku 'Standard_B1ms' (paid tier). Please refer to https://aka.ms/mysql-pricing for pricing details.
+Creating MySQL database {dbname}...
+"connectionString": "mysql {dbname} --host {host} --user {username} --password={password}",
+"databaseName": "flexibleserverdb",
+"host": "{servername}.mysql.database.azure.com",
+"id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+"location": "East US",
+"version": "5.7",
+"username": "{username}",
+"password": "{password}",
+"skuname": "Standard_B1ms"
 ```
 
-{{ Add description here }}
+The cmdlet generates a server with the given parameters and output important information in a visible format. The server creation automatically generates vnet and subnet in the resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a new MySql flexible server without parameters
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFlexibleServer -Location eastus
 
-{{ Add output here }}
+Creating Resource Group {resourceGroupName}...
+Creating new vnet {vnetName} in resource group {resourceGroupName}...
+Creating new subnet {subnetName} in resource group {resourceGroupName} and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
+Creating MySQL server {serverName} in group {resourceGroupName}...
+Your server is using sku 'Standard_B1ms' (paid tier). Please refer to https://aka.ms/mysql-pricing for pricing details.
+Creating MySQL database {dbname}...
+"connectionString": "mysql {dbname} --host {host} --user {username} --password={password}",
+"databaseName": "flexibleserverdb",
+"host": "{servername}.mysql.database.azure.com",
+"id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+"location": "East US",
+"version": "5.7",
+"username": "{username}",
+"password": "{password}",
+"skuname": "Standard_B1ms"
 ```
 
-{{ Add description here }}
+The cmdlet generates a server without given parameters and automatically generates necessary resources such as resource group, subnet, and database. The SKU and storage profile are set to default values. 
+
+### Example 3: Create a new MySql flexible server with public access to all IPs
+```powershell
+PS C:\> New-AzMySqlFlexibleServer -Location eastus -PublicAccess all
+
+Creating Resource Group {resourceGroupName}...
+Configurint server firewall rule to accept connections from '0.0.0.0' to '255.255.255.255'...
+Creating MySQL server {serverName} in group {resourceGroupName}...
+Your server is using sku 'Standard_B1ms' (paid tier). Please refer to https://aka.ms/mysql-pricing for pricing details.
+Creating MySQL database {dbname}...
+"connectionString": "mysql {dbname} --host {host} --user {username} --password={password}",
+"firewallName": "{firewallRuleName}",
+"databaseName": "flexibleserverdb",
+"host": "{serverName}.mysql.database.azure.com",
+"id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+"location": "East US",
+"version": "5.7",
+"username": "{username}",
+"password": "{password}",
+"skuname": "Standard_B1ms"
+```
+
+The cmdlet generates a server without given parameters and automatically generates necessary resources such as resource group, subnet, and database. The SKU and storage profile are set to default values.
+
 
 ## PARAMETERS
 
-### -AdministratorLogin
-The administrator's login name of a server.
-Can only be specified when the server is being created (and is required for creation).
+### -AdministratorUserName
+The administrator\'s login name of a server. Can only be specified when the server is being created.
 
 ```yaml
 Type: System.String
@@ -71,7 +113,22 @@ Accept wildcard characters: False
 ```
 
 ### -AdministratorLoginPassword
-The password of the administrator login (required for server creation).
+The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddressPrefixes
+The IP address prefix to use when creating a new virtual network in CIDR format. Default value is 10.0.0.0/16.
 
 ```yaml
 Type: System.String
@@ -101,25 +158,10 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityZone
-availability Zone information of the server.
+Availability zone into which to provision the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CreateMode
-The mode to create a new MySQL server.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode
 Parameter Sets: (All)
 Aliases:
 
@@ -145,8 +187,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelegatedSubnetArgumentSubnetArmResourceId
-delegated subnet arm resource id.
+### -SubnetId
+Resource ID of an existing subnet. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers/Microsoft.DBforMySQL/flexibleServers.After delegation, this subnet cannot be used for any other type of Azure resources.
 
 ```yaml
 Type: System.String
@@ -175,38 +217,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureEncryption
-Status showing whether the server enabled infrastructure encryption.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryptionEnum
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
-The geo-location where the resource lives
+The location where the resource lives.
 
 ```yaml
 Type: System.String
@@ -214,66 +226,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowCustomWindow
-indicates whether custom window is enabled or disabled
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowDayOfWeek
-day of week for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartHour
-start hour for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartMinute
-start minute for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -295,23 +247,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesTag
-Application-specific metadata in the form of key-value pairs.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReplicationRole
-The replication role.
+### -PublicAccess
+Determines the public access. Enter single or range of IP addresses to be included in the allowed list of IPs. IP address ranges must be dash-separated and not contain any spaces. Specifying 0.0.0.0 allows public access from any resources deployed within Azure to access your server. Specifying no IP address sets the server in public access mode but does not create a firewall rule.
 
 ```yaml
 Type: System.String
@@ -326,8 +263,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -339,30 +275,16 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+
 ```
 
-### -RestorePointInTime
-Restore point creation time (ISO8601 format), specifying the time to restore from.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerName
-The name of the server.
+### -Name
+The name of the server. The name can contain only lowercase letters, numbers, and the hyphen (-) character. Minimum 3 characters and maximum 63 characters.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -372,8 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The name of the sku, e.g.
-Standard_D32s_v3.
+The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.  Default: Standard_B1ms.
 
 ```yaml
 Type: System.String
@@ -382,15 +303,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "Standard_B1ms"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of the particular SKU, e.g.
-GeneralPurpose.
-
+Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
 Parameter Sets: (All)
@@ -398,13 +317,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "Burstable"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceServerId
-The source MySQL server id.
+### -SubnetPrefixes
+The subnet IP address prefix to use when creating a new VNet in CIDR format. Default value is 10.0.0.0/24.
 
 ```yaml
 Type: System.String
@@ -418,11 +337,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SslEnforcement
-Enable ssl enforcement or not when connect to server.
+### -VnetId
+Id of an existing virtual network or name of a new one to create. The name must be between 2 to 64 characters. The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -433,8 +352,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileBackupRetentionDay
+### -BackupRetentionDay
 Backup retention days for the server.
+Day count is between 7 and 35.
 
 ```yaml
 Type: System.Int32
@@ -443,28 +363,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileStorageAutogrow
-Enable Storage Auto Grow.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageProfileStorageIop
-Storage IOPS for a server.
+### -StorageInMb
+The storage capacity of the server. Minimum is 5 GiB and increases in 1 GiB increments. Max is 16 TiB.  Default: 10.
 
 ```yaml
 Type: System.Int32
@@ -473,28 +378,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageProfileStorageMb
-Max storage allowed for a server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
@@ -509,7 +399,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -533,7 +423,32 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: "5.7"
+irs.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Server version.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: "5.7"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

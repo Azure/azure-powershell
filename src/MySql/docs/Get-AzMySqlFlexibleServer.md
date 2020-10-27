@@ -19,7 +19,7 @@ Get-AzMySqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObjec
 
 ### Get
 ```
-Get-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
+Get-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -39,23 +39,53 @@ Gets information about a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MySql server with default context
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlFlexibleServer
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
+This cmdlet gets MySql server with default context.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
+This cmdlet gets MySql server by resource group and server name.
+
+### Example 3: Lists all the MySql servers in specified resource group
+```powershell
+PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
+
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+mysql-test-12 eastus   mysql_test2        5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+```
+
+This cmdlet lists all the MySql servers in specified resource group.
+
+### Example 4: Get MySql server by identity
+```powershell
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> Get-AzMySqlFlexibleServer -InputObject $ID
+
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+mysql-test-12 eastus   mysql_test2        5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+mysql-test-13 eastus   mysql_test2        5.7     5120                    Standard_D4ds_v4 GeneralPurpose
+```
+
+This cmdlet lists gets MySql server by identity.
 
 ## PARAMETERS
 
@@ -106,13 +136,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
+### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named

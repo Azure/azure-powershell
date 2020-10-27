@@ -16,50 +16,50 @@ The request body can contain one to many of the properties present in the normal
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <String>] [-DelegatedSubnetArgumentSubnetArmResourceId <String>]
- [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowCustomWindow <String>] [-MaintenanceWindowDayOfWeek <Int32>]
- [-MaintenanceWindowStartHour <Int32>] [-MaintenanceWindowStartMinute <Int32>] [-ReplicationRole <String>]
+ [-AdministratorLoginPassword <String>] [-SubnetId <String>]
+ [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] [-ReplicationRole <String>]
  [-SkuName <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageProfileBackupRetentionDay <Int32>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
- [-StorageProfileStorageIop <Int32>] [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>]
+ [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <String>]
- [-DelegatedSubnetArgumentSubnetArmResourceId <String>] [-HaEnabled <HaEnabledEnum>]
- [-MaintenanceWindowCustomWindow <String>] [-MaintenanceWindowDayOfWeek <Int32>]
- [-MaintenanceWindowStartHour <Int32>] [-MaintenanceWindowStartMinute <Int32>] [-ReplicationRole <String>]
- [-SkuName <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageProfileBackupRetentionDay <Int32>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
- [-StorageProfileStorageIop <Int32>] [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>]
+Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <String>] 
+ [-SubnetId <String>] [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] 
+ [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -SkuName Standard_D4ds_v4
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D4ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageMb 10240
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by identity.
 
 ## PARAMETERS
 
@@ -108,8 +108,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelegatedSubnetArgumentSubnetArmResourceId
-delegated subnet arm resource id.
+### -SubnetId
+Resource ID of an existing subnet. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers/Microsoft.DBforMySQL/flexibleServers.After delegation, this subnet cannot be used for any other type of Azure resources.
 
 ```yaml
 Type: System.String
@@ -154,56 +154,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowCustomWindow
-indicates whether custom window is enabled or disabled
+### -MaintenanceWindowWindow
+Period of time (UTC) designated for maintenance. Examples: "Sun:23:30" to schedule on Sunday, 11:30pm UTC. To set back to default pass in "Disabled".
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowDayOfWeek
-day of week for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartHour
-start hour for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartMinute
-start minute for maintenance window
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -260,13 +215,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
+### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -276,8 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The name of the sku, e.g.
-Standard_D32s_v3.
+The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.
 
 ```yaml
 Type: System.String
@@ -292,8 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of the particular SKU, e.g.
-GeneralPurpose.
+Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
@@ -322,8 +275,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileBackupRetentionDay
+### -BackupRetentionDay
 Backup retention days for the server.
+Day count is between 7 and 35.
 
 ```yaml
 Type: System.Int32
@@ -337,7 +291,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileStorageAutogrow
+### -StorageAutogrow
 Enable Storage Auto Grow.
 
 ```yaml
@@ -352,22 +306,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileStorageIop
-Storage IOPS for a server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageProfileStorageMb
+### -StorageInMb
 Max storage allowed for a server.
 
 ```yaml
