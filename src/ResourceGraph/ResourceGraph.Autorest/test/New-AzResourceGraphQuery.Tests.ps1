@@ -12,19 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzResourceGraphQuery' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpandedByQuery' {
+        $query =  New-AzResourceGraphQuery -Name $env.query03 -ResourceGroupName $env.resourceGroup -Location $env.location -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags"
+        $query.Name | Should -Be $env.query03
     }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpandedByFile' {
+        $query =  New-AzResourceGraphQuery -Name $env.query04 -ResourceGroupName $env.resourceGroup -Location $env.location -Description "requesting a subset of resource fields." -File "$PSScriptRoot\$($env.kqlFilePath)"
+        $query.Name | Should -Be $env.query04
     }
 }

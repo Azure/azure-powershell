@@ -12,15 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzResourceGraphQuery' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $queryList = Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup
+        $queryList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $query = Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup -Name $env.query01
+        $query.Name | Should -Be $env.query01
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $query = Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup -Name $env.query01
+        $query = Get-AzResourceGraphQuery -InputObject $query
+        $query.Name | Should -Be $env.query01
     }
 }

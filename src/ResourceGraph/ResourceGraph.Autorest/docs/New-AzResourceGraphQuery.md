@@ -14,8 +14,8 @@ Create a new graph query.
 
 ```
 New-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-ETag <String>] [-Location <String>] [-Query <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-ETag <String>] [-File <String>] [-Location <String>] [-Query <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,16 +23,28 @@ Create a new graph query.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a resource graph query by the query parameter
 ```powershell
-PS C:\> New-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
+PS C:\> New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
+
 
 ETag Location Name      Type
 ---- -------- ----      ----
      global   query-t03 microsoft.resourcegraph/queries
 ```
 
-{{ Add description here }}
+This command creates a resource graph query by the query parameter.
+
+### Example 2: Create a resource graph query by the file parameter
+```powershell
+PS C:\> New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
+
+ETag Location Name      Type
+---- -------- ----      ----
+     global   query-t04 microsoft.resourcegraph/queries
+```
+
+This command creates a resource graph query by the file parameter.
 
 ## PARAMETERS
 
@@ -69,6 +81,21 @@ Accept wildcard characters: False
 ### -ETag
 This will be used to handle Optimistic Concurrency.
 If not present, it will always overwrite the existing resource without checking conflict.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -File
+The content of the file will be passed to the query parameter.
 
 ```yaml
 Type: System.String
@@ -207,6 +234,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 
 ## OUTPUTS
 

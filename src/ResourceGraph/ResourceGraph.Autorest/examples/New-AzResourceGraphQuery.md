@@ -1,11 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a resource graph query by the query parameter
 ```powershell
-PS C:\> New-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
+PS C:\> New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
+
 
 ETag Location Name      Type
 ---- -------- ----      ----
      global   query-t03 microsoft.resourcegraph/queries
 ```
 
-{{ Add description here }}
+This command creates a resource graph query by the query parameter.
+
+### Example 2: Create a resource graph query by the file parameter
+```powershell
+PS C:\> New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
+
+ETag Location Name      Type
+---- -------- ----      ----
+     global   query-t04 microsoft.resourcegraph/queries
+```
+
+This command creates a resource graph query by the file parameter.
 

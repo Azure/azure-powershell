@@ -47,7 +47,7 @@ directive:
   - where:
       verb: Set
       subject: Query$
-    hide: true
+    remove: true
   - where:
       vert: Get|New|Update|Remove
       parameter-name: ResourceName
@@ -56,11 +56,9 @@ directive:
   - where:
       verb: New
       subject: Query$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     hide: true
   - where:
       verb: Update
       subject: Query$
-      variant: ^Update$|^UpdateViaIdentity$
     hide: true
 ```

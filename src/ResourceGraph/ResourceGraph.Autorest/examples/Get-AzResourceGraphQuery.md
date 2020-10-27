@@ -1,28 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all resource graph query under a resource group
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test
+PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
 
 ETag Location Name            Type
 ---- -------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
-{{ Add description here }}
+This command gets all resource graph query under a resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a resource graph query by name
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name SharedQuery-t01
+PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
 
 ETag Location Name            Type
 ---- -------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
-{{ Add description here }}
+This command gets a resource graph query by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a resource graph query by objecy
 ```powershell
-PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
+PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
 PS C:\> Get-AzResourceGraphQuery -InputObject $query
 
 ETag Location Name            Type
@@ -30,5 +30,5 @@ ETag Location Name            Type
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
-{{ Add description here }}
+This command gets a resource graph query by object.
 

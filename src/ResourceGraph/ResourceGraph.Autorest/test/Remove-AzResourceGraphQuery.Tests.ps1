@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzResourceGraphQuery' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup -Name $env.query03
+        $queryList =  Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup
+        $queryList.Name | Should -Not -Contain $env.query03
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $query = Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup -Name $env.query04
+        Remove-AzResourceGraphQuery -InputObject $query
+        $queryList = Get-AzResourceGraphQuery -ResourceGroupName $env.resourceGroup
+        $queryList.Name | Should -Not -Contain $env.query04
     }
 }
