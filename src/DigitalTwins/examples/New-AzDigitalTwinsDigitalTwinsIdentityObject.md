@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create A DigitalTwinsIdentityObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDigitalTwinsDigitalTwinsIdentityObject -Id '************' -Location eastus
 
-{{ Add output here }}
+EndpointName Location ResourceGroupName ResourceName SubscriptionId
+------------ -------- ----------------- ------------ --------------
+             eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create A DigitalTwinsIdentityObject by Id and location

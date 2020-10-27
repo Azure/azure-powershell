@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a DigitalTwinsCheckNameRequestObject by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDigitalTwinsCheckNameRequestObject -name youriTestName
 
-{{ Add output here }}
+Name          Type
+----          ----
+youriTestName Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a DigitalTwinsCheckNameRequestObject by name
