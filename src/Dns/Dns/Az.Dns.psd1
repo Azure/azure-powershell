@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile.'
+        ReleaseNotes = '* Release for Azure Stack 2020-09-01-hybrid profile.'
 
         # Prerelease string of this module
         # Prerelease = 'preview'
