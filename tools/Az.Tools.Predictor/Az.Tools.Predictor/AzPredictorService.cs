@@ -114,13 +114,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var commandSuggestions = this._commandSuggestions;
             var command = this._commandForPrediction;
 
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added for variety
+            IList<ValueTuple<string, PredictionSource>> varietyResults = new List<ValueTuple<string, PredictionSource>>(); // Added for variety
+            string currentCommand = ""; // Added for variety
+
             // We've already used _commandSuggestions. There is no need to wait the request to complete at this point.
             // Cancel it.
             this._predictionRequestCancellationSource?.Cancel();
 
-            IList<ValueTuple<string, PredictionSource>> results = new List<ValueTuple<string, PredictionSource>>();
-
-            var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
+            var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount * 10, cancellationToken);
 
             if (resultsFromSuggestion != null)
             {
@@ -137,14 +139,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 foreach (var r in resultsFromSuggestion)
                 {
-                    results.Add(ValueTuple.Create(r, predictionSource));
+                    currentCommand = r.Split(' ')[0];  // Added
+                    if (!presentCommands.ContainsKey(currentCommand)) // Added
+                    {
+                        presentCommands.Add(currentCommand, 1);
+                        varietyResults.Add(ValueTuple.Create(r, predictionSource));
+                    }
+                    if (varietyResults.Count() > suggestionCount)
+                    {
+                        break;
+                    }
                 }
             }
 
-            if ((resultsFromSuggestion == null) || (resultsFromSuggestion.Count() < suggestionCount))
+            if ((resultsFromSuggestion == null) || (varietyResults.Count() < suggestionCount))
             {
                 var commands = this._commands;
-                var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
+                var resultsFromCommands = commands?.Query(input, suggestionCount * 10, cancellationToken);
 
                 resultsFromCommands?.ExceptWith(resultsFromSuggestion);
 
@@ -152,12 +163,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     foreach (var r in resultsFromCommands)
                     {
-                        results.Add(ValueTuple.Create(r, PredictionSource.StaticCommands));
+                        currentCommand = r.Split(' ')[0];  // Added
+                        if (!presentCommands.ContainsKey(currentCommand)) // Added
+                        {
+                            presentCommands.Add(currentCommand, 1);
+                            varietyResults.Add(ValueTuple.Create(r, PredictionSource.StaticCommands));
+                        }
+                        if (varietyResults.Count() > suggestionCount)
+                        {
+                            break;
+                        }
                     }
                 }
             }
 
-            return results;
+
+            return varietyResults;
         }
 
         /// <inheritdoc/>
