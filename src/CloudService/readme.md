@@ -106,6 +106,11 @@ directive:
       verb: Remove
     remove: true
   - where:
+      variant: ^Delete$|^DeleteViaIdentity$
+      subject: CloudServiceInstance
+      verb: Remove
+    remove: true
+  - where:
       subject: ^CloudServiceInstance$
       verb: Remove
     set:
@@ -129,7 +134,8 @@ directive:
 
   - where:
       variant: ^GetViaIdentity$
-      subject: ^CloudServiceRoleInstanceRemoteDesktopFile$
+      subject: ^CloudServiceRoleInstanceRemoteDesktopFile$|^CloudServiceInstanceView$|^CloudServiceRoleInstanceView$
+      verb: Get
     remove: true
 
   - where:

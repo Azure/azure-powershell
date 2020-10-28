@@ -12,19 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzCloudServiceRoleInstance' {
+
     It 'DeleteExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Delete1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'DeleteViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
