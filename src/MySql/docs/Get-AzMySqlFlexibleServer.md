@@ -48,7 +48,7 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-This cmdlet gets MySql server with default context.
+This cmdlet gets MySql servers with default context.
 
 ### Example 2: Get MySql server by resource group and server name
 ```powershell
@@ -59,7 +59,7 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-This cmdlet gets MySql server by resource group and server name.
+This cmdlet gets MySql servers by resource group and server name.
 
 ### Example 3: Lists all the MySql servers in specified resource group
 ```powershell
@@ -71,7 +71,7 @@ mysql-test-11 eastus   mysql_test         5.7     5120                    Standa
 mysql-test-12 eastus   mysql_test2        5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-This cmdlet lists all the MySql servers in specified resource group.
+This cmdlet lists all the MySql servers in the specified resource group.
 
 ### Example 4: Get MySql server by identity
 ```powershell
@@ -85,7 +85,7 @@ mysql-test-12 eastus   mysql_test2        5.7     5120                    Standa
 mysql-test-13 eastus   mysql_test2        5.7     5120                    Standard_D4ds_v4 GeneralPurpose
 ```
 
-This cmdlet lists gets MySql server by identity.
+This cmdlet lists gets MySql servers by identity.
 
 ## PARAMETERS
 

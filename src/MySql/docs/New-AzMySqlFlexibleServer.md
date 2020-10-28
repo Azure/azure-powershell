@@ -15,9 +15,9 @@ schema: 2.0.0
 New-AzMySqlFlexibleServer 
  [-ResourceGroupName <String>] [-Name <String> -Location <String>]
  [-SubscriptionId <String>] [-AdministratorUserName <String>] [-AdministratorLoginPassword <String>]
- [-SubnetId <String>] [-HaEnabled <HaEnabledEnum>][-SkuName <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
+ [-HaEnabled <HaEnabledEnum>][-SkuName <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
  [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-AddressPrefixes [String]] [-PublicAccess [String]] [-SubnetPrefixes [String]] [-VnetId [String]]
+ [-AddressPrefixes [String]] [-PublicAccess [String]] [-SubnetPrefixes [String]] [-VnetId [String]] [-SubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -28,7 +28,8 @@ Creates a new server. A server can be generated with all arguments optional. If 
 
 ### Example 1: Create a new MySql flexible server with parameters
 ```powershell
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -SkuName Standard_B1ms -SkuTier Burstable
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
+-Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -SkuName Standard_B1ms -SkuTier Burstable
 
 Creating new vnet {vnetName} in resource group {resourceGroupName}...
 Creating new subnet {subnetName} in resource group {resourceGroupName} and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
@@ -46,7 +47,7 @@ Creating MySQL database {dbname}...
 "skuname": "Standard_B1ms"
 ```
 
-The cmdlet generates a server with the given parameters and output important information in a visible format. The server creation automatically generates vnet and subnet in the resource group.
+The cmdlet generates a server with the given parameters and output important information in a visible format. The server creation automatically generates vnet, subnet, and database in the resource group.
 
 ### Example 2: Create a new MySql flexible server without parameters
 ```powershell
@@ -69,7 +70,7 @@ Creating MySQL database {dbname}...
 "skuname": "Standard_B1ms"
 ```
 
-The cmdlet generates a server without given parameters and automatically generates necessary resources such as resource group, subnet, and database. The SKU and storage profile are set to default values. 
+When no parameters are given, the cmdlet automatically generates necessary resources such as resource group, vnet, and database. The SKU and storage profile are set to default values. 
 
 ### Example 3: Create a new MySql flexible server with public access to all IPs
 ```powershell
@@ -400,31 +401,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Application-specific metadata in the form of key-value pairs.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Server version.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "5.7"
-irs.
 
 ```yaml
 Type: System.Collections.Hashtable

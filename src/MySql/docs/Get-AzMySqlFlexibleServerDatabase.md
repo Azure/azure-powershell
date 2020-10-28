@@ -1,35 +1,42 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserversdatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-AzMySqlFlexibleServerDatabase
 schema: 2.0.0
 ---
 
 # Get-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
-Gets information about a database.
+Gets information about a MySQL database.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzMySqlFlexibleServersDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+Get-AzMySqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMySqlFlexibleServersDatabase -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+Get-AzMySqlFlexibleServerDatabase -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzMySqlFlexibleServerDatabase -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Gets information about a database.
+Gets information about a MySQL database.
+List all the databases in a given server.
 
 ## EXAMPLES
 
-### Example 1: Get MySql databases by resource group and server name
+### Example 1: Get a MySql database by resource name
 ```powershell
 PS C:\> Get-AzMySqlFlexibleServerDatabase -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Name flexibleserverdb
 
@@ -38,21 +45,9 @@ Name            Charset     Collation
 flexibleserverdb latin1   latin1_swedish_ci  
 ```
 
-This cmdlet gets MySql server by resource group and server name.
+This cmdlet gets MySql server by resource name.
 
-### Example 3: Lists all the MySql databases in specified resource group
-```powershell
-PS C:\> Get-AzMySqlFlexibleServerDatabase -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
-
-Name             Charset     Collation        
-----             -------- ------------------
-flexibleserverdb  latin1   latin1_swedish_ci  
-performance_schema latin1   latin1_swedish_ci
-```
-
-This cmdlet lists all the MySql servers in specified resource group.
-
-### Example 4: Get MySql databases by identity
+### Example 2: Get MySql databases by identity
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
 PS C:\> Get-AzMySqlFlexibleServerDatabase -InputObject $ID
@@ -63,7 +58,19 @@ flexibleserverdb  latin1   latin1_swedish_ci
 performance_schema latin1   latin1_swedish_ci 
 ```
 
-This cmdlet lists gets MySql server by identity.
+This cmdlet gets a MySql server by identity.
+
+### Example 3: Lists all the MySql databases in the specified server
+```powershell
+PS C:\> Get-AzMySqlFlexibleServerDatabase -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+
+Name             Charset     Collation        
+----             -------- ------------------
+flexibleserverdb  latin1   latin1_swedish_ci  
+performance_schema latin1   latin1_swedish_ci
+```
+
+This cmdlet lists all the MySql servers in specified the server.
 
 ## PARAMETERS
 
@@ -119,7 +126,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -134,7 +141,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

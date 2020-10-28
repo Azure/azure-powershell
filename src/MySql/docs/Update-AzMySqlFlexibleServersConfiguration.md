@@ -36,9 +36,9 @@ Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPa
 ```powershell
 PS C:\> Update-AzMySqlFlexibleServer -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
-Name            Value
-----            -----
-net_retry_count 15
+Name          Value   DefaultValue  Source        AllowedValues DataType
+----          ------  ------------  -------       ------------- ---------
+net_retry_count 15    10            user-override  1-4294967295   Integer
 ```
 
 This cmdlet updates MySql configuration by name.
@@ -48,9 +48,9 @@ This cmdlet updates MySql configuration by name.
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/configurations/wait_timeout"
 PS C:\> Update-AzMySqlFlexibleServer -InputObject $ID -Value 150
 
-Name         Value
-----         -----
-wait_timeout 150
+Name          Value   DefaultValue  Source        AllowedValues DataType
+----          ------  ------------  -------       ------------- ---------
+wait_timeout   150    28800         system-default   1-31536000   Integer
 ```
 
 These cmdlets update MySql configuration by identity.

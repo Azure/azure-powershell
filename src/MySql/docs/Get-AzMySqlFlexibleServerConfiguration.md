@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserversconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-AzMySqlFlexibleServerConfiguration
 schema: 2.0.0
 ---
 
-# Get-AzMySqlFlexibleServersConfiguration
+# Get-AzMySqlFlexibleServerConfiguration
 
 ## SYNOPSIS
 Gets information about a configuration of server.
@@ -14,14 +14,20 @@ Gets information about a configuration of server.
 
 ### Get (Default)
 ```
-Get-AzMySqlFlexibleServersConfiguration -Name <String> -ResourceGroupName <String>
+Get-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMySqlFlexibleServersConfiguration -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+Get-AzMySqlFlexibleServerConfiguration -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,35 +35,31 @@ Gets information about a configuration of server.
 
 ## EXAMPLES
 
-### Example 1: List all configurations in specified MySql server
+### Example 1: Get specified MySql configuration by name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServersConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> Get-AzMySqlFlexibleServerConfiguration -Name wait_timeout -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-Name                                     Type
-----                                     ----
-audit_log_enabled                        Microsoft.DBforMySQL/flexibleServers/configurations
-audit_log_events                         Microsoft.DBforMySQL/flexibleServers/configurations
-audit_log_exclude_users                  Microsoft.DBforMySQL/flexibleServers/configurations
-audit_log_include_users                  Microsoft.DBforMySQL/flexibleServers/configurations
+Name          Value   DefaultValue  Source        AllowedValues DataType
+----          ------  ------------  -------       ------------- ---------
+wait_timeout   28800  28800         system-default 1-31536000   Integer
+```
+
+This cmdlet gets specified MySql configuration by name.
+
+### Example 2: List all configurations in specified MySql server
+```powershell
+PS C:\> Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+
+Name          Value   DefaultValue  Source        AllowedValues DataType
+----          ------  ------------  -------       ------------- ---------
+archive        OFF    OFF           system-default ON, OFF      Enumeration
 ...
-transaction_prealloc_size                Microsoft.DBforMySQL/flexibleServers/configurations
-tx_isolation                             Microsoft.DBforMySQL/flexibleServers/configurations
-updatable_views_with_limit               Microsoft.DBforMySQL/flexibleServers/configurations
-wait_timeout                             Microsoft.DBforMySQL/flexibleServers/configurations
+wait_timeout   28800  28800         system-default 1-31536000   Integer
 ```
 
 This cmdlet lists all configurations in specified MySql server.
 
-### Example 2: Get specified MySql configuration by name
-```powershell
-PS C:\> Get-AzMySqlFlexibleServersConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-Name      Type
-----      ----
-time_zone Microsoft.DBforMySQL/flexibleServers/configurations
-```
-
-This cmdlet gets specified MySql configuration by name.
 
 ## PARAMETERS
 

@@ -34,7 +34,7 @@ firewallrule-test 0.0.0.0        0.0.0.1
 
 This cmdlets create a MySql server Firewall Rule.
 
-### Example 2: Create a new MySql Firewall Rule without giving a name
+### Example 2: Create a new MySql Firewall Rule without name
 ```powershell
 PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 

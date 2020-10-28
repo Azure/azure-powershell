@@ -29,23 +29,20 @@ Starts a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start the server by resource name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Start-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
-{{ Add description here }}
+Start the server by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Start the server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> Start-AzMySqlFlexibleServer -InputObject $ID
 ```
 
-{{ Add description here }}
+Start the server by identity
 
 ## PARAMETERS
 
