@@ -95,7 +95,10 @@ directive:
     - IPConfiguration
     - IPConfigurationPropertiesFormat
     - PublicIPAddress
-    - CloudService
+    - CloudServiceRoleProfile
+    - CloudServiceOsProfile
+    - CloudServiceNetworkProfile
+    - CloudServiceExtensionProfile
   - where:
       subject: ^LoadBalancerPublicIPAddress$
       verb: Switch
@@ -104,5 +107,55 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
+
+
+  - where:
+      subject: ^CloudServiceRoleInstance$
+      verb: Remove
+    hide: true
+  - where:
+      subject: ^CloudServiceRole$
+      verb: Get
+    hide: true
+  - where:
+      subject: ^CloudServiceInstance$
+      verb: Remove
+    set:
+      subject: CloudServiceRoleInstance
+  - where:
+      model-name: CloudService
+    set:
+      format-table:
+        properties:
+          - ResourceGroupName
+          - Name
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Publisher
+          - Type
+          - TypeHandlerVersion
+          - ProvisioningState
+  - where:
+      model-name: CloudServiceRoleProfileProperties
+    set:
+      format-table:
+        properties:
+          - Name
+          - SkuName
+          - SkuTier
+          - SkuCapacity
+  - where:
+      model-name: LoadBalancerConfiguration
+    set:
+      format-table:
+        properties:
+          - Name
+          - FrontendIPConfiguration
 
 ```
