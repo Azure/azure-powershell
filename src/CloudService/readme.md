@@ -202,4 +202,23 @@ directive:
           - Name
           - FrontendIPConfiguration
 
+  - where:
+      model-name: RoleInstanceView
+    set:
+      format-table:
+        properties:
+          - Statuses
+          - PlatformFaultDomain
+          - PlatformUpdateDomain
+
+  - where:
+      model-name: RoleInstance
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+          - SkuTier
+
 ```

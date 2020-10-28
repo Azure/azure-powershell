@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
     {
         public override string ToString()
         {
-            return this.ToJsonString();
+            return $"{{{this.Code} : {this.Count}}}";
         }
     }
 }
