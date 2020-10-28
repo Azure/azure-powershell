@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll","Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.RestoreAzureRmRecoveryServicesBackupItem","Restore-AzRecoveryServicesBackupItem","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Restore-AzRecoveryServicesBackupItem' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Restore-AzRecoveryServicesBackupItem'."
