@@ -51,8 +51,6 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(this-folder)/resources/CloudService.json
-  - $(this-folder)/resources/loadBalancer.json
-  # - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/loadBalancer.json
 
 title: CloudService
 module-version: 0.1.0
@@ -61,21 +59,49 @@ identity-correction-for-post: true
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Reimage$|^Reimage1$
+      subject: ^CloudService$
+      verb: Update
+    set:
+      subject: CloudServiceReimage
+      verb: Invoke
+  - where:
+      subject: ^CloudServiceRoleInstance$
+      verb: Update
+    set:
+      subject: CloudServiceRoleInstanceReimage
+      verb: Invoke
+  - where:
+      subject: ^RebuildCloudService$
+    set:
+      subject: Rebuild
+  - where:
+      subject: ^RebuildCloudServiceRoleInstance$
+    set:
+      subject: RoleInstanceRebuild
+
+  - where:
+      subject: ^WalkCloudServiceUpdateDomain$
+      verb: Invoke
+    set:
+      subject: UpdateDomain
+      verb: Update
+  - where:
+      variant: ^Create$|^CreateExpanded$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
     remove: true
   - where:
-      variant: ^GetViaIdentity$
-      subject: ^CloudServiceRoleInstanceRemoteDesktopFile$
-    remove: true
+      subject: ^CloudService$
+      verb: New
+    set:
+      verb: Update
   - where:
       subject: ^CloudService$
       verb: Set
     set:
-      verb: Update
+      verb: New
   - where:
-      subject: ^CloudServiceDomain$
-    set:
-      subject: CloudServiceUpdateDomain
+      variant: ^GetViaIdentity$
+      subject: ^CloudServiceRoleInstanceRemoteDesktopFile$
+    remove: true
   - where:
       subject: ^CloudService$
       parameter-name: Name
@@ -86,7 +112,6 @@ directive:
       subject: ^CloudServiceUpdateDomain$
       verb: Get
     remove: true
-
   - where:
       subject: ^LoadBalancerProbe$|^LoadBalancerNetworkInterface$|^LoadBalancerOutboundRule$|^LoadBalancerLoadBalancingRule$|^LoadBalancerInboundNatRule$|^LoadBalancerFrontendIPConfiguration$|^LoadBalancerBackendAddressPool$|^InboundNatRule$|^LoadBalancer$|^LoadBalancerTag$
     remove: true
@@ -107,7 +132,6 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
-
 
   - where:
       subject: ^CloudServiceRoleInstance$
