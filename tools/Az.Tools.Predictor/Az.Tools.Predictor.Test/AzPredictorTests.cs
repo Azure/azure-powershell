@@ -45,7 +45,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._azPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
             {
                 SuggestionCount = 1,
-            });
+            },
+            null);
         }
 
         /// <summary>

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public string CorrelationId { get; set; } = Guid.Empty.ToString();
                 public string SessionId { get; set; } = Guid.Empty.ToString();
                 public string SubscriptionId { get; set; } = Guid.Empty.ToString();
-                public Version VersionNumber{ get; set; } = new Version(1, 0);
+                public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
 
             public string History { get; set; }
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             public PredictionRequestBody(string command) => this.History = command;
         };
 
-        private static readonly HttpClient _client = new HttpClient();
+        private const string ThrottleByIdHeader = "X-UserId";
+        private readonly HttpClient _client;
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
         private volatile Tuple<string, Predictor> _commandSuggestions; // The command and the prediction for that.
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
 
         private readonly ITelemetryClient _telemetryClient;
+        private readonly IAzContext _azContext;
 
         /// <summary>
         /// The AzPredictor service interacts with the Aladdin service specified in serviceUri.
@@ -66,11 +69,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="serviceUri">The URI of the Aladdin service.</param>
         /// <param name="telemetryClient">The telemetry client.</param>
-        public AzPredictorService(string serviceUri, ITelemetryClient telemetryClient)
+        /// <param name="azContext">The Az context which this module runs with</param>
+        public AzPredictorService(string serviceUri, ITelemetryClient telemetryClient, IAzContext azContext)
         {
             this._commandsEndpoint = serviceUri + AzPredictorConstants.CommandsEndpoint;
             this._predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
             this._telemetryClient = telemetryClient;
+            this._azContext = azContext;
+
+            this._client = new HttpClient();
+            this._client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, this._azContext.HashedUserId);
 
             RequestCommands();
         }
@@ -163,6 +171,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public virtual void RequestPredictions(IEnumerable<string> commands)
         {
+            AzPredictorService.ReplaceThrottleUserIdToHeader(this._client?.DefaultRequestHeaders, this._azContext.HashedUserId);
+
             // Even if it's called multiple times, we only need to keep the one for the latest command.
 
             this._predictionRequestCancellationSource?.Cancel();
@@ -182,6 +192,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         SessionId = this._telemetryClient.SessionId,
                         CorrelationId = this._telemetryClient.CorrelationId,
+                        VersionNumber = this._azContext.AzVersion,
                     };
                     var requestBody = new PredictionRequestBody(localCommands)
                     {
@@ -222,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
-                        var httpResponseMessage = await AzPredictorService._client.GetAsync(this._commandsEndpoint);
+                        var httpResponseMessage = await this._client.GetAsync(this._commandsEndpoint);
 
                         var reply = await httpResponseMessage.Content.ReadAsStringAsync();
                         var commands_reply = JsonConvert.DeserializeObject<List<string>>(reply);
@@ -270,6 +281,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static string GetCommandName(string commandLine)
         {
             return commandLine.Split(AzPredictorConstants.CommandParameterSeperator).First();
+        }
+
+        private static void ReplaceThrottleUserIdToHeader(HttpRequestHeaders header, string value)
+        {
+            if (header != null)
+            {
+                lock (header)
+                {
+                    header.Remove(AzPredictorService.ThrottleByIdHeader);
+
+                    if (!string.IsNullOrWhiteSpace(value))
+                    {
+                        header.Add(AzPredictorService.ThrottleByIdHeader, value);
+                    }
+                }
+            }
+
         }
     }
 }

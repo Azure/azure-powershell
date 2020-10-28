@@ -57,6 +57,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly IAzPredictorService _service;
         private readonly ITelemetryClient _telemetryClient;
         private readonly Settings _settings;
+        private readonly IAzContext _azContext;
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
 
@@ -66,16 +67,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="service">The service that provides the suggestion</param>
         /// <param name="telemetryClient">The client to collect telemetry</param>
         /// <param name="settings">The settings of the service</param>
-        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings)
+        /// <param name="azContext">The Az context which this module runs with</param>
+        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings, IAzContext azContext)
         {
             this._service = service;
             this._telemetryClient = telemetryClient;
             this._settings = settings;
+            this._azContext = azContext;
         }
 
         /// <inhericdoc />
         public void StartEarlyProcessing(IReadOnlyList<string> history)
         {
+            // The context only changes when the user executes the corresponding command.
+            this._azContext?.UpdateContext();
+
             if (history.Count > 0)
             {
                 if (_lastTwoMaskedCommands.Any())
@@ -262,9 +268,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnImport()
         {
             var settings = Settings.GetSettings();
-            var telemetryClient = new AzPredictorTelemetryClient();
-            var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient);
-            var predictor = new AzPredictor(azPredictorService, telemetryClient, settings);
+            var azContext = new AzContext();
+            azContext.UpdateContext();
+            var telemetryClient = new AzPredictorTelemetryClient(azContext);
+            var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);
+            var predictor = new AzPredictor(azPredictorService, telemetryClient, settings, azContext);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
     }
