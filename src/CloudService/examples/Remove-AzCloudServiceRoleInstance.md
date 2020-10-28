@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+### Example 1: Remove a cloud service role instance
 
-{{ Add output here }}
+```powershell
+PS C:\> Remove-AzCloudServiceInstance -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "ContosoFrontEnd_IN_0"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command removes the role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
