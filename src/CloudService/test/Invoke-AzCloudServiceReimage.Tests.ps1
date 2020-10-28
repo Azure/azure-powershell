@@ -19,6 +19,6 @@ Describe 'Invoke-AzCloudServiceReimage' {
 
     It 'Reimage cloud service via identity' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Invoke-AzCloudServiceReimage -InputObject $cloudService.Id -RoleInstance $env.RoleInstanceName
+        Invoke-AzCloudServiceReimage -InputObject $cloudService.Id -RoleInstance $env.RoleInstanceName
     }
 }

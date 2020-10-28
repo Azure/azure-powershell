@@ -18,7 +18,7 @@ Describe 'Invoke-AzCloudServiceRoleInstanceReimage' {
     }
 
     It 'Reimage cloud service role instance via identity' {
-	    $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Invoke-AzCloudServiceRoleInstanceReimage -InputObject $cloudServiceRoleInstance[0]
+        $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        Invoke-AzCloudServiceRoleInstanceReimage -InputObject $cloudServiceRoleInstance[0]
     }
 }

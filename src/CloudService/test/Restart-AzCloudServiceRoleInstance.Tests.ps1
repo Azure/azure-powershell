@@ -18,7 +18,7 @@ Describe 'Restart-AzCloudServiceRoleInstance' {
     }
 
     It 'Restart cloud service role instance via identity' {
-	    $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Restart-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstance[0]
+        $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        Restart-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstance[0]
     }
 }

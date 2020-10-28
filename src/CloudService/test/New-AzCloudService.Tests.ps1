@@ -16,21 +16,21 @@ Describe 'New-AzCloudService' {
         # Create Network Profile
         $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $env.NewCSPublicIPId
         $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
-		$networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
-	    
+        $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+
         # Create Role Profile
         $role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WebRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
         $role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WorkerRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
         $roleProfile = @{role = @($role1, $role2)}
 
         # Create Extension Profile
-		$genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
-		$extensionProfile = @{extension = @($genevaExtension)}
-		
+        $genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
+        $extensionProfile = @{extension = @($genevaExtension)}
+
         # Read Configuration File
-	    $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
         $cscfgText = [IO.File]::ReadAllText($cscfgFilePath)
-	    
+
         # Create Cloud Service
         $cloudService = New-AzCloudService                                            `
                           -Name $env.CloudServiceName                                 `

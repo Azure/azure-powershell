@@ -34,13 +34,13 @@ Describe 'Get-AzCloudServiceRoleInstance' {
 
     It 'Get cloud service role instance via identity' {
         $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstances[0].Id
-		$cloudServiceRoleInstance.Name | Should Be $cloudServiceRoleInstances[0].Name
+        $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstances[0].Id
+        $cloudServiceRoleInstance.Name | Should Be $cloudServiceRoleInstances[0].Name
     }
 
     It 'Get cloud service role instance InstanceView via identity and Expand' {
         $cloudServiceRoleInstances = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudServiceRoleInstanceInstanceView = Get-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstances[0].Id -Expand instanceView
-		$cloudServiceRoleInstanceInstanceView.InstanceViewPlatformFaultDomain | Should Be 0
+        $cloudServiceRoleInstanceInstanceView = Get-AzCloudServiceRoleInstance -InputObject $cloudServiceRoleInstances[0].Id -Expand instanceView
+        $cloudServiceRoleInstanceInstanceView.InstanceViewPlatformFaultDomain | Should Be 0
     }
 }

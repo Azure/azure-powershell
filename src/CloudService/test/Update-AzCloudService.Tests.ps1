@@ -15,9 +15,9 @@ Describe 'Update-AzCloudService' {
 
     It 'Update cloud service via identity' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudService.ExtensionProfile.Extension = @()
+        $cloudService.ExtensionProfile.Extension = @()
         Update-AzCloudService -InputObject $cloudService -Parameter $cloudService
-		$cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		$cloudService.ExtensionProfile.Extension.Count | Should be 0
+        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        $cloudService.ExtensionProfile.Extension.Count | Should be 0
     }
 }

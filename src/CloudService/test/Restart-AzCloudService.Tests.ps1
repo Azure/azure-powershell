@@ -19,6 +19,6 @@ Describe 'Restart-AzCloudService' {
 
     It 'Restart cloud service via identity' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Restart-AzCloudService -InputObject $cloudService -RoleInstance $env.RoleInstanceName
+        Restart-AzCloudService -InputObject $cloudService -RoleInstance $env.RoleInstanceName
     }
 }

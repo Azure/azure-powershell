@@ -28,8 +28,8 @@ Describe 'Get-AzCloudService' {
     }
 
     It 'GetViaIdentity' {
-	    $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-	    $cs2 = Get-AzCloudService -InputObject $cloudService.Id
-		$cs2.RoleProfile.Role.Count | Should Be 2
+        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        $cs2 = Get-AzCloudService -InputObject $cloudService.Id
+        $cs2.RoleProfile.Role.Count | Should Be 2
     }
 }

@@ -14,11 +14,11 @@ while(-not $mockingPath) {
 Describe 'Invoke-AzCloudServiceRoleInstanceRebuild' {
 
     It 'Rebuild cloud service role instance' {
-		Invoke-AzCloudServiceRoleInstanceRebuild -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName
+        Invoke-AzCloudServiceRoleInstanceRebuild -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName
     }
 
     It 'Rebuild cloud service role instance via identity' {
-	    $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Invoke-AzCloudServiceRoleInstanceRebuild -InputObject $cloudServiceRoleInstance[0]
+        $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        Invoke-AzCloudServiceRoleInstanceRebuild -InputObject $cloudServiceRoleInstance[0]
     }
 }

@@ -52,38 +52,38 @@ function New-AzCloudServiceDiagnosticsExtension {
     [string] $TypeHandlerVersion,
 
     [string[]] $RolesAppliedTo,
-	
-	[Boolean] $AutoUpgradeMinorVersion
+
+    [Boolean] $AutoUpgradeMinorVersion
   )
 
   process {
     $publisher = "Microsoft.Azure.Diagnostics"
     $extensionType = "PaaSDiagnostics"
-	
+
     if (!(Test-Path $DiagnosticsConfigurationPath -PathType Leaf))
     {
         throw ("DiagnosticsConfigurationPath does not exits: " + $DiagnosticsConfigurationPath)
     }
-	
+
     if (-not $Subscription)
-	{
-	    $context = Get-AzContext
-	    $Subscription = $context.Subscription.Id
-	}
-	
+    {
+        $context = Get-AzContext
+        $Subscription = $context.Subscription.Id
+    }
+
     [xml]$diagnosticsConfigurationXml = Get-Content $DiagnosticsConfigurationPath
-	
-	$storageAccount = $diagnosticsConfigurationXml.PublicConfig.ChildNodes | Where-Object { $_.Name -eq 'StorageAccount' }
-	if (-not $storageAccount)
-	{
+
+    $storageAccount = $diagnosticsConfigurationXml.PublicConfig.ChildNodes | Where-Object { $_.Name -eq 'StorageAccount' }
+    if (-not $storageAccount)
+    {
         $storageAccount = $diagnosticsConfigurationXml.CreateElement('StorageAccount', $diagnosticsConfigurationXml.PublicConfig.NamespaceURI)
         $storageAccount.InnerText = $StorageAccountName
         $storageAccount = $diagnosticsConfigurationXml.PublicConfig.AppendChild($storageAccount)
-	}
+    }
 
-	$metrics = $diagnosticsConfigurationXml.PublicConfig.WadCfg.DiagnosticMonitorConfiguration.ChildNodes | Where-Object { $_.Name -eq 'Metrics' }
-	if (-not $metrics)
-	{
+    $metrics = $diagnosticsConfigurationXml.PublicConfig.WadCfg.DiagnosticMonitorConfiguration.ChildNodes | Where-Object { $_.Name -eq 'Metrics' }
+    if (-not $metrics)
+    {
         $metrics = $diagnosticsConfigurationXml.CreateElement('Metrics', $diagnosticsConfigurationXml.PublicConfig.NamespaceURI)
         $resourceId = '/subscriptions/' + $Subscription + '/resourceGroups/'+ $ResourceGroupName + '/providers/Microsoft.Compute/cloudservices/' + $CloudServiceName
         $metrics.SetAttribute('resourceId', $resourceId)
@@ -92,16 +92,16 @@ function New-AzCloudServiceDiagnosticsExtension {
 
     $setting = $diagnosticsConfigurationXml.PublicConfig.OuterXml
 
-	$privateConfig = $diagnosticsConfigurationXml.ChildNodes | Where-Object { $_.Name -eq 'PrivateConfig' }
-	if ($privateConfig)
-	{
-	    $protectedSetting = $privateConfig.OuterXml	
-	}
-	else
-	{
+    $privateConfig = $diagnosticsConfigurationXml.ChildNodes | Where-Object { $_.Name -eq 'PrivateConfig' }
+    if ($privateConfig)
+    {
+        $protectedSetting = $privateConfig.OuterXml
+    }
+    else
+    {
         $storageEndpoint = "https://core.windows.net"
         $protectedSetting = '<?xml version="1.0" encoding="UTF-8"?><PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"><StorageAccount endpoint="' + $storageEndpoint + '" key="' + $StorageAccountKey + '" name="' + $storageAccountName + '"/></PrivateConfig>'
-	}
+    }
 
     return New-AzCloudServiceExtensionObject -Name $Name -Publisher $publisher -Type $extensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $setting -ProtectedSetting $protectedSetting -RolesAppliedTo $RolesAppliedTo -AutoUpgradeMinorVersion $AutoUpgradeMinorVersion
   }

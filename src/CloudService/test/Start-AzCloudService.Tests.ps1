@@ -18,7 +18,7 @@ Describe 'Start-AzCloudService' {
     }
 
     It 'Start cloud service via identity' {
-	    $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Start-AzCloudService -InputObject $cloudService
+        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        Start-AzCloudService -InputObject $cloudService
     }
 }

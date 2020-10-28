@@ -18,8 +18,8 @@ Describe 'Get-AzCloudServiceInstanceView' {
     }
 
     It 'GetViaIdentity' {
-	    $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
         $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -InputObject ($cloudService.Id + "/instanceView")
-		$cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
+        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
     }
 }

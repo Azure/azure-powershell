@@ -18,6 +18,6 @@ Describe 'Invoke-AzCloudServiceRebuild' {
 
     It 'Rebuild cloud service via identity' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-		Invoke-AzCloudServiceRebuild -InputObject $cloudService.Id -RoleInstance $env.RoleInstanceName
+        Invoke-AzCloudServiceRebuild -InputObject $cloudService.Id -RoleInstance $env.RoleInstanceName
     }
 }
