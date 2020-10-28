@@ -95,7 +95,7 @@ function Switch-AzCloudService {
         $SourceCloudService = Get-AzCloudService -SubscriptionId $SubscriptionId -Name $CloudServiceName -ResourceGroupName $ResourceGroupName
 
         # Check that both have swappable property set.
-        if ([string]::IsNullOrEmpty($SourceCloudService.SwappableCloudServiceId)) {
+        if ([string]::IsNullOrEmpty($SourceCloudService.NetworkProfile.SwappableCloudService.Id)) {
             throw "SwappableCloudServiceId is not set on the source cloud service " + $SourceCloudService.Name 
         }
 
@@ -106,7 +106,7 @@ function Switch-AzCloudService {
         }
   
         # Parse target cloud service fields
-        $elements = $SourceCloudService.SwappableCloudServiceId.Split("/")
+        $elements = $SourceCloudService.NetworkProfile.SwappableCloudService.Id.Split("/")
         $TargetSubscriptionId = $elements[2]
         $TargetResourceGroupName = $elements[4]
         $TargetCloudServiceName = $elements[8]
@@ -121,13 +121,13 @@ function Switch-AzCloudService {
         }
 
         # Get the LBs and FrontEndIpConfigs to create the request body
-        $sourceLB = GetCloudServiceLoadBalancer($SubscriptionId, $ResourceGroupName, $SourceCloudService.NetworkProfileLoadBalancerConfiguration.Name, $ApiVersion)
+        $sourceLB = GetCloudServiceLoadBalancer($SubscriptionId, $ResourceGroupName, $SourceCloudService.NetworkProfile.LoadBalancerConfiguration[0].Name, $ApiVersion)
         $validSourceLB = ValidateLoadBalancerFrontEndIPConfiguration($sourceLB)
         if ($validSourceLB -eq $false) {
             throw "Source loadbBalancer must have a single value in its FrontendIpConfigurations." 
         }
 
-        $targetLB =  GetCloudServiceLoadBalancer($TargetSubscriptionId, $TargetResourceGroupName, $TargetCloudService.NetworkProfileLoadBalancerConfiguration.Name, $ApiVersion)      
+        $targetLB =  GetCloudServiceLoadBalancer($TargetSubscriptionId, $TargetResourceGroupName, $TargetCloudService.NetworkProfile.LoadBalancerConfiguration[0].Name, $ApiVersion)      
         $validTargetLB = ValidateLoadBalancerFrontEndIPConfiguration($targetLB)
         if ($validTargetLB -eq $false) {
             throw "Target loadbBalancer must have a single value in its FrontendIpConfigurations." 
@@ -136,9 +136,9 @@ function Switch-AzCloudService {
         # Construct the request body
         $requestBody = GetVIPSwapRequestBody
         $requestBody = $requestBody -replace "#LBFE1#", $sourceLB.properties.frontendIPConfigurations[0].Id
-        $requestBody = $requestBody -replace "#PIP2#", $TargetCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
+        $requestBody = $requestBody -replace "#PIP2#", $TargetCloudService.NetworkProfile.LoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
         $requestBody = $requestBody -replace "#LBFE2#", $targetLB.properties.frontendIPConfigurations[0].Id
-        $requestBody = $requestBody -replace "#PIP1#", $SourceCloudService.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
+        $requestBody = $requestBody -replace "#PIP1#", $SourceCloudService.NetworkProfile.LoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
 
         # Set up API URI and Headers
         $uriToInvoke = "/subscriptions/" + $SubscriptionId + "/providers/Microsoft.Network/locations/" + $SourceCloudService.Location + "/setLoadBalancerFrontendPublicIpAddresses?api-version=" + $ApiVersion
@@ -208,9 +208,9 @@ function ValidateLoadBalancerFrontEndIPConfiguration($lb) {
 
 function ValidateCloudServicePublicIPAddress($cs) {
 
-    if ($cs.NetworkProfileLoadBalancerConfiguration.Count -eq 1) {
-        if ($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration.Count -eq 1) {
-            if (-not [string]::IsNullOrEmpty($cs.NetworkProfileLoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId)) {
+    if ($cs.NetworkProfile.LoadBalancerConfiguration.Count -eq 1) {
+        if ($cs.NetworkProfile.LoadBalancerConfiguration[0].FrontendIPConfiguration.Count -eq 1) {
+            if (-not [string]::IsNullOrEmpty($cs.NetworkProfile.LoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId)) {
                 return $true;
             }
         }
@@ -257,3 +257,4 @@ function GetVIPSwapRequestBody() {
 }
 "@
 }
+
