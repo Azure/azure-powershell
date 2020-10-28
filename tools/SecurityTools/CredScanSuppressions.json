@@ -1209,5 +1209,9 @@
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\\TestImportNewDatabase_NetworkIsolation.json",
       "_justification": "temporary storage account deleted after PR merge"
     },
+    {
+      "file": "src\\DigitalTwins\\test\\New-AzDigitalTwinsEndpoint.Recording.json",
+      "_justification": "eventHubConnectionStringPrimaryKey serviceBusPrimaryConnectionString and eventGridAccessKey1 are deleted"
+    }
   ]
 }
