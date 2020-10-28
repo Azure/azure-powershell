@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for FtpsState.</summary>
+    /// <summary>State of FTP / FTPS service</summary>
     public partial class FtpsStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

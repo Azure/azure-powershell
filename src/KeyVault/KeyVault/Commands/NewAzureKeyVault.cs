@@ -98,7 +98,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
-        public SkuName Sku { get; set; }
+        [PSArgumentCompleter("Standard", "Premium")]
+        public string Sku { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -150,9 +151,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationOrUpdateParameters()
                 {
-                    VaultName = this.Name,
+                    Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,

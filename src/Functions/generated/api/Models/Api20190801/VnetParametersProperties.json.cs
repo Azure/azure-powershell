@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._vnetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetName.ToString()) : null, "vnetName" ,container.Add );
             AddIf( null != (((object)this._vnetResourceGroup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetResourceGroup.ToString()) : null, "vnetResourceGroup" ,container.Add );
+            AddIf( null != (((object)this._vnetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetName.ToString()) : null, "vnetName" ,container.Add );
             AddIf( null != (((object)this._vnetSubnetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._vnetSubnetName.ToString()) : null, "vnetSubnetName" ,container.Add );
             AfterToJson(ref container);
             return container;
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_vnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetName"), out var __jsonVnetName) ? (string)__jsonVnetName : (string)VnetName;}
             {_vnetResourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetResourceGroup"), out var __jsonVnetResourceGroup) ? (string)__jsonVnetResourceGroup : (string)VnetResourceGroup;}
+            {_vnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetName"), out var __jsonVnetName) ? (string)__jsonVnetName : (string)VnetName;}
             {_vnetSubnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("vnetSubnetName"), out var __jsonVnetSubnetName) ? (string)__jsonVnetSubnetName : (string)VnetSubnetName;}
             AfterFromJson(json);
         }

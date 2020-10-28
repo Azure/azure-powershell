@@ -6,7 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ReasonCode.</summary>
+    /// <summary>
+    /// The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when
+    /// the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription"
+    /// is related to capacity at DC.
+    /// </summary>
     public partial class ReasonCodeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
