@@ -33,6 +33,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Data.OleDb;
+using System.CodeDom;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -257,26 +258,28 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ExecuteClientAction(() => 
+            ExecuteClientAction(() =>
             {
-                bool backupCreated = false;
-                // 1. convert vhdx to vhd if need
-                // 1-1 check if vhdx file
-                if (Path.GetExtension(this.LocalFilePath.Name) == ".vhdx")
+            bool backupCreated = false;
+            // 1. convert vhdx to vhd if need
+            // 1-1 check if vhdx file
+            if (Path.GetExtension(this.LocalFilePath.Name) == ".vhdx")
+            {
+                // create back up 
+                // createBackUp(this.LocalFilePath.FullName);
+                backupCreated = true;
+
+                // 1-2. convert file
+                FileInfo vhdFileInfo = new FileInfo(Path.ChangeExtension(this.LocalFilePath.FullName, ".vhd"));
+                ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
+                VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
+
+                try
                 {
-                    // create back up 
-                    // createBackUp(this.LocalFilePath.FullName);
-                    backupCreated = true;
-
-                    // 1-2. convert file
-                    FileInfo vhdFileInfo = new FileInfo(Path.ChangeExtension(this.LocalFilePath.FullName, ".vhd"));
-                    ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
-                    VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
-
-                    WriteVerbose("Converting .vhdx file .vhd file.");
                     using (ManagementObject imageManagementService =
-                        StorageUtilities.GetImageManagementService(scope))
+                    StorageUtilities.GetImageManagementService(scope))
                     {
+                        WriteVerbose("Converting .vhdx file .vhd file.");
                         using (ManagementBaseObject inParams =
                             imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                         {
@@ -291,10 +294,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             }
                         }
                     }
-                    
-                    // 1-3. update this.LocalFilePath property for resizing, if all good
-                    this.LocalFilePath = vhdFileInfo;
                 }
+                catch (System.Management.ManagementException e)
+                {
+                        ThrowTerminatingError(new ErrorRecord(
+                            e,
+                            "Hyper-V is unavailable",
+                            ErrorCategory.InvalidOperation,
+                            null));
+                }
+                    
+                    
+                // 1-3. update this.LocalFilePath property for resizing, if all good
+                this.LocalFilePath = vhdFileInfo;
+            }
                 
                 // 2. resize vhd 
                 // 2-2. check if resize is needed 
@@ -306,27 +319,38 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         createBackUp(this.LocalFilePath.FullName);
                     }
 
-                    /*
+                    
                     // 2-3. resize
                     UInt64 FileSize = 1048576 * Convert.ToUInt64(Math.Ceiling((this.LocalFilePath.Length - 512) / 1048576.0));
-                    WriteVerbose("Resizing Vhd file from " + this.LocalFilePath.Length + " to " + FileSize);
-                    ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
-                    using (ManagementObject imageManagementService =
-                        StorageUtilities.GetImageManagementService(scope))
+
+                    try
                     {
-                        using (ManagementBaseObject inParams =
-                            imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
+                        ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
+                        using (ManagementObject imageManagementService =
+                            StorageUtilities.GetImageManagementService(scope))
                         {
-                            inParams["Path"] = this.LocalFilePath.FullName;
-                            inParams["MaxInternalSize"] = FileSize;
-                                             using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
-                                "ResizeVirtualHardDisk", inParams, null))
+                            WriteVerbose("Resizing Vhd file from " + this.LocalFilePath.Length + " to " + FileSize);
+                            using (ManagementBaseObject inParams =
+                                imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
                             {
-                                WmiUtilities.ValidateOutput(outParams, scope);
+                                inParams["Path"] = this.LocalFilePath.FullName;
+                                inParams["MaxInternalSize"] = FileSize;
+                                using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
+                                    "ResizeVirtualHardDisk", inParams, null))
+                                {
+                                    WmiUtilities.ValidateOutput(outParams, scope);
+                                }
                             }
                         }
                     }
-                    */
+                    catch (System.Management.ManagementException e)
+                    {
+                        ThrowTerminatingError(new ErrorRecord(
+                            e,
+                            "Hyper-V is unavailable",
+                            ErrorCategory.InvalidOperation,
+                            null));
+                    }
                 }
                 else // does not need resizing
                 { 
