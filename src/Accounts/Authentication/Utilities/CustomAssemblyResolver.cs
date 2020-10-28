@@ -10,12 +10,14 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
-                {"Azure.Core", new Version("1.2.2.0")},
+                {"Azure.Core", new Version("1.5.1.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
+                {"Microsoft.Identity.Client", new Version("4.21.0.0") },
+                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.16.2.0") },
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
                 {"Newtonsoft.Json", new Version("10.0.0.0")},
-                {"System.Buffers", new Version("4.0.2.0")},
+                {"System.Buffers", new Version("4.0.3.0")},
                 {"System.Diagnostics.DiagnosticSource", new Version("4.0.4.0")},
                 {"System.Memory", new Version("4.0.1.1")},
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
@@ -24,6 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.5.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
+                {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
                 {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
@@ -53,7 +56,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 AssemblyName name = new AssemblyName(args.Name);
                 if (NetFxPreloadAssemblies.TryGetValue(name.Name, out Version version))
                 {
-                    if (version >= name.Version && version.Major == name.Version.Major)
+                    //For Newtonsoft.Json, allow to use bigger version to replace smaller version
+                    if (version >= name.Version && (version.Major == name.Version.Major || string.Equals(name.Name, "Newtonsoft.Json", StringComparison.OrdinalIgnoreCase)))
                     {
                         string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{name.Name}.dll");
                         return Assembly.LoadFrom(requiredAssembly);

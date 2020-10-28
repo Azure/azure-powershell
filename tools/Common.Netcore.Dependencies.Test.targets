@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.7.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.8.0-preview" />
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" />
@@ -35,20 +35,20 @@
 
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="[10.0.3]" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-rc.1" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
  </ItemGroup>
 
  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.3" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
  </ItemGroup>
 

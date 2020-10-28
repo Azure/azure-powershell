@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Base class for policy cmdlets.
     /// </summary>
-    public abstract class PolicyCmdletBase : ResourceManagerCmdletBaseWithAPiVersion
+    public abstract class PolicyCmdletBase : ResourceManagerCmdletBaseWithApiVersion
     {
         public enum ListFilter
         {

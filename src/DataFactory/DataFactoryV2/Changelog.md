@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.0
+* Updated ADF .Net SDK version to 4.12.0
+* Updated ADF encryption client SDK version to 4.14.7587.7
+* Added `Stop-AzDataFactoryV2TriggerRun` and `Invoke-AzDataFactoryV2TriggerRun` commands
+
+## Version 1.10.2
+* Fixed typo in output messages
+
+## Version 1.10.1
+* Updated ADF .Net SDK version to 4.11.0
+
+## Version 1.10.0
+* Added missing properties to PSPipelineRun class.
+
 ## Version 1.9.0
 
 * Added global parameters to Data Factory.

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MariaDb
-Module Guid: 95e6899e-a8a2-4071-afb8-6b33b6c15be0
+Module Guid: c3b6a676-7237-4989-99d0-9df520acda9f
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mariadb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: MariaDb cmdlets
 Gets information about a configuration of server.
 
 ### [Get-AzMariaDbConnectionString](Get-AzMariaDbConnectionString.md)
-Get connection string of a MariaDb under a given framework.
+Get connection string of a MariaDB under a given framework.
 
 ### [Get-AzMariaDbFirewallRule](Get-AzMariaDbFirewallRule.md)
 Gets information about a server firewall rule.
@@ -32,11 +32,11 @@ Gets a virtual network rule.
 ### [New-AzMariaDbFirewallRule](New-AzMariaDbFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
-### [New-AzMariaDbServer](New-AzMariaDbServer.md)
-Creates a new MariaDb.
+### [New-AzMariaDbReplica](New-AzMariaDbReplica.md)
+Creates a replica of a MariaDB server.
 
-### [New-AzMariaDbServerReplica](New-AzMariaDbServerReplica.md)
-Creates a replica of a MariaDb server.
+### [New-AzMariaDbServer](New-AzMariaDbServer.md)
+Creates a new MariaDB.
 
 ### [New-AzMariaDbVirtualNetworkRule](New-AzMariaDbVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.
@@ -54,10 +54,11 @@ Deletes the virtual network rule with the given name.
 Restarts a server.
 
 ### [Restore-AzMariaDbServer](Restore-AzMariaDbServer.md)
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 
 ### [Update-AzMariaDbConfiguration](Update-AzMariaDbConfiguration.md)
 Updates a configuration of a server.
+Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzMariaDbFirewallRule](Update-AzMariaDbFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
@@ -65,6 +66,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzMariaDbServer](Update-AzMariaDbServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMariaDbVirtualNetworkRule](Update-AzMariaDbVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.

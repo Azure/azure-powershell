@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Path = directoryClient.Path;
             Directory = directoryClient;
             IsDirectory = true;
-            if (directoryClient.Path != "/") //if root directory, GetProperties() will fail. Skip until this is fixed.
+            if (directoryClient.Path != "/" || string.IsNullOrEmpty(directoryClient.Path)) //if root directory, GetProperties() will fail. Skip until this is fixed.
             {
                 Properties = directoryClient.GetProperties();
                 Length = Properties.ContentLength;

@@ -90,10 +90,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

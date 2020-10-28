@@ -6,9 +6,9 @@ Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
 
-Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
-----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
-mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
 ```
 
 This command creates a new MariaDB.

@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
+* Fixed null reference and method case insensitive in `Invoke-AzRestMethod`
+
+## Version 2.1.0
+* [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
+* Replaced Azure Directory Authentication Library with Microsoft Authentication Library(MSAL)
+
+## Version 1.9.5
+* Fixed DateTime parse issue in common libraries [#13045]
+
+## Version 1.9.4
+* Formatted the upcoming breaking change messages
+* Updated Azure.Core to 1.4.1
+
+## Version 1.9.3
+* Loaded all public cloud environments when discovery endpoint doesn't return default AzureCloud or other public environments [#12633]
+* Exposed SubscriptionPolicies in `Get-AzSubscription` [#12551]
+
+## Version 1.9.2
 * Updated `Connect-AzAccount` to accept parameter `MaxContextPopulation` [#9865]
 * Updated SubscriptionClient version to 2019-06-01 and display tenant domains [#9838]
 * Supported home tenant and managedBy tenant information of subscription

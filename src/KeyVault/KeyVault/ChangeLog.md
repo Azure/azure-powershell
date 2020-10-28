@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* [Breaking Change] Deprecated parameter DisableSoftDelete in `New-AzKeyVault` and EnableSoftDelete in `Update-AzKeyVault`
+* [Breaking Change] Removed attribute SecretValueText to avoid displaying SecretValue directly [#12266]
+* Supported new resource type: managed HSM
+    - CRUD of managed HSM and cmdlets to operate keys on managed HSM
+    - Full HSM backup/restore, AES key creation, security domain backup/restore, RBAC
+
+## Version 2.2.1
+* Provided the detailed date of removing property SecretValueText
+
+## Version 2.2.0
+* Added support for RBAC authorization [#10557]
+* Enhanced error handling in `Set-AzKeyVaultAccessPolicy` [#4007]
+
+## Version 2.1.0
+* Added warning messages for planning to disable soft delete
+* Added warning messages for planning to remove attribute SecretValueText
+
 ## Version 2.0.0
 * Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
 * Enabled soft delete by default when creating a key vault

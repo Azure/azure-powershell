@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
+    /// </summary>
     public partial struct ImmutabilityPolicyState :
         System.IEquatable<ImmutabilityPolicyState>
     {

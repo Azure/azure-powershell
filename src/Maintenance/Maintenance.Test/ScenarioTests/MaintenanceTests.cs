@@ -52,5 +52,12 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceUpdate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicMaintenanceConfiguration()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenancePublicConfiguration");
+        }
     }
 }

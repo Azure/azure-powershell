@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for WorkerSizeOptions.</summary>
+    /// <summary>Size of the machines.</summary>
     public partial class WorkerSizeOptionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

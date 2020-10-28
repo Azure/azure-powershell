@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -22,61 +23,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
     [Cmdlet(
         VerbsCommon.Get,
-        Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
         DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSRegistrationAssignment))]
     public class GetAzureRmManagedServicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
-        protected const string ByResourceIdParameterSet = "ByResourceId";
-        protected const string ByIdParameterSet = "ById";
+        protected const string ByNameParameterSet = "ByName";
 
-        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The scope where the registration assignment is created.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByIdParameterSet, HelpMessage = "The scope where the registration assignment is created.")]
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The scope where the registration assignment created.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The scope where the registration assignment created.")]
+        [ValidateNotNullOrEmpty]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByIdParameterSet, HelpMessage = "The Registration Assignment identifier.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The unique name of the Registration Assignment.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByResourceIdParameterSet,
-            HelpMessage = "The fully qualified resource id of registration assignment.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Whether to include registration definition details.")]
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
-        [Parameter(ParameterSetName = ByIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Whether to include registration definition details.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "Whether to include registration definition details.")]
         public SwitchParameter ExpandRegistrationDefinition { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string scope = null;
+            string scope = this.GetDefaultScope();
             string assignmentId = null;
 
-            if (this.IsParameterBound(x => x.ResourceId))
+            if (this.IsParameterBound(x => x.Name))
             {
-                assignmentId = this.ResourceId.GetResourceName();
-                scope = this.ResourceId.GetSubscriptionId().ToSubscriptionResourceId();
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
+                assignmentId = this.Name;
             }
-            else if (this.IsParameterBound(x => x.Id))
-            {
-                assignmentId = this.Id;
-                scope = this.Scope ?? this.GetDefaultScope();
-            }
-            else if (this.IsParameterBound(x => x.Scope))
+
+            if (this.IsParameterBound(x => x.Scope))
             {
                 scope = this.Scope;
             }
-            else
-            {
-                scope = this.GetDefaultScope();
-            }
 
-            if (string.IsNullOrEmpty(assignmentId))
+            if (string.IsNullOrWhiteSpace(assignmentId))
             {
                 var results = this.PSManagedServicesClient.ListRegistrationAssignments(
                     scope: scope,
@@ -85,12 +73,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
             else
             {
-                // validate assignmentId.
-                if (!assignmentId.IsGuid())
-                {
-                    throw new ApplicationException("RegistrationAssignment must be a valid GUID.");
-                }
-
                 var result = this.PSManagedServicesClient.GetRegistrationAssignment(
                     scope: scope,
                     registrationAssignmentId: assignmentId,

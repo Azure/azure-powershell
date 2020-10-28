@@ -9,8 +9,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
     public partial struct InfrastructureEncryption :
         System.IEquatable<InfrastructureEncryption>
     {
+        /// <summary>Additional (2nd) layer of encryption for data at rest</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryption Disabled = @"Disabled";
 
+        /// <summary>Default value for single layer of encryption for data at rest.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryption Enabled = @"Enabled";
 
         /// <summary>the value for an instance of the <see cref="InfrastructureEncryption" /> Enum.</summary>

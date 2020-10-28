@@ -21,6 +21,7 @@ using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {

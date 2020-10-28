@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
+            EnableRbacAuthorization = vault.Properties.EnableRbacAuthorization;
             SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
@@ -72,6 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnableSoftDelete { get; private set; }
 
         public bool? EnablePurgeProtection { get; private set; }
+        
+        public bool? EnableRbacAuthorization { get; private set; }
 
         public int? SoftDeleteRetentionInDays { get; private set; }
 
@@ -89,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static PSKeyVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
         {
-            // The service will return NULL when NetworkAcls is never set before or set with default property values
+            // The service will return NULL when NetworkAcls is never set before or set with default values
             // The default constructor will set default property values in SDK's NetworkRuleSet class
             if (properties?.NetworkAcls == null)
             {

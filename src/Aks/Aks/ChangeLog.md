@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
+* [Breaking Change] Removed parameter alias `ClientIdAndSecret` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* [Breaking Change] Changed the default value of `NodeVmSetType` in `New-AzAksCluster` from `AvailabilitySet` to `VirtualMachineScaleSets`.
+* [Breaking Change] Changed the default value of `NetworkPlugin` in `New-AzAksCluster` from `None` to `azure`.
+* [Breaking Change] Removed parameter `NodeOsType` in `New-AzAksCluster` as it supports only one value Linux.
+
+
+## Version 1.3.0
+* Added client side parameter validation logic for `New-AzAksCluster`, `Set-AzAksCluster` and `New-AzAksNodePool`. [#12372]
+* Added support for add-ons in `New-AzAksCluster`. [#11239]
+* Added cmdlets `Enable-AzAksAddOn` and `Disable-AzAksAddOn` for add-ons. [#11239]
+* Added parameter `GenerateSshKey` for `New-AzAksCluster`. [#12371]
+* Updated api version to 2020-06-01.
+
+## Version 1.2.0
 * Removed `ClientIdAndSecret` to `ServicePrincipalIdAndSecret` and set `ClientIdAndSecret` as an alias [#12381].
 * Removed `Get-AzAks`/`New-AzAks`/`Remove-AzAks`/`Set-AzAks` to `Get-AzAksCluster`/`New-AzAksCluster`/`Remove-AzAksCluster`/`Set-AzAksCluster` and set the original ones as alias [#12373].
 

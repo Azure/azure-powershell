@@ -2467,3 +2467,186 @@ function Test-VirtualMachineScaleSetImageVersion
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+    testing encryptionAtHost cmdlet for
+    new-azvmss - create vmss using simple parameter set and hostencryption tag.
+    update-azvmss test boolean parameter 
+    new-azvmssconfig
+#>
+function Test-VirtualMachineScaleSetEncryptionAtHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+ 
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmsswithconfig';
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+        
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -EncryptionAtHost `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+       
+        #creating vmss using new-azvmss default parameter set which uses New-VmssConfig with -EncryptionAtHost parameter
+        $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        #creating vmss using New-azvmss simple parameter set
+        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -EncryptionAtHost -DomainNameLabel "domainlabel"
+
+        Assert-AreEqual $vmssResult1.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
+        Assert-AreEqual $vmssResult2.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
+        
+        #using Update-azvmss to turn off encryptionAtHost
+        $updatedVM = Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult1 -EncryptionAtHost $false
+        
+        Assert-False { $updatedVM.VirtualMachineProfile.SecurityProfile.EncryptionAtHost };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+    create a VMSS in orchestration mode then add a vm to it
+#>
+function Test-VirtualMachineScaleSetOrchestrationVM
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssOrchestrationMode' + $rgname;
+        $vmName = 'vm' + $rgname;
+        $domainName = 'domain' + $rgname;
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+
+        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
+        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
+
+        Assert-AreEqual $VmssWithoutVmProfile.id $vm.virtualmachinescaleset.id
+
+        # Test PlatformFaultDomainCount parameter
+        $vmssNameSimple = $vmssname + "Simple";
+        $vmssNameDefault = $vmssname + "Default";
+        $platformFaultDomainCount = 5;
+        $platformFaultDomainCountConfig = 3;
+        $zone = "2";
+        $domainNameLabel = $rgname + "domainlabel";
+        $VmSku = "Standard_D2s_v3";
+
+ 
+        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig;
+        Assert-NotNull $vmssConfigFaultDomain;
+        Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss DefaultParameterSet 
+        $vmssDefault = New-AzVmss -Name $vmssNameDefault -ResourceGroup $rgname -VirtualMachineScaleSet $vmssConfigFaultDomain;
+        Assert-NotNull $vmssDefault;
+        Assert-AreEqual $vmssDefault.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet 
+        $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
+        Assert-NotNull $vmssSimple; 
+        Assert-AreEqual $vmssSimple.PlatformFaultDomainCount $platformFaultDomainCount;
+
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+} 
+
+<#
+.SYNOPSIS
+    testing encryptionAtHost cmdlet for
+    new-azvmss - create vmss using simple parameter set and hostencryption tag.
+    update-azvmss test boolean parameter 
+    new-azvmssconfig
+#>
+function Test-VirtualMachineScaleSetAssignedHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+ 
+    try
+    {
+        # Common
+        $zone = "2"
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Host
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+
+        $Sku = "Esv3-Type1"
+        $hostName = $rgname + "Host"
+        $host_ = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
+
+        # Creating a new vmss
+        $VmSku = "Standard_E2s_v3"
+        $domainNameLabel = "domainlabel"
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+
+        $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+        
+        Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.AssignedHost;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -55,10 +55,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
 
-        public string[] PrivateRange {
+        public string[] PrivateRange
+        {
             get
             {
-                return this.privateRange; 
+                return this.privateRange;
             }
             set
             {
@@ -70,13 +71,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string DNSEnableProxy { get; set; }
 
-        public string DNSRequireProxyForNetworkRules { get; set; }
-
         public string[] DNSServer { get; set; }
 
         public string ProvisioningState { get; set; }
 
         public List<string> Zones { get; set; }
+
+        public string AllowActiveFTP { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -164,11 +165,11 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
 
                 this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
-                    {
-                        Name = AzureFirewallMgmtIpConfigurationName,
-                        PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
-                        Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
-                    };
+                {
+                    Name = AzureFirewallMgmtIpConfigurationName,
+                    PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
+                    Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
+                };
             }
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
@@ -418,12 +419,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             if (string.Equals(this.DNSEnableProxy, "true", StringComparison.OrdinalIgnoreCase))
             {
                 // Nothing to validate since they have enabled DNS Proxy
-                return;
-            }
-
-            if (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase))
-            {
-                // Nothing to validate since both DNS Proxy and Requiring Proxy for Network Rules is disabled
                 return;
             }
 
