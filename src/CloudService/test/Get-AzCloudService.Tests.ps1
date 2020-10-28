@@ -24,23 +24,12 @@ Describe 'Get-AzCloudService' {
 
     It 'Get cloud service' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudService.RoleProfileRole.Count | Should Be 2
+        $cloudService.RoleProfile.Role.Count | Should Be 2
     }
 
-    It 'Get cloud service InstanceView' {
-        $cloudServiceInstanceView = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -InstanceView
-        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
+    It 'GetViaIdentity' {
+	    $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+	    $cs2 = Get-AzCloudService -InputObject $cloudService.Id
+		$cs2.RoleProfile.Role.Count | Should Be 2
     }
-
-    # It 'Get cloud service via identity' {
-    #     $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-    #     $cloudService = $cs | Get-AzCloudService
-    #     $cloudService.RoleProfileRole.Count | Should Be 2
-    # }
-
-    # It 'Get cloud service InstanceView via identity' {
-    #     $cs = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-    #     $cloudServiceInstanceView = $cs | Get-AzCloudService -InstanceView
-    #     $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
-    # }
 }

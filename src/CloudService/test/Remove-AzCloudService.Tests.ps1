@@ -16,15 +16,7 @@ Describe 'Remove-AzCloudService' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteRoleInstance' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteRoleInstanceViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

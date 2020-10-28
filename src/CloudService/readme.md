@@ -59,59 +59,86 @@ identity-correction-for-post: true
 
 directive:
   - where:
+      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
+      subject: ^CloudService$|^RebuildCloudService$
+    remove: true
+
+  - where:
       subject: ^CloudService$
-      verb: Update
+      variant: ^ReimageExpanded$|^ReimageViaIdentityExpanded$
     set:
       subject: CloudServiceReimage
       verb: Invoke
   - where:
       subject: ^CloudServiceRoleInstance$
-      verb: Update
+      variant: ^Reimage$|^ReimageViaIdentity$
     set:
       subject: CloudServiceRoleInstanceReimage
       verb: Invoke
+
   - where:
       subject: ^RebuildCloudService$
+      variant: ^RebuildExpanded$|^RebuildViaIdentityExpanded$
     set:
       subject: Rebuild
   - where:
       subject: ^RebuildCloudServiceRoleInstance$
+      variant: ^Rebuild$|^RebuildViaIdentity$
     set:
       subject: RoleInstanceRebuild
 
   - where:
-      subject: ^WalkCloudServiceUpdateDomain$
-      verb: Invoke
-    set:
-      subject: UpdateDomain
-      verb: Update
-  - where:
-      variant: ^Create$|^CreateExpanded$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      subject: ^CloudServiceUpdateDomain$
+      verb: Get
     remove: true
   - where:
+      subject: ^WalkCloudServiceUpdateDomain$
+    set:
+      subject: UpdateDomain
+      verb: Set
+
+  - where:
+      subject: ^CloudServiceRole$
+      verb: Get
+    remove: true
+  - where:
+      subject: ^CloudServiceRoleInstance$
+      verb: Remove
+    remove: true
+  - where:
+      subject: ^CloudServiceInstance$
+      verb: Remove
+    set:
+      subject: CloudServiceRoleInstance
+
+  - where:
       subject: ^CloudService$
+      verb: Update|Set
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentityExpanded$
+      verb: New
+    remove: true
+
+  - where:
+      variant: ^CreateViaIdentity$
       verb: New
     set:
       verb: Update
-  - where:
-      subject: ^CloudService$
-      verb: Set
-    set:
-      verb: New
+
   - where:
       variant: ^GetViaIdentity$
       subject: ^CloudServiceRoleInstanceRemoteDesktopFile$
     remove: true
+
   - where:
       subject: ^CloudService$
       parameter-name: Name
     set:
       parameter-name: Name
       alias-name: CloudServiceName
-  - where:
-      subject: ^CloudServiceUpdateDomain$
-      verb: Get
-    remove: true
+
   - where:
       subject: ^LoadBalancerProbe$|^LoadBalancerNetworkInterface$|^LoadBalancerOutboundRule$|^LoadBalancerLoadBalancingRule$|^LoadBalancerInboundNatRule$|^LoadBalancerFrontendIPConfiguration$|^LoadBalancerBackendAddressPool$|^InboundNatRule$|^LoadBalancer$|^LoadBalancerTag$
     remove: true
@@ -133,19 +160,6 @@ directive:
     where: $
     transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
 
-  - where:
-      subject: ^CloudServiceRoleInstance$
-      verb: Remove
-    hide: true
-  - where:
-      subject: ^CloudServiceRole$
-      verb: Get
-    hide: true
-  - where:
-      subject: ^CloudServiceInstance$
-      verb: Remove
-    set:
-      subject: CloudServiceRoleInstance
   - where:
       model-name: CloudService
     set:
