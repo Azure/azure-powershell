@@ -1,7 +1,7 @@
 ### Example 1: Get cloud service instance view
 
 ```powershell
-PS C:\>$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+PS C:\>$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
 PS C:\>$cloudServiceInstanceView
 RoleInstanceStatusesSummary                                   Statuses
