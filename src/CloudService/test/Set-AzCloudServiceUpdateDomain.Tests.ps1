@@ -12,11 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Set-AzCloudServiceUpdateDomain' {
-    It 'WalkExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Walk' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update role instances for update domain 0' -skip {
+        Set-AzCloudServiceUpdateDomain -CloudServiceName $env.CloudServiceName -ResourceGroupName $env.ResourceGroupName -UpdateDomain 0
     }
 }

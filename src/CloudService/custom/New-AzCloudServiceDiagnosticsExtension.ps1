@@ -74,7 +74,11 @@ function New-AzCloudServiceDiagnosticsExtension {
     [xml]$diagnosticsConfigurationXml = Get-Content $DiagnosticsConfigurationPath
 
     $storageAccount = $diagnosticsConfigurationXml.PublicConfig.ChildNodes | Where-Object { $_.Name -eq 'StorageAccount' }
-    if (-not $storageAccount)
+    if ($storageAccount)
+    {
+        Write-Host "Using StorageAccount information defined in diagnostics configuration file."
+    }
+    else
     {
         $storageAccount = $diagnosticsConfigurationXml.CreateElement('StorageAccount', $diagnosticsConfigurationXml.PublicConfig.NamespaceURI)
         $storageAccount.InnerText = $StorageAccountName
@@ -82,7 +86,11 @@ function New-AzCloudServiceDiagnosticsExtension {
     }
 
     $metrics = $diagnosticsConfigurationXml.PublicConfig.WadCfg.DiagnosticMonitorConfiguration.ChildNodes | Where-Object { $_.Name -eq 'Metrics' }
-    if (-not $metrics)
+    if ($metrics)
+    {
+        Write-Host "Using Metrics information defined in diagnostics configuration file."
+    }
+    else
     {
         $metrics = $diagnosticsConfigurationXml.CreateElement('Metrics', $diagnosticsConfigurationXml.PublicConfig.NamespaceURI)
         $resourceId = '/subscriptions/' + $Subscription + '/resourceGroups/'+ $ResourceGroupName + '/providers/Microsoft.Compute/cloudservices/' + $CloudServiceName
@@ -96,6 +104,7 @@ function New-AzCloudServiceDiagnosticsExtension {
     if ($privateConfig)
     {
         $protectedSetting = $privateConfig.OuterXml
+        Write-Host "Using PrivateConfig information defined in diagnostics configuration file."
     }
     else
     {

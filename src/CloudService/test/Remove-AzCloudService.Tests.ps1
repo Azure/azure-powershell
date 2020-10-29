@@ -12,8 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzCloudService' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete cloud service' -skip {
+        $publicIpName = "removecstestip"
+        $cloudServiceName = "cscmdlettest" +  (RandomString $false 8)
+        CreateCloudService $publicIpName $cloudServiceName
+        Remove-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $cloudServiceName
     }
 
     It 'DeleteViaIdentity' -skip {

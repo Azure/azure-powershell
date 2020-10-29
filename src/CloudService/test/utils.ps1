@@ -46,9 +46,9 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
                       -Location $env.Location                                     `
                       -PackageUrl $env.CspkgUrl                                   `
                       -Configuration $cscfgText                                   `
-                      -UpgradeMode "Auto"                                         `
+                      -UpgradeMode "Manual"                                       `
                       -RoleProfile $roleProfile                                   `
-                      -NetworkProfile $networkProfile    `
+                      -NetworkProfile $networkProfile                             `
                       -ExtensionProfile $extensionProfile
 }
 

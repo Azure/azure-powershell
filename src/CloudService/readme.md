@@ -93,6 +93,10 @@ directive:
     remove: true
   - where:
       subject: ^WalkCloudServiceUpdateDomain$
+      variant: ^Walk$
+    remove: true
+  - where:
+      subject: ^WalkCloudServiceUpdateDomain$
     set:
       subject: UpdateDomain
       verb: Set
@@ -220,5 +224,13 @@ directive:
           - Location
           - SkuName
           - SkuTier
+
+  - where:
+      model-name: CloudServiceInstanceView
+    set:
+      format-table:
+        properties:
+          - Statuses
+          - RoleInstanceStatusesSummary
 
 ```
