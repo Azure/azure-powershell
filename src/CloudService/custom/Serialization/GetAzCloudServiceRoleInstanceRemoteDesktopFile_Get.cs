@@ -27,7 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 {
                     stream.CopyTo(fileStream);
                 }
-                WriteObject($"Created file: {path}");
+                if (!path.Equals(paths[0]))
+                {
+                    WriteObject($"OutFile: {path}");
+                }
             }
             if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
             {
