@@ -84,21 +84,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
-            }
-
             if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSqlPoolAudit, this.Name, this.WorkspaceName)))
             {
-                SqlPoolAuditModel model = new SqlPoolAuditModel
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    WorkspaceName = this.WorkspaceName,
-                    SqlPoolName = this.Name
-                };
-
-                SynapseAnalyticsClient.RemoveSqlPoolAudit(model);
+                SynapseAnalyticsClient.RemoveSqlPoolAudit(this.ResourceGroupName, this.WorkspaceName, this.Name);
                 if (PassThru)
                 {
                     WriteObject(true);

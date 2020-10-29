@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
@@ -132,6 +133,20 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public static bool IsEmptyOrWhiteSpace(this string value)
         {
             return value.All(char.IsWhiteSpace);
+        }
+
+        public static bool AreEmailAddressesInCorrectFormat(string[] emailAddresses)
+        {
+            if (emailAddresses == null)
+            {
+                return true;
+            }
+
+            var emailRegex =
+                new Regex(string.Format("{0}{1}",
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
+            return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
         }
     }
 }

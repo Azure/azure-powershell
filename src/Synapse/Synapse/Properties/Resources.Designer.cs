@@ -179,15 +179,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to Create Diagnostic Settings..
-        /// </summary>
-        internal static string CreateDiagnosticSettingsException {
-            get {
-                return ResourceManager.GetString("CreateDiagnosticSettingsException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating a new firewall rule in workspace &apos;{0}&apos; with name &apos;{1}&apos;..
         /// </summary>
         internal static string CreatingFirewallRule {
@@ -278,6 +269,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
+        /// </summary>
+        internal static string EmailsAreNotValid {
+            get {
+                return ResourceManager.GetString("EmailsAreNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string EnablingSynapseSparkPoolAutoPause {
@@ -292,15 +292,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EnablingSynapseSparkPoolAutoScale {
             get {
                 return ResourceManager.GetString("EnablingSynapseSparkPoolAutoScale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Event hub authorization rule resource id is not provided..
-        /// </summary>
-        internal static string EventHubAuthorizationRuleResourceIdParameterException {
-            get {
-                return ResourceManager.GetString("EventHubAuthorizationRuleResourceIdParameterException", resourceCulture);
             }
         }
         
@@ -568,6 +559,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?.
+        /// </summary>
+        internal static string InvalidBlobStorageSasUri {
+            get {
+                return ResourceManager.GetString("InvalidBlobStorageSasUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
         /// </summary>
         internal static string InvalidCastParameterKeyExceptionMessage {
@@ -582,6 +582,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other excluded detection types..
+        /// </summary>
+        internal static string InvalidExcludedDetectionTypeSet {
+            get {
+                return ResourceManager.GetString("InvalidExcludedDetectionTypeSet", resourceCulture);
             }
         }
         
@@ -658,20 +667,20 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operation is not supported when multiple Diagnostic Settings enable &apos;{0}&apos;..
-        /// </summary>
-        internal static string MultipleDiagnosticsException {
-            get {
-                return ResourceManager.GetString("MultipleDiagnosticsException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
         /// </summary>
         internal static string NeedIntegrationRuntimeType {
             get {
                 return ResourceManager.GetString("NeedIntegrationRuntimeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide valid value for StorageAccountName or BlobStorageSasUri parameter..
+        /// </summary>
+        internal static string NoStorageAccountSpecified {
+            get {
+                return ResourceManager.GetString("NoStorageAccountSpecified", resourceCulture);
             }
         }
         
@@ -982,6 +991,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing threat protection settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("RemovingThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing vulnerability assessment settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("RemovingVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing audit settings in workspace &apos;{0}&apos;..
         /// </summary>
         internal static string RemovingWorkspaceAudit {
@@ -1059,15 +1086,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ServicePrincipalNameDoesNotExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalNameDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Setting Auditing Settings failed..
-        /// </summary>
-        internal static string SetAuditingSettingsException {
-            get {
-                return ResourceManager.GetString("SetAuditingSettingsException", resourceCulture);
             }
         }
         
@@ -1333,15 +1351,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to update Diagnostic Settings..
-        /// </summary>
-        internal static string UpdateDiagnosticSettingsException {
-            get {
-                return ResourceManager.GetString("UpdateDiagnosticSettingsException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Updating integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string UpdatingIntegrationRuntime {
@@ -1396,6 +1405,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating threat protection settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdatingThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("UpdatingThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating vulnerability assessment settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdatingVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("UpdatingVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upgrading integration runtime &apos;{0}&apos;..
         /// </summary>
         internal static string UpgradingIntegrationRuntime {
@@ -1437,15 +1464,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string WorkspaceDoesNotExist {
             get {
                 return ResourceManager.GetString("WorkspaceDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Workspace resource id is not provided..
-        /// </summary>
-        internal static string WorkspaceResourceIdParameterException {
-            get {
-                return ResourceManager.GetString("WorkspaceResourceIdParameterException", resourceCulture);
             }
         }
     }

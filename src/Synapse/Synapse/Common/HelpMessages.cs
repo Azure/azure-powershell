@@ -212,15 +212,25 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RetentionInDays = "The number of retention days for the audit logs.";
 
-        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
+        public const string NotificationRecipientsEmails = "A semicolon separated list of email addresses to send the alerts to.";
 
-        public const string EventHubName = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
+        public const string EmailAdmins = "Defines whether to email administrators.";
 
-        public const string EventHubAuthorizationRuleId = "The resource Id for the event hub authorization rule";
+        public const string ExcludedDetectionType = "Detection types to exclude.";
 
-        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
+        public const string StorageAccountName = "The name of the storage account.";
 
-        public const string WorkspaceId = "The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Audit Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2";
+        public const string ScanResultsStorageAccountName = "The name of the storage account that will hold the scan results.";
+
+        public const string ScanResultsContainerName = "The name of the storage container that will hold the scan results.";
+
+        public const string BlobStorageSasUri = "A SAS URI to a storage container that will hold the scan results.";
+
+        public const string RecurringScansInterval = "The recurring scans interval.";
+
+        public const string ScanEmailAdmins = "A value indicating whether to email service and co-administrators on recurring scan completion.";
+
+        public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
 
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 

@@ -79,28 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubTargetState)]
-        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubTargetState { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubName)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubAuthorizationRuleId)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubAuthorizationRuleResourceId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.LogAnalyticsTargetState)]
-        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string LogAnalyticsTargetState { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.WorkspaceId)]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceResourceId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -133,19 +111,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
-            }
-
             if (this.ShouldProcess(this.Name, string.Format(Resources.SettingSqlPoolAudit, this.Name, this.WorkspaceName)))
             {
-                SqlPoolAuditModel model = new SqlPoolAuditModel
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    WorkspaceName = this.WorkspaceName,
-                    SqlPoolName = this.Name
-                };
+                SqlPoolAuditModel model = SynapseAnalyticsClient.GetSqlPoolAudit(this.ResourceGroupName, this.WorkspaceName, this.Name);
 
                 if(this.IsParameterBound(c => c.AuditAction))
                 {
@@ -183,31 +151,11 @@ namespace Microsoft.Azure.Commands.Synapse
                     model.RetentionInDays = this.RetentionInDays;
                 }
 
-                if(this.IsParameterBound(c => c.EventHubTargetState))
+                // check parameters
+                if (this.BlobStorageTargetState == SynapseConstants.Security.Enabled &&
+                    string.IsNullOrEmpty(this.StorageAccountResourceId))
                 {
-                    model.EventHubTargetState = this.EventHubTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if(this.IsParameterBound(c => c.EventHubName))
-                {
-                    model.EventHubName = this.EventHubName;
-                }
-
-                if(this.IsParameterBound(c => c.EventHubAuthorizationRuleResourceId))
-                {
-                    model.EventHubAuthorizationRuleResourceId = this.EventHubAuthorizationRuleResourceId;
-                }
-
-                if(this.IsParameterBound(c => c.LogAnalyticsTargetState))
-                {
-                    model.LogAnalyticsTargetState = this.LogAnalyticsTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if(this.IsParameterBound(c => c.WorkspaceResourceId))
-                {
-                    model.WorkspaceResourceId = this.WorkspaceResourceId;
+                    throw new PSArgumentException(Resources.StorageAccountNameParameterException, "StorageAccountName");
                 }
 
                 SynapseAnalyticsClient.CreateOrUpdateSqlPoolAudit(model);

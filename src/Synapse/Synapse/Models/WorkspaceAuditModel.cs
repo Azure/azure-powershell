@@ -50,23 +50,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public uint? RetentionInDays { get; set; }
 
-        public AuditStateType EventHubTargetState { get; set; }
-
-        public string EventHubName { get; set; }
-
-        public string EventHubAuthorizationRuleResourceId { get; set; }
-
-        public AuditStateType LogAnalyticsTargetState { get; set; }
-
-        public string WorkspaceResourceId { get; set; }
-
         [Hidden]
         internal bool? IsAzureMonitorTargetEnabled { get; set; }
-
-        [Hidden]
-        internal IList<DiagnosticSettingsResource> DiagnosticsEnablingAuditCategory { get; set; }
-
-        [Hidden]
-        internal string NextDiagnosticSettingsName { get; set; }
     }
 }

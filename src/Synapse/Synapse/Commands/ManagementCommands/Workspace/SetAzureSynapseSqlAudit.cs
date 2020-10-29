@@ -66,28 +66,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubTargetState)]
-        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubTargetState { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubName)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EventHubAuthorizationRuleId)]
-        [ValidateNotNullOrEmpty]
-        public string EventHubAuthorizationRuleResourceId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.LogAnalyticsTargetState)]
-        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string LogAnalyticsTargetState { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.WorkspaceId)]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceResourceId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -110,78 +88,49 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = resourceIdentifier.ResourceName;
             }
 
-            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            WorkspaceAuditModel model = SynapseAnalyticsClient.GetWorkspaceAudit(this.ResourceGroupName, this.WorkspaceName);
+
+            if (this.IsParameterBound(c => c.AuditActionGroup))
             {
-                this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
+                model.AuditActionGroup = this.AuditActionGroup;
+            }
+
+            if (this.IsParameterBound(c => c.PredicateExpression))
+            {
+                model.PredicateExpression = this.PredicateExpression;
+            }
+
+            if (this.IsParameterBound(c => c.BlobStorageTargetState))
+            {
+                model.BlobStorageTargetState = this.BlobStorageTargetState == SynapseConstants.Security.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (this.IsParameterBound(c => c.StorageAccountResourceId))
+            {
+                model.StorageAccountResourceId = this.StorageAccountResourceId;
+            }
+
+            if (this.IsParameterBound(c => c.StorageKeyType))
+            {
+                model.StorageKeyType = (this.StorageKeyType == SynapseConstants.Security.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+            }
+
+            if (this.IsParameterBound(c => c.RetentionInDays))
+            {
+                model.RetentionInDays = this.RetentionInDays;
+            }
+
+            // check parameters
+            if (this.BlobStorageTargetState == SynapseConstants.Security.Enabled &&
+                string.IsNullOrEmpty(this.StorageAccountResourceId))
+            {
+                throw new PSArgumentException(Resources.StorageAccountNameParameterException, "StorageAccountName");
             }
 
             if (this.ShouldProcess(this.WorkspaceName, string.Format(Resources.SettingSqlAudit, this.WorkspaceName)))
             {
-                WorkspaceAuditModel model = new WorkspaceAuditModel
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    WorkspaceName = this.WorkspaceName
-                };
-
-                if (this.IsParameterBound(c => c.AuditActionGroup))
-                {
-                    model.AuditActionGroup = this.AuditActionGroup;
-                }
-
-                if (this.IsParameterBound(c => c.PredicateExpression))
-                {
-                    model.PredicateExpression = this.PredicateExpression;
-                }
-
-                if (this.IsParameterBound(c => c.BlobStorageTargetState))
-                {
-                    model.BlobStorageTargetState = this.BlobStorageTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if (this.IsParameterBound(c => c.StorageAccountResourceId))
-                {
-                    model.StorageAccountResourceId = this.StorageAccountResourceId;
-                }
-
-                if (this.IsParameterBound(c => c.StorageKeyType))
-                {
-                    model.StorageKeyType = (this.StorageKeyType == SynapseConstants.Security.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
-                }
-
-                if (this.IsParameterBound(c => c.RetentionInDays))
-                {
-                    model.RetentionInDays = this.RetentionInDays;
-                }
-
-                if (this.IsParameterBound(c => c.EventHubTargetState))
-                {
-                    model.EventHubTargetState = this.EventHubTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if (this.IsParameterBound(c => c.EventHubName))
-                {
-                    model.EventHubName = this.EventHubName;
-                }
-
-                if (this.IsParameterBound(c => c.EventHubAuthorizationRuleResourceId))
-                {
-                    model.EventHubAuthorizationRuleResourceId = this.EventHubAuthorizationRuleResourceId;
-                }
-
-                if (this.IsParameterBound(c => c.LogAnalyticsTargetState))
-                {
-                    model.LogAnalyticsTargetState = this.LogAnalyticsTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if (this.IsParameterBound(c => c.WorkspaceResourceId))
-                {
-                    model.WorkspaceResourceId = this.WorkspaceResourceId;
-                }
-
-                SynapseAnalyticsClient.CreateOrUpdateSqlAudit(model);
+                SynapseAnalyticsClient.CreateOrUpdateWorkspaceAudit(model);
                 if (PassThru)
                 {
                     WriteObject(model);

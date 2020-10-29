@@ -537,23 +537,11 @@ Are you sure you want to continue?</value>
   <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
     <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden.</value>
   </data>
-  <data name="CreateDiagnosticSettingsException" xml:space="preserve">
-    <value>Failed to Create Diagnostic Settings.</value>
-  </data>
-  <data name="EventHubAuthorizationRuleResourceIdParameterException" xml:space="preserve">
-    <value>Event hub authorization rule resource id is not provided.</value>
-  </data>
   <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
     <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
   </data>
   <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
     <value>Failed to get Role Assignments for Storage Account '{0}'.</value>
-  </data>
-  <data name="MultipleDiagnosticsException" xml:space="preserve">
-    <value>Operation is not supported when multiple Diagnostic Settings enable '{0}'.</value>
-  </data>
-  <data name="RemoveDiagnosticSettingsException" xml:space="preserve">
-    <value>Failed to remove Diagnostic Settings.</value>
   </data>
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
@@ -561,25 +549,40 @@ Are you sure you want to continue?</value>
   <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
     <value>Failed to retrieve properties of storage account '{0}'.</value>
   </data>
-  <data name="SetAuditingSettingsException" xml:space="preserve">
-    <value>Setting Auditing Settings failed.</value>
-  </data>
   <data name="SettingSqlAudit" xml:space="preserve">
     <value>Setting audit in workspace '{0}'.</value>
   </data>
   <data name="StorageAccountNameParameterException" xml:space="preserve">
     <value>Storage acount name is not provided.</value>
   </data>
-  <data name="UpdateDiagnosticSettingsException" xml:space="preserve">
-    <value>Failed to update Diagnostic Settings.</value>
-  </data>
-  <data name="WorkspaceResourceIdParameterException" xml:space="preserve">
-    <value>Workspace resource id is not provided.</value>
-  </data>
   <data name="RemovingSqlPoolAudit" xml:space="preserve">
     <value>Removing audit settings in SQL pool '{0}' under workspace '{1}'.</value>
   </data>
   <data name="RemovingWorkspaceAudit" xml:space="preserve">
     <value>Removing audit settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
+    <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
+  <data name="UpdatingThreatProtectionSetting" xml:space="preserve">
+    <value>Updating threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="RemovingThreatProtectionSetting" xml:space="preserve">
+    <value>Removing threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="UpdatingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Updating vulnerability assessment settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidBlobStorageSasUri" xml:space="preserve">
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?</value>
+  </data>
+  <data name="NoStorageAccountSpecified" xml:space="preserve">
+    <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
+  </data>
+  <data name="EmailsAreNotValid" xml:space="preserve">
+    <value>One or more of the email addresses you entered are not valid.</value>
+  </data>
+  <data name="RemovingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Removing vulnerability assessment settings in workspace '{0}'.</value>
   </data>
 </root>

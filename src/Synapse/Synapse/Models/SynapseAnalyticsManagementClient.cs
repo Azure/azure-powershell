@@ -1,14 +1,16 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest;
@@ -28,6 +30,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Action = System.Action;
+using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -39,8 +42,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SynapseManagementClient _synapseManagementClient;
         private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
         private ActiveDirectoryClient _activeDirectoryClient;
-        private MonitorManagementClient _monitorManagementClient;
         private ResourceManagementClient _resourceManagementClient;
+        private StorageManagementClient _storageManagementClient;
 
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
@@ -76,21 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             set { this._activeDirectoryClient = value; }
         }
 
-        public MonitorManagementClient MonitorManagementClient
-        {
-            get
-            {
-                if (_monitorManagementClient == null)
-                {
-                    _monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(Context,
-                        AzureEnvironment.Endpoint.ResourceManager);
-                }
-                return this._monitorManagementClient;
-            }
-
-            set { this._monitorManagementClient = value; }
-        }
-
         public ResourceManagementClient ResourceManagementClient
         {
             get
@@ -104,6 +92,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             set { this._resourceManagementClient = value; }
+        }
+
+        public StorageManagementClient StorageManagementClient
+        {
+            get
+            {
+                if (_storageManagementClient == null)
+                {
+                    _storageManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return this._storageManagementClient;
+            }
+
+            set { this._storageManagementClient = value; }
         }
 
         #region Workspace operations
@@ -534,16 +537,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     ResourceGroupName = resourceGroupName,
                     WorkspaceName = workspaceName
                 };
-                model.DiagnosticsEnablingAuditCategory = GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
-                    resourceGroupName, workspaceName);
-                model.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
 
                 model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
                 model.PredicateExpression = policy.PredicateExpression;
                 model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
                 ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
                     IsAuditEnabled(policy.State), policy.RetentionDays);
-                DetermineTargetsState(model, policy.State);
+                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
 
                 return model;
             }
@@ -553,58 +553,282 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public void CreateOrUpdateSqlAudit(WorkspaceAuditModel model)
+        public void CreateOrUpdateWorkspaceAudit(WorkspaceAuditModel model)
         {
-            model.DiagnosticsEnablingAuditCategory = GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
-                    model.ResourceGroupName, model.WorkspaceName);
-            model.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
-
-            VerifyAuditBeforePersistChanges(model);
-
-            DiagnosticSettingsResource currentSettings = model.DiagnosticsEnablingAuditCategory?.FirstOrDefault();
-            if (currentSettings == null)
+            try
             {
-                ChangeAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-            else
-            {
-                ChangeAuditWhenDiagnosticsEnablingAuditCategoryExist(model, currentSettings);
-            }
-        }
-
-        public void RemoveWorkspaceAudit(WorkspaceAuditModel model)
-        {
-            model = GetWorkspaceAudit(model.ResourceGroupName, model.WorkspaceName);
-            model.BlobStorageTargetState = AuditStateType.Disabled;
-            model.EventHubTargetState = AuditStateType.Disabled;
-            model.LogAnalyticsTargetState = AuditStateType.Disabled;
-
-            DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-
-            Exception exception = null;
-            while (model.DiagnosticsEnablingAuditCategory != null &&
-                model.DiagnosticsEnablingAuditCategory.Any())
-            {
-                DiagnosticSettingsResource settings = model.DiagnosticsEnablingAuditCategory.First();
-                if (IsAnotherCategoryEnabled(settings))
+                if (string.IsNullOrEmpty(model.PredicateExpression))
                 {
-                    if (DisableAuditCategory(model, settings) == false)
-                    {
-                        exception = new Exception(Resources.UpdateDiagnosticSettingsException);
-                    }
+                    var policy = new ServerBlobAuditingPolicy();
+                    PolicizeAuditModel(model, policy);
+                    // TODO operation error
+                    _synapseManagementClient.WorkspaceSManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
                 }
                 else
                 {
-                    if (RemoveFirstDiagnosticSettings(model) == false)
+                    var policy = new ExtendedServerBlobAuditingPolicy
                     {
-                        exception = new Exception(Resources.RemoveDiagnosticSettingsException);
-                    }
+                        PredicateExpression = model.PredicateExpression
+                    };
+                    PolicizeAuditModel(model, policy);
+                    _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
+                }
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceAudit(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
+                policy.State = BlobAuditingPolicyState.Disabled;
+                _synapseManagementClient.WorkspaceSManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+            
+        }
+
+        public ServerSecurityAlertPolicy GetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
+        {
+            var resourceGroup = GetStorageResourceGroup(storageName);
+            return GetStorageKeys(resourceGroup, storageName);
+        }
+
+        private static class StorageAccountType
+        {
+            public const string ClassicStorage = "Microsoft.ClassicStorage/storageAccounts";
+            public const string Storage = "Microsoft.Storage/storageAccounts";
+        }
+
+        public string GetStorageResourceGroup(string storageAccountName)
+        {
+            foreach (var storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
+            {
+                var resourceGroup = GetStorageResourceGroup(
+                    ResourceManagementClient,
+                    storageAccountName,
+                    storageAccountType);
+
+                if (resourceGroup != null)
+                {
+                    return resourceGroup;
                 }
             }
 
-            if (exception != null)
+            throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
+        }
+
+        private static string GetStorageResourceGroup(
+            ResourceManagementClient resourcesClient,
+            string storageAccountName,
+            string resourceType)
+        {
+            var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
+            var res = resourcesClient.Resources.List(query);
+            var allResources = new List<GenericResource>(res);
+            var account = allResources.Find(r => r.Name == storageAccountName);
+            if (account == null)
             {
-                throw exception;
+                return null;
+            }
+
+            var resId = account.Id;
+            var segments = resId.Split('/');
+            var indexOfResourceGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
+            return segments[indexOfResourceGroup];
+        }
+
+        private Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
+        {
+            try
+            {
+                return GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName), e);
+            }
+        }
+
+        private async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
+        {
+            var url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
+            if (!url.EndsWith("/"))
+            {
+                url = url + "/";
+            }
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            url = url + "subscriptions/" + (StorageManagementClient.SubscriptionId != null ? StorageManagementClient.SubscriptionId.Trim() : "");
+#else
+            url = url + "subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
+#endif
+            url = url + "/resourceGroups/" + resourceGroupName;
+            url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
+            url = url + "/listKeys?api-version=2014-06-01";
+
+            var httpRequest = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(url) };
+
+            await StorageManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var httpResponse = await StorageManagementClient.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = new Dictionary<StorageKeyKind, string>();
+            try
+            {
+                var responseDoc = JToken.Parse(responseContent);
+                var primaryKey = (string)responseDoc["primaryKey"];
+                var secondaryKey = (string)responseDoc["secondaryKey"];
+                if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+                {
+                    throw new Exception(); // this is caught by the synced wrapper
+                }
+
+                result.Add(StorageKeyKind.Primary, primaryKey);
+                result.Add(StorageKeyKind.Secondary, secondaryKey);
+                return result;
+            }
+            catch
+            {
+                return GetV2Keys(resourceGroupName, storageAccountName);
+            }
+        }
+
+        private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
+        {
+            var r = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            var k1 = r.Keys[0].Value;
+            var k2 = r.Keys[1].Value;
+#else
+            string k1 = r.StorageAccountKeys.Key1;
+            string k2 = r.StorageAccountKeys.Key2;
+#endif
+            var result = new Dictionary<StorageKeyKind, String>
+            {
+                {StorageKeyKind.Primary, k1}, {StorageKeyKind.Secondary, k2}
+            };
+            return result;
+        }
+
+        public ServerSecurityAlertPolicy SetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName, ServerSecurityAlertPolicy policy)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var policy = GetWorkspaceThreatDetectionPolicy(resourceGroupName, workspaceName);
+                policy.State = SecurityAlertPolicyState.Disabled;
+                _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public ServerVulnerabilityAssessment GetWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public struct StorageContainerInfo
+        {
+            public string StorageAccountAccessKey;
+            public string StorageContainerPath;
+        }
+
+        public StorageContainerInfo GetStorageContainerInfo(string resourceGroupName, string storageAccountName, string containerName)
+        {
+            var storageAccountObject = StorageManagementClient.StorageAccounts.GetProperties(resourceGroupName, storageAccountName);
+            var keysObject = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            var storageAccountBlobPrimaryEndpoints = storageAccountObject.PrimaryEndpoints.Blob;
+            var key = keysObject.Keys.FirstOrDefault().Value;
+#else
+            var storageAccountBlobPrimaryEndpoints = storageAccountObject.StorageAccount.PrimaryEndpoints.Blob;
+            var key = keysObject.StorageAccountKeys.Key1;
+#endif
+            return new StorageContainerInfo
+            {
+                StorageAccountAccessKey = key,
+                StorageContainerPath = string.Format("{0}{1}", storageAccountBlobPrimaryEndpoints, containerName)
+            };
+        }
+
+        public ServerVulnerabilityAssessment CreateOrUpdateWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, ServerVulnerabilityAssessment parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Delete(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
             }
         }
 
@@ -840,9 +1064,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     WorkspaceName = workspaceName,
                     SqlPoolName = sqlPoolName
                 };
-                model.DiagnosticsEnablingAuditCategory = GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
-                    resourceGroupName, workspaceName, sqlPoolName);
-                model.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
 
                 model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
                 model.PredicateExpression = policy.PredicateExpression;
@@ -850,7 +1071,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 model.AuditAction = ExtractAuditActions(policy.AuditActionsAndGroups);
                 ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
                     IsAuditEnabled(policy.State), policy.RetentionDays);
-                DetermineTargetsState(model, policy.State);
+                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
 
                 return model;
             }
@@ -858,34 +1079,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 throw GetSynapseException(ex);
             }
-        }
-
-        private IList<DiagnosticSettingsResource> GetDiagnosticsEnablingAuditCategory(
-            out string nextDiagnosticSettingsName,
-            string resourceGroupName, string workspaceName, string sqlPoolName = "master")
-        {
-            string resourceUri = GetResourceUri(resourceGroupName, workspaceName, sqlPoolName);
-            IList<DiagnosticSettingsResource> settings =
-                MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri).Result.Value;
-            nextDiagnosticSettingsName = GetNextDiagnosticSettingsName(settings);
-            return settings?.Where(s => IsAuditCategoryEnabled(s))?.OrderBy(s => s.Name)?.ToList();
-        }
-
-        private string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings)
-        {
-            int nextIndex = (settings?.Where(
-                s => s.Name.StartsWith(SynapseConstants.Security.DiagnosticSettingsNamePrefix)).Select(
-                s => s.Name).Select(
-                name => name.Replace(SynapseConstants.Security.DiagnosticSettingsNamePrefix, string.Empty)).Select(
-                number => Int32.TryParse(number, out Int32 index) ? index : 0).DefaultIfEmpty().Max() ?? 0) + 1;
-            return $"{SynapseConstants.Security.DiagnosticSettingsNamePrefix}{nextIndex}";
-        }
-
-        private static bool IsAuditCategoryEnabled(DiagnosticSettingsResource settings)
-        {
-            return settings?.Logs?.FirstOrDefault(
-                l => l.Enabled &&
-                string.Equals(l.Category, SynapseConstants.Security.SQLSecurityAuditCategory)) != null;
         }
 
         private AuditActionGroups[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
@@ -1018,514 +1211,36 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return state == BlobAuditingPolicyState.Enabled;
         }
 
-        private static void DetermineTargetsState(
-            WorkspaceAuditModel model,
-            BlobAuditingPolicyState policyState)
-        {
-            if (policyState == BlobAuditingPolicyState.Disabled)
-            {
-                model.BlobStorageTargetState = AuditStateType.Disabled;
-                model.EventHubTargetState = AuditStateType.Disabled;
-                model.LogAnalyticsTargetState = AuditStateType.Disabled;
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(model.StorageAccountResourceId))
-                {
-                    model.BlobStorageTargetState = AuditStateType.Disabled;
-                }
-                else
-                {
-                    model.BlobStorageTargetState = AuditStateType.Enabled;
-                }
-
-                if (model.IsAzureMonitorTargetEnabled == null ||
-                    model.IsAzureMonitorTargetEnabled == false ||
-                    model.DiagnosticsEnablingAuditCategory == null)
-                {
-                    model.EventHubTargetState = AuditStateType.Disabled;
-                    model.LogAnalyticsTargetState = AuditStateType.Disabled;
-                }
-                else
-                {
-                    DiagnosticSettingsResource eventHubSettings = model.DiagnosticsEnablingAuditCategory.FirstOrDefault(
-                        settings => !string.IsNullOrEmpty(settings.EventHubAuthorizationRuleId));
-                    if (eventHubSettings == null)
-                    {
-                        model.EventHubTargetState = AuditStateType.Disabled;
-                    }
-                    else
-                    {
-                        model.EventHubTargetState = AuditStateType.Enabled;
-                        model.EventHubName = eventHubSettings.EventHubName;
-                        model.EventHubAuthorizationRuleResourceId = eventHubSettings.EventHubAuthorizationRuleId;
-                    }
-
-                    DiagnosticSettingsResource logAnalyticsSettings = model.DiagnosticsEnablingAuditCategory.FirstOrDefault(
-                        settings => !string.IsNullOrEmpty(settings.WorkspaceId));
-                    if (logAnalyticsSettings == null)
-                    {
-                        model.LogAnalyticsTargetState = AuditStateType.Disabled;
-                    }
-                    else
-                    {
-                        model.LogAnalyticsTargetState = AuditStateType.Enabled;
-                        model.WorkspaceResourceId = logAnalyticsSettings.WorkspaceId;
-                    }
-                }
-            }
-        }
-
         public void CreateOrUpdateSqlPoolAudit(SqlPoolAuditModel model)
         {
-            model.DiagnosticsEnablingAuditCategory = GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
-                    model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName);
-            model.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
-
-            VerifyAuditBeforePersistChanges(model);
-
-            DiagnosticSettingsResource currentSettings = model.DiagnosticsEnablingAuditCategory?.FirstOrDefault();
-            if (currentSettings == null)
-            {
-                ChangeAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-            else
-            {
-                ChangeAuditWhenDiagnosticsEnablingAuditCategoryExist(model, currentSettings);
-            }
-        }
-
-        private void VerifyAuditBeforePersistChanges(WorkspaceAuditModel model)
-        {
-            if (model.BlobStorageTargetState == AuditStateType.Enabled &&
-                string.IsNullOrEmpty(model.StorageAccountResourceId))
-            {
-                throw new PSArgumentException(Resources.StorageAccountNameParameterException, "StorageAccountName");
-            }
-
-            if (model.EventHubTargetState == AuditStateType.Enabled &&
-                string.IsNullOrEmpty(model.EventHubAuthorizationRuleResourceId))
-            {
-                throw new PSArgumentException(Resources.EventHubAuthorizationRuleResourceIdParameterException, "EventHubAuthorizationRuleResourceId");
-            }
-
-            if (model.LogAnalyticsTargetState == AuditStateType.Enabled &&
-                string.IsNullOrEmpty(model.WorkspaceResourceId))
-            {
-                throw new PSArgumentException(Resources.WorkspaceResourceIdParameterException, "WorkspaceResourceId");
-            }
-
-            if (model.DiagnosticsEnablingAuditCategory != null && model.DiagnosticsEnablingAuditCategory.Count > 1)
-            {
-                throw new Exception(string.Format(Resources.MultipleDiagnosticsException, SynapseConstants.Security.SQLSecurityAuditCategory));
-            }
-        }
-
-        private void ChangeAuditWhenDiagnosticsEnablingAuditCategoryExist(
-            WorkspaceAuditModel model,
-            DiagnosticSettingsResource settings)
-        {
-            if (IsAnotherCategoryEnabled(settings))
-            {
-                ChangeAuditWhenMultipleCategoriesAreEnabled(model, settings);
-            }
-            else
-            {
-                ChangeAuditWhenOnlyAuditCategoryIsEnabled(model, settings);
-            }
-        }
-
-        private bool IsAnotherCategoryEnabled(DiagnosticSettingsResource settings)
-        {
-            return settings.Logs.FirstOrDefault(l => l.Enabled &&
-                !string.Equals(l.Category, SynapseConstants.Security.SQLSecurityAuditCategory)) != null ||
-                settings.Metrics.FirstOrDefault(m => m.Enabled) != null;
-        }
-
-        private void ChangeAuditWhenMultipleCategoriesAreEnabled(
-            WorkspaceAuditModel model,
-            DiagnosticSettingsResource settings)
-        {
-            if (DisableAuditCategory(model, settings) == false)
-            {
-                throw new Exception(Resources.UpdateDiagnosticSettingsException);
-            }
-
             try
             {
-                ChangeAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-            catch (Exception)
-            {
-                try
+                if (string.IsNullOrEmpty(model.PredicateExpression))
                 {
-                    EnableAuditCategory(model, settings);
+                    SqlPoolBlobAuditingPolicy policy = new SqlPoolBlobAuditingPolicy();
+                    PolicizeAuditModel(model, policy);
+                    _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy);
                 }
-                catch (Exception) { }
-
-                throw;
-            }
-        }
-
-        private void ChangeAuditWhenOnlyAuditCategoryIsEnabled(
-            WorkspaceAuditModel model,
-            DiagnosticSettingsResource settings)
-        {
-            string oldEventHubName = settings.EventHubName;
-            string oldEventHubAuthorizationRuleId = settings.EventHubAuthorizationRuleId;
-            string oldWorkspaceId = settings.WorkspaceId;
-
-            if (model.EventHubTargetState == AuditStateType.Enabled ||
-                model.LogAnalyticsTargetState == AuditStateType.Enabled)
-            {
-                EnableDiagnosticsAuditWhenOnlyAuditCategoryIsEnabled(model, settings, oldEventHubName, oldEventHubAuthorizationRuleId, oldWorkspaceId);
-            }
-            else
-            {
-                DisableDiagnosticsAuditWhenOnlyAuditCategoryIsEnabled(model, settings, oldEventHubName, oldEventHubAuthorizationRuleId, oldWorkspaceId);
-            }
-        }
-
-        private void EnableDiagnosticsAuditWhenOnlyAuditCategoryIsEnabled(
-            WorkspaceAuditModel model,
-            DiagnosticSettingsResource settings,
-            string oldEventHubName,
-            string oldEventHubAuthorizationRuleId,
-            string oldWorkspaceId)
-        {
-            settings.EventHubName = model.EventHubTargetState == AuditStateType.Enabled ?
-                model.EventHubName : null;
-            settings.EventHubAuthorizationRuleId = model.EventHubTargetState == AuditStateType.Enabled ?
-                model.EventHubAuthorizationRuleResourceId : null;
-            settings.WorkspaceId = model.LogAnalyticsTargetState == AuditStateType.Enabled ?
-                model.WorkspaceResourceId : null;
-
-            if (UpdateDiagnosticSettings(settings, model) == false)
-            {
-                throw new Exception(Resources.UpdateDiagnosticSettingsException);
-            }
-
-            try
-            {
-                model.IsAzureMonitorTargetEnabled = true;
-                if (CreateOrUpdateAudit(model) == false)
+                else
                 {
-                    throw new Exception(Resources.SetAuditingSettingsException);
-                }
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    settings.EventHubName = oldEventHubName;
-                    settings.EventHubAuthorizationRuleId = oldEventHubAuthorizationRuleId;
-                    settings.WorkspaceId = oldWorkspaceId;
-                    UpdateDiagnosticSettings(settings, model);
-                }
-                catch (Exception) { }
-
-                throw;
-            }
-        }
-
-        private void DisableDiagnosticsAuditWhenOnlyAuditCategoryIsEnabled(
-            WorkspaceAuditModel model,
-            DiagnosticSettingsResource settings,
-            string oldEventHubName,
-            string oldEventHubAuthorizationRuleId,
-            string oldWorkspaceId)
-        {
-            if (RemoveFirstDiagnosticSettings(model) == false)
-            {
-                throw new Exception(Resources.RemoveDiagnosticSettingsException);
-            }
-
-            try
-            {
-                DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    CreateDiagnosticSettings(oldEventHubName, oldEventHubAuthorizationRuleId, oldWorkspaceId, model);
-                }
-                catch (Exception) { }
-
-                throw;
-            }
-        }
-
-        private bool EnableAuditCategory(
-            dynamic model,
-            DiagnosticSettingsResource settings)
-        {
-            return SetAuditCategoryState(model, settings, true);
-        }
-
-        private bool DisableAuditCategory(
-            dynamic model,
-            DiagnosticSettingsResource settings)
-        {
-            return SetAuditCategoryState(model, settings, false);
-        }
-
-        private bool SetAuditCategoryState(
-            dynamic model,
-            DiagnosticSettingsResource settings,
-            bool isEnabled)
-        {
-            var log = settings?.Logs?.FirstOrDefault(l => string.Equals(l.Category, SynapseConstants.Security.SQLSecurityAuditCategory));
-            if (log != null)
-            {
-                log.Enabled = isEnabled;
-            }
-
-            return UpdateDiagnosticSettings(settings, model);
-        }
-
-        private bool UpdateDiagnosticSettings(
-            DiagnosticSettingsResource settings,
-            WorkspaceAuditModel model)
-        {
-            DiagnosticSettingsResource modifiedSettings;
-            if (model is SqlPoolAuditModel databaseAuditModel)
-            {
-                modifiedSettings = MonitorManagementClient.DiagnosticSettings.CreateOrUpdate(
-                    GetResourceUri(databaseAuditModel.ResourceGroupName, databaseAuditModel.WorkspaceName, databaseAuditModel.SqlPoolName),
-                    settings, settings.Name);
-            }
-            else
-            {
-                modifiedSettings = MonitorManagementClient.DiagnosticSettings.CreateOrUpdate(
-                    GetResourceUri(model.ResourceGroupName, model.WorkspaceName, "master"),
-                    settings, settings.Name);
-            }
-
-            if (modifiedSettings == null)
-            {
-                return false;
-            }
-
-            List<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = new List<DiagnosticSettingsResource>();
-            foreach (DiagnosticSettingsResource existingSettings in model.DiagnosticsEnablingAuditCategory)
-            {
-                if (!string.Equals(modifiedSettings.Id, existingSettings.Id))
-                {
-                    diagnosticsEnablingAuditCategory.Add(existingSettings);
-                }
-                else if (IsAuditCategoryEnabled(modifiedSettings))
-                {
-                    diagnosticsEnablingAuditCategory.Add(modifiedSettings);
-                }
-            }
-
-            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory.Any() ? diagnosticsEnablingAuditCategory : null;
-            return true;
-        }
-
-        private void ChangeAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(
-            WorkspaceAuditModel model)
-        {
-            if (model.EventHubTargetState == AuditStateType.Enabled ||
-                model.LogAnalyticsTargetState == AuditStateType.Enabled)
-            {
-                EnableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-            else
-            {
-                DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-            }
-        }
-
-        private void EnableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(
-            WorkspaceAuditModel model)
-        {
-            if (CreateDiagnosticSettings(
-                model.EventHubTargetState == AuditStateType.Enabled ?
-                model.EventHubName : null,
-                model.EventHubTargetState == AuditStateType.Enabled ?
-                model.EventHubAuthorizationRuleResourceId : null,
-                model.LogAnalyticsTargetState == AuditStateType.Enabled ?
-                model.WorkspaceResourceId : null,
-                model) == false)
-            {
-                throw new Exception(Resources.CreateDiagnosticSettingsException);
-            }
-
-            try
-            {
-                model.IsAzureMonitorTargetEnabled = true;
-                if (CreateOrUpdateAudit(model) == false)
-                {
-                    throw new Exception(Resources.SetAuditingSettingsException);
-                }
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    RemoveFirstDiagnosticSettings(model);
-                }
-                catch (Exception) { }
-
-                throw;
-            }
-        }
-
-        private void DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(
-            WorkspaceAuditModel model)
-        {
-            model.IsAzureMonitorTargetEnabled = null;
-            if (CreateOrUpdateAudit(model) == false)
-            {
-                throw new Exception(Resources.SetAuditingSettingsException);
-            }
-        }
-
-        private bool CreateDiagnosticSettings(
-            string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
-            WorkspaceAuditModel model)
-        {
-            DiagnosticSettingsResource settings;
-            if (model is SqlPoolAuditModel databaseAuditModel)
-            {
-                settings = CreateDiagnosticSettings(databaseAuditModel.NextDiagnosticSettingsName,
-                    eventHubName, eventHubAuthorizationRuleId, workspaceId,
-                    databaseAuditModel.ResourceGroupName, databaseAuditModel.WorkspaceName, databaseAuditModel.SqlPoolName);
-            }
-            else
-            {
-                settings = CreateDiagnosticSettings(model.NextDiagnosticSettingsName,
-                    eventHubName, eventHubAuthorizationRuleId, workspaceId,
-                    model.ResourceGroupName, model.WorkspaceName);
-            }
-
-            if (settings == null)
-            {
-                return false;
-            }
-
-            IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
-            if (diagnosticsEnablingAuditCategory == null)
-            {
-                diagnosticsEnablingAuditCategory = new List<DiagnosticSettingsResource>();
-            }
-
-            diagnosticsEnablingAuditCategory.Add(settings);
-            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory;
-            return true;
-        }
-
-        private DiagnosticSettingsResource CreateDiagnosticSettings(
-            string settingsName, string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
-            string resourceGroupName, string workspaceName, string sqlPoolName = "master")
-        {
-            string resoureUri = GetResourceUri(resourceGroupName, workspaceName, sqlPoolName);
-            DiagnosticSettingsResource settings = new DiagnosticSettingsResource
-            {
-                Logs = new List<LogSettings>(),
-                Metrics = new List<MetricSettings>(),
-                EventHubName = eventHubName,
-                EventHubAuthorizationRuleId = eventHubAuthorizationRuleId,
-                WorkspaceId = workspaceId
-            };
-
-            try
-            {
-                IList<DiagnosticSettingsCategoryResource> supportedCategories =
-                    MonitorManagementClient.DiagnosticSettingsCategory.ListAsync(resoureUri).Result.Value;
-                if (supportedCategories != null)
-                {
-                    foreach (DiagnosticSettingsCategoryResource category in supportedCategories)
+                    ExtendedSqlPoolBlobAuditingPolicy policy = new ExtendedSqlPoolBlobAuditingPolicy
                     {
-                        if (category.CategoryType == CategoryType.Metrics)
-                        {
-                            settings.Metrics.Add(new MetricSettings(false, null, category.Name));
-                        }
-                        else
-                        {
-                            settings.Logs.Add(
-                                new LogSettings(
-                                    string.Equals(category.Name, SynapseConstants.Security.SQLSecurityAuditCategory),
-                                    category.Name));
-                        }
-                    }
+                        PredicateExpression = model.PredicateExpression
+                    };
+
+                    PolicizeAuditModel(model, policy);
+                    _synapseManagementClient.ExtendedSqlPoolBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy);
                 }
             }
-            catch (AggregateException ex)
+            catch (CloudException ex)
             {
-                if (!(ex.InnerException is ErrorResponseException ex1) ||
-                    ex1.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw ex.InnerException ?? ex;
-                }
-            }
-
-            if (!settings.Logs.Any(l => string.Equals(l.Category, SynapseConstants.Security.SQLSecurityAuditCategory)))
-            {
-                settings.Logs.Add(new LogSettings(true, SynapseConstants.Security.SQLSecurityAuditCategory));
-            }
-
-            return MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(
-                resoureUri, settings, settingsName).Result;
-        }
-
-        private bool CreateOrUpdateAudit(WorkspaceAuditModel model)
-        {
-            return (model is SqlPoolAuditModel dbModel) ?
-                SetAudit(dbModel) : SetAudit(model);
-        }
-
-        private bool SetAudit(SqlPoolAuditModel model)
-        {
-            if (string.IsNullOrEmpty(model.PredicateExpression))
-            {
-                SqlPoolBlobAuditingPolicy policy = new SqlPoolBlobAuditingPolicy();
-                PolicizeAuditModel(model, policy);
-                return _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy)
-                    .ConfigureAwait(true).GetAwaiter().GetResult().Response.IsSuccessStatusCode;
-            }
-            else
-            {
-                ExtendedSqlPoolBlobAuditingPolicy policy = new ExtendedSqlPoolBlobAuditingPolicy
-                {
-                    PredicateExpression = model.PredicateExpression
-                };
-
-                PolicizeAuditModel(model, policy);
-                return _synapseManagementClient.ExtendedSqlPoolBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy)
-                    .ConfigureAwait(true).GetAwaiter().GetResult().Response.IsSuccessStatusCode;
-            }
-        }
-
-        private bool SetAudit(WorkspaceAuditModel model)
-        {
-            if (string.IsNullOrEmpty(model.PredicateExpression))
-            {
-                var policy = new ServerBlobAuditingPolicy();
-                PolicizeAuditModel(model, policy);
-                // TODO operation error
-                return _synapseManagementClient.WorkspaceSManagedqlServerBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(model.ResourceGroupName, model.WorkspaceName, policy)
-                    .ConfigureAwait(true).GetAwaiter().GetResult().Response.IsSuccessStatusCode;
-            }
-            else
-            {
-                var policy = new ExtendedServerBlobAuditingPolicy
-                {
-                    PredicateExpression = model.PredicateExpression
-                };
-                PolicizeAuditModel(model, policy);
-                return _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.CreateOrUpdateWithHttpMessagesAsync(model.ResourceGroupName, model.WorkspaceName, policy)
-                    .ConfigureAwait(true).GetAwaiter().GetResult().Response.IsSuccessStatusCode;
+                throw GetSynapseException(ex);
             }
         }
 
         private void PolicizeAuditModel(WorkspaceAuditModel model, dynamic policy)
         {
-            policy.State = model.BlobStorageTargetState == AuditStateType.Enabled ||
-                           model.EventHubTargetState == AuditStateType.Enabled ||
-                           model.LogAnalyticsTargetState == AuditStateType.Enabled ?
+            policy.State = model.BlobStorageTargetState == AuditStateType.Enabled ?
                            BlobAuditingPolicyState.Enabled : BlobAuditingPolicyState.Disabled;
 
             policy.IsAzureMonitorTargetEnabled = model.IsAzureMonitorTargetEnabled;
@@ -1575,7 +1290,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 actionsAndGroups.AddRange(auditAction);
             }
 
-            auditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
+            auditActionGroup?.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
             if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
             {
                 actionsAndGroups.Add("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP");
@@ -1776,65 +1491,34 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return storageAccountKeys;
         }
 
-        private bool RemoveFirstDiagnosticSettings(dynamic model)
+        internal dynamic GetSqlAuditing(string resourceGroupName, string workspaceName, string sqlPoolName = null)
         {
-            IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
-            DiagnosticSettingsResource settings = diagnosticsEnablingAuditCategory.FirstOrDefault();
-            if (settings == null ||
-                (model is SqlPoolAuditModel dbModel ?
-                RemoveDiagnosticSettings(settings.Name, dbModel.ResourceGroupName, dbModel.WorkspaceName, dbModel.SqlPoolName) :
-                RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.WorkspaceName)) == false)
+            if(sqlPoolName == null)
             {
-                return false;
+                return _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
             }
-
-            diagnosticsEnablingAuditCategory.RemoveAt(0);
-            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory.Any() ? diagnosticsEnablingAuditCategory : null;
-            return true;
+            else
+            {
+                return _synapseManagementClient.SqlPoolBlobAuditingPolicies.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
         }
 
-        private bool RemoveDiagnosticSettings(string settingsName, string resourceGroupName,
-            string workspaceName, string sqlPoolName = "master")
+        public void RemoveSqlPoolAudit(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
-            string resourceUri = GetResourceUri(resourceGroupName, workspaceName, sqlPoolName);
-            return MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
-                resourceUri, settingsName).Result.Response.IsSuccessStatusCode;
-        }
-
-        public void RemoveSqlPoolAudit(SqlPoolAuditModel model)
-        {
-            model = GetSqlPoolAudit(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName);
-
-            model.BlobStorageTargetState = AuditStateType.Disabled;
-            model.EventHubTargetState = AuditStateType.Disabled;
-            model.LogAnalyticsTargetState = AuditStateType.Disabled;
-
-            DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
-
-            Exception exception = null;
-            while (model.DiagnosticsEnablingAuditCategory != null &&
-                model.DiagnosticsEnablingAuditCategory.Any())
+            try
             {
-                DiagnosticSettingsResource settings = model.DiagnosticsEnablingAuditCategory.First();
-                if (IsAnotherCategoryEnabled(settings))
+                if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    if (DisableAuditCategory(model, settings) == false)
-                    {
-                        exception = new Exception(Resources.UpdateDiagnosticSettingsException);
-                    }
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
-                else
-                {
-                    if (RemoveFirstDiagnosticSettings(model) == false)
-                    {
-                        exception = new Exception(Resources.RemoveDiagnosticSettingsException);
-                    }
-                }
+
+                SqlPoolBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName, sqlPoolName);
+                policy.State = BlobAuditingPolicyState.Disabled;
+                _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
             }
-
-            if (exception != null)
+            catch (CloudException ex)
             {
-                throw exception;
+                throw GetSynapseException(ex);
             }
         }
 
