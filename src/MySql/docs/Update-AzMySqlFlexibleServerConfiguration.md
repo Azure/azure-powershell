@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlflexibleserversconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlflexibleserverconfiguration
 schema: 2.0.0
 ---
 
-# Update-AzMySqlFlexibleServersConfiguration
+# Update-AzMySqlFlexibleServerConfiguration
 
 ## SYNOPSIS
 Updates a configuration of a server.
@@ -15,14 +15,14 @@ Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPa
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServersConfiguration -Name <String> -ResourceGroupName <String>
+Update-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] [-Source <String>] [-Value <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFlexibleServersConfiguration -InputObject <IMySqlIdentity> [-Source <String>] [-Value <String>]
+Update-AzMySqlFlexibleServerConfiguration -InputObject <IMySqlIdentity> [-Source <String>] [-Value <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

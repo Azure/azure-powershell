@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlflexibleserversdatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
-# Remove-AzMySqlFlexibleServersDatabase
+# Remove-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
 Deletes a database.
@@ -14,14 +14,14 @@ Deletes a database.
 
 ### Delete (Default)
 ```
-Remove-AzMySqlFlexibleServersDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+Remove-AzMySqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMySqlFlexibleServersDatabase -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzMySqlFlexibleServerDatabase -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Deletes a database.
 
 ### Example 1: Remove MySql database by name
 ```powershell
-PS C:\> Remove-AzMySqlFlexibleServersDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> Remove-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 This cmdlet removes MySql database by name.
@@ -40,7 +40,7 @@ This cmdlet removes MySql database by name.
 ### Example 2: Remove MySql database by identity
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/databases/databasetest"
-PS C:\> Remove-AzMySqlFlexibleServersDatabase -InputObject $ID
+PS C:\> Remove-AzMySqlFlexibleServerDatabase -InputObject $ID
  
 ```
 
