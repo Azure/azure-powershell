@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DesktopVirtualization serv
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: c9912e2b929ec4bc4cc52188ca1a339571b2f308
+branch: cc26a59f1ac5da28fbd9682c2f5fc39bf4b2dd0d
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 sanitize-names: true
