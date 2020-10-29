@@ -66,8 +66,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "History", historyLine },
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", currentLog);
@@ -92,8 +92,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "Command", command },
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", currentLog);
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
                 { "Exception", e.ToString() },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", currentLog);
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "AcceptedSuggestion", acceptedSuggestion },
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
@@ -167,8 +167,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
                 { "IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture) },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
@@ -191,8 +191,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "SessionId", SessionId },
                 { "CorrelationId", CorrelationId },
                 { "Exception", e.ToString() },
-                { "UserId", _azContext.HashedUserId },
-                { "MacAddress", _azContext.HashedMacAddress },
+                { "UserId", _azContext.HashUserId },
+                { "HashMacAddress", _azContext.HashMacAddress },
             };
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);

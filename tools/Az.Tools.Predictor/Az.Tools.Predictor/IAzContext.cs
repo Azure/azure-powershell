@@ -29,12 +29,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
-        public string HashedUserId { get; }
+        public string HashUserId { get; }
 
         /// <summary>
         /// Gets the hashed MAC address.
         /// </summary>
-        public string HashedMacAddress { get; }
+        public string HashMacAddress { get; }
 
         /// <summary>
         /// Updates the Az context.

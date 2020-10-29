@@ -34,26 +34,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version AzVersion { get; private set; } = new Version("0.0.0.0");
 
         /// <inheritdoc/>
-        public string HashedUserId { get; private set; } = string.Empty;
+        public string HashUserId { get; private set; } = string.Empty;
 
-        private string _cachedHashedMacAddress;
+        private string _cachedHashMacAddress;
         /// <inheritdoc/>
-        public string HashedMacAddress
+        public string HashMacAddress
         {
             get
             {
-                if (_cachedHashedMacAddress == null)
+                if (_cachedHashMacAddress == null)
                 {
-                    _cachedHashedMacAddress = string.Empty;
+                    _cachedHashMacAddress = string.Empty;
 
                     var macAddress = GetMACAddress();
                     if (!string.IsNullOrWhiteSpace(macAddress))
                     {
-                        _cachedHashedMacAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
+                        _cachedHashMacAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
                     }
                 }
 
-                return _cachedHashedMacAddress;
+                return _cachedHashMacAddress;
             }
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void UpdateContext()
         {
             AzVersion = GetAzVersion();
-            HashedUserId = GenerateSha256HashString(GetUserAccountId());
+            HashUserId = GenerateSha256HashString(GetUserAccountId());
         }
 
         /// <summary>
