@@ -12,7 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Switch-AzCloudService' {
-    It 'Swap' -skip {
+    It 'CloudServiceName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CloudService' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

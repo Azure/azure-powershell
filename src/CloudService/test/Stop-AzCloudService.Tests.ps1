@@ -12,11 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Stop-AzCloudService' {
+
     It 'PowerOff/Stop cloud service' {
         Stop-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
     }
 
-    # It 'PowerOff/Stop cloud service via identity' {
-	#     Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName | Stop-AzCloudService
-    # }
+    It 'PowerOff/Stop cloud service via identity' {
+        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        Stop-AzCloudService -InputObject $cloudService
+    }
 }

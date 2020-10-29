@@ -29,19 +29,19 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
   param(
     [Parameter(HelpMessage="Name of Remote Desktop Extension.", Mandatory)]
     [string] $Name,
-	
+
     [Parameter(HelpMessage="Credential for Remote Desktop Extension.", Mandatory)]
     [PSCredential] $Credential,
-	
+
     [Parameter(HelpMessage="Expiration for Remote Desktop Extension.")]
     [DateTime] $Expiration,
-	
+
     [Parameter(HelpMessage="Remote Desktop Extension version.")]
     [string] $TypeHandlerVersion,
-	
+
     [string[]] $RolesAppliedTo,
-	
-	[Boolean] $AutoUpgradeMinorVersion
+
+    [Boolean] $AutoUpgradeMinorVersion
   )
 
   process {

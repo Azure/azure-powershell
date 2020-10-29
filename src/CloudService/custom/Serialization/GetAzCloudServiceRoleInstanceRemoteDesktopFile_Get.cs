@@ -20,11 +20,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 paths = new global::System.Collections.ObjectModel.Collection<global::System.String>();
                 paths.Add(OutFile);
             }
-            using( var stream = response.GetAwaiter().GetResult() )
+            var path = global::System.IO.Path.GetFullPath(paths[0]);
+            using ( var stream = response.GetAwaiter().GetResult() )
             {
-                using( var fileStream = global::System.IO.File.OpenWrite(paths[0]) )
+                using( var fileStream = global::System.IO.File.OpenWrite(path) )
                 {
                     stream.CopyTo(fileStream);
+                }
+                if (!path.Equals(paths[0]))
+                {
+                    WriteObject($"OutFile: {path}");
                 }
             }
             if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))

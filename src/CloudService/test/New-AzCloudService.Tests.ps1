@@ -12,23 +12,25 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzCloudService' {
-    It 'Create new cloud service' {
+    It 'UpdateExpanded: Create new cloud service' {
         # Create Network Profile
         $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $env.NewCSPublicIPId
-        $networkProfile = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
-	    
+        $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
+        $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+
         # Create Role Profile
         $role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WebRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
         $role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name "WorkerRole" -SkuName "Standard_D1_v2" -SkuTier "Standard" -SkuCapacity 2
-        $roles = @($role1, $role2)
+        $roleProfile = @{role = @($role1, $role2)}
 
         # Create Extension Profile
-		$extension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
-		
+        $genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
+        $extensionProfile = @{extension = @($genevaExtension)}
+
         # Read Configuration File
-	    $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
         $cscfgText = [IO.File]::ReadAllText($cscfgFilePath)
-	    
+
         # Create Cloud Service
         $cloudService = New-AzCloudService                                            `
                           -Name $env.CloudServiceName                                 `
@@ -36,13 +38,9 @@ Describe 'New-AzCloudService' {
                           -Location $env.Location                                     `
                           -PackageUrl $env.CspkgUrl                                   `
                           -Configuration $cscfgText                                   `
-                          -RoleProfileRole $roles                                     `
-                          -NetworkProfileLoadBalancerConfiguration $networkProfile    `
-                          -ExtensionProfileExtension $extension
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile    `
+                          -ExtensionProfile $extensionProfile
         $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
-    }
-
-    It 'Create new cloud service via identity' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -12,20 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile' {
-    It 'Get remote desktop file' {
-	    RemoveFile $env.RDPOutputFile
-	    Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -OutFile $env.RDPOutputFile
-		Test-Path $env.RDPOutputFile | Should be $true
-		$content = Get-Content $env.RDPOutputFile
-		$content[2].contains($env.RoleInstanceName) | Should be $true
-    }
 
-    # It 'GetViaIdentity' {
-	#     RemoveFile $env.RDPOutputFile
-	#     $cloudServiceRoleInstance = Get-AzCloudServiceRoleInstance -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-	# 	$cloudServiceRoleInstance[0] | Get-AzCloudServiceRoleInstanceRemoteDesktopFile -OutFile $env.RDPOutputFile
-	# 	Test-Path $env.RDPOutputFile | Should be $true
-	# 	$content = Get-Content $env.RDPOutputFile
-	# 	$content[2].contains($env.RoleInstanceName) | Should be $true
-    # }
+    It 'Get remote desktop file' {
+        RemoveFile $env.RDPOutputFile
+        $x = Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -OutFile $env.RDPOutputFile
+        Test-Path $env.RDPOutputFile | Should be $true
+        $content = Get-Content $env.RDPOutputFile
+        $content[2].contains($env.RoleInstanceName) | Should be $true
+    }
 }

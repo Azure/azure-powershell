@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+### Example 1: Reimage role instances of cloud service
 
-{{ Add output here }}
+```powershell
+PS C:\> $roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+PS C:\> Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
 
-{{ Add description here }}
+This command reimages 2 role instances ContosoFrontEnd_IN_0 and ContosoBackEnd_IN_1 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
 
-### Example 2: {{ Add title here }}
+### Example 2: Reimage all roles of cloud service
+
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
 ```
 
-{{ Add description here }}
-
+This command reimages all role instances of cloud service named ContosoCS that belongs to the resource group named ContosOrg.

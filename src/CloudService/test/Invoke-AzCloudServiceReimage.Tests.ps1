@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzCloudService.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzCloudServiceReimage.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,13 +11,14 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Update-AzCloudService' {
+Describe 'Invoke-AzCloudServiceReimage' {
 
-    It 'Update cloud service via identity' {
+    It 'Reimage cloud service' {
+        Invoke-AzCloudServiceReimage -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName
+    }
+
+    It 'Reimage cloud service via identity' {
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudService.ExtensionProfile.Extension = @()
-        Update-AzCloudService -InputObject $cloudService -Parameter $cloudService
-        $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudService.ExtensionProfile.Extension.Count | Should be 0
+        Invoke-AzCloudServiceReimage -InputObject $cloudService.Id -RoleInstance $env.RoleInstanceName
     }
 }

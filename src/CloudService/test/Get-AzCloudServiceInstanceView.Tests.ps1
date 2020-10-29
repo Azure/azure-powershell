@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCloudServiceVaultCertificateObject.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzCloudServiceInstanceView.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,8 +11,9 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzCloudServiceVaultCertificateObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-AzCloudServiceInstanceView' {
+    It 'Get cloud service InstanceView' {
+        $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
+        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
     }
 }

@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -15,34 +14,42 @@
 
 <#
 .Synopsis
-Create a in-memory object for CloudServiceVaultSecretGroup
+Create a in-memory object for Vault Secret Group
 .Description
-Create a in-memory object for CloudServiceVaultSecretGroup
+Create a in-memory object for Secret Group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceVaultSecretGroupObject
 #>
+
 function New-AzCloudServiceVaultSecretGroupObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
-        [Parameter(HelpMessage="Resource Id.")]
+        [Parameter(HelpMessage="Key Vault Resource Id.")]
         [string]
-        $SourceVaultId,
-        [Parameter(HelpMessage="The list of key vault references in SourceVault which contain certificates.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultCertificate[]]
-        $VaultCertificate
+        $Id,
+
+        [Parameter(HelpMessage="This is the URL of a certificate that has been uploaded to Key Vault as a secret..")]
+        [string[]]
+        $CertificateUrl
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup]::New()
+              $certificateUrls = @()
+              ForEach ($url in $CertificateUrl)
+              {
+                     $cloudServiceVaultCertificate = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultCertificate]::New()
+                     $cloudServiceVaultCertificate.CertificateUrl = $url
+                     $certificateUrls = $certificateUrls + $cloudServiceVaultCertificate
+              }
 
-        $Object.SourceVaultId = $SourceVaultId
-        $Object.VaultCertificate = $VaultCertificate
-        return $Object
+              $cloudServiceVaultSecretGroup = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup]::New()
+              $cloudServiceVaultSecretGroup.SourceVaultId = $Id
+              $cloudServiceVaultSecretGroup.VaultCertificate = $certificateUrls
+
+        return $cloudServiceVaultSecretGroup
     }
 }
-
