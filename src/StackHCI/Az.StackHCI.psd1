@@ -12,7 +12,7 @@
 RootModule = 'Az.StackHCI.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Get the App Roles assigned correctly in case of Stack HCI registration using WAC token.'
+        ReleaseNotes = 'Workaround for the token cache issue in Az.Accounts 2.1.0. Using version 1.9.5 of Az.Accounts.'
 
     } # End of PSData hashtable
 

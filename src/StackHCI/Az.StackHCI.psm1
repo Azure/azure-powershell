@@ -432,15 +432,26 @@ param(
 
     Write-Progress -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
+    # Once Get-AzAccessToken is made available in Az.Accounts module, use latest versions.
     try
     {
-        Import-Module -Name Az.Resources -ErrorAction Stop
+        Import-Module -Name Az.Accounts -RequiredVersion 1.9.5 
     }
     catch
     {
         Install-PackageProvider NuGet -Force | Out-Null
-        Install-Module -Name Az.Resources -Force -AllowClobber
-        Import-Module -Name Az.Resources
+        Install-Module -Name Az.Accounts -Force -AllowClobber -RequiredVersion 1.9.5
+        Import-Module -Name Az.Accounts -RequiredVersion 1.9.5
+    }
+
+    try
+    {
+        Import-Module -Name Az.Resources -ErrorAction Stop -RequiredVersion 2.5.1 
+    }
+    catch
+    {
+        Install-Module -Name Az.Resources -Force -AllowClobber -RequiredVersion 2.5.1
+        Import-Module -Name Az.Resources -RequiredVersion 2.5.1
     }
 
     Write-Progress -activity $ProgressActivityName -status $InstallAzureADMessage -percentcomplete 20
