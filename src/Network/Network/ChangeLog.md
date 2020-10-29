@@ -37,6 +37,7 @@
 	- Added parameter `-CoverageLevel`
 	- Added parameter `-Scope`
 * Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
+* Made arguments `-MinScaleUnits` and `-MaxScaleUnits` optional in `Set-AzExpressRouteGateway` 
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
