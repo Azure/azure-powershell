@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -27,14 +28,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version AzVersion { get; }
 
         /// <summary>
+        /// Gets all the Az.* modules versions.
+        /// </summary>
+        public IDictionary<string, Version> AzModulesVersions { get; }
+
+        /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
-        public string HashUserId { get; }
+        public string UserId { get; }
 
         /// <summary>
         /// Gets the hashed MAC address.
         /// </summary>
-        public string HashMacAddress { get; }
+        public string MacAddress { get; }
+
+        /// <summary>
+        /// Gets the OS where it's running on.
+        /// </summary>
+        public string OSVersion { get; }
+
+        /// <summary>
+        /// Gets the PowerShell version it's running on.
+        /// </summary>
+        public Version PowerShellVersion { get; }
+
+        /// <summary>
+        /// Gets the version of this module.
+        /// </summary>
+        public Version ModuleVersion { get; }
 
         /// <summary>
         /// Updates the Az context.

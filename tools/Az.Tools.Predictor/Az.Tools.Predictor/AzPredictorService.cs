@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             this._azContext = azContext;
 
             this._client = new HttpClient();
-            this._client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, this._azContext.HashedUserId);
+            this._client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, this._azContext.UserId);
 
             RequestCommands();
         }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public virtual void RequestPredictions(IEnumerable<string> commands)
         {
-            AzPredictorService.ReplaceThrottleUserIdToHeader(this._client?.DefaultRequestHeaders, this._azContext.HashedUserId);
+            AzPredictorService.ReplaceThrottleUserIdToHeader(this._client?.DefaultRequestHeaders, this._azContext.UserId);
 
             // Even if it's called multiple times, we only need to keep the one for the latest command.
 

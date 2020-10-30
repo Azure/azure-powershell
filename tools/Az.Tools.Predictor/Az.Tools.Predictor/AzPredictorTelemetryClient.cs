@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private readonly TelemetryClient _telemetryClient;
         private readonly IAzContext _azContext;
+        private Tuple<IDictionary<string, Version>, string> _cachedAzModulesVersions = Tuple.Create<IDictionary<string, Version>, string>(null, null);
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>
@@ -61,16 +63,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return;
             }
 
-            var currentLog = new Dictionary<string, string>()
-            {
-                { "History", historyLine },
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("History", historyLine);
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
 
 #if DEBUG
             Console.WriteLine("Recording CommandHistory");
@@ -87,16 +83,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             CorrelationId = Guid.NewGuid().ToString();
 
-            var currentLog = new Dictionary<string, string>()
-            {
-                { "Command", command },
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("Command", command);
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
 
 #if DEBUG
             Console.WriteLine("Recording RequestPrediction");
@@ -111,17 +101,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return;
             }
 
-            var currentLog = new Dictionary<string, string>()
-            {
-                { "Command", command },
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "Exception", e.ToString() },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("Command", command);
+            properties.Add("Exception", e.ToString());
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", currentLog);
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", properties);
 
 #if DEBUG
             Console.WriteLine("Recording RequestPredictionError");
@@ -136,14 +120,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return;
             }
 
-            var properties = new Dictionary<string, string>()
-            {
-                { "AcceptedSuggestion", acceptedSuggestion },
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("AcceptedSuggestion", acceptedSuggestion);
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
 
@@ -160,21 +138,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return;
             }
 
-            var properties = new Dictionary<string, string>()
-            {
-                { "UserInput", maskedUserInput },
-                { "Suggestion", JsonConvert.SerializeObject(suggestions) },
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture) },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("UserInput", maskedUserInput);
+            properties.Add("Suggestion", JsonConvert.SerializeObject(suggestions));
+            properties.Add("IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture));
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
 #if DEBUG
-            Console.WriteLine("Recording GetSuggestioin");
+            Console.WriteLine("Recording GetSuggestion");
 #endif
         }
 
@@ -186,14 +158,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return;
             }
 
-            var properties = new Dictionary<string, string>()
-            {
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
-                { "Exception", e.ToString() },
-                { "UserId", _azContext.HashUserId },
-                { "HashMacAddress", _azContext.HashMacAddress },
-            };
+            var properties = CreateProperties();
+            properties.Add("Exception", e.ToString());
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
 
@@ -214,6 +180,40 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Add the common properties to the telemetry event.
+        /// </summary>
+        private IDictionary<string, string> CreateProperties()
+        {
+            return new Dictionary<string, string>()
+            {
+                { "SessionId", SessionId },
+                { "CorrelationId", CorrelationId },
+                { "UserId", _azContext.UserId },
+                { "HashMacAddress", _azContext.MacAddress },
+                { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },
+                { "ModuleVersion", _azContext.ModuleVersion.ToString() },
+                { "OS", _azContext.OSVersion },
+                { "AzModulesVersions", GetAzModulesVersions() },
+            };
+        }
+
+        private string GetAzModulesVersions()
+        {
+            var azModulesVersions = _azContext.AzModulesVersions;
+
+            if (_cachedAzModulesVersions.Item1 != azModulesVersions)
+            {
+                _cachedAzModulesVersions = Tuple.Create(azModulesVersions,
+                     string.Join(",", azModulesVersions.Select(pair =>
+                        {
+                            return $"{pair.Key}: {pair.Value}";
+                            })));
+            }
+
+            return _cachedAzModulesVersions.Item2;
         }
     }
 }

@@ -30,30 +30,76 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class AzContext : IAzContext
     {
-        /// <inheritdoc/>
-        public Version AzVersion { get; private set; } = new Version("0.0.0.0");
+        private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
-        public string HashUserId { get; private set; } = string.Empty;
+        public Version AzVersion { get; private set; } = AzContext.DefaultVersion;
 
-        private string _cachedHashMacAddress;
         /// <inheritdoc/>
-        public string HashMacAddress
+        public IDictionary<string, Version> AzModulesVersions { get; private set; } = new Dictionary<string, Version>();
+
+        /// <inheritdoc/>
+        public string UserId { get; private set; } = string.Empty;
+
+        private string _macAddress;
+        /// <inheritdoc/>
+        public string MacAddress
         {
             get
             {
-                if (_cachedHashMacAddress == null)
+                if (_macAddress == null)
                 {
-                    _cachedHashMacAddress = string.Empty;
+                    _macAddress = string.Empty;
 
                     var macAddress = GetMACAddress();
                     if (!string.IsNullOrWhiteSpace(macAddress))
                     {
-                        _cachedHashMacAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
+                        _macAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
                     }
                 }
 
-                return _cachedHashMacAddress;
+                return _macAddress;
+            }
+        }
+
+        /// <inheritdoc/>
+        public string OSVersion
+        {
+            get
+            {
+                return Environment.OSVersion.ToString();
+            }
+        }
+
+        private Version _powerShellVersion;
+        /// <inheritdoc/>
+        public Version PowerShellVersion
+        {
+            get
+            {
+                if (_powerShellVersion == null)
+                {
+                    var outputs = AzContext.ExecuteScript<Version>("(Get-Host).Version");
+
+                    _powerShellVersion = outputs.FirstOrDefault();
+                }
+
+                return _powerShellVersion ?? AzContext.DefaultVersion;
+            }
+        }
+
+        private Version _moduleVersion;
+        /// <inheritdoc/>
+        public Version ModuleVersion
+        {
+            get
+            {
+                if (_moduleVersion == null)
+                {
+                    _moduleVersion = this.GetType().Assembly.GetName().Version;
+                }
+
+                return _moduleVersion ?? AzContext.DefaultVersion;
             }
         }
 
@@ -61,7 +107,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void UpdateContext()
         {
             AzVersion = GetAzVersion();
-            HashUserId = GenerateSha256HashString(GetUserAccountId());
+            AzModulesVersions = GetAzModulesVersions();
+            UserId = GenerateSha256HashString(GetUserAccountId());
         }
 
         /// <summary>
@@ -69,18 +116,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private Version GetAzVersion()
         {
-            Version defaultVersion = new Version("0.0.0");
+            Version defaultVersion = AzContext.DefaultVersion;
 
             Version latestAz = defaultVersion;
 
             try
             {
-                var outputs = AzContext.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
-                foreach (PSObject obj in outputs)
+                var outputs = AzContext.ExecuteScript<PSModuleInfo>("Get-Module -Name Az -ListAvailable");
+                foreach (var obj in outputs)
                 {
-                    string psVersion = obj.Properties["Version"].Value.ToString();
-                    int pos = psVersion.IndexOf('-');
-                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                    var currentAz = obj.Version;
                     if (currentAz > latestAz)
                     {
                         latestAz = currentAz;
@@ -92,6 +137,37 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             return latestAz;
+        }
+
+        /// <summary>
+        /// Gets all the Az modules versions.
+        /// </summary>
+        private IDictionary<string, Version> GetAzModulesVersions()
+        {
+            var moduleVersions = new Dictionary<string, Version>();
+
+            try
+            {
+                var outputs = AzContext.ExecuteScript<PSModuleInfo>("Get-Module -Name Az.* -ListAvailable");
+                foreach (var obj in outputs)
+                {
+                    var psVersion = obj.Version;
+                    var psName = obj.Name;
+
+                    bool setVersion = !moduleVersions.TryGetValue(psName, out var existingVersion)
+                        || (existingVersion < psVersion);
+
+                    if (setVersion)
+                    {
+                        moduleVersions[psName] = psVersion;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return moduleVersions;
         }
 
         /// <summary>
