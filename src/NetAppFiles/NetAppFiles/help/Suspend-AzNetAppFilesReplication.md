@@ -15,19 +15,19 @@ Suspend/break the replication connection on the destination volume
 ### ByFieldsParameterSet (Default)
 ```
 Suspend-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Name <String> [-ForceBreak] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Suspend-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Suspend-AzNetAppFilesReplication -ResourceId <String> [-ForceBreak] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Suspend-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
+Suspend-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-ForceBreak] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

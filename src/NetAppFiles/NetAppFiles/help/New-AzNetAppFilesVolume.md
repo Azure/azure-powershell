@@ -17,7 +17,8 @@ Creates a new Azure NetApp Files (ANF) volume.
 New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String> -PoolName <String>
  -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String> [-VolumeType <String>]
  -ServiceLevel <String> [-SnapshotId <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
- [-ReplicationObject <PSNetAppFilesReplicationObject>] [-ProtocolType <String[]>] [-Tag <Hashtable>]
+ [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>] [-Tag <Hashtable>]
+ [-SnapshotDirectoryVisible] [-KerberosEnabled] [-BackupId <string>] [-SecurityStyle <string>] [-ThroughputMibps <Double>] [-ThroughputMibps <Double>] [-SecurityStyle <String>] 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +26,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
 ```
 New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String>
  -ServiceLevel <String> [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
- [-ReplicationObject <PSNetAppFilesReplicationObject>] [-ProtocolType <String[]>] [-Tag <Hashtable>]
+ [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>] [-Tag <Hashtable>]
  -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -208,6 +209,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Snapshot
+A hashtable array which represents the snapshot object
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeSnapshot
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Backup
+A hashtable array which represents the backup object
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeBackupProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -303,6 +334,83 @@ The type of the ANF volume
 
 ```yaml
 Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotDirectoryVisible
+If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KerberosEnabled
+Describe if a volume is Kerberos Enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+
+### -BackupId
+Backup ID. UUID v4 or resource identifier used to identify the Backup
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityStyle
+The security style of volume. Possible values include: 'ntfs', 'unix'
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ThroughputMibps
+Maximum throughput in Mibps that can be achieved by this volume
+
+```yaml
+Type: System.Double
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 

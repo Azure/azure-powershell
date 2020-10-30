@@ -172,6 +172,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -QosType
+The qos type of the pool. Possible values include: 'Auto', 'Manual'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: Auto
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 A hashtable which represents resource tags
 

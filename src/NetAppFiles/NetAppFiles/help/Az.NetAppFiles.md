@@ -74,3 +74,6 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 ### [Update-AzNetAppFilesVolume](Update-AzNetAppFilesVolume.md)
 Updates an Azure NetApp Files (ANF) volume according to the optional modifiers provided.
 
+### [PoolChange-AzNetAppFilesVolume](PoolChange-AzNetAppFilesVolume.md)
+Change pool for an Azure NetApp Files (ANF) volume.
+
