@@ -1,59 +1,51 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetAppFilesReplicationStatus
+# Get-AzNetAppFilesBackup
 
 ## SYNOPSIS
-Get the status of the replication
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesReplicationStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesReplicationStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetAppFilesBackup [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesReplicationStatus -InputObject <PSNetAppFilesVolume>
+Get-AzNetAppFilesBackup [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the status of the replication
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
-
-Output:
-
-Healthy            : true
-RelationshipStatus : Idle
-MirrorState        : Mirrored
-TotalProgress      : 1024
-ErrorMessage       :
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets the status of replication on MyVol
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication destination volume
+The name of the ANF account
 
 ```yaml
 Type: System.String
@@ -82,30 +74,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The ANF replication destination volume object to get replication status
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the ANF replication destination volume
+The name of the ANF backup
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases: VolumeName
+Parameter Sets: (All)
+Aliases: BackupName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of the ANF pool of the replication destination volume
+The name of the ANF pool
 
 ```yaml
 Type: System.String
@@ -128,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF replication destination volume
+The resource group of the ANF account
 
 ```yaml
 Type: System.String
@@ -143,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF replication destination volume
+The resource id of the ANF Backup
 
 ```yaml
 Type: System.String
@@ -154,6 +131,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VolumeName
+The name of the ANF volume
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeObject
+The volume object containing the backup to return
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesReplicationStatus
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 
 ## NOTES
 

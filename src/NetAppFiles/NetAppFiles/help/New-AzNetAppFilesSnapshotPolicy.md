@@ -1,56 +1,84 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/suspend-aznetappfilesreplication
+online version:
 schema: 2.0.0
 ---
 
-# Suspend-AzNetAppFilesReplication
+# New-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-Suspend/break the replication connection on the destination volume
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Suspend-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-ForceBreak] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Suspend-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+New-AzNetAppFilesSnapshotPolicy -ResourceGroupName <String> -Location <String> -AccountName <String>
+ -Name <String> [-Enabled] -HourlySchedule <PSNetAppFilesHourlySchedule>
+ -DailySchedule <PSNetAppFilesDailySchedule> -WeeklySchedule <PSNetAppFilesWeeklySchedule>
+ -MonthlySchedule <PSNetAppFilesMonthlySchedule> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
-Suspend-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
+New-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled] -HourlySchedule <PSNetAppFilesHourlySchedule>
+ -DailySchedule <PSNetAppFilesDailySchedule> -WeeklySchedule <PSNetAppFilesWeeklySchedule>
+ -MonthlySchedule <PSNetAppFilesMonthlySchedule> [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Suspend/break the replication connection on the destination volume
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Suspend-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+PS C:\> {{ Add example code here }}
 ```
 
-This command suspends the ANF Replication connection on volume "MyDestinationAnfVolume".
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication volume
+The name of the ANF account
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountObject
+The Account for the new Snapshot Policy object
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DailySchedule
+A hashtable array which represents the daily Schedule
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesDailySchedule
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -75,53 +103,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceBreak
-If replication is in status transferring and you want to force break the replication, set to true
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The ANF destination volume object with the replication to break
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the ANF replication destination volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases: VolumeName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Return whether the break of the specified volume replication was performed
+### -Enabled
+The property to decide policy is enabled or not
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -135,13 +118,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of the ANF pool of the replication volume
+### -HourlySchedule
+A hashtable array which represents the hourly Schedule
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesHourlySchedule
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the resource
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonthlySchedule
+A hashtable array which represents the montly Schedule
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesMonthlySchedule
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the ANF snapshot policy
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SnapshotPolicyName
 
 Required: True
 Position: Named
@@ -151,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF replication destination volume
+The resource group of the ANF account
 
 ```yaml
 Type: System.String
@@ -165,18 +193,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the ANF replication destination volume
+### -Tag
+A hashtable array which represents resource tags
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WeeklySchedule
+A hashtable array which represents the montly Schedule
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesWeeklySchedule
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -216,13 +259,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshotPolicy
 
 ## NOTES
 

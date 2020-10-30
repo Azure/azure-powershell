@@ -1,52 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/suspend-aznetappfilesreplication
+online version:
 schema: 2.0.0
 ---
 
-# Suspend-AzNetAppFilesReplication
+# New-AzNetAppFilesBackup
 
 ## SYNOPSIS
-Suspend/break the replication connection on the destination volume
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Suspend-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-ForceBreak] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzNetAppFilesBackup -ResourceGroupName <String> -Location <String> -AccountName <String> -PoolName <String>
+ -VolumeName <String> -Name <String> -Label <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### ByParentObjectParameterSet
 ```
-Suspend-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Suspend-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
+New-AzNetAppFilesBackup -Name <String> -Label <String> -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Suspend/break the replication connection on the destination volume
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Suspend-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+PS C:\> {{ Add example code here }}
 ```
 
-This command suspends the ANF Replication connection on volume "MyDestinationAnfVolume".
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication volume
+The name of the ANF account
 
 ```yaml
 Type: System.String
@@ -75,43 +69,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceBreak
-If replication is in status transferring and you want to force break the replication, set to true
+### -Label
+Label for backup
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsParameterSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The ANF destination volume object with the replication to break
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the ANF replication destination volume
+### -Location
+The location of the resource
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: VolumeName
+Aliases:
 
 Required: True
 Position: Named
@@ -120,15 +99,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether the break of the specified volume replication was performed
+### -Name
+The name of the ANF backup
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: BackupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of the ANF pool of the replication volume
+The name of the ANF pool
 
 ```yaml
 Type: System.String
@@ -151,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF replication destination volume
+The resource group of the ANF account
 
 ```yaml
 Type: System.String
@@ -165,18 +144,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the ANF replication destination volume
+### -VolumeName
+The name of the ANF volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeObject
+The volume for the new backup object
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -216,13 +210,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 
 ## NOTES
 

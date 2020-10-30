@@ -1,55 +1,61 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/suspend-aznetappfilesreplication
+online version:
 schema: 2.0.0
 ---
 
-# Suspend-AzNetAppFilesReplication
+# Revert-AzNetAppFilesVolume
 
 ## SYNOPSIS
-Suspend/break the replication connection on the destination volume
+Revert a volume to one of its snapshots
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Suspend-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-ForceBreak] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Revert-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolName <String> -Name <String>
+ [-SnapshotId <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Revert-AzNetAppFilesVolume -Name <String> -PoolObject <PSNetAppFilesPool> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Suspend-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Revert-AzNetAppFilesVolume -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Suspend-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
+Revert-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Suspend/break the replication connection on the destination volume
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Suspend-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+PS C:\> {{ Add example code here }}
 ```
 
-This command suspends the ANF Replication connection on volume "MyDestinationAnfVolume".
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication volume
+The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -64,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,26 +81,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceBreak
-If replication is in status transferring and you want to force break the replication, set to true
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
-The ANF destination volume object with the replication to break
+The volume object to remove
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Type: PSNetAppFilesVolume
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -106,11 +97,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF replication destination volume
+The name of the ANF volume
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: String
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
 Required: True
@@ -121,10 +112,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the break of the specified volume replication was performed
+Return whether the specified volume was successfully reverted
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -136,10 +127,10 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of the ANF pool of the replication volume
+The name of the ANF pool
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -150,11 +141,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group of the ANF replication destination volume
+### -PoolObject
+The pool object containing the volume to remove
 
 ```yaml
-Type: System.String
+Type: PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group of the ANF volume
+
+```yaml
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -166,10 +172,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF replication destination volume
+The resource id of the ANF volume
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -180,11 +186,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SnapshotId
+SnapshotId of the snapshot.
+UUID v4 used to identify the Snapshot
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -200,7 +222,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -217,6 +239,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 

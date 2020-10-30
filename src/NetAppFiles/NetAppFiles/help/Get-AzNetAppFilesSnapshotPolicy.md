@@ -1,54 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/new-aznetappfilespool
+online version:
 schema: 2.0.0
 ---
 
-# New-AzNetAppFilesPool
+# Get-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-Creates a new Azure NetApp Files (ANF) pool.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
- -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-Tag <Hashtable>]
+Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName <String> -AccountName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzNetAppFilesSnapshotPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>]
- [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzNetAppFilesSnapshotPolicy -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesPool** cmdlet creates an ANF pool.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Create an ANF pool
-```
-PS C:\>New-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -l "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium"
-
-Output:
-
-Location          : westus2
-Id                : /subscriptions/subsID/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
-Name              : MyAnfAccount/MyAnfPool
-Type              : Microsoft.NetApp/netAppAccounts/capacityPools
-Tags              :
-PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
-Size              : 4398046511104
-ServiceLevel      : Premium
-ProvisioningState : Succeeded
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command creates the new ANF pool "MyAnfPool" within the account "MyAnfAccount".
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -68,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -AccountObject
-The account for the new pool object
+The Account for the new Snapshot Policy object
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
@@ -97,62 +89,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the resource
+### -Name
+The name of the ANF snapshot policy
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the ANF pool
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PoolName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolSize
-The size of the ANF pool
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosType
-The qos type of the pool. Possible values include: 'Auto', 'Manual'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
+Aliases: SnapshotPolicyName
 
 Required: False
 Position: Named
-Default value: Auto
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -172,33 +119,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceLevel
-The service level of the ANF pool
+### -ResourceId
+The resource id of the ANF Snapshot Policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A hashtable which represents resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: Tags
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -238,11 +170,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshotPolicy
 
 ## NOTES
 

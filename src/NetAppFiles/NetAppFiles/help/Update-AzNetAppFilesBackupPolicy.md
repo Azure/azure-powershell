@@ -1,68 +1,59 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/update-aznetappfilespool
+online version:
 schema: 2.0.0
 ---
 
-# Update-AzNetAppFilesPool
+# Update-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
- [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>]
- -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesBackupPolicy -ResourceGroupName <String> -Location <String> -AccountName <String>
+ -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>] [-MonthlyBackupsToKeep <Int32>]
+ [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>] -ResourceId <String>
+Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
+ [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
+ [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>]
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>]
- -InputObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
+ [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>]
+ -InputObject <PSNetAppFilesBackupPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzNetAppFilesPool** cmdlet modifies an ANF pool.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Modify an ANF pool
-```
-PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolSize 4398046511104 -QosType "Auto"
-
-Output:
-
-Location          : westus2
-Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
-Name              : MyAnfAccount/MyAnfPool
-Type              : Microsoft.NetApp/netAppAccounts/capacityPools
-Tags              :
-PoolId            : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
-Size              : 4398046511104
-ServiceLevel      : Standard
-QosType			  : Auto
-ProvisioningState : Succeeded
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command changes the ANF pool "MyAnfPool" to have the given size and QosType.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -82,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AccountObject
-The account object containing the pool to update
+The Account object containing the Backup Policy to update
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
@@ -93,6 +84,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DailyBackupsToKeep
+Daily backups count to keep
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -112,10 +118,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pool object to update
+The BackupPolicy object to remove
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -134,6 +140,21 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonthlyBackupsToKeep
+Monthly backups count to keep
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -142,44 +163,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF pool
+The name of the ANF backup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases: PoolName
+Parameter Sets: (All)
+Aliases: BackupPolicyName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolSize
-The size of the ANF pool
-
-```yaml
-Type: System.Nullable`1[System.Int64]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosType
-The qos type of the pool. Possible values include: 'Auto', 'Manual'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF pool
+The resource id of the ANF Backup Policy
 
 ```yaml
 Type: System.String
@@ -217,12 +208,42 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable which represents resource tags
+A hashtable array which represents resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WeeklyBackupsToKeep
+Weekly backups count to keep
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -YearlyBackupsToKeep
+Yearly backups count to keep
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -271,11 +292,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
 
 ## NOTES
 
