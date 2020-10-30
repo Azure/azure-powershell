@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Bypass ExpressRoute Gateway for this connection")]
+        public bool? ExpressRouteGatewayBypass { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The routing configuration for this ExpressRoute Gateway connection")]
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
@@ -153,6 +158,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             if (this.EnableInternetSecurity.HasValue)
             {
                 expressRouteConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
+            }
+
+            if (this.ExpressRouteGatewayBypass.HasValue)
+            {
+                expressRouteConnectionToModify.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.Value;
             }
 
             if (this.RoutingConfiguration != null)

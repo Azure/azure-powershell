@@ -4853,6 +4853,10 @@
                 <Label>EnableInternetSecurity</Label>
                 <PropertyName>EnableInternetSecurity</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ExpressRouteGatewayBypass</Label>
+				<PropertyName>ExpressRouteGatewayBypass</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>

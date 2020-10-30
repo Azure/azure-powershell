@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Bypass ExpressRoute Gateway for this ExpressRoute Gateway connection")]
+        public SwitchParameter ExpressRouteGatewayBypass { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The routing configuration for this ExpressRoute Gateway connection")]
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
@@ -150,7 +155,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 ExpressRouteCircuitPeering = peeringResourceId,
-                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
+                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent,
+                ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent
             };
 
             if (this.RoutingConfiguration != null)

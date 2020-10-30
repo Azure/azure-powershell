@@ -15,21 +15,25 @@ Updates an express route connection created between an express route gateway and
 ### ByExpressRouteConnectionName (Default)
 ```
 Set-AzExpressRouteConnection -ResourceGroupName <String> -ExpressRouteGatewayName <String> -Name <String>
- [-AuthorizationKey <String>] [-RoutingWeight <UInt32>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthorizationKey <String>] [-RoutingWeight <UInt32>] [-EnableInternetSecurity <Boolean>]
+ [-ExpressRouteGatewayBypass <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionResourceId
 ```
 Set-AzExpressRouteConnection -ResourceId <String> [-AuthorizationKey <String>] [-RoutingWeight <UInt32>]
- [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableInternetSecurity <Boolean>] [-ExpressRouteGatewayBypass <Boolean>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionObject
 ```
 Set-AzExpressRouteConnection -InputObject <PSExpressRouteConnection> [-AuthorizationKey <String>]
- [-RoutingWeight <UInt32>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RoutingWeight <UInt32>] [-EnableInternetSecurity <Boolean>] [-ExpressRouteGatewayBypass <Boolean>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,9 +139,25 @@ Accept wildcard characters: False
 Enable internet security for this ExpressRoute Gateway connection
 
 ```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRouteGatewayBypass
+Bypass ExpressRoute Gateway for this connection
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
 Required: False
 Position: Named
 Default value: None
