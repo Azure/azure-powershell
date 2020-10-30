@@ -35,7 +35,6 @@ Description = 'Microsoft Azure PowerShell - Module providing recommendations for
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
 RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
@@ -48,7 +47,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','Prediction'
+        Tags = 'Azure','PowerShell','Prediction'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -63,7 +62,7 @@ PrivateData = @{
         ReleaseNotes = '* the first preview release'
 
         # Prerelease string of this module
-        Prerelease = 'beta1'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
