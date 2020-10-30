@@ -260,54 +260,54 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-            bool backupCreated = false;
-            // 1. convert vhdx to vhd if need
-            // 1-1 check if vhdx file
-            if (Path.GetExtension(this.LocalFilePath.Name) == ".vhdx")
-            {
-                // create back up 
-                // createBackUp(this.LocalFilePath.FullName);
-                backupCreated = true;
-
-                // 1-2. convert file
-                FileInfo vhdFileInfo = new FileInfo(Path.ChangeExtension(this.LocalFilePath.FullName, ".vhd"));
-                ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
-                VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
-
-                try
+                bool backupCreated = false;
+                // 1. convert vhdx to vhd if need
+                // 1-1 check if vhdx file
+                if (Path.GetExtension(this.LocalFilePath.Name) == ".vhdx")
                 {
-                    using (ManagementObject imageManagementService =
-                    StorageUtilities.GetImageManagementService(scope))
-                    {
-                        WriteVerbose("Converting .vhdx file .vhd file.");
-                        using (ManagementBaseObject inParams =
-                            imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
-                        {
-                            inParams["SourcePath"] = this.LocalFilePath.FullName;
-                            inParams["VirtualDiskSettingData"] =
-                                settingData.GetVirtualHardDiskSettingDataEmbeddedInstance(null, imageManagementService.Path.Path);
+                    // create back up 
+                    createBackUp(this.LocalFilePath.FullName);
+                    backupCreated = true;
 
-                            using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
-                                "ConvertVirtualHardDisk", inParams, null))
+                    // 1-2. convert file
+                    FileInfo vhdFileInfo = new FileInfo(Path.ChangeExtension(this.LocalFilePath.FullName, ".vhd"));
+                    ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
+                    VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
+
+                    try
+                    {
+                        using (ManagementObject imageManagementService =
+                        StorageUtilities.GetImageManagementService(scope))
+                        {
+                            WriteVerbose("Converting .vhdx file .vhd file.");
+                            using (ManagementBaseObject inParams =
+                                imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                             {
-                                WmiUtilities.ValidateOutput(outParams, scope);
+                                inParams["SourcePath"] = this.LocalFilePath.FullName;
+                                inParams["VirtualDiskSettingData"] =
+                                    settingData.GetVirtualHardDiskSettingDataEmbeddedInstance(null, imageManagementService.Path.Path);
+
+                                using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
+                                    "ConvertVirtualHardDisk", inParams, null))
+                                {
+                                    WmiUtilities.ValidateOutput(outParams, scope);
+                                }
                             }
                         }
                     }
-                }
-                catch (System.Management.ManagementException e)
-                {
-                        ThrowTerminatingError(new ErrorRecord(
-                            e,
-                            "Hyper-V is unavailable",
-                            ErrorCategory.InvalidOperation,
-                            null));
-                }
+                    catch (System.Management.ManagementException e)
+                    {
+                            ThrowTerminatingError(new ErrorRecord(
+                                e,
+                                "Hyper-V is unavailable",
+                                ErrorCategory.InvalidOperation,
+                                null));
+                    }
                     
                     
-                // 1-3. update this.LocalFilePath property for resizing, if all good
-                this.LocalFilePath = vhdFileInfo;
-            }
+                    // 1-3. update this.LocalFilePath property for resizing, if all good
+                    this.LocalFilePath = vhdFileInfo;
+                }
                 
                 // 2. resize vhd 
                 // 2-2. check if resize is needed 
@@ -474,8 +474,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 backupPath = Path.GetDirectoryName(filePath) + @"\" + Path.GetFileNameWithoutExtension(filePath) + "_temp(" + extNum + ")" + ext;
                 extNum += 1;
             }
+            Console.WriteLine("Making a back up copy to: " + backupPath);
             this.LocalFilePath.CopyTo(backupPath);
-            Console.WriteLine("Back up copy made to: " + backupPath);
         }
 
     }
