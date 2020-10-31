@@ -15,14 +15,14 @@ Updates an existing RedisEnterprise cluster
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MinimumTlsVersion <String>] [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tags <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-MinimumTlsVersion <String>]
- [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
+ [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,6 +58,23 @@ Run the command as a job
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Capacity
+The size of the RedisEnterprise cluster.
+Defaults to 2 or 3 depending on SKU.
+Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: SkuCapacity
 
 Required: False
 Position: Named
@@ -158,31 +175,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-The size of the RedisEnterprise cluster.
-Defaults to 2 or 3 depending on SKU.
-Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
+### -Sku
 The type of RedisEnterprise cluster to deploy.
 Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
 Parameter Sets: (All)
-Aliases:
+Aliases: SkuName
 
 Required: False
 Position: Named
@@ -207,13 +207,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
+### -Tags
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named

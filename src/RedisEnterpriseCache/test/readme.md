@@ -15,3 +15,24 @@ Custom cmdlets generally encompass additional functionality not described in the
 
 ## Usage
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
+
+To execute tests in a specific order, update `test-module.ps1`. An example update would be:
+
+ - Replace the following:
+```powershell
+  Invoke-Pester -Script @{ Path = $testFolder } ...
+```
+ - With the following:
+```powershell
+  $orderedTests = @(
+      # Perform tests in the following order:
+      Join-Path $testFolder 'New*'
+      Join-Path $testFolder 'Set*'
+      Join-Path $testFolder 'Update*'
+      Join-Path $testFolder 'Export*'
+      Join-Path $testFolder 'Import*'
+      Join-Path $testFolder 'Get*'
+      Join-Path $testFolder 'Remove*'
+  )
+  Invoke-Pester -Script $orderedTests ...
+```

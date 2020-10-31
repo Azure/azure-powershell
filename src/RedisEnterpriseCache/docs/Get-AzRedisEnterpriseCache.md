@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Gets information about a RedisEnterprise cluster
+Gets information about a RedisEnterprise cluster and its associated database
 
 ## SYNTAX
 
@@ -18,23 +18,62 @@ Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-Name <String>] [-Subscr
 ```
 
 ## DESCRIPTION
-Gets information about a RedisEnterprise cluster
+Gets information about a RedisEnterprise cluster and its associated database
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 ```
 
-{{ Add output here }}
+Location Name    Type                            Zone
+-------- ----    ----                            ----
+East US  MyCache Microsoft.Cache/redisEnterprise
+
+ClientProtocol    : Encrypted
+ClusteringPolicy  : OSSCluster
+EvictionPolicy    : VolatileLRU
+Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
+Module            :
+Name              : default
+Port              : 10000
+ProvisioningState : Succeeded
+ResourceState     : Running
+Type              : Microsoft.Cache/redisEnterprise/databases
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 ```
 
-{{ Add output here }}
+Location Name     Type                            Zone
+-------- ----     ----                            ----
+East US  MyCache1 Microsoft.Cache/redisEnterprise
+
+ClientProtocol    : Encrypted
+ClusteringPolicy  : OSSCluster
+EvictionPolicy    : VolatileLRU
+Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default
+Module            :
+Name              : default
+Port              : 10000
+ProvisioningState : Succeeded
+ResourceState     : Running
+Type              : Microsoft.Cache/redisEnterprise/databases
+
+East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3}
+
+ClientProtocol    : Plaintext
+ClusteringPolicy  : EnterpriseCluster
+EvictionPolicy    : NoEviction
+Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default
+Module            : {RedisBloom, RedisTimeSeries, RediSearch}
+Name              : default
+Port              : 10000
+ProvisioningState : Succeeded
+ResourceState     : Running
+Type              : Microsoft.Cache/redisEnterprise/databases
 
 ## PARAMETERS
 
@@ -107,6 +146,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
 
 ## NOTES
 

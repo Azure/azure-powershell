@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: 8b4ce03d-64c1-4f50-a2a3-85cee56a4282
+Module Guid: e50a7b9d-bb6c-4c17-a7a1-bb5725578abd
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,10 +15,7 @@ Microsoft Azure PowerShell: RedisEnterpriseCache cmdlets
 Exports a database file from target database.
 
 ### [Get-AzRedisEnterpriseCache](Get-AzRedisEnterpriseCache.md)
-Gets information about a RedisEnterprise cluster
-
-### [Get-AzRedisEnterpriseCacheDatabase](Get-AzRedisEnterpriseCacheDatabase.md)
-Gets information about a database in a RedisEnterprise cluster.
+Gets information about a RedisEnterprise cluster and its associated database
 
 ### [Get-AzRedisEnterpriseCacheDatabaseKey](Get-AzRedisEnterpriseCacheDatabaseKey.md)
 Retrieves the access keys for the RedisEnterprise database.
@@ -36,7 +33,7 @@ Gets the private link resources that need to be created for a RedisEnterprise cl
 Imports a database file to target database.
 
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with 'default' database
+Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster and an associated database named 'default'
 
 ### [New-AzRedisEnterpriseCacheDatabaseKey](New-AzRedisEnterpriseCacheDatabaseKey.md)
 Regenerates the RedisEnterprise database's access keys.

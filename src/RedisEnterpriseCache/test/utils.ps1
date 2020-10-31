@@ -12,6 +12,11 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.ClusterName = 'ps-cache-test'
+    $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 6)
+    $env.Location = 'East US'
+    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -20,5 +25,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.ResourceGroupName | Out-Null
 }
 

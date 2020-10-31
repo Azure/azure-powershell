@@ -12,7 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzRedisEnterpriseCache' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $splat = @{
+            Name = $env.ClusterName
+            ResourceGroupName = $env.ResourceGroupName
+        }
+        $cache = Get-AzRedisEnterpriseCache @splat
+        $cache.Name | Should -Be @($splat.Name, "default")
+        $cache.Location | Should -Be $env.Location
+        $cache.Type | Should -Be @("Microsoft.Cache/redisEnterprise", "Microsoft.Cache/redisEnterprise/databases")
+    }
+
+    It 'List' {
+        $splat = @{
+            ResourceGroupName = $env.ResourceGroupName
+        }
+        $cache = Get-AzRedisEnterpriseCache @splat
+        $cache.Name | Should -Be @($env.ClusterName, "default")
+        $cache.Location | Should -Be $env.Location
+        $cache.Type | Should -Be @("Microsoft.Cache/redisEnterprise", "Microsoft.Cache/redisEnterprise/databases")
     }
 }

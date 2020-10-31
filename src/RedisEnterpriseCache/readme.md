@@ -79,6 +79,22 @@ directive:
     set:
       parameter-name: Zones
       alias: Zone
+  - where:
+      parameter-name: SkuCapacity
+    set:
+      parameter-name: Capacity
+      alias: SkuCapacity
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+      alias: SkuName
+  - where:
+      parameter-name: Tag
+    set:
+      parameter-name: Tags
+      alias: Tag
+
 
   # Remove unused variants
   - where:
@@ -111,7 +127,7 @@ directive:
 
   # Hide cmdlets
   - where:
-      verb: New
+      verb: New|Get
       subject: ^$|^Database$
     hide: true
   - where:

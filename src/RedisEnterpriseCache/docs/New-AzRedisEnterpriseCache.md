@@ -8,35 +8,62 @@ schema: 2.0.0
 # New-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with 'default' database
+Creates a Redis Enterpise cache cluster and an associated database
 
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
- [-SubscriptionId <String>] [-MinimumTlsVersion <String>] [-Modules <IModule[]>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
+ [-SubscriptionId <String>] [-Capacity <Int32>] [-ClientProtocol <Protocol>]
+ [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>] [-MinimumTlsVersion <String>]
+ [-Modules <IModule[]>] [-Port <Int32>] [-Tags <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with 'default' database
+Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster and an associated database named 'default'
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -SkuName "Enterprise_E10" -Zones "1","2","3" -Modules "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
 ```
 
-{{ Add output here }}
+Location Name    Type                            Zone
+-------- ----    ----                            ----
+East US  MyCache Microsoft.Cache/redisEnterprise
+
+ClientProtocol    : Encrypted
+ClusteringPolicy  : OSSCluster
+EvictionPolicy    : VolatileLRU
+Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
+Module            :
+Name              : default
+Port              : 10000
+ProvisioningState : Succeeded
+ResourceState     : Running
+Type              : Microsoft.Cache/redisEnterprise/databases
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-{{ Add code here }}
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zones "1","2","3" -Modules "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tags @{"tag" = "value"}
 ```
 
-{{ Add output here }}
+Location Name    Type                            Zone
+-------- ----    ----                            ----
+East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3}
+
+ClientProtocol    : Plaintext
+ClusteringPolicy  : EnterpriseCluster
+EvictionPolicy    : NoEviction
+Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
+Module            : {RedisBloom, RedisTimeSeries, RediSearch}
+Name              : default
+Port              : 10000
+ProvisioningState : Succeeded
+ResourceState     : Running
+Type              : Microsoft.Cache/redisEnterprise/databases
 
 ## PARAMETERS
 
@@ -55,6 +82,55 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Capacity
+The size of the RedisEnterprise cluster.
+Defaults to 2 or 3 depending on SKU.
+Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: SkuCapacity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientProtocol
+Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
+Default is TLS-encrypted.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusteringPolicy
+Clustering policy - default is OSSCluster.
+Specified at create time.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -62,6 +138,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EvictionPolicy
+Redis eviction policy - default is VolatileLRU.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -147,6 +238,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Port
+TCP port of the database endpoint.
+Specified at create time.
+Defaults to an available port.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -162,31 +270,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-The size of the RedisEnterprise cluster.
-Defaults to 2 or 3 depending on SKU.
-Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
+### -Sku
 The type of RedisEnterprise cluster to deploy.
 Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
 Parameter Sets: (All)
-Aliases:
+Aliases: SkuName
 
 Required: True
 Position: Named
@@ -211,13 +302,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
+### -Tags
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -280,6 +371,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
 
 ## NOTES
 
