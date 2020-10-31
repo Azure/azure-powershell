@@ -197,7 +197,9 @@ param(
         $graphTokenItemResource = $GraphEndpointResourceIdAzurePPE
     }
 
-    $graphTokenItem = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.TokenCache.ReadItems() | where { ($_.TenantId -eq "$TenantId") -and ($_.Resource -eq "$graphTokenItemResource")} | Sort-Object -Property ExpiresOn | Select-Object -Last 1
+    $authFactory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory
+    $azContext = Get-AzContext
+    $graphTokenItem = $authFactory.Authenticate($azContext.Account, $azContext.Environment, $azContext.Tenant.Id, $null, [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never, $null, $graphTokenItemResource)
     return $graphTokenItem.AccessToken
 }
 
@@ -432,26 +434,15 @@ param(
 
     Write-Progress -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
-    # Once Get-AzAccessToken is made available in Az.Accounts module, use latest versions.
     try
     {
-        Import-Module -Name Az.Accounts -RequiredVersion 1.9.5 
+        Import-Module -Name Az.Resources -ErrorAction Stop
     }
     catch
     {
         Install-PackageProvider NuGet -Force | Out-Null
-        Install-Module -Name Az.Accounts -Force -AllowClobber -RequiredVersion 1.9.5
-        Import-Module -Name Az.Accounts -RequiredVersion 1.9.5
-    }
-
-    try
-    {
-        Import-Module -Name Az.Resources -ErrorAction Stop -RequiredVersion 2.5.1 
-    }
-    catch
-    {
-        Install-Module -Name Az.Resources -Force -AllowClobber -RequiredVersion 2.5.1
-        Import-Module -Name Az.Resources -RequiredVersion 2.5.1
+        Install-Module -Name Az.Resources -Force -AllowClobber
+        Import-Module -Name Az.Resources
     }
 
     Write-Progress -activity $ProgressActivityName -status $InstallAzureADMessage -percentcomplete 20
