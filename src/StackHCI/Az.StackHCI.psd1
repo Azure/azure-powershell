@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Workaround for the token cache issue in Az.Accounts 2.1.0. Using version 1.9.5 of Az.Accounts.'
+        ReleaseNotes = 'Workaround for the token cache issue in Az.Accounts 2.1.0. Using AuthenticationFactory.'
 
     } # End of PSData hashtable
 
