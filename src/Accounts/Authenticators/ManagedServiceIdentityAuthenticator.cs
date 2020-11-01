@@ -37,9 +37,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var scopes = new[] { GetResourceId(msiParameters.ResourceId, msiParameters.Environment) };
             var requestContext = new TokenRequestContext(scopes);
-            ManagedIdentityCredential identityCredential = new ManagedIdentityCredential();
-            var tokenTask = identityCredential.GetTokenAsync(requestContext);
-            return MsalAccessToken.GetAccessTokenAsync(tokenTask, msiParameters.TenantId, msiParameters.Account.Id);
+            ManagedIdentityCredential identityCredential = new ManagedIdentityCredential(msiParameters.Account.Id);
+            return MsalAccessToken.GetAccessTokenAsync(identityCredential, requestContext, cancellationToken,
+                msiParameters.TenantId, msiParameters.Account.Id);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

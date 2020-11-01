@@ -71,7 +71,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             return MsalAccessToken.GetAccessTokenAsync(
                 authTask,
-                () => browserCredential.GetTokenAsync(requestContext, source.Token),
+                browserCredential,
+                requestContext,
                 source.Token);
         }
 

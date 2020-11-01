@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that token is not renewed after expiring for LRO [#13367]
+* Fixed the issue that AccountId is not respected in MSI
+* Fixed the issue that error message is unclear if browser is not avaialable for Interactive auth [#13340]
 
 ## Version 2.1.0
 * [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
