@@ -47,15 +47,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private TokenRequestContext TokenRequestContext { get; set; }
 
-        //public MsalAccessToken(string token, DateTimeOffset expiresOn, string tenantId, string userId = null, string homeAccountId = null)
-        //{
-        //    AccessToken = token;
-        //    ExpiredOn = expiresOn;
-        //    UserId = userId;
-        //    TenantId = tenantId;
-        //    HomeAccountId = homeAccountId;
-        //}
-
         public MsalAccessToken(TokenCredential tokenCredential, TokenRequestContext tokenRequestContext,
             string token, DateTimeOffset expiresOn, string tenantId, string userId = null, string homeAccountId = null)
         {
@@ -74,16 +65,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             authTokenSetter("Bearer", AccessToken);
         }
 
-        //public static async Task<IAccessToken> GetAccessTokenAsync(
-        //    ValueTask<AccessToken> result,
-        //    string tenantId = null,
-        //    string userId = null,
-        //    string homeAccountId = "")
-        //{
-        //    var token = await result;
-        //    return new MsalAccessToken(token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
-        //}
-
         public static async Task<IAccessToken> GetAccessTokenAsync(
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,
@@ -96,29 +77,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
 
-
-        //public static async Task<IAccessToken> GetAccessTokenAsync(
-        //    ValueTask<AccessToken> result,
-        //    Action action,
-        //    string tenantId = null,
-        //    string userId = null)
-        //{
-        //    var token = await result;
-        //    action();
-        //    return new MsalAccessToken(token.Token, token.ExpiresOn, tenantId, userId);
-        //}
-
-        //public static async Task<IAccessToken> GetAccessTokenAsync(
-        //    Task<AuthenticationRecord> authTask,
-        //    Func<ValueTask<AccessToken>> getTokenAction,
-        //    CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    var record = await authTask;
-        //    cancellationToken.ThrowIfCancellationRequested();
-        //    var token = await getTokenAction();
-
-        //    return new MsalAccessToken(token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
-        //}
 
         public static async Task<IAccessToken> GetAccessTokenAsync(
             Task<AuthenticationRecord> authTask,
@@ -143,6 +101,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 ExpiredOn = token.ExpiresOn;
             }
         }
+
         private bool IsExpired()
         {
 #if DEBUG
