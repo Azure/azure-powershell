@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfBakcupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Update(ResourceGroupName, AccountName, backupPolicyName: Name, backupPolicyPatch);
+                var anfBakcupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Update(ResourceGroupName, AccountName, backupPolicyName: Name, body: backupPolicyPatch);
                 WriteObject(anfBakcupPolicy.ConvertToPs());
             }
         }
