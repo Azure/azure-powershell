@@ -19,6 +19,8 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -29,6 +31,7 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -398,10 +401,33 @@ namespace Microsoft.Azure.Commands.Profile
                    }
 
                    HandleActions();
-                   var result = (PSAzureProfile) (task.ConfigureAwait(false).GetAwaiter().GetResult());
-                   WriteObject(result);
+
+                   try
+                   {
+                       var result = (PSAzureProfile)(task.ConfigureAwait(false).GetAwaiter().GetResult());
+                       WriteObject(result);
+                   }
+                   catch (AuthenticationFailedException ex)
+                   {
+                       if(IsUableToOpenWebPageError(ex))
+                       {
+                           WriteWarning(Resources.InteractiveAuthNotSupported);
+                           WriteDebug(ex.ToString());
+                       }
+                       else
+                       {
+                           WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                           throw;
+                       }
+                   }
                });
             }
+        }
+
+        private bool IsUableToOpenWebPageError(AuthenticationFailedException exception)
+        {
+            return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == "linux_xdg_open_failed"
+                            || (exception.Message?.ToLower()?.Contains("uable to open a web page") ?? false);
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();

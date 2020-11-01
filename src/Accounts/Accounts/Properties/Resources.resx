@@ -513,4 +513,10 @@
   <data name="SendFeedbackOpenLinkManually" xml:space="preserve">
     <value>Use a web browser to open the page {0}.</value>
   </data>
+  <data name="InteractiveAuthNotSupported" xml:space="preserve">
+    <value>Interactive authentication is not supported in this session, please run Connect-AzAccount using switch -DeviceCode.</value>
+  </data>
+  <data name="SuggestToUseDeviceCodeAuth" xml:space="preserve">
+    <value>Please run 'Connect-AzAccount -DeviceCode' if browser is not supported in this session.</value>
+  </data>
 </root>
