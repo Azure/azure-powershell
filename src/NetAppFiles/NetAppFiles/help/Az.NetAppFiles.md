@@ -36,10 +36,10 @@ Get the status of the replication
 Gets details of an Azure NetApp Files (ANF) snapshot.
 
 ### [Get-AzNetAppFilesSnapshotPolicy](Get-AzNetAppFilesSnapshotPolicy.md)
-Gets details of an Azure NetApp Files (ANF) Snapshot Policy.
+Gets details of an Azure NetApp Files (ANF) snapshot policy.
 
 ### [Get-AzNetAppFilesVault](Get-AzNetAppFilesVault.md)
-Gets details of an Azure NetApp Files (ANF) Backup Vault.
+Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
 
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
@@ -48,13 +48,13 @@ Gets details of an Azure NetApp Files (ANF) volume.
 Creates a new Azure NetApp Files (ANF) account.
 
 ### [New-AzNetAppFilesActiveDirectory](New-AzNetAppFilesActiveDirectory.md)
-Creates a new Azure NetApp Files (ANF) Active Directory configuration.
+Creates a new Azure NetApp Files (ANF) active directory configuration.
 
 ### [New-AzNetAppFilesBackup](New-AzNetAppFilesBackup.md)
-Creates a new Azure NetApp Files (ANF) Backup.
+Creates a new Azure NetApp Files (ANF) backup.
 
 ### [New-AzNetAppFilesBackupPolicy](New-AzNetAppFilesBackupPolicy.md)
-Creates a new Azure NetApp Files (ANF) Backup Policy.
+Creates a new Azure NetApp Files (ANF) backup policy for an ANF account.
 
 ### [New-AzNetAppFilesPool](New-AzNetAppFilesPool.md)
 Creates a new Azure NetApp Files (ANF) pool.
@@ -63,7 +63,7 @@ Creates a new Azure NetApp Files (ANF) pool.
 Creates a new Azure NetApp Files (ANF) snapshot.
 
 ### [New-AzNetAppFilesSnapshotPolicy](New-AzNetAppFilesSnapshotPolicy.md)
-Creates a new Azure NetApp Files (ANF) snapshot policy.
+Creates a new Azure NetApp Files (ANF) snapshot policy for an ANF account.
 
 ### [New-AzNetAppFilesVolume](New-AzNetAppFilesVolume.md)
 Creates a new Azure NetApp Files (ANF) volume.
@@ -114,19 +114,19 @@ Suspend/break the replication connection on the destination volume
 Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesActiveDirectory](Update-AzNetAppFilesActiveDirectory.md)
-Updates an Azure NetApp Files (ANF) active directory configuration according to the optional modifiers provided.
+Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesBackup](Update-AzNetAppFilesBackup.md)
-Updates an Azure NetApp Files (ANF) backup according to the optional modifiers provided.
+{{ Fill in the Synopsis }}
 
 ### [Update-AzNetAppFilesBackupPolicy](Update-AzNetAppFilesBackupPolicy.md)
-Updates an Azure NetApp Files (ANF) backup policy according to the optional modifiers provided.
+{{ Fill in the Synopsis }}
 
 ### [Update-AzNetAppFilesPool](Update-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesSnapshotPolicy](Update-AzNetAppFilesSnapshotPolicy.md)
-Updates an Azure NetApp Files (ANF) snapshot policy according to the optional modifiers provided.
+{{ Fill in the Synopsis }}
 
 ### [Update-AzNetAppFilesVolume](Update-AzNetAppFilesVolume.md)
 Updates an Azure NetApp Files (ANF) volume according to the optional modifiers provided.

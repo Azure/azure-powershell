@@ -14,20 +14,20 @@ Updates an Azure NetApp Files (ANF) active directory configuration to the option
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -Location <String> -AccountName <String>
- -Name <String> [-Dns <String[]>] -Domain <String> -Site <String> -SmbServerName <String> [-Username <String>]
+Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
+ [-Dns <String[]>] [-Domain <String>] [-Site <String>] [-SmbServerName <String>] [-Username <String>]
  [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperators <String[]>]
- [-ServerRootCACertificate <String>] [-AdName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerRootCACertificate <String>] [-AdName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] -Domain <String> -Site <String>
- -SmbServerName <String> [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
+Update-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] [-Domain <String>] [-Site <String>]
+ [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
  [-KdcIP <String>] [-BackupOperators <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
- [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +144,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,21 +161,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -265,7 +250,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,21 +265,6 @@ This name will be registered as a computer account in the AD and used to mount v
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A hashtable array which represents resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: Tags
 
 Required: False
 Position: Named

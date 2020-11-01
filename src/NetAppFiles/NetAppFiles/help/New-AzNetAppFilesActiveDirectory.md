@@ -14,11 +14,11 @@ Creates a new Azure NetApp Files (ANF) active directory configuration.
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -Location <String> -AccountName <String>
- -Name <String> [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String>
- [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
- [-BackupOperators <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
+ [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>]
+ [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperators <String[]>]
+ [-ServerRootCACertificate <String>] [-AdName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -162,21 +162,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

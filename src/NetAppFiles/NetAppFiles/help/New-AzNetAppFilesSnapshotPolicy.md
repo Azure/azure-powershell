@@ -36,7 +36,7 @@ The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new snapshot policy fo
 
 ### Example 1
 ```powershell
-    $hourlySchedule = @{        
+$hourlySchedule = @{        
         Minute = 2
         SnapshotsToKeep = 6
     }
