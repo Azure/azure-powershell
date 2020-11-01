@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <IncludeCommonTestProject>false</IncludeCommonTestProject>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
+    <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="Moq" Version="4.7.145" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
+    <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assert.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
+    </Content>
+    <Content Include="Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
+    </Content>
+    <Content Include="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
+    </Content>
+    <Content Include="AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
+    </Content>
+  </ItemGroup>
+
+</Project>

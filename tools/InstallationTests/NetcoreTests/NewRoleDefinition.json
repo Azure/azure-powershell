@@ -1,0 +1,10 @@
+{
+    "Name": "CustomRole Tests Role",
+    "Description": "Test role",
+    "Actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*"
+    ],
+    "NotActions": [],
+    "AssignableScopes": ["/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d"]
+}
