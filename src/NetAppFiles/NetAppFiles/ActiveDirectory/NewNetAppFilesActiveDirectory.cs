@@ -50,14 +50,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [Parameter(
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The location of the resource")]
-        [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.NetApp/netAppAccounts/activeDirectory")]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(
@@ -156,8 +148,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         {
             if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = AccountObject.ResourceGroupName;
-                Location = AccountObject.Location;
+                ResourceGroupName = AccountObject.ResourceGroupName;                
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
@@ -198,8 +189,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     }
                     anfAccount.ActiveDirectories.Add(activeDirectory);                    
                     var netAppAccountBody = new NetAppAccountPatch()
-                    {
-                        Location = Location,
+                    {                        
                         ActiveDirectories = anfAccount.ActiveDirectories                        
                     };
                     var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);

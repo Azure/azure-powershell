@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetAppFilesBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) backup.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ New-AzNetAppFilesBackup -Name <String> -Label <String> -VolumeObject <PSNetAppFi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesBackup** cmdlet creates a backup for an ANF volume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetAppFilesBackup -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyVolumeBackup" -Label "ALabel"
 ```
 
-{{ Add example description here }}
+This command creates the new ANF backup for volume named  account "MyVolume".
 
 ## PARAMETERS
 

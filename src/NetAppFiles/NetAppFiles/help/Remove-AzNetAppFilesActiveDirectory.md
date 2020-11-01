@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetAppFilesActiveDirectory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes an Azure NetApp Files (ANF) active directory configuration.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzNetAppFilesActiveDirectory [-Name <String>] -AccountObject <PSNetAppFil
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetAppFilesActiveDirectory** cmdlet deletes an ANF active directory configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyADName"
 ```
 
-{{ Add example description here }}
+This command deletes the new ANF active directory configuration with a the name "MyADName".
 
 ## PARAMETERS
 

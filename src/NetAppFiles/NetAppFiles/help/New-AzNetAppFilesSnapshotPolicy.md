@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) snapshot policy for an ANF account.
 
 ## SYNTAX
 
@@ -30,16 +30,37 @@ New-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled] -HourlySchedule <PSNet
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new snapshot policy for an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+    $hourlySchedule = @{        
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $dailySchedule = @{
+        Hour = 1
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $weeklySchedule = @{
+        Minute = 2    
+        Hour = 1		        
+        Day = "Sunday,Monday"
+        SnapshotsToKeep = 6
+    }
+    $monthlySchedule = @{
+        Minute = 2    
+        Hour = 1        
+        DaysOfMonth = "2,11,21"
+        SnapshotsToKeep = 6
+    }
+PS C:\> New-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
 ```
 
-{{ Add example description here }}
+This command creates the new ANF snapshot policy for ANF account named account "MyAccount".
 
 ## PARAMETERS
 

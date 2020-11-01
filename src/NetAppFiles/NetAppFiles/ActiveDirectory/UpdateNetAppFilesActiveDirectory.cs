@@ -28,7 +28,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
+namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 {
     [Cmdlet(
         "Update",
@@ -45,14 +45,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The location of the resource")]
-        [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.NetApp/netAppAccounts/activeDirectory")]
-        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -82,19 +74,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         public string[] Dns { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of the Active Directory domain")]
         [ValidateNotNullOrEmpty]
         public string Domain { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Active Directory site the service will limit Domain Controller discovery to")]
         [ValidateNotNullOrEmpty]
         public string Site { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes")]
         [ValidateNotNullOrEmpty]
         public string SmbServerName { get; set; }
@@ -142,14 +134,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public string AdName { get; set; }
 
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A hashtable array which represents resource tags")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Tags")]
-        public Hashtable Tag { get; set; }
-
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
@@ -163,20 +147,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
-                Location = AccountObject.Location;
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
-            }
-            IDictionary<string, string> tagPairs = null;
-
-            if (Tag != null)
-            {
-                tagPairs = new Dictionary<string, string>();
-
-                foreach (string key in Tag.Keys)
-                {
-                    tagPairs.Add(key, Tag[key].ToString());
-                }
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
@@ -184,48 +156,37 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 if (anfAccount == null)
                 {
-                    throw new ArgumentException("Specified NetAppAccount does not extist");
+                    throw new ArgumentException($"Specified NetAppAccount with name '{this.Name}' does not extist in Resource Group '{this.ResourceGroupName}'");
                 }
-
-                var activeDirectory = new Management.NetApp.Models.ActiveDirectory
+                var anfADConfig = anfAccount.ActiveDirectories?.FirstOrDefault(a => a.AdName == Name);
+                if (anfADConfig == null)
                 {
-                    AdName = Name,
-                    Dns = string.Join(",", Dns),
-                    Domain = Domain,
-                    SmbServerName = SmbServerName,
-                    Username = Username,
-                    Password = Password.ConvertToString(),
-                    Site = Site,
-                    OrganizationalUnit = OrganizationalUnit,
-                    BackupOperators = BackupOperators,
-                    KdcIP = KdcIP,
-                    ServerRootCACertificate = ServerRootCACertificate
-                };
-
-                var newActiveDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.ActiveDirectoryId == Name);
-                if (newActiveDirectory != null)
-                {
-                    newActiveDirectory.AdName = Name;
-                    newActiveDirectory.Dns = string.Join(",", Dns);
-                    newActiveDirectory.Domain = Domain;
-                    newActiveDirectory.SmbServerName = SmbServerName;
-                    newActiveDirectory.Username = Username;
-                    newActiveDirectory.Password = Password.ConvertToString();
-                    newActiveDirectory.Site = Site;
-                    newActiveDirectory.OrganizationalUnit = OrganizationalUnit;
-                    newActiveDirectory.BackupOperators = BackupOperators;
-                    newActiveDirectory.KdcIP = KdcIP;
-                    newActiveDirectory.ServerRootCACertificate = ServerRootCACertificate;
+                    throw new ArgumentException($"ActiveDirectory configuration with name '{this.Name}' in account '{this.AccountName}' is not found. Please use New-AzNetAppFilesActiveDirectory to Create a new ActiveDirectory configuration.");
                 }
                 else
                 {
-                    anfAccount.ActiveDirectories.Add(activeDirectory);
+                    string dnsStr = null;
+                    if (Dns != null)
+                    {
+                        dnsStr = string.Join(",", Dns);
+                    }
+                    
+                    anfADConfig.AdName = Name ?? anfADConfig.AdName;
+                    anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
+                    anfADConfig.Domain = Domain ?? anfADConfig.Domain;
+                    anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
+                    anfADConfig.Username = Username ?? anfADConfig.Username;
+                    anfADConfig.Password = Password.ConvertToString();                    
+                    anfADConfig.Site = Site ?? anfADConfig.Site;
+                    anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
+                    anfADConfig.BackupOperators = BackupOperators ?? anfADConfig.BackupOperators;
+                    anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
+                    anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
                 }
+                
                 var netAppAccountBody = new NetAppAccountPatch()
                 {
-                    Location = Location,
-                    ActiveDirectories = anfAccount.ActiveDirectories,
-                    Tags = tagPairs
+                    ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
                 var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
                 var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.AdName == Name);

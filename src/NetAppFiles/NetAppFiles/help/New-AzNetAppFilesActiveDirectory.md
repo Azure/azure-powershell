@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetAppFilesActiveDirectory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) active directory configuration.
 
 ## SYNTAX
 
@@ -31,16 +31,17 @@ New-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] -Domain <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new active directory configuration for an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $pwd_secure_string = Read-Host "Enter a Password" -AsSecureString
+PS C:\> New-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyADName" -Username "AdUserName -Password $pwd_secure_string -Domain "AdDomain" -Dns "192.0.2.2" -SmbServerName "AdSmbServerName"
 ```
 
-{{ Add example description here }}
+This command gets the AD password from promt into a secreates the new Active Directory configuration for the ANF account "MyAnfAccount".
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesActiveDirectory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) Active Directory configuration.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzNetAppFilesActiveDirectory [-Name <String>] -AccountObject <PSNetAppFilesA
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesActiveDirectory** cmdlet gets details of an ANF accounts Active Directory configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyADConfigName"
 ```
 
-{{ Add example description here }}
+This command gets the AD configuration named MyADConfigName for the Azure NetApp Files (ANF) account named MyAnfAccount.
 
 ## PARAMETERS
 

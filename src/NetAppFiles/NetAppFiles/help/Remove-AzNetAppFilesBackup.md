@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetAppFilesBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes an Azure NetApp Files (ANF) backup.
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Remove-AzNetAppFilesBackup [-Name <String>] -InputObject <PSNetAppFilesBackup> [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetAppFilesBackup** cmdlet deletes an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
 ```
 
-{{ Add example description here }}
+This command deletes the new ANF backup with a the name "MyBackup" for volume "MyVolume".
 
 ## PARAMETERS
 

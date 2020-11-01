@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) Backup Policy.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesBackupPolicy [-Name <String>] -AccountObject <PSNetAppFilesAcco
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesBackupPolicy** cmdlet gets details of an ANF backup policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyBackupPolicy"
 ```
 
-{{ Add example description here }}
+This command gets the backup policy named "MyBackupPolicy" for account "MyAnfAccount".
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) Backup.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesBackup [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesBackup** cmdlet gets details of an ANF backup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
 ```
 
-{{ Add example description here }}
+This command gets the backcup named "MyAnfAccount" from the volume named "MyVolume".
 
 ## PARAMETERS
 

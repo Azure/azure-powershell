@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) snapshot policy.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesSnapshotPolicy -AccountObject <PSNetAppFilesAccount>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesSnapshotPolicy** cmdlet gets details of an ANF snapshot policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
 ```
 
-{{ Add example description here }}
+This command gets the backup policy named "MyBackupPolicy" for account "MyAnfAccount".
 
 ## PARAMETERS
 

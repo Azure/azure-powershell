@@ -25,12 +25,13 @@ function Test-ActiveDirectoryCrud
     $accName2 = Get-ResourceName
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
     $resourceLocation = 'westus2'
-    $adUsername = "sdkuser"
+    $adUsername = "sdkuser"    
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
     $adPassword = "sdkpass"
     $adDomain = "sdkdomain"
     $adDns = "192.0.2.2"
     $adSmbServerName = "PSSMBSName"
+    $adSmbServerName2 = "PSMBSName2"
 
     try
     {
@@ -44,7 +45,7 @@ function Test-ActiveDirectoryCrud
         Assert-AreEqual $accName1 $retrievedAcc.Name
         $sPass = ConvertTo-SecureString $adPassword -AsPlainText -Force
         # create and check ActiveDirectory
-        $retrievedAd = New-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
+        $retrievedAd = New-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
         Assert-AreEqual $activeDirectoryName1 $retrievedAd.AdName        
         Assert-AreEqual $adDomain $retrievedAd.Domain        
         Assert-AreEqual $adUsername $retrievedAd.Username
@@ -63,7 +64,11 @@ function Test-ActiveDirectoryCrud
         Assert-AreEqual $adUsername $getRetrievedAd.Username
         Assert-AreEqual $adDns $getRetrievedAd.Dns
         Assert-AreEqual $adSmbServerName $getRetrievedAd.SmbServerName       
-              
+        
+        #update AD 
+        $getUpdateddAd = Update-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $activeDirectoryName1 -SmbServerName $adSmbServerName2 -Password $sPass
+        Assert-AreEqual $adSmbServerName2 $getUpdateddAd.SmbServerName
+
         # delete activeDirectory retrieved   
         # but test the WhatIf first, should not be removed
         Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $getRetrievedAd.AdName -WhatIf

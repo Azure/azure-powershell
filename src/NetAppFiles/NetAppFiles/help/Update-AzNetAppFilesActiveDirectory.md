@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetAppFilesActiveDirectory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Update-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] -Domain <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF active directory configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzNetAppFilesActiveDirectory  -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyADName" -Username $adUsername
 ```
 
-{{ Add example description here }}
+This command performs an update on the given active directory configuration modifying the username to that provided.
 
 ## PARAMETERS
 

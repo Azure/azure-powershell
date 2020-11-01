@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes an Azure NetApp Files (ANF) backup policy.
 
 ## SYNTAX
 
@@ -37,16 +37,16 @@ Remove-AzNetAppFilesBackupPolicy -Name <String> -InputObject <PSNetAppFilesBacku
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetAppFilesBackupPolicy** cmdlet deletes an ANF backup policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy"
 ```
 
-{{ Add example description here }}
+This command deletes the new ANF backup policy with a the name "MyBackupPolicy" for account "MyAccount".
 
 ## PARAMETERS
 

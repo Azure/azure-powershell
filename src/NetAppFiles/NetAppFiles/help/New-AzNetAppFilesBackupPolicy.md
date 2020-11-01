@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) backup policy for an ANF account.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ New-AzNetAppFilesBackupPolicy -Name <String> [-Enabled] [-DailyBackupsToKeep <In
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new backup policy for an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2 -YearlyBackupsToKeep 1
 ```
 
-{{ Add example description here }}
+This command creates the new ANF backup policy for ANF account named account "MyAccount".
 
 ## PARAMETERS
 

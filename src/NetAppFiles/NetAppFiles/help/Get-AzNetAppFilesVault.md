@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
 
 ## SYNTAX
 
@@ -30,16 +30,16 @@ Get-AzNetAppFilesVault -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesVault** cmdlet gets list of an ANF accounts backup vaults.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesVault -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" 
 ```
 
-{{ Add example description here }}
+This command gets a list of the backup vaults for Azure NetappFiles (ANF) account "MyAnfAccount".
 
 ## PARAMETERS
 
