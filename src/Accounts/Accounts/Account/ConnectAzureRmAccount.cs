@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private bool IsUableToOpenWebPageError(AuthenticationFailedException exception)
         {
-            return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == "linux_xdg_open_failed"
+            return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
                             || (exception.Message?.ToLower()?.Contains("uable to open a web page") ?? false);
         }
 
