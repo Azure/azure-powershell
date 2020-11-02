@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
@@ -125,7 +125,7 @@ Indicates the cmdlet should follow relation links.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: FL
 
 Required: False
 Position: Named
@@ -140,7 +140,7 @@ Specifies how many times to follow relation links if FollowRelLink is used.
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: ML
 
 Required: False
 Position: Named

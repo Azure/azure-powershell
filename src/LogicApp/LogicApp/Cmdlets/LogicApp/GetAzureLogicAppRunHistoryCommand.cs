@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Management.Automation;
 
     /// <summary>
@@ -45,12 +46,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RunName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow relation links.",
-            ParameterSetName = "FollowRelLink")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow relation links.")]
+        [Alias("FL")]
         public SwitchParameter FollowRelLink { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow relation links if FollowRelLink is used.",
-            ParameterSetName = "FollowRelLink")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow relation links if FollowRelLink is used.")]
+        [Alias("ML")]
+        [ValidateRange(1, Int32.MaxValue)]
         public int MaximumFollowRelLink { get; set; } = int.MaxValue;
 
         #endregion Input Parameters
