@@ -260,6 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                /*
                 bool backupCreated = false;
                 // 1. convert vhdx to vhd if need
                 // 1-1 check if vhdx file
@@ -356,27 +357,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 { 
                     WriteVerbose("Vhd file already resized. Proceeding to uploading.");
                 } 
+                */
                 
 
                 if (this.ParameterSetName == DirectUploadToManagedDiskSet)
                 {
-                    /*
+                    
                     // 3. DIRECT UPLOAD TO MANAGED DISK
 
-                    
                     // 3-1. create disk config  
                     // TO-DO: need to set disksizeGB in this method still 
                     var diskConfig = CreateDiskConfig();
 
                     // 3-2: create disk 
-                    NewAzureRmDisk newDisk = new NewAzureRmDisk
-                    {
-                        ResourceGroupName = this.ResourceGroupName,
-                        DiskName = this.DiskName,
-                        Disk = diskConfig
-                    };
-                    
-                    newDisk.ExecuteCmdlet();
+                    createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
                     
                     // 3-3: generate SAS
                     GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
@@ -393,8 +387,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     //sas.ExecuteCmdlet();
                     
                     // 3-4: upload 
-                    var parameters = ValidateParameters();
-                    var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+                    // var parameters = ValidateParameters();
+                    // var vhdUploadContext = VhdUploaderModel.Upload(parameters);
                     // AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
                     
                     // 3-5: revoke SAS
@@ -403,8 +397,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     revokeSas.DiskName = this.DiskName;
                     revokeSas.ExecuteCmdlet();
 
-                    WriteObject(vhdUploadContext);
-                    */
+                    // WriteObject(vhdUploadContext);
+
                 }
                 else
                 {
@@ -437,9 +431,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             vCreationData = new CreationData();
             vCreationData.CreateOption = "upload";
-            // TO-DO: change back to first line when .length is always N * Mib + 512
-            //vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
-            vCreationData.UploadSizeBytes = 32506368;
+            vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
 
             var vDisk = new PSDisk
             {
@@ -476,6 +468,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             }
             Console.WriteLine("Making a back up copy to: " + backupPath);
             this.LocalFilePath.CopyTo(backupPath);
+        }
+
+        private void createManagedDisk(string ResourceGroupName, string DiskName, PSDisk psDisk)
+        {
+            NewAzureRmDisk newDisk = new NewAzureRmDisk();
+            string resourceGroupName = ResourceGroupName;
+            string diskName = DiskName;
+            Disk disk = new Disk();
+            ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(psDisk, disk);
+
+            var result = newDisk.DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+            var psObject = new PSDisk();
+            ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
+            WriteObject(psObject);
         }
 
     }
