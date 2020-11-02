@@ -126,3 +126,56 @@ function Test-SynapseWorkspace
         Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
     }
 }
+
+<#
+.SYNOPSIS
+Tests Synapse Workspace SQL Active Directory Administrator
+#>
+function Test-SynapseWorkspace-ActiveDirectoryAdministrator
+{
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $activeDirectoryGroup = "testAADaccount",
+		$activeDirectoryGroupObjectId = "41732a4a-e09e-4b18-9624-38e252d68bbf",
+		$activeDirectoryUser = "Test User 2",
+		$activeDirectoryUserObjectId = "e87332b2-e3ed-480a-9723-e9b3611268f8"
+    )
+
+    try
+    {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+
+        # Set SQL Active Directory Administrator Group
+        $activeDirectoryAdminGroupSet = Set-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName `
+		-DisplayName $activeDirectoryGroup
+
+        Assert-AreEqual $activeDirectoryAdminGroupSet.DisplayName $activeDirectoryGroup
+		Assert-AreEqual $activeDirectoryAdminGroupSet.ObjectId $activeDirectoryGroupObjectId
+
+        # Get SQL Server Active Directory Administrator
+        $activeDirectoryAdminGroupGet = Get-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $activeDirectoryAdminGroupGet.DisplayName $activeDirectoryGroup
+		Assert-AreEqual $activeDirectoryAdminGroupGet.ObjectId $activeDirectoryGroupObjectId
+
+        # Set SQL Active Directory Administrator User
+		$activeDirectoryAdminUser = Set-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName `
+		-DisplayName $activeDirectoryUser
+
+        Assert-AreEqual $activeDirectoryAdminUser.DisplayName $activeDirectoryUser
+		Assert-AreEqual $activeDirectoryAdminUser.ObjectId $activeDirectoryUserObjectId
+
+        # Remove SQL Active Directory Administrator User
+		Assert-True {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
+
+        # Verify that SQL Active Directory Administrator was deleted
+		Assert-Throws {Get-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
+    }
+    finally
+    {
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName} -IgnoreFailures
+    }
+}

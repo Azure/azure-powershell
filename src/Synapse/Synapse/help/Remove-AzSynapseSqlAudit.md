@@ -1,42 +1,53 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/new-azsynapsesqldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqlaudit
 schema: 2.0.0
 ---
 
-# New-AzSynapseSqlDatabase
+# Remove-AzSynapseSqlAudit
 
 ## SYNOPSIS
-Creates a Synapse Analytics SQL database.
+Removes the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## SYNTAX
 
-### CreateByNameParameterSet (Default)
+### RemoveByNameParameterSet (Default)
 ```
-New-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-Tag <Hashtable>] [-Collation <String>] [-MaxSizeInBytes <Int64>] [-AsJob]
+Remove-AzSynapseSqlAudit [-ResourceGroupName <String>] -WorkspaceName <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateByParentObjectParameterSet
+### RemoveByInputObjectParameterSet
 ```
-New-AzSynapseSqlDatabase -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
- [-Collation <String>] [-MaxSizeInBytes <Int64>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Remove-AzSynapseSqlAudit -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseSqlDatabase** cmdlet gets information about an Azure Synapse Analytics SQL database.
+The **Remove-AzSynapseSqlAudit** cmdlet removes the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
+PS C:\> Remove-AzSynapseSqlAudit -WorkspaceName ContosoWorkspace
 ```
 
-This command creates an Azure Synapse Analytics SQL database.
+This command removes the auditing settings of an Azure Synapse Analytics Workspace named ContosoWorkspace.
+
+### Example 2
+```powershell
+PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Remove-AzSynapseSqlAudit
+```
+
+This command removes the auditing settings of an Azure Synapse Analytics Workspace named ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
@@ -45,22 +56,6 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Collation
-Collation defines the rules that sort and compare data, and cannot be changed after SQL pool creation.
-The default collation is SQL_Latin1_General_CP1_CI_AS.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,30 +81,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSizeInBytes
-Specifies the maximum size of the database in bytes.
+### -InputObject
+workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: System.Int64
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: RemoveByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+This Cmdlet does not return an object by default.
+If this switch is specified, it returns true if successful.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Synapse SQL Database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +117,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: False
@@ -131,15 +127,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-A string,string dictionary of tags associated with the resource.
+### -ResourceId
+Resource identifier of Synapse workspace.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,28 +147,13 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceObject
-workspace input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: CreateByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -216,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlDatabase
+### System.Boolean
 
 ## NOTES
 
