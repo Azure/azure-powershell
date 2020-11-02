@@ -18,7 +18,7 @@ The request body can contain one to many of the properties present in the normal
 Update-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
  [-AdministratorLoginPassword <String>] [-SubnetId <String>]
  [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] [-ReplicationRole <String>]
- [-SkuName <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-Sku <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
  [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ Update-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-
 ```
 Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <String>] 
  [-SubnetId <String>] [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] 
- [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
  [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ Use Update-AzMySqlConfiguration instead if you want update server parameters suc
 
 ### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -SkuName Standard_D4ds_v4
+PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
 ----          -------- ------------------ ------- ----------------------- ---------------- -------------
@@ -67,7 +67,7 @@ This cmdlet updates MySql server by identity.
 The password of the administrator login.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.
 
 ```yaml

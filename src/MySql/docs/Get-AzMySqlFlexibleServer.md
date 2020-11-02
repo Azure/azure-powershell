@@ -81,8 +81,6 @@ PS C:\> Get-AzMySqlFlexibleServer -InputObject $ID
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
 ----          -------- ------------------ ------- ----------------------- ---------------- -------------
 mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
-mysql-test-12 eastus   mysql_test2        5.7     5120                    Standard_D2ds_v4 GeneralPurpose
-mysql-test-13 eastus   mysql_test2        5.7     5120                    Standard_D4ds_v4 GeneralPurpose
 ```
 
 This cmdlet lists gets MySql servers by identity.

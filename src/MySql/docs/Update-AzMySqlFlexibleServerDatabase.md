@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlflexibleserverdatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/Update-azmysqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
-# Set-AzMySqlFlexibleServerDatabase
+# Update-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
 Updates an existing database.
@@ -14,14 +14,14 @@ Updates an existing database.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzMySqlFlexibleServerDatabase -DatabaseName <String> -ResourceGroupName <String> -ServerName <String>
  -Parameter <IDatabase> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Updates an existing database.
 
 ### Example 1: Create a new MySql server database
 ```powershell
-PS C:\> Set-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
+PS C:\> Update-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
 
 Name            Charset     Collation              
 ----            -------- ------------------
@@ -44,7 +44,7 @@ Update a database by resource name.
 ### Example 2: Update MySql database by parameter.
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/databases/databasetest"
-PS C:\> Set-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
+PS C:\> Update-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
 
 Name            Charset     Collation              
 ----            -------- ------------------

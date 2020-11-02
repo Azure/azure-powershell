@@ -15,9 +15,9 @@ schema: 2.0.0
 New-AzMySqlFlexibleServer 
  [-ResourceGroupName <String>] [-Name <String> -Location <String>]
  [-SubscriptionId <String>] [-AdministratorUserName <String>] [-AdministratorLoginPassword <String>]
- [-HaEnabled <HaEnabledEnum>][-SkuName <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
+ [-HaEnabled <HaEnabledEnum>][-Sku <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
  [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-AddressPrefixes [String]] [-PublicAccess [String]] [-SubnetPrefixes [String]] [-VnetId [String]] [-SubnetId <String>]
+ [-AddressPrefix [String]] [-PublicAccess [String]] [-SubnetPrefix [String]] [-VnetId [String]] [-SubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Creates a new server. A server can be generated with all arguments optional. If 
 ### Example 1: Create a new MySql flexible server with parameters
 ```powershell
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -SkuName Standard_B1ms -SkuTier Burstable
+-Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable
 
 Creating new vnet {vnetName} in resource group {resourceGroupName}...
 Creating new subnet {subnetName} in resource group {resourceGroupName} and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
@@ -294,7 +294,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.  Default: Standard_B1ms.
 
 ```yaml
