@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed one issue related to MSI
 
 ## Version 2.1.1
 * Fixed the issue that token is not renewed after expiring for LRO [#13367]
