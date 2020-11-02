@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RunName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow relation links.",
+            ParameterSetName = "FollowRelLink")]
+        public SwitchParameter FollowRelLink { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow relation links if FollowRelLink is used.",
+            ParameterSetName = "FollowRelLink")]
+        public int MaximumFollowRelLink { get; set; } = int.MaxValue;
+
         #endregion Input Parameters
 
         /// <summary>
@@ -55,8 +63,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.RunName))
             {
-                var enumerator = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name).GetEnumerator();
-                this.WriteObject(enumerator.ToIEnumerable<WorkflowRun>(), true);
+                Page<WorkflowRun> page = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name);
+                this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRun>(), true);
+
+                if (FollowRelLink && !string.IsNullOrWhiteSpace(page.NextPageLink))
+                {
+                    for (int i = 0; i < MaximumFollowRelLink; i++)
+                    {
+                        page = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name, page.NextPageLink);
+                        this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRun>(), true);
+                    }
+                }
             }
             else
             {
