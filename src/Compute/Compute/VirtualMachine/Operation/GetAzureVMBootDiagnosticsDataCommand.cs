@@ -22,14 +22,15 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -140,7 +141,6 @@ namespace Microsoft.Azure.Commands.Compute
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
 
                     BlobClient blobClient = new BlobClient(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri));
-                    BlobDownloadInfo blobDownloadInfo = blobClient.Download();
 
                     var localPathTest = this.LocalPath;
                     var bootSegment = new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];

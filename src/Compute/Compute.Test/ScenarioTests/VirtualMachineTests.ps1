@@ -4465,7 +4465,7 @@ function Test-VirtualMachineBootDiagnostics
         Assert-NotNull $vm;
 
         # Get Managed Boot Diagnostics 
-        #Get-AzVmBootDiagnosticsData -ResourceGroupName $rgname -Name $vmname -Windows -LocalPath "C:\Users\adsandor\Documents\bootDiags"; # See if removing this prevents the CI check failures. 
+        # Get-AzVmBootDiagnosticsData -ResourceGroupName $rgname -Name $vmname -Windows -LocalPath "C:\Users\adsandor\Documents\bootDiags"; # See if removing this prevents the CI check failures. 
     }
     finally
     {
