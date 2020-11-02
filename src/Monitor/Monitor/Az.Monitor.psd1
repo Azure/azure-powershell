@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.2.0'
+ModuleVersion = '2.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -107,7 +107,8 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Remove-AzInsightsPrivateLinkScope', 
                'New-AzInsightsPrivateLinkScopedResource', 
                'Get-AzInsightsPrivateLinkScopedResource', 
-               'Remove-AzInsightsPrivateLinkScopedResource'
+               'Remove-AzInsightsPrivateLinkScopedResource',
+               'Get-AzDataCollectionRule', 'New-AzDataCollectionRule', 'Set-AzDataCollectionRule', 'Remove-AzDataCollectionRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -142,8 +143,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed the bug that warning message cannot be suppressed. [#12889]
-* Supported ''SkipMetricValidation'' parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn''t yet emitted, by causing the metric validation to be skipped.'
+        ReleaseNotes = '* Adding support for Data Collection Rules and Data Collection Rule Association'
 
         # Prerelease string of this module
         # Prerelease = ''
