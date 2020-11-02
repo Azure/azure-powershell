@@ -164,9 +164,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, cancellationToken);
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken);
 
-                cancellationToken.ThrowIfCancellationRequested();
+                if (!Settings.ContinueOnTimeout)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                }
+
                 var userInput = context.InputAst.Extent.Text;
                 return suggestions.Select((r, index) =>
                     {

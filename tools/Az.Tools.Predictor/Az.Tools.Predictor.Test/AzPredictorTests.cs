@@ -147,5 +147,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.Equal(expected.Select(e => e.Item1), actual.Select(a => a.SuggestionText));
         }
+
+        /// <summary>
+        /// Verifies that we still return correct prediction when the user has input an incomplete command line.
+        /// </summary>
+        [Fact]
+        public void VerifySuggestionOnIncompleteCommand()
+        {
+            // We need to get the suggestions for more than one. So we create a local version az predictor.
+            var localAzPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
+            {
+                SuggestionCount = 7,
+            },
+            null);
+
+            var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
+            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Verbose ***";
+
+            var predictionContext = PredictionContext.Create(userInput);
+            var actual = localAzPredictor.GetSuggestion(predictionContext, CancellationToken.None);
+
+            Assert.Equal(expected, actual.First().SuggestionText);
+        }
     }
 }
