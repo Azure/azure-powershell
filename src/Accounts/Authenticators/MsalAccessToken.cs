@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private void Renew()
         {
-            if(IsExpired())
+            if(IsNearExpiration())
             {
                 var token = TokenCredential.GetToken(TokenRequestContext, default(CancellationToken));
                 AccessToken = token.Token;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
         }
 
-        private bool IsExpired()
+        private bool IsNearExpiration()
         {
 #if DEBUG
             if (Environment.GetEnvironmentVariable("FORCE_EXPIRED_ACCESS_TOKEN") != null)

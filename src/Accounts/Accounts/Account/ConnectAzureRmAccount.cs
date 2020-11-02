@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
-                       if(IsUableToOpenWebPageError(ex))
+                       if(IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
@@ -417,6 +417,7 @@ namespace Microsoft.Azure.Commands.Profile
                        else
                        {
                            WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                           WriteDebug(ex.ToString());
                            throw;
                        }
                    }
@@ -424,10 +425,10 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private bool IsUableToOpenWebPageError(AuthenticationFailedException exception)
+        private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
         {
             return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
-                            || (exception.Message?.ToLower()?.Contains("uable to open a web page") ?? false);
+                            || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
