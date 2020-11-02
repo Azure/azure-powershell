@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             Mandatory = true,
             HelpMessage = "The name of the ANF Active Directory")]
         [ValidateNotNullOrEmpty]
-        [Alias("BackupPolicyName")]
+        [Alias("ActiveDirectoryName")]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/activeDirectory",
             nameof(ResourceGroupName),

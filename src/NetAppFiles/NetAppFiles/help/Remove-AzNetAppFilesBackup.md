@@ -15,25 +15,25 @@ Deletes an Azure NetApp Files (ANF) backup.
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-VolumeName <String>] -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Remove-AzNetAppFilesBackup [-Name <String>] -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesBackup [-Name <String>] -VolumeObject <PSNetAppFilesVolume> [-PassThru]
+Remove-AzNetAppFilesBackup -Name <String> -VolumeObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Remove-AzNetAppFilesBackup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesBackup [-Name <String>] -InputObject <PSNetAppFilesBackup> [-PassThru]
+Remove-AzNetAppFilesBackup -InputObject <PSNetAppFilesBackup> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,10 +101,10 @@ The name of the ANF backup
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

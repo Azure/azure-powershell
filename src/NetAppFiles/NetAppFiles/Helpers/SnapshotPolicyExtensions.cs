@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ResourceGroupName = new ResourceIdentifier(snapshotPolicy.Id).ResourceGroupName,
                 Location = snapshotPolicy.Location,
                 Id = snapshotPolicy.Id,
-                Name = snapshotPolicy.Name1,
+                Name = snapshotPolicy.Name,
                 Type = snapshotPolicy.Type,
                 Tags = snapshotPolicy.Tags,
                 ProvisioningState = snapshotPolicy.ProvisioningState,

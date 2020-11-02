@@ -75,8 +75,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public string VolumeName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the ANF backup")]
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupName")]
         [ResourceNameCompleter(

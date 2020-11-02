@@ -28,7 +28,7 @@ function Test-BackupPolicyCrud
     $weeklyBackupsToKeep = 3
     $monthlyBackupsToKeep = 2
     $yearlyBackupsToKeep = 1
-    $backupLocation = "eastus2euap"
+    $backupLocation = "southcentralus"
 
     try
     {
@@ -60,6 +60,10 @@ function Test-BackupPolicyCrud
         Assert-AreEqual $monthlyBackupsToKeep $getRetrievedBackupPolicy.MonthlyBackupsToKeep
         #returns 0 atm service side issue
         #Assert-AreEqual $yearlyBackupsToKeep $retrievedBackupPolicy.YearlyBackupsToKeep
+        
+        $updatedDailyBackupsToKeep = 2
+        $updatedBackupPolicy = Update-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -DailyBackupsToKeep $updatedDailyBackupsToKeep
+        Assert-AreEqual $updatedDailyBackupsToKeep $updatedBackupPolicy.DailyBackupsToKeep
 
         #create second BackupPolicy
         $secondBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName2 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep

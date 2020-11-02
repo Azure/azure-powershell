@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) backup policy to the optional modifiers provided.
 
 ## SYNTAX
 
@@ -20,13 +20,6 @@ Update-AzNetAppFilesBackupPolicy -ResourceGroupName <String> -Location <String> 
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
-```
-Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
- [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
@@ -35,25 +28,32 @@ Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-
  [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Update-AzNetAppFilesBackupPolicy [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
+ [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesBackupPolicy -Name <String> [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
+Update-AzNetAppFilesBackupPolicy [-DailyBackupsToKeep <Int32>] [-WeeklyBackupsToKeep <Int32>]
  [-MonthlyBackupsToKeep <Int32>] [-YearlyBackupsToKeep <Int32>] [-Tag <Hashtable>]
  -InputObject <PSNetAppFilesBackupPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesBackupPolicy** cmdlet modifies an ANF backup policy .
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy" -DailyBackupsToKeep 2
 ```
 
-{{ Add example description here }}
+This command changes the ANF backup policy "MyBackupPolicy" to have the given DailyBackupsToKeep.
 
 ## PARAMETERS
 
@@ -167,7 +167,7 @@ The name of the ANF backup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupPolicyName
 
 Required: True

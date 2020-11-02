@@ -55,6 +55,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             Mandatory = true,
             HelpMessage = "The name of the ANF snapshot policy",
             ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF snapshot policy",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("SnapshotPolicyName")]
         [ResourceNameCompleter(

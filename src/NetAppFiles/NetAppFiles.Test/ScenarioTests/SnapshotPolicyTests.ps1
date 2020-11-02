@@ -59,7 +59,7 @@ function Test-SnapshotPolicyCrud
         
         # create and check SnapshotPolicy        
         $retrievedSnapshotPolicy = New-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName1 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
-        Assert-AreEqual "$accName/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name        
+        Assert-AreEqual "$accName1/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name        
         Assert-AreEqual $hourlySchedule["Minute"] $retrievedSnapshotPolicy.HourlySchedule.Minute
         Assert-AreEqual $dailySchedule["Hour"] $retrievedSnapshotPolicy.DailySchedule.Hour
         Assert-AreEqual $weeklySchedule["Day"] $retrievedSnapshotPolicy.WeeklySchedule.Day
@@ -67,15 +67,22 @@ function Test-SnapshotPolicyCrud
         
         # get and check a SnapshotPolicy by name and check again
         $getRetrievedSnapshotPolicy = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName1
-        Assert-AreEqual "$accName/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name
+        Assert-AreEqual "$accName1/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name
         Assert-AreEqual $hourlySchedule["Minute"] $getRetrievedSnapshotPolicy.HourlySchedule.Minute
         Assert-AreEqual $dailySchedule["Hour"] $getRetrievedSnapshotPolicy.DailySchedule.Hour
         Assert-AreEqual $weeklySchedule["Day"] $getRetrievedSnapshotPolicy.WeeklySchedule.Day
         Assert-AreEqual $monthlySchedule["DaysOfMonth"] $getRetrievedSnapshotPolicy.MonthlySchedule.DaysOfMonth
 
+        $hourlySchedule2 = @{
+            Minute = 1
+            SnapshotsToKeep = 3
+        }
+        $updatedSnapshotPolicy = Update-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName1 -HourlySchedule $hourlySchedule2
+        Assert-AreEqual $hourlySchedule2["Minute"] $updatedSnapshotPolicy.HourlySchedule.Minute
+
         #create second SnapshotPolicy
         $secondSnapshotPolicy = New-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName2 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
-        Assert-AreEqual "$accName/$snapshotPolicyName2" $secondSnapshotPolicy.Name        
+        Assert-AreEqual "$accName1/$snapshotPolicyName2" $secondSnapshotPolicy.Name        
         Assert-AreEqual $hourlySchedule["Minute"] $secondSnapshotPolicy.HourlySchedule.Minute
         Assert-AreEqual $dailySchedule["Hour"] $secondSnapshotPolicy.DailySchedule.Hour
         Assert-AreEqual $weeklySchedule["Day"] $secondSnapshotPolicy.WeeklySchedule.Day
@@ -85,16 +92,16 @@ function Test-SnapshotPolicyCrud
         $retrievedSnapshotPolicyList = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1
         # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
         Assert-AreEqual 2 $retrievedSnapshotPolicyList.Length
-        Assert-True {"$snapshotPolicyName1" -eq $retrievedSnapshotPolicyList[0].Name -or "$snapshotPolicyName2" -eq $retrievedSnapshotPolicyList[0].Name}
-        Assert-True {"$snapshotPolicyName1" -eq $retrievedSnapshotPolicyList[1].Name -or "$snapshotPolicyName2" -eq $retrievedSnapshotPolicyList[1].Name}
+        Assert-True {"$accName1/$snapshotPolicyName1" -eq $retrievedSnapshotPolicyList[0].Name -or "$accName1/$snapshotPolicyName2" -eq $retrievedSnapshotPolicyList[0].Name}
+        Assert-True {"$accName1/$snapshotPolicyName1" -eq $retrievedSnapshotPolicyList[1].Name -or "$accName1/$snapshotPolicyName2" -eq $retrievedSnapshotPolicyList[1].Name}
 
         # get and check a SnapshotPolicy by name
         $getRetrievedSnapshotPolicy = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName1
-        Assert-AreEqual "$snapshotPolicyName1" $getRetrievedSnapshotPolicy.Name
+        Assert-AreEqual "$accName1/$snapshotPolicyName1" $getRetrievedSnapshotPolicy.Name
 
         # get and check the SnapshotPolicy again using the resource id just obtained
         $getRetrievedSnapshotPolicyById = Get-AzNetAppFilesSnapshotPolicy -ResourceId $retrievedSnapshotPolicy.Id
-        Assert-AreEqual "$snapshotPolicyName1" $getRetrievedSnapshotPolicyById.Name
+        Assert-AreEqual "$accName1/$snapshotPolicyName1" $getRetrievedSnapshotPolicyById.Name
 
         # delete one account retrieved by id and one by name and check removed
         Remove-AzNetAppFilesSnapshotPolicy -ResourceId $retrievedSnapshotPolicy.Id

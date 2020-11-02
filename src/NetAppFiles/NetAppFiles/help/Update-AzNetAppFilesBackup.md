@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetAppFilesBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 
 ## SYNTAX
 
@@ -19,12 +19,6 @@ Update-AzNetAppFilesBackup -ResourceGroupName <String> -Location <String> -Accou
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
-```
-Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>]
@@ -32,24 +26,29 @@ Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>]
  [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Update-AzNetAppFilesBackup [-Label <String>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>]
- -InputObject <PSNetAppFilesBackup> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesBackup [-Label <String>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesBackup>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesBackup** cmdlet modifies an ANF backup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName $accName1 -Name $backupPolicyObject -Label "updatedLabel"
 ```
 
-{{ Add example description here }}
+This command performs an update on the given backup modifying the username to that provided.
 
 ## PARAMETERS
 
@@ -133,7 +132,7 @@ The name of the ANF backup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupPolicyName
 
 Required: True

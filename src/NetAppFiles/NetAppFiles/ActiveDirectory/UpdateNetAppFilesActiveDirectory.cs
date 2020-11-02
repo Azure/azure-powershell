@@ -58,9 +58,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF Active Directory")]
+            HelpMessage = "The name of the ANF active directory",
+            ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF active directory",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("BackupPolicyName")]
+        [Alias("ActiveDirectoryName")]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/activeDirectory",
             nameof(ResourceGroupName),

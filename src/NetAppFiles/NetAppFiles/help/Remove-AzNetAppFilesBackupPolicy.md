@@ -26,13 +26,13 @@ Remove-AzNetAppFilesBackupPolicy -Name <String> -AccountObject <PSNetAppFilesAcc
 
 ### ByResourceIdParameterSet
 ```
-Remove-AzNetAppFilesBackupPolicy -Name <String> -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackupPolicy -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesBackupPolicy -Name <String> -InputObject <PSNetAppFilesBackupPolicy> [-PassThru]
+Remove-AzNetAppFilesBackupPolicy -InputObject <PSNetAppFilesBackupPolicy> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ The name of the ANF backup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupPolicyName
 
 Required: True

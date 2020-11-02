@@ -30,6 +30,7 @@ function Test-BackupCrud
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $backupLocation = "southcentralus"
     $label = "powershellBackupTest"
+    $labelUpdate = "powershellBackupTestUpdate"
     $label2 = "powershellBackupTest2"
     #voll props
     $volName1 = Get-ResourceName
@@ -119,6 +120,11 @@ function Test-BackupCrud
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
         # service side issue does not return label enable when fixed (ANF-8057)
         # Assert-AreEqual $label $getRetrievedBackup.Label
+        
+        # update and check a Backup by name and check again
+        $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
+        # service side issue does not return label enable when fixed (ANF-8057)
+        #Assert-AreEqual $labelUpdate $updateBackup.Label
         
         #create second Backup       
         $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label2

@@ -14,13 +14,13 @@ Deletes an Azure NetApp Files (ANF) active directory configuration.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> [-Name <String>]
+Remove-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesActiveDirectory [-Name <String>] -AccountObject <PSNetAppFilesAccount> [-PassThru]
+Remove-AzNetAppFilesActiveDirectory -Name <String> -AccountObject <PSNetAppFilesAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,9 +89,9 @@ The name of the ANF Active Directory
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: BackupPolicyName
+Aliases: ActiveDirectoryName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

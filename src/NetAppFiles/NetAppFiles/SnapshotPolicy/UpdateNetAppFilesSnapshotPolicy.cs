@@ -61,7 +61,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF snapshot policy")]
+            HelpMessage = "The name of the ANF snapshot policy",
+            ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF snapshot policy",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("SnapshotPolicyName")]
         [ResourceNameCompleter(
@@ -71,31 +76,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The property to decide policy is enabled or not")]
         [ValidateNotNullOrEmpty]
         public bool? Enabled { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "A hashtable array which represents the hourly Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesHourlySchedule HourlySchedule { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "A hashtable array which represents the daily Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesDailySchedule DailySchedule { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "A hashtable array which represents the montly Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesWeeklySchedule WeeklySchedule { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "A hashtable array which represents the montly Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesMonthlySchedule MonthlySchedule { get; set; }

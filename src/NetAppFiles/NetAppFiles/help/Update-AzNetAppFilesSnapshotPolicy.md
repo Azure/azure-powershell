@@ -8,57 +8,60 @@ schema: 2.0.0
 # Update-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) snapshot policy to the optional modifiers provided.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesSnapshotPolicy -ResourceGroupName <String> -Location <String> -AccountName <String>
- -Name <String> -Enabled <Boolean> -HourlySchedule <PSNetAppFilesHourlySchedule>
- -DailySchedule <PSNetAppFilesDailySchedule> -WeeklySchedule <PSNetAppFilesWeeklySchedule>
- -MonthlySchedule <PSNetAppFilesMonthlySchedule> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Update-AzNetAppFilesSnapshotPolicy -Name <String> -Enabled <Boolean>
- -HourlySchedule <PSNetAppFilesHourlySchedule> -DailySchedule <PSNetAppFilesDailySchedule>
- -WeeklySchedule <PSNetAppFilesWeeklySchedule> -MonthlySchedule <PSNetAppFilesMonthlySchedule>
- -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Name <String> [-Enabled <Boolean>] [-HourlySchedule <PSNetAppFilesHourlySchedule>]
+ [-DailySchedule <PSNetAppFilesDailySchedule>] [-WeeklySchedule <PSNetAppFilesWeeklySchedule>]
+ [-MonthlySchedule <PSNetAppFilesMonthlySchedule>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesSnapshotPolicy -Name <String> -Enabled <Boolean>
- -HourlySchedule <PSNetAppFilesHourlySchedule> -DailySchedule <PSNetAppFilesDailySchedule>
- -WeeklySchedule <PSNetAppFilesWeeklySchedule> -MonthlySchedule <PSNetAppFilesMonthlySchedule>
+Update-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled <Boolean>]
+ [-HourlySchedule <PSNetAppFilesHourlySchedule>] [-DailySchedule <PSNetAppFilesDailySchedule>]
+ [-WeeklySchedule <PSNetAppFilesWeeklySchedule>] [-MonthlySchedule <PSNetAppFilesMonthlySchedule>]
  [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Update-AzNetAppFilesSnapshotPolicy [-Enabled <Boolean>] [-HourlySchedule <PSNetAppFilesHourlySchedule>]
+ [-DailySchedule <PSNetAppFilesDailySchedule>] [-WeeklySchedule <PSNetAppFilesWeeklySchedule>]
+ [-MonthlySchedule <PSNetAppFilesMonthlySchedule>] -ResourceId <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesSnapshotPolicy -Name <String> -Enabled <Boolean>
- -HourlySchedule <PSNetAppFilesHourlySchedule> -DailySchedule <PSNetAppFilesDailySchedule>
- -WeeklySchedule <PSNetAppFilesWeeklySchedule> -MonthlySchedule <PSNetAppFilesMonthlySchedule>
- [-Tag <Hashtable>] -InputObject <PSNetAppFilesSnapshotPolicy> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesSnapshotPolicy [-Enabled <Boolean>] [-HourlySchedule <PSNetAppFilesHourlySchedule>]
+ [-DailySchedule <PSNetAppFilesDailySchedule>] [-WeeklySchedule <PSNetAppFilesWeeklySchedule>]
+ [-MonthlySchedule <PSNetAppFilesMonthlySchedule>] [-Tag <Hashtable>]
+ -InputObject <PSNetAppFilesSnapshotPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesSnapshotPolicy** cmdlet modifies an ANF snapshot policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$hourlySchedule = @{
+        Minute = 1
+        SnapshotsToKeep = 3
+    }
+PS C:\> Update-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy" -HourlySchedule $hourlySchedule
 ```
 
-{{ Add example description here }}
+This command changes the ANF backup policy "MySnapshotPolicy" to have the given HourlySchedule.
 
 ## PARAMETERS
 
@@ -100,7 +103,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesDailySchedule
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,7 +133,7 @@ Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,7 +148,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesHourlySchedule
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,7 +193,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesMonthlySchedule
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +205,7 @@ The name of the ANF snapshot policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: SnapshotPolicyName
 
 Required: True
@@ -265,7 +268,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesWeeklySchedule
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

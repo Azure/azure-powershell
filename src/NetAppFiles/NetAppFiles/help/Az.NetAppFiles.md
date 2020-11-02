@@ -117,16 +117,16 @@ Updates an Azure NetApp Files (ANF) account according to the optional modifiers 
 Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesBackup](Update-AzNetAppFilesBackup.md)
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesBackupPolicy](Update-AzNetAppFilesBackupPolicy.md)
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) backup policy to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesPool](Update-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesSnapshotPolicy](Update-AzNetAppFilesSnapshotPolicy.md)
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) snapshot policy to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesVolume](Update-AzNetAppFilesVolume.md)
 Updates an Azure NetApp Files (ANF) volume according to the optional modifiers provided.

@@ -18,16 +18,16 @@ Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName <String> -AccountName <Str
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParentObjectParameterSet
+```
+Remove-AzNetAppFilesSnapshotPolicy -Name <String> -AccountObject <PSNetAppFilesAccount> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByResourceIdParameterSet
 ```
 Remove-AzNetAppFilesSnapshotPolicy -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Remove-AzNetAppFilesSnapshotPolicy -AccountObject <PSNetAppFilesAccount> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -115,7 +115,7 @@ The name of the ANF snapshot policy
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: SnapshotPolicyName
 
 Required: True

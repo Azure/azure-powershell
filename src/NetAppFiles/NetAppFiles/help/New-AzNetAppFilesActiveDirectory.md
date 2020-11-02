@@ -174,7 +174,7 @@ The name of the ANF Active Directory
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: BackupPolicyName
+Aliases: ActiveDirectoryName
 
 Required: True
 Position: Named

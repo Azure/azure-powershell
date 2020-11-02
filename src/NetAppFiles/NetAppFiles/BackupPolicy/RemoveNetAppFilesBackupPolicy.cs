@@ -53,7 +53,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF backup policy")]
+            HelpMessage = "The name of the ANF backup policy",
+            ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup policy",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupPolicyName")]
         [ResourceNameCompleter(
@@ -61,7 +66,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             nameof(ResourceGroupName),
             nameof(AccountName))]
         public string Name { get; set; }
-
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
