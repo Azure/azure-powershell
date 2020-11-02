@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.1.1'
+ModuleVersion = '2.1.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -143,9 +143,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed the issue that token is not renewed after expiring for LRO [#13367]
-* Fixed the issue that AccountId is not respected in MSI [#13376]
-* Fixed the issue that error message is unclear if browser is not avaialable for Interactive auth [#13340]'
+        ReleaseNotes = '* Fixed one issue related to MSI'
 
         # Prerelease string of this module
         # Prerelease = ''

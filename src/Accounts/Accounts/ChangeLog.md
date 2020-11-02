@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.2
 * Fixed one issue related to MSI
 
 ## Version 2.1.1
