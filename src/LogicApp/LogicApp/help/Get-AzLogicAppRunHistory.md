@@ -96,7 +96,7 @@ This command gets the first two pages of run history of a logic app named LogicA
 Each page contains thirty results.
 
 ```powershell
-Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowRelLink
+Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowRelLink -MaximumFollowRelLink 1
 ```
 
 ## PARAMETERS
