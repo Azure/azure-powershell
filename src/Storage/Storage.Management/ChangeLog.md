@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.1
 * Supported resource access rule in NetworkRuleSet
     - `Update-AzStorageAccountNetworkRuleSet`
     - `Add-AzStorageAccountNetworkRule`
