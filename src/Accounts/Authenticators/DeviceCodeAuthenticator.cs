@@ -57,7 +57,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authTask = codeCredential.AuthenticateAsync(requestContext, source.Token);
             return MsalAccessToken.GetAccessTokenAsync(
                 authTask,
-                () => codeCredential.GetTokenAsync(requestContext, source.Token),
+                codeCredential,
+                requestContext,
                 source.Token);
         }
 
