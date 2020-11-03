@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem;
 using System.Text;
 using System.Threading;
 
@@ -48,17 +47,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 if (commandAst?.CommandElements[0] is StringConstantExpressionAst commandName)
                 {
-                    var existingPrediction = this._predictions.FirstOrDefault(p => string.Equals(p.Command, commandName.Value, StringComparison.OrdinalIgnoreCase));
                     var parameterSet = new ParameterSet(commandAst);
-
-                    if (existingPrediction != null)
-                    {
-                        existingPrediction.ParameterSets.Add(parameterSet);
-                    }
-                    else
-                    {
-                        this._predictions.Add(new Prediction(commandName.Value, parameterSet));
-                    }
+                    this._predictions.Add(new Prediction(commandName.Value, parameterSet));
                 }
             }
         }
