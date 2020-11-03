@@ -150,7 +150,7 @@ This command will get all Connections in ExpressRoute "testExpressRoutegw" that 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteGatewayName
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 The parent ExpressRouteGateway for this connection.
 
 ```yaml
-Type: PSExpressRouteGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway
 Parameter Sets: ByExpressRouteGatewayObject
 Aliases: ExpressRouteGateway
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, ExpressRouteConnectionName
 
@@ -210,7 +210,7 @@ Accept wildcard characters: True
 The resource id of the parent ExpressRouteGateway for this connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteGatewayResourceId
 Aliases: ExpressRouteGatewayId
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteGatewayName
 Aliases:
 
