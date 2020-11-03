@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                     target: string.Format("Data collection rule '{0}' in resource group '{1}'", Name, ResourceGroupName),
                     action: "Create a data collection rule"))
             {
-                var dcrRespone = MonitorManagementClient.DataCollectionRules.Create(resourceGroupName: ResourceGroupName, dataCollectionRuleName: Name, body: dcr);
+                var dcrResponse = MonitorManagementClient.DataCollectionRules.Create(resourceGroupName: ResourceGroupName, dataCollectionRuleName: Name, body: dcr);
 
-                var output = new PSDataCollectionRuleResource(dcrRespone);
+                var output = new PSDataCollectionRuleResource(dcrResponse);
                 WriteObject(sendToPipeline: output);
             }
         }

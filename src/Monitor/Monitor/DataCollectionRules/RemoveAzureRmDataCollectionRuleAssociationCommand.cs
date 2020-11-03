@@ -16,17 +16,16 @@ using System;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 {
     /// <summary>
-    /// Delete a Data Collection Rule
+    /// Delete a Data Collection Rule Association
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRule", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRuleAssociation", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureRmDataCollectionRuleCommand : ManagementCmdletBase
+    public class RemoveAzureRmDataCollectionRuleAssociationCommand : ManagementCmdletBase
     {
         private const string ByName = "ByName";
         private const string ByInputObject = "ByInputObject";
@@ -35,31 +34,30 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         #region Cmdlet parameters
 
         /// <summary>
-        /// Gets or sets the resource group parameter.
+        /// Gets or sets the associated resource.
         /// </summary>
-        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
-        [ResourceGroupCompleter]
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The associated resource id.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the reource name parameter.
+        /// Gets or sets the resource name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the InputObject parameter
         /// </summary>
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The data collection rule resource from the pipe")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The data collection rule association resource from the pipe")]
         [ValidateNotNull]
-        public PSDataCollectionRuleResource InputObject { get; set; }
+        public PSDataCollectionRuleAssociationProxyOnlyResource InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the ResourceId parameter
         /// </summary>
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource identifier")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -72,7 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         #endregion
 
         /// <summary>
-        /// Executes the cmdlet. Remove-AzDataCollectionRule
+        /// Executes the cmdlet. Remove-AzDataCollectionRuleAssociation
         /// </summary>
         protected override void ProcessRecordInternal()
         {
@@ -81,36 +79,32 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                 case ByName:
                     break;
                 case ByInputObject:
-                    ResourceId = InputObject.Id;
-                    SetNameAndResourceFromResourceId();
+                    var dcra = new ResourceIdentifier(InputObject.Id);
+                    ResourceUri = InputObject.Id.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcra.ResourceName, "");
+                    Name = InputObject.Name;
                     break;
                 case ByResourceId:
-                    SetNameAndResourceFromResourceId();
+                    var dcraById = new ResourceIdentifier(ResourceId);
+                    ResourceUri = ResourceId.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcraById.ResourceName, "");
+                    Name = dcraById.ResourceName;
                     break;
                 default:
                     throw new Exception("Unkown ParameterSetName");
             }
 
             if (ShouldProcess(
-                    target: string.Format("Data collection rule '{0}' from resource group '{1}'", this.Name, this.ResourceGroupName),
-                    action: "Delete a data collection rule"))
+                    target: string.Format("Data collection rule association '{0}' from resource '{1}'", this.Name, this.ResourceUri),
+                    action: "Delete a data collection rule association"))
             {
-                this.MonitorManagementClient.DataCollectionRules.DeleteWithHttpMessagesAsync(
-                    resourceGroupName: ResourceGroupName,
-                    dataCollectionRuleName: Name).GetAwaiter().GetResult();
+                this.MonitorManagementClient.DataCollectionRuleAssociations.DeleteWithHttpMessagesAsync(
+                    resourceUri: ResourceUri,
+                    associationName: Name).GetAwaiter().GetResult();
 
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);
                 }
             }
-        }
-
-        private void SetNameAndResourceFromResourceId()
-        {
-            var resourceIdentifier = new ResourceIdentifier(ResourceId);
-            Name = resourceIdentifier.ResourceName;
-            ResourceGroupName = resourceIdentifier.ResourceGroupName;
         }
     }
 }

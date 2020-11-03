@@ -73,19 +73,22 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         private void ProcessRecordInternalByFile()
         {
             string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(File));
+            string resourceId = string.Empty;
 
             DataCollectionRuleResource dcr;
             PSDataCollectionRuleResource psDcr = SafeJsonConvert.DeserializeObject<PSDataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
             if (psDcr == null || psDcr.DataSources == null)
             {
                 dcr = SafeJsonConvert.DeserializeObject<DataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
+                resourceId = dcr.Id;
             }
             else
             {
                 dcr = psDcr.ConvertToApiObject();
+                resourceId = psDcr.Id;
             }
 
-            CreateDataCollectionRule(dcr.Id, dcr);
+            CreateDataCollectionRule(resourceId, dcr);
         }
 
         private void CreateDataCollectionRule(string resourceId, DataCollectionRuleResource dcr) 

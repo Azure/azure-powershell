@@ -19,7 +19,8 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    #region Data Collection Rule Resource
+    #region DCR - Data Collection Rule Resource
+
     /// <summary>
     /// Wraps around an Data Collection Rule.
     /// </summary>
@@ -145,9 +146,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             return dcrDefinitionObject;
         }
     }
+
     #endregion
 
-    #region Data Flow
+    #region DCR's Data Flow
     /// <summary>
     /// Wraps the DataFlow class.
     /// </summary>
@@ -181,7 +183,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     }
     #endregion
 
-    #region Destinations
+    #region DCR's Destinations
     /// <summary>
     /// Wraps the DataCollectionRuleDestinations class.
     /// </summary>
@@ -318,7 +320,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     }
     #endregion
 
-    #region Data Sources
+    #region DCR's Data Sources
     /// <summary>
     /// Wraps the DataCollectionRuleDataSources class.
     /// </summary>
@@ -592,6 +594,61 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             SamplingFrequencyInSeconds = perfCounterDataSource.SamplingFrequencyInSeconds;
             CounterSpecifiers = perfCounterDataSource.CounterSpecifiers?.Select(x => x).ToList();
             Name = perfCounterDataSource.Name;
+        }
+    }
+    #endregion
+
+    #region (DCR's child resource) Data Collection Rule Associations
+
+    /// <summary>
+    /// Wraps around an Data Collection Rule Association.
+    /// </summary>
+    public class PSDataCollectionRuleAssociationProxyOnlyResource : ProxyOnlyResource
+    {
+        #region Properties
+        /// <summary>
+        /// Gets or sets description of the association.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the data collection rule that is to
+        /// be associated.
+        /// </summary>
+        public string DataCollectionRuleId { get; set; }
+
+        /// <summary>
+        /// Gets the resource provisioning state. Possible values include:
+        /// 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed'
+        /// </summary>
+        public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets resource entity tag (ETag).
+        /// </summary>
+        public string Etag { get; private set; }
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the PSDataCollectionRuleAssociationProxyOnlyResource class.
+        /// </summary>
+        public PSDataCollectionRuleAssociationProxyOnlyResource()
+        { }
+
+        /// <summary>
+        /// Initializes a new instance of the PSDataCollectionRuleAssociationProxyOnlyResource class.
+        /// </summary>
+        /// <param name="dataCollectionRuleAssociationProxyOnlyResource">The DataCollectionRuleAssociationProxyOnlyResource to wrap.</param>
+        public PSDataCollectionRuleAssociationProxyOnlyResource(DataCollectionRuleAssociationProxyOnlyResource dataCollectionRuleAssociationProxyOnlyResource)
+            : base(
+                id: dataCollectionRuleAssociationProxyOnlyResource.Id,
+                name: dataCollectionRuleAssociationProxyOnlyResource.Name,
+                type: dataCollectionRuleAssociationProxyOnlyResource.Type)
+        {
+            Description = dataCollectionRuleAssociationProxyOnlyResource.Description;
+            ProvisioningState = dataCollectionRuleAssociationProxyOnlyResource.ProvisioningState;
+            Etag = dataCollectionRuleAssociationProxyOnlyResource.Etag;
+            DataCollectionRuleId = dataCollectionRuleAssociationProxyOnlyResource.DataCollectionRuleId;
         }
     }
     #endregion

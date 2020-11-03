@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the action group name parameter.
+        /// Gets or sets the resource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
         [ValidateNotNullOrEmpty]
