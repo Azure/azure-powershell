@@ -212,7 +212,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Generate a SHA256 Hash string from the originInput.
         /// </summary>
         /// <param name="originInput"></param>
-        /// <returns>The Sha256 hash, or empty if the input is only whtespace</returns>
+        /// <returns>The Sha256 hash, or empty if the input is only whitespace</returns>
         private static string GenerateSha256HashString(string originInput)
         {
             if (string.IsNullOrWhiteSpace(originInput))
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Get the MAC address of the default NIC, or null if none can be found
         /// </summary>
-        /// <returns>The MAC address of the defautl nic, or null if noen is found</returns>
+        /// <returns>The MAC address of the defautl nic, or null if none is found</returns>
         private static string GetMACAddress()
         {
             return NetworkInterface.GetAllNetworkInterfaces()?
