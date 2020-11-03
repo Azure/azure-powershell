@@ -87,12 +87,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var inputParameterSet = new ParameterSet(commandAst);
 
-            // This stores the neccessary information to build the results.
-            // Each element in the list is a ValueTuple and each such tuple has this component
-            // 1. The parameter list from the predictions.
-            // 2. The index of the element that the user input matches in the previous parameter list.
-            // 3. The string that's built so far for the final result.
-            var results = new List<ValueTuple<IList<Tuple<string, string>>, HashSet<int>, StringBuilder>>();
+            var results = new Dictionary<string, IList<Tuple<string, string>>>(StringComparer.OrdinalIgnoreCase);
 
             var isCommandNameComplete = (((commandAst?.CommandElements != null) && (commandAst.CommandElements.Count > 1)) || ((input as ScriptBlockAst)?.Extent?.Text?.EndsWith(' ') == true));
 
@@ -107,7 +102,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // Predictions should be flexible, e.g. if "Command -Name N -Location L" is a possibility,
             // then "Command -Location L -Name N" should also be possible.
             //
-            // resultBuilder and usedParams are stored in results to help prediction more flexible.
+            // resultBuilder and usedParams are used to store the information to construct the result.
+            // We want to avoid too much heap allocation for the performance purpose.
+
+            var resultBuilder = new StringBuilder();
+            var usedParams = new HashSet<int>();
 
             for (var i = 0; i < _predictions.Count && results.Count < suggestionCount; ++i)
             {
@@ -117,12 +116,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         cancellationToken.ThrowIfCancellationRequested();
 
-                        var resultBuilder = new StringBuilder(_predictions[i].Command);
-                        var usedParams = new HashSet<int>();
+                        resultBuilder.Clear();
+                        resultBuilder.Append(_predictions[i].Command);
+                        usedParams.Clear();
 
                         if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, parameterSet, usedParams))
                         {
-                            results.Add(ValueTuple.Create(parameterSet.Parameters, usedParams, resultBuilder));
+                            PredictRestOfParameters(resultBuilder, parameterSet.Parameters, usedParams);
+                            var prediction = UnescapePredictionText(resultBuilder);
+
+                            if (prediction.Length == input.Extent.Text.Length)
+                            {
+                                continue;
+                            }
+
+                            results.Add(prediction.ToString(), parameterSet.Parameters);
 
                             if (results.Count == suggestionCount)
                             {
@@ -133,22 +141,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            cancellationToken.ThrowIfCancellationRequested();
-
-            return results.Select((r) =>
-                    {
-                        PredictRestOfParameters(r.Item3, r.Item1, r.Item2);
-                        var prediction = UnescapePredictionText(r.Item3);
-
-                        if (prediction.Length <= input.Extent.Text.Length)
-                        {
-                            return ValueTuple.Create<string, List<Tuple<string, string>>>(null, null);
-                        }
-
-                        return ValueTuple.Create(prediction?.ToString(), r.Item1);
-                    })
-                    .Where((t) => t.Item1 != null)
-                    .ToDictionary((t) => t.Item1, (t) => t.Item2);
+            return results;
         }
 
         /// <summary>
