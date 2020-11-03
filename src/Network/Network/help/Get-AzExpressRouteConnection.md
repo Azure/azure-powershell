@@ -58,6 +58,7 @@ Name                               : testConnection
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection
 EnableInternetSecurity             : False
+ExpressRouteGatewayBypass          : False
 RoutingConfiguration               : {
                                        "AssociatedRouteTable": {
                                          "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
@@ -96,6 +97,7 @@ Name                               : testConnection1
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection1
 EnableInternetSecurity             : False
+ExpressRouteGatewayBypass          : False
 RoutingConfiguration               : {
                                        "AssociatedRouteTable": {
                                          "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
@@ -121,6 +123,7 @@ Name                               : testConnection2
 Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection2
 EnableInternetSecurity             : False
+ExpressRouteGatewayBypass          : False
 RoutingConfiguration               : {
                                        "AssociatedRouteTable": {
                                          "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
@@ -147,7 +150,7 @@ This command will get all Connections in ExpressRoute "testExpressRoutegw" that 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -162,7 +165,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExpressRouteGatewayName
 Aliases:
 
@@ -177,7 +180,7 @@ Accept wildcard characters: False
 The parent ExpressRouteGateway for this connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway
+Type: PSExpressRouteGateway
 Parameter Sets: ByExpressRouteGatewayObject
 Aliases: ExpressRouteGateway
 
@@ -192,7 +195,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, ExpressRouteConnectionName
 
@@ -207,7 +210,7 @@ Accept wildcard characters: True
 The resource id of the parent ExpressRouteGateway for this connection.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExpressRouteGatewayResourceId
 Aliases: ExpressRouteGatewayId
 
@@ -222,7 +225,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExpressRouteGatewayName
 Aliases:
 
