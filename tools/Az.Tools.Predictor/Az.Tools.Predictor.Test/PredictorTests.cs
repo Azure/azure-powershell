@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("Connect-AzAccount");
             var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
 
-            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.First());
+            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.First().Key);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
             var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
 
-            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.First());
+            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.First().Key);
         }
     }
 }
