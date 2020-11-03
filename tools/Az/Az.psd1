@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '1.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.0.1'; },
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; },
                @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.Compute'; RequiredVersion = '2.7.0'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
