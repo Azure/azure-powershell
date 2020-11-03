@@ -18,10 +18,9 @@ Create operation does not require eTag.
 ### UpdateExpanded (Default)
 ```
 Update-AzCostManagementExport -Name <String> -Scope <String> [-ConfigurationColumn <String[]>]
- [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>] [-DatasetGranularity <GranularityType>]
- [-DatasetGrouping <IQueryGrouping[]>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
+ [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -29,10 +28,9 @@ Update-AzCostManagementExport -Name <String> -Scope <String> [-ConfigurationColu
 ### UpdateViaIdentityExpanded
 ```
 Update-AzCostManagementExport -InputObject <ICostIdentity> [-ConfigurationColumn <String[]>]
- [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>] [-DatasetGranularity <GranularityType>]
- [-DatasetGrouping <IQueryGrouping[]>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
+ [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -45,30 +43,30 @@ Create operation does not require eTag.
 
 ## EXAMPLES
 
-### Example 1: Update a cost management export by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name exportinfo-ps-t -RecurrencePeriodFrom (Get-Date).ToString()
-
-```
-
-This command updates a cost management export by name.
-
-### Example 2: Update a cost management export by object
-```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name exportinfo-ps-t
-PS C:\> Update-AzCostManagementExport -InputObject $export -RecurrencePeriodFrom (Get-Date).ToString()
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command updates a cost management export by object.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -ConfigurationColumn
-Array of column names to be included in the query.
-Any valid query column name is allowed.
-If not provided, then query includes all columns.
+Array of column names to be included in the export.
+If not provided then the export will include all available columns.
+The available columns can vary by customer channel (see examples).
 
 ```yaml
 Type: System.String[]
@@ -82,61 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatasetAggregation
-Dictionary of aggregation expression to use in the query.
-The key of each item in the dictionary is the alias for the aggregated column.
-Query can have up to 2 aggregation clauses.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetFilter
-Has filter expression to use in the query.
-To construct, see NOTES section for DATASETFILTER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetGranularity
-The granularity of rows in the query.
+### -DataSetGranularity
+The granularity of rows in the export.
+Currently only 'Daily' is supported.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.GranularityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetGrouping
-Array of group by expression to use in the query.
-Query can have up to 2 group by clauses.
-To construct, see NOTES section for DATASETGROUPING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryGrouping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionTimeframe
-The time frame for pulling data for the query.
+The time frame for pulling data for the export.
 If custom, then a specific time period must be provided.
 
 ```yaml
@@ -179,7 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionType
-The type of the query.
+The type of the export.
+Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.ExportType
@@ -238,8 +188,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ETag
+eTag of the resource.
+To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Format
 The format of the export being delivered.
+Currently only 'Csv' is supported.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.FormatType
@@ -330,9 +297,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleStatus
-The status of the schedule.
-Whether active or not.
-If inactive, the export's scheduled execution is paused.
+The status of the export's schedule.
+If 'Inactive', the export's schedule is paused.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.StatusType
@@ -347,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with query and export operations.
+The scope associated with export operations.
 This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml
@@ -363,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimePeriodFrom
-The start date to pull data from.
+The start date for export data.
 
 ```yaml
 Type: System.DateTime
@@ -378,7 +344,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimePeriodTo
-The end date to pull data to.
+The end date for export data.
 
 ```yaml
 Type: System.DateTime
@@ -432,7 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IExport
 
 ## NOTES
 
@@ -442,20 +408,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
-  - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimension <IQueryComparisonExpression>]`: Has comparison expression for a dimension
-    - `Name <String>`: The name of the column to use in comparison.
-    - `Operator <OperatorType>`: The operator to use for comparison.
-    - `Value <String[]>`: Array of values to use for comparison
-  - `[Not <IQueryFilter>]`: The logical "NOT" expression.
-  - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
-  - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
-
-DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query. Query can have up to 2 group by clauses.
-  - `Name <String>`: The name of the column to group.
-  - `Type <QueryColumnType>`: Has type of the column to group.
 
 INPUTOBJECT <ICostIdentity>: Identity Parameter
   - `[AlertId <String>]`: Alert ID

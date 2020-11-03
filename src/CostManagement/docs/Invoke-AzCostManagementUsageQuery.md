@@ -29,37 +29,24 @@ Invoke-AzCostManagementUsageQuery -ExternalCloudProviderId <String>
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UsageViaIdentityExpanded
-```
-Invoke-AzCostManagementUsageQuery -InputObject <ICostIdentity> -Timeframe <TimeframeType> -Type <ExportType>
- [-ConfigurationColumn <String[]>] [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>]
- [-DatasetGranularity <GranularityType>] [-DatasetGrouping <IQueryGrouping[]>] [-TimePeriodFrom <DateTime>]
- [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UsageViaIdentityExpanded1
-```
-Invoke-AzCostManagementUsageQuery -InputObject <ICostIdentity> -Timeframe <TimeframeType> -Type <ExportType>
- [-ConfigurationColumn <String[]>] [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>]
- [-DatasetGranularity <GranularityType>] [-DatasetGrouping <IQueryGrouping[]>] [-TimePeriodFrom <DateTime>]
- [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Query the usage data for scope defined.
 
 ## EXAMPLES
 
-### Example 1: Invoke query usage of the cost management export 
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> Invoke-AzCostManagementUsageQuery -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Timeframe MonthToDate -Type Usage  -DatasetGranularity 'daily'
-
-NextLink Column                Row
--------- ------                ---
-         {UsageDate, Currency} {20200701 USD, 20200702 USD, 20200703 USD, 20200704 USD…}
+{{ Add code here }}
 ```
 
-this command invokes query usage of the cost management export.
+{{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
+```
+
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -98,7 +85,7 @@ Has filter expression to use in the query.
 To construct, see NOTES section for DATASETFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +116,7 @@ Array of group by expression to use in the query.
 To construct, see NOTES section for DATASETGROUPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryGrouping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryGrouping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -185,24 +172,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
-Parameter Sets: UsageViaIdentityExpanded, UsageViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Scope
-The scope associated with query and export operations.
+This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml
 Type: System.String
@@ -312,11 +283,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryDefinition
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryResult
 
 ## NOTES
 
@@ -340,15 +313,6 @@ DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
 DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query.
   - `Name <String>`: The name of the column to group.
   - `Type <QueryColumnType>`: Has type of the column to group.
-
-INPUTOBJECT <ICostIdentity>: Identity Parameter
-  - `[AlertId <String>]`: Alert ID
-  - `[ExportName <String>]`: Export Name.
-  - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  - `[ExternalCloudProviderType <ExternalCloudProviderType?>]`: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
-  - `[Id <String>]`: Resource identity path
-  - `[Scope <String>]`: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
-  - `[ViewName <String>]`: View name
 
 ## RELATED LINKS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCostManagementExportExecutionHistory
 
 ## SYNOPSIS
-The operation to get the execution history of an export for the defined scope by export name.
+The operation to get the execution history of an export for the defined scope and export name.
 
 ## SYNTAX
 
@@ -25,34 +25,27 @@ Get-AzCostManagementExportExecutionHistory -InputObject <ICostIdentity> [-Defaul
 ```
 
 ## DESCRIPTION
-The operation to get the execution history of an export for the defined scope by export name.
+The operation to get the execution history of an export for the defined scope and export name.
 
 ## EXAMPLES
 
-### Example 1: Get execution history of cost management export
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -ExportName "ps-customcolum-t"
+PS C:\> {{ Add code here }}
 
-ExecutionType ProcessingStartTime   ProcessingEndTime     Status    FileName
-------------- -------------------   -----------------     ------    --------
-OnDemand      6/29/2020 6:03:26 AM  6/29/2020 6:04:28 AM  Completed ad-hoc/ps-customcolum-t/20200601-20200630/ps-customcolum-t_041c4d56-f25e-4e37-99fb-ab201309e07f.csv
-Scheduled     6/30/2020 12:02:53 PM 6/30/2020 12:03:34 PM Completed ad-hoc/ps-customcolum-t/20200601-20200630/ps-customcolum-t_cd5bd8b1-014f-4521-b20a-69168288263d.csv
+{{ Add output here }}
 ```
 
-This command gets execution history of cost management export.
+{{ Add description here }}
 
-### Example 2: Get execution history of cost management export by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -ExportName "ps-customcolum-t"
-PS C:\> $export | Get-AzCostManagementExportExecutionHistory -InputObject $export
+PS C:\> {{ Add code here }}
 
-ExecutionType ProcessingStartTime   ProcessingEndTime     Status    FileName
-------------- -------------------   -----------------     ------    --------
-OnDemand      6/29/2020 6:03:26 AM  6/29/2020 6:04:28 AM  Completed ad-hoc/ps-customcolum-t/20200601-20200630/ps-customcolum-t_041c4d56-f25e-4e37-99fb-ab201309e07f.csv
-Scheduled     6/30/2020 12:02:53 PM 6/30/2020 12:03:34 PM Completed ad-hoc/ps-customcolum-t/20200601-20200630/ps-customcolum-t_cd5bd8b1-014f-4521-b20a-69168288263d.csv
+{{ Add output here }}
 ```
 
-This command gets execution history of cost management export by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -103,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with query and export operations.
+The scope associated with export operations.
 This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml
@@ -127,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IExportExecution
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IExportExecution
 
 ## NOTES
 

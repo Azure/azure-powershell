@@ -8,7 +8,8 @@ schema: 2.0.0
 # New-AzCostManagementQueryFilterObject
 
 ## SYNOPSIS
-Create a in-memory object for QueryFilter
+Create a in-memory object for QueryFilter.
+On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
 
 ## SYNTAX
 
@@ -18,7 +19,8 @@ New-AzCostManagementQueryFilterObject [-And <IQueryFilter[]>] [-Dimension <IQuer
 ```
 
 ## DESCRIPTION
-Create a in-memory object for QueryFilter
+Create a in-memory object for QueryFilter.
+On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
 
 ## EXAMPLES
 
@@ -29,10 +31,10 @@ PS C:\> $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Envi
 PS C:\> New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimension $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
 
 And       :
-Dimension : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryComparisonExpression
-Not       : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryFilter
-Or        : {Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryFilter, Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryFilter}
-Tag       : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryComparisonExpression
+Dimension : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryComparisonExpression
+Not       : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter
+Or        : {Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter, Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter}
+Tag       : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryComparisonExpression
 ```
 
 this command creates a filter object of query for cost management export.
@@ -45,7 +47,7 @@ Must have at least 2 items.
 To construct, see NOTES section for AND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +63,7 @@ Has comparison expression for a dimension.
 To construct, see NOTES section for DIMENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryComparisonExpression
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryComparisonExpression
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +79,7 @@ The logical "NOT" expression.
 To construct, see NOTES section for NOT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +96,7 @@ Must have at least 2 items.
 To construct, see NOTES section for OR properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +112,7 @@ Has comparison expression for a tag.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IQueryComparisonExpression
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryComparisonExpression
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.QueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter
 
 ## NOTES
 

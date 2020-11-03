@@ -1,35 +1,18 @@
-### Example 1: Get all cost management exports under a subscription
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f"
+PS C:\> {{ Add code here }}
 
-Name        Type
-----        ----
-TestExport  Microsoft.CostManagement/exports
-TestExport1 Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-this command gets all cost management exports under a subscription.
+{{ Add description here }}
 
-### Example 2: Get a cost management export by name
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name 'TestExport'
+PS C:\> {{ Add code here }}
 
-Name       Type
-----       ----
-TestExport Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-This command gets a cost management export by name.
-
-### Example 3: Get a cost management export by object
-```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name 'TestExport'
-PS C:\> Get-AzCostManagementExport -InputObject $export
-
-Name       Type
-----       ----
-TestExport Microsoft.CostManagement/exports
-```
-
-This command gets a cost management export by object.
+{{ Add description here }}
 

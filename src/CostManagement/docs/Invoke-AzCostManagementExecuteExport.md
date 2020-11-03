@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzCostManagementExecuteExport
 
 ## SYNOPSIS
-The operation to execute a export.
+The operation to execute an export.
 
 ## SYNTAX
 
@@ -25,26 +25,27 @@ Invoke-AzCostManagementExecuteExport -InputObject <ICostIdentity> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-The operation to execute a export.
+The operation to execute an export.
 
 ## EXAMPLES
 
-### Example 1: Invoke a cost mangement export by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Invoke-AzCostManagementExecuteExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -ExportName 'TestExport'
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command invokes a cost mangement export by name.
+{{ Add description here }}
 
-### Example 2: Invoke a cost mangement export by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -ExportName 'TestExport'
-PS C:\> Invoke-AzCostManagementExecuteExport -InputObject $export
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command invokes a cost mangement export by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with query and export operations.
+The scope associated with export operations.
 This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml

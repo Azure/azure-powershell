@@ -29,22 +29,23 @@ The operation to delete a export.
 
 ## EXAMPLES
 
-### Example 1: Remove a cost management export by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name AzureExport-T01
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a cost management export by name
+{{ Add description here }}
 
-### Example 2: Remove a cost management export by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name AzureExport-T02
-PS C:\> Remove-AzCostManagementExport -InputObject $export
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a cost management export by object
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with query and export operations.
+The scope associated with export operations.
 This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml

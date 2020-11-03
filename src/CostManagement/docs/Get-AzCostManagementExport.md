@@ -14,17 +14,20 @@ The operation to get the export for the defined scope by export name.
 
 ### List (Default)
 ```
-Get-AzCostManagementExport -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCostManagementExport -Scope <String> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCostManagementExport -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCostManagementExport -Name <String> -Scope <String> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCostManagementExport -InputObject <ICostIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCostManagementExport -InputObject <ICostIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,40 +35,23 @@ The operation to get the export for the defined scope by export name.
 
 ## EXAMPLES
 
-### Example 1: Get all cost management exports under a subscription
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f"
+PS C:\> {{ Add code here }}
 
-Name        Type
-----        ----
-TestExport  Microsoft.CostManagement/exports
-TestExport1 Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-this command gets all cost management exports under a subscription.
+{{ Add description here }}
 
-### Example 2: Get a cost management export by name
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name 'TestExport'
+PS C:\> {{ Add code here }}
 
-Name       Type
-----       ----
-TestExport Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-This command gets a cost management export by name.
-
-### Example 3: Get a cost management export by object
-```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name 'TestExport'
-PS C:\> Get-AzCostManagementExport -InputObject $export
-
-Name       Type
-----       ----
-TestExport Microsoft.CostManagement/exports
-```
-
-This command gets a cost management export by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,6 +62,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+May be used to expand the properties within an export.
+Currently only 'runHistory' is supported and will return information for the last 10 executions of the export.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -116,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with query and export operations.
+The scope associated with export operations.
 This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
 ```yaml
@@ -140,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20191101.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IExport
 
 ## NOTES
 

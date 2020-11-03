@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Cost service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -48,7 +48,8 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2019-11-01/costmanagement.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.exports.json
   # - $(this-folder)/resources/costmanagement.json
 title: CostManagement
 module-version: 0.1.0
@@ -74,16 +75,16 @@ directive:
   - where:
       subject: UsageQuery
       verb: invoke
-    hide: true
+    remove: true
   - where:
       subject: ByDimensionExternalCloudProviderType|CloudForecast|DismissAlert|Forecast
       verb: Invoke
     remove: true
-  - where:
-      subject: Export|ExportExecutionHistory|ExportExecution
-      parameter-name: Scope
-    set:
-      parameter-name: ABC
+  # - where:
+  #     subject: Export|ExportExecutionHistory|ExportExecution
+  #     parameter-name: Scope
+  #   set:
+  #     parameter-name: ABC
       # parameter-description: This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
   - from: source-file-csharp
     where: $

@@ -1,17 +1,18 @@
-### Example 1: Remove a cost management export by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name AzureExport-T01
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a cost management export by name
+{{ Add description here }}
 
-### Example 2: Remove a cost management export by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $export = Get-AzCostManagementExport -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name AzureExport-T02
-PS C:\> Remove-AzCostManagementExport -InputObject $export
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a cost management export by object
+{{ Add description here }}
 
