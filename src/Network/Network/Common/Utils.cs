@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.Network
     {
         public static bool IsIpv4PrivatePeeringNull(PSPeering privatePeering)
         {
-            if (privatePeering.PrimaryPeerAddressPrefix == null &&
-                privatePeering.SecondaryPeerAddressPrefix == null)
+            if (privatePeering == null ||
+                 (privatePeering.PrimaryPeerAddressPrefix == null &&
+                  privatePeering.SecondaryPeerAddressPrefix == null))
             {
                 return true;
             }

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connection != null)
             {
-                if ((AddressTypeUtils.IsIpv4(this.AddressPrefixType) || string.IsNullOrWhiteSpace(this.AddressPrefixType)) &&
+                if ((string.IsNullOrWhiteSpace(this.AddressPrefixType) || AddressTypeUtils.IsIpv4(this.AddressPrefixType)) &&
                     connection.IPv6CircuitConnectionConfig.AddressPrefix != null)
                 {
                     // when ipv6 also exists and call is to remove ipv4

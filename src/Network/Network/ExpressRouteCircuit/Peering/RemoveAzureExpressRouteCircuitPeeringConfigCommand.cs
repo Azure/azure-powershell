@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
                     if (peering.MicrosoftPeeringConfig != null && peering.Ipv6PeeringConfig != null)
                     {
                         // Both IPv4 and IPv6 peering configs are present. Only nullify the config corresponding to the address family specified
-                        if (AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType))
+                        if (string.IsNullOrWhiteSpace(this.PeerAddressType) || AddressTypeUtils.IsIpv4(this.PeerAddressType))
                         {
                             peering.PrimaryPeerAddressPrefix = null;
                             peering.SecondaryPeerAddressPrefix = null;
@@ -100,14 +100,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 else if (peering.PeeringType == MNM.ExpressRoutePeeringType.AzurePrivatePeering)
                 {
-                    if ((AddressTypeUtils.IsIpv4(this.PeerAddressType) || string.IsNullOrWhiteSpace(this.PeerAddressType)) &&
+                    if ((string.IsNullOrWhiteSpace(this.PeerAddressType) || AddressTypeUtils.IsIpv4(this.PeerAddressType)) &&
                             peering.Ipv6PeeringConfig != null)
                     {
                         // remove ipv4 call and ipv6 exists
                         peering.PrimaryPeerAddressPrefix = null;
                         peering.SecondaryPeerAddressPrefix = null;
                     }
-                    else if (AddressTypeUtils.IsIpv6(this.PeerAddressType) && !PeeringUtils.IsIpv4PrivatePeeringNull(peering))
+                    else if (AddressTypeUtils.IsIpv6(this.PeerAddressType) &&
+                        !PeeringUtils.IsIpv4PrivatePeeringNull(peering))
                     {
                         // remove ipv6 call and ipv4 exists
                         peering.Ipv6PeeringConfig = null;
