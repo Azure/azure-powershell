@@ -46,7 +46,8 @@ assignees: ''
 
 ## Debug output
 
-<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block -->
+<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
 
 ```
 
@@ -54,7 +55,8 @@ assignees: ''
 
 ## Error output
 
-<!-- Please run Resolve-AzError and paste the output in the below code block -->
+<!-- Please run Resolve-AzError and paste the output in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
 
 ```
 
