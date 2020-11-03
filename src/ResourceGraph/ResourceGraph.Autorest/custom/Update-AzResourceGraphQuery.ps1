@@ -40,7 +40,6 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <IGraphQueryUpdateParameters>: The parameters that can be provided when updating workbook properties properties.
   [Description <String>]: The description of a graph query.
-  [ETag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Query <String>]: KQL query that will be graph.
   [Tag <IGraphQueryUpdateParametersTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -89,14 +88,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

@@ -46,7 +46,6 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
 
 PROPERTY <IGraphQueryResource>: Graph Query entity definition.
   Query <String>: KQL query that will be graph.
-  [ETag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Location <String>]: The location of the resource
   [Tag <IResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -82,13 +81,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
