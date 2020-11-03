@@ -400,8 +400,6 @@ This value is used only for images that contain the Windows Server operating sys
 The acceptable values for this parameter are:
 - Windows_Client
 - Windows_Server
-This value cannot be updated.
-If you specify this parameter for an update, the value must match the initial value for the virtual machine.
 
 ```yaml
 Type: System.String

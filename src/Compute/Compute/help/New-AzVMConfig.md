@@ -166,7 +166,11 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type, which is for bringing your own license scenario.
+Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
+This value is used only for images that contain the Windows Server operating system.
+The acceptable values for this parameter are:
+- Windows_Client
+- Windows_Server
 
 ```yaml
 Type: System.String
