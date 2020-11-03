@@ -5,6 +5,11 @@
 # $debugState = $false
 [cmdletbinding()]
 param(
+    [string]
+    [Parameter(Mandatory = $false, Position = 0)]
+    [PSDefaultValue(Help = "9e223dbe-3399-4e19-88eb-0975f02ac87f")]
+    $subscriptionId = "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+
     [Parameter()]
     [switch]
     $Reverse
@@ -17,7 +22,7 @@ if (Get-Module -ListAVailable 'Az.Accounts')
 
 if (!(Get-AzureRmContext -ErrorAction 'Ignore'))
 {
-  Connect-AzureRmAccount -Subscription "Azure SDK PowerShell Test"
+  Connect-AzureRmAccount -Subscription $subscriptionId
 }
 
 $testInfo = @{

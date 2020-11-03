@@ -98,19 +98,19 @@ jobs:
     displayName: Connect AzAccount 
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/ConnectAzAccount.ps1 $(Password) $(ServicePrincipal) $(TenantId)"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/ConnectAzAccount.ps1 $(Password) $(ServicePrincipal) $(TenantId) $(SubscriptionId) "'
 
   - task: PowerShell@2
     displayName: Run Smoke Test 
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId)"'
 
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse"'
 
   - task: PowerShell@2
     displayName: Clean Az Modules
@@ -128,13 +128,13 @@ jobs:
     displayName: Run Smoke Test 
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) "'
 
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse "'
 
   - task: PowerShell@2
     displayName: Clean Az Modules
