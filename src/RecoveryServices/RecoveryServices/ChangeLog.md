@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Specifying policy BackupTime is in UTC.
 
 ## Version 3.0.0
 * Fixing Workload Restore for contributor permissions.
