@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'Az.StackHCI.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.3.1'
