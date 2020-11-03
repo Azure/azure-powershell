@@ -15,12 +15,10 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -56,6 +54,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
         public bool? EnableRbacAuthorization { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hash table which represents resource tags.")]
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.InputObject))
@@ -88,16 +92,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (this.ShouldProcess(this.VaultName, string.Format("Updating key vault '{0}' in resource group '{1}'.", this.VaultName, this.ResourceGroupName)))
             {
-                var result = KeyVaultManagementClient.UpdateVault(existingResource,
-                    existingResource.AccessPolicies,
-                    existingResource.EnabledForDeployment,
-                    existingResource.EnabledForTemplateDeployment,
-                    existingResource.EnabledForDiskEncryption,
-                    null,
-                    EnablePurgeProtection.IsPresent ? (true as bool?) : null,
-                    EnableRbacAuthorization,
-                    null,
-                    existingResource.NetworkAcls
+                var result = KeyVaultManagementClient.UpdateVault(
+                    existingResource,
+                    updatedParamater: new VaultCreationOrUpdateParameters
+                    {
+                        EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        EnableRbacAuthorization = this.EnableRbacAuthorization,
+                        Tags = this.Tag
+                    }
                 );
                 
                 WriteObject(result);
