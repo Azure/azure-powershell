@@ -29,7 +29,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for Az cmdlets to PSRreadline 2.2 or above - This module is compatible with PowerShell 7.1.'
+Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSRreadline v2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+
+For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '7.1'
@@ -59,7 +61,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* the first preview release'
+        ReleaseNotes = '* first preview release'
 
         # Prerelease string of this module
         # Prerelease = ''
