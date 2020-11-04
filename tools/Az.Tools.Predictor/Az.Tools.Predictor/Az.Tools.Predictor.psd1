@@ -29,7 +29,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSRreadline v2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
 
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
