@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -22,16 +21,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal interface IAzContext
     {
-        /// <summary>
-        /// Gets the current Az module version.
-        /// </summary>
-        public Version AzVersion { get; }
-
-        /// <summary>
-        /// Gets all the Az.* modules versions.
-        /// </summary>
-        public IDictionary<string, Version> AzModulesVersions { get; }
-
         /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>

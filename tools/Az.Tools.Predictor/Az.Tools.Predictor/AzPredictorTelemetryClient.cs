@@ -196,24 +196,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", _azContext.ModuleVersion.ToString() },
                 { "OS", _azContext.OSVersion },
-                { "AzModulesVersions", GetAzModulesVersions() },
             };
-        }
-
-        private string GetAzModulesVersions()
-        {
-            var azModulesVersions = _azContext.AzModulesVersions;
-
-            if (_cachedAzModulesVersions.Item1 != azModulesVersions)
-            {
-                _cachedAzModulesVersions = Tuple.Create(azModulesVersions,
-                     string.Join(",", azModulesVersions.Select(pair =>
-                        {
-                            return $"{pair.Key}: {pair.Value}";
-                            })));
-            }
-
-            return _cachedAzModulesVersions.Item2;
         }
     }
 }

@@ -33,12 +33,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
-        public Version AzVersion { get; private set; } = AzContext.DefaultVersion;
-
-        /// <inheritdoc/>
-        public IDictionary<string, Version> AzModulesVersions { get; private set; } = new Dictionary<string, Version>();
-
-        /// <inheritdoc/>
         public string UserId { get; private set; } = string.Empty;
 
         private string _macAddress;
@@ -106,68 +100,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public void UpdateContext()
         {
-            AzVersion = GetAzVersion();
-            AzModulesVersions = GetAzModulesVersions();
             UserId = GenerateSha256HashString(GetUserAccountId());
-        }
-
-        /// <summary>
-        /// Gets the latest version from the loaded Az modules.
-        /// </summary>
-        private Version GetAzVersion()
-        {
-            Version defaultVersion = AzContext.DefaultVersion;
-
-            Version latestAz = defaultVersion;
-
-            try
-            {
-                var outputs = AzContext.ExecuteScript<PSModuleInfo>("Get-Module -Name Az -ListAvailable");
-                foreach (var obj in outputs)
-                {
-                    var currentAz = obj.Version;
-                    if (currentAz > latestAz)
-                    {
-                        latestAz = currentAz;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-
-            return latestAz;
-        }
-
-        /// <summary>
-        /// Gets all the Az modules versions.
-        /// </summary>
-        private IDictionary<string, Version> GetAzModulesVersions()
-        {
-            var moduleVersions = new Dictionary<string, Version>();
-
-            try
-            {
-                var outputs = AzContext.ExecuteScript<PSModuleInfo>("Get-Module -Name Az.* -ListAvailable");
-                foreach (var obj in outputs)
-                {
-                    var psVersion = obj.Version;
-                    var psName = obj.Name;
-
-                    bool setVersion = !moduleVersions.TryGetValue(psName, out var existingVersion)
-                        || (existingVersion < psVersion);
-
-                    if (setVersion)
-                    {
-                        moduleVersions[psName] = psVersion;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-
-            return moduleVersions;
         }
 
         /// <summary>
