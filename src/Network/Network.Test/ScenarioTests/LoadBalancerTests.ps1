@@ -1754,6 +1754,13 @@ function Test-LoadBalancerMultiVip-Public
 		Assert-AreEqual $pipFrontend2Name $lb3.FrontendIPConfigurations[1].Name
         Assert-AreEqual $pip3.Id $lb3.FrontendIPConfigurations[1].PublicIPPrefix.Id
 		Assert-Null $lb3.FrontendIPConfigurations[1].Subnet
+
+        # Delete
+        $deleteLb = Remove-AzLoadBalancer -Name $lb2Name -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+		$list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
     }
     finally
     {
