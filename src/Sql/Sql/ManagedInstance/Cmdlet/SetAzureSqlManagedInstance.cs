@@ -198,6 +198,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ComputeGeneration { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -282,7 +289,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 InstancePoolName = this.InstancePoolName,
-                MinimalTlsVersion = this.MinimalTlsVersion
+                MinimalTlsVersion = this.MinimalTlsVersion,
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId
             });
             return updateData;
         }

@@ -565,6 +565,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interactive authentication is not supported in this session, please run Connect-AzAccount using switch -DeviceCode..
+        /// </summary>
+        internal static string InteractiveAuthNotSupported {
+            get {
+                return ResourceManager.GetString("InteractiveAuthNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The context is invalid. Please login using Connect-AzAccount..
         /// </summary>
         internal static string InvalidAzureContext {
@@ -1065,6 +1074,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SubscriptionOrTenantRequired {
             get {
                 return ResourceManager.GetString("SubscriptionOrTenantRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please run &apos;Connect-AzAccount -DeviceCode&apos; if browser is not supported in this session..
+        /// </summary>
+        internal static string SuggestToUseDeviceCodeAuth {
+            get {
+                return ResourceManager.GetString("SuggestToUseDeviceCodeAuth", resourceCulture);
             }
         }
         
