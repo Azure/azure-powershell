@@ -358,6 +358,14 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the client group name for Kafka Rest Proxy access.")]
         public string KafkaClientGroupName { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the resource provider connection type.")]
+        [ValidateSet(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
+        public string ResourceProviderConnection { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the private link type.")]
+        [ValidateSet(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
+        public string PrivateLink { get; set; }
+
 
         #endregion
 
@@ -538,6 +546,14 @@ namespace Microsoft.Azure.Commands.HDInsight
                 workerNode.AutoscaleConfiguration = autoscaleParameter;
             }
 
+            // Handle relay outound and private link feature
+            NetworkProperties networkProperties = null;
+            if (ResourceProviderConnection != null || PrivateLink != null)
+            {
+                networkProperties = new NetworkProperties(ResourceProviderConnection, PrivateLink);
+            }
+
+
             // Construct cluster create parameter
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
@@ -564,7 +580,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     {
                         IsEncryptionInTransitEnabled = EncryptionInTransit
                     } : null,
-                    MinSupportedTlsVersion = MinSupportedTlsVersion
+                    MinSupportedTlsVersion = MinSupportedTlsVersion,
+                    NetworkProperties = networkProperties
 
                 },
                 Identity = clusterIdentity

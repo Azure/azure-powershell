@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Add parameters `ResourceProviderConnection` and `PrivateLink` to cmdlet `New-AzHDInsightCluster` to support relay outbound and private link feature
+
 ## Version 4.0.0
  * For New-AzHDInsightCluster cmdlet:
      - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`

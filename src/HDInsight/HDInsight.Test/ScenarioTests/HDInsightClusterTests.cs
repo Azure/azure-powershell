@@ -77,5 +77,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithKafkaRestProxy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithRelayOutoundAndPrivateLink()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithRelayOutoundAndPrivateLink");
+        }
     }
 }

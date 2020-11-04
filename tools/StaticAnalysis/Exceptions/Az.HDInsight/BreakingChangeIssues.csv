@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll","Microsoft.Azure.Commands.HDInsight.RestartAzureHDInsightHostCommand","Restart-AzHDInsightHost","0","3010","The property 'NetworkSettings' of type 'Microsoft.Azure.Management.HDInsight.Models.ClusterGetProperties' has been removed.","Add the property 'NetworkSettings' back to type 'Microsoft.Azure.Management.HDInsight.Models.ClusterGetProperties'."

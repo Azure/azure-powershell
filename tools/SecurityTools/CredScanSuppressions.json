@@ -526,7 +526,7 @@
       "_justification": "Test resource is deleted"
     },
     {
-      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithPrivateLink.json",
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithRelayOutoundAndPrivateLink.json",
       "_justification": "Test resource is deleted"
     },
     {
