@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var resultBuilder = new StringBuilder();
             var usedParams = new HashSet<int>();
             var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added
-            int maxAllowedCommandDupl = 2;
+            int maxAllowedCommandDupl = 1;
 
             for (var i = 0; i < _predictions.Count && results.Count < suggestionCount; ++i)
             {
