@@ -42,14 +42,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of workflow runs</returns>
         public Page<WorkflowRun> GetWorkflowRuns(string resourceGroupName, string workflowName, string nextPageLink = "")
         {
-            if (string.IsNullOrWhiteSpace(nextPageLink))
-            {
-                return (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.List(resourceGroupName, workflowName);
-            }
-            else
-            {
-                return (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.ListNext(nextPageLink);
-            }
+            return string.IsNullOrWhiteSpace(nextPageLink) ? 
+                (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.List(resourceGroupName, workflowName) :
+                (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.ListNext(nextPageLink);
         }
 
         /// <summary>

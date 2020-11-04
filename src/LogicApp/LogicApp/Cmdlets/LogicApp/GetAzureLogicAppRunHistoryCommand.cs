@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RunName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow relation links.")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow next page links.")]
         [Alias("FL")]
-        public SwitchParameter FollowRelLink { get; set; }
+        public SwitchParameter FollowNextPageLink { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow relation links if FollowRelLink is used.")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow next page links if FollowNextPageLink is used.")]
         [Alias("ML")]
         [ValidateRange(1, Int32.MaxValue)]
-        public int MaximumFollowRelLink { get; set; } = int.MaxValue;
+        public int MaximumFollowNextPageLink { get; set; } = int.MaxValue;
 
         #endregion Input Parameters
 
@@ -65,21 +65,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.RunName))
             {
-                Page<WorkflowRun> page = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name);
-                this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRun>(), true);
-
-                if (FollowRelLink && !string.IsNullOrWhiteSpace(page.NextPageLink))
+                var page = new Page<WorkflowRun>();
+                int i = 0;
+                do
                 {
-                    for (int i = 0; i < MaximumFollowRelLink; i++)
-                    {
-                        page = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name, page.NextPageLink);
-                        this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRun>(), true);
-                    }
+                    page = this.LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name, page.NextPageLink);
+                    this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRun>(), true);
+                    i++;
                 }
+                while (this.FollowNextPageLink && !string.IsNullOrWhiteSpace(page.NextPageLink) && i <= this.MaximumFollowNextPageLink);
             }
             else
             {
-                this.WriteObject(LogicAppClient.GetWorkflowRun(this.ResourceGroupName, this.Name, this.RunName), true);
+                this.WriteObject(this.LogicAppClient.GetWorkflowRun(this.ResourceGroupName, this.Name, this.RunName), true);
             }
         }
     }

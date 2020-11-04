@@ -14,8 +14,8 @@ Gets the run history of a logic app.
 ## SYNTAX
 
 ```
-Get-AzLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>] [-FollowRelLink]
- [-MaximumFollowRelLink <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>] [-FollowNextPageLink]
+ [-MaximumFollowNextPageLink <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,7 @@ Get-AzLogicAppRunHistory -Name 'IntegrationAccount31' -ResourceGroupName MyResou
 This command gets the entire run history of a logic app named LogicApp03 by following the NextPageLink.
 
 ```powershell
-Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowRelLink
+Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowNextPageLink
 ```
 
 ### Example 5
@@ -96,7 +96,7 @@ This command gets the first two pages of run history of a logic app named LogicA
 Each page contains thirty results.
 
 ```powershell
-Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowRelLink -MaximumFollowRelLink 1
+Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowNextPageLink -MaximumFollowNextPageLink 1
 ```
 
 ## PARAMETERS
@@ -116,8 +116,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FollowRelLink
-Indicates the cmdlet should follow relation links.
+### -FollowNextPageLink
+Indicates the cmdlet should follow next page links.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -131,8 +131,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaximumFollowRelLink
-Specifies how many times to follow relation links if FollowRelLink is used.
+### -MaximumFollowNextPageLink
+Specifies how many times to follow next page links if FollowNextPageLink is used.
 
 ```yaml
 Type: System.Int32
