@@ -114,6 +114,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ZookeeperNodeSize = ZookeeperNodeSize,
                     HiveMetastore = HiveMetastore,
                     OozieMetastore = OozieMetastore,
+                    AmbariDatabase = AmbariDatabase,
                     ObjectId = ObjectId,
                     ApplicationId = ApplicationId,
                     AADTenantId = AadTenantId,
@@ -175,6 +176,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
                 OozieMetastore = value.OozieMetastore;
+                AmbariDatabase = value.AmbariDatabase;
                 CertificateFileContents = value.CertificateFileContents;
                 CertificateFilePath = value.CertificateFilePath;
                 AadTenantId = value.AADTenantId;
@@ -219,6 +221,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
         public AzureHDInsightMetastore HiveMetastore { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the database for ambari.")]
+        public AzureHDInsightMetastore AmbariDatabase { get; set; }
 
         [Parameter(HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
@@ -447,6 +452,12 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ClusterCreateHelper.AddHiveMetastoreToConfigurations(HiveMetastore, clusterConfigurations);
             }
 
+            // Handle Custom Ambari Database
+            if (AmbariDatabase != null)
+            {
+                ClusterCreateHelper.AddCustomAmbariDatabaseToConfigurations(AmbariDatabase, clusterConfigurations);
+            }
+
             // Handle ADLSGen1 identity
             if (!string.IsNullOrEmpty(CertificatePassword))
             {
@@ -552,7 +563,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 networkProperties = new NetworkProperties(ResourceProviderConnection, PrivateLink);
             }
-
 
             // Construct cluster create parameter
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended

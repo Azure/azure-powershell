@@ -84,5 +84,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithRelayOutoundAndPrivateLink");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithCustomAmbariDatabase()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithCustomAmbariDatabase");
+        }
     }
 }

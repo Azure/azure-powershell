@@ -313,3 +313,44 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with custom ambari database
+#>
+
+function Test-CreateClusterWithCustomAmbariDatabase{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
+
+		# prepare custom ambari database
+		$databaseUserName="databaseuser"
+		$databasePassword="xxxxxxx"
+		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
+		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
+		$sqlserver="yoursqlserver.database.windows.net"
+		$database="yourdatabase"
+		$config=New-AzHDInsightClusterConfig
+
+		# create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
+		-AmbariDatabase $config.AmbariDatabase
+
+		Assert-NotNull $cluster
+
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
