@@ -971,7 +971,18 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RemovingSynapseSqlPool", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse SQL pool restore point &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlPoolRestorePoint
+        {
+            get
+            {
+                return ResourceManager.GetString("RemovingSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Deleting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
@@ -1205,7 +1216,18 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolDoesNotExist", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified SQL pool restore point &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string SqlPoolRestorePointDoesNotExist
+        {
+            get
+            {
+                return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>

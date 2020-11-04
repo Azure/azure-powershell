@@ -1543,6 +1543,56 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointName))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointName));
+                }
+
+                List<RestorePoint> restorePointList = new List<RestorePoint>();
+                restorePointList = this._synapseManagementClient.SqlPoolRestorePoints.List(
+                    resourceGroupName,
+                    workspaceName,
+                    sqlPoolName)
+                    .ToList();
+
+                int index = restorePointList.FindIndex(element => element.Name == sqlPoolRestorePointName);
+
+                restorePointList.RemoveAt(index);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public bool TestSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointName)
+        {
+            try
+            {
+                List<RestorePoint> restorePointList = new List<RestorePoint>();
+                restorePointList = this._synapseManagementClient.SqlPoolRestorePoints.List(
+                    resourceGroupName,
+                    workspaceName,
+                    sqlPoolName)
+                    .ToList();
+
+                return (restorePointList.Count != 0) && (restorePointList.Exists(element => element.Name == sqlPoolRestorePointName));
+            }
+            catch (NotFoundException)
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region SQL Pool V3 operations
