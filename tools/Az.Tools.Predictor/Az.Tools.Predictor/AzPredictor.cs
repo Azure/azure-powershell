@@ -172,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             IEnumerable<ValueTuple<string, string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, string, PredictionSource>>();
             string maskedUserInput = string.Empty;
-            // This is the list of records of the original suggestion and the prediction source.
+            // This is the list of records of the source suggestion and the prediction source.
             var telemetryData = new List<ValueTuple<string, PredictionSource>>();
 
             try

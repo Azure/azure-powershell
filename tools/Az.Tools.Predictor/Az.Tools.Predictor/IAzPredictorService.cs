@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="input">User input from PSReadLine</param>
         /// <param name="suggestionCount">The number of suggestion to return.</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns>The list of suggestions and the source for <paramref name="input"/>. The maximum number of suggestion is <paramref name="suggestionCount"/></returns>
+        /// <returns>The list of suggestions for <paramref name="input"/> and the source that create the suggestion. The maximum number of suggestion is <paramref name="suggestionCount"/></returns>
         public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken);
 
         /// <summary>
