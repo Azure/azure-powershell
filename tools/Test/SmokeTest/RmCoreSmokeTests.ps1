@@ -5,11 +5,6 @@
 # $debugState = $false
 [cmdletbinding()]
 param(
-    [string]
-    [Parameter(Mandatory = $false, Position = 0)]
-    [PSDefaultValue(Help = "9e223dbe-3399-4e19-88eb-0975f02ac87f")]
-    $subscriptionId = "9e223dbe-3399-4e19-88eb-0975f02ac87f",
-
     [Parameter()]
     [switch]
     $Reverse
@@ -18,11 +13,6 @@ param(
 if (Get-Module -ListAVailable 'Az.Accounts')
 {
     Enable-AzureRmAlias
-}
-
-if (!(Get-AzureRmContext -ErrorAction 'Ignore'))
-{
-  Connect-AzureRmAccount -Subscription $subscriptionId
 }
 
 $testInfo = @{
