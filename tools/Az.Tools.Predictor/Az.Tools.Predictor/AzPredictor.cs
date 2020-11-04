@@ -61,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
 
+        // This contains the user modified texts and the original suggestion.
+        private Dictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
+
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>
         /// </summary>
@@ -81,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             // The context only changes when the user executes the corresponding command.
             this._azContext?.UpdateContext();
+            lock (_userAcceptedAndSuggestion)
+            {
+                _userAcceptedAndSuggestion.Clear();
+            }
 
             if (history.Count > 0)
             {
@@ -147,7 +154,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
-            _telemetryClient.OnSuggestionAccepted(acceptedSuggestion);
+            IDictionary<string, string> localSuggestedTexts = null;
+            lock (_userAcceptedAndSuggestion)
+            {
+                localSuggestedTexts = _userAcceptedAndSuggestion;
+            }
+
+            if (localSuggestedTexts.TryGetValue(acceptedSuggestion, out var suggestedText))
+            {
+                _telemetryClient.OnSuggestionAccepted(suggestedText);
+            }
+            else
+            {
+                _telemetryClient.OnSuggestionAccepted("NoRecord");
+            }
         }
 
         /// <inhericdoc />
@@ -160,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // is prefixed with `userInput`, it should be ordered before result that is not prefixed
             // with `userInput`.
 
-            IEnumerable<ValueTuple<string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, PredictionSource>>();
+            IEnumerable<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>>();
 
             try
             {
@@ -184,8 +204,51 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
             finally
             {
-                var maskedCommandLine = MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
-                _telemetryClient.OnGetSuggestion(maskedCommandLine, suggestions, cancellationToken.IsCancellationRequested);
+                var maskedCommandLine = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+                var sb = new StringBuilder();
+                // This is the list of records of the original suggestion and the prediction source.
+                var telemetryData = new List<ValueTuple<string, PredictionSource>>();
+                var userAcceptedAndSuggestion = new Dictionary<string, string>();
+
+                foreach (var s in suggestions)
+                {
+                    sb.Clear();
+                    sb.Append(s.Item1.Split(' ')[0])
+                        .Append(AzPredictorConstants.CommandParameterSeperator);
+
+                    foreach (var p in s.Item2)
+                    {
+                        sb.Append(p.Item1);
+                        if (p.Item2 != null)
+                        {
+                            sb.Append(AzPredictorConstants.CommandParameterSeperator)
+                                .Append(p.Item2);
+                        }
+
+                        sb.Append(AzPredictorConstants.CommandParameterSeperator);
+                    }
+
+                    if (sb[sb.Length - 1] == AzPredictorConstants.CommandParameterSeperator)
+                    {
+                        sb.Remove(sb.Length - 1, 1);
+                    }
+
+                    var suggestedText = sb.ToString();
+                    telemetryData.Add(ValueTuple.Create(suggestedText, s.Item3));
+                    userAcceptedAndSuggestion[s.Item1] = suggestedText;
+                }
+
+                lock (_userAcceptedAndSuggestion)
+                {
+                    foreach (var u in userAcceptedAndSuggestion)
+                    {
+                        _userAcceptedAndSuggestion[u.Key] = u.Value;
+                    }
+                }
+
+                _telemetryClient.OnGetSuggestion(maskedCommandLine,
+                        telemetryData,
+                        cancellationToken.IsCancellationRequested);
             }
 
             return new List<PredictiveSuggestion>();
