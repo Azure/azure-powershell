@@ -4414,7 +4414,8 @@ function Test-VirtualMachineImageListTopOrderExpand
 
 <#
 .SYNOPSIS
-
+This test can only run in Record mode. SEveral lines need to be uncommented for it to test the cmdlet. 
+Downloads the managed boot diagnostics of a Windows machine to a local file path. 
 #>
 function Test-VirtualMachineBootDiagnostics
 {
@@ -4429,6 +4430,8 @@ function Test-VirtualMachineBootDiagnostics
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1_v2';
         $vmname = 'vm' + $rgname;
+        # Create the file path on your machine, then set this variable to it. 
+        # $localPath = "C:\Users\adsandor\Documents\bootDiags"
         
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         
@@ -4465,7 +4468,8 @@ function Test-VirtualMachineBootDiagnostics
         Assert-NotNull $vm;
 
         # Get Managed Boot Diagnostics 
-        # Get-AzVmBootDiagnosticsData -ResourceGroupName $rgname -Name $vmname -Windows -LocalPath "C:\Users\adsandor\Documents\bootDiags"; # See if removing this prevents the CI check failures. 
+        # uncomment this when running locally. 
+        # Get-AzVmBootDiagnosticsData -ResourceGroupName $rgname -Name $vmname -Windows -LocalPath $localPath;
     }
     finally
     {
