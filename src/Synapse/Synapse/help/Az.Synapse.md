@@ -303,7 +303,7 @@ Updates a Synapse Analytics Spark pool.
 Updates an advanced threat protection settings on a workspace.
 
 ### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
-Updates a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.
