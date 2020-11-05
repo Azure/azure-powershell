@@ -1549,5 +1549,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("TargetVaultStorageRedundancy", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to container name is invalid.
+        /// </summary>
+        public static string ContainerNameIsInvalid
+        {
+            get
+            {
+                return ResourceManager.GetString("ContainerNameIsInvalid", resourceCulture);
+            }
+        }
     }
 }

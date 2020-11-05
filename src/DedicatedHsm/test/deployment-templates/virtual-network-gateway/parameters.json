@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkGateways_GW_name": {
+      "value": "vnetGatewayg2xzfa"
+    },
+    "publicIPAddresses_GWIP_externalid": {
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/publicIPAddresses/publicipamgop9"
+    },
+    "virtualNetworks_myHSM_vnet_externalid": {
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9"
+    }
+  }
+}

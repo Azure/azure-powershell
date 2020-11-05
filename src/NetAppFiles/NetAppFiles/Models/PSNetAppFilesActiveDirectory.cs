@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.NetApp.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
@@ -71,5 +72,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// The Organizational Unit (OU) within the Windows Active Directory.
         /// </summary>
         public string OrganizationalUnit { get; set; }
+
+        /// <summary>
+        /// The Active Directory site the service will limit Domain Controller discovery to
+        /// </summary>
+        public string Site { get; set; }
+
+        /// <summary>
+        /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+        /// </summary>
+        public IList<string> BackupOperators { get; set; }
     }
 }

@@ -29,7 +29,7 @@ function Test-AccountActiveDirectory
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass"
         Domain = "sdkdomain"
-        Dns = "127.0.0.1"
+        Dns = "192.0.2.2"
         SmbServerName = "PSSMBSName"
     }
     $activeDirectory2 = @{
@@ -37,7 +37,7 @@ function Test-AccountActiveDirectory
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass1"
         Domain = "sdkdomain"
-        Dns = "127.0.0.1"
+        Dns = "192.0.2.2"
         SmbServerName = "PSSMBSName"
     }
 
@@ -55,13 +55,16 @@ function Test-AccountActiveDirectory
             # create and check account 1
             $newTagName = "tag1"
             $newTagValue = "tagValue1"
-            $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
-            Assert-True { $false }
+            #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
+
+            Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories} 'Only one active directory allowed';
+            #Assert-True { $false }
         }
         catch
         {
             $ErrorMessage = $_.Exception.Message
-            Assert-True { ($ErrorMessage -contains 'Only one active directory allowed') }
+            #Assert-True { ($ErrorMessage -contains 'Only one active directory allowed') }
+            Assert-True { ($ErrorMessage -contains 'Only one') }
             #Assert-AreEqual $accName1 $retrievedAcc.Name
         }
 
