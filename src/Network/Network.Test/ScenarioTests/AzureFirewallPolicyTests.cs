@@ -92,5 +92,15 @@ namespace Commands.Network.Test.ScenarioTests
             }
             TestRunner.RunTestScript(string.Format("Test-AzureFirewallPolicyPremiumFeatures -baseDir '{0}' -spn '{1}'", AppDomain.CurrentDomain.BaseDirectory, servicePrincipal));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyCRUDWithNatRuleTranslatedFQDN()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyCRUDWithNatRuleTranslatedFQDN");
+        }
+
+
     }
 }
