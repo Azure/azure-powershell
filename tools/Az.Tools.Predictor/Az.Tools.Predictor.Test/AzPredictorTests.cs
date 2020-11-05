@@ -45,7 +45,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._azPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
             {
                 SuggestionCount = 1,
-            });
+            },
+            null);
         }
 
         /// <summary>
@@ -157,7 +158,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var localAzPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
-            });
+            },
+            null);
 
             var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
             var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Verbose ***";

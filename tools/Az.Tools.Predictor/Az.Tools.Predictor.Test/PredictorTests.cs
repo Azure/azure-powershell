@@ -43,7 +43,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("NEW-AZCONTEXT")]
-        [InlineData("Get-AzStorageAccount ")] // A complete command and we have exact the same on in the model.
         [InlineData("get-azaccount ")]
         [InlineData(AzPredictorConstants.CommandPlaceholder)]
         [InlineData("git status")]
