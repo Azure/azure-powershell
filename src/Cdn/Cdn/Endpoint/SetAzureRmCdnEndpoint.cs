@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
-using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -43,30 +42,30 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             var resourceGroupName = CdnEndpoint.ResourceGroupName;
             var profileName = CdnEndpoint.ProfileName;
+           
             try
             {
-                var endpoint = CdnManagementClient.Endpoints.Update(
-                    resourceGroupName,
-                    profileName,
-                    CdnEndpoint.Name,
-                    new EndpointUpdateParameters(
-                        CdnEndpoint.Tags.ToDictionaryTags(),
-                        CdnEndpoint.OriginHostHeader,
-                        CdnEndpoint.OriginPath,
-                        CdnEndpoint.ContentTypesToCompress.ToList(),
-                        CdnEndpoint.IsCompressionEnabled,
-                        CdnEndpoint.IsHttpAllowed,
-                        CdnEndpoint.IsHttpsAllowed,
-                        (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
-                        CdnEndpoint.OptimizationType,
-                        CdnEndpoint.ProbePath,
-                        CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
+                EndpointUpdateParameters updatedEndpoint = new EndpointUpdateParameters();
+                updatedEndpoint.Tags = CdnEndpoint.Tags.ToDictionaryTags();
+                updatedEndpoint.OriginPath = CdnEndpoint.OriginPath;
+                updatedEndpoint.ContentTypesToCompress = CdnEndpoint.ContentTypesToCompress.ToList();
+                updatedEndpoint.OriginHostHeader = CdnEndpoint.OriginHostHeader;
+                updatedEndpoint.IsCompressionEnabled = CdnEndpoint.IsCompressionEnabled;
+                updatedEndpoint.IsHttpAllowed = CdnEndpoint.IsHttpAllowed;
+                updatedEndpoint.IsHttpsAllowed = CdnEndpoint.IsHttpsAllowed;
+                updatedEndpoint.QueryStringCachingBehavior = (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString());
+                updatedEndpoint.OptimizationType = CdnEndpoint.OptimizationType;
+                updatedEndpoint.ProbePath = CdnEndpoint.ProbePath;
+                updatedEndpoint.GeoFilters = CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList();
+                updatedEndpoint.DeliveryPolicy = CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy();
+                updatedEndpoint.DefaultOriginGroup = CdnEndpoint.DefaultOriginGroup;
+
+                var endpoint = CdnManagementClient.Endpoints.Update(resourceGroupName, profileName, CdnEndpoint.Name, updatedEndpoint);
 
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoint.ToPsEndpoint());
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            catch (ErrorResponseException e)
             {
                 throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
                                      e.Response.Content));

@@ -73,9 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_canFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("canFailover"), out var __jsonCanFailover) ? (bool?)__jsonCanFailover : CanFailover;}
-            {_lastSyncTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastSyncTime"), out var __jsonLastSyncTime) ? global::System.DateTime.TryParse((string)__jsonLastSyncTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSyncTimeValue) ? __jsonLastSyncTimeValue : LastSyncTime : LastSyncTime;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
+            {_lastSyncTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastSyncTime"), out var __jsonLastSyncTime) ? global::System.DateTime.TryParse((string)__jsonLastSyncTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSyncTimeValue) ? __jsonLastSyncTimeValue : LastSyncTime : LastSyncTime;}
+            {_canFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("canFailover"), out var __jsonCanFailover) ? (bool?)__jsonCanFailover : CanFailover;}
             AfterFromJson(json);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._canFailover ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._canFailover) : null, "canFailover" ,container.Add );
+                AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
+                AddIf( null != this._canFailover ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._canFailover) : null, "canFailover" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

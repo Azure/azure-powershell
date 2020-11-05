@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Type of the test key</summary>
     public partial struct TestKeyType :
         System.IEquatable<TestKeyType>
     {

@@ -101,11 +101,6 @@ namespace Microsoft.Azure.Commands.Aks
                     throw new ArgumentException(Resources.NetworkPluginShouldBeAzure);
                 }
             }
-            if (string.Equals(this.NodeOsType, "Windows"))
-            {
-                if (NodeName?.Length > 6)
-                    throw new PSInvalidOperationException(Resources.WindowsNodePoolNameLengthLimitation);
-            }
         }
 
         private void VerifySshKeyGenBinaryExist()

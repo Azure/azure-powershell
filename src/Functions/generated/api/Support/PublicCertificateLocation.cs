@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Public Certificate Location</summary>
     public partial struct PublicCertificateLocation :
         System.IEquatable<PublicCertificateLocation>
     {

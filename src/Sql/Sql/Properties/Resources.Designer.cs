@@ -1555,6 +1555,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auditing policy cannot be defined for database edition {0}.
+        /// </summary>
+        internal static string UnsupportedDatabaseEditionForAuditingPolicy {
+            get {
+                return ResourceManager.GetString("UnsupportedDatabaseEditionForAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
         /// </summary>
         internal static string UseServerWithoutStorageAccount {

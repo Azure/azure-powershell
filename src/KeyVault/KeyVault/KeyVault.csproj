@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>KeyVault</PsModuleName>
@@ -12,9 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.0.0-beta.2" />
+    <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.2.0-beta.2" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,11 +26,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Update="SecretManagementExtension\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

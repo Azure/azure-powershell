@@ -102,11 +102,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVault vault = null;
 
                     if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
-                        vault = KeyVaultManagementClient.GetVault(
+                        PSKeyVault vault = KeyVaultManagementClient.GetVault(
                                                     VaultName,
                                                     ResourceGroupName,
                                                     ActiveDirectoryClient);

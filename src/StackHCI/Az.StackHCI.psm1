@@ -197,7 +197,9 @@ param(
         $graphTokenItemResource = $GraphEndpointResourceIdAzurePPE
     }
 
-    $graphTokenItem = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.TokenCache.ReadItems() | where { ($_.TenantId -eq "$TenantId") -and ($_.Resource -eq "$graphTokenItemResource")} | Sort-Object -Property ExpiresOn | Select-Object -Last 1
+    $authFactory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory
+    $azContext = Get-AzContext
+    $graphTokenItem = $authFactory.Authenticate($azContext.Account, $azContext.Environment, $azContext.Tenant.Id, $null, [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never, $null, $graphTokenItemResource)
     return $graphTokenItem.AccessToken
 }
 
@@ -296,6 +298,22 @@ param(
     $assignedPerms = Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId
     $usageWrite = $assignedPerms | where { ($_.Id -eq $usageWritePermission.Id) }
     $metadataWrite = $assignedPerms | where { ($_.Id -eq $metadataWritePermission.Id) }
+
+    if($usageWrite -eq $Null -or $metadataWrite -eq $Null)
+    {
+        # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
+        $assignedPerms = Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId
+    }
+
+    if($usageWrite -eq $Null)
+    {
+        $usageWrite = $assignedPerms | where { ($_.Id -eq $usageWritePermission.Id) }
+    }
+
+    if($metadataWrite -eq $Null)
+    {
+        $metadataWrite = $assignedPerms | where { ($_.Id -eq $metadataWritePermission.Id) }
+    }
 
     if($usageWrite -ne $Null -and $metadataWrite -ne $Null) # Check both Usage.Write and Metadata.Write are in consented state.
     {

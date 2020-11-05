@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// Description for Gets a snapshot of the configuration of an app at a previous point in time.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_GetConfigurationSnapshot=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}"
+    /// [OpenAPI] GetConfigurationSnapshot=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppConfigurationSnapshot_GetViaIdentity")]

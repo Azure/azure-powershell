@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for SupportedTlsVersions.</summary>
+    /// <summary>MinTlsVersion: configures the minimum version of TLS required for SSL requests</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersionsTypeConverter))]
     public partial struct SupportedTlsVersions :
         System.Management.Automation.IArgumentCompleter

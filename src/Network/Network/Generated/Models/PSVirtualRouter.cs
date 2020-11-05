@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.ResourceGuid = virtualHub.ResourceGuid;
             this.Type = virtualHub.Type;
             var ipconfig = virtualHub.IpConfigurations.FirstOrDefault<PSHubIpConfiguration>();
-            this.HostedSubnet = ipconfig.Id;
+            this.HostedSubnet = ipconfig.Subnet.Id;
             this.VirtualRouterAsn = virtualHub.VirtualRouterAsn;
             this.VirtualRouterIps = virtualHub.VirtualRouterIps;
             this.ProvisioningState = virtualHub.ProvisioningState;
