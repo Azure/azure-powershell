@@ -2649,7 +2649,7 @@ function Test-CreateSubresourcesOnEmptyLoadBalancer
         Assert-NotNull $ipConfig
 
         $lb = Add-AzLoadBalancerBackendAddressPoolConfig -Name $poolName -LoadBalancer $lb
-        $lb = Add-AzLoadBalancerProbeConfig -Name $probeName -LoadBalancer $lb -Port 2000 -IntervalInSeconds 60 -ProbeCount 3
+        $lb = Add-AzLoadBalancerProbeConfig -Name $probeName -LoadBalancer $lb -Port 2000 -IntervalInSeconds 60 -ProbeCount 3 -Protocol Tcp
         $lb = Add-AzLoadBalancerRuleConfig -Name $ruleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -Protocol Tcp -FrontendPort 1024 -BackendPort 2048
         $lb = Add-AzLoadBalancerInboundNatRuleConfig -Name $natRuleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -FrontendPort 128 -BackendPort 256
 
