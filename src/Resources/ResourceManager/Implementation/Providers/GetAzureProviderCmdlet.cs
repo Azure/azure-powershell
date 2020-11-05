@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Get an existing resource.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
-    public class GetAzureProviderCmdlet : ResourceManagerCmdletBase
+    public class GetAzureProviderCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// The individual provider parameter set name
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             var providers = this.ListPSResourceProviders();
 

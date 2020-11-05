@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
     [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class MoveAzureResourceCommand : ResourceManagerCmdletBase
+    public class MoveAzureResourceCommand : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// Caches the current resource ids to get all resource ids in the pipeline

@@ -15,11 +15,13 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -52,14 +54,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void StopsActiveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            resourcesClientMock.Setup(f => f.CancelDeployment(resourceGroupName, deploymentName));
+            resourcesClientMock.Setup(f => f.CancelDeployment(It.IsAny<FilterDeploymentOptions>()));
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;
 
             cmdlet.ExecuteCmdlet();
 
-            resourcesClientMock.Verify(f => f.CancelDeployment(resourceGroupName, deploymentName), Times.Once());
+            resourcesClientMock.Verify(
+                f => f.CancelDeployment(It.Is<FilterDeploymentOptions>(
+                    options => options.ScopeType == DeploymentScopeType.ResourceGroup
+                        && options.ResourceGroupName == resourceGroupName
+                        && options.DeploymentName == deploymentName)),
+                Times.Once());
         }
     }
 }

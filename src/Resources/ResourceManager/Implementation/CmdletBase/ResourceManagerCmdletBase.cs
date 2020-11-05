@@ -13,18 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
     using Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -68,9 +69,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
+        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
-        public string ApiVersion { get; set; }
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the switch that indicates if pre-release API version should be considered.
@@ -165,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The <c>ProcessRecord</c> method.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public sealed override void ExecuteCmdlet()
         {
             try
             {
@@ -413,6 +415,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+        /// Gets the source exception from a captured exception.
+        /// </summary>
+        /// <param name="capturedException">The captured exception</param>
+        private static Exception GetSourceException(ExceptionDispatchInfo capturedException)
+        {
+            if (capturedException.SourceException is AggregateException aggregateException)
+            {
+                var innerException = aggregateException.InnerExceptions?.SingleOrDefault();
+
+                if (innerException != null) 
+                {
+                    return innerException;
+                }
+            }
+
+            return capturedException.SourceException;
+        }
+
+        /// <summary>
         /// Provides specialized exception handling.
         /// </summary>
         /// <param name="capturedException">The captured exception</param>
@@ -420,33 +441,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
-                if (errorResponseException != null)
+                var sourceException = GetSourceException(capturedException);
+
+                if (sourceException is CloudException cloudException)
                 {
-                    throw errorResponseException;
+                    throw new ResourceManagerCloudException(cloudException);
                 }
 
-                var aggregateException = capturedException.SourceException as AggregateException;
-                if (aggregateException != null)
-                {
-                    if (aggregateException.InnerExceptions.CoalesceEnumerable().Any() &&
-                        aggregateException.InnerExceptions.Count == 1)
-                    {
-                        errorResponseException = aggregateException.InnerExceptions.Single() as ErrorResponseMessageException;
-                        if (errorResponseException != null)
-                        {
-                            throw errorResponseException;
-                        }
-
-                        throw aggregateException.InnerExceptions.Single();
-                    }
-                    else
-                    {
-                        throw aggregateException;
-                    }
-                }
-
-                throw capturedException.SourceException;
+                throw sourceException;
             }
             finally
             {

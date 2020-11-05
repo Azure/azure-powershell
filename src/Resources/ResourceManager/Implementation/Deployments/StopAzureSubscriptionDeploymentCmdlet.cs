@@ -15,6 +15,8 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
@@ -22,9 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
-    public class StopAzureDeploymentCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop, AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
+        DefaultParameterSetName = StopAzureSubscriptionDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Alias("Stop-AzSubscriptionDeployment")]
+    public class StopAzureSubscriptionDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The deployment Id parameter set.
@@ -42,33 +45,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string InputObjectParameterSet = "StopByInputObject";
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 0, ParameterSetName = StopAzureSubscriptionDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = StopAzureDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = StopAzureSubscriptionDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
             HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(ParameterSetName = StopAzureDeploymentCmdlet.InputObjectParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = StopAzureSubscriptionDeploymentCmdlet.InputObjectParameterSet, Mandatory = true,
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
-            var deploymentName = !string.IsNullOrEmpty(this.Name)
-                ? this.Name
-                : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
+            var options = new FilterDeploymentOptions(DeploymentScopeType.Subscription)
+            {
+                DeploymentName = !string.IsNullOrEmpty(this.Name)
+                    ? this.Name
+                    : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName
+            };
 
             ConfirmAction(
                 ProjectResources.CancelDeploymentMessage,
                 this.Name,
-                () => ResourceManagerSdkClient.CancelDeploymentAtSubscriptionScope(deploymentName));
+                () => ResourceManagerSdkClient.CancelDeployment(options));
 
             if (this.PassThru.IsPresent)
             {

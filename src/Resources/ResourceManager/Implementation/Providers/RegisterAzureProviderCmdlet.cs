@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
     [Cmdlet("Register", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
-    public class RegisterAzureProviderCmdlet : ResourceManagerCmdletBase
+    public class RegisterAzureProviderCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// Gets or sets the provider namespace
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             this.ConfirmAction(
                 processMessage: ProjectResources.RegisterProviderMessage,

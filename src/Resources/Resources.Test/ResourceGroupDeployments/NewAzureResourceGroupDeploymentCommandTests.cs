@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -27,6 +26,10 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using System.Linq;
+using System.Collections;
+using FluentAssertions;
+using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -95,7 +98,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -160,7 +163,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     DeploymentName = lastDeploymentName
                 }
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -225,7 +228,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Type = OnErrorDeploymentType.LastSuccessful,
                 }
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });

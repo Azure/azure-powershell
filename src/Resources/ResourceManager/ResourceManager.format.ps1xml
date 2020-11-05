@@ -2,6 +2,40 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters.PSResourceManagerErrorFormatter]::Format($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.PSWhatIfOperationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.PSWhatIfOperationResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters.WhatIfOperationResultFormatter]::Format($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>System.Management.Automation.PSCustomObject#DeploymentOperation</Name>
       <ViewSelectedBy>
         <TypeName>System.Management.Automation.PSCustomObject#DeploymentOperation</TypeName>
@@ -232,6 +266,144 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentScript</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentScript</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+                <ListItem>
+                  <Label>Name</Label>
+                  <PropertyName>Name</PropertyName>
+                </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SubscriptionId</Label>
+                <PropertyName>SubscriptionId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Error</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                   $_.Status.Error -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                    $_.Status.GetFormattedErrorString()
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Identity</Label>
+                <ScriptBlock>$_.Identity.UserAssignedIdentities.Keys</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ScriptKind</Label>
+                <PropertyName>ScriptKind</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.AzCliVersion -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>AzCliVersion</Label>
+                <PropertyName>AzCliVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.AzPowerShellVersion -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>AzPowerShellVersion</Label>
+                <PropertyName>AzPowerShellVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                  <ScriptBlock>$_.Status.StartTime</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EndTime</Label>
+                <ScriptBlock>$_.Status.EndTime</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ExpirationDate</Label>
+                <ScriptBlock>$_.Status.ExpirationTime</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CleanupPreference</Label>
+                <PropertyName>CleanupPreference</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StorageAccountId</Label>
+                <ScriptBlock>$_.Status.StorageAccountId</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ContainerInstanceId</Label>
+                <ScriptBlock>$_.Status.ContainerInstanceId</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>OutputsString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RetentionInterval</Label>
+                <PropertyName>RetentionInterval</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Timeout -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>Timeout</Label>
+                <PropertyName>Timeout</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentScriptLog</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentScriptLog</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>DeploymentScriptName</Label>
+                <PropertyName>DeploymentScriptName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Log</Label>
+                <ScriptBlock>$_.Log</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment</TypeName>
@@ -291,10 +463,31 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DeploymentName</Label>
                 <PropertyName>DeploymentName</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ResourceGroupName -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ManagementGroupId -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ManagementGroupId</Label>
+                <PropertyName>ManagementGroupId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Location -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
               </ListItem>
@@ -415,6 +608,10 @@
               <ListItem>
                 <Label>ResourceId</Label>
                 <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

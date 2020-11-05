@@ -60,6 +60,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return dynamicParameters;
         }
 
+        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(Hashtable templateObject, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        {
+            string templateContent = null;
+            if (templateObject != null)
+            {
+                templateContent = JsonConvert.SerializeObject(templateObject);
+            }
+
+            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
+
+            return dynamicParameters;
+        }
+
         public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
         {
             Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
@@ -116,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                         return dynamicParameters;
                     }
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     // Can't parse the template file, do not generate dynamic parameters
                     Debug.WriteLine("Unable to parse template file. The exception received was: " + e.Message);
@@ -131,51 +144,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
             if (templateParameterObject != null)
             {
-                UpdateParametersWithObject(dynamicParameters, templateParameterObject);
+                UpdateParametersWithObject(staticParameters, dynamicParameters, templateParameterObject);
             }
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = ParseTemplateParameterFileContents(templateParameterFilePath);
-                UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromFile));
+                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromFile));
             }
             if (templateParameterFilePath != null && Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
             {
                 var parametersFromUri = ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath));
-                UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromUri));
+                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromUri));
             }
             return dynamicParameters;
         }
 
-        private static void UpdateParametersWithObject(RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
+        private static void UpdateParametersWithObject(string[] staticParameters, RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
         {
+            const string duplicatedParameterSuffix = "FromTemplate";
+
             if (templateParameterObject != null)
             {
-                foreach (KeyValuePair<string, RuntimeDefinedParameter> dynamicParameter in dynamicParameters)
+                foreach (string paramName in templateParameterObject.Keys)
                 {
-                    try
+                    string dynamicParamName = staticParameters.Contains(paramName, StringComparer.OrdinalIgnoreCase)
+                        ? paramName + duplicatedParameterSuffix
+                        : paramName;
+
+                    if (dynamicParameters.TryGetValue(dynamicParamName, out RuntimeDefinedParameter dynamicParameter))
                     {
-                        foreach (string key in templateParameterObject.Keys)
-                        {
-                            if (key.Equals(dynamicParameter.Key, StringComparison.InvariantCultureIgnoreCase))
-                            {
-                                if (templateParameterObject[key] is TemplateFileParameterV1)
-                                {
-                                    dynamicParameter.Value.Value = (templateParameterObject[key] as TemplateFileParameterV1).Value;
-                                }
-                                else
-                                {
-                                    dynamicParameter.Value.Value = templateParameterObject[key];
-                                }
-                                dynamicParameter.Value.IsSet = true;
-                                ((ParameterAttribute)dynamicParameter.Value.Attributes[0]).Mandatory = false;
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        throw new ArgumentException(string.Format(ProjectResources.FailureParsingTemplateParameterObject,
-                                                                  dynamicParameter.Key,
-                                                                  templateParameterObject[dynamicParameter.Key]));
+                        dynamicParameter.Value = templateParameterObject[paramName] is TemplateFileParameterV1 templateFileParameterV1
+                            ? templateFileParameterV1.Value
+                            : templateParameterObject[paramName];
+
+                        dynamicParameter.IsSet = true;
+                        ((ParameterAttribute)dynamicParameter.Attributes[0]).Mandatory = false;
                     }
                 }
             }
@@ -183,7 +186,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private static Type GetParameterType(string resourceParameterType)
         {
-            if (string.IsNullOrEmpty(resourceParameterType))
+            if(string.IsNullOrEmpty(resourceParameterType))
             {
                 throw new ArgumentException(ProjectResources.GetParameterTypeError);
             }
@@ -236,8 +239,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             RuntimeDefinedParameter runtimeParameter = new RuntimeDefinedParameter()
             {
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
-                Name = staticParameters.Any(n => n.StartsWith(name, StringComparison.OrdinalIgnoreCase))
-                    ? name + duplicatedParameterSuffix : name,
+                Name = staticParameters.Contains(name, StringComparer.OrdinalIgnoreCase) ? name + duplicatedParameterSuffix : name,
                 ParameterType = GetParameterType(parameter.Value.Type),
                 Value = defaultValue
             };

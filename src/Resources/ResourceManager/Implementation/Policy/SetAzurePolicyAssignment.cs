@@ -14,49 +14,47 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Newtonsoft.Json.Linq;
+    using System;
     using System.Collections;
     using System.Management.Automation;
-    using System.Threading.Tasks;
+
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
+    using Newtonsoft.Json.Linq;
+    using Policy;      
 
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
-        /// The policy Id parameter set.
-        /// </summary>
-        internal const string PolicyAssignmentIdParameterSet = "SetByPolicyAssignmentId";
-
-        /// <summary>
-        /// The policy name parameter set.
-        /// </summary>
-        internal const string PolicyAssignmentNameParameterSet = "SetByPolicyAssignmentName";
-
-        /// <summary>
         /// Gets or sets the policy assignment name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment name.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
-        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment scope.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment not scopes parameter.
         /// </summary>
-        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment not scopes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentNotScopesHelp)]
         [ValidateNotNullOrEmpty]
         public string[] NotScope { get; set; }
 
@@ -64,31 +62,73 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy assignment Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentIdHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment display name parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for policy assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentDisplayNameHelp)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment description parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentDescriptionHelp)]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy sku object.
+        /// Gets or sets the new policy assignment metadata parameter
         /// </summary>
-        [Alias("SkuObject")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentMetadataHelp)]
         [ValidateNotNullOrEmpty]
-        public Hashtable Sku { get; set; }
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment policy parameter object.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        public Hashtable PolicyParameterObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
+        [ValidateNotNullOrEmpty]
+        public string PolicyParameter { get; set; }
+
+        /// <summary>
+        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the policy assignment. Only required when assigning a resource identity to the assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentLocationHelp)]
+        [LocationCompleter("Microsoft.ManagedIdentity/userAssignedIdentities")]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment enforcement mode.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
+        [ValidateNotNullOrEmpty]
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentInputObjectHelp)]
+        public PsPolicyAssignment InputObject { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -96,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string resourceId = this.Id ?? this.GetResourceId();
+            string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
             var operationResult = this.GetResourcesClient()
@@ -118,7 +158,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects("PolicyAssignmentId", JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputPolicyAssignments(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -128,19 +168,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
+            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
+
+            PolicyAssignmentEnforcementMode? existingMode = null;
+            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            {
+                existingMode = tempMode;
+            }
+
             var policyAssignmentObject = new PolicyAssignment
             {
-                Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
+                Name = this.Name ?? resource.Name,
+                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
+                Location = this.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
-                        ? resource.Properties["displayName"].ToString()
-                        : null),
-                    Description = this.Description ?? (resource.Properties["description"] != null
-                        ? resource.Properties["description"].ToString()
-                        : null),
+                    DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
+                    Description = this.Description ?? resource.Properties["description"]?.ToString(),
                     Scope = resource.Properties["scope"].ToString(),
-                    PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString()
+                    NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
+                    PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
+                    Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
+                    EnforcementMode = this.EnforcementMode ?? existingMode,
+                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
                 }
             };
 
@@ -148,28 +198,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Gets a resource.
-        /// </summary>
-        private async Task<JObject> GetExistingResource(string resourceId, string apiVersion)
-        {
-            return await this
-                .GetResourcesClient()
-                .GetResource<JObject>(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
-                .ConfigureAwait(continueOnCapturedContext: false);
-        }
-
-        /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        protected string GetResourceId()
+        private string GetResourceId()
         {
-            return ResourceIdUtility.GetResourceId(
-                resourceId: this.Scope,
-                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
-                extensionResourceName: this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
         }
     }
 }

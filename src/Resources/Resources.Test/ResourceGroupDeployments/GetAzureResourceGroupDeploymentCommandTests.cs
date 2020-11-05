@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -63,11 +64,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName,
                 Mode = DeploymentMode.Incremental
             };
-            FilterDeploymentOptions options = new FilterDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
             {
                 ResourceGroupName = resourceGroupName
             };
-            FilterDeploymentOptions actual = new FilterDeploymentOptions();
+            FilterDeploymentOptions actual = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup);
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterDeploymentOptions>()))
                 .Returns(result)
@@ -88,12 +89,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSepcificResourcesGroupDeployment()
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroupName
             };
-            FilterDeploymentOptions actual = new FilterDeploymentOptions();
+            FilterDeploymentOptions actual = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup);
             List<PSResourceGroupDeployment> result = new List<PSResourceGroupDeployment>();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {

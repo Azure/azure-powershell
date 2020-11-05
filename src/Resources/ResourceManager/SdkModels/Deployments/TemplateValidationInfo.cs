@@ -21,8 +21,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public TemplateValidationInfo(DeploymentValidateResult validationResult)
         {
-            Errors = new List<ResourceManagementErrorWithDetails>();
+            Errors = new List<ErrorResponse>();
             RequiredProviders = new List<Provider>();
+
+            if (validationResult.Error != null)
+            {
+                Errors.Add(validationResult.Error);
+            }
 
             if (validationResult.Properties != null &&
                validationResult.Properties.Providers != null)
@@ -31,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             }
         }
 
-        public List<ResourceManagementErrorWithDetails> Errors { get; set; }
+        public List<ErrorResponse> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
     }
