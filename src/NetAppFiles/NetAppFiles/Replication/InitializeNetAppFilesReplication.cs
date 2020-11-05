@@ -22,12 +22,12 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
     [Cmdlet(
-        "Reinitialize",
+        "Initialize",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesReplication",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Reinitialize-AnfReplication")]
-    public class ReinitializeAzureRmNetAppFilesReplication : AzureNetAppFilesCmdletBase
+    [Alias("Initialize-AnfReplication")]
+    public class InitializeAzureRmNetAppFilesReplication : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
