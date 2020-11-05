@@ -115,6 +115,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
+                    var test = this.VirtualMachineClient.Get("", Name);
+                    //this.VirtualMachineClient.
+
                     ReturnListVMObject(
                         this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
                         this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
