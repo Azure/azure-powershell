@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the action group.
+The name of the reource.
 
 ```yaml
 Type: System.String
