@@ -40,14 +40,17 @@ function Create-Resources
 	$key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
 	$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key[0].Value
 
-	# Create storage container
-	New-AzStorageContainer -Name $containerName -Context $ctx
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		# Create storage container
+		New-AzStorageContainer -Name $containerName -Context $ctx
 
-	# Add file to container to use for log replay
-	Set-AzStorageBlobContent -File ".\Resources\full.bak" `
-		-Container $containerName `
-		-Blob "full.bak" `
-		-Context $ctx
+		# Add file to container to use for log replay
+		Set-AzStorageBlobContent -File ".\Resources\full.bak" `
+			-Container $containerName `
+			-Blob ".\Resources\full.bak" `
+			-Context $ctx
+	}
 
 	# Generates sas token as we will need to initiate log replay
 	$testStorageContainerSasToken = New-AzStorageContainerSASToken `
