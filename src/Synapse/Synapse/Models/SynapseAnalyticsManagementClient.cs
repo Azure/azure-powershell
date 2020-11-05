@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointName)
+        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointCreationTime)
         {
             try
             {
@@ -1552,21 +1552,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointName))
+                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationTime))
                 {
-                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointName));
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointCreationTime));
                 }
 
-                List<RestorePoint> restorePointList = new List<RestorePoint>();
-                restorePointList = this._synapseManagementClient.SqlPoolRestorePoints.List(
-                    resourceGroupName,
-                    workspaceName,
-                    sqlPoolName)
-                    .ToList();
+                _synapseManagementClient.SqlPoolRestorePoints.Delete(sqlPoolRestorePointCreationTime);
 
-                int index = restorePointList.FindIndex(element => element.Name == sqlPoolRestorePointName);
+                //List<RestorePoint> restorePointList = new List<RestorePoint>();
+                //restorePointList = this._synapseManagementClient.SqlPoolRestorePoints.List(
+                //    resourceGroupName,
+                //    workspaceName,
+                //    sqlPoolName)
+                //    .ToList();
 
-                restorePointList.RemoveAt(index);
+                //int index = restorePointList.FindIndex(element => element.Name == sqlPoolRestorePointCreationTime);
+
+                //restorePointList.RemoveAt(index);
             }
             catch (ErrorContractException ex)
             {
