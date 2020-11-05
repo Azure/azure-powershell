@@ -13,9 +13,9 @@ Exports a database file from target database.
 ## SYNTAX
 
 ```
-Export-AzRedisEnterpriseCacheDatabase -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- -SasUri <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Export-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> -SasUri <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,23 +23,19 @@ Exports a database file from target database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -58,36 +54,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterName
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -97,6 +63,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClusterName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

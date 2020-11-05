@@ -13,9 +13,9 @@ Regenerates the RedisEnterprise database's access keys.
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheDatabaseKey -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- -KeyType <AccessKeyType> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRedisEnterpriseCacheDatabaseKey -Name <String> -ResourceGroupName <String> -KeyType <AccessKeyType>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,23 +23,19 @@ Regenerates the RedisEnterprise database's access keys.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -52,36 +48,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterName
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,6 +76,21 @@ Which access key to regenerate.
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClusterName
 
 Required: True
 Position: Named

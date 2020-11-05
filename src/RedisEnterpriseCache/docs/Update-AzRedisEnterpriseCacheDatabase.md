@@ -14,10 +14,10 @@ Updates a database
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
- [-EvictionPolicy <EvictionPolicy>] [-Modules <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
+ [-Modules <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,23 +33,19 @@ Updates a database
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -94,21 +90,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterName
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,12 +159,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the database.
+The name of the RedisEnterprise cluster.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: DatabaseName
+Aliases: ClusterName
 
 Required: True
 Position: Named

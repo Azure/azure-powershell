@@ -128,10 +128,10 @@ directive:
   # Hide cmdlets
   - where:
       verb: New|Get
-      subject: ^$|^Database$
+      subject: ^$|^Database$|^DatabaseKey$
     hide: true
   - where:
-      verb: Remove
+      verb: Remove|Update|Import|Export
       subject: Database
     hide: true
   - where:
