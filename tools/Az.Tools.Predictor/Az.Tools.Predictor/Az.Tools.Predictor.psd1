@@ -29,7 +29,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.0 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
 
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
@@ -37,7 +37,7 @@ For more information on Az Predictor, please visit the following: https://aka.ms
 PowerShellVersion = '7.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})
+# RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
@@ -70,7 +70,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @('Az')
+        ExternalModuleDependencies = @('Az', 'PSReadLine')
 
     } # End of PSData hashtable
 
