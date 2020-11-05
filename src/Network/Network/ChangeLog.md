@@ -29,6 +29,8 @@
     - Added parameter -SkuTier
     - Added parameter -SkuName and made Sku as Alias for this
     - Removed parameter -Sku
+* Updated New-AzFirewallPolicyNatRule cmdlet:
+    - Added parameter Translated FQDN
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
