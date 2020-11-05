@@ -135,7 +135,6 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
-
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
                     var localPathTest = this.LocalPath;
                     var localFile = this.LocalPath + new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
@@ -146,12 +145,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.Linux.IsPresent)
                 {
-                    
-                    var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
+                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                    var logUri = new Uri(bootDiagnostics.SerialConsoleLogBlobUri);
                     var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
                     DownloadFromBlobUri(logUri, localFile);
-                    
-                    
+
                     var sb = new StringBuilder();
                     using (var reader = new StreamReader(localFile))
                     {
