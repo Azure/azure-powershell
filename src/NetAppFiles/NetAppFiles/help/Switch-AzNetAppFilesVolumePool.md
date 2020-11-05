@@ -8,7 +8,7 @@ schema: 2.0.0
 # Switch-AzNetAppFilesVolumePool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Change pool for an Azure NetApp Files (ANF) volume.
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Switch-AzNetAppFilesVolumePool -InputObject <PSNetAppFilesVolume> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Switch-AzNetAppFilesVolumePool** cmdlet changes the pool of an ANF volume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Switch-AzNetAppFilesVolumePool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -NewPoolResourceId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 ```
 
-{{ Add example description here }}
+This changes the pool for the volume MyVolume to one with the Id of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 
 ## PARAMETERS
 
