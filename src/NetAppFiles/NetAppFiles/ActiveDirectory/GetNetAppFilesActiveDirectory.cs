@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the ANF Active Directory")]
+            HelpMessage = "The ActiveDirectoryId of the ANF Active Directory")]
         [ValidateNotNullOrEmpty]
         [Alias("ActiveDirectoryName")]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/activedirectory",
             nameof(ResourceGroupName),
             nameof(AccountName))]
-        public string Name { get; set; }
+        public string ActiveDirectoryId { get; set; }
 
 
         [Parameter(
@@ -79,14 +79,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 AccountName = NameParts[0];
             }
 
-            if (Name != null)
+            if (ActiveDirectoryId != null)
             {
-                var anfActiveDirectory = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.AdName == Name);
-                WriteObject(anfActiveDirectory?.ConvertToPs());
+                var anfActiveDirectory = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
+                WriteObject(anfActiveDirectory?.ConvertToPs(ResourceGroupName, AccountName));
             }
             else
             {
-                var anfActiveDirectories = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.ConvertToPs();
+                var anfActiveDirectories = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.ConvertToPs(ResourceGroupName, AccountName);
                 WriteObject(anfActiveDirectories, true);
             }
         }

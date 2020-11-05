@@ -14,19 +14,28 @@ Updates an Azure NetApp Files (ANF) active directory configuration to the option
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
- [-Dns <String[]>] [-Domain <String>] [-Site <String>] [-SmbServerName <String>] [-Username <String>]
- [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperators <String[]>]
- [-ServerRootCACertificate <String>] [-AdName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String>
+ -ActiveDirectoryId <String> [-Dns <String[]>] [-Domain <String>] [-Site <String>] [-SmbServerName <String>]
+ [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
+ [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] [-Domain <String>] [-Site <String>]
+Update-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> [-Dns <String[]>] [-Domain <String>]
+ [-Site <String>] [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>]
+ [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
+ [-ServerRootCACertificate <String>] [-AdName <String>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site <String>]
  [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
- [-KdcIP <String>] [-BackupOperators <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
- -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KdcIP <String>] [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
+ -InputObject <PSNetAppFilesActiveDirectory> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -74,6 +83,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ActiveDirectoryId
+The ID of the ANF active directory
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AdName
 Name of the active directory machine.
 This optional parameter is used only while creating kerberos volume
@@ -90,7 +114,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupOperators
+### -BackupOperator
 Users to be added to the Built-in Backup Operator active directory group.
 A list of unique usernames without domain specifier
 
@@ -151,6 +175,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The active directory object to remove
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KdcIP
 kdc server IP addresses for the active directory machine.
 This optional parameter is used only while creating kerberos volume.
@@ -161,21 +200,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the ANF Active Directory
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ActiveDirectoryName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,6 +349,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
 
 ## OUTPUTS
 

@@ -45,8 +45,8 @@ function Test-ActiveDirectoryCrud
         Assert-AreEqual $accName1 $retrievedAcc.Name
         $sPass = ConvertTo-SecureString $adPassword -AsPlainText -Force
         # create and check ActiveDirectory
-        $retrievedAd = New-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
-        Assert-AreEqual $activeDirectoryName1 $retrievedAd.AdName        
+        $retrievedAd = New-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -AdName $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
+        $activeDirectoryId = $retrievedAd.ActiveDirectoryId
         Assert-AreEqual $adDomain $retrievedAd.Domain        
         Assert-AreEqual $adUsername $retrievedAd.Username
         Assert-AreEqual $adDns $retrievedAd.Dns
@@ -57,8 +57,8 @@ function Test-ActiveDirectoryCrud
         Assert-AreEqual $adSmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
         Assert-AreEqual $adUsername $retrievedAcc.ActiveDirectories[0].Username
 
-        # get and check a ActiveDirectory by name and check again
-        $getRetrievedAd = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $activeDirectoryName1
+        # get and check a ActiveDirectory by id and check again
+        $getRetrievedAd = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -ActiveDirectoryId $activeDirectoryId
         Assert-AreEqual $activeDirectoryName1 $getRetrievedAd.AdName        
         Assert-AreEqual $adDomain $getRetrievedAd.Domain        
         Assert-AreEqual $adUsername $getRetrievedAd.Username
@@ -66,19 +66,19 @@ function Test-ActiveDirectoryCrud
         Assert-AreEqual $adSmbServerName $getRetrievedAd.SmbServerName       
         
         #update AD 
-        $getUpdateddAd = Update-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $activeDirectoryName1 -SmbServerName $adSmbServerName2 -Password $sPass
+        $getUpdateddAd = Update-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -ActiveDirectoryId $getRetrievedAd.ActiveDirectoryId -SmbServerName $adSmbServerName2 -Password $sPass
         Assert-AreEqual $adSmbServerName2 $getUpdateddAd.SmbServerName
 
         # delete activeDirectory retrieved   
         # but test the WhatIf first, should not be removed
-        Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $getRetrievedAd.AdName -WhatIf
+        Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -ActiveDirectoryId $getRetrievedAd.ActiveDirectoryId -WhatIf
         $retrievedActiveDirectoryList = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1
         Assert-AreEqual 1 $retrievedActiveDirectoryList.Length
                               
         #remove by name
-        Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $getRetrievedAd.AdName
+        Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -ActiveDirectoryId $getRetrievedAd.ActiveDirectoryId
         Start-Sleep -s 15
-        $retrievedActiveDirectoryList = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1                
+        $retrievedActiveDirectoryList = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1
         Assert-AreEqual 0 $retrievedActiveDirectoryList.Length
     }
     finally
@@ -114,9 +114,9 @@ function Test-ActiveDirectoryPipelines
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1
         $sPass = ConvertTo-SecureString $adPassword -AsPlainText -Force
         #create AD piping in Account
-        $retrievedAd = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 | New-AzNetAppFilesActiveDirectory -Name $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
+        $retrievedAd = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 | New-AzNetAppFilesActiveDirectory -AdName $activeDirectoryName1 -Username $adUsername -Password $sPass -Domain $adDomain -Dns $adDns -SmbServerName $adSmbServerName
 
-        $getRetrievedAd = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 | Get-AzNetAppFilesActiveDirectory -Name $activeDirectoryName1
+        $getRetrievedAd = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 | Get-AzNetAppFilesActiveDirectory -ActiveDirectoryId $retrievedAd.ActiveDirectoryId
     }
     finally
     {

@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     ///  Moves volume to another pool    
     /// </summary>
     [Cmdlet(
-        "PoolChange",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
+        "Switch",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumePool",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("PoolChange-AnfVolume")]
-    public class PoolChangeAzureRmNetAppFilesVolume : AzureNetAppFilesCmdletBase
+    [Alias("Switch-AnfVolumePool")]
+    public class SwitchAzureRmNetAppFilesVolumePool : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -110,15 +110,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Return whether the specified volume was successfully moved")]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
-        {
-            bool success = false;
-
+        {            
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
@@ -147,13 +140,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 var poolChangeBody = new PoolChangeRequest() { NewPoolResourceId = NewPoolResourceId};
+                var newPoolResourceIdentifier = new ResourceIdentifier(NewPoolResourceId);
                 AzureNetAppFilesManagementClient.Volumes.PoolChange(ResourceGroupName, AccountName, PoolName, Name, poolChangeBody);
-                success = true;
-            }
-
-            if (PassThru)
-            {
-                WriteObject(success);
+                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, newPoolResourceIdentifier.ResourceName, Name);
+                WriteObject(anfVolumes, true);                
             }
         }
     }

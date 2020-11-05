@@ -14,13 +14,20 @@ Deletes an Azure NetApp Files (ANF) active directory configuration.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String>
+ -ActiveDirectoryId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesActiveDirectory -Name <String> -AccountObject <PSNetAppFilesAccount> [-PassThru]
+Remove-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> -AccountObject <PSNetAppFilesAccount>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Remove-AzNetAppFilesActiveDirectory -InputObject <PSNetAppFilesActiveDirectory> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,6 +75,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ActiveDirectoryId
+The ID of the ANF active directory
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -83,18 +105,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the ANF Active Directory
+### -InputObject
+The active directory object to remove
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ActiveDirectoryName
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,6 +187,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
 
 ## OUTPUTS
 

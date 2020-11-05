@@ -57,16 +57,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             nameof(ResourceGroupName))]
         public string AccountName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the ANF Active Directory")]
-        [ValidateNotNullOrEmpty]
-        [Alias("ActiveDirectoryName")]
-        [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/activeDirectory",
-            nameof(ResourceGroupName),
-            nameof(AccountName))]
-        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -121,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             Mandatory = false,
             HelpMessage = "Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier")]
         [ValidateNotNullOrEmpty]
-        public string[] BackupOperators { get; set; }
+        public string[] BackupOperator { get; set; }
 
 
         [Parameter(
@@ -153,49 +143,40 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 AccountName = NameParts[0];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess($"{AccountName}.ActiveDirectory", string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 if (anfAccount == null)
                 {
-                    throw new ArgumentException($"Specified NetAppAccount with name '{this.Name}' does not extist in Resource Group '{this.ResourceGroupName}'");
+                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not extist in Resource Group '{this.ResourceGroupName}'");
                 }
-                
-                
-                if (anfAccount.ActiveDirectories?.FirstOrDefault(a => a.AdName == Name) != null)
+                                
+                var activeDirectory = new Management.NetApp.Models.ActiveDirectory
                 {
-                    throw new ArgumentException($"A ActiveDirectory resource with name '{this.Name}' in account '{this.AccountName}' already exists. Please use Set/Update-AzNetAppFilesActiveDirectory to update an existing ActiveDirectory resource.");
-                }
-                else
+                    AdName = AdName,
+                    Dns = string.Join(",", Dns),
+                    Domain = Domain,
+                    SmbServerName = SmbServerName,
+                    Username = Username,
+                    Password = Password.ConvertToString(),
+                    Site = Site,
+                    OrganizationalUnit = OrganizationalUnit,
+                    BackupOperators = BackupOperator,
+                    KdcIP = KdcIP,
+                    ServerRootCACertificate = ServerRootCACertificate
+                };
+                if (anfAccount.ActiveDirectories == null)
                 {
-                    var activeDirectory = new Management.NetApp.Models.ActiveDirectory
-                    {
-                        AdName = Name,
-                        Dns = string.Join(",", Dns),
-                        Domain = Domain,
-                        SmbServerName = SmbServerName,
-                        Username = Username,
-                        Password = Password.ConvertToString(),
-                        Site = Site,
-                        OrganizationalUnit = OrganizationalUnit,
-                        BackupOperators = BackupOperators,
-                        KdcIP = KdcIP,
-                        ServerRootCACertificate = ServerRootCACertificate
-                    };
-                    if (anfAccount.ActiveDirectories == null)
-                    {
-                        anfAccount.ActiveDirectories = new List<Management.NetApp.Models.ActiveDirectory>();
-                    }
-                    anfAccount.ActiveDirectories.Add(activeDirectory);                    
-                    var netAppAccountBody = new NetAppAccountPatch()
-                    {                        
-                        ActiveDirectories = anfAccount.ActiveDirectories                        
-                    };
-                    var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
-                    var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.AdName == Name);
-                    WriteObject(updatedActiveDirectory.ConvertToPs());
+                    anfAccount.ActiveDirectories = new List<Management.NetApp.Models.ActiveDirectory>();
                 }
+                anfAccount.ActiveDirectories.Add(activeDirectory);                    
+                var netAppAccountBody = new NetAppAccountPatch()
+                {                        
+                    ActiveDirectories = anfAccount.ActiveDirectories                        
+                };
+                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
+                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.SmbServerName == SmbServerName);
+                WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));                
             }
         }
     }

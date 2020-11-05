@@ -53,20 +53,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF active directory",
+            HelpMessage = "The ID of the ANF active directory",
             ParameterSetName = FieldsParameterSet)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF active directory",
+            HelpMessage = "The ID of the ANF active directory",
             ParameterSetName = ParentObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        [Alias("ActiveDirectoryName")]
+        [ValidateNotNullOrEmpty]        
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/activeDirectory",
             nameof(ResourceGroupName),
             nameof(AccountName))]
-        public string Name { get; set; }
-
+        public string ActiveDirectoryId { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -77,12 +75,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         public PSNetAppFilesAccount AccountObject { get; set; }
 
         [Parameter(
+            ParameterSetName = ObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The active directory object to remove")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesActiveDirectory InputObject { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Return whether the specified Active Directory  was successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
-        {
+        {            
             bool success = false;
             if (ParameterSetName == ParentObjectParameterSet)
             {
@@ -90,11 +96,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
-            
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            else if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                AccountName = InputObject.AccountName;
+                ActiveDirectoryId = InputObject.ActiveDirectoryId;
+            }
+
+            if (ShouldProcess(ActiveDirectoryId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
-                var activeDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.AdName == Name);
+                var activeDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.ActiveDirectoryId == ActiveDirectoryId);
                 anfAccount.ActiveDirectories.Remove(activeDirectory);
                 var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.BeginCreateOrUpdate(anfAccount, ResourceGroupName, AccountName);
                 success = true;

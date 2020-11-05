@@ -58,19 +58,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF active directory",
+            HelpMessage = "The ID of the ANF active directory",
             ParameterSetName = FieldsParameterSet)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF active directory",
+            HelpMessage = "The ID of the ANF active directory",
             ParameterSetName = ParentObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        [Alias("ActiveDirectoryName")]
+        [ValidateNotNullOrEmpty]        
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/activeDirectory",
             nameof(ResourceGroupName),
             nameof(AccountName))]
-        public string Name { get; set; }
+        public string ActiveDirectoryId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
             Mandatory = false,
             HelpMessage = "Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier")]
         [ValidateNotNullOrEmpty]
-        public string[] BackupOperators { get; set; }
+        public string[] BackupOperator { get; set; }
 
 
         [Parameter(
@@ -147,46 +146,78 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
+        [Parameter(
+            ParameterSetName = ObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The active directory object to remove")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesActiveDirectory InputObject { get; set; }
+
         public override void ExecuteCmdlet()
-        {
+        {            
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
+            else if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                AccountName = InputObject.AccountName;
+                ActiveDirectoryId = InputObject.ActiveDirectoryId;
+            }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(ActiveDirectoryId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 if (anfAccount == null)
                 {
-                    throw new ArgumentException($"Specified NetAppAccount with name '{this.Name}' does not extist in Resource Group '{this.ResourceGroupName}'");
+                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not extist in Resource Group '{this.ResourceGroupName}'");
                 }
-                var anfADConfig = anfAccount.ActiveDirectories?.FirstOrDefault(a => a.AdName == Name);
-                if (anfADConfig == null)
+                string dnsStr = null;
+                if (Dns != null)
                 {
-                    throw new ArgumentException($"ActiveDirectory configuration with name '{this.Name}' in account '{this.AccountName}' is not found. Please use New-AzNetAppFilesActiveDirectory to Create a new ActiveDirectory configuration.");
+                    dnsStr = string.Join(",", Dns);
                 }
-                else
+                Management.NetApp.Models.ActiveDirectory anfADConfig = null;
+                if (string.IsNullOrWhiteSpace(ActiveDirectoryId))
                 {
-                    string dnsStr = null;
-                    if (Dns != null)
-                    {
-                        dnsStr = string.Join(",", Dns);
-                    }
-                    
-                    anfADConfig.AdName = Name ?? anfADConfig.AdName;
+                    anfADConfig = new Management.NetApp.Models.ActiveDirectory();
+                    anfADConfig.AdName = AdName ?? anfADConfig.AdName;
                     anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
                     anfADConfig.Domain = Domain ?? anfADConfig.Domain;
                     anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
                     anfADConfig.Username = Username ?? anfADConfig.Username;
-                    anfADConfig.Password = Password.ConvertToString();                    
+                    anfADConfig.Password = Password.ConvertToString();
                     anfADConfig.Site = Site ?? anfADConfig.Site;
                     anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
-                    anfADConfig.BackupOperators = BackupOperators ?? anfADConfig.BackupOperators;
+                    anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
                     anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                     anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                }
+                else
+                {
+                    anfADConfig = anfAccount.ActiveDirectories?.FirstOrDefault(a => a.ActiveDirectoryId == ActiveDirectoryId);
+                    if (anfADConfig == null)
+                    {
+                        throw new ArgumentException($"ActiveDirectory configuration with ID '{this.ActiveDirectoryId}' in account '{this.AccountName}' is not found. Please use New-AzNetAppFilesActiveDirectory to Create a new ActiveDirectory configuration.");
+                    }
+                    else
+                    {
+                        anfADConfig.AdName = AdName ?? anfADConfig.AdName;
+                        anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
+                        anfADConfig.Domain = Domain ?? anfADConfig.Domain;
+                        anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
+                        anfADConfig.Username = Username ?? anfADConfig.Username;
+                        anfADConfig.Password = Password.ConvertToString();
+                        anfADConfig.Site = Site ?? anfADConfig.Site;
+                        anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
+                        anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
+                        anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
+                        anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                    }
                 }
                 
                 var netAppAccountBody = new NetAppAccountPatch()
@@ -194,8 +225,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
                 var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
-                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.AdName == Name);
-                WriteObject(updatedActiveDirectory.ConvertToPs());
+                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
+                WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
             }
         }
     }

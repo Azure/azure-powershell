@@ -14,13 +14,13 @@ Gets details of an Azure NetApp Files (ANF) Active Directory configuration.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String>
+ [-ActiveDirectoryId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesActiveDirectory [-Name <String>] -AccountObject <PSNetAppFilesAccount>
+Get-AzNetAppFilesActiveDirectory [-ActiveDirectoryId <String>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,13 +68,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ActiveDirectoryId
+The ActiveDirectoryId of the ANF Active Directory
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: ActiveDirectoryName
 
 Required: False
 Position: Named
@@ -83,13 +83,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the ANF Active Directory
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: ActiveDirectoryName
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

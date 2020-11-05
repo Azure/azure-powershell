@@ -1,52 +1,58 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/initialize-aznetappfilesreplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/switch-aznetappfilesvolumepool
 schema: 2.0.0
 ---
 
-# Initialize-AzNetAppFilesReplication
+# Switch-AzNetAppFilesVolumePool
 
 ## SYNOPSIS
-Re-Initializes the replication connection on the destination volume
+Change pool for an Azure NetApp Files (ANF) volume.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Initialize-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Switch-AzNetAppFilesVolumePool -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -Name <String> [-NewPoolResourceId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Switch-AzNetAppFilesVolumePool -Name <String> -PoolObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Initialize-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Switch-AzNetAppFilesVolumePool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Initialize-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Switch-AzNetAppFilesVolumePool -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Re-Initializes the connection on the destination volume
+The **Switch-AzNetAppFilesVolumePool** cmdlet changes the pool for an ANF volume.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Initialize-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+```
+PS C:\>Switch-AzNetAppFilesVolumePool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -NewPoolResourceId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 ```
 
-This command Re-Initializes the ANF Replication connection on volume "MyDestinationAnfVolume".
+This changes the pool for the volume MyVolume to one with the Id of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication volume
+The name of the ANF account
 
 ```yaml
 Type: System.String
@@ -76,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The ANF replication destination volume object to resync
+The volume object to remove
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
@@ -91,11 +97,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF replication destination volume
+The name of the ANF volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
 Required: True
@@ -105,12 +111,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether resync of the specified replication volume was performed
+### -NewPoolResourceId
+ResourceId of the pool to change to.
+UUID v4 used to identify the Pool
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: False
@@ -121,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of the ANF pool of the replication volume
+The name of the ANF pool
 
 ```yaml
 Type: System.String
@@ -135,8 +142,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PoolObject
+The pool object containing the volume to remove
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The resource group of the ANF replication destination volume
+The resource group of the ANF volume
 
 ```yaml
 Type: System.String
@@ -151,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF replication destination volume
+The resource id of the ANF volume
 
 ```yaml
 Type: System.String
@@ -202,6 +224,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 

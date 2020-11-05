@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVolumePoolChange()
+        public void TestSwitchVolumePool()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumePoolChange");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SwitchVolumePool");
         }
 
         [Fact]

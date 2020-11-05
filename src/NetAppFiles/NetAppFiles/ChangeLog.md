@@ -41,8 +41,7 @@
     - `Remove-AzNetAppFilesActiveDirectory`
     - `Update-AzNetAppFilesActiveDirectory`
 * Add new `Get-AzNetAppFilesVault` cmdlet (use for backups, vaults currently only support getting list of vaults):
-* Add new PoolChange-AzNetAppFilesVolume cmdlet, to move volume to another pool
-* Add new PoolChange-AzNetAppFilesVolume cmdlet, to move volume to another pool
+* Add new Switch-AzNetAppFilesVolumePool cmdlet, to move volume to another pool
 * Add parameters to `New-AzNetAppFilesVolume` 
      - Backup to to enable Backups and Backup Policy 
      - Snapshot to enable Snapshot Policy 
@@ -59,7 +58,7 @@
 * Add properties to support Kerberos to ExportPolicy rule
 * Add QosType parameter to Pool `New-AzNetAppFilesPool` and `Update-AzNetAppFilesPool`
 * Breaking Removed ServiecLevel from `Update-AzNetAppFilesPool` as that updating servie level is not supported
-* Add `Reinitialize-AzNetAppFilesReplication` cmdLet
+* Add `Initialize-AzNetAppFilesReplication` cmdLet
 * Add ForceBreak parameter to `Suspend-AzNetAppFilesReplication` to force break the replication if replication is in status transferring
 
 

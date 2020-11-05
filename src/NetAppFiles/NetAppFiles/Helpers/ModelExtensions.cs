@@ -42,15 +42,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }).ToList();
         }
 
-        public static List<PSNetAppFilesActiveDirectory> ConvertToPs(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories)
+        public static List<PSNetAppFilesActiveDirectory> ConvertToPs(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories, string resourceGroupName, string accountName)
         {
-            return activeDirectories.Select(e => e.ConvertToPs()).ToList();
+            return activeDirectories.Select(e => e.ConvertToPs(resourceGroupName, accountName)).ToList();
         }
 
-        public static PSNetAppFilesActiveDirectory ConvertToPs(this Management.NetApp.Models.ActiveDirectory activeDirectory)
+        public static PSNetAppFilesActiveDirectory ConvertToPs(this Management.NetApp.Models.ActiveDirectory activeDirectory, string resourceGroupName, string accountName)
         {
             var psActiveDirectory = new PSNetAppFilesActiveDirectory
             {
+                ResourceGroupName = resourceGroupName,
+                AccountName = accountName,
                 ActiveDirectoryId = activeDirectory.ActiveDirectoryId,
                 Username = activeDirectory.Username,
                 Password = activeDirectory.Password,
@@ -71,15 +73,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 
         public static PSNetAppFilesAccount ToPsNetAppFilesAccount(this NetAppAccount netAppAccount)
         {
+            string resourceGroupName = new ResourceIdentifier(netAppAccount.Id).ResourceGroupName;
             return new PSNetAppFilesAccount
             {
-                ResourceGroupName = new ResourceIdentifier(netAppAccount.Id).ResourceGroupName,
+                ResourceGroupName = resourceGroupName,
                 Location = netAppAccount.Location,
                 Id = netAppAccount.Id,
                 Name = netAppAccount.Name,
                 Type = netAppAccount.Type,
                 Tags = netAppAccount.Tags,
-                ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs() : null,
+                ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
                 ProvisioningState = netAppAccount.ProvisioningState
             };
         }

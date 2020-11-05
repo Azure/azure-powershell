@@ -68,9 +68,6 @@ Creates a new Azure NetApp Files (ANF) snapshot policy for an ANF account.
 ### [New-AzNetAppFilesVolume](New-AzNetAppFilesVolume.md)
 Creates a new Azure NetApp Files (ANF) volume.
 
-### [PoolChange-AzNetAppFilesVolume](PoolChange-AzNetAppFilesVolume.md)
-Change pool for an Azure NetApp Files (ANF) volume.
-
 ### [Remove-AzNetAppFilesAccount](Remove-AzNetAppFilesAccount.md)
 Deletes an Azure NetApp Files (ANF) account.
 
@@ -106,6 +103,9 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 
 ### [Set-AzNetAppFilesAccount](Set-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
+
+### [Switch-AzNetAppFilesVolumePool](Switch-AzNetAppFilesVolumePool.md)
+Change pool for an Azure NetApp Files (ANF) volume.
 
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
 Suspend/break the replication connection on the destination volume

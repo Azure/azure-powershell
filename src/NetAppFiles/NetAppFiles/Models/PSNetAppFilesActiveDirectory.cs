@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
     public class PSNetAppFilesActiveDirectory
     {
         /// <summary>
+        /// Gets or sets the Resource group name
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Account name
+        /// </summary>
+        public string AccountName { get; set; }
+
+        /// <summary>
         /// Id of the active drectory.
         /// Value of this property can not be set by user.
         /// </summary>

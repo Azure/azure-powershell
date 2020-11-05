@@ -397,9 +397,9 @@ function Test-VolumeReplication
 
 <#
 .SYNOPSIS
-Test Volume PoolChange operation
+Test Volume Switch-AzNetAppFilesVolumePool operation
 #>
-function Test-VolumePoolChange
+function Test-SwitchVolumePool
 {
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
@@ -479,7 +479,7 @@ function Test-VolumePoolChange
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         		
         # PoolChange and check the volume
-        $poolChangeResult = PoolChange-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -NewPoolResourceId $retrievedPool2.Id
+        $poolChangeResult = Switch-AzNetAppFilesVolumePool -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -NewPoolResourceId $retrievedPool2.Id
         
         # check GET no change to rest of volume
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName2 -VolumeName $volName1

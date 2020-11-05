@@ -14,18 +14,18 @@ Creates a new Azure NetApp Files (ANF) active directory configuration.
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> -Name <String>
- [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>]
- [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperators <String[]>]
+New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> [-Dns <String[]>]
+ -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>] [-Password <SecureString>]
+ [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesActiveDirectory -Name <String> [-Dns <String[]>] -Domain <String> [-Site <String>]
- -SmbServerName <String> [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
- [-KdcIP <String>] [-BackupOperators <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
+New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String>
+ [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
+ [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -91,7 +91,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupOperators
+### -BackupOperator
 Users to be added to the Built-in Backup Operator active directory group.
 A list of unique usernames without domain specifier
 
@@ -162,21 +162,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the ANF Active Directory
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ActiveDirectoryName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
