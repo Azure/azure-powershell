@@ -99,13 +99,13 @@ $RMpsd1s | ForEach-Object {
 
     $cmdletsToExport = $parsedPsd1.CmdletsToExport | Where-Object { $_ }
     $functionsToExport = $parsedPsd1.FunctionsToExport | Where-Object { $_ }
-    $cmdletsToExport = $cmdletsToExport + $functionsToExport
+    $cmdletsToExport = @() + $cmdletsToExport + $functionsToExport
 
     $cmdletsToExport | ForEach-Object {
         $cmdletHelpFile = $HelpFileMapping["$_.md"]
         if ($cmdletHelpFile -eq $null -and $Target -eq "Latest")
         {
-            throw "No help file found for cmdlet $_"
+            throw "No help file found for cmdlet $_" 
         }
 
         $cmdletLabel = $labelMapping.$_

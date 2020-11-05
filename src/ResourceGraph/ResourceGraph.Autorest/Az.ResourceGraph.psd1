@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ResourceGraph.private.dll'
   FormatsToProcess = './Az.ResourceGraph.format.ps1xml'
-  FunctionsToExport = 'Get-AzResourceGraphQuery', 'New-AzResourceGraphQuery', 'Remove-AzResourceGraphQuery', 'Update-AzResourceGraphQuery', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzResourceGraphQuery', 'New-AzResourceGraphQuery', 'Remove-AzResourceGraphQuery', 'Update-AzResourceGraphQuery'
+  AliasesToExport = @{}
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ResourceGraph'

@@ -84,7 +84,11 @@ function New-ModulePsm1 {
         # Create imports for nested modules.
         if ($ModuleMetadata.NestedModules -ne $null) {
             foreach ($dll in $ModuleMetadata.NestedModules) {
-                $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll + ")`r`n"
+                if ($dll.EndsWith("dll")) {
+                    $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll + ")`r`n"
+                } elseif ($dll -eq ($manifestDir.Name + ".psm1")) {
+                    $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath Microsoft.Azure.PowerShell.Cmdlets." + $manifestDir.Name.Split(".")[-1] + ".dll" + ")`r`n"
+                }
             }
         }
 
@@ -158,9 +162,11 @@ function Get-Cmdlets {
     $cmdlets = @()
     foreach ($module in $nestedModules) {
         $dllPath = Join-Path -Path $ModulePath -ChildPath $module
-        $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-        $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
-        $cmdlets += $dllCmdlets
+        if ($dllPath.EndsWith("dll")) {
+            $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+            $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
+            $cmdlets += $dllCmdlets
+        }
     }
     return $cmdlets
 }

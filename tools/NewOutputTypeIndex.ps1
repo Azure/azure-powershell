@@ -22,6 +22,9 @@ $psd1Files | ForEach {
     Import-LocalizedData -BindingVariable "psd1File" -BaseDirectory $_.DirectoryName -FileName $_.Name
     foreach ($nestedModule in $psd1File.NestedModules)
     {
+        if ($nestedModule.EndsWith("psm1")) {
+            continue;
+        }
         $dllPath = Join-Path -Path $_.DirectoryName -ChildPath $nestedModule
         $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
         $exportedTypes = $Assembly.GetTypes()
