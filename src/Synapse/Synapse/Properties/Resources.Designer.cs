@@ -613,6 +613,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter format for keyId: &apos;{0}&apos;. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901.
+        /// </summary>
+        internal static string InvalidKeyId {
+            get {
+                return ResourceManager.GetString("InvalidKeyId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid parameter set {0} selected. Please contact support..
         /// </summary>
         internal static string InvalidParameterSet {
@@ -1113,6 +1122,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSqlPoolAudit {
             get {
                 return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting transparent data encryption protector in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSqlTransparentDataEncryptionProtector {
+            get {
+                return ResourceManager.GetString("SettingSqlTransparentDataEncryptionProtector", resourceCulture);
             }
         }
         

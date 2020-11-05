@@ -174,6 +174,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
 
+        // TODO: need to update to Synapse link in future
         public const string AuditActionGroup =
 @"The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
   
@@ -231,6 +232,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ScanEmailAdmins = "A value indicating whether to email service and co-administrators on recurring scan completion.";
 
         public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
+
+        public const string EncryptionProtectorType = "The Azure Synapse SQL pool Transparent Data Encryption Protector type.";
+
+        public const string KeyId = "The Azure Key Vault KeyId.";
 
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 

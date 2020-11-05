@@ -169,7 +169,7 @@ function Test-SynapseWorkspace-ActiveDirectoryAdministrator
 		Assert-AreEqual $activeDirectoryAdminUser.ObjectId $activeDirectoryUserObjectId
 
         # Remove SQL Active Directory Administrator User
-		Assert-True {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
+		Assert-True {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
 
         # Verify that SQL Active Directory Administrator was deleted
 		Assert-Throws {Get-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
@@ -177,5 +177,89 @@ function Test-SynapseWorkspace-ActiveDirectoryAdministrator
     finally
     {
         Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName} -IgnoreFailures
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Synapse Workspace Security settings.
+Including SQL Auditing settings, Advanced threat protection settings, Vulnerability assessment settings and Transparent data encryption.
+#>
+function Test-SynapseWorkspace-Security
+{
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $storageGen2AccountName = (Get-DataLakeStorageAccountName),
+        $location = "eastus2euap"
+    )
+
+    try
+    {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_LRS -Kind StorageV2
+        
+        # Set SQL Auditing
+        Set-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -BlobStorageTargetState Enabled -StorageAccountResourceId $account.id -StorageKeyType Primary
+
+        # Get SQL Auditing
+        $auditing = Get-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Enabled
+        Assert-AreEqual $auditing.StorageAccountResourceId $account.id
+
+        # Set SQL Advanced threat protection
+        $threatProtectionSet = Update-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -NotificationRecipientsEmails "mail1@mail.com;mail2@mail.com" `
+        -EmailAdmins $False -ExcludedDetectionType "Sql_Injection","Unsafe_Action" -StorageAccountName $storageGen2AccountName
+
+        Assert-AreEqual $threatProtectionSet.ThreatDetectionState Enabled
+        Assert-AreEqual $threatProtectionSet.StorageAccountName $storageGen2AccountName
+
+        # Set SQL Vulnerability assessment
+        $vulnerabilityAssessmentSet = Update-AzSynapseSqlVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -StorageAccountName $storageGen2AccountName `
+        -RecurringScansInterval Weekly -EmailAdmins $False -NotificationEmail "mail1@mail.com","mail2@mail.com"
+
+        Assert-AreEqual $vulnerabilityAssessmentSet.StorageAccountName $storageGen2AccountName
+        Assert-AreEqual $vulnerabilityAssessmentSet.RecurringScansInterval Weekly
+
+        # Remove SQL Vulnerability assessment
+        Assert-True {Clear-AzSynapseSqlVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+
+        # Verify that SQL Vulnerability assessment was deleted
+        $vulnerabilityAssessmentGet = Get-AzSynapseSqlVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $vulnerabilityAssessmentGet.RecurringScansInterval None
+
+        # Remove SQL Advanced threat protection
+        Assert-True {Clear-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+
+        # Verify that SQL Advanced threat protection was deleted
+        $threatProtectionGet = Get-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
+
+        # Remove SQL Auditing
+        Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+
+        # Verify that SQL Auditing was deleted
+        $auditing = Get-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Disabled
+
+        # Set Transparent data encryption
+        $encryptionSet = Set-AzSynapseSqlTransparentDataEncryptionProtector -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Type ServiceManaged
+
+        Assert-AreEqual $encryptionSet.Type ServiceManaged
+
+        # Get Transparent data encryption
+        $encryptionGet = Get-AzSynapseSqlTransparentDataEncryptionProtector -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
+
+        Assert-AreEqual $encryptionGet.Type ServiceManaged
+    }
+    finally
+    {
+        Invoke-HandledCmdlet -Command {Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName} -IgnoreFailures
     }
 }

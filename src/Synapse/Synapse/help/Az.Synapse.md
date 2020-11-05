@@ -98,6 +98,9 @@ Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
 Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.
 
+### [Get-AzSynapseSqlTransparentDataEncryptionProtector](Get-AzSynapseSqlTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector.
+
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
 
@@ -236,6 +239,9 @@ Changes the auditing settings of an Azure Synapse Analytics Workspace.
 ### [Set-AzSynapseSqlPoolAudit](Set-AzSynapseSqlPoolAudit.md)
 Changes the auditing settings for an Azure Synapse Analytics SQL pool.
 
+### [Set-AzSynapseSqlTransparentDataEncryptionProtector](Set-AzSynapseSqlTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a Synapse Analytics Workspace.
+
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
@@ -297,7 +303,7 @@ Updates a Synapse Analytics Spark pool.
 Updates an advanced threat protection settings on a workspace.
 
 ### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
-This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
+Updates a Synapse Analytics SQL database.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.

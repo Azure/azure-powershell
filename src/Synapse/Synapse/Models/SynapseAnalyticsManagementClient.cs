@@ -6,6 +6,7 @@ using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -825,6 +826,30 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
 
                 _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Delete(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public EncryptionProtector GetWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public EncryptionProtector CreateOrUpdateWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName, EncryptionProtector parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
             }
             catch (CloudException ex)
             {
