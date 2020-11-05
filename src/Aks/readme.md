@@ -70,9 +70,9 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerInstance
+aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
 input-file:
-- $(aks)/stable/2019-12-01/containerInstance.json
+- $(aks)/stable/2019-10-01/managedClusters.json
 
 module-version: 4.0.1
 title: AksClient
