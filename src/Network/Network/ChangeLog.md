@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated New-AzFirewallPolicyNatRule cmdlet:
+    - Added parameter Translated FQDN
 
 ## Version 4.1.0
 * [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
