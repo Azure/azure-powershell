@@ -23,9 +23,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="VirtualNetwork\Subnet\NewAzureVirtualNetworkSubnetConfigCommand.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

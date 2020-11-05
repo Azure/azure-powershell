@@ -22,7 +22,7 @@ function Test-AzureFirewallPolicyCRUD {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "westus2"
+    $location = "eastus2euap"
 
     $ruleGroupName = Get-ResourceName
 
