@@ -117,12 +117,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public IEnumerable<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
+        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
         {
             var commandSuggestions = this._commandSuggestions;
             var command = this._commandForPrediction;
 
-            IList<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> results = new List<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>>();
+            IList<ValueTuple<string, string, PredictionSource>> results = new List<ValueTuple<string, string, PredictionSource>>();
 
             var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
 
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     foreach (var r in resultsFromCommands)
                     {
-                        if (resultsFromCommands?.ContainsKey(r.Key) == true)
+                        if (resultsFromSuggestion?.ContainsKey(r.Key) == true)
                         {
                             continue;
                         }

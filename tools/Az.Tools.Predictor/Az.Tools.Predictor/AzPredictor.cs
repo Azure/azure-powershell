@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -168,69 +168,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public List<PredictiveSuggestion> GetSuggestion(PredictionContext context, CancellationToken cancellationToken)
         {
-            // Eventually, the rendering layer in PSReadLine will show the suggestions in a list,
-            // with an experience similar to you typing in the text box in google/bing search page.
-            // Hence, the returned texts don't have to be prefixed with the `userInput`, but the
-            // text should be in the order of relevance, meaning that if you have a result that
-            // is prefixed with `userInput`, it should be ordered before result that is not prefixed
-            // with `userInput`.
+            var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
 
-            IEnumerable<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, IList<Tuple<string, string>>, PredictionSource>>();
+            IEnumerable<ValueTuple<string, string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, string, PredictionSource>>();
+            string maskedUserInput = string.Empty;
+            // This is the list of records of the source suggestion and the prediction source.
+            var telemetryData = new List<ValueTuple<string, PredictionSource>>();
 
             try
             {
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken);
+                maskedUserInput = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
 
-                if (!Settings.ContinueOnTimeout)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                }
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, localCancellationToken);
 
-                var userInput = context.InputAst.Extent.Text;
-                return suggestions.Select((r, index) =>
-                    {
-                        return new PredictiveSuggestion(MergeStrings(userInput, r.Item1));
-                    })
-                    .ToList();
-            }
-            catch (Exception e) when (!(e is OperationCanceledException))
-            {
-                this._telemetryClient.OnGetSuggestionError(e);
-            }
-            finally
-            {
-                var maskedCommandLine = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
-                var sb = new StringBuilder();
-                // This is the list of records of the original suggestion and the prediction source.
-                var telemetryData = new List<ValueTuple<string, PredictionSource>>();
+                localCancellationToken.ThrowIfCancellationRequested();
+
                 var userAcceptedAndSuggestion = new Dictionary<string, string>();
 
                 foreach (var s in suggestions)
                 {
-                    sb.Clear();
-                    sb.Append(s.Item1.Split(' ')[0])
-                        .Append(AzPredictorConstants.CommandParameterSeperator);
-
-                    foreach (var p in s.Item2)
-                    {
-                        sb.Append(p.Item1);
-                        if (p.Item2 != null)
-                        {
-                            sb.Append(AzPredictorConstants.CommandParameterSeperator)
-                                .Append(p.Item2);
-                        }
-
-                        sb.Append(AzPredictorConstants.CommandParameterSeperator);
-                    }
-
-                    if (sb[sb.Length - 1] == AzPredictorConstants.CommandParameterSeperator)
-                    {
-                        sb.Remove(sb.Length - 1, 1);
-                    }
-
-                    var suggestedText = sb.ToString();
-                    telemetryData.Add(ValueTuple.Create(suggestedText, s.Item3));
-                    userAcceptedAndSuggestion[s.Item1] = suggestedText;
+                    telemetryData.Add(ValueTuple.Create(s.Item2, s.Item3));
+                    userAcceptedAndSuggestion[s.Item1] = s.Item2;
                 }
 
                 lock (_userAcceptedAndSuggestion)
@@ -241,31 +199,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
                 }
 
-                _telemetryClient.OnGetSuggestion(maskedCommandLine,
+                localCancellationToken.ThrowIfCancellationRequested();
+
+                var returnedValue = suggestions.Select((r, index) =>
+                    {
+                        return new PredictiveSuggestion(r.Item1);
+                    })
+                    .ToList();
+
+                _telemetryClient.OnGetSuggestion(maskedUserInput,
                         telemetryData,
                         cancellationToken.IsCancellationRequested);
+
+                return returnedValue;
+
+            }
+            catch (Exception e) when (!(e is OperationCanceledException))
+            {
+                this._telemetryClient.OnGetSuggestionError(e);
             }
 
             return new List<PredictiveSuggestion>();
-        }
-
-        // Merge strings a and b such that the prefix of b is deleted if it is the suffix of a
-        private static string MergeStrings(string a, string b)
-        {
-            for (int i = 0; i < a.Length; i++)
-            {
-                var j = i;
-                while (char.ToLower(a[j]) == char.ToLower(b[j - i]))
-                {
-                    j++;
-                    if (j == a.Length)
-                    {
-                        return a.Substring(0, i) + b;
-                    }
-                }
-            }
-
-            return a + b;
         }
 
         /// <summary>

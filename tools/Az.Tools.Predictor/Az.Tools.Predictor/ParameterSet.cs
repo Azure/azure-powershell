@@ -64,9 +64,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
+
             if (param != null)
             {
                 Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
+            }
+            else if (arg != null)
+            {
+                throw new InvalidOperationException();
             }
         }
     }
