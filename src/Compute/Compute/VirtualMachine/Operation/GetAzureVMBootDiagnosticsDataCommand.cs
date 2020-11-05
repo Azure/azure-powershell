@@ -17,16 +17,14 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Extensions.Azure;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -138,27 +136,23 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
+
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
-
-                    BlobClient blobClient = new BlobClient(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri));
-
                     var localPathTest = this.LocalPath;
-                    var bootSegment = new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
-                    var localFile = this.LocalPath + bootSegment;
-                    blobClient.DownloadTo(localFile);
+                    var localFile = this.LocalPath + new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
+                    
+                    DownloadFromBlobUri(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri), localFile);
                 }
 
 
                 if (this.Linux.IsPresent)
                 {
-                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
-                    var logSegment = new Uri(bootDiagnostics.SerialConsoleLogBlobUri).Segments[2];
-
-                    var localFile = (this.LocalPath ?? Path.GetTempPath()) + logSegment;
-
-                    BlobClient blobClient = new BlobClient(new Uri(bootDiagnostics.SerialConsoleLogBlobUri));
-                    blobClient.DownloadTo(localFile);
-
+                    
+                    var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
+                    var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
+                    DownloadFromBlobUri(logUri, localFile);
+                    
+                    
                     var sb = new StringBuilder();
                     using (var reader = new StreamReader(localFile))
                     {
@@ -170,8 +164,22 @@ namespace Microsoft.Azure.Commands.Compute
                     };
 
                     WriteObject(sb.ToString());
+                    
                 }
             });
+        }
+
+        private void DownloadFromBlobUri(Uri sourceUri, string localFileInfo)
+        {
+            BlobUri blobUri;
+            if (!BlobUri.TryParseUri(sourceUri, out blobUri))
+            {
+                throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
+            }
+
+            var blob = new CloudBlob(sourceUri);
+
+            blob.DownloadToFileAsync(localFileInfo, FileMode.Create).ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }
