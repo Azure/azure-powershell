@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualrouterpeerlearnedroute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvirtualrouter
 schema: 2.0.0
 ---
 
