@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = "To add the created certificate to WebApp/slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "To add the created certificate to WebApp/slot.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AddCertBinding { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Ssl state option. Use either 'SniEnabled' or 'IpBasedEnabled'. Default option is 'SniEnabled'.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Ssl state option. Use either 'SniEnabled' or 'IpBasedEnabled'. Default option is 'SniEnabled'.")]
         [ValidateNotNullOrEmpty]
         public SslState? SslState { get; set; }
 
@@ -72,36 +72,38 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 var location = webApp.Location;
 
                 Certificate createdCertdetails = null;
-                
+
                 var certificate = new Certificate(
                     webApp.Location,
                     canonicalName: HostName,
-                    password: "",                    
+                    password: "",
                     serverFarmId: webApp.ServerFarmId);
-
-                try
+                if (this.ShouldProcess(this.WebAppName, string.Format($"Creating an App service managed certificate for Web App '{WebAppName}'")))
                 {
-                    createdCertdetails = WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
-                }
-                catch (DefaultErrorResponseException e)
-                {
-                    // This exception is thrown when certificate already exists. Let's swallow it and continue.
-                    if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                    try
                     {
-                        throw;
+                        createdCertdetails = WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
                     }
+                    catch (DefaultErrorResponseException e)
+                    {
+                        // This exception is thrown when certificate already exists. Let's swallow it and continue.
+                        if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                        {
+                            throw;
+                        }
+                    }
+                    //Add only when user is opted for Binding
+                    if (AddCertBinding)
+                    {
+                        WebsitesClient.UpdateHostNameSslState(ResourceGroupName,
+                                                              WebAppName,
+                                                              Slot,
+                                                              webApp.Location,
+                                                              HostName, SslState.HasValue ? SslState.Value : Management.WebSites.Models.SslState.SniEnabled,
+                                                              createdCertdetails.Thumbprint);
+                    }
+                    WriteObject(createdCertdetails);
                 }
-                //Add only when user is opted for Binding
-                if (AddCertBinding)
-                {
-                    WebsitesClient.UpdateHostNameSslState(ResourceGroupName,
-                                                          WebAppName,
-                                                          Slot,
-                                                          webApp.Location,
-                                                          HostName, SslState.HasValue ? SslState.Value : Management.WebSites.Models.SslState.SniEnabled,
-                                                          createdCertdetails.Thumbprint);
-                }
-                WriteObject(createdCertdetails);
 
             }
 

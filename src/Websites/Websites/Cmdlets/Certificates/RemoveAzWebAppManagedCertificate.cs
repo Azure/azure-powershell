@@ -69,16 +69,19 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                     var certificates = CmdletHelpers.GetCertificates(this.ResourcesClient, this.WebsitesClient, certificateResourceGroup, ThumbPrint);
                     if (certificates.Length > 0)
                     {
-                        try
+                        if (this.ShouldProcess(this.WebAppName, string.Format($"Removing an App service managed certificate for Web App '{WebAppName}'")))
                         {
-                            WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
-                        }
-                        catch (DefaultErrorResponseException e)
-                        {
-                            // This exception is thrown when certificate already exists. Let's swallow it and continue.
-                            if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                            try
                             {
-                                throw;
+                                WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
+                            }
+                            catch (DefaultErrorResponseException e)
+                            {
+                                // This exception is thrown when certificate already exists. Let's swallow it and continue.
+                                if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                                {
+                                    throw;
+                                }
                             }
                         }
                     }
