@@ -34,7 +34,8 @@ using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-
+using Microsoft.Rest;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -109,6 +110,21 @@ namespace Microsoft.Azure.Commands.Compute
         public DisplayHintType DisplayHint { get; set; }
 
         //test
+        /// <summary>
+        /// Service client credentials client to hold credentials
+        /// </summary>
+        private ServiceClientCredentials clientCredentials;
+        public ServiceClientCredentials ClientCredentials
+        {
+            get
+            {
+                return clientCredentials = clientCredentials ?? AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultProfile.DefaultContext,
+                                               AzureEnvironment.Endpoint.ResourceManager);
+
+            }
+            set => clientCredentials = value;
+        }
+
         private IResourceManagementClient resourceManagerClient;
         public IResourceManagementClient ResourceManagerClient
         {
@@ -144,8 +160,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
-                    
-                    
+
+
                     /*
                     var test = this.VirtualMachineClient.Get("", Name);
                     this.VirtualMachineClient.List("").SelectMany;
@@ -161,9 +177,19 @@ namespace Microsoft.Azure.Commands.Compute
                     this.TopLevelWildcardFilter();
 
                     this.VirtualMachineClient.ListWithHttpMessagesAsync();*/
-                     
+                    var ofilter = new ODataQuery<Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ResourceGroupFilter>("Name eq " + Name);//{Microsoft.Azure.Management.Compute.Models.VirtualMachine} type, Name 
+                    var testlist = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
+                    ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
+                    var test = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
 
-                    ReturnListVMObject(
+                    var testMess = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().;
+                    var testMEssNExt = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync();
+                    var testFiltGetAwait = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
+
+                    var testListAll = ResourceManagerClient.ResourceGroups.ListAsync().GetAwaiter().GetResult();
+                    var testListAllNext = ResourceManagerClient.ResourceGroups.ListNextAsync();
+
+                        ReturnListVMObject(
                         this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
                         this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
                 }
