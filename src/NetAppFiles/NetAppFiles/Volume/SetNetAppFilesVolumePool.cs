@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     ///  Moves volume to another pool    
     /// </summary>
     [Cmdlet(
-        "Switch",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumePool",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Switch-AnfVolumePool")]
-    public class SwitchAzureRmNetAppFilesVolumePool : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfVolumePool")]
+    public class SetAzureRmNetAppFilesVolumePool : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/switch-aznetAppfilesvolumepool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/set-aznetAppfilesvolumepool
 schema: 2.0.0
 ---
 
-# Switch-AzNetAppFilesVolumePool
+# Set-AzNetAppFilesVolumePool
 
 ## SYNOPSIS
 Change pool for an Azure NetApp Files (ANF) volume.
@@ -14,37 +14,37 @@ Change pool for an Azure NetApp Files (ANF) volume.
 
 ### ByFieldsParameterSet (Default)
 ```
-Switch-AzNetAppFilesVolumePool -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+Set-AzNetAppFilesVolumePool -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -Name <String> [-NewPoolResourceId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Switch-AzNetAppFilesVolumePool -Name <String> -PoolObject <PSNetAppFilesPool>
+Set-AzNetAppFilesVolumePool -Name <String> -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Switch-AzNetAppFilesVolumePool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Set-AzNetAppFilesVolumePool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Switch-AzNetAppFilesVolumePool -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+Set-AzNetAppFilesVolumePool -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Switch-AzNetAppFilesVolumePool** cmdlet changes the pool of an ANF volume.
+The **Set-AzNetAppFilesVolumePool** cmdlet changes the pool of an ANF volume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Switch-AzNetAppFilesVolumePool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -NewPoolResourceId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
+PS C:\>Set-AzNetAppFilesVolumePool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -NewPoolResourceId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
 ```
 
 This changes the pool for the volume MyVolume to one with the Id of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.SetParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -207,7 +207,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.SetParameter
 Parameter Sets: (All)
 Aliases: wi
 

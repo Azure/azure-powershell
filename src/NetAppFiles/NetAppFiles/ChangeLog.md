@@ -41,7 +41,7 @@
     - `Remove-AzNetAppFilesActiveDirectory`
     - `Update-AzNetAppFilesActiveDirectory`
 * Add new `Get-AzNetAppFilesVault` cmdlet (use for backups, vaults currently only support getting list of vaults):
-* Add new Switch-AzNetAppFilesVolumePool cmdlet, to move volume to another pool
+* Add new Set-AzNetAppFilesVolumePool cmdlet, to move volume to another pool
 * Add parameters to `New-AzNetAppFilesVolume` 
      - Backup to to enable Backups and Backup Policy 
      - Snapshot to enable Snapshot Policy 
