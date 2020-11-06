@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Onboard Migrate to Private Link Common Cmdlets
 
 ## Version 4.1.0
 * [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
