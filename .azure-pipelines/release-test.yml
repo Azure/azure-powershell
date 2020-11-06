@@ -104,13 +104,13 @@ jobs:
     displayName: Run Smoke Test 
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId)"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "'
 
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse"'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
 
   - task: PowerShell@2
     displayName: Clean Az Modules
@@ -128,13 +128,13 @@ jobs:
     displayName: Run Smoke Test 
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) "'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "'
 
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse "'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse "'
 
   - task: PowerShell@2
     displayName: Clean Az Modules
