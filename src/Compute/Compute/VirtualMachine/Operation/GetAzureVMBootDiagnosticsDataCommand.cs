@@ -132,26 +132,26 @@ namespace Microsoft.Azure.Commands.Compute
                             null));
                 }
 
+                //console log
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
                     var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
                     var localPathTest = this.LocalPath;
                     var localFile = this.LocalPath + new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
-                    
+
                     DownloadFromBlobUri(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri), localFile);
                 }
 
-
+                //serial log
+                var bootDiagnosticsSerial = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                var logUri = new Uri(bootDiagnosticsSerial.SerialConsoleLogBlobUri);
+                var localFileSerial = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
+                DownloadFromBlobUri(logUri, localFileSerial);
                 if (this.Linux.IsPresent)
                 {
-                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
-                    var logUri = new Uri(bootDiagnostics.SerialConsoleLogBlobUri);
-                    var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
-                    DownloadFromBlobUri(logUri, localFile);
-
                     var sb = new StringBuilder();
-                    using (var reader = new StreamReader(localFile))
+                    using (var reader = new StreamReader(localFileSerial))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -161,7 +161,6 @@ namespace Microsoft.Azure.Commands.Compute
                     };
 
                     WriteObject(sb.ToString());
-                    
                 }
             });
         }
