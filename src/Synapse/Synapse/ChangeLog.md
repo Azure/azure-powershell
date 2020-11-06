@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add `-Force` to all Remove cmdlets
 
 ## Version 0.3.0
 * Added support for operation of Synapse LinkedService
