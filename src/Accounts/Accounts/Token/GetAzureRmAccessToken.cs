@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = KnownResourceNameParameterSet,
             Mandatory = false,
-            HelpMessage = "Optional resouce type name, supported values: AadGraph, Analysis, Arm, Attestation, Batch, DataLake, KeyVault, OperationInsights, ResourceManager, Synapse. Default value is Arm if not specified.")]
+            HelpMessage = "Optional resouce type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Synapse. Default value is Arm if not specified.")]
         [PSArgumentCompleter(
             SupportedResourceNames.AadGraph,
-            SupportedResourceNames.Analysis,
+            SupportedResourceNames.AnalysisServices,
             SupportedResourceNames.Arm,
-            SupportedResourceNames.Attest,
+            SupportedResourceNames.Attestation,
             SupportedResourceNames.Batch,
             SupportedResourceNames.DataLake,
             SupportedResourceNames.KeyVault,
             SupportedResourceNames.ManagedHsm,
-            SupportedResourceNames.OperationInsights,
+            SupportedResourceNames.OperationalInsights,
             SupportedResourceNames.ResourceManager,
             SupportedResourceNames.Synapse
             )]
@@ -121,9 +121,9 @@ namespace Microsoft.Azure.Commands.Profile
             public const string KeyVault = "KeyVault";
             public const string ResourceManager = "ResourceManager"; //endpoint is same as Arm
 
-            public const string Analysis = "Analysis";
-            public const string Attest = "Attestation";
-            public const string OperationInsights = "OperationInsights";
+            public const string AnalysisServices = "AnalysisServices";
+            public const string Attestation = "Attestation";
+            public const string OperationalInsights = "OperationalInsights";
             public const string Synapse = "Synapse";
             public const string ManagedHsm = "ManagedHsm";
 
@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Commands.Profile
                 { KeyVault, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId },
                 { ResourceManager, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId },
 
-                { Analysis, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId },
-                { Attest, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId },
-                { OperationInsights, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId },
+                { AnalysisServices, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId },
+                { Attestation, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId },
+                { OperationalInsights, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId },
                 { Synapse, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId },
                 { ManagedHsm, AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId }
             };

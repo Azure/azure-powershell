@@ -610,15 +610,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find TenantId &quot;{0}&quot; in logged-in contexts. Please make sure you have logged into the tenant, e.g. Connect-AzAccount -Tenant xxx.
-        /// </summary>
-        internal static string InvalidTenantId {
-            get {
-                return ResourceManager.GetString("InvalidTenantId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} account in environment &apos;{1}&apos;.
         /// </summary>
         internal static string LoginTarget {

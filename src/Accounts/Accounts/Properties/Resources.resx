@@ -522,7 +522,4 @@
   <data name="InvalidResourceTypeName" xml:space="preserve">
     <value>The specified ResourceTypeName "{0}" is not supported, please provide a valid value. e.g. Arm, AadGraph, etc.</value>
   </data>
-  <data name="InvalidTenantId" xml:space="preserve">
-    <value>Could not find TenantId "{0}" in logged-in contexts. Please make sure you have logged into the tenant, e.g. Connect-AzAccount -Tenant xxx</value>
-  </data>
 </root>
