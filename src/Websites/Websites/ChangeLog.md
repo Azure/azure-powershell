@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Added support for new access restriction features: ServiceTag, multi-ip and http-headers
+* Added support for App Service Managed certificates
+	-New Cmdlets
+		-New-AzWebAppManagedCertificate
+		-Remove-AzWebAppManagedCertificate
 
 ## Version 2.0.0
 * Added support for Premium V3 pricing tier
