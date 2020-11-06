@@ -23,10 +23,18 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
-using Microsoft.Azure.Management.Internal.Resources;
+//using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 using Microsoft.Rest.Azure;
+//
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -100,19 +108,21 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public DisplayHintType DisplayHint { get; set; }
 
-        //adam
-        /*
+        //test
+        private IResourceManagementClient resourceManagerClient;
         public IResourceManagementClient ResourceManagerClient
         {
             get
             {
-                return resourceManagerClient = resourceManagerClient ?? new ResourceManagementClient(
-                                                   DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                                   ClientCredentials);
+                return resourceManagerClient = resourceManagerClient ?? 
+                    new ResourceManagementClient(
+                        DefaultProfile.DefaultContext.Environment.
+                        GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
+                            ClientCredentials);
             }
             set => resourceManagerClient = value;
-        }*/
-        //adam
+        }
+        //test
 
         public override void ExecuteCmdlet()
         {
