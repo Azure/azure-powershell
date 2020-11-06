@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Create function for web site, or a deployment slot.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_CreateFunction=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"
+    /// [OpenAPI] CreateFunction=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFunction_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Config information.",
         SerializedName = @"config",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig Config { get => FunctionEnvelopeBody.Config ?? null /* object */; set => FunctionEnvelopeBody.Config = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get => FunctionEnvelopeBody.Config ?? null /* object */; set => FunctionEnvelopeBody.Config = value; }
 
         /// <summary>Config URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Config URI.")]

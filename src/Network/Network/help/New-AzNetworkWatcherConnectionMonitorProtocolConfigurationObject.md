@@ -14,13 +14,14 @@ Create protocol configuration used to perform test evaluation over TCP, HTTP or 
 
 ### TCP
 ```
-New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] -Port <Int32>
- [-DisableTraceRoute] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] -Port <UInt16>
+ [-DisableTraceRoute] [-DestinationPortBehavior <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### HTTP
 ```
-New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <Int32>]
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <UInt16>]
  [-Method <String>] [-Path <String>] [-RequestHeader <Hashtable>] [-ValidStatusCodeRange <String[]>]
  [-PreferHTTPS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -70,6 +71,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestinationPortBehavior
+Destination port behavior.
+Supported values are None, ListenIfAvailable.
+
+```yaml
+Type: System.String
+Parameter Sets: TCP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableTraceRoute
 Value indicating whether path evaluation with trace route should be disabled.
 
@@ -86,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -HttpProtocol
-HTTP protocol switch
+HTTP protocol switch.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -131,7 +148,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path component of the URI. For instance, \"/dir1/dir2\".
+The path component of the URI.
+For instance, "/dir1/dir2".
 
 ```yaml
 Type: System.String
@@ -218,7 +236,8 @@ Accept wildcard characters: False
 ```
 
 ### -ValidStatusCodeRange
-HTTP status codes to consider successful. For instance, \"2xx,301-304,418\".
+HTTP status codes to consider successful.
+For instance, "2xx,301-304,418".
 
 ```yaml
 Type: System.String[]
@@ -241,11 +260,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTcpConfiguration
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTcpConfiguration
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorHttpConfiguration
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorHttpConfiguration
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorIcmpConfiguration
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorIcmpConfiguration
 
 ## NOTES
 

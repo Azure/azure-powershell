@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Site extension type.</summary>
     public partial struct SiteExtensionType :
         System.IEquatable<SiteExtensionType>
     {

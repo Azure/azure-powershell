@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Indicates whether the hostname is a standard or repository hostname.</summary>
     public partial struct HostType :
         System.IEquatable<HostType>
     {

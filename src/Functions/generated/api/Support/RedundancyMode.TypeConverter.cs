@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for RedundancyMode.</summary>
+    /// <summary>Site redundancy mode</summary>
     public partial class RedundancyModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
