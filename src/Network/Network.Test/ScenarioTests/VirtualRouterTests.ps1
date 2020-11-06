@@ -58,12 +58,12 @@ function Test-VirtualRouterCRUD
       # Update virtual route with branch to branch traffic
       $actualvr = Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -AllowBranchToBranchTraffic
       $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-      Assert-True $expectedvr.AllowBranchToBranchTraffic 
+      Assert-True { $expectedvr.AllowBranchToBranchTraffic }
 
       # Block branch to branch traffic
       $actualvr = Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
       $expectedvr = Get-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
-      Assert-False $expectedvr.AllowBranchToBranchTraffic 
+      Assert-False { $expectedvr.AllowBranchToBranchTraffic } 
         
       # List Virtual Routers
       $list = Get-AzVirtualRouter -ResourceGroupName $rgname
