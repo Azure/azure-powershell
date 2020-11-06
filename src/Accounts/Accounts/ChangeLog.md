@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed an issue that error happens if user profile path is inaccessible
+* Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
 * Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
 * Fixed null reference and method case insensitive in `Invoke-AzRestMethod`
 

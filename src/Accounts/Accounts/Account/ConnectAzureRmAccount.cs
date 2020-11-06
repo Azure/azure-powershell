@@ -227,6 +227,13 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+
+            // todo: ideally cancellation token should be passed to authentication factory as a parameter
+            // however AuthenticationFactory.Authenticate does not support it
+            // so I store it in AzureSession.Instance as a global variable
+            // todo: CancellationTokenSource should be visiable only in cmdlet class
+            // CancellationTokenSource.Token should be passed to other classes
+            AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
 
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
@@ -235,6 +242,14 @@ namespace Microsoft.Azure.Commands.Profile
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
             _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
+        }
+
+        protected override void StopProcessing()
+        {
+            if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource)) {
+                cancellationTokenSource?.Cancel();
+            }
+            base.StopProcessing();
         }
 
         public override void ExecuteCmdlet()
