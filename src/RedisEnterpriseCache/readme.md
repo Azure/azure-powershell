@@ -95,7 +95,6 @@ directive:
       parameter-name: Tags
       alias: Tag
 
-
   # Remove unused variants
   - where:
       verb: Get
@@ -137,6 +136,9 @@ directive:
   - where:
       verb: Get
       subject: ^$
+    hide: true
+  - where:
+      subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
 
   # Fix bug in generated code from namespace conflict

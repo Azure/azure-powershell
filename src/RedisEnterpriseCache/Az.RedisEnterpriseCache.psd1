@@ -1,5 +1,5 @@
 @{
-  GUID = 'e50a7b9d-bb6c-4c17-a7a1-bb5725578abd'
+  GUID = '0379dac3-572f-4244-bd9d-aa20ef37c710'
   RootModule = './Az.RedisEnterpriseCache.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.RedisEnterpriseCache.private.dll'
   FormatsToProcess = './Az.RedisEnterpriseCache.format.ps1xml'
-  FunctionsToExport = 'Export-AzRedisEnterpriseCacheDatabase', 'Get-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheOperationStatus', 'Get-AzRedisEnterpriseCachePrivateEndpointConnection', 'Get-AzRedisEnterpriseCachePrivateLinkResource', 'Import-AzRedisEnterpriseCacheDatabase', 'New-AzRedisEnterpriseCache', 'New-AzRedisEnterpriseCacheDatabaseKey', 'Remove-AzRedisEnterpriseCache', 'Remove-AzRedisEnterpriseCachePrivateEndpointConnection', 'Set-AzRedisEnterpriseCachePrivateEndpointConnection', 'Update-AzRedisEnterpriseCache', 'Update-AzRedisEnterpriseCacheDatabase', '*'
+  FunctionsToExport = 'Export-AzRedisEnterpriseCacheDatabase', 'Get-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheOperationStatus', 'Import-AzRedisEnterpriseCacheDatabase', 'New-AzRedisEnterpriseCache', 'New-AzRedisEnterpriseCacheDatabaseKey', 'Remove-AzRedisEnterpriseCache', 'Update-AzRedisEnterpriseCache', 'Update-AzRedisEnterpriseCacheDatabase', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

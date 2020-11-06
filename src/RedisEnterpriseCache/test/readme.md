@@ -27,7 +27,6 @@ To execute tests in a specific order, update `test-module.ps1`. An example updat
   $orderedTests = @(
       # Perform tests in the following order:
       Join-Path $testFolder 'New*'
-      Join-Path $testFolder 'Set*'
       Join-Path $testFolder 'Update*'
       Join-Path $testFolder 'Export*'
       Join-Path $testFolder 'Import*'
