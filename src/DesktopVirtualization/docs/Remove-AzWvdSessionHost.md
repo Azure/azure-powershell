@@ -52,6 +52,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Force
@@ -67,6 +68,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -HostPoolName
@@ -82,6 +84,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -InputObject
@@ -98,6 +101,7 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Name
@@ -113,6 +117,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -PassThru
@@ -128,6 +133,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -144,6 +150,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -159,6 +166,7 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -174,6 +182,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -190,6 +199,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -203,21 +213,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
+## ALIASES
+
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
+### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+#### INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
   - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
   - `[Id <String>]`: Resource identity path
+  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SessionHostName <String>]`: The name of the session host within the specified host pool
   - `[SubscriptionId <String>]`: The ID of the target subscription.

@@ -16,8 +16,9 @@ Create or update an application.
 ```
 New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
  -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>]
- [-IconPath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
+ [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
+ [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AppAlias
@@ -67,6 +68,23 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ApplicationType
+Resource Type of Application.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -CommandLineArgument
@@ -82,6 +100,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -CommandLineSetting
@@ -97,6 +116,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -112,6 +132,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Description
@@ -127,6 +148,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -FilePath
@@ -142,6 +164,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -FriendlyName
@@ -157,6 +180,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -GroupName
@@ -172,6 +196,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -IconIndex
@@ -187,6 +212,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -IconPath
@@ -202,6 +228,39 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MsixPackageApplicationId
+Specifies the package application Id for MSIX applications
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MsixPackageFamilyName
+Specifies the package family name for MSIX applications
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Name
@@ -217,6 +276,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -233,6 +293,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ShowInPortal
@@ -248,6 +309,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -263,6 +325,7 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -278,6 +341,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -294,6 +358,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -303,11 +368,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
+
+## ALIASES
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
