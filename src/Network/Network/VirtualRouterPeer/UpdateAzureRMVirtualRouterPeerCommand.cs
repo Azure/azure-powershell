@@ -19,9 +19,12 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using System.Linq;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 
