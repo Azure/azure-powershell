@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

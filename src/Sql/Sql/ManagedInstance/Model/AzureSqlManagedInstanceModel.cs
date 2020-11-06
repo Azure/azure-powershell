@@ -139,5 +139,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance backup storage redundancy
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
     }
 }

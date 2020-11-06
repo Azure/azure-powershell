@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse = (bool?) content.GetValueForProperty("InUse",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpPort = (int?) content.GetValueForProperty("InternalHttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpsPort = (int?) content.GetValueForProperty("InternalHttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse = (bool?) content.GetValueForProperty("InUse",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).ServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse = (bool?) content.GetValueForProperty("InUse",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpPort = (int?) content.GetValueForProperty("InternalHttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpsPort = (int?) content.GetValueForProperty("InternalHttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InternalHttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse = (bool?) content.GetValueForProperty("InUse",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).InUse, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).ServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMappingInternal)this).VirtualIP, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
     }

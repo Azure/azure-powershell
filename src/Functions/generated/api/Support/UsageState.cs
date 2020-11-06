@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>State indicating whether the app has exceeded its quota usage. Read-only.</summary>
     public partial struct UsageState :
         System.IEquatable<UsageState>
     {
