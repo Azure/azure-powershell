@@ -1,178 +1,185 @@
 pr: none
 trigger: none
 
-strategy:
-  matrix:
-    Windows PS 5.1.14:
-      Image_Name: 'vs2017-win2016'
-      PSVersion: '5.1.14'
-  
-    Windows PS 6.2.4:
-      Image_Name: 'vs2017-win2016'
-      PSVersion: '6.2.4'
-     
-    Windows PS 7.0.3:
-      Image_Name: 'vs2017-win2016'
-      PSVersion: '7.0.3'
+jobs:
+- job: SmokeTest
+  timeoutInMinutes: 180  
+  strategy:
+    matrix:
+      Windows PS 5.1.14:
+        Image_Name: 'vs2017-win2016'
+        PSVersion: '5.1.14'  
+      Windows PS 6.2.4:
+        Image_Name: 'vs2017-win2016'
+        PSVersion: '6.2.4'     
+      Windows PS 7.0.3:
+        Image_Name: 'vs2017-win2016'
+        PSVersion: '7.0.3'
+      Linux PS 6.2.4:
+        Image_Name: 'ubuntu-18.04'
+        PSVersion: '6.2.4'      
+      Linux PS 7.0.3:
+        Image_Name: 'ubuntu-18.04'
+        PSVersion: '7.0.3'  
+      MacOS PS 6.2.4:
+        Image_Name: 'macOS-10.15'
+        PSVersion: '6.2.4'
+      MacOS PS 7.0.3:
+        Image_Name: 'macOS-10.15'
+        PSVersion: '7.0.3'
+  pool:
+    vmImage: $(Image_Name)
 
-    Linux PS 6.2.4:
-      Image_Name: 'ubuntu-18.04'
-      PSVersion: '6.2.4'
+  steps:
+  - task: PowerShell@2
+    displayName: Prepare Powershell $(PSVersion) 
+    inputs:
+      filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion)'      
+
+  - task: DownloadPipelineArtifact@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'), eq(variables['PipelineId'], ''))
+    displayName: Download Latest Artifacts from Build Pipeline
+    inputs:
+      buildType: specific
+      project: $(ProjectToDownloadArtifacts)
+      definition: $(BuildPipelineName)
+      buildVersionToDownload: 'latest'
+      artifactName: $(ArtifactName)
+      targetPath: $(Pipeline.Workspace)
+
+  - task: DownloadPipelineArtifact@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'), ne(variables['PipelineId'], ''))
+    displayName: Download Specified Artifacts from Build Pipeline
+    inputs:
+      buildType: 'specific'
+      project: $(ProjectToDownloadArtifacts)
+      definition: $(BuildPipelineName)
+      buildVersionToDownload: 'specific'
+      pipelineId: $(PipelineId)
+      artifactName: '$(ArtifactName)'
+      targetPath: '$(Pipeline.Workspace)'
+
+  - task: PowerShell@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
+    displayName: Copy Artifacts to LocalRepo
+    inputs:
+      targetType: 'inline'
+      script: |
+       New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
+       Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
+       Write-Host "List artifacts..."
+       Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
+
+  - task: NuGetCommand@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
+    displayName: 'Download Previous Release .nupkg Files'
+    inputs:
+      command: custom
+      arguments: 'install Az -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
+
+  - task: PowerShell@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
+    displayName: 'Copy Previous Release .nupkg files to LocalRepo'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg | Copy-Item -Destination "$(Pipeline.Workspace)\\LocalRepo\\" -Force
+        Write-Host "List localRepo..."
+        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
+
+  - task: PowerShell@2
+    displayName: Install Az Modules from $(GalleryName)
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAzModules.ps1 -Gallery $(GalleryName) -LocalRepoLocation $(LocalRepoLocation)"'   
       
-    Linux PS 7.0.3:
-      Image_Name: 'ubuntu-18.04'
-      PSVersion: '7.0.3'
-  
-    MacOS PS 6.2.4:
-      Image_Name: 'macOS-10.15'
-      PSVersion: '6.2.4'
+  - task: PowerShell@2
+    displayName: Connect AzAccount 
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/ConnectAzAccount.ps1 $(Password) $(ServicePrincipal) $(TenantId) $(SubscriptionId) "'
 
-    MacOS PS 7.0.3:
-      Image_Name: 'macOS-10.15'
-      PSVersion: '7.0.3'
+  - task: PowerShell@2
+    displayName: Run Smoke Test 
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId)"'
 
-pool:
-  vmImage: $(Image_Name)
+  - task: PowerShell@2
+    displayName: 'Run Smoke Test Reversely'
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse"'
 
-steps:
-- task: PowerShell@2
-  displayName: Prepare Powershell $(PSVersion) 
-  inputs:
-    filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion)'      
-      
-- task: DownloadPipelineArtifact@2
-  condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: Download Artifacts from Build Pipeline
-  inputs:
-    buildType: specific
-    project: $(ProjectToDownloadArtifacts)
-    definition: $(BuildPipelineName)
-    buildVersionToDownload: latestFromBranch
-    branchName: $(BranchName)
-    artifactName: $(ArtifactName)
-    targetPath: $(Pipeline.Workspace)
+  - task: PowerShell@2
+    displayName: Clean Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
 
-- task: PowerShell@2
-  condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: Copy Artifacts to LocalRepo
-  inputs:
-    targetType: 'inline'
-    script: |
-     New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
-     Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
-     Write-Host "List artifacts..."
-     Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
+  - task: PowerShell@2
+    displayName: Update Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/UpdateAzModules.ps1 -Gallery $(GalleryName) -AllowEquality $(AllowEquality) "'  
 
-- task: NuGetCommand@2
-  condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: 'Download Previous Release .nupkg Files'
-  inputs:
-    command: custom
-    arguments: 'install Az -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
+  - task: PowerShell@2
+    displayName: Run Smoke Test 
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) "'
 
-- task: PowerShell@2
-  condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-  displayName: 'Copy Previous Release .nupkg files to LocalRepo'
-  inputs:
-    targetType: 'inline'
-    script: |
-      Get-ChildItem $(System.DefaultWorkingDirectory)/packages -Recurse -Include *.nupkg | Copy-Item -Destination "$(Pipeline.Workspace)\\LocalRepo\\" -Force
-      Write-Host "List localRepo..."
-      Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
+  - task: PowerShell@2
+    displayName: 'Run Smoke Test Reversely'
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 $(SubscriptionId) -Reverse "'
 
-- task: PowerShell@2
-  displayName: Install Az Modules from $(GalleryName)
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAzModules.ps1 -Gallery $(GalleryName) -LocalRepoLocation $(LocalRepoLocation)"'   
-      
-- task: PowerShell@2
-  displayName: Connect AzAccount 
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/ConnectAzAccount.ps1 $(Password) $(ServicePrincipal) $(TenantId)"'
-
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1"'
-
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
-
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
-
-- task: PowerShell@2
-  displayName: Update Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/UpdateAzModules.ps1 -Gallery $(GalleryName)"'  
-
-- task: PowerShell@2
-  displayName: Run Smoke Test 
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1"'
-
-- task: PowerShell@2
-  displayName: 'Run Smoke Test Reversely'
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
-
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
+  - task: PowerShell@2
+    displayName: Clean Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
     
-- task: PowerShell@2
-  displayName: Install an individual module
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 -Gallery $(GalleryName)"'  
+  - task: PowerShell@2
+    displayName: Install an individual module
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAnIndividualModule.ps1 -Gallery $(GalleryName) "'  
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
+  - task: PowerShell@2
+    displayName: Clean Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
 
-- task: PowerShell@2
-  displayName: Update an individual module
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 -Gallery $(GalleryName)"'  
+  - task: PowerShell@2
+    displayName: Update an individual module
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/UpdateAnIndividualModule.ps1 -Gallery $(GalleryName) -AllowEquality $(AllowEquality) "'  
 
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
+  - task: PowerShell@2
+    displayName: Clean Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
 
-- task: PowerShell@2
-  displayName: Install Az on top of an individual module
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 -Gallery $(GalleryName)"'  
+  - task: PowerShell@2
+    displayName: Install Az on top of an individual module
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAzOnTopOfAnIndividualModule.ps1 -Gallery $(GalleryName) -AllowEquality $(AllowEquality) "'  
  
-- task: PowerShell@2
-  displayName: Clean Az Modules
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
+  - task: PowerShell@2
+    displayName: Clean Az Modules
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/CleanAzModules.ps1"'  
 
-- task: PowerShell@2
-  displayName: Install an individual module on top of Az
-  inputs:
-    filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
-    arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 -Gallery $(GalleryName)"'
+  - task: PowerShell@2
+    displayName: Install an individual module on top of Az
+    inputs:
+      filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion) -Script "./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 -Gallery $(GalleryName) -AllowEquality $(AllowEquality) "'

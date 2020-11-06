@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for InternalLoadBalancingMode.</summary>
+    /// <summary>
+    /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.InternalLoadBalancingModeTypeConverter))]
     public partial struct InternalLoadBalancingMode :
         System.Management.Automation.IArgumentCompleter

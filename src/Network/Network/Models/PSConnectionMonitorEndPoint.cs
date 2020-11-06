@@ -24,18 +24,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Name { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public string Type { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ResourceId { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string Address { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSNetworkWatcherConnectionMonitorEndpointFilter Filter { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointScope Scope { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string CoverageLevel { get; set; }
 
         [JsonIgnore]
-        public string FilterText
+        public string ScopeText
         {
-            get { return JsonConvert.SerializeObject(this.Filter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Scope, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

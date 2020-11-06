@@ -28,29 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-GITPROPERTYREPOSITORY <IGitPatternRepository[]>: Repositories of git.
-  Name <String>: Name of the repository
-  Uri <String>: URI of the repository
-  [HostKey <String>]: Public sshKey of git repository.
-  [HostKeyAlgorithm <String>]: SshKey algorithm of git repository.
-  [Label <String>]: Label of the repository
-  [Password <String>]: Password of git repository basic auth.
-  [Pattern <String[]>]: Collection of pattern of the repository
-  [PrivateKey <String>]: Private sshKey algorithm of git repository.
-  [SearchPath <String[]>]: Searching path of the repository
-  [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
-  [Username <String>]: Username of git repository basic auth.
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.springcloud/new-azspringcloudservice
 #>
 function New-AzSpringCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -74,79 +57,6 @@ param(
     # Gets subscription ID which uniquely identify the Microsoft Azure subscription.
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # The code of error.
-    ${ConfigServerPropertiesErrorCode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # The message of error.
-    ${ConfigServerPropertiesErrorMessage},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Public sshKey of git repository.
-    ${GitPropertyHostKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # SshKey algorithm of git repository.
-    ${GitPropertyHostKeyAlgorithm},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Label of the repository
-    ${GitPropertyLabel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Password of git repository basic auth.
-    ${GitPropertyPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Private sshKey algorithm of git repository.
-    ${GitPropertyPrivateKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IGitPatternRepository[]]
-    # Repositories of git.
-    # To construct, see NOTES section for GITPROPERTYREPOSITORY properties and create a hash table.
-    ${GitPropertyRepository},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String[]]
-    # Searching path of the repository
-    ${GitPropertySearchPath},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Strict host key checking or not.
-    ${GitPropertyStrictHostKeyChecking},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # URI of the repository
-    ${GitPropertyUri},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Username of git repository basic auth.
-    ${GitPropertyUsername},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
@@ -204,34 +114,10 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Target application insight instrumentation key
-    ${TraceAppInsightInstrumentationKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Indicates whether enable the tracing functionality
-    ${TraceEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # The code of error.
-    ${TraceErrorCode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # The message of error.
-    ${TraceErrorMessage},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

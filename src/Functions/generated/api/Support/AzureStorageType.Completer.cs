@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AzureStorageType.</summary>
+    /// <summary>Type of storage.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageTypeTypeConverter))]
     public partial struct AzureStorageType :
         System.Management.Automation.IArgumentCompleter

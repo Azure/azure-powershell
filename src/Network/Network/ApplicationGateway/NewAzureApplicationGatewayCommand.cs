@@ -94,6 +94,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of trusted client CA certificate chains")]
+        public PSApplicationGatewayTrustedClientCertificate[] TrustedClientCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend IP config")]
         public PSApplicationGatewayFrontendIPConfiguration[] FrontendIPConfigurations { get; set; }
 
@@ -120,6 +126,12 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend http settings")]
         public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of ssl profiles")]
+        public PSApplicationGatewaySslProfile[] SslProfiles { get; set; }
 
         [Parameter(
              Mandatory = true,
@@ -292,6 +304,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.TrustedRootCertificates =this.TrustedRootCertificate?.ToList();
             }
 
+            if (this.TrustedClientCertificates != null)
+            {
+                applicationGateway.TrustedClientCertificates = this.TrustedClientCertificates?.ToList();
+            }
+
             if (this.FrontendIPConfigurations != null)
             {
                 applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations?.ToList();
@@ -315,6 +332,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.BackendHttpSettingsCollection != null)
             {
                 applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection?.ToList();
+            }
+
+            if (this.SslProfiles != null)
+            {
+                applicationGateway.SslProfiles = this.SslProfiles?.ToList();
             }
 
             if (this.HttpListeners != null)

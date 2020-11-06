@@ -139,7 +139,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
                         Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName): null,
                 MinimalTlsVersion = model.MinimalTlsVersion,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                MaintenanceConfigurationId = model.MaintenanceConfigurationId
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -216,6 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
             managedInstance.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(resp.StorageAccountType);
+            managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;

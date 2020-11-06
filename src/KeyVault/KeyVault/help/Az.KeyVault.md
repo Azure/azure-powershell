@@ -26,6 +26,9 @@ Adds an existing Azure Storage Account to the specified key vault for its keys t
 ### [Add-AzKeyVaultNetworkRule](Add-AzKeyVaultNetworkRule.md)
 Adds a rule meant to restrict access to a key vault based on the client's internet address.
 
+### [Add-AzManagedHsmKey](Add-AzManagedHsmKey.md)
+Creates a key in a managed HSM or imports a key into a managed HSM.
+
 ### [Backup-AzKeyVaultCertificate](Backup-AzKeyVaultCertificate.md)
 Backs up a certificate in a key vault.
 
@@ -37,6 +40,15 @@ Backs up a KeyVault-managed storage account.
 
 ### [Backup-AzKeyVaultSecret](Backup-AzKeyVaultSecret.md)
 Backs up a secret in a key vault.
+
+### [Backup-AzManagedHsm](Backup-AzManagedHsm.md)
+Fully backup a managed HSM.
+
+### [Backup-AzManagedHsmKey](Backup-AzManagedHsmKey.md)
+Backs up a key in a managed HSM.
+
+### [Backup-AzManagedHsmSecurityDomain](Backup-AzManagedHsmSecurityDomain.md)
+Backs up the security domain data of a managed HSM for restoring.
 
 ### [Get-AzKeyVault](Get-AzKeyVault.md)
 Gets key vaults.
@@ -68,6 +80,18 @@ Gets Key Vault managed Storage SAS Definitions.
 ### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
 Gets the secrets in a key vault.
 
+### [Get-AzManagedHsm](Get-AzManagedHsm.md)
+Get managed HSMs.
+
+### [Get-AzManagedHsmKey](Get-AzManagedHsmKey.md)
+Gets Managed Hsm keys.
+
+### [Get-AzManagedHsmRoleAssignment](Get-AzManagedHsmRoleAssignment.md)
+Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
+
+### [Get-AzManagedHsmRoleDefinition](Get-AzManagedHsmRoleDefinition.md)
+List role definitions of a given managed HSM at a given scope.
+
 ### [Import-AzKeyVaultCertificate](Import-AzKeyVaultCertificate.md)
 Imports a certificate to a key vault.
 
@@ -85,6 +109,12 @@ Creates an in-memory certificate policy object.
 
 ### [New-AzKeyVaultNetworkRuleSetObject](New-AzKeyVaultNetworkRuleSetObject.md)
 Create an object representing the network rule settings.
+
+### [New-AzManagedHsm](New-AzManagedHsm.md)
+Creates a managed HSM.
+
+### [New-AzManagedHsmRoleAssignment](New-AzManagedHsmRoleAssignment.md)
+Assigns the specified RBAC role to the specified principal, at the specified scope.
 
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes a key vault.
@@ -119,6 +149,15 @@ Removes a network rule from a key vault.
 ### [Remove-AzKeyVaultSecret](Remove-AzKeyVaultSecret.md)
 Deletes a secret in a key vault.
 
+### [Remove-AzManagedHsm](Remove-AzManagedHsm.md)
+Deletes a managed HSM.
+
+### [Remove-AzManagedHsmKey](Remove-AzManagedHsmKey.md)
+Deletes a key in a managed HSM.
+
+### [Remove-AzManagedHsmRoleAssignment](Remove-AzManagedHsmRoleAssignment.md)
+Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
+
 ### [Restore-AzKeyVaultCertificate](Restore-AzKeyVaultCertificate.md)
 Restores a certificate in a key vault from a backup file.
 
@@ -130,6 +169,15 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### [Restore-AzKeyVaultSecret](Restore-AzKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
+
+### [Restore-AzManagedHsm](Restore-AzManagedHsm.md)
+Fully restores a managed HSM from backup.
+
+### [Restore-AzManagedHsmKey](Restore-AzManagedHsmKey.md)
+Creates a key in a managed HSM from a backed-up key.
+
+### [Restore-AzManagedHsmSecurityDomain](Restore-AzManagedHsmSecurityDomain.md)
+Restores previous backed up security domain data to a managed HSM.
 
 ### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
@@ -167,6 +215,9 @@ Recovers a deleted key vault into an active state.
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.
 
+### [Undo-AzManagedHsmKeyRemoval](Undo-AzManagedHsmKeyRemoval.md)
+Recovers a deleted key in a managed HSM into an active state.
+
 ### [Update-AzKeyVault](Update-AzKeyVault.md)
 Update the state of an Azure key vault.
 
@@ -187,4 +238,10 @@ Updates the network rule set on a key vault.
 
 ### [Update-AzKeyVaultSecret](Update-AzKeyVaultSecret.md)
 Updates attributes of a secret in a key vault.
+
+### [Update-AzManagedHsm](Update-AzManagedHsm.md)
+Update the state of an Azure managed HSM.
+
+### [Update-AzManagedHsmKey](Update-AzManagedHsmKey.md)
+Updates the attributes of a key in a managed HSM.
 

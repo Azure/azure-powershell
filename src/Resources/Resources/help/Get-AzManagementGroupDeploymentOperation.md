@@ -15,13 +15,12 @@ Get deployment operation for management group deployment
 ### GetByDeploymentName (Default)
 ```
 Get-AzManagementGroupDeploymentOperation -ManagementGroupId <String> -DeploymentName <String>
- [-OperationId <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-OperationId <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
 ```
-Get-AzManagementGroupDeploymentOperation -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
+Get-AzManagementGroupDeploymentOperation -DeploymentObject <PSDeployment> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -47,27 +46,11 @@ This command gets the deployment "Deploy01" at the management group "myMG" and g
 
 ## PARAMETERS
 
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +65,7 @@ Accept wildcard characters: False
 The deployment name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -97,7 +80,7 @@ Accept wildcard characters: False
 The deployment object.
 
 ```yaml
-Type: PSDeployment
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
 Parameter Sets: GetByDeploymentObject
 Aliases:
 
@@ -112,7 +95,7 @@ Accept wildcard characters: False
 The management group id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -127,7 +110,7 @@ Accept wildcard characters: False
 The deployment operation Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -142,7 +125,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
