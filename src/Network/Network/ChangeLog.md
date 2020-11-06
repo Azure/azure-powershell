@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added warning messages for upcoming breaking change for Virtual Router Peer Routes
+    - `Get-AzVirtualRouterPeerLearnedRoute`
+    - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * Updated New-AzFirewallPolicyNatRule cmdlet:
     - Added parameter Translated FQDN
 
