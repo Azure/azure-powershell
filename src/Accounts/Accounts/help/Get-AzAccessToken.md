@@ -12,9 +12,16 @@ Get raw access token
 
 ## SYNTAX
 
-### KnownResourceTypeName
+### KnownResourceTypeName (Default)
 ```
-Get-AzAccessToken -ResourceTypeName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzAccessToken [-ResourceTypeName <String>] [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceUrl
+When using ResourceUrl, please make sure the value is correct for current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+```
+Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -37,6 +44,13 @@ PS C:\> Get-AzAccessToken -ResourceTypeName AadGraph
 
 Get access token of AAD graph endpoint for current account
 
+### Example 3 Get raw access token for AAD graph endpoint
+```powershell
+PS C:\> Get-AzAccessToken -Resource "https://graph.windows.net/"
+```
+
+Get access token of AAD graph endpoint for current account
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -55,12 +69,27 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resouce type name, supported values: AadGraph, Analysis, Arm, Attest, DataLake, KeyVault, OperationInsights, Synapse. Default value is Arm if not specified.
+Optional resouce type name, supported values: AadGraph, Analysis, Arm, Attestation, Batch, DataLake, KeyVault, OperationInsights, ResourceManager, Synapse. Default value is Arm if not specified.
 
 ```yaml
 Type: System.String
 Parameter Sets: KnownResourceTypeName
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUrl
+Resource url for that you're requesting token, e.g. 'http://graph.windows.net/'.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceUrl
+Aliases: Resource, ResourceUri
 
 Required: True
 Position: Named
@@ -75,6 +104,7 @@ Optional Tenant Id. Use tenant id of default context if not specified.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

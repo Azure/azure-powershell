@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public IDictionary<string, string> ExtendedProperties { get; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        private DateTimeOffset ExpiredOn { get; set; }
+        public DateTimeOffset ExpiredOn { get; set; }
 
         private readonly static TimeSpan ExpirationThreshold = TimeSpan.FromMinutes(5);
 
