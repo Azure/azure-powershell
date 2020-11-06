@@ -2,7 +2,7 @@
 name: Az module bug report
 about: Report errors or unexpected behaviors for the Az module
 title: ''
-labels: triage
+labels: needs-triage
 assignees: ''
 
 ---

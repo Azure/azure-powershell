@@ -800,6 +800,16 @@ function Test-UpdateKeyVault {
         $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
         Assert-False { $vault.EnableRbacAuthorization } "6. EnableRbacAuthorization should be false"
 
+        # Update Tags
+        $vault = $vault | Update-AzKeyVault -Tag @{key = "value"}
+        Assert-AreEqual 1 $vault.Tags.Count "7. Tags should contain a key-value pair (key, value)"
+        Assert-True { $vault.Tags.Contains("key") } "7. Tags should contain a key-value pair (key, value)"
+        Assert-AreEqual "value" $vault.Tags["key"] "7. Tags should contain a key-value pair (key, value)"
+
+        # Clean Tags
+        $vault = $vault | Update-AzKeyVault -Tag @{}
+        Assert-AreEqual 0 $vault.Tags.Count "8. Tags should be empty"
+
     }
     finally {
         $rg | Remove-AzResourceGroup -Force

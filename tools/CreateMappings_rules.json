@@ -600,5 +600,9 @@
   {
     "alias": "Migrate",
     "regex": "Migrate"
+  },
+  {
+    "regex": "DigitalTwins",
+    "alias": "DigitalTwins"
   }
 ]
