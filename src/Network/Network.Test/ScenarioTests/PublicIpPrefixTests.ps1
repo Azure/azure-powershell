@@ -139,7 +139,7 @@ function Test-GlobalPublicIpPrefixCRUD
         $ipTag.Tag = $ipTagTag
 
         # Create publicIpPrefix
-        $job = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -Tier Global -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag -AsJob
+        $job = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Tier Global -PrefixLength 30 -IpTag $ipTag -AsJob
         $job | Wait-Job
         $actual = $job | Receive-Job
         $expected = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname

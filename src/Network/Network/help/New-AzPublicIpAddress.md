@@ -73,6 +73,16 @@ $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of thi
 public IP address is immediately allocated to this resource from the publicIpPrefix specified.
 This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
 
+### Example 5: Create a new global public IP address
+```powershell
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $domainNameLabel -Location $location -Sku Standard -Tier Global
+```
+
+This command creates a new global public IP address resource.A DNS record is created for
+$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
+global public IP address is immediately allocated to this resource.
+This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
+
 ## PARAMETERS
 
 ### -AllocationMethod

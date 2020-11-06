@@ -623,7 +623,7 @@ function Test-PublicIpAddressCRUD-StandardSkuGlobalTier
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -Tier Global -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -Sku Standard -Tier Global -DomainNameLabel $domainNameLabel
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name

@@ -31,6 +31,13 @@ PS C:\> $publicIpPrefix = New-AzPublicIpPrefix -Name $prefixName -ResourceGroupN
 
 This command creates a new public IP prefix resource. 
 
+### Example 2: Create a new global public Ip prefix
+```powershell
+PS C:\> $publicIpPrefix = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Tier Global -PrefixLength 30
+```
+
+This command creates a new global public IP prefix resource. 
+
 ## PARAMETERS
 
 ### -AsJob
