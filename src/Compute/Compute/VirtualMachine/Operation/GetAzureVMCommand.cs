@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -95,6 +100,20 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public DisplayHintType DisplayHint { get; set; }
 
+        //adam
+        /*
+        public IResourceManagementClient ResourceManagerClient
+        {
+            get
+            {
+                return resourceManagerClient = resourceManagerClient ?? new ResourceManagementClient(
+                                                   DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                                   ClientCredentials);
+            }
+            set => resourceManagerClient = value;
+        }*/
+        //adam
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -115,8 +134,24 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
+                    
+                    
+                    /*
                     var test = this.VirtualMachineClient.Get("", Name);
-                    //this.VirtualMachineClient.
+                    this.VirtualMachineClient.List("").SelectMany;
+                    this.VirtualMachineClient.lis
+                    this.VirtualMachineClient.ListAvailableSizes("", "");
+                    this.VirtualMachineClient.ListByLocationAsync(this.Location);
+                    this.ComputeClient.ComputeManagementClient.VirtualMachines;
+                    this.ComputeClient.ComputeManagementClient.Images;
+                    var t = this.Location;
+                    var r = this.ResourceGroupName;
+                    this.ShouldGetByName();
+                    this.SubResourceWildcardFilter();
+                    this.TopLevelWildcardFilter();
+
+                    this.VirtualMachineClient.ListWithHttpMessagesAsync();*/
+                     
 
                     ReturnListVMObject(
                         this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
