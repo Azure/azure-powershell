@@ -63,7 +63,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; },
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
                @{ModuleName = 'Az.Network'; RequiredVersion = '1.6.0'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.11.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.11.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.0'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '0.10.0'; })
 
