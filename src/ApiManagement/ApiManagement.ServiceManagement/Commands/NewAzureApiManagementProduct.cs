@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Maximum number of simultaneous subscriptions. This parameter is optional." +
-                          " Default value is 1.")]
+                          " Default value is None.")]
         public Int32? SubscriptionsLimit { get; set; }
 
         [Parameter(
@@ -93,7 +93,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
             {
                 approvalRequired = ApprovalRequired ?? false;
-                subscriptionsLimit = SubscriptionsLimit ?? 1;
             }
 
             var product = Client.ProductCreate(
