@@ -6,12 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Name of the format. Valid values are:
-    /// FileZilla3
-    /// WebDeploy -- default
-    /// Ftp
-    /// </summary>
+    /// <summary>Argument completer implementation for PublishingProfileFormat.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormatTypeConverter))]
     public partial struct PublishingProfileFormat :
         System.Management.Automation.IArgumentCompleter

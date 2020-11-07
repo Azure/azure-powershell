@@ -236,15 +236,8 @@ function Install-AzModule {
         }
 
         if ($RemoveAzureRm -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            try {
-                $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?$" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?$"}
-                foreach($azureModuleName in $azureModuleNames) {
-                    Uninstall-Module -Name $azureModuleName -AllVersion -ErrorAction SilentlyContinue
-                }
-            }
-            catch {
-                Write-Warning $_
-            }
+            Uninstall-Module -Name 'AzureRm*' -AllVersion -ErrorAction SilentlyContinue
+            Uninstall-Module -Name 'Azure.*' -AllVersion -ErrorAction SilentlyContinue
         }
 
         #install Az.Accounts first

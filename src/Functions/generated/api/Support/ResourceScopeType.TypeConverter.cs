@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Name of a resource type this recommendation applies, e.g. Subscription, ServerFarm, Site.
-    /// </summary>
+    /// <summary>TypeConverter implementation for ResourceScopeType.</summary>
     public partial class ResourceScopeTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

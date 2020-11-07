@@ -396,12 +396,12 @@ Accept wildcard characters: False
 
 ### -LicenseType
 Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
-Possible values for Windows Server are:
+This value is used only for images that contain the Windows Server operating system.
+The acceptable values for this parameter are:
 - Windows_Client
 - Windows_Server
-Possible values for Linux Server operating system are: 
-- RHEL_BYOS (for RHEL) 
-- SLES_BYOS (for SUSE) 
+This value cannot be updated.
+If you specify this parameter for an update, the value must match the initial value for the virtual machine.
 
 ```yaml
 Type: System.String

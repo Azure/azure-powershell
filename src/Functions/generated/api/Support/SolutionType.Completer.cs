@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of Solution</summary>
+    /// <summary>Argument completer implementation for SolutionType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SolutionTypeTypeConverter))]
     public partial struct SolutionType :
         System.Management.Automation.IArgumentCompleter

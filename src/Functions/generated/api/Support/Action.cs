@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The action of virtual network rule.</summary>
     public partial struct Action :
         System.IEquatable<Action>
     {

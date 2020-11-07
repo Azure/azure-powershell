@@ -28,25 +28,25 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "Gets or sets the storage account resource id.")]
-        public string StorageAccountResourceId
+        [Parameter(HelpMessage = "Gets or sets the account name for the default storage account.")]
+        public string DefaultStorageAccountName
         {
-            get { return _config.StorageAccountResourceId; }
-            set { _config.StorageAccountResourceId = value; }
+            get { return _config.DefaultStorageAccountName; }
+            set { _config.DefaultStorageAccountName = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the storage account access key.")]
-        public string StorageAccountKey
+        [Parameter(HelpMessage = "Gets or sets the storage key for the default Azure Storage Account.")]
+        public string DefaultStorageAccountKey
         {
-            get { return _config.StorageAccountKey; }
-            set { _config.StorageAccountKey = value; }
+            get { return _config.DefaultStorageAccountKey; }
+            set { _config.DefaultStorageAccountKey = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the type of the default storage account.")]
-        public StorageType StorageAccountType
+        public StorageType DefaultStorageAccountType
         {
-            get { return _config.StorageAccountType; }
-            set { _config.StorageAccountType = value; }
+            get { return _config.DefaultStorageAccountType; }
+            set { _config.DefaultStorageAccountType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
@@ -189,6 +189,22 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return _config.EncryptionVaultUri; }
             set { _config.EncryptionVaultUri = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the public network access type.")]
+        [ValidateSet(PublicNetworkAccess.InboundAndOutbound, PublicNetworkAccess.OutboundOnly, IgnoreCase = true)]
+        public string PublicNetworkAccessType
+        {
+            get { return _config.PublicNetworkAccessType; }
+            set { _config.PublicNetworkAccessType = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the outbound access type to the public network.")]
+        [ValidateSet(OutboundOnlyPublicNetworkAccessType.PublicLoadBalancer, OutboundOnlyPublicNetworkAccessType.UDR, IgnoreCase = true)]
+        public string OutboundPublicNetworkAccessType
+        {
+            get { return _config.OutboundPublicNetworkAccessType; }
+            set { _config.OutboundPublicNetworkAccessType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption in transit or not.")]

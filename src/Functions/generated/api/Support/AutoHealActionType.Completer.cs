@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Predefined action to be taken.</summary>
+    /// <summary>Argument completer implementation for AutoHealActionType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionTypeTypeConverter))]
     public partial struct AutoHealActionType :
         System.Management.Automation.IArgumentCompleter

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Current order status.</summary>
     public partial struct CertificateOrderStatus :
         System.IEquatable<CertificateOrderStatus>
     {

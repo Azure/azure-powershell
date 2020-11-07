@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -27,38 +25,23 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     public class AuthenticationResultToken : IAccessToken
     {
         AuthenticationResult _result;
-        public string AccessToken { get; }
+        public string AccessToken => _result.AccessToken;
 
-        public string UserId { get; }
+        public string UserId => _result.UserInfo.DisplayableId;
 
-        public string TenantId { get; }
+        public string TenantId => _result.TenantId;
 
         public string LoginType => "User";
-
-        public string HomeAccountId { get; set; }
-
-        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
 
         public AuthenticationResultToken(AuthenticationResult result)
         {
             _result = result;
-            AccessToken = result.AccessToken;
-            UserId = result.Account?.Username;
-            TenantId = result.TenantId;
-        }
-
-        public AuthenticationResultToken(AuthenticationResult result, string userId = null, string tenantId = null)
-        {
-            _result = result;
-            AccessToken = result.AccessToken;
-            UserId = result.Account?.Username ?? userId;
-            TenantId = result.TenantId ?? tenantId;
         }
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             var header = _result.CreateAuthorizationHeader();
-            authTokenSetter("Bearer", _result.AccessToken);
+            authTokenSetter(_result.AccessTokenType, _result.AccessToken);
         }
 
         public static async Task<IAccessToken> GetAccessTokenAsync(Task<AuthenticationResult> result)
@@ -66,19 +49,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return new AuthenticationResultToken(await result);
         }
 
-        public static async Task<IAccessToken> GetAccessTokenAsync(Task<AuthenticationResult> result, string userId = null, string tenantId = null)
-        {
-            return new AuthenticationResultToken(await result, userId, tenantId);
-        }
-
         public static IAccessToken GetAccessToken(AuthenticationResult result)
         {
             return new AuthenticationResultToken(result);
         }
 
-        public static IAccessToken GetAccessToken(AuthenticationResult result, string userId = null, string tenantId = null)
-        {
-            return new AuthenticationResultToken(result, userId, tenantId);
-        }
     }
 }

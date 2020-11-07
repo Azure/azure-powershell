@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Domain registration status.</summary>
+    /// <summary>TypeConverter implementation for DomainStatus.</summary>
     public partial class DomainStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

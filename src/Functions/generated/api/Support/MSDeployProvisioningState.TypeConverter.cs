@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Provisioning state</summary>
+    /// <summary>TypeConverter implementation for MSDeployProvisioningState.</summary>
     public partial class MSDeployProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

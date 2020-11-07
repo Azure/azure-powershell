@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&
-                                string.IsNullOrEmpty(c.StorageAccountKey) &&
-                                string.IsNullOrEmpty(c.StorageAccountResourceId) &&
+                                string.IsNullOrEmpty(c.DefaultStorageAccountKey) &&
+                                string.IsNullOrEmpty(c.DefaultStorageAccountName) &&
                                 string.IsNullOrEmpty(c.HeadNodeSize) &&
                                 string.IsNullOrEmpty(c.ZookeeperNodeSize) &&
                                 ((!setEdgeNodeVmSize && string.IsNullOrEmpty(c.EdgeNodeSize)) || (setEdgeNodeVmSize && c.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&

@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.Profile.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -26,14 +29,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
     {
         public const string InputObjectParameterSet = "SelectByInputObject";
         public const string ContextNameParameterSet = "SelectByName";
-        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
+        [Parameter(Mandatory =true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline =true, HelpMessage ="A context object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }
-
-        /// <summary>
-        /// This cmdlet should work even if there isn't a default context
-        /// </summary>
-        protected override bool RequireDefaultContext() { return false; }
 
         public object GetDynamicParameters()
         {
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
             string name = null;
             if (ParameterSetName == InputObjectParameterSet)
             {
-                name = InputObject?.Name;
+                    name = InputObject?.Name;
             }
             else if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {

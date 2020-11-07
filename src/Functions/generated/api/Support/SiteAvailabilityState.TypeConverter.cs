@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Management information availability state for the app.</summary>
+    /// <summary>TypeConverter implementation for SiteAvailabilityState.</summary>
     public partial class SiteAvailabilityStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -22,8 +22,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceIds;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-    using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using System;
@@ -35,8 +33,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
+    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
+        /// <summary>
+        /// Adding a hard-coded API version to be used when there is no value provided for 'ApiVersion' parameter.
+        /// This is a temporary change until we update the cmdlet to use .NET SDK based client.
+        /// </summary>
+        private const string DefaultApiVersion = "2020-06-01";
+
         /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
@@ -90,42 +94,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// Gets or sets the API version.
-        /// </summary>
-        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced. Using the lastest possible API version will become the default behavior.")]
-        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
-        [ValidateNotNullOrEmpty]
-        public override string ApiVersion { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string contents;
-
             if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
 
                 var resourceGroupId = this.GetResourceGroupId();
 
-                if (! this.IsParameterBound(c => c.ApiVersion))
+                var apiVersion = this.ApiVersion ?? DefaultApiVersion;
+
+                var parameters = new ExportTemplateParameters
                 {
-                    var parameters = new ExportTemplateRequest
-                    {
-                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                        Options = this.GetExportOptions(),
-                    };
+                    Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
+                    Options = this.GetExportOptions(),
+                };
 
-                    var exportedTemplate = ResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
+                var operationResult = this.GetResourcesClient()
+                    .InvokeActionOnResource<JObject>(
+                        resourceId: resourceGroupId,
+                        action: Constants.ExportTemplate,
+                        parameters: parameters.ToJToken(),
+                        apiVersion: apiVersion,
+                        cancellationToken: this.CancellationToken.Value)
+                    .Result;
 
-                    var template = exportedTemplate.Template;
-                    contents = template.ToString();
+                var managementUri = this.GetResourcesClient()
+                    .GetResourceManagementRequestUri(
+                        resourceId: resourceGroupId,
+                        apiVersion: apiVersion,
+                        action: Constants.ExportTemplate);
 
-                    var error = exportedTemplate.Error;
+                var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                var resultString = this.GetLongRunningOperationTracker(activityName: activity,
+                    isResourceCreateOrUpdate: false)
+                    .WaitOnOperation(operationResult: operationResult);
 
-                    if(error != null)
+                var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+
+                if (JObject.Parse(resultString)["error"] != null)
+                {
+                    ExtendedErrorInfo error;
+                    if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
                     {
                         WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
                         foreach (var detail in error.Details)
@@ -134,53 +146,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         }
                     }
                 }
-                else
-                {
-                    var parameters = new ExportTemplateParameters
-                    {
-                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                        Options = this.GetExportOptions(),
-                    };
-                    var apiVersion = this.ApiVersion;
-                    var operationResult = this.GetResourcesClient()
-                       .InvokeActionOnResource<JObject>(
-                           resourceId: resourceGroupId,
-                           action: Constants.ExportTemplate,
-                           parameters: parameters.ToJToken(),
-                           apiVersion: apiVersion,
-                           cancellationToken: this.CancellationToken.Value)
-                       .Result;
-
-                    var managementUri = this.GetResourcesClient()
-                        .GetResourceManagementRequestUri(
-                            resourceId: resourceGroupId,
-                            apiVersion: apiVersion,
-                            action: Constants.ExportTemplate);
-
-                    var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-                    var resultString = this.GetLongRunningOperationTracker(activityName: activity,
-                        isResourceCreateOrUpdate: false)
-                        .WaitOnOperation(operationResult: operationResult);
-
-                    var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
-                    contents = template.ToString();
-
-                    if (JObject.Parse(resultString)["error"] != null)
-                    {
-                        if (JObject.Parse(resultString)["error"].TryConvertTo(out ExtendedErrorInfo error))
-                        {
-                            WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                            foreach (var detail in error.Details)
-                            {
-                                WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
-                            }
-                        }
-                    }
-                }
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.ResourceGroupName,
-                    contents: contents,
+                    contents: template.ToString(),
                     outputPath:
                         string.IsNullOrEmpty(this.Path)
                             ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)

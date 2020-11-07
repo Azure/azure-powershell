@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Size of the machines.</summary>
     public partial struct WorkerSizeOptions :
         System.IEquatable<WorkerSizeOptions>
     {

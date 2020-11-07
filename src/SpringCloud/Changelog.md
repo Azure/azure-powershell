@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.2.0
-* Updated API version to 2020-07-01.
-
 ## Version 0.1.0
 * First preview release for module Az.SpringCloud.
 

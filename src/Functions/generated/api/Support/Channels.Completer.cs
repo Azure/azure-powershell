@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>List of channels that this recommendation can apply.</summary>
+    /// <summary>Argument completer implementation for Channels.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ChannelsTypeConverter))]
     public partial struct Channels :
         System.Management.Automation.IArgumentCompleter

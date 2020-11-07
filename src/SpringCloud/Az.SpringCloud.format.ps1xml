@@ -72,9 +72,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -106,9 +106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -128,9 +128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AppResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -186,9 +186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AvailableOperations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AvailableOperations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.AvailableOperations</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AvailableOperations</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -208,9 +208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -236,9 +236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -258,9 +258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.BindingResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.BindingResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -316,9 +316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -392,9 +392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -420,9 +420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CertificateResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CertificateResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -442,9 +442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -476,9 +476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ClusterResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ClusterResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ClusterResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ClusterResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -510,9 +510,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerGitProperty</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerGitProperty</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerGitProperty</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerGitProperty</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -580,21 +580,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ProvisioningState</Label>
+            <Label>State</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
+                <PropertyName>State</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -602,37 +602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ConfigServerResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -664,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -692,9 +664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -714,9 +686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainValidatePayload</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainValidatePayload</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainValidatePayload</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainValidatePayload</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -736,9 +708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainValidateResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainValidateResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.CustomDomainValidateResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.CustomDomainValidateResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -764,9 +736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentInstance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentInstance</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentInstance</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentInstance</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -778,9 +750,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Reason</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
@@ -799,9 +768,6 @@
                 <PropertyName>Reason</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Status</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -810,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -838,9 +804,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -860,9 +826,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -906,9 +872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -916,13 +882,13 @@
             <Label>Cpu</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>InstanceCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>JvmOption</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MemoryInGb</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetCoreMainEntryPath</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RuntimeVersion</Label>
@@ -935,13 +901,13 @@
                 <PropertyName>Cpu</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>InstanceCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>JvmOption</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MemoryInGb</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetCoreMainEntryPath</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RuntimeVersion</PropertyName>
@@ -952,9 +918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentSettingsEnvironmentVariables</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettingsEnvironmentVariables</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.DeploymentSettingsEnvironmentVariables</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettingsEnvironmentVariables</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -974,9 +940,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Error</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Error</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1002,9 +968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.GitPatternRepository</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.GitPatternRepository</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.GitPatternRepository</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.GitPatternRepository</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1084,9 +1050,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.LogFileUrlResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.LogFileUrlResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.LogFileUrlResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.LogFileUrlResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1106,9 +1072,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.LogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.LogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.LogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.LogSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1140,9 +1106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ManagedIdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ManagedIdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1174,9 +1140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MetricDimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.MetricDimension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MetricDimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.MetricDimension</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1202,9 +1168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.MetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.MetricSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1272,71 +1238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MonitoringSettingProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NameAvailability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MonitoringSettingProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AppInsightsInstrumentationKey</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TraceEnabled</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AppInsightsInstrumentationKey</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TraceEnabled</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MonitoringSettingResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.MonitoringSettingResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NameAvailability</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NameAvailability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NameAvailability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1368,9 +1272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NameAvailabilityParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NameAvailabilityParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NameAvailabilityParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NameAvailabilityParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1396,9 +1300,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NetworkProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NetworkProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NetworkProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NetworkProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1442,31 +1346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NetworkProfileOutboundIPs</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.OperationDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.NetworkProfileOutboundIPs</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PublicIP</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PublicIP</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.OperationDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.OperationDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.OperationDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1498,9 +1380,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1538,9 +1420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.PersistentDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.PersistentDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1572,9 +1454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1600,9 +1482,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.RegenerateTestKeyRequestPayload</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.RegenerateTestKeyRequestPayload</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.RegenerateTestKeyRequestPayload</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.RegenerateTestKeyRequestPayload</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1622,9 +1504,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1650,9 +1532,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1690,9 +1572,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuCapabilities</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuCapabilities</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuCapabilities</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuCapabilities</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1718,9 +1600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1740,9 +1622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuLocationInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuLocationInfo1</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuLocationInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuLocationInfo1</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1768,9 +1650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuRestrictionInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuRestrictionInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuRestrictionInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuRestrictionInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1796,9 +1678,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuRestrictions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuRestrictions1</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuRestrictions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuRestrictions1</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuZoneDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuZoneDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceSkuZoneDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceSkuZoneDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1852,9 +1734,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceUploadDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceUploadDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ResourceUploadDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ResourceUploadDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1880,9 +1762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ServiceResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ServiceResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ServiceResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ServiceResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1914,9 +1796,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ServiceResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ServiceResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ServiceResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ServiceResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1936,9 +1818,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1970,9 +1852,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.SkuCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.SkuCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.SkuCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.SkuCapacity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2010,43 +1892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.SupportedRuntimeVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.SupportedRuntimeVersion</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Platform</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Platform</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TemporaryDisk</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TemporaryDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2072,9 +1920,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TestKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TestKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TestKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TestKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2118,9 +1966,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AppInsightInstrumentationKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AppInsightInstrumentationKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2152,9 +2034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2174,9 +2056,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.UserSourceInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.UserSourceInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

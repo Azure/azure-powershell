@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Management.Automation;
-
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using System;
+using System.Linq;
+using System.Collections.ObjectModel;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -41,14 +43,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             get
             {
-                try
-                {
-                    if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
-                    {
-                        return null;
-                    }
-                }
-                catch (InvalidOperationException)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
                 {
                     return null;
                 }
@@ -57,47 +52,23 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        [Parameter(Mandatory = true, ParameterSetName = ListAllParameterSet, HelpMessage = "List all available contexts in the current session.")]
+        [Parameter(Mandatory =true, ParameterSetName = ListAllParameterSet, HelpMessage ="List all available contexts in the current session.")]
         public SwitchParameter ListAvailable { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = ListAllParameterSet, HelpMessage = "Refresh contexts from token cache")]
-        public SwitchParameter RefreshContextFromTokenCache { get; set; }
-
-        protected override void BeginProcessing()
-        {
-            // Skip BeginProcessing()
-        }
 
         public override void ExecuteCmdlet()
         {
-            if (ListAvailable.IsPresent && RefreshContextFromTokenCache.IsPresent)
-            {
-                try
-                {
-                    var defaultProfile = DefaultProfile as AzureRmProfile;
-                    if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
-                    {
-                        defaultProfile.RefreshContextsFromCache();
-                    }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning(e.ToString());
-                }
-            }
-
             // If no context is found, return
-            if (DefaultContext == null && !this.ListAvailable.IsPresent)
+            if (DefaultContext == null)
             {
                 return;
             }
 
-            if (this.ListAvailable.IsPresent)
+            if (ListAvailable.IsPresent)
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
-                    foreach (var context in profile.Contexts)
+                    foreach( var context in profile.Contexts)
                     {
                         WriteContext(context.Value, context.Key);
                     }

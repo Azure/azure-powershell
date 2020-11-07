@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Defines what this IP filter will be used for. This is to support IP filtering on proxies.
-    /// </summary>
+    /// <summary>Argument completer implementation for IPFilterTag.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTagTypeConverter))]
     public partial struct IPFilterTag :
         System.Management.Automation.IArgumentCompleter

@@ -27,7 +27,6 @@ The **Add-AzHDInsightStorage** cmdlet adds an Azure Storage account entry to the
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
@@ -63,9 +62,9 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -StorageAccountResourceId $storageAccountResourceId `
-                -StorageAccountKey $storageAccountKey `
-                -StorageContainer $storageContainer
+                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+                -DefaultStorageAccountKey $storageAccountKey `
+                -DefaultStorageContainer $storageContainer
 ```
 
 This command adds an blob storage account entry to the HDInsight configuration named your-hadoop-001.

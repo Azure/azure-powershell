@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Action object.</summary>
+    /// <summary>TypeConverter implementation for AccessControlEntryAction.</summary>
     public partial class AccessControlEntryActionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

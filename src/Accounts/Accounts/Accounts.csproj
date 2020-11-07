@@ -25,10 +25,7 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
-    <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
-      Executable: pwsh
-      Application arguments: -NoExit -Command "Import-Module C:\AME\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1"-->
-    <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
+    <Copy SourceFiles="$(RepoSrc)lib\PreloadAssemblyInfo.json" DestinationFolder="$(TargetDir)" />
   </Target>
 
   <ItemGroup>
@@ -45,8 +42,7 @@
    
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
-    <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />  
   </ItemGroup>
    
   <ItemGroup>

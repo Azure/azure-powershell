@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Log entry type</summary>
+    /// <summary>Argument completer implementation for MSDeployLogEntryType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryTypeTypeConverter))]
     public partial struct MSDeployLogEntryType :
         System.Management.Automation.IArgumentCompleter

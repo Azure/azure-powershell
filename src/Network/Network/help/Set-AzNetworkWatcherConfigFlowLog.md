@@ -429,7 +429,7 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficAnalyticsInterval
-Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics. Supported values are 10 and 60 minutes.
+Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.
 
 ```yaml
 Type: System.Int32

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Job type.</summary>
+    /// <summary>TypeConverter implementation for WebJobType.</summary>
     public partial class WebJobTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

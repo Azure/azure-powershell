@@ -23,12 +23,12 @@ function Test-ClusterRelatedCommands{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter
+		$params= Prepare-ClusterCreateParameterForWASB
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
@@ -104,17 +104,56 @@ function Test-CreateClusterWithEncryptionInTransit{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -Location "South Central US"
+		$params= Prepare-ClusterCreateParameterForWASB -Location "South Central US"
 		$encryptionInTransit=$true
 
 		# create cluster
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionInTransit $encryptionInTransit
 
 		Assert-AreEqual $cluster.EncryptionInTransit $encryptionInTransit
+		
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster which Private Link
+#>
+
+function Test-CreateClusterWithPrivateLink{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameterForWASB -location "South Central US"
+
+		# Prepare virtual network
+		$vnetName=Generate-Name("hdi-ps-vnet")
+		$vnet=Create-VnetkWithSubnet -location $params.location -resourceGroupName $params.resourceGroupName `
+		-vnetName $vnetName -subnetPrivateLinkServiceNetworkPoliciesFlag $false 
+
+		# create cluster
+		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
+		-VirtualNetworkId $vnet.Id -SubnetName $vnet.Subnets[0].Id `
+		-PublicNetworkAccessType OutboundOnly -OutboundPublicNetworkAccessType PublicLoadBalancer
+
+		Assert-AreEqual $cluster.PublicNetworkAccessType OutboundOnly
+		Assert-AreEqual $cluster.OutboundPublicNetworkAccessType PublicLoadBalancer
 		
 	}
 	finally
@@ -136,7 +175,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameterForWASB -location "South Central US"
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_DS14_v2"
 		$headNodeSize="Standard_DS14_v2"
@@ -146,7 +185,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
 
@@ -172,7 +211,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "East US"
+		$params= Prepare-ClusterCreateParameterForWASB -location "East US"
 
 		# create autoscale cofiguration
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 4 -MaxWorkerNodeCount 5
@@ -180,7 +219,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 		# create cluster with load-based autoscale
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
 		-AutoscaleConfiguration $autoscaleConfiguration
@@ -208,7 +247,7 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "East US"
+		$params= Prepare-ClusterCreateParameterForWASB -location "East US"
 
 		# create autoscale schedule condition
 		$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time "09:00" -WorkerNodeCount 4 -Day Monday,Tuesday
@@ -221,7 +260,7 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 		# create cluster with schedule-based autoscale
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-DefaultStorageAccountName $params.storageAccountName -DefaultStorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
 		-AutoscaleConfiguration $autoscaleConfiguration
@@ -230,43 +269,6 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 		Assert-NotNull $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence
 		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.Condition[0].WorkerNodeCount $condition1.WorkerNodeCount
 		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence.Condition[1].WorkerNodeCount $condition2.WorkerNodeCount
-	}
-	finally
-	{
-		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
-	}
-}
-
-<#
-.SYNOPSIS
-Test Create Azure HDInsight Cluster with kafka rest proxy.
-#>
-
-function Test-CreateClusterWithKafkaRestProxy{
-# Create some resources that will be used throughout test
-	try
-	{
-		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US" -clusterType Kafka
-		$kafkaClientGroupName="FakeClientGroup"
-		$kafkaClientGroupId="00000000-0000-0000-0000-000000000000"
-		$disksPerWorkerNode=2
-
-		# test create cluster
-		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -KafkaClientGroupId  $kafkaClientGroupId `
-		-KafkaClientGroupName $kafkaClientGroupName -DisksPerWorkerNode $disksPerWorkerNode `
-		-KafkaManagementNodeSize Standard_D4_v2
-
-		Assert-NotNull $cluster
-		#test Get-AzHDInsightCluster
-		$resultCluster = Get-AzHDInsightCluster -ClusterName $cluster.Name
-		Assert-AreEqual $resultCluster.Name  $cluster.Name
 	}
 	finally
 	{

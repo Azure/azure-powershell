@@ -644,10 +644,6 @@ namespace Common.Authentication.Test.Cmdlets
             public string TenantId { get; private set; }
             public string UserId { get; private set; }
 
-            public string HomeAccountId => throw new NotImplementedException();
-
-            public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
-
             public SimpleAccessToken(IAzureAccount account, string tenantId, string tokenType = _defaultTokenType)
             {
                 if (account == null)

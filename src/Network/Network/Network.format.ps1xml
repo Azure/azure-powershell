@@ -334,10 +334,6 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Type</Label>
-                <PropertyName>Type</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>ResourceId</Label>
                 <PropertyName>ResourceId</PropertyName>
               </ListItem>
@@ -346,12 +342,8 @@
                 <PropertyName>Address</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Scope</Label>
-                <PropertyName>ScopeText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>CoverageLevel</Label>
-                <PropertyName>CoverageLevel</PropertyName>
+                <Label>Filter</Label>
+                <PropertyName>FilterText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -359,21 +351,21 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScope</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScope</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilter</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Include</Label>
-                <PropertyName>IncludeText</PropertyName>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Exclude</Label>
-                <PropertyName>ExcludeText</PropertyName>
+                <Label>Items</Label>
+                <PropertyName>ItemsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -381,14 +373,18 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScoperItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>Address</Label>
                 <PropertyName>Address</PropertyName>
@@ -496,10 +492,6 @@
               <ListItem>
                 <Label>DisableTraceRoute</Label>
                 <PropertyName>DisableTraceRoute</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>DestinationPortBehavior</Label>
-                <PropertyName>DestinationPortBehavior</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

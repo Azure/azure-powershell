@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Gets the type of restrictions. Possible values include: 'Location', 'Zone'</summary>
+    /// <summary>TypeConverter implementation for ResourceSkuRestrictionsType.</summary>
     public partial class ResourceSkuRestrictionsTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -162,6 +162,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
+        )]
+        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The list of DNS Servers"
         )]
         public string[] DnsServer { get; set; }
@@ -268,7 +274,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var firewall = new PSAzureFirewall();
             var sku = new PSAzureFirewallSku();
-            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName: MNM.AzureFirewallSkuName.AZFWVNet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
             if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
@@ -285,7 +291,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
-                if (this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                if(this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
                 {
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
                 }
@@ -315,7 +321,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
+                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku

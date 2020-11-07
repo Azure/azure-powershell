@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The action of virtual network rule.</summary>
+    /// <summary>Argument completer implementation for Action.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ActionTypeConverter))]
     public partial struct Action :
         System.Management.Automation.IArgumentCompleter

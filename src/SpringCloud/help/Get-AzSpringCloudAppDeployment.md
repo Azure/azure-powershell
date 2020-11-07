@@ -12,10 +12,10 @@ Get a Deployment and its properties.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzSpringCloudAppDeployment -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
- [-Version <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudAppDeployment -AppName <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-Version <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -28,12 +28,6 @@ Get-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupNa
 ```
 Get-AzSpringCloudAppDeployment -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzSpringCloudAppDeployment -AppName <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String[]>] [-Version <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,7 +144,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -165,7 +159,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -181,7 +175,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -196,7 +190,7 @@ Version of the deployments to be listed
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -215,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource
 
 ## NOTES
 

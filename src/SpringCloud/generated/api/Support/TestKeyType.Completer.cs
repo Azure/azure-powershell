@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Type of the test key</summary>
+    /// <summary>Argument completer implementation for TestKeyType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.TestKeyTypeTypeConverter))]
     public partial struct TestKeyType :
         System.Management.Automation.IArgumentCompleter

@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>State of the config server.</summary>
     public partial struct ConfigServerState :
         System.IEquatable<ConfigServerState>
     {

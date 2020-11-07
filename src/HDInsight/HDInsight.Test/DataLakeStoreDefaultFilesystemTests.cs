@@ -29,7 +29,7 @@ namespace Commands.HDInsight.Test.UnitTests
     public class DataLakeStoreDefaultFilesystemTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
-        private const string StorageAccountResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fakerg/providers/Microsoft.Storage/storageAccounts/dummystorage";
+        private const string StorageName = "dummystorage.azuredatalakestore.net";
         private const int ClusterSize = 4;
         private Guid ObjectId = new Guid("11111111-1111-1111-1111-111111111111");
         private Guid ApplicationId = new Guid("11111111-1111-1111-1111-111111111111");
@@ -66,7 +66,7 @@ namespace Commands.HDInsight.Test.UnitTests
                 CertificateFilePath = Certificate,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
-                StorageAccountResourceId = StorageAccountResourceId
+                DefaultStorageAccountName = StorageName
             };
 
             newclusteridentitycmdlet.ExecuteCmdlet();
@@ -80,7 +80,7 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.ObjectId == ObjectId &&
                                 c.ApplicationId == ApplicationId &&
                                 c.CertificateFilePath == Certificate &&
-                                c.StorageAccountResourceId == StorageAccountResourceId
+                                c.DefaultStorageAccountName == StorageName
                                 )),
                 Times.Once);
         }
@@ -98,7 +98,7 @@ namespace Commands.HDInsight.Test.UnitTests
                 CertificateFileContents = CertificateFileContents,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
-                StorageAccountResourceId = StorageAccountResourceId
+                DefaultStorageAccountName = StorageName
             };
 
             clusterIdentityCmdlet.ExecuteCmdlet();
@@ -112,7 +112,7 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.ObjectId == ObjectId &&
                                 c.ApplicationId == ApplicationId &&
                                 c.CertificateFileContents == CertificateFileContents &&
-                                c.StorageAccountResourceId == StorageAccountResourceId
+                                c.DefaultStorageAccountName == StorageName
                                 )),
                 Times.Once);
         }

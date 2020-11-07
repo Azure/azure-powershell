@@ -14,8 +14,8 @@ Creates a new IotHub.
 
 ```
 New-AzIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> -Units <Int64>
- -Location <String> [-Properties <PSIotHubInputProperties>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-Properties <PSIotHubInputProperties>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,12 +26,10 @@ You can create the IotHub with either the default properties or specify the inpu
 
 ### Example 1 Create a new IotHub with default properties
 ```
-PS C:\> $tags = @{}
-PS C:\> $tags.Add('key1','value1')
-PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Tag $tags
+PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope"
 ```
 
-Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" included with Tags.
+Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 
 ### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudToDevice Queue set to 20
 ```
@@ -128,21 +126,6 @@ Aliases:
 Accepted values: F1, S1, S2, S3, B1, B2, B3
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-IoT hub instance tags. Property bag in key-value pairs in the form of a hash table.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

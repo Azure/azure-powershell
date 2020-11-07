@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>DNS verification test result.</summary>
+    /// <summary>Argument completer implementation for DnsVerificationTestResult.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DnsVerificationTestResultTypeConverter))]
     public partial struct DnsVerificationTestResult :
         System.Management.Automation.IArgumentCompleter

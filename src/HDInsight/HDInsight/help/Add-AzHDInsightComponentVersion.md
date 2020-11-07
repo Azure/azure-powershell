@@ -29,7 +29,6 @@ The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running 
 PS C:\> # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
-        $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
             -Name $storageAccountName | %{ $_.Key1 }
@@ -58,9 +57,9 @@ PS C:\> # Primary storage account info
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -StorageAccountResourceId $storageAccountResourceId `
-                -StorageAccountKey $storageAccountKey `
-                -StorageContainer $storageContainer `
+                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+                -DefaultStorageAccountKey $storageAccountKey `
+                -DefaultStorageContainer $storageContainer `
                 -SshCredential $sshCredentials `
                 -Version "3.5"
 ```

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
@@ -25,206 +26,90 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the connection monitor endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Azure VM endpoint switch.",
-            ParameterSetName = "AzureVM")]
-        public SwitchParameter AzureVM { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Azure Vnet endpoint switch.",
-            ParameterSetName = "AzureVNet")]
-        public SwitchParameter AzureVNet { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Azure Subnet endpoint switch.",
-            ParameterSetName = "AzureSubnet")]
-        public SwitchParameter AzureSubnet { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "External Address endpoint switch.",
-            ParameterSetName = "ExternalAddress")]
-        public SwitchParameter ExternalAddress { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "MMA Workspace Machine endpoint switch.",
-            ParameterSetName = "MMAWorkspaceMachine")]
-        public SwitchParameter MMAWorkspaceMachine { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "MMA Workspace Network endpoint switch.",
-            ParameterSetName = "MMAWorkspaceNetwork")]
-        public SwitchParameter MMAWorkspaceNetwork { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             HelpMessage = "Resource ID of the connection monitor endpoint.",
-             ParameterSetName = "AzureVM")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Resource ID of the connection monitor endpoint.",
-             ParameterSetName = "AzureVNet")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Resource ID of the connection monitor endpoint.",
-             ParameterSetName = "AzureSubnet")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Resource ID of the connection monitor endpoint.",
-             ParameterSetName = "MMAWorkspaceMachine")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Resource ID of the connection monitor endpoint.",
-             ParameterSetName = "MMAWorkspaceNetwork")]
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "Address of the connection monitor endpoint (IP or domain name).",
-             ParameterSetName = "ExternalAddress")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Address of the connection monitor endpoint (IP or domain name).",
-             ParameterSetName = "MMAWorkspaceMachine")]
-        [Parameter(
             Mandatory = false,
             HelpMessage = "Address of the connection monitor endpoint (IP or domain name).",
-             ParameterSetName = "AzureVM")]
+            ParameterSetName = "SetByAddress")]
         [ValidateNotNullOrEmpty]
         public string Address { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
-             ParameterSetName = "AzureVNet")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
-             ParameterSetName = "MMAWorkspaceMachine")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpont scope.",
-             ParameterSetName = "MMAWorkspaceNetwork")]
+            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.",
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
+        [PSArgumentCompleter("Include")]
+        public string FilterType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be excluded from endpoint scope.",
-             ParameterSetName = "AzureVNet")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "List of items which need to be excluded from endpoint scope.",
-             ParameterSetName = "AzureSubnet")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "List of items which need to be excluded from endpoint scope.",
-             ParameterSetName = "MMAWorkspaceNetwork")]
+            HelpMessage = "List of items in the filter.",
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
-             ParameterSetName = "AzureVNet")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
-             ParameterSetName = "AzureSubnet")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
-             ParameterSetName = "MMAWorkspaceNetwork")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full")]
-        public string CoverageLevel { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointFilterItem[] FilterItem { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    string[] SplittedName = ResourceId.Split('/');
+                    // Name is in the form resourceName(ResourceGroupName)
+                    this.Name = SplittedName[8] + "(" + SplittedName[4] + ")";
+                }
+                else if (!string.IsNullOrEmpty(this.Address))
+                {
+                    this.Name = this.Address;
+                }
+            }
+
             PSNetworkWatcherConnectionMonitorEndpointObject endpoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
                 Name = this.Name,
-                Type = this.GetEndpointType(),
                 ResourceId = this.ResourceId,
                 Address = this.Address,
-                CoverageLevel = this.CoverageLevel
             };
 
-            if (this.IncludeItem != null || this.ExcludeItem != null)
+            if (this.FilterItem != null)
             {
-                endpoint.Scope = new PSNetworkWatcherConnectionMonitorEndpointScope();
-
-                if (this.IncludeItem != null)
+                endpoint.Filter = new PSNetworkWatcherConnectionMonitorEndpointFilter()
                 {
-                    endpoint.Scope.Include = new List<PSNetworkWatcherConnectionMonitorEndpointScopeItem>();
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in this.IncludeItem)
-                    {
-                        endpoint.Scope.Include.Add(new PSNetworkWatcherConnectionMonitorEndpointScopeItem()
-                        {
-                            Address = item.Address
-                        });
-                    }
-                }
+                    Type = FilterType == null ? "Include" : this.FilterType
+                };
 
-                if (this.ExcludeItem != null)
+                foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem Item in this.FilterItem)
                 {
-                    endpoint.Scope.Exclude = new List<PSNetworkWatcherConnectionMonitorEndpointScopeItem>();
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in this.ExcludeItem)
+                    if (endpoint.Filter.Items == null)
                     {
-                        endpoint.Scope.Exclude.Add(new PSNetworkWatcherConnectionMonitorEndpointScopeItem()
-                        {
-                            Address = item.Address
-                        });
+                        endpoint.Filter.Items = new List<PSNetworkWatcherConnectionMonitorEndpointFilterItem>();
                     }
+
+                    endpoint.Filter.Items.Add(new PSNetworkWatcherConnectionMonitorEndpointFilterItem()
+                    {
+                        Type = string.IsNullOrEmpty(Item.Type) ? "AgentAddress" : Item.Type,
+                        Address = Item.Address
+                    });
                 }
             }
 
             this.ValidateEndpoint(endpoint);
 
             WriteObject(endpoint);
-        }
-
-        private string GetEndpointType()
-        {
-            if (AzureVM.IsPresent)
-            {
-                return "AzureVM";
-            }
-            else if (AzureVNet.IsPresent)
-            {
-                return "AzureVNet";
-            }
-            else if (AzureSubnet.IsPresent)
-            {
-                return "AzureSubnet";
-            }
-            else if (ExternalAddress.IsPresent)
-            {
-                return "ExternalAddress";
-            }
-            else if (MMAWorkspaceMachine.IsPresent)
-            {
-                return "MMAWorkspaceMachine";
-            }
-            else if (MMAWorkspaceNetwork.IsPresent)
-            {
-                return "MMAWorkspaceNetwork";
-            }
-
-            return string.Empty;
         }
     }
 }

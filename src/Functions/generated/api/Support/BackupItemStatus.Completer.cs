@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Backup status.</summary>
+    /// <summary>Argument completer implementation for BackupItemStatus.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupItemStatusTypeConverter))]
     public partial struct BackupItemStatus :
         System.Management.Automation.IArgumentCompleter

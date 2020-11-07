@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
-    /// </summary>
+    /// <summary>Argument completer implementation for ImmutabilityPolicyState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ImmutabilityPolicyStateTypeConverter))]
     public partial struct ImmutabilityPolicyState :
         System.Management.Automation.IArgumentCompleter

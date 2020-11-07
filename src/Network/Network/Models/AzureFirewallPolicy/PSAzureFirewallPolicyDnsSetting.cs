@@ -22,5 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public IList<string> Servers { get; set; }
 
         public bool? EnableProxy { get; set; }
+
+        public bool? RequireProxyForNetworkRules { get; set; }
     }
 }

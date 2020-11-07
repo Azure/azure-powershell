@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Managed pipeline mode.</summary>
+    /// <summary>Argument completer implementation for ManagedPipelineMode.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineModeTypeConverter))]
     public partial struct ManagedPipelineMode :
         System.Management.Automation.IArgumentCompleter

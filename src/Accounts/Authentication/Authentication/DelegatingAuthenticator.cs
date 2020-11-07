@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.Security;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -23,48 +26,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
-        protected const string AdfsTenant = "adfs";
-        protected const string OrganizationsTenant = "organizations";
-
-        protected CancellationToken AuthenticationCancellationToken
-        {
-            get
-            {
-                // todo: move "LoginCancellationToken" to common repo as a const
-                if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource))
-                {
-                    return cancellationTokenSource.Token;
-                }
-                return new CancellationTokenSource().Token;
-            }
-        }
-
         public IAuthenticator Next { get; set; }
-        public abstract bool CanAuthenticate(AuthenticationParameters parameters);
-        public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken);
-
-        public Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
-        {
-            return Authenticate(parameters, AuthenticationCancellationToken);
-        }
-
-        public bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token)
-        {
-            return TryAuthenticate(parameters, AuthenticationCancellationToken, out token);
-        }
-
-        public bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token)
+        public abstract bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
+        public abstract Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
+        public bool TryAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId, out Task<IAccessToken> token)
         {
             token = null;
-            if (CanAuthenticate(parameters))
+            if (CanAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId))
             {
-                token = Authenticate(parameters, cancellationToken);
+                token = Authenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
                 return true;
             }
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(parameters, cancellationToken, out token);
+                return Next.TryAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId, out token);
             }
 
             return false;

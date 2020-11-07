@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 37E41DA2-B65B-4AA2-B6AB-F93CCA881C72
@@ -14,7 +14,7 @@ Sets the default Storage account setting in a cluster configuration object.
 ## SYNTAX
 
 ```
-Set-AzHDInsightDefaultStorage [-Config] <AzureHDInsightConfig> [-StorageAccountResourceId] <String>
+Set-AzHDInsightDefaultStorage [-Config] <AzureHDInsightConfig> [-StorageAccountName] <String>
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -28,8 +28,7 @@ The **Set-AzHDInsightDefaultStorage** cmdlet sets the default Storage account se
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
-PS C:\> $storageAccountName = "yourstorageaccountname"
+PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
@@ -47,7 +46,7 @@ PS C:\> $clusterCreds = Get-Credential
 # Create the cluster
 PS C:\> New-AzHDInsightClusterConfig `
             | Set-AzHDInsightDefaultStorage `
-                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountName "$secondStorageAccountName.blob.core.contoso.net" `
                 -StorageAccountKey $key2 `
                 -StorageContainer $storageContainer `
             | New-AzHDInsightCluster `
@@ -110,8 +109,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountResourceId
-The storage account name for the storage account to be added to the new cluster.
+### -StorageAccountName
+Specifies the name of the default storage account that the HDInsight cluster will use.
 
 ```yaml
 Type: System.String
@@ -132,7 +131,7 @@ Gets or sets the type of the default storage account. Defaults to AzureStorage
 Type: System.Nullable`1[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureStorage, AzureDataLakeStore, AzureDataLakeStorageGen2
+Accepted values: AzureStorage, AzureDataLakeStore
 
 Required: False
 Position: Named
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

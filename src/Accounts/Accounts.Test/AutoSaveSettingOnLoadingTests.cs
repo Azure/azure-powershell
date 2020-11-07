@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 var newSetting = JsonConvert.DeserializeObject<ContextAutosaveSettings>(afterModified) as ContextAutosaveSettings;
                 Assert.NotNull(newSetting);
                 Assert.Equal(ContextSaveMode.CurrentUser, newSetting.Mode);
-                //Assert.Equal(typeof(AzureTokenCache), AzureSession.Instance.TokenCache.GetType());
+                Assert.Equal(typeof(AuthenticationStoreTokenCache), AzureSession.Instance.TokenCache.GetType());
             }
             finally
             {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,9 +17,5 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public string IpAddress { get; set; }
 
         public string SubnetId { get; set; }
-
-        public string Tag { get; set; }
-
-        public Hashtable HttpHeader { get; set; }
     }
 }

@@ -21,45 +21,17 @@
 ## Upcoming Release
 * Added new cmdlet for virtual router
     - `Update-AzVirtualRouter`: to allow branch to branch traffic
-* Updated New-AzFirewallPolicyNatRule cmdlet:
-    - Added parameter Translated FQDN
-
-## Version 4.1.0
-* [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
+* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * Updated New-AzFirewall cmdlet:
-    - Added parameter `-SkuTier`
-    - Added parameter `-SkuName` and made Sku as Alias for this
-    - Removed parameter `-Sku`
-* [Breaking Change] Made `Connectionlink` argument mandatory in `Start-AzVpnConnectionPacketCapture` and `Stop-AzVpnConnectionPacketCapture`
-* [Breaking Change] Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` to remove parameter `-Filter`
-* [Breaking Change] Replaced `New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject` cmdlet with `New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject`
-* Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` cmdlet:
-	- Added parameter `-Type`
-	- Added parameter `-CoverageLevel`
-	- Added parameter `-Scope`
-* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
-* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
-    - `Get-AzApplicationGatewayClientAuthConfiguration`
-    - `New-AzApplicationGatewayClientAuthConfiguration`
-    - `Remove-AzApplicationGatewayClientAuthConfiguration`
-    - `Set-AzApplicationGatewayClientAuthConfiguration`
-    - `Add-AzApplicationGatewayTrustedClientCertificate` 
-    - `Get-AzApplicationGatewayTrustedClientCertificate` 
-    - `New-AzApplicationGatewayTrustedClientCertificate` 
-    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
-    - `Set-AzApplicationGatewayTrustedClientCertificate`
-    - `Add-AzApplicationGatewaySslProfile`
-    - `Get-AzApplicationGatewaySslProfile`
-    - `New-AzApplicationGatewaySslProfile`
-    - `Remove-AzApplicationGatewaySslProfile`
-    - `Set-AzApplicationGatewaySslProfile`
-    - `Get-AzApplicationGatewaySslProfilePolicy`
-    - `Remove-AzApplicationGatewaySslProfilePolicy`
-    - `Set-AzApplicationGatewaySslProfilePolicy`
-    
+    - Added parameter -SkuTier
+    - Added parameter -SkuName and made Sku as Alias for this
+    - Removed parameter -Sku
+* Updated New-AzFirewallPolicyNatRule cmdlet:
+    - Added parameter Translated FQDN
+
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
@@ -93,11 +65,6 @@
 * Added new cmdlet `Reset-AzVpnGateway` for customers to reset/reboot their VirtualWan VpnGateway for troubleshooting.
 * Updated `Set-AzVirtualNetworkSubnetConfig`
     - Set NSG and Route Table properties of subnet to null if explicitly set in parameters [#1548][#9718]
-* [Breaking Change] Deprecated a switch parameter in below cmdlets
-    - `New-AzFirewall`:
-        - Deprecated `-DnsProxyNotRequiredForNetworkRule` switch paramemter
-    - `New-AzFirewallPolicyDnsSetting`:
-        - Deprecated `-ProxyNotRequiredForNetworkRule` switch parameter
 
 ## Version 3.3.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`

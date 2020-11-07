@@ -19,13 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.3.1
-* Fixed an issue that may block Stack HCI registration.
-    - Workaround for the token cache issue in Az.Accounts 2.1.0. Using AuthenticationFactory.
-
-## Version 0.3.0
-* Get the App Roles assigned correctly in case of Stack HCI registration using WAC token.
-
 ## Version 0.2.0
 * Added hash table for region.
 

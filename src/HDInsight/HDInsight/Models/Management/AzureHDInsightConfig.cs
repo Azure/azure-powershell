@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
         /// <summary>
-        /// Gets or sets the storage type for the Azure Storage Account.
+        /// Gets or sets the StorageType for the default Azure Storage Account.
         /// </summary>
-        public StorageType StorageAccountType { get; set; }
+        public StorageType DefaultStorageAccountType { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage resource id for the Azure Storage Account.
+        /// Gets or sets the StorageName for the default Azure Storage Account.
         /// </summary>
-        public string StorageAccountResourceId { get; set; }
+        public string DefaultStorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage key for the Azure Storage Account.
+        /// Gets or sets the storage key for the default Azure Storage Account.
         /// </summary>
-        public string StorageAccountKey { get; set; }
+        public string DefaultStorageAccountKey { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the Head Node.
@@ -169,6 +169,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the encryption vault uri.
         /// </summary>
         public string EncryptionVaultUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access type.
+        /// </summary>
+        public string PublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the outbound access type to the public network.
+        /// </summary>
+        public string OutboundPublicNetworkAccessType;
 
         /// <summary>
         /// Gets or sets the flag which indicates whether enable encryption in transit or not.

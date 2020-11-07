@@ -109,14 +109,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         [ValidateNotNullOrEmpty]
         public SwitchParameter PreferHTTPS { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Destination port behavior. Supported values are None, ListenIfAvailable.",
-            ParameterSetName = "TCP")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("None", "ListenIfAvailable")]
-        public string DestinationPortBehavior { get; set; }
-
         public override void Execute()
         {
             base.Execute();
@@ -127,8 +119,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
                 protocolConfiguration = new PSNetworkWatcherConnectionMonitorTcpConfiguration()
                 {
                     Port = this.Port,
-                    DisableTraceRoute = this.DisableTraceRoute.IsPresent,
-                    DestinationPortBehavior = this.DestinationPortBehavior
+                    DisableTraceRoute = this.DisableTraceRoute.IsPresent
                 };
             }
             else if (HttpProtocol.IsPresent)

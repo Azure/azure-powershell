@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>List of channels that this recommendation can apply.</summary>
+    /// <summary>TypeConverter implementation for Channels.</summary>
     public partial class ChannelsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

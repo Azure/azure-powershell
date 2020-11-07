@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-
 using Newtonsoft.Json;
+using System.Management.Automation;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -28,8 +27,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class DisableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
-        protected override bool RequireDefaultContext() { return false; }
-
         public override void ExecuteCmdlet()
         {
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
@@ -63,8 +60,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
+        protected void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
+            var store = session.DataStore;
             string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
             result = new ContextAutosaveSettings
             {
@@ -73,56 +71,17 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.Process;
+            var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
+            if (memoryCache == null)
+            {
+                var diskCache = session.TokenCache as ProtectedFileTokenCache;
+                memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
+                if (diskCache != null && diskCache.Count > 0)
+                {
+                    memoryCache.Deserialize(diskCache.Serialize());
+                }
 
-            PowerShellTokenCacheProvider cacheProvider;
-            MemoryStream memoryStream = null;
-            if (AzureSession.Instance.TryGetComponent(
-                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                    out PowerShellTokenCacheProvider originalTokenCacheProvider))
-            {
-                if(originalTokenCacheProvider is SharedTokenCacheProvider)
-                {
-                    cacheProvider = new InMemoryTokenCacheProvider();
-                    var token = originalTokenCacheProvider.ReadTokenData();
-                    if (token != null && token.Length > 0)
-                    {
-                        memoryStream = new MemoryStream(token);
-                    }
-                    cacheProvider.UpdateTokenDataWithoutFlush(token);
-                    cacheProvider.FlushTokenData();
-                    AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
-                }
-                else
-                {
-                    cacheProvider = originalTokenCacheProvider;
-                }
-            }
-            else
-            {
-                cacheProvider = new InMemoryTokenCacheProvider();
-            }
-
-            PowerShellTokenCache newTokenCache = null;
-            if(AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
-            {
-                if(!tokenCache.IsPersistentCache)
-                {
-                    newTokenCache = tokenCache;
-                }
-                else
-                {
-                    newTokenCache = memoryStream == null ? null : PowerShellTokenCache.Deserialize(memoryStream);
-                }
-            }
-
-            if(newTokenCache == null)
-            {
-                newTokenCache = cacheProvider.GetTokenCache();
-            }
-            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => newTokenCache, true);
-            if(AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out IAuthenticatorBuilder builder))
-            {
-                builder.Reset();
+                session.TokenCache = memoryCache;
             }
 
             if (writeAutoSaveFile)

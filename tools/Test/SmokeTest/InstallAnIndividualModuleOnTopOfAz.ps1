@@ -2,10 +2,7 @@
 param(
     [string]
     [Parameter(Mandatory = $true, Position = 0)]
-    $gallery,
-    [bool]
-    [Parameter(Mandatory = $false, Position =1)]
-    $allowEquality = $false
+    $gallery
 )
 
 # Get previous version of Az
@@ -30,14 +27,13 @@ Get-AzVM
 
 # Check version
 $azComputeVersion = (Get-Module Az.Compute).Version
-Write-Host "Az.Compute version before updated", $azComputePreviousVersion
 Write-Host "Current version of Az.Compute,", $azComputeVersion
 
-if ([System.Version]$azComputeVersion -gt [System.Version]$azComputePreviousVersion) {
-    Write-Host "Install Az.Compute on top of Az successfully"
-}elseif(([System.Version]$azComputeVersion -eq [System.Version]$azComputePreviousVersion) -and $allowEquality){
+if ([System.Version]$azComputeVersion -lt [System.Version]$azComputePreviousVersion) {
+    throw "Install Az.Compute on top of Az failed"
+}elseif([System.Version]$azComputeVersion -eq [System.Version]$azComputePreviousVersion){
     Write-Warning "Az.Compute did not update"
 }else{
-    throw "Install Az.Compute on top of Az failed"
+    Write-Host "Install Az.Compute on top of Az successfully"
 }
  

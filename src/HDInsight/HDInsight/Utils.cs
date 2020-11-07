@@ -20,14 +20,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     internal class Utils
     {
-        public static Role ExtractRole(string nodeType, ComputeProfile computeProfile)
+        public static Role ExtractWorkerNode(Cluster cluster)
         {
-            return computeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
-        }
-
-        public static string GetResourceNameFromResourceId(string resourceId)
-        {
-            return resourceId?.Split('/').LastOrDefault();
+            return cluster?.Properties?.ComputeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals("workernode"));
         }
     }
 }

@@ -6,15 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Runtime version</summary>
     public partial struct RuntimeVersion :
         System.IEquatable<RuntimeVersion>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion Java11 = @"Java_11";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion Java8 = @"Java_8";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion NetCore31 = @"NetCore_31";
 
         /// <summary>the value for an instance of the <see cref="RuntimeVersion" /> Enum.</summary>
         private string _value { get; set; }

@@ -12,45 +12,18 @@ Creates connection monitor endpoint.
 
 ## SYNTAX
 
-### AzureVM
+### SetByResourceId
 ```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVM] -ResourceId <String>
- [-Address <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureVNet
-```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVNet] -ResourceId <String>
- [-IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>]
- [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
+New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] -ResourceId <String>
+ [-FilterType <String>]
+ [-FilterItem <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AzureSubnet
+### SetByAddress
 ```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureSubnet] -ResourceId <String>
- [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ExternalAddress
-```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-ExternalAddress] -Address <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MMAWorkspaceMachine
-```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-MMAWorkspaceMachine] -ResourceId <String>
- -Address <String> [-IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MMAWorkspaceNetwork
-```
-New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-MMAWorkspaceNetwork] -ResourceId <String>
- -IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>
- [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
+New-AzNetworkWatcherConnectionMonitorEndpointObject [-Name <String>] [-Address <String>] [-FilterType <String>]
+ [-FilterItem <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,17 +35,18 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject cmdlet creates connection mo
 ### Example 1
 ```powershell
 PS C:\>$MySrcResourceId1 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
-PS C:\>$SrcEndpointScopeItem1 = New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject -Address "WIN-P0HGNDO2S1B"
-PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndpointObject -Name "workspaceEndpoint" -MMAWorkspaceMachine -ResourceId $MySrcResourceId1 -IncludeItem $SrcEndpointScopeItem1
+PS C:\>$SrcEndpointFilterItem1 =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type "AgentAddress" -Address "WIN-P0HGNDO2S1B"
+PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name "workspaceEndpoint" -ResourceId $MySrcResourceId1 -FilterType Include -FilterItem $SrcEndpointFilterItem1
 ```
 
 Name       : workspaceEndpoint
-Type       : MMAWorkspaceMachine
 ResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace
 Address    :
-Scope     : {
-               "Include": [
+Filter     : {
+               "Type": "Include",
+               "Items": [
                  {
+                   "Type": "AgentAddress",
                    "Address": "WIN-P0HGNDO2S1B"
                  }
                ]
@@ -85,80 +59,7 @@ Address of the connection monitor endpoint (IP or domain name).
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVM
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ExternalAddress, MMAWorkspaceMachine
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureSubnet
-Azure Subnet endpoint switch.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureSubnet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureVM
-Azure VM endpoint switch.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVM
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureVNet
-Azure Vnet endpoint switch.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVNet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CoverageLevel
-Test coverage for the endpoint.
-Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.
-
-```yaml
-Type: System.String
-Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork
+Parameter Sets: SetByAddress
 Aliases:
 
 Required: False
@@ -183,12 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludeItem
-List of items which need to be excluded from endpoint scope.
+### -FilterItem
+List of items in the filter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
-Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointFilterItem]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,72 +99,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalAddress
-External Address endpoint switch.
+### -FilterType
+The behavior of the endpoint filter. Currently only 'Include' is supported.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExternalAddress
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeItem
-List of items which need to be included into endpont scope.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
-Parameter Sets: AzureVNet, MMAWorkspaceMachine
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
-Parameter Sets: MMAWorkspaceNetwork
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MMAWorkspaceMachine
-MMA Workspace Machine endpoint switch.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: MMAWorkspaceMachine
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MMAWorkspaceNetwork
-MMA Workspace Network endpoint switch.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: MMAWorkspaceNetwork
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -278,7 +122,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,7 +134,7 @@ Resource ID of the connection monitor endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: True

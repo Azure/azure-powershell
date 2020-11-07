@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Test needs to be run by the China CDN team")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileList()
         {

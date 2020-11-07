@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
 
     /// <summary>Create a new Service or update an exiting Service.</summary>
     /// <remarks>
-    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}"
+    /// [OpenAPI] Services_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSpringCloudService_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"Create a new Service or update an exiting Service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Generated]
     public partial class NewAzSpringCloudService_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -46,6 +46,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.SpringCloud Client => Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.ClientAPI;
 
+        /// <summary>The code of error.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The code of error.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The code of error.",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ConfigServerPropertiesErrorCode { get => ResourceBody.ConfigServerPropertiesErrorCode ?? null; set => ResourceBody.ConfigServerPropertiesErrorCode = value; }
+
+        /// <summary>The message of error.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The message of error.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The message of error.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ConfigServerPropertiesErrorMessage { get => ResourceBody.ConfigServerPropertiesErrorMessage ?? null; set => ResourceBody.ConfigServerPropertiesErrorMessage = value; }
+
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
         /// </summary>
@@ -54,6 +76,118 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Public sshKey of git repository.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Public sshKey of git repository.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Public sshKey of git repository.",
+        SerializedName = @"hostKey",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyHostKey { get => ResourceBody.GitPropertyHostKey ?? null; set => ResourceBody.GitPropertyHostKey = value; }
+
+        /// <summary>SshKey algorithm of git repository.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SshKey algorithm of git repository.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SshKey algorithm of git repository.",
+        SerializedName = @"hostKeyAlgorithm",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyHostKeyAlgorithm { get => ResourceBody.GitPropertyHostKeyAlgorithm ?? null; set => ResourceBody.GitPropertyHostKeyAlgorithm = value; }
+
+        /// <summary>Label of the repository</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Label of the repository")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Label of the repository",
+        SerializedName = @"label",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyLabel { get => ResourceBody.GitPropertyLabel ?? null; set => ResourceBody.GitPropertyLabel = value; }
+
+        /// <summary>Password of git repository basic auth.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Password of git repository basic auth.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Password of git repository basic auth.",
+        SerializedName = @"password",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyPassword { get => ResourceBody.GitPropertyPassword ?? null; set => ResourceBody.GitPropertyPassword = value; }
+
+        /// <summary>Private sshKey algorithm of git repository.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Private sshKey algorithm of git repository.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Private sshKey algorithm of git repository.",
+        SerializedName = @"privateKey",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyPrivateKey { get => ResourceBody.GitPropertyPrivateKey ?? null; set => ResourceBody.GitPropertyPrivateKey = value; }
+
+        /// <summary>Repositories of git.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Repositories of git.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Repositories of git.",
+        SerializedName = @"repositories",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IGitPatternRepository) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IGitPatternRepository[] GitPropertyRepository { get => ResourceBody.GitPropertyRepository ?? null /* arrayOf */; set => ResourceBody.GitPropertyRepository = value; }
+
+        /// <summary>Searching path of the repository</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Searching path of the repository")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Searching path of the repository",
+        SerializedName = @"searchPaths",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] GitPropertySearchPath { get => ResourceBody.GitPropertySearchPath ?? null /* arrayOf */; set => ResourceBody.GitPropertySearchPath = value; }
+
+        /// <summary>Strict host key checking or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Strict host key checking or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Strict host key checking or not.",
+        SerializedName = @"strictHostKeyChecking",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter GitPropertyStrictHostKeyChecking { get => ResourceBody.GitPropertyStrictHostKeyChecking ?? default(global::System.Management.Automation.SwitchParameter); set => ResourceBody.GitPropertyStrictHostKeyChecking = value; }
+
+        /// <summary>URI of the repository</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "URI of the repository")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"URI of the repository",
+        SerializedName = @"uri",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyUri { get => ResourceBody.GitPropertyUri ?? null; set => ResourceBody.GitPropertyUri = value; }
+
+        /// <summary>Username of git repository basic auth.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Username of git repository basic auth.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Username of git repository basic auth.",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GitPropertyUsername { get => ResourceBody.GitPropertyUsername ?? null; set => ResourceBody.GitPropertyUsername = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -195,10 +329,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>Backing field for <see cref="ResourceBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource _resourceBody= new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ServiceResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource _resourceBody= new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ServiceResource();
 
         /// <summary>Service resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource ResourceBody { get => this._resourceBody; set => this._resourceBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource ResourceBody { get => this._resourceBody; set => this._resourceBody = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -282,32 +416,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         ReadOnly = false,
         Description = @"Tags of the service which is a list of key value pairs that describe the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ITrackedResourceTags Tag { get => ResourceBody.Tag ?? null /* object */; set => ResourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ITrackedResourceTags Tag { get => ResourceBody.Tag ?? null /* object */; set => ResourceBody.Tag = value; }
+
+        /// <summary>Target application insight instrumentation key</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Target application insight instrumentation key")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Target application insight instrumentation key",
+        SerializedName = @"appInsightInstrumentationKey",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TraceAppInsightInstrumentationKey { get => ResourceBody.TraceAppInsightInstrumentationKey ?? null; set => ResourceBody.TraceAppInsightInstrumentationKey = value; }
+
+        /// <summary>Indicates whether enable the tracing functionality</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether enable the tracing functionality")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether enable the tracing functionality",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter TraceEnabled { get => ResourceBody.TraceEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ResourceBody.TraceEnabled = value; }
+
+        /// <summary>The code of error.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The code of error.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The code of error.",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TraceErrorCode { get => ResourceBody.TraceErrorCode ?? null; set => ResourceBody.TraceErrorCode = value; }
+
+        /// <summary>The message of error.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The message of error.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The message of error.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TraceErrorMessage { get => ResourceBody.TraceErrorMessage ?? null; set => ResourceBody.TraceErrorMessage = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -533,12 +711,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -555,7 +733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ResourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -573,12 +751,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -590,7 +768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IServiceResource
                 WriteObject((await response));
             }
         }

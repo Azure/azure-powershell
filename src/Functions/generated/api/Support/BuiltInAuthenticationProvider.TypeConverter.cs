@@ -6,11 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The default authentication provider to use when multiple providers are configured.
-    /// This setting is only needed if multiple providers are configured and the unauthenticated client
-    /// action is set to "RedirectToLoginPage".
-    /// </summary>
+    /// <summary>TypeConverter implementation for BuiltInAuthenticationProvider.</summary>
     public partial class BuiltInAuthenticationProviderTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

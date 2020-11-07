@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Gets or sets the type of the scale.</summary>
+    /// <summary>Argument completer implementation for SkuScaleType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.SkuScaleTypeTypeConverter))]
     public partial struct SkuScaleType :
         System.Management.Automation.IArgumentCompleter

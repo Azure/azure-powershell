@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -71,24 +71,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating context for each subscription accessible by account &apos;{0}&apos;..
-        /// </summary>
-        internal static string CreatingContextsWarning {
-            get {
-                return ResourceManager.GetString("CreatingContextsWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The default context can no longer be found; please run &apos;Get-AzContext -ListAvailable&apos; to see all available contexts, &apos;Select-AzContext&apos; to select a new default context, or &apos;Connect-AzAccount&apos; to login with a new account..
-        /// </summary>
-        internal static string DefaultContextMissing {
-            get {
-                return ResourceManager.GetString("DefaultContextMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Could not acquire access to file &apos;{0}&apos; please try again in a few minutes..
         /// </summary>
         internal static string FileLockFailure {
@@ -134,29 +116,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to get context name for subscription with ID &apos;{0}&apos;..
-        /// </summary>
-        internal static string NoContextNameForSubscription {
-            get {
-                return ResourceManager.GetString("NoContextNameForSubscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
         /// </summary>
         internal static string NoInternetConnection {
             get {
                 return ResourceManager.GetString("NoInternetConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to get token for account &apos;{0}&apos;, please run Connect-AzAccount to login for {0} if you need to use this account..
-        /// </summary>
-        internal static string NoTokenFoundWarning {
-            get {
-                return ResourceManager.GetString("NoTokenFoundWarning", resourceCulture);
             }
         }
         
@@ -278,15 +242,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to create a context for subscription with ID &apos;{0}..
-        /// </summary>
-        internal static string UnableToCreateContextForSubscription {
-            get {
-                return ResourceManager.GetString("UnableToCreateContextForSubscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot read the file at &apos;{0}&apos;. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes..
         /// </summary>
         internal static string UnreadableStream {
@@ -301,15 +256,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         internal static string UnwritableStream {
             get {
                 return ResourceManager.GetString("UnwritableStream", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User &apos;{0}&apos; was not found in the shared token cache; removing all contexts with this user..
-        /// </summary>
-        internal static string UserMissingFromSharedTokenCache {
-            get {
-                return ResourceManager.GetString("UserMissingFromSharedTokenCache", resourceCulture);
             }
         }
     }

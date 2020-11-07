@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a),
-    /// Create (c), Update (u) and Process (p).
-    /// </summary>
+    /// <summary>TypeConverter implementation for Permissions.</summary>
     public partial class PermissionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -68,11 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Business Critical edition for SqlAzure database
         /// </summary>
         BusinessCritical = 11,
-
-        /// <summary>
-        /// Hyperscale edition for SqlAzure database
-        /// </summary>
-        Hyperscale = 12
     }
 }
 

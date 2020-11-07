@@ -11,39 +11,19 @@
                 "majorVersions": [
                     {
                         "displayVersion": "3.1",
-                        "runtimeVersion": "dotnet|3.1",
                         "supportedFunctionsExtensionVersions": [
                             "~3"
                         ],
-                        "isDefault": true,
+                        "runtimeVersion": "dotnet|3.1",
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-                        },
-                        "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "FUNCTIONS_WORKER_RUNTIME": "dotnet",
                             "linuxFxVersion": "dotnet|3.1"
                         },
-                        "isPreview": false,
-                        "isDeprecated": false,
-                        "isHidden": false
-                    },
-                    {
-                        "displayVersion": "2.2",
-                        "runtimeVersion": "dotnet|2.2",
-                        "supportedFunctionsExtensionVersions": [
-                            "~2"
-                        ],
-                        "isDefault": true,
-                        "minorVersions": [],
-                        "applicationInsights": true,
-                        "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-                        },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
-                            "linuxFxVersion": "dotnet|2.2"
+                            "Use32BitWorkerProcess": false
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -64,26 +44,6 @@
                 "dependency": null,
                 "majorVersions": [
                     {
-                        "displayVersion": "14",
-                        "runtimeVersion": "Node|14",
-                        "supportedFunctionsExtensionVersions": [
-                            "~3"
-                        ],
-                        "isDefault": true,
-                        "minorVersions": [],
-                        "applicationInsights": true,
-                        "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "node"
-                        },
-                        "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
-                            "linuxFxVersion": "Node|14"
-                        },
-                        "isPreview": true,
-                        "isDeprecated": false,
-                        "isHidden": true
-                    },
-                    {
                         "displayVersion": "12",
                         "runtimeVersion": "Node|12",
                         "supportedFunctionsExtensionVersions": [
@@ -96,7 +56,7 @@
                             "FUNCTIONS_WORKER_RUNTIME": "node"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Node|12"
                         },
                         "isPreview": false,
@@ -110,14 +70,14 @@
                             "~2",
                             "~3"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "node"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Node|10"
                         },
                         "isPreview": false,
@@ -152,7 +112,7 @@
                             "FUNCTIONS_WORKER_RUNTIME": "python"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Python|3.6"
                         },
                         "isPreview": false,
@@ -173,7 +133,7 @@
                             "FUNCTIONS_WORKER_RUNTIME": "python"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Python|3.7"
                         },
                         "isPreview": false,
@@ -186,14 +146,14 @@
                         "supportedFunctionsExtensionVersions": [
                             "~3"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "python"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Python|3.8"
                         },
                         "isPreview": false,
@@ -227,7 +187,7 @@
                             "FUNCTIONS_WORKER_RUNTIME": "java"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Java|8"
                         },
                         "isPreview": false,
@@ -240,14 +200,14 @@
                         "supportedFunctionsExtensionVersions": [
                             "~3"
                         ],
-                        "isDefault": false,
+                        "isDefault": true,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "java"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
+                            "Use32BitWorkerProcess": false,
                             "linuxFxVersion": "Java|11"
                         },
                         "isPreview": false,

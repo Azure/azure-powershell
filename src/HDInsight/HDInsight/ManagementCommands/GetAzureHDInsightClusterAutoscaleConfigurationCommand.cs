@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
                 }
                 var cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
-                var autoscale = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), cluster.Properties.ComputeProfile)?.AutoscaleConfiguration;
+                var autoscale = Utils.ExtractWorkerNode(cluster)?.AutoscaleConfiguration;
                 autoscaleConfiguration = autoscale != null ? new AzureHDInsightAutoscale(autoscale) : null;
             }
 

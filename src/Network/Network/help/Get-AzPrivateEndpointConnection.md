@@ -12,23 +12,23 @@ Gets a private endpoint connection resource.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### ByPrivateLinkResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
+Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByPrivateLinkResourceId
+### ByResourceId
 ```
-Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <String>]
+Get-AzPrivateEndpointConnection -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
- -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>]
- [<CommonParameters>]
+Get-AzPrivateEndpointConnection -ServiceName <String> -ResourceGroupName <String>
+[-Name <String>] [-PrivateLinkResourceType <String>] [-Description <String>]
+[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,21 +64,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-The reason of action.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -119,12 +104,11 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values: 
 
 Required: False
 Position: Named
 Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

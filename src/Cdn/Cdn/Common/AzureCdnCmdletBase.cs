@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string UrlRedirectActionParameterSet = "UrlRedirectActionParameterSet";
         public const string CacheKeyQueryStringActionParameterSet = "CacheKeyQueryStringActionParameterSet";
         public const string UrlRewriteActionParameterSet = "UrlRewriteActionParameterSet";
-        public const string ByFieldsPrivateLinkParameterSet = "ByFieldsPrivateLinkParameterSet";
 
 
         /// <summary>

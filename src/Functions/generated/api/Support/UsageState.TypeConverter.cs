@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>State indicating whether the app has exceeded its quota usage. Read-only.</summary>
+    /// <summary>TypeConverter implementation for UsageState.</summary>
     public partial class UsageStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

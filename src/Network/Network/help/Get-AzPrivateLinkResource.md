@@ -14,14 +14,8 @@ Gets a private link resource.
 
 ### ByPrivateLinkResourceId (Default)
 ```
-Get-AzPrivateLinkResource -PrivateLinkResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByResource
-```
-Get-AzPrivateLinkResource -ResourceGroupName <String> -ServiceName <String>
- [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>] [<CommonParameters>]
+Get-AzPrivateLinkResource -PrivateLinkResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,52 +53,6 @@ The Azure resource manager id of the private link resource.
 ```yaml
 Type: System.String
 Parameter Sets: ByPrivateLinkResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PrivateLinkResourceType
-The private link resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases:
-Accepted values:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceName
-The private link service name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
 Aliases:
 
 Required: True

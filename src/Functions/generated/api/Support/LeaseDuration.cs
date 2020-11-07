@@ -6,9 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
-    /// </summary>
     public partial struct LeaseDuration :
         System.IEquatable<LeaseDuration>
     {

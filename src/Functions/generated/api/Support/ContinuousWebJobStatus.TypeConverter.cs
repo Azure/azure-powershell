@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Job status.</summary>
+    /// <summary>TypeConverter implementation for ContinuousWebJobStatus.</summary>
     public partial class ContinuousWebJobStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

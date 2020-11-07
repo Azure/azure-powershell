@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Type of the source uploaded</summary>
+    /// <summary>TypeConverter implementation for UserSourceType.</summary>
     public partial class UserSourceTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

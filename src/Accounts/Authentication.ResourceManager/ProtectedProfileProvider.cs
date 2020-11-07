@@ -12,19 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ProtectedProfileProvider : AzureRmProfileProvider
     {
-        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
 
         public ProtectedProfileProvider()
         {
@@ -34,9 +37,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        public override void ResetDefaultProfile()
+        {
+            foreach (var context in _profile.Contexts.Values)
+            {
+                context.TokenCache.Clear();
+            }
+
+            base.ResetDefaultProfile();
+        }
+
         public override T GetProfile<T>()
         {
             return Profile as T;
+        }
+
+        public override void SetTokenCacheForProfile(IAzureContextContainer profile)
+        {
+            base.SetTokenCacheForProfile(profile);
+            var session = AzureSession.Instance;
+            var cache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
+            session.TokenCache = cache;
+            if (profile.HasTokenCache())
+            {
+                cache.Deserialize(profile.GetTokenCache().CacheData);
+            }
+
+            profile.SetTokenCache(cache);
         }
 
         public override IAzureContextContainer Profile

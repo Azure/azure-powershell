@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// Gets the status indicating whether the primary location of the storage account is available or unavailable.
-    /// </summary>
+    /// <summary>TypeConverter implementation for AccountStatus.</summary>
     public partial class AccountStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

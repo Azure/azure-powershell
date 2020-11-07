@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Gets or sets the type of the scale.</summary>
+    /// <summary>TypeConverter implementation for SkuScaleType.</summary>
     public partial class SkuScaleTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

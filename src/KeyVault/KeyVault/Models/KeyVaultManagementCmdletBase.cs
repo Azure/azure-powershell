@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _resourceClient = value; }
         }
 
-        protected List<T> FilterByTag<T>(List<T> listResult, Hashtable tag) where T : PSKeyVaultIdentityItem
+        protected List<PSKeyVaultIdentityItem> FilterByTag(List<PSKeyVaultIdentityItem> listResult, Hashtable tag)
         {
             var tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
@@ -117,26 +117,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             return listResult;
         }
 
-        protected T FilterByTag<T>(T vault, Hashtable tag) where T : PSKeyVaultIdentityItem
+        protected PSKeyVault FilterByTag(PSKeyVault keyVault, Hashtable tag)
         {
-            return FilterByTag(new List<T> { vault }, tag).FirstOrDefault();
+            return (PSKeyVault)FilterByTag(new List<PSKeyVaultIdentityItem> { keyVault }, tag).FirstOrDefault();
         }
 
-        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName = ResourceTypeName.Vault)
+        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
         {
-            var vaults = new List<PSKeyVaultIdentityItem>();
-
-            // List all kinds of vault resources
-            if (resourceTypeName == null)
-            {
-                vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Vault));
-                vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Hsm));
-                return vaults;
-            }
-
             IEnumerable<PSKeyVaultIdentityItem> listResult;
-            var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
-                KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
+            var resourceType = KeyVaultManagementClient.VaultsResourceType;
             if (ShouldListByResourceGroup(resourceGroupName, null))
             {
                 listResult = ListByResourceGroup(resourceGroupName,
@@ -150,6 +139,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         r => r.ResourceType == resourceType));
             }
 
+            var vaults = new List<PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
                 vaults.AddRange(listResult);
@@ -178,17 +168,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             return new GenericPageEnumerable<GenericResource>(() => armClient.ResourceGroups.ListResources(resourceGroupName, filter), armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
-        protected string GetResourceGroupName(string name, bool isHsm=false)
+        protected string GetResourceGroupName(string vaultName)
         {
             var resourcesByName = ResourceClient.FilterResources(new FilterResourcesOptions
             {
-                ResourceType = isHsm? KeyVaultManagementClient.ManagedHsmResourceType:KeyVaultManagementClient.VaultsResourceType
+                ResourceType = KeyVaultManagementClient.VaultsResourceType
             });
 
             string rg = null;
             if (resourcesByName != null && resourcesByName.Count > 0)
             {
-                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
                 {
                     rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
@@ -208,9 +198,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         //
         // An alternate implementation that checks for the vault name globally would be to construct a vault
         // URL with the given name and attempt checking DNS entries for it.
-        protected bool VaultExistsInCurrentSubscription(string name, bool isHsm=false)
+        protected bool VaultExistsInCurrentSubscription(string name)
         {
-            return GetResourceGroupName(name, isHsm) != null;
+            return GetResourceGroupName(name) != null;
         }
 
         protected Guid GetTenantId()
@@ -463,8 +453,5 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
-
-        protected readonly string DefaultManagedHsmSkuFamily = "b";
-        protected readonly string DefaultManagedHsmSkuName = "Standard_B1";
     }
 }

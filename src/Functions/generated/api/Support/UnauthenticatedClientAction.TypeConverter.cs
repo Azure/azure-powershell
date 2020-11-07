@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The action to take when an unauthenticated client attempts to access the app.</summary>
+    /// <summary>TypeConverter implementation for UnauthenticatedClientAction.</summary>
     public partial class UnauthenticatedClientActionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

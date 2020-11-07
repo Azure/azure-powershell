@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
@@ -24,10 +28,16 @@ namespace Microsoft.Azure.Commands.Network
     {
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Enable DNS Proxy. By default it is disabled."
-        )]
+             Mandatory = false,
+             HelpMessage = "Enable DNS Proxy. By default it is disabled."
+         )]
         public SwitchParameter EnableProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default it is true."
+        )]
+        public SwitchParameter ProxyNotRequiredForNetworkRule { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -41,6 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             var dnsSetting = new PSAzureFirewallPolicyDnsSettings
             {
                 EnableProxy = this.EnableProxy.IsPresent ? true : (bool?)null,
+                RequireProxyForNetworkRules = this.ProxyNotRequiredForNetworkRule.IsPresent ? false : (bool?)null,
                 Servers = this.Server?.ToList()
             };
 

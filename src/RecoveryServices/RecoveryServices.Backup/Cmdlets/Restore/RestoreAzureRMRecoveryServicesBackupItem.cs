@@ -31,9 +31,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         internal const string AzureVMParameterSet = "AzureVMParameterSet";
-        internal const string AzureVMTargetRGParameterSet = "AzureVMTargetRGParameterSet";
-        internal const string AzureVMRestoreAsUnmanaged = "AzureVMRestoreAsUnmanaged";
-        internal const string AzureVMUseOSAParameterSet = "AzureVMUseOSAParameterSet";
         internal const string AzureFileParameterSet = "AzureFileParameterSet";
         internal const string AzureWorkloadParameterSet = "AzureWorkloadParameterSet";
 
@@ -53,12 +50,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = AzureVMParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
             ParameterSetName = AzureFileParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureVMRestoreAsUnmanaged, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureVMTargetRGParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureVMUseOSAParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
 
@@ -75,12 +66,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMTargetRGParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMUseOSAParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMRestoreAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
@@ -89,19 +74,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
-        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMUseOSAParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
-        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMTargetRGParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
-        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMRestoreAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
         /// <summary> 
         /// The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureVMTargetRGParameterSet,
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroupName { get; set; }
@@ -164,7 +143,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMUseOSAParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.OsaOption)]
         public SwitchParameter UseOriginalStorageAccount { get; set; }
 
@@ -173,12 +152,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMTargetRGParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMUseOSAParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
         public SwitchParameter RestoreOnlyOSDisk { get; set; }
 
         /// <summary>
@@ -186,18 +159,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMUseOSAParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMTargetRGParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
         public string[] RestoreDiskList { get; set; }
 
         /// <summary>
         /// Use this switch to specify to restore as unmanaged disks
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMRestoreAsUnmanaged,
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsUnmanagedDisks)]
         public SwitchParameter RestoreAsUnmanagedDisks { get; set; }
 

@@ -2,7 +2,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
 
-    /// <summary>Dictionary of <ContainerInfo></summary>
     public partial class WebSiteInstanceStatusPropertiesContainers
     {
 
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerInfo>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerInfo.FromJson(j) ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerInfo>)this).AdditionalProperties, null ,exclusions );
             AfterFromJson(json);
         }
     }

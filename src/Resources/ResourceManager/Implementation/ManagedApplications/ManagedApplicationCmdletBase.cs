@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Base class for policy assignment cmdlets.
     /// </summary>
-    public abstract class ManagedApplicationCmdletBase : ResourceManagerCmdletBaseWithApiVersion
+    public abstract class ManagedApplicationCmdletBase : ResourceManagerCmdletBaseWithAPiVersion
     {
         /// <summary>
         /// Gets the next set of resources using the <paramref name="nextLink"/>

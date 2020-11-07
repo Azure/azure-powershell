@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Management.WebSites.Models;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -23,8 +22,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Action = accessRestriction.Action;
                     psAccessRestiction.Priority = accessRestriction.Priority ?? 0;
                     psAccessRestiction.Description = accessRestriction.Description;
-                    psAccessRestiction.Tag = accessRestriction.Tag;
-                    psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
                     if (accessRestriction.IpAddress != null)
                         psAccessRestiction.IpAddress = accessRestriction.IpAddress;
                     else
@@ -43,8 +40,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Action = accessRestriction.Action;
                     psAccessRestiction.Priority = accessRestriction.Priority ?? 0;
                     psAccessRestiction.Description = accessRestriction.Description;
-                    psAccessRestiction.Tag = accessRestriction.Tag;
-                    psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
                     if (accessRestriction.IpAddress != null)
                         psAccessRestiction.IpAddress = accessRestriction.IpAddress;
                     else
@@ -52,17 +47,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     ScmSiteAccessRestrictions.Add(psAccessRestiction);
                 }
             }
-        }
-
-        private Hashtable ConvertHeaders(IDictionary<string, IList<string>> headers)
-        {            
-            Hashtable returnHeaders = new Hashtable();
-            foreach (var key in headers.Keys)
-            {
-                returnHeaders.Add(key, new List<string>(headers[key]));
-            }
-
-            return returnHeaders;
         }
         public string ResourceGroupName { get; set; }
         

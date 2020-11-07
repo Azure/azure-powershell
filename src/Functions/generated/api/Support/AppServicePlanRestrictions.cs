@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>App Service plans this offer is restricted to.</summary>
     public partial struct AppServicePlanRestrictions :
         System.IEquatable<AppServicePlanRestrictions>
     {

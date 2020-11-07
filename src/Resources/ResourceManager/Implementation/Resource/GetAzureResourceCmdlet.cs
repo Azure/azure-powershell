@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cmdlet to get existing resources.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
-    public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBaseWithApiVersion
+    public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBaseWithAPiVersion
     {
         public const string ByResourceIdParameterSet = "ByResourceId";
         public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";

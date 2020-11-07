@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             var clusterBeforeUpdate = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
-            Autoscale autoscaleConfig = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), clusterBeforeUpdate.Properties.ComputeProfile)?.AutoscaleConfiguration;
+            Autoscale autoscaleConfig = Utils.ExtractWorkerNode(clusterBeforeUpdate)?.AutoscaleConfiguration;
             if (autoscaleConfig == null)
             {
                 autoscaleConfig = new Autoscale();

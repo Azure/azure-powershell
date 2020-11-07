@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 8F0634BD-D817-4365-B6D1-924DC36AE4C9
@@ -31,7 +31,6 @@ You can provide each cluster with a list of script actions to run in a specified
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
@@ -72,9 +71,9 @@ PS C:\> New-AzHDInsightClusterConfig  `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -StorageAccountResourceId $storageAccountResourceId `
-                -StorageAccountKey $storageAccountKey `
-                -StorageContainer $storageContainer
+                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+                -DefaultStorageAccountKey $storageAccountKey `
+                -DefaultStorageContainer $storageContainer
 ```
 
 This command adds a script action for the Head and Worker nodes of the your-hadoop-001 cluster, to be run at the end of cluster creation.
@@ -178,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

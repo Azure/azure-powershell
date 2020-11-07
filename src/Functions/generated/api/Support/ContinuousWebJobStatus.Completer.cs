@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Job status.</summary>
+    /// <summary>Argument completer implementation for ContinuousWebJobStatus.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ContinuousWebJobStatusTypeConverter))]
     public partial struct ContinuousWebJobStatus :
         System.Management.Automation.IArgumentCompleter

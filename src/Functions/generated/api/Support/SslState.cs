@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>SSL type.</summary>
     public partial struct SslState :
         System.IEquatable<SslState>
     {

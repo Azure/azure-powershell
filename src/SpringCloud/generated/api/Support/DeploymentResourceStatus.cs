@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Status of the Deployment</summary>
     public partial struct DeploymentResourceStatus :
         System.IEquatable<DeploymentResourceStatus>
     {

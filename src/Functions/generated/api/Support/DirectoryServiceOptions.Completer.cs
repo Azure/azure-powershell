@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Indicates the directory service used.</summary>
+    /// <summary>Argument completer implementation for DirectoryServiceOptions.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptionsTypeConverter))]
     public partial struct DirectoryServiceOptions :
         System.Management.Automation.IArgumentCompleter

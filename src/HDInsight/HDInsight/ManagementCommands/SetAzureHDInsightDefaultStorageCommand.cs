@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightDefaultStorage"), OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightDefaultStorage"),OutputType(typeof(AzureHDInsightConfig))]
     public class SetAzureHDInsightDefaultStorageCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The storage account name for the storage account to be added to the new cluster.")]
-        public string StorageAccountResourceId { get; set; }
+        public string StorageAccountName { get; set; }
 
         [Parameter(Position = 2,
             Mandatory = false,
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            Config.StorageAccountType = StorageAccountType ?? Config.StorageAccountType;
-            Config.StorageAccountResourceId = StorageAccountResourceId;
-            Config.StorageAccountKey = StorageAccountKey;
+            Config.DefaultStorageAccountType = StorageAccountType ?? Config.DefaultStorageAccountType;
+            Config.DefaultStorageAccountName = StorageAccountName;
+            Config.DefaultStorageAccountKey = StorageAccountKey;
             WriteObject(Config);
         }
     }

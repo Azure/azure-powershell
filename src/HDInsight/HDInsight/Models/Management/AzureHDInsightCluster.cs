@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var clusterSecurityProfile = cluster.Properties.SecurityProfile;
             SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
             {
-                DomainResourceId = clusterSecurityProfile.AaddsResourceId,
+                Domain = clusterSecurityProfile.Domain,
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
                 OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
@@ -70,13 +70,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = cluster.Identity;
+            PublicNetworkAccessType = cluster.Properties?.NetworkSettings?.PublicNetworkAccess;
+            OutboundPublicNetworkAccessType = cluster.Properties?.NetworkSettings?.OutboundOnlyPublicNetworkAccessType;
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
-            var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
+            var vnet = Utils.ExtractWorkerNode(cluster)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
-            SubnetName = Utils.GetResourceNameFromResourceId(vnet?.Subnet);
+            SubnetName = vnet?.Subnet;
             ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
-            KafkaRestProperties = cluster?.Properties.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -92,26 +93,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
                 if (defaultAccount != null)
                 {
-                    StorageAccount = defaultAccount.StorageAccountName;
+                    DefaultStorageAccount = defaultAccount.StorageAccountName;
 
                     var wasbAccount = defaultAccount as AzureHDInsightWASBDefaultStorageAccount;
                     var adlAccount = defaultAccount as AzureHDInsightDataLakeDefaultStorageAccount;
-                    var abfsAccount = defaultAccount as AzureHDInsightDataLakeGen2DefaultStorageAccount;
 
                     if (wasbAccount != null)
                     {
-                        StorageContainer =  wasbAccount.StorageContainerName;
+                        DefaultStorageContainer =  wasbAccount.StorageContainerName;
                     }
                     else if(adlAccount != null)
                     {
-                        StorageRootPath = adlAccount.StorageRootPath;
+                        DefaultStorageRootPath = adlAccount.StorageRootPath;
                     }
-                    else if(abfsAccount!=null)
+                    else
                     {
-                        StorageFileSystem = abfsAccount.StorageFileSystem;
+                        DefaultStorageContainer = string.Empty;
                     }
 
-                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, StorageAccount);
+                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
                 }
             }
         }
@@ -174,22 +174,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Default storage account for this cluster.
         /// </summary>
-        public string StorageAccount { get; set; }
+        public string DefaultStorageAccount { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.
         /// </summary>
-        public string StorageContainer { get; set; }
+        public string DefaultStorageContainer { get; set; }
 
         /// <summary>
-        /// Default storage path where this Azure Data Lake Cluster is rooted.
+        /// Default storage path where this Azure Data Lake Cluster is rooted
         /// </summary>
-        public string StorageRootPath { get; set; }
-
-        /// <summary>
-        /// Default storage file system for this cluster.
-        /// </summary>
-        public string StorageFileSystem { get; set; }
+        public string DefaultStorageRootPath { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.
@@ -197,7 +192,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Additional storage accounts for this cluster.
+        /// Additional storage accounts for this cluster
         /// </summary>
         public List<string> AdditionalStorageAccounts { get; set; }
 
@@ -239,6 +234,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string PrivateEndpoint;
 
         /// <summary>
+        /// Gets or sets the public network access.
+        /// </summary>
+        public string PublicNetworkAccessType;
+
+        /// <summary>
+        /// Gets or sets the outbound public network access.
+        /// </summary>
+        public string OutboundPublicNetworkAccessType;
+
+        /// <summary>
         /// Gets or sets the encryption in transit.
         /// </summary>
         public bool? EncryptionInTransit;
@@ -254,13 +259,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string SubnetName;
 
         /// <summary>
-        /// Gets or sets the compute profile.
+        /// Gets or sets the compute profile
         /// </summary>
         public AzureHDInsightComputeProfile ComputeProfile;
-
-        /// <summary>
-        /// Gets or sets the kafka rest properties.
-        /// </summary>
-        public AzureHDInsightKafkaRestProperties KafkaRestProperties;
     }
 }

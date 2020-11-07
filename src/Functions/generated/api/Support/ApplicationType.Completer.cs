@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Type of application being monitored.</summary>
+    /// <summary>Argument completer implementation for ApplicationType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationTypeTypeConverter))]
     public partial struct ApplicationType :
         System.Management.Automation.IArgumentCompleter

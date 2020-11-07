@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Aks
 {
     public abstract class NewKubeBase : CreateOrUpdateKubeBase
     {
+        [CmdletParameterBreakingChange("NodeVmSetType", ChangeDescription = "Default value will be changed from AvailabilitySet to VirtualMachineScaleSets.")]
         [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
         [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
         public string NodeVmSetType { get; set; }
@@ -40,6 +41,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Maximum number of pods that can run on node.")]
         public int NodeMaxPodCount { get; set; }
+
+        [CmdletParameterBreakingChange("NodeOsType", ChangeDescription = "NodeOsType will be removed as it supports only one value Linux.")]
+        [Parameter(Mandatory = false, HelpMessage = "OsType to be used to specify os type, currently support 'Linux' only here.")]
+        [PSArgumentCompleter("Linux")]
+        public string NodeOsType { get; set; }
 
         ////Hide it as it expects GA by around May
         //[Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
@@ -114,9 +120,10 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$")]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 
+        [CmdletParameterBreakingChange("NetworkPlugin", ChangeDescription = "Default value will be changed from None to azure.")]
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
-        public string NetworkPlugin { get; set; } = "azure";
+        public string NetworkPlugin { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
@@ -210,9 +217,12 @@ namespace Microsoft.Azure.Commands.Aks
                 count: NodeCount,
                 vmSize: NodeVmSize,
                 osDiskSizeGB: NodeOsDiskSize,
-                type: NodeVmSetType ?? "VirtualMachineScaleSets",
+                type: NodeVmSetType ?? "AvailabilitySet",
                 vnetSubnetID: NodeVnetSubnetID);
-            defaultAgentPoolProfile.OsType = "Linux";
+            if (this.IsParameterBound(c => c.NodeOsType))
+            {
+                defaultAgentPoolProfile.OsType = NodeOsType;
+            }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
                 defaultAgentPoolProfile.MaxPods = NodeMaxPodCount;

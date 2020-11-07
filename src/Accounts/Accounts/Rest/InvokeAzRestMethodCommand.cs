@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 this.Path = ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
             }
 
-            switch (this.Method.ToUpper())
+            switch (this.Method)
             {
                 case "GET":
                     response = ServiceClient
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 for (int i = 0; i < types.Length; i++)
                 {
                     sb.Append(slash + types[i]);
-                    if (names != null && i != names.Length)
+                    if (i != names.Length)
                     {
                         sb.Append(slash + names[i]);
                     }       

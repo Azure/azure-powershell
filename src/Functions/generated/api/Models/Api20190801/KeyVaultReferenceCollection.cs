@@ -18,7 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; }
 
-        /// <summary>Dictionary of <ApiKVReference></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesInternal)Property).KeyToReferenceStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesInternal)Property).KeyToReferenceStatuses = value; }
 
@@ -76,11 +75,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResource
     {
-        /// <summary>Dictionary of <ApiKVReference></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dictionary of <ApiKVReference>",
+        Description = @"",
         SerializedName = @"keyToReferenceStatuses",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get; set; }
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     internal partial interface IKeyVaultReferenceCollectionInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal
     {
-        /// <summary>Dictionary of <ApiKVReference></summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses KeyToReferenceStatuses { get; set; }
         /// <summary>KeyVaultReferenceCollection resource specific properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollectionProperties Property { get; set; }

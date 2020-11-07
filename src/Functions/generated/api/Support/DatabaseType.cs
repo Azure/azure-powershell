@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Database type (e.g. SqlAzure / MySql).</summary>
     public partial struct DatabaseType :
         System.IEquatable<DatabaseType>
     {

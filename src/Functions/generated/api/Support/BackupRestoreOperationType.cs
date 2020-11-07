@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Operation type.</summary>
     public partial struct BackupRestoreOperationType :
         System.IEquatable<BackupRestoreOperationType>
     {

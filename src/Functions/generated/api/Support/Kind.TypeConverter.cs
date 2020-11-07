@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Indicates the type of storage account.</summary>
+    /// <summary>TypeConverter implementation for Kind.</summary>
     public partial class KindTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

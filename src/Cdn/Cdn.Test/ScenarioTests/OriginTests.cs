@@ -48,12 +48,5 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWhenEndpointDoesnotExist");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetOriginProperties()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetOriginProperties");
-        }
     }
 }

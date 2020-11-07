@@ -610,7 +610,8 @@ Accept wildcard characters: False
 
 ### -UseDeviceAuthentication
 
-Use device code authentication instead of a browser control.
+Use device code authentication instead of a browser control. This is the default authentication type
+for PowerShell version 6 and higher.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

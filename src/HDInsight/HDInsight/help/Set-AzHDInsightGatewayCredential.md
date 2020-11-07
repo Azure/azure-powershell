@@ -14,21 +14,20 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzHDInsightGatewayCredential [-Name] <String> [-HttpCredential] <PSCredential>
- [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzHDInsightGatewayCredential -Name <String> [-HttpCredential] <PSCredential> [-ResourceGroupName <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
+Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] -InputObject <AzureHDInsightCluster> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
+Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] -ResourceId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -142,7 +141,7 @@ Parameter Sets: SetByNameParameterSet
 Aliases: ClusterName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -153,7 +152,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

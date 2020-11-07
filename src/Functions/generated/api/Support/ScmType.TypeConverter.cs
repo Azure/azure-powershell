@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>SCM type.</summary>
+    /// <summary>TypeConverter implementation for ScmType.</summary>
     public partial class ScmTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

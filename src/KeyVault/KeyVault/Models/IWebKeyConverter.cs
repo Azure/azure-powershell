@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.KeyVault.WebKey;
 using System.IO;
 using System.Security;
-using Track2Sdk = Azure.Security.KeyVault.Keys;
-using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal interface IWebKeyConverter
     {
-        Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password);
-
-        Track2Sdk.JsonWebKey ConvertToTrack2SdkKeyFromFile(FileInfo fileInfo, SecureString password);
+        JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password);
     }
-
-
 }

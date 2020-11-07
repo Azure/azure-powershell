@@ -62,18 +62,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 StorageKey = exportRequest.StorageKey,
                 StorageKeyType = exportRequest.StorageKeyType.ToString(),
                 StorageUri = exportRequest.StorageUri.ToString(),
-                NetworkIsolation = null
-            };
-
-            if(!string.IsNullOrEmpty(exportRequest.NetworkIsolationSettings.SqlServerResourceId)
-                || !string.IsNullOrEmpty(exportRequest.NetworkIsolationSettings.StorageAccountResourceId))
-            {
-                parameters.NetworkIsolation = new Management.Sql.Models.NetworkIsolationSettings()
+                NetworkIsolation = new Management.Sql.Models.NetworkIsolationSettings()
                 {
                     SqlServerResourceId = exportRequest.NetworkIsolationSettings.SqlServerResourceId,
                     StorageAccountResourceId = exportRequest.NetworkIsolationSettings.StorageAccountResourceId
-                };
-            }
+                }
+            };
 
             if (exportRequest.AuthenticationType != AuthenticationType.None)
             {

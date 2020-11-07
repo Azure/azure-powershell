@@ -2,7 +2,7 @@
 name: Internal issue
 about: Azure PowerShell team only
 title: ''
-labels: needs-triage, Engineering
+labels: Azure PS Team, triage
 assignees: ''
 
 ---

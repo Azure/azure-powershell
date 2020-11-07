@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>State of the config server.</summary>
+    /// <summary>Argument completer implementation for ConfigServerState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ConfigServerStateTypeConverter))]
     public partial struct ConfigServerState :
         System.Management.Automation.IArgumentCompleter

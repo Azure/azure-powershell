@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
-
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected DateTimeOffset Expiration = DateTimeOffset.Now;
         protected string accessToken;
 
-        protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "organizations")
+        protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
         {
             if (string.IsNullOrWhiteSpace(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
             {
@@ -105,10 +104,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string UserId => Account.Id;
 
         public DateTimeOffset ExpiresOn => Expiration;
-
-        public string HomeAccountId { get; } = null;
-
-        public IDictionary<string, string> ExtendedProperties { get; }
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {

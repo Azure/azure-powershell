@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Type of the source uploaded</summary>
+    /// <summary>Argument completer implementation for UserSourceType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceTypeTypeConverter))]
     public partial struct UserSourceType :
         System.Management.Automation.IArgumentCompleter
@@ -29,10 +29,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Jar".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Jar", "Jar", global::System.Management.Automation.CompletionResultType.ParameterValue, "Jar");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NetCoreZip".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("NetCoreZip", "NetCoreZip", global::System.Management.Automation.CompletionResultType.ParameterValue, "NetCoreZip");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Source".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

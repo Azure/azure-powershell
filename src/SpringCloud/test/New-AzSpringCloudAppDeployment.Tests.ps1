@@ -14,11 +14,11 @@ while(-not $mockingPath) {
 Describe 'New-AzSpringCloudAppDeployment' {
     It 'CreateExpanded' {
         $deploy = New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName01 -AppName $env.appGateway -Name $env.deployTest `
-        -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
+        -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
         $deploy.ProvisioningState | Should -Be "Succeeded"
 
         $deploy = New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName01 -AppName $env.appGateway -Name $env.deployProd `
-        -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"} -JvmOption "-Xms1G -Xmx1G"
+        -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"} -JvmOption "-Xms1G -Xmx1G"
         $deploy.ProvisioningState | Should -Be "Succeeded"
     }
 }

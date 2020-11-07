@@ -14,16 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
-    using System.Collections;
-    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using ResourceManager.Common.ArgumentCompleters;
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
@@ -69,12 +66,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public PSIotHubInputProperties Properties { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "IoT hub instance tags. Property bag in key-value pairs in the form of a hash table.")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable Tag { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.AddIotHub))
@@ -88,11 +79,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         Capacity = this.Units
                     }
                 };
-
-                if (this.IsParameterBound(c => c.Tag))
-                {
-                    iotHubDescription.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
-                }
 
                 if (this.Properties != null)
                 {

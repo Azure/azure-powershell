@@ -14,24 +14,25 @@ Gets function apps in a subscription.
 
 ### GetAll (Default)
 ```
-Get-AzFunctionApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionApp [-SubscriptionId <String[]>] [-IncludeSlot] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByLocation
 ```
-Get-AzFunctionApp -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzFunctionApp -Location <String> [-SubscriptionId <String[]>] [-IncludeSlot] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-IncludeSlot]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByResourceGroupName
 ```
-Get-AzFunctionApp -ResourceGroupName <String> [-SubscriptionId <String[]>] [-IncludeSlot]
+Get-AzFunctionApp [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-IncludeSlot]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -118,7 +119,7 @@ Use to specify whether to include deployment slots in results.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceGroupName
+Parameter Sets: (All)
 Aliases:
 
 Required: False

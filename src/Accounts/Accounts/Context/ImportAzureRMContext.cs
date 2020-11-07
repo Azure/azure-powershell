@@ -12,16 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.Profile.Properties;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -71,23 +76,29 @@ namespace Microsoft.Azure.Commands.Profile
                 target.TrySetDefaultContext(source.DefaultContextKey);
             }
 
-            EnsureProtectedMsalCache();
+            AzureRmProfileProvider.Instance.SetTokenCacheForProfile(target.ToProfile());
+            EnsureProtectedCache(target, source.DefaultContext?.TokenCache?.CacheData);
         }
 
-        void EnsureProtectedMsalCache()
+        void EnsureProtectedCache(IProfileOperations profile, byte[] cacheData)
         {
-            try
+            if (profile == null || cacheData == null)
             {
-                if (AzureSession.Instance.TryGetComponent(
-                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                    out PowerShellTokenCacheProvider tokenCacheProvider))
-                {
-                    tokenCacheProvider.FlushTokenData();
-                }
+                return;
             }
-            catch
+
+            AzureRmAutosaveProfile autosave = profile as AzureRmAutosaveProfile;
+            var protectedcache = AzureSession.Instance.TokenCache as ProtectedFileTokenCache;
+            if (autosave != null && protectedcache == null && cacheData.Any())
             {
-                WriteWarning(Resources.ImportAuthenticationFailure);
+                try
+                {
+                    var cache = new ProtectedFileTokenCache(cacheData, AzureSession.Instance.DataStore);
+                }
+                catch
+                {
+                    WriteWarning(Resources.ImportAuthenticationFailure);
+                }
             }
         }
 
@@ -108,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                     ModifyProfile((profile) =>
                     {
-                        CopyProfile(new AzureRmProfile(Path, false), profile);
+                        CopyProfile(new AzureRmProfile(Path), profile);
                         executionComplete = true;
                     });
                 });
@@ -134,17 +145,16 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 else
                 {
-                    var defaultContext = profile.DefaultContext;
-                    if (defaultContext != null &&
-                        defaultContext.Subscription != null &&
-                        defaultContext.Subscription.State != null &&
-                        !defaultContext.Subscription.State.Equals(
+                    if (profile.DefaultContext != null &&
+                        profile.DefaultContext.Subscription != null &&
+                        profile.DefaultContext.Subscription.State != null &&
+                        !profile.DefaultContext.Subscription.State.Equals(
                         "Enabled",
                         StringComparison.OrdinalIgnoreCase))
                     {
                         WriteWarning(string.Format(
                                        Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                       defaultContext.Subscription.State));
+                                       profile.DefaultContext.Subscription.State));
                     }
 
                     WriteObject((PSAzureProfile)profile);

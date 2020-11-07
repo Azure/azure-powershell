@@ -88,13 +88,7 @@ function Test-AzureRmIotHubLifecycle
 	$routingProperties.Routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
 	$routingProperties.Routes.Add($routeProp)
 	$properties.Routing = $routingProperties
-
-	# Add Tags to Iot Hub
-	$tags = @{}
-	$tags.Add($Tag1Key, $Tag1Value)
-
-	# Create new Iot Hub
-	$newIothub1 = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 -Properties $properties -tag $tags
+	$newIothub1 = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 -Properties $properties
 
 	# Get Iot Hub in resourcegroup
 	$allIotHubsInResourceGroup =  Get-AzIotHub -ResourceGroupName $ResourceGroupName 
@@ -109,8 +103,6 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $iotHub.Properties.Routing.Routes.Count -eq 1}
     Assert-True { $iotHub.Properties.Routing.Routes[0].Name -eq "route"}
     Assert-True { $iotHub.Properties.Routing.Endpoints.EventHubs[0].Name -eq "eh1"}
-	Assert-True { $iotHub.Tags.Count -eq 1 }
-	Assert-True { $iotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
 
 	# Get Quota Metrics
 	$quotaMetrics = Get-AzIotHubQuotaMetric -ResourceGroupName $ResourceGroupName -Name $IotHubName
@@ -245,6 +237,13 @@ function Test-AzureRmIotHubLifecycle
 	$iothub.Properties.Routing.FallbackRoute.IsEnabled = 1
 	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
+
+	# Add Tags to Iot Hub
+	$tags = @{}
+	$tags.Add($Tag1Key, $Tag1Value)
+	$updatedIotHub = Update-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
+	Assert-True { $updatedIotHub.Tags.Count -eq 1 }
+	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
 
 	# Add more Tags to Iot Hub
 	$tags.Clear()

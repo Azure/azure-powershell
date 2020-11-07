@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Current DNS type</summary>
+    /// <summary>TypeConverter implementation for DnsType.</summary>
     public partial class DnsTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

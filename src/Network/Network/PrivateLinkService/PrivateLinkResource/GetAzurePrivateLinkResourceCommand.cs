@@ -16,14 +16,13 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkResource", DefaultParameterSetName = "ByPrivateLinkResourceId"), OutputType(typeof(PSPrivateLinkResource))]
-    public class GetAzurePrivateLinkResourceCommand : NetworkBaseCmdlet, IDynamicParameters
+    public class GetAzurePrivateLinkResourceCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -32,63 +31,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = "ByResource")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The private link service name.",
-            ParameterSetName = "ByResource")]
-        [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
-
-        public string PrivateLinkResourceType { get; set; }
-        string NamedContextParameterSet = "ByResource";
-        private RuntimeDefinedParameterDictionary DynamicParameters;
-        public const string privateEndpointTypeName = "PrivateLinkResourceType";
-        public string Subscription { get; set; }
-
-        public object GetDynamicParameters()
-        {
-            var parameters = new RuntimeDefinedParameterDictionary();
-            RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
-            {
-                parameters.Add(privateEndpointTypeName, namedParameter);
-            }
-            DynamicParameters = parameters;
-            return parameters;
-        }
-
         public override void Execute()
         {
             base.Execute();
-            if (this.IsParameterBound(c => c.PrivateLinkResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.ServiceName = resourceIdentifier.ResourceName;
-                this.PrivateLinkResourceType = resourceIdentifier.ResourceType;
-                this.Subscription = resourceIdentifier.Subscription;
-            }
-            else
-            {
-                this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
-                this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
-            }
-            IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, Subscription, PrivateLinkResourceType);
+
+            var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
+            string ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            string Name = resourceIdentifier.ResourceName;
+            string ResourceType = resourceIdentifier.ResourceType;
+
+            IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, resourceIdentifier.Subscription, ResourceType);
             if (provider == null)
             {
                 throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, this.PrivateLinkResourceId));
             }
-
-            var plrs = provider.ListPrivateLinkResource(ResourceGroupName, ServiceName);
+            
+            var plrs = provider.ListPrivateLinkResource(ResourceGroupName, Name);
             WriteObject(plrs, true);
 
         }

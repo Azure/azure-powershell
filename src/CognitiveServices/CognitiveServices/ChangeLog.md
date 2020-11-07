@@ -19,8 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.8.0
-
 * Updated SDK to 7.4.0-preview.
 
 ## Version 1.7.0

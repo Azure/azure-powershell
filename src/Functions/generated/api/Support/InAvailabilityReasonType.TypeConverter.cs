@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>
-    /// <code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code>
-    /// indicates that the name is already in use and is therefore unavailable.
-    /// </summary>
+    /// <summary>TypeConverter implementation for InAvailabilityReasonType.</summary>
     public partial class InAvailabilityReasonTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

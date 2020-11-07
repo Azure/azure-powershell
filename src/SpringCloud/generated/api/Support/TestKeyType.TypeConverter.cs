@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Type of the test key</summary>
+    /// <summary>TypeConverter implementation for TestKeyType.</summary>
     public partial class TestKeyTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -66,46 +66,41 @@ Enables custom domain with running endpoint.
 function Test-CustomDomainEnableDisableWithRunningEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "cdn-ps-test-msft"
-    $hostName = "a.cdn-ps-test-msft.azfdtest.xyz"
+    $endpointName = "testVerizonEP"
+    $hostName = "testVerizon.dustydog.us"
     
     $customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Microsoft"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
 
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
     $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
-    if ($endpoint.HostName -Match "azureedge-test\.net$") {
-         $hostName = 'a.cdn-ps-test-msft-df.azfdtest.xyz'
-    }
+
     $endpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
     Assert-True{$validateResult.CustomDomainValidated}
     $validateResultbyPiping = Test-AzCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName $hostName
     Assert-True{$validateResultbyPiping.CustomDomainValidated}
 
-    $createdCustomDomain = $endpoint | New-AzCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName
+    $createdCustomDomain = $endpoint | New-AzCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName 
     Assert-AreEqual $customDomainName $createdCustomDomain.Name
     Assert-AreEqual $hostName $createdCustomDomain.HostName
-
-   	$customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName
+    
+   	$customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName 
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
     $enabled = $customDomain | Enable-AzCdnCustomDomainHttps -PassThru
     Assert-True{$enabled}
+    Assert-ThrowsContains { Enable-AzCdnCustomDomainHttps -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
 
-    SleepInRecordMode 900
-
-    Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
-    $customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName
-    Assert-AreEqual "Disabling" $customDomain.CustomHttpsProvisioningState
+    Assert-ThrowsContains { Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -204,6 +199,10 @@ function Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint
 
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
 
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
+
+    Assert-ThrowsContains {  $customDomain | Disable-AzCdnCustomDomainHttps } "BadRequest"
+
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
@@ -242,6 +241,8 @@ function Test-AkamaiCustomDomainEnableHttpsWithRunningEndpoint
     $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
 
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
+
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
@@ -252,8 +253,8 @@ Enable Https for custom domain with running endpoint
 function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
 {
   # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "cdn-ps-test-msft"
-    $hostName = "a.cdn-ps-test-msft.azfdtest.xyz"
+    $endpointName = "testMicrosoftEP"
+    $hostName = "testMicrosoft.dustydog.us"
 
     $customDomainName = getAssetName
 
@@ -267,10 +268,6 @@ function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
     $endpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
-    if ($endpoint.HostName -Match "azureedge-test\.net$") {
-        $hostName = 'a.cdn-ps-test-msft-df.azfdtest.xyz'
-    }
-    
     $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
     Assert-True{$validateResult.CustomDomainValidated}
 
@@ -283,6 +280,8 @@ function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
 
     $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
+
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Represents the type of the Detector</summary>
+    /// <summary>TypeConverter implementation for IssueType.</summary>
     public partial class IssueTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

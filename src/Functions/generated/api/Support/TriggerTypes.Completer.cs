@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>The trigger type of the function</summary>
+    /// <summary>Argument completer implementation for TriggerTypes.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypesTypeConverter))]
     public partial struct TriggerTypes :
         System.Management.Automation.IArgumentCompleter

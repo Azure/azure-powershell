@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>State of FTP / FTPS service</summary>
+    /// <summary>Argument completer implementation for FtpsState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsStateTypeConverter))]
     public partial struct FtpsState :
         System.Management.Automation.IArgumentCompleter
