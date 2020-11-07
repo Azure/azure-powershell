@@ -5420,6 +5420,10 @@
                 <Label>VirtualRouterIps</Label>
                 <PropertyName>VirtualRouterIps</PropertyName>
               </ListItem>
+		      <ListItem>
+			    <Label>AllowBranchToBranchTraffic</Label>
+			    <PropertyName>AllowBranchToBranchTraffic</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>Peerings</Label>
                 <PropertyName>PeeringsText</PropertyName>
