@@ -16,7 +16,7 @@ The registered information available on the cluster is used to unregister the cl
 ```
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>]
- [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
+ [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>] [-UseDeviceLogin]
  [[-Credential] <PSCredential>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,106 +60,12 @@ Result: Success
 
 ## PARAMETERS
 
-### -SubscriptionId
-Specifies the Azure Subscription to create the resource
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Specifies the resource name of the resource created in Azure.
-If not specified, on-premise cluster name is used.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantId
-Specifies the Azure TenantId.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the Azure Resource Group name.
-If not specified \<LocalClusterName\>-rg will be used as resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ArmAccessToken
-Specifies the ARM access token.
-Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GraphAccessToken
-Specifies the Graph access token.
-Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AccountId
 Specifies the ARM access token.
 Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -170,19 +76,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentName
-Specifies the Azure Environment.
-Default is AzureCloud.
-Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+### -ArmAccessToken
+Specifies the ARM access token.
+Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: $AzureCloud
+Position: 5
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -191,7 +96,7 @@ Accept wildcard characters: False
 Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +112,7 @@ Specifies the credential for the ComputerName.
 Default is the current user executing the Cmdlet.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -218,18 +123,112 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -EnvironmentName
+Specifies the Azure Environment.
+Default is AzureCloud.
+Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
 
 ```yaml
-Type: SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: False
+Position: 8
+Default value: $AzureCloud
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GraphAccessToken
+Specifies the Graph access token.
+Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the Azure Resource Group name.
+If not specified \<LocalClusterName\>-rg will be used as resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+Specifies the resource name of the resource created in Azure.
+If not specified, on-premise cluster name is used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Specifies the Azure Subscription to create the resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Specifies the Azure TenantId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDeviceLogin
+Use device code authentication instead of an interactive browser prompt.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -238,9 +237,25 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

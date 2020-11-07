@@ -26,6 +26,7 @@ $FailedToRemoveRegistrationCertWarning = "Couldn't clean up Azure Stack HCI regi
 $UnregistrationSuccessDetailsMessage = "Azure Stack HCI is successfully unregistered. The Azure resource representing Azure Stack HCI has been deleted. Azure Stack HCI can’t sync with Azure until you register again."
 $RegistrationSuccessDetailsMessage = "Azure Stack HCI is successfully registered. An Azure resource representing Azure Stack HCI has been created in your Azure subscription to enable an Azure-consistent monitoring, billing, and support experience."
 $CouldNotGetLatestModuleInformationWarning = "Can't connect to the PowerShell Gallery to verify module version. Make sure you have the latest Az.StackHCI module with major version {0}.*."
+$ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Make sure every clustered node has network connectivity to Azure. Verify that your network firewall allows outbound HTTPS from port 443 to all the well-known Azure IP addresses and URLs required by Azure Stack HCI. Visit aka.ms/hcidocs for details."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -92,8 +93,6 @@ $PermissionIds.Add($ClusterReadWritePermission)
 $PermissionIds.Add($ClusterNodeReadPermission)
 $PermissionIds.Add($ClusterNodeReadWritePermission)
 
-$ServiceEndpointAzureCloud = [string]::Empty
-
 $Region_EASTUSEUAP = 'eastus2euap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
@@ -101,6 +100,7 @@ $Region_EASTUSEUAP = 'eastus2euap'
         }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://azurestackhci.azurefd.net"
+$ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
 
 $AuthorityAzureCloud = "https://login.microsoftonline.com"
 $BillingServiceApiScopeAzureCloud = "https://azurestackhci-usage.trafficmanager.net/.default"
@@ -138,9 +138,17 @@ $OutputPropertyResourceId = "AzureResourceId"
 $OutputPropertyPortalResourceURL = "AzurePortalResourceURL"
 $OutputPropertyPortalAADAppPermissionsURL = "AzurePortalAADAppPermissionsURL"
 $OutputPropertyDetails = "Details"
+$OutputPropertyTest = "Test"
+$OutputPropertyEndpointTested = "EndpointTested"
+$OutputPropertyIsRequired = "IsRequired"
+$OutputPropertyFailedNodes = "FailedNodes"
+
+$ConnectionTestToAzureHCIServiceName = "Connect to Azure Stack HCI Service"
 
 $ResourceGroupCreatedByName = "CreatedBy"
 $ResourceGroupCreatedByValue = "4C02703C-F5D0-44B0-ADC3-4ED5C2839E61"
+
+$HealthEndpointPath = "/health"
 
 enum RegistrationStatus
 {
@@ -723,6 +731,48 @@ param(
     return $False
 }
 
+function Check-ConnectionToCloudBillingService{
+param(
+    $ClusterNodes,
+    [System.Management.Automation.PSCredential] $Credential,
+    [string] $HealthEndpoint,
+    [System.Collections.ArrayList] $HealthEndPointCheckFailedNodes
+    )
+
+    Foreach ($clusNode in $ClusterNodes)
+    {
+        $nodeSession = $null
+
+        try
+        {
+            if($Credential -eq $Null)
+            {
+                $nodeSession = New-PSSession -ComputerName $clusNode.Name
+            }
+            else
+            {
+                $nodeSession = New-PSSession -ComputerName $clusNode.Name -Credential $Credential
+            }
+
+            # Check if node can reach cloud billing service
+            $healthResponse = Invoke-Command -Session $nodeSession -ScriptBlock { Invoke-WebRequest $Using:HealthEndpoint -UseBasicParsing}
+
+            if(($healthResponse -eq $Null) -or ($healthResponse.StatusCode -ne [int][system.net.httpstatuscode]::ok))
+            {
+                Write-Verbose ("StatusCode of invoking cloud billing service health endpoint on node " + $clusNode.Name + " : " + $healthResponse.StatusCode)
+                $HealthEndPointCheckFailedNodes.Add($clusNode.Name) | Out-Null
+                continue
+            }
+        }
+        catch
+        {
+            Write-Verbose ("Exception occured while testing health endpoint connectivity on Node: " + $clusNode.Name + " Exception: " + $_.Exception)
+            $HealthEndPointCheckFailedNodes.Add($clusNode.Name) | Out-Null
+            continue
+        }
+    }
+}
+
 function Setup-Certificates{
 param(
     $ClusterNodes,
@@ -874,6 +924,13 @@ enum OperationStatus
     Cancelled
 }
 
+enum ConnectionTestResult
+{
+    Unused;
+    Succeeded;
+    Failed
+}
+
 <#
     .Description
     Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
@@ -908,11 +965,17 @@ enum OperationStatus
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
 
-    .PARAMETER Credential
-    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
-
     .PARAMETER CertificateThumbprint
     Specifies the thumbprint of the certificate available on all the nodes. User is responsible for managing the certificate.
+
+    .PARAMETER RepairRegistration
+    Repair the current Azure Stack HCI registration with the cloud. This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Azure AD application in the cloud and generates new replacement certificates for both. The resource group, resource name, and other registration choices are preserved.
+
+    .PARAMETER UseDeviceLogin
+    Use device code authentication instead of an interactive browser prompt.
+
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
 
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
@@ -1214,6 +1277,18 @@ param(
                 $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
             }
 
+            $testConnectionResult = Test-AzStackHCIConnection -EnvironmentName $EnvironmentName -Region $regionName -ComputerName $ComputerName -Credential $Credential
+
+            if($testConnectionResult.Result -eq [ConnectionTestResult]::Failed)
+            {
+                # Failed on atleast 1 node
+                $ConnectingToCloudBillingServiceFailedMsg = $ConnectingToCloudBillingServiceFailed -f ($testConnectionResult.FailedNodes -join ",")
+                Write-Error -Message $ConnectingToCloudBillingServiceFailedMsg
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                Write-Output $registrationOutput
+                return
+            }
+
             if($resource -eq $Null)
             {
                 # Create new application
@@ -1399,7 +1474,15 @@ param(
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyPortalResourceURL -Value $portalResourceUrl
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResourceId -Value $resourceId
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyPortalAADAppPermissionsURL -Value $appPermissionsPageUrl
-        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $RegistrationSuccessDetailsMessage
+
+        if($operationStatus -eq [OperationStatus]::PendingForAdminConsent)
+        {
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $AdminConsentWarningMsg
+        }
+        else
+        {
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $RegistrationSuccessDetailsMessage
+        }
 
         Write-Output $registrationOutput
     }
@@ -1450,6 +1533,9 @@ param(
 
     .PARAMETER ComputerName
     Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
+
+    .PARAMETER UseDeviceLogin
+    Use device code authentication instead of an interactive browser prompt.
 
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
@@ -1726,5 +1812,175 @@ param(
     }
 }
 
+<#
+    .Description
+    Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+    .PARAMETER EnvironmentName
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+
+    .PARAMETER Region
+    Specifies the Region to connect to. Not used unless it is Canary region.
+
+    .PARAMETER ComputerName
+    Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
+
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Test: Name of the test performed.
+    EndpointTested: Endpoint used in the test.
+    IsRequired: True or False
+    Result: Succeeded or Failed
+    FailedNodes: List of nodes on which the test failed.
+
+    .EXAMPLE
+    Invoking on one of the cluster node. Success case.
+    C:\PS>Test-AzStackHCIConnection
+    Test: Connect to Azure Stack HCI Service
+    EndpointTested: https://azurestackhci-df.azurefd.net/health
+    IsRequired: True
+    Result: Succeeded
+
+    .EXAMPLE
+    Invoking on one of the cluster node. Failed case.
+    C:\PS>Test-AzStackHCIConnection
+    Test: Connect to Azure Stack HCI Service
+    EndpointTested: https://azurestackhci-df.azurefd.net/health
+    IsRequired: True
+    Result: Failed
+    FailedNodes: Node1inClus2, Node2inClus3
+#>
+function Test-AzStackHCIConnection{
+param(
+    [Parameter(Mandatory = $false)]
+    [string] $EnvironmentName = $AzureCloud,
+
+    [Parameter(Mandatory = $false)]
+    [string] $Region,
+
+    [Parameter(Mandatory = $false)]
+    [string] $ComputerName,
+
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.PSCredential] $Credential
+    )
+
+    try
+    {
+        Setup-Logging -LogFilePrefix "TestAzStackHCIConnection"
+
+        $testConnectionnOutput = New-Object -TypeName PSObject
+        $connectionTestResult = [ConnectionTestResult]::Unused
+
+        if([string]::IsNullOrEmpty($ComputerName))
+        {
+            $ComputerName = [Environment]::MachineName
+            $IsManagementNode = $False
+        }
+        else
+        {
+            $IsManagementNode = $True
+        }
+
+        if($IsManagementNode)
+        {
+            if($Credential -eq $Null)
+            {
+                $clusterNodeSession = New-PSSession -ComputerName $ComputerName
+            }
+            else
+            {
+                $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            }
+        }
+        else
+        {
+            $clusterNodeSession = New-PSSession -ComputerName localhost
+        }
+
+        if(-not([string]::IsNullOrEmpty($Region)))
+        {
+            $regionName = Normalize-RegionName -Region $Region
+
+            if($regionName -eq $Region_EASTUSEUAP)
+            {
+                $ServiceEndpointAzureCloud = $ServiceEndpointsAzureCloud[$regionName]
+            }
+            else
+            {
+                $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
+            }
+        }
+
+        $clusScript = {
+                $clusterPowershell = Get-WindowsFeature -Name RSAT-Clustering-PowerShell;
+                if ( $clusterPowershell.Installed -eq $false)
+                {
+                    Install-WindowsFeature RSAT-Clustering-PowerShell | Out-Null;
+                }
+            }
+
+        Invoke-Command -Session $clusterNodeSession -ScriptBlock $clusScript
+        $getCluster = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Cluster }
+
+        if($getCluster -eq $Null)
+        {
+            $NoClusterErrorMessage = $NoClusterError -f $ComputerName
+            Write-Error -Message $NoClusterErrorMessage
+            return
+        }
+        else
+        {
+            $ServiceEndpoint = ""
+            $Authority = ""
+            $BillingServiceApiScope = ""
+            $GraphServiceApiScope = ""
+
+            Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$ServiceEndpoint) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
+            $EndPointToInvoke = $ServiceEndpoint + $HealthEndpointPath
+
+            $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
+            $HealthEndPointCheckFailedNodes = [System.Collections.ArrayList]::new()
+
+            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyTest -Value $ConnectionTestToAzureHCIServiceName
+            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyEndpointTested -Value $EndPointToInvoke
+            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyIsRequired -Value $True
+
+            Check-ConnectionToCloudBillingService -ClusterNodes $clusterNodes -Credential $Credential -HealthEndpoint $EndPointToInvoke -HealthEndPointCheckFailedNodes $HealthEndPointCheckFailedNodes
+
+            if($HealthEndPointCheckFailedNodes.Count -ge 1)
+            {
+                # Failed on atleast 1 node
+                $connectionTestResult = [ConnectionTestResult]::Failed
+                $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyFailedNodes -Value $HealthEndPointCheckFailedNodes
+            }
+            else
+            {
+                $connectionTestResult = [ConnectionTestResult]::Succeeded
+            }
+
+            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $connectionTestResult
+            Write-Output $testConnectionnOutput
+            return
+        }
+    }
+    catch
+    {
+        Write-Error -Exception $_.Exception -Category OperationStopped
+        # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
+        $positionMessage = $_.InvocationInfo.PositionMessage
+        Write-Error ("Exception occured in Test-AzStackHCIConnection : " + $positionMessage) -Category OperationStopped
+        throw
+    }
+    finally
+    {
+        Stop-Transcript | out-null
+    }
+}
+
 Export-ModuleMember -Function Register-AzStackHCI
 Export-ModuleMember -Function Unregister-AzStackHCI
+Export-ModuleMember -Function Test-AzStackHCIConnection
