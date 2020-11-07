@@ -122,7 +122,7 @@ function Test-BackupCrud
         # Assert-AreEqual $label $getRetrievedBackup.Label
         
         # update and check a Backup by name and check again
-        $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
+        $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $labelUpdate $updateBackup.Label
         
