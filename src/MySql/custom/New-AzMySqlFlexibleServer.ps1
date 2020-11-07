@@ -40,12 +40,12 @@ function New-AzMySqlFlexibleServer {
         [System.String]
         ${Location},
 
-        [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
+        [Parameter(Mandatory, HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${AdministratorUserName},
 
-        [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
+        [Parameter(Mandatory, HelpMessage = 'The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         # [System.Security.SecureString]
         [System.String]
