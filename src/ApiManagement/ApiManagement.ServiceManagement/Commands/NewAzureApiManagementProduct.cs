@@ -89,7 +89,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             string productId = ProductId ?? Guid.NewGuid().ToString("N");
 
             bool? approvalRequired = null;
-            Int32? subscriptionsLimit = null;
             if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
             {
                 approvalRequired = ApprovalRequired ?? false;
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 LegalTerms,
                 SubscriptionRequired ?? true,
                 approvalRequired,
-                subscriptionsLimit,
+                SubscriptionsLimit,
                 State);
 
             WriteObject(product);
