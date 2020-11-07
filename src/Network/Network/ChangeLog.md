@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for virtual router
+    - `Update-AzVirtualRouter`: to allow branch to branch traffic
 * Updated New-AzFirewallPolicyNatRule cmdlet:
     - Added parameter Translated FQDN
 
