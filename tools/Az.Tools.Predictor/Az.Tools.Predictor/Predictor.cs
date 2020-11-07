@@ -102,6 +102,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var resultBuilder = new StringBuilder();
                 var usedParams = new HashSet<int>();
                 var sourceBuilder = new StringBuilder();
+                var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added
+                int maxAllowedCommandDupl = 1;
 
                 for (var i = 0; i < _predictions.Count && results.Count < suggestionCount; ++i)
                 {
@@ -140,7 +142,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                     }
                                 }
 
-                                results.Add(prediction.ToString(), sourceBuilder.ToString());
+
+                                if (!presentCommands.ContainsKey(_predictions[i].Command))
+                                {
+                                    results.Add(prediction.ToString(), sourceBuilder.ToString());
+                                    presentCommands.Add(_predictions[i].Command, 1);
+                                }
+                                else if (presentCommands[_predictions[i].Command] < maxAllowedCommandDupl)
+                                {
+                                    results.Add(prediction.ToString(), sourceBuilder.ToString());
+                                    presentCommands[_predictions[i].Command] += 1;
+                                }
 
                                 if (results.Count == suggestionCount)
                                 {
@@ -152,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
             catch
-            {
+            { 
             }
 
             return results;
