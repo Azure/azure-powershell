@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved error message of `New-AzDataFactoryV2LinkedServiceEncryptedCredential` command
+
+## Version 1.11.0
 * Updated ADF .Net SDK version to 4.12.0
 * Updated ADF encryption client SDK version to 4.14.7587.7
+* Added `Stop-AzDataFactoryV2TriggerRun` and `Invoke-AzDataFactoryV2TriggerRun` commands
 
 ## Version 1.10.2
 * Fixed typo in output messages

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "VpnSiteLink of Vpn Connection to  start packet capture on Vpn connection.")]
         public string LinkConnectionName { get; set; }
 

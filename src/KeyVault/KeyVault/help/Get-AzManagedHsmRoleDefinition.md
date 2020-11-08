@@ -48,7 +48,7 @@ The example lists all the roles at "/keys" scope.
 
 ### Example 2
 ```powershell
-PS C:\> $backupRole = Get-AzManagedHsmRoleDefinition -HsmName bezmhsm -RoleDefinitionName "managed hsm backup"
+PS C:\> $backupRole = Get-AzManagedHsmRoleDefinition -HsmName myHsm -RoleDefinitionName "managed hsm backup"
 
 PS C:\> $backupRole.Permissions
 

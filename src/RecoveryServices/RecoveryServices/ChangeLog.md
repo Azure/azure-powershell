@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Specifying policy BackupTime is in UTC.
+* Modifying breaking change warning in Get-AzRecoveryServicesBackupJobDetails cmdlet.
+* Updating sample script help text for Set-AzRecoveryServicesBackupProtectionPolicy cmdlet.
+
+## Version 3.0.0
 * Fixing Workload Restore for contributor permissions.
 * Added new parameter sets and validations for Restore-AzRecoveryServicesBackupItem cmdlet.
 

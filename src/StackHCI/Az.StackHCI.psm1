@@ -197,7 +197,9 @@ param(
         $graphTokenItemResource = $GraphEndpointResourceIdAzurePPE
     }
 
-    $graphTokenItem = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.TokenCache.ReadItems() | where { ($_.TenantId -eq "$TenantId") -and ($_.Resource -eq "$graphTokenItemResource")} | Sort-Object -Property ExpiresOn | Select-Object -Last 1
+    $authFactory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory
+    $azContext = Get-AzContext
+    $graphTokenItem = $authFactory.Authenticate($azContext.Account, $azContext.Environment, $azContext.Tenant.Id, $null, [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never, $null, $graphTokenItemResource)
     return $graphTokenItem.AccessToken
 }
 

@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.1.0
 * [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
@@ -27,6 +29,32 @@
     - Added parameter `-SkuTier`
     - Added parameter `-SkuName` and made Sku as Alias for this
     - Removed parameter `-Sku`
+* [Breaking Change] Made `Connectionlink` argument mandatory in `Start-AzVpnConnectionPacketCapture` and `Stop-AzVpnConnectionPacketCapture`
+* [Breaking Change] Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` to remove parameter `-Filter`
+* [Breaking Change] Replaced `New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject` cmdlet with `New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject`
+* Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` cmdlet:
+	- Added parameter `-Type`
+	- Added parameter `-CoverageLevel`
+	- Added parameter `-Scope`
+* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
+* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
+    - `Get-AzApplicationGatewayClientAuthConfiguration`
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Remove-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
+    - `Add-AzApplicationGatewayTrustedClientCertificate` 
+    - `Get-AzApplicationGatewayTrustedClientCertificate` 
+    - `New-AzApplicationGatewayTrustedClientCertificate` 
+    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
+    - `Set-AzApplicationGatewayTrustedClientCertificate`
+    - `Add-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfile`
+    - `New-AzApplicationGatewaySslProfile`
+    - `Remove-AzApplicationGatewaySslProfile`
+    - `Set-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfilePolicy`
+    - `Remove-AzApplicationGatewaySslProfilePolicy`
+    - `Set-AzApplicationGatewaySslProfilePolicy`
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource

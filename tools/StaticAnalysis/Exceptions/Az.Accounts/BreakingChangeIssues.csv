@@ -1,3 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll","Microsoft.Azure.Commands.Common.GetAzProfile","Get-AzProfile","0","1000","The cmdlet 'Get-AzProfile' has been removed and no alias was found for the original cmdlet name.","Add the cmdlet 'Get-AzProfile' back to the module, or add an alias to the original cmdlet name."
-"Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll","Microsoft.Azure.Commands.Common.SelectAzProfile","Select-AzProfile","0","1000","The cmdlet 'Select-AzProfile' has been removed and no alias was found for the original cmdlet name.","Add the cmdlet 'Select-AzProfile' back to the module, or add an alias to the original cmdlet name."

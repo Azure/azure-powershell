@@ -556,8 +556,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSConnectionMonitorQueryResult, MNM.ConnectionMonitorQueryResult>();
                 cfg.CreateMap<CNM.PSConnectionStateSnapshot, MNM.ConnectionStateSnapshot>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointObject, MNM.ConnectionMonitorEndpoint>();
-                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointFilter, MNM.ConnectionMonitorEndpointFilter>();
-                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointFilterItem, MNM.ConnectionMonitorEndpointFilterItem>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointScope, MNM.ConnectionMonitorEndpointScope>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointScopeItem, MNM.ConnectionMonitorEndpointScopeItem>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject, MNM.ConnectionMonitorTestConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTcpConfiguration, MNM.ConnectionMonitorTcpConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration, MNM.ConnectionMonitorIcmpConfiguration>();
@@ -575,8 +575,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectionMonitorQueryResult, CNM.PSConnectionMonitorQueryResult>();
                 cfg.CreateMap<MNM.ConnectionStateSnapshot, CNM.PSConnectionStateSnapshot>();
                 cfg.CreateMap<MNM.ConnectionMonitorEndpoint, CNM.PSNetworkWatcherConnectionMonitorEndpointObject>();
-                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilter, CNM.PSNetworkWatcherConnectionMonitorEndpointFilter>();
-                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilterItem, CNM.PSNetworkWatcherConnectionMonitorEndpointFilterItem>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointScope, CNM.PSNetworkWatcherConnectionMonitorEndpointScope>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointScopeItem, CNM.PSNetworkWatcherConnectionMonitorEndpointScopeItem>();
                 cfg.CreateMap<MNM.ConnectionMonitorTestConfiguration, CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject>();
                 cfg.CreateMap<MNM.ConnectionMonitorTcpConfiguration, CNM.PSNetworkWatcherConnectionMonitorTcpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorIcmpConfiguration, CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration>();
@@ -903,6 +903,7 @@ namespace Microsoft.Azure.Commands.Network
                         dest.CipherSuites = src.CipherSuites == null ? null : dest.CipherSuites;
                         dest.DisabledSslProtocols = src.DisabledSslProtocols == null ? null : dest.DisabledSslProtocols;
                     });
+                cfg.CreateMap<CNM.PSApplicationGatewayClientAuthConfiguration, MNM.ApplicationGatewayClientAuthConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
                 cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>()
@@ -916,6 +917,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>().ForMember(
                     dest => dest.Password,
                     opt => opt.ResolveUsing(src => src.Password?.ConvertToString()));
+                cfg.CreateMap<CNM.PSApplicationGatewaySslProfile, MNM.ApplicationGatewaySslProfile>();
                 cfg.CreateMap<CNM.PSApplicationGatewayHttpListener, MNM.ApplicationGatewayHttpListener>();
                 cfg.CreateMap<CNM.PSApplicationGatewayIPConfiguration, MNM.ApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRequestRoutingRule, MNM.ApplicationGatewayRequestRoutingRule>();
@@ -928,6 +930,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayRewriteRuleCondition, MNM.ApplicationGatewayRewriteRuleCondition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAuthenticationCertificate, MNM.ApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<CNM.PSApplicationGatewayTrustedRootCertificate, MNM.ApplicationGatewayTrustedRootCertificate>();
+                cfg.CreateMap<CNM.PSApplicationGatewayTrustedClientCertificate, MNM.ApplicationGatewayTrustedClientCertificate>();
                 cfg.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendHealth, MNM.ApplicationGatewayBackendHealth>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendHealthPool, MNM.ApplicationGatewayBackendHealthPool>();
@@ -969,6 +972,7 @@ namespace Microsoft.Azure.Commands.Network
                         dest.CipherSuites = src.CipherSuites == null ? null : dest.CipherSuites;
                         dest.DisabledSslProtocols = src.DisabledSslProtocols == null ? null : dest.DisabledSslProtocols;
                     });
+                cfg.CreateMap<MNM.ApplicationGatewayClientAuthConfiguration, CNM.PSApplicationGatewayClientAuthConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
                 cfg.CreateMap<MNM.ApplicationGatewayProbeHealthResponseMatch, CNM.PSApplicationGatewayProbeHealthResponseMatch>()
@@ -982,6 +986,7 @@ namespace Microsoft.Azure.Commands.Network
                     dest => dest.Password,
                     opt => opt.ResolveUsing(src => src.Password?.ConvertToSecureString()));
                 cfg.CreateMap<MNM.ApplicationGatewayFrontendPort, CNM.PSApplicationGatewayFrontendPort>();
+                cfg.CreateMap<MNM.ApplicationGatewaySslProfile, CNM.PSApplicationGatewaySslProfile>();
                 cfg.CreateMap<MNM.ApplicationGatewayHttpListener, CNM.PSApplicationGatewayHttpListener>();
                 cfg.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayRequestRoutingRule, CNM.PSApplicationGatewayRequestRoutingRule>();
@@ -994,6 +999,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayRewriteRuleCondition, CNM.PSApplicationGatewayRewriteRuleCondition>();
                 cfg.CreateMap<MNM.ApplicationGatewayAuthenticationCertificate, CNM.PSApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<MNM.ApplicationGatewayTrustedRootCertificate, CNM.PSApplicationGatewayTrustedRootCertificate>();
+                cfg.CreateMap<MNM.ApplicationGatewayTrustedClientCertificate, CNM.PSApplicationGatewayTrustedClientCertificate>();
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendHealth, CNM.PSApplicationGatewayBackendHealth>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendHealthPool, CNM.PSApplicationGatewayBackendHealthPool>();
