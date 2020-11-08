@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
@@ -433,6 +434,68 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             return certificates.ToArray();
         }
+
+        internal static string GetKeyVaultCertificates(ResourceClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string webApp, string keyVault, string certname)
+        {
+            string kvid = string.Empty;
+            string kvresourcegrpname = string.Empty;
+            if (!string.IsNullOrEmpty(keyVault))
+            {
+                var keyvaultResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
+                {
+                    ResourceType = "Microsoft.KeyVault/Vaults"
+                }).ToArray();
+
+                foreach (var kv in keyvaultResources)
+                {
+                    if (kv.Name == keyVault)
+                    {
+                        kvid = kv.Id;
+                        //Microsoft.Azure.Management.Storage.Version2017_10_01.Models.KeyVaultProperties()
+                        kvresourcegrpname = kv.ResourceGroupName;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                kvid = keyVault;
+            }
+
+            return kvid;
+            //var keyvaultResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
+            //{
+            //    ResourceType = "Microsoft.KeyVault/Vaults"
+            //}).ToArray();
+
+            //foreach (var kv in keyvaultResources)
+            //{
+            //   if (kv.Name == keyVault)
+            //   {
+            //       kvid = kv.Id;
+            //       //Microsoft.Azure.Management.Storage.Version2017_10_01.Models.KeyVaultProperties()
+            //       kvresourcegrpname = kv.ResourceGroupName;
+            //       break;
+            //   }
+        }
+            
+   
+
+        //internal static String CheckServicePrincipalPermissions(ResourceClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string keyvaultName, string keyvaultSubscription)
+        //{
+        //    string kvid = string.Empty;
+        //    string kvresourcegrpname = string.Empty;
+        //    var keyvaultResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
+        //    {
+        //    ResourceType = "Microsoft.KeyVault/Vaults"
+        //    }).ToArray();
+
+        //    //# Check for Microsoft.Azure.WebSites app registration
+        //    //AZUREPUBLICWEBSITESAPPID = "abfa0a7c-a6b6-4736-8310-5855508787cd";
+        //    //AZUREGOVWEBSITESAPPID = "6a02c803-dafd-4136-b4c3-5a6f318b4714";
+
+        //    return null;
+        //}
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
         {
