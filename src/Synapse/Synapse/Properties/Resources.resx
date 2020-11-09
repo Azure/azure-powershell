@@ -458,6 +458,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="RestoringSynapseSqlPool" xml:space="preserve">
     <value>Creating a new SQL pool restored from '{0}' in resource group '{1}' under parent Workspace '{2}' with name '{3}'.</value>
+  </data>
   <data name="RemoveFirewallRule" xml:space="preserve">
     <value>Are you sure you want to remove filewall rule '{0}'?</value>
   </data>

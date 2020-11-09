@@ -63,10 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = this.InputObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseTriggerSubscription, this.Name)))
-            {
-            }
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemoveSynapseTriggerSubscription, Name),
