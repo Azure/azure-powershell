@@ -591,4 +591,7 @@ Are you sure you want to continue?</value>
   <data name="SettingSqlTransparentDataEncryptionProtector" xml:space="preserve">
     <value>Setting transparent data encryption protector in workspace '{0}'.</value>
   </data>
+  <data name="ComfirmToRemoveSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace '{0}'?</value>
+  </data>
 </root>

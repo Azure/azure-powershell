@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     var policy = new ServerBlobAuditingPolicy();
                     PolicizeAuditModel(model, policy);
                     // TODO operation error
-                    _synapseManagementClient.WorkspaceSManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
+                    _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
                 }
                 else
                 {
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
                 policy.State = BlobAuditingPolicyState.Disabled;
-                _synapseManagementClient.WorkspaceSManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+                _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
             }
             catch (CloudException ex)
             {
@@ -2130,7 +2130,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.GetWithHttpMessagesAsync(
+                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.ListWithHttpMessagesAsync(
                 resourceGroupName,
                 workspaceName,
                 integrationRuntimeName);

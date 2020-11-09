@@ -4,10 +4,7 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -48,6 +45,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.InputObject))
@@ -64,14 +64,20 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = resourceIdentifier.ResourceName;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, string.Format(Resources.RemovingSqlActiveDirectoryAdministrator, this.WorkspaceName)))
-            {
-                SynapseAnalyticsClient.DeleteSqlActiveDirectoryAdministrators(this.ResourceGroupName, this.WorkspaceName);
-                if (this.PassThru)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.ComfirmToRemoveSqlActiveDirectoryAdministrator, this.WorkspaceName),
+                string.Format(Resources.RemovingSqlActiveDirectoryAdministrator, this.WorkspaceName),
+                WorkspaceName,
+                () =>
                 {
-                    WriteObject(true);
+                    SynapseAnalyticsClient.DeleteSqlActiveDirectoryAdministrators(this.ResourceGroupName, this.WorkspaceName);
+                    if (this.PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
-            }
+                );
         }
     }
 }

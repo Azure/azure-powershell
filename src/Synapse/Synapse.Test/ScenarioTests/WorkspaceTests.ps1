@@ -169,14 +169,14 @@ function Test-SynapseWorkspace-ActiveDirectoryAdministrator
 		Assert-AreEqual $activeDirectoryAdminUser.ObjectId $activeDirectoryUserObjectId
 
         # Remove SQL Active Directory Administrator User
-		Assert-True {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+		Assert-True {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru -Force}
 
         # Verify that SQL Active Directory Administrator was deleted
 		Assert-Throws {Get-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
     }
     finally
     {
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Force} -IgnoreFailures
     }
 }
 

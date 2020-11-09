@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("ComfirmToRemoveSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Synapse workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ConfirmToRemoveSynapseWorkspace {
