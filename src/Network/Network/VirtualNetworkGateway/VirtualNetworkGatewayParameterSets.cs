@@ -17,5 +17,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         public const string AadAuthenticationConfiguration = @"AadAuthenticationConfiguration";
 
         public const string UpdateResourceWithTags = @"UpdateResourceWithTags";
+
+        public const string TypeLocalGatewayConfiguration = @"TypeLocalGatewayConfiguration";
     }
 }

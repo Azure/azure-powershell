@@ -14,6 +14,65 @@
 
 <#
 .SYNOPSIS
+Virtual network type local gateway tests
+#>
+function Test-VirtualNetworkLocalGatewayCRUD
+{
+ # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
+    $extendedLocationType = "EdgeZone"
+    $extendedLocationName = Get-ResourceName
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -GatewayType LocalGateway -VirtualNetworkResourceId $vnet.Id -ExtendedLocationType $extendedLocationType -ExtendedLocationName $extendedLocationName -Force 
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "LocalGateway" $expected.GatewayType
+	  Assert-AreEqual "EdgeZone" $expected.ExtendedLocationType
+      Assert-AreEqual $extendedLocationName $expected.ExtendedLocationName
+      
+      # List virtualNetworkGateways
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $list[0].Name $actual.Name	
+      Assert-AreEqual $list[0].Location $actual.Location
+
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name "*"
+      Assert-True { $list.Count -ge 0 }
+      
+      # Delete virtualNetworkGateway
+      $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
 Virtual network express route gateway tests
 #>
 function Test-VirtualNetworkExpressRouteGatewayCRUD
