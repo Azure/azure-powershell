@@ -50,8 +50,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetNullPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            Assert.Empty(result);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            Assert.Empty(result.Item1);
         }
 
         /// <summary>
@@ -66,8 +67,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            Assert.NotEmpty(result);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            Assert.NotEmpty(result.Item1);
         }
 
         /// <summary>
@@ -81,8 +83,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            Assert.NotEmpty(result);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            Assert.NotEmpty(result.Item1);
         }
 
         /// <summary>
@@ -97,8 +100,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetNullPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            Assert.Empty(result);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            Assert.Empty(result.Item1);
         }
 
         /// <summary>
@@ -108,9 +112,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommand()
         {
             var predictionContext = PredictionContext.Create("Connect-AzAccount");
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
 
-            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.First().Key);
+            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.Item1.First().Key);
         }
 
         /// <summary>
@@ -120,9 +125,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommandAndParameters()
         {
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
-            var result = this._predictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var result = this._predictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
 
-            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.First().Key);
+            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.Item1.First().Key);
         }
     }
 }

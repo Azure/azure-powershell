@@ -125,14 +125,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <remarks>
         /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
         /// </remarks>
-        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
+        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
         {
             var commandSuggestions = this._commandSuggestions;
             var command = this._commandForPrediction;
 
             IList<ValueTuple<string, string, PredictionSource>> results = new List<ValueTuple<string, string, PredictionSource>>();
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added
 
-            var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
+            var resultsFromSuggestionTuple = commandSuggestions?.Item2?.Query(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
+            var resultsFromSuggestion = resultsFromSuggestionTuple.Item1;
+            presentCommands = resultsFromSuggestionTuple.Item2;
 
             if (resultsFromSuggestion != null)
             {
@@ -159,7 +162,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             if ((resultsFromSuggestion == null) || (resultsFromSuggestion.Count() < suggestionCount))
             {
                 var commands = this._commands;
-                var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
+                var resultsFromCommandsTuple = commands?.Query(input, presentCommands,suggestionCount - resultsFromSuggestion.Count(), maxAllowedCommandDuplicate, cancellationToken);
+                var resultsFromCommands = resultsFromCommandsTuple.Item1;
+                presentCommands = resultsFromCommandsTuple.Item2;
 
                 if (resultsFromCommands != null)
                 {

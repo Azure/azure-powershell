@@ -62,11 +62,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingSuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._suggestionsPredictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var expected = this._suggestionsPredictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             Assert.NotEmpty(actual);
             Assert.NotNull(actual.First().Item1);
-            Assert.Equal(expected.First().Key, actual.First().Item1);
+            Assert.Equal(expected.Item1.First().Key, actual.First().Item1);
             Assert.Equal(PredictionSource.CurrentCommand, actual.First().Item3);
         }
 
@@ -79,11 +80,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingCommand(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._commandsPredictor.Query(predictionContext.InputAst, 1, CancellationToken.None);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
+            var expected = this._commandsPredictor.Query(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             Assert.NotEmpty(actual);
             Assert.NotNull(actual.First().Item1);
-            Assert.Equal(expected.First().Key, actual.First().Item1);
+            Assert.Equal(expected.Item1.First().Key, actual.First().Item1);
             Assert.Equal(PredictionSource.StaticCommands, actual.First().Item3);
         }
 
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyNoPrediction(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             Assert.Empty(actual);
         }
     }

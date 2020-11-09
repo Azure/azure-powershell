@@ -40,6 +40,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// The number of suggestions to return to PSReadLine
         /// </summary>
         public int? SuggestionCount { get; set; }
+        public int? MaxAllowedCommandDuplicate { get; set; }
 
         private static bool? _isContinueOnTimeout;
         /// <summary>
@@ -120,6 +121,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
                     {
                         this.SuggestionCount = profileSettings.SuggestionCount;
+                    }
+
+                    if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
+                    {
+                        this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
                     }
                 }
                 catch
