@@ -104,6 +104,9 @@ Downloads a storage blob.
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
 
+### [Get-AzStorageBlobInventoryPolicy](Get-AzStorageBlobInventoryPolicy.md)
+Gets blob inventory policy from a Storage account.
+
 ### [Get-AzStorageBlobQueryResult](Get-AzStorageBlobQueryResult.md)
 Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
 
@@ -206,6 +209,9 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
 
+### [New-AzStorageBlobInventoryPolicyRule](New-AzStorageBlobInventoryPolicyRule.md)
+Creates a blob inventory policy rule object, which can be used in Set-AzStorageBlobInventoryPolicy.
+
 ### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
 Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
@@ -296,6 +302,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
 
+### [Remove-AzStorageBlobInventoryPolicy](Remove-AzStorageBlobInventoryPolicy.md)
+Removes blob inventory policy from a Storage account.
+
 ### [Remove-AzStorageContainer](Remove-AzStorageContainer.md)
 Removes the specified storage container.
 
@@ -364,6 +373,9 @@ Creates or modifies the management policy of an Azure Storage account.
 
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
+
+### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
+Creates or updates blob inventory policy in a Storage account.
 
 ### [Set-AzStorageBlobTag](Set-AzStorageBlobTag.md)
 Set blob tags of a specific blob.

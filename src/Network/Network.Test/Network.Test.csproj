@@ -24,7 +24,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="18.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="18.0.0-beta.1" />
   </ItemGroup>
 
   <ItemGroup>
