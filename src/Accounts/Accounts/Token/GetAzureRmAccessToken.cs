@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile
                 TenantId = TenantId,
                 UserId = accessToken.UserId,
             };
-            result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiredOn ?? result.ExpiresOn;
+            result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiresOn ?? result.ExpiresOn;
 
             WriteObject(result);
         }
