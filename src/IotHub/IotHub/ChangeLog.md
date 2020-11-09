@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Allow tags in IoT Hub create cmdlet.
+* Allowed tags in IoT Hub create cmdlet.
 
 ## Version 2.6.0
 * Updated devices sdk.
