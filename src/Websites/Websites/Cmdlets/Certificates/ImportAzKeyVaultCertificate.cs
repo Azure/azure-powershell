@@ -36,17 +36,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "Hostnames associated with web app/slot.")]
-        [ValidateNotNullOrEmpty]
-        public string HostName { get; set; }
+        //[Parameter(Position = 5, Mandatory = true, HelpMessage = "Hostnames associated with web app/slot.")]
+        //[ValidateNotNullOrEmpty]
+        //public string HostName { get; set; }
 
-        [Parameter( Position = 6, Mandatory = false, HelpMessage = "Bind the Certificate to WebApp/slot.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AddCertBinding { get; set; }
+        //[Parameter( Position = 6, Mandatory = false, HelpMessage = "Bind the Certificate to WebApp/slot.")]
+        //[ValidateNotNullOrEmpty]
+        //public SwitchParameter AddCertBinding { get; set; }
 
-        [Parameter( Position = 7, Mandatory = false, HelpMessage = "Ssl state option. Use either 'SniEnabled' or 'IpBasedEnabled'. Default option is 'SniEnabled'.")]
-        [ValidateNotNullOrEmpty]
-        public SslState? SslState { get; set; }
+        //[Parameter( Position = 7, Mandatory = false, HelpMessage = "Ssl state option. Use either 'SniEnabled' or 'IpBasedEnabled'. Default option is 'SniEnabled'.")]
+        //[ValidateNotNullOrEmpty]
+        //public SslState? SslState { get; set; }
 
         public override void ExecuteCmdlet()
         {
