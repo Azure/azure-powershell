@@ -36,27 +36,30 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Modify a Backup protection policy
 ```
-PS C:\>$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunTimes.RemoveAll()
-PS C:\> $DT = Get-Date
-PS C:\> $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
+PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+PS C:\> $SchPol.ScheduleRunTimes.Clear()
+PS C:\> $Date = Get-Date
+PS C:\> $date1 = Get-Date -Year $Date.Year -Month $Date.Month -Day $Date.Day -Hour $Date.Hour -Minute 0 -Second 0 -Millisecond 0
+PS C:\> $date1 = $date1.ToUniversalTime()
+PS C:\> $SchPol.ScheduleRunTimes.Add($date1)
+PS C:\> $SchPol.ScheduleRunFrequency.Clear
+PS C:\> $SchPol.ScheduleRunDays.Add("Monday")
+PS C:\> $SchPol.ScheduleRunFrequency="Weekly"
 PS C:\> $RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
-PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
-PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
-PS C:\> $Pol.AzureBackupRGName = "RG_prefix"
-PS C:\> $Pol.AzureBackupRGNameSuffix = "RG_suffix"
+PS C:\> $RetPol.IsDailyScheduleEnabled=$false
+PS C:\> $RetPol.DailySchedule.DurationCountInDays = 0
+PS C:\> $RetPol.IsWeeklyScheduleEnabled=$true 
+PS C:\> $RetPol.WeeklySchedule.DaysOfTheWeek.Add("Monday")
+PS C:\> $RetPol.WeeklySchedule.DurationCountInWeeks = 365
+PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy"
 PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
 
-The first command gets a base SchedulePolicy object, and then stores it in the $SchPol variable.
-The second command removes all scheduled run times from the schedule policy in $SchPol.
-The third command uses the Get-Date cmdlet to get the current date and time, and then stores it in the $DT variable.
-The fourth command adds the date and time in $DT to the schedule run time for the schedule policy.
-The fifth command gets a base retention policy object, and then stores it in the $RetPol variable.
-The sixth command sets the retention duration to 365 days.
-The seventh command gets the Backup protection policy named NewPolicy, and then stores it in the $Pol variable.
-The eighth and ninth sets the resource group parameters associated with policy which stores the restore points.
-The final command modifies the Backup protection policy in $Pol using schedule policy in $SchPol and the retention policy in $RetPol.
+Here is the high-level description of the steps to be followed for modifying a protection policy: 
+1.	Get a base SchedulePolicyObject and base RetentionPolicyObject. Store them in some variable.
+2.	Set the different parameters of schedule and retention policy object as per your requirement. For example- In the above sample script, we are trying to set a weekly protection policy. Hence, we changed the schedule frequency to "Weekly" and also updated the schedule run time. In the retention policy object, we updated the weekly retention duration and set the correct "weekly schedule enabled" flag. In case you want to set a Daily policy, set the "daily schedule enabled" flag to true and assign appropriate values for other object parameters.
+3.	Get the backup protection policy that you want to modify and store it in a variable. In the above example, we retrieved the backup policy with the name "TestPolicy" that we wanted to modify.
+4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object.
 
 ## PARAMETERS
 

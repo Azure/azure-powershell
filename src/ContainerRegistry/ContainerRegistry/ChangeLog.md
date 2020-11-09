@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 2.0.0
-* [Breaking Change] Updates API version to 2020-05-01
+* [Breaking Change] Updates API version to 2019-05-01
 * [Breaking Change] Removed SKU "Classic" and parameter `StorageAccountName` from `New-AzContainerRegistry`
 * Added New cmdlets: `Connect-AzContainerRegistry`, `Import-AzContainerRegistry`, `Get-AzContainerRegistryUsage`, `New-AzContainerRegistryNetworkRule`, `Set-AzContainerRegistryNetworkRule`
 * Added new parameter `NetworkRuleSet` to `Update-AzContainerRegistry`
