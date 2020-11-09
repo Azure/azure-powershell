@@ -115,7 +115,7 @@ function Test-SynapseSqlPool
         Assert-AreEqual "Online" $sqlPoolResumed.Status
 
         # Delete SqlPool
-        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru} "Remove SqlPool failed."
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
     }
     finally
     {
