@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
 * Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
 * Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
 * Fixed null reference and method case insensitive in `Invoke-AzRestMethod`
