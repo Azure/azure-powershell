@@ -23,6 +23,31 @@
 ## Version 0.4.0
 * Add `-Force` to all Remove cmdlets
 
+* Added support for operation of Synapse SQL Pool Restore Point
+    - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
+* Added support for operation of Auditing settings in Workspace-level and SqlPool-level
+    - Add `Set-AzSynapseSqlAudit` cmdlet
+    - Add `Get-AzSynapseSqlAudit` cmdlet
+    - Add `Remove-AzSynapseSqlAudit` cmdlet
+    - Add `Set-AzSynapseSqlPoolAudit` cmdlet
+    - Add `Get-AzSynapseSqlPoolAudit` cmdlet
+    - Add `Remove-AzSynapseSqlPoolAudit` cmdlet
+* Added support for operation of Advanced Threat Protection settings in Workspace-level
+    - Add `Update-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Clear-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Transparent data encryption settings in Workspace-level
+    - Add `Set-AzSynapseSqlTransparentDataEncryptionProtector` cmdlet
+    - Add `Get-AzSynapseSqlTransparentDataEncryptionProtector` cmdlet
+* Added support for operation of Vulnerability Assessment settings in Workspace-level
+    - Add `Update-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Clear-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+* Added support for operation of SQL Active Directory admin
+    - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+
 ## Version 0.3.0
 * Added support for operation of Synapse LinkedService
     - Add `Get-AzSynapseLinkedService` cmdlet
