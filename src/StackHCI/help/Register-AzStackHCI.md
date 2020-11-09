@@ -16,8 +16,8 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceName] <String>]
  [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
- [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceLogin]
- [[-Credential] <PSCredential>] [<CommonParameters>]
+ [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration]
+ [-UseDeviceAuthentication] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -276,7 +276,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseDeviceLogin
+### -UseDeviceAuthentication
 Use device code authentication instead of an interactive browser prompt.
 
 ```yaml

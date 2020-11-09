@@ -50,7 +50,7 @@ FailedNodes: Node1inClus2, Node2inClus3
 Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Specifies the credential for the ComputerName.
 Default is the current user executing the Cmdlet.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Default is AzureCloud.
 Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Specifies the Region to connect to.
 Not used unless it is Canary region.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

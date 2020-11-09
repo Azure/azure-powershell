@@ -27,6 +27,7 @@ $UnregistrationSuccessDetailsMessage = "Azure Stack HCI is successfully unregist
 $RegistrationSuccessDetailsMessage = "Azure Stack HCI is successfully registered. An Azure resource representing Azure Stack HCI has been created in your Azure subscription to enable an Azure-consistent monitoring, billing, and support experience."
 $CouldNotGetLatestModuleInformationWarning = "Can't connect to the PowerShell Gallery to verify module version. Make sure you have the latest Az.StackHCI module with major version {0}.*."
 $ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Make sure every clustered node has network connectivity to Azure. Verify that your network firewall allows outbound HTTPS from port 443 to all the well-known Azure IP addresses and URLs required by Azure Stack HCI. Visit aka.ms/hcidocs for details."
+$ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -600,7 +601,7 @@ param(
     [string] $AccountId,
     [string] $EnvironmentName,
     [string] $ProgressActivityName,
-    [bool]   $UseDeviceLogin
+    [bool]   $UseDeviceAuthentication
     )
 
     Write-Progress -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
@@ -645,7 +646,7 @@ param(
 
         if([string]::IsNullOrEmpty($TenantId))
         {
-            if(($UseDeviceLogin -eq $false) -and ($IsIEPresent))
+            if(($UseDeviceAuthentication -eq $false) -and ($IsIEPresent))
             {
                 Connect-AzAccount -Environment $EnvironmentName -SubscriptionId $SubscriptionId -Scope Process | Out-Null
             }
@@ -657,7 +658,7 @@ param(
         }
         else
         {
-            if(($UseDeviceLogin -eq $false) -and ($IsIEPresent))
+            if(($UseDeviceAuthentication -eq $false) -and ($IsIEPresent))
             {
                 Connect-AzAccount -Environment $EnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -Scope Process | Out-Null
             }
@@ -960,7 +961,7 @@ enum ConnectionTestResult
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
 
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -971,7 +972,7 @@ enum ConnectionTestResult
     .PARAMETER RepairRegistration
     Repair the current Azure Stack HCI registration with the cloud. This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Azure AD application in the cloud and generates new replacement certificates for both. The resource group, resource name, and other registration choices are preserved.
 
-    .PARAMETER UseDeviceLogin
+    .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
 
     .PARAMETER Credential
@@ -1055,7 +1056,7 @@ param(
     [Switch]$RepairRegistration,
 
     [Parameter(Mandatory = $false)]
-    [Switch]$UseDeviceLogin,
+    [Switch]$UseDeviceAuthentication,
 
     [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential
@@ -1185,7 +1186,7 @@ param(
             $ResourceGroupName = $ResourceName + "-rg"
         }
 
-        $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName -UseDeviceLogin $UseDeviceLogin
+        $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication
 
         Write-Verbose "Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
             SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint RepairRegistration: $RepairRegistration"
@@ -1233,18 +1234,36 @@ param(
 
             $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
 
-            if($resGroup -eq $Null)
+            if($resource -ne $null)
             {
                 if([string]::IsNullOrEmpty($Region))
                 {
-                    $Region = "EastUS"
+                    $Region = $resource.Location
+                }
+                elseif($Region -ne $resource.Location)
+                {
+                    $ResourceExistsInDifferentRegionErrorMessage = $ResourceExistsInDifferentRegionError -f $resource.Location, $Region
+                    Write-Error -Message $ResourceExistsInDifferentRegionErrorMessage
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    Write-Output $registrationOutput
+                    return
                 }
             }
             else
             {
-                if([string]::IsNullOrEmpty($Region))
+                if($resGroup -eq $Null)
                 {
-                    $Region = $resGroup.Location
+                    if([string]::IsNullOrEmpty($Region))
+                    {
+                        $Region = "EastUS"
+                    }
+                }
+                else
+                {
+                    if([string]::IsNullOrEmpty($Region))
+                    {
+                        $Region = $resGroup.Location
+                    }
                 }
             }
 
@@ -1275,18 +1294,6 @@ param(
             else
             {
                 $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
-            }
-
-            $testConnectionResult = Test-AzStackHCIConnection -EnvironmentName $EnvironmentName -Region $regionName -ComputerName $ComputerName -Credential $Credential
-
-            if($testConnectionResult.Result -eq [ConnectionTestResult]::Failed)
-            {
-                # Failed on atleast 1 node
-                $ConnectingToCloudBillingServiceFailedMsg = $ConnectingToCloudBillingServiceFailed -f ($testConnectionResult.FailedNodes -join ",")
-                Write-Error -Message $ConnectingToCloudBillingServiceFailedMsg
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                Write-Output $registrationOutput
-                return
             }
 
             if($resource -eq $Null)
@@ -1529,12 +1536,12 @@ param(
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
 
     .PARAMETER ComputerName
     Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
 
-    .PARAMETER UseDeviceLogin
+    .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
 
     .PARAMETER Credential
@@ -1595,7 +1602,7 @@ param(
     [string] $ComputerName,
 
     [Parameter(Mandatory = $false)]
-    [Switch]$UseDeviceLogin,
+    [Switch]$UseDeviceAuthentication,
 
     [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential
@@ -1674,7 +1681,7 @@ param(
 
         if ($PSCmdlet.ShouldProcess($resourceId))
         {
-            $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceLogin $UseDeviceLogin
+            $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication
 
             Write-Verbose "Unregister-AzStackHCI triggered - ResourceName: $ResourceName `
                    SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
@@ -1817,7 +1824,7 @@ param(
     Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
 
     .PARAMETER Region
     Specifies the Region to connect to. Not used unless it is Canary region.

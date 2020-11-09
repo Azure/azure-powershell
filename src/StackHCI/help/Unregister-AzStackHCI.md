@@ -16,7 +16,7 @@ The registered information available on the cluster is used to unregister the cl
 ```
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>]
- [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>] [-UseDeviceLogin]
+ [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>] [-UseDeviceAuthentication]
  [[-Credential] <PSCredential>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -218,7 +218,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseDeviceLogin
+### -UseDeviceAuthentication
 Use device code authentication instead of an interactive browser prompt.
 
 ```yaml

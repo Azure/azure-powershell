@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: StackHCI cmdlets
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
 
+### [Test-AzStackHCIConnection](Test-AzStackHCIConnection.md)
+
+
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
