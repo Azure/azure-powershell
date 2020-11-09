@@ -24,7 +24,7 @@
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * Added new cmdlet for virtual router
     - `Update-AzVirtualRouter`: to allow branch to branch traffic
-* [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
+* [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
