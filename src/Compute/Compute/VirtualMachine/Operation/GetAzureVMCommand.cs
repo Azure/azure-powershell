@@ -177,24 +177,33 @@ namespace Microsoft.Azure.Commands.Compute
                     this.TopLevelWildcardFilter();
 
                     this.VirtualMachineClient.ListWithHttpMessagesAsync();*/
-                    var ofilter = new ODataQuery<Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ResourceGroupFilter>("Name eq " + Name);//{Microsoft.Azure.Management.Compute.Models.VirtualMachine} type, Name 
-                    var testlist = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
+                    //var ofilter = new ODataQuery<Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ResourceGroupFilter>("Name eq " + Name);//{Microsoft.Azure.Management.Compute.Models.VirtualMachine} type, Name 
+                    //var testlist = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
                     ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
-                    var test = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult().;
+                    
+                    //var testList = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
+                   // var testNext = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync(testList.Body.NextPageLink);
+                    //var nextRGInList = testNext(testList.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
+                    
+                    
+                    //var testMess = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().;
+                    //var testMessNExt = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync();
+                    //var testFiltGetAwait = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
 
-                    var testMess = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().;
-                    var testMessNExt = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync();
-                    var testFiltGetAwait = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
-
-                    var testListAll = ResourceManagerClient.ResourceGroups.ListAsync().GetAwaiter().GetResult();
-                    var testListAllNext = ResourceManagerClient.ResourceGroups.ListNextAsync(testListAll.NextPageLink);
-                    while(testListAll != null)
-                    {
-                        if (!string.IsNullOrEmpty(testListAll.NextPageLink))
+                    var testListAll = ResourceManagerClient.ResourceGroups.List();
+                    //             
+                    
+                    //while (!string.IsNullOrEmpty(testListAll.NextPageLink))
+                    //{
+                        var currentRG = testListAll.ToArray()[1];
+                        //testListAll = ResourceManagerClient.ResourceGroups.ListNext(testListAll.NextPageLink);
+                        int start = 0;
+                        while (start < testListAll.ToArray().Length)
                         {
-                            testListAll = testListAllNext(testListAll.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
+                            var currentRGResult = testListAll.ToArray()[start];
+                            start += 1; 
                         }
-                    }
+                    //}
 
                         ReturnListVMObject(
                         this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
