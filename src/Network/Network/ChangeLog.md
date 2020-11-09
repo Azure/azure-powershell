@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added warning messages for upcoming breaking change for Virtual Router Peer Routes
+    - `Get-AzVirtualRouterPeerLearnedRoute`
+    - `Get-AzVirtualRouterPeerAdvertisedRoute`
 * Added new cmdlet for virtual router
     - `Update-AzVirtualRouter`: to allow branch to branch traffic
 * Updated New-AzFirewallPolicyNatRule cmdlet:
