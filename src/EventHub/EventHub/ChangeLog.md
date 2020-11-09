@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed Cluster commands for EventHub cluster without tags
-* updated help text for PartnerNamespace of AzEventHubGeoDRConfiguration commands 
+* Updated help text for PartnerNamespace of AzEventHubGeoDRConfiguration commands 
 
 ## Version 1.7.0
 * Added optional switch parameter `TrustedServiceAccessEnabled` to `Set-AzEventHubNetworkRuleSet` cmdlet
