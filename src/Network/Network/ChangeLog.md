@@ -32,6 +32,8 @@
         - Added Sku Tier property
     - `New-AzLoadBalancerBackendAddressConfig`:
         - Added LoadBalancerFrontendIPConfigurationId property
+* Added new cmdlet for virtual router
+    - `Update-AzVirtualRouter`: to allow branch to branch traffic
 * [Breaking Change] Removed parameter `HostedSubnet` and add `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
@@ -40,7 +42,9 @@
     - Added parameter -SkuTier
     - Added parameter -SkuName and made Sku as Alias for this
     - Removed parameter -Sku
-    
+* Updated New-AzFirewallPolicyNatRule cmdlet:
+    - Added parameter Translated FQDN
+
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
