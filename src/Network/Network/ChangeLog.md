@@ -25,7 +25,7 @@
         - Added PublicIpAddressPrefixId property
 * Added new properties to the following cmdlets to allow for global load balancing
     - `New-AzLoadBalancer`:
-        - Added Sku Tier property 
+        - Added Sku Tier property
     - `New-AzPuplicIpAddress`:
         - Added Sku Tier property
     - `New-AzPublicIpPrefix`:
