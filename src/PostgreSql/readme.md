@@ -62,6 +62,9 @@ directive:
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^LocationBasedCapabilities_Execute$/g, "LocationBasedCapabilities_Get")
   - from: Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
     where: $.definitions.VirtualNetworkRule
     transform: $['required'] = ['properties']
@@ -73,15 +76,15 @@ directive:
     transform: return $.replace(/^(FirewallRules|Configurations|NameAvailabilities|LocationBasedCapabilities)_/g, "flexibleServer$1_")
   - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
     where: $.paths..operationId
-    transform: return $.replace(/^CheckVirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
+    transform: return $.replace(/^VirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
   - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
     where: 
       verb: Restore$
       subject: ^FlexibleServer$
     hide: true
   - where:
-      verb: Invoke$
-      subject: ^ExecuteFlexibleServerVirtualNetworkSubnetUsage$|^ExecuteFlexibleServerLocationBasedCapabilities$
+      verb: Get$
+      subject: ^FlexibleServerVirtualNetworkSubnetUsage$
     hide: true
   - where:
       verb: Test$

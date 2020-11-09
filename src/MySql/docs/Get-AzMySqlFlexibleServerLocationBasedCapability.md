@@ -13,7 +13,7 @@ Get capabilities at specified location in a given subscription.
 ## SYNTAX
 
 ```
-Get-AzMySqlFlexibleServerLocationBasedCapability -Location <String> [-SubscriptionId <String[]>]
+Get-AzMySqlFlexibleServerLocationBasedCapability -LocationName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -23,7 +23,6 @@ Get capabilities at specified location in a given subscription.
 ## EXAMPLES
 
 ### Example 1: List available SKUs and their properties in the location
-
 ```powershell
 PS C:\> Get-AzMySqlFlexibleServerLocationBasedCapability -Location eastus
 For prices please refer to https://aka.ms/mysql-pricing
@@ -68,13 +67,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
+### -LocationName
 The name of the location.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: LocationName
+Aliases:
 
 Required: True
 Position: Named

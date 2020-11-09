@@ -14,7 +14,7 @@ Stops a server.
 
 ### Stop (Default)
 ```
-Stop-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+Stop-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -43,7 +43,6 @@ PS C:\> Stop-AzMySqlFlexibleServer -InputObject $ID
 ```
 
 Stop the server by identity
-
 
 ## PARAMETERS
 
@@ -93,6 +92,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
+Aliases: ServerName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -131,21 +145,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Stop
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop
-Aliases: ServerName
 
 Required: True
 Position: Named

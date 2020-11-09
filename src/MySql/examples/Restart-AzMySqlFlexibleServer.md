@@ -1,18 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restart the server by resource name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
-{{ Add description here }}
+Restart the server by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Restart the server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> Restart-AzMySqlFlexibleServer -InputObject $ID
 ```
 
-{{ Add description here }}
-
+Restart the server by identity

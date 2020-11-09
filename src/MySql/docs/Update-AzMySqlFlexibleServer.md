@@ -10,26 +10,26 @@ schema: 2.0.0
 ## SYNOPSIS
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
+Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <String>] [-SubnetId <String>]
- [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] [-ReplicationRole <String>]
- [-Sku <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-HaEnabled <HaEnabledEnum>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <String>] 
- [-SubnetId <String>] [-HaEnabled <HaEnabledEnum>] [-MaintenanceWindowWindow <String>] 
- [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
+ [-BackupRetentionDay <Int32>] [-HaEnabled <HaEnabledEnum>] [-ReplicationRole <String>] [-Sku <String>]
+ [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>]
+ [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,10 +79,26 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run the command as a job
+Run the command as a job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -108,23 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Resource ID of an existing subnet. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers/Microsoft.DBforMySQL/flexibleServers.After delegation, this subnet cannot be used for any other type of Azure resources.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HaEnabled
-Enable HA or not for a server.
+Enable or disable high availability feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum
@@ -139,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
+Identity Parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -154,15 +155,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowWindow
-Period of time (UTC) designated for maintenance. Examples: "Sun:23:30" to schedule on Sunday, 11:30pm UTC. To set back to default pass in "Disabled".
+### -Name
+The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: ServerName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Run the command asynchronously.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -200,8 +201,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -215,23 +216,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ServerName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Sku
-The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.
+The name of the sku, typically, tier + family + cores, e.g.
+B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
@@ -246,7 +233,8 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. 
+The tier of the particular SKU, e.g.
+Basic.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
@@ -265,22 +253,6 @@ Enable ssl enforcement or not when connect to server.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -322,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
@@ -402,7 +374,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

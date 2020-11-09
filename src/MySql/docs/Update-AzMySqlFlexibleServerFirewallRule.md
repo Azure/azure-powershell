@@ -1,33 +1,46 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/Update-azmysqlflexibleserverfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlflexibleserverfirewallrule
 schema: 2.0.0
 ---
 
 # Update-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
-Updates an existing firewall rule.
+Creates a new firewall rule or updates an existing firewall rule.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String>
- -ServerName <String> -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzMySqlFlexibleServerFirewallRule -Parameter <IFirewallRule> 
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Update-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ClientIPAddress
+```
+Update-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMySqlFlexibleServerFirewallRule -InputObject <IMySqlIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMySqlFlexibleServerFirewallRule -InputObject <IMySqlIdentity> -EndIPAddress <String>
+ -StartIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates an existing firewall rule.
+Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
@@ -71,6 +84,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress, ClientIPAddressViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -92,7 +121,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -102,12 +131,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases: FirewallRuleName
 
 Required: True
@@ -132,29 +177,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Represents a server firewall rule.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -169,7 +198,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -185,7 +214,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -200,7 +229,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: False
@@ -246,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 
 ## OUTPUTS
 
@@ -261,9 +290,18 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IFirewallRule>: Represents a server firewall rule.
-  - `EndIPAddress <String>`: The end IP address of the server firewall rule. Must be IPv4 format.
-  - `StartIPAddress <String>`: The start IP address of the server firewall rule. Must be IPv4 format.
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  - `[ConfigurationName <String>]`: The name of the server configuration.
+  - `[DatabaseName <String>]`: The name of the database.
+  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
+  - `[Id <String>]`: Resource identity path
+  - `[KeyName <String>]`: The name of the server key.
+  - `[LocationName <String>]`: The name of the location.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[ServerName <String>]`: The name of the server.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 

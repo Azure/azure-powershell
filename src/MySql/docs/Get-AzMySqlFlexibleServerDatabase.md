@@ -1,18 +1,24 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-AzMySqlFlexibleServerDatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
 # Get-AzMySqlFlexibleServerDatabase
 
 ## SYNOPSIS
-Gets information about a MySQL database.
+Gets information about a database.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzMySqlFlexibleServerDatabase -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzMySqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -24,15 +30,8 @@ Get-AzMySqlFlexibleServerDatabase -InputObject <IMySqlIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzMySqlFlexibleServerDatabase -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Gets information about a MySQL database.
-List all the databases in a given server.
+Gets information about a database.
 
 ## EXAMPLES
 
@@ -74,21 +73,6 @@ This cmdlet lists all the MySql servers in specified the server.
 
 ## PARAMETERS
 
-### -Name
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: DatabaseName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -117,6 +101,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: DatabaseName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,7 +155,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False

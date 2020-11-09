@@ -7,29 +7,28 @@ schema: 2.0.0
 
 # New-AzMySqlFlexibleServer
 
-## Creates a new server. A server can be generated with all arguments optional.
+## SYNOPSIS
+Creates a new server.
 
 ## SYNTAX
 
 ```
-New-AzMySqlFlexibleServer 
- [-ResourceGroupName <String>] [-Name <String> -Location <String>]
- [-SubscriptionId <String>] [-AdministratorUserName <String>] [-AdministratorLoginPassword <String>]
- [-HaEnabled <HaEnabledEnum>][-Sku <String>] [-SkuTier <SkuTier>][-BackupRetentionDay <Int32>]
- [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-AddressPrefix [String]] [-PublicAccess [String]] [-SubnetPrefix [String]] [-VnetId [String]] [-SubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> -AdministratorUserName <String> [-SubscriptionId <String>]
+ [-BackupRetentionDay <Int32>] [-Location <String>] [-Sku <String>] [-SkuTier <String>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new server. A server can be generated with all arguments optional. If no arguments were provided from a user, the powershell generates resource group, virtual network, and database. It also uses default values for server properties. 
+Creates a new server.
 
 ## EXAMPLES
 
 ### Example 1: Create a new MySql flexible server with parameters
 ```powershell
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable
+-Location westus2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable
 
 Creating new vnet {vnetName} in resource group {resourceGroupName}...
 Creating new subnet {subnetName} in resource group {resourceGroupName} and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
@@ -40,18 +39,19 @@ Creating MySQL database {dbname}...
 "databaseName": "flexibleserverdb",
 "host": "{servername}.mysql.database.azure.com",
 "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
-"location": "East US",
+"location": "West US 2",
 "version": "5.7",
 "username": "{username}",
 "password": "{password}",
 "skuname": "Standard_B1ms"
 ```
 
-The cmdlet generates a server with the given parameters and output important information in a visible format. The server creation automatically generates vnet, subnet, and database in the resource group.
+The cmdlet generates a server with the given parameters and output important information in a visible format.
+The server creation automatically generates vnet, subnet, and database in the resource group.
 
 ### Example 2: Create a new MySql flexible server without parameters
 ```powershell
-PS C:\> New-AzMySqlFlexibleServer -Location eastus
+PS C:\> New-AzMySqlFlexibleServer
 
 Creating Resource Group {resourceGroupName}...
 Creating new vnet {vnetName} in resource group {resourceGroupName}...
@@ -63,18 +63,19 @@ Creating MySQL database {dbname}...
 "databaseName": "flexibleserverdb",
 "host": "{servername}.mysql.database.azure.com",
 "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
-"location": "East US",
+"location": "West US 2",
 "version": "5.7",
 "username": "{username}",
 "password": "{password}",
 "skuname": "Standard_B1ms"
 ```
 
-When no parameters are given, the cmdlet automatically generates necessary resources such as resource group, vnet, and database. The SKU and storage profile are set to default values. 
+When no parameters are given, the cmdlet automatically generates necessary resources such as resource group, vnet, and database.
+The SKU and storage profile are set to default values.
 
 ### Example 3: Create a new MySql flexible server with public access to all IPs
 ```powershell
-PS C:\> New-AzMySqlFlexibleServer -Location eastus -PublicAccess all
+PS C:\> New-AzMySqlFlexibleServer -PublicAccess all
 
 Creating Resource Group {resourceGroupName}...
 Configurint server firewall rule to accept connections from '0.0.0.0' to '255.255.255.255'...
@@ -86,57 +87,45 @@ Creating MySQL database {dbname}...
 "databaseName": "flexibleserverdb",
 "host": "{serverName}.mysql.database.azure.com",
 "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
-"location": "East US",
+"location": "West US 2",
 "version": "5.7",
 "username": "{username}",
 "password": "{password}",
 "skuname": "Standard_B1ms"
 ```
 
-The cmdlet generates a server without given parameters and automatically generates necessary resources such as resource group, subnet, and database. The SKU and storage profile are set to default values.
-
+The cmdlet generates a server without given parameters and automatically generates necessary resources such as resource group, subnet, and database.
+The SKU and storage profile are set to default values.
 
 ## PARAMETERS
 
-### -AdministratorUserName
-The administrator\'s login name of a server. Can only be specified when the server is being created.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AdministratorLoginPassword
-The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
+The password of the administrator.
+Minimum 8 characters and maximum 128 characters.
+Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
 
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AddressPrefixes
-The IP address prefix to use when creating a new virtual network in CIDR format. Default value is 10.0.0.0/16.
+### -AdministratorUserName
+Administrator username for the server.
+Once set, it cannot be changed.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run the command as a job
+Run the command as a job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -158,11 +147,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilityZone
-Availability zone into which to provision the resource.
+### -BackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -188,43 +178,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Resource ID of an existing subnet. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers/Microsoft.DBforMySQL/flexibleServers.After delegation, this subnet cannot be used for any other type of Azure resources.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HaEnabled
-Enable HA or not for a server.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
-The location where the resource lives.
+The location the resource resides in.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -234,25 +209,10 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Run the command asynchronously.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicAccess
-Determines the public access. Enter single or range of IP addresses to be included in the allowed list of IPs. IP address ranges must be dash-separated and not contain any spaces. Specifying 0.0.0.0 allows public access from any resources deployed within Azure to access your server. Specifying no IP address sets the server in public access mode but does not create a firewall rule.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -276,26 +236,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
-```
-
-### -Name
-The name of the server. The name can contain only lowercase letters, numbers, and the hyphen (-) character. Minimum 3 characters and maximum 63 characters.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ServerName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -Sku
-The name of the compute SKU. Follows the convention Standard_{VM name}. Examples: Standard_B1ms, Standard_E16ds_v4.  Default: Standard_B1ms.
+The name of the sku, typically, tier + family + cores, e.g.
+Standard_B1ms, Standard_D2ds_v4.
 
 ```yaml
 Type: System.String
@@ -304,27 +249,15 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "Standard_B1ms"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Burstable"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetPrefixes
-The subnet IP address prefix to use when creating a new VNet in CIDR format. Default value is 10.0.0.0/24.
+Compute tier of the server.
+Accepted values: Burstable, GeneralPurpose, Memory Optimized.
+Default: Burstable.
 
 ```yaml
 Type: System.String
@@ -334,43 +267,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VnetId
-Id of an existing virtual network or name of a new one to create. The name must be between 2 to 64 characters. The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -StorageInMb
-The storage capacity of the server. Minimum is 5 GiB and increases in 1 GiB increments. Max is 16 TiB.  Default: 10.
+Max storage allowed for a server.
 
 ```yaml
 Type: System.Int32
@@ -379,7 +281,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 10
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -424,7 +326,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "5.7"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

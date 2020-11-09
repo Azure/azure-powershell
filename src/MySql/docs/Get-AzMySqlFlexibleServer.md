@@ -19,7 +19,7 @@ Get-AzMySqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObjec
 
 ### Get
 ```
-Get-AzMySqlFlexibleServer -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>]
+Get-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -118,14 +118,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -134,13 +133,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ServerName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named

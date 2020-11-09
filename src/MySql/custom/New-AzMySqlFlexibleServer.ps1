@@ -47,8 +47,7 @@ function New-AzMySqlFlexibleServer {
 
         [Parameter(Mandatory, HelpMessage = 'The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        # [System.Security.SecureString]
-        [System.String]
+        [System.Security.SecureString]
         [ValidateNotNullOrEmpty()]
         ${AdministratorLoginPassword},
 
@@ -189,9 +188,7 @@ function New-AzMySqlFlexibleServer {
             }
 
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Default
-            # Write-Output ConvertTo-SecureString $PSBoundParameters['AdministratorLoginPassword'] -AsPlainText -Force
-            # Write-Output . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
-            # $PSBoundParameters.AdministratorLoginPassword = ConvertTo-SecureString $PSBoundParameters['AdministratorLoginPassword'] -AsPlainText -Force
+            $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
             Az.MySql.internal\New-AzMySqlFlexibleServer @PSBoundParameters
         } catch {

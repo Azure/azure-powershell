@@ -9,15 +9,14 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a configuration of a server.
-Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] [-Source <String>] [-Value <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +27,6 @@ Update-AzMySqlFlexibleServerConfiguration -InputObject <IMySqlIdentity> [-Source
 
 ## DESCRIPTION
 Updates a configuration of a server.
-Use Update-AzMySqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 
@@ -55,7 +53,6 @@ wait_timeout   150    28800         system-default   1-31536000   Integer
 
 These cmdlets update MySql configuration by identity.
 
-
 ## PARAMETERS
 
 ### -AsJob
@@ -67,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the server configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ConfigurationName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,6 +98,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the server configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

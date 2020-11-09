@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D4ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageMb 10240
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- ---------------- -------------
+mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
-{{ Add description here }}
-
+This cmdlet updates MySql server by identity.

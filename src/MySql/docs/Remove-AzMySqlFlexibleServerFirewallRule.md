@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlflexibleserversfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlflexibleserverfirewallrule
 schema: 2.0.0
 ---
 
-# Remove-AzMySqlFlexibleServersFirewallRule
+# Remove-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
 Deletes a firewall rule.
@@ -14,9 +14,9 @@ Deletes a firewall rule.
 
 ### Delete (Default)
 ```
-Remove-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -26,7 +26,7 @@ Remove-AzMySqlFlexibleServerFirewallRule -InputObject <IMySqlIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Deletes a server firewall rule.
+Deletes a firewall rule.
 
 ## EXAMPLES
 
@@ -79,21 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server firewall rule.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: FirewallRuleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -107,6 +92,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the server firewall rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: FirewallRuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

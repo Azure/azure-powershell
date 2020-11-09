@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-AzMySqlFlexibleServerConfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverconfiguration
 schema: 2.0.0
 ---
 
@@ -12,22 +12,22 @@ Gets information about a configuration of server.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzMySqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMySqlFlexibleServerConfiguration -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,24 +59,7 @@ wait_timeout   28800  28800         system-default 1-31536000   Integer
 
 This cmdlet lists all configurations in specified MySql server.
 
-
-
 ## PARAMETERS
-
-### -Name
-The name of the server configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: ConfigurationName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -106,6 +89,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the server configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
