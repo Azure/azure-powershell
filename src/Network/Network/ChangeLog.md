@@ -37,6 +37,7 @@
 	- Added parameter `-CoverageLevel`
 	- Added parameter `-Scope`
 * Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
+* Made arguments `-MinScaleUnits` and `-MaxScaleUnits` optional in `Set-AzExpressRouteGateway` 
 * Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
     - `Get-AzApplicationGatewayClientAuthConfiguration`
     - `New-AzApplicationGatewayClientAuthConfiguration`
