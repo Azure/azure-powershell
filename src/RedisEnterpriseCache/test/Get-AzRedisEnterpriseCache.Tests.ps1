@@ -18,9 +18,12 @@ Describe 'Get-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
         }
         $cache = Get-AzRedisEnterpriseCache @splat
-        $cache.Name | Should -Be @($splat.Name, "default")
+        $cache.Name | Should -Be $splat.Name
         $cache.Location | Should -Be $env.Location
-        $cache.Type | Should -Be @("Microsoft.Cache/redisEnterprise", "Microsoft.Cache/redisEnterprise/databases")
+        $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $databaseName = "default"
+        $cache.Database[$databaseName].Name | Should -Be $databaseName
+        $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
     }
 
     It 'List' {
@@ -28,8 +31,11 @@ Describe 'Get-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
         }
         $cache = Get-AzRedisEnterpriseCache @splat
-        $cache.Name | Should -Be @($env.ClusterName, "default")
+        $cache.Name | Should -Be $env.ClusterName
         $cache.Location | Should -Be $env.Location
-        $cache.Type | Should -Be @("Microsoft.Cache/redisEnterprise", "Microsoft.Cache/redisEnterprise/databases")
+        $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $databaseName = "default"
+        $cache.Database[$databaseName].Name | Should -Be $databaseName
+        $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
     }
 }

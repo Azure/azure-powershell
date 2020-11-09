@@ -6,61 +6,26 @@ Gets information about a RedisEnterprise cluster and its associated database
 .Example
 PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 
-Location Name    Type                            Zone
--------- ----    ----                            ----
-East US  MyCache Microsoft.Cache/redisEnterprise
-
-ClientProtocol    : Encrypted
-ClusteringPolicy  : OSSCluster
-EvictionPolicy    : VolatileLRU
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
-Module            :
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 .Example
 PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 
-Location Name     Type                            Zone
--------- ----     ----                            ----
-East US  MyCache1 Microsoft.Cache/redisEnterprise
-
-ClientProtocol    : Encrypted
-ClusteringPolicy  : OSSCluster
-EvictionPolicy    : VolatileLRU
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default
-Module            :
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
-
-East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3}
-
-ClientProtocol    : Plaintext
-ClusteringPolicy  : EnterpriseCluster
-EvictionPolicy    : NoEviction
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default
-Module            : {RedisBloom, RedisTimeSeries, RediSearch}
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
+Location Name     Type                            Zone      Database
+-------- ----     ----                            ----      --------
+East US  MyCache1 Microsoft.Cache/redisEnterprise           {default}
+East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 
 function Get-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster],[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, HelpMessage='The name of the resource group.')]
@@ -135,24 +100,37 @@ function Get-AzRedisEnterpriseCache {
     process {
         if ($PSBoundParameters.ContainsKey("Name"))
         {
-            Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @PSBoundParameters
+            $cluster = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @PSBoundParameters
 
             $clusterName = $PSBoundParameters["Name"]
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Add("ClusterName", $clusterName)
-            Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+            $databaseList = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+            $cluster.Database = @{}
+            foreach ($database in $databaseList)
+            {
+                $cluster.Database.Add($database.Name, $database)
+            }
+
+            return $cluster
         }
         else
         {
-            $Clusters = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @PSBoundParameters
+            $clusterList = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @PSBoundParameters
 
-            foreach ($clusterName in $Clusters.Name)
+            foreach ($cluster in $clusterList)
             {
                 $GetPSBoundParameters = @{} + $PSBoundParameters
-                $null = $GetPSBoundParameters.Add("ClusterName", $clusterName)
-                Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @GetPSBoundParameters
-                Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @GetPSBoundParameters
+                $null = $GetPSBoundParameters.Add("ClusterName", $cluster.Name)
+                $databaseList = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @GetPSBoundParameters
+                $cluster.Database = @{}
+                foreach ($database in $databaseList)
+                {
+                    $cluster.Database.Add($database.Name, $database)
+                }
             }
+
+            return $clusterList
         }
     }
 }

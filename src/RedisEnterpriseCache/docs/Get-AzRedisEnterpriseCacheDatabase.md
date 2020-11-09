@@ -1,51 +1,44 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
 schema: 2.0.0
 ---
 
-# Get-AzRedisEnterpriseCache
+# Get-AzRedisEnterpriseCacheDatabase
 
 ## SYNOPSIS
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a database in a RedisEnterprise cluster.
 
 ## SYNTAX
 
 ```
-Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-Name <String>] [-SubscriptionId <String>]
+Get-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a database in a RedisEnterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: Get a Redis Enterprise Cache by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
+PS C:\> {{ Add code here }}
 
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
+{{ Add output here }}
 ```
 
-This command gets the Redis Enterprise Cache named MyCache.
+{{ Add description here }}
 
-### Example 2: Get every Redis Enterprise Cache in a resource group
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
+PS C:\> {{ Add code here }}
 
-Location Name     Type                            Zone      Database
--------- ----     ----                            ----      --------
-East US  MyCache1 Microsoft.Cache/redisEnterprise           {default}
-East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
-
+{{ Add output here }}
 ```
 
-This command gets every Redis Enterprise Cache in the specified resource group.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -72,7 +65,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ClusterName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +92,7 @@ Gets subscription credentials which uniquely identify the Microsoft Azure subscr
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
 
 ## NOTES
 

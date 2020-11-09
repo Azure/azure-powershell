@@ -16,7 +16,7 @@ Updates a database
 ```
 Update-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
- [-Modules <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String>
 ```
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
  [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
- [-Modules <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -33,19 +33,23 @@ Updates a database
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
 {{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -142,14 +146,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Modules
+### -Module
 Optional set of redis modules to enable in this database - modules can only be added at creation time.
-To construct, see NOTES section for MODULES properties and create a hash table.
+To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[]
 Parameter Sets: (All)
-Aliases: Module
+Aliases:
 
 Required: False
 Position: Named
@@ -297,7 +301,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-MODULES <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
+MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   - `Name <String>`: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   - `[Arg <String>]`: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 

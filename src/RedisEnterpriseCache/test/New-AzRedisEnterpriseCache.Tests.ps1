@@ -20,22 +20,27 @@ Describe 'New-AzRedisEnterpriseCache' {
             SubscriptionId = $env.SubscriptionId
             Sku = "Enterprise_E10"
             Capacity = 2
-            Zones = @("1", "2", "3")
+            Zone = @("1", "2", "3")
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
         }
         $cache = New-AzRedisEnterpriseCache @splat
-        $cache.Name | Should -Be @($splat.Name, "default")
+        $cache.Name | Should -Be $splat.Name
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
         $cache.SkuCapacity | Should -Be $splat.Capacity
-        $cache.Type | Should -Be @("Microsoft.Cache/redisEnterprise", "Microsoft.Cache/redisEnterprise/databases")
-        $cache.ProvisioningState | Should -Be @("Succeeded", "Succeeded")
-        $cache.ResourceState | Should -Be @("Running", "Running")
-        $cache.Zone | Should -Be $splat.Zones
-        $cache.ClientProtocol | Should -Be $splat.ClientProtocol
-        $cache.ClusteringPolicy | Should -Be $splat.ClusteringPolicy
-        $cache.EvictionPolicy | Should -Be $splat.EvictionPolicy
+        $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $cache.ProvisioningState | Should -Be "Succeeded"
+        $cache.ResourceState | Should -Be "Running"
+        $cache.Zone | Should -Be $splat.Zone
+        $databaseName = "default"
+        $cache.Database[$databaseName].Name | Should -Be $databaseName
+        $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
+        $cache.Database[$databaseName].ClientProtocol | Should -Be $splat.ClientProtocol
+        $cache.Database[$databaseName].ClusteringPolicy | Should -Be $splat.ClusteringPolicy
+        $cache.Database[$databaseName].EvictionPolicy | Should -Be $splat.EvictionPolicy
+        $cache.Database[$databaseName].ProvisioningState | Should -Be "Succeeded"
+        $cache.Database[$databaseName].ResourceState | Should -Be "Running"
     }
 }

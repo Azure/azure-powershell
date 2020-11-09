@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: 0379dac3-572f-4244-bd9d-aa20ef37c710
+Module Guid: 22b89f2a-67c8-40b1-a269-2c325f7551ef
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,9 @@ Exports a database file from target database.
 
 ### [Get-AzRedisEnterpriseCache](Get-AzRedisEnterpriseCache.md)
 Gets information about a RedisEnterprise cluster and its associated database
+
+### [Get-AzRedisEnterpriseCacheDatabase](Get-AzRedisEnterpriseCacheDatabase.md)
+Gets information about a database in a RedisEnterprise cluster.
 
 ### [Get-AzRedisEnterpriseCacheDatabaseKey](Get-AzRedisEnterpriseCacheDatabaseKey.md)
 Retrieves the access keys for the RedisEnterprise database.

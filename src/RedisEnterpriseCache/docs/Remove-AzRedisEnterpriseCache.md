@@ -29,23 +29,21 @@ Deletes a RedisEnterprise cache cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Redis Enterprise Cache and return the result
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+True
 ```
 
-{{ Add description here }}
+This command removes a Redis Enterprise Cache and displays whether the operation is successful.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Redis Enterprise Cache and do not display the result
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup"
 ```
 
-{{ Add description here }}
+This command removes a Redis Enterprise Cache. Because the PassThru parameter is not specified, the result of the operation is not displayed.
+
 
 ## PARAMETERS
 

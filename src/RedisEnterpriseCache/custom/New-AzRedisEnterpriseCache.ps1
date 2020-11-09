@@ -6,48 +6,25 @@ Creates or updates an existing (overwrite/recreate, with potential downtime) cac
 .Example
 PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
 
-Location Name    Type                            Zone
--------- ----    ----                            ----
-East US  MyCache Microsoft.Cache/redisEnterprise
-
-ClientProtocol    : Encrypted
-ClusteringPolicy  : OSSCluster
-EvictionPolicy    : VolatileLRU
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
-Module            :
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zones "1","2","3" -Modules "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tags @{"tag" = "value"}
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zone "1","2","3" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tag @{"tag" = "value"}
 
-Location Name    Type                            Zone
--------- ----    ----                            ----
-East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3}
-
-ClientProtocol    : Plaintext
-ClusteringPolicy  : EnterpriseCluster
-EvictionPolicy    : NoEviction
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
-Module            : {RedisBloom, RedisTimeSeries, RediSearch}
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
+Location Name    Type                            Zone      Database
+-------- ----    ----                            ----      --------
+East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-MODULES <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
+MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Args <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 
@@ -56,7 +33,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/new-a
 #>
 
 function New-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster],[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='The name of the RedisEnterprise cluster.')]
@@ -104,19 +81,17 @@ function New-AzRedisEnterpriseCache {
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage='The zones where this cluster will be deployed.')]
-        [Alias('Zone')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String[]]
         # The zones where this cluster will be deployed.
-        ${Zones},
+        ${Zone},
 
         [Parameter(HelpMessage='Optional set of redis modules to enable in this database - modules can only be added at creation time.')]
-        [Alias('Module')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at creation time.
-        # To construct, see NOTES section for MODULES properties and create a hash table.
-        ${Modules},
+        # To construct, see NOTES section for MODULE properties and create a hash table.
+        ${Module},
 
         [Parameter(HelpMessage='Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
@@ -150,12 +125,11 @@ function New-AzRedisEnterpriseCache {
         ${ClusteringPolicy},
 
         [Parameter(HelpMessage='Resource tags.')]
-        [Alias('Tag')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
-        ${Tags},
+        ${Tag},
 
         [Parameter(HelpMessage='Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -231,20 +205,23 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Add("ClusterName", $clusterName)
 
         $GetPSBoundParameters = @{} + $PSBoundParameters
-        $null = $GetPSBoundParameters.Remove("Modules")
+        $null = $GetPSBoundParameters.Remove("Module")
         $null = $GetPSBoundParameters.Remove("ClientProtocol")
         $null = $GetPSBoundParameters.Remove("Port")
         $null = $GetPSBoundParameters.Remove("EvictionPolicy")
         $null = $GetPSBoundParameters.Remove("ClusteringPolicy")
-        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
+        $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         $null = $PSBoundParameters.Remove("Location")
         $null = $PSBoundParameters.Remove("Sku")
         $null = $PSBoundParameters.Remove("Capacity")
         $null = $PSBoundParameters.Remove("MinimumTlsVersion")
-        $null = $PSBoundParameters.Remove("Zones")
-        $null = $PSBoundParameters.Remove("Tags")
+        $null = $PSBoundParameters.Remove("Zone")
+        $null = $PSBoundParameters.Remove("Tag")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        $cluster.Database = @{$database.Name = $database}
+
+        return $cluster
     }
 }

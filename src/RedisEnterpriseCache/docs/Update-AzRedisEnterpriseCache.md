@@ -15,14 +15,14 @@ Updates an existing RedisEnterprise cluster
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tags <Hashtable>]
+ [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
- [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -207,13 +207,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tag
+Aliases:
 
 Required: False
 Position: Named

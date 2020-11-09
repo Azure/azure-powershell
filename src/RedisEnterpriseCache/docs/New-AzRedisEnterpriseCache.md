@@ -16,7 +16,7 @@ Creates a Redis Enterpise cache cluster and an associated database
 New-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
  [-SubscriptionId <String>] [-Capacity <Int32>] [-ClientProtocol <Protocol>]
  [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>] [-MinimumTlsVersion <String>]
- [-Modules <IModule[]>] [-Port <Int32>] [-Tags <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>]
+ [-Module <IModule[]>] [-Port <Int32>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,45 +25,29 @@ Creates or updates an existing (overwrite/recreate, with potential downtime) cac
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create a Redis Enterprise Cache
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+West US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
 ```
 
-Location Name    Type                            Zone
--------- ----    ----                            ----
-East US  MyCache Microsoft.Cache/redisEnterprise
+This command creates a Redis Enterprise Cache.
 
-ClientProtocol    : Encrypted
-ClusteringPolicy  : OSSCluster
-EvictionPolicy    : VolatileLRU
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
-Module            :
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Create a Redis Enterprise Cache using some optional parameters
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zones "1","2","3" -Modules "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tags @{"tag" = "value"}
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zone "1","2","3" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tag @{"tag" = "value"}
+
+Location Name    Type                            Zone      Database
+-------- ----    ----                            ----      --------
+East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+
 ```
 
-Location Name    Type                            Zone
--------- ----    ----                            ----
-East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3}
-
-ClientProtocol    : Plaintext
-ClusteringPolicy  : EnterpriseCluster
-EvictionPolicy    : NoEviction
-Id                : /subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default
-Module            : {RedisBloom, RedisTimeSeries, RediSearch}
-Name              : default
-Port              : 10000
-ProvisioningState : Succeeded
-ResourceState     : Running
-Type              : Microsoft.Cache/redisEnterprise/databases
+This command creates a Redis Enterprise Cache using some optional parameters.
 
 ## PARAMETERS
 
@@ -192,14 +176,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Modules
+### -Module
 Optional set of redis modules to enable in this database - modules can only be added at creation time.
-To construct, see NOTES section for MODULES properties and create a hash table.
+To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[]
 Parameter Sets: (All)
-Aliases: Module
+Aliases:
 
 Required: False
 Position: Named
@@ -302,13 +286,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tag
+Aliases:
 
 Required: False
 Position: Named
@@ -317,13 +301,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 The zones where this cluster will be deployed.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases: Zone
+Aliases:
 
 Required: False
 Position: Named
@@ -372,8 +356,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
-
 ## NOTES
 
 ALIASES
@@ -383,7 +365,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-MODULES <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
+MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   - `Name <String>`: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   - `[Arg <String>]`: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 

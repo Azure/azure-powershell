@@ -31,7 +31,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-MODULES <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
+MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 .Link
@@ -93,12 +93,11 @@ function Update-AzRedisEnterpriseCacheDatabase {
         ${EvictionPolicy},
 
         [Parameter()]
-        [Alias('Module')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at creation time.
-        # To construct, see NOTES section for MODULES properties and create a hash table.
-        ${Modules},
+        # To construct, see NOTES section for MODULE properties and create a hash table.
+        ${Module},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]

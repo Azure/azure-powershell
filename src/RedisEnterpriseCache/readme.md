@@ -70,16 +70,6 @@ directive:
       parameter-name: Name
       alias: ClusterName
   - where:
-      parameter-name: Module
-    set:
-      parameter-name: Modules
-      alias: Module
-  - where:
-      parameter-name: Zone
-    set:
-      parameter-name: Zones
-      alias: Zone
-  - where:
       parameter-name: SkuCapacity
     set:
       parameter-name: Capacity
@@ -89,11 +79,6 @@ directive:
     set:
       parameter-name: Sku
       alias: SkuName
-  - where:
-      parameter-name: Tag
-    set:
-      parameter-name: Tags
-      alias: Tag
 
   # Remove unused variants
   - where:
@@ -134,15 +119,14 @@ directive:
       subject: Database
     hide: true
   - where:
-      verb: Get
-      subject: ^$
-    hide: true
-  - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
 
-  # Fix bug in generated code from namespace conflict
+  # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/Origin\(System.Convert.ToString\(/g, 'Origin(global::System.Convert.ToString(');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Module.Instance.SetProxyConfiguration\(/g, 'Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Module.Instance.SetProxyConfiguration(');
 ```
