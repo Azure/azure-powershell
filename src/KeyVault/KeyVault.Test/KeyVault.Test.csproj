@@ -25,9 +25,5 @@
     <None Update="Scripts\ControlPlane\KeyVaultManagementTests.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ScenarioTests\PesterTests\" />
-  </ItemGroup>
-
 </Project>
 

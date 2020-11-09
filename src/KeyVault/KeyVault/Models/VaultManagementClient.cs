@@ -164,6 +164,46 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
+        /// Update an existing vault. Only EnablePurgeProtection, EnableRbacAuthorization and Tags can be updated currently.
+        /// </summary>
+        /// <param name="existingVault">the existing vault</param>
+        /// <param name="updatedParamater">updated paramater</param>
+        /// <param name="adClient">the active directory client</param>
+        /// <returns>the updated vault</returns>
+        public PSKeyVault UpdateVault(
+            PSKeyVault existingVault,
+            VaultCreationOrUpdateParameters updatedParamater,
+            ActiveDirectoryClient adClient = null)
+        {
+            if (existingVault == null)
+                throw new ArgumentNullException("existingVault");
+            if (existingVault.OriginalVault == null)
+                throw new ArgumentNullException("existingVault.OriginalVault");
+
+            //Update the vault properties in the object received from server
+            var properties = existingVault.OriginalVault.Properties;
+
+            if (!(properties.EnablePurgeProtection.HasValue && properties.EnablePurgeProtection.Value)
+                && updatedParamater.EnablePurgeProtection.HasValue
+                && updatedParamater.EnablePurgeProtection.Value)
+                properties.EnablePurgeProtection = updatedParamater.EnablePurgeProtection;
+
+            properties.EnableRbacAuthorization = updatedParamater.EnableRbacAuthorization;
+
+            var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
+                resourceGroupName: existingVault.ResourceGroupName,
+                vaultName: existingVault.VaultName,
+                parameters: new VaultCreateOrUpdateParameters
+                {
+                    Location = existingVault.Location,
+                    Properties = properties,
+                    Tags = TagsConversionHelper.CreateTagDictionary(updatedParamater.Tags, validate: true)
+                }
+                );
+            return new PSKeyVault(response, adClient);
+        }
+
+        /// <summary>
         /// Update an existing vault. Only EnabledForDeployment and AccessPolicies can be updated currently.
         /// </summary>
         /// <param name="existingVault">the existing vault</param>

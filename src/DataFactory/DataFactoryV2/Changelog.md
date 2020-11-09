@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved error message of `New-AzDataFactoryV2LinkedServiceEncryptedCredential` command
 
 ## Version 1.11.0
 * Updated ADF .Net SDK version to 4.12.0

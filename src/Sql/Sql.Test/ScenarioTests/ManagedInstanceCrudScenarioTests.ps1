@@ -390,3 +390,46 @@ function Test-CreateUpdateManagedInstanceWithMinimalTlsVersion
 		Remove-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName -Force
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests creating a managed instance with MaintenanceConfigurationId
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateManagedInstanceWithMaintenanceConfigurationId
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest "westeurope"
+	$vnetName = "cl_maintenance_configuration"
+	$subnetName = "ManagedInstance"
+
+	# Setup VNET
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+
+	$managedInstanceName = Get-ManagedInstanceName
+	$version = "12.0"
+	$credentials = Get-ServerCredential
+	$licenseType = "BasePrice"
+	$storageSizeInGB = 32
+	$vCore = 8
+	$skuName = "GP_Gen5"
+	$maintenanceConfigurationId = "/subscriptions/a295933f-f7f5-4994-a109-8fa51241a5d6/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/MI_Sat_12AM_6AM"
+
+
+	try
+	{
+		$managedInstance1 = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AssignIdentity `
+			-MaintenanceConfigurationId $maintenanceConfigurationId
+
+		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance1.MaintenanceConfigurationId "MI_Sat_12AM_6AM"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

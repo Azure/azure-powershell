@@ -173,12 +173,12 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             {
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p1/foo1",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1/providers/p1/foo1",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
@@ -188,7 +188,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
+                    ResourceId = "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
                     ChangeType = ChangeType.Ignore
                 },
                 new WhatIfChange
@@ -204,7 +204,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             };
 
             string changesInfo = $@"
-Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1
 {Color.Green}
   + p1/foo1
   + p2/bar
