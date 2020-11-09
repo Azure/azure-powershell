@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        WriteWarning,
+                        WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation));
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                    try
                    {
-                       var result = (PSAzureProfile)(task.ConfigureAwait(false).GetAwaiter().GetResult());
+                       var result = (PSAzureProfile)task.Result;
                        WriteObject(result);
                    }
                    catch (AuthenticationFailedException ex)
