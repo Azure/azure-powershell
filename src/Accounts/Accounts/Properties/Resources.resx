@@ -496,10 +496,10 @@
     <value>Context autosave is not supported in current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
   <data name="TokenCacheEncryptionNotSupportedWithFallback" xml:space="preserve">
-    <value>Token cache encryption is not supported in current environment and token cache will be fallen back as plain text.</value>
+    <value>INITIALIZATION: Token cache encryption is not supported in current environment and token cache will be fallen back as plain text.</value>
   </data>
   <data name="ProfileFileNotAccessible" xml:space="preserve">
-    <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
+    <value>INITIALIZATION: Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
   </data>
   <data name="AzurePowerShellFeedback" xml:space="preserve">
     <value>The Azure PowerShell team is listening, please let us know how we are doing: {0}.</value>
@@ -518,5 +518,8 @@
   </data>
   <data name="SuggestToUseDeviceCodeAuth" xml:space="preserve">
     <value>Please run 'Connect-AzAccount -DeviceCode' if browser is not supported in this session.</value>
+  </data>
+  <data name="FallbackContextSaveModeDueCacheCheckError" xml:space="preserve">
+    <value>INITIALIZATION: Fallback context save mode to process because of error during checking token cache persistence: {0}.</value>
   </data>
 </root>
