@@ -15,7 +15,7 @@ Changes the auditing settings for an Azure Synapse Analytics SQL pool.
 ### SetByNameParameterSet (Default)
 ```
 Set-AzSynapseSqlPoolAudit [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
+ [-AuditActionGroup <AuditActionGroup[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
  [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzSynapseSqlPoolAudit [-ResourceGroupName <String>] -WorkspaceName <String> 
 ### SetByParentObjectParameterSet
 ```
 Set-AzSynapseSqlPoolAudit -Name <String> -WorkspaceObject <PSSynapseWorkspace>
- [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
+ [-AuditActionGroup <AuditActionGroup[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
  [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -32,7 +32,7 @@ Set-AzSynapseSqlPoolAudit -Name <String> -WorkspaceObject <PSSynapseWorkspace>
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-AuditActionGroup <AuditActionGroups[]>]
+Set-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-AuditActionGroup <AuditActionGroup[]>]
  [-AuditAction <String[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -40,7 +40,7 @@ Set-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-AuditActionGroup <Au
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzSynapseSqlPoolAudit -ResourceId <String> [-AuditActionGroup <AuditActionGroups[]>]
+Set-AzSynapseSqlPoolAudit -ResourceId <String> [-AuditActionGroup <AuditActionGroup[]>]
  [-AuditAction <String[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -169,7 +169,7 @@ These groups cover all SQL statements and stored procedures executed against the
 For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.AuditActionGroups[]
+Type: Microsoft.Azure.Commands.Synapse.Models.AuditActionGroup[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP

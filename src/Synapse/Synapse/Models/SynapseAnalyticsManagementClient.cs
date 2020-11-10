@@ -564,14 +564,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        private AuditActionGroups[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
+        private AuditActionGroup[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
         {
-            var groups = new List<AuditActionGroups>();
+            var groups = new List<AuditActionGroup>();
             if (auditActionsAndGroups != null)
             {
                 auditActionsAndGroups.ForEach(item =>
                 {
-                    if (Enum.TryParse(item, true, out AuditActionGroups group))
+                    if (Enum.TryParse(item, true, out AuditActionGroup group))
                     {
                         groups.Add(group);
                     }
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 auditActionsAndGroups.ForEach(item =>
                 {
-                    if (!Enum.TryParse(item, true, out AuditActionGroups group))
+                    if (!Enum.TryParse(item, true, out AuditActionGroup group))
                     {
                         actions.Add(item);
                     }
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        private static IList<string> ExtractAuditActionsAndGroups(AuditActionGroups[] auditActionGroup, string[] auditAction = null)
+        private static IList<string> ExtractAuditActionsAndGroups(AuditActionGroup[] auditActionGroup, string[] auditAction = null)
         {
             var actionsAndGroups = new List<string>();
             if (auditAction != null)

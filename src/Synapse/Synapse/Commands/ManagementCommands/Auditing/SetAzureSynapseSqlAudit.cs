@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AuditActionGroup)]
-        public AuditActionGroups[] AuditActionGroup { get; set; }
+        public AuditActionGroup[] AuditActionGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PredicateExpression)]
         [ValidateNotNull]

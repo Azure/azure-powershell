@@ -15,14 +15,14 @@ Changes the auditing settings of an Azure Synapse Analytics Workspace.
 ### SetByNameParameterSet (Default)
 ```
 Set-AzSynapseSqlAudit [-ResourceGroupName <String>] -WorkspaceName <String>
- [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
+ [-AuditActionGroup <AuditActionGroup[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-AuditActionGroup <AuditActionGroups[]>]
+Set-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-AuditActionGroup <AuditActionGroup[]>]
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-AuditActionGroup <Audi
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzSynapseSqlAudit -ResourceId <String> [-AuditActionGroup <AuditActionGroups[]>]
+Set-AzSynapseSqlAudit -ResourceId <String> [-AuditActionGroup <AuditActionGroup[]>]
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -111,7 +111,7 @@ These groups cover all SQL statements and stored procedures executed against the
 For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.AuditActionGroups[]
+Type: Microsoft.Azure.Commands.Synapse.Models.AuditActionGroup[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP

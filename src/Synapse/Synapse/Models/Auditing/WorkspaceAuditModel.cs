@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public enum AuditStateType { Enabled, Disabled };
 
-    public enum AuditActionGroups
+    public enum AuditActionGroup
     {
         BATCH_STARTED_GROUP,
         BATCH_COMPLETED_GROUP,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string WorkspaceName { get; set; }
 
-        public AuditActionGroups[] AuditActionGroup { get; set; }
+        public AuditActionGroup[] AuditActionGroup { get; set; }
 
         public string PredicateExpression { get; set; }
 
