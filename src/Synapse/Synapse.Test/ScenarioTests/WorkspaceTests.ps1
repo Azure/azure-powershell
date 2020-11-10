@@ -114,7 +114,7 @@ function Test-SynapseWorkspace
         Assert-True {$found -eq 1} "Workspace created earlier is not found when listing all in subscription."
 
         # Delete workspace
-        Assert-True {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -PassThru} "Remove Workspace failed."
+        Assert-True {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -PassThru -Force} "Remove Workspace failed."
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName}
@@ -122,7 +122,7 @@ function Test-SynapseWorkspace
     finally
     {
         # cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
         Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
     }
 }
