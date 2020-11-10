@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.2.0
 * Added warning messages for upcoming breaking change for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
     - `Get-AzVirtualRouterPeerAdvertisedRoute`
