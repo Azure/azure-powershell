@@ -14,10 +14,6 @@
 // limitations under the License.
 //
 
-//
-// Changes to this file may cause incorrect behavior and will be lost if the
-// code is regenerated.
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,10 +24,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 namespace Microsoft.Azure.Commands.Compute.Extension
 {
     [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingExtensionUpgrade", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    class VirtualMachineScaleSetRollingExtensionStartUpgrade
+    [OutputType(typeof(PSOperationStatusResponse))]
+    class VirtualMachineScaleSetRollingExtensionStartUpgrade : VirtualMachineScaleSetExtensionBaseCmdlet
     {
 
     }
