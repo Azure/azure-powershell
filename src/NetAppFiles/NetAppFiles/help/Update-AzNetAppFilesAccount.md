@@ -214,7 +214,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
 ## OUTPUTS
 

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             string userId = null,
             string homeAccountId = "")
         {
-            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken);
+            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
 
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             TokenRequestContext requestContext,
             CancellationToken cancellationToken)
         {
-            var record = await authTask;
+            var record = await authTask.ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
-            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken);
+            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
 
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
         }
