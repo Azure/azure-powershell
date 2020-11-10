@@ -172,6 +172,35 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Profile.Models.PSAccessToken</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAccessToken</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Token</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ExpiresOn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TenantId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>UserId</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscriptionPolicy</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscriptionPolicy</TypeName>
