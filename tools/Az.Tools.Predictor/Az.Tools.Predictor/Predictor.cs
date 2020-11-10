@@ -174,7 +174,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
             if ((results.Count < suggestionCount) && (resultsTemp.Count >0))
             {
-                //resultsTemp.ToList().GetRange(0, suggestionCount - results.Count).ForEach(x => results[x.Key] = (results.ContainsKey(x.Key) ? results[x.Key] : x.Value));
                 resultsTemp.ToList().GetRange(0, suggestionCount - results.Count).ForEach(x => results.Add(x.Key,x.Value));
             }
             return new Tuple<IDictionary<string, string>, Dictionary<string, int>>(results, presentCommands);
