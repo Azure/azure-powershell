@@ -31,6 +31,15 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.0 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
 
+The module needs to be imported manually via
+Import-Module Az.Tools.Predictor
+
+Enable plugins via
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+Switch the output format of suggestions to list view via
+Set-PSReadLineOption -PredictionViewStyle ListView
+
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
 # Minimum version of the PowerShell engine required by this module
