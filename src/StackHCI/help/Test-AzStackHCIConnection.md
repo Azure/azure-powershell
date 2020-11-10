@@ -1,13 +1,14 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
 schema: 2.0.0
 ---
 
 # Test-AzStackHCIConnection
 
 ## SYNOPSIS
+Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
 ## SYNTAX
 
