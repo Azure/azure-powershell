@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Updated planning to deprecate warnings for the following cmdlets
+    -`New-AzVirtualHubRoute`
+    -`New-AzVirtualHubRouteTable`
+    -`Add-AzVirtualHubRoute`
+    -`Add-AzVirtualHubRouteTable`
+    -`Get-AzVirtualHubRouteTable`
+    -`Remove-AzVirtualHubRouteTable`
+* Added planning to deprecate warnings on the argument `RouteTable` for the following cmdlets
+    -`New-AzVirtualHub`
+    -`Set-AzVirtualHub`
+    -`Update-AzVirtualHub`
 
 ## Version 4.1.0
 * [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
