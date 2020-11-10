@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get raw access token
+Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
 
 ## SYNTAX
 
@@ -19,7 +19,6 @@ Get-AzAccessToken [-ResourceTypeName <String>] [-TenantId <String>] [-DefaultPro
 ```
 
 ### ResourceUrl
-When using ResourceUrl, please make sure the value is correct for current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
 ```
 Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
