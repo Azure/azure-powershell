@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.Network.dll","Microsoft.Azure.Commands.Network.NewAzFirewallPolicyNatRuleCommand","New-AzFirewallPolicyNatRule","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzFirewallPolicyNatRule' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzFirewallPolicyNatRule'."
