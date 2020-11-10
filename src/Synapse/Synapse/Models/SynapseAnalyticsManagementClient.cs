@@ -330,6 +330,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        #endregion
+
+        #region Workspace SQL Active Directory Administrator
+
         public WorkspaceAadAdminInfo GetSqlActiveDirectoryAdministrators(string resourceGroupName, string workspaceName)
         {
             try
@@ -523,555 +527,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public WorkspaceAuditModel GetWorkspaceAudit(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                var policy = _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
-                var model = new WorkspaceAuditModel
-                {
-                    ResourceGroupName = resourceGroupName,
-                    WorkspaceName = workspaceName
-                };
-
-                model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
-                model.PredicateExpression = policy.PredicateExpression;
-                model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-                ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
-                    IsAuditEnabled(policy.State), policy.RetentionDays);
-                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
-
-                return model;
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void CreateOrUpdateWorkspaceAudit(WorkspaceAuditModel model)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(model.PredicateExpression))
-                {
-                    var policy = new ServerBlobAuditingPolicy();
-                    PolicizeAuditModel(model, policy);
-                    // TODO operation error
-                    _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
-                }
-                else
-                {
-                    var policy = new ExtendedServerBlobAuditingPolicy
-                    {
-                        PredicateExpression = model.PredicateExpression
-                    };
-                    PolicizeAuditModel(model, policy);
-                    _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
-                }
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void RemoveWorkspaceAudit(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
-                policy.State = BlobAuditingPolicyState.Disabled;
-                _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-            
-        }
-
-        public ServerSecurityAlertPolicy GetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.Get(resourceGroupName, workspaceName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
-        {
-            var resourceGroup = GetStorageResourceGroup(storageName);
-            return GetStorageKeys(resourceGroup, storageName);
-        }
-
-        private static class StorageAccountType
-        {
-            public const string ClassicStorage = "Microsoft.ClassicStorage/storageAccounts";
-            public const string Storage = "Microsoft.Storage/storageAccounts";
-        }
-
-        public string GetStorageResourceGroup(string storageAccountName)
-        {
-            foreach (var storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
-            {
-                var resourceGroup = GetStorageResourceGroup(
-                    ResourceManagementClient,
-                    storageAccountName,
-                    storageAccountType);
-
-                if (resourceGroup != null)
-                {
-                    return resourceGroup;
-                }
-            }
-
-            throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
-        }
-
-        private static string GetStorageResourceGroup(
-            ResourceManagementClient resourcesClient,
-            string storageAccountName,
-            string resourceType)
-        {
-            var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
-            var res = resourcesClient.Resources.List(query);
-            var allResources = new List<GenericResource>(res);
-            var account = allResources.Find(r => r.Name == storageAccountName);
-            if (account == null)
-            {
-                return null;
-            }
-
-            var resId = account.Id;
-            var segments = resId.Split('/');
-            var indexOfResourceGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
-            return segments[indexOfResourceGroup];
-        }
-
-        private Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
-        {
-            try
-            {
-                return GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName), e);
-            }
-        }
-
-        private async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
-        {
-            var url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
-            if (!url.EndsWith("/"))
-            {
-                url = url + "/";
-            }
-            // TODO: Remove IfDef
-#if NETSTANDARD
-            url = url + "subscriptions/" + (StorageManagementClient.SubscriptionId != null ? StorageManagementClient.SubscriptionId.Trim() : "");
-#else
-            url = url + "subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
-#endif
-            url = url + "/resourceGroups/" + resourceGroupName;
-            url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
-            url = url + "/listKeys?api-version=2014-06-01";
-
-            var httpRequest = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(url) };
-
-            await StorageManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            var httpResponse = await StorageManagementClient.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            var responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var result = new Dictionary<StorageKeyKind, string>();
-            try
-            {
-                var responseDoc = JToken.Parse(responseContent);
-                var primaryKey = (string)responseDoc["primaryKey"];
-                var secondaryKey = (string)responseDoc["secondaryKey"];
-                if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
-                {
-                    throw new Exception(); // this is caught by the synced wrapper
-                }
-
-                result.Add(StorageKeyKind.Primary, primaryKey);
-                result.Add(StorageKeyKind.Secondary, secondaryKey);
-                return result;
-            }
-            catch
-            {
-                return GetV2Keys(resourceGroupName, storageAccountName);
-            }
-        }
-
-        private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
-        {
-            var r = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
-            // TODO: Remove IfDef
-#if NETSTANDARD
-            var k1 = r.Keys[0].Value;
-            var k2 = r.Keys[1].Value;
-#else
-            string k1 = r.StorageAccountKeys.Key1;
-            string k2 = r.StorageAccountKeys.Key2;
-#endif
-            var result = new Dictionary<StorageKeyKind, String>
-            {
-                {StorageKeyKind.Primary, k1}, {StorageKeyKind.Secondary, k2}
-            };
-            return result;
-        }
-
-        public ServerSecurityAlertPolicy SetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName, ServerSecurityAlertPolicy policy)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void RemoveWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                var policy = GetWorkspaceThreatDetectionPolicy(resourceGroupName, workspaceName);
-                policy.State = SecurityAlertPolicyState.Disabled;
-                _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public ServerVulnerabilityAssessment GetWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Get(resourceGroupName, workspaceName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public struct StorageContainerInfo
-        {
-            public string StorageAccountAccessKey;
-            public string StorageContainerPath;
-        }
-
-        public StorageContainerInfo GetStorageContainerInfo(string resourceGroupName, string storageAccountName, string containerName)
-        {
-            var storageAccountObject = StorageManagementClient.StorageAccounts.GetProperties(resourceGroupName, storageAccountName);
-            var keysObject = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
-            // TODO: Remove IfDef
-#if NETSTANDARD
-            var storageAccountBlobPrimaryEndpoints = storageAccountObject.PrimaryEndpoints.Blob;
-            var key = keysObject.Keys.FirstOrDefault().Value;
-#else
-            var storageAccountBlobPrimaryEndpoints = storageAccountObject.StorageAccount.PrimaryEndpoints.Blob;
-            var key = keysObject.StorageAccountKeys.Key1;
-#endif
-            return new StorageContainerInfo
-            {
-                StorageAccountAccessKey = key,
-                StorageContainerPath = string.Format("{0}{1}", storageAccountBlobPrimaryEndpoints, containerName)
-            };
-        }
-
-        public ServerVulnerabilityAssessment CreateOrUpdateWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, ServerVulnerabilityAssessment parameters)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void RemoveWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Delete(resourceGroupName, workspaceName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public EncryptionProtector GetWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.Get(resourceGroupName, workspaceName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public EncryptionProtector CreateOrUpdateWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName, EncryptionProtector parameters)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
         #endregion
 
-        #region SQL pool operations
-
-        public SqlPool CreateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPool createOrUpdateParams)
-        {
-            try
-            {
-                return _synapseManagementClient.SqlPools.Create(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        internal SqlPool GetSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                return _synapseManagementClient.SqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                return GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public List<SqlPool> ListSqlPools(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                var firstPage = this._synapseManagementClient.SqlPools.ListByWorkspace(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.SqlPools.ListByWorkspaceNext);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void UpdateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo updateParams)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void DeleteSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                if (!TestSqlPool(resourceGroupName, workspaceName, sqlPoolName))
-                {
-                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolDoesNotExist, sqlPoolName));
-                }
-
-                _synapseManagementClient.SqlPools.Delete(resourceGroupName, workspaceName, sqlPoolName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public bool TestSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
-                return true;
-            }
-            catch (NotFoundException)
-            {
-                return false;
-            }
-        }
-
-        public void RenameSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, string newSqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                this._synapseManagementClient.SqlPools.Rename(
-                    resourceGroupName,
-                    workspaceName,
-                    sqlPoolName,
-                    new ResourceMoveDefinition
-                    {
-                        Id = Utils.ConstructResourceId(
-                            _synapseManagementClient.SubscriptionId,
-                            resourceGroupName,
-                            ResourceTypes.SqlPool,
-                            newSqlPoolName,
-                            $"workspaces/{workspaceName}")
-                    });
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void PauseSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                this._synapseManagementClient.SqlPools.Pause(resourceGroupName, workspaceName, sqlPoolName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public void ResumeSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                this._synapseManagementClient.SqlPools.Resume(resourceGroupName, workspaceName, sqlPoolName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public List<RestorePoint> ListSqlPoolRestorePoints(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                return this._synapseManagementClient.SqlPoolRestorePoints.List(
-                    resourceGroupName,
-                    workspaceName,
-                    sqlPoolName)
-                    .ToList();
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public RestorePoint CreateSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, CreateSqlPoolRestorePointDefinition parameters)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
+        #region Auditing
 
         public SqlPoolAuditModel GetSqlPoolAudit(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
@@ -1518,7 +976,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         internal dynamic GetSqlAuditing(string resourceGroupName, string workspaceName, string sqlPoolName = null)
         {
-            if(sqlPoolName == null)
+            if (sqlPoolName == null)
             {
                 return _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
             }
@@ -1540,6 +998,571 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 SqlPoolBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName, sqlPoolName);
                 policy.State = BlobAuditingPolicyState.Disabled;
                 _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public WorkspaceAuditModel GetWorkspaceAudit(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var policy = _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
+                var model = new WorkspaceAuditModel
+                {
+                    ResourceGroupName = resourceGroupName,
+                    WorkspaceName = workspaceName
+                };
+
+                model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
+                model.PredicateExpression = policy.PredicateExpression;
+                model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
+                ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
+                    IsAuditEnabled(policy.State), policy.RetentionDays);
+                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
+
+                return model;
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void CreateOrUpdateWorkspaceAudit(WorkspaceAuditModel model)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(model.PredicateExpression))
+                {
+                    var policy = new ServerBlobAuditingPolicy();
+                    PolicizeAuditModel(model, policy);
+                    // TODO operation error
+                    _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
+                }
+                else
+                {
+                    var policy = new ExtendedServerBlobAuditingPolicy
+                    {
+                        PredicateExpression = model.PredicateExpression
+                    };
+                    PolicizeAuditModel(model, policy);
+                    _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
+                }
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceAudit(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
+                policy.State = BlobAuditingPolicyState.Disabled;
+                _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region Threat Detection
+
+        public ServerSecurityAlertPolicy GetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
+        {
+            var resourceGroup = GetStorageResourceGroup(storageName);
+            return GetStorageKeys(resourceGroup, storageName);
+        }
+
+        private static class StorageAccountType
+        {
+            public const string ClassicStorage = "Microsoft.ClassicStorage/storageAccounts";
+            public const string Storage = "Microsoft.Storage/storageAccounts";
+        }
+
+        public string GetStorageResourceGroup(string storageAccountName)
+        {
+            foreach (var storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
+            {
+                var resourceGroup = GetStorageResourceGroup(
+                    ResourceManagementClient,
+                    storageAccountName,
+                    storageAccountType);
+
+                if (resourceGroup != null)
+                {
+                    return resourceGroup;
+                }
+            }
+
+            throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
+        }
+
+        private static string GetStorageResourceGroup(
+            ResourceManagementClient resourcesClient,
+            string storageAccountName,
+            string resourceType)
+        {
+            var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
+            var res = resourcesClient.Resources.List(query);
+            var allResources = new List<GenericResource>(res);
+            var account = allResources.Find(r => r.Name == storageAccountName);
+            if (account == null)
+            {
+                return null;
+            }
+
+            var resId = account.Id;
+            var segments = resId.Split('/');
+            var indexOfResourceGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
+            return segments[indexOfResourceGroup];
+        }
+
+        private Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
+        {
+            try
+            {
+                return GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName), e);
+            }
+        }
+
+        private async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
+        {
+            var url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
+            if (!url.EndsWith("/"))
+            {
+                url = url + "/";
+            }
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            url = url + "subscriptions/" + (StorageManagementClient.SubscriptionId != null ? StorageManagementClient.SubscriptionId.Trim() : "");
+#else
+            url = url + "subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
+#endif
+            url = url + "/resourceGroups/" + resourceGroupName;
+            url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
+            url = url + "/listKeys?api-version=2014-06-01";
+
+            var httpRequest = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(url) };
+
+            await StorageManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var httpResponse = await StorageManagementClient.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = new Dictionary<StorageKeyKind, string>();
+            try
+            {
+                var responseDoc = JToken.Parse(responseContent);
+                var primaryKey = (string)responseDoc["primaryKey"];
+                var secondaryKey = (string)responseDoc["secondaryKey"];
+                if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+                {
+                    throw new Exception(); // this is caught by the synced wrapper
+                }
+
+                result.Add(StorageKeyKind.Primary, primaryKey);
+                result.Add(StorageKeyKind.Secondary, secondaryKey);
+                return result;
+            }
+            catch
+            {
+                return GetV2Keys(resourceGroupName, storageAccountName);
+            }
+        }
+
+        private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
+        {
+            var r = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            var k1 = r.Keys[0].Value;
+            var k2 = r.Keys[1].Value;
+#else
+            string k1 = r.StorageAccountKeys.Key1;
+            string k2 = r.StorageAccountKeys.Key2;
+#endif
+            var result = new Dictionary<StorageKeyKind, String>
+            {
+                {StorageKeyKind.Primary, k1}, {StorageKeyKind.Secondary, k2}
+            };
+            return result;
+        }
+
+        public ServerSecurityAlertPolicy SetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName, ServerSecurityAlertPolicy policy)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var policy = GetWorkspaceThreatDetectionPolicy(resourceGroupName, workspaceName);
+                policy.State = SecurityAlertPolicyState.Disabled;
+                _synapseManagementClient.WorkspaceManagedSqlServerSecurityAlertPolicy.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region Vulnerability Assessment
+
+        public ServerVulnerabilityAssessment GetWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public struct StorageContainerInfo
+        {
+            public string StorageAccountAccessKey;
+            public string StorageContainerPath;
+        }
+
+        public StorageContainerInfo GetStorageContainerInfo(string resourceGroupName, string storageAccountName, string containerName)
+        {
+            var storageAccountObject = StorageManagementClient.StorageAccounts.GetProperties(resourceGroupName, storageAccountName);
+            var keysObject = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            // TODO: Remove IfDef
+#if NETSTANDARD
+            var storageAccountBlobPrimaryEndpoints = storageAccountObject.PrimaryEndpoints.Blob;
+            var key = keysObject.Keys.FirstOrDefault().Value;
+#else
+            var storageAccountBlobPrimaryEndpoints = storageAccountObject.StorageAccount.PrimaryEndpoints.Blob;
+            var key = keysObject.StorageAccountKeys.Key1;
+#endif
+            return new StorageContainerInfo
+            {
+                StorageAccountAccessKey = key,
+                StorageContainerPath = string.Format("{0}{1}", storageAccountBlobPrimaryEndpoints, containerName)
+            };
+        }
+
+        public ServerVulnerabilityAssessment CreateOrUpdateWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, ServerVulnerabilityAssessment parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.WorkspaceManagedSqlServerVulnerabilityAssessments.Delete(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region Transparent Data Encryption
+
+        public EncryptionProtector GetWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.Get(resourceGroupName, workspaceName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public EncryptionProtector CreateOrUpdateWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName, EncryptionProtector parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region SQL pool operations
+
+        public SqlPool CreateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPool createOrUpdateParams)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPools.Create(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlPool GetSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return _synapseManagementClient.SqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<SqlPool> ListSqlPools(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var firstPage = this._synapseManagementClient.SqlPools.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.SqlPools.ListByWorkspaceNext);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void UpdateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo updateParams)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void DeleteSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestSqlPool(resourceGroupName, workspaceName, sqlPoolName))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolDoesNotExist, sqlPoolName));
+                }
+
+                _synapseManagementClient.SqlPools.Delete(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public bool TestSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
+                return true;
+            }
+            catch (NotFoundException)
+            {
+                return false;
+            }
+        }
+
+        public void RenameSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, string newSqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseManagementClient.SqlPools.Rename(
+                    resourceGroupName,
+                    workspaceName,
+                    sqlPoolName,
+                    new ResourceMoveDefinition
+                    {
+                        Id = Utils.ConstructResourceId(
+                            _synapseManagementClient.SubscriptionId,
+                            resourceGroupName,
+                            ResourceTypes.SqlPool,
+                            newSqlPoolName,
+                            $"workspaces/{workspaceName}")
+                    });
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void PauseSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseManagementClient.SqlPools.Pause(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void ResumeSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseManagementClient.SqlPools.Resume(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region SQL Pool Backup
+
+        public List<RestorePoint> ListSqlPoolRestorePoints(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return this._synapseManagementClient.SqlPoolRestorePoints.List(
+                    resourceGroupName,
+                    workspaceName,
+                    sqlPoolName)
+                    .ToList();
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public RestorePoint CreateSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, CreateSqlPoolRestorePointDefinition parameters)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
             }
             catch (CloudException ex)
             {
