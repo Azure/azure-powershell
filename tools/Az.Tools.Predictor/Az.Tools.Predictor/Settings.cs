@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private void OverrideSettingsFromEnv()
         {
-            var serviceUri = System.Environment.GetEnvironmentVariable("ServiceUri");
+            var serviceUri = System.Environment.GetEnvironmentVariable("AzPredictorServiceUri");
 
             if (!string.IsNullOrWhiteSpace(serviceUri))
             {
