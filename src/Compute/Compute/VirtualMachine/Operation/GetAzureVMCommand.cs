@@ -36,6 +36,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -160,40 +161,70 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
+                    /*
+                    ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
+                    var testListAllRGs = ResourceManagerClient.ResourceGroups.List();
+                    IterateResourceGroupsForCurrentSubId(testListAllRGs);
+                    */
+
                     //var ofilter = new ODataQuery<Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ResourceGroupFilter>("Name eq " + Name);//{Microsoft.Azure.Management.Compute.Models.VirtualMachine} type, Name 
                     //var testlist = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
-
-
-                    //var testList = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
-                    // var testNext = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync(testList.Body.NextPageLink);
-                    //var nextRGInList = testNext(testList.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
-
-
-                    //var testMess = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().;
-                    //var testMessNExt = ResourceManagerClient.ResourceGroups.ListNextWithHttpMessagesAsync();
-                    //var testFiltGetAwait = ResourceManagerClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult();
                     
                     ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
                     var testListAllRGs = ResourceManagerClient.ResourceGroups.List();
 
                     IterateResourceGroupsForCurrentSubId(testListAllRGs);
-                    /*
-                    //while (!string.IsNullOrEmpty(testListAll.NextPageLink))
-                    //{
-                        var currentRG = testListAll.ToArray()[1];
-                        //testListAll = ResourceManagerClient.ResourceGroups.ListNext(testListAll.NextPageLink);
-                        int start = 0;
-                        while (start < testListAll.ToArray().Length)
-                        {
-                            var currentRGResult = testListAll.ToArray()[start];
-                            start += 1; 
-                        }
-                    //}
-                    */
 
-                        ReturnListVMObject(
-                        this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
-                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
+                    var resourceGroups = ResourceManagerClient.ResourceGroups.List();
+                    int index = 0;
+                    while (index < resourceGroups.ToArray().Length)
+                    {
+                        var currentRG = resourceGroups.ElementAt(index);
+                        if (Status)
+                        {
+                            try
+                            {
+                                //var allVmsInRG = this.VirtualMachineClient.ListWithHttpMessagesAsync(currentRG.Name).GetAwaiter().GetResult();
+                                
+                                //This Get errors out for RGs that do not have the named VM in them. 
+                                //Despite the catch syntax, these errors are included in the HTTP response. 
+                                var result = this.VirtualMachineClient.Get(currentRG.Name, this.Name, InstanceViewExpand);
+                                if (result != null)
+                                {
+                                    WriteObject(result.ToPSVirtualMachineInstanceView(currentRG.Name, this.Name));
+                                }
+
+                            }
+                            catch
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
+                                currentRG.Name, this.Name).GetAwaiter().GetResult();
+
+                            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                            if (result.Body != null)
+                            {
+                                psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
+                            }
+                            psResult.DisplayHint = this.DisplayHint;
+                            WriteObject(psResult);
+                        }
+
+                        index += 1;
+                    }
+
+
+                    //original code
+                    /*
+                    ReturnListVMObject(
+                            this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
+                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
+                    */
+                        
                 }
                 else if (ShouldGetByName(ResourceGroupName, Name))
                 {
@@ -232,48 +263,39 @@ namespace Microsoft.Azure.Commands.Compute
                 //make a list of VMs to add to
                 Page<VirtualMachine> pageOfVMs = new Page<VirtualMachine>();
                 var vmList = pageOfVMs.ToList();
-                AzureOperationResponse<IPage<VirtualMachine>> testAOR = new AzureOperationResponse<IPage<VirtualMachine>>();
-                int start = 0;
-                while (start < resourceGroups.ToArray().Length)
+
+                int index = 0;
+                while (index < resourceGroups.ToArray().Length)
                 {
-                    var currentRGResult = resourceGroups.ToArray()[start];
+                    var currentRGResult = resourceGroups.ElementAt(index);
 
                     var testListVMs = this.VirtualMachineClient.ListWithHttpMessagesAsync(currentRGResult.Name).GetAwaiter().GetResult();
 
                     try
                     {
-                        var testGetVM = this.VirtualMachineClient.Get(currentRGResult.Name, this.Name, InstanceViewExpand);
-                        //add the VM to the list
-                        vmList.Add(testGetVM);
-                        //pageOfVMs.GetEnumerator().;
-                        //vmList.Clear();
+                        if (vmList.Count() < 100)
+                        {
+                            var testGetVM = this.VirtualMachineClient.Get(currentRGResult.Name, this.Name, InstanceViewExpand);
+                            vmList.Add(testGetVM);
+                        }
+                        else
+                        {
+                            break; 
+                        }
+
                     }
                     catch
                     {
-                        var t = 1;
-                        var x = t; 
                         //swallow all exceptions
                     }
-
-                    
-
-                    start += 1;
+                    index += 1;
                 }
 
-                //test
-                var numVMs = vmList.LongCount();
-                var getVM = vmList.ElementAt(0);
                 var psResultList = new List<PSVirtualMachineList>();
-                var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmList);
+                var psItemList = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmList);
                 //TODO: looks like I can map my list directly to what I need to run the methods, just need to create different methods that 
                 //use the same code. 
-                foreach (var item in vmList)
-                {
-
-                }
-
-                //var pageVM = pageOfVMs.ElementAt(0);
-                var pageVMNums = pageOfVMs.Count();
+                //foreach (var item in vmList)
 
                 if (!string.IsNullOrEmpty(resourceGroups.NextPageLink))
                 {
@@ -289,13 +311,18 @@ namespace Microsoft.Azure.Commands.Compute
         private void ReturnListVMObjectList(List<VirtualMachine> vmList)
         {
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
+            var enumOfVMs = vmList.GetEnumerator();
+            while (enumOfVMs.Current != null)
+            {
+                psResultListStatus = GetPowerStateList(vmList, psResultListStatus);
 
-            //vmList.ElementAt(0).ne
+                enumOfVMs.MoveNext();
+            }
         }
 
         private List<PSVirtualMachineListStatus> GetPowerStateList(List<VirtualMachine> vmList, List<PSVirtualMachineListStatus> psResultListStatus)
         {
-
+            
 
             return psResultListStatus;
         }
@@ -339,6 +366,7 @@ namespace Microsoft.Azure.Commands.Compute
             AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             List<PSVirtualMachineListStatus> psResultListStatus)
         {
+
             if (vmListResult.Body != null)
             {
                 int vm_count = 0;
