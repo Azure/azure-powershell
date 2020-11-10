@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Added new MSIX Package cmdlets and Updated Applications cmdlets.
+
 ## Version 2.0.0
 * Require Location property for creating top level arm objects.
 * Made `ApplicationGroupType` required for `New-AzWvdApplicationGroup`.
