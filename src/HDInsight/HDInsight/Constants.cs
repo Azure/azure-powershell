@@ -143,5 +143,116 @@ namespace Microsoft.Azure.Commands.HDInsight
             public static string ERROR_INPUT_CANNOT_BE_EMPTY = "Input cannot be empty";
             public static string ERROR_SCHEME_SPECIFIED_IN_STORAGE_FQDN = "Please specify fully qualified storage endpoint without the scheme";
         }
+
+        public static class ConfigurationKey
+        {
+            /// <summary>
+            /// The constant for Core site configs.
+            /// </summary>
+            public const string CoreSite = "core-site";
+
+            /// <summary>
+            /// The constant for Hive site configs.
+            /// </summary>
+            public const string HiveSite = "hive-site";
+
+            /// <summary>
+            /// The constant for hive environment configs.
+            /// </summary>
+            public const string HiveEnv = "hive-env";
+
+            /// <summary>
+            /// The constant for Oozie site configs.
+            /// </summary>
+            public const string OozieSite = "oozie-site";
+
+            /// <summary>
+            /// The constant for Oozie environment configs.
+            /// </summary>
+            public const string OozieEnv = "oozie-env";
+
+            /// <summary>
+            /// The constant for WebHCAT site configs.
+            /// </summary>
+            public const string WebHCatSite = "webhcat-site";
+
+            /// <summary>
+            /// The constant for HBase environment configs.
+            /// </summary>
+            public const string HBaseEnv = "hbase-env";
+
+            /// <summary>
+            /// The constant for HBase site configs.
+            /// </summary>
+            public const string HBaseSite = "hbase-site";
+
+            /// <summary>
+            /// The constant for Storm site configs.
+            /// </summary>
+            public const string StormSite = "storm-site";
+
+            /// <summary>
+            /// The constant for Yarn site configs.
+            /// </summary>
+            public const string YarnSite = "yarn-site";
+
+            /// <summary>
+            /// The constant for MapRed site configs.
+            /// </summary>
+            public const string MapRedSite = "mapred-site";
+
+            /// <summary>
+            /// The constant for Tez site configs.
+            /// </summary>
+            public const string TezSite = "tez-site";
+
+            /// <summary>
+            /// The constant for HDFS site configs.
+            /// </summary>
+            public const string HdfsSite = "hdfs-site";
+
+            /// <summary>
+            /// The constant for Gateway configs.
+            /// </summary>
+            public const string Gateway = "gateway";
+
+            /// <summary>
+            /// The constant for cluster identity configs.
+            /// </summary>
+            public const string ClusterIdentity = "clusterIdentity";
+
+            /// <summary>
+            /// The constant for Spark-Defaults configs.
+            /// </summary>
+            public const string SparkDefaults = "spark-defaults";
+
+            /// <summary>
+            /// The constant for Spark-Thrift-SparkConf configs.
+            /// </summary>
+            public const string SparkThriftConf = "spark-thrift-sparkconf";
+
+            /// <summary>
+            /// The constant for Spark2-Defaults configs.
+            /// </summary>
+            public const string Spark2Defaults = "spark2-defaults";
+
+            /// <summary>
+            /// The constant for Spark2-Thrift-SparkConf configs.
+            /// </summary>
+            public const string Spark2ThriftConf = "spark2-thrift-sparkconf";
+
+            /// <summary>
+            /// The constant for custom ambari db configs.
+            /// </summary>
+            public const string AmbariConf = "ambari-conf";
+        }
+
+        public static class AmbariConfiguration
+        {
+            public const string SqlServerKey = "database-server";
+            public const string DatabaseNameKey = "database-name";
+            public const string DatabaseUserKey = "database-user-name";
+            public const string DatabasePasswordKey = "database-user-password";
+        }
     }
 }

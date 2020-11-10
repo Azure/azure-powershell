@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public AzureHDInsightMetastore HiveMetastore { get; set; }
 
         /// <summary>
+        /// Gets or sets the database for ambari.
+        /// </summary>
+        public AzureHDInsightMetastore AmbariDatabase { get; set; }
+
+        /// <summary>
         /// Gets Object id of the service principal. 
         /// </summary>
         public Guid ObjectId { get; set; }
