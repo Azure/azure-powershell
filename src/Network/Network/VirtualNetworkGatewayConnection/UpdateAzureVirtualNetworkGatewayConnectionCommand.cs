@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Commands.Network
         public int? DpdTimeoutInSeconds { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        public VirtualNetworkGatewayConnectionMode? ConnectionMode { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
@@ -108,6 +114,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.DpdTimeoutInSeconds.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
+                    }
+
+                    if (this.ConnectionMode.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode.Value;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
