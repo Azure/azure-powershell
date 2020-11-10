@@ -197,6 +197,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string AzureSynapseAnalyticsEndpointSuffix { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
@@ -327,7 +333,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(StorageEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
                                     nameof(ActiveDirectoryEndpoint), true);
-
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix,
+                                    nameof(ContainerRegistryEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
                                     nameof(ActiveDirectoryServiceEndpointResourceId));
