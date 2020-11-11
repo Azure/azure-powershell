@@ -12,19 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzCommunicationServiceKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded' {
+        $keys = New-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -KeyType Primary
+        $keys[0].PrimaryKey | Should -Not -Be $keyPair[0].PrimaryKey
+
+        $keys = New-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -KeyType Secondary
+        $keys[0].SecondaryKey | Should -Not -Be $keyPair[0].SecondaryKey
     }
 
-    It 'Regenerate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Regenerate' {
+        $keys = New-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Parameter @{KeyType="Primary"}
+        $keys[0].PrimaryKey | Should -Not -Be $keyPair[0].PrimaryKey
+
+        $keys = New-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Parameter @{KeyType="Secondary"}
+        $keys[0].SecondaryKey | Should -Not -Be $keyPair[0].SecondaryKey
     }
 
-    It 'RegenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegenerateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeEach {
+        $keyPair = Get-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
     }
 }

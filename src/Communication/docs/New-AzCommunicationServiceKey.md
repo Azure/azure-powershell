@@ -49,9 +49,9 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 ```powershell
 PS > New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
 
-PrimaryConnectionString                                                                                                                                     PrimaryKey
------------------------                                                                                                                                     ----------
-endpoint=https://contosoacsresource1.communication.azure.com/;accesskey=00bX0qrur6RrEx1tN8/4ibx6wITSET1XsRZgUCiOcGZNeL76TLhGJEEJbj69msOH1PZ/ZcQpyWQYIceHoFNfWw== 00bX0qrur6RrEx1tN8/4ibx6wITSET1XsRZgUCiOcGZNeL76TLhGJEEJbj69msOH1PZ/ZcQpyWQYIceHoFNfWw==
+PrimaryConnectionString              PrimaryKey
+-----------------------              ----------
+endpoint=<example-primary-endpoint>  <example-primarykey>
 ```
 
 Invalidates the previous Primary key, regenerate a new one and return it.
@@ -60,9 +60,9 @@ Invalidates the previous Primary key, regenerate a new one and return it.
 ```powershell
 PS C:\> New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 
-SecondaryConnectionString                                                                                                                                   SecondaryKey
--------------------------                                                                                                                                   ------------
-endpoint=https://contosoacsresource1.communication.azure.com/;accesskey=md3tW8+ZaQpflaPLe0DMutXFqFtZIUI57lP3Fr29JR11BLdJoS8wlRCV4KQItNzdxu6RuCYMTGUy9kOPF5b1eA== md3tW8+ZaQpflaPLe0DMutXFqFtZIUI57lP3Fr29JR11BLdJoS8wlRCV4KQ
+SecondaryConnectionString               SecondaryKey
+-----------------------                 ----------
+endpoint=<example-secondary-endpoint>   <example-secondarykey>
 ```
 
 Invalidates the previous Secondary key, regenerate a new one and return it.
@@ -238,7 +238,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[Location <String>]`: The Azure region
   - `[OperationId <String>]`: The ID of an ongoing async operation
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
   - `[KeyType <KeyType?>]`: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).

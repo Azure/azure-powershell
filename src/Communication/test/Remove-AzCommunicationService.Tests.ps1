@@ -13,10 +13,22 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzCommunicationService' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $name = "communicationService-test" + $env.rstr1
+        $res = New-AzCommunicationService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation -Location $env.location
+
+        Remove-AzCommunicationService -Name $name -ResourceGroupName $env.resourceGroup
+
+        $serviceList = Get-AzCommunicationService -ResourceGroupName $env.resourceGroup
+        $serviceList.Name | Should -Not -Contain $name
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $name = "communicationService-test" + $env.rstr2
+        $res = New-AzCommunicationService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation -Location $env.location
+
+        Remove-AzCommunicationService -InputObject $res
+
+        $serviceList = Get-AzCommunicationService -ResourceGroupName $env.resourceGroup
+        $serviceList.Name | Should -Not -Contain $name
     }
 }

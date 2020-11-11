@@ -12,11 +12,20 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzCommunicationService' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
+        $UpdatedAzCommunicationService = Update-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
+
+        $UpdatedAzCommunicationService.Tag[$env.exampleKey1] | Should -Be $env.exampleValue1
+        $UpdatedAzCommunicationService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
+        $res = Get-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup
+        $UpdatedAzCommunicationService = Update-AzCommunicationService -InputObject $res -Tag $tag
+
+        $UpdatedAzCommunicationService.Tag[$env.exampleKey1] | Should -Be $env.exampleValue1
+        $UpdatedAzCommunicationService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
     }
 }

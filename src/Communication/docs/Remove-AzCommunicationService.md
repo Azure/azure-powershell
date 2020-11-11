@@ -218,7 +218,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[Location <String>]`: The Azure region
   - `[OperationId <String>]`: The ID of an ongoing async operation
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

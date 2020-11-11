@@ -11,8 +11,9 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzCommunicationService' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe -Verbose:$True 'New-AzCommunicationService' {
+    It 'CreateExpanded' {
+        $NewAzCommunicationService = New-AzCommunicationService -ResourceGroupName $env.resourceGroup -Name $env.resourceName -DataLocation $env.dataLocation -Location $env.location
+        $NewAzCommunicationService.Name | Should -Be $env.resourceName
     }
 }

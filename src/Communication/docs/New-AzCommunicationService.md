@@ -23,23 +23,16 @@ Create a new CommunicationService or update an existing CommunicationService.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a ACS resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
 
-{{ Add output here }}
+Location Name           Type                                          AzureAsyncOperation
+-------- ----           ----                                          -------------------
+Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a ACS resource using the specified parameters.
 
 ## PARAMETERS
 

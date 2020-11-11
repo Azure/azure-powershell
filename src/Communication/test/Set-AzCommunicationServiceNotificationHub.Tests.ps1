@@ -12,11 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Set-AzCommunicationServiceNotificationHub' {
-    It 'LinkExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LinkExpanded' {
+        $returnedResourceId = Set-AzCommunicationServiceNotificationHub -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -ConnectionString $env.notificationHubConnectionString -ResourceId $env.notificationHubResourceId
+        $returnedResourceId | Should -Be $env.notificationHubResourceId
     }
 
-    It 'Link' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Link' {
+        $returnedResourceId = Set-AzCommunicationServiceNotificationHub -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -LinkNotificationHubParameter @{ConnectionString=$env.notificationHubConnectionString; ResourceId=$env.notificationHubResourceId}
+        $returnedResourceId | Should -Be $env.notificationHubResourceId
     }
 }

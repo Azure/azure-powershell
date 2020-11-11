@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzCommunicationServiceKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $keys = Get-AzCommunicationServiceKey -ResourceGroupName $env.resourceGroup -CommunicationServiceName $env.persistentResourceName
+        $keys.PrimaryKey | Should -Not -Be $keys.SecondaryKey
     }
 }

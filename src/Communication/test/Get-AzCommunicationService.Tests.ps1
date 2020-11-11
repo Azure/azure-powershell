@@ -12,19 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzCommunicationService' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $services = Get-AzCommunicationService
+        $services.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $service = Get-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup
+        $service.Name | Should -Be $env.persistentResourceName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $services = Get-AzCommunicationService -ResourceGroupName $env.resourceGroup
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $CommunicationServiceInstance01 = Get-AzCommunicationService -ResourceGroupName $env.resourceGroup -Name $env.persistentResourceName
+        $CommunicationServiceInstance = Get-AzCommunicationService -inputObject $CommunicationServiceInstance01
+        $CommunicationServiceInstance.Name | Should -Be $env.persistentResourceName
     }
 }
