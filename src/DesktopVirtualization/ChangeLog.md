@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.1.0
-* Added new MSIX Package cmdlets and Updated Applications cmdlets.
+* Added new MSIX Package cmdlets and updated Applications cmdlets.
 
 ## Version 2.0.0
 * Require Location property for creating top level arm objects.
