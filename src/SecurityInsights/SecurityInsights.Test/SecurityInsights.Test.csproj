@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>SecurityInsights</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="SqlInformationProtectionPolicies\Empty.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InvalidRank.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\MissingRank.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+</Project>

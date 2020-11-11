@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>SecurityInsights</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
+  </ItemGroup>
+
+</Project>
