@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.HealthcareApis.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -30,6 +29,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.ResourceType = serviceDescription.Type;
             this.Tags = serviceDescription.Tags;
             this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration?.OfferThroughput;
+            this.CosmosDbKeyVaultKeyUri = serviceDescription.Properties.CosmosDbConfiguration?.KeyVaultKeyUri;
             this.CorsOrigins = serviceDescription.Properties.CorsConfiguration?.Origins;
             this.CorsHeaders = serviceDescription.Properties.CorsConfiguration?.Headers;
             this.CorsMethods = serviceDescription.Properties.CorsConfiguration?.Methods;
@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public IList<string> CorsOrigins { get; private set; }
 
         public int? CosmosDbOfferThroughput { get; private set; }
+
+        public string CosmosDbKeyVaultKeyUri { get; private set; }
 
         public string ExportStorageAccountName { get; private set; }
 

@@ -15,21 +15,22 @@ Updates an existing healthcareApis fhir service.
 ### ServiceNameParameterSet (Default)
 ```
 Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosOfferThroughput <Int32>]
- [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
- [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
- [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>]
- [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CosmosKeyVaultKeyUri <String>] [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] 
+ [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
+ [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential] [-ExportStorageAccountName <String>] 
+ [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] 
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String>] [-Audience <String>]
- [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>]
- [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential]
- [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
- [-DisableManagedIdentity] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>] 
+ [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] 
+ [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] 
+ [-AllowCorsCredential] [-DisableCorsCredential] [-ExportStorageAccountName <String>] 
+ [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>]
+  -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -57,6 +58,7 @@ CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
 CosmosDbOfferThroughput : 500
+CosmosKeyVaultKeyUri    : https://<my-keyvault>.vault.azure.net/keys/<my-key>
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
@@ -84,6 +86,7 @@ CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
 CosmosDbOfferThroughput : 500
+CosmosKeyVaultKeyUri    : 
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
@@ -239,6 +242,21 @@ HealthcareApis FhirService CosmosOfferThroughput.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosKeyVaultKeyUri
+HealthcareApis Fhir Service CosmosKeyVaultKeyUri.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

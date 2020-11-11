@@ -50,6 +50,15 @@ function Get-OfferThroughput
 
 <#
 .SYNOPSIS
+Gets $keyVaultKeyUri value
+#>
+function Get-KeyVaultKeyUri
+{
+    return "https://<my-vault>.vault.azure.net/keys/<my-key>"
+}
+
+<#
+.SYNOPSIS
 Gets kind value
 #>
 function Get-Kind

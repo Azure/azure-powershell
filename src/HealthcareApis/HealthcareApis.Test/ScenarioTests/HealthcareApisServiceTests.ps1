@@ -29,6 +29,7 @@ function Test-AzRmHealthcareApisService{
 	$rname = Get-ResourceName
 	$location = Get-Location
 	$offerThroughput =  Get-OfferThroughput
+	$keyVaultKeyUri = Get-KeyVaultKeyUri
 	$kind = Get-Kind
 	$object_id = Get-AccessPolicyObjectID;
 	$storageAccountName = "exportStorage"
@@ -40,13 +41,14 @@ function Test-AzRmHealthcareApisService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -CosmosKeyVaultKeyUri $keyVaultKeyUri -ManagedIdentity -ExportStorageAccountName $storageAccountName;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
 		# Assert
 		Assert-AreEqual $rname $actual.Name
 		Assert-AreEqual $offerThroughput $actual.CosmosDbOfferThroughput
+		Assert-AreEqual $keyVaultKeyUri $actual.CosmosKeyVaultKeyUri
 		Assert-AreEqual $kind $actual.Kind
 		Assert-AreEqual "https://$rname.azurehealthcareapis.com" $actual.Audience
 		Assert-AreEqual $storageAccountName $actual.ExportStorageAccountName
@@ -56,7 +58,8 @@ function Test-AzRmHealthcareApisService{
 
 		#Update using parameters
 		$newOfferThroughput = $offerThroughput - 600
-		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput -DisableManagedIdentity;
+		$newKeyVaultKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-key-1>"
+		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput -CosmosKeyVaultKeyUri $newKeyVaultKeyUri -DisableManagedIdentity;
 
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
