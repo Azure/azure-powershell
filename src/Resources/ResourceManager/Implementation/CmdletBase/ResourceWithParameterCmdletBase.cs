@@ -17,11 +17,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 
@@ -142,26 +142,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                                     "to provide a better error message in the case where not all required parameters are satisfied.")]
         public SwitchParameter SkipTemplateParameterPrompt { get; set; }
 
-        private TemplateSpecsSdkClient templateSpecsSdkClient;
-
-        /// <summary>
-        /// Gets or sets the Template Specs Azure sdk client wrapper
-        /// </summary>
-        public TemplateSpecsSdkClient TemplateSpecsSdkClient
-        {
-            get
-            {
-                if (this.templateSpecsSdkClient == null)
-                {
-                    this.templateSpecsSdkClient = new TemplateSpecsSdkClient(DefaultContext);
-                }
-
-                return this.templateSpecsSdkClient;
-            }
-
-            set { this.templateSpecsSdkClient = value; }
-        }
-
         public object GetDynamicParameters()
         {
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
@@ -238,12 +218,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSArgumentException("No version found in Resource ID");
                     }
 
-                    var templateSpecVersion = TemplateSpecsSdkClient.GetTemplateSpec(
-                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
-                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName).Versions.Single();
+                    ITemplateSpecsClient templateSpecsClient = 
+                        AzureSession.Instance.ClientFactory.CreateArmClient<TemplateSpecsClient>(
+                            DefaultContext, 
+                            AzureEnvironment.Endpoint.ResourceManager
+                        );
 
-                    var templateObj = JObject.Parse(templateSpecVersion.Template);
+                    if (!string.IsNullOrEmpty(resourceIdentifier.Subscription) &&
+                        templateSpecsClient.SubscriptionId != resourceIdentifier.Subscription)
+                    {
+                        // The template spec is in a different subscription than our default 
+                        // context. Force the client to use that subscription:
+                        templateSpecsClient.SubscriptionId = resourceIdentifier.Subscription;
+                    }
+
+                    var templateSpecVersion = templateSpecsClient.TemplateSpecVersions.Get(
+                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
+                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
+                        resourceIdentifier.ResourceName);
+
+                    if (!(templateSpecVersion.Template is JObject))
+                    {
+                        throw new InvalidOperationException("Unexpected type."); // Sanity check
+                    }
+
+                    JObject templateObj = (JObject)templateSpecVersion.Template;
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
