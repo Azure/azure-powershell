@@ -280,7 +280,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
       Assert-AreEqual 30 $connection.DpdTimeoutSeconds
-      Assert-AreEqual VirtualNetworkGatewayConnectionMode.Default $connection.ConnectionMode
+      Assert-AreEqual "Default" $connection.ConnectionMode
     
 	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
       $job = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -DpdTimeoutInSeconds 10 -ConnectionMode ResponderOnly -Force -AsJob
@@ -292,7 +292,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual false $connection.UsePolicyBasedTrafficSelectors
 	  Assert-AreEqual 0 $connection.IpsecPolicies.Count
       Assert-AreEqual 10 $connection.DpdTimeoutSeconds
-      Assert-AreEqual VirtualNetworkGatewayConnectionMode.ResponderOnly $connection.ConnectionMode
+      Assert-AreEqual "ResponderOnly" $connection.ConnectionMode
 
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force

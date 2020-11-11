@@ -18,7 +18,7 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
- -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <VirtualNetworkGatewayConnectionMode>] [-SharedKey <String>]
+ -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>] [-SharedKey <String>]
  [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>] 
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] [-AsJob]
@@ -31,7 +31,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
 New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
- -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <VirtualNetworkGatewayConnectionMode>] [-SharedKey <String>]
+ -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>] [-SharedKey <String>]
  [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>] [-Force]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] [-AsJob]
@@ -300,14 +300,13 @@ Accept wildcard characters: False
 Virtual Network Gateway Connection Mode
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.VirtualNetworkGatewayConnectionMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: Default
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

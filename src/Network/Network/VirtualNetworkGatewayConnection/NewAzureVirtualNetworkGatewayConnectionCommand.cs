@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
         Mandatory = false,
-        ValueFromPipelineByPropertyName = true,
-        HelpMessage = "Gateway Connection Mode.")]
-        public VirtualNetworkGatewayConnectionMode ConnectionMode { get; set; }
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
 
         [Parameter(
         Mandatory = false,

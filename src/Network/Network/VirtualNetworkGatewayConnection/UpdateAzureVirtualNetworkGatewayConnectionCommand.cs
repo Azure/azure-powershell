@@ -24,6 +24,8 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using System.Collections;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -50,9 +52,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
         Mandatory = false,
-        ValueFromPipelineByPropertyName = true,
         HelpMessage = "Virtual Network Gateway Connection Mode.")]
-        public VirtualNetworkGatewayConnectionMode? ConnectionMode { get; set; }
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -116,9 +118,9 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
                     }
 
-                    if (this.ConnectionMode.HasValue)
+                    if (!String.IsNullOrEmpty(this.ConnectionMode))
                     {
-                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode.Value;
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
