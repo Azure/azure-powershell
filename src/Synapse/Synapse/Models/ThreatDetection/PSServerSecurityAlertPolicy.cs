@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             ModelizeStorageAccount(policy.StorageEndpoint);
         }
 
+        public PSServerSecurityAlertPolicy() { }
+
         public string ResourceGroupName { get; set; }
 
         public string WorkspaceName { get; set; }
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public uint? RetentionInDays { get; internal set; }
 
-        private void ModelizeStorageAccount(string storageEndpoint)
+        protected void ModelizeStorageAccount(string storageEndpoint)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {

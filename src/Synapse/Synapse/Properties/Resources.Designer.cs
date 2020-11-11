@@ -892,6 +892,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing threat protection settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseDataFlow {
@@ -1401,6 +1410,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingIntegrationRuntimeNode {
             get {
                 return ResourceManager.GetString("UpdatingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating threat protection settings in SQL pool &apos;{0}&apos; under worksapce &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingSqlPoolThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("UpdatingSqlPoolThreatProtectionSetting", resourceCulture);
             }
         }
         

@@ -12,45 +12,56 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.AdvancedThreatProtectionSetting,
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.AdvancedThreatProtectionSetting,
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSServerSecurityAlertPolicy))]
-    public class UpdateAzureSynapseSqlAdvancedThreatProtectionSetting : SynapseManagementCmdletBase
+    [OutputType(typeof(PSSqlPoolSecurityAlertPolicy))]
+    public class UpdateAzureSynapseSqlPoolAdvancedThreatProtectionSetting : SynapseManagementCmdletBase
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
+        private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";
         private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
         private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false,
-            HelpMessage = HelpMessages.ResourceGroupName)]
-        [ResourceGroupCompleter()]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
+        [ResourceNameCompleter(
+            ResourceTypes.SqlPool,
+            nameof(ResourceGroupName),
+            nameof(WorkspaceName))]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
-        public PSSynapseWorkspace InputObject { get; set; }
+        public PSSynapseWorkspace WorkspaceObject { get; set; }
+
+        [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet, Mandatory = true,
+            HelpMessage = HelpMessages.SqlPoolObject)]
+        [ValidateNotNull]
+        public PSSynapseSqlPool InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = UpdateByResourceIdParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceResourceId)]
+            Mandatory = true, HelpMessage = HelpMessages.SqlPoolResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.NotificationRecipientsEmails)]
-        [Alias("NotificationRecipientsEmails")]
-        public string NotificationRecipientsEmail { get; set; }
+        public string NotificationRecipientsEmails { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.EmailAdmins)]
-        [Alias("EmailAdmins")]
         [ValidateNotNullOrEmpty]
-        public bool? EmailAdmin { get; set; }
+        public bool? EmailAdmins { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.ExcludedDetectionType)]
         [PSArgumentCompleter(SynapseConstants.DetectionType.None,
@@ -74,18 +85,28 @@ namespace Microsoft.Azure.Commands.Synapse
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.WorkspaceObject))
+            {
+                this.ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
+                this.WorkspaceName = this.WorkspaceObject.Name;
+            }
+
             if (this.IsParameterBound(c => c.InputObject))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.WorkspaceName = this.InputObject.Name;
+                this.WorkspaceName = resourceIdentifier.ParentResource;
+                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.WorkspaceName = resourceIdentifier.ResourceName;
+                this.WorkspaceName = resourceIdentifier.ParentResource;
+                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
@@ -93,18 +114,18 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            ServerSecurityAlertPolicy policy = SynapseAnalyticsClient.GetWorkspaceThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName);
+            SqlPoolSecurityAlertPolicy policy = SynapseAnalyticsClient.GetSqlPoolThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName, this.Name);
 
             policy.State = SecurityAlertPolicyState.Enabled;
 
-            if (this.IsParameterBound(c => c.NotificationRecipientsEmail))
+            if (this.IsParameterBound(c => c.NotificationRecipientsEmails))
             {
-                policy.EmailAddresses = this.NotificationRecipientsEmail.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList();
+                policy.EmailAddresses = this.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList();
             }
 
-            if (this.IsParameterBound(c => c.EmailAdmin))
+            if (this.IsParameterBound(c => c.EmailAdmins))
             {
-                policy.EmailAccountAdmins = this.EmailAdmin;
+                policy.EmailAccountAdmins = this.EmailAdmins;
             }
 
             if (this.IsParameterBound(c => c.ExcludedDetectionType))
@@ -121,21 +142,13 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 policy.StorageEndpoint = string.Format("https://{0}.blob.{1}", this.StorageAccountName,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+                policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(this.StorageAccountName)[StorageKeyKind.Primary];
             }
 
-            if (!string.IsNullOrEmpty(policy.StorageEndpoint))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSqlPoolThreatProtectionSetting, this.Name, this.WorkspaceName)))
             {
-                policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(policy.StorageEndpoint)[StorageKeyKind.Primary];
-            }
-            else
-            {
-                policy.StorageEndpoint = null;
-            }
-
-            if (this.ShouldProcess(this.WorkspaceName, string.Format(Resources.UpdatingThreatProtectionSetting, this.WorkspaceName)))
-            {
-                var result = new PSServerSecurityAlertPolicy(SynapseAnalyticsClient.SetWorkspaceThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName, policy),
-                    this.ResourceGroupName, this.WorkspaceName);
+                var result = new PSSqlPoolSecurityAlertPolicy(SynapseAnalyticsClient.SetSqlPoolThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName, this.Name, policy),
+                    this.ResourceGroupName, this.WorkspaceName, this.Name);
                 WriteObject(result);
             }
         }

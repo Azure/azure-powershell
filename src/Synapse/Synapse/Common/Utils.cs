@@ -148,5 +148,29 @@ namespace Microsoft.Azure.Commands.Synapse.Common
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
             return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
         }
+
+        public static string[] ProcessExcludedDetectionTypes(string[] excludedDetectionTypes)
+        {
+            if (excludedDetectionTypes == null || excludedDetectionTypes.Length == 0)
+            {
+                return excludedDetectionTypes;
+            }
+
+            if (excludedDetectionTypes.Length == 1)
+            {
+                if (excludedDetectionTypes[0] == SynapseConstants.DetectionType.None)
+                {
+                    return new string[] { };
+                }
+            }
+            else
+            {
+                if (excludedDetectionTypes.Contains(SynapseConstants.DetectionType.None))
+                {
+                    throw new Exception(string.Format(Resources.InvalidExcludedDetectionTypeSet, SynapseConstants.DetectionType.None));
+                }
+            }
+            return excludedDetectionTypes;
+        }
     }
 }

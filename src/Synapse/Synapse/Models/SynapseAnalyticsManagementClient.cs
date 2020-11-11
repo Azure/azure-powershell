@@ -1252,6 +1252,49 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public SqlPoolSecurityAlertPolicy GetSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolSecurityAlertPolicies.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public SqlPoolSecurityAlertPolicy SetSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolSecurityAlertPolicy policy)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var policy = GetSqlPoolThreatDetectionPolicy(resourceGroupName, workspaceName, sqlPoolName);
+                policy.State = SecurityAlertPolicyState.Disabled;
+                _synapseManagementClient.SqlPoolSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         #endregion
 
         #region Vulnerability Assessment
