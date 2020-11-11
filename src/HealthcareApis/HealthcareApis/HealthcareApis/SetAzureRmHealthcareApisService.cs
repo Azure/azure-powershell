@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
                     {
                         OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput,
-                        KeyVaultKeyUri = InputObject.CosmosDbKeyVaultKeyUri ?? healthcareApisAccount.Properties.KeyVaultKeyUri
+                        KeyVaultKeyUri = InputObject.CosmosDbKeyVaultKeyUri ?? healthcareApisAccount.Properties.CosmosDbConfiguration.KeyVaultKeyUri
                     },
                     CorsConfiguration = new ServiceCorsConfigurationInfo()
                     {
