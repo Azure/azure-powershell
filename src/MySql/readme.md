@@ -100,6 +100,10 @@ directive:
       subject: ^Server$|^Configuration$|^FirewallRule$|^FlexibleServer$|^FlexibleServerFirewallRule$
     hide: true
   - where:
+      verb: Update$
+      subject: ^FlexibleServerConfiguration$
+    hide: true
+  - where:
       verb: New$
       variant: ^Create$|^CreateViaIdentity
       subject: ^Server$|^Configuration$|^FirewallRule$|^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$|NameAvailability$|^VirtualNetworkRule$

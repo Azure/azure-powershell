@@ -29,23 +29,20 @@ Restarts a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restart the server by resource name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
-{{ Add description here }}
+Restart the server by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Restart the server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+PS C:\> Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
-{{ Add description here }}
+Restart the server by identity
 
 ## PARAMETERS
 

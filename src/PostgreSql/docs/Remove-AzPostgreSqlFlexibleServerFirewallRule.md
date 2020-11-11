@@ -30,23 +30,22 @@ Deletes a PostgreSQL server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove PostgreSql Firewall Rule by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzPostgreSqlFlexibleServerFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes PostgreSql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove PostgreSql Firewall Rule by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
+PS C:\> Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove PostgreSql Firewall Rule by identity.
 
 ## PARAMETERS
 

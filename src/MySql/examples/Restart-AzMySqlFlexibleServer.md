@@ -7,7 +7,7 @@ Restart the server by name
 
 ### Example 2: Restart the server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/restart"
 PS C:\> Restart-AzMySqlFlexibleServer -InputObject $ID
 ```
 

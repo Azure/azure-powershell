@@ -11,7 +11,7 @@ This cmdlet updates MySql configuration by name.
 
 ### Example 2: Update MySql configuration by identity.
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/configurations/wait_timeout"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/configurations/wait_timeout"
 PS C:\> Update-AzMySqlFlexibleServer -InputObject $ID -Value 150
 
 Name          Value   DefaultValue  Source        AllowedValues DataType

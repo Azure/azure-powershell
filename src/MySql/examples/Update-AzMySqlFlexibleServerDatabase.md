@@ -10,7 +10,7 @@ Update a database by resource name.
 
 ### Example 2: Update MySql database by parameter.
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/databases/databasetest"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/databases/databasetest"
 PS C:\> Update-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
 
 Name            Charset     Collation              

@@ -27,11 +27,11 @@ function setupEnv() {
     $location = "eastus"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
-    New-AzResourceGroup -Name $resourceGroup -Location $location
+    # New-AzResourceGroup -Name $resourceGroup -Location $location
 
     # Create the test Vnet
     write-host "Deploy Vnet template"
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    # New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
@@ -39,12 +39,18 @@ function setupEnv() {
     $env.Add("serverName", $serverName)
     $Sku = "GP_Gen5_4"
     $env.Add("Sku", $Sku)
+    $FlexibleSku = "Standard_D2s_v3"
+    $env.Add("FlexibleSku", $Sku)
 
     write-host (Get-AzContext | Out-String)
 
     write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
     New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
 
+
+    write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName postgresql_test -AdministratorLoginPassword $password"
+    New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName postgresql_test -AdministratorLoginPassword $password
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -57,4 +63,3 @@ function cleanupEnv() {
     write-host "Clean resources you create for testing."
     Remove-AzResourceGroup -Name $env.resourceGroup
 }
-

@@ -29,23 +29,20 @@ Starts a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start the server by resource name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Start-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
-{{ Add description here }}
+Start the server by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Start the server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+PS C:\> Start-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
-{{ Add description here }}
+Start the server by identity
 
 ## PARAMETERS
 

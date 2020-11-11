@@ -1,0 +1,157 @@
+{
+  "Restore-AzMySqlFlexibleServer+[NoContext]+PointInTimeRestore+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100?api-version=2020-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "532e77f9-e412-45ee-837d-8d3ba729e06f" ],
+        "CommandName": [ "Get-AzMySqlFlexibleServer" ],
+        "FullCommandName": [ "Get-AzMySqlFlexibleServer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "012e5f4c-fc95-4735-b40e-24624018a2f4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "05b97bd4-322c-44fc-8153-b8ea0255d1f9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065459Z:05b97bd4-322c-44fc-8153-b8ea0255d1f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:54:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "937" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_B1ms\",\"tier\":\"Burstable\",\"capacity\":0},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":10240,\"storageIops\":0,\"backupRetentionDays\":7,\"storageAutogrow\":\"Disabled\",\"fileStorageSkuName\":\"Premium_LRS\"},\"version\":\"5.7\",\"state\":\"Stopped\",\"haState\":\"\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"sourceServerId\":\"\",\"publicNetworkAccess\":\"Enabled\",\"sslEnforcement\":\"Disabled\",\"haEnabled\":\"Disabled\",\"earliestRestoreDate\":\"2020-11-11T01:19:49.1443505+00:00\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"None\",\"replicaCapacity\":10,\"byokEnforcement\":\"Disabled\"},\"location\":\"West US 2\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBforMySQL/flexibleServers\"}"
+    }
+  },
+  "Restore-AzMySqlFlexibleServer+[NoContext]+PointInTimeRestore+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-restore?api-version=2020-07-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-restore?api-version=2020-07-01-preview",
+      "Content": "{\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"sourceServerId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100\",\r\n    \"restorePointInTime\": \"2020-11-10T22:44:59.7507449-08:00\",\r\n    \"createMode\": \"PointInTimeRestore\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "325" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/2c93ee24-221b-441d-ac47-55db8770e649?api-version=2020-07-01-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/2c93ee24-221b-441d-ac47-55db8770e649?api-version=2020-07-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "2c93ee24-221b-441d-ac47-55db8770e649" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "429687d6-1836-4871-a9aa-6677b2026500" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065459Z:429687d6-1836-4871-a9aa-6677b2026500" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:54:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "87" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"RestoreSnapshotManagementOperation\",\"startTime\":\"2020-11-11T06:54:59.7Z\"}"
+    }
+  },
+  "Restore-AzMySqlFlexibleServer+[NoContext]+PointInTimeRestore+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/2c93ee24-221b-441d-ac47-55db8770e649?api-version=2020-07-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/2c93ee24-221b-441d-ac47-55db8770e649?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "3e3fa510-4773-4e08-a4c0-cdcce0fda8e6" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlFlexibleServer" ],
+        "FullCommandName": [ "New-AzMySqlFlexibleServer_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4258c6f8-b653-4c86-9257-017f3bdb1a15" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "b0b85164-7cbb-4b4c-ac03-b13c28ef9255" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065559Z:b0b85164-7cbb-4b4c-ac03-b13c28ef9255" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:55:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"2c93ee24-221b-441d-ac47-55db8770e649\",\"status\":\"Failed\",\"startTime\":\"2020-11-11T06:54:59.7Z\",\"error\":{\"code\":\"InvalidConfigurationValue\",\"message\":\"The value \u002711/11/2020 6:44:59 AM\u0027 for configuration \u0027PointInTime\u0027 is not valid. The allowed values are \u0027Request OperationRequestId[2c93ee24-221b-441d-ac47-55db8770e649] RequestId[2c93ee24-221b-441d-ac47-55db8770e649] to restore to server [mysql-test-100-restore] failed because [mysql-test-100] RestoreFromServerName does not exist, or point in time [11/11/2020 6:44:59 AM] is invalid.\u0027.\"}}"
+    }
+  },
+  "Restore-AzMySqlFlexibleServer+[NoContext]+PointInTimeRestore+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-restore?api-version=2020-07-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-restore?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "3e3fa510-4773-4e08-a4c0-cdcce0fda8e6" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlFlexibleServer" ],
+        "FullCommandName": [ "New-AzMySqlFlexibleServer_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "992cc7d2-4bda-4682-8fa2-deeb3acb6512" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "92a2702b-35dc-4dd4-b4cb-995a74cc17f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065600Z:92a2702b-35dc-4dd4-b4cb-995a74cc17f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:55:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "169" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The requested resource of type \u0027Microsoft.DBforMySQL/flexibleServers\u0027 with name \u0027mysql-test-100-restore\u0027 was not found.\"}}"
+    }
+  }
+}

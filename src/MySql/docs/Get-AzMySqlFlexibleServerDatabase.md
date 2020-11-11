@@ -48,7 +48,7 @@ This cmdlet gets MySql server by resource name.
 
 ### Example 2: Get MySql databases by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test"
 PS C:\> Get-AzMySqlFlexibleServerDatabase -InputObject $ID
 
 Name             Charset     Collation            

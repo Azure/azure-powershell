@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: 364024d1-7eb3-40de-8ccc-62bbc67820d6
+Module Guid: 76b5feb1-33ce-4d47-8f6a-037908babd06
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -120,7 +120,7 @@ The request body can contain one to many of the properties present in the normal
 Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
-Updates a configuration of a server.
+
 
 ### [Update-AzMySqlFlexibleServerDatabase](Update-AzMySqlFlexibleServerDatabase.md)
 Creates a new database or updates an existing database.
