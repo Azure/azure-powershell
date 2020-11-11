@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Commands.Network
                 if ((string.IsNullOrWhiteSpace(this.AddressPrefixType) || AddressTypeUtils.IsIpv4(this.AddressPrefixType)) &&
                     connection.IPv6CircuitConnectionConfig.AddressPrefix != null)
                 {
-                    // when ipv6 also exists and call is to remove ipv4
+                    // call is to remove ipv4 and ipv6 exists
                     connection.AddressPrefix = null;
                 }
                 else if (AddressTypeUtils.IsIpv6(this.AddressPrefixType) && connection.AddressPrefix != null)
                 {
-                    // when ipv4 exists and call is to remove ipv6
+                    // call is to remove ipv6 and ipv4 exists
                     connection.IPv6CircuitConnectionConfig = null;
                 }
                 else
