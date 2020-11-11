@@ -21,7 +21,8 @@ Describe 'New-AzWvdHostPool' {
                             -LoadBalancerType 'DepthFirst' `
                             -PreferredAppGroupType 'Desktop' `
                             -DesktopAppGroupName 'FullSenerioCreateAG' `
-                            -WorkspaceName 'FullSenerioCreateWS'
+                            -WorkspaceName 'FullSenerioCreateWS' `
+                            -StartVMOnConnect $false
 
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -57,7 +58,8 @@ Describe 'New-AzWvdHostPool' {
                             -SsoClientId 'https://domain/name' `
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
-                            -SsoSecretType 'SharedKeyInKeyVault'
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect $false
 
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
@@ -79,10 +81,11 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
             $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
             $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
+                        -ResourceGroupName $env.ResourceGroup `
+                        -Name 'HostPoolPowershellContained1'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -103,8 +106,9 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
             $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
             $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPool.StartVMOnConnect | Should -Be $false
 
-        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -Name 'HostPoolPowershellContained1'
     }
