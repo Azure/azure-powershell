@@ -20,6 +20,7 @@ using System.Linq;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -98,36 +99,46 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
-        static void MigrateAdalCache(AzureSession session, IDataStore store, string adalCachePath, string msalCachePath)
+        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer, Action<string> writeWarning)
         {
-            if (session.ARMContextSaveMode == ContextSaveMode.Process)
-            {
-                // Don't attempt to migrate if context autosave is disabled
-                return;
-            }
-
-            if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
-            {
-                // Return if
-                // (1) The ADAL cache doesn't exist (nothing to migrate), or
-                // (2) The MSAL cache does exist (don't override existing cache)
-                return;
-            }
-
-            byte[] adalData;
             try
             {
-                adalData = File.ReadAllBytes(adalCachePath);
-            }
-            catch
-            {
-                // Return if there was an error converting the ADAL data safely
-                return;
-            }
+                if (session.ARMContextSaveMode == ContextSaveMode.Process)
+                {
+                    // Don't attempt to migrate if context autosave is disabled
+                    return;
+                }
 
-            if(adalData != null && adalData.Length > 0)
+                var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+                var store = session.DataStore;
+                if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
+                {
+                    // Return if
+                    // (1) The ADAL cache doesn't exist (nothing to migrate), or
+                    // (2) The MSAL cache does exist (don't override existing cache)
+                    return;
+                }
+
+                byte[] adalData;
+                try
+                {
+                    adalData = File.ReadAllBytes(adalCachePath);
+                }
+                catch
+                {
+                    // Return if there was an error converting the ADAL data safely
+                    return;
+                }
+
+                if (adalData != null && adalData.Length > 0)
+                {
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
+                }
+            }
+            catch(Exception e)
             {
-                new AdalTokenMigrator(adalData).MigrateFromAdalToMsal();
+                writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
             }
         }
 
@@ -232,7 +243,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-            MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
+
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();

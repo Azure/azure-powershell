@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue where What-If shows two resource group scopes with different casing
+* Updated `Export-AzResourceGroup` to use the SDK.
+* Added culture info to parse methods
+
+## Version 3.0.0
 * Fixed parsing bug
 * Updated ARM template What-If cmdlets to remove preview message from results
 * Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]

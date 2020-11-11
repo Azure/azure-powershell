@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -93,14 +96,19 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
-            {
-                this.SynapseAnalyticsClient.DeleteSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                if (this.PassThru.IsPresent)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveSynapseSparkPool, Name),
+                string.Format(Resources.RemovingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName),
+                Name,
+                () =>
                 {
-                    WriteObject(true);
-                }
-            }
+                    this.SynapseAnalyticsClient.DeleteSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                    if (this.PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

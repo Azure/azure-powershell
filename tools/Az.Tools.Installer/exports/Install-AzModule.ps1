@@ -257,6 +257,9 @@ function Install-AzModule {
             $parameter.Add('RequiredVersion', $module['Az.Accounts'])
             $module.Remove('Az.Accounts')
         }
+        if ($RemovePrevious) {
+            Uninstall-Module -Name Az.Accounts -AllVersion -ErrorAction SilentlyContinue
+        }
         Install-Module @parameter
 
         $module.Keys | Foreach-Object {

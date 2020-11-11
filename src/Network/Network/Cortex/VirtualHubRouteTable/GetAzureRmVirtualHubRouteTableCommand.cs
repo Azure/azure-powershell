@@ -18,10 +18,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzVHubRouteTable")]
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName),
