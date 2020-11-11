@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute
                     
                     ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
                     var testListAllRGs = ResourceManagerClient.ResourceGroups.List();
-
+                    /*
                     IterateResourceGroupsForCurrentSubId(testListAllRGs);
 
                     var resourceGroups = ResourceManagerClient.ResourceGroups.List();
@@ -216,14 +216,14 @@ namespace Microsoft.Azure.Commands.Compute
 
                         index += 1;
                     }
-
+                    */
 
                     //original code
-                    /*
+                    
                     ReturnListVMObject(
                             this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
                             this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
-                    */
+                    
                         
                 }
                 else if (ShouldGetByName(ResourceGroupName, Name))
@@ -331,7 +331,18 @@ namespace Microsoft.Azure.Commands.Compute
             Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
         {
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
-
+            //adam
+            var listTest = TopLevelWildcardFilter(ResourceGroupName, Name, resources:vmListResult.Body.ToList());
+            var listPSItems = new List<PSVirtualMachineListStatus>();
+            foreach (var item in vmListResult.Body)
+            {
+                var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
+                listPSItems.Add(psItem);
+            }
+            var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
+            var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
+            //adam
             while (vmListResult != null)
             {
                 psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
