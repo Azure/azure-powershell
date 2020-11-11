@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that TenantId may be not respected if using `Connect-AzAccount -DeviceCode`[#13477]
 * Added new cmdlet `Get-AzAccessToken`
 * Fixed an issue that error happens if user profile path is inaccessible
 * Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
