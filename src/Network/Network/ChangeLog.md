@@ -19,6 +19,36 @@
 --->
 
 ## Upcoming Release
+* Updated planning to deprecate warnings for the following cmdlets
+    -`New-AzVirtualHubRoute`
+    -`New-AzVirtualHubRouteTable`
+    -`Add-AzVirtualHubRoute`
+    -`Add-AzVirtualHubRouteTable`
+    -`Get-AzVirtualHubRouteTable`
+    -`Remove-AzVirtualHubRouteTable`
+* Added planning to deprecate warnings on the argument `RouteTable` for the following cmdlets
+    -`New-AzVirtualHub`
+    -`Set-AzVirtualHub`
+    -`Update-AzVirtualHub`
+* Made arguments `-MinScaleUnits` and `-MaxScaleUnits` optional in `Set-AzExpressRouteGateway`
+* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
+    - `Get-AzApplicationGatewayClientAuthConfiguration`
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Remove-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
+    - `Add-AzApplicationGatewayTrustedClientCertificate` 
+    - `Get-AzApplicationGatewayTrustedClientCertificate` 
+    - `New-AzApplicationGatewayTrustedClientCertificate` 
+    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
+    - `Set-AzApplicationGatewayTrustedClientCertificate`
+    - `Add-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfile`
+    - `New-AzApplicationGatewaySslProfile`
+    - `Remove-AzApplicationGatewaySslProfile`
+    - `Set-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfilePolicy`
+    - `Remove-AzApplicationGatewaySslProfilePolicy`
+    - `Set-AzApplicationGatewaySslProfilePolicy`
 
 ## Version 4.2.0
 * Added warning messages for upcoming breaking change for Virtual Router Peer Routes
@@ -45,26 +75,7 @@
 	- Added parameter `-Type`
 	- Added parameter `-CoverageLevel`
 	- Added parameter `-Scope`
-* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
-* Made arguments `-MinScaleUnits` and `-MaxScaleUnits` optional in `Set-AzExpressRouteGateway` 
-* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
-    - `Get-AzApplicationGatewayClientAuthConfiguration`
-    - `New-AzApplicationGatewayClientAuthConfiguration`
-    - `Remove-AzApplicationGatewayClientAuthConfiguration`
-    - `Set-AzApplicationGatewayClientAuthConfiguration`
-    - `Add-AzApplicationGatewayTrustedClientCertificate` 
-    - `Get-AzApplicationGatewayTrustedClientCertificate` 
-    - `New-AzApplicationGatewayTrustedClientCertificate` 
-    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
-    - `Set-AzApplicationGatewayTrustedClientCertificate`
-    - `Add-AzApplicationGatewaySslProfile`
-    - `Get-AzApplicationGatewaySslProfile`
-    - `New-AzApplicationGatewaySslProfile`
-    - `Remove-AzApplicationGatewaySslProfile`
-    - `Set-AzApplicationGatewaySslProfile`
-    - `Get-AzApplicationGatewaySslProfilePolicy`
-    - `Remove-AzApplicationGatewaySslProfilePolicy`
-    - `Set-AzApplicationGatewaySslProfilePolicy`
+* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior` 
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
