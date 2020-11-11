@@ -103,14 +103,14 @@ namespace Microsoft.Azure.Commands.Network
                     if ((string.IsNullOrWhiteSpace(this.PeerAddressType) || AddressTypeUtils.IsIpv4(this.PeerAddressType)) &&
                             peering.Ipv6PeeringConfig != null)
                     {
-                        // remove ipv4 call and ipv6 exists
+                        // call is to remove ipv4 and ipv6 exists
                         peering.PrimaryPeerAddressPrefix = null;
                         peering.SecondaryPeerAddressPrefix = null;
                     }
                     else if (AddressTypeUtils.IsIpv6(this.PeerAddressType) &&
                         !PeeringUtils.IsIpv4PrivatePeeringNull(peering))
                     {
-                        // remove ipv6 call and ipv4 exists
+                        // call is to remove ipv6 and ipv4 exists
                         peering.Ipv6PeeringConfig = null;
                     }
                     else
