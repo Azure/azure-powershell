@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
 
+        public const String RTv1ChangeDesc = "Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.";
+        [CmdletParameterBreakingChange("RouteTable", ChangeDescription = RTv1ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The route table associated with this Virtual Hub.")]
