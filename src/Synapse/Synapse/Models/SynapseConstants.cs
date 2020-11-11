@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string Sql = nameof(Sql);
 
-        public const string Audit = nameof(Audit);
+        public const string AuditSetting = nameof(AuditSetting);
 
         public const string ActiveDirectoryAdministrator = nameof(ActiveDirectoryAdministrator);
 

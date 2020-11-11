@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlpoolaudit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlpoolauditsetting
 schema: 2.0.0
 ---
 
-# Get-AzSynapseSqlPoolAudit
+# Get-AzSynapseSqlPoolAuditSetting
 
 ## SYNOPSIS
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
@@ -14,42 +14,43 @@ Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlPoolAudit [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Get-AzSynapseSqlPoolAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzSynapseSqlPoolAudit -Name <String> -WorkspaceObject <PSSynapseWorkspace>
+Get-AzSynapseSqlPoolAuditSetting -Name <String> -WorkspaceObject <PSSynapseWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet
 ```
-Get-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSynapseSqlPoolAuditSetting -InputObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzSynapseSqlPoolAudit -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseSqlPoolAudit** cmdlet gets the auditing settings of an Azure Synapse Analytics SQL pool.
+The **Get-AzSynapseSqlPoolAuditSetting** cmdlet gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolAudit -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> Get-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command gets the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Get-AzSynapseSqlPoolAudit
+PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Get-AzSynapseSqlPoolAuditSetting
 ```
 
 This command gets the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace through pipeline.

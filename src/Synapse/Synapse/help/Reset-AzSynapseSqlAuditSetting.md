@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqlaudit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/reset-azsynapsesqlauditsetting
 schema: 2.0.0
 ---
 
-# Remove-AzSynapseSqlAudit
+# Reset-AzSynapseSqlAuditSetting
 
 ## SYNOPSIS
 Removes the auditing settings of an Azure Synapse Analytics Workspace.
@@ -14,37 +14,37 @@ Removes the auditing settings of an Azure Synapse Analytics Workspace.
 
 ### RemoveByNameParameterSet (Default)
 ```
-Remove-AzSynapseSqlAudit [-ResourceGroupName <String>] -WorkspaceName <String> [-AsJob] [-PassThru]
+Reset-AzSynapseSqlAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObjectParameterSet
 ```
-Remove-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
+Reset-AzSynapseSqlAuditSetting -InputObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceIdParameterSet
 ```
-Remove-AzSynapseSqlAudit -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlAuditSetting -ResourceId <String> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseSqlAudit** cmdlet removes the auditing settings of an Azure Synapse Analytics Workspace.
+The **Reset-AzSynapseSqlAuditSetting** cmdlet removes the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSqlAudit -WorkspaceName ContosoWorkspace
+PS C:\> Reset-AzSynapseSqlAuditSetting -WorkspaceName ContosoWorkspace
 ```
 
 This command removes the auditing settings of an Azure Synapse Analytics Workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Remove-AzSynapseSqlAudit
+PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Reset-AzSynapseSqlAuditSetting
 ```
 
 This command removes the auditing settings of an Azure Synapse Analytics Workspace named ContosoWorkspace through pipeline.

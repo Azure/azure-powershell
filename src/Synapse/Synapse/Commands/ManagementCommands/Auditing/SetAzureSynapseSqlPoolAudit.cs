@@ -8,8 +8,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.Audit,
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.AuditSetting,
         DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [Alias("Set-AzSynapseSqlPoolAudit")]
     [OutputType(typeof(SqlPoolAuditModel))]
     public class SetAzureSynapseSqlPoolAudit : SynapseManagementCmdletBase
     {

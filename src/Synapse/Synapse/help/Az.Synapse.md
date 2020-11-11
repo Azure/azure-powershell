@@ -14,12 +14,6 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Synap
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
-### [Clear-AzSynapseSqlAdvancedThreatProtectionSetting](Clear-AzSynapseSqlAdvancedThreatProtectionSetting.md)
-Removes the advanced threat protection settings from a workspace.
-
-### [Clear-AzSynapseSqlVulnerabilityAssessmentSetting](Clear-AzSynapseSqlVulnerabilityAssessmentSetting.md)
-Clears the vulnerability assessment settings of a workspace.
-
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
 
@@ -83,7 +77,7 @@ Gets information about an Azure AD administrator for Synapse Analytics Workspace
 ### [Get-AzSynapseSqlAdvancedThreatProtectionSetting](Get-AzSynapseSqlAdvancedThreatProtectionSetting.md)
 Gets the advanced threat protection settings for a workspace.
 
-### [Get-AzSynapseSqlAudit](Get-AzSynapseSqlAudit.md)
+### [Get-AzSynapseSqlAuditSetting](Get-AzSynapseSqlAuditSetting.md)
 Gets the auditing settings of an Azure Synapse Analytics Workspace.
 
 ### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
@@ -92,7 +86,7 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
 
-### [Get-AzSynapseSqlPoolAudit](Get-AzSynapseSqlPoolAudit.md)
+### [Get-AzSynapseSqlPoolAuditSetting](Get-AzSynapseSqlPoolAuditSetting.md)
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
@@ -182,17 +176,11 @@ Deletes a Synapse Analytics Spark pool.
 ### [Remove-AzSynapseSqlActiveDirectoryAdministrator](Remove-AzSynapseSqlActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for Synapse Analytics Workspace.
 
-### [Remove-AzSynapseSqlAudit](Remove-AzSynapseSqlAudit.md)
-Removes the auditing settings of an Azure Synapse Analytics Workspace.
-
 ### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
 This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
 
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
 Deletes a Synapse Analytics SQL pool.
-
-### [Remove-AzSynapseSqlPoolAudit](Remove-AzSynapseSqlPoolAudit.md)
-Removes the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ### [Remove-AzSynapseTrigger](Remove-AzSynapseTrigger.md)
 Removes a trigger from a workspace.
@@ -205,6 +193,18 @@ Deletes a Synapse Analytics workspace.
 
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
 Resets timeout of a Synapse Analytics Spark session.
+
+### [Reset-AzSynapseSqlAdvancedThreatProtectionSetting](Reset-AzSynapseSqlAdvancedThreatProtectionSetting.md)
+Removes the advanced threat protection settings from a workspace.
+
+### [Reset-AzSynapseSqlAuditSetting](Reset-AzSynapseSqlAuditSetting.md)
+Removes the auditing settings of an Azure Synapse Analytics Workspace.
+
+### [Reset-AzSynapseSqlPoolAuditSetting](Reset-AzSynapseSqlPoolAuditSetting.md)
+Removes the auditing settings of an Azure Synapse Analytics SQL pool.
+
+### [Reset-AzSynapseSqlVulnerabilityAssessmentSetting](Reset-AzSynapseSqlVulnerabilityAssessmentSetting.md)
+Clears the vulnerability assessment settings of a workspace.
 
 ### [Restore-AzSynapseSqlPool](Restore-AzSynapseSqlPool.md)
 Restores a Synapse Analytics SQL pool.
@@ -233,10 +233,10 @@ Creates a pipeline in workspace.
 ### [Set-AzSynapseSqlActiveDirectoryAdministrator](Set-AzSynapseSqlActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for Synapse Analytics SQL pool.
 
-### [Set-AzSynapseSqlAudit](Set-AzSynapseSqlAudit.md)
+### [Set-AzSynapseSqlAuditSetting](Set-AzSynapseSqlAuditSetting.md)
 Changes the auditing settings of an Azure Synapse Analytics Workspace.
 
-### [Set-AzSynapseSqlPoolAudit](Set-AzSynapseSqlPoolAudit.md)
+### [Set-AzSynapseSqlPoolAuditSetting](Set-AzSynapseSqlPoolAuditSetting.md)
 Changes the auditing settings for an Azure Synapse Analytics SQL pool.
 
 ### [Set-AzSynapseSqlTransparentDataEncryptionProtector](Set-AzSynapseSqlTransparentDataEncryptionProtector.md)

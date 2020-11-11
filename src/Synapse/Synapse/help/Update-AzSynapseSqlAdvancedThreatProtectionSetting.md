@@ -15,7 +15,7 @@ Updates an advanced threat protection settings on a workspace.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzSynapseSqlAdvancedThreatProtectionSetting [-ResourceGroupName <String>] -WorkspaceName <String>
- [-NotificationRecipientsEmails <String>] [-EmailAdmins <Boolean>] [-ExcludedDetectionType <String[]>]
+ [-NotificationRecipientsEmail <String>] [-EmailAdmin <Boolean>] [-ExcludedDetectionType <String[]>]
  [-StorageAccountName <String>] [-RetentionInDays <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,28 +23,27 @@ Update-AzSynapseSqlAdvancedThreatProtectionSetting [-ResourceGroupName <String>]
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzSynapseSqlAdvancedThreatProtectionSetting -InputObject <PSSynapseWorkspace>
- [-NotificationRecipientsEmails <String>] [-EmailAdmins <Boolean>] [-ExcludedDetectionType <String[]>]
+ [-NotificationRecipientsEmail <String>] [-EmailAdmin <Boolean>] [-ExcludedDetectionType <String[]>]
  [-StorageAccountName <String>] [-RetentionInDays <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceId <String>
- [-NotificationRecipientsEmails <String>] [-EmailAdmins <Boolean>] [-ExcludedDetectionType <String[]>]
- [-StorageAccountName <String>] [-RetentionInDays <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceId <String> [-NotificationRecipientsEmail <String>]
+ [-EmailAdmin <Boolean>] [-ExcludedDetectionType <String[]>] [-StorageAccountName <String>]
+ [-RetentionInDays <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSynapseSqlAdvancedThreatProtectionSetting** cmdlet updates an advanced threat protection settings on an Azure Synapse Analytics Workspace.
-In order to enable advanced threat protection on a workspace an auditing settings must be enabled on that workspace.
+The **Update-AzSynapseSqlAdvancedThreatProtectionSetting** cmdlet updates an advanced threat protection settings on an Azure Synapse Analytics Workspace. In order to enable advanced threat protection on a workspace an auditing settings must be enabled on that workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -NotificationRecipientsEmails "admin01@contoso.com;secadmin@contoso.com" -EmailAdmins $False -ExcludedDetectionType "Sql_Injection_Vulnerability","SQL_Injection" -StorageAccountName "mystorageAccount"
+PS C:\> Update-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -NotificationRecipientsEmail "admin01@contoso.com;secadmin@contoso.com" -EmailAdmin $False -ExcludedDetectionType "Sql_Injection_Vulnerability","SQL_Injection" -StorageAccountName "mystorageAccount"
 ```
 
 This command updates the advanced threat protection settings for a workspace named ContosoWorkspace.
@@ -81,13 +80,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EmailAdmins
+### -EmailAdmin
 Defines whether to email administrators.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases:
+Aliases: EmailAdmins
 
 Required: False
 Position: Named
@@ -126,13 +125,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NotificationRecipientsEmails
+### -NotificationRecipientsEmail
 A semicolon separated list of email addresses to send the alerts to.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NotificationRecipientsEmails
 
 Required: False
 Position: Named

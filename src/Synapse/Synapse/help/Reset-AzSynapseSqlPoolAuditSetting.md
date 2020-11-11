@@ -1,54 +1,59 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/clear-azsynapsesqlvulnerabilityassessmentsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/reset-azsynapsesqlpoolauditsetting
 schema: 2.0.0
 ---
 
-# Clear-AzSynapseSqlVulnerabilityAssessmentSetting
+# Reset-AzSynapseSqlPoolAuditSetting
 
 ## SYNOPSIS
-Clears the vulnerability assessment settings of a workspace.
+Removes the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### ClearByNameParameterSet (Default)
+### RemoveByNameParameterSet (Default)
 ```
-Clear-AzSynapseSqlVulnerabilityAssessmentSetting [-ResourceGroupName <String>] -WorkspaceName <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlPoolAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ClearByInputObjectParameterSet
+### RemoveByParentObjectParameterSet
 ```
-Clear-AzSynapseSqlVulnerabilityAssessmentSetting -InputObject <PSSynapseWorkspace> [-PassThru] [-AsJob]
+Reset-AzSynapseSqlPoolAuditSetting -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ClearByResourceIdParameterSet
+### RemoveByInputObjectParameterSet
 ```
-Clear-AzSynapseSqlVulnerabilityAssessmentSetting -ResourceId <String> [-PassThru] [-AsJob]
+Reset-AzSynapseSqlPoolAuditSetting -InputObject <PSSynapseSqlPool> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Reset-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Clear-AzSynapseSqlVulnerabilityAssessmentSetting** cmdlet removes the vulnerability assessment settings of an Azure Synapse Analytics Workspace.
-Before updates the settings, you need to enable the Azure defender for SQL.
+The **Reset-AzSynapseSqlPoolAuditSetting** cmdlet removes the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Clear-AzSynapseSqlVulnerabilityAssessmentSetting -WorkspaceName ContosoWorkspace
+PS C:\> Reset-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
-Clears the vulnerability assessment settings of an Azure Synapse Analytics Workspace named ContosoWorkspace.
+This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Clear-AzSynapseSqlVulnerabilityAssessmentSetting
+PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Reset-AzSynapseSqlPoolAuditSetting
 ```
 
-Clears the vulnerability assessment settings of an Azure Synapse Analytics Workspace named ContosoWorkspace through pipeline.
+This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
@@ -83,17 +88,32 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-workspace input object, usually passed through the pipeline.
+SQL pool input object, usually passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: ClearByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
+Parameter Sets: RemoveByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of Synapse SQL pool.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByNameParameterSet, RemoveByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +138,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClearByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: False
@@ -129,11 +149,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource identifier of Synapse workspace.
+Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClearByResourceIdParameterSet
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -148,13 +168,28 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClearByNameParameterSet
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceObject
+workspace input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: RemoveByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -195,6 +230,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+
+### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
 
 ## OUTPUTS
 

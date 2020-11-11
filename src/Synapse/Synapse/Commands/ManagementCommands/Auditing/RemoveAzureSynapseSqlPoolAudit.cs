@@ -8,8 +8,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.Audit,
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.AuditSetting,
         DefaultParameterSetName = RemoveByNameParameterSet, SupportsShouldProcess = true)]
+    [Alias("Remove-AzSynapseSqlPoolAudit")]
     [OutputType(typeof(bool))]
     public class RemoveAzureSynapseSqlPoolAudit : SynapseManagementCmdletBase
     {

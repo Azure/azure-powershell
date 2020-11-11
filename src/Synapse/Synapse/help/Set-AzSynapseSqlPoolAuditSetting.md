@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/set-azsynapsesqlpoolaudit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/set-azsynapsesqlpoolauditsetting
 schema: 2.0.0
 ---
 
-# Set-AzSynapseSqlPoolAudit
+# Set-AzSynapseSqlPoolAuditSetting
 
 ## SYNOPSIS
 Changes the auditing settings for an Azure Synapse Analytics SQL pool.
@@ -14,7 +14,7 @@ Changes the auditing settings for an Azure Synapse Analytics SQL pool.
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzSynapseSqlPoolAudit [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Set-AzSynapseSqlPoolAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-AuditActionGroup <AuditActionGroup[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
  [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -23,7 +23,7 @@ Set-AzSynapseSqlPoolAudit [-ResourceGroupName <String>] -WorkspaceName <String> 
 
 ### SetByParentObjectParameterSet
 ```
-Set-AzSynapseSqlPoolAudit -Name <String> -WorkspaceObject <PSSynapseWorkspace>
+Set-AzSynapseSqlPoolAuditSetting -Name <String> -WorkspaceObject <PSSynapseWorkspace>
  [-AuditActionGroup <AuditActionGroup[]>] [-AuditAction <String[]>] [-PredicateExpression <String>]
  [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -32,7 +32,7 @@ Set-AzSynapseSqlPoolAudit -Name <String> -WorkspaceObject <PSSynapseWorkspace>
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-AuditActionGroup <AuditActionGroup[]>]
+Set-AzSynapseSqlPoolAuditSetting -InputObject <PSSynapseSqlPool> [-AuditActionGroup <AuditActionGroup[]>]
  [-AuditAction <String[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -40,49 +40,49 @@ Set-AzSynapseSqlPoolAudit -InputObject <PSSynapseSqlPool> [-AuditActionGroup <Au
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzSynapseSqlPoolAudit -ResourceId <String> [-AuditActionGroup <AuditActionGroup[]>]
+Set-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-AuditActionGroup <AuditActionGroup[]>]
  [-AuditAction <String[]>] [-PredicateExpression <String>] [-BlobStorageTargetState <String>]
  [-StorageAccountResourceId <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-AsJob]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSynapseSqlPoolAudit** cmdlet changes the auditing settings of an Azure Synapse Analytics SQL pool.
+The **Set-AzSynapseSqlPoolAuditSetting** cmdlet changes the auditing settings of an Azure Synapse Analytics SQL pool.
 When blob storage is a destination for audit logs, specify the *StorageAccountResourceId* parameter to determine the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys. You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseSqlPoolAudit -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -StorageKeyType Primary
+PS C:\> Set-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -StorageKeyType Primary
 ```
 
 Enable the blob storage auditing policy of an Azure Synapse Analytics SQL pool named ContosoSqlPool.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseSqlPoolAudit -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Disabled
+PS C:\> Set-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Disabled
 ```
 
 Disable the blob storage auditing policy of an Azure Synapse Analytics SQL pool named ContosoSqlPool.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzSynapseSqlPoolAudit -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -StorageKeyType Primary -PredicateExpression "statement <> 'select 1'"
+PS C:\> Set-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -StorageKeyType Primary -PredicateExpression "statement <> 'select 1'"
 ```
 
 Enable the blob storage auditing policy of an Azure Synapse Analytics SQL pool named ContosoSqlPool with advanced filtering using a T-SQL predicate.
 
 ### Example 4
 ```powershell
-PS C:\> Set-AzSynapseSqlPoolAudit -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PredicateExpression ""
+PS C:\> Set-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PredicateExpression ""
 ```
 
 Remove the advanced filtering setting from the auditing policy of an Azure Synapse Analytics SQL pool named ContosoSqlPool.
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Set-AzSynapseSqlPoolAudit -BlobStorageTargetState Disabled
+PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Set-AzSynapseSqlPoolAuditSetting -BlobStorageTargetState Disabled
 ```
 
 Disable the blob storage auditing policy of an Azure Synapse Analytics SQL pool named ContosoSqlPool through pipeline.

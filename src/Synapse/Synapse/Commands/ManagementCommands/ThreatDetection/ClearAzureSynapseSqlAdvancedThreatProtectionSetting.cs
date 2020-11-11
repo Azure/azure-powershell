@@ -8,8 +8,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Clear, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.AdvancedThreatProtectionSetting,
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.AdvancedThreatProtectionSetting,
         DefaultParameterSetName = ClearByNameParameterSet, SupportsShouldProcess = true)]
+    [Alias("Clear-AzSynapseSqlAdvancedThreatProtectionSetting")]
     [OutputType(typeof(bool))]
     public class ClearAzureSynapseSqlAdvancedThreatProtectionSetting : SynapseManagementCmdletBase
     {

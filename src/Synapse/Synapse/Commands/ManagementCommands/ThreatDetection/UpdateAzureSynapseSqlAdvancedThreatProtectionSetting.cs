@@ -44,11 +44,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.NotificationRecipientsEmails)]
-        public string NotificationRecipientsEmails { get; set; }
+        [Alias("NotificationRecipientsEmails")]
+        public string NotificationRecipientsEmail { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.EmailAdmins)]
+        [Alias("EmailAdmins")]
         [ValidateNotNullOrEmpty]
-        public bool? EmailAdmins { get; set; }
+        public bool? EmailAdmin { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.ExcludedDetectionType)]
         [PSArgumentCompleter(SynapseConstants.DetectionType.None,
@@ -95,14 +97,14 @@ namespace Microsoft.Azure.Commands.Synapse
 
             policy.State = SecurityAlertPolicyState.Enabled;
 
-            if (this.IsParameterBound(c => c.NotificationRecipientsEmails))
+            if (this.IsParameterBound(c => c.NotificationRecipientsEmail))
             {
-                policy.EmailAddresses = this.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList();
+                policy.EmailAddresses = this.NotificationRecipientsEmail.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList();
             }
 
-            if (this.IsParameterBound(c => c.EmailAdmins))
+            if (this.IsParameterBound(c => c.EmailAdmin))
             {
-                policy.EmailAccountAdmins = this.EmailAdmins;
+                policy.EmailAccountAdmins = this.EmailAdmin;
             }
 
             if (this.IsParameterBound(c => c.ExcludedDetectionType))

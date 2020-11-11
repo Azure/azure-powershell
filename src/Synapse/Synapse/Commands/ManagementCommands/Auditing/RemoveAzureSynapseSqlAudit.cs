@@ -11,8 +11,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.Audit,
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.AuditSetting,
         DefaultParameterSetName = RemoveByNameParameterSet, SupportsShouldProcess = true)]
+    [Alias("Remove-AzSynapseSqlAudit")]
     [OutputType(typeof(bool))]
     public class RemoveAzureSynapseSqlAudit : SynapseManagementCmdletBase
     {

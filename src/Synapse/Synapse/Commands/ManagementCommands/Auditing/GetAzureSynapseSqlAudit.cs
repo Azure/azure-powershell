@@ -7,8 +7,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.Audit,
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Sql + SynapseConstants.AuditSetting,
         DefaultParameterSetName = GetByNameParameterSet)]
+    [Alias("Get-AzSynapseSqlAudit")]
     [OutputType(typeof(WorkspaceAuditModel))]
     public class GetAzureSynapseSqlAudit : SynapseManagementCmdletBase
     {

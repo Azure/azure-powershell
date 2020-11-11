@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlaudit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlauditsetting
 schema: 2.0.0
 ---
 
-# Get-AzSynapseSqlAudit
+# Get-AzSynapseSqlAuditSetting
 
 ## SYNOPSIS
 Gets the auditing settings of an Azure Synapse Analytics Workspace.
@@ -14,36 +14,37 @@ Gets the auditing settings of an Azure Synapse Analytics Workspace.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlAudit [-ResourceGroupName <String>] -WorkspaceName <String>
+Get-AzSynapseSqlAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet
 ```
-Get-AzSynapseSqlAudit -InputObject <PSSynapseWorkspace> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSynapseSqlAuditSetting -InputObject <PSSynapseWorkspace> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzSynapseSqlAudit -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseSqlAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseSqlAudit** cmdlet gets the auditing settings of an Azure Synapse Analytics Workspace.
+The **Get-AzSynapseSqlAuditSetting** cmdlet gets the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlAudit -WorkspaceName ContosoWorkspace
+PS C:\> Get-AzSynapseSqlAuditSetting -WorkspaceName ContosoWorkspace
 ```
 
 Gets the auditing settings of a workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAudit
+PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAuditSetting
 ```
 
 Gets the auditing settings of a workspace named ContosoWorkspace through pipeline.
