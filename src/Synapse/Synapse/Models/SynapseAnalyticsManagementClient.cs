@@ -1365,6 +1365,47 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public SqlPoolVulnerabilityAssessment GetSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolVulnerabilityAssessments.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public SqlPoolVulnerabilityAssessment CreateOrUpdateSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolVulnerabilityAssessment parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolVulnerabilityAssessments.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.SqlPoolVulnerabilityAssessments.Delete(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         #endregion
 
         #region SQL pool operations

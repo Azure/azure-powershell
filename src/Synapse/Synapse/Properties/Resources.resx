@@ -606,4 +606,10 @@ Are you sure you want to continue?</value>
   <data name="RemovingSqlPoolThreatProtectionSetting" xml:space="preserve">
     <value>Removing threat protection settings in SQL pool '{0}' under workspace '{1}'.</value>
   </data>
+  <data name="UpdatingSqlPoolVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Updating vulnerability assessment settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSqlPoolVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Removing vulnerability assessment settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
 </root>

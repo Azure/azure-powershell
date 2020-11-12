@@ -901,6 +901,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing vulnerability assessment settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseDataFlow {
@@ -1419,6 +1428,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSqlPoolThreatProtectionSetting {
             get {
                 return ResourceManager.GetString("UpdatingSqlPoolThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating vulnerability assessment settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingSqlPoolVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("UpdatingSqlPoolVulnerabilityAssessmentSetting", resourceCulture);
             }
         }
         
