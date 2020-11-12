@@ -1,0 +1,234 @@
+{
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"10240\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "82" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/9a12f5da-7a78-4c03-8b9d-f41de188b99f?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/9a12f5da-7a78-4c03-8b9d-f41de188b99f?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9a12f5da-7a78-4c03-8b9d-f41de188b99f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "60cb77d3-758b-4fc8-a257-6cb9851e9385" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T055956Z:60cb77d3-758b-4fc8-a257-6cb9851e9385" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 05:59:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "92" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpdateConfigurationManagementOperation\",\"startTime\":\"2020-11-12T05:59:56.17Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/9a12f5da-7a78-4c03-8b9d-f41de188b99f?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/9a12f5da-7a78-4c03-8b9d-f41de188b99f?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "45de83c3-757b-4bf3-8e81-69b07e1a4ec0" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "68f9ee22-cb92-4d98-bcc9-c1315bb7e827" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "c08af11f-6c56-4879-80b8-3fa00fea5761" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T060006Z:c08af11f-6c56-4879-80b8-3fa00fea5761" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 06:00:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "262" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"9a12f5da-7a78-4c03-8b9d-f41de188b99f\",\"status\":\"Failed\",\"startTime\":\"2020-11-12T05:59:56.17Z\",\"error\":{\"code\":\"SubscriptionDoesNotHaveServer\",\"message\":\"Subscription \u00277fec3109-5b78-4a24-b834-5d47d63e2596\u0027 does not have the server \u0027postgresqltest100\u0027.\"}}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "45de83c3-757b-4bf3-8e81-69b07e1a4ec0" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 504,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "5de6c091-cf3d-48d9-8fb3-28f688002c5d" ],
+        "x-ms-correlation-request-id": [ "5de6c091-cf3d-48d9-8fb3-28f688002c5d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T060106Z:5de6c091-cf3d-48d9-8fb3-28f688002c5d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 06:01:06 GMT" ],
+        "Connection": [ "close" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "153" ]
+      },
+      "Content": "{\"error\":{\"code\":\"GatewayTimeout\",\"message\":\"The gateway did not receive a response from \u0027Microsoft.DBforPostgreSQL\u0027 within the specified time period.\"}}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"4096\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "81" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/557d3568-0dd4-464b-aa9c-136de9b37a32?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/557d3568-0dd4-464b-aa9c-136de9b37a32?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "557d3568-0dd4-464b-aa9c-136de9b37a32" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "1d8807a2-e98f-4b44-b7d6-1dd0abe986c9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T060154Z:1d8807a2-e98f-4b44-b7d6-1dd0abe986c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 06:01:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpdateConfigurationManagementOperation\",\"startTime\":\"2020-11-12T06:01:54.583Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/557d3568-0dd4-464b-aa9c-136de9b37a32?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/557d3568-0dd4-464b-aa9c-136de9b37a32?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "eed72625-6bfd-4cba-b2fe-f71c2e88fd87" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "d44f8020-eb59-44f4-b125-7fbe2abfc235" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "45083add-8434-4edb-978a-f49c44bb944c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T060204Z:45083add-8434-4edb-978a-f49c44bb944c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 06:02:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "263" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"557d3568-0dd4-464b-aa9c-136de9b37a32\",\"status\":\"Failed\",\"startTime\":\"2020-11-12T06:01:54.583Z\",\"error\":{\"code\":\"SubscriptionDoesNotHaveServer\",\"message\":\"Subscription \u00277fec3109-5b78-4a24-b834-5d47d63e2596\u0027 does not have the server \u0027postgresqltest100\u0027.\"}}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "eed72625-6bfd-4cba-b2fe-f71c2e88fd87" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 504,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "48682fed-4b46-44c9-a3cd-72dd748816a2" ],
+        "x-ms-correlation-request-id": [ "48682fed-4b46-44c9-a3cd-72dd748816a2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T060305Z:48682fed-4b46-44c9-a3cd-72dd748816a2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 06:03:04 GMT" ],
+        "Connection": [ "close" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "153" ]
+      },
+      "Content": "{\"error\":{\"code\":\"GatewayTimeout\",\"message\":\"The gateway did not receive a response from \u0027Microsoft.DBforPostgreSQL\u0027 within the specified time period.\"}}"
+    }
+  }
+}

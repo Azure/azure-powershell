@@ -1,23 +1,18 @@
-### Example 1: Update PostgreSql configuration by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzPostgreSqlFlexibleServer -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 15
+PS C:\> {{ Add code here }}
 
-Name          Value   DefaultValue  Source        AllowedValues DataType
-----          ------  ------------  -------       ------------- ---------
-work_mem    10240    4096            user-override  4096-2097151   Integer
+{{ Add output here }}
 ```
 
-This cmdlet updates PostgreSql configuration by name.
+{{ Add description here }}
 
-### Example 2: Update PostgreSql configuration by identity.
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSql/flexibleServers/PostgreSql-test/configurations/wait_timeout"
-PS C:\> Update-AzPostgreSqlFlexibleServer -InputObject $ID -Value 10240
+PS C:\> {{ Add code here }}
 
-Name          Value   DefaultValue  Source        AllowedValues DataType
-----          ------  ------------  -------       ------------- ---------
-work_mem   10240    4096         system-default   4096-2097151   Integer
+{{ Add output here }}
 ```
 
-These cmdlets update PostgreSql configuration by identity.
+{{ Add description here }}
 

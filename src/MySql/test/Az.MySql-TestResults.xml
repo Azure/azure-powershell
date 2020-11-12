@@ -1,14 +1,217 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-11-11" time="22:50:42">
-  <environment platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" machine-name="DESKTOP-R88RMV9" os-version="10.0.19042" user="daeunyim" cwd="C:\Users\daeunyim\work\azure-powershell\src\MySql" nunit-version="2.5.8.0" user-domain="REDMOND" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="43" errors="0" failures="0" not-run="0" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2020-11-12" time="00:00:24">
+  <environment user="daeunyim" cwd="C:\Users\daeunyim\work\azure-powershell\src\MySql" os-version="10.0.19042" machine-name="DESKTOP-R88RMV9" nunit-version="2.5.8.0" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" user-domain="REDMOND" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="1086.4217" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="8.9691" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="1086.4217" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="1.0593" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Restore-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="1086.0886" asserts="0" description="Restore-AzMySqlFlexibleServer">
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.6836" asserts="0" description="Get-AzMySqlFlexibleServer">
             <results>
-              <test-case description="PointInTimeRestore" name="Restore-AzMySqlFlexibleServer.PointInTimeRestore" time="1084.4498" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzMySqlFlexibleServer.List1" time="0.2836" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlFlexibleServer.Get" time="0.0474" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMySqlFlexibleServer.List" time="0.0218" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlFlexibleServer.GetViaIdentity" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.5033" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServerConfiguration" executed="True" result="Success" success="True" time="0.2375" asserts="0" description="Get-AzMySqlFlexibleServerConfiguration">
+            <results>
+              <test-case description="List" name="Get-AzMySqlFlexibleServerConfiguration.List" time="0.0831" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlFlexibleServerConfiguration.Get" time="0.0326" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlFlexibleServerConfiguration.GetViaIdentity" time="0.0315" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.4988" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServerDatabase" executed="True" result="Success" success="True" time="0.2218" asserts="0" description="Get-AzMySqlFlexibleServerDatabase">
+            <results>
+              <test-case description="List" name="Get-AzMySqlFlexibleServerDatabase.List" time="0.0591" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlFlexibleServerDatabase.Get" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlFlexibleServerDatabase.GetViaIdentity" time="0.0476" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.4935" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServerFirewallRule" executed="True" result="Success" success="True" time="0.2038" asserts="0" description="Get-AzMySqlFlexibleServerFirewallRule">
+            <results>
+              <test-case description="List" name="Get-AzMySqlFlexibleServerFirewallRule.List" time="0.0619" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMySqlFlexibleServerFirewallRule.Get" time="0.0224" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzMySqlFlexibleServerFirewallRule.GetViaIdentity" time="0.0353" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerLocationBasedCapability.Tests.ps1" executed="True" result="Ignored" success="True" time="0.36" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerLocationBasedCapability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServerLocationBasedCapability" executed="True" result="Ignored" success="True" time="0.0745" asserts="0" description="Get-AzMySqlFlexibleServerLocationBasedCapability">
+            <results>
+              <test-case description="List" name="Get-AzMySqlFlexibleServerLocationBasedCapability.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.4136" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Get-AzMySqlFlexibleServerReplica.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMySqlFlexibleServerReplica" executed="True" result="Success" success="True" time="0.1593" asserts="0" description="Get-AzMySqlFlexibleServerReplica">
+            <results>
+              <test-case description="List" name="Get-AzMySqlFlexibleServerReplica.List" time="0.0847" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.4032" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.149" asserts="0" description="New-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMySqlFlexibleServer.CreateExpanded" time="0.0745" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.3517" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMySqlFlexibleServerDatabase" executed="True" result="Success" success="True" time="0.0968" asserts="0" description="New-AzMySqlFlexibleServerDatabase">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMySqlFlexibleServerDatabase.CreateExpanded" time="0.0225" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3908" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMySqlFlexibleServerFirewallRule" executed="True" result="Success" success="True" time="0.1572" asserts="0" description="New-AzMySqlFlexibleServerFirewallRule">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMySqlFlexibleServerFirewallRule.CreateExpanded" time="0.0292" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ClientIPAddress" name="New-AzMySqlFlexibleServerFirewallRule.ClientIPAddress" time="0.0258" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="AllowAll" name="New-AzMySqlFlexibleServerFirewallRule.AllowAll" time="0.0286" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.363" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\New-AzMySqlFlexibleServerReplica.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMySqlFlexibleServerReplica" executed="True" result="Success" success="True" time="0.122" asserts="0" description="New-AzMySqlFlexibleServerReplica">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMySqlFlexibleServerReplica.CreateExpanded" time="0.0576" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3446" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1162" asserts="0" description="Remove-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="Delete" name="Remove-AzMySqlFlexibleServer.Delete" time="0.0265" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlFlexibleServer.DeleteViaIdentity" time="0.0142" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.349" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMySqlFlexibleServerDatabase" executed="True" result="Success" success="True" time="0.1047" asserts="0" description="Remove-AzMySqlFlexibleServerDatabase">
+            <results>
+              <test-case description="Delete" name="Remove-AzMySqlFlexibleServerDatabase.Delete" time="0.0192" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlFlexibleServerDatabase.DeleteViaIdentity" time="0.0171" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServerFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3406" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Remove-AzMySqlFlexibleServerFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMySqlFlexibleServerFirewallRule" executed="True" result="Success" success="True" time="0.1175" asserts="0" description="Remove-AzMySqlFlexibleServerFirewallRule">
+            <results>
+              <test-case description="Delete" name="Remove-AzMySqlFlexibleServerFirewallRule.Delete" time="0.0183" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMySqlFlexibleServerFirewallRule.DeleteViaIdentity" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3615" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1115" asserts="0" description="Restart-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="Restart" name="Restart-AzMySqlFlexibleServer.Restart" time="0.0255" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartViaIdentity" name="Restart-AzMySqlFlexibleServer.RestartViaIdentity" time="0.0198" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3873" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restore-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1373" asserts="0" description="Restore-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="PointInTimeRestore" name="Restore-AzMySqlFlexibleServer.PointInTimeRestore" time="0.0785" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Start-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.4196" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Start-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1905" asserts="0" description="Start-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="Start" name="Start-AzMySqlFlexibleServer.Start" time="0.0622" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StartViaIdentity" name="Start-AzMySqlFlexibleServer.StartViaIdentity" time="0.0497" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Stop-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.4138" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Stop-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1432" asserts="0" description="Stop-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="Stop" name="Stop-AzMySqlFlexibleServer.Stop" time="0.0286" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="StopViaIdentity" name="Stop-AzMySqlFlexibleServer.StopViaIdentity" time="0.0262" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="0.41" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="0.1176" asserts="0" description="Update-AzMySqlFlexibleServer">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMySqlFlexibleServer.UpdateExpanded" time="0.0343" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFlexibleServer.UpdateViaIdentityExpanded" time="0.0156" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.3468" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMySqlFlexibleServerConfiguration" executed="True" result="Success" success="True" time="0.1122" asserts="0" description="Update-AzMySqlFlexibleServerConfiguration">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMySqlFlexibleServerConfiguration.UpdateExpanded" time="0.0248" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFlexibleServerConfiguration.UpdateViaIdentityExpanded" time="0.021" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.3633" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMySqlFlexibleServerDatabase" executed="True" result="Success" success="True" time="0.1271" asserts="0" description="Update-AzMySqlFlexibleServerDatabase">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMySqlFlexibleServerDatabase.UpdateExpanded" time="0.0311" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFlexibleServerDatabase.UpdateViaIdentityExpanded" time="0.0275" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.3952" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Update-AzMySqlFlexibleServerFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMySqlFlexibleServerFirewallRule" executed="True" result="Success" success="True" time="0.167" asserts="0" description="Update-AzMySqlFlexibleServerFirewallRule">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMySqlFlexibleServerFirewallRule.UpdateExpanded" time="0.0357" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ClientIPAddress" name="Update-AzMySqlFlexibleServerFirewallRule.ClientIPAddress" time="0.0141" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzMySqlFlexibleServerFirewallRule.UpdateViaIdentityExpanded" time="0.0179" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ClientIPAddressViaIdentity" name="Update-AzMySqlFlexibleServerFirewallRule.ClientIPAddressViaIdentity" time="0.0183" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>

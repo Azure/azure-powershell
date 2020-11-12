@@ -15,7 +15,7 @@ Describe 'Restore-AzPostgreSqlFlexibleServer' {
     It 'PointInTimeRestore' {
         {
             $restorePointInTime = (Get-Date).AddMinutes(-10)
-            Restore-AzPostgreSqlFlexibleServer -SourceServerName $env.serverName -Location $env.location -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime - 
+            Restore-AzPostgreSqlFlexibleServer -SourceServerName $env.serverName -Location $env.location -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime
         } | Should -Not -Throw
     }
 }

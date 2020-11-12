@@ -29,7 +29,7 @@ Describe 'Get-AzPostgreSqlFlexibleServer' {
     It 'List' {
         {
             $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup
-            $servers.Count | Should -Be 1
+            $servers.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 

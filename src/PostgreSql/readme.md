@@ -108,6 +108,10 @@ directive:
       subject: ^Server$|^Configuration$|^FirewallRule$|^Database$|^LocationBasedPerformanceTier$|^LogFile$|^SecurityAlertPolicy$|^Administrator$|^NameAvailability$|^VirtualNetworkRule$
     hide: true
   - where:
+      verb: Update$
+      subject: ^FlexibleServerConfiguration$
+    hide: true
+  - where:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
     hide: true

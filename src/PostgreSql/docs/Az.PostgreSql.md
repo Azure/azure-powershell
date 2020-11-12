@@ -105,7 +105,7 @@ The request body can contain one to many of the properties present in the normal
 Use Update-AzPostgreSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlFlexibleServerConfiguration](Update-AzPostgreSqlFlexibleServerConfiguration.md)
-Updates a configuration of a server.
+
 
 ### [Update-AzPostgreSqlFlexibleServerFirewallRule](Update-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.

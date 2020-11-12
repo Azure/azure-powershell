@@ -41,7 +41,7 @@ PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGrou
 
 Name          Value   DefaultValue  Source        AllowedValues DataType
 ----          ------  ------------  -------       ------------- ---------
-work_mem   4096  4096         system-default 4096-2097151   Integer
+work_mem        4096  4096         system-default 4096-2097151   Integer
 ```
 
 This cmdlet gets specified PostgreSql configuration by name.
@@ -52,7 +52,7 @@ PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName Powershel
 
 Name          Value   DefaultValue  Source        AllowedValues DataType
 ----          ------  ------------  -------       ------------- ---------
-application_name        ""    ""           system-default [A-Za-z0-9._-]*      String
+application_name  ""    ""           system-default [A-Za-z0-9._-]*      String
 ...
 pgbouncer.enabled   false  false         system-default true, false   Boolean
 ```

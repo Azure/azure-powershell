@@ -15,6 +15,7 @@ Describe 'Stop-AzPostgreSqlFlexibleServer' {
     It 'Stop' {
         {
             Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
+            Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
         } | Should -Not -Throw
     }
 

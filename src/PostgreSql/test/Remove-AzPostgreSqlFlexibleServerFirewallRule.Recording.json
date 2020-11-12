@@ -1,8 +1,8 @@
 {
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"0.0.0.1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"de386837-d2af-4b0b-b4d0-47e49abff83b\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T06:51:53.813Z\"}"
     }
   },
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -115,10 +115,10 @@
       "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
@@ -235,10 +235,10 @@
       "Content": null
     }
   },
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"0.0.0.1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -312,10 +312,10 @@
       "Content": "{\"name\":\"679aed21-2184-4b08-9ed9-047e09425b76\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T06:53:55.613Z\"}"
     }
   },
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -351,10 +351,10 @@
       "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
+  "Remove-AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "49" ],
