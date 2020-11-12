@@ -15,6 +15,7 @@ Describe 'Stop-AzMySqlFlexibleServer' {
     It 'Stop' {
         {
             Stop-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
+            Start-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
         } | Should -Not -Throw
     }
 

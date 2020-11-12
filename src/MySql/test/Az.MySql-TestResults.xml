@@ -1,31 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-11-11" time="10:28:56">
-  <environment platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" cwd="C:\Users\daeunyim\work\azure-powershell\src\MySql" user="daeunyim" nunit-version="2.5.8.0" user-domain="REDMOND" clr-version="Unknown" machine-name="DESKTOP-R88RMV9" os-version="10.0.19042" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-11-11" time="22:50:42">
+  <environment platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" machine-name="DESKTOP-R88RMV9" os-version="10.0.19042" user="daeunyim" cwd="C:\Users\daeunyim\work\azure-powershell\src\MySql" nunit-version="2.5.8.0" user-domain="REDMOND" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="122.6158" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="1086.4217" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Failure" success="False" time="122.6158" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1" executed="True" result="Success" success="True" time="1086.4217" asserts="0" description="C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restore-AzMySqlFlexibleServer.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Restart-AzMySqlFlexibleServer" executed="True" result="Failure" success="False" time="122.0425" asserts="0" description="Restart-AzMySqlFlexibleServer">
+          <test-suite type="TestFixture" name="Restore-AzMySqlFlexibleServer" executed="True" result="Success" success="True" time="1086.0886" asserts="0" description="Restore-AzMySqlFlexibleServer">
             <results>
-              <test-case description="Restart" name="Restart-AzMySqlFlexibleServer.Restart" time="61.2978" asserts="0" success="False" result="Failure" executed="True">
-                <failure>
-                  <message>Expected no exception to be thrown, but an exception "[OperationFailed] : Operation Restart failed, because server mysql-test-100 is busy with other operations." was thrown from C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1:17 char:13
-    +             Restart-AzMySqlFlexibleServer -ResourceGroupName $env.res …
-    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
-                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1: line 18
-18:         } | Should -Not -Throw</stack-trace>
-                </failure>
-              </test-case>
-              <test-case description="RestartViaIdentity" name="Restart-AzMySqlFlexibleServer.RestartViaIdentity" time="60.4069" asserts="0" success="False" result="Failure" executed="True">
-                <failure>
-                  <message>Expected no exception to be thrown, but an exception "[OperationFailed] : Operation Restart failed, because server mysql-test-100 is busy with other operations." was thrown from C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1:24 char:13
-    +             Restart-AzMySqlFlexibleServer -InputObject $ID
-    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
-                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\daeunyim\work\azure-powershell\src\MySql\test\Restart-AzMySqlFlexibleServer.Tests.ps1: line 25
-25:         } | Should -Not -Throw</stack-trace>
-                </failure>
-              </test-case>
+              <test-case description="PointInTimeRestore" name="Restore-AzMySqlFlexibleServer.PointInTimeRestore" time="1084.4498" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>

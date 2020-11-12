@@ -144,8 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The name of the sku, typically, tier + family + cores, e.g.
-B_Gen4_1, GP_Gen5_8.
+The name of the sku, e.g., Standard_D2ds_v4, Standard_B1ms
 
 ```yaml
 Type: System.String

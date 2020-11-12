@@ -38,7 +38,7 @@ Stop the server by name
 
 ### Example 2: Stop the server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/stop"
 PS C:\> Stop-AzMySqlFlexibleServer -InputObject $ID
 ```
 

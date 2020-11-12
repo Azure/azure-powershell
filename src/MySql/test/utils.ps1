@@ -27,7 +27,7 @@ function setupFlexibleServerEnv() {
     $location = "westus2"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
-    New-AzResourceGroup -Name $resourceGroup -Location $location
+    # New-AzResourceGroup -Name $resourceGroup -Location $location
 
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
@@ -40,11 +40,11 @@ function setupFlexibleServerEnv() {
 
     write-host (Get-AzContext | Out-String)
 
-    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
-    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
+    # write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
+    # New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
 
-    write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
-    New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
+    # write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
+    # New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -56,5 +56,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
     write-host "Clean resources you create for testing."
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
