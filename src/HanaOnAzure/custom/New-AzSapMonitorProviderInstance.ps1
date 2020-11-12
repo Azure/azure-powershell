@@ -265,7 +265,7 @@ function New-AzSapMonitorProviderInstance {
             }
             'ByDict' {
                 $property = $InstanceProperty
-                $PSBoundParameters.remove('InstanceProperty')
+                $null = $PSBoundParameters.remove('InstanceProperty')
             }
         }
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
