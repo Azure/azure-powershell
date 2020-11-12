@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.3.0
 * Updated planning to deprecate warnings for the following cmdlets
     -`New-AzVirtualHubRoute`
     -`New-AzVirtualHubRouteTable`

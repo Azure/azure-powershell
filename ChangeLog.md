@@ -1,3 +1,104 @@
+## 5.1.0 - November 2020
+#### Az.Accounts
+* Fixed an issue that TenantId may be not respected if using 'Connect-AzAccount -DeviceCode'[#13477]
+* Added new cmdlet 'Get-AzAccessToken'
+* Fixed an issue that error happens if user profile path is inaccessible
+* Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
+* Added parameter 'ContainerRegistryEndpointSuffix' to: 'Add-AzEnvironment', 'Set-AzEnvironment' 
+* Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
+* Fixed an issue causing 'Connect-AzAccount -KeyVaultAccessToken' not working [#13127]
+* Fixed null reference and method case insensitive in 'Invoke-AzRestMethod'
+
+#### Az.Aks
+* Fixed the issue that user cannot use service principal to create a new Kubernetes cluster. [#13012]
+
+#### Az.AppConfiguration
+* General availability of 'Az.AppConfiguration' module
+#### Az.DataFactory
+* Improved error message of 'New-AzDataFactoryV2LinkedServiceEncryptedCredential' command
+
+#### Az.DataLakeStore
+* Updated ADLS dataplane SDK to 1.2.4-alpha. Changes:https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-124-alpha
+
+#### Az.DesktopVirtualization
+* Added new MSIX Package cmdlets and updated Applications cmdlets.
+
+#### Az.EventHub
+* Fixed Cluster commands for EventHub cluster without tags
+* Updated help text for PartnerNamespace of AzEventHubGeoDRConfiguration commands 
+
+#### Az.HDInsight
+* Add parameters 'ResourceProviderConnection' and 'PrivateLink' to cmdlet 'New-AzHDInsightCluster' to support relay outbound and private link feature
+* Add parameter 'AmbariDatabase' to cmdlet 'New-AzHDInsightCluster' to support custom Ambari database feature
+* Add accept value 'AmbariDatabase' to the parameter 'MetastoreType' of the cmdlet 'Add-AzHDInsightMetastore'
+
+#### Az.IotHub
+* Allowed tags in IoT Hub create cmdlet.
+
+#### Az.KeyVault
+* Supported updating key vault tag
+
+#### Az.LogicApp
+* Fixed for Get-AzLogicAppRunHistory only retrieving the first page of results
+
+#### Az.Network
+* Updated planning to deprecate warnings for the following cmdlets
+    -'New-AzVirtualHubRoute'
+    -'New-AzVirtualHubRouteTable'
+    -'Add-AzVirtualHubRoute'
+    -'Add-AzVirtualHubRouteTable'
+    -'Get-AzVirtualHubRouteTable'
+    -'Remove-AzVirtualHubRouteTable'
+* Added planning to deprecate warnings on the argument 'RouteTable' for the following cmdlets
+    -'New-AzVirtualHub'
+    -'Set-AzVirtualHub'
+    -'Update-AzVirtualHub'
+* Made arguments '-MinScaleUnits' and '-MaxScaleUnits' optional in 'Set-AzExpressRouteGateway'
+* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
+    - 'Get-AzApplicationGatewayClientAuthConfiguration'
+    - 'New-AzApplicationGatewayClientAuthConfiguration'
+    - 'Remove-AzApplicationGatewayClientAuthConfiguration'
+    - 'Set-AzApplicationGatewayClientAuthConfiguration'
+    - 'Add-AzApplicationGatewayTrustedClientCertificate' 
+    - 'Get-AzApplicationGatewayTrustedClientCertificate' 
+    - 'New-AzApplicationGatewayTrustedClientCertificate' 
+    - 'Remove-AzApplicationGatewayTrustedClientCertificate' 
+    - 'Set-AzApplicationGatewayTrustedClientCertificate'
+    - 'Add-AzApplicationGatewaySslProfile'
+    - 'Get-AzApplicationGatewaySslProfile'
+    - 'New-AzApplicationGatewaySslProfile'
+    - 'Remove-AzApplicationGatewaySslProfile'
+    - 'Set-AzApplicationGatewaySslProfile'
+    - 'Get-AzApplicationGatewaySslProfilePolicy'
+    - 'Remove-AzApplicationGatewaySslProfilePolicy'
+    - 'Set-AzApplicationGatewaySslProfilePolicy'
+
+#### Az.RecoveryServices
+* Specifying policy BackupTime is in UTC.
+* Modifying breaking change warning in Get-AzRecoveryServicesBackupJobDetails cmdlet.
+* Updating sample script help text for Set-AzRecoveryServicesBackupProtectionPolicy cmdlet.
+
+#### Az.Resources
+* Fixed an issue where What-If shows two resource group scopes with different casing
+* Updated 'Export-AzResourceGroup' to use the SDK.
+* Added culture info to parse methods
+
+#### Az.Sql
+* Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
+* Added MaintenanceConfigurationId to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* Fixed a bug in GetAzureSqlDatabaseReplicationLink.cs where PartnerServerName parameter was being checked for by value instead of key
+
+#### Az.Websites
+* Added support for new access restriction features: ServiceTag, multi-ip and http-headers
+
+### Thanks to our community contributors
+* John Q. Martin (@johnmart82), Adding firewall prerequisite information (#13385)
+* Manikandan Duraisamy (@madurais-msft), Corrected the PublicSubnetName argument (#13417)
+* @mahortas, Update for -HostNames parameter values (#13349)
+* @MariachiForHire, added supported TrafficAnalyticsInterval values (#13304)
+* Michael James (@mikejwhat), Allow Get-AzLogicAppRunHistory to return more than 30 entries (#13393)
+* Shashikant Shakya (@shshakya), Update Restore-AzSqlInstanceDatabase.md (#13404)
+
 ## 5.0.0 - October 2020
 #### Az.Accounts
 * [Breaking Change] Removed 'Get-AzProfile' and 'Select-AzProfile'
