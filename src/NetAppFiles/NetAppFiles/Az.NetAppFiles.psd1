@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -82,12 +82,22 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'New-AzNetAppFilesVolume', 'Remove-AzNetAppFilesVolume', 
                'Update-AzNetAppFilesVolume', 'Get-AzNetAppFilesSnapshot', 
                'New-AzNetAppFilesSnapshot', 'Remove-AzNetAppFilesSnapshot', 
-               'Approve-AzNetAppFilesReplication', 
+               'Approve-AzNetAppFilesReplication',
                'Get-AzNetAppFilesReplicationStatus', 
                'Suspend-AzNetAppFilesReplication', 
                'Remove-AzNetAppFilesReplication', 
                'Resume-AzNetAppFilesReplication',
-               'Restore-AzNetAppFilesVolume'
+               'Restore-AzNetAppFilesVolume',
+               'Set-AzNetAppFilesVolumePool',
+               'New-AzNetAppFilesSnapshotPolicy', 'Get-AzNetAppFilesSnapshotPolicy',
+               'Update-AzNetAppFilesSnapshotPolicy','Remove-AzNetAppFilesSnapshotPolicy', 
+               'New-AzNetAppFilesBackupPolicy', 'Get-AzNetAppFilesBackupPolicy',
+               'Update-AzNetAppFilesBackupPolicy','Remove-AzNetAppFilesBackupPolicy',
+               'New-AzNetAppFilesBackup', 'Get-AzNetAppFilesBackup',
+               'Update-AzNetAppFilesBackup','Remove-AzNetAppFilesBackup',
+               'Get-AzNetAppFilesVault',
+               'New-AzNetAppFilesActiveDirectory', 'Get-AzNetAppFilesActiveDirectory',
+               'Update-AzNetAppFilesActiveDirectory','Remove-AzNetAppFilesActiveDirectory'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -96,11 +106,23 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
 AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 
                'Set-AnfAccount', 'Update-AnfAccount', 'Get-AnfPool', 'New-AnfPool', 
                'Update-AnfPool', 'Remove-AnfPool', 'Get-AnfVolume', 'New-AnfVolume', 
-               'Remove-AnfVolume', 'Update-AnfVolume', 'Get-AnfSnapshot', 
-               'New-AnfSnapshot', 'Remove-AnfSnapshot', 'Approve-AnfReplication', 
+               'Remove-AnfVolume', 'Update-AnfVolume',
+               'Get-AnfSnapshot',
+               'New-AnfSnapshot', 'Remove-AnfSnapshot',
+               'Approve-AnfReplication', 
                'Get-AnfReplicationStatus', 'Suspend-AnfReplication', 
                'Remove-AnfReplication', 'Resume-AnfReplication',
-               'Restore-AnfVolume'
+               'Restore-AnfVolume',
+               'Set-AnfVolumePool',
+               'Get-AnfSnapshotPolicy','New-AnfSnapshotPolicy', 
+               'Remove-AnfSnapshotPolicy','Update-AnfSnapshotPolicy', 
+               'Get-AnfBackupPolicy','New-AnfBackupPolicy', 
+               'Remove-AnfBackupPolicy','Update-AnfBackupPolicy',
+               'Get-AnfBackup','New-AnfBackup', 
+               'Remove-AnfBackup','Update-AnfBackup',
+               'Get-AnfSnapshotPolicy',
+               'Get-AnfActiveDirectory','New-AnfActiveDirectory', 
+               'Remove-AnfActiveDirectory','Update-AnfActiveDirectory'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

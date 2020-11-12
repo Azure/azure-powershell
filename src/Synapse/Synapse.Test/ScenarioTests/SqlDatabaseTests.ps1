@@ -58,7 +58,7 @@ function Test-SynapseSqlDatabase
         Assert-True {$found -eq 1} "SqlDatabase created earlier is not found when listing all in resource group: $resourceGroupName."
 
         # Delete SqlDatabase
-        Assert-True {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -PassThru} "Remove SqlDatabase failed."
+        Assert-True {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -PassThru -Force} "Remove SqlDatabase failed."
 
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
 
@@ -68,6 +68,6 @@ function Test-SynapseSqlDatabase
     finally
     {
         # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
     }
 }

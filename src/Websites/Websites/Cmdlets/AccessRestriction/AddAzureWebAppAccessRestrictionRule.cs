@@ -19,6 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using System;
+using Microsoft.Azure.Commands.WebApps.Validations;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -28,84 +32,122 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestrictionRule", DefaultParameterSetName = IpAddressParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAccessRestrictionConfig))]
     public class AddAzureWebAppAccessRestrictionRuleCmdlet : WebAppBaseClientCmdLet
-    {        
+    {   
+        // Parameter sets
         private const string IpAddressParameterSet = "IpAddressParameterSet";
+        private const string ServiceTagParameterSet = "ServiceTagParameterSet";
         private const string SubnetNameParameterSet = "SubnetNameParameterSet";
         private const string SubnetIdParameterSet = "SubnetIdParameterSet";
-        private const string InputObjectParameterSet = "InputObjectParameterSet";
-        
-        [Parameter(ParameterSetName = IpAddressParameterSet, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
+
+        // Help messages
+        private const string ResourceGroupNameHelpMessage = "The name of the resource group.";
+        private const string WebAppNameHelpMessage = "The name of the web app.";
+        private const string NameHelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.";
+        private const string DescriptionHelpMessage = "Access Restriction description.";
+        private const string PriorityHelpMessage = "Access Restriction priority. E.g.: 500.";
+        private const string ActionHelpMessage = "Allow or Deny rule.";
+        private const string SlotNameHelpMessage = "Deployment Slot name.";
+        private const string TargetScmSiteHelpMessage = "Rule is aimed for Main site or Scm site.";
+        private const string IgnoreMissingServiceEndpointHelpMessage = "Specify if Service Endpoint registration at Subnet should be validated.";
+        private const string IpAddressHelpMessage = "Ip Address v4 or v6 CIDR range. E.g.: 192.168.0.0/24 or 2002::1234:abcd:ffff:c0a8:101/64";
+        private const string SubnetNameHelpMessage = "Name of Subnet.";
+        private const string VirtualNetworkNameHelpMessage = "Name of Virtual Network (must be in same resource group as Web App).";
+        private const string SubnetIdHelpMessage = "ResourceId of Subnet.";
+        private const string ServiceTagHelpMessage = "Name of Service Tag";
+        private const string PassThruHelpMessage = "Return the access restriction config object.";
+        private const string HeaderHelpMessage = "Http header restrictions. Example: -HttpHeader @{'x-azure-fdid' = '7acacb02-47ea-4cd4-b568-5e880e72582e'; 'x-forwarded-host' = 'www.contoso.com', 'app.contoso.com'}";
+
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Position = 0, Mandatory = true, HelpMessage = ResourceGroupNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Position = 0, Mandatory = true, HelpMessage = ResourceGroupNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Position = 0, Mandatory = true, HelpMessage = ResourceGroupNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Position = 0, Mandatory = true, HelpMessage = ResourceGroupNameHelpMessage, ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Position = 1, Mandatory = true, HelpMessage = WebAppNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Position = 1, Mandatory = true, HelpMessage = WebAppNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Position = 1, Mandatory = true, HelpMessage = WebAppNameHelpMessage, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Position = 1, Mandatory = true, HelpMessage = WebAppNameHelpMessage, ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = NameHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = NameHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = NameHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = NameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Access Restriction description.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Access Restriction description.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Access Restriction description.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = DescriptionHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = DescriptionHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = DescriptionHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = DescriptionHelpMessage)]
         public string Description { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = "Access Restriction priority. E.g.: 500.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Access Restriction priority. E.g.: 500.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = "Access Restriction priority. E.g.: 500.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = true, HelpMessage = PriorityHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = PriorityHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = PriorityHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = PriorityHelpMessage)]
         [ValidateNotNullOrEmpty]
         public uint Priority { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Allow", "Deny")]
         public string Action { get; set; } = "Allow";
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = SlotNameHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = SlotNameHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = SlotNameHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = SlotNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = TargetScmSiteHelpMessage)]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = TargetScmSiteHelpMessage)]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = TargetScmSiteHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = TargetScmSiteHelpMessage)]
         [ValidateNotNullOrEmpty]        
         public SwitchParameter TargetScmSite { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = "Ip Address v4 or v6 CIDR range. E.g.: 192.168.0.0/24")]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = IpAddressHelpMessage)]
+        [ValidateIpAddress]
         [ValidateNotNullOrEmpty]
         public string IpAddress { get; set; }
 
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Name of Subnet.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = SubnetNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Name of Virtual Network (must be in same resource group as Web App).")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = VirtualNetworkNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = "ResourceId of Subnet.")]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = SubnetIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Specify if Service Endpoint registration at Subnet should be validated.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Specify if Service Endpoint registration at Subnet should be validated.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = IgnoreMissingServiceEndpointHelpMessage)]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = IgnoreMissingServiceEndpointHelpMessage)]
         public SwitchParameter IgnoreMissingServiceEndpoint { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "Return the access restriction config object.")]
+
+        [Parameter(Mandatory = false, HelpMessage = PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = true, HelpMessage = ServiceTagHelpMessage)]
+        [ValidateServiceTag]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HeaderHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        [ValidateHttpHeader]
+        public Hashtable HttpHeader { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -115,12 +157,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 SiteConfig siteConfig = webApp.SiteConfig;
                 var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                 IpSecurityRestriction ipSecurityRestriction = null;
+                IDictionary<string, IList<string>> httpHeader = null;
+                if (HttpHeader != null)
+                    httpHeader = ConvertHeaderHashtable(HttpHeader);
+
                 int intPriority = checked((int)Priority);
                 switch (ParameterSetName)
                 {
                     case IpAddressParameterSet:                    
-                        ipSecurityRestriction = new IpSecurityRestriction(IpAddress, null, null, null, null, Action, null, intPriority, Name, Description);
+                        ipSecurityRestriction = new IpSecurityRestriction(IpAddress, null, null, null, null, Action, null, intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);                        
+                        break;
+
+                    case ServiceTagParameterSet:
+                        ipSecurityRestriction = new IpSecurityRestriction(ServiceTag, null, null, null, null, Action, "ServiceTag", intPriority, Name, Description, httpHeader);
+                        accessRestrictionList.Add(ipSecurityRestriction);
                         break;
 
                     case SubnetNameParameterSet:
@@ -136,7 +187,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
                         }
                         
-                        ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description);
+                        ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);                                           
                         break;
                 }
@@ -155,6 +206,31 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
                 }
             }
+        }
+
+        private IDictionary<string, IList<string>> ConvertHeaderHashtable(Hashtable headers)
+        {
+            IDictionary<string, IList<string>> headerResult = new Dictionary<string, IList<string>>();
+            foreach (string key in headers.Keys)
+            {
+                var value = headers[key];
+                if (value is string)
+                {
+                    var headerValues = new List<string>() { (string)value };
+                    headerResult.Add(key, headerValues);
+                }
+                
+                else if (value is object[])
+                {
+                    var headerValues = new List<string>();
+                    foreach (var item in (object[])value)
+                    {
+                        headerValues.Add(item.ToString());
+                    }
+                    headerResult.Add(key, headerValues);
+                }
+            }
+            return headerResult;
         }
     }
 }

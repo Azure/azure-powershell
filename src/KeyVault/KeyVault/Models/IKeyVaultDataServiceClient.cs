@@ -19,32 +19,54 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size);
+        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
+        PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
+        PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey);
+
         PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
+
+        PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
         PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
-        PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name);
+        PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion);
+
+        PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
+
+        PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName);
 
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName);
+
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName);
 
         IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName);
+
         PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
+
+        PSDeletedKeyVaultKey DeleteManagedHsmKey(string ManagedHsm, string keyName);
 
         void PurgeKey(string vaultName, string name);
 
+        void PurgeManagedHsmKey(string managedHsmName, string keyName);
+
         PSKeyVaultKey RecoverKey(string vaultName, string keyName);
+
+        PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
 
         PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes);
 
@@ -68,7 +90,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
+        string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath);
+
         PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+
+        PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 
@@ -167,6 +193,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         string BackupManagedStorageAccount(string vaultName, string managedStorageAccountName, string outputBlobPath);
 
         PSKeyVaultManagedStorageAccount RestoreManagedStorageAccount(string vaultName, string inputBlobPath);
+
+        #endregion
+
+        #region Full backup restore
+        Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken);
+        void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder);
+        #endregion
+
+        #region RBAC
+        PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope);
+        PSKeyVaultRoleAssignment[] GetHsmRoleAssignments(string hsmName, string scope);
+        PSKeyVaultRoleAssignment GetHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
+        PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId);
+        void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
         #endregion
     }
 }

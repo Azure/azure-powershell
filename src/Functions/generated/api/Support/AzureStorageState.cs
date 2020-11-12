@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>State of the storage account.</summary>
     public partial struct AzureStorageState :
         System.IEquatable<AzureStorageState>
     {

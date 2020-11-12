@@ -191,6 +191,98 @@ function Test-AddWebAppAccessRestriction
 
 <#
 .SYNOPSIS
+Add ServiceTag Access Restriction
+#>
+function Test-AddWebAppAccessRestrictionServiceTag
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName	
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Shared"
+	$serviceTag = "AzureFrontDoor.Backend"
+
+	try
+	{
+		# Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webApp = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		
+		# Assert Setup
+		Assert-AreEqual $wname $webApp.Name
+		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
+		
+		# Run Tests
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name frontdoor -Action Allow -ServiceTag $serviceTag -Priority 400 -PassThru
+
+		# Assert
+		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
+		Assert-AreEqual "frontdoor" $actual.MainSiteAccessRestrictions[0].RuleName
+		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
+		Assert-AreEqual $serviceTag $actual.MainSiteAccessRestrictions[0].IpAddress
+		Assert-AreEqual "Deny all" $actual.MainSiteAccessRestrictions[1].RuleName
+		Assert-AreEqual "Deny" $actual.MainSiteAccessRestrictions[1].Action
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+Add HttpHeader Access Restriction
+#>
+function Test-AddWebAppAccessRestrictionHttpHeaders
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName	
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Shared"
+	$serviceTag = "AzureFrontDoor.Backend"
+
+	try
+	{
+		# Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webApp = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		
+		# Assert Setup
+		Assert-AreEqual $wname $webApp.Name
+		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
+		
+		# Run Tests
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name singleinstance-frontdoor -Action Allow -ServiceTag $serviceTag `
+		-Priority 500 -HttpHeader @{'x-azure-fdid' = '355deb06-47c4-4ba4-9641-c7d7a98b913e'; 'x-forwarded-host' = 'www.contoso.com', 'app.contoso.com' } -PassThru
+
+		# Assert
+		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
+		Assert-AreEqual "singleinstance-frontdoor" $actual.MainSiteAccessRestrictions[0].RuleName
+		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
+		Assert-AreEqual $serviceTag $actual.MainSiteAccessRestrictions[0].IpAddress
+		Assert-NotNull $actual.MainSiteAccessRestrictions[0].HttpHeader
+		Assert-AreEqual "Deny all" $actual.MainSiteAccessRestrictions[1].RuleName
+		Assert-AreEqual "Deny" $actual.MainSiteAccessRestrictions[1].Action
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
 Add Subnet Access Restriction
 #>
 function Test-AddWebAppAccessRestrictionServiceEndpoint
@@ -286,6 +378,59 @@ function Test-RemoveWebAppAccessRestriction
 
 		# Run Tests
 		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -PassThru
+
+		# Assert
+		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count
+		Assert-AreEqual "Allow all" $actual.MainSiteAccessRestrictions[0].RuleName
+		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+Add and Remove ServiceTag Access Restriction
+#>
+function Test-RemoveWebAppAccessRestrictionServiceTag
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName	
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Shared"
+	$serviceTag = "AzureCloud"
+
+	try
+	{
+		# Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webApp = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		
+		# Assert Setup
+		Assert-AreEqual $wname $webApp.Name
+		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
+		
+		# Run Tests
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name all-azure -Action Allow -ServiceTag $serviceTag -Priority 400 -PassThru
+
+		# Assert
+		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
+		Assert-AreEqual "all-azure" $actual.MainSiteAccessRestrictions[0].RuleName
+		Assert-AreEqual $serviceTag $actual.MainSiteAccessRestrictions[0].IpAddress
+		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
+		Assert-AreEqual "Deny all" $actual.MainSiteAccessRestrictions[1].RuleName
+		Assert-AreEqual "Deny" $actual.MainSiteAccessRestrictions[1].Action
+
+		# Run Tests
+		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -ServiceTag $serviceTag -PassThru
 
 		# Assert
 		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count

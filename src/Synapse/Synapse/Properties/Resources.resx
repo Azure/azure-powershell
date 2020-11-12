@@ -456,4 +456,43 @@ Are you sure you want to continue?</value>
   <data name="RemovingSynapseDataFlow" xml:space="preserve">
     <value>Deleting data flow '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RestoringSynapseSqlPool" xml:space="preserve">
+    <value>Creating a new SQL pool restored from '{0}' in resource group '{1}' under parent Workspace '{2}' with name '{3}'.</value>
+  </data>
+  <data name="RemoveFirewallRule" xml:space="preserve">
+    <value>Are you sure you want to remove filewall rule '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataFlow" xml:space="preserve">
+    <value>Are you sure you want to remove data flow '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataset" xml:space="preserve">
+    <value>Are you sure you want to remove data set '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseLinkedService" xml:space="preserve">
+    <value>Are you sure you want to remove linked service '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseNotebook" xml:space="preserve">
+    <value>Are you sure you want to remove notebook '{0}'?</value>
+  </data>
+  <data name="RemoveSynapsePipeline" xml:space="preserve">
+    <value>Are you sure you want to remove pipeline '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSparkPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Spark pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlDatabase" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL database '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTrigger" xml:space="preserve">
+    <value>Are you sure you want to remove trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTriggerSubscription" xml:space="preserve">
+    <value>Are you sure you want to unsubscribe the event trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseWorkspace" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse workspace '{0}'?</value>
+  </data>
 </root>
