@@ -16,8 +16,8 @@ Creates the metadata of a service instance.
 New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
  [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
  [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
- [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>] [-ExportStorageAccountName <String>] 
- [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob] 
+ [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>] [-ExportStorageAccountName <String>]
+ [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCorsCredential
-HealthcareApis Fhir Service AllowCorsCredential.
+HealthcareApis Fhir Service AllowCorsCredentials.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -134,7 +134,9 @@ Accept wildcard characters: False
 ```
 
 ### -CorsHeader
-HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use * for any header.
+HealthcareApis Fhir Service List of Cors Header.
+Specify HTTP headers which can be used during the request.
+Use " * " for any header.
 
 ```yaml
 Type: System.String[]
@@ -149,7 +151,9 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMaxAge
-HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.
+HealthcareApis Fhir Service Cors Max Age.
+Specify how long a result from a request can be cached in seconds.
+Example: 600 means 10 minutes.
 
 ```yaml
 Type: System.Int32
@@ -179,10 +183,27 @@ Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use * to allow access from any site.
+HealthcareApis Fhir Service List of Cors Origin.
+Specify URLs of origin sites that can access this API, or use " * " to allow access from any site.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosKeyVaultKeyUri
+HealthcareApis Fhir Service CosmosKeyVaultKeyUri.
+The URI of the customer-managed key for the backing database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -414,7 +435,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
+### Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 
 ## NOTES
 

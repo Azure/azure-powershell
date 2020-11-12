@@ -239,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
+### Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 
 ## NOTES
 
