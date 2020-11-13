@@ -2,20 +2,20 @@
 ```powershell
 PS C:\> Get-AzPostgreSqlFlexibleServer
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-postgresql-test-11 eastus   postgresql-test         5.7     32768                    Standard_D2ds_v4 GeneralPurpose
+Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----            -------- ------------------ ------- ----------------------- ---------------- -------------
+postgresql-test-11 eastus   postgresql-test  12     32768                    Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet gets PostgreSql servers with default context.
 
 ### Example 2: Get PostgreSql server by resource group and server name
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name PostgreSql-test
+PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-postgresql-test-11 eastus   postgresql-test         5.7     32768                    Standard_D2s_v3 GeneralPurpose
+Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----            -------- ------------------ ------- ----------------------- ---------------- -------------
+postgresql-test-11 eastus   postgresql-test  12     32768                    Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet gets PostgreSql servers by resource group and server name.
@@ -24,22 +24,22 @@ This cmdlet gets PostgreSql servers by resource group and server name.
 ```powershell
 PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-postgresql-test-11 eastus   postgresql-test         5.7     32768                    Standard_D2s_v3 GeneralPurpose
-postgresql-test-12 eastus   postgresql-test2        5.7     32768                    Standard_D2s_v3 GeneralPurpose
+Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----            -------- ------------------ ------- ----------------------- ---------------- -------------
+postgresql-test-11 eastus   postgresql-test  12     32768                    Standard_D2s_v3 GeneralPurpose
+postgresql-test-12 eastus   postgresql-test2 12     32768                   Standard_D4s_v3 GeneralPurpose
 ```
 
 This cmdlet lists all the PostgreSql servers in the specified resource group.
 
 ### Example 4: Get PostgreSql server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test"
 PS C:\> Get-AzPostgreSqlFlexibleServer -InputObject $ID
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-postgresql-test-11 eastus   postgresql-test         12     32768                    Standard_D2s_v3 GeneralPurpose
+Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----            -------- ------------------ ------- ----------------------- ---------------- -------------
+postgresql-test-11 eastus   postgresql-test  12     32768                    Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet lists gets PostgreSql servers by identity.

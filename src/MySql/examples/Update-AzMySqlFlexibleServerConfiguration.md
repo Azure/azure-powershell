@@ -16,7 +16,7 @@ PS C:\> Update-AzMySqlFlexibleServer -InputObject $ID -Value 150
 
 Name          Value   DefaultValue  Source        AllowedValues DataType
 ----          ------  ------------  -------       ------------- ---------
-wait_timeout   150    28800         system-default   1-31536000   Integer
+wait_timeout   150    28800         user-override   1-31536000   Integer
 ```
 
 These cmdlets update MySql configuration by identity.
