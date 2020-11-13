@@ -13,7 +13,7 @@ function setupEnv() {
 
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.location = 'westus2'
+    $env.location = 'uksouth'
     # For any resources you created for test, you should add it to $env here.
     $env.sapMonitor01 = 'sapMonitor-' + (RandomString -allChars $false -len 6) + '-test'
     $env.sapMonitor02 = 'sapMonitor-' + (RandomString -allChars $false -len 6) + '-test'
@@ -22,6 +22,7 @@ function setupEnv() {
     $env.sapIns02 = 'sapInstance-' + (RandomString -allChars $false -len 6)
     $env.sapIns03 = 'sapInstance-' + (RandomString -allChars $false -len 6)
     $env.sapIns04 = 'sapInstance-' + (RandomString -allChars $false -len 6)
+    $env.sapIns05 = 'sapInstance-' + (RandomString -allChars $false -len 6)
 
     Write-Host -ForegroundColor Green "Create test group..."
     $costResourceGroup = 'costmanagement-rg-' + (RandomString -allChars $false -len 6)
@@ -29,8 +30,8 @@ function setupEnv() {
     $null = $env.Add('costResourceGroup', $costResourceGroup)
     Write-Host -ForegroundColor Green 'The test group create completed.'
 
-    Write-Host -ForegroundColor Green "Using nancyc-hn1 resource group.The resource group included HANA VM, Cann't remove."
-    $env.resourceGroup = 'nancyc-hn1' # The resource group deployed HANA VM, Because very difficult to deploy a HANA VM.
+    Write-Host -ForegroundColor Green "Using donaliu-HN1 resource group.The resource group included HANA VM, Cann't remove."
+    $env.resourceGroup = 'donaliu-HN1' # The resource group deployed HANA VM, Because very difficult to deploy a HANA VM.
 
     Write-Host -ForegroundColor Green 'Deploying operational insights workspace'
     $env.workspacesName01 = 'monitoringworkspace-' + (RandomString -allChars $false -len 6)
@@ -59,8 +60,14 @@ function setupEnv() {
     
     # Virtual network
     # HANA Vm subnet
-    $env.MonitorSubnet = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/nancyc-hn1/providers/Microsoft.Network/virtualNetworks/vnet-sap/subnets/subnet-admin"
-    
+    $env.MonitorSubnet = "/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/tniek-all/providers/Microsoft.Network/virtualNetworks/vnet-all/subnets/sapmon"
+    # hostName and port may need to be changed based on the env when running live/record test
+    $hostName = '10.1.2.6'
+    $port = 30113
+    $null = $env.Add('hostName', $hostName)
+    $null = $env.Add('port', $port)
+    $null = $env.Add('prometheusUrl', 'http://10.3.1.6:9100/metrics')
+
     # Create SAP monitor
     Write-Host -ForegroundColor Green 'create SAP monitor for test...'
     New-AzSapMonitor -Name $env.sapMonitor01 -ResourceGroupName $env.resourceGroup -Location $env.location -EnableCustomerAnalytic `
@@ -71,10 +78,9 @@ function setupEnv() {
     Write-Host -ForegroundColor Green 'The SAP monitor created successfully'
 
     Write-Host -ForegroundColor Green 'create SAP instance for test...'
-    $hostName = 'hdb1-0'
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns01 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
-    New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns02 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePasswordSecretId $env.hanaDbPasswordSecretId -HanaDatabasePasswordKeyVaultResourceId $env.hanaDbPasswordKvResourceId
+    New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns01 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort $port -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
+    New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns02 -SapMonitorName $env.sapMonitor01 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort $port -HanaDatabaseUsername SYSTEM -HanaDatabasePasswordSecretId $env.hanaDbPasswordSecretId -HanaDatabasePasswordKeyVaultResourceId $env.hanaDbPasswordKvResourceId
     Write-Host -ForegroundColor Green 'The SAP instance created successfully'
 
     $envFile = 'env.json'
