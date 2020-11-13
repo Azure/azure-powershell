@@ -66,6 +66,14 @@ directive:
       verb: Get
       subject: OperationStatuses
     remove: true
+  # Rename ResourceId to NotificationHubResourceId
+  - where:
+      verb: Invoke
+      subject: LinkCommunicationServiceNotificationHub
+      parameter-name: ResourceId
+    set:
+      parameter-name: NotificationHubResourceId
+  # Rename Invoke-LinkCommunicationServiceNotificationHub to Set-ServiceNotificationHub
   - where:
       verb: Invoke
       subject: LinkCommunicationServiceNotificationHub

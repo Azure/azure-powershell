@@ -15,8 +15,8 @@ Links an Azure Notification Hub to this communication service.
 ### LinkExpanded (Default)
 ```
 Set-AzCommunicationServiceNotificationHub -CommunicationServiceName <String> -ResourceGroupName <String>
- -ConnectionString <String> -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ConnectionString <String> -NotificationHubResourceId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Link
@@ -33,7 +33,7 @@ Links an Azure Notification Hub to this communication service.
 
 ### Example 1: Provide Notification Hub details interactively
 ```powershell
-PS C:\> Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -ResourceId "<notificationhub-resourceid>"
+PS C:\> Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
 ```
 
 A linked notification hub allows a ACS resource to send notifications for certain events.
@@ -101,13 +101,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -NotificationHubResourceId
+The resource ID of the notification hub
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LinkExpanded
 Aliases:
 
 Required: True
@@ -117,12 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource ID of the notification hub
+### -ResourceGroupName
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -201,7 +201,7 @@ To create the parameters described below, construct a hash table containing the 
 
 LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an Azure Notification Hub to link to the communication service
   - `ConnectionString <String>`: Connection string for the notification hub
-  - `ResourceId <String>`: The resource ID of the notification hub
+  - `NotificationHubResourceId <String>`: The resource ID of the notification hub
 
 ## RELATED LINKS
 
