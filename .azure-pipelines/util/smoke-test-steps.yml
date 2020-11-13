@@ -14,6 +14,13 @@ jobs:
     vmImage: ${{ parameters.vmImage }}
 
   steps:
+  - task: UseDotNet@2
+    condition: ne(variables['NetCoreVersion'], '')
+    displayName: 'Prepare .NET Core $(NetCoreVersion)'
+    inputs:
+      packageType: sdk
+      version: $(NetCoreVersion)
+    
   - task: PowerShell@2
     displayName: Prepare Powershell ${{ parameters.psVersion }}
     inputs:
