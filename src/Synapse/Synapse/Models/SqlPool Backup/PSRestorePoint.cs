@@ -1,23 +1,20 @@
 ﻿using Microsoft.Azure.Management.Synapse.Models;
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSRestorePoint
+    public class PSRestorePoint : PSSynapseResource
     {
-        public PSRestorePoint(RestorePoint restorePoint, [Optional] string ResourceGroupName, [Optional] string WorkspaceName, [Optional] string SqlPoolName)
+        public PSRestorePoint(RestorePoint restorePoint)
         {
             this.Location = restorePoint.Location;
             this.RestorePointType = restorePoint.RestorePointType;
             this.EarliestRestoreDate = restorePoint.EarliestRestoreDate;
             this.RestorePointCreationDate = restorePoint.RestorePointCreationDate;
             this.RestorePointLabel = restorePoint.RestorePointLabel;
-            this.ResourceGroupName = ResourceGroupName;
-            this.WorkspaceName = WorkspaceName;
-            this.SqlPoolName = SqlPoolName;
+            this.Id = restorePoint.Id;
+            this.Name = restorePoint.Name;
+            this.Type = restorePoint.Type;
         }
 
         public string Location { get; }
@@ -30,10 +27,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string RestorePointLabel { get; }
 
-        public string ResourceGroupName { get; set; }
+        public new string Id { get; set; }
 
-        public string WorkspaceName { get; set; }
+        public new string Name { get; set; }
 
-        public string SqlPoolName { get; set; }
+        public new string Type { get; set; }
+
     }
 }

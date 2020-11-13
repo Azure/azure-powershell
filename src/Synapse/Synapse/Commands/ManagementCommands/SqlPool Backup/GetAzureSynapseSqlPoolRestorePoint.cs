@@ -103,13 +103,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SqlPoolName = resourceIdentifier.ResourceName;
             }
 
-            if (!String.IsNullOrEmpty(this.SqlPoolName) && !String.IsNullOrEmpty(this.Name) && this.SqlPoolName != this.Name)
-            {
-                var singleResult = this.SynapseAnalyticsClient.GetSingleSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName, this.Name);
-                WriteObject(singleResult, true);
-                return;
-            }
-
             var result = this.SynapseAnalyticsClient.ListSqlPoolRestorePoints(this.ResourceGroupName, this.WorkspaceName, this.Name)
                 .Select(element => new PSRestorePoint(element));
 

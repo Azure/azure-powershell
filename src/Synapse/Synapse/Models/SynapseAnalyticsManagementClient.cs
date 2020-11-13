@@ -1557,6 +1557,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointCreationTime));
                 }
 
+                bool isNumeric = sqlPoolRestorePointCreationTime.All(char.IsDigit);
+                if (isNumeric)
+                {
+                    this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationTime);
+                    return;
+                }
                 this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, DateTime.Parse(sqlPoolRestorePointCreationTime,
                                           System.Globalization.CultureInfo.InvariantCulture).ToFileTimeUtc().ToString());
             }
@@ -1577,7 +1583,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     sqlPoolName)
                     .ToList();
 
-                return (restorePointList.Count != 0) && (restorePointList.Exists(element => element.RestorePointCreationDate.Value.ToString() == sqlPoolRestorePointName));
+                return (restorePointList.Count != 0) && ((restorePointList.Exists(element => element.RestorePointCreationDate.Value.ToString() == sqlPoolRestorePointName)) || restorePointList.Exists(element => element.Name == sqlPoolRestorePointName.ToString()));
             }
             catch (NotFoundException)
             {

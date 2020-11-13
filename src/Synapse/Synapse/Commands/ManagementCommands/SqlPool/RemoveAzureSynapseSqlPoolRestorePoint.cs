@@ -78,10 +78,13 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
 
             if (this.IsParameterBound(c => c.InputObject))
             {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.WorkspaceName = this.InputObject.WorkspaceName;
-                this.SqlPoolName = this.InputObject.SqlPoolName;
-                this.Name = this.InputObject.RestorePointCreationDate.Value.ToFileTimeUtc().ToString();
+                this.Name = this.InputObject.Id.Substring(this.InputObject.Id.LastIndexOf('/') + 1);
+                this.ResourceId = this.InputObject.Id.Substring(0, this.InputObject.Id.Substring(0, this.InputObject.Id.LastIndexOf("/")).LastIndexOf("/"));
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.WorkspaceName = resourceIdentifier.ParentResource;
+                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
+                this.SqlPoolName = resourceIdentifier.ResourceName;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
