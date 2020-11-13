@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * Added new MSIX Package cmdlets and updated Applications cmdlets.
 
 ## Version 2.0.0

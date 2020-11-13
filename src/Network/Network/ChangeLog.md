@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.3.0
 * Updated below cmdlet 
     - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
         - Added PublicIpAddressPrefix property
