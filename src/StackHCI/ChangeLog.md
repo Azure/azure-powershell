@@ -23,6 +23,7 @@
     - Supports On-Premises Azure Stack HCI OS changes to use independent certificate on cluster nodes.
     - Cleans up resource group during unregistration.
     - Improves registration output and logging.
+    - Corrected invalid character in unregistration details message.
 * [Breaking Change] Breaks the public preview registration of On-Premises Azure Stack HCI with Azure.
     - To register public preview On-Premises Azure Stack HCi with Azure, use 0.3.1 version of Az.StackHCI.
 
