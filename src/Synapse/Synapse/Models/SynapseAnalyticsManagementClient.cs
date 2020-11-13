@@ -1377,7 +1377,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.SqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1422,7 +1422,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
+                _synapseManagementClient.SqlPools.UpdateAsync(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
             catch (CloudException ex)
             {
