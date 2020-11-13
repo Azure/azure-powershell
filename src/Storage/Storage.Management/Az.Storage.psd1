@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -186,7 +186,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Disable-AzStorageBlobLastAccessTimeTracking', 
                'Enable-AzStorageContainerDeleteRetentionPolicy', 
                'Disable-AzStorageContainerDeleteRetentionPolicy', 
-               'Restore-AzStorageContainer'
+               'Restore-AzStorageContainer', 
+               'Set-AzStorageBlobInventoryPolicy', 'New-AzStorageBlobInventoryPolicyRule', 
+               'Get-AzStorageBlobInventoryPolicy', 'Remove-AzStorageBlobInventoryPolicy' 
 
 # Variables to export from this module
 # VariablesToExport = @()

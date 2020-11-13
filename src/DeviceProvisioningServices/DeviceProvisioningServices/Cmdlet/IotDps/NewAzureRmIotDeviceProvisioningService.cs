@@ -15,12 +15,15 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
+    using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
     using Azure.Management.Internal.Resources;
     using Azure.Management.Internal.Resources.Models;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
@@ -68,6 +71,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateSet(new string[] { "S1" }, IgnoreCase = true)]
         public string SkuName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "IoT Device Provisioning Service instance tags. Property bag in key-value pairs in the form of a hash table.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, DPSResources.AddDeviceProvisioningService))
@@ -113,6 +122,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 else
                 {
                     provisioningServiceDescription.Sku = new IotDpsSkuInfo(IotDpsSku.S1);
+                }
+
+                if (this.IsParameterBound(c => c.Tag))
+                {
+                    provisioningServiceDescription.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
                 }
 
                 IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);

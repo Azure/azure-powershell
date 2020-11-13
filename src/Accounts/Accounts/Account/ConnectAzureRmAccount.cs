@@ -19,6 +19,8 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -29,6 +31,7 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -224,6 +227,13 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+
+            // todo: ideally cancellation token should be passed to authentication factory as a parameter
+            // however AuthenticationFactory.Authenticate does not support it
+            // so I store it in AzureSession.Instance as a global variable
+            // todo: CancellationTokenSource should be visiable only in cmdlet class
+            // CancellationTokenSource.Token should be passed to other classes
+            AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
 
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
@@ -232,6 +242,14 @@ namespace Microsoft.Azure.Commands.Profile
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
             _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
+        }
+
+        protected override void StopProcessing()
+        {
+            if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource)) {
+                cancellationTokenSource?.Cancel();
+            }
+            base.StopProcessing();
         }
 
         public override void ExecuteCmdlet()
@@ -398,10 +416,34 @@ namespace Microsoft.Azure.Commands.Profile
                    }
 
                    HandleActions();
-                   var result = (PSAzureProfile) (task.ConfigureAwait(false).GetAwaiter().GetResult());
-                   WriteObject(result);
+
+                   try
+                   {
+                       var result = (PSAzureProfile)(task.ConfigureAwait(false).GetAwaiter().GetResult());
+                       WriteObject(result);
+                   }
+                   catch (AuthenticationFailedException ex)
+                   {
+                       if(IsUnableToOpenWebPageError(ex))
+                       {
+                           WriteWarning(Resources.InteractiveAuthNotSupported);
+                           WriteDebug(ex.ToString());
+                       }
+                       else
+                       {
+                           WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                           WriteDebug(ex.ToString());
+                           throw;
+                       }
+                   }
                });
             }
+        }
+
+        private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
+        {
+            return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
+                            || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();

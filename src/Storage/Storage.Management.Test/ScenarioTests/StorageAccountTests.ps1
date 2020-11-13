@@ -1459,3 +1459,176 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-StorageBlobInventory
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobInventory
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+		$containerName = "container"+ $rgname
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# new account and container, enable versioning
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype 
+		New-AzRmStorageContainer -ResourceGroupName $rgname  -StorageAccountName $stoname  -Name $containerName
+		Update-AzStorageBlobServiceProperty  -ResourceGroupName $rgname  -StorageAccountName $stoname -IsVersioningEnabled $true
+
+        #create rule objects
+        $rule1 = New-AzStorageBlobInventoryPolicyRule -Name test1 -Disabled -BlobType blockBlob,appendBlob,pageBlob -PrefixMatch abc,edf,eqwewqe,eqwewqreewqe,qwewqewqewqewqewadasd -IncludeSnapshot -IncludeBlobVersion
+        $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -BlobType BlockBlob
+        $rule3 = New-AzStorageBlobInventoryPolicyRule -Name test3 -BlobType appendBlob -PrefixMatch abc1,edf1
+
+		# Set inventory policy
+		$policy1 = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname  -Disabled -Destination $containerName -Rule $rule1,$rule2,$rule3
+		Assert-AreEqual $false $policy1.Enabled
+		Assert-AreEqual $containerName $policy1.Destination
+		Assert-AreEqual 3 $policy1.Rules.Count
+
+		# get inventory policy 
+		$policy1 = Get-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname
+		Assert-AreEqual $false $policy1.Enabled
+		Assert-AreEqual $containerName $policy1.Destination
+		Assert-AreEqual 3 $policy1.Rules.Count
+		Assert-AreEqual "test1" $policy1.Rules[0].Name
+		Assert-AreEqual $false $policy1.Rules[0].Enabled
+		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 3 $policy1.Rules[0].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 5 $policy1.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "test2" $policy1.Rules[1].Name
+		Assert-AreEqual $true $policy1.Rules[1].Enabled
+		Assert-AreEqual $false $policy1.Rules[1].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy1.Rules[1].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy1.Rules[1].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 0 $policy1.Rules[1].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "test3" $policy1.Rules[2].Name
+		Assert-AreEqual $true $policy1.Rules[2].Enabled
+		Assert-AreEqual $false $policy1.Rules[2].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy1.Rules[2].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy1.Rules[2].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy1.Rules[2].Definition.Filters.PrefixMatch.Count
+
+		# set policy with json and account name pipeline
+		$policy2 = Get-AzStorageAccount -ResourceGroupName $rgname  -StorageAccountName $stoname |  Set-AzStorageBlobInventoryPolicy -Policy (@{
+            Enabled=$true;
+            Destination=$containerName;
+            Rules=(@{
+                Enabled=$true;
+                Name="Test1";
+                Definition=(@{
+                    Filters=(@{
+                        BlobTypes=@("blockBlob");
+                        PrefixMatch=@("prefix1","prefix2");
+                        IncludeSnapshots=$true;
+                        IncludeBlobVersions=$true;
+                    })
+                })
+            },
+            @{
+                Enabled=$false;
+                Name="Test2";
+                Definition=(@{
+                    Filters=(@{
+                        BlobTypes=@("blockBlob","appendBlob","pageBlob");
+                        PrefixMatch=@("prefix3","prefix4");
+                        IncludeSnapshots=$true;
+                        IncludeBlobVersions=$false;
+                    })
+                })
+            })
+        })
+		Assert-AreEqual $true $policy2.Enabled
+		Assert-AreEqual $containerName $policy2.Destination
+		Assert-AreEqual 2 $policy2.Rules.Count
+
+		# get inventory policy 
+		$policy2 = Get-AzStorageAccount -ResourceGroupName $rgname  -StorageAccountName $stoname | Get-AzStorageBlobInventoryPolicy 
+		Assert-AreEqual $true $policy2.Enabled
+		Assert-AreEqual $containerName $policy2.Destination
+		Assert-AreEqual 2 $policy2.Rules.Count
+		Assert-AreEqual "Test1" $policy2.Rules[0].Name
+		Assert-AreEqual $true $policy2.Rules[0].Enabled
+		Assert-AreEqual $true $policy2.Rules[0].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $true $policy2.Rules[0].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy2.Rules[0].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy2.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "Test2" $policy2.Rules[1].Name
+		Assert-AreEqual $false $policy2.Rules[1].Enabled
+		Assert-AreEqual $true $policy2.Rules[1].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy2.Rules[1].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 3 $policy2.Rules[1].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy2.Rules[1].Definition.Filters.PrefixMatch.Count
+
+		# remove policy 
+		Get-AzStorageAccount -ResourceGroupName $rgname  -StorageAccountName $stoname | Remove-AzStorageBlobInventoryPolicy 
+
+		# set policy by pipeline policy then get inventory policy 
+		$policy3 = $policy1 | Set-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname 
+		$policy3 = Get-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname
+		Assert-AreEqual $false $policy3.Enabled
+		Assert-AreEqual $containerName $policy3.Destination
+		Assert-AreEqual 3 $policy3.Rules.Count
+		Assert-AreEqual "test1" $policy3.Rules[0].Name
+		Assert-AreEqual $false $policy3.Rules[0].Enabled
+		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 3 $policy3.Rules[0].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 5 $policy3.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "test2" $policy3.Rules[1].Name
+		Assert-AreEqual $true $policy3.Rules[1].Enabled
+		Assert-AreEqual $false $policy3.Rules[1].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy3.Rules[1].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy3.Rules[1].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 0 $policy3.Rules[1].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "test3" $policy3.Rules[2].Name
+		Assert-AreEqual $true $policy3.Rules[2].Enabled
+		Assert-AreEqual $false $policy3.Rules[2].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy3.Rules[2].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy3.Rules[2].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy3.Rules[2].Definition.Filters.PrefixMatch.Count
+
+		# set policy by pipeline policy rules then get inventory policy 
+		$policy4 = ,($policy2.Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname -Destination $containerName -Disabled
+		$policy4 = Get-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname	
+		Assert-AreEqual $false $policy4.Enabled
+		Assert-AreEqual $containerName $policy4.Destination
+		Assert-AreEqual 2 $policy4.Rules.Count
+		Assert-AreEqual "Test1" $policy4.Rules[0].Name
+		Assert-AreEqual $true $policy4.Rules[0].Enabled
+		Assert-AreEqual $true $policy4.Rules[0].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $true $policy4.Rules[0].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 1 $policy4.Rules[0].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy4.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual "Test2" $policy4.Rules[1].Name
+		Assert-AreEqual $false $policy4.Rules[1].Enabled
+		Assert-AreEqual $true $policy4.Rules[1].Definition.Filters.IncludeSnapshots
+		Assert-AreEqual $false $policy4.Rules[1].Definition.Filters.IncludeBlobVersions
+		Assert-AreEqual 3 $policy4.Rules[1].Definition.Filters.BlobTypes.Count
+		Assert-AreEqual 2 $policy4.Rules[1].Definition.Filters.PrefixMatch.Count	
+
+		# remove policy 
+		Remove-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

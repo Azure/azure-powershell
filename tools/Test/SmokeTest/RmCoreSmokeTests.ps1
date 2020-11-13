@@ -15,11 +15,6 @@ if (Get-Module -ListAVailable 'Az.Accounts')
     Enable-AzureRmAlias
 }
 
-if (!(Get-AzureRmContext -ErrorAction 'Ignore'))
-{
-  Connect-AzureRmAccount -Subscription "Azure SDK PowerShell Test"
-}
-
 $testInfo = @{
     TotalCount = 0;
     PassedCount = 0;

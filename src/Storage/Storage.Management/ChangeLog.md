@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Set/Get/Remove blob inventory policy
+    - `New-AzStorageBlobInventoryPolicyRule`
+    - `Set-AzStorageBlobInventoryPolicy`
+    - `Get-AzStorageBlobInventoryPolicy`
+    - `Remove-AzStorageBlobInventoryPolicy`
 
 ## Version 3.0.1
 * Supported resource access rule in NetworkRuleSet
