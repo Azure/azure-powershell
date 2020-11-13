@@ -34,7 +34,7 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -88,7 +88,7 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -111,7 +111,7 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -192,7 +192,7 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -215,7 +215,7 @@ Describe 'Get-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `

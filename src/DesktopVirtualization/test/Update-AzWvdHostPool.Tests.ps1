@@ -34,7 +34,7 @@ Describe 'Update-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -74,7 +74,7 @@ Describe 'Update-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert2' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs2' `
                             -SsoSecretType 'CertificateInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              

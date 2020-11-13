@@ -21,8 +21,7 @@ Describe 'New-AzWvdHostPool' {
                             -LoadBalancerType 'DepthFirst' `
                             -PreferredAppGroupType 'Desktop' `
                             -DesktopAppGroupName 'FullSenerioCreateAG' `
-                            -WorkspaceName 'FullSenerioCreateWS' `
-                            -StartVMOnConnect $false
+                            -WorkspaceName 'FullSenerioCreateWS'
 
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -59,7 +58,7 @@ Describe 'New-AzWvdHostPool' {
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
                             -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect $false
+                            -StartVMOnConnect:$false
 
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
