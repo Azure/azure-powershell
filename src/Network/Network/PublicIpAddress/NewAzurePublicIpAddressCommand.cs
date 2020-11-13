@@ -69,6 +69,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         [Parameter(
+    Mandatory = false,
+    ValueFromPipelineByPropertyName = true,
+    HelpMessage = "The public IP Sku tier.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+    MNM.PublicIPAddressSkuTier.Regional,
+    MNM.PublicIPAddressSkuTier.Global,
+    IgnoreCase = true)]
+        public string Tier { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
@@ -171,6 +182,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIp.Sku = new PSPublicIpAddressSku();
                 publicIp.Sku.Name = this.Sku;
+            }
+
+            if (!string.IsNullOrEmpty(this.Tier))
+            {
+                if(publicIp.Sku == null)
+                {
+                    publicIp.Sku = new PSPublicIpAddressSku();
+                }
+
+                publicIp.Sku.Tier = this.Tier;
             }
 
             if (this.IdleTimeoutInMinutes > 0)
