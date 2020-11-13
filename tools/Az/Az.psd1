@@ -214,6 +214,19 @@ Az.LogicApp
 * Fixed for Get-AzLogicAppRunHistory only retrieving the first page of results
 
 Az.Network
+* Updated below cmdlet 
+    -`New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
+        - Added PublicIpAddressPrefix property
+        - Added PublicIpAddressPrefixId property
+* Added new properties to the following cmdlets to allow for global load balancing
+    - `New-AzLoadBalancer`:
+        - Added Sku Tier property
+    - `New-AzPuplicIpAddress`:
+        - Added Sku Tier property
+    - `New-AzPublicIpPrefix`:
+        - Added Sku Tier property
+    - `New-AzLoadBalancerBackendAddressConfig`:
+        - Added LoadBalancerFrontendIPConfigurationId property
 * Updated planning to deprecate warnings for the following cmdlets
     -''New-AzVirtualHubRoute''
     -''New-AzVirtualHubRouteTable''
