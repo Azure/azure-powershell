@@ -109,7 +109,8 @@ Resources:
 Tags: 
     Name         Value
     ==========   =====
-    CostCenter   0001 
+    Value        0001 
+    Name         CostCenter
 PS C:\>Get-AzureRmTag -Name "CostCenter"
 Name:   CostCenter
 Count:  1
