@@ -333,15 +333,27 @@ namespace Microsoft.Azure.Commands.Compute
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
             //adam
             var listTest = TopLevelWildcardFilter(ResourceGroupName, Name, resources:vmListResult.Body.ToList());
+            //TODO: this is good, but I also need to deal with the paging, does this get all the pages of VMs? 
+            //!!!
+
             var listPSItems = new List<PSVirtualMachineListStatus>();
-            foreach (var item in vmListResult.Body)
+            /*foreach (var item in vmListResult.Body)
             {
-                var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
-                listPSItems.Add(psItem);
+                //var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                //psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
+                //listPSItems.Add(psItem);
+                //functional but n2 time
+            }*/
+            var psListParam = new List<PSVirtualMachine>();
+            foreach (var item in listTest)
+            {
+                var psItem2 = new PSVirtualMachine(); 
+                psItem2 = ComputeAutoMapperProfile.Mapper.Map(item, psItem2);
+                psListParam.Add(psItem2);
+                
             }
             var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
-            var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
+            //var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
             //adam
             while (vmListResult != null)
             {
