@@ -95,3 +95,110 @@ function Test-AzRmHealthcareApisService{
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
+
+<#
+.SYNOPSIS
+Test PrivateEndpointConnection
+#>
+function Test-PrivateEndpointConnection
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+
+    try
+    {
+        # Test
+        $accountname = 'hca' + $rgname;
+        $loc = Get-Location;
+        $offerThroughput =  Get-OfferThroughput
+	    $kind = Get-Kind
+	    $storageAccountName = "exportStorage"
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzHealthcareApisService -Name $accountname -ResourceGroupName $rgname -Location $loc -Kind $kind -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+        Assert-AreEqual $createdAccount.PrivateEndpointConnections $null
+
+        $vnet = Get-AzVirtualNetwork -ResourceName anrudraw-vnet -ResourceGroupName anrudraw-demo
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name pe-powershell-ut -PrivateLinkServiceId $createdAccount.Id -RequestMessage "Please Approve my request" -GroupId "fhir"
+        New-AzPrivateEndpoint -PrivateLinkServiceConnection $plsConnection -Subnet $vnet.Subnets[0] -Name pe-powershell-ut -ResourceGroupName anrudraw-demo -Location $loc 
+        
+        $account = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $accountname
+        Assert-AreEqual $account.PrivateEndpointConnections.Length 1
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test PublicNetworkAccessControl
+#>
+function Test-PublicNetworkAccessControl
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    # Test
+    $accountname = 'hca' + $rgname;
+    $loc = "Central US EUAP";
+    $offerThroughput =  Get-OfferThroughput
+	$kind = Get-Kind
+	$storageAccountName = "exportStorage"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount =  New-AzHealthcareApisService -Name $accountname -ResourceGroupName $rgname -Location $loc -Kind $kind -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+
+        $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $accountname
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Disabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Disabled"
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzHealthcareApisService -Name $accountname -ResourceGroupName $rgname -Location $loc -Kind $kind -PublicNetworkAccess "Enabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzHealthcareApisService -Name $accountname -ResourceGroupName $rgname -Location $loc -Kind $kind -PublicNetworkAccess "Disabled" -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Disabled"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -155,6 +155,12 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for Cognitive Services Account. Commonly `Enabled` or `Disabled`.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        public string PublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -177,13 +183,18 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
                             ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName},
-                            AccessPolicies = accessPolicies
+                            AccessPolicies = accessPolicies,
                         }
                     };
                     
                     if (this.ManagedIdentity.IsPresent)
                     {
-                        servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                        servicesDescription.Identity = new Management.HealthcareApis.Models.ServicesResourceIdentity() { Type = "SystemAssigned" };
+                    }
+
+                    if (!string.IsNullOrEmpty(PublicNetworkAccess))
+                    {
+                        servicesDescription.Properties.PublicNetworkAccess = PublicNetworkAccess;
                     }
 
                     if (ShouldProcess(this.Name, Resources.createService))
