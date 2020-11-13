@@ -23,7 +23,7 @@ Describe 'Get-AzMySqlConfiguration' {
     }
 
     It 'GetViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/configurations/server_id"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/configurations/server_id"
         $config = Get-AzMySqlConfiguration -InputObject $ID 
         $config.Name | Should -Be server_id
     }

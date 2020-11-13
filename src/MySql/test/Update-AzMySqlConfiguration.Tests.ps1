@@ -18,7 +18,7 @@ Describe 'Update-AzMySqlConfiguration' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/configurations/wait_timeout"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/configurations/wait_timeout"
         $config = Update-AzMySqlConfiguration -InputObject $ID -Value 150
         $config.Value | Should -Be 150
     }

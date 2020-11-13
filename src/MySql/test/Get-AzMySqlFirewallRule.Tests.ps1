@@ -29,7 +29,7 @@ Describe 'Get-AzMySqlFirewallRule' {
 
     It 'GetViaIdentity' {
         New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
         $rule = Get-AzMySqlFirewallRule -InputObject $ID
         $rule.StartIPAddress | Should -Be 0.0.0.0
         $rule.EndIPAddress | Should -Be 0.0.0.1

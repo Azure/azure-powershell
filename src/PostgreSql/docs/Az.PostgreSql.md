@@ -29,9 +29,6 @@ Gets information about a configuration of server.
 ### [Get-AzPostgreSqlFlexibleServerFirewallRule](Get-AzPostgreSqlFlexibleServerFirewallRule.md)
 List all the firewall rules in a given server.
 
-### [Get-AzPostgreSqlFlexibleServerLocationBasedCapability](Get-AzPostgreSqlFlexibleServerLocationBasedCapability.md)
-Get capabilities at specified location in a given subscription.
-
 ### [Get-AzPostgreSqlReplica](Get-AzPostgreSqlReplica.md)
 List all the replicas for a given server.
 

@@ -26,7 +26,7 @@ Describe 'Remove-AzPostgreSqlServer' {
             #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             New-AzPostgreSqlServer -Name postgresqldelete -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/postgresqldelete"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSQL/servers/postgresqldelete"
             Remove-AzPostgreSqlServer -InputObject $ID
         } | Should -Not -Throw
     }

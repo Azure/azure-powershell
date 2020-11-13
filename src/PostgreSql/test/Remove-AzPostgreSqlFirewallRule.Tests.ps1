@@ -22,7 +22,7 @@ Describe 'Remove-AzPostgreSqlFirewallRule' {
     It 'DeleteViaIdentity' {
         { 
             New-AzPostgreSqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
             Remove-AzPostgreSqlFirewallRule -InputObject $ID 
         } | Should -Not -Throw
     }

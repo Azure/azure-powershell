@@ -32,9 +32,6 @@ Gets information about a database.
 ### [Get-AzMySqlFlexibleServerFirewallRule](Get-AzMySqlFlexibleServerFirewallRule.md)
 Gets information about a server firewall rule.
 
-### [Get-AzMySqlFlexibleServerLocationBasedCapability](Get-AzMySqlFlexibleServerLocationBasedCapability.md)
-Get capabilities at specified location in a given subscription.
-
 ### [Get-AzMySqlFlexibleServerReplica](Get-AzMySqlFlexibleServerReplica.md)
 List all the replicas for a given server.
 

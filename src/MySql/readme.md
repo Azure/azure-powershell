@@ -81,7 +81,7 @@ directive:
     hide: true
   - where:
       verb: Get$
-      subject: ^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerLocationBasedPerformanceTier$
+      subject: ^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerLocationBasedCapability$
     hide: true
   - where:
       verb: Test$

@@ -1,8 +1,8 @@
 {
-  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"10240\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"4f49a233-b3c9-4f43-859e-1260748f24ca\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-12T23:12:43.627Z\"}"
     }
   },
-  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -112,13 +112,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"value\":\"10240\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"user-override\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresqltest100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
+      "Content": "{\"properties\":{\"value\":\"10240\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"user-override\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresql-test-100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
     }
   },
-  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"4096\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -192,10 +192,10 @@
       "Content": "{\"name\":\"45063307-4cbb-49c5-875b-ac9b1be719da\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-12T23:13:50.087Z\"}"
     }
   },
-  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresqltest100/configurations/work_mem?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/configurations/work_mem?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -228,7 +228,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"value\":\"4096\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"system-default\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresqltest100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
+      "Content": "{\"properties\":{\"value\":\"4096\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"system-default\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresql-test-100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
     }
   }
 }
