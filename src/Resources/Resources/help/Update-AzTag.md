@@ -17,7 +17,7 @@ Selectively updates the set of tags on a resource or subscription.
 ```powershell
 Update-AzTag
    -ResourceId <String>
-   -Operation <TagPatchOpeation>
+   -Operation <TagPatchOperation>
    -Tag <Hashtable>
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
