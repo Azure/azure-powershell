@@ -141,6 +141,11 @@ Alternatively, be sure to check out the [Azure Community Support](https://azure.
 
 If there is a feature you would like to see in Azure PowerShell, please use the [`Send-Feedback`][SendFeedback] cmdlet, or file an issue in our [GitHub issues][GitHubIssues] page to provide the Azure PowerShell team direct feedback.
 
+## Telemetry
+
+Azure PowerShell collects telemetry data by default. Microsoft aggregated collected data to identify patterns of usage to identify common issues and to improve the experience of Azure PowerShell. Microsoft Azure PowerShell does not collect any private or personal data.
+You can opt-out of data collection with the [`Disable-AzDataCollection`](https://docs.microsoft.com/en-us/powershell/module/az.accounts/disable-azdatacollection) cmdlet.
+
 ## Contribute Code
 
 If you would like to become an active contributor to this project, please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines][ContributionGuidelines].
