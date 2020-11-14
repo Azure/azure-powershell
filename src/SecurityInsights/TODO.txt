@@ -2,5 +2,7 @@ Security
 Update Az.SecInsights.psd1 cmdletstoexport with all cmdlet names
 Recheck - AssemblyInfo.cs
 go through three files in common
-Models?
+
+AlertRuleTemplate - sdk is mising properties.  Update API then SDK.
+
 Create Help Files

@@ -26,9 +26,54 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         private static Regex subscriptionRegex = new Regex("/subscriptions/(?<subscriptionId>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static Regex workspaceRegex = new Regex("/workspaces/(?<workspace>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex alertruleRegex = new Regex("/alertRules/(?<alertrule>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex actionRegex = new Regex("/actions/(?<action>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         public static string GetResourceName(string id)
         {
             return id.Split('/').Last();
+        }
+
+        public static string GetWorkspaceName(string id)
+        {
+            var match = workspaceRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["workspace"].Value;
+
+        }
+        
+        public static string GetAlertRuleName(string id)
+        {
+            var match = alertruleRegex.Match(id);
+            
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["alertrule"].Value;
+
+        }
+
+        public static string GetActionName(string id)
+        {
+            var match = actionRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["action"].Value;
+
         }
 
         public static string GetResourceLocation(string id)

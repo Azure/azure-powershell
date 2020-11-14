@@ -15,46 +15,32 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 {
-    public class PSSentinelIncident
+    public class PSSentinelFusionAlertRule
     {
+
         public string Id { get; set; }
 
         public string Name { get; set; }
 
         public string Type { get; set; }
 
-        public PSSentinelIncidentAdditionalData AdditonalData { get; set; }
+        public string Kind { get; set; }
 
-        public string Classificaton { get; set; }
+        public string AlertRuleTemplateName { get; set; }
 
-        public string ClassificationComment { get; set; }
-        
-        public string ClassificationReason { get; set; }
-
-        public DateTime? CreatedTimeUTC { get; set; }
+        public string DisplayName { get; set; }
 
         public string Description { get; set; }
 
-        public DateTime? FirstActivityTimeUtc { get; set; }
-
-        public int? IncidentNumber { get; set; }
-
-        public string IncidentUrl { get; set; }
-
-        public IList<PSSentinelIncidentLabel> Labels { get; set; }
-
-        public DateTime? LastActivityTimeUtc { get; set; }
-
-        public DateTime? LastModifiedTimeUtc { get; set; }
-
-        public PSSentinelIncidentOwner Owner { get; set; }
-
         public string Severity { get; set; }
 
-        public string Status { get; set; }
+        public bool Enabled { get; set; }
 
-        public string Title { get; set; }
+        public DateTime? LastModifiedUtc { get; set; }
+
+        public IList<string> Tactics { get; set; }
+        
     }
 }
