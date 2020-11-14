@@ -28,8 +28,8 @@ function Test-AzRmHealthcareApisService{
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$location = Get-Location
-	$offerThroughput =  Get-OfferThroughput
 	$keyVaultKeyUri = Get-KeyVaultKeyUri
+	$offerThroughput =  Get-OfferThroughput
 	$kind = Get-Kind
 	$object_id = Get-AccessPolicyObjectID;
 	$storageAccountName = "exportStorage"
@@ -41,14 +41,16 @@ function Test-AzRmHealthcareApisService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -CosmosKeyVaultKeyUri $keyVaultKeyUri -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosKeyVaultKeyUri $keyVaultKeyUri -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
+		Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+
 		# Assert
 		Assert-AreEqual $rname $actual.Name
+		Assert-AreEqual $keyVaultKeyUri $actual.CosmosDbKeyVaultKeyUri
 		Assert-AreEqual $offerThroughput $actual.CosmosDbOfferThroughput
-		Assert-AreEqual $keyVaultKeyUri $actual.CosmosKeyVaultKeyUri
 		Assert-AreEqual $kind $actual.Kind
 		Assert-AreEqual "https://$rname.azurehealthcareapis.com" $actual.Audience
 		Assert-AreEqual $storageAccountName $actual.ExportStorageAccountName
@@ -57,14 +59,15 @@ function Test-AzRmHealthcareApisService{
 		Assert-NotNull $actual.IdentityTenantId
 
 		#Update using parameters
-		$newOfferThroughput = $offerThroughput - 600
-		$newKeyVaultKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-key-1>"
-		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput -CosmosKeyVaultKeyUri $newKeyVaultKeyUri -DisableManagedIdentity;
+		$newKeyVaultKeyUri = "https://pshealthapitestvault.vault.azure.net/keys/PSKey2"
+		$newOfferThroughput = 400
+		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosKeyVaultKeyUri $newKeyVaultKeyUri -CosmosOfferThroughput $newOfferThroughput -DisableManagedIdentity;
 
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
 		# Assert the update
 		Assert-AreEqual $rname $updatedAccount.Name
+		Assert-AreEqual $newKeyVaultKeyUri $updatedAccount.CosmosDbKeyVaultKeyUri
 		Assert-AreEqual $newOfferThroughput $updatedAccount.CosmosDbOfferThroughput
 		Assert-AreEqual "None" $updatedAccount.IdentityType
 

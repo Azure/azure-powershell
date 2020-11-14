@@ -381,8 +381,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
                     {
-                        OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput,
-                        KeyVaultKeyUri = InputObject.CosmosDbKeyVaultKeyUri ?? healthcareApisAccount.Properties.CosmosDbConfiguration.KeyVaultKeyUri
+                        KeyVaultKeyUri = CosmosKeyVaultKeyUri ?? healthcareApisAccount.Properties.CosmosDbConfiguration.KeyVaultKeyUri,
+                        OfferThroughput = CosmosOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
                     },
                     CorsConfiguration = new ServiceCorsConfigurationInfo()
                     {
@@ -483,8 +483,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
                     {
-                        OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput,
-                        KeyVaultKeyUri = InputObject.CosmosDbKeyVaultKeyUri ?? healthcareApisAccount.Properties.CosmosDbConfiguration.KeyVaultKeyUri
+                        KeyVaultKeyUri = InputObject.CosmosDbKeyVaultKeyUri ?? healthcareApisAccount.Properties.CosmosDbConfiguration.KeyVaultKeyUri,
+                        OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
                     },
                     CorsConfiguration = new ServiceCorsConfigurationInfo()
                     {

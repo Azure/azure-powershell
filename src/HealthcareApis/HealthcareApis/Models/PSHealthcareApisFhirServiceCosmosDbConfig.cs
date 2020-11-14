@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.KeyVaultKeyUri = serviceCosmosDbConfigurationInfo.KeyVaultKeyUri;
         }
 
-        public int? OfferThroughput { get; private set; }
-
         public string KeyVaultKeyUri { get; private set; }
+
+        public int? OfferThroughput { get; private set; }
     }
 }

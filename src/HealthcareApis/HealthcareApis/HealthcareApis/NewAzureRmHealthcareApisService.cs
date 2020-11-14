@@ -116,15 +116,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(
            Mandatory = false,
-           HelpMessage = "HealthcareApis Fhir Service CosmosOfferThroughput.")]
-        [ValidateNotNullOrEmpty]
-        public int? CosmosOfferThroughput { get; set; }
-
-        [Parameter(
-           Mandatory = false,
            HelpMessage = "HealthcareApis Fhir Service CosmosKeyVaultKeyUri. The URI of the customer-managed key for the backing database.")]
         [ValidateNotNullOrEmpty]
         public string CosmosKeyVaultKeyUri { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "HealthcareApis Fhir Service CosmosOfferThroughput.")]
+        [ValidateNotNullOrEmpty]
+        public int? CosmosOfferThroughput { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -315,6 +315,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private void EnsureNameAvailabilityOrThrow()
         {
+            WriteDebug(this.Name + " " + ResourceTypeName);
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
 

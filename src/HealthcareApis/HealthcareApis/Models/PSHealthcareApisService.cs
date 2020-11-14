@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.Location = serviceDescription.Location;
             this.ResourceType = serviceDescription.Type;
             this.Tags = serviceDescription.Tags;
-            this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration?.OfferThroughput;
             this.CosmosDbKeyVaultKeyUri = serviceDescription.Properties.CosmosDbConfiguration?.KeyVaultKeyUri;
+            this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration?.OfferThroughput;
             this.CorsOrigins = serviceDescription.Properties.CorsConfiguration?.Origins;
             this.CorsHeaders = serviceDescription.Properties.CorsConfiguration?.Headers;
             this.CorsMethods = serviceDescription.Properties.CorsConfiguration?.Methods;
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
 
         public IList<string> CorsOrigins { get; private set; }
 
-        public int? CosmosDbOfferThroughput { get; private set; }
-
         public string CosmosDbKeyVaultKeyUri { get; private set; }
+
+        public int? CosmosDbOfferThroughput { get; private set; }
 
         public string ExportStorageAccountName { get; private set; }
 

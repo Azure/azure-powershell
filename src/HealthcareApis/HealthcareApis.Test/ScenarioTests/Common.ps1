@@ -50,11 +50,11 @@ function Get-OfferThroughput
 
 <#
 .SYNOPSIS
-Gets $keyVaultKeyUri value
+Gets keyVaultKeyUri value
 #>
 function Get-KeyVaultKeyUri
 {
-    return "https://<my-vault>.vault.azure.net/keys/<my-key>"
+    return "https://pshealthapitestvault.vault.azure.net/keys/PSKey1"
 }
 
 <#
