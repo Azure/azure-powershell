@@ -143,9 +143,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
          HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The network access type for Fhir service. Commonly `Enabled` or `Disabled`.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "The network access type for Fhir service. Commonly `Enabled` or `Disabled`.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The network access type for Fhir service. Commonly `Enabled` or `Disabled`.")]
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccess { get; set; }
 
@@ -288,7 +287,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         StorageAccountName = ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
                     },
                     AccessPolicies = accessPolicies,
-                    PublicNetworkAccess = healthcareApisAccount.Properties.PublicNetworkAccess
+                    PublicNetworkAccess = PublicNetworkAccess ?? healthcareApisAccount.Properties.PublicNetworkAccess
                 },
                 Kind = healthcareApisAccount.Kind,
                 Tags = GetTags(healthcareApisAccount)
