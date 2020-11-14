@@ -35,12 +35,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         //---Note This test will be added to the next (2019-11-01) version ---
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestVolumeReplication()
-        //{
-        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeReplication");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeReplication()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetVolumePool()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetVolumePool");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
