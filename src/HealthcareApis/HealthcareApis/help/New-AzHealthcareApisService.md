@@ -329,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-The network access type for Cognitive Services Account. Commonly `Enabled` or `Disabled`.
+The network access type for Fhir service. Commonly `Enabled` or `Disabled`.
 
 ```yaml
 Type: System.String
