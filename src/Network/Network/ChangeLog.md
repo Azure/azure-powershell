@@ -23,6 +23,21 @@
     - fix bug to remove entire private peering object when cx intends delete
 * Updated Remove-AzExpressRouteCircuitConnectionConfig:
     - fix bug to remove entire circuit connection object when cx intends delete
+
+## Version 4.3.0
+* Updated below cmdlet 
+    - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
+        - Added PublicIpAddressPrefix property
+        - Added PublicIpAddressPrefixId property
+* Added new properties to the following cmdlets to allow for global load balancing
+    - `New-AzLoadBalancer`:
+        - Added Sku Tier property
+    - `New-AzPuplicIpAddress`:
+        - Added Sku Tier property
+    - `New-AzPublicIpPrefix`:
+        - Added Sku Tier property
+    - `New-AzLoadBalancerBackendAddressConfig`:
+        - Added LoadBalancerFrontendIPConfigurationId property
 * Updated planning to deprecate warnings for the following cmdlets
     -`New-AzVirtualHubRoute`
     -`New-AzVirtualHubRouteTable`
