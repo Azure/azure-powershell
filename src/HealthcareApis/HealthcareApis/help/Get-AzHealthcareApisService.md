@@ -47,6 +47,7 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -75,6 +76,7 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -95,6 +97,7 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -123,6 +126,7 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -143,6 +147,7 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft

@@ -45,8 +45,6 @@ function Test-AzRmHealthcareApisService{
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
-		Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
-
 		# Assert
 		Assert-AreEqual $rname $actual.Name
 		Assert-AreEqual $keyVaultKeyUri $actual.CosmosDbKeyVaultKeyUri

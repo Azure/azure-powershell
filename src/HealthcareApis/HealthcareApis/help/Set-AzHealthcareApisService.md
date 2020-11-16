@@ -46,7 +46,7 @@ Updates an existing healthcareApis fhir service.
 ### Example 1 : Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
 
 ```powershell
-PS C:\> Set-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500
+PS C:\> Set-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500 -CosmosKeyVaultKeyUri "https://<my-keyvault>.vault.azure.net/keys/<my-key>"
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -56,8 +56,8 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
-CosmosDbOfferThroughput : 500
 CosmosKeyVaultKeyUri    : https://<my-keyvault>.vault.azure.net/keys/<my-key>
+CosmosDbOfferThroughput : 500
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
@@ -84,8 +84,8 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
-CosmosDbOfferThroughput : 500
 CosmosKeyVaultKeyUri    : 
+CosmosDbOfferThroughput : 500
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
