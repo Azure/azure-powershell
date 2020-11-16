@@ -4,7 +4,7 @@ PS C:\> Get-AzMySqlFlexibleServerReplica -ResourceGroupName PowershellMySqlTest 
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
 ----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+mysql-test    westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
 This cmdlet gets MySql server replica by resource group and server name.

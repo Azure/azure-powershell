@@ -4,7 +4,7 @@ PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Server
 
 Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName       SkuTier        
 ----               -------- ------------------ ------- ----------------------- -------       -------        
-mysql-test-replica eastus   mysql_test         5.7     10240                   Standard_B1ms Burstable
+mysql-test-replica westus2   mysql_test         5.7     10240                   Standard_B1ms Burstable
 ```
 
 This cmdlet creates a new MySql server replica.
@@ -16,7 +16,7 @@ PS C:\> New-AzMySqlFlexibleServerReplica -Master $mysql -Replica mysql-test-repl
 
 Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName       SkuTier        
 ----               -------- ------------------ ------- ----------------------- -------       -------        
-mysql-test-replica eastus   mysql_test         5.7     10240                   Standard_B1ms Burstable
+mysql-test-replica westus2   mysql_test         5.7     10240                   Standard_B1ms Burstable
 ```
 
 This cmdlet with parameter master(inputobject) creates a new MySql server replica.

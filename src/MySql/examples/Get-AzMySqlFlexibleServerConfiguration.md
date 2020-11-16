@@ -24,7 +24,7 @@ This cmdlet gets specified MySql configuration by name.
 
 ### Example 3: List configuration by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)/configurations/wait_timeout"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/configurations/wait_timeout"
 Get-AzMySqlFlexibleServerConfiguration -Name wait_timeout -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
 Name          Value   DefaultValue  Source        AllowedValues DataType

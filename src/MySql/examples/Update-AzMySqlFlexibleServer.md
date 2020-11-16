@@ -4,18 +4,18 @@ PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Nam
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
 ----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D4ds_v4 GeneralPurpose
+mysql-test    westus2   mysql_test         5.7     5120                    Standard_D4ds_v4 GeneralPurpose
 ```
 
 This cmdlet updates MySql server by resource group and server name.
 
 ### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageMb 10240
+PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
 
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
 ----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+mysql-test    westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
 ```
 
 This cmdlet updates MySql server by identity.

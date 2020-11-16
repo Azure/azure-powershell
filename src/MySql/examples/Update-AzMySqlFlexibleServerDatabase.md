@@ -1,4 +1,4 @@
-### Example 1: Create a new MySql server database
+### Example 1: Update a MySql server database by name
 ```powershell
 PS C:\> Update-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
 
