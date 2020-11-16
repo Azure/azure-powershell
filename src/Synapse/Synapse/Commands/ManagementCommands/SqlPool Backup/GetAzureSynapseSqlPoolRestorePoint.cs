@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -38,20 +37,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [ResourceNameCompleter(ResourceTypes.SqlPool, nameof(WorkspaceName))]
-        [ValidateNotNullOrEmpty]
-        public string SqlPoolName { get; set; }
-
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
-
-        [Parameter(ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.SqlPoolObject)]
-        [ValidateNotNull]
-        public PSSynapseSqlPool SqlPoolObject { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetByInputObjectParameterSet, Mandatory = true,
             HelpMessage = HelpMessages.SqlPoolObject)]
@@ -94,18 +83,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.IsParameterBound(c => c.SqlPoolObject))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.SqlPoolObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.WorkspaceName = resourceIdentifier.ParentResource;
-                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.SqlPoolName = resourceIdentifier.ResourceName;
-            }
-
             var result = this.SynapseAnalyticsClient.ListSqlPoolRestorePoints(this.ResourceGroupName, this.WorkspaceName, this.Name)
                 .Select(element => new PSRestorePoint(element));
-
             WriteObject(result, true);
         }
     }

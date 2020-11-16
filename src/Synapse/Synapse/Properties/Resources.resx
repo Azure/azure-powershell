@@ -591,4 +591,10 @@ Are you sure you want to continue?</value>
   <data name="ComfirmToRemoveSqlActiveDirectoryAdministrator" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace '{0}'?</value>
   </data>
+  <data name="RemovingSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Deleting SQL pool Restore Point '{0}' in resource group '{1}' , workspace '{2}', under  Sql Pool '{3}'.</value>
+  </data>
+  <data name="SqlPoolRestorePointDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified Restore Point '{0}' does not exist.</value>
+  </data>
 </root>

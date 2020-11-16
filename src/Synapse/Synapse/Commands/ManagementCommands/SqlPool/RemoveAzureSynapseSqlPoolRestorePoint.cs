@@ -4,9 +4,6 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
-using System.Linq;
-using Microsoft.Azure.Commands.Synapse.Properties;
-using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Commands
 {

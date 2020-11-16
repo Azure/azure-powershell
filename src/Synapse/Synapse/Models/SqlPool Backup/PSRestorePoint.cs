@@ -32,6 +32,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public new string Name { get; set; }
 
         public new string Type { get; set; }
-
     }
 }
