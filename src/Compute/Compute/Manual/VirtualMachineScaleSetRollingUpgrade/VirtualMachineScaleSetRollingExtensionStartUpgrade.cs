@@ -14,15 +14,13 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingExtensionUpgradeNon", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingExtensionUpgrade", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class VirtualMachineScaleSetRollingExtensionStartUpgradeNon : ComputeAutomationBaseCmdlet
+    public partial class VirtualMachineScaleSetRollingExtensionStartUpgrade : ComputeAutomationBaseCmdlet
     {
         private const string ByResourceIdParamSet = "ByResourceId",
             ByInputObjectParamSet = "ByInputObject",
             DefaultParameterSetName = "DefaultParameter";
-        private const string resourceGroups = "resourceGroups", 
-            virtualMachineScaleSets = "virtualMachineScaleSets";
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
@@ -69,23 +67,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     break;
 
                 case ByResourceIdParamSet:
-                    //var resourceIdSegments = this.ResourceId.Segments;
-                    //ERROR: This operation is not supported for a relative URI
+
                     ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
 
-                    if (!String.IsNullOrEmpty(identifier.ResourceGroupName) & !String.IsNullOrEmpty(identifier.ResourceName))
+
+                    ExecuteClientAction(() =>
                     {
-                        ExecuteClientAction(() =>
-                        {
-                            this.StartRollingUpdate(identifier.ResourceGroupName, identifier.ResourceName);
-                        });
-                    }
-                    /*else
-                    {
-                        //throw exception incorrectly used cmdlet?
-                        //Might just call the api and let it error out actually. 
-                        // TODO: test what happens when an empty value for RG or NAme is passed
-                    }*/
+                        this.StartRollingUpdate(identifier.ResourceGroupName, identifier.ResourceName);
+                    });
                     
                     break;
 
