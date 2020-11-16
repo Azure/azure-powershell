@@ -1,0 +1,975 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4ed2c9a9-bc8e-4962-a98f-b17efc8c0b4a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"1D6AC15FF39A42B\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "57fb08a4-7539-4bbc-bd00-33b412430fab"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "729aaa17-616c-47ba-9c4f-79512e068096"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132735Z:729aaa17-616c-47ba-9c4f-79512e068096"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:35 GMT"
+        ],
+        "Content-Length": [
+          "5529"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit\",\r\n  \"name\": \"managedcerts/sit\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"name\": \"managedcerts(sit)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"managedcerts1.org\",\r\n      \"managedcerts-sit.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-015.api.azurewebsites.windows.net:454/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/webspaces/RG-W-CUS-CentralUSwebspace/sites/managedcerts\",\r\n    \"repositorySiteName\": \"managedcerts\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"managedcerts1.org\",\r\n      \"managedcerts-sit.azurewebsites.net\",\r\n      \"managedcerts-sit.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"managedcerts1.org\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"managedcerts-sit.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"managedcerts-sit.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/serverfarms/ASP-W-CUS\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2020-10-27T04:02:33.0266667\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": null,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": null,\r\n      \"windowsFxVersion\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"azureStorageAccounts\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": null,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": null,\r\n      \"minTlsVersion\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0\r\n    },\r\n    \"deploymentId\": \"managedcerts__8d3c\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"C3E7C05FE8A97695B3AE08C1935F4251C48E338FE439627B2E788D9D718C8A70\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"40.86.91.212\",\r\n    \"possibleInboundIpAddresses\": \"40.86.91.212,13.89.172.18\",\r\n    \"ftpUsername\": \"managedcerts__sit\\\\$managedcerts__sit\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-015.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"40.86.95.108,40.86.95.228,40.86.92.253,40.86.95.159\",\r\n    \"possibleOutboundIpAddresses\": \"40.86.95.108,40.86.95.228,40.86.92.253,40.86.95.159,13.67.177.34,13.67.177.214,13.67.176.100,40.86.83.238,104.208.25.165,40.86.91.212,13.89.172.18\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-015\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-W-CUS\",\r\n    \"defaultHostName\": \"managedcerts-sit.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d06b946-cd3b-4e46-9204-0809a875cb5b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"1D6AC15FF39A42B\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c74c14fb-8406-488c-b58e-4b56d5d47bb3"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "5755d3b1-b24a-4359-94ca-3bd28a39ac71"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132807Z:5755d3b1-b24a-4359-94ca-3bd28a39ac71"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:06 GMT"
+        ],
+        "Content-Length": [
+          "5529"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit\",\r\n  \"name\": \"managedcerts/sit\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"name\": \"managedcerts(sit)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"managedcerts1.org\",\r\n      \"managedcerts-sit.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-015.api.azurewebsites.windows.net:454/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/webspaces/RG-W-CUS-CentralUSwebspace/sites/managedcerts\",\r\n    \"repositorySiteName\": \"managedcerts\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"managedcerts1.org\",\r\n      \"managedcerts-sit.azurewebsites.net\",\r\n      \"managedcerts-sit.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"managedcerts1.org\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"managedcerts-sit.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"managedcerts-sit.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/serverfarms/ASP-W-CUS\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2020-10-27T04:02:33.0266667\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": null,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": null,\r\n      \"windowsFxVersion\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"azureStorageAccounts\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": null,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": null,\r\n      \"minTlsVersion\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0\r\n    },\r\n    \"deploymentId\": \"managedcerts__8d3c\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"C3E7C05FE8A97695B3AE08C1935F4251C48E338FE439627B2E788D9D718C8A70\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"40.86.91.212\",\r\n    \"possibleInboundIpAddresses\": \"40.86.91.212,13.89.172.18\",\r\n    \"ftpUsername\": \"managedcerts__sit\\\\$managedcerts__sit\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-015.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"40.86.95.108,40.86.95.228,40.86.92.253,40.86.95.159\",\r\n    \"possibleOutboundIpAddresses\": \"40.86.95.108,40.86.95.228,40.86.92.253,40.86.95.159,13.67.177.34,13.67.177.214,13.67.176.100,40.86.83.238,104.208.25.165,40.86.91.212,13.89.172.18\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-015\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-W-CUS\",\r\n    \"defaultHostName\": \"managedcerts-sit.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/web?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b9d90245-4a1d-437b-812a-73e1f5f22bc2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "dc272821-e56f-42fa-b6af-baba01298371"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ee373d1-be9a-49d4-b2e8-82fcaa06db27"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132736Z:5ee373d1-be9a-49d4-b2e8-82fcaa06db27"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:36 GMT"
+        ],
+        "Content-Length": [
+          "3585"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/web\",\r\n  \"name\": \"managedcerts\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"powerShellVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": \"VS2019\",\r\n    \"httpLoggingEnabled\": false,\r\n    \"azureMonitorLogCategories\": null,\r\n    \"acrUseManagedIdentityCreds\": false,\r\n    \"acrUserManagedIdentityID\": null,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$managedcerts__sit\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": true,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": true,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"vnetPrivatePortsCount\": 0,\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"clientSecretSettingName\": null,\r\n      \"clientSecretCertificateThumbprint\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"aadClaimsAuthorization\": null,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleClientSecretSettingName\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookAppSecretSettingName\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"gitHubClientId\": null,\r\n      \"gitHubClientSecret\": null,\r\n      \"gitHubClientSecretSettingName\": null,\r\n      \"gitHubOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"twitterConsumerSecretSettingName\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountClientSecretSettingName\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"apiManagementConfig\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 1,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 1,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictionsUseMain\": false,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"scmMinTlsVersion\": \"1.0\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"preWarmedInstanceCount\": 0,\r\n    \"functionAppScaleLimit\": 0,\r\n    \"healthCheckPath\": null,\r\n    \"fileChangeAuditEnabled\": false,\r\n    \"functionsRuntimeScaleMonitoringEnabled\": false,\r\n    \"websiteTimeZone\": null,\r\n    \"minimumElasticInstanceCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/web?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6fa301bd-4a16-4b51-9f5f-a7d621803358"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c7402f36-a9e6-40cd-a98f-361bb7caf96f"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d9b74d5-8525-4f4e-ac7d-42056e9dbd15"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132808Z:9d9b74d5-8525-4f4e-ac7d-42056e9dbd15"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:07 GMT"
+        ],
+        "Content-Length": [
+          "3585"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/web\",\r\n  \"name\": \"managedcerts\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"powerShellVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": \"VS2019\",\r\n    \"httpLoggingEnabled\": false,\r\n    \"azureMonitorLogCategories\": null,\r\n    \"acrUseManagedIdentityCreds\": false,\r\n    \"acrUserManagedIdentityID\": null,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$managedcerts__sit\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": true,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": true,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"vnetPrivatePortsCount\": 0,\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"clientSecretSettingName\": null,\r\n      \"clientSecretCertificateThumbprint\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"aadClaimsAuthorization\": null,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleClientSecretSettingName\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookAppSecretSettingName\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"gitHubClientId\": null,\r\n      \"gitHubClientSecret\": null,\r\n      \"gitHubClientSecretSettingName\": null,\r\n      \"gitHubOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"twitterConsumerSecretSettingName\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountClientSecretSettingName\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"apiManagementConfig\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 1,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 1,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictionsUseMain\": false,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"scmMinTlsVersion\": \"1.0\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"preWarmedInstanceCount\": 0,\r\n    \"functionAppScaleLimit\": 0,\r\n    \"healthCheckPath\": null,\r\n    \"fileChangeAuditEnabled\": false,\r\n    \"functionsRuntimeScaleMonitoringEnabled\": false,\r\n    \"websiteTimeZone\": null,\r\n    \"minimumElasticInstanceCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d8abbeed-2aaa-4b74-b4d1-4fec4e8247c4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0dfecb21-82ef-4c13-96a0-a5eb710958f6"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "c59ddbfa-aab5-42ec-a0d7-8fd276e24c69"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132737Z:c59ddbfa-aab5-42ec-a0d7-8fd276e24c69"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:37 GMT"
+        ],
+        "Content-Length": [
+          "711"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"5ae8e65d-1272-41d5-98f9-82522acb847c\",\r\n    \"APPLICATIONINSIGHTS_CONNECTION_STRING\": \"InstrumentationKey=5ae8e65d-1272-41d5-98f9-82522acb847c;IngestionEndpoint=https://centralus-0.in.applicationinsights.azure.com/\",\r\n    \"ApplicationInsightsAgent_EXTENSION_VERSION\": \"~2\",\r\n    \"XDT_MicrosoftApplicationInsights_Mode\": \"default\",\r\n    \"ANCM_ADDITIONAL_ERROR_PAGE_LINK\": \"https://managedcerts.scm.azurewebsites.net/detectors?type=tools&name=eventviewer\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "53ef469a-dafd-4a0e-9cf2-5e5f42d7c1b9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ef7e5f6e-7b99-4e1f-add1-cb4f6d1b2aad"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "4df75374-a586-4e57-a858-26801b29ce92"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132809Z:4df75374-a586-4e57-a858-26801b29ce92"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:08 GMT"
+        ],
+        "Content-Length": [
+          "711"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"APPINSIGHTS_INSTRUMENTATIONKEY\": \"5ae8e65d-1272-41d5-98f9-82522acb847c\",\r\n    \"APPLICATIONINSIGHTS_CONNECTION_STRING\": \"InstrumentationKey=5ae8e65d-1272-41d5-98f9-82522acb847c;IngestionEndpoint=https://centralus-0.in.applicationinsights.azure.com/\",\r\n    \"ApplicationInsightsAgent_EXTENSION_VERSION\": \"~2\",\r\n    \"XDT_MicrosoftApplicationInsights_Mode\": \"default\",\r\n    \"ANCM_ADDITIONAL_ERROR_PAGE_LINK\": \"https://managedcerts.scm.azurewebsites.net/detectors?type=tools&name=eventviewer\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/connectionstrings/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e71e858-560b-46ba-a64e-2ee0de5b574e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "01c44542-c8b2-4662-88d3-7359ec4debe3"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "4b494e62-4124-4cca-bd6b-f76d39b35a95"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132739Z:4b494e62-4124-4cca-bd6b-f76d39b35a95"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:38 GMT"
+        ],
+        "Content-Length": [
+          "265"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/connectionstrings/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8f83da98-f21d-4992-9be3-974e7004b67e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "48471e49-5d8e-4865-954a-2031aa536413"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "b1fb3348-be47-496c-a6f6-6b59573f749f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132810Z:b1fb3348-be47-496c-a6f6-6b59573f749f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:09 GMT"
+        ],
+        "Content-Length": [
+          "265"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/azurestorageaccounts/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2F6dXJlc3RvcmFnZWFjY291bnRzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d58d51b-23af-45c8-868a-046f72b5e60f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ff25542d-680a-45e1-b857-fa3c227390eb"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d048317-8c96-41a1-9f65-15c8c5e25ea0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132739Z:5d048317-8c96-41a1-9f65-15c8c5e25ea0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:39 GMT"
+        ],
+        "Content-Length": [
+          "262"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings\",\r\n  \"name\": \"azurestorageaccounts\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/azurestorageaccounts/list?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL21hbmFnZWRjZXJ0cy9zbG90cy9zaXQvY29uZmlnL2F6dXJlc3RvcmFnZWFjY291bnRzL2xpc3Q/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1ad54471-cebb-4f5c-a5f9-175caa02714a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "287ef22e-d0a1-4573-a48c-02200964824d"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "9f067652-bba4-49c2-88a5-0d71aa08df02"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132810Z:9f067652-bba4-49c2-88a5-0d71aa08df02"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:09 GMT"
+        ],
+        "Content-Length": [
+          "262"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/sites/managedcerts/slots/sit/config/appsettings\",\r\n  \"name\": \"azurestorageaccounts\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts1.org?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcy93d3cubWFuYWdlZGNlcnRzMS5vcmc/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/serverfarms/ASP-W-CUS\",\r\n    \"canonicalName\": \"www.managedcerts1.org\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "86fb54ee-d8f8-42bf-bdc5-7bb770290a77"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "270"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts1.org/operationresults/c11b5199-c1be-404f-b800-a55b1feaeb26?api-version=2020-06-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "61ca13f3-5e26-4258-a0ff-f0f08210b630"
+        ],
+        "x-ms-correlation-request-id": [
+          "61ca13f3-5e26-4258-a0ff-f0f08210b630"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132748Z:61ca13f3-5e26-4258-a0ff-f0f08210b630"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:27:48 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/providers/Microsoft.Web/certificates?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "96f7c77a-8042-4d2d-853e-1a39a4b37f9e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "2fcd78c1-8b13-40e6-8962-7b6202268a3c",
+          "d139fbfb-22e2-446c-83ee-3001d038644a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "68332d92-cb75-4290-a222-5ecf1da8043f"
+        ],
+        "x-ms-correlation-request-id": [
+          "68332d92-cb75-4290-a222-5ecf1da8043f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132805Z:68332d92-cb75-4290-a222-5ecf1da8043f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:05 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "8671"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testasptod109/providers/Microsoft.Web/certificates/testkv1611-testcertname1611\",\r\n      \"name\": \"testkv1611-testcertname1611\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"East US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"testdomaintr115.co.uk\",\r\n        \"hostNames\": [\r\n          \"testdomaintr115.co.uk\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"testdomaintr115.co.uk\",\r\n        \"issueDate\": \"2020-11-16T05:45:10+05:30\",\r\n        \"expirationDate\": \"2021-11-16T05:55:10+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"057D487F414F2EE0C6A1F3A97F45958ECD2EB32C\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": {\r\n          \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/ASE109/providers/Microsoft.Web/hostingEnvironments/ASEtest109\",\r\n          \"name\": \"ASEtest109\",\r\n          \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n        },\r\n        \"keyVaultId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourcegroups/testkv1611/providers/microsoft.keyvault/vaults/testkv1611\",\r\n        \"keyVaultSecretName\": \"testcertname1611\",\r\n        \"keyVaultSecretStatus\": \"Succeeded\",\r\n        \"webSpace\": \"testasptod109-ASEtest109appseEastUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testasptod109/providers/Microsoft.Web/certificates/testasptod109-testkvimz-testcert2810z\",\r\n      \"name\": \"testasptod109-testkvimz-testcert2810z\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"East US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"faizeuapdm1.com\",\r\n        \"hostNames\": [\r\n          \"faizeuapdm1.com\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"faizeuapdm1.com\",\r\n        \"issueDate\": \"2020-10-28T17:17:05+05:30\",\r\n        \"expirationDate\": \"2021-10-28T17:27:05+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"526FC665D5F98AFDFC9E8F4433C760C11A192A69\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": {\r\n          \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/ASE109/providers/Microsoft.Web/hostingEnvironments/ASEtest109\",\r\n          \"name\": \"ASEtest109\",\r\n          \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n        },\r\n        \"keyVaultId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourcegroups/testrs13646/providers/microsoft.keyvault/vaults/testkvimz\",\r\n        \"keyVaultSecretName\": \"testcert2810z\",\r\n        \"keyVaultSecretStatus\": \"OperationNotPermittedOnKeyVault\",\r\n        \"webSpace\": \"testasptod109-ASEtest109appseEastUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/.NETSDKRG/providers/Microsoft.Web/certificates/adoresnow-.NETSDKRG-CentralUSwebspace\",\r\n      \"name\": \"adoresnow-.NETSDKRG-CentralUSwebspace\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"*.adoresnow.net,adoresnow.net\",\r\n        \"hostNames\": [\r\n          \"*.adoresnow.net\",\r\n          \"adoresnow.net\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"Go Daddy Secure Certificate Authority - G2\",\r\n        \"issueDate\": \"2020-05-05T14:07:28+05:30\",\r\n        \"expirationDate\": \"2021-05-05T14:07:28+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"CD2ED68DADECFE4821589622694F32014F492FFC\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"KeyVaultDoesNotExist\",\r\n        \"webSpace\": \".NETSDKRG-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/cleanupservice/providers/Microsoft.Web/certificates/www.teja-test.com\",\r\n      \"name\": \"www.teja-test.com\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"www.teja-test.com\",\r\n        \"hostNames\": [\r\n          \"www.teja-test.com\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n        \"issueDate\": \"2020-10-27T05:30:00+05:30\",\r\n        \"expirationDate\": \"2021-04-27T05:29:59+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"12450C0F722C6BDF7D73EF6D0D1E041FBF1D8CA5\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"Succeeded\",\r\n        \"webSpace\": \"cleanupservice-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"canonicalName\": \"www.teja-test.com\",\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/cleanupservice/providers/Microsoft.Web/certificates/testkv2809-testcert2809\",\r\n      \"name\": \"testkv2809-testcert2809\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"testdomain2908.com\",\r\n        \"hostNames\": [\r\n          \"testdomain2908.com\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"testdomain2908.com\",\r\n        \"issueDate\": \"2020-09-28T12:41:05+05:30\",\r\n        \"expirationDate\": \"2021-09-28T12:51:05+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"AEBBBBC2C208D0BF3A75DA71E3996CB104DC087C\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"UnknownError\",\r\n        \"webSpace\": \"cleanupservice-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testrcdest118/providers/Microsoft.Web/certificates/testcertificate2610\",\r\n      \"name\": \"testcertificate2610\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"domainappz.com\",\r\n        \"hostNames\": [\r\n          \"domainappz.com\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"domainappz.com\",\r\n        \"issueDate\": \"2020-10-26T13:12:34+05:30\",\r\n        \"expirationDate\": \"2021-10-26T13:22:34+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"08A32C0CB6392803BB4CC1361D76545F840B3A75\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"Succeeded\",\r\n        \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts1.org\",\r\n      \"name\": \"www.managedcerts1.org\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"www.managedcerts1.org\",\r\n        \"hostNames\": [\r\n          \"www.managedcerts1.org\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n        \"issueDate\": \"2020-11-16T05:30:00+05:30\",\r\n        \"expirationDate\": \"2021-05-16T05:29:59+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"3C6658D8FCE2986088F996493EBAD339CE8A2A2E\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"Initialized\",\r\n        \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"canonicalName\": \"www.managedcerts1.org\",\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts.net\",\r\n      \"name\": \"www.managedcerts.net\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"www.managedcerts.net\",\r\n        \"hostNames\": [\r\n          \"www.managedcerts.net\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n        \"issueDate\": \"2020-11-16T05:30:00+05:30\",\r\n        \"expirationDate\": \"2021-05-16T05:29:59+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"DFDEB0630E5FF14364D8A0CA11B25B2A15803A26\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"Initialized\",\r\n        \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"canonicalName\": \"www.managedcerts.net\",\r\n        \"tags\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testrcdest118/providers/Microsoft.Web/certificates/testcert1110\",\r\n      \"name\": \"testcert1110\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"Central US\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"subjectName\": \"testdomaintr115.co.uk\",\r\n        \"hostNames\": [\r\n          \"testdomaintr115.co.uk\"\r\n        ],\r\n        \"pfxBlob\": null,\r\n        \"siteName\": null,\r\n        \"selfLink\": null,\r\n        \"issuer\": \"testdomaintr115.co.uk\",\r\n        \"issueDate\": \"2020-11-10T19:12:17+05:30\",\r\n        \"expirationDate\": \"2021-11-10T19:22:17+05:30\",\r\n        \"password\": null,\r\n        \"thumbprint\": \"F9F7AF2E7651ADF2A4E32BC2FC270B20968D59F1\",\r\n        \"valid\": null,\r\n        \"toDelete\": null,\r\n        \"cerBlob\": null,\r\n        \"publicKeyHash\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"keyVaultId\": \"\",\r\n        \"keyVaultSecretName\": \"\",\r\n        \"keyVaultSecretStatus\": \"Initialized\",\r\n        \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n        \"serverFarmId\": null,\r\n        \"tags\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/resources?$filter=resourceType%20eq%20'Microsoft.Web%2FCertificates'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5XZWIlMkZDZXJ0aWZpY2F0ZXMnJmFwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b82527fa-1da0-496f-bb6e-94ab510b0000"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "411e067e-5226-4991-aaa6-9832bbe30dbb"
+        ],
+        "x-ms-correlation-request-id": [
+          "411e067e-5226-4991-aaa6-9832bbe30dbb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132813Z:411e067e-5226-4991-aaa6-9832bbe30dbb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:12 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "243"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts.net\",\r\n      \"name\": \"www.managedcerts.net\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"centralus\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts.net?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL1JHLVctQ1VTL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcy93d3cubWFuYWdlZGNlcnRzLm5ldD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "31ad32fb-ef24-4bbc-8121-71382a89f754"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29017.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "da6bb8e5-1a42-4f9c-ae83-d353ef760b55"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "3b658f20-4fa8-48c6-a853-c6cf624b6ea7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20201116T132813Z:3b658f20-4fa8-48c6-a853-c6cf624b6ea7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 16 Nov 2020 13:28:12 GMT"
+        ],
+        "Content-Length": [
+          "909"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/RG-W-CUS/providers/Microsoft.Web/certificates/www.managedcerts.net\",\r\n  \"name\": \"www.managedcerts.net\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"www.managedcerts.net\",\r\n    \"hostNames\": [\r\n      \"www.managedcerts.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n    \"issueDate\": \"2020-11-16T05:30:00+05:30\",\r\n    \"expirationDate\": \"2021-05-16T05:29:59+05:30\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"DFDEB0630E5FF14364D8A0CA11B25B2A15803A26\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"keyVaultSecretStatus\": \"Initialized\",\r\n    \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"canonicalName\": \"www.managedcerts.net\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "04b0639d-85d8-445a-bada-8da78e50ff30"
+  }
+}

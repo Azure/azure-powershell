@@ -31,27 +31,27 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzWebAppManagedCertificate()
+        public void TestNewAzWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppManagedCertificate");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificate");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzWebAppManagedCertificateWithSSLBinding()
+        public void TestNewAzWebAppCertificateWithSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppManagedCertificateWithSSLBinding");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificateWithSSLBinding");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzWebAppManagedCertificateForSlot()
+        public void TestNewAzWebAppCertificateForSlot()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppManagedCertificateForSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificateForSlot");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzWebAppManagedCertificate()
+        public void TestRemoveAzWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAzWebAppManagedCertificate");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAzWebAppCertificate");
         }
     }
 }

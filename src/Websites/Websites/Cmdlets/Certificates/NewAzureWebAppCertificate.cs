@@ -20,8 +20,10 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
 using System;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
@@ -30,8 +32,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
     /// <summary>
     /// This commandlet will let you create a new managed certificate
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppManagedCertificate"), OutputType(typeof(PSCertificate))]
-    public class NewAzWebAppManagedCertificate : WebAppBaseClientCmdLet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCertificate))]
+    public class NewAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
         const string ParameterSet1Name = "S1";
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "To add the created certificate to WebApp/slot.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AddCertBinding { get; set; }
+        public SwitchParameter AddBinding { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Ssl state option. Use either 'SniEnabled' or 'IpBasedEnabled'. Default option is 'SniEnabled'.")]
         [ValidateNotNullOrEmpty]
@@ -82,19 +84,26 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 {
                     try
                     {
-                        createdCertdetails = WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
+                        WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
-                        // This exception is thrown when certificate already exists. Let's swallow it and continue.
-                        if (e.Response.StatusCode != HttpStatusCode.Conflict)
+                        // 'Conflict' exception is thrown when certificate already exists. Let's swallow it and continue.
+                        //'Accepted' exception is thrown by default for create cert method. 
+                        if (e.Response.StatusCode != HttpStatusCode.Conflict &&
+                            e.Response.StatusCode != HttpStatusCode.Accepted)
                         {
                             throw;
                         }
                     }
+                    //Delay the execution by 5 seconds so that the Certificate will created post it return 'Accepted' status
+                    Thread.Sleep(15000);
+                    var certs = WebsitesClient.ListCertificates().ToList();
+                    createdCertdetails = certs.Where(c => c.Name == HostName).SingleOrDefault();
                     //Add only when user is opted for Binding
-                    if (AddCertBinding)
+                    if (AddBinding)
                     {
+                        
                         WebsitesClient.UpdateHostNameSslState(ResourceGroupName,
                                                               WebAppName,
                                                               Slot,

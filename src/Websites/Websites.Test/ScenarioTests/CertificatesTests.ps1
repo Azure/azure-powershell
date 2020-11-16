@@ -16,18 +16,17 @@
 .SYNOPSIS
 Tests creating a new managed cert for app.
 #>
-function Test-NewAzWebAppManagedCertificate
+function Test-NewAzWebAppCertificate
 {
 	$rgname = "RG-W-CUS"
 	$appname = "managedcerts"
 	$slot = "testslot"
-	$prodHostname = "www.managedcerts.net"
-	$slotHostname = "testslot.adorenow.net"
+	$prodHostname = "www.managedcerts.net"	
 	$thumbprint=""
 
 	try{		
 
-		$cert=New-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert
@@ -37,7 +36,7 @@ function Test-NewAzWebAppManagedCertificate
 	finally{
 		
 		# Cleanup
-		Remove-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
 	}
 }
 
@@ -45,7 +44,7 @@ function Test-NewAzWebAppManagedCertificate
 .SYNOPSIS
 Tests creating a new managed cert for app with SSL binding.
 #>
-function Test-NewAzWebAppManagedCertificateWithSSLBinding
+function Test-NewAzWebAppCertificateWithSSLBinding
 {
 	$rgname = "RG-W-CUS"
 	$appname = "managedcerts"
@@ -56,7 +55,7 @@ function Test-NewAzWebAppManagedCertificateWithSSLBinding
 
 	try{		
 
-		$cert=New-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -AddCertBinding
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -AddBinding
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert
@@ -75,7 +74,7 @@ function Test-NewAzWebAppManagedCertificateWithSSLBinding
 		
 		# Cleanup
 		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
 	}
 }
 
@@ -83,7 +82,7 @@ function Test-NewAzWebAppManagedCertificateWithSSLBinding
 .SYNOPSIS
 Tests creating a new managed certfor slot.
 #>
-function Test-NewAzWebAppManagedCertificateForSlot
+function Test-NewAzWebAppCertificateForSlot
 {
 
 	$rgname = "RG-W-CUS"
@@ -94,7 +93,7 @@ function Test-NewAzWebAppManagedCertificateForSlot
 
 	try{
 		
-		$cert=New-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot
 		$thumbprint=$cert.ThumbPrint
 		
 		# Assert
@@ -104,7 +103,7 @@ function Test-NewAzWebAppManagedCertificateForSlot
 	finally{
 	
 		# Cleanup
-		Remove-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot -ThumbPrint $thumbprint
 	}
 }
 
@@ -112,7 +111,7 @@ function Test-NewAzWebAppManagedCertificateForSlot
 .SYNOPSIS
 Tests removing a managed cert.
 #>
-function Test-RemoveAzWebAppManagedCertificate
+function Test-RemoveAzWebAppCertificate
 {
 
 	$rgname = "RG-W-CUS"
@@ -122,13 +121,13 @@ function Test-RemoveAzWebAppManagedCertificate
 
 	try{		
 
-		$cert=New-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert
 		Assert-AreEqual $prodHostname $cert.SubjectName	
 		
-		Remove-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
 
 		$certificate = Get-AzWebAppCertificate -Thumbprint $thumbprint
 		

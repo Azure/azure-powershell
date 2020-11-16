@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version:https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappmanagedcertificate
+online version:https://docs.microsoft.com/en-us/powershell/module/az.websites/new-AzWebAppCertificate
 schema: 2.0.0
 ---
 
-# New-AzWebAppManagedCertificate
+# New-AzWebAppCertificate
 
 ## SYNOPSIS
 Creates an App service managed certificate for an Azure Web App. 
@@ -13,25 +13,25 @@ Creates an App service managed certificate for an Azure Web App.
 ## SYNTAX
 
 ```
-New-AzWebAppManagedCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
+New-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
  [-HostName] <String> [-AddCertBinding] [[-SslState] <SslState>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzWebAppManagedCertificate** cmdlet creates an Azure App Service Managed Certificate
+The **New-AzWebAppCertificate** cmdlet creates an Azure App Service Managed Certificate
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzWebAppManagedCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net"
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net"
 ```
 
 This command create an App Service Managed Certificate for the given WebApp
 
 ### Example 2
 ```powershell
-PS C:\> New-AzWebAppManagedCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -AddCertBinding
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -AddCertBinding
 ```
 
 This command create an App Service Managed Certificate and binds to the given WebApp.
@@ -160,4 +160,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Remove-AzWebAppManagedCertificate](./Remove-AzWebAppManagedCertificate.md)
+[Remove-AzWebAppCertificate](./Remove-AzWebAppCertificate.md)

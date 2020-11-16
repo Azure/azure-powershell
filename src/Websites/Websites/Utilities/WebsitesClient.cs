@@ -887,6 +887,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             return WrappedWebsitesClient.Certificates().Get(resourceGroupName, certificateName);
         }
+        public IEnumerable<Certificate> ListCertificates()
+        {
+            return WrappedWebsitesClient.Certificates().List();
+        }
 
         public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
         {

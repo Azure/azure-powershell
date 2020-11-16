@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version:https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappmanagedcertificate
+online version:https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-AzWebAppCertificate
 schema: 2.0.0
 ---
 
-# Remove-AzWebAppManagedCertificate
+# Remove-AzWebAppCertificate
 
 ## SYNOPSIS
 Creates an App service managed certificate for an Azure Web App. 
@@ -13,18 +13,18 @@ Creates an App service managed certificate for an Azure Web App.
 ## SYNTAX
 
 ```
-Remove-AzWebAppManagedCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
+Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
  [-HostName] <String> [-ThumbPrint] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzWebAppManagedCertificate** cmdlet creates an Azure App Service Managed Certificate
+The **Remove-AzWebAppCertificate** cmdlet creates an Azure App Service Managed Certificate
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Remove-AzWebAppManagedCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
+PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
 ```
 
 This command removes App Service Managed certificate for the given web app.
@@ -135,4 +135,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[New-AzWebAppManagedCertificate](./New-AzWebAppManagedCertificate.md)
+[New-AzWebAppCertificate](./New-AzWebAppCertificate.md)

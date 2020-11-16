@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
     /// <summary>
     /// This commandlet will let you delete a managed certificate
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppManagedCertificate"), OutputType(typeof(void))]
-    public class RemoveAzWebAppManagedCertificate : WebAppBaseClientCmdLet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", SupportsShouldProcess = true), OutputType(typeof(void))]
+    public class RemoveAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
         const string ParameterSet1Name = "S1";
 
@@ -71,9 +71,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                     {
                         if (this.ShouldProcess(this.WebAppName, string.Format($"Removing an App service managed certificate for Web App '{WebAppName}'")))
                         {
+                            var certName = !string.IsNullOrEmpty(HostName) ? HostName : certificates[0].Name;
                             try
                             {
-                                WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
+                                WebsitesClient.RemoveCertificate(certificateResourceGroup, certName);
                             }
                             catch (DefaultErrorResponseException e)
                             {
