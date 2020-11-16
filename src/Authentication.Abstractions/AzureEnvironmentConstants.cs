@@ -203,6 +203,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         public const string AzureSynapseAnalyticsEndpointSuffix = "dev.azuresynapse.net";
         public const string ChinaSynapseAnalyticsEndpointSuffix = "dev.azuresynapse.azure.cn";
+        public const string USGovernmentSynapseAnalyticsEndpointSuffix = "dev.azuresynapse.usgovcloudapi.net";
+
+        /// <summary>
+        /// The token audience for authorizing Synapse Service requests
+        /// </summary>
+        public const string AzureSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.net";
+        public const string ChinaSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.azure.cn";
+        public const string USGovernmentSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.usgovcloudapi.net";
 
         /// <summary>
         /// The domain name suffix for Azure Container Registry
@@ -210,11 +218,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string AzureContainerRegistryEndpointSuffix = "azurecr.io";
         public const string ChinaContainerRegistryEndpointSuffix = "azurecr.cn";
         public const string USGovernmentContainerRegistryEndpointSuffix = "azurecr.us";
-
-        /// <summary>
-        /// The token audience for authorizing Synapse Service requests
-        /// </summary>
-        public const string AzureSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.net";
-        public const string ChinaSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.net";
     }
 }

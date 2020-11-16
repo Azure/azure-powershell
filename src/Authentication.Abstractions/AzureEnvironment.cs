@@ -268,6 +268,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpointResourceId);
                 azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix);
                 azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointResourceId);
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.USGovernmentSynapseAnalyticsEndpointSuffix);
+                azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.USGovernmentSynapseAnalyticsEndpointResourceId);
                 azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.ManagedHsmServiceEndpointResourceId, AzureEnvironmentConstants.USGovernmeneManagedHsmServiceEndpointResourceId);
                 azureEnvironments[EnvironmentName.AzureUSGovernment].SetProperty(ExtendedEndpoint.ManagedHsmServiceEndpointSuffix, AzureEnvironmentConstants.USGovernmentManagedHsmDnsSuffix);
             }
