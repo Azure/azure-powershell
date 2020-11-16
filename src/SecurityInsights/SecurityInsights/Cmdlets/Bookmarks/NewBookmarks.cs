@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                 
         public override void ExecuteCmdlet()
         {
+            if (BookmarkId == null)
+            {
+                BookmarkId = Guid.NewGuid().ToString();
+            }
+
             var name = BookmarkId;
 
             UserInfo userinfo = new UserInfo

@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         #region IncidentComments
         public const string IncidentCommentId = "Incident Comment Id.";
+        public const string Message = "Incident Message.";
         #endregion
 
         #region Incidents

@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\DataConnectors\" />
+  </ItemGroup>
+
 </Project>
