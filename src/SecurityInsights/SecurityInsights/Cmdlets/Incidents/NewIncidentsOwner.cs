@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentOwner", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSentinelIncidentOwner))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentOwner", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSentinelIncident))]
     public class NewIncidentsOwner : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AssignedTo)]

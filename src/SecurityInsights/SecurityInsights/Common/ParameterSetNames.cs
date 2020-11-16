@@ -35,6 +35,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         #endregion
 
+        #region Bookmarks
+        public const string BookmarkId = "BookmarkId.";
+        #endregion
+
+
+        #region IncidentComments
+        public const string IncidentCommentId = "IncidentCommentId";
+        #endregion
+
         #region Incidents
         public const string IncidentId = "IncidentId";
         #endregion

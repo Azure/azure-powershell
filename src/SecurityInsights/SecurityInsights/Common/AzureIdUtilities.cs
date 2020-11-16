@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         private static Regex actionRegex = new Regex("/actions/(?<action>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static Regex incidentRegex = new Regex("/incidents/(?<incident>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex incidentCommentRegex = new Regex("/comments/(?<comment>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         public static string GetResourceName(string id)
         {
             return id.Split('/').Last();
@@ -73,6 +77,32 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
             }
 
             return match.Groups["action"].Value;
+
+        }
+
+        public static string GetIncidentName(string id)
+        {
+            var match = incidentRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["incident"].Value;
+
+        }
+
+        public static string GetIncidentCommentName(string id)
+        {
+            var match = incidentCommentRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["comment"].Value;
 
         }
 

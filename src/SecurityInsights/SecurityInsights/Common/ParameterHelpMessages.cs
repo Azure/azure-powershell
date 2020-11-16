@@ -55,6 +55,22 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string TriggerThreshold = "Alert Rule Trigger Threshold.";
         #endregion
 
+        #region Bookmarks
+        public const string BookmarkId = "Bookmark Id,";
+        public const string RelationName = "Bookmark Relation Name.";
+        public const string CreatedBy = "Bookmark Created By.";
+        public const string BookmarkDisplayName = "Bookmark Rule Display Name.";
+        public const string IncidentInfo = "Bookmark Incident Info.";
+        public const string Notes = "Bookmark Notes.";
+        public const string BookmarkQuery = "Bookmark Query.";
+        public const string QueryResult = "Bookmark Query Result.";
+        public const string UpdatedBy = "Bookmark Updated By.";
+        #endregion
+
+        #region IncidentComments
+        public const string IncidentCommentId = "Incident Comment Id.";
+        #endregion
+
         #region Incidents
         public const string IncidentId = "Incident Id.";
         public const string Classificaton = "Incident Classificaiton.";
