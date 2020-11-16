@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The collection of suggestions. The key is the predicted text adjusted based on <paramref name="input"/>. The
         /// value is the original text to create the adjusted text. </returns>
-        public Tuple<IDictionary<string, string>, Dictionary<string, int>> Query(Ast input, Dictionary<string, int> presentCommands, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
+        public Tuple<IDictionary<string, string>, IDictionary<string, int>> Query(Ast input, IDictionary<string, int> presentCommands, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
         {
             if (suggestionCount <= 0)
             {
@@ -105,8 +105,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var resultBuilder = new StringBuilder();
                 var usedParams = new HashSet<int>();
                 var sourceBuilder = new StringBuilder();
-                //var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added
-
+                
                 for (var i = 0; i < _predictions.Count && results.Count < suggestionCount; ++i)
                 {
                     if (commandNameQuery(_predictions[i].Command))
@@ -176,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 resultsTemp.ToList().GetRange(0, suggestionCount - results.Count).ForEach(x => results.Add(x.Key,x.Value));
             }
-            return new Tuple<IDictionary<string, string>, Dictionary<string, int>>(results, presentCommands);
+            return new Tuple<IDictionary<string, string>, IDictionary<string, int>>(results, presentCommands);
         }
 
         /// <summary>

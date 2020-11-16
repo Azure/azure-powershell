@@ -131,11 +131,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var command = this._commandForPrediction;
 
             IList<ValueTuple<string, string, PredictionSource>> results = new List<ValueTuple<string, string, PredictionSource>>();
-            var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); // Added
-
+            var presentCommands = new System.Collections.Generic.Dictionary<string, int>(); 
             var resultsFromSuggestionTuple = commandSuggestions?.Item2?.Query(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
             var resultsFromSuggestion = resultsFromSuggestionTuple.Item1;
-            presentCommands = resultsFromSuggestionTuple.Item2;
+            presentCommands = resultsFromSuggestionTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             if (resultsFromSuggestion != null)
             {
@@ -164,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var commands = this._commands;
                 var resultsFromCommandsTuple = commands?.Query(input, presentCommands,suggestionCount - resultsFromSuggestion.Count(), maxAllowedCommandDuplicate, cancellationToken);
                 var resultsFromCommands = resultsFromCommandsTuple.Item1;
-                presentCommands = resultsFromCommandsTuple.Item2;
+                presentCommands = resultsFromCommandsTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                 if (resultsFromCommands != null)
                 {
