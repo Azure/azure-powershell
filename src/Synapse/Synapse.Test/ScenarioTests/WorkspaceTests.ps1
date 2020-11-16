@@ -183,7 +183,7 @@ function Test-SynapseWorkspace-ActiveDirectoryAdministrator
 <#
 .SYNOPSIS
 Tests Synapse Workspace Security settings.
-Including SQL Auditing settings, Advanced threat protection settings, Vulnerability assessment settings and Transparent data encryption.
+Including SQL Auditing settings, Advanced threat protection settings and Vulnerability assessment settings.
 #>
 function Test-SynapseWorkspace-Security
 {
@@ -247,16 +247,6 @@ function Test-SynapseWorkspace-Security
         $auditing = Get-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
 
         Assert-AreEqual $auditing.BlobStorageTargetState Disabled
-
-        # Set Transparent data encryption
-        $encryptionSet = Set-AzSynapseSqlTransparentDataEncryptionProtector -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Type ServiceManaged
-
-        Assert-AreEqual $encryptionSet.Type ServiceManaged
-
-        # Get Transparent data encryption
-        $encryptionGet = Get-AzSynapseSqlTransparentDataEncryptionProtector -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
-
-        Assert-AreEqual $encryptionGet.Type ServiceManaged
     }
     finally
     {

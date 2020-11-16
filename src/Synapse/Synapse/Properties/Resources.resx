@@ -588,9 +588,6 @@ Are you sure you want to continue?</value>
   <data name="InvalidKeyId" xml:space="preserve">
     <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
   </data>
-  <data name="SettingSqlTransparentDataEncryptionProtector" xml:space="preserve">
-    <value>Setting transparent data encryption protector in workspace '{0}'.</value>
-  </data>
   <data name="ComfirmToRemoveSqlActiveDirectoryAdministrator" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace '{0}'?</value>
   </data>

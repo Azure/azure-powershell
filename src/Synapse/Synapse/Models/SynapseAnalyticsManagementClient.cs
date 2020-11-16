@@ -1324,34 +1324,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
-        #region Transparent Data Encryption
-
-        public EncryptionProtector GetWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.Get(resourceGroupName, workspaceName);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        public EncryptionProtector CreateOrUpdateWorkspaceTransparentDataEncryptionProtector(string resourceGroupName, string workspaceName, EncryptionProtector parameters)
-        {
-            try
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerEncryptionProtector.CreateOrUpdate(resourceGroupName, workspaceName, parameters);
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
-        }
-
-        #endregion
-
         #region SQL pool operations
 
         public SqlPool CreateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPool createOrUpdateParams)

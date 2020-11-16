@@ -233,10 +233,6 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
 
-        public const string EncryptionProtectorType = "The Azure Synapse SQL pool Transparent Data Encryption Protector type.";
-
-        public const string KeyId = "The Azure Key Vault KeyId.";
-
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 
         public const string StartIpAddress = "The start IP address of the firewall rule. Must be IPv4 format.";

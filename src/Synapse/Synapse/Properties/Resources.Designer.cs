@@ -834,15 +834,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemoveSynapseWorkspace", resourceCulture);
-                }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to remove Diagnostic Settings..
-        /// </summary>
-        internal static string RemoveDiagnosticSettingsException {
-            get {
-                return ResourceManager.GetString("RemoveDiagnosticSettingsException", resourceCulture);
             }
         }
         
@@ -1131,15 +1122,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSqlPoolAudit {
             get {
                 return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Setting transparent data encryption protector in workspace &apos;{0}&apos;..
-        /// </summary>
-        internal static string SettingSqlTransparentDataEncryptionProtector {
-            get {
-                return ResourceManager.GetString("SettingSqlTransparentDataEncryptionProtector", resourceCulture);
             }
         }
         

@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
+                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
             };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
