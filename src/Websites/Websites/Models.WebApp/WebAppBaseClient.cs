@@ -16,6 +16,9 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
@@ -56,6 +59,55 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                 return _websitesClient;
             }
             set { _websitesClient = value; }
+        }
+
+        private KeyVaultClient _keyVaultClient { get; set; }
+        public KeyVaultClient KeyvaultClient
+        {
+            get
+            {
+                if (_keyVaultClient == null)
+                {
+                    _keyVaultClient = new KeyVaultClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _keyVaultClient;
+            }
+            set { _keyVaultClient = value; }
+        }
+
+        private ActiveDirectoryClient _activeDirectoryClient;
+        private DataServiceCredential _dataServiceCredential;
+        public ActiveDirectoryClient ActiveDirectoryClient
+        {
+            get
+            {
+                if (_activeDirectoryClient != null) return _activeDirectoryClient;
+
+                _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+                // TODO: Remove IfDef
+#if NETSTANDARD
+                try
+                {
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                }
+                catch
+                {
+                    _activeDirectoryClient = null;
+                }
+#else
+                _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
+                DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
+                () => Task.FromResult(_dataServiceCredential.GetToken()));
+#endif
+                return _activeDirectoryClient;
+            }
+
+            set { _activeDirectoryClient = value; }
         }
     }
 }
