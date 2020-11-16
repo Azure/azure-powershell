@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The network access type for Cognitive Services Account. Commonly `Enabled` or `Disabled`.")]
+            HelpMessage = "The network access type for Fhir Service. Commonly `Enabled` or `Disabled`.")]
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccess { get; set; }
 
