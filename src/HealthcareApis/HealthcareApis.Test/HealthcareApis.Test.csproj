@@ -19,4 +19,8 @@
     <ProjectReference Include="..\HealthcareApis\HealthcareApis.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests.HealthcareApisServiceTests\" />
+  </ItemGroup>
+
 </Project>

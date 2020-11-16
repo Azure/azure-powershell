@@ -143,22 +143,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-The network access type for Fhir service.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Audience
 HealthcareApis FhirService Audience.
 
@@ -393,6 +377,22 @@ Parameter Sets: ServiceNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The network access type for Fhir service. Commonly `Enabled` or `Disabled`.
+
+```yaml
+Type: System.String
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
