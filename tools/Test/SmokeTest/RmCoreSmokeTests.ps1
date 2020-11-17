@@ -84,7 +84,26 @@ $resourceTestCommands = @(
     @{Name = "Az.Resources [Tags]";           Command = {Get-AzureRmTag -ErrorAction Stop}},
     @{Name = "Az.TrafficManager";             Command = {Get-AzureRmTrafficManagerProfile -ErrorAction Stop}},
     @{Name = "Az.Billing [UsageAggregates]";  Command = {Get-UsageAggregates -ReportedStartTime '1/1/2018' -ReportedEndTime '1/2/2018' -ErrorAction Stop}},
-    @{Name = "Az.Websites";                   Command = {Get-AzureRmWebApp -ErrorAction Stop}}
+    @{Name = "Az.Websites";                   Command = {Get-AzureRmWebApp -ErrorAction Stop}},
+    @{Name = "Az.Accounts";                   Command = {Get-AzDomain -ErrorAction Stop}},
+    @{Name = "Az.Advisor";                    Command = {Get-AzAdvisorConfiguration -ErrorAction Stop}},
+    @{Name = "Az.DataBoxEdge";                Command = {try {Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName $resourceGroupName -DeviceName 'smokeTestDevice' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.Databricks";                 Command = {try {Get-AzDatabricksVNetPeering -ResourceGroupName $resourceGroupName -WorkSpaceName 'smokeTestWorkSpace' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.DataShare";                  Command = {try {Get-AzDataShare -ResourceGroupName $resourceGroupName -AccountName 'smokeTestAccountName' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*NotFound*") {throw $_}}}},
+    #The test for Az.DeploymentManager has done,but it has one issue when deserializing the response
+    #@{Name = "Az.DeploymentManager";          Command = {try {Get-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName  -ErrorAction Stop}catch {if ($_.ToString() -notlike "*not found*") {throw $_}}}},
+    @{Name = "Az.DesktopVirtualization";      Command = {try {Get-AzWvdApplication -GroupName 'smokeTestGroup' -ResourceGroupName $resourceGroupName -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.FrontDoor";                  Command = {Get-AzFrontDoor -ErrorAction Stop}},
+    @{Name = "Az.Functions";                  Command = {Get-AzFunctionApp -ErrorAction Stop}},
+    @{Name = "Az.HealthcareApis";             Command = {Get-AzHealthcareApisService -ErrorAction Stop}},
+    @{Name = "Az.Kusto";                      Command = {try {Get-AzKustoAttachedDatabaseConfiguration -ClusterName 'smokeTestCluster' -ResourceGroupName $resourceGroupName -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.Maintenance";                Command = {try {Get-AzApplyUpdate -ResourceGroupName $resourceGroupName -ProviderName 'smokeTestProvider' -ResourceType 'test' -ResourceName 'test' -ApplyUpdateName 'test' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment -ErrorAction Stop}},
+    @{Name = "Az.PowerBIEmbedded";            Command = {try {Get-AzPowerBIWorkspaceCollectionAccessKeys -ResourceGroupName $resourceGroupName -WorkspaceCollectionName 'smokeTestWorkspaceCollection' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*NotFound*") {throw $_}}}},
+    @{Name = "Az.PrivateDns";                 Command = {try {Get-AzPrivateDnsRecordSet -ResourceGroupName $resourceGroupName -ZoneName 'smokeTestZone' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.SqlVirtualMachine";          Command = {try {Get-AzAvailabilityGroupListener -ResourceGroupName $resourceGroupName -SqlVMGroupName 'smokeTestSqlVMGroup' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.StorageSync";                Command = {try {Get-AzStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName 'smokeTestStorage' -SyncGroupName 'smokeTestSyncGroup' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}},
+    @{Name = "Az.Support";                    Command = {try {Get-AzSupportProblemClassification -ServiceId '55d5fb0b-eae8-45f0-8182-28119dcc12fa' -ErrorAction Stop}catch {if ($_.ToString() -notlike "*Not Found*") {throw $_}}}}
 )
 
 if($Reverse.IsPresent){
