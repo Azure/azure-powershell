@@ -162,62 +162,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
-                    /*
-                    ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
-                    var testListAllRGs = ResourceManagerClient.ResourceGroups.List();
-                    IterateResourceGroupsForCurrentSubId(testListAllRGs);
-                    */
-
-                    //var ofilter = new ODataQuery<Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ResourceGroupFilter>("Name eq " + Name);//{Microsoft.Azure.Management.Compute.Models.VirtualMachine} type, Name 
-                    //var testlist = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
                     
-                    ResourceManagerClient.SubscriptionId = this.ComputeClient.ComputeManagementClient.SubscriptionId;
-                    var testListAllRGs = ResourceManagerClient.ResourceGroups.List();
-                    /*
-                    IterateResourceGroupsForCurrentSubId(testListAllRGs);
-
-                    var resourceGroups = ResourceManagerClient.ResourceGroups.List();
-                    int index = 0;
-                    while (index < resourceGroups.ToArray().Length)
-                    {
-                        var currentRG = resourceGroups.ElementAt(index);
-                        if (Status)
-                        {
-                            try
-                            {
-                                //var allVmsInRG = this.VirtualMachineClient.ListWithHttpMessagesAsync(currentRG.Name).GetAwaiter().GetResult();
-                                
-                                //This Get errors out for RGs that do not have the named VM in them. 
-                                //Despite the catch syntax, these errors are included in the HTTP response. 
-                                var result = this.VirtualMachineClient.Get(currentRG.Name, this.Name, InstanceViewExpand);
-                                if (result != null)
-                                {
-                                    WriteObject(result.ToPSVirtualMachineInstanceView(currentRG.Name, this.Name));
-                                }
-
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        else
-                        {
-                            var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
-                                currentRG.Name, this.Name).GetAwaiter().GetResult();
-
-                            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                            if (result.Body != null)
-                            {
-                                psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
-                            }
-                            psResult.DisplayHint = this.DisplayHint;
-                            WriteObject(psResult);
-                        }
-
-                        index += 1;
-                    }
-                    */
 
                     //original code
                     
@@ -257,120 +202,11 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private void IterateResourceGroupsForCurrentSubId(IPage<ResourceGroup> resourceGroups)
-        {
-            while (resourceGroups != null)
-            {
-                //make a list of VMs to add to
-                Page<VirtualMachine> pageOfVMs = new Page<VirtualMachine>();
-                var vmList = pageOfVMs.ToList();
-
-                int index = 0;
-                while (index < resourceGroups.ToArray().Length)
-                {
-                    var currentRGResult = resourceGroups.ElementAt(index);
-
-                    var testListVMs = this.VirtualMachineClient.ListWithHttpMessagesAsync(currentRGResult.Name).GetAwaiter().GetResult();
-
-                    try
-                    {
-                        if (vmList.Count() < 100)
-                        {
-                            var testGetVM = this.VirtualMachineClient.Get(currentRGResult.Name, this.Name, InstanceViewExpand);
-                            vmList.Add(testGetVM);
-                        }
-                        else
-                        {
-                            break; 
-                        }
-
-                    }
-                    catch
-                    {
-                        //swallow all exceptions
-                    }
-                    index += 1;
-                }
-
-                var psResultList = new List<PSVirtualMachineList>();
-                var psItemList = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmList);
-                //TODO: looks like I can map my list directly to what I need to run the methods, just need to create different methods that 
-                //use the same code. 
-                //foreach (var item in vmList)
-
-                if (!string.IsNullOrEmpty(resourceGroups.NextPageLink))
-                {
-                    resourceGroups = ResourceManagerClient.ResourceGroups.ListNext(resourceGroups.NextPageLink);
-                }
-                else
-                {
-                    resourceGroups = null;
-                }
-            }
-        }
-
-
-
         private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
         {
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
-            //adam
-            //removing for clean test
-            /*
-            var psResultListStatusTest = new List<PSVirtualMachineListStatus>();
-            var listTest = TopLevelWildcardFilter(ResourceGroupName, Name, resources:vmListResult.Body.ToList());
-            //TODO: this is good, but I also need to deal with the paging, does this get all the pages of VMs? 
-            //!!! Need to test it. 
             
-            var globalVMList = new List<VirtualMachine>();//TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body.ToList());
-            while (vmListResult != null) //get pages of VMs onto the list
-            {
-                var currentPageOfVMs = vmListResult.Body;//.ToList()
-                var whilingList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: currentPageOfVMs);
-                globalVMList = globalVMList.Concat(whilingList).ToList();
-                if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
-                {
-                    vmListResult = listNextFunction(vmListResult.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
-                }
-                else
-                {
-                    vmListResult = null;
-                }
-
-                foreach (var item in globalVMList)
-                {
-                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
-
-
-                }
-
-
-            }
-            psResultListStatusTest = this.GetPowerStateList(globalVMList, psResultListStatusTest);
-
-
-            //var listPSItems = new List<PSVirtualMachineListStatus>();
-            //foreach (var item in vmListResult.Body)
-            //{
-                //var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                //psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
-                //listPSItems.Add(psItem);
-                //functional but n2 time
-            //}
-            var psListParam = new List<PSVirtualMachine>();
-            foreach (var item in listTest)
-            {
-                var psItem2 = new PSVirtualMachine(); 
-                psItem2 = ComputeAutoMapperProfile.Mapper.Map(item, psItem2);
-                psListParam.Add(psItem2);
-                
-            }
-            //var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
-            //var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
-            //adam
-            */
             while (vmListResult != null)
             {
                 psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
@@ -399,62 +235,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
             }
-        }
-
-        private List<PSVirtualMachineListStatus> GetPowerStateList(List<VirtualMachine> vmList, List<PSVirtualMachineListStatus> psResultListStatus)
-        {
-            int vmCount = 0;
-            var psVMList = new List<PSVirtualMachine>();
-            foreach (var vm in vmList)
-            {
-                vmCount++;
-                if (vmCount <= MaxNumVMforStatus)
-                {
-                    //var psVM = ComputeAutoMapperProfile.Mapper.Map<Models.PSVirtualMachineInstanceView>(vm);//fewest errors
-                    
-                    /*
-                    //status logic
-                    if (this.Status.IsPresent)
-                    {
-                        VirtualMachine state = null;
-                        try
-                        {
-                            // Call additional Get InstanceView of each VM to get the power states of all VM.
-                            state = this.VirtualMachineClient.Get(psVM.ResourceGroupName, psVM.Name, InstanceViewExpand);
-                        }
-                        catch
-                        {
-                            // Swallow any exception during getting instance view information.
-                        }
-                        if (state == null)
-                        {
-                            psVM.PowerState = InfoNotAvailable; //adam: compile errors, lists do not work
-                            psVM.MaintenanceRedeployStatus = null;
-                        }
-                        else
-                        {
-                            var psstate = state.ToPSVirtualMachineInstanceView(psVM.ResourceGroupName, psVM.Name);
-                            if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
-                            {
-                                psVM.PowerState = psstate.Statuses[1].DisplayStatus;
-                            }
-                            else
-                            {
-                                psVM.PowerState = InfoNotAvailable;
-                            }
-                            psVM.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
-                        }
-                    }
-                    psVMList.Add(psVM);*/
-                }
-                else if (this.Status.IsPresent)
-                {
-                    WriteWarning(string.Format(Properties.Resources.VirtualMachineTooManyVMsWithStatusParameter, MaxNumVMforStatus));
-                    break;
-                }
-            }
-
-            return psResultListStatus;
         }
 
         private List<PSVirtualMachineListStatus> GetPowerstate(
