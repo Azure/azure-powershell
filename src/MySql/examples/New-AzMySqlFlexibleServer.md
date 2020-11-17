@@ -6,7 +6,7 @@ PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName Powershell
 
 Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
 ----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      WestUS 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
+mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
 ```
 
 
