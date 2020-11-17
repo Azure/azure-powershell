@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
     public class PSHealthcareApisFhirServiceCosmosDbConfig
     {
         internal static readonly int defaultOfferThroughput = 400;
-        internal static readonly string defaultKeyVaultKeyUri = null;
         public PSHealthcareApisFhirServiceCosmosDbConfig(ServiceCosmosDbConfigurationInfo serviceCosmosDbConfigurationInfo)
         {
             this.OfferThroughput = serviceCosmosDbConfigurationInfo.OfferThroughput;

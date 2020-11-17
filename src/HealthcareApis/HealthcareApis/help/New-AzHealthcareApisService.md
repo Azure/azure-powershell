@@ -26,9 +26,35 @@ Creates or updates the metadata of a service instance.
 
 ## EXAMPLES
 
-### Example 1 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400 and key vault key uri "https://\<my-keyvault>.vault.azure.net/keys/\<my-key>"
+### Example 1 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400"
 ```powershell
-PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  400 -CosmosKeyVaultKeyUri "https://<my-keyvault>.vault.azure.net/keys/<my-key>"
+PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput 400
+
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  : 
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
+```
+
+### Example 2 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400 and key vault key uri "https://\<my-keyvault>.vault.azure.net/keys/\<my-key>"
+```powershell
+PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput 400 -CosmosKeyVaultKeyUri "https://<my-keyvault>.vault.azure.net/keys/<my-key>"
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -215,21 +241,6 @@ HealthcareApis Fhir Service CosmosOfferThroughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CosmosKeyVaultKeyUri
-HealthcareApis Fhir Service CosmosKeyVaultKeyUri.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

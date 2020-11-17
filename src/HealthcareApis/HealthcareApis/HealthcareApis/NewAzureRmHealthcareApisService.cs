@@ -285,11 +285,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private string GetCosmosDBKeyVaultKeyUri()
         {
-            if (CosmosKeyVaultKeyUri == null)
-            {
-                return PSHealthcareApisFhirServiceCosmosDbConfig.defaultKeyVaultKeyUri;
-            }
-
             return CosmosKeyVaultKeyUri;
         }
 
@@ -315,7 +310,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private void EnsureNameAvailabilityOrThrow()
         {
-            WriteDebug(this.Name + " " + ResourceTypeName);
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
 
