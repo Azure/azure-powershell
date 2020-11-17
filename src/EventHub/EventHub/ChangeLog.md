@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.1
 * Fixed Cluster commands for EventHub cluster without tags
 * Updated help text for PartnerNamespace of AzEventHubGeoDRConfiguration commands 
 

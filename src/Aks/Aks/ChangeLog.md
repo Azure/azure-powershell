@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * Fixed the issue that user cannot use service principal to create a new Kubernetes cluster. [#13012]
 
 ## Version 2.0.0
