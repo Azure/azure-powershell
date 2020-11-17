@@ -440,6 +440,7 @@ Accept wildcard characters: False
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+- All
 - Get
 - List
 - Delete
@@ -473,6 +474,7 @@ Accept wildcard characters: False
 ### -PermissionsToKeys
 Specifies an array of key operation permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+- All
 - Decrypt
 - Encrypt
 - UnwrapKey
@@ -506,6 +508,7 @@ Accept wildcard characters: False
 ### -PermissionsToSecrets
 Specifies an array of secret operation permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+- All
 - Get
 - List
 - Set
@@ -530,6 +533,22 @@ Accept wildcard characters: False
 
 ### -PermissionsToStorage
 Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
+The acceptable values for this parameter:
+- all
+- get
+- list
+- delete
+- set
+- update
+- regeneratekey
+- getsas
+- listsas
+- deletesas
+- setsas
+- recover
+- backup
+- restore
+- purge
 
 ```yaml
 Type: System.String[]
