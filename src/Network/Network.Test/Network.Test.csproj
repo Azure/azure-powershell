@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Network</PsModuleName>
@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
