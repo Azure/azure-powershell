@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported "all" as an option when setting key vault access policies
 
 ## Version 3.1.0
 * Supported updating key vault tag
