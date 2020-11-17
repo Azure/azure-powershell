@@ -612,4 +612,7 @@ Are you sure you want to continue?</value>
   <data name="RemovingSqlPoolVulnerabilityAssessmentSetting" xml:space="preserve">
     <value>Removing vulnerability assessment settings in SQL pool '{0}' under workspace '{1}'.</value>
   </data>
+  <data name="EnablingAdvancedDataSecurity" xml:space="preserve">
+    <value>Enabling Advanced Data Security on workspace '{0}'.</value>
+  </data>
 </root>

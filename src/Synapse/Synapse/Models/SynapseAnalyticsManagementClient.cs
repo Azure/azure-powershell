@@ -23,10 +23,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -672,7 +674,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
 
-        private static string GetStorageAccountName(string storageEndpoint)
+        public string GetStorageAccountName(string storageEndpoint)
         {
             int accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
             int accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
@@ -1404,6 +1406,68 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 throw GetSynapseException(ex);
             }
+        }
+
+        #endregion
+
+        #region Advanced Threat Protection
+
+        public void EnableWorkspaceVa(string resourceGroupName, string workspaceName, string workspaceLocation, string deploymentName)
+        {
+            AutoEnableVa(resourceGroupName, workspaceName, workspaceLocation, "DeployWorkspaceVaTemplate.json", deploymentName);
+        }
+
+        private void AutoEnableVa(string resourceGroupName, string workspaceName, string workspaceLocation, string templateName, string deploymentName)
+        {
+            // Generate deployment name if it was not provided
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = "EnableVA_" + workspaceName + "_" + Guid.NewGuid().ToString("N");
+            }
+
+            // Trim deployment name as it has a maximum of 64 chars
+            if (deploymentName.Length > 64)
+            {
+                deploymentName = deploymentName.Substring(0, 64);
+            }
+
+            Dictionary<string, object> parametersDictionary = new Dictionary<string, object>
+            {
+                {"workspaceName", new Dictionary<string, object> { {"value", workspaceName } }},
+                {"location", new Dictionary<string, object> { {"value", workspaceLocation } }},
+            };
+            string parameters = JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.None,
+                Formatting = Formatting.Indented
+            });
+
+            var properties = new DeploymentProperties
+            {
+                Mode = DeploymentMode.Incremental,
+                Parameters = JObject.Parse(parameters),
+                Template = JObject.Parse(GetArmTemplateContent(templateName)),
+            };
+
+            Deployment deployment = new Deployment(properties);
+
+            ResourceManagementClient.Deployments.CreateOrUpdate(resourceGroupName, deploymentName, deployment);
+        }
+
+        private string GetArmTemplateContent(string templateName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames().FirstOrDefault(str => str.EndsWith(templateName));
+            string template;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    template = reader.ReadToEnd();
+                }
+            }
+
+            return template;
         }
 
         #endregion
@@ -2611,11 +2675,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private static SynapseException GetSynapseException(CloudException ex)
         {
             return ex.CreateSynapseException();
-        }
-
-        private string GetResourceUri(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            return $"/subscriptions/{_subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}";
         }
 
         #endregion

@@ -110,6 +110,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
                'Update-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
                'Reset-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
+               'Enable-AzSynapseSqlAdvancedDataSecurity', 
                'Update-AzSynapseSqlPool', 'Test-AzSynapseWorkspace', 
                'Test-AzSynapseSparkPool', 'Test-AzSynapseSqlPool', 
                'New-AzSynapseFirewallRule', 'Remove-AzSynapseFirewallRule', 
@@ -160,7 +161,8 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Clear-AzSynapseSqlAdvancedThreatProtectionSetting', 
                'Clear-AzSynapseSqlVulnerabilityAssessmentSetting', 
                'Clear-AzSynapseSqlPoolAdvancedThreatProtectionSetting', 
-               'Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting'
+               'Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
+               'Enable-AzSynapseSqlAdvancedThreatProtection'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

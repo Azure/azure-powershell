@@ -287,6 +287,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enabling Advanced Data Security on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string EnablingAdvancedDataSecurity {
+            get {
+                return ResourceManager.GetString("EnablingAdvancedDataSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string EnablingSynapseSparkPoolAutoPause {
