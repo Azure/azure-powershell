@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public string ServiceUri { get; set; }
 
         /// <summary>
-        /// The number of suggestions to return to PSReadLine
+        /// The number of suggestions to return to PSReadLine.
         /// </summary>
         public int? SuggestionCount { get; set; }
         public int? MaxAllowedCommandDuplicate { get; set; }
@@ -115,12 +115,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                     if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
                     {
-                        this.ServiceUri = profileSettings.ServiceUri;
+                        ServiceUri = profileSettings.ServiceUri;
                     }
 
                     if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
                     {
-                        this.SuggestionCount = profileSettings.SuggestionCount;
+                        SuggestionCount = profileSettings.SuggestionCount;
                     }
 
                     if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             if (!string.IsNullOrWhiteSpace(serviceUri))
             {
-                this.ServiceUri = serviceUri;
+                ServiceUri = serviceUri;
             }
         }
     }

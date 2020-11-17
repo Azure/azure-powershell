@@ -24,7 +24,7 @@ using System.Linq;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A telemetry client implementation to collect the telemetry data for AzPredictor
+    /// A telemetry client implementation to collect the telemetry data for AzPredictor.
     /// </summary>
     sealed class AzPredictorTelemetryClient : ITelemetryClient
     {
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private Tuple<IDictionary<string, Version>, string> _cachedAzModulesVersions = Tuple.Create<IDictionary<string, Version>, string>(null, null);
 
         /// <summary>
-        /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>
+        /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>.
         /// </summary>
-        /// <param name="azContext">The Az context which this module runs with</param>
+        /// <param name="azContext">The Az context which this module runs with.</param>
         public AzPredictorTelemetryClient(IAzContext azContext)
         {
             TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording CommandHistory");
+            System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
 #endif
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording RequestPrediction");
+            System.Diagnostics.Trace.WriteLine("Recording RequestPrediction");
 #endif
         }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording RequestPredictionError");
+            System.Diagnostics.Trace.WriteLine("Recording RequestPredictionError");
 #endif
         }
 
@@ -126,12 +126,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording AcceptSuggestion");
+            System.Diagnostics.Trace.WriteLine("Recording AcceptSuggestion");
 #endif
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled)
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSource, bool isCancelled)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var properties = CreateProperties();
             properties.Add("UserInput", maskedUserInput);
-            properties.Add("Suggestion", JsonConvert.SerializeObject(suggestions));
+            properties.Add("Suggestion", JsonConvert.SerializeObject(suggestions.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))));
             properties.Add("IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture));
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording GetSuggestion");
+            System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
 #endif
         }
 
@@ -164,15 +164,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
 
 #if TELEMETRY_TRACE && DEBUG
-            Console.WriteLine("Recording GetSuggestioinError");
+            System.Diagnostics.Trace.WriteLine("Recording GetSuggestioinError");
 #endif
         }
 
         /// <summary>
-        /// Check whether the data collection is opted in from user
+        /// Check whether the data collection is opted in from user.
         /// </summary>
-        /// <returns>true if allowed</returns>
-        private bool IsDataCollectionAllowed()
+        /// <returns>true if allowed.</returns>
+        private static bool IsDataCollectionAllowed()
         {
             if (AzurePSDataCollectionProfile.Instance.EnableAzureDataCollection == true)
             {

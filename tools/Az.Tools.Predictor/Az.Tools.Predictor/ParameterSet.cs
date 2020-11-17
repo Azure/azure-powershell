@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +27,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     sealed class ParameterSet
     {
-        public IList<Tuple<string, string>> Parameters { get; }
+        /// <summary>
+        /// Gets the list of the parameters with their names and values.
+        /// </summary>
+        public IReadOnlyList<Parameter> Parameters { get; }
 
         public ParameterSet(CommandAst commandAst)
         {
-            Parameters = new List<Tuple<string, string>>();
+            Validation.CheckArgument(commandAst, $"{nameof(commandAst)} cannot be null.");
+
+            var parameters = new List<Parameter>();
             var elements = commandAst.CommandElements.Skip(1);
             Ast param = null;
             Ast arg = null;
@@ -40,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     if (param != null)
                     {
-                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
+                        parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
                     }
                     param = elem;
                     arg = null;
@@ -52,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // We'll ignore the incomplete parameter.
                     if (param != null)
                     {
-                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
+                        parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
                     }
 
                     param = null;
@@ -64,15 +70,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
+            Validation.CheckInvariant((param != null) || (arg == null));
 
             if (param != null)
             {
-                Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
+                parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
             }
-            else if (arg != null)
-            {
-                throw new InvalidOperationException();
-            }
+
+            Parameters = parameters;
         }
     }
 }

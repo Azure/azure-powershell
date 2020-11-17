@@ -45,10 +45,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnRequestPrediction(string command);
 
         /// <summary>
-        /// Collects the event when we fail to get the prediction for the command
+        /// Collects the event when we fail to get the prediction for the command.
         /// </summary>
         /// <param name="command">The command to that we request the prediction for.</param>
-        /// <param name="e">The exception</param>
+        /// <param name="e">The exception.</param>
         public void OnRequestPredictionError(string command, Exception e);
 
         /// <summary>
@@ -60,15 +60,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
-        /// <param name="maskedUserInput">The user input that the suggestions are for</param>
-        /// <param name="suggestions">The list of suggestion and its source</param>
-        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled);
+        /// <param name="maskedUserInput">The user input that the suggestions are for.</param>
+        /// <param name="suggestions">The list of suggestions.</param>
+        /// <param name="suggestionSources">The list of sources for each of <paramref name="suggestions"/>.</param>
+        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out.</param>
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSources, bool isCancelled);
 
         /// <summary>
         /// Collects when an exception is thrown when we return a suggestion.
         /// </summary>
-        /// <param name="e">The exception</param>
+        /// <param name="e">The exception.</param>
 
         public void OnGetSuggestionError(Exception e);
     }
