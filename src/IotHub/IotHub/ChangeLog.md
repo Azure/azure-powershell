@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added examples on how to include inline json values to the cmdlet.
 
 ## Version 2.7.0
 * Allowed tags in IoT Hub create cmdlet.
