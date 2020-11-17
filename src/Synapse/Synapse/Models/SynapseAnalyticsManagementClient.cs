@@ -1098,8 +1098,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
+        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageEndpoint)
         {
+            var storageName = GetStorageAccountName(storageEndpoint);
             var resourceGroup = GetStorageResourceGroup(storageName);
             return GetStorageKeys(resourceGroup, storageName);
         }

@@ -121,7 +121,11 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 policy.StorageEndpoint = string.Format("https://{0}.blob.{1}", this.StorageAccountName,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
-                policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(this.StorageAccountName)[StorageKeyKind.Primary];
+            }
+
+            if (!string.IsNullOrEmpty(policy.StorageEndpoint))
+            {
+                policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(policy.StorageEndpoint)[StorageKeyKind.Primary];
             }
 
             if (this.ShouldProcess(this.WorkspaceName, string.Format(Resources.UpdatingThreatProtectionSetting, this.WorkspaceName)))
