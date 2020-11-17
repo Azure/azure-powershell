@@ -42,7 +42,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = DefaultParamSet)]
-    [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
+    [OutputType(typeof(PSVirtualMachine), typeof(Automation.Models.PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
@@ -316,14 +316,17 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
             //adam
+            //removing for clean test
+            /*
             var psResultListStatusTest = new List<PSVirtualMachineListStatus>();
             var listTest = TopLevelWildcardFilter(ResourceGroupName, Name, resources:vmListResult.Body.ToList());
             //TODO: this is good, but I also need to deal with the paging, does this get all the pages of VMs? 
             //!!! Need to test it. 
+            
             var globalVMList = new List<VirtualMachine>();//TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body.ToList());
             while (vmListResult != null) //get pages of VMs onto the list
             {
-                var currentPageOfVMs = vmListResult.Body.ToList();
+                var currentPageOfVMs = vmListResult.Body;//.ToList()
                 var whilingList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: currentPageOfVMs);
                 globalVMList = globalVMList.Concat(whilingList).ToList();
                 if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
@@ -335,19 +338,27 @@ namespace Microsoft.Azure.Commands.Compute
                     vmListResult = null;
                 }
 
+                foreach (var item in globalVMList)
+                {
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
+
+
+                }
+
 
             }
             psResultListStatusTest = this.GetPowerStateList(globalVMList, psResultListStatusTest);
 
 
             //var listPSItems = new List<PSVirtualMachineListStatus>();
-            /*foreach (var item in vmListResult.Body)
-            {
+            //foreach (var item in vmListResult.Body)
+            //{
                 //var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
                 //psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
                 //listPSItems.Add(psItem);
                 //functional but n2 time
-            }*/
+            //}
             var psListParam = new List<PSVirtualMachine>();
             foreach (var item in listTest)
             {
@@ -359,6 +370,7 @@ namespace Microsoft.Azure.Commands.Compute
             //var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
             //var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
             //adam
+            */
             while (vmListResult != null)
             {
                 psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
@@ -398,9 +410,9 @@ namespace Microsoft.Azure.Commands.Compute
                 vmCount++;
                 if (vmCount <= MaxNumVMforStatus)
                 {
-                    var psVM = ComputeAutoMapperProfile.Mapper.Map<Models.PSVirtualMachineInstanceView>(vm);//fewest errors
+                    //var psVM = ComputeAutoMapperProfile.Mapper.Map<Models.PSVirtualMachineInstanceView>(vm);//fewest errors
                     
-
+                    /*
                     //status logic
                     if (this.Status.IsPresent)
                     {
@@ -433,7 +445,7 @@ namespace Microsoft.Azure.Commands.Compute
                             psVM.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
                         }
                     }
-                    psVMList.Add(psVM);
+                    psVMList.Add(psVM);*/
                 }
                 else if (this.Status.IsPresent)
                 {
@@ -453,7 +465,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (vmListResult.Body != null)
             {
                 int vm_count = 0;
-                foreach (var item in vmListResult.Body)
+                //adam
+                var filteredList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body);
+                foreach (var item in filteredList)
+                //adam
+                //foreach (var item in vmListResult.Body)//orig
                 {
                     vm_count++;
                     var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
