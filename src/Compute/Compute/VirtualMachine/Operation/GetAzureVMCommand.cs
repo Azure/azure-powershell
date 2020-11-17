@@ -308,35 +308,38 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private void ReturnListVMObjectList(List<VirtualMachine> vmList)
-        {
-            var psResultListStatus = new List<PSVirtualMachineListStatus>();
-            var enumOfVMs = vmList.GetEnumerator();
-            while (enumOfVMs.Current != null)
-            {
-                psResultListStatus = GetPowerStateList(vmList, psResultListStatus);
 
-                enumOfVMs.MoveNext();
-            }
-        }
-
-        private List<PSVirtualMachineListStatus> GetPowerStateList(List<VirtualMachine> vmList, List<PSVirtualMachineListStatus> psResultListStatus)
-        {
-            
-
-            return psResultListStatus;
-        }
 
         private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
         {
             var psResultListStatus = new List<PSVirtualMachineListStatus>();
             //adam
+            var psResultListStatusTest = new List<PSVirtualMachineListStatus>();
             var listTest = TopLevelWildcardFilter(ResourceGroupName, Name, resources:vmListResult.Body.ToList());
             //TODO: this is good, but I also need to deal with the paging, does this get all the pages of VMs? 
-            //!!!
+            //!!! Need to test it. 
+            var globalVMList = new List<VirtualMachine>();//TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body.ToList());
+            while (vmListResult != null) //get pages of VMs onto the list
+            {
+                var currentPageOfVMs = vmListResult.Body.ToList();
+                var whilingList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: currentPageOfVMs);
+                globalVMList = globalVMList.Concat(whilingList).ToList();
+                if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                {
+                    vmListResult = listNextFunction(vmListResult.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    vmListResult = null;
+                }
 
-            var listPSItems = new List<PSVirtualMachineListStatus>();
+
+            }
+            psResultListStatusTest = this.GetPowerStateList(globalVMList, psResultListStatusTest);
+
+
+            //var listPSItems = new List<PSVirtualMachineListStatus>();
             /*foreach (var item in vmListResult.Body)
             {
                 //var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
@@ -352,7 +355,7 @@ namespace Microsoft.Azure.Commands.Compute
                 psListParam.Add(psItem2);
                 
             }
-            var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
+            //var testFilteredPSList = TopLevelWildcardFilter(ResourceGroupName, Name, listPSItems);
             //var psItemTest = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(listTest);
             //adam
             while (vmListResult != null)
@@ -383,6 +386,62 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
             }
+        }
+
+        private List<PSVirtualMachineListStatus> GetPowerStateList(List<VirtualMachine> vmList, List<PSVirtualMachineListStatus> psResultListStatus)
+        {
+            int vmCount = 0;
+            var psVMList = new List<PSVirtualMachine>();
+            foreach (var vm in vmList)
+            {
+                vmCount++;
+                if (vmCount <= MaxNumVMforStatus)
+                {
+                    var psVM = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(vm);
+                    
+
+                    //status logic
+                    if (this.Status.IsPresent)
+                    {
+                        VirtualMachine state = null;
+                        try
+                        {
+                            // Call additional Get InstanceView of each VM to get the power states of all VM.
+                            state = this.VirtualMachineClient.Get(psVM.ResourceGroupName, psVM.Name, InstanceViewExpand);
+                        }
+                        catch
+                        {
+                            // Swallow any exception during getting instance view information.
+                        }
+                        if (state == null)
+                        {
+                            psVM.PowerState = InfoNotAvailable; //adam: compile errors, lists do not work
+                            psVM.MaintenanceRedeployStatus = null;
+                        }
+                        else
+                        {
+                            var psstate = state.ToPSVirtualMachineInstanceView(psVM.ResourceGroupName, psVM.Name);
+                            if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
+                            {
+                                psVM.PowerState = psstate.Statuses[1].DisplayStatus;
+                            }
+                            else
+                            {
+                                psVM.PowerState = InfoNotAvailable;
+                            }
+                            psVM.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
+                        }
+                    }
+                    psVMList.Add(psVM);
+                }
+                else if (this.Status.IsPresent)
+                {
+                    WriteWarning(string.Format(Properties.Resources.VirtualMachineTooManyVMsWithStatusParameter, MaxNumVMforStatus));
+                    break;
+                }
+            }
+
+            return psResultListStatus;
         }
 
         private List<PSVirtualMachineListStatus> GetPowerstate(
