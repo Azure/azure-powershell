@@ -64,7 +64,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        git config user.email "bez@microsoft.com"
+        git config user.email "azuresdkci@microsoft.com"
         git config user.name "azuresdkci"
         git remote set-url origin https://$(Token)@github.com/Azure/azure-powershell.git
         git checkout -b internal/dailybuild
@@ -81,7 +81,7 @@ jobs:
         Remove-Item -Force -Recurse -Path artifacts
 
   - task: DotNetCoreCLI@2
-    displayName: 'Build for Test'
+    displayName: 'Build after Version Bump up'
     inputs:
       command: custom
       custom: msbuild
