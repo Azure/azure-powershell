@@ -66,7 +66,7 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-WLRecoveryConfi
 
 The **Restore-AzRecoveryServicesBackupItem** cmdlet restores the data and configuration for an Azure Backup item to a specified recovery point.
 
-### For Azure VM  backup
+**For Azure VM  backup**
 
 You can backup Azure virtual machines and restore disks (both managed and un-managed) using this command. The restore operation does not restore the full virtual machine.
 If this is a managed disk VM, a target Resource group should be specified where the restored disks are kept. When target resource group is specified, if the snapshots are present in the resource group that was specified in backup policy, the restore operation will be instant and the disks are created from local snapshots and kept in target-resource group. There is also an option to restore them as un-managed disks but this will leverage the data present in Azure recovery services vault and hence will be lot slower. The configuration of the VM and the deployment template which can be used to create VM out of the restored disks will be downloaded to the specified storage account.
@@ -80,11 +80,11 @@ Please refer to different possible parameter sets and parameter text for more in
 > [!NOTE]
 > If -VaultId parameter is used then -VaultLocation parameter should be used as well.
 
-### For Azure File share backup
+**For Azure File share backup**
 
 You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
 
-### For Azure Workloads
+**For Azure Workloads**
 
 You can restore SQL DBs within Azure VMs
 
