@@ -37,6 +37,7 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
 using System.Runtime.InteropServices;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -397,7 +398,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vmCount++;
                 if (vmCount <= MaxNumVMforStatus)
                 {
-                    var psVM = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(vm);
+                    var psVM = ComputeAutoMapperProfile.Mapper.Map<Models.PSVirtualMachineInstanceView>(vm);//fewest errors
                     
 
                     //status logic
