@@ -28,6 +28,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 using System.Text.RegularExpressions;
+using System.Net.Http;
+using System.Threading;
 
 namespace Common.Authentication.Test
 {
@@ -560,6 +562,52 @@ namespace Common.Authentication.Test
             }
 
             return resourceId;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanGetServiceClientCredentialsWithAccessToken()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            IAuthenticatorBuilder authenticatorBuilder = new DefaultAuthenticatorBuilder();
+            AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => authenticatorBuilder);
+            PowerShellTokenCacheProvider factory = new InMemoryTokenCacheProvider();
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory);
+            string tenant = Guid.NewGuid().ToString();
+            string userId = "user1@contoso.org";
+            var armToken = Guid.NewGuid().ToString();
+            var graphToken = Guid.NewGuid().ToString();
+            var kvToken = Guid.NewGuid().ToString();
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.AccessToken
+            };
+            account.SetTenants(tenant);
+            account.SetAccessToken(armToken);
+            account.SetProperty(AzureAccount.Property.GraphAccessToken, graphToken);
+            account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, kvToken);
+            var authFactory = new AuthenticationFactory();
+            var environment = AzureEnvironment.PublicEnvironments.Values.First();
+            var mockContext = new AzureContext()
+            {
+                Account = account
+            };
+            var credentials = authFactory.GetServiceClientCredentials(mockContext);
+            VerifyAccessTokenInServiceClientCredentials(credentials, armToken);
+            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.Graph);
+            VerifyAccessTokenInServiceClientCredentials(credentials, graphToken);
+            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+            VerifyAccessTokenInServiceClientCredentials(credentials, kvToken);
+        }
+
+        private void VerifyAccessTokenInServiceClientCredentials(Microsoft.Rest.ServiceClientCredentials cred, string expected)
+        {
+            using (var request = new HttpRequestMessage())
+            {
+                cred.ProcessHttpRequestAsync(request, new CancellationToken()).ConfigureAwait(false).GetAwaiter().GetResult();
+                Assert.Equal(expected, request.Headers.Authorization.Parameter);
+            }
         }
     }
 }

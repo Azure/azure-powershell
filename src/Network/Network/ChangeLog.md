@@ -23,6 +23,62 @@
     - fix bug to remove entire private peering object when cx intends delete
 * Updated Remove-AzExpressRouteCircuitConnectionConfig:
     - fix bug to remove entire circuit connection object when cx intends delete
+
+## Version 4.3.0
+* Updated below cmdlet 
+    - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
+        - Added PublicIpAddressPrefix property
+        - Added PublicIpAddressPrefixId property
+* Added new properties to the following cmdlets to allow for global load balancing
+    - `New-AzLoadBalancer`:
+        - Added Sku Tier property
+    - `New-AzPuplicIpAddress`:
+        - Added Sku Tier property
+    - `New-AzPublicIpPrefix`:
+        - Added Sku Tier property
+    - `New-AzLoadBalancerBackendAddressConfig`:
+        - Added LoadBalancerFrontendIPConfigurationId property
+* Updated planning to deprecate warnings for the following cmdlets
+    -`New-AzVirtualHubRoute`
+    -`New-AzVirtualHubRouteTable`
+    -`Add-AzVirtualHubRoute`
+    -`Add-AzVirtualHubRouteTable`
+    -`Get-AzVirtualHubRouteTable`
+    -`Remove-AzVirtualHubRouteTable`
+* Added planning to deprecate warnings on the argument `RouteTable` for the following cmdlets
+    -`New-AzVirtualHub`
+    -`Set-AzVirtualHub`
+    -`Update-AzVirtualHub`
+* Made arguments `-MinScaleUnits` and `-MaxScaleUnits` optional in `Set-AzExpressRouteGateway`
+* Added new cmdlets to support Mutual Authentication and SSL Profiles on Application Gateway
+    - `Get-AzApplicationGatewayClientAuthConfiguration`
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Remove-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
+    - `Add-AzApplicationGatewayTrustedClientCertificate` 
+    - `Get-AzApplicationGatewayTrustedClientCertificate` 
+    - `New-AzApplicationGatewayTrustedClientCertificate` 
+    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
+    - `Set-AzApplicationGatewayTrustedClientCertificate`
+    - `Add-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfile`
+    - `New-AzApplicationGatewaySslProfile`
+    - `Remove-AzApplicationGatewaySslProfile`
+    - `Set-AzApplicationGatewaySslProfile`
+    - `Get-AzApplicationGatewaySslProfilePolicy`
+    - `Remove-AzApplicationGatewaySslProfilePolicy`
+    - `Set-AzApplicationGatewaySslProfilePolicy`
+
+## Version 4.2.0
+* Added warning messages for upcoming breaking change for Virtual Router Peer Routes
+    - `Get-AzVirtualRouterPeerLearnedRoute`
+    - `Get-AzVirtualRouterPeerAdvertisedRoute`
+* Added new cmdlet for virtual router
+    - `Update-AzVirtualRouter`: to allow branch to branch traffic
+* Updated New-AzFirewallPolicyNatRule cmdlet:
+    - Added parameter Translated FQDN
+
+## Version 4.1.0
 * [Breaking Change] Removed parameter `HostedSubnet` and added `Subnet` instead
 * Added new cmdlets for Virtual Router Peer Routes
     - `Get-AzVirtualRouterPeerLearnedRoute`
@@ -31,6 +87,14 @@
     - Added parameter `-SkuTier`
     - Added parameter `-SkuName` and made Sku as Alias for this
     - Removed parameter `-Sku`
+* [Breaking Change] Made `Connectionlink` argument mandatory in `Start-AzVpnConnectionPacketCapture` and `Stop-AzVpnConnectionPacketCapture`
+* [Breaking Change] Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` to remove parameter `-Filter`
+* [Breaking Change] Replaced `New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject` cmdlet with `New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject`
+* Updated `New-AzNetworkWatcherConnectionMonitorEndPointObject` cmdlet:
+	- Added parameter `-Type`
+	- Added parameter `-CoverageLevel`
+	- Added parameter `-Scope`
+* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior` 
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource

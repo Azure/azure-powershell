@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "type": "TumblingWindowTrigger",
+    "typeProperties": {
+      "frequency": "Minute",
+      "interval": 15,
+      "startTime": "2019-09-10T13:00:00Z",
+      "endtime": "2019-09-14T13:00:00Z",
+      "maxConcurrency": 2
+    },
+    "pipeline": {
+      "pipelineReference": {
+        "referenceName": "samplePipeline",
+        "type": "PipelineReference"
+      }
+    }
+  }
+}

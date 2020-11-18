@@ -143,6 +143,7 @@ Specifies the type for the blob that this cmdlet uploads.
 The acceptable values for this parameter are:
 - Block
 - Page
+- Append
 The default value is Block.
 
 ```yaml

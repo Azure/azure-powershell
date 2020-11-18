@@ -15,11 +15,6 @@ if (Get-Module -ListAVailable 'Az.Accounts')
     Enable-AzureRmAlias
 }
 
-if (!(Get-AzureRmContext -ErrorAction 'Ignore'))
-{
-  Connect-AzureRmAccount -Subscription "Azure SDK PowerShell Test"
-}
-
 $testInfo = @{
     TotalCount = 0;
     PassedCount = 0;
@@ -42,7 +37,7 @@ $resourceCleanUpCommands = @(
 $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzureRmStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     @{Name = "Az.Storage [Data]";             Command = {New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
-    @{Name = "Az.Aks";                        Command = {Get-AzureRmAks -ErrorAction Stop}},
+    @{Name = "Az.Aks";                        Command = {Get-AzAksCluster -ErrorAction Stop}},
     @{Name = "Az.AnalysisServices";           Command = {Get-AzureRmAnalysisServicesServer -ErrorAction Stop}},
     @{Name = "Az.ApiManagement";              Command = {Get-AzureRmApiManagement -ErrorAction Stop}},
     @{Name = "Az.ApplicationInsights";        Command = {Get-AzureRmApplicationInsights -ErrorAction Stop}},

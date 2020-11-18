@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificates { get; set; }
 
+        public List<PSApplicationGatewayTrustedClientCertificate> TrustedClientCertificates { get; set; }
+
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
@@ -44,6 +46,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSApplicationGatewayBackendAddressPool> BackendAddressPools { get; set; }
 
         public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
+
+        public List<PSApplicationGatewaySslProfile> SslProfiles { get; set; }
 
         public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
 
@@ -94,6 +98,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string TrustedClientCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(TrustedClientCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string AuthenticationCertificatesText
         {
             get { return JsonConvert.SerializeObject(AuthenticationCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -127,6 +137,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BackendHttpSettingsCollectionText
         {
             get { return JsonConvert.SerializeObject(BackendHttpSettingsCollection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SslProfilesText
+        {
+            get { return JsonConvert.SerializeObject(SslProfiles, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

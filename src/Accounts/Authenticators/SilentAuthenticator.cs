@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var cacheCredential = new SharedTokenCacheCredential(options);
             var requestContext = new TokenRequestContext(scopes);
             var tokenTask = cacheCredential.GetTokenAsync(requestContext);
-            return MsalAccessToken.GetAccessTokenAsync(tokenTask, silentParameters.TenantId, silentParameters.UserId, silentParameters.HomeAccountId);
+            return MsalAccessToken.GetAccessTokenAsync(cacheCredential, requestContext, cancellationToken, silentParameters.TenantId, silentParameters.UserId, silentParameters.HomeAccountId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

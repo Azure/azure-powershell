@@ -19,6 +19,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -34,7 +35,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
  [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
- [-KafkaClientGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -43,6 +45,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -58,8 +61,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
- [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
+ [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -68,6 +71,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -83,8 +87,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
- [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
+ [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,7 +211,7 @@ PS C:\&gt; # Primary storage account info
             -EncryptionInTransit $true `
 ```
 
-### Example 4: Create an Azure HDInsight cluster with private link feature
+### Example 4: Create an Azure HDInsight cluster with relay outbound and private link feature
 ```
 PS C:\&gt; # Primary storage account info
         $storageAccountResourceGroupName = "Group"
@@ -244,7 +248,7 @@ PS C:\&gt; # Primary storage account info
             -StorageContainer $storageContainer `
             -SshCredential $clusterCreds `
             -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
-            -PublicNetworkAccessType OutboundOnly -OutboundPublicNetworkAccessType PublicLoadBalancer `
+            -ResourceProviderConnection Outbound -PrivateLink Enabled `
 ```
 
 ### Example 5: Create an Azure HDInsight cluster which enables encryption at host
@@ -471,6 +475,21 @@ You can alternatively use the Add-AzHDInsightStorage cmdlet.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AmbariDatabase
+Gets or sets the database for ambari.
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
 Parameter Sets: (All)
 Aliases:
 
@@ -1004,6 +1023,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateLink
+Gets or sets the private link type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RdpAccessExpiry
 Specifies the expiration, as a DateTime object, for Remote Desktop Protocol (RDP) access to a cluster.
 
@@ -1045,6 +1080,22 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceProviderConnection
+Gets or sets the resource provider connection type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Inbound, Outbound
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

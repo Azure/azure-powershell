@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            WriteWarningWithTimestamp("Upcoming breaking changes in the cmdlet 'Get-AzVirtualRouterAdvertisedRoutes': "
+                + "The output type 'Microsoft.Azure.Commands.Network.Models.PSVirtualRouterLearnedRoutes' is changing. "
+                + "Note: Go to https://aka.ms/azps-changewarnings for steps to suppress this breaking change warning, and other information on breaking changes in Azure PowerShell.");
+
             base.Execute();
 
             context = DefaultContext;

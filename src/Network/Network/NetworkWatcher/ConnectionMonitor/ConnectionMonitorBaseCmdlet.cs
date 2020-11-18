@@ -432,19 +432,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public void ValidateEndpointFilterItem(PSNetworkWatcherConnectionMonitorEndpointFilterItem endpointFilterItem)
-        {
-            if (!string.IsNullOrEmpty(endpointFilterItem.Type) && !String.Equals(endpointFilterItem.Type, "AgentAddress"))
-            {
-                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointFilterItemType);
-            }
-
-            if (string.IsNullOrEmpty(endpointFilterItem.Address))
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterItemAddressIsMissing);
-            }
-        }
-
         public void ValidateProtocolConfiguration(PSNetworkWatcherConnectionMonitorProtocolConfiguration protocolConfiguration)
         {
             if (protocolConfiguration == null)
@@ -470,6 +457,13 @@ namespace Microsoft.Azure.Commands.Network
         public void ValidateTCPProtocolConfiguration(PSNetworkWatcherConnectionMonitorTcpConfiguration tcpProtocolConfiguration)
         {
             this.ValidatePort(tcpProtocolConfiguration.Port, throwIfNull: true);
+
+            if (!string.IsNullOrEmpty(tcpProtocolConfiguration.DestinationPortBehavior)
+                && !string.Equals(tcpProtocolConfiguration.DestinationPortBehavior, "None", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(tcpProtocolConfiguration.DestinationPortBehavior, "ListenIfAvailable", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException(Properties.Resources.UnsupportedDestinationPortBehavior);
+            }
         }
 
         public void ValidateHTTPProtocolConfiguration(PSNetworkWatcherConnectionMonitorHttpConfiguration httpProtocolConfiguration)
@@ -533,13 +527,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.MissedPropertiesInConnectionMonitorEndpoint);
             }
 
-            if (!string.IsNullOrEmpty(endpoint.ResourceId) && !string.IsNullOrEmpty(endpoint.Address))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidPropertiesInConnectionMonitorEndpoint);
-            }
-
+            this.ValidateEndpointType(endpoint);
             this.ValidateEndpointResourceId(endpoint);
-            this.ValidateEndpointFilter(endpoint);
         }
 
         public void ValidateTestConfiguration(PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration)
@@ -803,6 +792,21 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
+        private void ValidateEndpointType(PSNetworkWatcherConnectionMonitorEndpointObject endpoint)
+        {
+            if (string.IsNullOrEmpty(endpoint.Type))
+            {
+                throw new PSArgumentException(Properties.Resources.EmptyEndpointType, endpoint.Name);
+            }
+
+            if (!string.Equals(endpoint.Type, "AzureVM", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "AzureVNet", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(endpoint.Type, "AzureSubnet", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "MMAWorkspaceMachine", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(endpoint.Type, "MMAWorkspaceNetwork", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "ExternalAddress", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidEndpointType, endpoint.Name);
+            }
+        }
+
         private void ValidateEndpointResourceId(PSNetworkWatcherConnectionMonitorEndpointObject endpoint)
         {
             if (string.IsNullOrEmpty(endpoint.ResourceId))
@@ -810,30 +814,48 @@ namespace Microsoft.Azure.Commands.Network
                 return;
             }
 
-            string[] SplittedName = endpoint.ResourceId.Split('/');
+            string[] splittedName = endpoint.ResourceId.Split('/');
 
             // Resource ID must be in the format "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/name"
-            if (SplittedName.Count() < 9)
+            if (splittedName.Count() < 9)
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceId);
             }
 
-            string resourceType = SplittedName[7];
+            string resourceType = splittedName[7];
             if (string.IsNullOrEmpty(resourceType) || (!resourceType.Equals("virtualMachines", StringComparison.OrdinalIgnoreCase)
-                && !resourceType.Equals("virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase)
-                && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase)))
+                && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase)
+                && !resourceType.Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase)))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceType);
             }
 
-            if (resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase) && (endpoint.Filter?.Items == null || !endpoint.Filter.Items.Any()))
+            if (string.Equals(endpoint.Type, "AzureVM", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterItemIsMissing);
+                if (!resourceType.Equals("virtualMachines", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
+                }
             }
-
-            if (endpoint.Filter?.Items != null && endpoint.Filter.Items.Any() && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(endpoint.Type, "AzureVNet", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointTypeForEndpointWithFilter);
+                if (!resourceType.Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
+                }
+            }
+            else if (string.Equals(endpoint.Type, "AzureSubnet", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!resourceType.Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase) || splittedName.Count() != 11 
+                    || splittedName[9].Equals("subnet", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
+                }
+            }
+            else if ((string.Equals(endpoint.Type, "MMAWorkspaceMachine", StringComparison.OrdinalIgnoreCase) || string.Equals(endpoint.Type, "MMAWorkspaceNetwork", StringComparison.OrdinalIgnoreCase)) 
+                && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
             }
         }
 
@@ -903,27 +925,41 @@ namespace Microsoft.Azure.Commands.Network
                 ConnectionMonitorEndpoint cmSourceEndpoint = new ConnectionMonitorEndpoint()
                 {
                     Name = sourceEndpoint.Name,
+                    Type = sourceEndpoint.Type,
                     ResourceId = sourceEndpoint.ResourceId,
                     Address = sourceEndpoint.Address,
+                    CoverageLevel = sourceEndpoint.CoverageLevel
                 };
 
-                // Add ConnectionMonitorEndpointFilterItem
-                if (sourceEndpoint.Filter?.Items != null)
+                // Add ConnectionMonitorEndpointScope
+                if (sourceEndpoint.Scope != null)
                 {
-                    cmSourceEndpoint.Filter = new ConnectionMonitorEndpointFilter()
-                    {
-                        Type = string.IsNullOrEmpty(sourceEndpoint.Filter.Type) ? "Include" : sourceEndpoint.Filter.Type,
-                        Items = new List<ConnectionMonitorEndpointFilterItem>()
-                    };
+                    cmSourceEndpoint.Scope = new ConnectionMonitorEndpointScope();
 
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem item in sourceEndpoint.Filter.Items)
+                    if (sourceEndpoint.Scope.Include != null)
                     {
-                        cmSourceEndpoint.Filter.Items.Add(
-                            new ConnectionMonitorEndpointFilterItem()
-                            {
-                                Type = string.IsNullOrEmpty(item.Type) ? "AgentAddress" : item.Type,
-                                Address = item.Address
-                            });
+                        cmSourceEndpoint.Scope.Include = new List<ConnectionMonitorEndpointScopeItem>();
+                        foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in sourceEndpoint.Scope.Include)
+                        {
+                            cmSourceEndpoint.Scope.Include.Add(
+                                new ConnectionMonitorEndpointScopeItem()
+                                {
+                                    Address = item.Address
+                                });
+                        }
+                    }
+
+                    if (sourceEndpoint.Scope.Exclude != null)
+                    {
+                        cmSourceEndpoint.Scope.Exclude = new List<ConnectionMonitorEndpointScopeItem>();
+                        foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in sourceEndpoint.Scope.Exclude)
+                        {
+                            cmSourceEndpoint.Scope.Exclude.Add(
+                                new ConnectionMonitorEndpointScopeItem()
+                                {
+                                    Address = item.Address
+                                });
+                        }
                     }
                 }
 
@@ -967,27 +1003,41 @@ namespace Microsoft.Azure.Commands.Network
                 ConnectionMonitorEndpoint cmDestinationEndpoint = new ConnectionMonitorEndpoint()
                 {
                     Name = destinationEndpoint.Name,
+                    Type = destinationEndpoint.Type,
                     ResourceId = destinationEndpoint.ResourceId,
                     Address = destinationEndpoint.Address,
+                    CoverageLevel = destinationEndpoint.CoverageLevel
                 };
 
-                // Add ConnectionMonitorEndpointFilterItem
-                if (destinationEndpoint.Filter?.Items != null)
+                // Add ConnectionMonitorEndpointScope
+                if (destinationEndpoint.Scope != null)
                 {
-                    cmDestinationEndpoint.Filter = new ConnectionMonitorEndpointFilter()
-                    {
-                        Type = string.IsNullOrEmpty(destinationEndpoint.Filter.Type) ? "Include" : destinationEndpoint.Filter.Type,
-                        Items = new List<ConnectionMonitorEndpointFilterItem>()
-                    };
+                    cmDestinationEndpoint.Scope = new ConnectionMonitorEndpointScope();
 
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem item in destinationEndpoint.Filter.Items)
+                    if (destinationEndpoint.Scope.Include != null)
                     {
-                        cmDestinationEndpoint.Filter.Items.Add(
-                            new ConnectionMonitorEndpointFilterItem()
-                            {
-                                Type = string.IsNullOrEmpty(item.Type) ? "AgentAddress" : item.Type,
-                                Address = item.Address
-                            });
+                        cmDestinationEndpoint.Scope.Include = new List<ConnectionMonitorEndpointScopeItem>();
+                        foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in destinationEndpoint.Scope.Include)
+                        {
+                            cmDestinationEndpoint.Scope.Include.Add(
+                                new ConnectionMonitorEndpointScopeItem()
+                                {
+                                    Address = item.Address
+                                });
+                        }
+                    }
+
+                    if (destinationEndpoint.Scope.Exclude != null)
+                    {
+                        cmDestinationEndpoint.Scope.Exclude = new List<ConnectionMonitorEndpointScopeItem>();
+                        foreach (PSNetworkWatcherConnectionMonitorEndpointScopeItem item in destinationEndpoint.Scope.Exclude)
+                        {
+                            cmDestinationEndpoint.Scope.Exclude.Add(
+                                new ConnectionMonitorEndpointScopeItem()
+                                {
+                                    Address = item.Address
+                                });
+                        }
                     }
                 }
 
@@ -997,50 +1047,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 cmTestGroup.Destinations.Add(cmDestinationEndpoint.Name);
-            }
-        }
-
-        private void ValidateEndpointFilter(PSNetworkWatcherConnectionMonitorEndpointObject endpoint)
-        {
-            if (endpoint.Filter == null)
-            {
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(endpoint.Filter.Type) && !endpoint.Filter.Type.Equals("Include", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointFilterType);
-            }
-
-            if (!string.IsNullOrEmpty(endpoint.Filter.Type) && (endpoint.Filter.Items == null || (endpoint.Filter.Items != null && !endpoint.Filter.Items.Any())))
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointWilthFilterTypeMustHaveFilterItem);
-            }
-
-            if (endpoint.Filter.Items != null && endpoint.Filter.Items.Any() && string.IsNullOrEmpty(endpoint.ResourceId))
-            {
-                throw new PSArgumentException(Properties.Resources.ResourceIDIsMissingInEndpointWithFilter);
-            }
-
-            this.ValidateEndpointFilterItemList(endpoint.Filter?.Items);
-        }
-
-        private void ValidateEndpointFilterItemList(List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> items)
-        {
-            if (items == null || !items.Any())
-            {
-                return;
-            }
-
-            HashSet<string> addressSet = new HashSet<string>();
-            foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem item in items)
-            {
-                this.ValidateEndpointFilterItem(item);
-
-                if (!addressSet.Add(item.Address))
-                {
-                    throw new PSArgumentException(Properties.Resources.EndpointFilterItemAddressesMustBeUnique);
-                }
             }
         }
 
