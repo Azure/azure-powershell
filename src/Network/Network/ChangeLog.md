@@ -56,6 +56,9 @@
     - `Get-AzApplicationGatewaySslProfilePolicy`
     - `Remove-AzApplicationGatewaySslProfilePolicy`
     - `Set-AzApplicationGatewaySslProfilePolicy`
+* Added a new 'Priority' field to the PSApplicationGatewayRequestRoutingRule class
+    - `AzureApplicationGatewayRequestRoutingRuleBase`
+    - `AddAzureApplicationGatewayRequestRoutingRuleCommand`
     
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource

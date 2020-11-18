@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                 HelpMessage = "The priority of the rule")]
-        [ValidateNotNullOrEmpty]
+        [ValidateRange(1, 20000)]
         public int? Priority { get; set; }
 
         [Parameter(
