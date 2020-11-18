@@ -44,9 +44,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string VulnerabilityAssessmentSetting = nameof(VulnerabilityAssessmentSetting);
 
-        public const string TransparentDataEncryptionProtector = nameof(TransparentDataEncryptionProtector);
+        public const string TransparentDataEncryption = nameof(TransparentDataEncryption);
 
         public const string AdvancedDataSecurity = nameof(AdvancedDataSecurity);
+
+        public const string AdvancedDataSecurityPolicy = nameof(AdvancedDataSecurityPolicy);
 
         public const string SqlDatabase = nameof(SqlDatabase);
 

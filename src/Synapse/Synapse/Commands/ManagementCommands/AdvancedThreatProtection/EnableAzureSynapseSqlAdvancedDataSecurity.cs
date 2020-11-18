@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 policy.State = SecurityAlertPolicyState.Enabled;
                 if(!string.IsNullOrEmpty(policy.StorageEndpoint))
                 {
-                    policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(SynapseAnalyticsClient.GetStorageAccountName(policy.StorageEndpoint))[StorageKeyKind.Primary];
+                    policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(policy.StorageEndpoint)[StorageKeyKind.Primary];
                 }
                 SynapseAnalyticsClient.SetWorkspaceThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName, policy);
 

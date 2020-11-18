@@ -260,6 +260,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling Advanced Data Security on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string DisablingAdvancedDataSecurity {
+            get {
+                return ResourceManager.GetString("DisablingAdvancedDataSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string DisablingSynapseSparkPoolAutoPause {
@@ -1167,6 +1176,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSqlPoolAudit {
             get {
                 return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting transparent data encryption protector in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSqlPoolTransparentDataEncryption {
+            get {
+                return ResourceManager.GetString("SettingSqlPoolTransparentDataEncryption", resourceCulture);
             }
         }
         

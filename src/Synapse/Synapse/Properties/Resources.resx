@@ -615,4 +615,10 @@ Are you sure you want to continue?</value>
   <data name="EnablingAdvancedDataSecurity" xml:space="preserve">
     <value>Enabling Advanced Data Security on workspace '{0}'.</value>
   </data>
+  <data name="DisablingAdvancedDataSecurity" xml:space="preserve">
+    <value>Disabling Advanced Data Security on workspace '{0}'.</value>
+  </data>
+  <data name="SettingSqlPoolTransparentDataEncryption" xml:space="preserve">
+    <value>Setting transparent data encryption protector in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
 </root>

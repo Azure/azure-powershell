@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
 
-        public string GetStorageAccountName(string storageEndpoint)
+        private static string GetStorageAccountName(string storageEndpoint)
         {
             int accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
             int accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
@@ -1468,6 +1468,34 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             return template;
+        }
+
+        #endregion
+
+        #region Transparent Data Encryption
+
+        public TransparentDataEncryption GetSqlPoolTransparentDataEncryption(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolTransparentDataEncryptions.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public TransparentDataEncryption SetSqlPoolTransparentDataEncryption(string resourceGroupName, string workspaceName, string sqlPoolName, TransparentDataEncryption parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolTransparentDataEncryptions.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
         }
 
         #endregion
