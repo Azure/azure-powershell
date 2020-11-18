@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,27 +21,17 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-//using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 using Microsoft.Rest.Azure;
-//
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Rest;
-using Microsoft.Rest.Azure.OData;
-using System.Runtime.InteropServices;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = DefaultParamSet)]
-    [OutputType(typeof(PSVirtualMachine), typeof(Automation.Models.PSVirtualMachineInstanceView))]
+    [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
@@ -162,15 +151,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
-                    
-
-                    //original code
-                    
                     ReturnListVMObject(
                             this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
-                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
-                    
-                        
+                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync); 
                 }
                 else if (ShouldGetByName(ResourceGroupName, Name))
                 {
@@ -245,11 +228,8 @@ namespace Microsoft.Azure.Commands.Compute
             if (vmListResult.Body != null)
             {
                 int vm_count = 0;
-                //adam
                 var filteredList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body);
-                //foreach (var item in filteredList)
-                //adam
-                foreach (var item in vmListResult.Body)//orig
+                foreach (var item in filteredList)
                 {
                     vm_count++;
                     var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);

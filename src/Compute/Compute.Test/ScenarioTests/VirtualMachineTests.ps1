@@ -4439,11 +4439,11 @@ function Test-VirtualMachineGetVMNameAcrossResourceGroups
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
-        $domainNameLabel = "domainlabel1";
-        $domainNameLabel2 = "domainlabe2";
-        $domainNameLabel3 = "domainlabe3";
+        $domainNameLabel1 = "domain1" + $rgname;
+        $domainNameLabel2 = "domain2" + $rgname;
+        $domainNameLabel3 = "domain3" + $rgname;
 
-        $vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel1;
         $vm2 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel2;
         $vm3 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname3 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel3;
 
