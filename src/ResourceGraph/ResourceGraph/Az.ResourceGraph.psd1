@@ -11,7 +11,7 @@
 # Script module or binary module file associated with this manifest.
 
 # Version number of this module.
-ModuleVersion = '0.7.7'
+ModuleVersion = '0.7.8'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.ResourceGraph.dll', 'ResourceGraph.Autorest\bin\Az.ResourceGraph.private.dll'

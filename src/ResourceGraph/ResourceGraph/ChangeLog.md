@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.8
+* Added four new cmdlets -- Get-AzResourceGraphQuery, New-AzResourceGraphQuery, Remove-AzResourceGraphQuery, Update-AzResourceGraphQuery
+
 ## Version 0.7.7
 * Update references in .psd1 to use relative path
 
